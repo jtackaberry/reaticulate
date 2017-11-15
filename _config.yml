@@ -1,0 +1,12 @@
+theme: jekyll-theme-midnight
+description: an articulation management system for REAPER
+breadcrumbs: true
+kramdown:
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    line_numbers: false
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1

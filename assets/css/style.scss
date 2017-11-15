@@ -1,0 +1,86 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+    font: 110%/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#header {
+    display: none;
+}
+
+section {
+    margin-top: 10px;
+}
+
+section #title {
+    margin-bottom: 20px;
+}
+
+.credits {
+    display: none !important;
+}
+
+.wrapper, section {
+    max-width: 1200px;
+}
+
+
+img[alt="pianoroll"] {
+	margin: 0 auto;
+    display: block;
+    max-width: 90%;
+}
+
+img[alt="scaled"] {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+    img[alt="floating"] {
+        float: right;
+        padding-left: 2em;
+        padding-bottom: 1em;
+    }
+    img[alt="inline"] {
+        max-width: calc(100% - 400px);
+    }
+}
+@media screen and (max-width: 799px) {
+    img[alt="floating"] {
+        display: block;
+        margin: 0 auto;
+    }
+}
+h2#tldr, h2#reaticulate-notations-for-reabank-files {
+	padding-top: 0;
+}
+
+h1 a {
+    color: #e8e8e8;
+}
+
+h2 {
+    padding-top: 2em;
+}
+
+.highlight {
+    line-height: 1.2;
+}
+
+.language-go .highlight .c {
+    color: #a2cba6;
+    font-weight: bold;
+}
+
+
+p.warning {
+	color: #ffbd7c;
+	border-left: 4px solid #ff9000;
+	padding-left: 10px;
+	font-style: normal !important;
+}
