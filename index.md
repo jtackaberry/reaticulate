@@ -5,7 +5,7 @@
 Install it with [ReaPack](https://reapack.com/):
 
 ```
-https://someurlhere/
+http://reaticulate.com/index.xml
 ```
 
 This is an alpha preview.  Please [report the bugs you inevitably find via GitHub](https://github.com/jtackaberry/reaticulate/issues).
@@ -32,7 +32,7 @@ Reaticulate is installable as a ReaPack repository.  If you don't already have R
 
 Once you have ReaPack installed:
 - Open the menu: `Extensions | ReaPack | Import a Repository`
-- Paste in this URL: `TODO`
+- Paste in this URL: `http://reaticulate.com/index.xml`
 - Double click the newly added Reaticulate item in the repository list
 - Click the `Install/update Reaticulate` button and select `Install all packages`
 - Invoke the action `Script: Reaticulate_Main.lua` from the actions list.
