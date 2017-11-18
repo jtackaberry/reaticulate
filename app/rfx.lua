@@ -244,7 +244,7 @@ end
 
 
 function rfx.get_banks_conflicts()
-    -- Tracks program details where the key is 16 * channel + program
+    -- Tracks program details where the key is 128 * channel + program
     local programs = {}
     local conflicts = {}
     for channel = 1, 16 do
