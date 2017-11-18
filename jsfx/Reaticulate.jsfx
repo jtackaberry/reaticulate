@@ -22,7 +22,7 @@ desc:Reaticulate
 // byte 2: version
 // byte 3: magic
 // Defaults to MAGIC + VERSION consts (defined below)
-slider1:704708608<0,2147483647,1>Reaticulate metadata
+slider1:704708608<0,2147483647,1>-Reaticulate metadata
 // Ideally we'll manage to keep everything we need in slider1 for constant
 // polling, but we'll reserve this one just in case.
 slider2:0<0,2147483647,1>-Reserved for future use
@@ -44,7 +44,7 @@ slider9:0<0,2147483647,1>-Unused
 //     byte 1: current program number for group 2; 128 == disabled
 //     byte 2: current program number for group 3; 128 == disabled
 //     byte 3: current program number for group 4; see slider26 for disabled
-slider10:8421504<0,2147483647,1>Reaticulate data for channel 1
+slider10:8421504<0,2147483647,1>-Reaticulate data for channel 1
 slider11:8421504<0,2147483647,1>-Reaticulate data for channel 2
 slider12:8421504<0,2147483647,1>-Reaticulate data for channel 3
 slider13:8421504<0,2147483647,1>-Reaticulate data for channel 4
@@ -74,7 +74,7 @@ slider29:0<0,2147483647,1>-Unused
 // for the GUI.  The actual encoding of these values is defined
 // within that script and this JSFX is agnostic.  This is used, for example,
 // to store the current banks assigned to this track.
-slider30:0<0,2147483647,1>Reaticulate Track Data 0
+slider30:0<0,2147483647,1>-Reaticulate Track Data 0
 slider31:0<0,2147483647,1>-Reaticulate Track Data 1
 slider32:0<0,2147483647,1>-Reaticulate Track Data 2
 slider33:0<0,2147483647,1>-Reaticulate Track Data 3
@@ -108,7 +108,9 @@ slider59:0<0,2147483647,1>-Reaticulate Track Data 29
 slider60:0<0,2147483647,1>-Unused
 slider61:0<0,2147483647,1>-Unused
 slider62:0<0,2147483647,1>-Unused
-slider63:0<0,2147483647,1>-Unused
+
+// For debugging
+slider63:0<0,15,1>Show debug info for channel
 
 
 // Special assembler-esque interface used by the GUI for programming
@@ -437,18 +439,27 @@ function get_output_event_param2(event)
 @gfx
 gfx_x = gfx_y = 0;
 gfx_r = gfx_g = gfx_b = gfx_a = 1;
+channel = slider63;
+group = 0;
 
-channel = 0;
+gfx_printf("Reaticulate debug info\n");
+gfx_printf("  serial: %d\n", serial);
+gfx_printf("  pending: %d\n", have_pending_activations);
+gfx_printf("  active notes bitmap: %d\n", slider3);
+gfx_printf("  program notification: %d\n", slider1 & 0x80);
+gfx_printf("  articulations len: %d\n", articulations_len);
+
 control = slider(SLIDER_OFFSET_CONTROL + channel);
-program = (control >> (8 * 0)) & 0xff;
+program = (control >> (8 * group)) & 0xff;
 articulation = get_articulation(channel, program);
 num_outputs = get_articulation_num_outputs(articulation);
 flags = get_articulation_flags(articulation);
-gfx_printf("program: %d\n", program);
-gfx_printf("program notification: %d\n", slider1 & 0x80);
-gfx_printf("articulation: %d\n", articulation);
-gfx_printf("# outputs: %d\n", num_outputs);
-gfx_printf("flags: %d\n", all_articulation_flags_by_channel[0]);
+
+gfx_printf("\nChannel %d debug info\n", channel);
+gfx_printf("  program: %d\n", program);
+gfx_printf("  articulation ptr: %d\n", articulation);
+gfx_printf("  # outputs: %d\n", num_outputs);
+gfx_printf("  flags: %d\n", flags);
 
 
 @serialize
