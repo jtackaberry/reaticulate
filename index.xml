@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf8"?>
+<index name="Reaticulate" version="1">
+  <category name="app">
+    <reapack name="app.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T02:44:55Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/app.lua</source>
+      </version>
+    </reapack>
+    <reapack name="articons.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-07T01:28:20Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/articons.lua</source>
+      </version>
+    </reapack>
+    <reapack name="middleclass.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-10-26T01:19:55Z">
+        <source file="lib/middleclass.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/lib/middleclass.lua</source>
+      </version>
+    </reapack>
+    <reapack name="rtk.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T02:52:22Z">
+        <source file="lib/rtk.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/lib/rtk.lua</source>
+      </version>
+    </reapack>
+    <reapack name="utils.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T00:32:14Z">
+        <source file="lib/utils.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/lib/utils.lua</source>
+      </version>
+    </reapack>
+    <reapack name="main.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T02:00:57Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/main.lua</source>
+      </version>
+    </reapack>
+    <reapack name="reabank.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T02:52:10Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/reabank.lua</source>
+      </version>
+    </reapack>
+    <reapack name="rfx.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T03:07:10Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/rfx.lua</source>
+      </version>
+    </reapack>
+    <reapack name="banklist.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-17T00:58:02Z">
+        <source file="screens/banklist.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/screens/banklist.lua</source>
+      </version>
+    </reapack>
+    <reapack name="installer.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T00:58:45Z">
+        <source file="screens/installer.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/screens/installer.lua</source>
+      </version>
+    </reapack>
+    <reapack name="settings.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-16T03:05:13Z">
+        <source file="screens/settings.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/screens/settings.lua</source>
+      </version>
+    </reapack>
+    <reapack name="trackcfg.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T02:44:59Z">
+        <source file="screens/trackcfg.lua" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/app/screens/trackcfg.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="actions">
+    <reapack name="Reaticulate_Activate articulation by CC in group 1 on default channel (MIDI CC relative or mousewheel).lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-05T17:57:20Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%201%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC in group 2 on default channel (MIDI CC relative or mousewheel).lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-06T01:00:10Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%202%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC in group 3 on default channel (MIDI CC relative or mousewheel).lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-06T01:00:25Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%203%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC in group 4 on default channel (MIDI CC relative or mousewheel).lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-06T01:00:31Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%204%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 01.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2001.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 02.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2002.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 03.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2003.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 04.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2004.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 05.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 06.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2006.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 07.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2007.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 08.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2008.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 09.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2009.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 10.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2010.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 11.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2011.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 12.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2012.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 13.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2013.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 14.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2014.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 15.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2015.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on channel 16.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2016.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate articulation by CC on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:02:04Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate next articulation in group 1 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:32:12Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20next%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate next articulation in group 2 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:32:09Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20next%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate next articulation in group 3 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:32:47Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20next%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate next articulation in group 4 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:32:51Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20next%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate previous articulation in group 1 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:32:55Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate previous articulation in group 2 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:33:00Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate previous articulation in group 3 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:33:05Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Activate previous articulation in group 4 on default channel.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-08T13:33:09Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Main.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T02:21:02Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Main.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel by CC.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20by%20CC.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 01.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2001.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 02.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2002.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 03.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2003.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 04.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2004.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 05.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2005.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 06.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2006.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 07.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2007.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 08.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2008.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 09.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2009.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 10.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2010.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 11.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2011.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 12.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2012.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 13.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2013.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 14.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2014.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 15.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2015.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Reaticulate_Set default MIDI channel to 16.lua" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-10-15T01:01:40Z">
+        <source main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2016.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name=".">
+    <reapack name="Reaticulate-factory.reabank" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-17T01:31:09Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/Reaticulate-factory.reabank</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="img">
+    <reapack name="add_circle_outline_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-11-10T00:29:46Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/add_circle_outline_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="arrow_back_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-11-08T03:14:35Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/arrow_back_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="articulations.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-04T21:55:06Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/articulations.png</source>
+      </version>
+    </reapack>
+    <reapack name="delete_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-12-12T01:35:59Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/delete_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="dock_window_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-06T22:44:38Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/dock_window_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="edit_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-11-12T21:02:59Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/edit_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="info_outline_white_24x24.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-09-01T23:59:05Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/info_outline_white_24x24.png</source>
+      </version>
+    </reapack>
+    <reapack name="keyboard_arrow_down_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-12-10T23:37:38Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/keyboard_arrow_down_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="keyboard_arrow_up_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-12-10T23:37:34Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/keyboard_arrow_up_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="loop_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-11-12T19:04:05Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/loop_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="settings_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-11-08T03:14:42Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/settings_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="undock_window_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-06T22:44:46Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/undock_window_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="view_list_white_18x18.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2016-11-08T03:52:49Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/view_list_white_18x18.png</source>
+      </version>
+    </reapack>
+    <reapack name="warning_amber_24x24.png" type="script">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-09-01T23:58:30Z">
+        <source main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/warning_amber_24x24.png</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="jsfx">
+    <reapack name="Reaticulate.jsfx" type="effect">
+      <version author="Jason Tackaberry" name="1.0.0" time="2017-11-18T21:22:33Z">
+        <source>https://raw.githubusercontent.com/jtackaberry/reaticulate/master/jsfx/Reaticulate.jsfx</source>
+      </version>
+    </reapack>
+  </category>
+  <metadata>
+    <description>
+<![CDATA[{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\sub\f0\fs72\lang9 Reaticulate\b\fs48\par
+
+\pard\sl240\slmult1\b0 Reaticulate provides a system for managing virtual instrument articulations in REAPER.\par
+\par
+More information at {{\field{\*\fldinst{HYPERLINK http://reaticulate.com/ }}{\fldrslt{http://reaticulate.com/\ul0\cf0}}}}\b\f0\fs48\par
+}
+]]>      None
+    </description>
+    <link rel="website">http://reaticulate.com/</link>
+  </metadata>
+</index>
