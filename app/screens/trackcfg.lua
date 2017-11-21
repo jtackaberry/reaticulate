@@ -148,7 +148,7 @@ function screen.create_bank_ui()
 
     row:add(rtk.Label:new({label=' → '}), {valign=rtk.Widget.CENTER})
 
-    channel_menu[1] = 'Default'
+    channel_menu[1] = 'Source'
     bankbox.dstchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.dstchannel_menu, {lpadding=0, expand=1, fill=true})
     bankbox.dstchannel_menu:setmenu(channel_menu)
