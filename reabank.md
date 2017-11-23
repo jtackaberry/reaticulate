@@ -26,9 +26,10 @@ top of the UI and open the file in your editor.  Clicking this will create the f
 necessary before opening the editor.  Open in Default App will launch whatever application
 you've associated with `.reabank` files.
 
-Once you save changes to the file, click the reload button (next to the pencil) to force
-Reaticulate to pick up the changes.
-
+<p class='warning'>
+    Once you save changes to the file, click the reload button (next to the pencil) to force
+    Reaticulate to pick up the changes.
+</p>
 
 ## Anatomy of a standard Reabank file
 

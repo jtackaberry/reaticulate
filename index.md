@@ -8,6 +8,15 @@ Install it with [ReaPack](https://reapack.com/):
 http://reaticulate.com/index.xml
 ```
 
+If you'd prefer to watch a video of ceaseless blathering than reading this website:
+
+<div data-s9e-mediaembed="youtube" style="display:block;width:100%;max-width:90%"><div
+style="overflow:hidden;position:relative;padding-bottom:56.25%"><iframe allowfullscreen=""
+scrolling="no" style="background:url(https://i.ytimg.com/vi/1gDJUIrecE8/hqdefault.jpg) 50% 50% /
+cover;border:0;height:100%;left:0;position:absolute;width:100%"
+src="https://www.youtube.com/embed/1gDJUIrecE8"></iframe></div></div>
+
+
 This is an alpha preview.  Please [report the bugs you inevitably find via GitHub](https://github.com/jtackaberry/reaticulate/issues).
 
 
@@ -104,5 +113,5 @@ bust out your trusty text editor and hack up your own Reabank file, with the spe
 notations used to direct Reaticulate's behavior.
 
 <p class='warning'>
-    <a href='reabank.html'><b>Click here to learn how to create your own custom banks for Reaticulate</b></a>.
+    <a href='{% link reabank.md %}'><b>Click here to learn how to create your own custom banks for Reaticulate</b></a>.
 </p>

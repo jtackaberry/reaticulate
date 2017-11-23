@@ -7,8 +7,52 @@ body {
     font: 110%/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#header {
-    display: none;
+.nav ul {
+    list-style: none;
+    background-color: #373737;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.nav li {
+    font-family: 'Oswald', sans-serif;
+    line-height: 20px;
+    height: 20px;
+    border-bottom: 1px solid #888;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: .2s background-color;
+}
+
+.nav a:hover {
+    background-color: rgba(29, 128, 194, 0.3);
+}
+
+.nav a.active {
+    background-color: rgb(29, 128, 194);
+    cursor: default;
+}
+
+@media screen and (min-width: 600px) {
+    .nav li {
+        width: 120px;
+        border-bottom: none;
+        height: 30px;
+        line-height: 30px;
+        font-size: 1em;
+    }
+
+    .nav li {
+        display: inline-block;
+        margin-right: -4px;
+    }
+
 }
 
 section {
@@ -16,7 +60,7 @@ section {
 }
 
 section #title {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .credits {
