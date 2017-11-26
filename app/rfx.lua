@@ -254,20 +254,27 @@ function rfx.get_banks_conflicts()
             for _, bank in ipairs(banks) do
                 for _, art in ipairs(bank.articulations) do
                     local idx = 128 * channel + art.program
+                    -- Keep track of output events, because conflicting programs with the same output
+                    -- events shouldn't count as conflicts.
+                    --
+                    -- FIXME: order shouldn't matter either, but this implementation requires same order.
+                    local outputs = table.tostring(art:get_outputs())
                     -- Has this program been seen before?
                     local first = programs[idx]
                     if not first then
                         programs[idx] = {
                             bank = bank,
-                            art = art
+                            art = art,
+                            outputs = outputs
                         }
-                    else
+                    elseif first.outputs ~= outputs then
                         -- Program has been seen before on the same channel.
                         local conflict = conflicts[bank]
                         if not conflict then
                             conflicts[bank] = {
                                 source = first.bank,
-                                channels = 1 << (channel - 1)
+                                channels = 1 << (channel - 1),
+                                program = art.program
                             }
                         else
                             conflict.channels = conflict.channels | (1 << (channel - 1))

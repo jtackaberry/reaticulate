@@ -240,6 +240,7 @@ function screen.check_errors()
                     local label = "Error: bank conflict on same channel:\n" .. conflict.source.name
                     bankbox.warning.label:attr('label', label)
                     bankbox.warning:show()
+                    log("Conflict: %s with program %s on channel %s", conflict.source.name, conflict.program, channel)
                 end
             end
         end
