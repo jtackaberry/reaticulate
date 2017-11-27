@@ -292,7 +292,23 @@ function App.activate_relative_articulation_in_group(channel, group, distance)
         art = App.active_articulations[artidx]
     end
     if not art or not art.button.visible then
-        log("TODO: select first visible")
+        -- No articulation is currently selected, so we need to pick one to use as a
+        -- starting point.  For negative distances, pick the first articulation, and
+        -- for positive distances, pick the last.
+        if distance < 0 then
+            local bank = App.screens.banklist.get_first_bank()
+            if bank then
+                art = bank:get_first_articulation()
+            end
+        else
+            local bank = App.screens.banklist.get_last_bank()
+            if bank then
+                art = bank:get_last_articulation()
+            end
+        end
+        if not art then
+            return
+        end
     end
 
     local bank = art:get_bank()
