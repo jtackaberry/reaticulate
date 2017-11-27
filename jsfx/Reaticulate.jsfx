@@ -745,7 +745,7 @@ local(flags, output_type, dstchannel, param1, param2)
             // Past me: FIXME: should we really merge dstchannel into existing channels?
             //     No, need to support multiple held keyswitches per source channel.
             // Future me: sure sounds like past me knew what he was talking about.
-            //     Unfortunately future me seems to have gottem dumber.  Will keep
+            //     Unfortunately future me seems to have gotten dumber.  Will keep
             //     the comment around until I figure out what I was on about, because
             //     AFAICT we're ok: we're tracking held keyswitches per group per channel.
             held_keyswitches[4 * channel + group] = param1 | ((1 << dstchannel) << 8);

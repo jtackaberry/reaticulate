@@ -639,7 +639,7 @@ end
 -- invoke this method on a handled event.  It's the implementation's
 -- responsibility to determine if the widget _should_ handle this event,
 -- and if so, to dispatch to the appropriate on* method and declare
--- the event handled by setting the handled attribute.v
+-- the event handled by setting the handled attribute.
 --
 -- The default widget implementation handles mouse events only
 function rtk.Widget:_handle_event(offx, offy, event)
