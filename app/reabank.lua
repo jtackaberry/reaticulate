@@ -225,10 +225,10 @@ function Bank:create_ui()
         local color = art.color or reabank.colors.default
         local textcolor = '#ffffff'
         if not color:starts('#') then
-            color = reabank.colors[color]
+            color = reabank.colors[color] or reabank.colors.default
         end
         local textcolor = color2luma(color) > 0.7 and '#000000' or '#ffffff'
-        art.icon = articons.get(art.iconname or 'note-eighth')
+        art.icon = articons.get(art.iconname) or articons.get('note-eighth')
         local flags = art.channels > 0 and 0 or rtk.Button.FLAT_LABEL
         local outputstr = art:describe_outputs()
         art.button = rtk.Button:new({label=(art.shortname or art.name), icon=art.icon, color=color, textcolor=textcolor,
