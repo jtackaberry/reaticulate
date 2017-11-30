@@ -354,12 +354,9 @@ function Articulation:get_bank()
 end
 
 function Articulation:activate(refocus)
-    local refocus = function()
-        if refocus == true then
-            App.refocus()
-        end
+    if refocus == true then
+        reaper.defer(App.refocus)
     end
-    reaper.defer(refocus)
     if self.program >= 0 then
         local bank = self:get_bank()
         activate_articulation(bank.srcchannel, bank.msb, bank.lsb, self.program)
