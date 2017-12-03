@@ -50,7 +50,7 @@ function hex2int(s)
 end
 
 function int2hex(d)
-    return rgb2hex((d >> 16) & 0xff, (d >> 8) & 0xff, d & 0xff)
+    return rgb2hex(d & 0xff, (d >> 8) & 0xff, (d >> 16) & 0xff)
 end
 
 function color2rgba(s)
