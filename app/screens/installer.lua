@@ -44,7 +44,7 @@ function screen.init()
         -- at the top of the chain.  I pine for mature APIs.
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock()
-        local fx = reaper.TrackFX_AddByName(App.track, 'Reaticulate', 0, 1)
+        local fx = reaper.TrackFX_AddByName(App.track, 'Reaticulate.jsfx', 0, 1)
         for fx = fx, 0, -1 do
             reaper.SNM_MoveOrRemoveTrackFX(App.track, fx, -1)
         end
