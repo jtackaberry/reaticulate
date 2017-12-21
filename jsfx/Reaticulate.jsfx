@@ -14,10 +14,9 @@
 
 desc:Reaticulate
 
-// byte 0: change serial which increments when programs or active notes
-//         have changed have changed).  MSB of this byte is 1 if programs
-//         have changed and 0 if only notes have changed.  Next 7 bits is
-//         the counter.
+// byte 0: bits 0-3: program serial which increments when program has changed
+//         bits 4-7: notes serial which increments when notes have changed.
+//         Serial wraps as needed.
 // byte 1: reabank version (mod 256)
 // byte 2: version
 // byte 3: magic
@@ -187,8 +186,11 @@ OUTPUT_TYPE_NOTE = 3;
 OUTPUT_TYPE_NOTE_HOLD = 4;
 
 
-// byte 0 of slider 1
-serial = 0;
+// bits 0-3 of slider 1
+program_serial = 0;
+// bits 4-7 of slider 1
+notes_serial = 0;
+
 // Persisted, and tracks whether the instance has ever been initialized.
 initialized = 0;
 
@@ -443,7 +445,7 @@ channel = slider63;
 group = 0;
 
 gfx_printf("Reaticulate debug info\n");
-gfx_printf("  serial: %d\n", serial);
+gfx_printf("  serial: %d %d\n", program_serial, notes_serial);
 gfx_printf("  pending: %d\n", have_pending_activations);
 gfx_printf("  active notes bitmap: %d\n", slider3);
 gfx_printf("  program notification: %d\n", slider1 & 0x80);
@@ -589,12 +591,6 @@ opcode = (slider64 & 0x7f000000) >> 24;
         have_pending_activations = 1;
     );
 
-    // Arguments: b0=serial
-    (opcode == OPCODE_ACK_PROGRAM_CHANGED) ? (
-        (slider1 & 0x7f <= b0) ? (
-            // Only clear bit if current serial is <= supplied serial that was acked.
-            slider1 &= $~31 ~ 0x80;
-        );
     );
 
     // Clear slider to prevent repeated evaluation of the same operation (in case some other
@@ -634,8 +630,8 @@ local(notes, bitmap, i)
     );
     slider3 = bitmap;
     sliderchange(3);
-    serial = serial < 127 ? serial + 1 : 0;
-    slider1 = MAGIC | VERSION | (slider1 & 0x0000ff00) | serial | (slider1 & 0x80);
+    notes_serial = notes_serial < 15 ? notes_serial + 1 : 0;
+    slider1 = MAGIC | VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
     sliderchange(1);
 );
 
@@ -653,9 +649,8 @@ local(control, shift, current_program)
 
     mask = $~31 ~ (0xff << shift);
     control = (control & mask) | (new_program << shift);
-    serial = serial < 127 ? serial + 1 : 0;
-    // Ensure high bit of serial is set to indicate program change.
-    slider1 = MAGIC | VERSION | (slider1 & 0x0000ff00) | serial | 0x80;
+    program_serial = program_serial < 15 ? program_serial + 1 : 0;
+    slider1 = MAGIC | VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
     slider(SLIDER_OFFSET_CONTROL + channel) = control;
     (group == 3) ? (
         // Previously mentioned kludge: MSB in slider is unusable, so we use slider26

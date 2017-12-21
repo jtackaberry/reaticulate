@@ -79,7 +79,8 @@ local rfx = {
     -- The current change serial of the RFX.  When this changes without the track
     -- changing, then an articulation has changed on at least one channel.  Parsed
     -- from metadata.
-    serial = nil,
+    program_serial = nil,
+    notes_serial = nil,
     -- The Reabank version that was used to build the MIDI channel control data.
     -- Parsed from metadata.
     reabank_version = nil,
@@ -112,6 +113,10 @@ function rfx.init()
     end
 end
 
+function rfx.get(track)
+    return reaper.TrackFX_GetByName(track, "Reaticulate", false)
+end
+
 -- Discover the Reaticulate FX on the given track.  Sets rfx.fx to the fx id if valid, and returns
 -- true if the fx is detected to have changed (e.g. track changed or FX became enabled) or false
 -- otherwise.
@@ -124,12 +129,16 @@ function rfx.sync(track, forced)
     if not track then
         rfx.fx = nil
     else
-        local fx = reaper.TrackFX_GetByName(track, "Reaticulate", false)
-        fx = rfx.validate(track, fx)
+        local fx = rfx.validate(track, rfx.get(track))
         track_changed = track_changed or (fx ~= rfx.fx)
-        local serial = (rfx.metadata or 0) & 0xff
-        local serial_changed = (rfx.serial ~= serial)
-        rfx.serial = serial
+        local metadata = rfx.metadata or 0
+        local program_serial = metadata & 0x0f
+        local notes_serial = metadata & 0xf0
+        local program_changed = (rfx.program_serial ~= program_serial)
+        local notes_changed = (rfx.notes_serial ~= notes_serial)
+
+        rfx.program_serial = program_serial
+        rfx.notes_serial = notes_serial
         rfx.fx = fx
         -- Track whether either the track changed or the RFX on the
         -- current track changed.
@@ -146,7 +155,7 @@ function rfx.sync(track, forced)
                     rfx.sync_banks_by_channel()
                 end
             end
-            if (serial_changed and serial & 0x80 ~= 0) or track_changed then
+            if program_changed or track_changed then
                 -- Serial has changed with MSB=1 so an articulation has changed on at least one
                 -- channel.
                 group4_enabled = rfx.get_param(rfx.params.group_4_enabled_programs)
@@ -167,9 +176,8 @@ function rfx.sync(track, forced)
                         rfx.programs[channel][group] = program
                     end
                 end
-                rfx.opcode(OPCODE_ACK_PROGRAM_CHANGED, serial & 0x7f)
             end
-            if serial_changed then
+            if notes_changed then
                 -- Sync active notes.
                 rfx.active_notes, _, _ = reaper.TrackFX_GetParam(track, fx, rfx.params.active_notes)
             end
