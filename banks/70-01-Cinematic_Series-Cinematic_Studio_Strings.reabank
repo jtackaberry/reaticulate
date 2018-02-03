@@ -1,0 +1,100 @@
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/Studio Strings" n="Section"
+Bank 70 1 Cinematic Studio Strings - Section
+//! c=legato i=legato o=note:24,1/note:34,65
+20 legato std
+//! c=legato i=legato o=note:24,127/note:34,65
+21 legato adv
+//! c=legato-light i=legato o=note:28/note:34,65
+29 legato harmonics
+//! c=legato-dark i=legato-tremolo o=note:25/note:34,65
+30 legato tremolo
+//! c=legato i=legato-fast o=note:30,1/note:34,65
+28 legato marcato
+//! c=legato i=legato-runs o=note:30,127/note:34,65
+33 legato marcato+spic
+
+//! c=long i=note-whole o=note:24/note:34,1
+1 sustain
+//! c=short i=spiccato o=note:29,1
+42 spiccato
+//! c=short i=spiccato o=note:29,33
+41 staccatissimo
+//! c=short i=staccato o=note:29,65
+40 staccato
+//! c=short i=sfz o=note:29,127
+54 sfz
+//! c=short-light i=pizz o=note:31,1
+56 pizz
+//! c=short-dark i=pizz-bartok o=note:31,65
+57 bartok pizz
+//! c=short-light i=col-legno o=note:31,93
+58 col legno
+//! c=long i=trill o=note:27/note:34,1
+70 trills
+//! c=long-light i=harmonics o=note:28/note:34,1
+10 harmonics
+//! c=long-dark i=tremolo o=note:25/note:34,1
+11 tremolo
+//! c=long-dark i=tremolo o=note:26
+81 measured trem
+//! c=long i=marcato o=note:30,1/note:34,1
+9 marcato
+//! c=long i=legato-runs o=note:30,127/note:34,1
+19 marcato+spic
+
+//! c=long-light i=con-sord g=3 o=note:35,127
+7 con sordino
+//! c=long-light i=note-whole g=3 o=note:35,1
+2 senza sordino
+
+
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/Studio Strings" n="Full Ensemble"
+Bank 70 4 Cinematic Studio Strings - Full Ensemble
+//! c=legato i=legato o=note:12,1/note:22,65
+20 legato std
+//! c=legato i=legato o=note:12,127/note:22,65
+21 legato adv
+//! c=legato-light i=legato o=note:16/note:22,65
+29 legato harmonics
+//! c=legato-dark i=legato-tremolo o=note:13/note:22,65
+30 legato tremolo
+//! c=legato i=legato-fast o=note:18,1/note:22,65
+28 legato marcato
+//! c=legato i=legato-runs o=note:18,127/note:22,65
+33 legato marcato+spic
+
+//! c=long i=note-whole o=note:12/note:22,1
+1 sustain
+//! c=short i=spiccato o=note:17,1
+42 spiccato
+//! c=short i=spiccato o=note:17,33
+41 staccatissimo
+//! c=short i=staccato o=note:17,65
+40 staccato
+//! c=short i=sfz o=note:17,127
+54 sfz
+//! c=short-light i=pizz o=note:19,1
+56 pizz
+//! c=short-dark i=pizz-bartok o=note:19,65
+57 bartok pizz
+//! c=short-light i=col-legno o=note:19,93
+58 col legno
+//! c=long i=trill o=note:15/note:22,1
+70 trills
+//! c=long-light i=harmonics o=note:16/note:22,1
+10 harmonics
+//! c=long-dark i=tremolo o=note:13/note:22,1
+11 tremolo
+//! c=long-dark i=tremolo o=note:14
+81 measured trem
+//! c=long i=marcato o=note:18,1/note:22,1
+9 marcato
+//! c=long i=legato-runs o=note:18,127/note:22,1
+19 marcato+spic
+
+//! c=long-light i=con-sord g=3 o=note:23,127
+7 con sordino
+//! c=long-light i=note-whole g=3 o=note:23,1
+2 senza sordino

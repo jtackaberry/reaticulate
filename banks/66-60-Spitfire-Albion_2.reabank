@@ -1,0 +1,116 @@
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="Recorder"
+//! m="Set patch to UACC"
+Bank 66 60 Albion 2 - Recorder
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="HornEuph"
+//! m="Set patch to UACC"
+Bank 66 61 Albion 2 - HornEuph
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short i=spiccato o=cc:32,42
+42 very short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="Sackbutt Hi"
+//! m="Set patch to UACC"
+Bank 66 62 Albion 2 - Sackbutt Hi
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short i=spiccato o=cc:32,42
+42 very short
+//! c=short i=marcato-quarter o=cc:32,50
+52 marcato(short)
+//! c=long i=marcato-half o=cc:32,52
+55 marcato(long)
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="Sackbutt Lo"
+//! m="Set patch to UACC"
+Bank 66 63 Albion 2 - Sackbutt Lo
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short i=spiccato o=cc:32,42
+42 very short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="String Hi"
+//! m="Set patch to UACC"
+Bank 66 64 Albion 2 - String Hi
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 short cs
+//! c=short-light i=pizz o=cc:32,56
+56 pizzicato
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short-dark i=blend o=cc:32,5
+5 long (half)
+//! c=long-light i=con-sord o=cc:32,7
+7 long cs
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=legato i=legato-blend-generic o=cc:32,24
+24 legato (half)
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-light i=harmonics o=cc:32,10
+10 long harmonics
+//! c=long i=trill-min2 o=cc:32,70
+70 trill (minor)
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill (major)
+//! c=long-light i=flautando o=cc:32,8
+8 long flautando
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="String Lo"
+//! m="Set patch to UACC"
+Bank 66 65 Albion 2 - String Lo
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 short cs (quiet)
+//! c=short-light i=staccato-con-sord o=cc:32,44
+44 short cs (longer)
+//! c=short-light i=pizz o=cc:32,56
+56 pizzicato
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short-dark i=blend o=cc:32,5
+5 long (half)
+//! c=long-light i=con-sord o=cc:32,7
+7 long cs
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=legato i=legato-blend-generic o=cc:32,24
+24 legato (half)
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-light i=flautando o=cc:32,8
+8 long flautando

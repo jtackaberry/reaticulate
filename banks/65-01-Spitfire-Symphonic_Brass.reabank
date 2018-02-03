@@ -1,0 +1,1046 @@
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo"
+//! m="Set patch to UACC"
+Bank 65 1 SSB - Horn Solo
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 2 SSB - Horn Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 3 SSB - Horn Solo - Decorative
+//! c=long-dark i=tremolo o=cc:32,11
+11 flutter
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Legato"
+//! m="Set patch to UACC"
+Bank 65 4 SSB - Horn Solo - Legato
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2"
+//! m="Set patch to UACC"
+Bank 65 5 SSB - Horns a2
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=stopped o=cc:32,7
+7 stopped
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Core"
+//! m="Set patch to UACC"
+Bank 65 6 SSB - Horns a2 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=long-dark i=stopped o=cc:32,7
+7 stopped
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 7 SSB - Horns a2 - Decorative
+//! c=long-dark i=tremolo o=cc:32,11
+11 flutter
+//! c=short i=staccato o=cc:32,59
+59 bells up staccato
+//! c=short i=note-eighth o=cc:32,54
+54 bells up quaver
+//! c=short i=note-quarter o=cc:32,55
+55 bells up crotchet
+//! c=long i=note-whole o=cc:32,17
+17 bells up long
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Legato"
+//! m="Set patch to UACC"
+Bank 65 8 SSB - Horns a2 - Legato
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6"
+//! m="Set patch to UACC"
+Bank 65 9 SSB - Horns a6
+
+//! c=legato i=phrase o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Core"
+//! m="Set patch to UACC"
+Bank 65 10 SSB - Horns a6 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 11 SSB - Horns a6 - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Legato"
+//! m="Set patch to UACC"
+Bank 65 12 SSB - Horns a6 - Legato
+//! c=legato i=phrase o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo"
+//! m="Set patch to UACC"
+Bank 65 13 SSB - Tenor Trombone Solo
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=note-whole o=cc:32,7
+7 long muted
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 14 SSB - Tenor Trombone Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=long-light i=note-whole o=cc:32,7
+7 long muted
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short-light i=marcato-quarter o=cc:32,53
+53 marcato muted
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short-light i=tenuto-eighth o=cc:32,51
+51 tenuto muted
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato muted
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 15 SSB - Tenor Trombone Solo - Decorative
+//! c=long-dark i=tremolo o=cc:32,11
+11 flutter
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2"
+//! m="Set patch to UACC"
+Bank 65 16 SSB - Tenor Trombones a2
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Core"
+//! m="Set patch to UACC"
+Bank 65 17 SSB - Tenor Trombones a2 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 18 SSB - Tenor Trombones a2 - Decorative
+//! c=fx i=fx o=cc:32,90
+90 fx glissandi
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Legato"
+//! m="Set patch to UACC"
+Bank 65 19 SSB - Tenor Trombones a2 - Legato
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo"
+//! m="Set patch to UACC"
+Bank 65 20 SSB - Bass Trombone Solo
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 21 SSB - Bass Trombone Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 22 SSB - Bass Trombone Solo - Decorative
+//! c=long-dark i=tremolo o=cc:32,11
+11 flutter
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2"
+//! m="Set patch to UACC"
+Bank 65 23 SSB - Bass Trombones a2
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Core"
+//! m="Set patch to UACC"
+Bank 65 24 SSB - Bass Trombones a2 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 25 SSB - Bass Trombones a2 - Decorative
+//! c=fx i=fx o=cc:32,90
+90 fx glissandi
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Legato"
+//! m="Set patch to UACC"
+Bank 65 26 SSB - Bass Trombones a2 - Legato
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo"
+//! m="Set patch to UACC"
+Bank 65 27 SSB - Contrabass Trombone Solo
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=stopped o=cc:32,7
+7 stopped
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 28 SSB - Contrabass Trombone Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=long-dark i=stopped o=cc:32,7
+7 stopped
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato muted
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 29 SSB - Contrabass Trombone Solo - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6"
+//! m="Set patch to UACC"
+Bank 65 30 SSB - Trombones a6
+
+//! c=legato i=phrase o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Core"
+//! m="Set patch to UACC"
+Bank 65 31 SSB - Trombones a6 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 32 SSB - Trombones a6 - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Legato"
+//! m="Set patch to UACC"
+Bank 65 33 SSB - Trombones a6 - Legato
+
+//! c=legato i=phrase o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo"
+//! m="Set patch to UACC"
+Bank 65 34 SSB - Trumpet Solo
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 long muted
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 35 SSB - Trumpet Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 long muted
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short-light i=marcato-quarter o=cc:32,53
+53 marcato muted
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short-light i=tenuto-eighth o=cc:32,51
+51 tenuto muted
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato muted
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 36 SSB - Trumpet Solo - Decorative
+//! c=long-dark i=tremolo o=cc:32,11
+11 flutter
+//! c=long i=vibrato-molto o=cc:32,2
+2 long mariachi
+//! c=fx i=fx o=cc:32,90
+90 fx glissandi
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Legato"
+//! m="Set patch to UACC"
+Bank 65 37 SSB - Trumpet Solo - Legato
+
+//! c=legato i=phrase o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2"
+//! m="Set patch to UACC"
+Bank 65 38 SSB - Trumpets a2
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 long muted
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Core"
+//! m="Set patch to UACC"
+Bank 65 39 SSB - Trumpets a2 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 long muted
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 40 SSB - Trumpets a2 - Decorative
+//! c=long i=vibrato-molto o=cc:32,2
+2 long mariachi
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Legato"
+//! m="Set patch to UACC"
+Bank 65 41 SSB - Trumpets a2 - Legato
+
+//! c=legato i=phrase o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6"
+//! m="Set patch to UACC"
+Bank 65 42 SSB - Trumpets a6
+
+//! c=legato i=phrase o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Core"
+//! m="Set patch to UACC"
+Bank 65 43 SSB - Trumpets a6 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 44 SSB - Trumpets a6 - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Legato"
+//! m="Set patch to UACC"
+Bank 65 45 SSB - Trumpets a6 - Legato
+//! c=legato i=phrase o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo"
+//! m="Set patch to UACC"
+Bank 65 46 SSB - Tuba Solo
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=stopped o=cc:32,7
+7 stopped
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 47 SSB - Tuba Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=stopped o=cc:32,7
+7 stopped
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 48 SSB - Tuba Solo - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Legato"
+//! m="Set patch to UACC"
+Bank 65 49 SSB - Tuba Solo - Legato
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo"
+//! m="Set patch to UACC"
+Bank 65 50 SSB - Contrabass Tuba Solo
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 51 SSB - Contrabass Tuba Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 52 SSB - Contrabass Tuba Solo - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo"
+//! m="Set patch to UACC"
+Bank 65 53 SSB - Cimbasso Solo
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo - Core"
+//! m="Set patch to UACC"
+Bank 65 54 SSB - Cimbasso Solo - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo - Decorative"
+//! m="Set patch to UACC"
+Bank 65 55 SSB - Cimbasso Solo - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2"
+//! m="Set patch to UACC"
+Bank 65 56 SSB - Cimbassi a2
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Core"
+//! m="Set patch to UACC"
+Bank 65 57 SSB - Cimbassi a2 - Core
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
+//! c=short i=marcato-quarter o=cc:32,52
+52 marcato
+//! c=short i=tenuto-eighth o=cc:32,50
+50 tenuto
+//! c=short i=staccato o=cc:32,40
+40 staccato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Decorative"
+//! m="Set patch to UACC"
+Bank 65 58 SSB - Cimbassi a2 - Decorative
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 60 SSB - Horn Solo - Extras
+//! c=short i=spiccato o=cc:32,42
+42 staccatissimo
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 61 SSB - Horns a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=spiccato o=cc:32,49
+49 bells up staccatissimo
+
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 62 SSB - Horns a6 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=fanfare o=cc:32,77
+77 fanfare
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 63 SSB - Tenor Trombone Solo - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=long-light i=tremolo o=cc:32,12
+12 flutter muted
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 64 SSB - Tenor Trombones a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 65 SSB - Trombones a6 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=fanfare o=cc:32,77
+77 fanfare
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 66 SSB - Bass Trombone Solo - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 67 SSB - Bass Trombones a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 68 SSB - Trumpet Solo - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 69 SSB - Trumpets a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 70 SSB - Trumpets a6 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=fanfare o=cc:32,77
+77 fanfare
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 71 SSB - Tuba Solo - Extras
+//! c=short-dark i=staccato-overblown o=cc:32,47
+47 short stopped

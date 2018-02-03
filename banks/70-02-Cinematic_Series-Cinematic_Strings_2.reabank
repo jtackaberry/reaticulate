@@ -1,0 +1,70 @@
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/CS2" n="Ensemble"
+Bank 70 2 Cinematic Strings 2 Ensemble
+//! c=legato i=legato g=2 o=note:20
+20 legato on
+//! c=legato i=note-whole g=2 o=note:21
+19 legato off
+
+//! c=textured i=legato-runs g=3 o=note:22
+108 live mode on
+//! c=textured i=note-whole g=3 o=note:23
+109 live mode off
+
+//! c=long i=note-whole o=note:12
+1 arco
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-min2 o=note:14
+70 trill m2
+//! c=long i=trill-maj2 o=note:15
+71 trill M2
+//! c=long i=legato-runs o=note:16
+33 runs
+
+//! c=short i=spiccato o=note:17,1
+42 staccatissimo
+//! c=short i=staccato o=note:17,127
+40 staccato
+//! c=long i=marcato o=note:18,1
+9 marcato+spic
+//! c=long i=marcato o=note:18,127
+2 marcato+stac
+//! c=short-light i=pizz o=note:19
+56 pizz
+
+
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/CS2" n="Section"
+Bank 70 3 Cinematic Strings 2
+//! c=legato i=legato g=2 o=note:32
+20 legato on
+//! c=legato i=note-whole g=2 o=note:33
+19 legato off
+
+//! c=textured i=legato-runs g=3 o=note:34
+108 live mode on
+//! c=textured i=note-whole g=3 o=note:35
+109 live mode off
+
+//! c=long i=note-whole o=note:24
+1 arco
+//! c=long-dark i=tremolo o=note:25
+11 tremolo
+//! c=long i=trill-min2 o=note:26
+70 trill m2
+//! c=long i=trill-maj2 o=note:27
+71 trill M2
+//! c=long i=legato-runs o=note:28
+33 runs
+
+//! c=short i=spiccato o=note:29,1
+42 staccatissimo
+//! c=short i=staccato o=note:29,127
+40 staccato
+//! c=long i=marcato o=note:30,1
+9 marcato+spic
+//! c=long i=marcato o=note:30,127
+2 marcato+stac
+//! c=short-light i=pizz o=note:31
+56 pizz

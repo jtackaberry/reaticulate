@@ -1,0 +1,398 @@
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Legato"
+//! m="Set patch to UACC"
+Bank 66 30 Albion V - Legato
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Brass High"
+//! m="Set patch to UACC"
+Bank 66 31 Albion V - Brass High
+//! c=long-light i=alt-wave-double o=cc:32,1
+2 air
+//! c=long i=alt-x o=cc:32,2
+1 bursts
+//! c=long i=phrase-tremolo o=cc:32,3
+3 doodle tonguing
+//! c=long-light i=phrase-tremolo-cresc o=cc:32,4
+4 doodle tonguing mute
+//! c=long i=trill-min2 o=cc:32,5
+5 finger trills
+//! c=long i=tremolo o=cc:32,6
+6 fluttered
+//! c=long i=tremolo-harmonics-a o=cc:32,7
+7 granular flutter a
+//! c=long i=tremolo-harmonics-b o=cc:32,8
+8 granular flutter b
+//! c=long-light i=harmonics-natural o=cc:32,9
+9 hollow
+
+//! c=long i=cresc-half o=cc:32,10
+10 mini cresc
+//! c=fx i=fx o=cc:32,11
+11 multiphonics
+//! c=long i=cuivre o=cc:32,12
+12 overblown fff
+//! c=long i=alt-wave o=cc:32,13
+13 slight bend
+//! c=long i=stopped o=cc:32,14
+14 stifled
+//! c=long-light i=alt-wave-double-stopped o=cc:32,15
+114 super air
+//! c=long-light i=vibrato o=cc:32,17
+16 vibrato
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=fx i=fx o=cc:32,16
+17 tuning slide taken out
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Brass Low"
+//! m="Set patch to UACC"
+Bank 66 32 Albion V - Brass Low
+//! c=long-light i=alt-wave-double o=cc:32,1
+2 air
+//! c=long i=alt-x o=cc:32,2
+1 bursts
+//! c=long i=phrase-tremolo o=cc:32,3
+3 doodle tonguing
+//! c=long-light i=phrase-tremolo-cresc o=cc:32,4
+4 doodle tonguing mute
+//! c=long i=trill-min2 o=cc:32,5
+5 finger trills
+//! c=long i=tremolo o=cc:32,6
+6 fluttered
+//! c=long i=tremolo-harmonics-a o=cc:32,7
+7 granular flutter a
+//! c=long i=tremolo-harmonics-b o=cc:32,8
+8 granular flutter b
+//! c=long-light i=harmonics-natural o=cc:32,9
+9 hollow
+
+//! c=long i=cresc-half o=cc:32,10
+10 mini cresc
+//! c=fx i=fx o=cc:32,11
+11 multiphonics
+//! c=long i=cuivre o=cc:32,12
+12 overblown fff
+//! c=long i=alt-wave o=cc:32,13
+13 slight bend
+//! c=long i=stopped o=cc:32,14
+14 stifled
+//! c=long-light i=alt-wave-double-stopped o=cc:32,15
+114 super air
+//! c=long-light i=vibrato o=cc:32,16
+16 vibrato
+//! c=short i=staccato o=cc:32,40
+40 short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Strings High - Main"
+//! m="Set patch to UACC"
+Bank 66 33 Albion V - Strings High - Main
+//! c=long-light i=flautando-con-sord o=cc:32,5
+5 flautando cs long
+//! c=short-light i=flautando-con-sord o=cc:32,44
+44 flautando cs short
+//! c=long i=frozen o=cc:32,6
+6 frozen long
+//! c=short i=frozen-eighth o=cc:32,45
+45 frozen short
+//! c=long i=alt-gypsy o=cc:32,8
+8 gypsy long
+//! c=short i=alt-gypsy-eighth o=cc:32,46
+46 gypsy short
+//! c=long i=dblstop-5th o=cc:32,4
+4 dbl stop 5ths long
+//! c=short i=dblstop-5th-eighth o=cc:32,43
+43 dbl stop 5ths short
+//! c=long-light i=sul-tasto-super o=cc:32,16
+114 super tasto long
+
+//! c=short-light i=sul-tasto-super-eighth o=cc:32,50
+50 super tasto short
+//! c=long-light i=alt-wave-double o=cc:32,1
+1 air and ice
+//! c=long-light i=alt-wave-double-tr o=cc:32,2
+2 air ice and tratto
+//! c=long-light i=alt-gypsy-harmonics o=cc:32,7
+10 gypsy harmonics
+//! c=long-light i=alt-tremolo-gypsy-harmonics o=cc:32,32
+32 gypsy harm trem
+//! c=long-dark i=con-sord-sul-pont o=cc:32,15
+19 cs sul pont
+//! c=long-dark i=spiccato-brushed-con-sord-sul-pont o=cc:32,42
+62 brushed sul pont cs
+//! c=long-light i=con-sord o=cc:32,13
+7 silken cs long
+//! c=short-light i=staccato-con-sord o=cc:32,41
+47 silken cs short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Strings High - Soft and Wild"
+//! m="Set patch to UACC"
+Bank 66 34 Albion V - Strings High - Soft and Wild
+//! c=short-light i=pizz-con-sord o=cc:32,40
+56 brushed pizz cs
+//! c=long-light i=col-legno-whole o=cc:32,3
+3 col leg tratto
+//! c=long-light i=tremolo-harmonics o=cc:32,30
+11 harmonic trems
+//! c=short-light i=col-legno-loose o=cc:32,47
+58 light loose col leg
+//! c=long i=tremolo-harmonics o=cc:32,9
+1 no rosin long
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=short-light i=pizz-sul-pont o=cc:32,48
+48 pizz sul pont
+//! c=short-light i=pizz-mix o=cc:32,49
+49 pizz sp/legno mix
+
+//! c=long-light i=con-sord-bow-up o=cc:32,11
+7 pulsing con sord
+//! c=long-light i=con-sord-bow-up o=cc:32,12
+12 ricochet
+//! c=long i=sul-g o=cc:32,14
+112 sul g
+//! c=long i=tremolo-slurred o=cc:32,31
+31 travelling trems
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Strings Low - Main"
+//! m="Set patch to UACC"
+Bank 66 35 Albion V - Strings Low - Main
+//! c=long-light i=flautando-con-sord o=cc:32,4
+5 flautando cs long
+//! c=short-light i=flautando-con-sord o=cc:32,42
+44 flautando cs short
+//! c=long i=frozen o=cc:32,7
+6 frozen long
+//! c=short i=frozen-eighth o=cc:32,45
+45 frozen short
+//! c=long i=alt-gypsy o=cc:32,9
+8 gypsy long
+//! c=short i=alt-gypsy-eighth o=cc:32,46
+46 gypsy short
+//! c=long i=dblstop-5th o=cc:32,6
+4 dbl stop 5ths long
+//! c=short i=dblstop-5th-eighth o=cc:32,44
+43 dbl stop 5ths short
+//! c=long-light i=sul-tasto-super o=cc:32,16
+114 super tasto long
+
+//! c=short-light i=sul-tasto-super-eighth o=cc:32,50
+50 super tasto short
+//! c=long-light i=alt-wave-double o=cc:32,1
+1 air and ice
+//! c=long-light i=alt-wave-double-tr o=cc:32,2
+2 air ice and tratto
+//! c=long-light i=alt-gypsy-harmonics o=cc:32,8
+10 gypsy harmonics
+//! c=long-light i=alt-tremolo-gypsy-harmonics o=cc:32,32
+32 gypsy harm trem
+//! c=long-dark i=con-sord-sul-pont o=cc:32,5
+19 cs sul pont
+//! c=long-dark i=spiccato-brushed-con-sord-sul-pont o=cc:32,43
+62 brushed sul pont cs
+//! c=long-light i=con-sord o=cc:32,14
+7 silken cs long
+//! c=short-light i=staccato-con-sord o=cc:32,41
+47 silken cs short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Strings Low - Soft and Wild"
+//! m="Set patch to UACC"
+Bank 66 36 Albion V - Strings Low - Soft and Wild
+//! c=short-light i=pizz-con-sord o=cc:32,40
+56 brushed pizz cs
+//! c=long-light i=col-legno-whole o=cc:32,3
+3 col leg tratto
+//! c=long-light i=tremolo-harmonics o=cc:32,30
+11 harmonic trems
+//! c=short-light i=col-legno-loose o=cc:32,47
+58 light loose col leg
+//! c=long i=tremolo-harmonics o=cc:32,10
+1 no rosin long
+//! c=long-light i=harmonics o=cc:32,11
+10 harmonics
+//! c=short-light i=pizz-sul-pont o=cc:32,48
+48 pizz sul pont
+//! c=short-light i=pizz-mix o=cc:32,49
+49 pizz sp/legno mix
+
+//! c=long-light i=con-sord-bow-up o=cc:32,13
+7 pulsing con sord
+//! c=long-light i=con-sord-bow-up o=cc:32,12
+12 ricochet
+//! c=long i=sul-c o=cc:32,15
+112 sul c
+//! c=long i=tremolo-slurred o=cc:32,31
+31 travelling trems
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V/Multi" n="Strings Low + High - Main"
+//! m="High on ch 1, low on ch 2, both UACC"
+Bank 66 37 Albion V - Strings Low + High - Main
+//! c=long-light i=flautando-con-sord o=cc@1:32,5/cc@2:32,4
+5 flautando cs long
+//! c=short-light i=flautando-con-sord o=cc@1:32,44/cc@2:32,42
+44 flautando cs short
+//! c=long i=frozen o=cc@1:32,6/cc@2:32,7
+6 frozen long
+//! c=short i=frozen-eighth o=cc@1:32,45/cc@2:32,45
+45 frozen short
+//! c=long i=alt-gypsy o=cc@1:32,8/cc@2:32,9
+8 gypsy long
+//! c=short i=alt-gypsy-eighth o=cc@1:32,46/cc@2:32,46
+46 gypsy short
+//! c=long i=dblstop-5th o=cc@1:32,4/cc@2:32,6
+4 dbl stop 5ths long
+//! c=short i=dblstop-5th-eighth o=cc@1:32,43/cc@2:32,44
+43 dbl stop 5ths short
+//! c=long-light i=sul-tasto-super o=cc@1:32,16/cc@2:32,16
+114 super tasto long
+
+//! c=short-light i=sul-tasto-super-eighth o=cc@1:32,50/cc@2:32,50
+50 super tasto short
+//! c=long-light i=alt-wave-double o=cc@1:32,1/cc@2:32,1
+1 air and ice
+//! c=long-light i=alt-wave-double-tr o=cc@1:32,2/cc@2:32,2
+2 air ice and tratto
+//! c=long-light i=alt-gypsy-harmonics o=cc@1:32,7/cc@2:32,8
+10 gypsy harmonics
+//! c=long-light i=alt-tremolo-gypsy-harmonics o=cc@1:32,32/cc@2:32,32
+32 gypsy harm trem
+//! c=long-dark i=con-sord-sul-pont o=cc@1:32,15/cc@2:32,5
+19 cs sul pont
+//! c=long-dark i=spiccato-brushed-con-sord-sul-pont o=cc@1:32,42/cc@2:32,43
+62 brushed sul pont cs
+//! c=long-light i=con-sord o=cc@1:32,13/cc@2:32,14
+7 silken cs long
+//! c=short-light i=staccato-con-sord o=cc@1:32,41/cc@2:32,41
+47 silken cs short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V/Multi" n="Strings Low + High - Soft and Wild"
+//! m="High on ch 1, low on ch 2, both UACC"
+Bank 66 40 Albion V - Strings Low + High - Soft and Wild
+//! c=short-light i=pizz-con-sord o=cc@1:32,40/cc@2:32,40
+56 brushed pizz cs
+//! c=long-light i=col-legno-whole o=cc@1:32,3/cc@2:32,3
+3 col leg tratto
+//! c=long-light i=tremolo-harmonics o=cc@1:32,30/cc@2:32,30
+11 harmonic trems
+//! c=short-light i=col-legno-loose o=cc@1:32,47/cc@2:32,47
+58 light loose col leg
+//! c=long i=tremolo-harmonics o=cc@1:32,9/cc@2:32,10
+1 no rosin long
+//! c=long-light i=harmonics o=cc@1:32,10/cc@2:32,11
+10 harmonics
+//! c=short-light i=pizz-sul-pont o=cc@1:32,48/cc@2:32,48
+48 pizz sul pont
+//! c=short-light i=pizz-mix o=cc@1:32,49/cc@2:32,49
+49 pizz sp/legno mix
+
+//! c=long-light i=con-sord-bow-up o=cc@1:32,11/cc@2:32,13
+7 pulsing con sord
+//! c=long-light i=con-sord-bow-up o=cc@1:32,12/cc@2:32,12
+12 ricochet
+//! c=long i=sul-g o=cc@1:32,14/cc@2:32,15
+112 sul iv
+//! c=long i=tremolo-slurred o=cc@1:32,31/cc@2:32,31
+31 travelling trems
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Woods High"
+//! m="Set patch to UACC"
+Bank 66 38 Albion V - Woods High
+//! c=long-light i=alt-wave-double o=cc:32,1
+2 air
+//! c=long i=vibrato o=cc:32,14
+14 aleatoric overblown
+//! c=long i=alt-x o=cc:32,2
+1 bursts
+//! c=long i=phrase-tremolo o=cc:32,3
+3 doodle tonguing
+//! c=long i=trill o=cc:32,4
+4 finger trills
+//! c=long i=tremolo o=cc:32,5
+11 flutter
+//! c=long-light i=harmonics-natural o=cc:32,6
+6 hollow
+//! c=long i=cresc-half o=cc:32,7
+7 mini cresc
+//! c=fx i=fx o=cc:32,8
+8 multiphonics
+
+//! c=long i=cresc-p-half o=cc:32,9
+9 overblowing
+//! c=long i=cresc-f-half o=cc:32,10
+10 overblown
+//! c=long i=marcato o=cc:32,15
+15 pulsing semi cresc
+//! c=long i=alt-wave o=cc:32,11
+5 slight bend
+//! c=long-light i=alt-wave-double-stopped o=cc:32,12
+114 super air
+//! c=long i=vibrato o=cc:32,13
+16 vibrato
+//! c=short i=staccato o=cc:32,42
+40 short
+//! c=short i=accented-quarter o=cc:32,40
+54 overblown
+//! c=short i=spiccato o=cc:32,41
+42 v short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V" n="Woods Low"
+//! m="Set patch to UACC"
+Bank 66 39 Albion V - Woods Low
+//! c=long-light i=alt-wave-double o=cc:32,1
+2 air
+//! c=long i=vibrato o=cc:32,2
+14 aleatoric overblown
+//! c=long i=alt-x o=cc:32,3
+1 bursts
+//! c=long i=phrase-tremolo o=cc:32,4
+3 doodle tonguing
+//! c=long i=trill o=cc:32,5
+4 finger trills
+//! c=long i=tremolo o=cc:32,6
+11 flutter
+//! c=long-light i=harmonics-natural o=cc:32,7
+6 hollow
+//! c=long i=cresc-half o=cc:32,8
+7 mini cresc
+//! c=fx i=fx o=cc:32,9
+8 multiphonics
+
+//! c=long i=cresc-p-half o=cc:32,10
+9 overblowing
+//! c=long i=cresc-f-half o=cc:32,11
+10 overblown
+//! c=long i=marcato o=cc:32,12
+15 pulsing semi cresc
+//! c=long i=alt-wave o=cc:32,13
+5 slight bend
+//! c=long-light i=alt-wave-double-stopped o=cc:32,14
+114 super air
+//! c=long i=vibrato o=cc:32,15
+16 vibrato
+//! c=short i=staccato o=cc:32,42
+40 short
+//! c=short i=accented-quarter o=cc:32,40
+54 overblown
+//! c=short i=spiccato o=cc:32,41
+42 v short

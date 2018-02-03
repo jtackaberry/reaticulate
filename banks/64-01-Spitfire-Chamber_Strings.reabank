@@ -1,0 +1,522 @@
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Basic Articulations"
+//! m="Set patch to UACC"
+Bank 64 1 SCS - Basic Articulations
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Ensembles"
+//! m="Set patch to UACC"
+Bank 64 2 SCS - Ensembles
+
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-light i=sul-tasto o=cc:32,17
+17 sul tasto
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 short con sord
+
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V1 Core"
+//! m="Set patch to UACC"
+Bank 64 3 SCS - V1 Core
+//! c=long i=note-whole  o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-dark i=sul-pont o=cc:32,113
+113 sul pont dist
+//! c=long-light i=sul-tasto o=cc:32,17
+17 sul tasto
+//! c=long i=sul-g o=cc:32,112
+112 sul g
+//! c=long i=marcato o=cc:32,9
+9 marcato
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short-light i=spiccato-feathered o=cc:32,48
+48 spiccato feathered
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=staccato-dig o=cc:32,49
+49 staccato dig
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato con sord
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V1 Decorative"
+//! m="Set patch to UACC"
+Bank 64 4 SCS - V1 Decorative
+//! c=long-dark i=con-sord-sul-pont o=cc:32,19
+19 cs sul pont
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-dark i=tremolo-sul-pont o=cc:32,13
+13 trem sul pont
+//! c=long-light i=tremolo-con-sord o=cc:32,12
+12 trem cs
+//! c=long-light i=tremolo-con-sord-sul-pont o=cc:32,15
+15 trem cs sul pont
+//! c=long-dark i=tremolo-150 o=cc:32,81
+81 trem 150
+//! c=long-dark i=tremolo-180 o=cc:32,82
+82 trem 180
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+//! c=long i=trill-min2 o=cc:32,72
+72 trill m3
+//! c=long i=trill-perf4 o=cc:32,74
+74 trill P4
+//! c=fx i=fx o=cc:32,105
+105 fx slide
+//! c=fx i=fx o=cc:32,100
+100 fx run
+//! c=fx i=fx o=cc:32,111
+111 disco fall
+//! c=fx i=fx o=cc:32,91
+91 tense long
+//! c=fx i=fx o=cc:32,90
+90 fx
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V1 Legato Performance"
+//! m="Set patch to UACC"
+Bank 64 5 SCS - V1 Legato Performance
+
+//! c=legato i=legato n=fingered o=cc:32,20
+20 legato (fingered)
+//! c=legato i=legato-bowed n=bowed o=cc:32,34
+34 legato (bowed)
+//! c=legato i=legato-portamento n=portamento o=cc:32,31
+31 legato (port)
+//! c=legato i=legato-fast n=fast o=cc:32,32
+32 legato (fast)
+//! c=legato i=legato-runs n=runs o=cc:32,33
+33 legato (runs)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V1 Legato Decorative"
+//! m="Set patch to UACC"
+Bank 64 6 SCS - V1 Legato Decorative
+
+//! c=legato-dark i=legato-tremolo n=tremolo o=cc:32,30
+30 legato tremolo
+//! c=legato i=legato-sul-g n="sul g" o=cc:32,37
+37 legato sul g
+//! c=legato-light i=legato-con-sord n="con sord" o=cc:32,26
+26 legato (con sord)
+//! c=legato-light i=legato-portamento-con-sord n="con sord (port)"" o=cc:32,38
+38 legato (cs port)
+//! c=legato-light i=legato-flautando n=flautando o=cc:32,27
+27 legato (flautando)
+//! c=legato-light i=legato-portamento-flautando n="flautando (port)" o=cc:32,39
+39 legato (flaut port)
+//! c=legato-dark i=legato-sul-pont n="sul pont" o=cc:32,36
+36 legato (sul pont)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V2 Core"
+//! m="Set patch to UACC"
+Bank 64 7 SCS - V2 Core
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-light i=sul-tasto o=cc:32,17
+17 sul tasto
+//! c=long i=sul-g o=cc:32,112
+112 sul g
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato con sord
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V2 Decorative"
+//! m="Set patch to UACC"
+Bank 64 8 SCS - V2 Decorative
+//! c=long-dark i=con-sord-sul-pont o=cc:32,19
+19 cs sul pont
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-dark i=tremolo-150 o=cc:32,81
+81 trem 150
+//! c=long-dark i=tremolo-180 o=cc:32,82
+82 trem 180
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=fx i=fx o=cc:32,105
+105 fx slide
+//! c=fx i=fx o=cc:32,100
+100 fx run
+//! c=fx i=fx o=cc:32,111
+111 disco fall
+//! c=fx i=fx o=cc:32,91
+91 tense long
+//! c=fx i=fx o=cc:32,90
+90 fx
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V2 Legato Performance"
+//! m="Set patch to UACC"
+//! clone="Spitfire/Chamber Strings/V1 Legato Performance"
+Bank 64 9 SCS - V2 Legato Performance
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="V2 Legato Decorative"
+//! m="Set patch to UACC"
+Bank 64 10 SCS - V2 Legato Decorative
+
+//! c=legato-dark i=legato-tremolo n=tremolo o=cc:32,30
+30 legato tremolo
+//! c=legato i=legato-sul-g n="sul g" o=cc:32,37
+37 legato sul g
+//! c=legato-light i=legato-con-sord n="con sord" o=cc:32,26
+26 legato (con sord)
+//! c=legato-light i=legato-portamento-con-sord n="con sord (port)" o=cc:32,38
+38 legato (cs port)
+//! c=legato-light i=legato-flautando n=flautando o=cc:32,27
+27 legato (flautando)
+//! c=legato-dark i=legato-sul-pont n="sul pont" o=cc:32,36
+36 legato (sul pont)
+
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Va Core"
+//! m="Set patch to UACC"
+Bank 64 11 SCS - Va Core
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-light i=sul-tasto o=cc:32,17
+17 sul tasto
+//! c=long i=sul-c o=cc:32,112
+112 sul c
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato con sord
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Va Decorative"
+//! m="Set patch to UACC"
+Bank 64 12 SCS - Va Decorative
+//! c=long-dark i=con-sord-sul-pont o=cc:32,19
+19 cs sul pont
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-light i=tremolo-con-sord o=cc:32,12
+12 trem cs
+//! c=long-dark i=tremolo-150 o=cc:32,81
+81 trem 150
+//! c=long-dark i=tremolo-180 o=cc:32,82
+82 trem 180
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=fx i=fx o=cc:32,105
+105 fx slide
+//! c=fx i=fx o=cc:32,100
+100 fx run
+//! c=fx i=fx o=cc:32,111
+111 disco fall
+//! c=fx i=fx o=cc:32,91
+91 tense long
+//! c=fx i=fx o=cc:32,90
+90 fx
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Va Legato Performance"
+//! m="Set patch to UACC"
+Bank 64 13 SCS - Va Legato Performance
+
+//! c=legato i=legato n=fingered o=cc:32,20
+20 legato (fingered)
+//! c=legato i=legato-portamento n=portamento o=cc:32,31
+31 legato (port)
+//! c=legato i=legato-fast n=fast o=cc:32,32
+32 legato (fast)
+//! c=legato i=legato-runs n=runs o=cc:32,33
+33 legato (runs)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Va Legato Decorative"
+//! m="Set patch to UACC"
+Bank 64 14 SCS - Va Legato Decorative
+
+//! c=legato-dark i=legato-tremolo n=tremolo o=cc:32,30
+30 legato tremolo
+//! c=legato i=legato-sul-c n="sul c" o=cc:32,37
+37 legato sul c
+//! c=legato-light i=legato-con-sord n="con sord" o=cc:32,26
+26 legato (con sord)
+//! c=legato-light i=legato-portamento-con-sord n="con sord (port)" o=cc:32,38
+38 legato (cs port)
+//! c=legato-light i=legato-flautando n=flautando o=cc:32,27
+27 legato (flautando)
+//! c=legato-dark i=legato-sul-pont n="sul pont" o=cc:32,36
+36 legato (sul pont)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Vc Core"
+//! m="Set patch to UACC"
+Bank 64 15 SCS - Vc Core
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-dark i=sul-pont o=cc:32,113
+113 sul pont dist
+//! c=long-light i=sul-tasto o=cc:32,17
+17 sul tasto
+//! c=long i=sul-c o=cc:32,112
+112 sul c
+//! c=long i=marcato o=cc:32,9
+9 marcato
+
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 staccato con sord
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Vc Decorative"
+//! m="Set patch to UACC"
+Bank 64 16 SCS - Vc Decorative
+//! c=long-dark i=con-sord-sul-pont o=cc:32,19
+19 cs sul pont
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-dark i=tremolo-sul-pont o=cc:32,13
+13 trem sul pont
+//! c=long-light i=tremolo-con-sord o=cc:32,12
+12 trem cs
+//! c=long-light i=tremolo-con-sord-sul-pont o=cc:32,15
+15 trem cs sul pont
+//! c=long-dark i=tremolo-150 o=cc:32,81
+81 trem 150
+//! c=long-dark i=tremolo-180 o=cc:32,82
+82 trem 180
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+//! c=long i=trill-min2 o=cc:32,72
+72 trill m3
+//! c=long i=trill-perf4 o=cc:32,74
+74 trill P4
+//! c=fx i=fx o=cc:32,105
+105 fx slide
+//! c=fx i=fx o=cc:32,100
+100 fx run
+//! c=fx i=fx o=cc:32,111
+111 disco fall
+//! c=fx i=fx o=cc:32,91
+91 tense long
+//! c=fx i=fx o=cc:32,90
+90 fx
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Vc Legato Performance"
+//! m="Set patch to UACC"
+//! clone="Spitfire/Chamber Strings/V1 Legato Performance"
+Bank 64 17 SCS - Vc Legato Performance
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Cb Core"
+//! m="Set patch to UACC"
+Bank 64 18 SCS - Cb Core
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-dark i=sul-pont o=cc:32,113
+113 sul pont dist
+
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=staccato o=cc:32,40
+40 staccato
+//! c=short-dark i=staccato-dig o=cc:32,49
+49 staccato dig
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Cb Decorative"
+//! m="Set patch to UACC"
+Bank 64 19 SCS - Cb Decorative
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-dark i=tremolo-sul-pont o=cc:32,13
+13 trem sul pont
+//! c=long-dark i=tremolo-150 o=cc:32,81
+81 trem 150
+//! c=long-dark i=tremolo-180 o=cc:32,82
+82 trem 180
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+//! c=fx i=fx o=cc:32,105
+105 fx slide
+//! c=fx i=fx o=cc:32,100
+100 fx run
+//! c=fx i=fx o=cc:32,91
+91 tense long
+//! c=fx i=fx o=cc:32,90
+90 fx
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Cb Legato Performance"
+//! m="Set patch to UACC"
+Bank 64 20 SCS - Cb Legato Performance
+//! c=legato i=legato n=fingered o=cc:32,20
+20 legato (fingered)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Performance Legato"
+//! m="Set patch to UACC"
+Bank 64 21 SCS - Performance Legato
+//! c=legato i=phrase o=cc:32,20
+20 legato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Vc Legato Decorative"
+//! m="Set patch to UACC"
+//! clone="Spitfire/Chamber Strings/Va Legato Decorative"
+Bank 64 22 SCS - Vc Legato Decorative

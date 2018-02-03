@@ -1,0 +1,162 @@
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="Woodwind Lo"
+//! m="Set patch to UACC"
+Bank 66 70 Albion 3 - Woodwind Lo
+//! c=short i=staccato o=cc:32,43
+43 short
+//! c=short i=staccato-overblown o=cc:32,42
+42 short extra
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,21
+21 legato
+//! c=short-dark i=fall o=cc:32,123
+123 fall
+//! c=short-dark i=rip o=cc:32,122
+122 rip
+//! c=fx i=fx o=cc:32,111
+111 fx1
+//! c=fx i=fx o=cc:32,112
+112 fx2
+//! c=fx i=fx o=cc:32,113
+113 fx3
+//! c=fx i=fx o=cc:32,114
+114 fx4
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Wall of Woodwind"
+//! m="Set patch to UACC"
+Bank 66 71 Albion 3 - Wall of Woodwind
+//! c=short i=staccato o=cc:32,41
+41 short
+//! c=short i=staccato-overblown o=cc:32,43
+43 short extra
+//! c=long i=note-whole o=cc:32,1
+1 long
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="Brass Lo"
+//! m="Set patch to UACC"
+Bank 66 72 Albion 3 - Brass Lo
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long i=note-whole o=cc:32,9
+9 long nasty
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=fx i=fx o=cc:32,90
+90 fx1
+//! c=fx i=fx o=cc:32,91
+91 fx2
+//! c=fx i=fx o=cc:32,92
+92 fx3
+//! c=fx i=fx o=cc:32,93
+93 fx4
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Brutish Brass"
+//! m="Use default note keyswitches (NOT UACC!)"
+//
+// This bank does not use UACC because the patch has a bug where the same
+// UACC number is used for multiple articulations.
+Bank 66 73 Albion 3 - Brutish Brass
+//! c=short i=staccato o=note:84
+43 short
+//! c=long i=note-whole o=note:85
+1 long
+//! c=long i=note-whole o=note:86
+15 long nasty
+//! c=short i=staccato o=note:87
+45 short (octave)
+//! c=long i=note-whole o=note:88
+3 long (octave)
+//! c=long i=note-whole o=note:89
+9 long nasty (octave)
+
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="String Lo (Celli)"
+//! m="Set patch to UACC"
+Bank 66 74 Albion 3 - String Lo (Celli)
+//! c=short i=staccato o=cc:32,40
+40 short A & B
+//! c=long i=note-whole o=cc:32,1
+1 long A & B
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=legato i=legato o=cc:32,20
+20 legato A
+//! c=legato i=legato-portamento o=cc:32,31
+31 portamento A
+//! c=legato i=legato o=cc:32,21
+21 legato B
+//! c=legato i=legato-portamento o=cc:32,32
+32 portamento B
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="String Lo"
+//! m="Set patch to UACC"
+Bank 66 75 Albion 3 - String Lo
+//! c=short i=spiccato o=cc:32,40
+40 short
+//! c=short i=staccato o=cc:32,41
+41 staccato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=legato i=legato-portamento o=cc:32,31
+31 portamento
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Chunderous Cellos"
+//! m="Use default note keyswitches (NOT UACC!)"
+//
+// This bank does not use UACC because the patch has a bug where the same
+// UACC number is used for multiple articulations.
+Bank 66 76 Albion 3 - Chunderous Cellos
+//! c=short i=staccato o=note:84
+43 short
+//! c=long i=note-whole o=note:85
+1 long
+//! c=long-light i=con-sord o=note:86
+7 long cs
+//! c=short i=staccato o=note:87
+45 short (octave)
+//! c=long i=note-whole o=note:88
+3 long (octave)
+//! c=long-light i=con-sord o=note:89
+4 long cs (octave)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Siege of Strings"
+//! m="Use default note keyswitches (NOT UACC!)"
+//
+// This bank does not use UACC because the patch has a bug where the same
+// UACC number is used for multiple articulations.
+Bank 66 77 Albion 3 - Siege of Strings
+//! c=long i=note-whole o=note:86
+1 long
+//! c=long i=note-whole o=note:89
+3 long (octave)
+//! c=short i=staccato o=note:84
+40 short
+//! c=short i=staccato o=note:85
+41 staccato
+//! c=short i=staccato o=note:87
+45 short (octave)
+//! c=short i=staccato o=note:88
+62 staccato (octave)

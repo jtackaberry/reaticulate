@@ -1,0 +1,118 @@
+//----------------------------------------------------------------------------
+//! g="Spitfire/Masse" n="Tutti"
+//! m="Set patch to UACC"
+Bank 66 50 Masse - Tutti
+//! c=long i=note-whole o=cc:32,5
+1 long
+//! c=short i=staccato o=cc:32,9
+40 staccato
+//! c=long-dark i=note-whole o=cc:32,1
+9 beast long
+//! c=short-dark i=staccato o=cc:32,2
+54 beast short
+//! c=long i=note-whole o=cc:32,3
+3 brass/string choir long
+//! c=short i=note-eighth o=cc:32,4
+4 brass/string choir short
+//! c=short i=note-eighth o=cc:32,6
+6 low brass string stab
+//! c=short-light i=note-eighth o=cc:32,7
+7 low wood string stab
+//! c=short i=note-eighth o=cc:32,8
+8 nutcracker
+
+//! c=long-light i=note-whole o=cc:32,10
+10 woods/string 1 long
+//! c=short-light i=note-eighth o=cc:32,11
+11 woods/string 1 short
+//! c=long-light i=note-whole o=cc:32,12
+12 woods/string 2 long
+//! c=short-light i=note-eighth o=cc:32,13
+13 woods/string 2 short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Masse" n="Strings"
+//! m="Set patch to UACC"
+Bank 66 51 Masse - Strings
+//! c=long-light i=note-whole o=cc:32,1
+1 cool strings 1
+//! c=long-light i=note-whole o=cc:32,2
+2 cool strings 2
+//! c=long-light i=note-whole o=cc:32,3
+3 cool strings 3
+//! c=long-light i=note-whole o=cc:32,4
+4 cool strings 4
+//! c=long i=note-whole o=cc:32,5
+5 giant epic long
+//! c=short i=note-eighth o=cc:32,6
+42 giant epic short
+//! c=long-light i=note-whole o=cc:32,7
+8 ligeti strings
+//! c=short-light i=note-eighth o=cc:32,8
+56 mondo plucks
+
+//! c=long i=note-whole o=cc:32,13
+13 slow strings 1
+//! c=long i=note-whole o=cc:32,14
+14 slow strings 2
+//! c=long-light i=note-whole o=cc:32,15
+15 super slow strings 1
+//! c=long-light i=note-whole o=cc:32,16
+16 super slow strings 2
+//! c=long-light i=note-whole o=cc:32,9
+9 super cool strings 1
+//! c=long-light i=note-whole o=cc:32,10
+10 super cool strings 2
+//! c=long-light i=note-whole o=cc:32,11
+11 super cool strings 3
+//! c=long-light i=note-whole o=cc:32,12
+12 super cool strings 4
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Masse" n="Brass"
+//! m="Set patch to UACC"
+Bank 66 52 Masse - Brass
+//! c=long-dark i=note-whole o=cc:32,1
+1 beast long
+//! c=short-dark i=note-eighth o=cc:32,2
+42 beast short
+//! c=long i=note-whole o=cc:32,3
+3 choir long
+//! c=short i=note-eighth o=cc:32,4
+4 choir short
+//! c=short-dark i=note-whole o=cc:32,5
+9 power long
+//! c=long-light i=note-whole o=cc:32,8
+8 super choir long
+//! c=short-light i=note-eighth o=cc:32,9
+48 super choir short
+//! c=long-light i=note-whole o=cc:32,6
+6 slow choir long
+//! c=long-light i=note-whole o=cc:32,7
+7 super slow choir
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Masse" n="Woodwinds"
+//! m="Set patch to UACC"
+Bank 66 53 Masse - Woodwinds
+//! c=long-dark i=note-whole o=cc:32,1
+1 beast long
+//! c=short-dark i=note-eighth o=cc:32,2
+42 beast short
+//! c=long i=note-whole o=cc:32,3
+3 chorus long
+//! c=short i=note-eighth o=cc:32,4
+4 chorus short
+//! c=short-light i=note-eighth o=cc:32,5
+5 light short
+//! c=long-dark i=note-whole o=cc:32,6
+6 orchestrator long
+//! c=short-dark i=note-eighth o=cc:32,7
+7 orchestrator shorts
+//! c=long-light i=note-whole o=cc:32,8
+8 slow chorus long
+//! c=long i=note-whole o=cc:32,9
+9 slow orchestrator

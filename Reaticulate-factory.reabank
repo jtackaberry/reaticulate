@@ -3,7 +3,7 @@
 // This file is a specially formatted Reabank file that is notated for use by Reaticulate.
 // Specification can be found here:
 //
-// 		http://reaticulate.com/reabank.html
+//      http://reaticulate.com/reabank.html
 //
 //!
 //
@@ -12,7 +12,6 @@
 // This file is distributed with Reaticulate and will be replaced with upgrades.
 // Edit Reaticulate.reabank in the Reaper Data directory instead.
 //
-
 // Default colors can be overridden in the user Reaticulate.reabank file.
 //
 //! colors=default=#666666,short=#6c30c6,short-light=#9630c6,short-dark=#533bca
@@ -84,7 +83,7 @@ Bank 64 2 SCS - Ensembles
 71 trill M2
 
 
-
+//----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="V1 Core"
 //! m="Set patch to UACC"
 Bank 64 3 SCS - V1 Core
@@ -123,6 +122,8 @@ Bank 64 3 SCS - V1 Core
 //! c=short-light i=col-legno o=cc:32,58
 58 col legno
 
+
+//----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="V1 Decorative"
 //! m="Set patch to UACC"
 Bank 64 4 SCS - V1 Decorative
@@ -198,9 +199,6 @@ Bank 64 6 SCS - V1 Legato Decorative
 36 legato (sul pont)
 
 
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="V2 Core"
 //! m="Set patch to UACC"
@@ -231,7 +229,6 @@ Bank 64 7 SCS - V2 Core
 57 bartok pizz
 //! c=short-light i=col-legno o=cc:32,58
 58 col legno
-
 
 
 //----------------------------------------------------------------------------
@@ -270,7 +267,6 @@ Bank 64 8 SCS - V2 Decorative
 Bank 64 9 SCS - V2 Legato Performance
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="V2 Legato Decorative"
 //! m="Set patch to UACC"
@@ -288,8 +284,6 @@ Bank 64 10 SCS - V2 Legato Decorative
 27 legato (flautando)
 //! c=legato-dark i=legato-sul-pont n="sul pont" o=cc:32,36
 36 legato (sul pont)
-
-
 
 
 
@@ -390,9 +384,6 @@ Bank 64 14 SCS - Va Legato Decorative
 36 legato (sul pont)
 
 
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="Vc Core"
 //! m="Set patch to UACC"
@@ -475,9 +466,6 @@ Bank 64 16 SCS - Vc Decorative
 Bank 64 17 SCS - Vc Legato Performance
 
 
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="Cb Core"
 //! m="Set patch to UACC"
@@ -532,11 +520,14 @@ Bank 64 19 SCS - Cb Decorative
 //! c=fx i=fx o=cc:32,90
 90 fx
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="Cb Legato Performance"
 //! m="Set patch to UACC"
-//! clone="Spitfire/Chamber Strings/V1 Legato Performance"
 Bank 64 20 SCS - Cb Legato Performance
+//! c=legato i=legato n=fingered o=cc:32,20
+20 legato (fingered)
+
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Chamber Strings" n="Performance Legato"
@@ -546,9 +537,11 @@ Bank 64 21 SCS - Performance Legato
 20 legato
 
 
-
-
-
+//----------------------------------------------------------------------------
+//! g="Spitfire/Chamber Strings" n="Vc Legato Decorative"
+//! m="Set patch to UACC"
+//! clone="Spitfire/Chamber Strings/Va Legato Decorative"
+Bank 64 22 SCS - Vc Legato Decorative
 
 
 //----------------------------------------------------------------------------
@@ -634,7 +627,6 @@ Bank 64 32 SSS - Ensembles Decorative
 71 trill M2
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Core"
 //! m="Set patch to UACC"
@@ -645,7 +637,7 @@ Bank 64 33 SSS - V1 Core
 7 con sord
 //! c=long-light i=harmonics o=cc:32,10
 10 harmonics
-//! c=long-light i=flautando o=cc:32,87
+//! c=long-light i=flautando o=cc:32,8
 8 flautando
 //! c=long-dark i=sul-pont o=cc:32,18
 18 sul pont
@@ -701,8 +693,6 @@ Bank 64 34 SSS - V1 Decorative
 
 //! c=long-dark i=tremolo-180 o=cc:32,82
 82 trem 180
-//! c=long-dark i=sul-pont o=cc:32,18
-18 sul pont
 //! c=long i=trill-min2 o=cc:32,70
 70 trill m2
 //! c=long i=trill-maj2 o=cc:32,71
@@ -711,7 +701,7 @@ Bank 64 34 SSS - V1 Decorative
 72 trill m3
 //! c=long i=trill-maj3 o=cc:32,73
 73 trill M3
-//! c=fx i=fx
+//! c=fx i=fx o=cc:32,90
 90 fx
 
 
@@ -729,9 +719,6 @@ Bank 64 35 SSS - V1 Legato Performance
 33 legato (runs)
 
 
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Core"
 //! m="Set patch to UACC"
@@ -742,7 +729,7 @@ Bank 64 36 SSS - V2 Core
 7 con sord
 //! c=long-light i=harmonics o=cc:32,10
 10 harmonics
-//! c=long-light i=flautando o=cc:32,87
+//! c=long-light i=flautando o=cc:32,8
 8 flautando
 //! c=long-dark i=sul-pont o=cc:32,18
 18 sul pont
@@ -789,8 +776,8 @@ Bank 64 37 SSS - V2 Decorative
 11 tremolo
 //! c=long-dark i=tremolo-sul-pont o=cc:32,13
 13 trem sul pont
-//! c=long-light i=tremolo-con-sord o=cc:32,59
-59 trem cs
+//! c=long-light i=tremolo-con-sord o=cc:32,12
+12 trem cs
 //! c=long-dark i=tremolo-150 o=cc:32,81
 81 trem 150
 
@@ -813,11 +800,6 @@ Bank 64 37 SSS - V2 Decorative
 Bank 64 38 SSS - V2 Legato Performance
 
 
-
-
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Core"
 //! m="Set patch to UACC"
@@ -828,7 +810,7 @@ Bank 64 39 SSS - Va Core
 7 con sord
 //! c=long-light i=harmonics o=cc:32,10
 10 harmonics
-//! c=long-light i=flautando o=cc:32,87
+//! c=long-light i=flautando o=cc:32,8
 8 flautando
 //! c=long-dark i=sul-pont o=cc:32,18
 18 sul pont
@@ -873,8 +855,8 @@ Bank 64 40 SSS - Va Decorative
 11 tremolo
 //! c=long-dark i=tremolo-sul-pont o=cc:32,13
 13 trem sul pont
-//! c=long-light i=tremolo-con-sord o=cc:32,59
-59 trem cs
+//! c=long-light i=tremolo-con-sord o=cc:32,12
+12 trem cs
 //! c=long-dark i=tremolo-150 o=cc:32,81
 81 trem 150
 
@@ -897,16 +879,12 @@ Bank 64 40 SSS - Va Decorative
 Bank 64 41 SSS - Va Legato Performance
 
 
-
-
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Core"
 //! m="Set patch to UACC"
 //! clone="Spitfire/Symphonic Strings/Va Core"
 Bank 64 42 SSS - Vc Core
+
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Decorative"
@@ -954,10 +932,6 @@ Bank 64 43 SSS - Vc Decorative
 Bank 64 44 SSS - Vc Legato Performance
 
 
-
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Core"
 //! m="Set patch to UACC"
@@ -966,7 +940,7 @@ Bank 64 45 SSS - Cb Core
 1 long
 //! c=long-light i=harmonics o=cc:32,10
 10 harmonics
-//! c=long-light i=flautando o=cc:32,87
+//! c=long-light i=flautando o=cc:32,8
 8 flautando
 //! c=long-dark i=sul-pont o=cc:32,18
 18 sul pont
@@ -1025,16 +999,12 @@ Bank 64 46 SSS - Cb Decorative
 Bank 64 47 SSS - Cb Legato Performance
 
 
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Performance Legato"
 //! m="Set patch to UACC"
 Bank 64 48 SSS - Performance Legato
 //! c=legato i=phrase o=cc:32,20
 20 legato
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1061,6 +1031,7 @@ Bank 64 60 SSW - Piccolo Flute
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Piccolo Flute - Full"
 //! m="Set patch to UACC"
@@ -1086,6 +1057,7 @@ Bank 64 61 SSW - Piccolo Flute - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Piccolo Flute - Legato"
 //! m="Set patch to UACC"
@@ -1093,8 +1065,6 @@ Bank 64 62 SSW - Piccolo Flute - Legato
 
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1134,14 +1104,13 @@ Bank 64 64 SSW - Flute Solo - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flute Solo - Legato"
 //! m="Set patch to UACC"
 Bank 64 65 SSW - Flute Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1184,6 +1153,7 @@ Bank 64 67 SSW - Flutes a2 - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flutes a2 - Legato"
 //! m="Set patch to UACC"
@@ -1192,11 +1162,6 @@ Bank 64 68 SSW - Flutes a2 - Legato
 20 legato
 //! c=legato i=legato-bowed o=cc:32,21
 21 legato detache
-
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1233,14 +1198,13 @@ Bank 64 70 SSW - Alto Flute - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Alto Flute - Legato"
 //! m="Set patch to UACC"
 Bank 64 71 SSW - Alto Flute - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1264,7 +1228,6 @@ Bank 64 72 SSW - Bass Flute
 40 staccato
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Flute - Full"
 //! m="Set patch to UACC"
@@ -1283,17 +1246,13 @@ Bank 64 73 SSW - Bass Flute - Full
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Flute - Legato"
 //! m="Set patch to UACC"
 Bank 64 74 SSW - Bass Flute - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1341,16 +1300,13 @@ Bank 64 76 SSW - Oboe Solo - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboe Solo - Legato"
 //! m="Set patch to UACC"
 Bank 64 77 SSW - Oboe Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1392,16 +1348,13 @@ Bank 64 79 SSW - Oboes a2 - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboes a2 - Legato"
 //! m="Set patch to UACC"
 Bank 64 80 SSW - Oboes a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1434,15 +1387,13 @@ Bank 64 82 SSW - Cor Anglais - Full
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Cor Anglais - Legato"
 //! m="Set patch to UACC"
 Bank 64 83 SSW - Cor Anglais - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1482,15 +1433,13 @@ Bank 64 85 SSW - Clarinet Solo - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinet Solo - Legato"
 //! m="Set patch to UACC"
 Bank 64 86 SSW - Clarinet Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1513,6 +1462,7 @@ Bank 64 87 SSW - Clarinets a2
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinets a2 - Full"
 //! m="Set patch to UACC"
@@ -1534,6 +1484,7 @@ Bank 64 88 SSW - Clarinets a2 - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinets a2 - Legato"
 //! m="Set patch to UACC"
@@ -1541,10 +1492,6 @@ Bank 64 89 SSW - Clarinets a2 - Legato
 
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1565,6 +1512,7 @@ Bank 64 90 SSW - Bass Clarinet
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Clarinet - Full"
 //! m="Set patch to UACC"
@@ -1582,6 +1530,7 @@ Bank 64 91 SSW - Bass Clarinet - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Clarinet - Legato"
 //! m="Set patch to UACC"
@@ -1589,11 +1538,6 @@ Bank 64 92 SSW - Bass Clarinet - Legato
 
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1612,6 +1556,7 @@ Bank 64 93 SSW - Contrabass Clarinet
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabass Clarinet - Full"
 //! m="Set patch to UACC"
@@ -1626,6 +1571,7 @@ Bank 64 94 SSW - Contrabass Clarinet - Full
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabass Clarinet - Legato"
 //! m="Set patch to UACC"
@@ -1633,9 +1579,6 @@ Bank 64 95 SSW - Contrabass Clarinet - Legato
 
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1671,16 +1614,13 @@ Bank 64 97 SSW - Bassoon Solo - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon Solo - Legato"
 //! m="Set patch to UACC"
 Bank 64 98 SSW - Bassoon Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1705,6 +1645,7 @@ Bank 64 99 SSW - Bassoon a2
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon a2 - Full"
 //! m="Set patch to UACC"
@@ -1728,6 +1669,7 @@ Bank 64 100 SSW - Bassoon a2 - Full
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon a2 - Legato"
 //! m="Set patch to UACC"
@@ -1735,10 +1677,6 @@ Bank 64 101 SSW - Bassoon a2 - Legato
 
 //! c=legato i=legato o=cc:32,20
 20 legato
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -1757,6 +1695,7 @@ Bank 64 102 SSW - Contrabassoon
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabassoon - Full"
 //! m="Set patch to UACC"
@@ -1771,6 +1710,7 @@ Bank 64 103 SSW - Contrabassoon - Full
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabassoon - Legato"
 //! m="Set patch to UACC"
@@ -1780,16 +1720,8 @@ Bank 64 104 SSW - Contrabassoon - Legato
 20 legato
 
 
-
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horn Solo"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo"
 //! m="Set patch to UACC"
 Bank 65 1 SSB - Horn Solo
 
@@ -1805,7 +1737,7 @@ Bank 65 1 SSB - Horn Solo
 40 staccato
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 //! c=long i=trill-min2 o=cc:32,70
 70 trill m2
@@ -1813,11 +1745,8 @@ Bank 65 1 SSB - Horn Solo
 71 trill M2
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horn Solo - Core"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 2 SSB - Horn Solo - Core
 
@@ -1829,28 +1758,26 @@ Bank 65 2 SSB - Horn Solo - Core
 50 tenuto
 //! c=short i=staccato o=cc:32,40
 40 staccato
-//! c=short i=spiccato o=cc:32,42
-42 staccatissimo
 //! c=long i=trill-min2 o=cc:32,70
 70 trill m2
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horn Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 3 SSB - Horn Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
+
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horn Solo - Legato"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Legato"
 //! m="Set patch to UACC"
 Bank 65 4 SSB - Horn Solo - Legato
 
@@ -1858,11 +1785,8 @@ Bank 65 4 SSB - Horn Solo - Legato
 20 legato
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a2"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2"
 //! m="Set patch to UACC"
 Bank 65 5 SSB - Horns a2
 
@@ -1886,11 +1810,8 @@ Bank 65 5 SSB - Horns a2
 71 trill M2
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a2 - Core"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Core"
 //! m="Set patch to UACC"
 Bank 65 6 SSB - Horns a2 - Core
 
@@ -1912,9 +1833,8 @@ Bank 65 6 SSB - Horns a2 - Core
 71 trill M2
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a2 - Decorative"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 7 SSB - Horns a2 - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
@@ -1927,15 +1847,14 @@ Bank 65 7 SSB - Horns a2 - Decorative
 55 bells up crotchet
 //! c=long i=note-whole o=cc:32,17
 17 bells up long
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
+
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a2 - Legato"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Legato"
 //! m="Set patch to UACC"
 Bank 65 8 SSB - Horns a2 - Legato
 
@@ -1943,13 +1862,8 @@ Bank 65 8 SSB - Horns a2 - Legato
 20 legato
 
 
-
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a6"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6"
 //! m="Set patch to UACC"
 Bank 65 9 SSB - Horns a6
 
@@ -1957,6 +1871,8 @@ Bank 65 9 SSB - Horns a6
 20 legato
 //! c=long i=note-whole o=cc:32,1
 1 long
+//! c=long-dark i=cuivre o=cc:32,9
+9 cuivre
 //! c=short i=marcato-quarter o=cc:32,52
 52 marcato
 //! c=short i=tenuto-eighth o=cc:32,50
@@ -1967,14 +1883,12 @@ Bank 65 9 SSB - Horns a6
 75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a6 - Core"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Core"
 //! m="Set patch to UACC"
 Bank 65 10 SSB - Horns a6 - Core
 
@@ -1991,32 +1905,25 @@ Bank 65 10 SSB - Horns a6 - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a6 - Decorative"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 11 SSB - Horns a6 - Decorative
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
+
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Horns a6 - Legato"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Legato"
 //! m="Set patch to UACC"
 Bank 65 12 SSB - Horns a6 - Legato
-
 //! c=legato i=phrase o=cc:32,20
 20 legato
 
 
-
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombone Solo"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo"
 //! m="Set patch to UACC"
 Bank 65 13 SSB - Tenor Trombone Solo
 
@@ -2034,14 +1941,12 @@ Bank 65 13 SSB - Tenor Trombone Solo
 75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombone Solo - Core"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 14 SSB - Tenor Trombone Solo - Core
 
@@ -2066,24 +1971,19 @@ Bank 65 14 SSB - Tenor Trombone Solo - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombone Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 15 SSB - Tenor Trombone Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombones a2"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2"
 //! m="Set patch to UACC"
 Bank 65 16 SSB - Tenor Trombones a2
 //! c=legato i=legato o=cc:32,20
@@ -2098,16 +1998,14 @@ Bank 65 16 SSB - Tenor Trombones a2
 50 tenuto
 //! c=short i=staccato o=cc:32,40
 40 staccato
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombones a2 - Core"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Core"
 //! m="Set patch to UACC"
 Bank 65 17 SSB - Tenor Trombones a2 - Core
 
@@ -2124,33 +2022,27 @@ Bank 65 17 SSB - Tenor Trombones a2 - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombones a2 - Decorative"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 18 SSB - Tenor Trombones a2 - Decorative
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=fx i=fx o=cc:32,90
 90 fx glissandi
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tenor Trombones a2 - Legato"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Legato"
 //! m="Set patch to UACC"
 Bank 65 19 SSB - Tenor Trombones a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
 
 
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombone Solo"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo"
 //! m="Set patch to UACC"
 Bank 65 20 SSB - Bass Trombone Solo
 //! c=long i=note-whole o=cc:32,1
@@ -2167,12 +2059,12 @@ Bank 65 20 SSB - Bass Trombone Solo
 75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombone Solo - Core"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 21 SSB - Bass Trombone Solo - Core
 
@@ -2189,25 +2081,19 @@ Bank 65 21 SSB - Bass Trombone Solo - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombone Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 22 SSB - Bass Trombone Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombones a2"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2"
 //! m="Set patch to UACC"
 Bank 65 23 SSB - Bass Trombones a2
 //! c=legato i=legato o=cc:32,20
@@ -2226,12 +2112,12 @@ Bank 65 23 SSB - Bass Trombones a2
 75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombones a2 - Core"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Core"
 //! m="Set patch to UACC"
 Bank 65 24 SSB - Bass Trombones a2 - Core
 
@@ -2248,33 +2134,27 @@ Bank 65 24 SSB - Bass Trombones a2 - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombones a2 - Decorative"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 25 SSB - Bass Trombones a2 - Decorative
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=fx i=fx o=cc:32,90
 90 fx glissandi
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Bass Trombones a2 - Legato"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Legato"
 //! m="Set patch to UACC"
 Bank 65 26 SSB - Bass Trombones a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
 
 
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Contrabass Trombone Solo"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo"
 //! m="Set patch to UACC"
 Bank 65 27 SSB - Contrabass Trombone Solo
 //! c=long i=note-whole o=cc:32,1
@@ -2289,12 +2169,12 @@ Bank 65 27 SSB - Contrabass Trombone Solo
 40 staccato
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Contrabass Trombone Solo - Core"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 28 SSB - Contrabass Trombone Solo - Core
 
@@ -2315,20 +2195,17 @@ Bank 65 28 SSB - Contrabass Trombone Solo - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Contrabass Trombone Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 29 SSB - Contrabass Trombone Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trombones a6"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6"
 //! m="Set patch to UACC"
 Bank 65 30 SSB - Trombones a6
 
@@ -2348,14 +2225,12 @@ Bank 65 30 SSB - Trombones a6
 75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trombones a6 - Core"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Core"
 //! m="Set patch to UACC"
 Bank 65 31 SSB - Trombones a6 - Core
 
@@ -2372,18 +2247,17 @@ Bank 65 31 SSB - Trombones a6 - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trombones a6 - Decorative"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 32 SSB - Trombones a6 - Decorative
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
+
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trombones a6 - Legato"
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Legato"
 //! m="Set patch to UACC"
 Bank 65 33 SSB - Trombones a6 - Legato
 
@@ -2391,12 +2265,8 @@ Bank 65 33 SSB - Trombones a6 - Legato
 20 legato
 
 
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpet Solo"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo"
 //! m="Set patch to UACC"
 Bank 65 34 SSB - Trumpet Solo
 
@@ -2421,7 +2291,7 @@ Bank 65 34 SSB - Trumpet Solo
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpet Solo - Core"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 35 SSB - Trumpet Solo - Core
 
@@ -2448,21 +2318,19 @@ Bank 65 35 SSB - Trumpet Solo - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpet Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 36 SSB - Trumpet Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
 //! c=long i=vibrato-molto o=cc:32,2
 2 long mariachi
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=fx i=fx o=cc:32,90
 90 fx glissandi
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpet Solo - Legato"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Legato"
 //! m="Set patch to UACC"
 Bank 65 37 SSB - Trumpet Solo - Legato
 
@@ -2470,13 +2338,8 @@ Bank 65 37 SSB - Trumpet Solo - Legato
 20 legato
 
 
-
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a2"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2"
 //! m="Set patch to UACC"
 Bank 65 38 SSB - Trumpets a2
 
@@ -2501,7 +2364,7 @@ Bank 65 38 SSB - Trumpets a2
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a2 - Core"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Core"
 //! m="Set patch to UACC"
 Bank 65 39 SSB - Trumpets a2 - Core
 
@@ -2522,21 +2385,19 @@ Bank 65 39 SSB - Trumpets a2 - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a2 - Decorative"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 40 SSB - Trumpets a2 - Decorative
 //! c=long i=vibrato-molto o=cc:32,2
 2 long mariachi
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a2 - Legato"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Legato"
 //! m="Set patch to UACC"
 Bank 65 41 SSB - Trumpets a2 - Legato
 
@@ -2544,12 +2405,8 @@ Bank 65 41 SSB - Trumpets a2 - Legato
 20 legato
 
 
-
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a6"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6"
 //! m="Set patch to UACC"
 Bank 65 42 SSB - Trumpets a6
 
@@ -2569,14 +2426,12 @@ Bank 65 42 SSB - Trumpets a6
 75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a6 - Core"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Core"
 //! m="Set patch to UACC"
 Bank 65 43 SSB - Trumpets a6 - Core
 
@@ -2593,33 +2448,27 @@ Bank 65 43 SSB - Trumpets a6 - Core
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a6 - Decorative"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 44 SSB - Trumpets a6 - Decorative
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
+
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Trumpets a6 - Legato"
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Legato"
 //! m="Set patch to UACC"
 Bank 65 45 SSB - Trumpets a6 - Legato
-
 //! c=legato i=phrase o=cc:32,20
 20 legato
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tuba Solo"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo"
 //! m="Set patch to UACC"
 Bank 65 46 SSB - Tuba Solo
-
 //! c=legato i=legato o=cc:32,20
 20 legato
 //! c=long i=note-whole o=cc:32,1
@@ -2634,13 +2483,12 @@ Bank 65 46 SSB - Tuba Solo
 40 staccato
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tuba Solo - Core"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 47 SSB - Tuba Solo - Core
 
@@ -2656,18 +2504,18 @@ Bank 65 47 SSB - Tuba Solo - Core
 40 staccato
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tuba Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 48 SSB - Tuba Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
+
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Tuba Solo - Legato"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Legato"
 //! m="Set patch to UACC"
 Bank 65 49 SSB - Tuba Solo - Legato
 
@@ -2675,11 +2523,8 @@ Bank 65 49 SSB - Tuba Solo - Legato
 20 legato
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Contrabass Tuba Solo"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo"
 //! m="Set patch to UACC"
 Bank 65 50 SSB - Contrabass Tuba Solo
 
@@ -2693,13 +2538,12 @@ Bank 65 50 SSB - Contrabass Tuba Solo
 40 staccato
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Contrabass Tuba Solo - Core"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 51 SSB - Contrabass Tuba Solo - Core
 
@@ -2713,22 +2557,18 @@ Bank 65 51 SSB - Contrabass Tuba Solo - Core
 40 staccato
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Contrabass Tuba Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 52 SSB - Contrabass Tuba Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Cimbasso Solo"
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo"
 //! m="Set patch to UACC"
 Bank 65 53 SSB - Cimbasso Solo
 
@@ -2744,13 +2584,12 @@ Bank 65 53 SSB - Cimbasso Solo
 40 staccato
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Cimbasso Solo - Core"
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo - Core"
 //! m="Set patch to UACC"
 Bank 65 54 SSB - Cimbasso Solo - Core
 
@@ -2766,21 +2605,18 @@ Bank 65 54 SSB - Cimbasso Solo - Core
 40 staccato
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Cimbasso Solo - Decorative"
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo - Decorative"
 //! m="Set patch to UACC"
 Bank 65 55 SSB - Cimbasso Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
-//! c=short-dark i=rip-downward o=cc:32,101
+//! c=short-dark i=fall o=cc:32,101
 101 fall
 
 
-
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Cimbassi a2"
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2"
 //! m="Set patch to UACC"
 Bank 65 56 SSB - Cimbassi a2
 
@@ -2794,15 +2630,14 @@ Bank 65 56 SSB - Cimbassi a2
 50 tenuto
 //! c=short i=staccato o=cc:32,40
 40 staccato
-//! c=short-dark i=rip o=cc:32,122
-122 rip
-//! c=short-dark i=rip-downward o=cc:32,123
-123 fall
-
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Cimbassi a2 - Core"
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Core"
 //! m="Set patch to UACC"
 Bank 65 57 SSB - Cimbassi a2 - Core
 
@@ -2818,23 +2653,124 @@ Bank 65 57 SSB - Cimbassi a2 - Core
 40 staccato
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Symphonic Brass" n="Cimbassi a2 - Decorative"
+//! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Decorative"
 //! m="Set patch to UACC"
 Bank 65 58 SSB - Cimbassi a2 - Decorative
-//! c=short-dark i=rip o=cc:32,122
-122 rip
-//! c=short-dark i=rip-downward o=cc:32,123
-123 fall
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=short-dark i=fall o=cc:32,101
+101 fall
 
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 60 SSB - Horn Solo - Extras
+//! c=short i=spiccato o=cc:32,42
+42 staccatissimo
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 61 SSB - Horns a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=spiccato o=cc:32,49
+49 bells up staccatissimo
 
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="Brass Hi"
+//! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 62 SSB - Horns a6 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=fanfare o=cc:32,77
+77 fanfare
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 63 SSB - Tenor Trombone Solo - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=long-light i=tremolo o=cc:32,12
+12 flutter muted
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 64 SSB - Tenor Trombones a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 65 SSB - Trombones a6 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=fanfare o=cc:32,77
+77 fanfare
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 66 SSB - Bass Trombone Solo - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 67 SSB - Bass Trombones a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 68 SSB - Trumpet Solo - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 69 SSB - Trumpets a2 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 70 SSB - Trumpets a6 - Extras
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
+//! c=short i=fanfare o=cc:32,77
+77 fanfare
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Extras"
+//! m="Add'l individual articulations (use UACC)"
+Bank 65 71 SSB - Tuba Solo - Extras
+//! c=short-dark i=staccato-overblown o=cc:32,47
+47 short stopped
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 1" n="Brass Hi"
 //! m="Set patch to UACC"
-Bank 66 1 Albion I - Brass Hi
+Bank 66 1 Albion 1 - Brass Hi
 
 //! c=short i=staccato o=cc:32,40
 40 staccato
@@ -2847,19 +2783,18 @@ Bank 66 1 Albion I - Brass Hi
 //! c=fx i=fx o=cc:32,91
 91 fx2
 
-//----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="Brass Lo"
-//! m="Set patch to UACC"
-//! clone="Spitire/Albion I/Brass Hi"
-Bank 66 2 Albion I - Brass Lo
-
-
-
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="Brass Mid"
+//! g="Spitfire/Albion 1" n="Brass Lo"
 //! m="Set patch to UACC"
-Bank 66 3 Albion I - Brass Mid
+//! clone="Spitfire/Albion 1/Brass Hi"
+Bank 66 2 Albion 1 - Brass Lo
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 1" n="Brass Mid"
+//! m="Set patch to UACC"
+Bank 66 3 Albion 1 - Brass Mid
 
 //! c=short i=staccato o=cc:32,40
 40 staccato
@@ -2869,11 +2804,10 @@ Bank 66 3 Albion I - Brass Mid
 20 legato
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="Piano"
+//! g="Spitfire/Albion 1" n="Piano"
 //! m="Set patch to UACC"
-Bank 66 4 Albion I - Piano
+Bank 66 4 Albion 1 - Piano
 
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -2886,9 +2820,9 @@ Bank 66 4 Albion I - Piano
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="String Hi"
+//! g="Spitfire/Albion 1" n="String Hi"
 //! m="Set patch to UACC"
-Bank 66 5 Albion I - String Hi
+Bank 66 5 Albion 1 - String Hi
 
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -2922,11 +2856,10 @@ Bank 66 5 Albion I - String Hi
 92 fx3
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="String Lo"
+//! g="Spitfire/Albion 1" n="String Lo"
 //! m="Set patch to UACC"
-Bank 66 6 Albion I - String Lo
+Bank 66 6 Albion 1 - String Lo
 
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -2954,11 +2887,10 @@ Bank 66 6 Albion I - String Lo
 91 fx2
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="Woodwind Hi"
+//! g="Spitfire/Albion 1" n="Woodwind Hi"
 //! m="Set patch to UACC"
-Bank 66 7 Albion I - Woodwind Hi
+Bank 66 7 Albion 1 - Woodwind Hi
 
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -2978,11 +2910,10 @@ Bank 66 7 Albion I - Woodwind Hi
 33 runs
 
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion I" n="Woodwind Lo"
+//! g="Spitfire/Albion 1" n="Woodwind Lo"
 //! m="Set patch to UACC"
-Bank 66 8 Albion I - Woodwind Lo
+Bank 66 8 Albion 1 - Woodwind Lo
 
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -2996,13 +2927,10 @@ Bank 66 8 Albion I - Woodwind Lo
 91 fx2
 
 
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass High"
 //! m="Set patch to UACC"
 Bank 66 15 Albion ONE - Brass High
-
 //! c=short i=staccato o=cc:32,40
 40 short
 //! c=long i=note-whole o=cc:32,1
@@ -3012,11 +2940,11 @@ Bank 66 15 Albion ONE - Brass High
 //! c=long i=note-whole o=cc:32,3
 3 long octave
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass Low"
 //! m="Set patch to UACC"
 Bank 66 16 Albion ONE - Brass Low
-
 //! c=short i=staccato o=cc:32,40
 40 short
 //! c=long i=note-whole o=cc:32,1
@@ -3026,24 +2954,21 @@ Bank 66 16 Albion ONE - Brass Low
 //! c=long i=note-whole o=cc:32,9
 9 long nasty
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass Mid"
 //! m="Set patch to UACC"
 Bank 66 17 Albion ONE - Brass Mid
-
 //! c=short i=staccato o=cc:32,40
 40 short
 //! c=long i=note-whole o=cc:32,1
 1 long
 
 
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Strings"
 //! m="Set patch to UACC"
 Bank 66 18 Albion ONE - Strings
-
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
 //! c=short i=staccato o=cc:32,40
@@ -3072,7 +2997,7 @@ Bank 66 19 Albion ONE - Woods High
 40 short
 //! c=long i=note-whole o=cc:32,1
 1 long
-//! c=short i=staccato o=cc:32,41
+//! c=short i=staccato o=cc:32,21
 41 short arranged
 //! c=long i=note-whole o=cc:32,2
 2 long arranged
@@ -3099,6 +3024,7 @@ Bank 66 21 Albion ONE - Legacy - Brass High
 //! c=fx i=fx o=cc:32,91
 91 fx2
 
+
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Brass Low"
 //! m="Set patch to UACC"
@@ -3107,9 +3033,9 @@ Bank 66 22 Albion ONE - Legacy - Brass Low
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion ONE" n="Brass Mid"
+//! g="Spitfire/Albion ONE/Legacy" n="Brass Mid"
 //! m="Set patch to UACC"
-Bank 66 23 Albion ONE - Brass Mid
+Bank 66 23 Albion ONE - Legacy - Brass Mid
 //! c=short i=staccato o=cc:32,40
 40 short
 
@@ -3118,7 +3044,6 @@ Bank 66 23 Albion ONE - Brass Mid
 //! g="Spitfire/Albion ONE/Legacy" n="Piano"
 //! m="Set patch to UACC"
 Bank 66 24 Albion ONE - Legacy - Piano
-
 //! c=short i=staccato o=cc:32,40
 40 short
 //! c=short i=staccato-con-sord o=cc:32,42
@@ -3129,13 +3054,10 @@ Bank 66 24 Albion ONE - Legacy - Piano
 91 fx misc
 
 
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="String High"
 //! m="Set patch to UACC"
 Bank 66 25 Albion ONE - Legacy - String High
-
 //! c=short i=staccato o=cc:32,43
 43 short ostinatum
 //! c=short i=spiccato o=cc:32,42
@@ -3154,12 +3076,10 @@ Bank 66 25 Albion ONE - Legacy - String High
 92 fx3
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="String Low"
 //! m="Set patch to UACC"
 Bank 66 26 Albion ONE - Legacy - String Low
-
 //! c=short i=marcato-quarter o=cc:32,44
 44 brush ostinatum
 //! c=short i=staccato o=cc:32,42
@@ -3174,12 +3094,10 @@ Bank 66 26 Albion ONE - Legacy - String Low
 91 fx2
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Woodwind High"
 //! m="Set patch to UACC"
-Bank 66 27 Albion ONE - Legacy - Woodwind Hifg
-
+Bank 66 27 Albion ONE - Legacy - Woodwind High
 //! c=short i=staccato o=cc:32,40
 40 short
 //! c=short i=staccato-overblown o=cc:32,41
@@ -3192,12 +3110,10 @@ Bank 66 27 Albion ONE - Legacy - Woodwind Hifg
 33 runs
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Woodwind Low"
 //! m="Set patch to UACC"
 Bank 66 28 Albion ONE - Legacy - Woodwind Low
-
 //! c=short i=staccato o=cc:32,40
 40 short
 //! c=fx i=fx o=cc:32,90
@@ -3206,10 +3122,145 @@ Bank 66 28 Albion ONE - Legacy - Woodwind Low
 91 fx2
 
 
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion ONE" n="Strings Legato"
+//! m="Set patch to UACC"
+Bank 66 126 Albion ONE - Strings Legato
+//! c=legato i=legato o=cc:32,26
+26 legato full strings (8ves)
+//! c=legato i=legato o=cc:32,25
+25 legato low strings (8ves)
+//! c=legato i=legato o=cc:32,27
+20 legato mid strings
+//! c=legato i=legato o=cc:32,28
+28 legato high strings (8ves)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion ONE" n="Brass Legato"
+//! m="Set patch to UACC"
+Bank 66 127 Albion ONE - Brass Legato
+// Program numbers for low and mid brass intentionally swapped as mid brass
+// seems like a better choice for default legato.
+//
+//! c=legato i=legato o=cc:32,20
+21 legato low brass (8ves)
+//! c=legato i=legato o=cc:32,21
+20 legato mid brass
+//! c=legato i=legato o=cc:32,22
+22 legato high brass (8ves)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion ONE" n="Woods Legato"
+//! m="Set patch to UACC"
+Bank 66 125 Albion ONE - Woods Legato
+//! c=legato i=legato o=cc:32,23
+23 legato low woods
+//! c=legato i=legato o=cc:32,24
+24 legato high woods
 
 
 
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion ONE" n="Strings High - Runs"
+//! m="Set patch to UACC"
+Bank 66 124 Albion ONE - Strings High - Runs
+//! c=legato-dark i=legato-runs o=cc:32,90
+90 chrm asc 1 oct
+//! c=legato-dark i=legato-runs o=cc:32,91
+91 chrm asc 2 oct
+//! c=legato-dark i=legato-runs o=cc:32,92
+92 chrm asc 3 oct flurry
+//! c=legato-dark i=legato-runs o=cc:32,93
+93 chrm asc flurry 1
+//! c=legato-dark i=legato-runs o=cc:32,94
+94 chrm asc flurry 2
 
+//! c=legato-dark i=legato-runs o=cc:32,95
+95 chrm desc 1 oct
+//! c=legato-dark i=legato-runs o=cc:32,96
+96 chrm desc 2 oct
+//! c=legato-dark i=legato-runs o=cc:32,97
+97 chrm desc 3 oct flurry
+//! c=legato-dark i=legato-runs o=cc:32,98
+98 chrm desc flurry 1
+//! c=legato-dark i=legato-runs o=cc:32,99
+99 chrm desc flurry 2
+
+//! c=legato i=run-major o=cc:32,100
+100 maj asc 1 oct
+//! c=legato i=run-major o=cc:32,101
+101 maj asc 3 oct
+//! c=legato i=run-major o=cc:32,102
+102 maj asc 3 oct flurry
+//! c=legato i=run-major o=cc:32,103
+103 maj desc 1 oct
+//! c=legato i=run-major o=cc:32,104
+104 maj desc 3 oct
+//! c=legato i=run-major o=cc:32,105
+105 maj desc 3 oct flurry
+
+
+//! c=legato-light i=run-minor o=cc:32,106
+106 min asc 1 oct
+//! c=legato-light i=run-minor o=cc:32,107
+107 min asc 3 oct
+//! c=legato-light i=run-minor o=cc:32,108
+108 min asc 3 oct flurry
+//! c=legato-light i=run-minor o=cc:32,109
+109 min desc 1 oct
+//! c=legato-light i=run-minor o=cc:32,110
+110 min desc 3 oct
+//! c=legato-light i=run-minor o=cc:32,111
+111 min desc 3 oct flurry
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion ONE" n="Strings Low - Runs"
+//! m="Set patch to UACC"
+Bank 66 123 Albion ONE - Strings Low - Runs
+//! c=legato-dark i=legato-runs o=cc:32,90
+90 chrm asc 1 oct
+//! c=legato-dark i=legato-runs o=cc:32,91
+91 chrm asc 2 oct
+//! c=legato-dark i=legato-runs o=cc:32,92
+92 chrm asc 3 oct flurry
+
+//! c=legato-dark i=legato-runs o=cc:32,95
+95 chrm desc 1 oct
+//! c=legato-dark i=legato-runs o=cc:32,96
+96 chrm desc 2 oct
+//! c=legato-dark i=legato-runs o=cc:32,97
+97 chrm desc 3 oct flurry
+
+
+//! c=legato i=run-major o=cc:32,100
+100 maj asc 1 oct
+//! c=legato i=run-major o=cc:32,112
+112 maj asc 2 oct
+//! c=legato i=run-major o=cc:32,113
+113 maj asc 2 oct flurry
+//! c=legato i=run-major o=cc:32,103
+103 maj desc 1 oct
+//! c=legato i=run-major o=cc:32,114
+114 maj desc 2 oct
+//! c=legato i=run-major o=cc:32,115
+115 maj desc 2 oct flurry
+
+
+//! c=legato-light i=run-minor o=cc:32,106
+106 min asc 1 oct
+//! c=legato-light i=run-minor o=cc:32,116
+116 min asc 2 oct
+//! c=legato-light i=run-minor o=cc:32,117
+117 min asc 2 oct flurry
+//! c=legato-light i=run-minor o=cc:32,109
+109 min desc 1 oct
+//! c=legato-light i=run-minor o=cc:32,118
+118 min desc 2 oct
+//! c=legato-light i=run-minor o=cc:32,119
+119 min desc 2 oct flurry
 
 
 //----------------------------------------------------------------------------
@@ -3263,9 +3314,6 @@ Bank 66 31 Albion V - Brass High
 17 tuning slide taken out
 
 
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion V" n="Brass Low"
 //! m="Set patch to UACC"
@@ -3305,7 +3353,6 @@ Bank 66 32 Albion V - Brass Low
 16 vibrato
 //! c=short i=staccato o=cc:32,40
 40 short
-
 
 
 //----------------------------------------------------------------------------
@@ -3351,8 +3398,6 @@ Bank 66 33 Albion V - Strings High - Main
 47 silken cs short
 
 
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion V" n="Strings High - Soft and Wild"
 //! m="Set patch to UACC"
@@ -3382,8 +3427,6 @@ Bank 66 34 Albion V - Strings High - Soft and Wild
 112 sul g
 //! c=long i=tremolo-slurred o=cc:32,31
 31 travelling trems
-
-
 
 
 //----------------------------------------------------------------------------
@@ -3429,9 +3472,6 @@ Bank 66 35 Albion V - Strings Low - Main
 47 silken cs short
 
 
-
-
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion V" n="Strings Low - Soft and Wild"
 //! m="Set patch to UACC"
@@ -3457,16 +3497,16 @@ Bank 66 36 Albion V - Strings Low - Soft and Wild
 7 pulsing con sord
 //! c=long-light i=con-sord-bow-up o=cc:32,12
 12 ricochet
-//! c=long i=sul-g o=cc:32,15
-112 sul g
+//! c=long i=sul-c o=cc:32,15
+112 sul c
 //! c=long i=tremolo-slurred o=cc:32,31
 31 travelling trems
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Albion V" n="Strings Low+High - Main"
+//! g="Spitfire/Albion V/Multi" n="Strings Low + High - Main"
 //! m="High on ch 1, low on ch 2, both UACC"
-Bank 66 37 Albion V - Strings High - Main
+Bank 66 37 Albion V - Strings Low + High - Main
 //! c=long-light i=flautando-con-sord o=cc@1:32,5/cc@2:32,4
 5 flautando cs long
 //! c=short-light i=flautando-con-sord o=cc@1:32,44/cc@2:32,42
@@ -3506,6 +3546,35 @@ Bank 66 37 Albion V - Strings High - Main
 47 silken cs short
 
 
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion V/Multi" n="Strings Low + High - Soft and Wild"
+//! m="High on ch 1, low on ch 2, both UACC"
+Bank 66 40 Albion V - Strings Low + High - Soft and Wild
+//! c=short-light i=pizz-con-sord o=cc@1:32,40/cc@2:32,40
+56 brushed pizz cs
+//! c=long-light i=col-legno-whole o=cc@1:32,3/cc@2:32,3
+3 col leg tratto
+//! c=long-light i=tremolo-harmonics o=cc@1:32,30/cc@2:32,30
+11 harmonic trems
+//! c=short-light i=col-legno-loose o=cc@1:32,47/cc@2:32,47
+58 light loose col leg
+//! c=long i=tremolo-harmonics o=cc@1:32,9/cc@2:32,10
+1 no rosin long
+//! c=long-light i=harmonics o=cc@1:32,10/cc@2:32,11
+10 harmonics
+//! c=short-light i=pizz-sul-pont o=cc@1:32,48/cc@2:32,48
+48 pizz sul pont
+//! c=short-light i=pizz-mix o=cc@1:32,49/cc@2:32,49
+49 pizz sp/legno mix
+
+//! c=long-light i=con-sord-bow-up o=cc@1:32,11/cc@2:32,13
+7 pulsing con sord
+//! c=long-light i=con-sord-bow-up o=cc@1:32,12/cc@2:32,12
+12 ricochet
+//! c=long i=sul-g o=cc@1:32,14/cc@2:32,15
+112 sul iv
+//! c=long i=tremolo-slurred o=cc@1:32,31/cc@2:32,31
+31 travelling trems
 
 
 //----------------------------------------------------------------------------
@@ -3594,7 +3663,6 @@ Bank 66 39 Albion V - Woods Low
 42 v short
 
 
-
 //----------------------------------------------------------------------------
 //! g="Spitfire/Masse" n="Tutti"
 //! m="Set patch to UACC"
@@ -3626,8 +3694,6 @@ Bank 66 50 Masse - Tutti
 12 woods/string 2 long
 //! c=short-light i=note-eighth o=cc:32,13
 13 woods/string 2 short
-
-
 
 
 //----------------------------------------------------------------------------
@@ -3667,10 +3733,6 @@ Bank 66 51 Masse - Strings
 11 super cool strings 3
 //! c=long-light i=note-whole o=cc:32,12
 12 super cool strings 4
-
-
-
-
 
 
 //----------------------------------------------------------------------------
@@ -3721,10 +3783,462 @@ Bank 66 53 Masse - Woodwinds
 9 slow orchestrator
 
 
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="Recorder"
+//! m="Set patch to UACC"
+Bank 66 60 Albion 2 - Recorder
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="HornEuph"
+//! m="Set patch to UACC"
+Bank 66 61 Albion 2 - HornEuph
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short i=spiccato o=cc:32,42
+42 very short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="Sackbutt Hi"
+//! m="Set patch to UACC"
+Bank 66 62 Albion 2 - Sackbutt Hi
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short i=spiccato o=cc:32,42
+42 very short
+//! c=short i=marcato-quarter o=cc:32,50
+52 marcato(short)
+//! c=long i=marcato-half o=cc:32,52
+55 marcato(long)
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="Sackbutt Lo"
+//! m="Set patch to UACC"
+Bank 66 63 Albion 2 - Sackbutt Lo
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short i=spiccato o=cc:32,42
+42 very short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="String Hi"
+//! m="Set patch to UACC"
+Bank 66 64 Albion 2 - String Hi
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 short cs
+//! c=short-light i=pizz o=cc:32,56
+56 pizzicato
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short-dark i=blend o=cc:32,5
+5 long (half)
+//! c=long-light i=con-sord o=cc:32,7
+7 long cs
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=legato i=legato-blend-generic o=cc:32,24
+24 legato (half)
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-light i=harmonics o=cc:32,10
+10 long harmonics
+//! c=long i=trill-min2 o=cc:32,70
+70 trill (minor)
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill (major)
+//! c=long-light i=flautando o=cc:32,8
+8 long flautando
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 2" n="String Lo"
+//! m="Set patch to UACC"
+Bank 66 65 Albion 2 - String Lo
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=short-light i=staccato-con-sord o=cc:32,47
+47 short cs (quiet)
+//! c=short-light i=staccato-con-sord o=cc:32,44
+44 short cs (longer)
+//! c=short-light i=pizz o=cc:32,56
+56 pizzicato
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=short-dark i=blend o=cc:32,5
+5 long (half)
+//! c=long-light i=con-sord o=cc:32,7
+7 long cs
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=legato i=legato-blend-generic o=cc:32,24
+24 legato (half)
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long-light i=flautando o=cc:32,8
+8 long flautando
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="Woodwind Lo"
+//! m="Set patch to UACC"
+Bank 66 70 Albion 3 - Woodwind Lo
+//! c=short i=staccato o=cc:32,43
+43 short
+//! c=short i=staccato-overblown o=cc:32,42
+42 short extra
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,21
+21 legato
+//! c=short-dark i=fall o=cc:32,123
+123 fall
+//! c=short-dark i=rip o=cc:32,122
+122 rip
+//! c=fx i=fx o=cc:32,111
+111 fx1
+//! c=fx i=fx o=cc:32,112
+112 fx2
+//! c=fx i=fx o=cc:32,113
+113 fx3
+//! c=fx i=fx o=cc:32,114
+114 fx4
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Wall of Woodwind"
+//! m="Set patch to UACC"
+Bank 66 71 Albion 3 - Wall of Woodwind
+//! c=short i=staccato o=cc:32,41
+41 short
+//! c=short i=staccato-overblown o=cc:32,43
+43 short extra
+//! c=long i=note-whole o=cc:32,1
+1 long
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="Brass Lo"
+//! m="Set patch to UACC"
+Bank 66 72 Albion 3 - Brass Lo
+//! c=short i=staccato o=cc:32,40
+40 short
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long i=note-whole o=cc:32,9
+9 long nasty
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=short-dark i=fall o=cc:32,101
+101 fall
+//! c=short-dark i=rip o=cc:32,100
+100 rip
+//! c=fx i=fx o=cc:32,90
+90 fx1
+//! c=fx i=fx o=cc:32,91
+91 fx2
+//! c=fx i=fx o=cc:32,92
+92 fx3
+//! c=fx i=fx o=cc:32,93
+93 fx4
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Brutish Brass"
+//! m="Use default note keyswitches (NOT UACC!)"
+//
+// This bank does not use UACC because the patch has a bug where the same
+// UACC number is used for multiple articulations.
+Bank 66 73 Albion 3 - Brutish Brass
+//! c=short i=staccato o=note:84
+43 short
+//! c=long i=note-whole o=note:85
+1 long
+//! c=long i=note-whole o=note:86
+15 long nasty
+//! c=short i=staccato o=note:87
+45 short (octave)
+//! c=long i=note-whole o=note:88
+3 long (octave)
+//! c=long i=note-whole o=note:89
+9 long nasty (octave)
+
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="String Lo (Celli)"
+//! m="Set patch to UACC"
+Bank 66 74 Albion 3 - String Lo (Celli)
+//! c=short i=staccato o=cc:32,40
+40 short A & B
+//! c=long i=note-whole o=cc:32,1
+1 long A & B
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=legato i=legato o=cc:32,20
+20 legato A
+//! c=legato i=legato-portamento o=cc:32,31
+31 portamento A
+//! c=legato i=legato o=cc:32,21
+21 legato B
+//! c=legato i=legato-portamento o=cc:32,32
+32 portamento B
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3" n="String Lo"
+//! m="Set patch to UACC"
+Bank 66 75 Albion 3 - String Lo
+//! c=short i=spiccato o=cc:32,40
+40 short
+//! c=short i=staccato o=cc:32,41
+41 staccato
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=legato i=legato o=cc:32,20
+20 legato
+//! c=legato i=legato-portamento o=cc:32,31
+31 portamento
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Chunderous Cellos"
+//! m="Use default note keyswitches (NOT UACC!)"
+//
+// This bank does not use UACC because the patch has a bug where the same
+// UACC number is used for multiple articulations.
+Bank 66 76 Albion 3 - Chunderous Cellos
+//! c=short i=staccato o=note:84
+43 short
+//! c=long i=note-whole o=note:85
+1 long
+//! c=long-light i=con-sord o=note:86
+7 long cs
+//! c=short i=staccato o=note:87
+45 short (octave)
+//! c=long i=note-whole o=note:88
+3 long (octave)
+//! c=long-light i=con-sord o=note:89
+4 long cs (octave)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion 3/Ensembles" n="Siege of Strings"
+//! m="Use default note keyswitches (NOT UACC!)"
+//
+// This bank does not use UACC because the patch has a bug where the same
+// UACC number is used for multiple articulations.
+Bank 66 77 Albion 3 - Siege of Strings
+//! c=long i=note-whole o=note:86
+1 long
+//! c=long i=note-whole o=note:89
+3 long (octave)
+//! c=short i=staccato o=note:84
+40 short
+//! c=short i=staccato o=note:85
+41 staccato
+//! c=short i=staccato o=note:87
+45 short (octave)
+//! c=short i=staccato o=note:88
+62 staccato (octave)
+
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/Studio Strings" n="Section"
+Bank 70 1 Cinematic Studio Strings - Section
+//! c=legato i=legato o=note:24,1/note:34,65
+20 legato std
+//! c=legato i=legato o=note:24,127/note:34,65
+21 legato adv
+//! c=legato-light i=legato o=note:28/note:34,65
+29 legato harmonics
+//! c=legato-dark i=legato-tremolo o=note:25/note:34,65
+30 legato tremolo
+//! c=legato i=legato-fast o=note:30,1/note:34,65
+28 legato marcato
+//! c=legato i=legato-runs o=note:30,127/note:34,65
+33 legato marcato+spic
+
+//! c=long i=note-whole o=note:24/note:34,1
+1 sustain
+//! c=short i=spiccato o=note:29,1
+42 spiccato
+//! c=short i=spiccato o=note:29,33
+41 staccatissimo
+//! c=short i=staccato o=note:29,65
+40 staccato
+//! c=short i=sfz o=note:29,127
+54 sfz
+//! c=short-light i=pizz o=note:31,1
+56 pizz
+//! c=short-dark i=pizz-bartok o=note:31,65
+57 bartok pizz
+//! c=short-light i=col-legno o=note:31,93
+58 col legno
+//! c=long i=trill o=note:27/note:34,1
+70 trills
+//! c=long-light i=harmonics o=note:28/note:34,1
+10 harmonics
+//! c=long-dark i=tremolo o=note:25/note:34,1
+11 tremolo
+//! c=long-dark i=tremolo o=note:26
+81 measured trem
+//! c=long i=marcato o=note:30,1/note:34,1
+9 marcato
+//! c=long i=legato-runs o=note:30,127/note:34,1
+19 marcato+spic
+
+//! c=long-light i=con-sord g=3 o=note:35,127
+7 con sordino
+//! c=long-light i=note-whole g=3 o=note:35,1
+2 senza sordino
+
+
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/Studio Strings" n="Full Ensemble"
+Bank 70 4 Cinematic Studio Strings - Full Ensemble
+//! c=legato i=legato o=note:12,1/note:22,65
+20 legato std
+//! c=legato i=legato o=note:12,127/note:22,65
+21 legato adv
+//! c=legato-light i=legato o=note:16/note:22,65
+29 legato harmonics
+//! c=legato-dark i=legato-tremolo o=note:13/note:22,65
+30 legato tremolo
+//! c=legato i=legato-fast o=note:18,1/note:22,65
+28 legato marcato
+//! c=legato i=legato-runs o=note:18,127/note:22,65
+33 legato marcato+spic
+
+//! c=long i=note-whole o=note:12/note:22,1
+1 sustain
+//! c=short i=spiccato o=note:17,1
+42 spiccato
+//! c=short i=spiccato o=note:17,33
+41 staccatissimo
+//! c=short i=staccato o=note:17,65
+40 staccato
+//! c=short i=sfz o=note:17,127
+54 sfz
+//! c=short-light i=pizz o=note:19,1
+56 pizz
+//! c=short-dark i=pizz-bartok o=note:19,65
+57 bartok pizz
+//! c=short-light i=col-legno o=note:19,93
+58 col legno
+//! c=long i=trill o=note:15/note:22,1
+70 trills
+//! c=long-light i=harmonics o=note:16/note:22,1
+10 harmonics
+//! c=long-dark i=tremolo o=note:13/note:22,1
+11 tremolo
+//! c=long-dark i=tremolo o=note:14
+81 measured trem
+//! c=long i=marcato o=note:18,1/note:22,1
+9 marcato
+//! c=long i=legato-runs o=note:18,127/note:22,1
+19 marcato+spic
+
+//! c=long-light i=con-sord g=3 o=note:23,127
+7 con sordino
+//! c=long-light i=note-whole g=3 o=note:23,1
+2 senza sordino
+
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/CS2" n="Ensemble"
+Bank 70 2 Cinematic Strings 2 Ensemble
+//! c=legato i=legato g=2 o=note:20
+20 legato on
+//! c=legato i=note-whole g=2 o=note:21
+19 legato off
+
+//! c=textured i=legato-runs g=3 o=note:22
+108 live mode on
+//! c=textured i=note-whole g=3 o=note:23
+109 live mode off
+
+//! c=long i=note-whole o=note:12
+1 arco
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-min2 o=note:14
+70 trill m2
+//! c=long i=trill-maj2 o=note:15
+71 trill M2
+//! c=long i=legato-runs o=note:16
+33 runs
+
+//! c=short i=spiccato o=note:17,1
+42 staccatissimo
+//! c=short i=staccato o=note:17,127
+40 staccato
+//! c=long i=marcato o=note:18,1
+9 marcato+spic
+//! c=long i=marcato o=note:18,127
+2 marcato+stac
+//! c=short-light i=pizz o=note:19
+56 pizz
+
+
+//----------------------------------------------------------------------------
+//! g="Cinematic Series/CS2" n="Section"
+Bank 70 3 Cinematic Strings 2
+//! c=legato i=legato g=2 o=note:32
+20 legato on
+//! c=legato i=note-whole g=2 o=note:33
+19 legato off
+
+//! c=textured i=legato-runs g=3 o=note:34
+108 live mode on
+//! c=textured i=note-whole g=3 o=note:35
+109 live mode off
+
+//! c=long i=note-whole o=note:24
+1 arco
+//! c=long-dark i=tremolo o=note:25
+11 tremolo
+//! c=long i=trill-min2 o=note:26
+70 trill m2
+//! c=long i=trill-maj2 o=note:27
+71 trill M2
+//! c=long i=legato-runs o=note:28
+33 runs
+
+//! c=short i=spiccato o=note:29,1
+42 staccatissimo
+//! c=short i=staccato o=note:29,127
+40 staccato
+//! c=long i=marcato o=note:30,1
+9 marcato+spic
+//! c=long i=marcato o=note:30,127
+2 marcato+stac
+//! c=short-light i=pizz o=note:31
+56 pizz
+
 
 //----------------------------------------------------------------------------
 //! g="VirHarmonic/Bohemian Violin" n="Expansion 1" off=20
-Bank 42 7 Bohemian Violin Exp1
+Bank 70 10 Bohemian Violin Exp1
 
 //! c=long-dark i=note-whole g=2 f=toggle o=note:35
 1 chords
@@ -3777,119 +4291,3 @@ Bank 42 7 Bohemian Violin Exp1
 91 czardas
 //! c=fx i=phrase g=3 o=note:50
 92 emotive
-
-
-
-
-
-//! g="Cinematic Series" n="Studio Strings"
-Bank 70 1 Cinematic Studio Strings
-//! c=legato i=legato g=2 o=cc:58,76
-20 legato on
-//! c=legato i=note-whole g=2 o=cc:58,81
-19 legato off
-//! c=long-light i=con-sord g=3 o=cc:58,86
-7 con sordino
-//! c=long-light i=note-whole g=3 o=cc:58,91
-2 senza sordino
-//! c=long i=note-whole o=cc:58,1
-1 sustain
-//! c=short i=spiccato o=cc:58,11
-42 spiccato
-//! c=short i=spiccato o=cc:58,16
-41 staccatissimo
-//! c=short i=staccato o=cc:58,21
-40 staccato
-//! c=short i=sfz o=cc:58,26
-54 sfz
-//! c=short-light i=pizz o=cc:58,31
-56 pizz
-//! c=short-dark i=pizz-bartok o=cc:58,36
-57 bartok pizz
-//! c=short-light i=col-legno o=cc:58,41
-58 col legno
-//! c=long i=trill o=cc:58,46
-70 trills
-//! c=long-light i=harmonics o=cc:58,51
-10 harmonics
-//! c=long-dark i=tremolo o=cc:58,56
-11 tremolo
-//! c=long-dark i=tremolo o=cc:58,61
-81 measured trem
-//! c=long i=marcato o=cc:58,66
-9 marcato
-//! c=long i=legato-runs o=cc:58,71
-33 marcato+spic
-
-
-
-//! g="Cinematic Series/CS2" n="Ensemble"
-Bank 70 2 Cinematic Strings 2 Ensemble
-//! c=legato i=legato g=2 o=note:20
-20 legato on
-//! c=legato i=note-whole g=2 o=note:21
-19 legato off
-
-//! c=textured i=legato-runs g=3 o=note:22
-108 live mode on
-//! c=textured i=note-whole g=3 o=note:23
-109 live mode off
-
-//! c=long i=note-whole o=note:12
-1 arco
-//! c=long-dark i=tremolo o=note:13
-11 tremolo
-//! c=long i=trill-min2 o=note:14
-70 trill m2
-//! c=long i=trill-maj2 o=note:15
-71 trill M2
-//! c=long i=legato-runs o=note:16
-33 runs
-
-//! c=short i=spiccato o=note:17,1
-42 staccatissimo
-//! c=short i=staccato o=note:17,127
-40 staccato
-//! c=long i=marcato o=note:18,1
-9 marcato+spic
-//! c=long i=marcato o=note:18,127
-2 marcato+stac
-//! c=short-light i=pizz o=note:19
-56 pizz
-
-
-
-
-//! g="Cinematic Series/CS2" n="Section"
-Bank 70 3 Cinematic Strings 2
-//! c=legato i=legato g=2 o=note:32
-20 legato on
-//! c=legato i=note-whole g=2 o=note:33
-19 legato off
-
-//! c=textured i=legato-runs g=3 o=note:34
-108 live mode on
-//! c=textured i=note-whole g=3 o=note:35
-109 live mode off
-
-//! c=long i=note-whole o=note:24
-1 arco
-//! c=long-dark i=tremolo o=note:25
-11 tremolo
-//! c=long i=trill-min2 o=note:26
-70 trill m2
-//! c=long i=trill-maj2 o=note:27
-71 trill M2
-//! c=long i=legato-runs o=note:28
-33 runs
-
-//! c=short i=spiccato o=note:29,1
-42 staccatissimo
-//! c=short i=staccato o=note:29,127
-40 staccato
-//! c=long i=marcato o=note:30,1
-9 marcato+spic
-//! c=long i=marcato o=note:30,127
-2 marcato+stac
-//! c=short-light i=pizz o=note:31
-56 pizz

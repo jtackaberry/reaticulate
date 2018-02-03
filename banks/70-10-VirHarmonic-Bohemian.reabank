@@ -1,0 +1,55 @@
+//----------------------------------------------------------------------------
+//! g="VirHarmonic/Bohemian Violin" n="Expansion 1" off=20
+Bank 70 10 Bohemian Violin Exp1
+
+//! c=long-dark i=note-whole g=2 f=toggle o=note:35
+1 chords
+
+//! c=long-light i=phrase o=note-hold:0
+20 performer
+//! c=long i=note-half o=note-hold:24
+104 arc
+
+//! c=long i=note-quarter o=note-hold:25
+106 mid arc
+//! c=long i=note-whole o=note-hold:26
+107 sustain
+
+//! c=long i=decrescendo o=note-hold:27
+103 diminuendo
+//! c=long i=marcato o=note-hold:28
+9 marcato
+
+//! c=legato i=legato-fast o=note-hold:30
+21 on bow 1/4
+//! c=legato i=legato o=note-hold:32
+22 on bow 1/2
+//! c=legato i=legato-slow o=note-hold:34
+23 on bow whole
+//! c=legato i=legato-bowed o=note-hold:29
+34 bow change
+//! c=legato i=legato-portamento o=note-hold:31
+31 portamento
+
+//! c=legato i=legato-runs o=note-hold:33
+33 trill/run
+//! c=short i=staccato o=note-hold:36
+40 staccato
+//! c=short i=spiccato o=note-hold:37
+42 spiccato
+//! c=short-light i=pizz o=note-hold:38
+56 pizz
+//! c=long i=bow-down o=note-hold:39
+37 down bow
+//! c=long i=bow-up o=note-hold:40
+38 up bow
+//! c=#eb9632 i=legato-bowed2 o=note-hold:41
+39 rebow
+
+
+//! c=fx i=phrase g=3 o=note:48
+90 improv
+//! c=fx i=phrase g=3 o=note:49
+91 czardas
+//! c=fx i=phrase g=3 o=note:50
+92 emotive
