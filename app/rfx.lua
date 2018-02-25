@@ -22,18 +22,21 @@ local reabank = require 'reabank'
 
 local NO_PROGRAM = 128
 
--- Opcodes for programming the RFX.  See rfx.opcode().
-local OPCODE_NOOP = 0
-local OPCODE_CLEAR = 1
-local OPCODE_ACTIVATE_ARTICULATION = 2
-local OPCODE_NEW_ARTICULATION = 3
-local OPCODE_SET_ARTICULATION_INFO = 4
-local OPCODE_ADD_OUTPUT_EVENT = 5
-local OPCODE_ACK_PROGRAM_CHANGED = 6
+
 
 local rfx = {
     -- MSB of first parameter must be set to this or else it's not an RFX instance.
     MAGIC = 42 << 24,
+
+    -- Opcodes for programming the RFX.  See rfx.opcode().
+    OPCODE_NOOP = 0,
+    OPCODE_CLEAR = 1,
+    OPCODE_ACTIVATE_ARTICULATION = 2,
+    OPCODE_NEW_ARTICULATION = 3,
+    OPCODE_SET_ARTICULATION_INFO = 4,
+    OPCODE_ADD_OUTPUT_EVENT = 5,
+    OPCODE_DUMP_CCS = 7,
+
     params_by_version = {
         [1 << 16] = {
             -- byte 0: change serial, byte 1: reabank version (mod 256), byte 2: RFX version, byte 3: magic
@@ -343,7 +346,7 @@ function rfx.sync_articulation_details()
     if not rfx.fx then
         return
     end
-    rfx.opcode(OPCODE_CLEAR)
+    rfx.opcode(rfx.OPCODE_CLEAR)
     rfx.sync_banks_by_channel()
     for param = rfx.params.control_start, rfx.params.control_end do
         local channel = param - rfx.params.control_start + 1
@@ -353,8 +356,8 @@ function rfx.sync_articulation_details()
                 for _, art in ipairs(bank.articulations) do
                     local group = art.group - 1
                     local outputs = art:get_outputs()
-                    rfx.opcode(OPCODE_NEW_ARTICULATION, channel - 1, art.program, (group << 4) + #outputs)
-                    rfx.opcode(OPCODE_SET_ARTICULATION_INFO, art.flags, art.off or bank.off or 128, 0)
+                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, channel - 1, art.program, (group << 4) + #outputs)
+                    rfx.opcode(rfx.OPCODE_SET_ARTICULATION_INFO, art.flags, art.off or bank.off or 128, 0)
 
                     for _, output in ipairs(outputs) do
                         local dstchannel = output.channel
@@ -368,7 +371,7 @@ function rfx.sync_articulation_details()
                         local param1 = tonumber(output.args[1] or 0)
                         local param2 = tonumber(output.args[2] or 0)
                         local typechannel = ((dstchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
-                        rfx.opcode(OPCODE_ADD_OUTPUT_EVENT, typechannel, param1, param2)
+                        rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, typechannel, param1, param2)
                     end
                 end
             end
@@ -395,7 +398,7 @@ function rfx.clear_channel_program(channel, group)
 end
 
 function rfx.activate_articulation(channel, program)
-    rfx.opcode(OPCODE_ACTIVATE_ARTICULATION, channel, program)
+    rfx.opcode(rfx.OPCODE_ACTIVATE_ARTICULATION, channel, program)
     -- It may be tempting to sync() now but the RFX will trigger the articulation
     -- asynchronously, so syncing now will miss it most of the time.  Might as well
     -- just wait for the next refresh.
