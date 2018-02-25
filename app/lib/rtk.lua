@@ -997,7 +997,7 @@ function rtk.Box:_reflow_step1(w, h)
             else
                 expand_units = expand_units + attrs.expand
             end
-            spacing = self.spacing
+            spacing = attrs.spacing or self.spacing
             self._reflowed_children[#self._reflowed_children+1] = widgetattrs
         else
             widget.realized = false
@@ -1061,7 +1061,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size)
             offset = offset + wh + tpadding + spacing + bpadding
             maxw = math.max(maxw, ww)
             maxh = math.max(maxh, offset)
-            spacing = self.spacing
+            spacing = attrs.spacing or self.spacing
         end
     end
     return maxw, maxh
@@ -1124,7 +1124,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size)
             offset = offset + ww + lpadding + spacing + rpadding
             maxw = math.max(maxw, offset)
             maxh = math.max(maxh, wh)
-            spacing = self.spacing
+            spacing = attrs.spacing or self.spacing
         end
     end
     return maxw, maxh
@@ -1717,7 +1717,7 @@ function rtk.OptionMenu:onattr(attr, value)
         self._menustr = self:_build_submenu(self.menu)
     elseif attr == 'selected' then
         -- First lookup by user id.
-            local idx = self._idx_by_id[value]
+        local idx = self._idx_by_id[value]
         if idx then
             -- Index exists by id.
             value = idx
