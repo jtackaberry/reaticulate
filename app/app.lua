@@ -506,10 +506,14 @@ end
 function rtk.onkeypresspost(event)
     log("keypress: keycode=%d  handled=%s", event.keycode, event.handled)
     if not event.handled then
+        if App.screens.get_current() == App.screens.banklist then
         if event.keycode >= 49 and event.keycode <= 57 then
             App.set_default_channel(event.keycode - 48)
         elseif event.keycode == rtk.keycodes.DOWN then
-            App.activate_next_articulation_in_group(1)
+                App.activate_relative_articulation_in_group(App.default_channel, 1, 1)
+            elseif event.keycode == rtk.keycodes.UP then
+                App.activate_relative_articulation_in_group(App.default_channel, 1, -1)
+            end
         end
     end
 end
@@ -560,6 +564,9 @@ function App.refresh_banks()
     App.ontrackchange(nil, App.track)
     -- Update articulation list to reflect any changes that were made to the Reabank template.
     App.screens.banklist.update()
+    if App.screens.get_current() == App.screens.trackcfg then
+        App.screens.trackcfg.update()
+    end
     log("bank refresh took %.03fs", os.clock() - t0)
 end
 

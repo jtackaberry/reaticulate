@@ -116,6 +116,7 @@ function screen.create_bank_ui()
     row:add(bank_menu, {expand=1, fill=true, rpadding=10})
     bankbox.bank_menu = bank_menu
     bank_menu:setmenu(banklist_menu_spec)
+    bank_menu:select(1)
 
     -- Channel row
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
