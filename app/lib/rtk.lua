@@ -1715,14 +1715,14 @@ function rtk.OptionMenu:onattr(attr, value)
         self._item_by_idx = {}
         self._idx_by_id = {}
         self._menustr = self:_build_submenu(self.menu)
-        self:onattr('selected', 1)
     elseif attr == 'selected' then
-        local item = self._item_by_idx[value]
-        if not item then
-            -- Try looking up item by user id
+        -- First lookup by user id.
             local idx = self._idx_by_id[value]
-            item = self._item_by_idx[idx]
+        if idx then
+            -- Index exists by id.
+            value = idx
         end
+        local item = self._item_by_idx[value]
         if item then
             if self.flags & rtk.OptionMenu.HIDE_LABEL == 0 then
                 self.label = item.buttonlabel or item.label
