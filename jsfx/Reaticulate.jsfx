@@ -881,15 +881,24 @@ local(articulation, num_outputs, group, control, current_program, flags, last_ds
             update_current_channel_program(channel, program, group, flags);
         );
 
+        num_outputs = get_articulation_num_outputs(articulation);
+        (num_outputs > 0) ? (
+            // This program has output events.  Before processing them, clear the channel
+            // routing map.
         last_dstchannels = channel_map[channel];
         channel_map[channel] = 0;
-        num_outputs = get_articulation_num_outputs(articulation);
         i = 0; loop(num_outputs,
             event = get_articulation_output_event(articulation, i);
             emit_output_event(channel, program, group, articulation, event, last_dstchannels);
             i += 1;
         );
         update_channel_articulation_flags(channel);
+        ) : (
+            // There are no output events defined for this program.  We're not going to
+            // clear the current channel routing map but we will release any held
+            // notes for this channel and group.
+            send_deferred_note_off(channel, group);
+        );
     );
 );
 
