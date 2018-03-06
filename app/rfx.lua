@@ -149,7 +149,7 @@ function rfx.sync(track, forced)
             if track_changed then
                 -- Track changed, need to update banks_by_channel map
                 rfx.reabank_version = (rfx.metadata >> 8) & 0xff
-                if rfx.reabank_version ~= reabank.version then
+                if rfx.reabank_version ~= reabank.version % 256 then
                     -- The control data was synced from a different reabank version, so need
                     -- to regenerate.  (This implicitly calls sync_banks_by_channel())
                     rfx.sync_articulation_details()
