@@ -20,7 +20,7 @@ desc:Reaticulate
 // byte 1: reabank version (mod 256)
 // byte 2: version
 // byte 3: magic
-// Defaults to MAGIC + VERSION consts (defined below)
+// Defaults to RFX_MAGIC + RFX_VERSION consts (defined below)
 slider1:704708608<0,2147483647,1>-Reaticulate metadata
 // Ideally we'll manage to keep everything we need in slider1 for constant
 // polling, but we'll reserve this one just in case.
@@ -127,8 +127,8 @@ out_pin:none
 ext_noinit = 1;
 ext_midi_bus = 1;
 
-MAGIC = (42 << 24);
-VERSION = (1 << 16);
+RFX_MAGIC = (42 << 24);
+RFX_VERSION = (1 << 16);
 
 // Misc constants
 MIDI_EVENT_PROGRAM = 0xc0;
@@ -156,7 +156,8 @@ OPCODE_ACTIVATE_ARTICULATION = 2;
 // refer to this articulation.  Value is a bitmap where the first 4 bits are
 // the group number and the next 4 bits indicate the number of output
 // events that will follow.
-// (channel, program, value)
+//
+// (channel+version, program, value)
 OPCODE_NEW_ARTICULATION = 3;
 
 // (flags, off program, unused)
@@ -190,8 +191,8 @@ program_serial = 0;
 // bits 4-7 of slider 1
 notes_serial = 0;
 
-// Persisted, and tracks whether the instance has ever been initialized.
-initialized = 0;
+// Persisted, and tracks the version of the serialized instance data
+serialized_version = 0;
 
 // Array to map source channel to destination channels.  Value is a 16-bit
 // bitmap where each bit is a MIDI channel.
@@ -270,27 +271,51 @@ articulations_len = 0;
 // Array that maps a program to the appropriate position in the articulations
 // array.  Indexed by MIDI channel and program number.
 //
-// JS serialization munges the MSB but 24 bits is enough to represent the
-// articulation pointer.
-articulations_ptr = 33000; // size: 16 * 128 = 2048
+// This value is maintained and persisted but it's not otherwise used directly.
+// Instead it's translated to articulations_ptr to provide a directly useable
+// pointer to an articulation in this JSFX instance.
+//
+// JS serialization munges the MSB but 24 bits is still plenty big to
+// represent an offset.
+articulations_offsets = 33000;  // size: 16 * 128 = 2048
 
-// Array holding all configured articulations.  Indexed via articulations_ptr.
-// Each record is 2 + n slots, where the first slot describes
-// the articulation information:
+// Array that maps a program to the appropriate position in the articulations
+// array.  Indexed by MIDI channel and program number.
+articulations_ptr = 40000; // size: 16 * 128 = 2048
+
+
+// Array holding all configured articulations.  This array holds variable
+// sized records, whose size varies by articulation and depends on factors
+// such as the articulation record version and number of output events.
+//
+// The record version is indicated in slot 1 bits 4-7 where the following
+// versions are defined:
+//
+//     v0: each record is 2 + n slots, where n is the # of output events.
+//
+// This array is indexed via articulations_ptr.
+//
+// Slot 0: v0 - articulation information
 //      bits 0-3: number of output events (see below)
 //      bits 4-7: group number
 //        byte 1: articulation flags
 //        byte 2: "off" (release) program for articulations with note-hold outputs.
-// and the second slot is:
+// Slot 1: v0
 //      bits 0-3: source channel
-// and there is 1 slot for each output event, which is defined as:
+//      bits 4-7: articulation record version
+//
+// Following the base articulation information slots, there are n*m slots for
+// output events, where n is the # of output events and m is dependent on
+// the articulation record version.
+//
+// Slot 0: v0
 //      bits 0-3: output type (see OUTPUT_TYPE_* constants)
 //      bits 4-7: the destination MIDI channel for the articulation.  Subsequent
 //                incoming events are routed to this channel when the articulation
 //                is activated, in addition to output event.
 //       byte 1: parameter 1 (context depends on output type)
 //       byte 2: parameter 2 (context depends on output type)
-articulations = 200000; // size: (2 + 16) * 128 * 16 = 36864 (upper bound)
+articulations = 200000; // size: (2 + 16*1) * 128 * 16 = 36864 (upper bound for v0)
 
 // The last articulation created by OPCODE_NEW_ARTICULATION.
 last_new_articulation = 0;
@@ -307,14 +332,29 @@ last_new_articulation = 0;
 //
 // NB: normally the high byte is obliterated during serialization, but we'll use it
 // here because this array is not serialized.  It's regenerated on instantiation.
-articulations_by_output_event = 250000; // size: (256 + 128 * 128) * 16 = 266240
+articulations_by_output_event = 300000; // size: (256 + 128 * 128) * 16 = 266240
 
 // Maps an articulation index to the program and channel number for
 // that articulation.  Byte 0 (LSB) contains the program number and bits 0-3 of
 // byte 1 contains the channel.
 //
 // Regenerated on instantiation.
-program_by_articulation = 520000; // size: (2 + 16) * 128 * 16 = 36864 (upper bound)
+program_by_articulation = 600000; // size: (2 + 16) * 128 * 16 = 36864 (upper bound)
+
+
+function get_articulation_version_record_size(version)
+(
+    (version == 0) ? 2 : (
+        (version == 1) ? 3; // TBD
+    );
+);
+
+function get_articulation_version_output_event_size(version)
+(
+    (version == 0) ? 1 : (
+        (version == 1) ? 2; // TBD
+    );
+);
 
 
 function update_output_event_map(type, b1, b2, articulation, event_idx)
@@ -374,12 +414,6 @@ function get_articulation_program(articulation)
 );
 
 
-function get_articulation_channel(articulation)
-(
-    (program_by_articulation[articulation - articulations] >> 8) & 0xff;
-);
-
-
 function get_articulation_num_outputs(articulation)
 (
     articulation[0] & 0x0f;
@@ -409,10 +443,29 @@ function get_articulation_channel(articulation)
     articulation[1] & 0x0f;
 );
 
+function get_articulation_version(articulation)
+(
+    (articulation[1] & 0xf0) >> 4;
+);
+
+
+function get_articulation_output_event_offset(articulation, n)
+local(version)
+(
+    version = get_articulation_version(articulation);
+    get_articulation_version_record_size(version) + get_articulation_version_output_event_size(version) * n;
+);
+
+
+function get_articulation_record_size(articulation)
+(
+    get_articulation_output_event_offset(articulation, get_articulation_num_outputs(articulation));
+);
+
 
 function get_articulation_output_event(articulation, n)
 (
-    articulation + 2 + (1 * n);
+    articulation + get_articulation_output_event_offset(articulation, n);
 );
 
 
@@ -448,6 +501,7 @@ channel = slider63;
 group = 0;
 
 gfx_printf("Reaticulate debug info\n");
+gfx_printf("  version: %d\n", serialized_version);
 gfx_printf("  serial: %d %d\n", program_serial, notes_serial);
 gfx_printf("  pending: %d\n", have_pending_activations);
 gfx_printf("  active notes bitmap: %d\n", slider3);
@@ -469,22 +523,19 @@ gfx_printf("  flags: %d\n", flags);
 
 
 @serialize
-file_var(0, initialized);
+file_var(0, serialized_version);
 file_mem(0, channel_map, 16);
 file_mem(0, held_keyswitches, 16 * NUM_GROUPS);
 file_mem(0, all_articulation_flags_by_channel, 16);
-file_mem(0, articulations_ptr, 16 * 128);
+file_mem(0, articulations_offsets, 16 * 128);
 file_var(0, articulations_len);
 file_mem(0, articulations, articulations_len);
 file_mem(0, last_ccs_by_channel, 16 * 128);
 file_var(0, cc_feedback_midi_bus);
 
 // This is done exactly once in the life of the RFX.
-!initialized ? (
-    // In the future, if necessary, we will repurpose this variable for version detection and
-    // serialization upgrades. It's not a coincidence that both the version and the value of
-    // initialized is 1.
-    initialized = 1;
+!serialized_version ? (
+    serialized_version = 2;
 
     // Initialize MIDI channel routing and held keyswitches per channel
     memset(held_keyswitches, 0, 16 * NUM_GROUPS);
@@ -499,13 +550,31 @@ file_var(0, cc_feedback_midi_bus);
 
 // This is done when the RFX is instantiated.
  file_avail(0) >= 0 ? (
+    (serialized_version == 1) ? (
+        // In version 1, articulations_offsets was actually an absolute position
+        // instead of a relative one.  We need to convert it to a relative position
+        // now as we'll generate articulations_ptr below.
+        i = 0; loop(16 * 128,
+            // 200000 was the position of articulations_ptr in v1
+            articulations_offsets[i] -= 200000;
+            i += 1;
+        );
+        serialized_version = 2;
+    );
+
+    // Regenerate articulations_ptr
+    i = 0; loop(16 * 128,
+        articulations_ptr[i] = articulations_offsets[i] + articulations;
+        i += 1;
+    );
+
     // Regenerate program_by_articulation
     memset(program_by_articulation, 0, (2 + 16) * 128 * 16);
     i = 0; loop(16 * 128,
         channel = i / 128;
         program = i % 128;
-        idx = articulations_ptr[i] - articulations;
-        program_by_articulation[idx] = program | (channel << 8);
+        offset = articulations_offsets[i];
+        program_by_articulation[offset] = program | (channel << 8);
         i += 1;
     );
 
@@ -522,10 +591,12 @@ file_var(0, cc_feedback_midi_bus);
             update_output_event_map(type, param1, param2, articulation, j);
             j += 1;
         );
-        i += 2 + (1 * num_outputs);
+        i += get_articulation_record_size(articulation);
     );
-);
 
+    // Update slider1 to reflect any version changes.
+    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ffff);
+);
 
 @slider
 // Triggered by the GUI to program this instance.  There are some real caveats with
@@ -541,6 +612,7 @@ opcode = (slider64 & 0x7f000000) >> 24;
     (opcode == OPCODE_CLEAR) ? (
         // Nuke it all from orbit.
         memset(all_articulation_flags_by_channel, 0, 16);
+        memset(articulations_offsets, 0, 16 * 128);
         memset(articulations_ptr, 0, 16 * 128);
         memset(articulations, 0, (2 + 16) * 128 * 16);
         memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
@@ -552,19 +624,21 @@ opcode = (slider64 & 0x7f000000) >> 24;
     // Arguments: b0=channel, b1=program, b2=num groups/outputs
     (opcode == OPCODE_NEW_ARTICULATION) ? (
         // Number of events reserved.
+        channel = b0 & 0x0f;
         num_outputs = b2 & 0x0f;
         last_new_articulation = articulations + articulations_len;
 
         // Map new articulation to program/channel.
-        program_by_articulation[articulations_len] = b1 | (b0 << 8);
+        program_by_articulation[articulations_len] = b1 | (channel << 8);
 
-        articulations_ptr[b0 * 128 + b1] = last_new_articulation;
+        articulations_offsets[channel * 128 + b1] = last_new_articulation - articulations;
+        articulations_ptr[channel * 128 + b1] = last_new_articulation;
 
         // Now that the space is reserved, reset the events counter which we
         // increment for each new event.
         last_new_articulation[0] = b2 & 0xf0;
         last_new_articulation[1] = b0;
-        articulations_len += 2 + (1 * num_outputs);
+        articulations_len += get_articulation_output_event_offset(last_new_articulation, num_outputs);
     );
 
     // Arguments: b0=flags, b1=off program, b2=unused
@@ -576,12 +650,14 @@ opcode = (slider64 & 0x7f000000) >> 24;
     (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
         // Get current number of output events for articulation to act as the index for the
         // one being added now.
-        num_outputs = last_new_articulation[0] & 0x0f;
-        // Increment events count
-        last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
+        num_outputs = get_articulation_num_outputs(last_new_articulation);
 
-        event = last_new_articulation + 2 + (1 * num_outputs);
+        // Get pointer to current output event.
+        event = last_new_articulation + get_articulation_record_size(last_new_articulation);
         event[0] = b0 | (b1 << 8) | (b2 << 16);
+
+        // Increment events count.
+        last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
 
         // Map output event back to articulation
         update_output_event_map(b0 & 0x0f, b1, b2, last_new_articulation, num_outputs);
@@ -639,7 +715,7 @@ local(notes, bitmap, i)
     slider3 = bitmap;
     sliderchange(3);
     notes_serial = notes_serial < 15 ? notes_serial + 1 : 0;
-    slider1 = MAGIC | VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
+    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
     sliderchange(1);
 );
 
@@ -658,7 +734,7 @@ local(control, shift, current_program)
     mask = $~31 ~ (0xff << shift);
     control = (control & mask) | (new_program << shift);
     program_serial = program_serial < 15 ? program_serial + 1 : 0;
-    slider1 = MAGIC | VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
+    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
     slider(SLIDER_OFFSET_CONTROL + channel) = control;
     (group == 3) ? (
         // Previously mentioned kludge: MSB in slider is unusable, so we use slider26
