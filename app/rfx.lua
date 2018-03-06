@@ -356,7 +356,10 @@ function rfx.sync_articulation_details()
                 for _, art in ipairs(bank.articulations) do
                     local group = art.group - 1
                     local outputs = art:get_outputs()
-                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, channel - 1, art.program, (group << 4) + #outputs)
+                    -- First nybble of param1 is source channel, while second is articulation record version.
+                    -- Use 0 of default right now, will be extended in future.
+                    local param1 = (channel - 1) | (0 << 4)
+                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, param1, art.program, (group << 4) + #outputs)
                     rfx.opcode(rfx.OPCODE_SET_ARTICULATION_INFO, art.flags, art.off or bank.off or 128, 0)
 
                     for _, output in ipairs(outputs) do
