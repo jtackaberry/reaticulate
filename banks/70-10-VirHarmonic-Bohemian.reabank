@@ -5,7 +5,7 @@ Bank 70 10 Bohemian Violin Exp1
 //! c=long-dark i=note-whole g=2 f=toggle o=note:35
 1 chords
 
-//! c=long-light i=phrase o=note-hold:0
+//! c=long-light i=phrase
 20 performer
 //! c=long i=note-half o=note-hold:24
 104 arc
