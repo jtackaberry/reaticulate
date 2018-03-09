@@ -60,7 +60,10 @@ function screen.filter_articulations(filter)
             if filter:len() > 0 then
                 score = get_filter_score((art.shortname or art.name):lower(), filter)
             end
-            if score ~= 0 and (bank.srcchannel == 17 or bank.srcchannel == App.default_channel) then
+            -- Show articulation if the score is non-zero (in which case there is a match).
+            -- We don't further filter based on the bank's source channel vs the current
+            -- default channel (as we once did).
+            if score ~= 0 then
                 if not art.button.visible then
                     art.button:show()
                 end
