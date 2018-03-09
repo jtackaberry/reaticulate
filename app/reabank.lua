@@ -80,31 +80,60 @@ local function replace_selected_events(take, channel, bank_msb, bank_lsb, val)
 end
 
 -- Source channel starts at 1 (17 = use default channel)
-local function activate_articulation(source_channel, msb, lsb, program)
+local function activate_articulation(source_channel, msb, lsb, program, force_insert)
     local channel = source_channel - 1
     if channel >= 16 then
         channel = App.default_channel - 1
     end
+
+    local take = nil
+
+    -- If MIDI Editor is open, use the current take there.
     local hwnd = reaper.MIDIEditor_GetActive()
     if hwnd then
         -- Magic value 32060 is the MIDI editor context
         local stepInput = reaper.GetToggleCommandStateEx(32060, 40481)
-        if stepInput == 1 then
-            -- Step recording is enabled in the editor, so inject the PC event at
-            -- the current cursor position.
-            reaper.PreventUIRefresh(1)
-            reaper.Undo_BeginBlock2(0)
-            local take = reaper.MIDIEditor_GetTake(hwnd)
-            -- Replace any existing selected events (if those events are program changes)
-            -- otherwise insert a new event at the cursor position.
-            if not replace_selected_events(take, channel, msb, lsb, program) then
-                local cursor = reaper.GetCursorPosition()
-                local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
-                insert_program_change(take, false, ppq, channel, msb, lsb, program)
-            end
-            reaper.Undo_EndBlock2(0, "MIDI editor: insert program change (" .. program .. ")", -1)
-            reaper.PreventUIRefresh(-1)
+        if stepInput == 1 or force_insert then
+            take = reaper.MIDIEditor_GetTake(hwnd)
         end
+    elseif force_insert then
+        -- No active MIDI editor and we want to force insert.  Try to find the current
+        -- take on the selected track based on edit cursor position.
+        --
+        -- FIXME: might support multiple selected tracks.
+        local track = reaper.GetSelectedTrack(0, 0)
+        if track then
+            local cursor = reaper.GetCursorPosition()
+            for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
+                local item = reaper.GetTrackMediaItem(track, idx)
+                local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
+                local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
+                if cursor >= startpos and cursor <= endpos then
+                    take = reaper.GetActiveTake(item)
+                    break
+                end
+            end
+        end
+    end
+    if take then
+        -- Take was found (either because MIDI editor is open with step input enabled or because
+        -- force insert was used), so inject the PC event at the current cursor position.
+        reaper.PreventUIRefresh(1)
+        reaper.Undo_BeginBlock2(0)
+        -- Replace any existing selected events (if those events are program changes)
+        -- otherwise insert a new event at the cursor position.
+        --
+        -- FIXME: if there's another program change at the editor position for a
+        -- known articulation in the same group, then we should also replace it
+        -- (which is most easily done by just selecting them before moving on).
+        -- This prevents accumulation of pointless program changes on the track.
+        if not replace_selected_events(take, channel, msb, lsb, program) then
+            local cursor = reaper.GetCursorPosition()
+            local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
+            insert_program_change(take, false, ppq, channel, msb, lsb, program)
+        end
+        reaper.Undo_EndBlock2(0, "MIDI editor: insert program change (" .. program .. ")", -1)
+        reaper.PreventUIRefresh(-1)
     end
     rfx.activate_articulation(channel, program)
     reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, msb)
@@ -353,13 +382,13 @@ function Articulation:get_bank()
     return reabank.banks[self.bankidx]
 end
 
-function Articulation:activate(refocus)
+function Articulation:activate(refocus, force_insert)
     if refocus == true then
         reaper.defer(App.refocus)
     end
     if self.program >= 0 then
         local bank = self:get_bank()
-        activate_articulation(bank.srcchannel, bank.msb, bank.lsb, self.program)
+        activate_articulation(bank.srcchannel, bank.msb, bank.lsb, self.program, force_insert)
         return true
     else
         return false

@@ -198,7 +198,7 @@ function App.feedback_current_ccs(track)
         -- the current value back to the last touched FX.
         local r, _, _ = reaper.TrackFX_GetParam(ltrack, lfx, lparam)
         reaper.TrackFX_SetParam(ltrack, lfx, lparam, r)
-end
+    end
     -- Due to what must be a bug in Reaper, we need to restore the track automation modes
     -- _after_ ending the undo block, otherwise the parameters adjusted above end up
     -- getting automatically armed.
@@ -216,7 +216,7 @@ end
 
 function App.onartclick(art, event)
     if event.button == rtk.mouse.BUTTON_LEFT then
-        App.activate_articulation(art, true)
+        App.activate_articulation(art, true, false)
     elseif event.button == rtk.mouse.BUTTON_MIDDLE then
         -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
         for channel = 0, 15 do
@@ -225,11 +225,13 @@ function App.onartclick(art, event)
             end
         end
         rfx.sync(rfx.track, true)
+    elseif event.button == rtk.mouse.BUTTON_RIGHT then
+        App.activate_articulation(art, true, true)
     end
 end
 
-function App.activate_articulation(art, refocus)
-    if art:activate(refocus or false) then
+function App.activate_articulation(art, refocus, force_insert)
+    if art:activate(refocus or false, force_insert) then
         local bank = art:get_bank()
         local channel = bank:get_src_channel()
         local idx = channel + (art.group << 8)
@@ -307,6 +309,7 @@ function App.handle_command(cmd, arg)
         local args = string.split(arg, ',')
         local channel = _cmd_arg_to_channel(args[1])
         local program = tonumber(args[2])
+        local force_insert = tonumber(args[3] or 0)
         local art = nil
         for _, bank in ipairs(App.screens.banklist.visible_banks) do
             if bank.srcchannel == 17 or bank.srcchannel == channel then
@@ -317,7 +320,7 @@ function App.handle_command(cmd, arg)
             end
         end
         if art then
-            App.activate_articulation(art, false)
+            App.activate_articulation(art, false, force_insert)
         end
     elseif cmd == 'activate_relative_articulation' and rfx.fx then
         local args = string.split(arg, ',')
@@ -429,7 +432,7 @@ function App.activate_relative_articulation_in_group(channel, group, distance)
         end
     end
     if target ~= art and target.group == group and target.button.visible then
-        App.activate_articulation(target, false)
+        App.activate_articulation(target, false, false)
         target.button:scrolltoview(130, 40)
     end
 end
