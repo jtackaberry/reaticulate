@@ -898,11 +898,6 @@ function send_deferred_note_off(mpos, channel, group)
 // during transport start.  Both of these can cause the downstream FX to unpress the keyswitch note
 // causing Reaticulate to become out of sync with it.
 //
-// Empircally, CC123 comes after the forged note-offs.  If it comes in the next block then we'll
-// miss it (in which case see above), but in testing it seems to come in the same block as the
-// explicit note-offs.  This is why we set the mpos a fair bit ahead in the block, to ensure they
-// come after the CC123.
-//
 // Fixes #31.
 function retrigger_held_keyswitch_notes(mpos, channel)
 local (group)
@@ -1288,10 +1283,16 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 (play_state != last_play_state) ? (
     last_play_state = play_state;
     (play_state == 1) ? (
-        // Transport started playing.  Anticipate either forged note-offs or
-        // CC123 All Notes Off coming from Reaper.
+        // Transport started playing.  Anticipate either forged note-offs or CC123 All Notes Off
+        // coming from Reaper.
+        //
+        // Empircally, CC123 comes after the forged note-offs.  If it comes in the next block then
+        // we'll miss it (in which case see above comment about CC123), but in testing it seems to
+        // come in the same block as the explicit note-offs.  This is why we set the mpos a fair bit
+        // ahead in the block, to ensure they come after the CC123.
+        mpos += 100;
         channel = 0; loop(16,
-            mpos = retrigger_held_keyswitch_notes(mpos + 100, channel);
+            mpos = retrigger_held_keyswitch_notes(mpos, channel);
             channel += 1;
         );
     );
