@@ -259,7 +259,6 @@ function Bank:create_ui()
         local textcolor = color2luma(color) > 0.7 and '#000000' or '#ffffff'
         art.icon = articons.get(art.iconname) or articons.get('note-eighth')
         local flags = art.channels > 0 and 0 or rtk.Button.FLAT_LABEL
-        local outputstr = art:describe_outputs()
         art.button = rtk.Button:new({label=(art.shortname or art.name), icon=art.icon, color=color, textcolor=textcolor,
                                      tpadding=1, rpadding=1, bpadding=1, lpadding=1,
                                      flags=flags, rspace=40})
@@ -269,8 +268,11 @@ function Bank:create_ui()
         art.button.ondraw = function(button, offx, offy, event) art:draw_button_midi_channel(button, offx, offy, event) end
         art.button.onblur = function(button, event) App.set_statusbar(nil) end
         art.button.onhover = function(button, event)
+            if not art.outputstr then
+                art.outputstr = art:describe_outputs()
+            end
             -- button:scrollto(130, 40)
-            App.set_statusbar(outputstr)
+            App.set_statusbar(art.outputstr)
         end
         self.vbox:add(art.button, {lpadding=30})
     end
@@ -349,6 +351,15 @@ function Articulation:describe_outputs()
                 s = string.format('note %s', name)
             else
                 s = string.format('note %s vel %d', name, output.args[2] or 127)
+            end
+        elseif output.type == 'art' then
+            local program = tonumber(output.args[1] or 0)
+            local bank = self:get_bank()
+            local art = bank.articulations_by_program[program]
+            if art then
+                s = art.name or 'unnamed articulation'
+            else
+                s = 'undefined articulation'
             end
         elseif output.type == nil and output.channel then
             verb = 'Routes'

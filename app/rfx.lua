@@ -107,7 +107,8 @@ local output_type_to_rfx_param = {
     ["program"] = 1,
     ["cc"] = 2,
     ["note"] = 3,
-    ["note-hold"] = 4
+    ["note-hold"] = 4,
+    ["art"] = 5,
 }
 
 function rfx.init()
@@ -211,7 +212,7 @@ function rfx.validate(track, fx)
         local params = rfx.params_by_version[version]
         if params == nil then
             -- Unsupported RFX version
-            log("unsupported rfx version %s", version)
+            log("unsupported rfx version %s", version >> 16)
             return nil
         end
         rfx.version = version
