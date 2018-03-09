@@ -510,9 +510,9 @@ function rtk.onkeypresspost(event)
     log("keypress: keycode=%d  handled=%s", event.keycode, event.handled)
     if not event.handled then
         if App.screens.get_current() == App.screens.banklist then
-        if event.keycode >= 49 and event.keycode <= 57 then
-            App.set_default_channel(event.keycode - 48)
-        elseif event.keycode == rtk.keycodes.DOWN then
+            if event.keycode >= 49 and event.keycode <= 57 then
+                App.set_default_channel(event.keycode - 48)
+            elseif event.keycode == rtk.keycodes.DOWN then
                 App.activate_relative_articulation_in_group(App.default_channel, 1, 1)
             elseif event.keycode == rtk.keycodes.UP then
                 App.activate_relative_articulation_in_group(App.default_channel, 1, -1)
