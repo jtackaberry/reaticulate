@@ -33,7 +33,7 @@ local function channel_menu_to_channel(channel)
 end
 
 local function channel_to_channel_menu(channel)
-    if channel == 16 then
+    if channel == 17 then
         return 1
     else
         return channel + 1

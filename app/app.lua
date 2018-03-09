@@ -667,6 +667,28 @@ function App.init(basedir)
     articons.init(Path.imagedir)
     rtk.scale = App.config.scale
 
+    -- Testing binary serialization.
+    if false then
+        local cfg = {
+            b = {
+                {17, 17, 1, 1},
+                {17, 17, 1, 2},
+                {17, 17, 1, 3},
+                {17, 17, 1, 4},
+                {17, 17, 1, 5},
+                {17, 17, 1, 6},
+                {17, 17, 1, 7}
+            }
+        }
+        local binser = require 'lib.binser'
+        local s = binser.serialize(cfg)
+        log("serialized: %d %s", #s, s)
+        t0 = os.clock()
+        d = binser.deserialize(s)
+        t1 = os.clock()
+        log("deserialized: %f", t1-t0)
+    end
+
     App.overlay = rtk.VBox:new({position=rtk.Widget.FIXED})
     rtk.widget:add(App.overlay)
 
@@ -681,6 +703,7 @@ function App.init(basedir)
     App.screens.init()
 
     App.screens.replace(App.screens.banklist)
+    -- App.screens.push(App.screens.settings)
     App.set_default_channel(1)
 
     rtk.onupdate = function()
