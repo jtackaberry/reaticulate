@@ -144,11 +144,9 @@ function App.screens.get_current()
 end
 
 function App.ontrackchange(last, cur)
-    feedback.show_last_touched()
     reaper.PreventUIRefresh(1)
     App.sync_midi_editor()
     App.screens.banklist.filter_entry:onchange()
-    feedback.ontrackchange(last, cur)
     reaper.PreventUIRefresh(0)
 end
 
