@@ -144,74 +144,12 @@ function App.screens.get_current()
 end
 
 function App.ontrackchange(last, cur)
+    feedback.show_last_touched()
     reaper.PreventUIRefresh(1)
     App.sync_midi_editor()
     App.screens.banklist.filter_entry:onchange()
-    if last and (App.config.cc_feedback_device or -1) >= 0 and reaper.ValidatePtr2(0, last, "MediaTrack*") then
-        local midi_out = reaper.GetMediaTrackInfo_Value(last, "I_MIDIHWOUT")
-        -- Clear existing MIDI output device only if it's the same as the
-        -- configured feedback device.
-        if midi_out == App.config.cc_feedback_device << 5 then
-            reaper.SetMediaTrackInfo_Value(last, "I_MIDIHWOUT", -1)
-        end
-    end
-    if cur and rfx.fx and (App.config.cc_feedback_device or -1) >= 0 then
-        local input = reaper.GetMediaTrackInfo_Value(cur, "I_RECINPUT")
-        if input and input & 4096 ~= 0 then
-            reaper.SetMediaTrackInfo_Value(cur, "I_MIDIHWOUT", App.config.cc_feedback_device << 5)
-            App.feedback_current_ccs(cur)
-        end
-    end
+    feedback.ontrackchange(last, cur)
     reaper.PreventUIRefresh(0)
-end
-
-function App.feedback_current_ccs(track)
-    if App.config.cc_feedback_device == -1 or not track then
-        return
-    end
-    -- Get current automation mode of the track and reset to trim before we
-    -- mess around with parameters.
-    local global_automode = reaper.GetGlobalAutomationOverride()
-    local track_automode  = reaper.GetMediaTrackInfo_Value(track, "I_AUTOMODE")
-    local ltrack_automode = nil
-
-    reaper.Undo_BeginBlock()
-
-    -- Remember last touched FX (see below) and clear automation modes.
-    local lr, ltrack, lfx, lparam = reaper.GetLastTouchedFX()
-    if lr then
-        ltrack = reaper.GetTrack(0, ltrack - 1)
-        ltrack_automode  = reaper.GetMediaTrackInfo_Value(ltrack, "I_AUTOMODE")
-        reaper.SetMediaTrackInfo_Value(ltrack, "I_AUTOMODE", 0)
-    else
-        ltrack = nil
-    end
-
-    reaper.SetMediaTrackInfo_Value(track, "I_AUTOMODE", 0)
-    reaper.SetGlobalAutomationOverride(0)
-
-    rfx.opcode(rfx.OPCODE_DUMP_CCS, App.config.cc_feedback_bus - 1)
-
-    if ltrack then
-        -- By setting the JSFX parameter above, we just replaced the last touched
-        -- FX.  There doesn't seem to be any way to restore it other than to rewrite
-        -- the current value back to the last touched FX.
-        local r, _, _ = reaper.TrackFX_GetParam(ltrack, lfx, lparam)
-        reaper.TrackFX_SetParam(ltrack, lfx, lparam, r)
-    end
-    -- Due to what must be a bug in Reaper, we need to restore the track automation modes
-    -- _after_ ending the undo block, otherwise the parameters adjusted above end up
-    -- getting automatically armed.
-    reaper.Undo_EndBlock("Reaticulate: sync track CCs to MIDI out", 2)
-
-    -- For some reason, restoring track automation modes doesn't end up cluttering
-    -- undo history even though we are outside of an undo block (probably another
-    -- Reaper bug?).
-    reaper.SetMediaTrackInfo_Value(track, "I_AUTOMODE", track_automode)
-    if ltrack then
-        reaper.SetMediaTrackInfo_Value(ltrack, "I_AUTOMODE", ltrack_automode)
-    end
-    reaper.SetGlobalAutomationOverride(global_automode)
 end
 
 function App.onartclick(art, event)
@@ -219,12 +157,14 @@ function App.onartclick(art, event)
         App.activate_articulation(art, true, false)
     elseif event.button == rtk.mouse.BUTTON_MIDDLE then
         -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
+        rfx.freeze(rfx.track)
         for channel = 0, 15 do
             if art.channels & (1 << channel) ~= 0 then
                 rfx.clear_channel_program(channel + 1, art.group)
             end
         end
         rfx.sync(rfx.track, true)
+        rfx.thaw()
     elseif event.button == rtk.mouse.BUTTON_RIGHT then
         App.activate_articulation(art, true, true)
     end
