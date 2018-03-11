@@ -168,8 +168,13 @@ OPCODE_SET_ARTICULATION_INFO = 4;
 OPCODE_ADD_OUTPUT_EVENT = 5;
 
 // Dumps all current CCs on all channels to the given MIDI bus.
-// (midi_bus)
+// ()
 OPCODE_DUMP_CCS = 7;
+
+// Sets whether CC feedback should be enabled.  If 0 (which is the default
+// unless set to 1), OPCODE_DUMP_CCs is a no-op.
+// (enabled, bus)
+OPCODE_SET_CC_FEEDBACK_ENABLED = 8;
 
 // Constants that apply to the flags parameter for OPCODE_SET_ARTICULATION_INFO
 ARTICULATION_FLAG_CHASE = 1 << 0;
@@ -254,9 +259,11 @@ active_channels_by_cc = 25000; // size: 16 * 128 = 2048
 //
 // This is used for CC chasing and CC feedback.
 last_ccs_by_channel = 30000; // size: 16 * 128 = 2048
-// If >= 0, all CCs will be output on this MIDI bus.
-cc_feedback_midi_bus = -1;
-// If non-zero, indicates on next @block we should dump all CCs to cc_feedback_midi_bus.
+
+// Bits 0-3 indicate the MIDI bus for feedback.  Bit 7 is whether feedback
+// is enabled.
+cc_feedback = 0;
+// If non-zero, indicates on next @block we should dump all CCs to the CC feedback bus.
 cc_dump_pending = 0;
 
 // Indexed by source channel, values hold the union of articulation
@@ -360,8 +367,8 @@ program_by_articulation = 600000; // size: (2 + 16) * 128 * 16 = 36864 (upper bo
 // we likely to have active in a group in a given moment?  I'm calling it 8.
 // We can support 8 concurrent held notes per (channel, group) tuple.
 //
-// This the held_keyswitches array is indexed by (channel, group) where each
-// record has 8*2 slots.  Each held note uses 2 slots.
+// This array is indexed by (channel, group) where each record has 8*2 slots.
+// Each held note uses 2 slots.
 //
 // Slot 0: LSB of value contains the note number, and next 8 bits contains
 //         the velocity the note-on was sent at, in case it needs to be
@@ -533,7 +540,7 @@ function get_output_event_param2(event)
 slider63 ? (
     gfx_x = gfx_y = 0;
     gfx_r = gfx_g = gfx_b = gfx_a = 1;
-    channel = slider63;
+    channel = slider63 - 1;
 
     gfx_printf("Reaticulate debug info\n");
     gfx_printf("  version: %d\n", serialized_version);
@@ -543,9 +550,9 @@ slider63 ? (
     gfx_printf("  program notification: %d\n", slider1 & 0x80);
     gfx_printf("  articulations len: %d\n", articulations_len);
     gfx_printf("  play state: %d %f\n", play_state, play_position);
-    gfx_printf("  midi bus: %d\n", cc_feedback_midi_bus);
+    gfx_printf("  midi bus: %d\n", cc_feedback);
 
-    gfx_printf("\nChannel %d debug info\n", channel);
+    gfx_printf("\nChannel %d debug info\n", channel + 1);
     control = slider(SLIDER_OFFSET_CONTROL + channel);
     group = 0; loop(MAX_GROUPS,
         program = (control >> (8 * group)) & 0xff;
@@ -571,7 +578,7 @@ file_mem(0, articulations_offsets, 16 * 128);
 file_var(0, articulations_len);
 file_mem(0, articulations, articulations_len);
 file_mem(0, last_ccs_by_channel, 16 * 128);
-file_var(0, cc_feedback_midi_bus);
+file_var(0, cc_feedback);
 file_mem(0, held_keyswitches, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
 
 // This is done exactly once in the life of the RFX.
@@ -714,8 +721,12 @@ opcode = (slider64 & 0x7f000000) >> 24;
     );
 
     (opcode == OPCODE_DUMP_CCS) ? (
-        cc_feedback_midi_bus = b0 < 16 ? b0 : -1;
         cc_dump_pending = 1;
+    );
+
+    // Arguments: b0=enabled, b1=bus
+    (opcode == OPCODE_SET_CC_FEEDBACK_ENABLED) ? (
+        cc_feedback = (b1 & 0x0f) | (!!b0 << 4);
     );
 
     // Clear slider to prevent repeated evaluation of the same operation (in case some other
@@ -957,6 +968,7 @@ local(flags, output_type, dstchannel, param1, param2)
     );
     (output_type == OUTPUT_TYPE_CC) ? (
         midisend(mpos + 1, MIDI_EVENT_CC + dstchannel, param1, param2);
+        // FIXME: send for midi feedback
     );
     (output_type == OUTPUT_TYPE_ARTICULATION) ? (
         // Here we have a referenced articulation we need to follow.  Push the articulation
@@ -1267,9 +1279,9 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                 // );
 
                 // Send CCs to MIDI bus for feedback if it's not already going to bus 0.
-                (cc_feedback_midi_bus > 0 && type == MIDI_EVENT_CC) ? (
-                    midi_bus = cc_feedback_midi_bus;
-                    midisend(channel, msg1, msg2, msg3);
+                (cc_feedback & 0x10 && type == MIDI_EVENT_CC) ? (
+                    midi_bus = cc_feedback & 0x0f;
+                    midisend(mpos, msg1, msg2, msg3);
                     midi_bus = 0;
                 );
             );
@@ -1300,7 +1312,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 
 
 (cc_dump_pending > 0) ? (
-    midi_bus = cc_feedback_midi_bus;
+    midi_bus = cc_feedback & 0x0f;
 
     channel = 0; loop(16,
         ccs = last_ccs_by_channel + (channel * 16);

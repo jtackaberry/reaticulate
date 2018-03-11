@@ -1,0 +1,18 @@
+desc:BUS Translator for CC Feedback (Reaticulate)
+slider1:1<0,1,1>Enabled
+slider2:15<0,15,1>Source bus
+slider3:0<0,15,1>Destination bus
+
+in_pin:none
+out_pin:none
+
+@init
+ext_midi_bus = 1;
+
+@block
+while (midirecv(mpos, msg1, msg2, msg3)) (
+    (midi_bus == slider2 && slider1) ? (
+        midi_bus = slider3;
+        midisend(mpos, msg1, msg2, msg3);
+    );
+);

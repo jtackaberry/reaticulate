@@ -17,6 +17,7 @@ local rtk = require 'lib.rtk'
 local rfx = require 'rfx'
 local reabank = require 'reabank'
 local articons = require 'articons'
+local feedback = require 'feedback'
 
 App = {
     -- Currently selected track (or nil if no track is selected)
@@ -50,7 +51,9 @@ App = {
         scale = 1.0,
         bg = nil,
         cc_feedback_device = -1,
-        cc_feedback_bus = 1
+        cc_feedback_bus = 1,
+        -- Togglable via action
+        cc_feedback_active = true
     },
 
     toolbar = {
@@ -147,7 +150,8 @@ function App.ontrackchange(last, cur)
     reaper.PreventUIRefresh(1)
     App.sync_midi_editor()
     App.screens.banklist.filter_entry:onchange()
-    reaper.PreventUIRefresh(0)
+    feedback.ontrackchange(last, cur)
+    reaper.PreventUIRefresh(-1)
 end
 
 function App.onartclick(art, event)
@@ -241,7 +245,7 @@ function App.handle_command(cmd, arg)
     log("cmd: %s(%s)", cmd, arg)
     if cmd == 'set_default_channel' then
         App.set_default_channel(tonumber(arg))
-        App.feedback_current_ccs(App.track)
+        feedback.dump_ccs(App.track)
     elseif cmd == 'activate_articulation' and rfx.fx then
         -- Look at all visible banks and find the matching articulation.
         local args = string.split(arg, ',')
@@ -284,7 +288,16 @@ function App.handle_command(cmd, arg)
         end
         App.activate_relative_articulation_in_group(channel, group, distance)
     elseif cmd == 'dump_ccs' and rfx.fx then
-        App.feedback_current_ccs(App.track)
+        feedback.dump_ccs(App.track)
+    elseif cmd == 'set_midi_feedback_active' then
+        local enabled = tonumber(arg)
+        if enabled == -1 then
+            -- Toggle
+            feedback.set_active(not App.config.cc_feedback_active)
+        else
+            feedback.set_active(not not enabled)
+        end
+        feedback.dump_ccs(App.track)
     end
 end
 

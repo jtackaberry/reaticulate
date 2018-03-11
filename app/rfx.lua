@@ -36,6 +36,7 @@ local rfx = {
     OPCODE_SET_ARTICULATION_INFO = 4,
     OPCODE_ADD_OUTPUT_EVENT = 5,
     OPCODE_DUMP_CCS = 7,
+    OPCODE_SET_CC_FEEDBACK_ENABLED = 8,
 
     params_by_version = {
         [1 << 16] = {

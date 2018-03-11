@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 local rtk = require 'lib.rtk'
+local feedback = require 'feedback'
+
 
 local screen = {
     widget = nil,
@@ -58,12 +60,11 @@ function screen.init()
         -- Remove output device if we disabled feedback and the current output device is set
         -- to the previously configured feedback device.
         if App.config.cc_feedback_device == -1 then
-            local midi_out = reaper.GetMediaTrackInfo_Value(App.track, "I_MIDIHWOUT")
-            if midi_out == last_device << 5 then
-                reaper.SetMediaTrackInfo_Value(App.track, "I_MIDIHWOUT", -1)
-            end
+            feedback.destroy_feedback_track()
         else
-            App.ontrackchange(App.track, App.track)
+            feedback.ensure_feedback_track()
+            feedback.update_feedback_track_settings()
+            feedback.ontrackchange(nil, App.track)
         end
     end
     screen.midi_device_menu = menu
@@ -84,7 +85,8 @@ function screen.init()
         log("Changed MIDI CC feedback bus: %s", menu.selected)
         App.config.cc_feedback_bus = menu.selected
         App.save_config()
-        App.ontrackchange(App.track, App.track)
+        feedback.update_feedback_track_settings()
+        feedback.ontrackchange(nil, App.track)
     end
 
 
