@@ -445,9 +445,9 @@ end
 -- no-op (at least in that it does not leave side effects).
 function rfx.push_state(track)
     local state = rfx.state
-    local mode = 0
+    local track_mode = 0
     if track then
-        mode = reaper.GetMediaTrackInfo_Value(track, "I_AUTOMODE")
+        track_mode = reaper.GetMediaTrackInfo_Value(track, "I_AUTOMODE")
     end
     if state.depth == 0 then
         -- state.t0 = os.clock()
@@ -486,9 +486,9 @@ function rfx.push_state(track)
         end
     end
     state.depth = state.depth + 1
-    if mode > 1 and state.tracks[track] == nil then
+    if track_mode > 1 and state.tracks[track] == nil then
         -- Track is valid with a writable automation mode.
-        state.tracks[track] = mode
+        state.tracks[track] = track_mode
         reaper.SetMediaTrackInfo_Value(track, "I_AUTOMODE", 0)
     end
 end
