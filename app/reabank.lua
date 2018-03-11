@@ -132,7 +132,7 @@ local function activate_articulation(source_channel, msb, lsb, program, force_in
             local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
             insert_program_change(take, false, ppq, channel, msb, lsb, program)
         end
-        reaper.Undo_EndBlock2(0, "MIDI editor: insert program change (" .. program .. ")", -1)
+        reaper.Undo_EndBlock2(0, "Reaticulate: insert program change (" .. program .. ")", -1)
         reaper.PreventUIRefresh(-1)
     end
     rfx.activate_articulation(channel, program)
