@@ -155,14 +155,14 @@ function App.onartclick(art, event)
         App.activate_articulation(art, true, false)
     elseif event.button == rtk.mouse.BUTTON_MIDDLE then
         -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
-        rfx.freeze(rfx.track)
+        rfx.push_state(rfx.track)
         for channel = 0, 15 do
             if art.channels & (1 << channel) ~= 0 then
                 rfx.clear_channel_program(channel + 1, art.group)
             end
         end
         rfx.sync(rfx.track, true)
-        rfx.thaw()
+        rfx.pop_state()
     elseif event.button == rtk.mouse.BUTTON_RIGHT then
         App.activate_articulation(art, true, true)
     end

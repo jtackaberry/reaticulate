@@ -110,7 +110,9 @@ local rfx = {
             track = nil,
             automation_mode = nil,
             param = nil,
-            fx = nil
+            fx = nil,
+            -- true if there is currently a deferred function pending to restore last fx state.
+            deferred = false,
         }
     }
 }
@@ -258,7 +260,7 @@ end
 -- Slot index and channel start at 1.  Caller will need to call rfx.sync_articulation_details()
 -- after.
 function rfx.set_bank(slot, srcchannel, dstchannel, bank)
-    rfx.freeze(rfx.track)
+    rfx.push_state(rfx.track)
     if bank then
         rfx.set_data(slot + rfx.params.banks_start - 1,
                      srcchannel - 1, dstchannel - 1,
@@ -267,7 +269,7 @@ function rfx.set_bank(slot, srcchannel, dstchannel, bank)
         -- Clear slot.
         rfx.set_data(slot + rfx.params.banks_start - 1, 0, 0, 0)
     end
-    rfx.thaw()
+    rfx.pop_state()
 end
 
 
@@ -355,9 +357,9 @@ function rfx.sync_banks_by_channel()
     local metadata = (rfx.metadata & 0xffff00ff) | (rfx.reabank_version << 8)
     -- Only update the metadata if it actually changed.
     if metadata ~= rfx.metadata then
-        rfx.freeze(rfx.track)
+        rfx.push_state(rfx.track)
         rfx.set_param(rfx.params.metadata, metadata)
-        rfx.thaw()
+        rfx.pop_state()
     end
 end
 
@@ -368,7 +370,7 @@ function rfx.sync_articulation_details()
     if not rfx.fx then
         return
     end
-    rfx.freeze(rfx.track)
+    rfx.push_state(rfx.track)
     rfx.opcode(rfx.OPCODE_CLEAR)
     rfx.sync_banks_by_channel()
     for param = rfx.params.control_start, rfx.params.control_end do
@@ -405,7 +407,7 @@ function rfx.sync_articulation_details()
             rfx.set_data(param, NO_PROGRAM, NO_PROGRAM, NO_PROGRAM, NO_PROGRAM)
         end
     end
-    rfx.thaw()
+    rfx.pop_state()
 end
 
 -- Clears the current program for the given channel.  Channel and group
@@ -425,9 +427,9 @@ function rfx.clear_channel_program(channel, group)
 end
 
 function rfx.activate_articulation(channel, program)
-    rfx.freeze(rfx.track)
+    rfx.push_state(rfx.track)
     rfx.opcode(rfx.OPCODE_ACTIVATE_ARTICULATION, channel, program)
-    rfx.thaw()
+    rfx.pop_state()
     -- It may be tempting to sync() now but the RFX will trigger the articulation
     -- asynchronously, so syncing now will miss it most of the time.  Might as well
     -- just wait for the next refresh.
@@ -441,13 +443,14 @@ end
 -- if track automation is read only, then there's no need to temporarily change it.
 -- And if additionally there's no last touched FX, this function is effectively a
 -- no-op (at least in that it does not leave side effects).
-function rfx.freeze(track)
+function rfx.push_state(track)
     local state = rfx.state
     local mode = 0
     if track then
         mode = reaper.GetMediaTrackInfo_Value(track, "I_AUTOMODE")
     end
     if state.depth == 0 then
+        -- state.t0 = os.clock()
         state.global_automation_override = reaper.GetGlobalAutomationOverride()
 
         -- Remember last touched FX and clear automation modes.
@@ -458,9 +461,10 @@ function rfx.freeze(track)
             last.automation_mode = reaper.GetMediaTrackInfo_Value(last.track, "I_AUTOMODE")
             last.fx = lfx
             last.param = lparam
-            -- log("pop automation: remember last touched: %s (%d) %d %d", last.track, ltrack, last.fx, last.param)
-            -- reaper.SetMediaTrackInfo_Value(last.track, "I_AUTOMODE", 0)
-            state.tracks[last.track] = last.automation_mode
+            if last.automation_mode > 1 then
+                state.tracks[last.track] = last.automation_mode
+                reaper.SetMediaTrackInfo_Value(last.track, "I_AUTOMODE", 0)
+            end
         elseif track_mode <= 1 then
             -- No last touched FX, and track automation mode is non-writing.  So there is really
             -- nothing for us to do.
@@ -485,16 +489,16 @@ function rfx.freeze(track)
     if mode > 1 and state.tracks[track] == nil then
         -- Track is valid with a writable automation mode.
         state.tracks[track] = mode
-        -- table.insert(state.tracks, {track, mode})
         reaper.SetMediaTrackInfo_Value(track, "I_AUTOMODE", 0)
     end
 end
 
+
 -- Restores the track's automation state / last touched FX if it was previously saved.
-function rfx.thaw()
+function rfx.pop_state()
     local state = rfx.state
     if state.depth == 0 then
-        -- Nothing to do.  If freeze() was called it didn't need to do anything.
+        -- Nothing to do.  If push_state() was called it didn't need to do anything.
         return
     end
     state.depth = state.depth - 1
@@ -510,16 +514,25 @@ function rfx.thaw()
         end
         -- There doesn't seem to be any way to restore last touched FX parameter
         -- other than to rewrite the current value back to the last touched FX.
-        local r, _, _ = reaper.TrackFX_GetParam(last.track, last.fx, last.param)
-        reaper.TrackFX_SetParam(last.track, last.fx, last.param, r)
-        last.track = nil
+        local lastval, _, _ = reaper.TrackFX_GetParam(last.track, last.fx, last.param)
+        reaper.TrackFX_SetParam(last.track, last.fx, last.param, lastval)
+        if not last.deferred then
+            -- Reaper sometimes needs a bit more convincing to restore the last touched FX.
+            -- It works to wrap everything in an undo block, but given the high cost of
+            -- that, this kludge appears to work while being much lower cost.
+            function restore()
+                reaper.TrackFX_SetParam(last.track, last.fx, last.param, lastval)
+                last.deferred = false
+                last.track = nil
+            end
+            last.deferred = true
+            reaper.defer(restore)
+        end
     end
 
     -- Due to what must be a bug in Reaper, we need to restore the track automation modes
     -- _after_ ending the undo block, otherwise the parameters adjusted above end up
     -- getting automatically armed.
-    --
-    -- Undo block _seems_ not to be necessary.  See above Undo_Begin() in thaw()
     -- reaper.Undo_EndBlock("Reaticulate: communication to RFX", 2)
 
     -- For some reason, restoring track automation modes doesn't end up cluttering
@@ -534,7 +547,9 @@ function rfx.thaw()
         reaper.SetGlobalAutomationOverride(state.global_automation_override)
     end
     reaper.PreventUIRefresh(-1)
+    -- log("push/pop took %f", os.clock() - state.t0)
 end
+
 
 -- Lower level functions
 
