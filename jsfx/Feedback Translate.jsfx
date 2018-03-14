@@ -2,6 +2,10 @@ desc:BUS Translator for CC Feedback (Reaticulate)
 slider1:1<0,1,1>Enabled
 slider2:15<0,15,1>Source bus
 slider3:0<0,15,1>Destination bus
+// Set by Reaticulate UI on instantiation to differentiate between a
+// Reaticulate created instance and another one (perhaps manually
+// instantiated by the user)
+slider4:0<0,2147483647,1>Magic
 
 in_pin:none
 out_pin:none

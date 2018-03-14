@@ -18,6 +18,11 @@ local feedback = {
     track = nil,
 }
 
+-- A special value we set on the BUS Translator JSFX to identify whether the instance
+-- was instantiated by Reaticulate.
+local BUS_TRANSLATOR_MAGIC = 0x42424242
+
+
 function feedback.ontrackchange(last, cur)
     if (App.config.cc_feedback_device or -1) < 0 then
         -- No feedback enabled.
@@ -133,10 +138,15 @@ function feedback.get_feedback_track()
     -- Locate feedback track (whichever track has the BUS Translator FX)
     for i = 0, reaper.CountTracks(0) - 1 do
         local track = reaper.GetTrack(0, i)
-        if reaper.TrackFX_GetByName(track, "BUS Translator", false) >= 0 then
-            -- Remember for future calls
-            feedback.track = track
-            return track
+        local fx = reaper.TrackFX_GetByName(track, "BUS Translator", false)
+        if fx >= 0 then
+            -- Test magic value to ensure this instance was one created by Reaticulate
+            local val, _, _ = reaper.TrackFX_GetParam(track, fx, 3)
+            if val == BUS_TRANSLATOR_MAGIC then
+                -- Remember for future calls
+                feedback.track = track
+                return track
+            end
         end
     end
     return nil
@@ -188,6 +198,7 @@ function feedback.update_feedback_track_settings()
             rfx.push_state(feedback_track)
             reaper.TrackFX_SetParam(feedback_track, fx, 0, App.config.cc_feedback_active and 1 or 0)
             reaper.TrackFX_SetParam(feedback_track, fx, 2, App.config.cc_feedback_bus - 1)
+            reaper.TrackFX_SetParam(feedback_track, fx, 3, BUS_TRANSLATOR_MAGIC)
             rfx.pop_state()
         end
     end
