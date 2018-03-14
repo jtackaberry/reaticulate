@@ -458,13 +458,21 @@ function rfx.push_state(track)
         local last = state.last_touched_fx
         local lr, ltracknum, lfx, lparam = reaper.GetLastTouchedFX()
         if lr then
-            last.track = reaper.GetTrack(0, ltracknum - 1)
-            last.automation_mode = reaper.GetMediaTrackInfo_Value(last.track, "I_AUTOMODE")
-            last.fx = lfx
-            last.param = lparam
-            if last.automation_mode > 1 then
-                state.tracks[last.track] = last.automation_mode
-                reaper.SetMediaTrackInfo_Value(last.track, "I_AUTOMODE", 0)
+            -- FIXME: doesn't work with subprojects
+            local last_track = reaper.GetTrack(0, ltracknum - 1)
+            -- Do the quick magic test on the last touched FX to see if it's an RFX.
+            -- We don't want to restore last touched FX for any RFX.  The magic test
+            -- can result in false positives, but it's _probably_ ok here.
+            local val, _, _ = reaper.TrackFX_GetParam(last_track, lfx, 0)
+            if val < 0 or (math.floor(val) & 0xff000000) ~= rfx.MAGIC then
+                last.track = last_track
+                last.automation_mode = reaper.GetMediaTrackInfo_Value(last.track, "I_AUTOMODE")
+                last.fx = lfx
+                last.param = lparam
+                if last.automation_mode > 1 then
+                    state.tracks[last.track] = last.automation_mode
+                    reaper.SetMediaTrackInfo_Value(last.track, "I_AUTOMODE", 0)
+                end
             end
         elseif track_mode <= 1 then
             -- No last touched FX, and track automation mode is non-writing.  So there is really
