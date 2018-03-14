@@ -469,6 +469,15 @@ function rtk.onkeypresspost(event)
                 App.activate_relative_articulation_in_group(App.default_channel, 1, -1)
             end
         end
+        -- If the app sees an unhandled space key then we do what is _probably_ what
+        -- the user wants, which is to toggle transport play and refocus outside of
+        -- Reaticulate.  This fails if the user has bound space to something else,
+        -- but it's worth the risk.
+        if event.keycode == rtk.keycodes.SPACE then
+            -- Transport: Play/stop
+            reaper.Main_OnCommandEx(40044, 0, 0)
+            App.refocus()
+        end
     end
 end
 
