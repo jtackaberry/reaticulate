@@ -148,7 +148,7 @@ end
 function screen.init()
     screen.widget = rtk.widget:add(rtk.VBox:new())
 
-    local topbar = rtk.VBox:new({spacing=0, position=rtk.Widget.FIXED, bg=rtk.theme.window_bg, tpadding=0, bpadding=15})
+    local topbar = rtk.VBox:new({spacing=0, position=rtk.Widget.FIXED, bg=rtk.theme.window_bg, tpadding=0, bpadding=15, z=50})
     screen.toolbar = rtk.HBox:new({spacing=0})
     screen.widget:add(topbar, {lpadding=0})
 
