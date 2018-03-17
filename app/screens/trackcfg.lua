@@ -61,7 +61,22 @@ function screen.init()
         lpadding=10, tpadding=50, bpadding=20
     })
 
-    screen.banklist = screen.widget:add(rtk.VBox:new({spacing=20}), {lpadding=20})
+    screen.banklist = screen.widget:add(rtk.VBox:new({spacing=20}), {lpadding=10})
+
+    local spacer = rtk.Spacer({h=50, y=0, z=10})
+    spacer.ondropfocus = function(self, event)
+        local bankbox = screen.banklist:get_child(-1)
+        bankbox.bborder = {3, '#e7d054'}
+        return true
+    end
+    spacer.ondropblur = function(self, event)
+        local bankbox = screen.banklist:get_child(-1)
+        bankbox.bborder = nil
+    end
+    spacer.ondrop = function(self, event, _, srcbankbox)
+        return screen.move_bankbox(srcbankbox, #screen.banklist.children)
+    end
+    screen.widget:add(spacer, {tpadding=-20, bpadding=-20})
 
     local add_bank_button = make_button("add_circle_outline_white_18x18.png", "Add Bank", true)
     add_bank_button.onclick = function()
@@ -75,7 +90,7 @@ function screen.init()
             bankbox.bank_menu.onchange()
         end
     end
-    screen.widget:add(add_bank_button, {lpadding=20, tpadding=20, bpadding=20})
+    screen.widget:add(add_bank_button, {lpadding=20, tpadding=20, bpadding=40})
     screen.update()
 end
 
@@ -91,19 +106,44 @@ function screen.sync_banks_to_rfx()
     screen.check_errors()
 end
 
+function screen.move_bankbox(bankbox, targetidx)
+    screen.banklist:remove(bankbox)
+    screen.banklist:insert(math.max(1, targetidx), bankbox)
+    screen.sync_banks_to_rfx()
+    App.screens.banklist.update()
+    return true
+end
+
 
 function screen.create_bank_ui()
     local bankbox = rtk.VBox:new({spacing=10, bpadding=20})
     local banklist_menu_spec = reabank.to_menu()
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
 
+    bankbox.ondrop = function(self, event, _, srcbankbox)
+        return screen.move_bankbox(srcbankbox, screen.banklist:get_child_index(bankbox) - 1)
+    end
+    bankbox.ondropfocus = function(self, event)
+        local slot = screen.banklist:get_child_index(bankbox)
+        bankbox.tborder = {3, '#e7d054', slot == 1 and 10 or self.spacing * 2}
+        return true
+    end
+    bankbox.ondropblur = function(self, event)
+        bankbox.tborder = nil
+    end
+
     -- Bank row
-    local up_button = make_button("keyboard_arrow_up_white_18x18.png", nil, true, {
-        color={0.3, 0.3, 0.6, 1},
-        lpadding=3, rpadding=3, tpadding=3, bpadding=3
-    })
-    row:add(up_button)
-    up_button.onclick = function()
+    local drag_handle = rtk.ImageBox:new({image=get_image('drag_vertical_24x24.png'), w=24, halign=rtk.Widget.CENTER})
+    drag_handle.ondragstart = function(event)
+        return bankbox
+    end
+    drag_handle.ondraw = function(self, offx, offy, event)
+        if event:is_widget_hovering(self) then
+            rtk.mouse.cursor = rtk.mouse.cursors.size_all
+        end
+    end
+    row:add(drag_handle)
+    drag_handle.onclick2 = function()
         local idx = screen.banklist:remove(bankbox) - 1
         if idx < 1 then
             idx = #screen.banklist.children + 1
@@ -120,20 +160,7 @@ function screen.create_bank_ui()
 
     -- Channel row
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
-    local down_button = make_button("keyboard_arrow_down_white_18x18.png", nil, true, {
-        color={0.3, 0.3, 0.6, 1},
-        lpadding=3, rpadding=3, tpadding=3, bpadding=3
-    })
-    row:add(down_button)
-    down_button.onclick = function()
-        local idx = screen.banklist:remove(bankbox) + 1
-        if idx > #screen.banklist.children + 1 then
-            idx = 1
-        end
-        screen.banklist:insert(idx, bankbox)
-        screen.sync_banks_to_rfx()
-        App.screens.banklist.update()
-    end
+    row:add(rtk.Spacer({w=24, h=24}))
 
     local channel_menu = {
         'Omni', 'Ch 1', 'Ch 2', 'Ch 3', 'Ch 4',

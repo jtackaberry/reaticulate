@@ -67,11 +67,15 @@ App.screens.settings = require 'screens.settings'
 
 
 -- Utility button factory
+function get_image(file)
+    return rtk.Image:new(Path.join(Path.imagedir, file))
+end
+
 function make_button(iconfile, label, textured, attrs)
     local icon = nil
     local button = nil
     if iconfile then
-        icon = rtk.Image:new(Path.join(Path.imagedir, iconfile))
+        icon = get_image(iconfile)
         if label then
             flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.FLAT_LABEL)
             button = rtk.Button:new({icon=icon, label=label,
@@ -649,7 +653,7 @@ function App.init(basedir)
         log("deserialized: %f", t1-t0)
     end
 
-    App.overlay = rtk.VBox:new({position=rtk.Widget.FIXED})
+    App.overlay = rtk.VBox:new({position=rtk.Widget.FIXED, z=100})
     rtk.widget:add(App.overlay)
 
     App.overlay:add(build_toolbar())
