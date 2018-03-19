@@ -54,6 +54,10 @@ function string.split(s, delim)
     return words
 end
 
+function string.strip(s)
+    return s:match('^%s*(.-)%s*$')
+ end
+
 function read_file(fname)
     local f = io.open(fname)
     local contents = f:read("*all")

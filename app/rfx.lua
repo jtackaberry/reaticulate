@@ -37,6 +37,8 @@ local rfx = {
     OPCODE_ADD_OUTPUT_EVENT = 5,
     OPCODE_DUMP_CCS = 7,
     OPCODE_SET_CC_FEEDBACK_ENABLED = 8,
+    OPCODE_NEW_BANK = 9,
+    OPCODE_SET_BANK_CHASE_CC = 10,
 
     params_by_version = {
         [1 << 16] = {
@@ -379,6 +381,11 @@ function rfx.sync_articulation_details()
         local banks = rfx.banks_by_channel[channel]
         if banks then
             for _, bank in ipairs(banks) do
+                local param1 = (channel - 1) | (0 << 4)
+                rfx.opcode(rfx.OPCODE_NEW_BANK, param1, bank.msb, bank.lsb)
+                for _, cc in ipairs(bank:get_chase_cc_list()) do
+                    rfx.opcode(rfx.OPCODE_SET_BANK_CHASE_CC, cc)
+                end
                 for _, art in ipairs(bank.articulations) do
                     local group = art.group - 1
                     local outputs = art:get_outputs()

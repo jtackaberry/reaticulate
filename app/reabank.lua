@@ -245,6 +245,26 @@ function Bank:get_src_channel()
     end
 end
 
+function Bank:get_chase_cc_list()
+    if self._chase then
+        return self._chase
+    end
+    ccs = {}
+    chase = self.chase or '1-127'
+    for _, elem in ipairs(chase:split(',')) do
+        if elem:find('-') then
+            subrange = elem:split('-')
+            for i = tonumber(subrange[1]), tonumber(subrange[2]) do
+                ccs[#ccs+1] = i
+            end
+        else
+            ccs[#ccs+1] = tonumber(elem)
+        end
+    end
+    self._chase = ccs
+    return ccs
+end
+
 function Bank:create_ui()
     self.vbox = rtk.VBox:new({spacing=10})
     self.heading = rtk.Heading:new({label=self.shortname or self.name})
@@ -521,6 +541,7 @@ function reabank.parse(filename, banks)
             merge(metadata, 'flags', props.f)
             merge(metadata, 'message', props.m)
             merge(metadata, 'clone', props.clone)
+            merge(metadata, 'chase', props.chase)
             if props.colors then
                 reabank.parse_colors(props.colors)
             end

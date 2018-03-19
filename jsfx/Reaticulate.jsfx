@@ -139,6 +139,8 @@ SLIDER_OFFSET_CONTROL = 10;
 SLIDER_OPCODE = 64;
 MAX_GROUPS = 4;
 MAX_HELD_KEYSWITCHES = 8;
+MAX_BANKS = 16;
+MAX_CHANNELS = 16;
 
 // Opcode is the high byte of slider 64.  Up to 128 opcodes supported (since
 // the high byte loses the MSB for signedness).
@@ -175,6 +177,21 @@ OPCODE_DUMP_CCS = 7;
 // unless set to 1), OPCODE_DUMP_CCs is a no-op.
 // (enabled, bus)
 OPCODE_SET_CC_FEEDBACK_ENABLED = 8;
+
+// Creates a new bank.  Any articulation created with OPCODE_NEW_ARTICULATION
+// is assumed to belong to this bank.
+//
+// (channel+version, msb, lsb)
+OPCODE_NEW_BANK = 9;
+
+// Defines a new CC to be chased for the bank that was previously created with
+// OPCODE_NEW_BANK.  Called separately for each CC that is to be chased.
+// These CCs are ignored per articulation if ARTICULATION_FLAG_CHASE is not
+// set.
+//
+// (cc)
+OPCODE_SET_BANK_CHASE_CC = 10;
+
 
 // Constants that apply to the flags parameter for OPCODE_SET_ARTICULATION_INFO
 ARTICULATION_FLAG_CHASE = 1 << 0;
@@ -311,6 +328,8 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 // Slot 1: v0
 //      bits 0-3: source channel
 //      bits 4-7: articulation record version
+//     bytes 1-2: indicates the offset (from 0) into the banks array this
+//                articulation belongs to.
 //
 // Following the base articulation information slots, there are n*m slots for
 // output events, where n is the # of output events and m is dependent on
@@ -379,6 +398,34 @@ program_by_articulation = 600000; // size: (2 + 16) * 128 * 16 = 36864 (upper bo
 // keyswitches for that channel/group.
 held_keyswitches = 650000; // size: 16 * MAX_GROUPS * 8 * 2 = 1024
 
+// Length of the banks array.
+banks_len = 0;
+
+// Array holding all configured bankls.  This array holds variable
+// sized records, whose size depends on the bank record version.
+//
+// The record version is indicated in slot 0 bits 4-7 where the following
+// versions are defined:
+//
+//     v0: each record is 10 slots
+//
+// Slot 0: v0 - bank information
+//      bits 0-3: source channel
+//      bits 4-7: bank record version
+//        byte 1: bank MSB
+//        byte 2: bank LSB
+// Slot 1: v0 - CC chase bitmap for CCs 0-23
+// Slot 2: v0 - CC chase bitmap for CCs 24-47
+// Slot 3: v0 - CC chase bitmap for CCs 48-72
+// Slot 4: v0 - CC chase bitmap for CCs 72-95
+// Slot 5: v0 - CC chase bitmap for CCs 96-119
+// Slot 6: v0 - CC chase bitmap for CCs 120-127
+// Slots 7-9: unused
+banks = 660000; // size: MAX_CHANNELS * MAX_BANKS * 10 = 2560
+
+// The last articulation created by OPCODE_NEW_BANK.
+last_new_bank = 0;
+
 
 function get_articulation_version_record_size(version)
 (
@@ -392,6 +439,11 @@ function get_articulation_version_output_event_size(version)
     (version == 0) ? 1 : (
         (version == 1) ? 2; // TBD
     );
+);
+
+function get_bank_version_record_size(version)
+(
+    10;
 );
 
 
@@ -490,6 +542,11 @@ function get_articulation_version(articulation)
     (articulation[1] & 0xf0) >> 4;
 );
 
+function get_articulation_bank(articulaztion)
+(
+    ((articulation[1] & 0xffff00) >> 8) + banks;
+);
+
 
 function get_articulation_output_event_offset(articulation, n)
 local(version)
@@ -580,6 +637,8 @@ file_mem(0, articulations, articulations_len);
 file_mem(0, last_ccs_by_channel, 16 * 128);
 file_var(0, cc_feedback);
 file_mem(0, held_keyswitches, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
+file_var(0, banks_len);
+file_mem(0, banks, banks_len);
 
 // This is done exactly once in the life of the RFX.
 !serialized_version ? (
@@ -665,14 +724,38 @@ opcode = (slider64 & 0x7f000000) >> 24;
         memset(articulations, 0, (2 + 16) * 128 * 16);
         memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
         memset(program_by_articulation, 0, (2 + 16) * 128 * 16);
+        memset(banks, 0, MAX_CHANNELS * MAX_BANKS * 10);
         articulations_len = 0;
         last_new_articulation = 0;
+        banks_len = 0;
+        last_new_bank = 0;
     );
 
-    // Arguments: b0=channel, b1=program, b2=num groups/outputs
-    (opcode == OPCODE_NEW_ARTICULATION) ? (
-        // Number of events reserved.
+    // Arguments: b0=channel+version, b1=msb, b2=lsb
+    (opcode == OPCODE_NEW_BANK) ? (
         channel = b0 & 0x0f;
+        version = (b0 & 0xf0) >> 4;
+        last_new_bank = banks + banks_len;
+
+        // Now that the space is reserved, reset the events counter which we
+        // increment for each new event.
+        last_new_bank[0] = b0 | (b1 << 8) | (b2 << 16);
+        banks_len += get_bank_version_record_size(version);
+    );
+
+
+    // Arguments: b0=cc
+    (opcode == OPCODE_SET_BANK_CHASE_CC) ? (
+        offset = floor(b0 / 24);
+        bitmap = 1 << (b0 - (offset * 24));
+        last_new_bank[1 + offset] |= bitmap;
+    );
+
+
+    // Arguments: b0=channel+version, b1=program, b2=num groups/outputs
+    (opcode == OPCODE_NEW_ARTICULATION) ? (
+        channel = b0 & 0x0f;
+        // Number of events we need to reserve.
         num_outputs = b2 & 0x0f;
         last_new_articulation = articulations + articulations_len;
 
@@ -685,7 +768,7 @@ opcode = (slider64 & 0x7f000000) >> 24;
         // Now that the space is reserved, reset the events counter which we
         // increment for each new event.
         last_new_articulation[0] = b2 & 0xf0;
-        last_new_articulation[1] = b0;
+        last_new_articulation[1] = b0 | (banks_len << 8);
         articulations_len += get_articulation_output_event_offset(last_new_articulation, num_outputs);
     );
 
@@ -921,16 +1004,21 @@ local (group)
 );
 
 
-function chase_ccs(mpos, src, dst)
-local(ccs, i)
+function chase_ccs(mpos, articulation, src, dst)
+local(ccs, i, bank, offset, bitmap)
 (
     ccs = last_ccs_by_channel + (src * 16);
+    bank = get_articulation_bank(articulation);
     i = 0; loop(128,
-        (ccs[i] != -1) ? (
-            midisend(mpos, MIDI_EVENT_CC + dst, i, ccs[i]);
+        offset = floor(i / 24);
+        bitmap = 1 << (i - (offset * 24));
+        (bank[1 + offset] & bitmap) ? (
+            (ccs[i] != -1) ? (
+                midisend(mpos, MIDI_EVENT_CC + dst, i, ccs[i]);
+                mpos += 1;
+            );
         );
         i += 1;
-        mpos += 1;
     );
     mpos;
 );
@@ -980,7 +1068,7 @@ local(flags, output_type, dstchannel, param1, param2)
     (last_dstchannels & (1 << dstchannel) == 0 && flags & ARTICULATION_FLAG_CHASE) ? (
         // New dst channel was not already in previous destination channel list, so
         // need to chase CCs to the new dst channel.
-        mpos = chase_ccs(mpos, channel, dstchannel);
+        mpos = chase_ccs(mpos, articulation, channel, dstchannel);
     );
     // Include dstchannel for output event in the dstchannels bitmap.
     channel_map[channel] |= (1 << dstchannel);
