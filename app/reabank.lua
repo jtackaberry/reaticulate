@@ -335,10 +335,15 @@ function Articulation:get_outputs()
     if not self._outputs then
         self._outputs = {}
         for spec in (self.outputs or ''):gmatch('([^/]+)') do
-            output = {type=nil, channel=nil, args={}}
+            output = {type=nil, channel=nil, args={}, route=true}
             for prefix, part in ('/' .. spec):gmatch('([/@:])([^@:]+)') do
                 if prefix == '/' then
-                    output.type = part
+                    if part:starts('-') then
+                        output.route = false
+                        output.type = part:sub(2)
+                    else
+                        output.type = part
+                    end
                 elseif prefix == '@' then
                     output.channel = tonumber(part)
                 elseif prefix == ':' then

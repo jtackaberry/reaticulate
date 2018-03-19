@@ -406,6 +406,10 @@ function rfx.sync_articulation_details()
                         end
                         local param1 = tonumber(output.args[1] or 0)
                         local param2 = tonumber(output.args[2] or 0)
+                        -- Set bit 7 of param1 if this output event should not setup routing
+                        if not output.route then
+                            param1 = param1 | 0x80
+                        end
                         local typechannel = ((dstchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
                         rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, typechannel, param1, param2)
                     end

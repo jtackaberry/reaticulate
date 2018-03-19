@@ -340,8 +340,9 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 //      bits 4-7: the destination MIDI channel for the articulation.  Subsequent
 //                incoming events are routed to this channel when the articulation
 //                is activated, in addition to output event.
-//       byte 1: parameter 1 (context depends on output type)
-//       byte 2: parameter 2 (context depends on output type)
+//     bits 8-14: parameter 1 (context depends on output type)
+//        bit 15: if set, this output event should not setup channel routing
+//    bits 16-22: parameter 2 (context depends on output type)
 articulations = 200000; // size: (2 + 16*1) * 128 * 16 = 36864 (upper bound for v0)
 
 // The last articulation created by OPCODE_NEW_ARTICULATION.
@@ -582,7 +583,7 @@ function get_output_event_dstchannel(event)
 
 function get_output_event_param1(event)
 (
-    (event[0] & 0xff00) >> 8;
+    (event[0] & 0x7f00) >> 8;
 );
 
 
@@ -591,6 +592,10 @@ function get_output_event_param2(event)
     (event[0] & 0xff0000) >> 16;
 );
 
+function get_output_event_should_route(event)
+(
+    !(event[0] & 0x8000);
+);
 
 
 @gfx
@@ -777,7 +782,7 @@ opcode = (slider64 & 0x7f000000) >> 24;
         last_new_articulation[0] = (last_new_articulation[0] & 0x7f0000ff) | (b0 << 8) | (b1 << 16);
     );
 
-    // Arguments: b0=type+dstchannel, b1=param1, b2=param2
+    // Arguments: b0=type+dstchannel, b1=param1+noroute, b2=param2
     (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
         // Get current number of output events for articulation to act as the index for the
         // one being added now.
@@ -1025,13 +1030,14 @@ local(ccs, i, bank, offset, bitmap)
 
 
 function emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels)
-local(flags, output_type, dstchannel, param1, param2)
+local(flags, output_type, dstchannel, param1, param2, should_route)
 (
     flags = get_articulation_flags(articulation);
     output_type = get_output_event_type(event);
     dstchannel = get_output_event_dstchannel(event);
     param1 = get_output_event_param1(event);
     param2 = get_output_event_param2(event);
+    should_route = get_output_event_should_route(event);
 
     (output_type == OUTPUT_TYPE_PROGRAM) ? (
         midisend(mpos + 1, MIDI_EVENT_PROGRAM + dstchannel, param1, 0);
@@ -1062,16 +1068,19 @@ local(flags, output_type, dstchannel, param1, param2)
         // Here we have a referenced articulation we need to follow.  Push the articulation
         // details onto the stack (with bit 30 _un_set) so that activate() below can
         // continue processing them.
+        // FIXME: we should propagate should_route to the new articulation
         stack_push(param1 | (dstchannel << 8));
     );
 
-    (last_dstchannels & (1 << dstchannel) == 0 && flags & ARTICULATION_FLAG_CHASE) ? (
-        // New dst channel was not already in previous destination channel list, so
-        // need to chase CCs to the new dst channel.
-        mpos = chase_ccs(mpos, articulation, channel, dstchannel);
+    (should_route) ? (
+        (last_dstchannels & (1 << dstchannel) == 0 && flags & ARTICULATION_FLAG_CHASE) ? (
+            // New dst channel was not already in previous destination channel list, so
+            // need to chase CCs to the new dst channel.
+            mpos = chase_ccs(mpos, articulation, channel, dstchannel);
+        );
+        // Include dstchannel for output event in the dstchannels bitmap.
+        channel_map[channel] |= (1 << dstchannel);
     );
-    // Include dstchannel for output event in the dstchannels bitmap.
-    channel_map[channel] |= (1 << dstchannel);
     mpos + 2;
 );
 
@@ -1092,7 +1101,8 @@ local(group, articulation, flags)
 
 
 function _activate(mpos, channel, program, articulation, do_update)
-local(articulation, num_outputs, group, control, current_program, flags, last_dstchannels, i, output_type)
+local(articulation, num_outputs, group, control, current_program, flags,
+      last_dstchannels, i, output_type, should_route)
 (
     group = get_articulation_group(articulation);
     flags = get_articulation_flags(articulation);
@@ -1116,11 +1126,19 @@ local(articulation, num_outputs, group, control, current_program, flags, last_ds
         // routing map.
         last_dstchannels = channel_map[channel];
         channel_map[channel] = 0;
+        // Track whether we had any output events that setup routing.
+        should_route = 0;
         i = 0; loop(num_outputs,
             event = get_articulation_output_event(articulation, i);
             output_type = get_output_event_type(event);
+            should_route |= get_output_event_should_route(event);
             mpos = emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels);
             i += 1;
+        );
+        // If all output events were set to not setup routing, then here we restore the
+        // channel map we had before.
+        (channel_map[channel] == 0 && !should_route && num_outputs > 0) ? (
+            channel_map[channel] = last_dstchannels;
         );
         update_channel_articulation_flags(channel);
         // Process any note-offs needed for note output events now.  This allows us to ensure
