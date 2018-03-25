@@ -1137,7 +1137,7 @@ local(articulation, num_outputs, group, control, current_program, flags,
         );
         // If all output events were set to not setup routing, then here we restore the
         // channel map we had before.
-        (channel_map[channel] == 0 && !should_route && num_outputs > 0) ? (
+        (channel_map[channel] == 0 && !should_route) ? (
             channel_map[channel] = last_dstchannels;
         );
         update_channel_articulation_flags(channel);
