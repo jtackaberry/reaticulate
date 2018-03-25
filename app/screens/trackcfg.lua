@@ -63,7 +63,7 @@ function screen.init()
 
     screen.banklist = screen.widget:add(rtk.VBox:new({spacing=20}), {lpadding=10})
 
-    local spacer = rtk.Spacer({h=50, y=0, z=10})
+    local spacer = rtk.Spacer({h=150, y=0, z=10})
     spacer.ondropfocus = function(self, event)
         local bankbox = screen.banklist:get_child(-1)
         bankbox.bborder = {3, '#e7d054'}
@@ -76,7 +76,7 @@ function screen.init()
     spacer.ondrop = function(self, event, _, srcbankbox)
         return screen.move_bankbox(srcbankbox, #screen.banklist.children)
     end
-    screen.widget:add(spacer, {tpadding=-20, bpadding=-20})
+    screen.widget:add(spacer, {tpadding=-20, bpadding=-130})
 
     local add_bank_button = make_button("add_circle_outline_white_18x18.png", "Add Bank", true)
     add_bank_button.onclick = function()
@@ -139,7 +139,7 @@ function screen.create_bank_ui()
     end
     drag_handle.ondraw = function(self, offx, offy, event)
         if event:is_widget_hovering(self) then
-            rtk.mouse.cursor = rtk.mouse.cursors.size_all
+            rtk.mouse.cursor = 'ruler_scroll'
         end
     end
     row:add(drag_handle)

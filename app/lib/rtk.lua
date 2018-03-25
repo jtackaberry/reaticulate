@@ -394,7 +394,13 @@ function rtk.update()
             rtk.mouse.cursor = rtk.mouse.cursors.pointer
         end
         if rtk.mouse.cursor ~= last_cursor then
-            gfx.setcursor(rtk. mouse.cursor)
+            if type(rtk.mouse.cursor) == 'number' then
+                gfx.setcursor(rtk.mouse.cursor)
+            else
+                -- Set cursor by cursor filename.
+                -- http://reaper.fm/sdk/cursors/cursors.php#files
+                gfx.setcursor(1, rtk.mouse.cursor)
+            end 
         end
 
         if not event.handled then
