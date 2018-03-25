@@ -920,8 +920,8 @@ function rtk.Widget:onhover(event) end
 function rtk.Widget:onblur(event) end
 
 
--- Called when a widget is dragged.  If the callback returns a non-nil value
--- then the drag is allowed, otherwise it's not.  The non-nil value returned
+-- Called when a widget is dragged.  If the callback returns a non-false value
+-- then the drag is allowed, otherwise it's not.  The non-false value returned
 -- will be passed as the last parameter to the ondrop() callback of the target
 -- widget.
 function rtk.Widget:ondragstart(event) return false end
