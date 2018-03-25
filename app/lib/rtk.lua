@@ -2041,6 +2041,12 @@ function rtk.Spacer:_reflow(boxx, boxy, boxw, boxh, fillw, fillh)
                                          (fillh or not self.h) and boxh or nil)
 end
 
+-- Don't allow Spacers to be focusable.
+function rtk.Spacer:onmousedown()
+    return false
+end
+
+
 -------------------------------------------------------------------------------------------------------------
 -- TODO!
 --
