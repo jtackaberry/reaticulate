@@ -541,15 +541,17 @@ function rfx.pop_state()
         if last.automation_mode > 1 then
             reaper.SetMediaTrackInfo_Value(last.track, "I_AUTOMODE", 0)
         end
-        -- There doesn't seem to be any way to restore last touched FX parameter
-        -- other than to rewrite the current value back to the last touched FX.
-        local lastval, _, _ = reaper.TrackFX_GetParam(last.track, last.fx, last.param)
-        reaper.TrackFX_SetParam(last.track, last.fx, last.param, lastval)
+        -- Defer restoration of last touched FX in case we've just activated an articulation
+        -- that's generated an output event that ends up modifying the last touched FX.
+        --
+        -- For example, in CSS, if the user clicks in the UI e.g. the con sordino button, this
+        -- sets the last touched FX to the host parameter for con sordino.  Then if we activate
+        -- the articulation for con sord, this would modify the con sord state.  If we now read
+        -- and restore that param before the VSTi has a chance to communicate the change back,
+        -- we will have undone the articulation change.
         if not last.deferred then
-            -- Reaper sometimes needs a bit more convincing to restore the last touched FX.
-            -- It works to wrap everything in an undo block, but given the high cost of
-            -- that, this kludge appears to work while being much lower cost.
             function restore()
+                local lastval, _, _ = reaper.TrackFX_GetParam(last.track, last.fx, last.param)
                 reaper.TrackFX_SetParam(last.track, last.fx, last.param, lastval)
                 last.deferred = false
                 last.track = nil
