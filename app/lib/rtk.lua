@@ -1716,9 +1716,27 @@ function rtk.Entry:_handle_event(offx, offy, event)
         event.handled = self
         local len = self.value:len()
         if event.keycode == rtk.keycodes.LEFT then
-            self.cursor = math.max(1, self.cursor - 1)
+            if event.ctrl then
+                while self.cursor > 1 and self.value:sub(self.cursor - 1, self.cursor - 1) == ' ' do
+                    self.cursor = self.cursor - 1
+                end
+                while self.cursor > 1 and self.value:sub(self.cursor - 1, self.cursor - 1) ~= ' ' do
+                    self.cursor = self.cursor - 1
+                end
+            else
+                self.cursor = math.max(1, self.cursor - 1)
+            end
         elseif event.keycode == rtk.keycodes.RIGHT then
-            self.cursor = math.min(self.cursor + 1, len + 1)
+            if event.ctrl then
+                while self.cursor <= len and self.value:sub(self.cursor, self.cursor) ~= ' ' do
+                    self.cursor = self.cursor + 1
+                end
+                while self.cursor <= len and self.value:sub(self.cursor, self.cursor) == ' ' do
+                    self.cursor = self.cursor + 1
+                end
+            else
+                self.cursor = math.min(self.cursor + 1, len + 1)
+            end
         elseif event.keycode == rtk.keycodes.HOME then
             self.cursor = 1
         elseif event.keycode == rtk.keycodes.END then
