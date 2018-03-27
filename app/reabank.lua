@@ -43,6 +43,8 @@ local ARTICULATION_FLAG_ANTIHANG_CC = 1 << 2
 local ARTICULATION_FLAG_BLOCK_BANK_CHANGE = 1 << 3
 local ARTICULATION_FLAG_TOGGLE = 1 << 4
 local ARTICULATION_FLAG_HIDDEN = 1 << 5
+local ARTICULATION_FLAG_IS_FILTER = 1 << 6
+
 
 local function insert_program_change(take, selected, ppq, channel, bank_msb, bank_lsb, program)
     reaper.MIDI_InsertCC(take, selected, false, ppq, 0xb0, channel, 0, bank_msb)
@@ -182,6 +184,8 @@ function Bank:initialize(factory, msb, lsb, name, attrs)
     self.msb = tonumber(msb)
     self.lsb = tonumber(lsb)
     self.name = name
+    -- Set to true when Bank:realize() is called.
+    self.realized = false
     self.msblsb = (self.msb << 8) + self.lsb
     -- List of articulations in order defined in Reabank file
     self.articulations = {}
@@ -314,6 +318,29 @@ function Bank:copy_articulations_from(from_bank)
     end
 end
 
+-- Perform any necessary post-processing after all articulations are instantiated
+-- in the bank.  This need only be called when the bank is actually used by the user.
+function Bank:realize()
+    if self.realized then
+        return
+    end
+    -- Discover which articulations are used as filters for other articulations'
+    -- output events and set ARTICULATION_FLAG_IS_FILTER on them.
+    for _, art in ipairs(self.articulations) do
+        local outputs = art:get_outputs()
+        for _, output in ipairs(outputs) do
+            if output.filter_program then
+                local filter = self:get_articulation_by_program(output.filter_program)
+                if filter then
+                    filter.flags = filter.flags | ARTICULATION_FLAG_IS_FILTER
+                end
+            end
+        end
+    end
+    self.realized = true
+end
+
+
 local Articulation = class('Articulation')
 function Articulation:initialize(bank, program, name, attrs)
     self.color = 'default'
@@ -325,6 +352,9 @@ function Articulation:initialize(bank, program, name, attrs)
     self.program = program
     self.name = name
     self._attrs = attrs
+    -- True if any output event has a filter program, false otherwise, or nil if
+    -- we don't know (because we haven't called get_outputs())
+    self._has_conditional_output = nil
     table.merge(self, attrs)
     self.group = tonumber(self.group or 1)
 
@@ -333,10 +363,11 @@ end
 
 function Articulation:get_outputs()
     if not self._outputs then
+        self._has_conditional_output = false
         self._outputs = {}
         for spec in (self.outputs or ''):gmatch('([^/]+)') do
-            output = {type=nil, channel=nil, args={}, route=true}
-            for prefix, part in ('/' .. spec):gmatch('([/@:])([^@:]+)') do
+            output = {type=nil, channel=nil, args={}, route=true, filter_program=nil}
+            for prefix, part in ('/' .. spec):gmatch('([/@:%%])([^@:%%]+)') do
                 if prefix == '/' then
                     if part:starts('-') then
                         output.route = false
@@ -348,12 +379,19 @@ function Articulation:get_outputs()
                     output.channel = tonumber(part)
                 elseif prefix == ':' then
                     output.args = part:split(',')
+                elseif prefix == '%' then
+                    output.filter_program = tonumber(part)
+                    self._has_conditional_output = true
                 end
             end
             self._outputs[#self._outputs+1] = output
         end
     end
     return self._outputs
+end
+
+function Articulation:has_conditional_output()
+    return self._has_conditional_output
 end
 
 -- Returns a human readable string explaining what the outputs do.
@@ -415,7 +453,7 @@ function Articulation:copy_to_bank(bank)
 end
 
 function Articulation:get_bank()
-    return reabank.banks[self.bankidx]
+    return reabank.get_bank_by_msblsb(self.bankidx)
 end
 
 function Articulation:activate(refocus, force_insert)

@@ -39,6 +39,7 @@ local rfx = {
     OPCODE_SET_CC_FEEDBACK_ENABLED = 8,
     OPCODE_NEW_BANK = 9,
     OPCODE_SET_BANK_CHASE_CC = 10,
+    OPCODE_SET_OUTPUT_EVENT_INFO1 = 11,
 
     params_by_version = {
         [1 << 16] = {
@@ -381,17 +382,24 @@ function rfx.sync_articulation_details()
         local banks = rfx.banks_by_channel[channel]
         if banks then
             for _, bank in ipairs(banks) do
+                bank:realize()
                 local param1 = (channel - 1) | (0 << 4)
                 rfx.opcode(rfx.OPCODE_NEW_BANK, param1, bank.msb, bank.lsb)
                 for _, cc in ipairs(bank:get_chase_cc_list()) do
                     rfx.opcode(rfx.OPCODE_SET_BANK_CHASE_CC, cc)
                 end
                 for _, art in ipairs(bank.articulations) do
+                    local version = 0
                     local group = art.group - 1
                     local outputs = art:get_outputs()
+                    local version = 0
+                    -- If the articulation has a conditional output event then we need to use a
+                    -- v1 articulation record to allow OPCODE_SET_OUTPUT_EVENT_INFO1 later.
+                    if art:has_conditional_output() then
+                        version = 1
+                    end
                     -- First nybble of param1 is source channel, while second is articulation record version.
-                    -- Use 0 of default right now, will be extended in future.
-                    local param1 = (channel - 1) | (0 << 4)
+                    local param1 = (channel - 1) | (version << 4)
                     rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, param1, art.program, (group << 4) + #outputs)
                     rfx.opcode(rfx.OPCODE_SET_ARTICULATION_INFO, art.flags, art.off or bank.off or 128, 0)
 
@@ -412,6 +420,12 @@ function rfx.sync_articulation_details()
                         end
                         local typechannel = ((dstchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
                         rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, typechannel, param1, param2)
+
+                        -- Set filter program if the output event is conditional.
+                        local filter = output.filter_program and (output.filter_program | 0x80) or 0
+                        if version > 0 and filter > 0 then
+                            rfx.opcode(rfx.OPCODE_SET_OUTPUT_EVENT_INFO1, filter, 0, 0)
+                        end
                     end
                 end
             end

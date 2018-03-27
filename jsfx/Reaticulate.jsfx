@@ -192,6 +192,14 @@ OPCODE_NEW_BANK = 9;
 // (cc)
 OPCODE_SET_BANK_CHASE_CC = 10;
 
+// Sets additional parameters for the last output event added with
+// OPCODE_ADD_OUTPUT_EVENT.  Requires an articulation record version of
+// 1 or later.
+//
+// (filter_program)
+OPCODE_SET_OUTPUT_EVENT_INFO1 = 11;
+
+
 
 // Constants that apply to the flags parameter for OPCODE_SET_ARTICULATION_INFO
 ARTICULATION_FLAG_CHASE = 1 << 0;
@@ -199,6 +207,8 @@ ARTICULATION_FLAG_ANTIHANG = 1 << 1;
 ARTICULATION_FLAG_ANTIHANG_CC = 1 << 2;
 ARTICULATION_FLAG_BLOCK_BANK_CHANGE = 1 << 3;
 ARTICULATION_FLAG_TOGGLE = 1 << 4;
+ARTICULATION_FLAG_HIDDEN = 1 << 5;
+ARTICULATION_FLAG_IS_FILTER = 1 << 6;
 
 // Constants that refer to the low nybble of the type+dstchannel parameter
 // for OPCODE_ADD_OUTPUT_EVENT
@@ -317,25 +327,27 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 // versions are defined:
 //
 //     v0: each record is 2 + n slots, where n is the # of output events.
+//     v1: each record is 3 + 2n slots, where n is the # of output events.
 //
 // This array is indexed via articulations_ptr.
 //
-// Slot 0: v0 - articulation information
+// Slot 0: v0+ - articulation information
 //      bits 0-3: number of output events (see below)
 //      bits 4-7: group number
 //        byte 1: articulation flags
 //        byte 2: "off" (release) program for articulations with note-hold outputs.
-// Slot 1: v0
+// Slot 1: v0+
 //      bits 0-3: source channel
 //      bits 4-7: articulation record version
 //     bytes 1-2: indicates the offset (from 0) into the banks array this
 //                articulation belongs to.
+// Slot 2: v1+ - reserved for future expansion
 //
 // Following the base articulation information slots, there are n*m slots for
 // output events, where n is the # of output events and m is dependent on
 // the articulation record version.
 //
-// Slot 0: v0
+// Slot 0: v0+
 //      bits 0-3: output type (see OUTPUT_TYPE_* constants)
 //      bits 4-7: the destination MIDI channel for the articulation.  Subsequent
 //                incoming events are routed to this channel when the articulation
@@ -343,10 +355,18 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 //     bits 8-14: parameter 1 (context depends on output type)
 //        bit 15: if set, this output event should not setup channel routing
 //    bits 16-22: parameter 2 (context depends on output type)
-articulations = 200000; // size: (2 + 16*1) * 128 * 16 = 36864 (upper bound for v0)
+// Slot 1: v1
+//      bits 0-6: filter program number: if this program isn't already activated
+//                in another group on the same channel, then the output event
+//                will not be emitted.
+//         bit 7: if set, filtering will be performed.
+articulations = 200000; // size: (3 + 16*2) * 128 * 16 = 71680 (upper bound for v1)
 
 // The last articulation created by OPCODE_NEW_ARTICULATION.
 last_new_articulation = 0;
+
+// The latest output event creater by OPCODE_ADD_OUTPUT_EVENT.
+last_new_output_event = 0;
 
 // Maps output events to articulations.  The first 24 bits of the value is a
 // pointer to the articulation, and the MSB holds the output event number of
@@ -431,14 +451,14 @@ last_new_bank = 0;
 function get_articulation_version_record_size(version)
 (
     (version == 0) ? 2 : (
-        (version == 1) ? 3; // TBD
+        (version == 1) ? 3;
     );
 );
 
 function get_articulation_version_output_event_size(version)
 (
     (version == 0) ? 1 : (
-        (version == 1) ? 2; // TBD
+        (version == 1) ? 2;
     );
 );
 
@@ -477,12 +497,24 @@ function get_articulation(channel, program)
 );
 
 
-function is_program_active(channel, group, program)
+function is_program_active(channel, program)
+local(control)
+(
+    control = slider(SLIDER_OFFSET_CONTROL + channel);
+    (control & 0xff == program ||
+     (control & 0xff00) >> 8 == program ||
+     (control & 0xff0000) >> 16 == program ||
+     ((control & 0x7f000000) >> 24 == program && slider26 & (1 << channel) != 0)
+    );
+);
+
+
+function is_program_active_for_group(channel, group, program)
 (
     (group < 3) ? (
         program < 128;
     ) : (
-        slider26 & (1 << channel) == 1;
+        slider26 & (1 << channel) != 0;
     );
 );
 
@@ -491,7 +523,7 @@ function get_active_program(channel, group)
 local(program)
 (
     program = (slider(SLIDER_OFFSET_CONTROL + channel) >> (group * 8)) & 0xff;
-    is_program_active(channel, group, program) ? program : -1;
+    is_program_active_for_group(channel, group, program) ? program : -1;
 );
 
 
@@ -529,7 +561,7 @@ function get_articulation_flags(articulation)
 
 function get_articulation_off_program(articulation)
 (
-    (articulation[0] & 0xff0000) >> 16;
+    (articulation[0] & 0x7f0000) >> 16;
 );
 
 
@@ -595,6 +627,17 @@ function get_output_event_param2(event)
 function get_output_event_should_route(event)
 (
     !(event[0] & 0x8000);
+);
+
+// Returns -1 if no filtering.
+function get_output_event_filter_program(event)
+(
+    // Requires v1+ articulations, but does not do a version test.
+    (event[1] & 0x80) ? (
+        event[1] & 0x7f;
+    ) : (
+        -1;
+    );
 );
 
 
@@ -732,6 +775,7 @@ opcode = (slider64 & 0x7f000000) >> 24;
         memset(banks, 0, MAX_CHANNELS * MAX_BANKS * 10);
         articulations_len = 0;
         last_new_articulation = 0;
+        last_new_output_event = 0;
         banks_len = 0;
         last_new_bank = 0;
     );
@@ -790,6 +834,7 @@ opcode = (slider64 & 0x7f000000) >> 24;
 
         // Get pointer to current output event.
         event = last_new_articulation + get_articulation_record_size(last_new_articulation);
+        last_new_output_event = event;
         event[0] = b0 | (b1 << 8) | (b2 << 16);
 
         // Increment events count.
@@ -799,6 +844,11 @@ opcode = (slider64 & 0x7f000000) >> 24;
         update_output_event_map(b0 & 0x0f, b1, b2, last_new_articulation, num_outputs);
     );
 
+    // Arguments: b0=filter program+filter enabeld, b1=unused, b2=unused
+    (opcode == OPCODE_SET_OUTPUT_EVENT_INFO1) ? (
+        // Requires v1 articulations but does not do version test.
+        last_new_output_event[1] = b0;
+    );
 
     // Arguments: b0=channel, b1=program
     (opcode == OPCODE_ACTIVATE_ARTICULATION) ? (
@@ -947,12 +997,15 @@ local (idx, dstchannels, group_held, i)
 
 
 function _send_held_keyswitch_note(mpos, channel, group, retrigger)
-local(dstchannels, idx, group_held, i, velocity)
+local(dstchannels, idx, group_held, i, note, dstchannels, velocity)
 (
     idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
     group_held = held_keyswitches + idx;
     noteinfo = group_held;
     i = 0;
+    // Push a sentinel.  Safely unique as the dstchannels bitmap (the lower 16 bits)
+    // will never be 0.
+    stack_push(0x42420000);
     // Send deferred note-offs for previously triggered keyswitches in this group.
     while (noteinfo[0] && i < MAX_HELD_KEYSWITCHES) (
         note = noteinfo[0] & 0xff;
@@ -973,7 +1026,7 @@ local(dstchannels, idx, group_held, i, velocity)
     // we now need to send note-on events for.  This ensures even during retriggering
     // we preserve the fix for #26 (to ensure multiple note-hold output events simulate
     // being pressed together).
-    while (stack_peek(0)) (
+    while (stack_peek(0) != 0x42420000) (
         stack_pop(i);
         note = (i & 0xff000000) >> 24;
         velocity = (i & 0xff0000) >> 16;
@@ -981,6 +1034,8 @@ local(dstchannels, idx, group_held, i, velocity)
         mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, note, velocity);
         mpos += 1;
     );
+    // Pop sentinel
+    stack_pop();
     mpos;
 );
 
@@ -1029,6 +1084,14 @@ local(ccs, i, bank, offset, bitmap)
 );
 
 
+function _enqueue_articulation(program, channel, except_program)
+(
+    (program != except_program) ? (
+        stack_push(program | (channel << 8));
+    );
+);
+
+
 function emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels)
 local(flags, output_type, dstchannel, param1, param2, should_route)
 (
@@ -1044,10 +1107,12 @@ local(flags, output_type, dstchannel, param1, param2, should_route)
     );
     (output_type == OUTPUT_TYPE_NOTE) ? (
         midisend(mpos + 1, MIDI_EVENT_NOTE_ON + dstchannel, param1, param2 ? param2 : 127);
-        // We usurp the stack to defer the note-off events until all note-on events
-        // for the output list have been processed.  _activate() below will check
-        // the stack for values with bit 30 set and process the note-offs.
-        stack_push((1 << 30) | (dstchannel) << 8 | param1);
+        // Here we send the note-offs with a large enough offset to ensure they follow all
+        // note-ons from the list of output events for this articulation.  This causes
+        // multiple note output events to simulate pressing the keys simultaneously.
+        //
+        // Fixes #20.
+        midisend(mpos + 50, MIDI_EVENT_NOTE_OFF + dstchannel, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE_HOLD) ? (
         off_program = get_articulation_off_program(articulation);
@@ -1066,10 +1131,9 @@ local(flags, output_type, dstchannel, param1, param2, should_route)
     );
     (output_type == OUTPUT_TYPE_ARTICULATION) ? (
         // Here we have a referenced articulation we need to follow.  Push the articulation
-        // details onto the stack (with bit 30 _un_set) so that activate() below can
-        // continue processing them.
+        // details onto the stack so that activate() below can continue processing them.
         // FIXME: we should propagate should_route to the new articulation
-        stack_push(param1 | (dstchannel << 8));
+        _enqueue_articulation(param1, dstchannel, program);
     );
 
     (should_route) ? (
@@ -1106,6 +1170,7 @@ local(articulation, num_outputs, group, control, current_program, flags,
 (
     group = get_articulation_group(articulation);
     flags = get_articulation_flags(articulation);
+    version = get_articulation_version(articulation);
     control = slider(SLIDER_OFFSET_CONTROL + channel);
     last_program = (control >> (8 * group)) & 0xff;
     (last_program != program || group == 3 || flags & ARTICULATION_FLAG_TOGGLE) ? (
@@ -1130,9 +1195,12 @@ local(articulation, num_outputs, group, control, current_program, flags,
         should_route = 0;
         i = 0; loop(num_outputs,
             event = get_articulation_output_event(articulation, i);
-            output_type = get_output_event_type(event);
-            should_route |= get_output_event_should_route(event);
-            mpos = emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels);
+            filter_program = version > 0 ? get_output_event_filter_program(event) : -1;
+            (filter_program < 0 || is_program_active(channel, filter_program)) ? (
+                output_type = get_output_event_type(event);
+                should_route |= get_output_event_should_route(event);
+                mpos = emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels);
+            );
             i += 1;
         );
         // If all output events were set to not setup routing, then here we restore the
@@ -1140,22 +1208,24 @@ local(articulation, num_outputs, group, control, current_program, flags,
         (channel_map[channel] == 0 && !should_route) ? (
             channel_map[channel] = last_dstchannels;
         );
-        update_channel_articulation_flags(channel);
-        // Process any note-offs needed for note output events now.  This allows us to ensure
-        // all note-ons were sent before we start sending any note-offs, so that multiple
-        // note output events simulate pressing the keys simultaneously.
-        //
-        // Fixes #20.
-        while (stack_peek(0) & (1 << 30)) (
-            stack_pop(i);
-            midisend(mpos + 1, MIDI_EVENT_NOTE_ON + (i & 0xff00) >> 8 + dstchannel, i & 0xff, 0);
-            mpos += 1;
-        );
     ) : (
         // There are no output events defined for this program.  We're not going to
         // clear the current channel routing map but we will release any held
         // notes for this channel and group.
         mpos = send_deferred_note_off(mpos, channel, group);
+    );
+    update_channel_articulation_flags(channel);
+
+    // If the activated program acts as a filter for some other articulation's output events,
+    // retrigger all active articulations in the same group if they
+    (flags & ARTICULATION_FLAG_IS_FILTER) ? (
+        control = slider(SLIDER_OFFSET_CONTROL + channel);
+        _enqueue_articulation(control & 0xff, channel, program);
+        _enqueue_articulation((control & 0xff00) >> 8, channel, program);
+        _enqueue_articulation((control & 0xff0000) >> 16, channel, program);
+        slider26 & (1 << channel) ? (
+            _enqueue_articulation((control & 0x7f000000) >> 24, channel, program);
+        );
     );
     mpos;
 );
@@ -1175,7 +1245,7 @@ local (group, cascade_channel, cascade_program, cascade_articulation, cascade_gr
             group = get_articulation_group(articulation);
             while (stack_peek(0)) (
                 stack_pop(artinfo);
-                cascade_channel = artinfo >> 8;
+                cascade_channel = (artinfo & 0xff00) >> 8;
                 cascade_program = artinfo & 0xff;
                 cascade_articulation = get_articulation(cascade_channel, cascade_program);
                 (cascade_articulation) ? (
