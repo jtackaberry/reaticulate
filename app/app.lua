@@ -668,12 +668,13 @@ function App.init(basedir)
 
     App.screens.replace(App.screens.banklist)
     -- App.screens.push(App.screens.settings)
+    -- App.screens.push(App.screens.trackcfg)
     App.set_default_channel(1)
 
     rtk.onupdate = function()
-        exists, val = reaper.GetProjExtState(0, "reaticulate", "command")
-        if exists ~= 0 then
-            reaper.SetProjExtState(0, "reaticulate", "command", '')
+        if reaper.HasExtState("reaticulate", "command") then
+            val = reaper.GetExtState("reaticulate", "command")
+            reaper.SetExtState("reaticulate", "command", '', false)
             for cmd, arg in val:gmatch('(%S+)=([^"]%S*)') do
                 App.handle_command(cmd, arg)
             end
