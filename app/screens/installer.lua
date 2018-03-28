@@ -51,6 +51,9 @@ function screen.init()
         reaper.Undo_EndBlock("Add Reaticulate FX", -1)
         reaper.PreventUIRefresh(-1)
         rfx.sync(rfx.track, true)
+        -- Trigger the track changed callback to ensure any actions dependend on the RFX are
+        -- triggered now that we've instantiated it.
+        App.ontrackchange(nil, rfx.track)
         screen.update()
     end
 
