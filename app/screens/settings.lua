@@ -21,6 +21,28 @@ local screen = {
     midi_device_menu = nil
 }
 
+
+local startup_script = [[
+-- Begin Reaticulate startup stanza (don't edit this line)
+local sep = package.config:sub(1, 1)
+local script = debug.getinfo(1, 'S').source:sub(2)
+local basedir = script:gsub('(.*)' .. sep .. '.*$', '%1')
+dofile(basedir .. sep .. 'Reaticulate' .. sep .. 'actions' .. sep .. 'Reaticulate_Start.lua')
+-- End Reaticulate startup stanza (don't edit this line)
+]]
+
+local function update_startup_action(start)
+    local scriptfile = Path.join(reaper.GetResourcePath(), 'Scripts', '__startup.lua')
+    local script = read_file(scriptfile) or ''
+    name = name:gsub("%^a", "")
+    script = script:gsub('-- Begin Reaticulate.*-- End Reaticulate[^\n]*\n*', '')
+    if start then
+        script = script .. '\n\n' .. startup_script
+    end
+    write_file(scriptfile, script)
+end
+
+
 local function make_section(title)
     local heading = rtk.Heading:new({label=title})
     screen.widget:add(heading, {
@@ -51,7 +73,7 @@ function screen.init()
 
     local section = make_section("CC Feedback to Control Surface")
     local row = add_row(section, "MIDI Device:", 75, 2)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}), {expand=1, fill=true, rpadding=10})
+    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3, w=-10}))
     menu.onchange = function(menu)
         log("Changed MIDI CC feedback device: %s", menu.selected_id)
         last_device = App.config.cc_feedback_device
@@ -91,6 +113,16 @@ function screen.init()
 
 
     local section = make_section("Misc Settings")
+    local row = add_row(section, "Autostart:", 75)
+    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3, w=-10}))
+    menu:setmenu({'Never', 'When REAPER starts'})
+    menu:select((App.config.autostart or 0) + 1)
+    menu.onchange = function(menu)
+        update_startup_action(menu.selected == 2)
+        App.config.autostart = menu.selected - 1
+        App.save_config()
+    end
+
     local row = add_row(section, "Debug:", 75)
     local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
     menu:setmenu({'Disabled', 'Enabled'})

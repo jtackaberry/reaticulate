@@ -53,7 +53,8 @@ App = {
         cc_feedback_device = -1,
         cc_feedback_bus = 1,
         -- Togglable via action
-        cc_feedback_active = true
+        cc_feedback_active = true,
+        autostart = 0
     },
 
     toolbar = {
@@ -302,6 +303,8 @@ function App.handle_command(cmd, arg)
             feedback.set_active(not not enabled)
         end
         feedback.dump_ccs(App.track)
+    elseif cmd == 'ping' then
+        reaper.SetExtState("reaticulate", "pong", arg, false)
     end
 end
 
