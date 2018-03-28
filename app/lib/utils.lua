@@ -60,9 +60,11 @@ function string.strip(s)
 
 function read_file(fname)
     local f = io.open(fname)
-    local contents = f:read("*all")
-    f:close()
-    return contents
+    if f then
+        local contents = f:read("*all")
+        f:close()
+        return contents
+    end
 end
 
 function write_file(fname, contents)
