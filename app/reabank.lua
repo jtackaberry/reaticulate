@@ -590,9 +590,11 @@ function reabank.parse(filename, banks)
             end
         elseif line:len() > 0 and not line:starts("//") then
             program, name = line:match("(%d+) +(.*)")
-            art = Articulation(bank, tonumber(program), name, metadata)
-            if art.flags & ARTICULATION_FLAG_HIDDEN == 0 then
-                bank:add_articulation(art)
+            if program and name then
+                art = Articulation(bank, tonumber(program), name, metadata)
+                if art.flags & ARTICULATION_FLAG_HIDDEN == 0 then
+                    bank:add_articulation(art)
+                end
             end
             -- Reinitialize for next articulation
             metadata = {}
