@@ -498,10 +498,12 @@ function rfx.push_state(track)
             if val < 0 or (math.floor(val) & 0xff000000) ~= rfx.MAGIC then
                 -- Last FX isn't an RFX, so we're ok to restore it.
                 last.param = lparam
+                last.rfx = false
             else
                 -- Last touched FX is (somehow) an RFX.  Let's at least change the last
                 -- touched parameter to something innocuous.  (This parameter is unused.)
                 last.param = 61
+                last.rfx = true
             end
             last.automation_mode = reaper.GetMediaTrackInfo_Value(last.track, "I_AUTOMODE")
             if last.automation_mode > 1 then
@@ -551,28 +553,40 @@ function rfx.pop_state()
 
     -- Restore last touched FX
     local last = state.last_touched_fx
-    if last.track then
+    if last.track and reaper.ValidatePtr2(0, last.track, "MediaTrack*") then
         if last.automation_mode > 1 then
             reaper.SetMediaTrackInfo_Value(last.track, "I_AUTOMODE", 0)
         end
-        -- Defer restoration of last touched FX in case we've just activated an articulation
-        -- that's generated an output event that ends up modifying the last touched FX.
+        -- If the last touched FX is an RFX or the last touched track is different than
+        -- the current one, we can safely restore the last touched FX synchronously because
+        -- we know any action that occurred in between push_state() and pop_state() wouldn't
+        -- have interfered with the last toucehd FX.
+        --
+        -- Otherwise, we defer restoration of last touched FX in case we've just activated an
+        -- articulation that's generated an output event that ends up modifying the last
+        -- touched FX.
         --
         -- For example, in CSS, if the user clicks in the UI e.g. the con sordino button, this
         -- sets the last touched FX to the host parameter for con sordino.  Then if we activate
         -- the articulation for con sord, this would modify the con sord state.  If we now read
         -- and restore that param before the VSTi has a chance to communicate the change back,
         -- we will have undone the articulation change.
-        if not last.deferred then
-            function restore()
+        function restore()
+            if last.track and reaper.ValidatePtr2(0, last.track, "MediaTrack*") then
                 local lastval, _, _ = reaper.TrackFX_GetParam(last.track, last.fx, last.param)
                 reaper.TrackFX_SetParam(last.track, last.fx, last.param, lastval)
-                last.deferred = false
-                last.track = nil
             end
+            last.deferred = false
+            last.track = nil
+        end
+        if last.rfx or last.track ~= rfx.track then
+            restore()
+        elseif not last.deferred then
             last.deferred = true
             reaper.defer(restore)
         end
+    else
+        last.track = nil
     end
 
     -- Due to what must be a bug in Reaper, we need to restore the track automation modes

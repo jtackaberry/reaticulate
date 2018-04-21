@@ -35,6 +35,7 @@ function feedback.ontrackchange(last, cur)
         rfx.pop_state()
     end
     if cur and rfx.fx then
+        -- Track must be monitored for MIDI input for CC feedback to be triggered.
         local input = reaper.GetMediaTrackInfo_Value(cur, "I_RECINPUT")
         rfx.push_state(cur)
         if input and input & 4096 ~= 0 then
@@ -124,7 +125,7 @@ function feedback._set_track_enabled(track, enabled)
     end
     -- FIXME: not validated, can't easily call rfx.validate()
     local fx = rfx.get(track)
-    if fx >= 0 then
+    if fx >= 0 and rfx.params then
         local param = enabled + (bus << 8) + ((rfx.OPCODE_SET_CC_FEEDBACK_ENABLED & 0x7f) << 24)
         reaper.TrackFX_SetParam(track, fx, rfx.params.opcode, param)
     end
