@@ -55,95 +55,37 @@ local function insert_program_change(take, selected, ppq, channel, bank_msb, ban
     reaper.UpdateItemInProject(item)
 end
 
-local function replace_selected_events(take, channel, bank_msb, bank_lsb, val)
-    local evtidx = reaper.MIDI_EnumSelEvts(take, 0)
-    local replace = {}
-    while evtidx > -1 do
-        local rv, selected, muted, ppq, msg = reaper.MIDI_GetEvt(take, evtidx, true, true, 1, "")
-        local command = string.byte(msg, 1) & 0xf0
-        local value = string.byte(msg, 2)
-        -- Replace either CC 0 (command == 176) and value 0/32, which is a bank select, or
-        -- a program change (command == 192).
-        if (command == 0xb0 and (value == 0 or value == 0x20)) or command == 0xc0 then
-            replace[#replace+1] = {evtidx, ppq}
+-- Deletes all bank select or program change events at the given ppq.
+-- The caller passes an index of a CC event which must exist at the ppq,
+-- but in case there are multiple events at that ppq, it's not required that
+-- it's the first.
+local function delete_program_events_at_ppq(take, idx, max, ppq)
+    -- The supplied index is at the ppq, but there may be others ahead of it.  So
+    -- rewind to the first.
+    while idx >= 0 do
+        local rv, selected, muted, evtppq, command, chan, msg2, msg3 = reaper.MIDI_GetCC(take, idx)
+        if evtppq ~= ppq then
+            break
         end
-        evtidx = reaper.MIDI_EnumSelEvts(take, evtidx + 1)
+        idx = idx - 1
     end
-    if #replace > 0 then
-        for _, events in ipairs(replace) do
-            local evtidx, ppq = table.unpack(events)
-            reaper.MIDI_DeleteEvt(take, evtidx)
-            insert_program_change(take, true, ppq, channel, bank_msb, bank_lsb, val)
+    idx = idx + 1
+    -- Now idx is the first CC at ppq.  Enumerate subsequent events and delete
+    -- any bank selects or program changes until we move off the ppq.
+    while idx < max do
+        local rv, selected, muted, evtppq, command, chan, msg2, msg3 = reaper.MIDI_GetCC(take, idx)
+        if evtppq ~= ppq then
+            return
         end
-        return true
-    else
-        return false
+        if (command == 0xb0 and (msg2 == 0 or msg2 == 0x20)) or (command == 0xc0) then
+            reaper.MIDI_DeleteCC(take, idx)
+        else
+            -- If we deleted the event, we don't advance idx because the old value would
+            -- point to the adjacent event.  Otherwise we do need to increment it.
+            idx = idx + 1
+        end
     end
-    return #replace > 0
 end
-
--- Source channel starts at 1 (17 = use default channel)
-local function activate_articulation(source_channel, msb, lsb, program, force_insert)
-    local channel = source_channel - 1
-    if channel >= 16 then
-        channel = App.default_channel - 1
-    end
-
-    local take = nil
-
-    -- If MIDI Editor is open, use the current take there.
-    local hwnd = reaper.MIDIEditor_GetActive()
-    if hwnd then
-        -- Magic value 32060 is the MIDI editor context
-        local stepInput = reaper.GetToggleCommandStateEx(32060, 40481)
-        if stepInput == 1 or force_insert then
-            take = reaper.MIDIEditor_GetTake(hwnd)
-        end
-    elseif force_insert then
-        -- No active MIDI editor and we want to force insert.  Try to find the current
-        -- take on the selected track based on edit cursor position.
-        --
-        -- FIXME: might support multiple selected tracks.
-        local track = reaper.GetSelectedTrack(0, 0)
-        if track then
-            local cursor = reaper.GetCursorPosition()
-            for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
-                local item = reaper.GetTrackMediaItem(track, idx)
-                local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
-                local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
-                if cursor >= startpos and cursor <= endpos then
-                    take = reaper.GetActiveTake(item)
-                    break
-                end
-            end
-        end
-    end
-    if take then
-        -- Take was found (either because MIDI editor is open with step input enabled or because
-        -- force insert was used), so inject the PC event at the current cursor position.
-        reaper.PreventUIRefresh(1)
-        reaper.Undo_BeginBlock2(0)
-        -- Replace any existing selected events (if those events are program changes)
-        -- otherwise insert a new event at the cursor position.
-        --
-        -- FIXME: if there's another program change at the editor position for a
-        -- known articulation in the same group, then we should also replace it
-        -- (which is most easily done by just selecting them before moving on).
-        -- This prevents accumulation of pointless program changes on the track.
-        if not replace_selected_events(take, channel, msb, lsb, program) then
-            local cursor = reaper.GetCursorPosition()
-            local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
-            insert_program_change(take, false, ppq, channel, msb, lsb, program)
-        end
-        reaper.Undo_EndBlock2(0, "Reaticulate: insert program change (" .. program .. ")", -1)
-        reaper.PreventUIRefresh(-1)
-    end
-    rfx.activate_articulation(channel, program)
-    reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, msb)
-    reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, lsb)
-    reaper.StuffMIDIMessage(0, 0xc0 + channel, program, 0)
-end
-
 
 local function _parse_flags(flags, value)
     if not flags then
@@ -473,13 +415,95 @@ function Articulation:activate(refocus, force_insert)
         reaper.defer(App.refocus)
     end
     if self.program >= 0 then
-        local bank = self:get_bank()
-        activate_articulation(bank.srcchannel, bank.msb, bank.lsb, self.program, force_insert)
+        self:_activate(force_insert)
         return true
     else
         return false
     end
 end
+
+function Articulation:_activate(force_insert)
+    local bank = self:get_bank()
+    -- Source channel starts at 1 (17 = use default channel)
+    local channel = bank.srcchannel - 1
+    if channel >= 16 then
+        channel = App.default_channel - 1
+    end
+
+    local take = nil
+
+    -- If MIDI Editor is open, use the current take there.
+    local hwnd = reaper.MIDIEditor_GetActive()
+    if hwnd then
+        -- Magic value 32060 is the MIDI editor context
+        local stepInput = reaper.GetToggleCommandStateEx(32060, 40481)
+        if stepInput == 1 or force_insert then
+            take = reaper.MIDIEditor_GetTake(hwnd)
+        end
+    elseif force_insert then
+        -- No active MIDI editor and we want to force insert.  Try to find the current
+        -- take on the selected track based on edit cursor position.
+        --
+        -- FIXME: might support multiple selected tracks.
+        local track = reaper.GetSelectedTrack(0, 0)
+        if track then
+            local cursor = reaper.GetCursorPosition()
+            for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
+                local item = reaper.GetTrackMediaItem(track, idx)
+                local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
+                local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
+                if cursor >= startpos and cursor <= endpos then
+                    take = reaper.GetActiveTake(item)
+                    break
+                end
+            end
+        end
+    end
+    reaper.PreventUIRefresh(1)
+    if take then
+        reaper.Undo_BeginBlock2(0)
+        -- Take was found (either because MIDI editor is open with step input enabled or because
+        -- force insert was used), so inject the PC event at the current cursor position.
+
+        -- This is a bit tragic.  There's no native function to get a list of MIDI events given a
+        -- ppq.  So knowing that the event indexes will be ordered by time, we do a binary search
+        -- across the events until we converge on the ppq.
+        --
+        -- If the events at the ppq are program changes, we delete them (as we're about to replace
+        -- them).
+        local cursor = reaper.GetCursorPosition()
+        local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
+
+        local _, _, n_events, _ = reaper.MIDI_CountEvts(take)
+        local skip = math.floor(n_events / 2)
+        local idx = skip
+        while idx > 0 and idx < n_events and skip > 0.5 do
+            local rv, _, _, evtppq, _, _, _, _ = reaper.MIDI_GetCC(take, idx)
+            skip = skip / 2
+            if evtppq > ppq then
+                -- Event is ahead of target ppq, back up.
+                idx = idx - math.ceil(skip)
+            elseif evtppq < ppq then
+                -- Event is behind target ppq, skip ahead.
+                idx = idx + math.ceil(skip)
+            else
+                delete_program_events_at_ppq(take, idx, n_events, ppq)
+                break
+            end
+        end
+        insert_program_change(take, false, ppq, channel, bank.msb, bank.lsb, self.program)
+        rfx.activate_articulation(channel, self.program)
+        reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. self.name .. ")", -1)
+    else
+        rfx.activate_articulation(channel, self.program)
+    end
+    reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, bank.msb)
+    reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, bank.lsb)
+    reaper.StuffMIDIMessage(0, 0xc0 + channel, self.program, 0)
+    reaper.PreventUIRefresh(-1)
+end
+
+
 
 function Articulation:is_active()
     return self.channels ~= 0
