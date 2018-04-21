@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="Brass Hi"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 1 Albion 1 - Brass Hi
 
 //! c=short i=staccato o=cc:32,40
@@ -17,14 +17,13 @@ Bank 66 1 Albion 1 - Brass Hi
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="Brass Lo"
-//! m="Set patch to UACC"
 //! clone="Spitfire/Albion 1/Brass Hi"
 Bank 66 2 Albion 1 - Brass Lo
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="Brass Mid"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 3 Albion 1 - Brass Mid
 
 //! c=short i=staccato o=cc:32,40
@@ -37,7 +36,7 @@ Bank 66 3 Albion 1 - Brass Mid
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="Piano"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 4 Albion 1 - Piano
 
 //! c=short i=staccato o=cc:32,40
@@ -52,7 +51,7 @@ Bank 66 4 Albion 1 - Piano
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="String Hi"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 5 Albion 1 - String Hi
 
 //! c=short i=staccato o=cc:32,40
@@ -89,7 +88,7 @@ Bank 66 5 Albion 1 - String Hi
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="String Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 6 Albion 1 - String Lo
 
 //! c=short i=staccato o=cc:32,40
@@ -120,7 +119,7 @@ Bank 66 6 Albion 1 - String Lo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="Woodwind Hi"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 7 Albion 1 - Woodwind Hi
 
 //! c=short i=staccato o=cc:32,40
@@ -143,7 +142,7 @@ Bank 66 7 Albion 1 - Woodwind Hi
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 1" n="Woodwind Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 8 Albion 1 - Woodwind Lo
 
 //! c=short i=staccato o=cc:32,40

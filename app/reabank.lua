@@ -45,6 +45,7 @@ local ARTICULATION_FLAG_TOGGLE = 1 << 4
 local ARTICULATION_FLAG_HIDDEN = 1 << 5
 local ARTICULATION_FLAG_IS_FILTER = 1 << 6
 
+local DEFAULT_CHASE_CCS = '1,2,11,64-69'
 
 local function insert_program_change(take, selected, ppq, channel, bank_msb, bank_lsb, program)
     reaper.MIDI_InsertCC(take, selected, false, ppq, 0xb0, channel, 0, bank_msb)
@@ -195,6 +196,8 @@ function Bank:initialize(factory, msb, lsb, name, attrs)
     -- 1 = channel 1, 17 = omni
     self.channel = 17
     table.merge(self, attrs)
+    -- Remember the supplied attributes for copy_missing_attributes_from()
+    self._attrs = attrs
 
     self.flags = _parse_flags(self.flags,
         -- Defaults
@@ -254,7 +257,7 @@ function Bank:get_chase_cc_list()
         return self._chase
     end
     ccs = {}
-    chase = self.chase or '1-127'
+    chase = self.chase or DEFAULT_CHASE_CCS
     for _, elem in ipairs(chase:split(',')) do
         if elem:find('-') then
             subrange = elem:split('-')
@@ -315,6 +318,15 @@ end
 function Bank:copy_articulations_from(from_bank)
     for _, art in ipairs(from_bank.articulations) do
         art:copy_to_bank(self)
+    end
+end
+
+function Bank:copy_missing_attributes_from(from_bank)
+    for k, v in pairs(from_bank._attrs) do
+        if not self._attrs[k] then
+            self._attrs[k] = v
+            self[k] = v
+        end
     end
 end
 
@@ -604,6 +616,7 @@ function reabank.parse(filename, banks)
     for _, bank in ipairs(cloned) do
         local source = reabank.banks_by_path[bank.clone]
         if source then
+            bank:copy_missing_attributes_from(source)
             bank:copy_articulations_from(source)
         end
     end

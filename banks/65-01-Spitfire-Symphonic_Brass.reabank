@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 1 SSB - Horn Solo
 
 //! c=legato i=legato o=cc:32,20
@@ -25,7 +25,7 @@ Bank 65 1 SSB - Horn Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 2 SSB - Horn Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -44,7 +44,7 @@ Bank 65 2 SSB - Horn Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 3 SSB - Horn Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
@@ -56,7 +56,7 @@ Bank 65 3 SSB - Horn Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 4 SSB - Horn Solo - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -65,7 +65,7 @@ Bank 65 4 SSB - Horn Solo - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 5 SSB - Horns a2
 
 //! c=legato i=legato o=cc:32,20
@@ -90,7 +90,7 @@ Bank 65 5 SSB - Horns a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 6 SSB - Horns a2 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -113,7 +113,7 @@ Bank 65 6 SSB - Horns a2 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 7 SSB - Horns a2 - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
@@ -133,7 +133,7 @@ Bank 65 7 SSB - Horns a2 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 8 SSB - Horns a2 - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -142,7 +142,7 @@ Bank 65 8 SSB - Horns a2 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a6"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 9 SSB - Horns a6
 
 //! c=legato i=phrase o=cc:32,20
@@ -167,7 +167,7 @@ Bank 65 9 SSB - Horns a6
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 10 SSB - Horns a6 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -184,7 +184,7 @@ Bank 65 10 SSB - Horns a6 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 11 SSB - Horns a6 - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -194,7 +194,7 @@ Bank 65 11 SSB - Horns a6 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 12 SSB - Horns a6 - Legato
 //! c=legato i=phrase o=cc:32,20
 20 legato
@@ -202,7 +202,7 @@ Bank 65 12 SSB - Horns a6 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 13 SSB - Tenor Trombone Solo
 
 //! c=long i=note-whole o=cc:32,1
@@ -225,7 +225,7 @@ Bank 65 13 SSB - Tenor Trombone Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 14 SSB - Tenor Trombone Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -250,7 +250,7 @@ Bank 65 14 SSB - Tenor Trombone Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 15 SSB - Tenor Trombone Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
@@ -262,7 +262,7 @@ Bank 65 15 SSB - Tenor Trombone Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 16 SSB - Tenor Trombones a2
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -284,7 +284,7 @@ Bank 65 16 SSB - Tenor Trombones a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 17 SSB - Tenor Trombones a2 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -301,7 +301,7 @@ Bank 65 17 SSB - Tenor Trombones a2 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 18 SSB - Tenor Trombones a2 - Decorative
 //! c=fx i=fx o=cc:32,90
 90 fx glissandi
@@ -313,7 +313,7 @@ Bank 65 18 SSB - Tenor Trombones a2 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 19 SSB - Tenor Trombones a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -321,7 +321,7 @@ Bank 65 19 SSB - Tenor Trombones a2 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 20 SSB - Bass Trombone Solo
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -343,7 +343,7 @@ Bank 65 20 SSB - Bass Trombone Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 21 SSB - Bass Trombone Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -360,7 +360,7 @@ Bank 65 21 SSB - Bass Trombone Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 22 SSB - Bass Trombone Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
@@ -372,7 +372,7 @@ Bank 65 22 SSB - Bass Trombone Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 23 SSB - Bass Trombones a2
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -396,7 +396,7 @@ Bank 65 23 SSB - Bass Trombones a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 24 SSB - Bass Trombones a2 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -413,7 +413,7 @@ Bank 65 24 SSB - Bass Trombones a2 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 25 SSB - Bass Trombones a2 - Decorative
 //! c=fx i=fx o=cc:32,90
 90 fx glissandi
@@ -425,7 +425,7 @@ Bank 65 25 SSB - Bass Trombones a2 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 26 SSB - Bass Trombones a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -433,7 +433,7 @@ Bank 65 26 SSB - Bass Trombones a2 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 27 SSB - Contrabass Trombone Solo
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -453,7 +453,7 @@ Bank 65 27 SSB - Contrabass Trombone Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 28 SSB - Contrabass Trombone Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -474,7 +474,7 @@ Bank 65 28 SSB - Contrabass Trombone Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Contrabass Trombone Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 29 SSB - Contrabass Trombone Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -484,7 +484,7 @@ Bank 65 29 SSB - Contrabass Trombone Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 30 SSB - Trombones a6
 
 //! c=legato i=phrase o=cc:32,20
@@ -509,7 +509,7 @@ Bank 65 30 SSB - Trombones a6
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 31 SSB - Trombones a6 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -526,7 +526,7 @@ Bank 65 31 SSB - Trombones a6 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 32 SSB - Trombones a6 - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -536,7 +536,7 @@ Bank 65 32 SSB - Trombones a6 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 33 SSB - Trombones a6 - Legato
 
 //! c=legato i=phrase o=cc:32,20
@@ -545,7 +545,7 @@ Bank 65 33 SSB - Trombones a6 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 34 SSB - Trumpet Solo
 
 //! c=legato i=legato o=cc:32,20
@@ -570,7 +570,7 @@ Bank 65 34 SSB - Trumpet Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 35 SSB - Trumpet Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -597,7 +597,7 @@ Bank 65 35 SSB - Trumpet Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 36 SSB - Trumpet Solo - Decorative
 //! c=long-dark i=tremolo o=cc:32,11
 11 flutter
@@ -609,7 +609,7 @@ Bank 65 36 SSB - Trumpet Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 37 SSB - Trumpet Solo - Legato
 
 //! c=legato i=phrase o=cc:32,20
@@ -618,7 +618,7 @@ Bank 65 37 SSB - Trumpet Solo - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 38 SSB - Trumpets a2
 
 //! c=legato i=legato o=cc:32,20
@@ -643,7 +643,7 @@ Bank 65 38 SSB - Trumpets a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 39 SSB - Trumpets a2 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -664,7 +664,7 @@ Bank 65 39 SSB - Trumpets a2 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 40 SSB - Trumpets a2 - Decorative
 //! c=long i=vibrato-molto o=cc:32,2
 2 long mariachi
@@ -676,7 +676,7 @@ Bank 65 40 SSB - Trumpets a2 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 41 SSB - Trumpets a2 - Legato
 
 //! c=legato i=phrase o=cc:32,20
@@ -685,7 +685,7 @@ Bank 65 41 SSB - Trumpets a2 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 42 SSB - Trumpets a6
 
 //! c=legato i=phrase o=cc:32,20
@@ -710,7 +710,7 @@ Bank 65 42 SSB - Trumpets a6
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 43 SSB - Trumpets a6 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -727,7 +727,7 @@ Bank 65 43 SSB - Trumpets a6 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 44 SSB - Trumpets a6 - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -737,7 +737,7 @@ Bank 65 44 SSB - Trumpets a6 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 45 SSB - Trumpets a6 - Legato
 //! c=legato i=phrase o=cc:32,20
 20 legato
@@ -745,7 +745,7 @@ Bank 65 45 SSB - Trumpets a6 - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 46 SSB - Tuba Solo
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -767,7 +767,7 @@ Bank 65 46 SSB - Tuba Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 47 SSB - Tuba Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -784,7 +784,7 @@ Bank 65 47 SSB - Tuba Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 48 SSB - Tuba Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -794,7 +794,7 @@ Bank 65 48 SSB - Tuba Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 49 SSB - Tuba Solo - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -803,7 +803,7 @@ Bank 65 49 SSB - Tuba Solo - Legato
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 50 SSB - Contrabass Tuba Solo
 
 //! c=long i=note-whole o=cc:32,1
@@ -822,7 +822,7 @@ Bank 65 50 SSB - Contrabass Tuba Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 51 SSB - Contrabass Tuba Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -837,7 +837,7 @@ Bank 65 51 SSB - Contrabass Tuba Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Contrabass Tuba Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 52 SSB - Contrabass Tuba Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -847,7 +847,7 @@ Bank 65 52 SSB - Contrabass Tuba Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 53 SSB - Cimbasso Solo
 
 //! c=long i=note-whole o=cc:32,1
@@ -868,7 +868,7 @@ Bank 65 53 SSB - Cimbasso Solo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 54 SSB - Cimbasso Solo - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -885,7 +885,7 @@ Bank 65 54 SSB - Cimbasso Solo - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbasso Solo - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 55 SSB - Cimbasso Solo - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -895,7 +895,7 @@ Bank 65 55 SSB - Cimbasso Solo - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 56 SSB - Cimbassi a2
 
 //! c=long i=note-whole o=cc:32,1
@@ -916,7 +916,7 @@ Bank 65 56 SSB - Cimbassi a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 57 SSB - Cimbassi a2 - Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -933,7 +933,7 @@ Bank 65 57 SSB - Cimbassi a2 - Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 58 SSB - Cimbassi a2 - Decorative
 //! c=short-dark i=rip o=cc:32,100
 100 rip
@@ -943,7 +943,7 @@ Bank 65 58 SSB - Cimbassi a2 - Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horn Solo - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 60 SSB - Horn Solo - Extras
 //! c=short i=spiccato o=cc:32,42
 42 staccatissimo
@@ -951,7 +951,7 @@ Bank 65 60 SSB - Horn Solo - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 61 SSB - Horns a2 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -962,7 +962,7 @@ Bank 65 61 SSB - Horns a2 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a6 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 62 SSB - Horns a6 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -972,7 +972,7 @@ Bank 65 62 SSB - Horns a6 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombone Solo - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 63 SSB - Tenor Trombone Solo - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -982,7 +982,7 @@ Bank 65 63 SSB - Tenor Trombone Solo - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Tenor Trombones a2 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 64 SSB - Tenor Trombones a2 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -990,7 +990,7 @@ Bank 65 64 SSB - Tenor Trombones a2 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Trombones a6 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 65 SSB - Trombones a6 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -999,14 +999,14 @@ Bank 65 65 SSB - Trombones a6 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombone Solo - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 66 SSB - Bass Trombone Solo - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trombones" n="Bass Trombones a2 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 67 SSB - Bass Trombones a2 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -1014,7 +1014,7 @@ Bank 65 67 SSB - Bass Trombones a2 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpet Solo - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 68 SSB - Trumpet Solo - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -1022,7 +1022,7 @@ Bank 65 68 SSB - Trumpet Solo - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a2 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 69 SSB - Trumpets a2 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -1030,7 +1030,7 @@ Bank 65 69 SSB - Trumpets a2 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Trumpets" n="Trumpets a6 - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 70 SSB - Trumpets a6 - Extras
 //! c=long i=multitongued o=cc:32,75
 75 multitongued
@@ -1040,7 +1040,7 @@ Bank 65 70 SSB - Trumpets a6 - Extras
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Tubas" n="Tuba Solo - Extras"
-//! m="Add'l individual articulations (use UACC)"
+//! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 71 SSB - Tuba Solo - Extras
 //! c=short-dark i=staccato-overblown o=cc:32,47
 47 short stopped

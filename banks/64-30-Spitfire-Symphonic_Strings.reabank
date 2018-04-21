@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Basic Articulations"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 30 SSS - Basic Articulations
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -24,7 +24,7 @@ Bank 64 30 SSS - Basic Articulations
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Ensembles Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 31 SSS - Ensembles Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -59,7 +59,7 @@ Bank 64 31 SSS - Ensembles Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Ensembles Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 32 SSS - Ensembles Decorative
 //! c=long-light i=con-sord-blend o=cc:32,5
 5 cs blend
@@ -83,7 +83,7 @@ Bank 64 32 SSS - Ensembles Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 33 SSS - V1 Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -126,7 +126,7 @@ Bank 64 33 SSS - V1 Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 34 SSS - V1 Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
@@ -161,7 +161,7 @@ Bank 64 34 SSS - V1 Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Legato Performance"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 35 SSS - V1 Legato Performance
 //! c=legato i=legato n=fingered o=cc:32,20
 20 legato (fingered)
@@ -175,7 +175,7 @@ Bank 64 35 SSS - V1 Legato Performance
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 36 SSS - V2 Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -216,7 +216,7 @@ Bank 64 36 SSS - V2 Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 37 SSS - V2 Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
@@ -249,14 +249,13 @@ Bank 64 37 SSS - V2 Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Legato Performance"
-//! m="Set patch to UACC"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
 Bank 64 38 SSS - V2 Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 39 SSS - Va Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -295,7 +294,7 @@ Bank 64 39 SSS - Va Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 40 SSS - Va Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
@@ -328,21 +327,19 @@ Bank 64 40 SSS - Va Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Legato Performance"
-//! m="Set patch to UACC"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
 Bank 64 41 SSS - Va Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Core"
-//! m="Set patch to UACC"
 //! clone="Spitfire/Symphonic Strings/Va Core"
 Bank 64 42 SSS - Vc Core
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 43 SSS - Vc Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
@@ -381,14 +378,13 @@ Bank 64 43 SSS - Vc Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Legato Performance"
-//! m="Set patch to UACC"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
 Bank 64 44 SSS - Vc Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Core"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 45 SSS - Cb Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -423,7 +419,7 @@ Bank 64 45 SSS - Cb Core
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Decorative"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 46 SSS - Cb Decorative
 //! c=long-light i=sul-tasto-super o=cc:32,114
 114 super sul tasto
@@ -448,14 +444,13 @@ Bank 64 46 SSS - Cb Decorative
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Legato Performance"
-//! m="Set patch to UACC"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
 Bank 64 47 SSS - Cb Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Performance Legato"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 64 48 SSS - Performance Legato
 //! c=legato i=phrase o=cc:32,20
 20 legato

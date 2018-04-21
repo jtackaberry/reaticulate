@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3" n="Woodwind Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 70 Albion 3 - Woodwind Lo
 //! c=short i=staccato o=cc:32,43
 43 short
@@ -26,7 +26,7 @@ Bank 66 70 Albion 3 - Woodwind Lo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3/Ensembles" n="Wall of Woodwind"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 71 Albion 3 - Wall of Woodwind
 //! c=short i=staccato o=cc:32,41
 41 short
@@ -38,7 +38,7 @@ Bank 66 71 Albion 3 - Wall of Woodwind
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3" n="Brass Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 72 Albion 3 - Brass Lo
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -64,7 +64,7 @@ Bank 66 72 Albion 3 - Brass Lo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3/Ensembles" n="Brutish Brass"
-//! m="Use default note keyswitches (NOT UACC!)"
+//! chase=1,11,16-21,64-69  m="Use default note keyswitches (NOT UACC!)"
 //
 // This bank does not use UACC because the patch has a bug where the same
 // UACC number is used for multiple articulations.
@@ -86,7 +86,7 @@ Bank 66 73 Albion 3 - Brutish Brass
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3" n="String Lo (Celli)"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 74 Albion 3 - String Lo (Celli)
 //! c=short i=staccato o=cc:32,40
 40 short A & B
@@ -106,7 +106,7 @@ Bank 66 74 Albion 3 - String Lo (Celli)
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3" n="String Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 75 Albion 3 - String Lo
 //! c=short i=spiccato o=cc:32,40
 40 short
@@ -122,7 +122,7 @@ Bank 66 75 Albion 3 - String Lo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3/Ensembles" n="Chunderous Cellos"
-//! m="Use default note keyswitches (NOT UACC!)"
+//! chase=1,11,16-21,64-69  m="Use default note keyswitches (NOT UACC!)"
 //
 // This bank does not use UACC because the patch has a bug where the same
 // UACC number is used for multiple articulations.
@@ -143,7 +143,7 @@ Bank 66 76 Albion 3 - Chunderous Cellos
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 3/Ensembles" n="Siege of Strings"
-//! m="Use default note keyswitches (NOT UACC!)"
+//! chase=1,11,16-21,64-69  m="Use default note keyswitches (NOT UACC!)"
 //
 // This bank does not use UACC because the patch has a bug where the same
 // UACC number is used for multiple articulations.

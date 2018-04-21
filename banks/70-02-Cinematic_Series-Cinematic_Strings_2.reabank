@@ -1,5 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="Cinematic Series/CS2" n="Ensemble and Basses"
+//! chase=1,2,5,11,20,64-69
 Bank 70 2 Cinematic Strings 2 Ensemble and Basses
 //! c=legato i=legato g=2 o=note:20
 20 legato on
@@ -36,6 +37,7 @@ Bank 70 2 Cinematic Strings 2 Ensemble and Basses
 
 //----------------------------------------------------------------------------
 //! g="Cinematic Series/CS2" n="Vn/Va/Vc"
+//! chase=1,2,5,11,20,64-69
 Bank 70 3 Cinematic Strings 2 Vn/Va/Vc
 //! c=legato i=legato g=2 o=note:32
 20 legato on

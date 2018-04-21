@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="Recorder"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 60 Albion 2 - Recorder
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -11,7 +11,7 @@ Bank 66 60 Albion 2 - Recorder
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="HornEuph"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 61 Albion 2 - HornEuph
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -24,7 +24,7 @@ Bank 66 61 Albion 2 - HornEuph
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="Sackbutt Hi"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 62 Albion 2 - Sackbutt Hi
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -41,7 +41,7 @@ Bank 66 62 Albion 2 - Sackbutt Hi
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="Sackbutt Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 63 Albion 2 - Sackbutt Lo
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -54,7 +54,7 @@ Bank 66 63 Albion 2 - Sackbutt Lo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="String Hi"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 64 Albion 2 - String Hi
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -88,7 +88,7 @@ Bank 66 64 Albion 2 - String Hi
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="String Lo"
-//! m="Set patch to UACC"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 66 65 Albion 2 - String Lo
 //! c=short i=staccato o=cc:32,40
 40 short
