@@ -59,18 +59,24 @@ function string.strip(s)
  end
 
 function read_file(fname)
-    local f = io.open(fname)
+    local f, err = io.open(fname)
     if f then
         local contents = f:read("*all")
         f:close()
-        return contents
+        return contents, nil
+    else
+        return nil, err
     end
 end
 
 function write_file(fname, contents)
-    local f = io.open(fname, "w")
-    f:write(contents)
-    f:close()
+    local f, err = io.open(fname, "w")
+    if f then
+        f:write(contents)
+        f:close()
+    else
+        return err
+    end
 end
 
 function table.val_to_str(v)

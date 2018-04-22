@@ -67,7 +67,7 @@ App.screens.trackcfg = require 'screens.trackcfg'
 App.screens.settings = require 'screens.settings'
 
 
--- Utility button factory
+-- App-wide utility functions
 function get_image(file)
     return rtk.Image:new(Path.join(Path.imagedir, file))
 end
@@ -92,6 +92,12 @@ function make_button(iconfile, label, textured, attrs)
     return button
 end
 
+
+function fatal_error(msg)
+    msg = msg .. "\n\nReaticulate must now exit."
+    reaper.ShowMessageBox(msg, "Reaticulate: fatal error", 0)
+    rtk.quit()
+end
 
 
 function App.screens.init()

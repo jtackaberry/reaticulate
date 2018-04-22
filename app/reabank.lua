@@ -240,7 +240,6 @@ function Bank:create_ui()
             if not art.outputstr then
                 art.outputstr = art:describe_outputs()
             end
-            -- button:scrollto(130, 40)
             App.set_statusbar(art.outputstr)
         end
         self.vbox:add(art.button, {lpadding=30})
@@ -673,7 +672,12 @@ end
 
 local function set_reabank_file(reabank)
     local inifile = reaper.get_ini_file()
-    local ini = read_file(inifile)
+    local ini, err = read_file(inifile)
+    if err then
+        -- Can't read REAPER's ini file.  This shouldn't happen.  Something is wrong with the
+        -- installation.
+        return fatal_error("Failed to read REAPER's ini file: " .. tostring(err))
+    end
     if ini:find("mididefbankprog=") then
         ini = ini:gsub("mididefbankprog=[^\n]*", "mididefbankprog=" .. reabank)
     else
@@ -686,7 +690,10 @@ local function set_reabank_file(reabank)
         end
     end
     log("Updating ini file %s", inifile)
-    write_file(inifile, ini)
+    err = write_file(inifile, ini)
+    if err then
+        return fatal_error("Failed to write ini file: " .. tostring(err))
+    end
 end
 
 function reabank.banks_to_reabank_string()
@@ -702,7 +709,7 @@ end
 
 local function get_reabank_file()
     local ini = read_file(reaper.get_ini_file())
-    return ini:match("mididefbankprog=([^\n]*)")
+    return ini and ini:match("mididefbankprog=([^\n]*)")
 end
 
 function reabank.init()
@@ -743,7 +750,10 @@ function reabank.refresh()
     header = header .. "// Edit this instead: " .. reabank.reabank_filename_user .. "\n\n\n\n"
 
     reabank.banks = reabank.parseall()
-    write_file(newfile, header .. reabank.banks_to_reabank_string())
+    local err = write_file(newfile, header .. reabank.banks_to_reabank_string())
+    if err then
+        return fatal_error("Failed to write Reabank file: " .. tostring(err))
+    end
     set_reabank_file(newfile)
 
     -- Kick all media items on the current track as well as the selected media
