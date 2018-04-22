@@ -282,6 +282,9 @@ function screen.update()
         local bankbox = screen.create_bank_ui()
         bankbox.srcchannel_menu:select(channel_to_channel_menu(srcchannel), false)
         bankbox.dstchannel_menu:select(channel_to_channel_menu(dstchannel), false)
+        -- Set the option menu label which will be used if the MSB/LSB isn't found
+        -- in the bank list.
+        bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s, %s)', msb, lsb))
         bankbox.bank_menu:select(tostring((msb << 8) + lsb), false)
         screen.banklist:add(bankbox)
     end
