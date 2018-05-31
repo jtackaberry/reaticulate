@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf8"?>
+<index name="Reaticulate" version="1">
+  <category name="MIDI Articulations">
+    <reapack name="Reaticulate: an articulation management system for REAPER" type="script">
+      <version author="Jason Tackaberry" name="0.2.0" time="2018-05-31T00:58:46Z">
+        <source file="../Reaticulate-factory.reabank" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/Reaticulate-factory.reabank</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 1 on default channel (MIDI CC relative or mousewheel).lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%201%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 2 on default channel (MIDI CC relative or mousewheel).lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%202%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 3 on default channel (MIDI CC relative or mousewheel).lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%203%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 4 on default channel (MIDI CC relative or mousewheel).lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%204%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 01.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2001.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 02.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2002.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 03.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2003.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 04.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2004.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 05.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 06.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2006.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 07.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2007.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 08.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2008.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 09.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2009.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 10.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2010.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 11.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2011.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 12.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2012.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 13.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2013.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 14.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2014.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 15.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2015.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 16.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2016.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 1 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20next%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 2 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20next%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 3 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20next%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 4 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20next%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 1 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 2 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 3 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 4 on default channel.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Disable CC feedback to MIDI feedback device.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Disable%20CC%20feedback%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Dump current CC values on selected track to MIDI feedback device.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Dump%20current%20CC%20values%20on%20selected%20track%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Enable CC feedback to MIDI feedback device.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Enable%20CC%20feedback%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Main.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Main.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel by CC.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20by%20CC.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 01.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2001.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 02.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2002.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 03.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2003.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 04.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2004.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 05.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2005.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 06.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2006.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 07.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2007.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 08.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2008.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 09.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2009.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 10.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2010.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 11.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2011.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 12.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2012.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 13.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2013.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 14.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2014.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 15.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2015.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 16.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2016.lua</source>
+        <source file="../actions/Reaticulate_Start.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Start.lua</source>
+        <source file="../actions/Reaticulate_Toggle CC feedback to MIDI feedback device.lua" main="main" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/actions/Reaticulate_Toggle%20CC%20feedback%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../app/app.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/app.lua</source>
+        <source file="../app/articons.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/articons.lua</source>
+        <source file="../app/feedback.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/feedback.lua</source>
+        <source file="../app/lib/middleclass.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/lib/middleclass.lua</source>
+        <source file="../app/lib/rtk.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/lib/rtk.lua</source>
+        <source file="../app/lib/utils.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/lib/utils.lua</source>
+        <source file="../app/main.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/main.lua</source>
+        <source file="../app/reabank.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/reabank.lua</source>
+        <source file="../app/rfx.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/rfx.lua</source>
+        <source file="../app/screens/banklist.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/screens/banklist.lua</source>
+        <source file="../app/screens/installer.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/screens/installer.lua</source>
+        <source file="../app/screens/settings.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/screens/settings.lua</source>
+        <source file="../app/screens/trackcfg.lua" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/app/screens/trackcfg.lua</source>
+        <source file="../img/add_circle_outline_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/add_circle_outline_white_18x18.png</source>
+        <source file="../img/arrow_back_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/arrow_back_white_18x18.png</source>
+        <source file="../img/articulations.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/articulations.png</source>
+        <source file="../img/delete_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/delete_white_18x18.png</source>
+        <source file="../img/dock_window_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/dock_window_white_18x18.png</source>
+        <source file="../img/drag_vertical_24x24.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/drag_vertical_24x24.png</source>
+        <source file="../img/edit_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/edit_white_18x18.png</source>
+        <source file="../img/info_outline_white_24x24.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/info_outline_white_24x24.png</source>
+        <source file="../img/keyboard_arrow_down_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/keyboard_arrow_down_white_18x18.png</source>
+        <source file="../img/keyboard_arrow_up_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/keyboard_arrow_up_white_18x18.png</source>
+        <source file="../img/loop_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/loop_white_18x18.png</source>
+        <source file="../img/settings_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/settings_white_18x18.png</source>
+        <source file="../img/undock_window_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/undock_window_white_18x18.png</source>
+        <source file="../img/view_list_white_18x18.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/view_list_white_18x18.png</source>
+        <source file="../img/warning_amber_24x24.png" main="nomain" type="script">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/img/warning_amber_24x24.png</source>
+        <source file="../jsfx/Feedback Translate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/jsfx/Feedback%20Translate.jsfx</source>
+        <source file="../jsfx/Reaticulate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.2.0/jsfx/Reaticulate.jsfx</source>
+      </version>
+    </reapack>
+  </category>
+  <metadata>
+    <description>
+<![CDATA[{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\sub\f0\fs72\lang9 Reaticulate\b\fs48\par
+
+\pard\sl240\slmult1\b0 Reaticulate provides a system for managing virtual instrument articulations in REAPER.\par
+\par
+More information at {{\field{\*\fldinst{HYPERLINK http://reaticulate.com/ }}{\fldrslt{http://reaticulate.com/\ul0\cf0}}}}\b\f0\fs48\par
+}
+]]>    </description>
+    <link rel="website">http://reaticulate.com/</link>
+  </metadata>
+</index>
