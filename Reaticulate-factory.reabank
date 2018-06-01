@@ -4050,9 +4050,54 @@ Bank 66 77 Albion 3 - Siege of Strings
 62 staccato (octave)
 
 //----------------------------------------------------------------------------
+// XXX: This bank is deprecated (replaced by note-based banks 70 4/5) and so it
+// is hidden by default.
+//
+//! g="Cinematic Series" n="Studio Strings"
+//! chase=1,2,5,11,20,64-69 f=hidden
+Bank 70 1 Cinematic Studio Strings
+//! c=legato i=legato g=2 o=cc:58,76
+20 legato on
+//! c=legato i=note-whole g=2 o=cc:58,81
+19 legato off
+//! c=long-light i=con-sord g=3 o=cc:58,86
+7 con sordino
+//! c=long-light i=note-whole g=3 o=cc:58,91
+2 senza sordino
+//! c=long i=note-whole o=cc:58,1
+1 sustain
+//! c=short i=spiccato o=cc:58,11
+42 spiccato
+//! c=short i=spiccato o=cc:58,16
+41 staccatissimo
+//! c=short i=staccato o=cc:58,21
+40 staccato
+//! c=short i=sfz o=cc:58,26
+54 sfz
+//! c=short-light i=pizz o=cc:58,31
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:58,36
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:58,41
+58 col legno
+//! c=long i=trill o=cc:58,46
+70 trills
+//! c=long-light i=harmonics o=cc:58,51
+10 harmonics
+//! c=long-dark i=tremolo o=cc:58,56
+11 tremolo
+//! c=long-dark i=tremolo o=cc:58,61
+81 measured trem
+//! c=long i=marcato o=cc:58,66
+9 marcato
+//! c=long i=legato-runs o=cc:58,71
+33 marcato+spic
+
+
+//----------------------------------------------------------------------------
 //! g="Cinematic Series/Studio Strings" n="Section"
 //! chase=1,2,5,11,20,64-69
-Bank 70 1 Cinematic Studio Strings - Section
+Bank 70 4 Cinematic Studio Strings - Section
 //! c=legato i=legato o=note:24,1/note:34,65
 20 legato std
 //! c=legato i=legato o=note:24,127/note:34,65
@@ -4104,7 +4149,7 @@ Bank 70 1 Cinematic Studio Strings - Section
 //----------------------------------------------------------------------------
 //! g="Cinematic Series/Studio Strings" n="Full Ensemble"
 //! chase=1,2,5,11,20,64-69
-Bank 70 4 Cinematic Studio Strings - Full Ensemble
+Bank 70 5 Cinematic Studio Strings - Full Ensemble
 //! c=legato i=legato o=note:12,1/note:22,65
 20 legato std
 //! c=legato i=legato o=note:12,127/note:22,65
