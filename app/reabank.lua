@@ -148,6 +148,12 @@ function Bank:initialize(factory, msb, lsb, name, attrs)
         ARTICULATION_FLAG_ANTIHANG_CC |
         ARTICULATION_FLAG_BLOCK_BANK_CHANGE
     )
+
+    -- Bank-level hidden flag is an exception.  It doesn't propagate to the
+    -- articulations but rather controls whether the bank should be visible
+    -- in the UI.
+    self.hidden = (self.flags & ARTICULATION_FLAG_HIDDEN) ~= 0
+    self.flags = self.flags & ~ARTICULATION_FLAG_HIDDEN
 end
 
 function Bank:add_articulation(art)
@@ -818,7 +824,12 @@ function reabank.to_menu()
                 end
             end
         end
-        submenu[#submenu+1] = {bank.shortname or bank.name, tostring(bank.msblsb), 0, bank.name}
+        submenu[#submenu+1] = {
+            bank.shortname or bank.name,
+            tostring(bank.msblsb),
+            bank.hidden and rtk.OptionMenu.ITEM_HIDDEN or rtk.OptionMenu.ITEM_NORMAL,
+            bank.name
+        }
     end
 
     function cmp(a, b)
