@@ -1912,8 +1912,12 @@ end
 rtk.OptionMenu = class('rtk.OptionMenu', rtk.Button)
 rtk.OptionMenu.static._icon = nil
 rtk.OptionMenu.static.SEPARATOR = 0
+
+rtk.OptionMenu.static.ITEM_NORMAL = 0
 rtk.OptionMenu.static.ITEM_CHECKED = 1
 rtk.OptionMenu.static.ITEM_DISABLED = 2
+rtk.OptionMenu.static.ITEM_HIDDEN = 4
+
 rtk.OptionMenu.static.HIDE_LABEL = 32768
 
 function rtk.OptionMenu:initialize(attrs)
@@ -1999,16 +2003,18 @@ function rtk.OptionMenu:_build_submenu(submenu)
             -- Map this index to the user id (or a stringified version of the
             -- index if no user id is given)
             self._idx_by_id[id or #self._item_by_idx] = #self._item_by_idx
-            if flags then
-                if flags & rtk.OptionMenu.ITEM_CHECKED ~= 0 then
-                    label = '!' .. label
+            if not flags or flags & rtk.OptionMenu.ITEM_HIDDEN == 0 then
+                if flags then
+                    if flags & rtk.OptionMenu.ITEM_CHECKED ~= 0 then
+                        label = '!' .. label
+                    end
+                    if flags & rtk.OptionMenu.ITEM_DISABLED ~= 0 then
+                        label = '#' .. label
+                    end
                 end
-                if flags & rtk.OptionMenu.ITEM_DISABLED ~= 0 then
-                    label = '#' .. label
-                end
+                -- menustr = menustr .. (n == #submenu and '<' or '') .. label .. '|'
+                menustr = menustr .. label .. '|'
             end
-            -- menustr = menustr .. (n == #submenu and '<' or '') .. label .. '|'
-            menustr = menustr .. label .. '|'
         end
     end
     return menustr
