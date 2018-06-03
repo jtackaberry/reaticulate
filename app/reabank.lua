@@ -729,7 +729,7 @@ function reabank.init()
     local cur_factory_bank_size, err = file_size(reabank.reabank_filename_factory)
     local file = get_reabank_file() or ''
     local tmpnum = file:lower():match("-tmp(%d+).")
-    if tmpnum then
+    if tmpnum and file_exists(file) then
         log("tmp rebeank exists: %s", file)
         reabank.version = tonumber(tmpnum)
         reabank.filename_tmp = file

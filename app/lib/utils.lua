@@ -90,6 +90,16 @@ function file_size(fname)
     end
 end
 
+function file_exists(fname)
+    local f, err = io.open(fname)
+    if f then
+        f:close()
+        return true
+    else
+        return false
+    end
+end
+
 function table.val_to_str(v)
     if "string" == type(v) then
         v = string.gsub(v, "\n", "\\n")
