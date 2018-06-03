@@ -156,6 +156,7 @@ end
 -- Creates a track for MIDI feedback.  Assumes the caller has already checked that
 -- none already exists via get_feedback_track().
 function feedback.create_feedback_track()
+    reaper.PreventUIRefresh(1)
     local idx = reaper.CountTracks(0)
     reaper.InsertTrackAtIndex(idx, false)
     feedback.track = reaper.GetTrack(0, idx)
@@ -167,6 +168,7 @@ function feedback.create_feedback_track()
     reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)
     reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)
     feedback.scroll_mixer(App.track)
+    reaper.PreventUIRefresh(-1)
     return feedback.track
 end
 
