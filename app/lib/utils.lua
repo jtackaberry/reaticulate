@@ -79,6 +79,17 @@ function write_file(fname, contents)
     end
 end
 
+function file_size(fname)
+    local f, err = io.open(fname)
+    if f then
+        local size = f:seek("end")
+        f:close()
+        return size, nil
+    else
+        return nil, err
+    end
+end
+
 function table.val_to_str(v)
     if "string" == type(v) then
         v = string.gsub(v, "\n", "\\n")

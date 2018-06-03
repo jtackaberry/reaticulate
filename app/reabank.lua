@@ -725,21 +725,33 @@ function reabank.init()
     reabank.reabank_filename_factory = Path.join(Path.basedir, "Reaticulate-factory.reabank")
     reabank.reabank_filename_user = Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")
     log("Reabank files: factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)
+
+    local cur_factory_bank_size, err = file_size(reabank.reabank_filename_factory)
     local file = get_reabank_file() or ''
     local tmpnum = file:lower():match("-tmp(%d+).")
     if tmpnum then
-        log("parsing existing tmp rebeank")
+        log("tmp rebeank exists: %s", file)
         reabank.version = tonumber(tmpnum)
         reabank.filename_tmp = file
-        reabank.menu = nil
-        reabank.banks = reabank.parseall()
-    else
-        -- Install default Reabank.
-        log("generating new reabank")
-        reabank.banks = reabank.parse(reabank.reabank_filename_factory)
-        reabank.refresh()
+        -- Determine if the factory bank has changed file size.  If it has (because e.g. the user
+        -- upgraded), ensure the tmp bank is refreshed.  This isn't foolproof, but it's good enough.
+        local last_factory_bank_size = reaper.GetExtState("reaticulate", "factory_bank_size")
+        if cur_factory_bank_size == tonumber(last_factory_bank_size) then
+            reabank.menu = nil
+            reabank.banks = reabank.parseall()
+            log("Existing reabank %s parsed in %.03fs", reabank.filename_tmp, os.clock() - t0)
+            return
+        else
+            log("factory bank has changed: cur=%s last=%s", cur_factory_bank_size, last_factory_bank_size)
+        end
     end
-    log("Reabank %s parsed in %.03fs", reabank.filename_tmp, os.clock() - t0)
+
+    -- Either tmp reabank doesn't exist or factory banks have changed, so regenerate.
+    log("generating new reabank")
+    reabank.banks = reabank.parse(reabank.reabank_filename_factory)
+    reabank.refresh()
+    reaper.SetExtState("reaticulate", "factory_bank_size", tostring(cur_factory_bank_size), true)
+    log("Refreshed reabank %s parsed in %.03fs", reabank.filename_tmp, os.clock() - t0)
 end
 
 
