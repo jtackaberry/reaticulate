@@ -839,7 +839,7 @@ function reabank.to_menu()
         submenu[#submenu+1] = {
             bank.shortname or bank.name,
             tostring(bank.msblsb),
-            bank.hidden and rtk.OptionMenu.ITEM_HIDDEN or rtk.OptionMenu.ITEM_NORMAL,
+            bank.hidden and rtk.OptionMenu.ITEM_DISABLED or rtk.OptionMenu.ITEM_NORMAL,
             bank.name
         }
     end

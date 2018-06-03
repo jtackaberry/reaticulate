@@ -2,7 +2,7 @@
 // XXX: This bank is deprecated (replaced by note-based banks 70 4/5) and so it
 // is hidden by default.
 //
-//! g="Cinematic Series" n="Studio Strings"
+//! g="Cinematic Series/Studio Strings" n="(Previous version - deprecated)"
 //! chase=1,2,5,11,20,64-69 f=hidden
 Bank 70 1 Cinematic Studio Strings
 //! c=legato i=legato g=2 o=cc:58,76
