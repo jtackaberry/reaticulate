@@ -306,7 +306,7 @@ function App.handle_command(cmd, arg)
             -- Toggle
             feedback.set_active(not App.config.cc_feedback_active)
         else
-            feedback.set_active(not not enabled)
+            feedback.set_active(enabled == 1 and true or false)
         end
         feedback.dump_ccs(App.track)
     elseif cmd == 'ping' then
