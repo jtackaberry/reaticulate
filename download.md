@@ -1,3 +1,7 @@
+---
+title: Download
+---
+
 ## The Easy Way
 
 If your DAW is connected to the Internet, you can install Reaticulate as a ReaPack repository.

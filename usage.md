@@ -1,3 +1,7 @@
+---
+title: Usage
+---
+
 # First Run
 
 * Open Reaper's Actions list (the `?` key by default) and run `Script: Reaticulate_Main.lua`
