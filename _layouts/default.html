@@ -33,7 +33,10 @@
           <ul>
               {% assign current = page.url | downcase | split: '/' %}
               <li class="home"><a {% if current[1] == nil %}class='active'{% endif %} href="{{ site.baseurl }}/">Home</a></li>
+              <li class="download"><a {% if current[1] contains 'download' %}class='active'{% endif %} href="{{ site.baseurl }}{% link download.md %}">Download</a></li>
+              <li class="usage"><a {% if current[1] contains 'usage' %}class='active'{% endif %} href="{{ site.baseurl }}{% link usage.md %}">Usage</a></li>
               <li class="reabank"><a {% if current[1] contains 'reabank' %}class='active'{% endif %} href="{{ site.baseurl }}{% link reabank.md %}">Bank Files</a></li>
+              <li class="news"><a {% if current[1] contains 'news' %}class='active'{% endif %} href="{{ site.baseurl }}{% link news.md %}">News</a></li>
             </ul>
           </div>
 

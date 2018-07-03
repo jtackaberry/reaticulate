@@ -5,6 +5,7 @@
 
 body {
     font: 110%/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.6em;
 }
 
 .nav ul {
@@ -100,17 +101,36 @@ img[alt="scaled"] {
         margin: 0 auto;
     }
 }
-h2#tldr, h2#reaticulate-notations-for-reabank-files {
-	padding-top: 0;
-}
 
 h1 a {
     color: #e8e8e8;
 }
 
-h2 {
-    padding-top: 2em;
+
+h1:nth-of-type(1), h2:nth-of-type(1) {
+	padding-top: 0;
 }
+
+h1, h2 {
+    padding-top: 1.5em;
+}
+
+h3 {
+    padding-top: 1em;
+}
+
+h4 {
+    padding-top: 0.5em;
+}
+
+h2 ~ h1, h1 ~ h2 {
+    padding-top: 1.5em !important;
+}
+
+h1 + h2, h2 + h3, h3 + h4 {
+    padding-top: 0 !important;
+}
+
 
 .highlight {
     line-height: 1.2;
@@ -127,4 +147,17 @@ p.warning {
 	border-left: 4px solid #ff9000;
 	padding-left: 10px;
 	font-style: normal !important;
+}
+
+li ul, li ol {
+    margin-bottom: 0 !important;
+}
+
+code.highlighter-rouge {
+    padding: 0;
+    margin: 0;
+}
+
+td {
+    vertical-align: top;
 }

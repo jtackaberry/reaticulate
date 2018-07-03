@@ -173,9 +173,18 @@ marked as required.
                 emit the output events but the UI will indicate the articulation as off if it was previously on.
             </li>
             <li>
-                <code>hidden</code>: Articulation will not be visible in the UI.
+                <code>hidden</code>: Articulation will not be visible in the UI.  When defined at the bank level
+                instead of a specific articulation, the bank will not be available to add to tracks, however
+                any existing references to the bank (e.g. in existing projects) will continue to work.
             </li>
         </ul>
+    </td>
+</tr>
+<tr>
+    <td style='text-align: center'>chase</td>
+    <td>
+        Comma-delimited list of CCs (or CC ranges) that should be chased when CC chasing is enabled
+        for an articulation (as is default).  For example: 1,2,5,11-21,92-120.  (Default: 1,2,11,64-69)
     </td>
 </tr>
 </table>
@@ -239,7 +248,7 @@ And programs can be decorated with these attributes:
 
 ## Program Numbers
 
-Although the program numbers are arbitary and don't influence any specific behavior, some
+Although the __program numbers are arbitary__ and don't influence any specific behavior, some
 form of standardization is recommended because this allows using the
 `Reaticulate_Activate articulation by CC` actions to trigger a given articulation (or
 at least its closest approximation) from a control surface, tablet, etc., no matter the
@@ -257,7 +266,12 @@ your choice bound to the Activate Articulation action) to set spiccato, no matte
 track is selected.
 
 
-## Output Events
+## Output Events Specification
+
+<p class='warning'>
+    This section is a bit nerdy.  It's quite necessary to understand to build your
+    own banks, but don't worry, there are some more approachable examples later.
+</p>
 
 Programs can trigger up to 16 *output events*, specified by the `o` attribute, which
 ultimately describe the articulation's behavior.
@@ -268,14 +282,32 @@ destination MIDI channel.  Or both: you can have a program send a MIDI event to 
 specific channel, and subsequently performed MIDI will be routed to that channel.
 
 Multiple output events are separated by a `/` (forward slash) where each individual
-output event takes the form `type@channel:arg1,arg2` (no whitespace allowed).
+output event roughly takes the form `type@channel:arg1,arg2` (no whitespace allowed).
 
-* `type` defines the type of output event (see below)
-* `@channel` is optional and specifies the destination MIDI channel of the output event
-  and implies subsequent MIDI events will also be routed to that destination channel. When
- channel is not specified, the destination channel will be the same as the source channel where
- the articulation was triggered.
+A more formal specification for a single output event would look like this:
+
+```
+[-][type][@channel][:arg1[,arg2]][%filter_program]
+```
+
+Where elements enclosed in square brackets is optional, and where:
+
+
+* Output events prefixed with `-` don't affect the routing of future MIDI events.  Otherwise, if channels
+  are not prefixed this way then any future user-generated MIDI event will be routed to this channel when
+  the articulation is activated.
+* `type` defines the type of output event (see below), e.g. note, cc, etc.
+* `@channel` specifies the destination MIDI channel of the output event
+  and unless `type` is prefixed with `-` it implies subsequent MIDI events will also be
+  routed to that destination channel. When channel is not specified, the destination channel
+  will be the same as the source channel where the articulation was triggered.
 * `arg1` and `arg2` depend on the type
+* `%filter_program` if defined will only emit the output event if the specified program number
+  `filter_program` is currently active on the same channel in another group.  This allows other
+  the state of other groups to modify the output events emitted by the articulation.  For example,
+  you might have an articlation group that specifies normal attack vs hard attack with different
+  programs.  A single sustain articulation could then emit different keyswitches depending on
+  whether the normal or hard attack is selected in the group.
 
 Possible output event types are:
 
@@ -285,11 +317,26 @@ Possible output event types are:
 | cc        | A CC event, with `arg1` indicating the CC number and `arg2` defining the CC value
 | note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity.  `arg2` is optional and if not specified the default velocity is 127.
 | note-hold | A note-on event, where `arg1` and `arg2` are according to the `note` type.  The corresponding note-off event is deferred until the next articulation is activated.  This is useful with patches that use non-latching keyswitches.
+| art       | Activate another articulation in the same bank, with `arg1` being the articulation program number and `arg2` is omitted.  This can be used to create composite articulations.  For example if you have articulation groups for con sordino/senza sordino and legato/non-legato, you could have another composite articulation for non-legato sustain con sordino that references the articulations in the other groups.
+
+Be aware that if multiple `note` output events are specified for a given articulation, all note-on
+events will be sent before any note-off event.  This means as far as the target patch is concerned
+the notes will be simultaneously pressed.  This is also true for `note-hold` events, except that
+of course in that case all the necessary note-off events will be deferred until the next articulation.
 
 The `type` can also be empty, specifying just `@channel`, in which case the action of the
 articulation will just be to set up routing to the destination channel specified, with no MIDI event
 emitted.
 
+Alternatively, if the type is prefixed with a `-` sign (e.g. `-note`) then the output event is
+emitted but routing of subsequent user MIDI events to the output event's destination channel
+will not be done.  This can be useful for example to send control events to listeners on other
+channels.
+
+
+
+
+## Output Event Examples
 
 Ok, with the technicals out of the way, here are some examples.
 
@@ -365,6 +412,44 @@ Bank 42 7 Bohemian Violin Exp1
 //! c=fx i=phrase g=3 o=note:50
 50 emotive
 ```
+
+### Contextual articulations based on state of other groups
+
+Suppose a trumpet library offered a number of different articulations with different types of mutes
+(no mute, straight mute, or harmon mute), with each variant being available under a different
+patch.
+
+The obvious approach would be to create different articulations for each of the normal vs hard
+attack variants.  This is a perfectly cromulent strategy to be sure, but by using filter programs
+you could move the hard/normal attack flag to a group and use only a single program for each
+articulation even if it offers all three variants.
+
+Here we we have the three different patches for the different mute types on different MIDI
+channels.  A single articulation definition can route to the appropriate patch depending on
+which mute articulation is selected.
+
+```go
+//! c=long i=note-whole g=2
+120 unmuted
+//! c=long-light i=stopped g=2
+121 straight mute
+//! c=long-light i=stopped g=2
+122 harmon mute
+
+//! c=long i=note-whole o=note:24@1%120/note:24@2%121/note:24@3%122
+1 long
+//! c=short i=staccato o=note:27@1%120/note:27@2%121/note:27@3%122
+40 staccato
+//! c=short i=marcato-quarter o=note:28@1%120/note:28@2%121/note:28@3%122
+52 marcato
+```
+
+This bank uses programs 120-122 to define the different mute types.  Notice there aren't any
+output events with these articulations -- they don't actually emit any outputs directly, but
+rather they influence the output events emitted by the long and staccato articulations.
+
+Changing one of the mute types will retrigger long or staccato (whichever is selected) and
+cause the appropriate output event to be emitted for the new mute type.
 
 
 ## Articulation Colors

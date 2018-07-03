@@ -1,12 +1,18 @@
-![floating](img/banklist.png)
 
-## tl;dr
+<div style='border: 1px solid #4f596c; background-color: #2c3034; padding: 9px; text-align: center; margin-bottom: 1em'>
+Version 0.2.0 is now available!  Read about the <a href='{% link news.md %}'>new features and fixes</a>.
+</div>
+
+![floating](img/banklist.png)
+# tl;dr
 
 Install it with [ReaPack](https://reapack.com/):
 
 ```
-http://reaticulate.com/index.xml
+http://reaticulate.com/release.xml
 ```
+For more details on installation, [check the download page](download).
+
 
 If you'd prefer to watch a video of ceaseless blathering than reading this website:
 
@@ -36,17 +42,7 @@ Reaticulate is [free and open source](https://github.com/jtackaberry/reaticulate
 
 ## How do I install it?
 
-Reaticulate is installable as a ReaPack repository.  If you don't already have ReaPack,
-[head on over to reapack.com and install it](https://reapack.com/).
-
-Once you have ReaPack installed:
-- Open the menu: `Extensions | ReaPack | Import a Repository`
-- Paste in this URL: `http://reaticulate.com/index.xml`
-- Double click the newly added Reaticulate item in the repository list
-- Click the `Install/update Reaticulate` button and select `Install all packages`
-- Invoke the action `Script: Reaticulate_Main.lua` from the actions list.
-    - Pro tip: you can automatically run the script on startup by using
-      [SWS](http://www.sws-extension.org/)'s `Set global startup` action
+Follow the instructions over [over on the download page](download).
 
 
 ## How does it work?
@@ -74,6 +70,9 @@ Output events can be:
 
 When articulations are spread across multiple destination channels, Reaticulate prevents
 note hanging and ensures that CCs are properly chased.
+
+There's a lot more [on the usage page](usage).
+
 
 
 ## Use cases
