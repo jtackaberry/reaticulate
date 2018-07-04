@@ -290,7 +290,7 @@ A more formal specification for a single output event would look like this:
 [-][type][@channel][:arg1[,arg2]][%filter_program]
 ```
 
-Where elements enclosed in square brackets is optional, and where:
+Where elements enclosed in square brackets are optional, and where:
 
 
 * Output events prefixed with `-` don't affect the routing of future MIDI events.  Otherwise, if channels
@@ -303,9 +303,9 @@ Where elements enclosed in square brackets is optional, and where:
   will be the same as the source channel where the articulation was triggered.
 * `arg1` and `arg2` depend on the type
 * `%filter_program` if defined will only emit the output event if the specified program number
-  `filter_program` is currently active on the same channel in another group.  This allows other
+  `filter_program` is currently active on the same channel in another group.  This allows
   the state of other groups to modify the output events emitted by the articulation.  For example,
-  you might have an articlation group that specifies normal attack vs hard attack with different
+  you might have an articulation group that specifies normal attack vs hard attack with different
   programs.  A single sustain articulation could then emit different keyswitches depending on
   whether the normal or hard attack is selected in the group.
 
@@ -315,7 +315,7 @@ Possible output event types are:
 |:---------:|---------------
 | program   | Program change message.  `arg1` indicates the program number and `arg2` can be omitted.
 | cc        | A CC event, with `arg1` indicating the CC number and `arg2` defining the CC value
-| note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity.  `arg2` is optional and if not specified the default velocity is 127.
+| note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity.  `arg2` is optional and if not specified the default velocity is 127.  (It's not possible to specify the note-off velocity, however.  This is a seldom used feature of MIDI.)
 | note-hold | A note-on event, where `arg1` and `arg2` are according to the `note` type.  The corresponding note-off event is deferred until the next articulation is activated.  This is useful with patches that use non-latching keyswitches.
 | art       | Activate another articulation in the same bank, with `arg1` being the articulation program number and `arg2` is omitted.  This can be used to create composite articulations.  For example if you have articulation groups for con sordino/senza sordino and legato/non-legato, you could have another composite articulation for non-legato sustain con sordino that references the articulations in the other groups.
 
@@ -331,7 +331,8 @@ emitted.
 Alternatively, if the type is prefixed with a `-` sign (e.g. `-note`) then the output event is
 emitted but routing of subsequent user MIDI events to the output event's destination channel
 will not be done.  This can be useful for example to send control events to listeners on other
-channels.
+channels.  If _all_ the output events for the articulation are prefixed this way, then the
+destination channel routing setup by the previous articulation won't be altered.
 
 
 
@@ -398,7 +399,7 @@ Bank 42 7 Bohemian Violin Exp1
 //! c=long-dark i=note-whole g=2 f=toggle o=note:35
 35 chords
 
-//! c=long-light i=phrase o=note-hold:0
+//! c=long-light i=phrase
 0 performer
 //! c=long i=note-half o=note-hold:24
 24 arc
