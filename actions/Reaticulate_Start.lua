@@ -18,8 +18,16 @@ function check()
         -- Lookup cmd id saved from previous invocation of Reaticulate_Main.
         cmd = reaper.GetExtState("reaticulate", "main_command_id")
         if cmd == '' or not cmd or not reaper.ReverseNamedCommandLookup(tonumber(cmd)) then
-            -- This is the command id for the default script location
-            cmd = reaper.NamedCommandLookup('_RSbe259504561f6a52557d2d1c64e52ef13527bf17')
+            -- cmd id not stored, so try to discover it by registering the main script
+            local self = debug.getinfo(1, 'S').source:sub(2)
+            local basedir = self:match("(.*)[/\\][^/\\]+")
+            local script = string.format("%s/Reaticulate_Main.lua", basedir)
+            cmd = reaper.AddRemoveReaScript(true, 0, script, true)
+            if cmd == 0 then
+                -- We're out of self-discovery options.  This is the command id for the default
+                -- script location.  Hope for the best.
+                cmd = reaper.NamedCommandLookup('_RSbe259504561f6a52557d2d1c64e52ef13527bf17')
+            end
         end
         if cmd == '' or not cmd or cmd == 0 then
             reaper.ShowMessageBox(
