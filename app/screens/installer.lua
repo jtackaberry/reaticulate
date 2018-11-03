@@ -22,16 +22,17 @@ local screen = {
 }
 
 function screen.init()
-    screen.widget = rtk.widget:add(rtk.VBox:new(), {halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER})
+    screen.widget = rtk.Container:new()
+    local box = screen.widget:add(rtk.VBox:new(), {halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1})
 
     screen.label1 = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}})
-    screen.widget:add(screen.label1, {halign=rtk.Widget.CENTER})
+    box:add(screen.label1, {halign=rtk.Widget.CENTER})
 
     screen.label2 = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}})
-    screen.widget:add(screen.label2, {halign=rtk.Widget.CENTER})
+    box:add(screen.label2, {halign=rtk.Widget.CENTER})
 
     screen.label3 = rtk.Label:new({label="Unbypass FX chain to enable.", color={1, 1, 1, 0.5}})
-    screen.widget:add(screen.label3, {halign=rtk.Widget.CENTER, tpadding=20})
+    box:add(screen.label3, {halign=rtk.Widget.CENTER, tpadding=20})
 
     icon = rtk.Image:new(Path.join(Path.imagedir, "add_circle_outline_white_18x18.png"))
     screen.button = rtk.Button:new({
@@ -44,30 +45,30 @@ function screen.init()
         -- at the top of the chain.  I pine for mature APIs.
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock()
-        local fx = reaper.TrackFX_AddByName(App.track, 'Reaticulate.jsfx', 0, 1)
+        local fx = reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, 1)
         for fx = fx, 0, -1 do
-            reaper.SNM_MoveOrRemoveTrackFX(App.track, fx, -1)
+            reaper.SNM_MoveOrRemoveTrackFX(app.track, fx, -1)
         end
         reaper.Undo_EndBlock("Add Reaticulate FX", -1)
         reaper.PreventUIRefresh(-1)
         rfx.sync(rfx.track, true)
         -- Trigger the track changed callback to ensure any actions dependend on the RFX are
         -- triggered now that we've instantiated it.
-        App.ontrackchange(nil, rfx.track)
+        app:ontrackchange(nil, rfx.track)
         screen.update()
     end
 
-    screen.widget:add(screen.button, {halign=rtk.Widget.CENTER, tpadding=20})
+    box:add(screen.button, {halign=rtk.Widget.CENTER, tpadding=20})
 end
 
 function screen.update()
     -- Enable the add FX button only if the FX chain isn't bypassed.
     -- If it is bypassed then show the label that says so.
-    if App.track then
+    if app.track then
         screen.label1:attr('label', 'Reaticulate is not')
         screen.label2:attr('label', 'enabled for this track')
         screen.label2:show()
-        local enabled = reaper.GetMediaTrackInfo_Value(App.track, "I_FXEN")
+        local enabled = reaper.GetMediaTrackInfo_Value(app.track, "I_FXEN")
         if enabled == 1 then
             screen.label3:hide()
             screen.button:show()

@@ -132,6 +132,7 @@ local output_type_to_rfx_param = {
 }
 
 function rfx.init()
+    -- rfx.params_by_version[2 << 16] = rfx.params_by_version[1 << 16];
     for channel = 1, 16 do
         rfx.programs[channel] = {NO_PROGRAM, NO_PROGRAM, NO_PROGRAM, NO_PROGRAM}
     end
@@ -329,6 +330,7 @@ function rfx.sync_banks_by_channel()
     end
     rfx.banks_by_channel = {}
     for srcchannel, dstchannel, msb, lsb in rfx.get_banks() do
+        -- log("Track bank: %s -> %s   %s %s", srcchannel, dstchannel, msb, lsb)
         local bank = reabank.get_bank(msb, lsb)
         if not bank then
             log("Error: RFX instance refers to undefined bank: msb=%s lsb=%s", msb, lsb)

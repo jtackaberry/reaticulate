@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-local App = require 'app'
+local App = require 'cfgui.app'
 
 function main(basedir)
     reaper.defer(function() App(basedir) end)

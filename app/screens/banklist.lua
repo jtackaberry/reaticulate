@@ -15,8 +15,10 @@
 local rtk = require 'lib.rtk'
 local rfx = require 'rfx'
 local reabank = require 'reabank'
+local articons = require 'articons'
 
 local screen = {
+    name = 'banklist',
     widget = nil,
     midi_channel_buttons = {},
     visible_banks = {},
@@ -72,6 +74,7 @@ function screen.filter_articulations(filter)
             end
         end
     end
+    -- app.viewport:scrollto(0, 0)
 end
 
 local function handle_filter_keypress(self, event)
@@ -88,7 +91,7 @@ local function handle_filter_keypress(self, event)
         for _, bank in ipairs(screen.visible_banks) do
             for _, art in ipairs(bank.articulations) do
                 if art.button.visible then
-                    App.activate_articulation(art, false)
+                    app:activate_articulation(art, false)
                     activated = true
                     break
                 end
@@ -103,6 +106,97 @@ local function handle_filter_keypress(self, event)
     end
 end
 
+
+function screen.draw_button_midi_channel(art, button, offx, offy, event)
+    local hovering = event:is_widget_hovering(button)
+    if not hovering and not art:is_active() then
+        -- No channel boxes to draw.
+        return
+    end
+
+    local channels = {}
+    local bitmap = art.channels
+    local hover_channel = nil
+    if hovering then
+        local bank = art:get_bank()
+        hover_channel = bank:get_src_channel(app.default_channel) - 1
+        bitmap = bitmap | (1 << hover_channel)
+    end
+
+    local channel = 0
+    while bitmap > 0 do
+        if bitmap & 1 > 0 then
+            channels[#channels+1] = channel
+        end
+        bitmap = bitmap >> 1
+        channel = channel + 1
+    end
+
+    if channels then
+        local x = offx + button.cx + button.cw
+        gfx.setfont(1, button.font, (button.fontsize - 2) * rtk.scale, rtk.fonts.BOLD)
+        for idx, channel in ipairs(channels) do
+            local lw, lh = gfx.measurestr(channel + 1)
+            x = x - (lw + 15)
+            local y = offy + button.cy + (button.ch - lh) / 2
+            button:setcolor('#ffffff')
+            local fill = (channel == hover_channel) or (app.active_notes & (1 << channel) > 0)
+            gfx.rect(x - 5, y - 1, lw + 10, lh + 2, fill)
+            if fill then
+                button:setcolor('#000000')
+            end
+            gfx.x = x
+            gfx.y = y
+            gfx.drawstr(channel + 1)
+        end
+    end
+end
+
+
+
+function screen.create_banklist_ui(bank)
+    bank.vbox = rtk.VBox:new({spacing=10})
+    bank.heading = rtk.Heading:new({label=bank.shortname or bank.name})
+    bank.vbox:add(bank.heading, {lpadding=10, tpadding=#reabank.banks > 0 and 40 or 20, bpadding=10})
+
+    for n, art in ipairs(bank.articulations) do
+        local color = art.color or reabank.colors.default
+        local textcolor = '#ffffff'
+        if not color:starts('#') then
+            color = reabank.colors[color] or reabank.colors.default
+        end
+        local textcolor = color2luma(color) > 0.7 and '#000000' or '#ffffff'
+        art.icon = articons.get(art.iconname) or articons.get('note-eighth')
+        local flags = art.channels > 0 and 0 or rtk.Button.FLAT_LABEL
+        art.button = rtk.Button:new({
+            -- Prefix a bit of whitespace to distance from icon
+            label='  ' .. (art.shortname or art.name),
+            icon=art.icon,
+            color=color,
+            textcolor=textcolor,
+            tpadding=1, rpadding=1, bpadding=1, lpadding=1,
+            flags=flags,
+            rspace=40
+        })
+        -- Make button width fill container (with 10px margin at right)
+        art.button:resize(-10, nil)
+        art.button.onclick = function(button, event) app:onartclick(art, event) end
+        art.button.ondraw = function(button, offx, offy, event)
+            screen.draw_button_midi_channel(art, button, offx, offy, event)
+        end
+        art.button.onmouseleave = function(button, event) app:set_statusbar(nil) end
+        art.button.onmouseenter = function(button, event)
+            if not art.outputstr then
+                art.outputstr = art:describe_outputs()
+            end
+            app:set_statusbar(art.outputstr)
+            return true
+        end
+        bank.vbox:add(art.button, {lpadding=30})
+    end
+    bank.vbox:hide()
+    return bank.vbox
+end
 
 -- Shows the articulation banks for the current track in the order
 -- defined by the track's RFX.
@@ -126,7 +220,7 @@ function screen.show_track_banks()
         local bank = reabank.get_bank_by_msblsb(msblsb)
         if bank then
             if not bank.vbox then
-                bank:create_ui()
+                screen.create_banklist_ui(bank)
             end
             screen.banks:add(bank.vbox:show())
             visible[#visible+1] = bank
@@ -146,29 +240,39 @@ end
 
 
 function screen.init()
-    screen.widget = rtk.widget:add(rtk.VBox:new())
+    screen.widget = rtk.VBox:new()
 
-    local topbar = rtk.VBox:new({spacing=0, position=rtk.Widget.FIXED, bg=rtk.theme.window_bg, tpadding=0, bpadding=15, z=50})
+    local topbar = rtk.VBox:new({
+        spacing=0,
+        position=rtk.Widget.FIXED,
+        bg=rtk.theme.window_bg,
+        y=0,
+        focusable=true,
+        tpadding=0,
+        bpadding=15,
+        z=50
+    })
     screen.toolbar = rtk.HBox:new({spacing=0})
     screen.widget:add(topbar, {lpadding=0})
 
-    local track_button = make_button("view_list_white_18x18.png")
+    local track_button = app:make_button("view_list_white_18x18.png")
     screen.toolbar:add(track_button, {rpadding=0})
     track_button.onclick = function()
-        App.screens.push(App.screens.trackcfg)
+        app:push_screen('trackcfg')
+        -- app:open_config_ui()
     end
     screen.toolbar:add(rtk.HBox.FLEXSPACE)
 
     -- Filter text entry
-    local row = topbar:add(rtk.HBox:new({spacing=10}), {tpadding=40})
-    local entry = rtk.Entry:new({label="Filter articulations"})
+    local row = topbar:add(rtk.HBox:new({spacing=10}), {tpadding=10})
+    local entry = rtk.Entry:new({label="Filter articulations", bg2='#0000007f'})
     screen.filter_entry = entry
     entry.onkeypress = handle_filter_keypress
     entry.onchange = function(self)
         screen.filter_tabbed = false
         screen.filter_articulations(self.value:lower())
     end
-    row:add(entry, {expand=1, fill=true, lpadding=20, rpadding=20})
+    row:add(entry, {expand=1, fillw=true, lpadding=20, rpadding=20})
 
     -- MIDI channel button rows
     row = rtk.HBox:new({spacing=2})
@@ -176,14 +280,14 @@ function screen.init()
     for channel = 1, 16 do
         local label = string.format("%02d", channel)
         local button = rtk.Button:new({
-            label=label, color={0.6, 0.3, 0.3, 1}, w=25, h=20,
+            label=label, color=rtk.theme.entry_border_focused, w=25, h=20,
             fontscale=0.9, halign=rtk.Widget.CENTER,
             flags=rtk.Button.FLAT_LABEL
         })
         local button = row:add(button)
         button.onclick = function()
-            App.set_default_channel(channel)
-            App.refocus()
+            app:set_default_channel(channel)
+            app:refocus()
         end
         screen.midi_channel_buttons[channel] = button
         if channel == 8 then
@@ -191,7 +295,7 @@ function screen.init()
             topbar:add(row, {tpadding=0, halign=rtk.Widget.CENTER})
         end
     end
-    screen.banks = screen.widget:add(rtk.VBox:new({bpadding=50}))
+    screen.banks = screen.widget:add(rtk.VBox:new({bpadding=20}))
 
     -- Info / button when no banks are configured on track (hidden when there are banks)
     screen.no_banks_box = rtk.VBox:new()
@@ -211,6 +315,10 @@ function screen.init()
     })
     screen.no_banks_box:add(button, {halign=rtk.Widget.CENTER, tpadding=20})
     button.onclick = track_button.onclick
+
+    -- Testing nested viewports
+    -- screen.widget = rtk.Viewport:new({child=screen.widget}  )
+    -- screen.widget:scrollto(0, 200)
 end
 
 -- Ensures the default channel is highlighted.  Called by the main app when the default

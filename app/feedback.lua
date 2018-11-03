@@ -1,4 +1,4 @@
--- Copyright 2017-2018 Jason Tackaberry
+-- cOpyright 2017-2018 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ local BUS_TRANSLATOR_MAGIC = 0x42424242
 
 
 function feedback.ontrackchange(last, cur)
-    if (App.config.cc_feedback_device or -1) < 0 then
+    if (app.config.cc_feedback_device or -1) < 0 then
         -- No feedback enabled.
         return
     end
@@ -118,9 +118,9 @@ function feedback.install_feedback(track)
 end
 
 function feedback._set_track_enabled(track, enabled)
-    local device = App.config.cc_feedback_device - 1
+    local device = app.config.cc_feedback_device - 1
     local bus = 15
-    if App.config.cc_feedback_device < 0 then
+    if app.config.cc_feedback_device < 0 then
         enabled = 0
     end
     -- FIXME: not validated, can't easily call rfx.validate()
@@ -167,7 +167,7 @@ function feedback.create_feedback_track()
 
     reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)
     reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)
-    feedback.scroll_mixer(App.track)
+    feedback.scroll_mixer(app.track)
     reaper.PreventUIRefresh(-1)
     return feedback.track
 end
@@ -193,14 +193,14 @@ end
 function feedback.update_feedback_track_settings()
     local feedback_track = feedback.get_feedback_track()
     if feedback_track then
-        reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", App.config.cc_feedback_device << 5)
+        reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)
         local fx = reaper.TrackFX_GetByName(feedback_track, "BUS Translator", false)
         if fx == -1 then
             log("CC feedback is enabled but BUS Translator FX not found")
         else
             rfx.push_state(feedback_track)
-            reaper.TrackFX_SetParam(feedback_track, fx, 0, App.config.cc_feedback_active and 1 or 0)
-            reaper.TrackFX_SetParam(feedback_track, fx, 2, App.config.cc_feedback_bus - 1)
+            reaper.TrackFX_SetParam(feedback_track, fx, 0, app.config.cc_feedback_active and 1 or 0)
+            reaper.TrackFX_SetParam(feedback_track, fx, 2, app.config.cc_feedback_bus - 1)
             reaper.TrackFX_SetParam(feedback_track, fx, 3, BUS_TRANSLATOR_MAGIC)
             rfx.pop_state()
         end
@@ -221,7 +221,7 @@ function feedback._dump_ccs()
 end
 
 function feedback.dump_ccs(track)
-    if App.config.cc_feedback_device == -1 or not track then
+    if app.config.cc_feedback_device == -1 or not track then
         return
     end
     rfx.push_state(track)
@@ -230,7 +230,7 @@ function feedback.dump_ccs(track)
 end
 
 function feedback.set_active(active)
-    App.config.cc_feedback_active = active
+    app.config.cc_feedback_active = active
     feedback.update_feedback_track_settings()
 end
 
