@@ -101,7 +101,6 @@ function BaseApp:show_screen(screen)
         screen.widget:show()
         if self.viewport then
             self.viewport:attr('child', screen.widget)
-            self.viewport:scrollto(0, 0)
         else
             self.frame:replace(self.frame.content_position, screen.widget, {expand=1})
         end

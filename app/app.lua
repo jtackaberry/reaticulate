@@ -265,6 +265,7 @@ function rfx.onartchange(channel, group, last_program, new_program, track_change
                     art.button.flags = 0
                 end
                 app.active_articulations[artidx] = art
+                app:scroll_articulation_into_view(art)
                 break
             end
         end
@@ -424,10 +425,14 @@ function App:activate_relative_articulation_in_group(channel, group, distance)
     end
     if target ~= art and target.group == group and target.button.visible then
         self:activate_articulation(target, false, false)
-        target.button:scrolltoview(130, 40)
     end
 end
 
+function App:scroll_articulation_into_view(art)
+    if art.button then
+        art.button:scrolltoview(110, 10)
+    end
+end
 
 function App:sync_midi_editor(hwnd)
     if not hwnd then

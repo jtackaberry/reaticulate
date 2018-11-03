@@ -286,6 +286,7 @@ function screen.check_errors()
 end
 
 function screen.update()
+    app.viewport:scrollto(0, 0)
     screen.banklist:clear()
     for srcchannel, dstchannel, msb, lsb in rfx.get_banks() do
         local bankbox = screen.create_bank_ui()
