@@ -323,13 +323,30 @@ function rtk.update()
     local char = gfx.getchar()
     if char > 0 then
         event = rtk._event:reset(rtk.Event.KEY)
+        event.char = nil
         event.keycode = char
-        if char >= 32 and char <= 255 then
-            event.char = string.char(char)
-        else
-            event.char = nil
+        if char <= 26 then
+            event.char = string.char(char + 96)
+            event.ctrl = true
+            event.alt = false
+        elseif char >= 32 then
+            if char <= 255 then
+                event.char = string.char(char)
+                event.ctrl = false
+                event.alt = false
+            elseif char <= 282 then
+                event.char = string.char(char - 160)
+                event.ctrl = true
+                event.alt = true
+            elseif char <= 346 then
+                event.char = string.char(char - 224)
+                event.ctrl = false
+                event.alt = true
+            end
         end
         rtk.onkeypresspre(event)
+    elseif char < 0 then
+        rtk.onclose()
     end
 
     local last_in_window = rtk.in_window
