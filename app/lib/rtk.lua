@@ -2631,32 +2631,68 @@ function rtk.Spacer:initialize(attrs)
     self:setattrs(attrs)
 end
 
-function rtk.Spacer:_draw(offx, offy, event)
-    rtk.Widget:_draw(offx, offy, event)
-    -- self:draw_debug_box(offx, offy)
-end
-
-function rtk.Spacer:_reflow(boxx, boxy, boxw, boxh, fillw, fillh)
-    -- Allow nil width or height which will expand to fill the parent container.
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    self.cw, self.ch = self:_resolvesize(boxw, boxh, self.w, self.h,
-                                         (fillw or not self.w) and boxw or nil,
-                                         (fillh or not self.h) and boxh or nil)
-end
-
--- Don't allow Spacers to be focusable.
-function rtk.Spacer:onmousedown()
-    return false
-end
-
 
 -------------------------------------------------------------------------------------------------------------
--- TODO!
---
-rtk.Checkbox = class('rtk.Checkbox', rtk.Widget)
+rtk.CheckBox = class('rtk.CheckBox', rtk.Button)
+rtk.CheckBox.static.TYPE_TWO_STATE = 0
+rtk.CheckBox.static.TYPE_THREE_STATE = 1
+rtk.CheckBox.static.STATE_UNCHECKED = 0
+rtk.CheckBox.static.STATE_CHECKED = 1
+rtk.CheckBox.static.STATE_INDETERMINATE = 2
+rtk.CheckBox.static._icon_unchecked = nil
 
-function rtk.Checkbox:initialize(attrs)
-    rtk.Widget.initialize(self, attrs)
+function rtk.CheckBox:initialize(attrs)
+    if rtk.CheckBox.static._icon_unchecked == nil then
+        rtk.CheckBox.static._icon_unchecked = rtk.Image.make_icon('checkbox-unchecked')
+        rtk.CheckBox.static._icon_checked = rtk.Image.make_icon('checkbox-checked')
+        rtk.CheckBox.static._icon_intermediate = rtk.Image.make_icon('checkbox-intermediate')
+        rtk.CheckBox.static._icon_hover = rtk.CheckBox.static._icon_unchecked:clone():accent()
+    end
+    self._value_map = {
+        [rtk.CheckBox.static.STATE_UNCHECKED] = rtk.CheckBox.static._icon_unchecked,
+        [rtk.CheckBox.static.STATE_CHECKED] = rtk.CheckBox.static._icon_checked,
+        [rtk.CheckBox.static.STATE_INDETERMINATE] = rtk.CheckBox.static._icon_intermediate
+    }
+    local defaults = {
+        flags = rtk.Button.FLAT_ICON | rtk.Button.FLAT_LABEL | rtk.Button.NO_HOVER,
+        type = rtk.CheckBox.TYPE_TWO_STATE,
+        value = rtk.CheckBox.STATE_UNCHECKED,
+        icon = self._value_map[rtk.CheckBox.STATE_UNCHECKED],
+        cursor =  rtk.mouse.cursors.pointer,
+    }
+    if attrs then
+        table.merge(defaults, attrs)
+    end
+    rtk.Button.initialize(self, defaults)
+    self:onattr('value', self.value)
+end
+
+function rtk.CheckBox:onclick(event)
+    local value = self.value + 1
+    if (self.type == rtk.CheckBox.TYPE_TWO_STATE and value > 1) or
+       (self.type == rtk.CheckBox.TYPE_THREE_STATE and value > 2) then
+        value = rtk.CheckBox.STATE_UNCHECKED
+    end
+    self:attr('value', value)
+end
+
+function rtk.CheckBox:onattr(attr, value, trigger)
+    if attr == 'value' then
+        self.icon = self._value_map[value] or self._value_map[0]
+        if trigger then
+            self:onchange()
+        end
+    end
+end
+
+function rtk.CheckBox:_draw_icon(x, y, hovering)
+    rtk.Button._draw_icon(self, x, y, hovering)
+    if hovering then
+        rtk.CheckBox._icon_hover:draw(x, y, rtk.scale)
+    end
+end
+
+function rtk.CheckBox:onchange()
 end
 
 -------------------------------------------------------------------------------------------------------------
