@@ -1016,6 +1016,28 @@ function rtk.Widget:reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     return self.cx, self.cy, self.cw, self.ch
 end
 
+-- Returns the widget's position relative to its viewport (or the root widget if there is
+-- no viewport).
+--
+-- This is different than self.last_offy + self.cy because last_offy is only set if the
+-- widget is drawn.  If the widget's parent container isn't visible (scrolled outside the
+-- viewport say) then that approach doesn't work.  This function takes the more expensive
+-- but reliable route of crawling up the widget hierarchy.  Consequently, this should not
+-- be called frequently.
+function rtk.Widget:_get_relative_pos_to_viewport()
+    local x, y = 0, 0
+    local widget = self
+    while widget do
+        x = x + widget.cx
+        y = y + widget.cy
+        if widget.viewport and widget.viewport == widget.parent then
+            break
+        end
+        widget = widget.parent
+    end
+    return x, y
+end
+
 -- Ensures the widget is fully visible in the viewport, plus the additional
 -- padding.  tpadding provides distance from top of viewport if scrolling
 -- up, and bpadding applies below the widget if scrolling down.
@@ -1024,13 +1046,12 @@ function rtk.Widget:scrolltoview(tpadding, bpadding)
         -- Not visible or not reflowed yet, or the widget has no viewport to scroll.
         return
     end
-    local absy = self.last_offy + self.cy
-    if absy - tpadding < 0 then
-        local delta = tpadding - absy
-        self.viewport:scrollby(0, -delta)
-    elseif absy + self.ch + bpadding > self.viewport.ch then
-        local delta = absy + self.ch + bpadding - self.viewport.ch
-        self.viewport:scrollby(0, delta)
+    local _, absy = self:_get_relative_pos_to_viewport()
+    if absy - tpadding < self.viewport.vy then
+        self.viewport:scrollto(0, absy - tpadding)
+    elseif absy + self.ch + bpadding > self.viewport.vy + self.viewport.ch then
+        local y = absy + self.ch + bpadding - self.viewport.ch
+        self.viewport:scrollto(0, absy + self.ch + bpadding - self.viewport.ch)
     end
 end
 
@@ -1252,8 +1273,8 @@ end
 function rtk.Viewport:onattr(attr, value, trigger)
     rtk.Widget.onattr(self, attr, value, trigger)
     if attr == 'child' and value then
-        -- Yay mark and sweep GC!
         self.child.viewport = self
+        self.child.parent = self
         rtk.queue_reflow()
     end
 end
@@ -1302,27 +1323,6 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
         self:scrollby(0, event.wheel)
         event:set_handled(self)
     end
-end
-
-function rtk.Viewport:scrollby(offx, offy)
-    if self.child then
-        if offx ~= 0 then
-            local limx = math.max(0, self.child.cw - self.cw)
-            self.vx = clamp(self.vx + offx, 0, limx)
-        end
-        if offy ~= 0 then
-            local limy = math.max(0, self.child.ch - self.ch)
-            self.vy = clamp(self.vy + offy, 0, limy)
-        end
-        rtk.queue_draw()
-    end
-end
-
-function rtk.Viewport:scrollto(x, y)
-    local limit = self.child or self
-    self.vx = clamp(x, 0, limit.cw or 0)
-    self.vy = clamp(y, 0, limit.ch or 0)
-    rtk.queue_draw()
 end
 
 
@@ -1386,31 +1386,49 @@ function rtk.Container:onmousemove(event)
     end
 end
 
-
 function rtk.Container:clear()
     self.children = {}
     rtk.queue_reflow()
 end
 
+function rtk.Container:_reparent_child(child)
+    if child then
+        -- Yay mark and sweep GC!
+        child.parent = self
+    end
+end
+
+function rtk.Container:_unparent_child(pos)
+    local child = self.children[pos][1]
+    if child then
+        child.parent = nil
+    end
+end
+
 function rtk.Container:insert(pos, widget, attrs)
+    self:_reparent_child(widget)
     table.insert(self.children, pos, {widget, attrs or {}})
     rtk.queue_reflow()
     return widget
 end
 
 function rtk.Container:add(widget, attrs)
+    self:_reparent_child(widget)
     self.children[#self.children+1] = {widget, attrs or {}}
     rtk.queue_reflow()
     return widget
 end
 
 function rtk.Container:replace(pos, widget, attrs)
+    self:_unparent_child(pos)
+    self:_reparent_child(widget)
     self.children[pos] = {widget, attrs or {}}
     rtk.queue_reflow()
     return widget
 end
 
 function rtk.Container:remove_index(index)
+    self:_unparent_child(index)
     table.remove(self.children, index)
     rtk.queue_reflow()
 end
@@ -1828,7 +1846,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             if attrs.valign == rtk.Widget.CENTER then
                 offy = self.tpadding + (maxh - widget.ch) / 2
             elseif attrs.valign == rtk.Widget.BOTTOM then
-                offy =self.tpadding +  maxh - widget.ch
+                offy = self.tpadding + maxh - widget.ch
             end
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
