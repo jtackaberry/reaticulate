@@ -423,7 +423,7 @@ held_keyswitches = 650000; // size: 16 * MAX_GROUPS * 8 * 2 = 1024
 // Length of the banks array.
 banks_len = 0;
 
-// Array holding all configured bankls.  This array holds variable
+// Array holding all configured banks.  This array holds variable
 // sized records, whose size depends on the bank record version.
 //
 // The record version is indicated in slot 0 bits 4-7 where the following
@@ -467,6 +467,22 @@ function get_bank_version_record_size(version)
 (
     10;
 );
+
+function get_bank_source_channel(bank)
+(
+    bank[0] & 0x0f;
+);
+
+function get_bank_msb(bank)
+(
+    (bank[0] >> 8) & 0xff;
+);
+
+function get_bank_lsb(bank)
+(
+    (bank[0] >> 16) & 0xff;
+);
+
 
 
 function update_output_event_map(type, b1, b2, articulation, event_idx)
@@ -1091,6 +1107,49 @@ local(ccs, i, bank, offset, bitmap)
     mpos;
 );
 
+// Sends a MIDI event to the feedback controller if feedback is enabled.
+function feedback_controller_midisend(mpos, msg1, msg2, msg3)
+(
+    // Only send the event if feedback is enabled
+    (cc_feedback & 0x10) ? (
+        midi_bus = cc_feedback & 0x0f;
+        midisend(mpos, msg1, msg2, msg3);
+        midi_bus = 0;
+    );
+    mpos + 1;
+);
+
+
+// Notifies the feedback controller of a new articulation if feedback is enabled.
+//
+// This first sends a bank select (CC0+32) indicating the MSB+LSB of the reabank the
+// articulation belongs to, then it signals the group for the articulation by a
+// magic event (note-off for note 0 where the velocity indicates the group).  Finally
+// the actual program change is sent.
+//
+// All these events occur on the source channel where the articulation change occurred.
+function feedback_controller_articulation(mpos, channel, articulation, group)
+local(bank, msb, lsb, program)
+(
+    program = get_articulation_program(articulation);
+    (cc_feedback & 0x10 && program != -1) ? (
+        bank = get_articulation_bank(articulation);
+        msb = get_bank_msb(bank);
+        lsb = get_bank_lsb(bank);
+
+        midi_bus = cc_feedback & 0x0f;
+        midisend(mpos, MIDI_EVENT_CC + channel, 0, msb);
+        midisend(mpos + 1, MIDI_EVENT_CC + channel, 32, lsb);
+        midisend(mpos + 2, MIDI_EVENT_NOTE_OFF + channel, 0, group);
+        midisend(mpos + 3, MIDI_EVENT_PROGRAM + channel, program, 0);
+        midi_bus = 0;
+
+        mpos + 4;
+    ) : (
+        mpos;
+    );
+);
+
 
 function _enqueue_articulation(program, channel, except_program)
 (
@@ -1223,6 +1282,7 @@ local(articulation, num_outputs, group, control, current_program, flags,
         mpos = send_deferred_note_off(mpos, channel, group);
     );
     update_channel_articulation_flags(channel);
+    mpos = feedback_controller_articulation(mpos, channel, articulation, group);
 
     // If the activated program acts as a filter for some other articulation's output events,
     // retrigger all active articulations in the same group if they
@@ -1462,11 +1522,8 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                 //     retrigger_held_keyswitch_notes(mpos, channel);
                 // );
 
-                // Send CCs to MIDI bus for feedback if it's not already going to bus 0.
-                (cc_feedback & 0x10 && type == MIDI_EVENT_CC) ? (
-                    midi_bus = cc_feedback & 0x0f;
-                    midisend(mpos, msg1, msg2, msg3);
-                    midi_bus = 0;
+                (type == MIDI_EVENT_CC) ? (
+                    mpos = feedback_controller_midisend(mpos, msg1, msg2, msg3);
                 );
             );
         ) : (
@@ -1496,18 +1553,31 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 
 
 (cc_dump_pending > 0) ? (
-    midi_bus = cc_feedback & 0x0f;
-
+    mpos = 0;
     channel = 0; loop(16,
+        // Send current program # for each group.  Incrementing mpos ensures proper
+        // ordering.
+        group = MAX_GROUPS - 1; loop(MAX_GROUPS,
+            articulation = get_active_articulation(channel, group);
+            (articulation) ? (
+                mpos = feedback_controller_articulation(mpos, channel, articulation, group);
+            );
+            group -= 1;
+        );
+
+        // Now send all observed CC values for this channel.
+        midi_bus = cc_feedback & 0x0f;
         ccs = last_ccs_by_channel + (channel * 16);
         i = 0; loop(128,
             ccs[i] >= 0 ? (
-                midisend(0, MIDI_EVENT_CC + channel, i, ccs[i]);
+                midisend(mpos, MIDI_EVENT_CC + channel, i, ccs[i]);
+                mpos += 1;
             );
             i += 1;
         );
+        midi_bus = 0;
+
         channel += 1;
     );
     cc_dump_pending = 0;
-    midi_bus = 0;
 );
