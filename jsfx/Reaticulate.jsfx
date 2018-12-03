@@ -575,7 +575,7 @@ function get_articulation_version(articulation)
     (articulation[1] & 0xf0) >> 4;
 );
 
-function get_articulation_bank(articulaztion)
+function get_articulation_bank(articulation)
 (
     ((articulation[1] & 0xffff00) >> 8) + banks;
 );
