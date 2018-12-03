@@ -285,7 +285,7 @@ end
 function App:handle_command(cmd, arg)
     if cmd == 'set_default_channel' then
         self:set_default_channel(tonumber(arg))
-        feedback.dump_ccs(self.track)
+        feedback.sync(self.track)
     elseif cmd == 'activate_articulation' and rfx.fx then
         -- Look at all visible banks and find the matching articulation.
         local args = string.split(arg, ',')
@@ -303,6 +303,11 @@ function App:handle_command(cmd, arg)
         end
         if art then
             self:activate_articulation(art, false, force_insert)
+        else
+            -- Requested articulation doesn't exist.  We re-sync current articulations to the
+            -- control surface (if feedback is enabled) to handle the case where the articulation
+            -- was triggered from a control surface which may now be in an incorrect state.
+            feedback.sync(self.track, feedback.SYNC_ARTICULATIONS)
         end
     elseif cmd == 'activate_relative_articulation' and rfx.fx then
         local args = string.split(arg, ',')
@@ -328,7 +333,7 @@ function App:handle_command(cmd, arg)
         end
         self:activate_relative_articulation_in_group(channel, group, distance)
     elseif cmd == 'dump_ccs' and rfx.fx then
-        feedback.dump_ccs(self.track)
+        feedback.sync(self.track)
     elseif cmd == 'set_midi_feedback_active' then
         local enabled = tonumber(arg)
         if enabled == -1 then
@@ -337,7 +342,7 @@ function App:handle_command(cmd, arg)
         else
             feedback.set_active(enabled == 1 and true or false)
         end
-        feedback.dump_ccs(self.track)
+        feedback.sync(self.track)
     end
     return BaseApp.handle_command(self, cmd, arg)
 end

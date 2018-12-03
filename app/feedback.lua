@@ -15,6 +15,10 @@
 local rfx = require 'rfx'
 
 local feedback = {
+    SYNC_CC = 1,
+    SYNC_ARTICULATIONS = 2,
+    SYNC_ALL = 1 | 2,
+
     track = nil,
 }
 
@@ -45,27 +49,26 @@ function feedback.ontrackchange(last, cur)
                 -- Feedback send was just created (not already there), so we need to take
                 -- care of some niggles.  Notably if mixer is supposed to scroll to
                 -- selected track, the scroll position is broken after the send is installed
-                -- (sigh), so we reset it.  Also, we must defer dumping CCs for a few cycles
+                -- (sigh), so we reset it.  Also, we must defer syncing for a few cycles
                 -- otherwise they go into a blackhole -- ostensibly Reaper needs some time to
                 -- realize there is a new send.
                 feedback.scroll_mixer(cur)
                 cycles = 5
-                function dump()
+                function sync()
                     if cycles == 0 then
-                        -- This is done asynchronously, so use the public version of dump_ccs() which
+                        -- This is done asynchronously, so use the public version of sync() which
                         -- pushes/pops automation settings.
-                        feedback.dump_ccs(cur)
+                        feedback.sync(cur)
                     else
                         cycles = cycles - 1
-                        reaper.defer(dump)
+                        reaper.defer(sync)
                     end
                 end
-                reaper.defer(dump)
+                reaper.defer(sync)
             else
-                -- CCs can be dumped immediately as send already exists.
-                feedback._dump_ccs()
+                -- We can sync to control surface immediately as send already exists.
+                feedback._sync(feedback.SYNC_ALL)
             end
-            -- rfx.pop_state()
         end
         rfx.pop_state()
     end
@@ -216,16 +219,16 @@ function feedback.ensure_feedback_track()
     end
 end
 
-function feedback._dump_ccs()
-    rfx.opcode(rfx.OPCODE_DUMP_CCS)
+function feedback._sync(what)
+    rfx.opcode(rfx.OPCODE_SYNC_TO_FEEDBACK_CONTROLLER, what)
 end
 
-function feedback.dump_ccs(track)
+function feedback.sync(track, what)
     if app.config.cc_feedback_device == -1 or not track then
         return
     end
     rfx.push_state(track)
-    feedback._dump_ccs()
+    feedback._sync(what or feedback.SYNC_ALL)
     rfx.pop_state()
 end
 

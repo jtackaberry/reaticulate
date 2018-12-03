@@ -169,12 +169,16 @@ OPCODE_SET_ARTICULATION_INFO = 4;
 // (type+dstchannel, param1, param2)
 OPCODE_ADD_OUTPUT_EVENT = 5;
 
-// Dumps all current CCs on all channels to the given MIDI bus.
-// ()
-OPCODE_DUMP_CCS = 7;
+// Syncs current state to the MIDI bus defined in OPECODE_SET_CC_FEEDBACK_ENABLED.
+// The first argument is a bitmap indicating what should be synced.
+//    bit 0: sync CCs
+//    bit 1: sync articulations
+//
+// (what)
+OPCODE_SYNC_TO_FEEDBACK_CONTROLLER = 7;
 
 // Sets whether CC feedback should be enabled.  If 0 (which is the default
-// unless set to 1), OPCODE_DUMP_CCs is a no-op.
+// unless set to 1), OPCODE_SYNC_TO_FEEDBACK_CONTROLLER is a no-op.
 // (enabled, bus)
 OPCODE_SET_CC_FEEDBACK_ENABLED = 8;
 
@@ -289,9 +293,11 @@ last_ccs_by_channel = 30000; // size: 16 * 128 = 2048
 
 // Bits 0-3 indicate the MIDI bus for feedback.  Bit 7 is whether feedback
 // is enabled.
-cc_feedback = 0;
-// If non-zero, indicates on next @block we should dump all CCs to the CC feedback bus.
-cc_dump_pending = 0;
+midi_feedback = 0;
+// If non-zero, indicates on next @block we should sync to the feedback bus.
+// Value represents a bitmap as defined in OPCODE_SYNC_TO_FEEDBACK_CONTROLLER
+// above.
+midi_feedback_sync_pending = 0;
 
 // Indexed by source channel, values hold the union of articulation
 // flags for articulations across all groups for that channel.  Used to make
@@ -700,7 +706,7 @@ file_mem(0, articulations_offsets, 16 * 128);
 file_var(0, articulations_len);
 file_mem(0, articulations, articulations_len);
 file_mem(0, last_ccs_by_channel, 16 * 128);
-file_var(0, cc_feedback);
+file_var(0, midi_feedback);
 file_mem(0, held_keyswitches, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
 file_var(0, banks_len);
 file_mem(0, banks, banks_len);
@@ -882,13 +888,14 @@ opcode = (slider64 & 0x7f000000) >> 24;
         have_pending_activations = 1;
     );
 
-    (opcode == OPCODE_DUMP_CCS) ? (
-        cc_dump_pending = 1;
+    // Arguments: b0=what
+    (opcode == OPCODE_SYNC_TO_FEEDBACK_CONTROLLER) ? (
+        midi_feedback_sync_pending |= b0;
     );
 
     // Arguments: b0=enabled, b1=bus
     (opcode == OPCODE_SET_CC_FEEDBACK_ENABLED) ? (
-        cc_feedback = (b1 & 0x0f) | (!!b0 << 4);
+        midi_feedback = (b1 & 0x0f) | (!!b0 << 4);
     );
 
     // Clear slider to prevent repeated evaluation of the same operation (in case some other
@@ -1111,8 +1118,8 @@ local(ccs, i, bank, offset, bitmap)
 function feedback_controller_midisend(mpos, msg1, msg2, msg3)
 (
     // Only send the event if feedback is enabled
-    (cc_feedback & 0x10) ? (
-        midi_bus = cc_feedback & 0x0f;
+    (midi_feedback & 0x10) ? (
+        midi_bus = midi_feedback & 0x0f;
         midisend(mpos, msg1, msg2, msg3);
         midi_bus = 0;
     );
@@ -1132,12 +1139,12 @@ function feedback_controller_articulation(mpos, channel, articulation, group)
 local(bank, msb, lsb, program)
 (
     program = get_articulation_program(articulation);
-    (cc_feedback & 0x10 && program != -1) ? (
+    (midi_feedback & 0x10 && program != -1) ? (
         bank = get_articulation_bank(articulation);
         msb = get_bank_msb(bank);
         lsb = get_bank_lsb(bank);
 
-        midi_bus = cc_feedback & 0x0f;
+        midi_bus = midi_feedback & 0x0f;
         midisend(mpos, MIDI_EVENT_CC + channel, 0, msb);
         midisend(mpos + 1, MIDI_EVENT_CC + channel, 32, lsb);
         midisend(mpos + 2, MIDI_EVENT_NOTE_OFF + channel, 0, group);
@@ -1552,32 +1559,36 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 );
 
 
-(cc_dump_pending > 0) ? (
+(midi_feedback_sync_pending != 0) ? (
     mpos = 0;
+
     channel = 0; loop(16,
-        // Send current program # for each group.  Incrementing mpos ensures proper
-        // ordering.
-        group = MAX_GROUPS - 1; loop(MAX_GROUPS,
-            articulation = get_active_articulation(channel, group);
-            (articulation) ? (
-                mpos = feedback_controller_articulation(mpos, channel, articulation, group);
+        (midi_feedback_sync_pending & 2) ? (
+            // Send current program # for each group.  Incrementing mpos ensures proper
+            // ordering.
+            group = MAX_GROUPS - 1; loop(MAX_GROUPS,
+                articulation = get_active_articulation(channel, group);
+                (articulation) ? (
+                    mpos = feedback_controller_articulation(mpos, channel, articulation, group);
+                );
+                group -= 1;
             );
-            group -= 1;
         );
 
-        // Now send all observed CC values for this channel.
-        midi_bus = cc_feedback & 0x0f;
-        ccs = last_ccs_by_channel + (channel * 16);
-        i = 0; loop(128,
-            ccs[i] >= 0 ? (
-                midisend(mpos, MIDI_EVENT_CC + channel, i, ccs[i]);
-                mpos += 1;
+        (midi_feedback_sync_pending & 1) ? (
+            // Now send all observed CC values for this channel.
+            midi_bus = midi_feedback & 0x0f;
+            ccs = last_ccs_by_channel + (channel * 16);
+            i = 0; loop(128,
+                ccs[i] >= 0 ? (
+                    midisend(mpos, MIDI_EVENT_CC + channel, i, ccs[i]);
+                    mpos += 1;
+                );
+                i += 1;
             );
-            i += 1;
+            midi_bus = 0;
         );
-        midi_bus = 0;
-
         channel += 1;
     );
-    cc_dump_pending = 0;
+    midi_feedback_sync_pending = 0;
 );
