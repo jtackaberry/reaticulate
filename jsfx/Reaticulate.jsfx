@@ -304,7 +304,8 @@ all_articulation_flags_by_channel = 32500; // size: 16
 articulations_len = 0;
 
 // Array that maps a program to the appropriate position in the articulations
-// array.  Indexed by MIDI channel and program number.
+// array.  Indexed by MIDI channel (byte 1) and program number (byte 0).  A value
+// of -1 indicates this program/channel combination has no assigned articulation.
 //
 // This value is maintained and persisted but it's not otherwise used directly.
 // Instead it's translated to articulations_ptr to provide a directly useable
@@ -699,6 +700,11 @@ file_mem(0, banks, banks_len);
         i += 1;
     );
 
+    // Offset 0 is the first slot of the articulations array, so we initialize
+    // all values to -1 which denotes the program/channel has no assigned
+    // articulation.
+    memset(articulations_offsets, -1, 16 * 128);
+
     // For chasing.  It's almost not worth persisting, but I have future plans. :)
     memset(last_ccs_by_channel, -1, 16 * 128);
 );
@@ -729,7 +735,9 @@ file_mem(0, banks, banks_len);
         channel = i / 128;
         program = i % 128;
         offset = articulations_offsets[i];
-        program_by_articulation[offset] = program | (channel << 8);
+        (offset != -1) ? (
+            program_by_articulation[offset] = program | (channel << 8);
+        );
         i += 1;
     );
 
@@ -767,7 +775,7 @@ opcode = (slider64 & 0x7f000000) >> 24;
     (opcode == OPCODE_CLEAR) ? (
         // Nuke it all from orbit.
         memset(all_articulation_flags_by_channel, 0, 16);
-        memset(articulations_offsets, 0, 16 * 128);
+        memset(articulations_offsets, -1, 16 * 128);
         memset(articulations_ptr, 0, 16 * 128);
         memset(articulations, 0, (2 + 16) * 128 * 16);
         memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
