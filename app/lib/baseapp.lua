@@ -250,7 +250,9 @@ function BaseApp:handle_onmousewheel(event)
 end
 
 function BaseApp:set_theme()
-    local bg = int2hex(reaper.GSC_mainwnd(20)) -- COLOR_BTNHIGHLIGHT
+    -- COLOR_BTNHIGHLIGHT which corresponds to "Main window 3D highlight" theme element.
+    -- FIXME: apparently broken on Mac
+    local bg = int2hex(reaper.GSC_mainwnd(20))
     -- Determine from theme background color if we should use the light or dark theme.
     local luma = color2luma(bg)
     log("set theme bg: %s", bg)
