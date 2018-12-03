@@ -23,6 +23,15 @@ require 'lib.utils'
 App = class('App', BaseApp)
 
 function App:initialize(basedir)
+    self.config = {
+        -- Configuration that's persisted across restarts.
+        cc_feedback_device = -1,
+        cc_feedback_bus = 1,
+        -- Togglable via action
+        cc_feedback_active = true,
+        autostart = 0
+    }
+
     BaseApp.initialize(self, 'reaticulate', basedir)
     -- log("")
 
@@ -43,15 +52,6 @@ function App:initialize(basedir)
     -- (e.g. scrolling through articulations via the relative CC action) where, for UX, we can't
     -- afford to wait for the full activation round trip.
     self.pending_articulations = {}
-
-    table.merge(self.config, {
-        -- Configuration that's persisted across restarts.
-        cc_feedback_device = -1,
-        cc_feedback_bus = 1,
-        -- Togglable via action
-        cc_feedback_active = true,
-        autostart = 0
-    })
 
     self:add_screen('installer', 'screens.installer')
     self:add_screen('banklist', 'screens.banklist')

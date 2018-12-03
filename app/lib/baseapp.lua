@@ -41,7 +41,12 @@ function BaseApp:initialize(appid, basedir)
         stack = {}
     }
     self.toolbar = {}
-    self.config = {
+
+    if not self.config then
+        -- Superclass didn't initialize config table, so do that now.
+        self.config = {}
+    end
+    table.merge(self.config, {
         -- Initial dimensions
         x = 0,
         y = 0,
@@ -50,7 +55,7 @@ function BaseApp:initialize(appid, basedir)
         dockstate = 0,
         scale = 1.0,
         bg = nil
-    }
+    });
     self.viewport = nil
 
     rtk.ondock = function() self:handle_ondock() end
