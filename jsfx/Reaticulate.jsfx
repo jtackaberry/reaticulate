@@ -455,6 +455,10 @@ banks = 660000; // size: MAX_CHANNELS * MAX_BANKS * 10 = 2560
 last_new_bank = 0;
 
 
+// Last PC mpos delta by channel.  Events must be offset by this amount to ensure they
+// follow articulation output events.
+program_change_mpos_delta = 670000; // size: 16
+
 function get_articulation_version_record_size(version)
 (
     (version == 0) ? 2 : (
@@ -1334,6 +1338,7 @@ local (group, cascade_channel, cascade_program, cascade_articulation, cascade_gr
             );
         );
     );
+    mpos;
 );
 
 
@@ -1398,14 +1403,17 @@ local(match, output_type, group, flags)
 );
 
 
+memset(program_change_mpos_delta, 0, 16);
 while (midirecv(mpos, msg1, msg2, msg3)) (
     type = msg1 & 0xf0;
     channel = msg1 & 0x0f;
+    mpos += program_change_mpos_delta[channel];
     (type == MIDI_EVENT_PROGRAM) ? (
         // Trigger the articulation only if it wasn't previously just activated via
         // opcode.
         (pending_activations[channel] == 0 || pending_activations[channel] & 0xff != msg2) ? (
-            activate(mpos, channel, msg2);
+            newmpos = activate(mpos, channel, msg2);
+            program_change_mpos_delta[channel] = newmpos - mpos;
         );
         // Now clear the pending activation as we just filtered out the duplicate.
         pending_activations[channel] = 0;
