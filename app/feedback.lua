@@ -193,7 +193,7 @@ function feedback.destroy_feedback_track()
     end
 end
 
-function feedback.update_feedback_track_settings()
+function feedback.update_feedback_track_settings(dosync)
     local feedback_track = feedback.get_feedback_track()
     if feedback_track then
         reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)
@@ -203,9 +203,19 @@ function feedback.update_feedback_track_settings()
         else
             rfx.push_state(feedback_track)
             reaper.TrackFX_SetParam(feedback_track, fx, 0, app.config.cc_feedback_active and 1 or 0)
+            reaper.TrackFX_SetParam(feedback_track, fx, 1, 15)
             reaper.TrackFX_SetParam(feedback_track, fx, 2, app.config.cc_feedback_bus - 1)
             reaper.TrackFX_SetParam(feedback_track, fx, 3, BUS_TRANSLATOR_MAGIC)
+            local articulation_cc = 0
+            if app.config.cc_feedback_articulations == 2 then
+                articulation_cc = app.config.cc_feedback_articulations_cc or 0
+            end
+            reaper.TrackFX_SetParam(feedback_track, fx, 4, articulation_cc)
             rfx.pop_state()
+
+            if dosync then
+                feedback.ontrackchange(nil, app.track)
+            end
         end
     end
 end
@@ -224,7 +234,7 @@ function feedback._sync(what)
 end
 
 function feedback.sync(track, what)
-    if app.config.cc_feedback_device == -1 or not track then
+    if app.config.cc_feedback_device == -1 or not track or not rfx.fx then
         return
     end
     rfx.push_state(track)

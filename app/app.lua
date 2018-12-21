@@ -23,10 +23,14 @@ require 'lib.utils'
 App = class('App', BaseApp)
 
 function App:initialize(basedir)
+    -- Configuration that's persisted across restarts.
     self.config = {
-        -- Configuration that's persisted across restarts.
         cc_feedback_device = -1,
         cc_feedback_bus = 1,
+        -- 1=Program Change, 2=CC
+        cc_feedback_articulations = 1,
+        -- 0 means use Program Changes, otherwise it's the CC #
+        cc_feedback_articulations_cc = 0,
         -- Togglable via action
         cc_feedback_active = true,
         autostart = 0

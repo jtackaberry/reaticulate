@@ -71,7 +71,7 @@ function screen.init()
     end
     screen.toolbar:add(back_button)
 
-    local section = make_section("CC Feedback to Control Surface")
+    local section = make_section("Feedback to Control Surface")
     local row = add_row(section, "MIDI Device:", 75, 2)
     local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3, w=-10}))
     menu.onchange = function(menu)
@@ -85,8 +85,7 @@ function screen.init()
             feedback.destroy_feedback_track()
         else
             feedback.ensure_feedback_track()
-            feedback.update_feedback_track_settings()
-            feedback.ontrackchange(nil, app.track)
+            feedback.update_feedback_track_settings(true)
         end
     end
     screen.midi_device_menu = menu
@@ -108,14 +107,40 @@ function screen.init()
         log("Changed MIDI CC feedback bus: %s", menu.selected)
         app.config.cc_feedback_bus = menu.selected
         app:save_config()
-        feedback.update_feedback_track_settings()
-        feedback.ontrackchange(nil, app.track)
+        feedback.update_feedback_track_settings(true)
     end
+
+    local row = add_row(section, "Articulations:", 75)
+    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
+    menu:setmenu({"Program Changes", "CC values"})
+
+    local row = add_row(section, "CC #:", 75)
+    local text = row:add(rtk.Entry:new({label="CC number", w=75}))
+    text.onchange = function(text)
+        -- TODO: validate value is a number
+        app.config.cc_feedback_articulations_cc = tonumber(text.value)
+        app:save_config()
+        feedback.update_feedback_track_settings(true)
+    end
+    menu.onchange = function(menu)
+        app.config.cc_feedback_articulations = menu.selected
+        if menu.selected == 1 then
+            row:hide()
+        else
+            if app.config.cc_feedback_articulations_cc > 0 then
+                text:attr('value', tostring(app.config.cc_feedback_articulations_cc))
+            end
+            row:show()
+        end
+        feedback.update_feedback_track_settings(true)
+        app:save_config()
+    end
+    menu:select(app.config.cc_feedback_articulations or 2)
 
 
     local section = make_section("Misc Settings")
     local row = add_row(section, "Autostart:", 75)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3, w=-10}))
+    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
     menu:setmenu({'Never', 'When REAPER starts'})
     menu:select((app.config.autostart or 0) + 1)
     menu.onchange = function(menu)
