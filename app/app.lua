@@ -332,7 +332,7 @@ function App:handle_command(cmd, arg)
             distance = sign * math.ceil(math.abs(offset) * 16.0 / resolution)
         end
         self:activate_relative_articulation_in_group(channel, group, distance)
-    elseif cmd == 'dump_ccs' and rfx.fx then
+    elseif cmd == 'sync_feedback' and rfx.fx then
         feedback.sync(self.track)
     elseif cmd == 'set_midi_feedback_active' then
         local enabled = tonumber(arg)
