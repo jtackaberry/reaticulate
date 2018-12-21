@@ -1935,6 +1935,13 @@ function rtk.Button:onmouseenter(event)
     return true
 end
 
+-- Returns the width and height of the label.
+function rtk.Button:_reflow_get_label_size()
+    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+    w, h = gfx.measurestr(self.label)
+    return w, h
+end
+
 function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
     local w, h = self:_resolvesize(boxw, boxh, self.w, self.h)
@@ -1949,8 +1956,7 @@ function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     end
 
     if self.label ~= nil then
-        gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
-        self.lw, self.lh = gfx.measurestr(self.label)
+        self.lw, self.lh = self:_reflow_get_label_size()
         if self.icon ~= nil then
             self.cw = w or ((self.icon.width + self.lpadding + self.rpadding + self.lspace + self.rspace) * rtk.scale + self.lw)
             self.ch = h or (math.max(self.icon.height * rtk.scale, self.lh) + (self.tpadding + self.bpadding) * rtk.scale)
@@ -2534,6 +2540,22 @@ function rtk.OptionMenu:initialize(attrs)
         self.flags = rtk.Button.ICON_RIGHT
     end
 end
+
+-- Return the size of the longest menu item
+function rtk.OptionMenu:_reflow_get_label_size()
+    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+    local w, h = 0, 0
+    for _, item in ipairs(self._item_by_idx) do
+        local label = item.buttonlabel or item.label
+        item_w, item_h = gfx.measurestr(label)
+        if item_w > w then
+            w, h = item_w, item_h
+        end
+    end
+    return w, h
+end
+
+
 
 function rtk.OptionMenu:setmenu(menu)
     return self:attr('menu', menu)
