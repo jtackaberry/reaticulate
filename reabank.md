@@ -437,11 +437,11 @@ which mute articulation is selected.
 //! c=long-light i=stopped g=2
 122 harmon mute
 
-//! c=long i=note-whole o=note:24@1%120/note:24@2%121/note:24@3%122
+//! c=long i=note-whole o=note@1:24%120/note@2:24%121/note@3:24%122
 1 long
-//! c=short i=staccato o=note:27@1%120/note:27@2%121/note:27@3%122
+//! c=short i=staccato o=note@1:27%120/note@2:27%121/note@3:27%122
 40 staccato
-//! c=short i=marcato-quarter o=note:28@1%120/note:28@2%121/note:28@3%122
+//! c=short i=marcato-quarter o=note@1:28%120/note@2:28%121/note@3:28%122
 52 marcato
 ```
 
