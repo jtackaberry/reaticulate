@@ -2,7 +2,7 @@
 title: Download
 ---
 
-## The Easy Way
+## The Easy Way (ReaPack)
 
 If your DAW is connected to the Internet, you can install Reaticulate as a ReaPack repository.
 
@@ -23,7 +23,41 @@ Once you have ReaPack installed:
 
 Now's a good time to read more about [how to use Reaticulate](usage).
 
-## The Hard Way
+### Updating
+
+Access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated
+to the latest version.
+
+
+### Living on the edge?
+
+Pre-releases are made available from time to time and can give an earlier preview to new functionality
+or fixes.  For the pre-release version, instead of the above ReaPack URL, use this one:
+
+```
+http://reaticulate.com/prerelease.xml
+```
+
+This ReaPack will always contain the latest version, whether a release, or a subsequent pre-release.
+
+It's possible to switch between the release and prerelease ReaPacks, but you first need to uninstall
+Reaticulate before following the above installation instructions again.  (Don't worry, your custom
+banks won't be affected.)
+
+Follow these steps below to uninstall.
+
+### Uninstalling
+
+Follow these steps to uninstall the Reaticulate ReaPack:
+
+1. Close current project (if one is open)
+1. Menu: `Extensions | ReaPack | Manage Repositories`
+1. Right click Reaticulate and click Uninstall
+1. Click ok and say yes to the prompt
+1. Restart Reaper (necessary to stop existing Reaticulate instance)
+
+
+## The Hard Way (Manual)
 
 If your DAW doesn't have Internet connectivity, you can follow these manual installation
 instructions:
