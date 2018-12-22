@@ -40,6 +40,16 @@ http://reaticulate.com/prerelease.xml
 
 This ReaPack will always contain the latest version, whether a release, or a subsequent pre-release.
 
+<p class='warning'>
+    Pre-releases are kept as stable as possible, unfortunately by virtue of having less testing time they are
+    more likely to contain bugs.
+
+    Your feedback with pre-releases is very much appreciated.  See the <a href='{% link contact.md %}'>
+    contact page</a> for details on how to report issues.
+</p>
+
+
+
 It's possible to switch between the release and prerelease ReaPacks, but you first need to uninstall
 Reaticulate before following the above installation instructions again.  (Don't worry, your custom
 banks won't be affected.)
