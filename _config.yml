@@ -1,5 +1,5 @@
 theme: jekyll-theme-midnight
-description: an articulation management system for REAPER
+description: a free articulation management system for REAPER
 breadcrumbs: true
 kramdown:
   syntax_highlighter_opts:
