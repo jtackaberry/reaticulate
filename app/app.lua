@@ -80,6 +80,11 @@ function App:ontrackchange(last, cur)
     self:sync_midi_editor()
     self.screens.banklist.filter_entry:onchange()
     feedback.ontrackchange(last, cur)
+    if cur then
+        -- Sync control surface to new track.
+        -- https://forum.cockos.com/showthread.php?p=2077098
+        reaper.CSurf_OnTrackSelection(cur)
+    end
     reaper.PreventUIRefresh(-1)
 end
 
@@ -337,14 +342,9 @@ function App:handle_command(cmd, arg)
         end
         self:activate_relative_articulation_in_group(channel, group, distance)
     elseif cmd == 'sync_feedback' and rfx.fx then
-        feedback.sync(self.track)
-    elseif cmd == 'set_midi_feedback_active' then
-        local enabled = tonumber(arg)
-        if enabled == -1 then
-            -- Toggle
-            feedback.set_active(not self.config.cc_feedback_active)
-        else
-            feedback.set_active(enabled == 1 and true or false)
+        if self.track then
+            reaper.CSurf_OnTrackSelection(self.track)
+            feedback.sync(self.track)
         end
     elseif cmd == 'set_midi_feedback_active' then
         local enabled = self:handle_toggle_option(arg, 'cc_feedback_active', false)
