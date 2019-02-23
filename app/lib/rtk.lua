@@ -99,6 +99,8 @@ local rtk = {
     dragarg = nil,
     -- True will the app is running.  rtk.quit() will set this to false.
     running = true,
+    -- hwnd of the gfx window (iff JS extension is installed)
+    hwnd = nil,
 
     mouse = {
         BUTTON_LEFT = 1,
@@ -464,8 +466,7 @@ function rtk.update()
     end
     local dockstate, x, y = gfx.dock(-1, true, true)
     if dockstate ~= rtk.dockstate then
-        rtk.dockstate = dockstate
-        rtk.ondock()
+        rtk._handle_dock_change(dockstate)
     end
     if x ~= rtk.x or y ~= rtk.y then
         local last_x, last_y = rtk.x, rtk.y
@@ -485,12 +486,31 @@ function rtk.set_theme(name, iconpath, overrides)
     gfx.clear = hex2int(rtk.theme.window_bg)
 end
 
-function rtk.init(title, w, h, dock, x, y)
+function rtk._handle_dock_change(dockstate)
+    if reaper.JS_Window_FindChild then
+        if dockstate & 1 == 0 then
+            -- Not docked, need to find top level window (and hope that the title
+            -- doesn't exist
+            rtk.hwnd = reaper.JS_Window_Find(rtk.title, true)
+        else
+            -- Docked, so we can find the window relative to the main hwnd
+            local mainhwnd = reaper.GetMainHwnd()
+            rtk.hwnd = reaper.JS_Window_FindChild(mainhwnd, title, true)
+        end
+    end
+    rtk.dockstate = dockstate
+    rtk.ondock()
+end
+
+function rtk.init(title, w, h, dockstate, x, y)
     -- Reusable event object.
     rtk._event = rtk.Event:new()
     rtk._backingstore = rtk.Image:new():create(w, h)
     rtk.x, rtk.y = x or 0, y or 0
-    gfx.init(title, w, h, dock, x, y)
+    rtk.title = title
+    gfx.init(title, w, h, dockstate, x, y)
+    rtk._handle_dock_change(dockstate or 0)
+    rtk.clear()
     -- Update immediately to clear canvas with gfx.clear (defined by set_theme())
     -- to avoid ugly flicker.
     gfx.update()
