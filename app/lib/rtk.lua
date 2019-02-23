@@ -487,16 +487,13 @@ function rtk.set_theme(name, iconpath, overrides)
 end
 
 function rtk._handle_dock_change(dockstate)
-    if reaper.JS_Window_FindChild then
-        if dockstate & 1 == 0 then
-            -- Not docked, need to find top level window (and hope that the title
-            -- doesn't exist
-            rtk.hwnd = reaper.JS_Window_Find(rtk.title, true)
-        else
-            -- Docked, so we can find the window relative to the main hwnd
-            local mainhwnd = reaper.GetMainHwnd()
-            rtk.hwnd = reaper.JS_Window_FindChild(mainhwnd, title, true)
-        end
+    if reaper.JS_Window_Find then
+        -- reaper.JS_Window_FindChild() using reaper.GetMainHwnd() as the parent
+        -- window seemed like the safer bet but this isn't robust.  First, it
+        -- only works when the window is docked (otherwise returns nil) and even
+        -- then, the hwnd returned by JS_Window_FindChild() doesn't match JS_Window_GetFocus().
+        -- So we use this more expensive call and hope that our title is unique enough.
+        rtk.hwnd = reaper.JS_Window_Find(rtk.title, true)
     end
     rtk.dockstate = dockstate
     rtk.ondock()
