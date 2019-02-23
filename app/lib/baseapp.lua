@@ -219,6 +219,7 @@ function BaseApp:handle_ondock()
         self.config.last_dockstate = rtk.dockstate
     end
     if rtk.hwnd and reaper.JS_Window_AttachTopmostPin then
+        log('js_ReaScriptAPI extension is available')
         reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
     end
     self:save_config()
