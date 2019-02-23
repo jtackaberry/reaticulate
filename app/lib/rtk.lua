@@ -280,6 +280,7 @@ local function _get_mousemove_event(generated)
 end
 
 function rtk.update()
+    gfx.update()
     local need_draw = rtk._draw_queued
     if rtk.onupdate() == false then
         return true
@@ -472,7 +473,6 @@ function rtk.update()
         rtk.y = y
         rtk.onmove(last_x, last_y)
     end
-    gfx.update()
 end
 
 function rtk.set_theme(name, iconpath, overrides)
