@@ -217,6 +217,9 @@ function BaseApp:handle_ondock()
     if (rtk.dockstate or 0) & 0x01 ~= 0 then
         self.config.last_dockstate = rtk.dockstate
     end
+    if rtk.hwnd and reaper.JS_Window_AttachTopmostPin then
+        reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
+    end
     self:save_config()
 end
 
@@ -381,7 +384,7 @@ function BaseApp:check_commands()
     end
     if reaper.HasExtState(self.appid, "command") then
         local val = reaper.GetExtState(self.appid, "command")
-        reaper.SetExtState(self.appid, "command", '', false)
+        reaper.DeleteExtState(self.appid, "command", false)
         for cmd, arg in val:gmatch('(%S+)=([^"]%S*)') do
             -- log("cmd: %s %s", cmd, arg)
             if cmd:starts('?') then
