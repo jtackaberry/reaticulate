@@ -2663,7 +2663,7 @@ end
 
 function rtk.OptionMenu:onmousedown(event)
     local function popup()
-        gfx.x, gfx.y = self.cx + self.last_offx, self.cy + self.last_offy + self.ch
+        gfx.x, gfx.y = self.sx + self.cx + self.last_offx, self.sy + self.cy + self.last_offy + self.ch
         local choice = gfx.showmenu(self._menustr)
         if choice > 0 then
             self:attr('selected', choice)
