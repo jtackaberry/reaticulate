@@ -18,7 +18,7 @@ require 'lib.utils'
 BaseApp = class('BaseApp')
 app = nil
 
-function BaseApp:initialize(appid, basedir)
+function BaseApp:initialize(appid, title, basedir)
     if reaper.NamedCommandLookup('_SWS_TOGSELMASTER') == 0 then
         -- Sunk before we started.
         reaper.ShowMessageBox("Reaticulate requires the SWS extensions (www.sws-extension.org).\n\nAborting!",
@@ -37,6 +37,7 @@ function BaseApp:initialize(appid, basedir)
     self.cmdpending = 0
 
     self.appid = appid
+    self.title = title
     self.screens = {
         stack = {}
     }
@@ -74,7 +75,7 @@ end
 
 function BaseApp:run()
     self:handle_onupdate()
-    rtk.init("Reaticulate", self.config.w, self.config.h, self.config.dockstate, self.config.x, self.config.y)
+    rtk.init(self.title, self.config.w, self.config.h, self.config.dockstate, self.config.x, self.config.y)
     rtk.run()
 end
 

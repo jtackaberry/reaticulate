@@ -36,7 +36,7 @@ function App:initialize(basedir)
         autostart = 0
     }
 
-    BaseApp.initialize(self, 'reaticulate', basedir)
+    BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir)
     -- log("")
 
     -- Currently selected track (or nil if no track is selected)
