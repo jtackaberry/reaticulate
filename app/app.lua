@@ -56,6 +56,8 @@ function App:initialize(basedir)
     -- (e.g. scrolling through articulations via the relative CC action) where, for UX, we can't
     -- afford to wait for the full activation round trip.
     self.pending_articulations = {}
+    -- Last non-Reaticulate focused window hwnd (if JS ext is installed)
+    self.saved_focus_window = nil
 
     self:add_screen('installer', 'screens.installer')
     self:add_screen('banklist', 'screens.banklist')
@@ -231,16 +233,22 @@ function App:activate_articulation(art, refocus, force_insert)
 end
 
 function App:refocus()
-    -- If the MIDI editor is open, focus.
-    if reaper.MIDIEditor_GetActive() ~= nil then
-        local cmd = reaper.NamedCommandLookup('_SN_FOCUS_MIDI_EDITOR')
-        if cmd ~= 0 then
-            -- Version of SWS that supports MIDI editor focus.
-            reaper.Main_OnCommandEx(cmd, 0, 0)
-        end
+    if self.saved_focus_window then
+        local title = reaper.JS_Window_GetTitle(self.saved_focus_window)
+        reaper.JS_Window_SetFocus(self.saved_focus_window)
     else
-        -- Focus arrange view
-        reaper.Main_OnCommandEx(reaper.NamedCommandLookup('_BR_FOCUS_ARRANGE_WND'), 0, 0)
+        -- No JS extension so we do our best at guessing.
+        -- If the MIDI editor is open, focus.
+        if reaper.MIDIEditor_GetActive() ~= nil then
+            local cmd = reaper.NamedCommandLookup('_SN_FOCUS_MIDI_EDITOR')
+            if cmd ~= 0 then
+                -- Version of SWS that supports MIDI editor focus.
+                reaper.Main_OnCommandEx(cmd, 0, 0)
+            end
+        else
+            -- Focus arrange view
+            reaper.Main_OnCommandEx(reaper.NamedCommandLookup('_BR_FOCUS_ARRANGE_WND'), 0, 0)
+        end
     end
 end
 
@@ -712,6 +720,14 @@ function App:handle_onupdate()
         self.screens.installer.update()
         if current_screen ~= self.screens.installer then
             self:replace_screen('installer')
+        end
+    end
+
+    -- Save focus
+    if reaper.JS_Window_GetFocus then
+        local hwnd = reaper.JS_Window_GetFocus()
+        if hwnd ~= rtk.hwnd then
+            self.saved_focus_window = hwnd
         end
     end
 end
