@@ -346,9 +346,34 @@ function App:handle_command(cmd, arg)
         else
             feedback.set_active(enabled == 1 and true or false)
         end
+    elseif cmd == 'set_midi_feedback_active' then
+        local enabled = self:handle_toggle_option(arg, 'cc_feedback_active', false)
+        feedback.set_active(enabled)
         feedback.sync(self.track)
     end
     return BaseApp.handle_command(self, cmd, arg)
+end
+
+function App:handle_toggle_option(argstr, cfgitem, store)
+    local args = string.split(argstr, ',')
+    local enabled = tonumber(args[1])
+    local value = self.config[cfgitem]
+    if enabled == -1 then
+        value = not value
+    else
+        value = (enabled == 1 and true or false)
+    end
+    if store then
+        self.config[cfgitem] = value
+        self:save_config()
+    end
+    if #args > 2 then
+        local section_id = tonumber(args[2])
+        local cmd_id = tonumber(args[3])
+        reaper.SetToggleCommandState(section_id, cmd_id, value and 1 or 0)
+        reaper.RefreshToolbar2(section_id, cmd_id)
+    end
+    return value
 end
 
 function App:set_default_channel(channel)
