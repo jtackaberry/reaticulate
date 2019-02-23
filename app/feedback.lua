@@ -25,10 +25,11 @@ local feedback = {
 -- A special value we set on the BUS Translator JSFX to identify whether the instance
 -- was instantiated by Reaticulate.
 local BUS_TRANSLATOR_MAGIC = 0x42424242
+local BUS_TRANSLATOR_FX_NAME = 'Feedback Translate.jsfx'
 
 
 function feedback.ontrackchange(last, cur)
-    if (app.config.cc_feedback_device or -1) < 0 then
+    if (app.config.cc_feedback_device or -1) < 0 or not app.config.cc_feedback_active then
         -- No feedback enabled.
         return
     end
@@ -45,7 +46,7 @@ function feedback.ontrackchange(last, cur)
         if input and input & 4096 ~= 0 then
             -- Indicate to RFX that it should start sending CCs to bus 16
             feedback._set_track_enabled(cur, 1)
-            if feedback.install_feedback(cur) then
+            if feedback.add_feedback_send(cur) then
                 -- Feedback send was just created (not already there), so we need to take
                 -- care of some niggles.  Notably if mixer is supposed to scroll to
                 -- selected track, the scroll position is broken after the send is installed
@@ -105,7 +106,7 @@ end
 -- created.  Assumes caller has already ensured feedback is enabled by user.
 --
 -- Returns false if feedback was already installed, and true otherwise.
-function feedback.install_feedback(track)
+function feedback.add_feedback_send(track)
     local feedback_track = feedback.ensure_feedback_track()
     if feedback.get_feedback_send(track) then
         return false
@@ -142,7 +143,7 @@ function feedback.get_feedback_track()
     -- Locate feedback track (whichever track has the BUS Translator FX)
     for i = 0, reaper.CountTracks(0) - 1 do
         local track = reaper.GetTrack(0, i)
-        local fx = reaper.TrackFX_GetByName(track, "BUS Translator", false)
+        local fx = reaper.TrackFX_GetByName(track, BUS_TRANSLATOR_FX_NAME, false)
         if fx >= 0 then
             -- Test magic value to ensure this instance was one created by Reaticulate
             local val, _, _ = reaper.TrackFX_GetParam(track, fx, 3)
@@ -165,7 +166,7 @@ function feedback.create_feedback_track()
     feedback.track = reaper.GetTrack(0, idx)
     reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)
     -- Install FX.
-    local fx = reaper.TrackFX_AddByName(feedback.track, 'Feedback Translate.jsfx', 0, 1)
+    local fx = reaper.TrackFX_AddByName(feedback.track, BUS_TRANSLATOR_FX_NAME, 0, 1)
     feedback.update_feedback_track_settings()
 
     reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)
@@ -197,7 +198,7 @@ function feedback.update_feedback_track_settings(dosync)
     local feedback_track = feedback.get_feedback_track()
     if feedback_track then
         reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)
-        local fx = reaper.TrackFX_GetByName(feedback_track, "BUS Translator", false)
+        local fx = reaper.TrackFX_GetByName(feedback_track, BUS_TRANSLATOR_FX_NAME, false)
         if fx == -1 then
             log("CC feedback is enabled but BUS Translator FX not found")
         else
@@ -244,6 +245,7 @@ end
 
 function feedback.set_active(active)
     app.config.cc_feedback_active = active
+    app:save_config()
     feedback.update_feedback_track_settings()
 end
 
