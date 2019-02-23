@@ -426,7 +426,7 @@ function rtk.update()
                 -- just repaint the current backing store.
             if need_draw or rtk._draw_queued or event.handled then
                 rtk.clear()
-                rtk.widget:_draw(0, 0, event)
+                rtk.widget:_draw(0, 0, 0, 0, event)
                 rtk._backingstore:resize(rtk.w, rtk.h, false)
                 rtk._backingstore:drawfrom(-1)
                 rtk._draw_queued = false
@@ -737,12 +737,22 @@ function rtk.Widget:initialize()
     self.cy = nil
     self.cw = nil
     self.ch = nil
-
     -- Box supplied from parent on last reflow
     self.box = nil
-    -- Absolute window x/y offsets that were supplied in last draw
+
+
+    -- Window x/y offsets that were supplied in last draw.  These coordinates
+    -- indicate where the widget is drawn within the overall backing store, but
+    -- may not be screen coordinates e.g. in the case of a viewport.
     self.last_offx = nil
     self.last_offy = nil
+    -- Screen coordinates for this widget's backing store.  Generally the child
+    -- doesn't need to know this, except in cases where the child needs to interact
+    -- directly with the screen (e.g. to display a popup menu).  As with
+    -- last_offx and last_offy, these are passed in through _draw().
+    self.sx = nil
+    self.sy = nil
+
 
     -- Indicates whether the widget should be rendered by its parent.
     self.visible = true
@@ -843,9 +853,12 @@ end
 -- container.  This may not necessarily be screen coordinates if for example
 -- the parent is drawing the child to a backing store.
 --
+-- sx and sy are the screen coordinates for the widget.
+--
 -- event is the rtk.Event object that occurred at the time of the redraw.
-function rtk.Widget:_draw(offx, offy, event)
+function rtk.Widget:_draw(offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
     self:_draw_bg(offx, offy, event)
     return false
 end
@@ -1279,9 +1292,10 @@ function rtk.Viewport:onattr(attr, value, trigger)
     end
 end
 
-function rtk.Viewport:_draw(offx, offy, event)
+function rtk.Viewport:_draw(offx, offy, sx, sy, event)
     local x, y = self.cx + offx, self.cy + offy
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
     if y + self.ch < 0 or y > rtk.h or self.ghost then
         -- Viewport is not visible
         return false
@@ -1292,11 +1306,13 @@ function rtk.Viewport:_draw(offx, offy, event)
         self:_clamp()
         -- Redraw the backing store, first "clearing" it according to what's currently painted
         -- underneath it.
+        local child_x = x + self.lpadding
+        local child_y = y + self.tpadding
         self._backingstore:drawfrom(gfx.dest, x, y, 0, 0, self._backingstore.width, self._backingstore.height)
         rtk.push_dest(self._backingstore.id)
-        self.child:_draw(-self.vx, -self.vy, event)
+        self.child:_draw(-self.vx, -self.vy, sx + child_x, sy + child_y, event)
         rtk.pop_dest()
-        self._backingstore:drawregion(0, 0, x + self.lpadding, y + self.tpadding, self.cw, self.ch)
+        self._backingstore:drawregion(0, 0, child_x, child_y, self.cw, self.ch)
     end
 
     self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder)
@@ -1538,8 +1554,9 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
 end
 
 
-function rtk.Container:_draw(offx, offy, event)
+function rtk.Container:_draw(offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
     local x, y = self.cx + offx, self.cy + offy
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -1561,7 +1578,7 @@ function rtk.Container:_draw(offx, offy, event)
                     wx = x - offx
                     wy = y - offy
                 end
-                widget:_draw(wx, wy, event)
+                widget:_draw(wx, wy, sx, sy, event)
                 -- widget:draw_debug_box(wx, wy)
             end
         end
@@ -1991,8 +2008,9 @@ function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
 end
 
 
-function rtk.Button:_draw(offx, offy, event)
+function rtk.Button:_draw(offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
     local x, y = self.cx + offx, self.cy + offy
     local sx, sy, sw, sh = x, y, 0, 0
 
@@ -2198,8 +2216,10 @@ function rtk.Entry:_rendertext(x, y)
     rtk.pop_dest()
 end
 
-function rtk.Entry:_draw(offx, offy, event)
+function rtk.Entry:_draw(offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
+
     local x, y = self.cx + offx, self.cy + offy
     local focused = self:focused()
 
@@ -2405,8 +2425,9 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cw, self.ch = w, h
 end
 
-function rtk.Label:_draw(offx, offy, event)
+function rtk.Label:_draw(offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
     local x, y = self.cx + offx, self.cy + offy
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -2458,8 +2479,9 @@ function rtk.ImageBox:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cw, self.ch = w, h
 end
 
-function rtk.ImageBox:_draw(offx, offy, event)
+function rtk.ImageBox:_draw(offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
+    self.sx, self.sy = sx, sy
     local x, y = self.cx + offx, self.cy + offy
 
     if not self.image or y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -2650,7 +2672,7 @@ function rtk.OptionMenu:onmousedown(event)
     -- Force a redraw and then defer opening the popup menu so we get a UI refresh with the
     -- button pressed before pening the menu, which is modal and blocks further redraws.
     rtk.Button.onmousedown(self, event)
-    self:_draw(self.last_offx, self.last_offy, event)
+    self:_draw(self.last_offx, self.last_offy, self.sx, self.sy, event)
     self:ondraw(self.last_offx, self.last_offy, event)
     if self._menustr ~= nil then
         reaper.defer(popup)
