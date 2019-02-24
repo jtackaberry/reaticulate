@@ -290,8 +290,8 @@ function rtk.update()
 
     if gfx.w ~= rtk.w or gfx.h ~= rtk.h then
         rtk.w, rtk.h = gfx.w, gfx.h
-        rtk.reflow()
         rtk.onresize()
+        rtk.reflow()
         need_draw = true
     elseif rtk._reflow_queued then
         rtk.reflow()
@@ -428,7 +428,7 @@ function rtk.update()
                 -- just repaint the current backing store.
             if need_draw or rtk._draw_queued or event.handled then
                 rtk.clear()
-                rtk.widget:_draw(0, 0, 0, 0, event)
+                rtk.widget:_draw(0, 0, 0, 0, 0, 0, event)
                 rtk._backingstore:resize(rtk.w, rtk.h, false)
                 rtk._backingstore:drawfrom(-1)
                 rtk._draw_queued = false
@@ -865,21 +865,26 @@ end
 
 -- Draws the widget.  Subclasses override.
 --
--- offx and offy indicate the absolute coordinates on the current drawing target
--- that the widget should offset its position from as requested by the parent
--- container.  This may not necessarily be screen coordinates if for example
--- the parent is drawing the child to a backing store.
+-- px and py are the parent's position relative to the current drawing target.
 --
--- sx and sy are the screen coordinates for the widget.
+-- offx and offy are the coordinates on the current drawing target that the
+-- widget should offset its position from as requested by the parent container.
+-- This may not necessarily be screen coordinates if for example the parent is
+-- drawing the child to a backing store.  These values implicitly include px and
+-- py (because they are relative to the drawing target, not the parent).
+--
+-- sx and sy are the screen coordinates of the current drawing target.
 --
 -- event is the rtk.Event object that occurred at the time of the redraw.
-function rtk.Widget:_draw(offx, offy, sx, sy, event)
+function rtk.Widget:_draw(px, py, offx, offy, sx, sy, event)
     self.last_offx, self.last_offy = offx, offy
     self.sx, self.sy = sx, sy
-    self:_draw_bg(offx, offy, event)
+    self.px, self.py = px, py
     return false
 end
 
+-- Draws the widget background.  This isn't called by the default _draw() method
+-- and is left up to subclasses to call explicitly at the appropriate time.
 function rtk.Widget:_draw_bg(offx, offy, event)
     if self.bg and not self.ghost then
         self:setcolor(self.bg)
@@ -1257,7 +1262,6 @@ function rtk.Widget:onreflow() end
 rtk.Viewport = class('rtk.Viewport', rtk.Widget)
 function rtk.Viewport:initialize(attrs)
     rtk.Widget.initialize(self)
-    -- self.child = nil
     self.vx = 0
     self.vy = 0
     self:setattrs(attrs)
@@ -1281,7 +1285,15 @@ function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
 
     -- FIXME: viewport dimensions calculation assumes vertical scrolling viewport
     if self.child and self.child.visible == true then
-        local wx, wy, ww, wh = self.child:reflow(0, 0, child_max_w, child_max_h, fillw, fillh, self)
+        local wx, wy, ww, wh = self.child:reflow(
+            self.lpadding,
+            self.tpadding,
+            child_max_w,
+            child_max_h,
+            fillw,
+            fillh,
+            self
+        )
         -- log("%s (child of vp %s): requests wxy=%s,%s  wh=%s,%s (offered %s,%s)", self.child.id, self.id, wx, wy, ww, wh, w, h)
         -- Computed size of viewport takes into account widget's size and x/y offset within
         -- the viewport.
@@ -1309,10 +1321,9 @@ function rtk.Viewport:onattr(attr, value, trigger)
     end
 end
 
-function rtk.Viewport:_draw(offx, offy, sx, sy, event)
+function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
     local x, y = self.cx + offx, self.cy + offy
-    self.last_offx, self.last_offy = offx, offy
-    self.sx, self.sy = sx, sy
     if y + self.ch < 0 or y > rtk.h or self.ghost then
         -- Viewport is not visible
         return false
@@ -1323,13 +1334,11 @@ function rtk.Viewport:_draw(offx, offy, sx, sy, event)
         self:_clamp()
         -- Redraw the backing store, first "clearing" it according to what's currently painted
         -- underneath it.
-        local child_x = x + self.lpadding
-        local child_y = y + self.tpadding
         self._backingstore:drawfrom(gfx.dest, x, y, 0, 0, self._backingstore.width, self._backingstore.height)
         rtk.push_dest(self._backingstore.id)
-        self.child:_draw(-self.vx, -self.vy, sx + child_x, sy + child_y, event)
+        self.child:_draw(0, 0, -self.vx, -self.vy, sx + x, sy + y, event)
         rtk.pop_dest()
-        self._backingstore:drawregion(0, 0, child_x, child_y, self.cw, self.ch)
+        self._backingstore:drawregion(0, 0, x, y, self.cw, self.ch)
     end
 
     self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder)
@@ -1350,7 +1359,8 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
 
     if not event.handled and self.child and self.child.visible and self.child.realized then
         self:_clamp()
-        self.child:_handle_event(x - self.vx, y - self.vy, event, clipped or not hovering)
+        self.child:_handle_event(x - self.vx + self.lpadding, y - self.vy + self.tpadding,
+                                 event, clipped or not hovering)
     end
     if hovering and not event.handled and event.type == rtk.Event.MOUSEWHEEL and not event.ctrl then
         self:scrollby(0, event.wheel)
@@ -1534,28 +1544,28 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
     zs = self._z_indexes
     for zidx = #zs, 1, -1 do
         local zchildren = self._reflowed_children[zs[zidx]]
-        for cidx = #zchildren, 1, -1 do
+        local nzchildren = zchildren and #zchildren or 0
+        for cidx = nzchildren, 1, -1 do
             local widget, attrs = table.unpack(zchildren[cidx])
             if widget ~= rtk.Container.FLEXSPACE and widget.visible == true and widget.realized then
                 if widget.position == rtk.Widget.FIXED then
                     -- Handling viewport and non-viewport cases separately here is inelegant in
-                    -- how it blurs the layers too much, I don't see a cleaner way.
+                    -- how it blurs the layers too much, but I don't see a cleaner way.
                     if self.viewport then
                         widget:_handle_event(offx + self.viewport.vx, offy + self.viewport.vy, event, clipped)
                     else
-                        widget:_handle_event(self.cx, self.cy, event, clipped)
+                        widget:_handle_event(self.cx + (self.last_offx or 0),
+                                             self.cy + (self.last_offy or 0),
+                                             event, clipped)
                     end
                 else
                     widget:_handle_event(x, y, event, clipped)
                 end
 
-                -- Even if the event was handled, we continue to invoke the child handlers to
-                -- ensure that e.g. children no longer hovering can trigger onmouseleave() or
-                -- lower z-index children under the mouse cursor have the chance to declare
-                -- as hovering.
-                -- if event.handled and event.type ~= rtk.Event.MOUSEMOVE  then
-                --     return
-                -- end
+                -- It's tempting to break if the event was handled, but even if it was, we
+                -- continue to invoke the child handlers to ensure that e.g. children no longer
+                -- hovering can trigger onmouseleave() or lower z-index children under the mouse
+                -- cursor have the chance to declare as hovering.
             end
         end
     end
@@ -1565,15 +1575,12 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
     -- from falling through to lower z-index widgets that are obscured by the container.
     -- Also if we're dragging with mouse button pressed, then allow the container to handle
     -- the event so that e.g. containers can serve as drop targets.
-    -- if self.bg or event.button ~= 0 or self.focusable then
-    -- end
     rtk.Widget._handle_event(self, offx, offy, event, clipped)
 end
 
 
-function rtk.Container:_draw(offx, offy, sx, sy, event)
-    self.last_offx, self.last_offy = offx, offy
-    self.sx, self.sy = sx, sy
+function rtk.Container:_draw(px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
     local x, y = self.cx + offx, self.cy + offy
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -1592,10 +1599,10 @@ function rtk.Container:_draw(offx, offy, sx, sy, event)
             if widget ~= rtk.Container.FLEXSPACE and widget.realized then
                 local wx, wy = x, y
                 if widget.position == rtk.Widget.FIXED then
-                    wx = x - offx
-                    wy = y - offy
+                    wx = self.cx + px
+                    wy = self.cy + py
                 end
-                widget:_draw(wx, wy, sx, sy, event)
+                widget:_draw(self.cx + px, self.cy + py, wx, wy, sx, sy, event)
                 -- widget:draw_debug_box(wx, wy)
             end
         end
@@ -1641,12 +1648,14 @@ function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
             local wx, wy, ww, wh = widget:reflow(
                 self.lpadding + lpadding,
                 self.tpadding + tpadding,
-                child_w - lpadding - rpadding,
-                child_h - tpadding - bpadding,
+                math.max(child_w - lpadding - rpadding, attrs.minw or 0),
+                math.max(child_h - tpadding - bpadding, attrs.minh or 0),
                 attrs.fillw,
                 attrs.fillh,
                 viewport
             )
+            ww = math.max(ww, attrs.minw or 0)
+            wh = math.max(wh, attrs.minh or 0)
             if attrs.halign == rtk.Widget.RIGHT then
                 widget.cx = wx + (w - ww)
                 widget.box[1] = w - ww
@@ -1700,7 +1709,7 @@ function rtk.Box:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     local child_h = h - self.tpadding - self.bpadding
 
     local innerw, innerh, expand_unit_size = self:_reflow_step1(child_w, child_h, viewport)
-    local s1w, s1h = innerw, innerh
+    -- local s1w, s1h = innerw, innerh
     local innerw, innerh = self:_reflow_step2(child_w, child_h, innerw, innerh, expand_unit_size, viewport)
 
     -- Set our own dimensions, so add self padding to inner dimensions
@@ -1733,25 +1742,33 @@ function rtk.Box:_reflow_step1(w, h, viewport)
             -- Reflow at 0,0 coords just to get the native dimensions.  Will adjust position in second pass.
             if not attrs.expand or attrs.expand == 0 then
                 if self.direction == rtk.Box.HORIZONTAL then
+                    local child_maxw = remaining_size - lpadding - rpadding - spacing
+                    local minw = attrs.minw or 0
+                    child_maxw = math.max(child_maxw, minw)
                     _, _, ww, wh = widget:reflow(
                         0,
                         0,
-                        remaining_size - lpadding - rpadding - spacing,
+                        child_maxw,
                         h - tpadding - bpadding,
                         nil,
                         attrs.fillh,
                         viewport
-                )
+                    )
+                    ww = math.max(ww, minw)
                 else
+                    local child_maxh = remaining_size - tpadding - bpadding - spacing
+                    local minh = attrs.minh or 0
+                    child_maxh = math.max(child_maxh, minh)
                     _, _, ww, wh = widget:reflow(
                         0,
                         0,
                         w - lpadding - rpadding,
-                        remaining_size - tpadding - bpadding - spacing,
+                        child_maxh,
                         attrs.fillw,
                         nil,
                         viewport
                     )
+                    wh = math.max(wh, minh)
                 end
                 maxw = math.max(maxw, ww)
                 maxh = math.max(maxh, wh)
@@ -1762,6 +1779,11 @@ function rtk.Box:_reflow_step1(w, h, viewport)
                 end
             else
                 expand_units = expand_units + attrs.expand
+                -- if self.direction == rtk.Box.HORIZONTAL and attrs.minw then
+                --     remaining_size = remaining_size + attrs.minw
+                -- elseif self.direction == rtk.Box.VERTICAL and attrs.minh then
+                --     remaining_size = remaining_size + attrs.minh
+                -- end
             end
             spacing = attrs.spacing or self.spacing
             self:_add_reflowed_child(widgetattrs, attrs.z or widget.z or 0)
@@ -1795,6 +1817,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             maxh = math.max(maxh, offset)
         elseif widget.visible == true then
             local wx, wy, ww, wh
+            local minh = attrs.minh or 0
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
             local offx = self.lpadding
@@ -1807,6 +1830,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
                 local child_maxh = (expand_unit_size * attrs.expand) - tpadding - bpadding - spacing
+                child_maxh = math.floor(math.max(child_maxh, minh))
                 wx, wy, ww, wh = widget:reflow(
                     offx + lpadding,
                     offset + tpadding + spacing,
@@ -1816,6 +1840,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                     attrs.fillh and attrs.fillh ~= 0,
                     viewport
                 )
+                wh = child_maxh
                 if not attrs.fillh or attrs.fillh == 0 then
                     -- We're expanding but not filling, so we want the child to use what it needs
                     -- but for purposes of laying out the box, treat it as if it's using child_maxh.
@@ -1826,7 +1851,6 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                         widget.cy = wy + (child_maxh - wh) / 2
                         widget.box[2] = (child_maxh - wh) / 2
                     end
-                    wh = child_maxh
                 end
             else
                 -- Non-expanded widget with native size, already reflown in pass 1.  Just need
@@ -1837,7 +1861,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 widget.cy = widget.cy + oy
                 widget.box[1] = ox
                 widget.box[2] = oy
-                ww, wh = widget.cw, widget.ch
+                ww, wh = widget.cw, math.max(widget.ch, minh)
             end
             offset = offset + wh + tpadding + spacing + bpadding
             maxw = math.max(maxw, ww)
@@ -1875,6 +1899,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             local wx, wy, ww, wh
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
+            local minw = attrs.minw or 0
             local offy = self.tpadding
             -- FIXME: this doesn't work for expanded children because widget.ch isn't computed yet.
             if attrs.valign == rtk.Widget.CENTER then
@@ -1885,6 +1910,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
                 local child_maxw = (expand_unit_size * attrs.expand) - lpadding - rpadding - spacing
+                child_maxw = math.floor(math.max(child_maxw, minw))
                 wx, wy, ww, wh = widget:reflow(
                     offset + lpadding + spacing,
                     offy + tpadding,
@@ -1894,6 +1920,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                     attrs.fillh and attrs.fillh ~= 0,
                     viewport
                 )
+                ww = child_maxw
                 if not attrs.fillw or attrs.fillw == 0 then
                     if attrs.halign == rtk.Widget.RIGHT then
                         widget.cx = wx + (child_maxw - ww)
@@ -1902,7 +1929,6 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                         widget.cx = wx + (child_maxw - ww) / 2
                         widget.box[1] = (child_maxw - ww) / 2
                     end
-                    ww = child_maxw
                 end
             else
                 -- Non-expanded widget with native size, already reflown in pass 1.  Just need
@@ -1913,7 +1939,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 widget.cy = widget.cy + oy
                 widget.box[1] = ox
                 widget.box[2] = oy
-                ww, wh = widget.cw, widget.ch
+                ww, wh = math.max(widget.cw, minw), widget.ch
             end
             offset = offset + ww + lpadding + spacing + rpadding
             maxw = math.max(maxw, offset)
@@ -2025,9 +2051,8 @@ function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
 end
 
 
-function rtk.Button:_draw(offx, offy, sx, sy, event)
-    self.last_offx, self.last_offy = offx, offy
-    self.sx, self.sy = sx, sy
+function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
     local x, y = self.cx + offx, self.cy + offy
     local sx, sy, sw, sh = x, y, 0, 0
 
@@ -2233,9 +2258,8 @@ function rtk.Entry:_rendertext(x, y)
     rtk.pop_dest()
 end
 
-function rtk.Entry:_draw(offx, offy, sx, sy, event)
-    self.last_offx, self.last_offy = offx, offy
-    self.sx, self.sy = sx, sy
+function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
 
     local x, y = self.cx + offx, self.cy + offy
     local focused = self:focused()
@@ -2442,9 +2466,8 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cw, self.ch = w, h
 end
 
-function rtk.Label:_draw(offx, offy, sx, sy, event)
-    self.last_offx, self.last_offy = offx, offy
-    self.sx, self.sy = sx, sy
+function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
     local x, y = self.cx + offx, self.cy + offy
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -2496,9 +2519,8 @@ function rtk.ImageBox:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cw, self.ch = w, h
 end
 
-function rtk.ImageBox:_draw(offx, offy, sx, sy, event)
-    self.last_offx, self.last_offy = offx, offy
-    self.sx, self.sy = sx, sy
+function rtk.ImageBox:_draw(px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
     local x, y = self.cx + offx, self.cy + offy
 
     if not self.image or y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -2689,7 +2711,7 @@ function rtk.OptionMenu:onmousedown(event)
     -- Force a redraw and then defer opening the popup menu so we get a UI refresh with the
     -- button pressed before pening the menu, which is modal and blocks further redraws.
     rtk.Button.onmousedown(self, event)
-    self:_draw(self.last_offx, self.last_offy, self.sx, self.sy, event)
+    self:_draw(self.px, self.py, self.last_offx, self.last_offy, self.sx, self.sy, event)
     self:ondraw(self.last_offx, self.last_offy, event)
     if self._menustr ~= nil then
         reaper.defer(popup)
