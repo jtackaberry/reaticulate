@@ -1286,8 +1286,8 @@ function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     -- FIXME: viewport dimensions calculation assumes vertical scrolling viewport
     if self.child and self.child.visible == true then
         local wx, wy, ww, wh = self.child:reflow(
-            self.lpadding,
-            self.tpadding,
+            0,
+            0,
             child_max_w,
             child_max_h,
             fillw,
@@ -1331,12 +1331,14 @@ function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
     self:ondrawpre(offx, offy, event)
     self:_draw_bg(offx, offy, event)
     if self.child and self.child.realized then
+        local lpadding = self.lpadding or 0
+        local tpadding = self.tpadding or 0
         self:_clamp()
         -- Redraw the backing store, first "clearing" it according to what's currently painted
         -- underneath it.
         self._backingstore:drawfrom(gfx.dest, x, y, 0, 0, self._backingstore.width, self._backingstore.height)
         rtk.push_dest(self._backingstore.id)
-        self.child:_draw(0, 0, -self.vx, -self.vy, sx + x, sy + y, event)
+        self.child:_draw(lpadding, tpadding, -self.vx + lpadding, -self.vy + tpadding, sx + x, sy + y, event)
         rtk.pop_dest()
         self._backingstore:drawregion(0, 0, x, y, self.cw, self.ch)
     end
