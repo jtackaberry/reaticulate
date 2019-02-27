@@ -2497,7 +2497,7 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
         end
         self.lw, self.lh = lw, lh
     end
-    self.cw, self.ch = math.min(w, boxw), math.min(h, boxh)
+    self.cw, self.ch = w, h
 end
 
 function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
