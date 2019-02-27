@@ -967,6 +967,7 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
         elseif event.type == rtk.Event.MOUSEDOWN then
             if not event.handled and self:onmousedown(event) then
                 event:set_handled(self)
+                rtk.set_mouse_cursor(self.cursor)
             end
             -- Register this widget as a drag candidate.  If the mouse moves with the button
             -- pressed, onupdate() will invoke ondragstart() for us.
@@ -977,6 +978,7 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
             end
         elseif event.type == rtk.Event.MOUSEUP then
             if not event.handled and self:focused() then
+                rtk.set_mouse_cursor(self.cursor)
                 self:onclick(event)
                 event:set_handled(self)
             end
