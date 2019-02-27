@@ -2326,7 +2326,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
         end
     end
     if hover and event and event.type == rtk.Event.MOUSEDOWN then
-        self.caret = self:caret_from_mousedown(x, y, event)
+        self.caret = self:caret_from_mousedown(x + sx, y + sy, event)
     end
     if focused then
         if not self._blinking then
