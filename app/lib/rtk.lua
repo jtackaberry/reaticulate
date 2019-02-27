@@ -1052,8 +1052,15 @@ end
 
 function rtk.Widget:reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     if not boxx then
+        -- reflow() called with no arguments to indicate local reflow needed without
+        -- any change to bounding box, so we can reuse the previous bounding box.
         if self.box then
             self:_reflow(table.unpack(self.box))
+        else
+            -- We haven't ever reflowed before, so no prior bounding box.   Caller isn't
+            -- allowed to depend on our return arguments when called without supplying a
+            -- bounding box.
+            return
         end
     else
         self.viewport = viewport
