@@ -1015,12 +1015,24 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
     end
 end
 
-
+-- Sets an attribute on the widget to the given value.
+--
+-- If trigger is anything other than false, setting the attribute will cause
+-- invocation of on*() handles (if applicable).  Setting to false will disable
+-- this, which can be useful if setting the attribute in another on* handler to
+-- prevent circular calls.
 function rtk.Widget:attr(attr, value, trigger)
+    value = self:_filter_attr(attr, value)
     self[attr] = value
     self:onattr(attr, value, trigger == nil or trigger)
     return self
 end
+
+-- Subclasses can implement this to filter attribute values to ensure validity.
+function rtk.Widget:_filter_attr(attr, value)
+    return value
+end
+
 
 function rtk.Widget:setcolor(s)
     local r, g, b, a = color2rgba(s)
@@ -2414,6 +2426,15 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
     end
 end
 
+function rtk.Entry:_filter_attr(attr, value)
+    if attr == 'value' then
+        return value or ''
+    else
+        return value
+    end
+end
+
+
 function rtk.Entry:onattr(attr, value, trigger)
     rtk.Widget.onattr(self, attr, value, trigger)
     if attr == 'value' then
@@ -2779,6 +2800,17 @@ function rtk.CheckBox:onclick(event)
         value = rtk.CheckBox.STATE_UNCHECKED
     end
     self:attr('value', value)
+end
+
+function rtk.CheckBox:_filter_attr(attr, value)
+    if attr == 'value' then
+        if value == false or value == nil then
+            return rtk.CheckBox.STATE_UNCHECKED
+        elseif value == true then
+            return rtk.CheckBox.STATE_CHECKED
+        end
+    end
+    return value
 end
 
 function rtk.CheckBox:onattr(attr, value, trigger)
