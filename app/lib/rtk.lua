@@ -1319,6 +1319,8 @@ function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
         -- Computed size of viewport takes into account widget's size and x/y offset within
         -- the viewport.
         self.cw, self.ch = math.max(ww + wx, (fillw and w) or self.w or 0), h
+        -- Truncate child dimensions to our constraining box
+        self.cw, self.ch = math.min(self.cw, boxw), math.min(self.ch, boxh)
     else
         self.cw, self.ch = w, h
     end
@@ -2495,7 +2497,7 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
         end
         self.lw, self.lh = lw, lh
     end
-    self.cw, self.ch = w, h
+    self.cw, self.ch = math.min(w, boxw), math.min(h, boxh)
 end
 
 function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
