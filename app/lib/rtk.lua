@@ -2521,7 +2521,7 @@ function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
     gfx.y = y + (self.ch - self.lh) / 2
     self:setcolor(self.color)
     gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, self.fontflags or 0)
-    gfx.drawstr(self.label)
+    gfx.drawstr(self.label, 0, x + self.cw, y + self.ch)
     self:ondraw(offx, offy, event)
 end
 
