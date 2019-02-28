@@ -1294,6 +1294,10 @@ function rtk.Viewport:initialize(attrs)
     -- If scroll*() is called then the offset is dirtied so that it can be clamped
     -- upon next draw or event.
     self._needs_clamping = false
+    -- If not nil, then we need to emit onscroll() on next draw.  Value is the previous
+    -- scroll position.  Initialize to non-nil value to ensure we trigger onscroll()
+    -- after first draw.
+    self._needs_onscroll = {0, 0}
 end
 
 -- function rtk.Viewport:onmouseenter()
@@ -1371,6 +1375,10 @@ function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
 
     self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder)
     self:ondraw(offx, offy, event)
+    if self._needs_onscroll then
+        self:onscroll(self._needs_onscroll[1], self._needs_onscroll[2])
+        self._needs_onscroll = nil
+    end
 end
 
 function rtk.Viewport:_handle_event(offx, offy, event, clipped)
@@ -1404,10 +1412,14 @@ function rtk.Viewport:scrollby(offx, offy)
 end
 
 function rtk.Viewport:scrollto(x, y)
-    self.vx = x
-    self.vy = y
-    self._needs_clamping = true
-    rtk.queue_draw()
+    if x ~= self.vx or y ~= self.vy then
+        self._needs_clamping = true
+        -- Ensure we emit onscroll() after our next draw.
+        self._needs_onscroll = {self.vx, self.vy}
+        self.vx = x
+        self.vy = y
+        rtk.queue_draw()
+    end
 end
 
 -- Clamp viewport position to fit child's current dimensions.  Caller must ensure child
@@ -1420,6 +1432,8 @@ function rtk.Viewport:_clamp()
         self._needs_clamping = false
     end
 end
+
+function rtk.Viewport:onscroll() end
 
 -------------------------------------------------------------------------------------------------------------
 
