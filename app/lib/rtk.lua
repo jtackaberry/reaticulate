@@ -428,10 +428,13 @@ function rtk.update()
                 -- just repaint the current backing store.
             if need_draw or rtk._draw_queued or event.handled then
                 rtk.clear()
+                -- Clear _draw_queued flag before drawing so that if some event
+                -- handler triggered from _draw() queues a redraw it won't get
+                -- lost.
+                rtk._draw_queued = false
                 rtk.widget:_draw(0, 0, 0, 0, 0, 0, event)
                 rtk._backingstore:resize(rtk.w, rtk.h, false)
                 rtk._backingstore:drawfrom(-1)
-                rtk._draw_queued = false
             else
                 rtk._backingstore:draw(nil, nil, nil, 6)
             end
