@@ -1778,7 +1778,7 @@ function rtk.Box:_reflow_step1(w, h, viewport)
             expand_units = expand_units + (attrs.expand or 1)
             spacing = 0
         elseif widget.visible == true then
-            local ww, wh
+            local ww, wh = 0, 0
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
             -- Reflow at 0,0 coords just to get the native dimensions.  Will adjust position in second pass.
@@ -1882,7 +1882,6 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                     attrs.fillh and attrs.fillh ~= 0,
                     viewport
                 )
-                wh = child_maxh
                 if not attrs.fillh or attrs.fillh == 0 then
                     -- We're expanding but not filling, so we want the child to use what it needs
                     -- but for purposes of laying out the box, treat it as if it's using child_maxh.
@@ -1893,6 +1892,8 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                         widget.cy = wy + (child_maxh - wh) / 2
                         widget.box[2] = (child_maxh - wh) / 2
                     end
+                else
+                    wh = child_maxh
                 end
             else
                 -- Non-expanded widget with native size, already reflown in pass 1.  Just need
@@ -1962,7 +1963,6 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                     attrs.fillh and attrs.fillh ~= 0,
                     viewport
                 )
-                ww = child_maxw
                 if not attrs.fillw or attrs.fillw == 0 then
                     if attrs.halign == rtk.Widget.RIGHT then
                         widget.cx = wx + (child_maxw - ww)
@@ -1971,6 +1971,8 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                         widget.cx = wx + (child_maxw - ww) / 2
                         widget.box[1] = (child_maxw - ww) / 2
                     end
+                else
+                    ww = child_maxw
                 end
             else
                 -- Non-expanded widget with native size, already reflown in pass 1.  Just need
