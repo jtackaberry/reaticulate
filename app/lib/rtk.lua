@@ -966,7 +966,6 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                     self:onmouseleave(event)
                     self.hovering = false
                 else
-                    -- We
                     rtk.set_mouse_cursor(self.cursor)
                     self:onmousemove(event)
                 end
@@ -1622,11 +1621,12 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
         end
     end
 
-    -- If the event wasn't handled and there's a background defined or we're focuysa, then we give the
-    -- container the opportunity to handle the event, to e.g. prevent mouseover events
-    -- from falling through to lower z-index widgets that are obscured by the container.
-    -- Also if we're dragging with mouse button pressed, then allow the container to handle
-    -- the event so that e.g. containers can serve as drop targets.
+    -- If the event wasn't handled and there's a background defined or we're
+    -- focused, then we give the container the opportunity to handle the event,
+    -- to e.g. prevent mouseover events from falling through to lower z-index
+    -- widgets that are obscured by the container. Also if we're dragging with
+    -- mouse button pressed, then allow the container to handle the event so
+    -- that e.g. containers can serve as drop targets.
     rtk.Widget._handle_event(self, offx, offy, event, clipped)
 end
 
