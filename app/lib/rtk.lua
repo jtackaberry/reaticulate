@@ -426,7 +426,7 @@ function rtk.update()
             end
             -- If the event was marked as handled, or if one of the handlers explicitly requested a
             -- redraw (or a reflow in which case we implicitly redraw) then do so now.  Otherwise
-                -- just repaint the current backing store.
+            -- just repaint the current backing store.
             if need_draw or rtk._draw_queued or event.handled then
                 rtk.clear()
                 -- Clear _draw_queued flag before drawing so that if some event
