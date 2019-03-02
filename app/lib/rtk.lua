@@ -1293,10 +1293,24 @@ function rtk.Widget:onreflow() end
 -------------------------------------------------------------------------------------------------------------
 
 rtk.Viewport = class('rtk.Viewport', rtk.Widget)
+rtk.Viewport.static.SCROLLBAR_NEVER = 0
+rtk.Viewport.static.SCROLLBAR_ALWAYS = 1
+rtk.Viewport.static.SCROLLBAR_HOVER = 2
+
 function rtk.Viewport:initialize(attrs)
     rtk.Widget.initialize(self)
     self.vx = 0
     self.vy = 0
+    self.scrollbar_size = 15
+    self.vscrollbar = rtk.Viewport.SCROLLBAR_HOVER
+    self.vscrollbar_offset = 0
+    self.vscrollbar_gutter = 50
+
+    -- TODO: implement horizontal scrollbars
+    self.hscrollbar = rtk.Viewport.SCROLLBAR_NEVER
+    self.hscrollbar_offset = 0
+    self.hscrollbar_gutter = 50
+
     self:setattrs(attrs)
     self:onattr('child', self.child, true)
     self._backingstore = nil
@@ -1307,6 +1321,13 @@ function rtk.Viewport:initialize(attrs)
     -- scroll position.  Initialize to non-nil value to ensure we trigger onscroll()
     -- after first draw.
     self._needs_onscroll = {0, 0}
+
+    -- Scrollbar geometry updated during _reflow()
+    self._vscrollx = 0
+    self._vscrolly = 0
+    self._vscrollh = 0
+    self._vscrolla = {current=0, target=0, delta=0.05}
+    self._vscroll_in_gutter = false
 end
 
 -- function rtk.Viewport:onmouseenter()
@@ -1331,23 +1352,39 @@ function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
             fillh,
             self
         )
-        -- log("%s (child of vp %s): requests wxy=%s,%s  wh=%s,%s (offered %s,%s)", self.child.id, self.id, wx, wy, ww, wh, w, h)
         -- Computed size of viewport takes into account widget's size and x/y offset within
         -- the viewport.
         self.cw, self.ch = math.max(ww + wx, (fillw and w) or self.w or 0), h
-        -- Truncate child dimensions to our constraining box
-        self.cw, self.ch = math.min(self.cw, boxw), math.min(self.ch, boxh)
+        -- Truncate child dimensions to our constraining box unless the dimension was
+        -- explicitly specified.
+        if not self.w then
+            self.cw = math.min(self.cw, boxw)
+        end
+        if not self.h then
+            self.ch = math.min(self.ch, boxh)
+        end
     else
         self.cw, self.ch = w, h
     end
 
-    local child_w = self.cw - self.lpadding - self.rpadding
-    local child_h = self.ch - self.tpadding - self.bpadding
+    local innerw = self.cw - self.lpadding - self.rpadding
+    local innerh = self.ch - self.tpadding - self.bpadding
     if not self._backingstore then
-        self._backingstore = rtk.Image:new():create(child_w, child_h)
+        self._backingstore = rtk.Image:new():create(innerw, innerh)
     else
-        self._backingstore:resize(child_w, child_h, false)
+        self._backingstore:resize(innerw, innerh, false)
     end
+
+    -- Calculate geometry for scrollbars
+    self._vscrollh = 0
+    if self.child then
+        if self.vscrollbar ~= rtk.Viewport.SCROLLBAR_NEVER and self.child.ch > innerh then
+            self._vscrollx = self.cx + self.cw - self.scrollbar_size - self.vscrollbar_offset
+            self._vscrolly = self.cy + self.ch * self.vy / self.child.ch + self.tpadding
+            self._vscrollh = self.ch * innerh  / self.child.ch
+        end
+    end
+
     self._needs_clamping = true
 end
 
@@ -1362,7 +1399,8 @@ end
 
 function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
     rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
-    local x, y = self.cx + offx, self.cy + offy
+    local x = self.cx + offx + self.lpadding
+    local y = self.cy + offy + self.tpadding
     if y + self.ch < 0 or y > rtk.h or self.ghost then
         -- Viewport is not visible
         return false
@@ -1370,16 +1408,16 @@ function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
     self:ondrawpre(offx, offy, event)
     self:_draw_bg(offx, offy, event)
     if self.child and self.child.realized then
-        local lpadding = self.lpadding or 0
-        local tpadding = self.tpadding or 0
         self:_clamp()
         -- Redraw the backing store, first "clearing" it according to what's currently painted
         -- underneath it.
         self._backingstore:drawfrom(gfx.dest, x, y, 0, 0, self._backingstore.width, self._backingstore.height)
         rtk.push_dest(self._backingstore.id)
-        self.child:_draw(lpadding, tpadding, -self.vx + lpadding, -self.vy + tpadding, sx + x, sy + y, event)
+        self.child:_draw(0, 0, -self.vx, -self.vy, sx + x, sy + y, event)
         rtk.pop_dest()
         self._backingstore:drawregion(0, 0, x, y, self.cw, self.ch)
+
+        self:_draw_scrollbars(px, py, offx, offy, sx, sy, event)
     end
 
     self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder)
@@ -1390,19 +1428,95 @@ function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
     end
 end
 
+function rtk.Viewport:_draw_scrollbars(px, py, offx, offy, sx, sy, event)
+    local dragging = rtk.dragging == self
+    local animate = self._vscrolla.current ~= self._vscrolla.target
+    if self.vscrollbar == rtk.Viewport.SCROLLBAR_ALWAYS or
+        (self.vscrollbar == rtk.Viewport.SCROLLBAR_HOVER and
+            (dragging or (not rtk.dragging and self._vscroll_in_gutter) or animate)) then
+        local scry = self.cy + self.ch * self.vy / self.child.ch + self.tpadding
+        local scrx = self._vscrollx + offx
+        local handle_hovering = point_in_box(rtk.mouse.x, rtk.mouse.y, scrx + sx, scry + sy,
+                                                self.scrollbar_size, self.ch)
+        if (handle_hovering and self._vscroll_in_gutter) or dragging then
+            self._vscrolla.target = 0.44
+            self._vscrolla.delta = 0.1
+        elseif self._vscroll_in_gutter or self.vscrollbar == rtk.Viewport.SCROLLBAR_ALWAYS then
+            self._vscrolla.target = 0.19
+            self._vscrolla.delta = 0.1
+        end
+        if animate then
+            local newval
+            if self._vscrolla.current < self._vscrolla.target then
+                newval = math.min(self._vscrolla.current + self._vscrolla.delta, self._vscrolla.target)
+            else
+                newval = math.max(self._vscrolla.current - self._vscrolla.delta, self._vscrolla.target)
+            end
+            self._vscrolla.current = newval
+            rtk.queue_draw()
+        end
+        self:setcolor('#ffffff')
+        gfx.a = self._vscrolla.current
+        gfx.rect(scrx, scry + offy, self.scrollbar_size, self._vscrollh, 1)
+    end
+end
+
 function rtk.Viewport:_handle_event(offx, offy, event, clipped)
+    rtk.Widget._handle_event(self, offx, offy, event, clipped)
     local x, y = self.cx + offx, self.cy + offy
     local hovering = point_in_box(rtk.mouse.x, rtk.mouse.y, x, y, self.cw, self.ch)
 
-    if event.type == rtk.Event.MOUSEMOVE and rtk.dragging and rtk.dragging.viewport == self then
-        if rtk.mouse.y - 20 < y then
-            self:scrollby(10, -math.max(5, math.abs(y - rtk.mouse.y)))
-        elseif rtk.mouse.y + 20 > y + self.ch then
-            self:scrollby(10, math.max(5, math.abs(y + self.ch - rtk.mouse.y)))
+    if event.type == rtk.Event.MOUSEMOVE then
+        local vscroll_in_gutter = false
+        if rtk.dragging and rtk.dragging.viewport == self then
+            if rtk.mouse.y - 20 < y then
+                self:scrollby(10, -math.max(5, math.abs(y - rtk.mouse.y)))
+            elseif rtk.mouse.y + 20 > y + self.ch then
+                self:scrollby(10, math.max(5, math.abs(y + self.ch - rtk.mouse.y)))
+            end
+            event:set_handled(self)
+        elseif not rtk.dragging and not event.handled and hovering then
+            if self.vscrollbar ~= rtk.Viewport.SCROLLBAR_NEVER and self._vscrollh > 0 then
+                local gutterx = self._vscrollx + offx - self.vscrollbar_gutter
+                local guttery = self.cy + offy
+                -- Are we hovering in the scrollbar gutter?
+                if point_in_box(rtk.mouse.x, rtk.mouse.y, gutterx, guttery,
+                                self.vscrollbar_gutter + self.scrollbar_size, self.ch) then
+                    vscroll_in_gutter = true
+                    if rtk.mouse.x >= self._vscrollx + offx then
+                        event:set_handled(self)
+                    else
+                        -- Ensure we queue draw if we leave the scrollbar handle but still in
+                        -- the gutter.
+                        rtk.queue_draw()
+                    end
+                end
+            end
+        end
+        if vscroll_in_gutter ~= self._vscroll_in_gutter then
+            self._vscroll_in_gutter = vscroll_in_gutter
+            if not vscroll_in_gutter then
+                self._vscrolla.target = 0
+                self._vscrolla.delta = 0.02
+            end
+            -- Ensure we redraw to reflect mouse leaving gutter.  But we
+            -- don't mark the event as handled because we're ok with lower
+            -- z-order widgets handling the mouseover as well.
+            rtk.queue_draw()
+        end
+    elseif not event.handled and self._vscroll_in_gutter then
+        if event.type == rtk.Event.MOUSEDOWN and rtk.mouse.x >= self._vscrollx + offx then
+            local sy = self.cy + self.last_offy + self.sy
+            local scrolly = self:_get_vscrollbar_screen_pos()
+            if rtk.mouse.y < scrolly or rtk.mouse.y > scrolly + self._vscrollh then
+                if self:_handle_scrollbar(nil, self._vscrollh / 2, true) then
+                    event:set_handled(true)
+                end
+            end
         end
     end
 
-    if not event.handled and self.child and self.child.visible and self.child.realized then
+    if (not event.handled or event.type == rtk.Event.MOUSEMOVE) and self.child and self.child.visible and self.child.realized then
         self:_clamp()
         self.child:_handle_event(x - self.vx + self.lpadding, y - self.vy + self.tpadding,
                                  event, clipped or not hovering)
@@ -1413,6 +1527,52 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
     end
 end
 
+function rtk.Viewport:_get_vscrollbar_screen_pos()
+    return self.last_offy + self.sy + self.cy + self.ch * self.vy / self.child.ch + self.tpadding
+end
+
+function rtk.Viewport:_handle_scrollbar(hoffset, voffset, gutteronly)
+    if voffset ~= nil then
+        local innerh = self.ch - self.tpadding - self.bpadding
+        -- Screen coordinate of the Viewport widget
+        local vsy = self.cy + self.last_offy + self.sy
+        -- Screen coordinate of the scrollbar
+        if gutteronly then
+            local ssy = self:_get_vscrollbar_screen_pos()
+            if rtk.mouse.y >= ssy and rtk.mouse.y <= ssy + self._vscrollh then
+                -- Mouse is not in the gutter.
+                return false
+            end
+        end
+        local pct = clamp(rtk.mouse.y - vsy - voffset, 0, innerh) / innerh
+        local target = pct * (self.child.ch)
+        self:scrollto(self.vx, target)
+    end
+end
+
+function rtk.Viewport:ondragstart(event)
+    if self._vscroll_in_gutter then
+        if rtk.mouse.x >= self._vscrollx + self.last_offx + self.sx then
+            return {true, rtk.mouse.y - self:_get_vscrollbar_screen_pos()}
+        end
+    end
+    return false
+end
+
+function rtk.Viewport:ondragmousemove(event, arg)
+    local vscrollbar, offset = table.unpack(arg)
+    if vscrollbar then
+        self:_handle_scrollbar(nil, offset, false)
+
+    end
+end
+
+function rtk.Viewport:ondragend(event)
+    -- In case we release the mouse in a different location (off the scrollbar
+    -- handle or even outside the gutter), ensure the new state gets redrawn.
+    rtk.queue_draw()
+    return true
+end
 
 -- Scroll functions blindly accept the provided positions in case the child has not yet been
 -- reflowed.  The viewport offsets will be clamped on next draw or event.
