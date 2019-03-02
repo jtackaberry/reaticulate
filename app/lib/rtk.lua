@@ -1768,6 +1768,15 @@ function rtk.Box:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     outerw = innerw + self.lpadding + self.rpadding
     outerh = innerh + self.tpadding + self.bpadding
 
+    -- self.w/self.h could be negative or fractional, which is ok because
+    -- resolvesize() returns the correct value.  If that's the case, force fill
+    -- to be enabled so our cw/ch calculation below uses the resolved values.
+    if self.w and self.w < 1.0 then
+        fillw = true
+    end
+    if self.h and self.h < 1.0 then
+        fillh = true
+    end
     self.cw = math.max(outerw, (fillw and w) or self.w or 0)
     self.ch = math.max(outerh, (fillh and h) or self.h or 0)
     -- log("%s (box): box=%s,%s  expand=%s spacing=%s  fill=%s,%s  inner=%s,%s (s1=%s,%s)   wh=%s,%s -> cxy=%s,%s cwh=%s,%s", self.id, boxw, boxh, expand_unit_size, self.spacing, fillw, fillh, innerw, innerh, s1w, s1h, w, h, self.cx, self.cy, self.cw, self.ch)
