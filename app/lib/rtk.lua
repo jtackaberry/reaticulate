@@ -2359,9 +2359,6 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
         if not focused then
             self:_draw_borders(offx, offy, self.border_hover)
         end
-        if event.type == rtk.Event.MOUSEMOVE then
-            event:set_handled(self)
-        end
     end
     if hover and event and event.type == rtk.Event.MOUSEDOWN then
         self.caret = self:caret_from_mousedown(x + sx, y + sy, event)
