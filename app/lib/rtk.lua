@@ -142,7 +142,7 @@ local rtk = {
             entry_border_hover = '#3a508e',
             entry_border_focused = '#4960b8',
             entry_bg = '#353535',
-            entry_label = '#ffffff7f',
+            entry_label = '#ffffff8f',
         },
         light = {
             accent = '#47abff',
