@@ -925,6 +925,9 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
         event:set_widget_hovering(self, offx, offy)
         -- rtk.set_mouse_cursor(self.cursor)
         if event.type == rtk.Event.MOUSEMOVE then
+            if rtk.dragging == self then
+                self:ondragmousemove(event, rtk.dragarg)
+            end
             if self.hovering == false then
                 -- Mousemove event over a widget that's not currently marked as hovering.
                 if event.buttons == 0 or self:focused() then
@@ -1003,6 +1006,9 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
 
     -- Cases below are when mouse is not hovering over widget
     elseif event.type == rtk.Event.MOUSEMOVE then
+        if rtk.dragging == self then
+            self:ondragmousemove(event, rtk.dragarg)
+        end
         if self.hovering == true then
             self:onmouseleave(event)
             rtk.queue_draw()
@@ -1247,6 +1253,9 @@ function rtk.Widget:ondragstart(event) return false end
 -- Called when a currently dragging widget has been dropped.  Return value
 -- has no significance.
 function rtk.Widget:ondragend(event, dragarg) end
+
+-- Called when a currently dragging widget is moving.
+function rtk.Widget:ondragmousemove(event, dragarg) end
 
 -- Called when a currently dragging widget is hovering over another widget.
 -- If the callback returns true then the widget is considered to be a valid
