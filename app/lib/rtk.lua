@@ -2521,17 +2521,15 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
     local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, fillw and boxw or nil, fillh and boxh or nil)
 
-    if not w or not h then
-        gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, self.fontflags or 0)
-        local lw, lh = gfx.measurestr(self.label)
-        if not w then
-            w = lw + (self.lpadding + self.rpadding) * rtk.scale
-        end
-        if not h then
-            h = lh + (self.tpadding + self.bpadding) * rtk.scale
-        end
-        self.lw, self.lh = lw, lh
+    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, self.fontflags or 0)
+    local lw, lh = gfx.measurestr(self.label)
+    if not w then
+        w = lw + (self.lpadding + self.rpadding) * rtk.scale
     end
+    if not h then
+        h = lh + (self.tpadding + self.bpadding) * rtk.scale
+    end
+    self.lw, self.lh = lw, lh
     self.cw, self.ch = w, h
 end
 
