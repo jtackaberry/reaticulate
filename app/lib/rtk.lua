@@ -1592,7 +1592,7 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
     -- processed in reverse order, which is the opposite order than they're drawn. So
     -- elements at the same z level that are painted  above others will receive events
     -- first.
-    zs = self._z_indexes
+    local zs = self._z_indexes
     for zidx = #zs, 1, -1 do
         local zchildren = self._reflowed_children[zs[zidx]]
         local nzchildren = zchildren and #zchildren or 0
