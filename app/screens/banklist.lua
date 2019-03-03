@@ -259,17 +259,16 @@ function screen.init()
     screen.toolbar:add(track_button, {rpadding=0})
     track_button.onclick = function()
         app:push_screen('trackcfg')
-        -- app:open_config_ui()
     end
     screen.toolbar:add(rtk.HBox.FLEXSPACE)
 
     -- Filter text entry
     local row = topbar:add(rtk.HBox:new({spacing=10}), {tpadding=10})
-    local entry = rtk.Entry:new({label="Filter articulations", bg2='#0000007f'})
+    local icon = app:get_image('search_white_18.png')
+    local entry = rtk.Entry:new({icon=icon, label="Filter articulations", bg2='#0000007f'})
     screen.filter_entry = entry
     entry.onkeypress = handle_filter_keypress
     entry.onchange = function(self)
-        screen.filter_tabbed = false
         screen.filter_articulations(self.value:lower())
     end
     row:add(entry, {expand=1, fillw=true, lpadding=20, rpadding=20})
