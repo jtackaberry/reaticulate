@@ -358,6 +358,8 @@ function App:handle_command(cmd, arg)
         local enabled = self:handle_toggle_option(arg, 'cc_feedback_active', false)
         feedback.set_active(enabled)
         feedback.sync(self.track)
+    elseif cmd == 'focus_filter' then
+        self.screens.banklist.focus_filter()
     end
     return BaseApp.handle_command(self, cmd, arg)
 end
@@ -509,6 +511,8 @@ function BaseApp:handle_onkeypresspost(event)
             -- Transport: Play/stop
             reaper.Main_OnCommandEx(40044, 0, 0)
             self:refocus()
+        elseif event.char == '/' then
+            self.screens.banklist.focus_filter()
         end
     end
 end

@@ -22,8 +22,11 @@ local screen = {
     widget = nil,
     midi_channel_buttons = {},
     visible_banks = {},
-    filter_tabbed = false,
-    toolbar = nil
+    toolbar = nil,
+    -- If true, when enter is pressed in the filter box to activate an
+    -- articulation, the last non-Reaticulate window is refocused.  This is set
+    -- to true when the "Focus articulation filter" action is activated.
+    filter_refocus_on_activation = false,
 }
 
 -- SublimeText style substring match
@@ -80,29 +83,35 @@ end
 local function handle_filter_keypress(self, event)
     if event.keycode == rtk.keycodes.ESCAPE then
         self:attr('value', '')
-    elseif event.keycode == rtk.keycodes.TAB then
-        -- Tab is handled by the main app, so we return false to indicate the event
-        -- is not handled.
-        screen.filter_tabbed = true
+    elseif event.keycode == rtk.keycodes.UP or event.keycode == rtk.keycodes.DOWN then
+        -- Pass up/down through to the main window so articulations can be selected.
+        screen.filter_activate_on_enter = false
         return false
     elseif event.keycode == rtk.keycodes.ENTER then
-        -- Select the first visible articulation and clear the filter.
-        local activated = false
-        for _, bank in ipairs(screen.visible_banks) do
-            for _, art in ipairs(bank.articulations) do
-                if art.button.visible then
-                    app:activate_articulation(art, false)
-                    activated = true
+        if screen.filter_activate_on_enter and self.value ~= '' then
+            -- Select the first visible articulation and clear the filter.
+            local activated = false
+            for _, bank in ipairs(screen.visible_banks) do
+                for _, art in ipairs(bank.articulations) do
+                    if art.button.visible then
+                        app:activate_articulation(art, screen.filter_refocus_on_activation)
+                        activated = true
+                        break
+                    end
+                end
+                if activated then
                     break
                 end
             end
-            if activated then
-                break
-            end
+        elseif screen.filter_refocus_on_activation then
+            -- No articulation activation needed but we do need to refocus still.
+            app:refocus()
         end
         if event.keycode == rtk.keycodes.ENTER then
             self:attr('value', '')
         end
+    else
+        screen.filter_activate_on_enter = true
     end
 end
 
