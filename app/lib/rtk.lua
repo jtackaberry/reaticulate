@@ -694,6 +694,7 @@ end
 
 function rtk.Image:draw(dx, dy, scale, mode, a)
     gfx.mode = mode or 0
+    gfx.a = a or 1.0
     gfx.blit(self.id, scale or 1.0, 0, self.sx, self.sy, self.width, self.height, dx or 0, dy or 0)
     gfx.mode = 0
     return self
