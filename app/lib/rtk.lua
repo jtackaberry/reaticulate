@@ -2452,6 +2452,8 @@ function rtk.Entry:initialize(attrs)
     self.tpadding = 3
     self.rpadding = 5
     self.bpadding = 3
+    self.icon = nil
+    self.icon_alpha = 0.6
     self.label = ''
     self.bg = rtk.theme.entry_bg
     self.border = {rtk.theme.entry_border_focused}
@@ -2557,14 +2559,21 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
         self:_rendertext(x, y)
     end
 
+    local lpadding = self.lpadding
+    if self.icon then
+        local a = self.icon_alpha + (focused and 0.2 or 0)
+        self.icon:draw(x + lpadding, y + (self.ch - self.icon.height * rtk.scale) / 2, rtk.scale, nil, a)
+        lpadding = lpadding + self.icon.width + 5
+    end
+
     self.image:drawregion(
-        self.loffset, 0, x + self.lpadding, y + self.tpadding,
-        self.cw - self.lpadding - self.rpadding, self.ch - self.tpadding - self.bpadding
+        self.loffset, 0, x + lpadding, y + self.tpadding,
+        self.cw - lpadding - self.rpadding, self.ch - self.tpadding - self.bpadding
     )
 
     if self.label and #self.value == 0 then
         gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, rtk.fonts.ITALICS)
-        gfx.x, gfx.y = x + self.lpadding, y + self.tpadding
+        gfx.x, gfx.y = x + lpadding, y + self.tpadding
         self:setcolor(rtk.theme.entry_label)
         gfx.drawstr(self.label)
     end
@@ -2586,7 +2595,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
         self:_draw_borders(offx, offy, self.border)
         if self.caretctr % 32 < 16 then
             -- Draw caret
-            local curx = x + self.positions[self.caret] + self.lpadding - self.loffset
+            local curx = x + self.positions[self.caret] + lpadding - self.loffset
             self:setcolor(rtk.theme.text)
             gfx.line(curx, y + self.tpadding, curx, y + self.ch - self.bpadding, 0)
         end
