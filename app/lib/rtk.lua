@@ -1204,6 +1204,7 @@ function rtk.Widget:focus()
             rtk.focused:blur()
         end
         rtk.focused = self
+        rtk.queue_draw()
     end
     return self
 end
@@ -1212,6 +1213,7 @@ function rtk.Widget:blur()
     if self:focused() then
         if self:onblur() ~= false then
             rtk.focused = nil
+            rtk.queue_draw()
         end
     end
     return self
