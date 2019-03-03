@@ -85,6 +85,10 @@ local rtk = {
     dockstate = nil,
     -- true if the mouse is positioned within the UI window
     in_window = false,
+    -- true if the UI window currently has keyboard focus.  This requires the js_ReaScriptAPI
+    -- extension and if it's not installed will always be true.  Is only valid when reflowing,
+    -- drawing, or handling events.
+    is_focused = true,
     -- The top-level widget for the app (normally a container of some sort).
     widget = nil,
     -- The currently focused widget (or nil if no widget is focused)
@@ -363,6 +367,15 @@ function rtk.update()
         rtk.onclose()
     end
 
+    -- Check focus
+    if reaper.JS_Window_GetFocus then
+        local focused = rtk.hwnd == reaper.JS_Window_GetFocus()
+        if focused ~= rtk.is_focused then
+            rtk.is_focused = focused
+            need_draw = true
+        end
+    end
+
     local last_in_window = rtk.in_window
     rtk.in_window = gfx.mouse_x >= 0 and gfx.mouse_y >= 0 and gfx.mouse_x <= gfx.w and gfx.mouse_y <= gfx.h
     if not event then
@@ -533,6 +546,18 @@ function rtk.clear()
     gfx.set(hex2rgb(rtk.theme.window_bg))
     gfx.rect(0, 0, rtk.w, rtk.h, 1)
 end
+
+
+function rtk.focus()
+    if rtk.hwnd and reaper.JS_Window_SetFocus then
+        reaper.JS_Window_SetFocus(rtk.hwnd)
+        rtk.queue_draw()
+        return true
+    else
+        return false
+    end
+end
+
 
 local function _run()
     rtk.update()
@@ -2512,7 +2537,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
     rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
 
     local x, y = self.cx + offx, self.cy + offy
-    local focused = self:focused()
+    local focused = self:focused() and rtk.is_focused
 
     if (y + self.ch < 0 or y > rtk.h or self.ghost) and not focused then
         -- Widget not viewable on viewport
@@ -2570,7 +2595,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
 end
 
 function rtk.Entry:_blink()
-    if self:focused() then
+    if self:focused() and rtk.is_focused then
         self._blinking = true
         local ctr = self.caretctr % 16
         self.caretctr = self.caretctr + 1
