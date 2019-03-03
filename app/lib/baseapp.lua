@@ -70,12 +70,12 @@ function BaseApp:initialize(appid, title, basedir)
     self:get_config()
     self:set_debug(self.config.debug_level or 0)
     self:set_theme()
-    rtk.widget = self:build_frame()
+    rtk.init(self.title, self.config.w, self.config.h, self.config.dockstate, self.config.x, self.config.y)
+    self:build_frame()
 end
 
 function BaseApp:run()
     self:handle_onupdate()
-    rtk.init(self.title, self.config.w, self.config.h, self.config.dockstate, self.config.x, self.config.y)
     rtk.run()
 end
 
@@ -108,7 +108,7 @@ function BaseApp:show_screen(screen)
         if self.viewport then
             self.viewport:attr('child', screen.widget)
         else
-            self.frame:replace(self.frame.content_position, screen.widget, {expand=1})
+            self.frame:replace(self.frame.content_position, screen.widget, {expand=1, fillw=true})
         end
         if screen.toolbar then
             screen.toolbar:show()
@@ -289,16 +289,13 @@ function BaseApp:build_frame()
 
     self.statusbar = rtk.HBox:new({bg=rtk.theme.window_bg, lpadding=10, tpadding=5, bpadding=5, rpadding=10})
     self.statusbar.label = self.statusbar:add(rtk.Label:new({color=rtk.theme.text_faded}), {expand=1})
-    self.viewport = self.frame:add(rtk.Viewport:new(), {expand=1})
-    if not self.viewport then
-        self.frame:add(rtk.VBox.FLEXSPACE)
-    end
+    self.frame:add(rtk.VBox.FLEXSPACE)
     self.frame.content_position = #self.frame.children
 
     self.frame:add(self.statusbar)
     self:set_statusbar('Reaticulate')
 
-    return self.frame
+    rtk.widget:add(self.frame)
 end
 
 function BaseApp:handle_onupdate()
