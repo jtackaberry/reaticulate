@@ -92,6 +92,14 @@ local rtk = {
     drag_candidates = nil,
     -- The currently dragging widget (or nil if none)
     dragging = nil,
+    -- true if the currently dragging widget is eligible to be dropped and false
+    -- otherwise.  When false, it means ondrop*() handlers will never be called.
+    -- This should be set to false by the widget's ondragstart() handler.  This
+    -- is useful for e.g. scrollbars.
+    --
+    -- TODO: this is better signalled via an ondragstart() return value or possible
+    -- via the event object.
+    droppable = true,
     -- The current drop target of the currently dragging widget (or nil if
     -- not dragging or not currently over a valid top target)
     dropping = nil,
@@ -401,6 +409,8 @@ function rtk.update()
                 -- Clear event handled flag to give ondragstart() handler the opportunity
                 -- to reset it as handled to prevent further propogation.
                 event.handled = nil
+                -- Reset droppable status.
+                rtk.droppable = true
                 for n, widget in ipairs(rtk.drag_candidates) do
                     arg = widget:ondragstart(event)
                     if arg ~= false then
@@ -942,7 +952,7 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                     end
                 else
                     -- If here, mouse is moving while buttons are pressed.
-                    if rtk.dragarg and not event.generated then
+                    if rtk.dragarg and not event.generated and rtk.droppable then
                         -- We are actively dragging a widget
                         if rtk.dropping == self or self:ondropfocus(event, rtk.dragging, rtk.dragarg) then
                             if rtk.dropping then
@@ -1553,6 +1563,7 @@ end
 function rtk.Viewport:ondragstart(event)
     if self._vscroll_in_gutter then
         if rtk.mouse.x >= self._vscrollx + self.last_offx + self.sx then
+            rtk.droppable = false
             return {true, rtk.mouse.y - self:_get_vscrollbar_screen_pos()}
         end
     end
