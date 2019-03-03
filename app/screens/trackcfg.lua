@@ -43,7 +43,8 @@ end
 function screen.init()
     screen.error_icon = rtk.Image:new(Path.join(Path.imagedir, "warning_amber_24x24.png"))
     screen.info_icon = rtk.Image:new(Path.join(Path.imagedir, "info_outline_white_24x24.png"))
-    screen.widget = rtk.VBox:new()
+    local vbox = rtk.VBox:new()
+    screen.widget = rtk.Viewport({child=vbox, rpadding=10})
 
     screen.toolbar = rtk.HBox:new({spacing=0})
 
@@ -57,11 +58,11 @@ function screen.init()
     screen.toolbar:add(back_button)
 
     local heading = rtk.Heading:new({label="Track Articulations"})
-    screen.widget:add(heading, {
+    vbox:add(heading, {
         lpadding=10, tpadding=10, bpadding=20
     })
 
-    screen.banklist = screen.widget:add(rtk.VBox:new({spacing=10}), {lpadding=10})
+    screen.banklist = vbox:add(rtk.VBox:new({spacing=10}), {lpadding=10})
 
     local spacer = rtk.Spacer({h=150, w=1.0, y=0, z=10})
     spacer.ondropfocus = function(self, event, _, srcbankbox)
@@ -69,7 +70,7 @@ function screen.init()
         return true
     end
 
-    screen.widget:add(spacer, {tpadding=-20, bpadding=-130})
+    vbox:add(spacer, {tpadding=-20, bpadding=-130})
 
     local add_bank_button = app:make_button("add_circle_outline_white_18x18.png", "Add Bank", true)
     add_bank_button.onclick = function()
@@ -83,7 +84,7 @@ function screen.init()
             bankbox.bank_menu.onchange()
         end
     end
-    screen.widget:add(add_bank_button, {lpadding=20, tpadding=20, bpadding=40})
+    vbox:add(add_bank_button, {lpadding=20, tpadding=20, bpadding=40})
     screen.update()
 end
 
@@ -286,7 +287,7 @@ function screen.check_errors()
 end
 
 function screen.update()
-    app.viewport:scrollto(0, 0)
+    screen.widget:scrollto(0, 0)
     screen.banklist:clear()
     for srcchannel, dstchannel, msb, lsb in rfx.get_banks() do
         local bankbox = screen.create_bank_ui()

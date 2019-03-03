@@ -45,10 +45,10 @@ end
 
 local function make_section(title)
     local heading = rtk.Heading:new({label=title})
-    screen.widget:add(heading, {
+    screen.vbox:add(heading, {
         lpadding=10, tpadding=30, bpadding=15
     })
-    return screen.widget:add(rtk.VBox:new({spacing=10, lpadding=20, bpadding=0}))
+    return screen.vbox:add(rtk.VBox:new({spacing=10, lpadding=20, bpadding=0}))
 end
 
 local function add_row(section, label, w, spacing)
@@ -61,7 +61,8 @@ local function add_row(section, label, w, spacing)
 end
 
 function screen.init()
-    screen.widget = rtk.VBox:new()
+    screen.vbox = rtk.VBox()
+    screen.widget = rtk.Viewport({child=screen.vbox})
     screen.toolbar = rtk.HBox:new({spacing=0})
 
     -- Back button: return to bank list

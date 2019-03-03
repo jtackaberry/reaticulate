@@ -238,13 +238,17 @@ function screen.show_track_banks()
     end
 end
 
+function screen.focus_filter()
+    screen.filter_entry:focus()
+    screen.filter_refocus_on_activation = not rtk.in_window
+    return rtk.focus()
+end
 
 function screen.init()
     screen.widget = rtk.VBox:new()
 
     local topbar = rtk.VBox:new({
         spacing=0,
-        position=rtk.Widget.FIXED,
         bg=rtk.theme.window_bg,
         y=0,
         focusable=true,
@@ -294,7 +298,9 @@ function screen.init()
             topbar:add(row, {tpadding=0, halign=rtk.Widget.CENTER})
         end
     end
-    screen.banks = screen.widget:add(rtk.VBox:new({bpadding=20}))
+    screen.banks = rtk.VBox({bpadding=20})
+    screen.viewport = rtk.Viewport({child=screen.banks})
+    screen.widget:add(screen.viewport, {fillw=true})
 
     -- Info / button when no banks are configured on track (hidden when there are banks)
     screen.no_banks_box = rtk.VBox:new()
@@ -314,10 +320,6 @@ function screen.init()
     })
     screen.no_banks_box:add(button, {halign=rtk.Widget.CENTER, tpadding=20})
     button.onclick = track_button.onclick
-
-    -- Testing nested viewports
-    -- screen.widget = rtk.Viewport:new({child=screen.widget}  )
-    -- screen.widget:scrollto(0, 200)
 end
 
 -- Ensures the default channel is highlighted.  Called by the main app when the default
