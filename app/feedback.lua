@@ -1,4 +1,4 @@
--- cOpyright 2017-2018 Jason Tackaberry
+-- Copyright 2017-2019 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
