@@ -82,17 +82,20 @@ local rtk = {
     w = gfx.w,
     h = gfx.h,
 
+    -- Last observed dock state for the window
     dockstate = nil,
     -- true if the mouse is positioned within the UI window
     in_window = false,
     -- true if the UI window currently has keyboard focus.  This requires the js_ReaScriptAPI
-    -- extension and if it's not installed will always be true.  Is only valid when reflowing,
-    -- drawing, or handling events.
+    -- extension and if it's not installed will always be true.
     is_focused = true,
     -- The top-level widget for the app (normally a container of some sort).
     widget = nil,
     -- The currently focused widget (or nil if no widget is focused)
     focused = nil,
+    -- All widgets under the mouse for the last mousedown event.  Used by the main loop to
+    -- query widgets for draggability when the mouse is dragged.  This is nil when the
+    -- mouse button isn't pressed
     drag_candidates = nil,
     -- The currently dragging widget (or nil if none)
     dragging = nil,
