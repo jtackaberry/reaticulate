@@ -151,6 +151,7 @@ local rtk = {
             entry_border_focused = '#4960b8',
             entry_bg = '#353535',
             entry_label = '#ffffff8f',
+            scrollbar = '#ffffff',
         },
         light = {
             accent = '#47abff',
@@ -162,7 +163,8 @@ local rtk = {
             entry_border_hover = '#3a508e',
             entry_border_focused = '#4960b8',
             entry_bg = '#cccccc',
-            entry_label = '#0000007f'
+            entry_label = '#0000007f',
+            scrollbar = '#000000',
         }
     },
 
@@ -1476,7 +1478,7 @@ function rtk.Viewport:_draw_scrollbars(px, py, offx, offy, sx, sy, event)
             self._vscrolla.current = newval
             rtk.queue_draw()
         end
-        self:setcolor('#ffffff')
+        self:setcolor(rtk.theme.scrollbar)
         gfx.a = self._vscrolla.current
         gfx.rect(scrx, scry + offy, self.scrollbar_size, self._vscrollh, 1)
     end
