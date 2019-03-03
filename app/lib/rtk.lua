@@ -1452,16 +1452,15 @@ function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
 end
 
 function rtk.Viewport:_draw_scrollbars(px, py, offx, offy, sx, sy, event)
-    local dragging = rtk.dragging == self
     local animate = self._vscrolla.current ~= self._vscrolla.target
     if self.vscrollbar == rtk.Viewport.SCROLLBAR_ALWAYS or
         (self.vscrollbar == rtk.Viewport.SCROLLBAR_HOVER and
-            (dragging or (not rtk.dragging and self._vscroll_in_gutter) or animate)) then
+            ((not rtk.dragging and self._vscroll_in_gutter) or animate or self._vscrolla.target>0)) then
         local scry = self.cy + self.ch * self.vy / self.child.ch + self.tpadding
         local scrx = self._vscrollx + offx
         local handle_hovering = point_in_box(rtk.mouse.x, rtk.mouse.y, scrx + sx, scry + sy,
                                                 self.scrollbar_size, self.ch)
-        if (handle_hovering and self._vscroll_in_gutter) or dragging then
+        if (handle_hovering and self._vscroll_in_gutter) or rtk.dragging == self then
             self._vscrolla.target = 0.44
             self._vscrolla.delta = 0.1
         elseif self._vscroll_in_gutter or self.vscrollbar == rtk.Viewport.SCROLLBAR_ALWAYS then
@@ -1488,15 +1487,19 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
     rtk.Widget._handle_event(self, offx, offy, event, clipped)
     local x, y = self.cx + offx, self.cy + offy
     local hovering = point_in_box(rtk.mouse.x, rtk.mouse.y, x, y, self.cw, self.ch)
+    local child_dragging = rtk.dragging and rtk.dragging.viewport == self
 
     if event.type == rtk.Event.MOUSEMOVE then
         local vscroll_in_gutter = false
-        if rtk.dragging and rtk.dragging.viewport == self then
+        if child_dragging then
             if rtk.mouse.y - 20 < y then
                 self:scrollby(10, -math.max(5, math.abs(y - rtk.mouse.y)))
             elseif rtk.mouse.y + 20 > y + self.ch then
                 self:scrollby(10, math.max(5, math.abs(y + self.ch - rtk.mouse.y)))
             end
+            -- Show scrollbar when we have a child dragging.
+            self._vscrolla.target = 0.19
+            self._vscrolla.delta = 0.03
             event:set_handled(self)
         elseif not rtk.dragging and not event.handled and hovering then
             if self.vscrollbar ~= rtk.Viewport.SCROLLBAR_NEVER and self._vscrollh > 0 then
@@ -1516,9 +1519,9 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
                 end
             end
         end
-        if vscroll_in_gutter ~= self._vscroll_in_gutter then
+        if vscroll_in_gutter ~= self._vscroll_in_gutter or self._vscrolla.current > 0 then
             self._vscroll_in_gutter = vscroll_in_gutter
-            if not vscroll_in_gutter then
+            if not vscroll_in_gutter and not child_dragging then
                 self._vscrolla.target = 0
                 self._vscrolla.delta = 0.02
             end
@@ -1532,10 +1535,9 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
             local sy = self.cy + self.last_offy + self.sy
             local scrolly = self:_get_vscrollbar_screen_pos()
             if rtk.mouse.y < scrolly or rtk.mouse.y > scrolly + self._vscrollh then
-                if self:_handle_scrollbar(nil, self._vscrollh / 2, true) then
-                    event:set_handled(true)
-                end
+                self:_handle_scrollbar(nil, self._vscrollh / 2, true)
             end
+            event:set_handled(true)
         end
     end
 
