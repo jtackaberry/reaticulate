@@ -1184,7 +1184,7 @@ end
 
 function rtk.Widget:blur()
     if self:focused() then
-        if self:onblur() == false then
+        if self:onblur() ~= false then
             rtk.focused = nil
         end
     end
