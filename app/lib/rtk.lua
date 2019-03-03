@@ -517,14 +517,13 @@ function rtk.init(title, w, h, dockstate, x, y)
     -- Reusable event object.
     rtk._event = rtk.Event:new()
     rtk._backingstore = rtk.Image:new():create(w, h)
-    rtk.x, rtk.y = x or 0, y or 0
     rtk.title = title
-    gfx.init(title, w, h, dockstate, x, y)
-    rtk._handle_dock_change(dockstate or 0)
-    rtk.clear()
-    -- Update immediately to clear canvas with gfx.clear (defined by set_theme())
-    -- to avoid ugly flicker.
-    gfx.update()
+    rtk.x, rtk.y = x or 0, y or 0
+    rtk.w, rtk.h = w, h
+    rtk.dockstate = dockstate
+    if not rtk.widget then
+        rtk.widget = rtk.Container()
+    end
 end
 
 
@@ -533,11 +532,23 @@ function rtk.clear()
     gfx.rect(0, 0, rtk.w, rtk.h, 1)
 end
 
-function rtk.run()
+local function _run()
     rtk.update()
     if rtk.running then
-        reaper.defer(rtk.run)
+        reaper.defer(_run)
     end
+end
+
+function rtk.run()
+    gfx.init(rtk.title, rtk.w, rtk.h, rtk.dockstate, rtk.x, rtk.y)
+    -- Update immediately to clear canvas with gfx.clear (defined by set_theme())
+    -- to avoid ugly flicker.
+    rtk.clear()
+    gfx.update()
+
+    rtk._handle_dock_change(dockstate or 0)
+
+    _run()
 end
 
 function rtk.quit()
