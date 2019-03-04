@@ -1838,12 +1838,12 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
         end
     end
 
-    -- If the event wasn't handled and there's a background defined or we're
-    -- focused, then we give the container the opportunity to handle the event,
-    -- to e.g. prevent mouseover events from falling through to lower z-index
-    -- widgets that are obscured by the container. Also if we're dragging with
-    -- mouse button pressed, then allow the container to handle the event so
-    -- that e.g. containers can serve as drop targets.
+    -- Give the container itself the opportunity to handle event.  For example,
+    -- if we have a background defined or we're focused, then we want to prevent
+    -- mouseover events from falling through to lower z-index widgets that are
+    -- obscured by the container.  Also if we're dragging with mouse button
+    -- pressed, the container needs to have the opportunity to serve as a drop
+    -- target.
     rtk.Widget._handle_event(self, offx, offy, event, clipped)
 end
 
@@ -1861,7 +1861,7 @@ function rtk.Container:_draw(px, py, offx, offy, sx, sy, event)
     self:_draw_bg(offx, offy, event)
 
     -- Draw children from lowest z-index to highest.  Children at the same z level are
-    -- drawn in order.
+    -- drawn in insertion order.
     for _, z in ipairs(self._z_indexes) do
         for _, widgetattrs in ipairs(self._reflowed_children[z]) do
             local widget, attrs = table.unpack(widgetattrs)
