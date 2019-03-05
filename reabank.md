@@ -297,10 +297,11 @@ Where elements enclosed in square brackets are optional, and where:
   are not prefixed this way then any future user-generated MIDI event will be routed to this channel when
   the articulation is activated.
 * `type` defines the type of output event (see below), e.g. note, cc, etc.
-* `@channel` specifies the destination MIDI channel of the output event
-  and unless `type` is prefixed with `-` it implies subsequent MIDI events will also be
-  routed to that destination channel. When channel is not specified, the destination channel
-  will be the same as the source channel where the articulation was triggered.
+* `@channel` specifies the destination MIDI channel of the output event and unless `type` is
+  prefixed with `-` it implies subsequent MIDI events will also be routed to that destination
+  channel. When channel is not specified, the destination channel will be dictated by the
+  destination channel the defined by the user when the bank was configured on the track.  See the
+  [usage page](usage#track-setup) for more information on source and destination channels.
 * `arg1` and `arg2` depend on the type
 * `%filter_program` if defined will only emit the output event if the specified program number
   `filter_program` is currently active on the same channel in another group.  This allows

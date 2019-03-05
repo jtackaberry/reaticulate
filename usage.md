@@ -15,7 +15,7 @@ Let's first get some terminology and basic operational stuff out of the way:
 
 * A __patch__ refers to a set of articulations offered by some virtual instrument on a single channel
     * For example Spitfire's Chamber Strings Ensembles patch running in Kontakt
-* __Banks__ define a set of articulations that typically describe some multi-articulation patch
+* A __Bank__ defines a set of articulations that typically describes some multi-articulation patch
     * __Factory banks__ are distributed with Reaticulate and you won't directly change these, but
       you can use them
     * __User banks__ are custom banks made by you
@@ -48,7 +48,8 @@ to switch articulations.
 
 A *bank* is a collection of articulations that generally describes a multi-articulation patch of a
 virtual instrument.  A track can contain a number of banks provided there are no conflicting
-articulations (program numbers) between banks on the same track.
+articulations (program numbers) between banks assigned to the same MIDI source channel (see below)
+on a given track.
 
 Once added, each bank has a few UI elements:
 * A selection of one of the existing factory or user banks (see below)
@@ -104,20 +105,24 @@ Hopefully the GUI will be fairly intuitive.  Here are some tips that may not be 
 ![floating](img/banklist-small.png)
 * The group of 16 numbers at the top of the UI indicate the __default channel__
     * The default channel is the channel on which articulations will be activated when you click an
-      articulation button with the mouse
+      articulation button with the mouse (provided the articulation's output events don't explicitly
+      specify a destination channel themselves)
+    * This value is synchronized (in both directions) with the target channel for new events in the active
+      MIDI editor.
     * There are also a number of actions relating the default channel (see later)
 * __Left clicking__ on an articulation will change articulations by sending the output events defined
   for that articulation in the bank using the default channel as the source channel for the articulation
     * If you have the MIDI editor open and step input is enabled, then left clicking will also
       insert the program change message in the MIDI item
 * __Right clicking__ on the other hand will *always* insert a program change at the edit cursor
-    * This also works from the arrange view
+    * This also works from the arrange view even if the MIDI editor is closed
 * When you left or right click an articulation, Reaticulate will focus the MIDI editor if it's open,
-  or the arrange view if it's not.  This is *usually* what you want to avoid focus stealing
+  or the arrange view if it's not.  This is *usually* what you want to avoid focus-stealing
 * When an articulation is activated, the source channel that articulation is active on is denoted by
   a number on the right edge of the articulation
-    * If a bank's source channel is set to __Omni__ in the track configuration, then it's possible activate
-      the articulation on multiple channels. All channels will be listed here.
+    * If a bank's source channel is set to __Omni__ in the track configuration, then it's possible
+      activate the articulation on multiple channels. All channels on which the articulation is
+      active will be listed here.
 * __Middle clicking__ an articulation will clear its assignment from all source channels (at least
   as far as the UI is concerned)
 * There's no vertical scrollbar in the UI yet.  Use the __scroll wheel__ on your mouse to scroll the view as needed.
@@ -144,13 +149,45 @@ All actions are prefixed with `Reaticulate` so you can easily find them by searc
 | `Set default MIDI Channel to <n>` | Sets the default channel to `<n>`. There are 16 separate actions for the 16 different MIDI channels.
 | `Activate articulation by CC in group <n> on default channel (MIDI CC relative or mousewheel)` | Scrolls through the articulations in group `<n>`.  It can be convenient to bind this action to an encoder as a quick way to flip through articulations from a control surface.
 | `Activate previous/next articulation in group <n> on default channel` | These actions can be assigned to previous/next keys (or control surface buttons) to discretely scroll through the articulations on group `<n>`
-| `Disable/Enable/Toggle CC feedback to MIDI feedback device` | If CC feedback is configured (see below), these actions control whether or not it's active
-| `Dump current CC values on select track to MIDI feedback device` | Replays all last seen CCs on all channels to the MIDI feedback device (if configured).
+| `Disable/Enable/Toggle feedback to MIDI feedback device` | If feedback is configured (see below), these actions control whether or not it's active.  If not configured, these actions do nothing.
+| `Sync current state on selected track to MIDI feedback device` | Replays all last seen CCs and current articulations on all channels to the MIDI feedback device (if configured).
 
 
-# CC Feedback to Control Surface
+# Feedback to Control Surface
 
 ## Overview
+
+Reaticulate is able to send articulation changes and CC values to a control surface or other MIDI
+controller:
+* When a track is selected, it can send all current articulations and last-seen CCs across all
+  channels on that track.  This causes your control surface to sync its faders/encoders as you
+  select different tracks.
+* During playback, articulation changes and CCs on all channels from the selected track will
+  be streamed back to the control surface in real time.
+
+If multiple tracks are selected, then the first selected track will be synced to the control
+surface.
+
+<p class='warning'>
+  Feedback is only sent to the control surface when the selected track is both armed for recording
+  and monitoring for input on a MIDI device.
+</p>
+
+### Articulations
+
+(This function currently only exists in the pre-release version.)
+
+Whenever an articulation is triggered on the selected track, first a Bank Select message is sent
+to the control surface, and then the articulation.  By default, the articulation is a Program
+Change message, but this can be translated to a CC of your choice (see below).
+
+The Bank Select is a 14-bit event indicating the MSB and LSB of the Reaticulate bank the selected
+articulation belongs to.  (In practice, this means two events: CC0 with the MSB value, and CC32 with
+the LSB value.)
+
+The MIDI channel of these events is the source channel of the selected articulation.
+
+### CC values
 
 MIDI controllers that send CCs can sometimes also *receive* those same CCs and use those values to set the
 controller's current state.  There are many devices with this capability, but some examples are:
@@ -172,20 +209,19 @@ MCP, software such as [Bome MIDI Translator Pro](https://www.bome.com/products/m
 be used to translate between CCs on the DAW side and pitch bend messages (used by MCP) on the
 control surface side.
 
-Reaticulate provides a built-in mechanism to transmit CC values to a MIDI controller:
-* When a track is selected, it can send all last-seen CCs across all channels on that track.  This
-  causes your control surface to sync its faders/encoders as you select different tracks.
-* During playback, the CCs on all channels from the first selected track will be streamed back to
-  the control surface in real time.
 
 ## Configuration
 
 To configure this:
 * Click the settings icon ![Settings icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/settings_white_18x18.png) in the toolbar
-* In the *CC Feedback to Control Surface* section select your control surface's MIDI device
+* In the *Feedback to Control Surface* section select your control surface's MIDI device
     * __Important!__ This device must be enabled for MIDI output within Reaper first, before selecting
       the MIDI device.  (Clicking the `Device must be enabled for output` text will open Reaper's
       Settings.)
+* By default, articulation changes are signaled to the control surface via Program Change messages
+  but these can be translated to a CC value.  Under the *Articulations* option list, select *CC
+  values* and then enter the CC number to use.  Note that even if CC values are used here, the bank
+  select message will still be sent.
 
 ## MIDI Bus
 
