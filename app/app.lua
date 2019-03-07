@@ -226,10 +226,20 @@ function App:activate_articulation(art, refocus, force_insert)
     reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, bank.msb)
     reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, bank.lsb)
     reaper.StuffMIDIMessage(0, 0xc0 + channel, art.program, 0)
-
     -- Set articulation as pending.
     local idx = (channel + 1) + (art.group << 8)
     self.pending_articulations[idx] = art
+end
+
+function App:activate_articulation_if_exists(art, refocus, force_insert)
+    if art then
+        self:activate_articulation(art, refocus, force_insert)
+    else
+        -- Requested articulation doesn't exist.  We re-sync current articulations to the
+        -- control surface (if feedback is enabled) to handle the case where the articulation
+        -- was triggered from a control surface which may now be in an incorrect state.
+        feedback.sync(self.track, feedback.SYNC_ARTICULATIONS)
+    end
 end
 
 function App:refocus()
@@ -318,14 +328,23 @@ function App:handle_command(cmd, arg)
                 end
             end
         end
-        if art then
-            self:activate_articulation(art, false, force_insert)
-        else
-            -- Requested articulation doesn't exist.  We re-sync current articulations to the
-            -- control surface (if feedback is enabled) to handle the case where the articulation
-            -- was triggered from a control surface which may now be in an incorrect state.
-            feedback.sync(self.track, feedback.SYNC_ARTICULATIONS)
+        self:activate_articulation_if_exists(art, false, force_insert)
+    elseif cmd == 'activate_articulation_by_slot' and rfx.fx then
+        local args = string.split(arg, ',')
+        local channel = _cmd_arg_to_channel(args[1])
+        local slot = tonumber(args[2])
+        local art = nil
+        for _, bank in ipairs(self.screens.banklist.visible_banks) do
+            if bank.srcchannel == 17 or bank.srcchannel == channel then
+                if slot > #bank.articulations then
+                    slot = slot - #bank.articulations
+                else
+                    art = bank.articulations[slot]
+                    break
+                end
+            end
         end
+        self:activate_articulation_if_exists(art, false, force_insert)
     elseif cmd == 'activate_relative_articulation' and rfx.fx then
         local args = string.split(arg, ',')
         local channel = _cmd_arg_to_channel(args[1])
