@@ -235,6 +235,16 @@ function App:activate_articulation(art, refocus, force_insert, channel)
     local idx = (channel + 1) + (art.group << 8)
     self.pending_articulations[idx] = art
     self.last_activated_articulation = art
+
+    -- Defer unsetting hover until next update so we can check the rfx once
+    -- again to detect the new articulation choice.  This prevents
+    -- flickering.
+    local banklist = self.screens.banklist
+    if banklist.selected_articulation then
+        reaper.defer(function()
+            banklist.clear_selected_articulation()
+        end)
+    end
 end
 
 function App:activate_articulation_if_exists(art, refocus, force_insert)
@@ -469,12 +479,8 @@ function App:activate_selected_articulation(channel, refocus)
     end
     if current then
         self:activate_articulation(target, refocus, insert, channel)
-        -- Defer unsetting hover until next update so we can check the rfx once
-        -- again to detect the new articulation choice.  This prevents
-        -- flickering.
         reaper.defer(function()
             banklist.clear_filter()
-            banklist.clear_selected_articulation()
         end)
     end
     self.last_selected_activation_timestamp = os.clock()
