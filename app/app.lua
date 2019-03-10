@@ -56,6 +56,8 @@ function App:initialize(basedir)
     -- (e.g. scrolling through articulations via the relative CC action) where, for UX, we can't
     -- afford to wait for the full activation round trip.
     self.pending_articulations = {}
+    -- The articulation that was explicitly last activated by the user on this track
+    self.last_activated_articulation = nil
     -- Last non-Reaticulate focused window hwnd (if JS ext is installed)
     self.saved_focus_window = nil
 
@@ -140,7 +142,7 @@ local function delete_program_events_at_ppq(take, idx, max, ppq)
     end
 end
 
-function App:activate_articulation(art, refocus, force_insert)
+function App:activate_articulation(art, refocus, force_insert, channel)
     if art.program < 0 then
         return false
     end
@@ -149,7 +151,7 @@ function App:activate_articulation(art, refocus, force_insert)
     end
 
     local bank = art:get_bank()
-    local channel = bank:get_src_channel(app.default_channel) - 1
+    local channel = bank:get_src_channel(channel or app.default_channel) - 1
     local take = nil
 
     -- If MIDI Editor is open, use the current take there.
@@ -229,6 +231,7 @@ function App:activate_articulation(art, refocus, force_insert)
     -- Set articulation as pending.
     local idx = (channel + 1) + (art.group << 8)
     self.pending_articulations[idx] = art
+    self.last_activated_articulation = art
 end
 
 function App:activate_articulation_if_exists(art, refocus, force_insert)
@@ -309,10 +312,32 @@ local function _cmd_arg_to_channel(arg)
     end
 end
 
+local function _cmd_arg_to_distance(mode, resolution, offset)
+    local mode = tonumber(mode)
+    local resolution = tonumber(resolution)
+    local offset = tonumber(offset)
+
+    -- Normalize offset into distance
+    if mode == 2 and offset % 15 == 0 then
+        -- Mode 2 is used by mousewheel as well.  Encoder left/wheel down is negative,
+        -- encoder right/wheel up is positive.  So we actually want to invert the mouse wheel
+        -- direction (such that down is positive).  Also, we need to treat the sensitivity
+        -- differently for mouse.  Unfortunately the only way to detect it is the heuristic
+        -- that values from mousewheel events are integer multiples of 15.
+        return -offset / 15
+    else
+        -- MIDI CC activated.  Adjust based on resolution and reduce the velocity effect.
+        local sign = offset < 0 and -1 or 1
+        return sign * math.ceil(math.abs(offset) * 16.0 / resolution)
+    end
+end
+
+
 function App:handle_command(cmd, arg)
     if cmd == 'set_default_channel' then
         self:set_default_channel(tonumber(arg))
         feedback.sync(self.track)
+
     elseif cmd == 'activate_articulation' and rfx.fx then
         -- Look at all visible banks and find the matching articulation.
         local args = string.split(arg, ',')
@@ -329,6 +354,7 @@ function App:handle_command(cmd, arg)
             end
         end
         self:activate_articulation_if_exists(art, false, force_insert)
+
     elseif cmd == 'activate_articulation_by_slot' and rfx.fx then
         local args = string.split(arg, ',')
         local channel = _cmd_arg_to_channel(args[1])
@@ -345,38 +371,35 @@ function App:handle_command(cmd, arg)
             end
         end
         self:activate_articulation_if_exists(art, false, force_insert)
+
     elseif cmd == 'activate_relative_articulation' and rfx.fx then
         local args = string.split(arg, ',')
         local channel = _cmd_arg_to_channel(args[1])
         local group = tonumber(args[2])
-        local mode = tonumber(args[3])
-        local resolution = tonumber(args[4])
-        local offset = tonumber(args[5])
-        local distance = 0
-
-        -- Normalize offset into distance
-        if mode == 2 and offset % 15 == 0 then
-            -- Mode 2 is used by mousewheel as well.  Encoder left/wheel down is negative,
-            -- encoder right/wheel up is positive.  So we actually want to invert the mouse wheel
-            -- direction (such that down is positive).  Also, we need to treat the sensitivity
-            -- differently for mouse.  Unfortunately the only way to detect it is the heuristic
-            -- that values from mousewheel events are integer multiples of 15.
-            distance = -offset / 15
-        else
-            -- MIDI CC activated.  Adjust based on resolution and reduce the velocity effect.
-            local sign = offset < 0 and -1 or 1
-            distance = sign * math.ceil(math.abs(offset) * 16.0 / resolution)
-        end
+        local distance = _cmd_arg_to_distance(args[3], args[4], args[5])
         self:activate_relative_articulation_in_group(channel, group, distance)
+
+    elseif cmd == 'select_relative_articulation' and rfx.fx then
+        local args = string.split(arg, ',')
+        local distance = _cmd_arg_to_distance(args[1], args[2], args[3])
+        self.screens.banklist.select_relative_articulation(distance)
+
+    elseif cmd == 'activate_selected_articulation' and rfx.fx then
+        local args = string.split(arg, ',')
+        local channel = _cmd_arg_to_channel(args[1])
+        self:activate_selected_articulation(channel, false)
+
     elseif cmd == 'sync_feedback' and rfx.fx then
         if self.track then
             reaper.CSurf_OnTrackSelection(self.track)
             feedback.sync(self.track)
         end
+
     elseif cmd == 'set_midi_feedback_active' then
         local enabled = self:handle_toggle_option(arg, 'cc_feedback_active', false)
         feedback.set_active(enabled)
         feedback.sync(self.track)
+
     elseif cmd == 'focus_filter' then
         self.screens.banklist.focus_filter()
     end
@@ -413,83 +436,57 @@ function App:set_default_channel(channel)
 end
 
 
--- distance < 0 means previous, otherwise means next.
 function App:activate_relative_articulation_in_group(channel, group, distance)
-    local artidx = channel + (group << 8)
-    local art = self.pending_articulations[artidx]
-    if not art then
-        art = self.active_articulations[artidx]
+    local target
+    local banklist = self.screens.banklist
+    local current = self:get_active_articulation(channel, group)
+    if current then
+        target = banklist.get_relative_articulation(current, distance, group)
+    else
+        target = banklist.get_firstlast_articulation(distance < 0)
     end
-    if not art or not art.button.visible then
-        -- No articulation is currently selected, so we need to pick one to use as a
-        -- starting point.  For negative distances, pick the first articulation, and
-        -- for positive distances, pick the last.
-        if distance < 0 then
-            local bank = self.screens.banklist.get_first_bank()
-            if bank then
-                art = bank:get_first_articulation()
-            end
-        else
-            local bank = self.screens.banklist.get_last_bank()
-            if bank then
-                art = bank:get_last_articulation()
-            end
-        end
-        if not art then
-            return
-        end
-    end
-
-    local bank = art:get_bank()
-
-    local function _get_adjacent_art(art)
-        if distance < 0 then
-            return bank:get_articulation_before(art)
-        else
-            return bank:get_articulation_after(art)
-        end
-    end
-
-    local absdistance = math.abs(distance)
-    local target = art
-    -- TODO: infinite loop potential here.  Give this a closer look for bugs.
-    while absdistance > 0 do
-        candidate = _get_adjacent_art(target)
-        if not candidate then
-            -- We have hit the edge of the current.  Check to see if we have other banks to move to.
-            if distance < 0 then
-                bank = self.screens.banklist.get_bank_before(bank)
-                if bank then
-                    candidate = bank:get_last_articulation()
-                end
-            else
-                bank = self.screens.banklist.get_bank_after(bank)
-                if bank then
-                    candidate = bank:get_first_articulation()
-                end
-            end
-        end
-        if not candidate then
-            -- We're at the top or bottom of the banklist, so wrap around.
-            if distance < 0 then
-                bank = self.screens.banklist.get_last_bank()
-                candidate = bank:get_last_articulation()
-            else
-                bank = self.screens.banklist.get_first_bank()
-                candidate = bank:get_first_articulation()
-            end
-        end
-        if candidate then
-            target = candidate
-            if candidate.group == group and candidate.button.visible then
-                absdistance = absdistance - 1
-            end
-        end
-    end
-    if target ~= art and target.group == group and target.button.visible then
+    if target then
         self:activate_articulation(target, false, false)
     end
 end
+
+function App:activate_selected_articulation(channel, refocus)
+    local banklist = self.screens.banklist
+    local current = banklist.get_selected_articulation()
+    if current then
+        self:activate_articulation(target, refocus, false, channel)
+        -- Defer unsetting hover until next update so we can check the rfx once
+        -- again to detect the new articulation choice.  This prevents
+        -- flickering.
+        reaper.defer(function()
+            banklist.clear_filter()
+            banklist.clear_selected_articulation()
+        end)
+    end
+end
+
+-- distance < 0 means previous, otherwise means next.  If group is nil, try all
+-- groups.
+function App:get_active_articulation(channel, group)
+    channel = channel or self.default_channel
+    local groups
+    if group then
+        groups = {group}
+    else
+        groups = {1, 2, 3, 4}
+    end
+    for _, group in ipairs(groups) do
+        local artidx = channel + (group << 8)
+        local art = self.pending_articulations[artidx]
+        if not art then
+            art = self.active_articulations[artidx]
+        end
+        if art and art.button.visible then
+            return art
+        end
+    end
+end
+
 
 function App:scroll_articulation_into_view(art)
     if art.button then
@@ -511,15 +508,20 @@ function App:handle_ondock()
 end
 
 function BaseApp:handle_onkeypresspost(event)
-    log("keypress: keycode=%d  handled=%s", event.keycode, event.handled)
+    log("keypress: keycode=%d  handled=%s  char=%s", event.keycode, event.handled, event.char)
     if not event.handled then
         if self:current_screen() == self.screens.banklist then
             if event.keycode >= 49 and event.keycode <= 57 then
                 self:set_default_channel(event.keycode - 48)
             elseif event.keycode == rtk.keycodes.DOWN then
-                self:activate_relative_articulation_in_group(self.default_channel, 1, 1)
+                self.screens.banklist.select_relative_articulation(1)
             elseif event.keycode == rtk.keycodes.UP then
-                self:activate_relative_articulation_in_group(self.default_channel, 1, -1)
+                self.screens.banklist.select_relative_articulation(-1)
+            elseif event.keycode == rtk.keycodes.ENTER then
+                self:activate_selected_articulation(self.default_channel, true)
+            elseif event.keycode == rtk.keycodes.ESCAPE then
+                self.screens.banklist.clear_filter()
+                self.screens.banklist.clear_selected_articulation()
             end
         end
         -- If the app sees an unhandled space key then we do what is _probably_ what
@@ -703,6 +705,7 @@ function App:handle_onupdate()
         end
         self.active_articulations = {}
         self.pending_articulations = {}
+        self.last_activated_articulation = nil
     end
 
     -- If rfx.sync() returns true then the FX has changed and we need

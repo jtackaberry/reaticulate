@@ -27,6 +27,7 @@ local screen = {
     -- articulation, the last non-Reaticulate window is refocused.  This is set
     -- to true when the "Focus articulation filter" action is activated.
     filter_refocus_on_activation = false,
+    selected_articulation = nil,
 }
 
 -- SublimeText style substring match
@@ -81,43 +82,33 @@ function screen.filter_articulations(filter)
 end
 
 local function handle_filter_keypress(self, event)
-    if event.keycode == rtk.keycodes.ESCAPE then
-        self:attr('value', '')
-    elseif event.keycode == rtk.keycodes.UP or event.keycode == rtk.keycodes.DOWN then
-        -- Pass up/down through to the main window so articulations can be selected.
-        screen.filter_activate_on_enter = false
+    if event.keycode == rtk.keycodes.UP or event.keycode == rtk.keycodes.DOWN or 
+       event.keycode == rtk.keycodes.ESCAPE then
+        -- These are handled at the app layer
         return false
     elseif event.keycode == rtk.keycodes.ENTER then
-        if screen.filter_activate_on_enter and self.value ~= '' then
-            -- Select the first visible articulation and clear the filter.
-            local activated = false
-            for _, bank in ipairs(screen.visible_banks) do
-                for _, art in ipairs(bank.articulations) do
-                    if art.button.visible then
-                        app:activate_articulation(art, screen.filter_refocus_on_activation)
-                        activated = true
-                        break
-                    end
-                end
-                if activated then
-                    break
+        if self.value ~= '' then
+            if screen.selected_articulation then
+                app:activate_selected_articulation(nil, screen.filter_refocus_on_activation)
+            else
+                local art = screen.get_firstlast_articulation()
+                if art then
+                    app:activate_articulation(art, screen.filter_refocus_on_activation)
                 end
             end
         elseif screen.filter_refocus_on_activation then
             -- No articulation activation needed but we do need to refocus still.
             app:refocus()
         end
-        if event.keycode == rtk.keycodes.ENTER then
-            self:attr('value', '')
-        end
-    else
-        screen.filter_activate_on_enter = true
+        reaper.defer(function()
+            screen.clear_selected_articulation()
+            screen.clear_filter()
+        end)
     end
 end
 
-
 function screen.draw_button_midi_channel(art, button, offx, offy, event)
-    local hovering = event:is_widget_hovering(button)
+    local hovering = event:is_widget_hovering(button) or button.hover
     if not hovering and not art:is_active() then
         -- No channel boxes to draw.
         return
@@ -253,6 +244,12 @@ function screen.focus_filter()
     return rtk.focus()
 end
 
+
+function screen.clear_filter()
+    screen.filter_entry:attr('value', '')
+end
+
+
 function screen.init()
     screen.widget = rtk.VBox:new()
 
@@ -374,8 +371,126 @@ function screen.get_last_bank()
 end
 
 
+-- Returns the first or last *visible* articulation on the track
+function screen.get_firstlast_articulation(last)
+    if not last then
+        local bank = screen.get_first_bank()
+        if bank then
+            for _, art in ipairs(bank.articulations) do
+                if art.button.visible then
+                    return art
+                end
+            end
+        end
+    else
+        local bank = screen.get_last_bank()
+        if bank then
+            for i = #bank.articulations, 1, -1 do
+                local art = bank.articulations[i]
+                if art.button.visible then
+                    return art
+                end
+            end
+        end
+    end
+end
+
+-- If group is specified then we find the closest articulation in this group.
+function screen.get_relative_articulation(art, distance, group)
+    local bank = art:get_bank()
+    local function _get_adjacent_art(art)
+        if distance < 0 then
+            return bank:get_articulation_before(art)
+        else
+            return bank:get_articulation_after(art)
+        end
+    end
+
+    local absdistance = math.abs(distance)
+    local target = art
+    -- TODO: infinite loop potential here.  Give this a closer look for bugs.
+    while absdistance > 0 do
+        candidate = _get_adjacent_art(target)
+        if not candidate then
+            -- We have hit the edge of the current.  Check to see if we have other banks to move to.
+            if distance < 0 then
+                bank = screen.get_bank_before(bank)
+                if bank then
+                    candidate = bank:get_last_articulation()
+                end
+            else
+                bank = screen.get_bank_after(bank)
+                if bank then
+                    candidate = bank:get_first_articulation()
+                end
+            end
+        end
+        if not candidate then
+            -- We're at the top or bottom of the banklist, so wrap around.
+            if distance < 0 then
+                bank = screen.get_last_bank()
+                candidate = bank:get_last_articulation()
+            else
+                bank = screen.get_first_bank()
+                candidate = bank:get_first_articulation()
+            end
+        end
+        if candidate then
+            target = candidate
+            if (candidate.group == group or not group) and candidate.button.visible then
+                absdistance = absdistance - 1
+            end
+        end
+    end
+    if (target.group == group or not group) and target.button.visible then
+        return target
+    end
+end
+
+function screen.get_selected_articulation()
+    local sel = screen.selected_articulation
+    if sel and sel.button.visible then
+        return sel
+    end
+end
+
+function screen.clear_selected_articulation()
+    if screen.selected_articulation then
+        screen.selected_articulation.button:attr('hover', false)
+        screen.selected_articulation = nil
+    end
+end
+
+
+function screen.select_relative_articulation(distance)
+    local current = screen.get_selected_articulation()
+    -- There could be a selected articulation even if current is nil, for
+    -- example if we in the middle of selecting but then applied a filter that
+    -- hid the articulation.
+    --
+    -- clear_selected_articulation() doesn't discriminate about whether it's
+    -- visible, so use that.
+    screen.clear_selected_articulation()
+    if not current then
+        -- Ask app layer what the currently *active* articulation
+        local last = app.last_activated_articulation
+        local group = last and last.group or nil
+        current = app:get_active_articulation(nil, group)
+    end
+    if current then
+        target = screen.get_relative_articulation(current, distance, nil)
+    else
+        -- Last resort: get either the first or last (depending on direction)
+        target = screen.get_firstlast_articulation(distance < 0)
+    end
+    if target then
+        target.button:attr('hover', true)
+        screen.selected_articulation = target
+    end
+end
 
 function screen.update()
+    screen.selected_articulation = nil
     screen.show_track_banks()
 end
 

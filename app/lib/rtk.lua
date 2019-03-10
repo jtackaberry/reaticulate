@@ -2257,6 +2257,7 @@ function rtk.Button:initialize(attrs)
     self.rspace = 5
     self.font, self.fontsize = table.unpack(rtk.fonts.button or rtk.fonts.default)
     self.fontscale = 1.0
+    self.hover = false
     self:setattrs(attrs)
     if not self.flags then
         self.flags = rtk.Button.FULL_SURFACE
@@ -2342,13 +2343,13 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
     end
 
     -- TODO: finish support for alignment attributes
-    local hover = event:is_widget_hovering(self)
+    local hover = event:is_widget_hovering(self) or self.hover
     local lx, ix, sepx = nil, nil, nil
     -- Default label color to surfaceless color and override if label is drawn on surface
     local textcolor = self.textcolor2
     local draw_icon_surface = self.flags & rtk.Button.FLAT_ICON == 0
     local draw_label_surface = self.flags & rtk.Button.FLAT_LABEL == 0
-    local draw_hover = self.flags & rtk.Button.NO_HOVER == 0
+    local draw_hover = self.flags & rtk.Button.NO_HOVER == 0 or self.hover
     local draw_separator = false
     -- Button has both icon and label
     if self.icon ~= nil and self.label ~= nil then
@@ -2404,8 +2405,14 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
             gfx.set(1, 1, 1, 0.2 * self.alpha)
             gfx.rect(sx, sy, sw, sh, 0)
         else
-            gfx.gradrect(sx, sy, sw, sh, r, g, b, a,  0, 0, 0, 0,   -r/75, -g/75, -b/75, 0)
-            gfx.set(1, 1, 1, 0.1 * self.alpha)
+            local mul = hover and 0.8 or 1
+            local d = hover and 400 or -75
+            gfx.gradrect(sx, sy, sw, sh, r, g, b, a*mul,  0, 0, 0, 0,   r/d, g/d, b/d, 0)
+            if hover then
+                gfx.set(r*1.3, g*1.3, b*1.3, self.alpha)
+            else
+                gfx.set(1, 1, 1, 0.1 * self.alpha)
+            end
             gfx.rect(sx, sy, sw, sh, 0)
         end
         if sepx and draw_separator and self.flags & rtk.Button.NO_SEPARATOR == 0 then
