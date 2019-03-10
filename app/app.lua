@@ -389,6 +389,11 @@ function App:handle_command(cmd, arg)
         local channel = _cmd_arg_to_channel(args[1])
         self:activate_selected_articulation(channel, false)
 
+    elseif cmd == 'insert_articulation' then
+        local args = string.split(arg, ',')
+        local channel = _cmd_arg_to_channel(args[1])
+        self:insert_last_articulation(channel)
+
     elseif cmd == 'sync_feedback' and rfx.fx then
         if self.track then
             reaper.CSurf_OnTrackSelection(self.track)
@@ -484,6 +489,17 @@ function App:get_active_articulation(channel, group)
         if art and art.button.visible then
             return art
         end
+    end
+end
+
+
+function App:insert_last_articulation(channel)
+    local art = self.last_activated_articulation
+    if not art then
+        art = self:get_active_articulation(channel)
+    end
+    if art then
+        self:activate_articulation(art, false, true, channel)
     end
 end
 
