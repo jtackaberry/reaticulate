@@ -182,7 +182,7 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         end
     end
     reaper.PreventUIRefresh(1)
-    if take then
+    if reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
         reaper.Undo_BeginBlock2(0)
         -- Take was found (either because MIDI editor is open with step input enabled or because
         -- force insert was used), so inject the PC event at the current cursor position.
