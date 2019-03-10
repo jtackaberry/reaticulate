@@ -216,6 +216,10 @@ local rtk = {
 
     _event = nil,
     _reflow_queued = false,
+    -- Set of specific widgets that need to be reflowed on next update.  If
+    -- _reflow_queued is true but this value is nil then the entire scene is
+    -- reflowed.
+    _reflow_widgets = nil,
     _draw_queued = false,
     -- After drawing, the window contents is blitted to this backing store as an
     -- optimization for subsequent UI updates where no event has occured.
@@ -248,7 +252,16 @@ function rtk.pop_dest()
     gfx.dest = table.remove(rtk._dest_stack, #rtk._dest_stack)
 end
 
-function rtk.queue_reflow()
+function rtk.queue_reflow(widget)
+    if widget then
+        if rtk._reflow_widgets then
+            rtk._reflow_widgets[widget] = true
+        elseif not rtk._reflow_queued then
+            rtk._reflow_widgets = {[widget]=true}
+        end
+    else
+        rtk._reflow_widgets = nil
+    end
     rtk._reflow_queued = true
 end
 
@@ -264,8 +277,21 @@ end
 
 
 function rtk.reflow()
+    local widgets = rtk._reflow_widgets
     rtk._reflow_queued = false
-    local x, y, w, h = rtk.widget:reflow(0, 0, rtk.w, rtk.h)
+    rtk._reflow_widgets = nil
+    local t0 = os.clock()
+    if widgets and rtk.widget.realized and #widgets < 20 then
+        for widget, _ in pairs(widgets) do
+            widget:reflow()
+        end
+    else
+        rtk.widget:reflow(0, 0, rtk.w, rtk.h)
+    end
+    local reflow_time = os.clock() - t0
+    if reflow_time > 0.05 then
+        log("WARN: slow rtk reflow: %s", reflow_time)
+    end
     rtk.onreflow()
 end
 
@@ -1229,7 +1255,7 @@ end
 
 -- Called when an attribute is set via attr()
 function rtk.Widget:onattr(attr, value, trigger)
-    self:reflow()
+    rtk.queue_reflow(self)
 end
 
 -- Called before any drawing from within the internal draw method.
