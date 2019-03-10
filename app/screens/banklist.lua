@@ -497,7 +497,7 @@ function screen.scroll_articulation_into_view(art)
 end
 
 function screen.update()
-    screen.selected_articulation = nil
+    screen.clear_selected_articulation()
     screen.show_track_banks()
 end
 
