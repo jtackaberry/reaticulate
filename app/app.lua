@@ -298,7 +298,7 @@ function rfx.onartchange(channel, group, last_program, new_program, track_change
                     art.button.flags = 0
                 end
                 app.active_articulations[artidx] = art
-                app:scroll_articulation_into_view(art)
+                app.screens.banklist.scroll_articulation_into_view(art)
                 break
             end
         end
@@ -513,12 +513,6 @@ function App:insert_last_articulation(channel)
     end
 end
 
-
-function App:scroll_articulation_into_view(art)
-    if art.button then
-        art.button:scrolltoview(110, 10)
-    end
-end
 
 function App:sync_midi_editor(hwnd)
     if not hwnd then

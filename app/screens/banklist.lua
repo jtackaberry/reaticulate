@@ -485,7 +485,14 @@ function screen.select_relative_articulation(distance)
     end
     if target then
         target.button:attr('hover', true)
+        screen.scroll_articulation_into_view(target)
         screen.selected_articulation = target
+    end
+end
+
+function screen.scroll_articulation_into_view(art)
+    if art.button then
+        art.button:scrolltoview(50, 10)
     end
 end
 
