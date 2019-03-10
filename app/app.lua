@@ -58,6 +58,9 @@ function App:initialize(basedir)
     self.pending_articulations = {}
     -- The articulation that was explicitly last activated by the user on this track
     self.last_activated_articulation = nil
+    -- Timestamp of the previous activation of a selected articulation.  Used to implement
+    -- "double click" functionality for the "Activate selected articulation" action.
+    self.last_selected_activation_timestamp = nil
     -- Last non-Reaticulate focused window hwnd (if JS ext is installed)
     self.saved_focus_window = nil
 
@@ -458,8 +461,14 @@ end
 function App:activate_selected_articulation(channel, refocus)
     local banklist = self.screens.banklist
     local current = banklist.get_selected_articulation()
+    local delta = os.clock() - (self.last_selected_activation_timestamp or 0)
+    local insert = false
+    if not current and delta < 0.5 then
+        insert = true
+        current = self.last_activated_articulation
+    end
     if current then
-        self:activate_articulation(target, refocus, false, channel)
+        self:activate_articulation(target, refocus, insert, channel)
         -- Defer unsetting hover until next update so we can check the rfx once
         -- again to detect the new articulation choice.  This prevents
         -- flickering.
@@ -468,6 +477,7 @@ function App:activate_selected_articulation(channel, refocus)
             banklist.clear_selected_articulation()
         end)
     end
+    self.last_selected_activation_timestamp = os.clock()
 end
 
 -- distance < 0 means previous, otherwise means next.  If group is nil, try all
