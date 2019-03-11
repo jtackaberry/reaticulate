@@ -313,7 +313,7 @@ function screen.init()
     -- Info / button when no banks are configured on track (hidden when there are banks)
     screen.no_banks_box = rtk.VBox:new()
     screen.widget:add(screen.no_banks_box, {
-        halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1
+        halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1, bpadding=100
     })
     local label = rtk.Label:new({
         label="No banks on this track", fontsize=24,
