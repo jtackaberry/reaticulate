@@ -18,7 +18,8 @@ local feedback = require 'feedback'
 
 local screen = {
     widget = nil,
-    midi_device_menu = nil
+    midi_device_menu = nil,
+    warning_icon = nil,
 }
 
 
@@ -61,6 +62,7 @@ local function add_row(section, label, w, spacing)
 end
 
 function screen.init()
+    screen.warning_icon = rtk.Image:new(Path.join(Path.imagedir, "warning_amber_24x24.png"))
     screen.vbox = rtk.VBox()
     screen.widget = rtk.Viewport({child=screen.vbox})
     screen.toolbar = rtk.HBox:new({spacing=0})
@@ -156,6 +158,26 @@ function screen.init()
     menu:select((app.config.debug_level or 0) + 1)
     menu.onchange = function(menu)
         app:set_debug(menu.selected - 1)
+    end
+
+
+    -- Show a warning if the js_ReaScriptAPI isn't installed.
+    if not reaper.JS_Window_Find then
+        local hbox = screen.vbox:add(rtk.HBox:new({spacing=10}), {tpadding=50, lpadding=20, rpadding=20})
+        hbox:add(rtk.ImageBox:new({image=screen.warning_icon}), {valign=rtk.Widget.TOP})
+        local vbox = hbox:add(rtk.VBox())
+        local label = vbox:add(rtk.Label({wrap=true}), {valign=rtk.Widget.CENTER})
+        label:attr(
+            'label',
+            "Reaticulate runs best when the js_ReaScriptAPI is installed."
+        )
+        local button = vbox:add(
+            rtk.Button({label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5}),
+            {tpadding=10}
+        )
+        button.onclick = function()
+            open_url('https://forum.cockos.com/showthread.php?t=212174')
+        end
     end
 end
 
