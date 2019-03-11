@@ -1876,6 +1876,11 @@ end
 function rtk.Container:_handle_event(offx, offy, event, clipped)
     local x, y = self.cx + offx, self.cy + offy
 
+    if y + self.ch < 0 or y > rtk.h or self.ghost then
+        -- Container is not visible
+        return false
+    end
+
     -- Handle events from highest z-index to lowest.  Children at the same z level are
     -- processed in reverse order, which is the opposite order than they're drawn. So
     -- elements at the same z level that are painted  above others will receive events
