@@ -799,6 +799,24 @@ rtk.Widget.static.BOTTOM = 2
 rtk.Widget.static.RELATIVE = 0
 rtk.Widget.static.FIXED = 1
 
+local function _filter_border(value)
+    if type(value) == 'string' then
+        return {value, nil, nil}
+    else
+        return value
+    end
+end
+rtk.Widget.static._attr_filters = {
+    halign = {left=rtk.Widget.LEFT, center=rtk.Widget.CENTER, right=rtk.Widget.RIGHT},
+    valign = {top=rtk.Widget.TOP, center=rtk.Widget.CENTER, bottom=rtk.Widget.BOTTOM},
+    position = {relative=rtk.Widget.RELATIVE, fixed=rtk.Widget.FIXED},
+    border = _filter_border,
+    tborder = _filter_border,
+    rborder = _filter_border,
+    bborder = _filter_border,
+    lborder = _filter_border,
+}
+
 function rtk.Widget:initialize()
     self.id = rtk._last_widget_serial
     rtk._last_widget_serial = rtk._last_widget_serial + 1
@@ -872,7 +890,9 @@ end
 
 function rtk.Widget:setattrs(attrs)
     if attrs ~= nil then
-        table.merge(self, attrs)
+        for k, v in pairs(attrs) do
+            self[k] = self:_filter_attr(k, v)
+        end
     end
 end
 
@@ -1112,11 +1132,19 @@ function rtk.Widget:attr(attr, value, trigger)
     value = self:_filter_attr(attr, value)
     self[attr] = value
     self:onattr(attr, value, trigger == nil or trigger)
+    -- Return self to allow chaining multiple attributes
     return self
 end
 
 -- Subclasses can implement this to filter attribute values to ensure validity.
 function rtk.Widget:_filter_attr(attr, value)
+    local map = rtk.Widget._attr_filters[attr]
+    local t = type(map)
+    if t == 'table' then
+        return map[value] or value
+    elseif t == 'function' then
+        return map(value) or value
+    end
     return value
 end
 
@@ -1376,6 +1404,12 @@ rtk.Viewport = class('rtk.Viewport', rtk.Widget)
 rtk.Viewport.static.SCROLLBAR_NEVER = 0
 rtk.Viewport.static.SCROLLBAR_ALWAYS = 1
 rtk.Viewport.static.SCROLLBAR_HOVER = 2
+rtk.Viewport.static._attr_filters.vscrollbar = {
+    never=rtk.Viewport.SCROLLBAR_NEVER,
+    always=rtk.Viewport.SCROLLBAR_ALWAYS,
+    hover=rtk.Viewport.SCROLLBAR_HOVER
+}
+rtk.Viewport.static._attr_filters.hscrollbar = rtk.Viewport._attr_filters.vscrollbar
 
 function rtk.Viewport:initialize(attrs)
     rtk.Widget.initialize(self)
@@ -1744,14 +1778,14 @@ end
 
 function rtk.Container:insert(pos, widget, attrs)
     self:_reparent_child(widget)
-    table.insert(self.children, pos, {widget, attrs or {}})
+    table.insert(self.children, pos, {widget, self:_filter_attrs(attrs)})
     rtk.queue_reflow()
     return widget
 end
 
 function rtk.Container:add(widget, attrs)
     self:_reparent_child(widget)
-    self.children[#self.children+1] = {widget, attrs or {}}
+    self.children[#self.children+1] = {widget, self:_filter_attrs(attrs)}
     rtk.queue_reflow()
     return widget
 end
@@ -1759,7 +1793,7 @@ end
 function rtk.Container:replace(pos, widget, attrs)
     self:_unparent_child(pos)
     self:_reparent_child(widget)
-    self.children[pos] = {widget, attrs or {}}
+    self.children[pos] = {widget, self:_filter_attrs(attrs)}
     rtk.queue_reflow()
     return widget
 end
@@ -1775,6 +1809,17 @@ function rtk.Container:remove(widget)
     if n ~= nil then
         self:remove_index(n)
         return n
+    end
+end
+
+function rtk.Container:_filter_attrs(attrs)
+    if attrs then
+        for k, v in pairs(attrs) do
+            attrs[k] = self:_filter_attr(k, v)
+        end
+        return attrs
+    else
+        return {}
     end
 end
 
@@ -1990,11 +2035,33 @@ end
 rtk.Box = class('rtk.Box', rtk.Container)
 rtk.Box.static.HORIZONTAL = 1
 rtk.Box.static.VERTICAL = 2
+rtk.Box.static.FILL_NONE = 0
+rtk.Box.static.FILL_TO_PARENT = 1
+rtk.Box.static.FILL_TO_SIBLINGS = 2
+
+rtk.Box.static._attr_filters.fillw = {
+    none=rtk.Box.FILL_NONE,
+    parent=rtk.Box.FILL_TO_PARENT,
+    siblings=rtk.Box.FILL_TO_SIBLINGS,
+}
+rtk.Box.static._attr_filters.fillh = rtk.Box.static._attr_filters.fillw
 
 function rtk.Box:initialize(direction, attrs)
     self.direction = direction
     rtk.Container.initialize(self, attrs)
 end
+
+function rtk.Box:_filter_attr(attr, value)
+    if attr == 'fillw' or attr == 'fillh' then
+        if value == false then
+            return rtk.Box.FILL_NONE
+        elseif value == true then
+            return rtk.Box.FILL_TO_PARENT
+        end
+    end
+    return rtk.Widget._filter_attr(self, attr, value)
+end
+
 
 function rtk.Box:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
@@ -2055,7 +2122,7 @@ function rtk.Box:_reflow_step1(w, h, viewport)
                         child_maxw,
                         h - tpadding - bpadding,
                         nil,
-                        attrs.fillh,
+                        attrs.fillh == rtk.Box.FILL_TO_PARENT,
                         viewport
                     )
                     ww = math.max(ww, minw)
@@ -2068,7 +2135,7 @@ function rtk.Box:_reflow_step1(w, h, viewport)
                         0,
                         w - lpadding - rpadding,
                         child_maxh,
-                        attrs.fillw,
+                        attrs.fillw == rtk.Box.FILL_TO_PARENT,
                         nil,
                         viewport
                     )
@@ -2733,7 +2800,7 @@ function rtk.Entry:_filter_attr(attr, value)
     if attr == 'value' then
         return value or ''
     else
-        return value
+        return rtk.Widget._filter_attr(self, attr, value)
     end
 end
 
@@ -3110,6 +3177,8 @@ function rtk.CheckBox:_filter_attr(attr, value)
         elseif value == true then
             return rtk.CheckBox.STATE_CHECKED
         end
+    else
+        return rtk.Button._filter_attr(self, attr, value)
     end
     return value
 end
