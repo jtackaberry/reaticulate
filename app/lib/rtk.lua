@@ -1883,7 +1883,7 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
 
     -- Handle events from highest z-index to lowest.  Children at the same z level are
     -- processed in reverse order, which is the opposite order than they're drawn. So
-    -- elements at the same z level that are painted  above others will receive events
+    -- elements at the same z level that are painted above others will receive events
     -- first.
     local zs = self._z_indexes
     for zidx = #zs, 1, -1 do
@@ -1914,7 +1914,7 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
         end
     end
 
-    -- Give the container itself the opportunity to handle event.  For example,
+    -- Give the container itself the opportunity to handle the event.  For example,
     -- if we have a background defined or we're focused, then we want to prevent
     -- mouseover events from falling through to lower z-index widgets that are
     -- obscured by the container.  Also if we're dragging with mouse button
