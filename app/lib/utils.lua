@@ -143,3 +143,16 @@ end
 function note_to_name(note)
     return string.format('%s%d', notes[(note % 12) + 1], math.floor(note / 12) - 2)
 end
+
+function open_url(url)
+    if reaper.GetOS():starts('Win') then
+        reaper.ExecProcess(string.format('cmd.exe /C start /B "" "%s"', url), -2)
+    elseif reaper.GetOS():starts('OSX') then
+        os.execute(string.format('open "" "%s"', url))
+    else
+        reaper.ShowMessageBox(
+            "Sorry, I don't know how to open URLs on this operating system.",
+            "Unsupported operating system", 0
+        )
+    end
+end
