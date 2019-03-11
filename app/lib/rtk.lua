@@ -233,7 +233,7 @@ local rtk = {
 function log(fmt, ...)
     if rtk.debug then
         if not fmt then
-            reaper.ShowConsoleMsg(debug.traceback())
+            reaper.ShowConsoleMsg(debug.traceback() .. "\n")
         elseif fmt == "" then
             -- Clear console
             reaper.ShowConsoleMsg(fmt)
