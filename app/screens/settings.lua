@@ -94,7 +94,7 @@ function screen.init()
     screen.midi_device_menu = menu
 
     local row = add_row(section, "", 75)
-    local info = row:add(rtk.Label:new({focusable=true}), {valign=rtk.Widget.CENTER, spacing=20})
+    local info = row:add(rtk.Label:new({focusable=true, wrap=true}), {valign=rtk.Widget.CENTER, spacing=20})
     info:attr('label', 'Device must be enabled for output.')
     info.onmouseenter = function() return true end
     info.onclick = function()
