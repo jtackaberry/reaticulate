@@ -2184,6 +2184,7 @@ end
 function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
     local offset = self.tpadding
     local spacing = 0
+    local third_pass = {}
     for n, widgetattrs in ipairs(self.children) do
         local widget, attrs = table.unpack(widgetattrs)
         if widget == rtk.Container.FLEXSPACE then
@@ -2196,19 +2197,12 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             local minh = attrs.minh or 0
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
-            local offx = self.lpadding
-            -- FIXME: this doesn't work for expanded children because widget.cw isn't computed yet.
-            if attrs.halign == rtk.Widget.CENTER then
-                offx = self.lpadding + (maxw - widget.cw) / 2
-            elseif attrs.halign == rtk.Widget.RIGHT then
-                offx = self.lpadding + maxw - widget.cw - self.rpadding
-            end
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
                 local child_maxh = (expand_unit_size * attrs.expand) - tpadding - bpadding - spacing
                 child_maxh = math.floor(math.max(child_maxh, minh))
                 wx, wy, ww, wh = widget:reflow(
-                    offx + lpadding,
+                    self.lpadding + lpadding,
                     offset + tpadding + spacing,
                     w - lpadding - rpadding,
                     child_maxh,
@@ -2216,6 +2210,11 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                     attrs.fillh and attrs.fillh ~= 0,
                     viewport
                 )
+                if attrs.halign == rtk.Widget.CENTER then
+                    widget.cx = wx + (maxw - ww) / 2
+                elseif attrs.halign == rtk.Widget.RIGHT then
+                    widget.cx = wx + maxw - ww
+                end
                 if not attrs.fillh or attrs.fillh == 0 then
                     -- We're expanding but not filling, so we want the child to use what it needs
                     -- but for purposes of laying out the box, treat it as if it's using child_maxh.
@@ -2232,18 +2231,33 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             else
                 -- Non-expanded widget with native size, already reflown in pass 1.  Just need
                 -- to adjust position.
-                local ox = offx + lpadding
-                local oy = offset + tpadding + spacing
-                widget.cx = widget.cx + ox
-                widget.cy = widget.cy + oy
-                widget.box[1] = ox
-                widget.box[2] = oy
+                local offx = self.lpadding + lpadding
+                if attrs.halign == rtk.Widget.CENTER then
+                    offx = offx + (maxw - widget.cw) / 2
+                elseif attrs.halign == rtk.Widget.RIGHT then
+                    offx = offx + maxw - widget.cw
+                end
+                local offy = offset + tpadding + spacing
+                if attrs.fillw ~= rtk.Box.FILL_TO_SIBLINGS then
+                    widget.cx = widget.cx + offx
+                    widget.cy = widget.cy + offy
+                    widget.box[1] = offx
+                    widget.box[2] = offy
+                else
+                    third_pass[#third_pass+1] = {widget, offx, offy}
+                end
                 ww, wh = widget.cw, math.max(widget.ch, minh)
             end
             offset = offset + wh + tpadding + spacing + bpadding
             maxw = math.max(maxw, ww)
             maxh = math.max(maxh, offset)
             spacing = attrs.spacing or self.spacing
+        end
+    end
+    if #third_pass > 0 then
+        for n, widgetinfo in ipairs(third_pass) do
+            local widget, ox, oy = table.unpack(widgetinfo)
+            widget:reflow(ox, oy, maxw, child_maxh, true, nil, viewport)
         end
     end
     return maxw, maxh
@@ -2265,6 +2279,7 @@ end
 function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
     local offset = self.lpadding
     local spacing = 0
+    local third_pass = {}
     for n, widgetattrs in ipairs(self.children) do
         local widget, attrs = table.unpack(widgetattrs)
         if widget == rtk.Container.FLEXSPACE then
@@ -2277,26 +2292,24 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
             local minw = attrs.minw or 0
-            local offy = self.tpadding
-            -- FIXME: this doesn't work for expanded children because widget.ch isn't computed yet.
-            if attrs.valign == rtk.Widget.CENTER then
-                offy = self.tpadding + (maxh - widget.ch) / 2
-            elseif attrs.valign == rtk.Widget.BOTTOM then
-                offy = self.tpadding + maxh - widget.ch
-            end
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
                 local child_maxw = (expand_unit_size * attrs.expand) - lpadding - rpadding - spacing
                 child_maxw = math.floor(math.max(child_maxw, minw))
                 wx, wy, ww, wh = widget:reflow(
                     offset + lpadding + spacing,
-                    offy + tpadding,
+                    self.tpadding + tpadding,
                     child_maxw,
                     h - tpadding - bpadding,
-                    attrs.fillw and attrs.fillw ~= 0,
-                    attrs.fillh and attrs.fillh ~= 0,
+                    attrs.fillw == rtk.Box.FILL_TO_PARENT,
+                    attrs.fillh == rtk.Box.FILL_TO_PARENT,
                     viewport
                 )
+                if attrs.valign == rtk.Widget.CENTER then
+                    widget.cy = wy + (maxh - wh) / 2
+                elseif attrs.valign == rtk.Widget.BOTTOM then
+                    widget.cy = wy + maxh - wh
+                end
                 if not attrs.fillw or attrs.fillw == 0 then
                     if attrs.halign == rtk.Widget.RIGHT then
                         widget.cx = wx + (child_maxw - ww)
@@ -2311,18 +2324,33 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             else
                 -- Non-expanded widget with native size, already reflown in pass 1.  Just need
                 -- to adjust position.
-                local ox = offset + lpadding + spacing
-                local oy = offy + tpadding
-                widget.cx = widget.cx + ox
-                widget.cy = widget.cy + oy
-                widget.box[1] = ox
-                widget.box[2] = oy
+                local offy = self.tpadding + tpadding
+                if attrs.valign == rtk.Widget.CENTER then
+                    offy = offy + (maxh - widget.ch) / 2
+                elseif attrs.valign == rtk.Widget.BOTTOM then
+                    offy = offy + maxh - widget.ch
+                end
+                local offx = offset + lpadding + spacing
+                if attrs.fillh ~= rtk.Box.FILL_TO_SIBLINGS then
+                    widget.cx = widget.cx + offx
+                    widget.cy = widget.cy + offy
+                    widget.box[1] = offx
+                    widget.box[2] = offy
+                else
+                    third_pass[#third_pass+1] = {widget, offx, offy}
+                end
                 ww, wh = math.max(widget.cw, minw), widget.ch
             end
             offset = offset + ww + lpadding + spacing + rpadding
             maxw = math.max(maxw, offset)
             maxh = math.max(maxh, wh)
             spacing = attrs.spacing or self.spacing
+        end
+    end
+    if #third_pass > 0 then
+        for n, widgetinfo in ipairs(third_pass) do
+            local widget, ox, oy = table.unpack(widgetinfo)
+            widget:reflow(ox, oy, child_maxw, maxh, nil, true, viewport)
         end
     end
     return maxw, maxh
