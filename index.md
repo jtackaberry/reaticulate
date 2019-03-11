@@ -11,7 +11,16 @@ Install it with [ReaPack](https://reapack.com/):
 ```
 http://reaticulate.com/release.xml
 ```
+
+Or if you're feeling particularly adventurous and always want the latest version
+even if it's a pre-release:
+
+```
+http://reaticulate.com/prerelease.xml
+```
+
 For more details on installation, [check the download page](download).
+
 
 
 If you'd prefer to watch a video of ceaseless blathering than reading this website:
