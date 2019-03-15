@@ -169,7 +169,7 @@ function screen.init()
         local label = vbox:add(rtk.Label({wrap=true}), {valign=rtk.Widget.CENTER})
         label:attr(
             'label',
-            "Reaticulate runs best when the js_ReaScriptAPI is installed."
+            "Reaticulate runs best when the js_ReaScriptAPI extension is installed."
         )
         local button = vbox:add(
             rtk.Button({label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5}),
