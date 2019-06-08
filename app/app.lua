@@ -234,9 +234,12 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         rfx.activate_articulation(channel, art.program)
     end
     reaper.PreventUIRefresh(-1)
-    reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, bank.msb)
-    reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, bank.lsb)
-    reaper.StuffMIDIMessage(0, 0xc0 + channel, art.program, 0)
+    -- XXX: temporarily disable message stuffing.  It shouldn't be necessary as
+    -- articulations are activated by communication with the RFX now.
+    -- reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, bank.msb)
+    -- reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, bank.lsb)
+    -- reaper.StuffMIDIMessage(0, 0xc0 + channel, art.program, 0)
+
     -- Set articulation as pending.
     local idx = (channel + 1) + (art.group << 8)
     self.pending_articulations[idx] = art
