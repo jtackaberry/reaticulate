@@ -461,7 +461,7 @@ end
 function App:set_default_channel(channel)
     self.default_channel = channel
     self.screens.banklist.highlight_channel_button(channel)
-    self:sync_midi_editor()
+    self:sync_midi_editor(nil, true)
     rtk.queue_draw()
 end
 
@@ -532,12 +532,22 @@ function App:insert_last_articulation(channel)
 end
 
 
-function App:sync_midi_editor(hwnd)
+function App:sync_midi_editor(hwnd, push)
     if not hwnd then
         hwnd = reaper.MIDIEditor_GetActive()
     end
-    -- Set channel for new events to <channel>
-    reaper.MIDIEditor_OnCommand(hwnd, 40482 + self.default_channel - 1)
+    if hwnd then
+        if push then
+            -- We are syncing the target channel *to* the MIDI editor.
+            reaper.MIDIEditor_OnCommand(hwnd, 40482 + self.default_channel - 1)
+        else
+            -- Sync target channel for inserts *from* MIDI editor to Reaticulate's default channel.
+            local channel = reaper.MIDIEditor_GetSetting_int(hwnd, 'default_note_chan') + 1
+            if channel ~= self.default_channel then
+                self:set_default_channel(channel)
+            end
+        end
+    end
 end
 
 function App:handle_ondock()
