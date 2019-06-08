@@ -33,7 +33,11 @@ function App:initialize(basedir)
         cc_feedback_articulations_cc = 0,
         -- Togglable via action
         cc_feedback_active = true,
-        autostart = 0
+        autostart = 0,
+
+        -- If true, if the MIDI editor is open, the item that is target for event insertion
+        -- will dictate which track is selected in the TCP.
+        track_selection_follows_midi_editor = false,
     }
 
     BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir)
@@ -45,6 +49,8 @@ function App:initialize(basedir)
     self.default_channel = 1
     -- hwnd of the last seen MIDI editor
     self.last_midi_hwnd = nil
+    -- The last selected take in the MIDI editor.  nil if the editor is closed.
+    self.last_midi_editor_take = nil
     -- Last seen active notes bitmap from the current track RFX.  Just a copy of
     -- rfx.active_notes so we can detect changes.
     self.active_notes = 0
@@ -420,6 +426,9 @@ function App:handle_command(cmd, arg)
 
     elseif cmd == 'focus_filter' then
         self.screens.banklist.focus_filter()
+
+    elseif cmd == 'set_track_selection_follows_midi_editor' then
+        self:handle_toggle_option(arg, 'track_selection_follows_midi_editor', true)
     end
     return BaseApp.handle_command(self, cmd, arg)
 end
@@ -772,6 +781,32 @@ function App:handle_onupdate()
         self.screens.installer.update()
         if current_screen ~= self.screens.installer then
             self:replace_screen('installer')
+        end
+    end
+
+    local hwnd = rfx.fx and self.last_midi_hwnd or reaper.MIDIEditor_GetActive()
+    if hwnd then
+        if self.config.track_selection_follows_midi_editor then
+        -- If rfx is valid then last_midi_hwnd is set, otherwise we need to fetch it.
+            local take = reaper.MIDIEditor_GetTake(hwnd)
+            if take ~= self.last_midi_editor_take then
+                self.last_midi_editor_take = take
+                if take and reaper.ValidatePtr(take, "MediaItem_Take*") then
+                    local take_track = reaper.GetMediaItemTake_Track(take)
+                    reaper.PreventUIRefresh(1)
+                    reaper.SetOnlyTrackSelected(take_track)
+                    feedback.scroll_mixer(take_track)
+                    -- Track: Vertical scroll selected tracks into view.
+                    reaper.Main_OnCommandEx(40913, 0, 0)
+                    reaper.PreventUIRefresh(-1)
+                end
+            end
+        else
+            self.last_midi_editor_take = nil
+        end
+        local channel = reaper.MIDIEditor_GetSetting_int(hwnd, 'default_note_chan') + 1
+        if channel ~= self.default_channel then
+            self:set_default_channel(channel)
         end
     end
 
