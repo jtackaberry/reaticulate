@@ -617,6 +617,64 @@ function rtk.quit()
 end
 
 
+function rtk.set_font(font, size, scale, flags)
+    gfx.setfont(1, font, size * scale * rtk.scale, flags or 0)
+end
+
+
+function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh)
+    -- Common case where the string fits in the box.
+    local w, h = gfx.measurestr(s)
+    if w <= boxw or (not wrap and not truncate) then
+        return w, h, h, s
+    end
+    -- Text exceeds bounding box.
+    if not wrap and truncate then
+        -- This isn't exactly the most efficient.
+        local truncated = s
+        for i = 1, s:len() do
+            local segment = s:sub(1, i)
+            local lw, _ = gfx.measurestr(segment)
+            if lw > boxw then
+                break
+            end
+            truncated = segment
+        end
+        return w, h, h, truncated
+    end
+
+    -- We'll need to wrap the string.  Do the expensive work.
+    local startpos = 1
+    local endpos = 1
+    local wrappos = 1
+    local len = s:len()
+    local segments = {}
+    for endpos = 1, len do
+        local substr = s:sub(startpos, endpos)
+        local ch = s:sub(endpos, endpos)
+        local w, _ = gfx.measurestr(substr)
+        if w > boxw then
+            if wrappos == startpos then
+                wrappos = endpos - 1
+            end
+            if wrappos > startpos then
+                segments[#segments+1] = string.strip(s:sub(startpos, wrappos))
+                startpos = wrappos + 1
+                wrappos = endpos
+            end
+        end
+        if ch == ' ' or ch == '-' or ch == ',' or ch == '.' then
+            wrappos = endpos
+        end
+    end
+    if startpos ~= len then
+        segments[#segments+1] = string.strip(s:sub(startpos, len))
+    end
+    local wrapped = table.concat(segments, "\n")
+    local ww, wh = gfx.measurestr(wrapped)
+    return ww, wh, h, wrapped
+end
+
 -------------------------------------------------------------------------------------------------------------
 
 rtk.Event = class('rtk.Event')
@@ -2882,60 +2940,16 @@ function rtk.Label:initialize(attrs)
     self:setattrs(attrs)
 end
 
--- Returns a string with newlines to fit the supplied box width.
---
--- Expects gfx.setfont() to already have been called.
-function rtk.Label:_wrap(s, boxw)
-    -- Common case where the string fits in the box.
-    local w, h = gfx.measurestr(s)
-    if w <= boxw then
-        return s, w, h
-    end
-
-    -- We'll need to wrap the string.  Do the expensive work.
-    local startpos = 1
-    local endpos = 1
-    local wrappos = 1
-    local len = s:len()
-    local segments = {}
-    for endpos = 1, len do
-        local substr = s:sub(startpos, endpos)
-        local ch = s:sub(endpos, endpos)
-        local w, _ = gfx.measurestr(substr)
-        if w > boxw then
-            if wrappos == startpos then
-                wrappos = endpos - 1
-            end
-            if wrappos > startpos then
-                segments[#segments+1] = string.strip(s:sub(startpos, wrappos))
-                startpos = wrappos + 1
-                wrappos = endpos
-            end
-        end
-        if ch == ' ' or ch == '-' or ch == ',' or ch == '.' then
-            wrappos = endpos
-        end
-    end
-    if startpos ~= len then
-        segments[#segments+1] = string.strip(s:sub(startpos, len))
-    end
-    local wrapped = table.concat(segments, "\n")
-    local w, h = gfx.measurestr(wrapped)
-    return wrapped, w, h
-end
-
 function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
     local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, fillw and boxw or nil, fillh and boxh or nil)
 
     local lw, lh
-    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, self.fontflags or 0)
-    if self.wrap then
-        self._label, lw, lh = self:_wrap(self.label, boxw - self.lpadding - self.rpadding)
-    else
-        lw, lh = gfx.measurestr(self.label)
-        self._label = self.label
-    end
+    rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
+    lw, lh, _, self.vlabel = rtk.layout_gfx_string(self.label, self.wrap, true,
+                                                   boxw - self.lpadding - self.rpadding,
+                                                   boxy - self.tpadding- self.bpadding)
+
     if not w then
         w = lw + (self.lpadding + self.rpadding) * rtk.scale
     end
@@ -2966,8 +2980,8 @@ function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
     -- TODO: support vertical alignment options.  Defaults to center.
     gfx.y = y + (self.ch - self.lh) / 2
     self:setcolor(self.color)
-    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, self.fontflags or 0)
-    gfx.drawstr(self._label, 0, x + self.cw, y + self.ch)
+    rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
+    gfx.drawstr(self.vlabel, 0, x + self.cw, y + self.ch)
     self:ondraw(offx, offy, event)
 end
 
