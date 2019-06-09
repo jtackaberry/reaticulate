@@ -43,6 +43,12 @@ function App:initialize(basedir)
         track_selection_follows_fx_focus = false,
     }
 
+    self.config_map_to_script = {
+        track_selection_follows_midi_editor = {0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},
+        track_selection_follows_fx_focus = {0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},
+        single_floating_instrument_fx_window = {0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},
+    }
+
     BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir)
     -- log("")
 
@@ -451,7 +457,19 @@ end
 function App:handle_toggle_option(argstr, cfgitem, store)
     local args = string.split(argstr, ',')
     local enabled = tonumber(args[1])
-    local value = self.config[cfgitem]
+    local section_id, cmd_id
+    if #args > 2 then
+        section_id = tonumber(args[2])
+        cmd_id = tonumber(args[3])
+    end
+    return self:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
+end
+
+-- If enabled is -1 then toggle, otherwise set to given value.  If section_id
+-- and cmd_id are supplied, those will be used to set the command state,
+-- otherwise they will be discovered.
+function App:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
+    local value = self:get_toggle_option(cfgitem)
     if enabled == -1 then
         value = not value
     else
@@ -461,13 +479,30 @@ function App:handle_toggle_option(argstr, cfgitem, store)
         self.config[cfgitem] = value
         self:save_config()
     end
-    if #args > 2 then
-        local section_id = tonumber(args[2])
-        local cmd_id = tonumber(args[3])
+    log("set toggle option: %s -> %s", cfgitem, value)
+
+    if not cmd_id and self.config_map_to_script[cfgitem] then
+        local section, filename = table.unpack(self.config_map_to_script[cfgitem])
+        local script = Path.join(Path.basedir, 'actions', filename)
+        local cmd = reaper.AddRemoveReaScript(true, section, script, false)
+        if cmd > 0 then
+            section_id = section
+            cmd_id = cmd
+        end
+    end
+
+    if cmd_id then
         reaper.SetToggleCommandState(section_id, cmd_id, value and 1 or 0)
         reaper.RefreshToolbar2(section_id, cmd_id)
     end
+    if self:current_screen() == self.screens.settings then
+        self.screens.settings.update()
+    end
     return value
+end
+
+function App:get_toggle_option(cfgitem)
+    return self.config[cfgitem]
 end
 
 function App:set_default_channel(channel)
