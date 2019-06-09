@@ -47,9 +47,9 @@ end
 local function make_section(title)
     local heading = rtk.Heading:new({label=title})
     screen.vbox:add(heading, {
-        lpadding=10, tpadding=30, bpadding=15
+        lpadding=10, tpadding=20, bpadding=15
     })
-    return screen.vbox:add(rtk.VBox:new({spacing=10, lpadding=20, bpadding=0}))
+    return screen.vbox:add(rtk.VBox:new({spacing=10, lpadding=20, bpadding=20}))
 end
 
 local function add_row(section, label, w, spacing)
@@ -74,6 +74,38 @@ function screen.init()
     end
     screen.toolbar:add(back_button)
 
+
+
+    --
+    -- Section: Behavior
+    --
+    local section = make_section("Behavior")
+    screen.cb_track_follows_midi_editor = rtk.CheckBox({
+        wrap=true,
+        ivalign=rtk.Widget.TOP,
+        label="Track selection follows MIDI editor target item"
+    })
+    screen.cb_track_follows_midi_editor.onchange = function(cb)
+        app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)
+    end
+    section:add(screen.cb_track_follows_midi_editor)
+
+    screen.cb_track_follows_fx_focus = rtk.CheckBox({
+        wrap=true,
+        ivalign=rtk.Widget.TOP,
+        label="Track selection follows FX focus"
+    })
+    screen.cb_track_follows_fx_focus.onchange = function(cb)
+        app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)
+    end
+
+    if rtk.has_js_reascript_api then
+        section:add(screen.cb_track_follows_fx_focus)
+    end
+
+    --
+    -- Section: Feedback to Control Surface
+    --
     local section = make_section("Feedback to Control Surface")
     local row = add_row(section, "MIDI Device:", 75, 2)
     local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3, w=-10}))
@@ -141,6 +173,10 @@ function screen.init()
     menu:select(app.config.cc_feedback_articulations or 2)
 
 
+
+    --
+    -- Section: Misc Settings
+    --
     local section = make_section("Misc Settings")
     local row = add_row(section, "Autostart:", 75)
     local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
@@ -191,6 +227,8 @@ function screen.update()
     end
     screen.midi_device_menu:setmenu(menu)
     screen.midi_device_menu:select(tostring(app.config.cc_feedback_device) or 1)
+    screen.cb_track_follows_fx_focus:attr('value', app:get_toggle_option('track_selection_follows_fx_focus'), false)
+    screen.cb_track_follows_midi_editor:attr('value', app:get_toggle_option('track_selection_follows_midi_editor'), false)
 end
 
 return screen
