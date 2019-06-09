@@ -38,6 +38,9 @@ function App:initialize(basedir)
         -- If true, if the MIDI editor is open, the item that is target for event insertion
         -- will dictate which track is selected in the TCP.
         track_selection_follows_midi_editor = false,
+
+        -- If true, focusing an FX window will select the corresponding track.
+        track_selection_follows_fx_focus = false,
     }
 
     BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir)
@@ -432,6 +435,8 @@ function App:handle_command(cmd, arg)
 
     elseif cmd == 'set_track_selection_follows_midi_editor' then
         self:handle_toggle_option(arg, 'track_selection_follows_midi_editor', true)
+    elseif cmd == 'set_track_selection_follows_fx_focus' then
+        self:handle_toggle_option(arg, 'track_selection_follows_fx_focus', true)
     end
     return BaseApp.handle_command(self, cmd, arg)
 end
@@ -806,12 +811,7 @@ function App:handle_onupdate()
                 self.last_midi_editor_take = take
                 if take and reaper.ValidatePtr(take, "MediaItem_Take*") then
                     local take_track = reaper.GetMediaItemTake_Track(take)
-                    reaper.PreventUIRefresh(1)
-                    reaper.SetOnlyTrackSelected(take_track)
-                    feedback.scroll_mixer(take_track)
-                    -- Track: Vertical scroll selected tracks into view.
-                    reaper.Main_OnCommandEx(40913, 0, 0)
-                    reaper.PreventUIRefresh(-1)
+                    self:select_track(take_track)
                 end
             end
         else
@@ -823,12 +823,38 @@ function App:handle_onupdate()
         end
     end
 
-    -- Save focus
-    if reaper.JS_Window_GetFocus then
-        local hwnd = reaper.JS_Window_GetFocus()
-        if hwnd ~= rtk.hwnd then
-            self.saved_focus_window = hwnd
+    if rtk.focused_hwnd ~= nil and not rtk.is_focused then
+        if self.saved_focus_window ~= rtk.focused_hwnd then
+            -- Focused window changed.
+            self.saved_focus_window = rtk.focused_hwnd
+            if self.config.track_selection_follows_fx_focus then
+                self:select_track_from_fx_window()
+            end
         end
+    end
+end
+
+function App:select_track(track)
+    reaper.PreventUIRefresh(1)
+    reaper.SetOnlyTrackSelected(track)
+    feedback.scroll_mixer(track)
+    -- Track: Vertical scroll selected tracks into view.
+    reaper.Main_OnCommandEx(40913, 0, 0)
+    reaper.PreventUIRefresh(-1)
+end
+
+function App:select_track_from_fx_window()
+    local w = rtk.focused_hwnd
+    while w ~= nil do
+        local title = reaper.JS_Window_GetTitle(w)
+        local tracknum = title:match('Track (%d+)')
+        if tracknum then
+            local track = reaper.GetTrack(0, tracknum - 1)
+            self:select_track(track)
+            log("Selecting track %s due to focused FX", tracknum)
+            break
+        end
+        w = reaper.JS_Window_GetParent(w)
     end
 end
 
