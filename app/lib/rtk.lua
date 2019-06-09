@@ -2436,7 +2436,11 @@ function rtk.Button:initialize(attrs)
     rtk.Widget.initialize(self)
     self.focusable = true
     self.label = nil
+    -- If true, wraps the label to the bounding box on reflow.
+    self.wrap = false
     self.icon = nil
+    -- Icon vertical alignment when text is wrapped
+    self.ivalign = rtk.Widget.CENTER
     self.color = rtk.theme.button
     -- Text color when label is drawn over button surface
     self.textcolor = rtk.theme.buttontext
@@ -2465,11 +2469,14 @@ function rtk.Button:onmouseenter(event)
     return true
 end
 
--- Returns the width and height of the label.
-function rtk.Button:_reflow_get_label_size()
-    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
-    w, h = gfx.measurestr(self.label)
-    return w, h
+-- Returns the width, height, single-line height, and wrapped label.
+--
+-- The single-line height represents the height of the prewrapped label
+-- when rendered with the current font.  This can be used for alignment
+-- calculations.
+function rtk.Button:_reflow_get_label_size(boxw, boxh)
+    rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
+    return rtk.layout_gfx_string(self.label, self.wrap, true, boxw, boxh)
 end
 
 function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
@@ -2486,7 +2493,15 @@ function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     end
 
     if self.label ~= nil then
-        self.lw, self.lh = self:_reflow_get_label_size()
+        -- Calculate the viewable portion of the label
+        local lwmax = (w or boxw) - (self.lpadding + self.rpadding) * rtk.scale
+        local lhmax = (h or boxh) - (self.tpadding + self.bpadding) * rtk.scale
+
+        if self.icon then
+            lwmax = lwmax - (self.icon.width + self.lspace + self.rspace) * rtk.scale
+        end
+        self.lw, self.lh, self.lhs, self.vlabel = self:_reflow_get_label_size(lwmax, lhmax)
+
         if self.icon ~= nil then
             self.cw = w or ((self.icon.width + self.lpadding + self.rpadding + self.lspace + self.rspace) * rtk.scale + self.lw)
             self.ch = h or (math.max(self.icon.height * rtk.scale, self.lh) + (self.tpadding + self.bpadding) * rtk.scale)
@@ -2495,25 +2510,6 @@ function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
             self.ch = (h and h * rtk.scale or self.lh) + (self.tpadding + self.bpadding) * rtk.scale
         end
 
-        -- Calculate the viewable portion of the label
-        local lwmax = self.cw - (self.lpadding + self.rpadding) * rtk.scale
-        if self.icon then
-            lwmax = lwmax - (self.icon.width + self.lspace + self.rspace) * rtk.scale
-        end
-        if self.lw > lwmax + 1 then
-            -- Text width will overflow the max space available for the label.  Truncate
-            -- the label to fit.
-            for i = 1, self.label:len() do
-                local vlabel = self.label:sub(1, i)
-                local lw, _ = gfx.measurestr(vlabel)
-                if lw > lwmax then
-                    break
-                end
-                self.vlabel = vlabel
-            end
-        else
-            self.vlabel = self.label
-        end
     elseif self.icon ~= nil then
         self.cw = w or (self.icon.width + self.lpadding + self.rpadding) * rtk.scale
         self.ch = h or (self.icon.height + self.tpadding + self.bpadding) * rtk.scale
@@ -2611,12 +2607,23 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
     end
     gfx.set(1, 1, 1, self.alpha)
     if self.icon then
-        self:_draw_icon(ix, sy + (self.ch - self.icon.height * rtk.scale) / 2, hover)
+        local iy
+        if self.vlabel and self.ivalign ~= rtk.Widget.CENTER then
+            if self.ivalign == rtk.Widget.BOTTOM then
+                iy = sy + self.ch - self.icon.height * rtk.scale
+            else
+                iy = sy
+            end
+        else
+            -- Center icon vertically according to computed height
+            iy = sy + (self.ch - self.icon.height * rtk.scale) / 2
+        end
+        self:_draw_icon(ix, iy, hover)
     end
     if self.vlabel then
         gfx.x = lx
         gfx.y = sy + (self.ch - self.lh) / 2
-        gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+        rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
         self:setcolor(textcolor)
         gfx.drawstr(self.vlabel)
     end
@@ -3097,8 +3104,8 @@ function rtk.OptionMenu:initialize(attrs)
 end
 
 -- Return the size of the longest menu item
-function rtk.OptionMenu:_reflow_get_label_size()
-    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+function rtk.OptionMenu:_reflow_get_label_size(boxw, boxh)
+    rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
     local w, h = 0, 0
     for _, item in ipairs(self._item_by_idx) do
         local label = item.buttonlabel or item.label
@@ -3107,7 +3114,7 @@ function rtk.OptionMenu:_reflow_get_label_size()
             w, h = item_w, item_h
         end
     end
-    return w, h
+    return rtk.layout_gfx_string(self.label, false, true, boxw, boxh)
 end
 
 
