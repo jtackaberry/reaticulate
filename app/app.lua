@@ -48,6 +48,8 @@ function App:initialize(basedir)
 
     -- Currently selected track (or nil if no track is selected)
     self.track = nil
+    -- The previously selected track.  This is never cleared to nil.
+    self.last_track = nil
     -- Default MIDI Channel for banks not pinned to channels.  Offset from 1.
     self.default_channel = 1
     -- hwnd of the last seen MIDI editor
@@ -433,6 +435,11 @@ function App:handle_command(cmd, arg)
     elseif cmd == 'focus_filter' then
         self.screens.banklist.focus_filter()
 
+    elseif cmd == 'select_last_track' then
+        if self.last_track and reaper.ValidatePtr2(0, self.last_track, "MediaTrack*") then
+            reaper.SetOnlyTrackSelected(self.last_track)
+        end
+
     elseif cmd == 'set_track_selection_follows_midi_editor' then
         self:handle_toggle_option(arg, 'track_selection_follows_midi_editor', true)
     elseif cmd == 'set_track_selection_follows_fx_focus' then
@@ -772,7 +779,9 @@ function App:handle_onupdate()
 
     -- Check if track has changed
     if track ~= self.track then
-        last_track = self.track
+        if self.track ~= nil then
+            self.last_track = self.track
+        end
         self.track = track
         self:ontrackchange(last_track, track)
     end

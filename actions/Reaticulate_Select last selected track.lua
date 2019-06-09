@@ -1,0 +1,1 @@
+reaper.SetExtState("reaticulate", "command", "select_last_track=0", false)
