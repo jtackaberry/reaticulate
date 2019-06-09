@@ -2694,10 +2694,10 @@ function rtk.Entry:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     local maxw, maxh = nil, nil
     if self.textwidth and not self.w then
         -- Compute dimensions based on font and size
-        gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+        rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
         maxw, maxh = gfx.measurestr(string.rep("D", self.textwidth))
     elseif not self.h then
-        gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+        rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
         _, maxh = gfx.measurestr("Dummy!")
     end
 
@@ -2714,8 +2714,8 @@ function rtk.Entry:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
 end
 
 function rtk.Entry:calcpositions(startfrom)
+    rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
     -- Ok, this isn't exactly efficient, but it should be fine for sensibly sized strings.
-    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
     for i = (startfrom or 1), self.value:len() do
         local w, _ = gfx.measurestr(self.value:sub(1, i))
         self.positions[i + 1] = w
@@ -2734,7 +2734,7 @@ function rtk.Entry:calcview()
 end
 
 function rtk.Entry:_rendertext(x, y)
-    gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, 0)
+    rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
     self.image:drawfrom(gfx.dest, x + self.lpadding, y + self.tpadding, 0, 0, self.image.width, self.image.height)
     rtk.push_dest(self.image.id)
     self:setcolor(rtk.theme.text)
@@ -2778,7 +2778,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
     )
 
     if self.label and #self.value == 0 then
-        gfx.setfont(1, self.font, self.fontsize * self.fontscale * rtk.scale, rtk.fonts.ITALICS)
+        rtk.set_font(self.font, self.fontsize, self.fontscale, rtk.fonts.ITALICS)
         gfx.x, gfx.y = x + lpadding, y + self.tpadding
         self:setcolor(rtk.theme.entry_label)
         gfx.drawstr(self.label)
