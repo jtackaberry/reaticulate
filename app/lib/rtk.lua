@@ -75,6 +75,8 @@ end
 -------------------------------------------------------------------------------------------------------------
 
 local rtk = {
+    has_js_reascript_api = reaper.JS_Window_GetFocus ~= nil,
+
     debug = false,
     scale = 1,
     x = 0,
@@ -89,6 +91,8 @@ local rtk = {
     -- true if the UI window currently has keyboard focus.  This requires the js_ReaScriptAPI
     -- extension and if it's not installed will always be true.
     is_focused = true,
+    -- the hwnd of the currently focused window (per js_ReaScriptAPI)
+    focused_hwnd = nil,
     -- The top-level widget for the app (normally a container of some sort).
     widget = nil,
     -- The currently focused widget (or nil if no widget is focused)
@@ -397,8 +401,9 @@ function rtk.update()
     end
 
     -- Check focus
-    if reaper.JS_Window_GetFocus then
-        local focused = rtk.hwnd == reaper.JS_Window_GetFocus()
+    if rtk.has_js_reascript_api then
+        rtk.focused_hwnd = reaper.JS_Window_GetFocus()
+        local focused = rtk.hwnd == rtk.focused_hwnd
         if focused ~= rtk.is_focused then
             rtk.is_focused = focused
             need_draw = true
@@ -545,7 +550,7 @@ function rtk.set_theme(name, iconpath, overrides)
 end
 
 function rtk._handle_dock_change(dockstate)
-    if reaper.JS_Window_Find then
+    if rtk.has_js_reascript_api then
         -- reaper.JS_Window_FindChild() using reaper.GetMainHwnd() as the parent
         -- window seemed like the safer bet but this isn't robust.  First, it
         -- only works when the window is docked (otherwise returns nil) and even
@@ -578,7 +583,7 @@ end
 
 
 function rtk.focus()
-    if rtk.hwnd and reaper.JS_Window_SetFocus then
+    if rtk.hwnd and rtk.has_js_reascript_api then
         reaper.JS_Window_SetFocus(rtk.hwnd)
         rtk.queue_draw()
         return true
