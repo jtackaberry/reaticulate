@@ -162,7 +162,7 @@ function screen.init()
 
 
     -- Show a warning if the js_ReaScriptAPI isn't installed.
-    if not reaper.JS_Window_Find then
+    if not rtk.has_js_reascript_api then
         local hbox = screen.vbox:add(rtk.HBox:new({spacing=10}), {tpadding=50, lpadding=20, rpadding=20})
         hbox:add(rtk.ImageBox:new({image=screen.warning_icon}), {valign=rtk.Widget.TOP})
         local vbox = hbox:add(rtk.VBox())
