@@ -551,9 +551,6 @@ end
 
 function rtk._handle_dock_change(dockstate)
     if rtk.has_js_reascript_api then
-        -- if rtk.hwnd then
-        --     reaper.JS_WindowMessage_ReleaseWindow(rtk.hwnd)
-        -- end
         rtk.hwnd = nil
 
         -- Find the gfx hwnd based on window title.  If we have more than one
