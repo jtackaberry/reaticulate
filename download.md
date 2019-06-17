@@ -28,6 +28,9 @@ Now's a good time to read more about [how to use Reaticulate](usage).
 Access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated
 to the latest version.
 
+If Reaticulate does update, you should restart Reaper to ensure the latest version of all
+Reaticulate scripts are running.
+
 
 ### Living on the edge?
 

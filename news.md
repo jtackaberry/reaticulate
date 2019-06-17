@@ -10,8 +10,8 @@ For those who installed Reaticulate via ReaPack, the updates should come
 automatically in time, but you can force the update by accessing `Extensions |
 ReaPack | Synchronize packages` from Reaper's menu.
 
-After the update, you should reload your project to ensure the latest JSFX is
-installed on your tracks.
+After the update, you should restart Reaper to ensure the latest version of all
+Reaticulate scripts are running.
 
 ## Full Change Log
 
