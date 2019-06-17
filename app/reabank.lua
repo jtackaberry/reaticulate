@@ -404,13 +404,14 @@ function reabank.parse(filename, banks)
         end
     end
 
+    local bank = nil
     local metadata = {}
     for line in f:lines() do
         line = line:gsub("^%s*(.-)%s*$", "%1")
-        if line:starts("Bank") then
+        if line:starts("Bank", true) then
             -- Start of new bank
-            msb, lsb, name = line:match("Bank +(%d+) +(%d+) +(.*)")
-            bank = Bank(filename == reabank.reabank_filename_factory, msb, lsb, name, metadata)
+            local msb, lsb, name = line:match(".... +(%d+) +(%d+) +(.*)")
+            bank = Bank(filename, msb, lsb, name, metadata)
             banks[bank.msblsb] = bank
             reabank.banks_by_path[bank:get_path()] = bank
             if bank.clone then

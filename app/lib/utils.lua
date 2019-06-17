@@ -42,8 +42,12 @@ Path.join = function(first, ...)
 end
 
 
-function string.starts(s, start)
-   return s:sub(1, string.len(start)) == start
+function string.starts(s, start, insensitive)
+    if insensitive == true then
+        return s:lower():sub(1, string.len(start)) == start:lower()
+    else
+        return s:sub(1, string.len(start)) == start
+    end
 end
 
 function string.split(s, delim)
@@ -122,7 +126,7 @@ end
 
 function table.tostring(tbl)
     local result, done = {}, {}
-    for k, v in ipairs(tbl ) do
+    for k, v in ipairs(tbl) do
         table.insert(result, table.val_to_str(v))
         done[k] = true
     end
