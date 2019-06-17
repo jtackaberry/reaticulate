@@ -551,15 +551,17 @@ end
 
 function rtk._handle_dock_change(dockstate)
     if rtk.has_js_reascript_api then
+        -- if rtk.hwnd then
+        --     reaper.JS_WindowMessage_ReleaseWindow(rtk.hwnd)
+        -- end
         rtk.hwnd = nil
 
-        -- Find the Reaticulate hwnd based on window title.  It happens that if
-        -- a Reaticulate JSFX window is floating, JS_Window_Find() will return
-        -- it. So if we have more than one match by title, we determine the hwnd
-        -- based on screen coordinates, since we can corroborate that with
-        -- gfx.clienttoscreen().  Since it's unclear how portable that logic is,
-        -- if there's only one title match then we blindly return it, which
-        -- should provide equivalent behavior to the previous approach.
+        -- Find the gfx hwnd based on window title.  If we have more than one
+        -- match by title, we determine the hwnd based on screen coordinates,
+        -- since we can corroborate that with gfx.clienttoscreen().  Since it's
+        -- unclear how portable that logic is, if there's only one title match
+        -- then we blindly return it, which should provide equivalent behavior
+        -- to the previous approach.
         local a = reaper.new_array({}, 10)
         local nmatches = reaper.JS_Window_ArrayFind(rtk.title, true, a)
         if nmatches > 0 then
