@@ -631,7 +631,8 @@ function rtk.run()
     rtk.clear()
     gfx.update()
 
-    rtk._handle_dock_change(dockstate or 0)
+    local dockstate, _, _ = gfx.dock(-1, true, true)
+    rtk._handle_dock_change(dockstate)
 
     _run()
 end
