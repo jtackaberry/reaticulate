@@ -19,11 +19,11 @@ BaseApp = class('BaseApp')
 app = nil
 
 function BaseApp:initialize(appid, title, basedir)
-    if reaper.NamedCommandLookup('_SWS_TOGSELMASTER') == 0 then
+    if reaper.NamedCommandLookup('_SWS_TOGSELMASTER') == 0 or true then
         -- Sunk before we started.
         reaper.ShowMessageBox("Reaticulate requires the SWS extensions (www.sws-extension.org).\n\nAborting!",
                               "SWS extension missing", 0)
-        return
+        return false
     end
     app = self
     Path.init(basedir)

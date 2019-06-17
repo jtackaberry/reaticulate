@@ -49,7 +49,9 @@ function App:initialize(basedir)
         single_floating_instrument_fx_window = {0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},
     }
 
-    BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir)
+    if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
+        return
+    end
     -- log("")
 
     -- Currently selected track (or nil if no track is selected)
