@@ -553,27 +553,29 @@ function rtk._handle_dock_change(dockstate)
     if rtk.has_js_reascript_api then
         rtk.hwnd = nil
 
-        -- Find the gfx hwnd based on window title.  If we have more than one
-        -- match by title, we determine the hwnd based on screen coordinates,
-        -- since we can corroborate that with gfx.clienttoscreen().  Since it's
-        -- unclear how portable that logic is, if there's only one title match
-        -- then we blindly return it, which should provide equivalent behavior
-        -- to the previous approach.
-        local a = reaper.new_array({}, 10)
-        local nmatches = reaper.JS_Window_ArrayFind(rtk.title, true, a)
-        if nmatches > 0 then
-            local hwnds = a.table()
-            if nmatches == 1 then
-                -- Just the one match by title, so use it.
-                rtk.hwnd = reaper.JS_Window_HandleFromAddress(hwnds[1])
-            else
-                -- More than one matches, so narrow it down by comparing with
-                -- what reaper reports our screen coordinates are.
-                local x, y = gfx.clienttoscreen(0, 0)
+        -- Find the gfx hwnd based on window title.  First use JS_Window_Find()
+        -- which is pretty fast, and if it doesn't appear to be this gfx instance
+        -- (based on screen coordinates) then we do the much more expensive call to
+        -- JS_Window_ArrayFind().  If that only returns one result, then we go
+        -- with our original hwnd, and if not, then we find the one that matches
+        -- the screen position of this gfx.
+        local x, y = gfx.clienttoscreen(0, 0)
+        local function verify_hwnd_coords(hwnd)
+            local _, hx, hy, _, _ = reaper.JS_Window_GetClientRect(hwnd)
+            return hx == x and hy == y
+        end
+
+        rtk.hwnd = reaper.JS_Window_Find(rtk.title, true)
+        if not verify_hwnd_coords(rtk.hwnd) then
+            -- The returned hwnd doesn't match our screen coordinates so do
+            -- a deeper search.
+            local a = reaper.new_array({}, 10)
+            local nmatches = reaper.JS_Window_ArrayFind(rtk.title, true, a)
+            if nmatches > 1 then
+                local hwnds = a.table()
                 for n, hwndptr in ipairs(hwnds) do
                     local hwnd = reaper.JS_Window_HandleFromAddress(hwndptr)
-                    local _, hx, hy, _, _ = reaper.JS_Window_GetClientRect(hwnd)
-                    if hx == x and hy == y then
+                    if verify_hwnd_coords(hwnd) then
                         rtk.hwnd = hwnd
                         break
                     end
