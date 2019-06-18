@@ -40,9 +40,7 @@ function screen.init()
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock()
         local fx = reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, 1)
-        for fx = fx, 0, -1 do
-            reaper.SNM_MoveOrRemoveTrackFX(app.track, fx, -1)
-        end
+        reaper.TrackFX_CopyToTrack(app.track, fx, app.track, 0, true)
         reaper.Undo_EndBlock("Add Reaticulate FX", -1)
         reaper.PreventUIRefresh(-1)
         rfx.sync(rfx.track, true)
