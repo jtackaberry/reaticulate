@@ -287,15 +287,24 @@ function BaseApp:build_frame()
     self.frame = rtk.VBox:new({position=rtk.Widget.FIXED, z=100})
     self.frame:add(toolbar)
 
-    self.statusbar = rtk.HBox:new({bg=rtk.theme.window_bg, lpadding=10, tpadding=5, bpadding=5, rpadding=10})
+    self.statusbar = rtk.HBox:new({
+        bg=rtk.theme.window_bg,
+        lpadding=10,
+        tpadding=5,
+        bpadding=5,
+        rpadding=10,
+        z=110
+    })
     self.statusbar.label = self.statusbar:add(rtk.Label:new({color=rtk.theme.text_faded}), {expand=1})
+
+    -- Add a placeholder widget that screens will replace.
     self.frame:add(rtk.VBox.FLEXSPACE)
     self.frame.content_position = #self.frame.children
 
-    self.frame:add(self.statusbar)
     self:set_statusbar('Reaticulate')
 
     rtk.widget:add(self.frame)
+    rtk.widget:add(self.statusbar, {valign=rtk.Widget.BOTTOM, fillw=true})
 end
 
 function BaseApp:handle_onupdate()
