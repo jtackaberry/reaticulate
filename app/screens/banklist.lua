@@ -192,7 +192,8 @@ function screen.create_banklist_ui(bank)
             app:set_statusbar(art.outputstr)
             return true
         end
-        bank.vbox:add(art.button, {lpadding=30})
+        local tpadding = art.spacer and (art.spacer & 0xff) * 20 or 0
+        bank.vbox:add(art.button, {lpadding=30, tpadding=tpadding})
     end
     bank.vbox:hide()
     return bank.vbox

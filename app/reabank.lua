@@ -437,6 +437,7 @@ function reabank.parse(filename, banks)
             merge(metadata, 'message', props.m)
             merge(metadata, 'clone', props.clone)
             merge(metadata, 'chase', props.chase)
+            merge(metadata, 'spacer', props.spacer)
             if props.colors then
                 reabank.parse_colors(props.colors)
             end
