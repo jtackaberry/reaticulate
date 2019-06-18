@@ -175,8 +175,6 @@ surface.
 
 ### Articulations
 
-(This function currently only exists in the pre-release version.)
-
 Whenever an articulation is triggered on the selected track, first a Bank Select message is sent
 to the control surface, and then the articulation.  By default, the articulation is a Program
 Change message, but this can be translated to a CC of your choice (see below).
