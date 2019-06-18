@@ -300,8 +300,8 @@ function BaseApp:build_frame()
         z=110
     })
     self.statusbar.label = self.statusbar:add(rtk.Label:new({color=rtk.theme.text_faded}), {expand=1})
+    self.frame:add(self.statusbar, {fillw=true})
 
-    self.frame:add(self.statusbar)
     rtk.widget:add(self.frame)
 
     self:set_statusbar('')
