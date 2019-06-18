@@ -39,7 +39,7 @@ These are the changes since 0.2.0.
 
 ### Minor Enhancements
 * Added a new "Behaviors" section on Settings page
-* Activating an articulation now scrolls it into view in the GUI ([#50](https://github.com/jtackaberry/reaticulate/issues/50]))
+* Activating an articulation now scrolls it into view in the GUI ([#50](https://github.com/jtackaberry/reaticulate/issues/50])
 * Improved First Run experience (especially for portable Reaper installations) ([#46](https://github.com/jtackaberry/reaticulate/issues/46))
 * Minor cosmetic improvements with drag-and-drop to reorder banks on the track configuration page
 
