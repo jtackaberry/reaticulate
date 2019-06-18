@@ -280,12 +280,12 @@ function rtk.set_mouse_cursor(cursor)
 end
 
 
-function rtk.reflow()
+function rtk.reflow(full)
     local widgets = rtk._reflow_widgets
     rtk._reflow_queued = false
     rtk._reflow_widgets = nil
     local t0 = os.clock()
-    if widgets and rtk.widget.realized and #widgets < 20 then
+    if full ~= true and widgets and rtk.widget.realized and #widgets < 20 then
         for widget, _ in pairs(widgets) do
             widget:reflow()
         end
@@ -339,7 +339,7 @@ function rtk.update()
     if gfx.w ~= rtk.w or gfx.h ~= rtk.h then
         rtk.w, rtk.h = gfx.w, gfx.h
         rtk.onresize()
-        rtk.reflow()
+        rtk.reflow(true)
         need_draw = true
     elseif rtk._reflow_queued then
         rtk.reflow()
