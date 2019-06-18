@@ -583,6 +583,7 @@ function rtk._handle_dock_change(dockstate)
             end
         end
     end
+    rtk.queue_reflow()
     rtk.dockstate = dockstate
     rtk.ondock()
 end
