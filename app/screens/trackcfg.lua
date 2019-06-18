@@ -236,7 +236,7 @@ function screen.create_bank_ui()
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
     bankbox.info = row
     row:add(rtk.ImageBox:new({image=screen.info_icon}), {valign=rtk.Widget.TOP})
-    row.label = row:add(rtk.Label:new(), {valign=rtk.Widget.CENTER})
+    row.label = row:add(rtk.Label:new({wrap=true}), {valign=rtk.Widget.CENTER})
 
     -- Warning row
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
