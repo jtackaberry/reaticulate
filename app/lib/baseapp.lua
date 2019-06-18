@@ -108,7 +108,7 @@ function BaseApp:show_screen(screen)
         if self.viewport then
             self.viewport:attr('child', screen.widget)
         else
-            self.frame:replace(self.frame.content_position, screen.widget, {expand=1, fillw=true})
+            self.frame:replace(self.frame.content_position, screen.widget, {expand=1, fillw=true, fillh=true})
         end
         if screen.toolbar then
             screen.toolbar:show()
@@ -287,6 +287,10 @@ function BaseApp:build_frame()
     self.frame = rtk.VBox:new({position=rtk.Widget.FIXED, z=100})
     self.frame:add(toolbar)
 
+    -- Add a placeholder widget that screens will replace.
+    self.frame:add(rtk.VBox.FLEXSPACE)
+    self.frame.content_position = #self.frame.children
+
     self.statusbar = rtk.HBox:new({
         bg=rtk.theme.window_bg,
         lpadding=10,
@@ -297,14 +301,10 @@ function BaseApp:build_frame()
     })
     self.statusbar.label = self.statusbar:add(rtk.Label:new({color=rtk.theme.text_faded}), {expand=1})
 
-    -- Add a placeholder widget that screens will replace.
-    self.frame:add(rtk.VBox.FLEXSPACE)
-    self.frame.content_position = #self.frame.children
-
-    self:set_statusbar('Reaticulate')
-
+    self.frame:add(self.statusbar)
     rtk.widget:add(self.frame)
-    rtk.widget:add(self.statusbar, {valign=rtk.Widget.BOTTOM, fillw=true})
+
+    self:set_statusbar('')
 end
 
 function BaseApp:handle_onupdate()

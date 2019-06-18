@@ -2348,7 +2348,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 -- to adjust position.
                 local offx = self.lpadding + lpadding
                 if attrs.halign == rtk.Widget.CENTER then
-                    offx = offx + (maxw - widget.cw) / 2
+                    offx = (offx - self.rpadding - rpadding) + (maxw - widget.cw) / 2
                 elseif attrs.halign == rtk.Widget.RIGHT then
                     offx = offx + maxw - widget.cw
                 end
@@ -2441,7 +2441,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 -- to adjust position.
                 local offy = self.tpadding + tpadding
                 if attrs.valign == rtk.Widget.CENTER then
-                    offy = offy + (maxh - widget.ch) / 2
+                    offy = (offy - self.bpadding - bpadding) + (maxh - widget.ch) / 2
                 elseif attrs.valign == rtk.Widget.BOTTOM then
                     offy = offy + maxh - widget.ch
                 end
