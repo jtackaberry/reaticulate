@@ -649,7 +649,7 @@ function rtk.set_font(font, size, scale, flags)
 end
 
 
-function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh)
+function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, align)
     -- Common case where the string fits in the box.
     local w, h = gfx.measurestr(s)
     if w <= boxw or (not wrap and not truncate) then
@@ -676,6 +676,14 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh)
     local wrappos = 1
     local len = s:len()
     local segments = {}
+    local widths = {}
+    local maxwidth = 0
+    local function addsegment(segment)
+        w, _ = gfx.measurestr(segment)
+        segments[#segments+1] = segment
+        widths[#widths+1] = w
+        maxwidth = math.max(w, maxwidth)
+    end
     for endpos = 1, len do
         local substr = s:sub(startpos, endpos)
         local ch = s:sub(endpos, endpos)
@@ -685,7 +693,7 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh)
                 wrappos = endpos - 1
             end
             if wrappos > startpos then
-                segments[#segments+1] = string.strip(s:sub(startpos, wrappos))
+                addsegment(string.strip(s:sub(startpos, wrappos)))
                 startpos = wrappos + 1
                 wrappos = endpos
             end
@@ -695,7 +703,24 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh)
         end
     end
     if startpos ~= len then
-        segments[#segments+1] = string.strip(s:sub(startpos, len))
+        addsegment(string.strip(s:sub(startpos, len)))
+    end
+    -- This is a bit of a lame way to implement string justification, by
+    -- prepending lines with spaces to get roughly close to the proper width.
+    -- This naive approach won't work for right justification, and even for
+    -- center justified text there is an error margin.  If that needs to be
+    -- fixed, then we will have to return the unconcatenated segments with
+    -- position data included, and implement a separate draw function to process
+    -- them.  Meanwhile, this is good enough for now.
+    if align == rtk.Widget.CENTER then
+        local spacew, _ = gfx.measurestr(' ')
+        for n, line in ipairs(segments) do
+            -- How much space we have to add to the line to get it centered
+            -- relative to our widest line.
+            local lpad = (maxwidth - widths[n]) / 2
+            local nspaces = math.round(lpad / spacew)
+            segments[n] = string.rep(' ', nspaces) .. line
+        end
     end
     local wrapped = table.concat(segments, "\n")
     local ww, wh = gfx.measurestr(wrapped)
@@ -2971,6 +2996,7 @@ function rtk.Label:initialize(attrs)
     self.wrap = false
     self.font, self.fontsize, self.fontflags = table.unpack(rtk.fonts.label or rtk.fonts.default)
     self.fontscale = 1.0
+    self.textalign = rtk.Widget.LEFT
     self:setattrs(attrs)
 end
 
@@ -2982,7 +3008,8 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
     lw, lh, _, self.vlabel = rtk.layout_gfx_string(self.label, self.wrap, true,
                                                    boxw - self.lpadding - self.rpadding,
-                                                   boxy - self.tpadding- self.bpadding)
+                                                   boxy - self.tpadding - self.bpadding,
+                                                   self.textalign)
 
     if not w then
         w = lw + (self.lpadding + self.rpadding) * rtk.scale
