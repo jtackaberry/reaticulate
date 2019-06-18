@@ -25,14 +25,8 @@ function screen.init()
     screen.widget = rtk.Container:new()
     local box = screen.widget:add(rtk.VBox:new(), {halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1})
 
-    screen.label1 = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}})
-    box:add(screen.label1, {halign=rtk.Widget.CENTER})
-
-    screen.label2 = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}})
-    box:add(screen.label2, {halign=rtk.Widget.CENTER})
-
-    screen.label3 = rtk.Label:new({label="Unbypass FX chain to enable.", color={1, 1, 1, 0.5}})
-    box:add(screen.label3, {halign=rtk.Widget.CENTER, tpadding=20})
+    screen.message = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}, wrap=true, textalign=rtk.Widget.CENTER})
+    box:add(screen.message, {halign=rtk.Widget.CENTER})
 
     icon = rtk.Image:new(Path.join(Path.imagedir, "add_circle_outline_white_18x18.png"))
     screen.button = rtk.Button:new({
@@ -64,23 +58,21 @@ end
 function screen.update()
     -- Enable the add FX button only if the FX chain isn't bypassed.
     -- If it is bypassed then show the label that says so.
+    local label = 'No track selected'
     if app.track then
-        screen.label1:attr('label', 'Reaticulate is not')
-        screen.label2:attr('label', 'enabled for this track')
-        screen.label2:show()
         local enabled = reaper.GetMediaTrackInfo_Value(app.track, "I_FXEN")
         if enabled == 1 then
-            screen.label3:hide()
+            label = 'Reaticulate is not enabled for this track'
             screen.button:show()
         else
-            screen.label3:show()
+            label = 'Unbypass FX chain to enable'
             screen.button:hide()
         end
     else
-        screen.label1:attr('label', 'No track selected')
-        screen.label2:hide()
-        screen.label3:hide()
         screen.button:hide()
+    end
+    if label ~= screen.message.label then
+        screen.message:attr('label', label)
     end
 end
 
