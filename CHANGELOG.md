@@ -1,3 +1,41 @@
+# 0.3.0 - June 17, 2019
+
+Below is a list of changes since 0.2.0.
+
+## New Features
+* Articulations are now fed back to control surface ([#48](https://github.com/jtackaberry/reaticulate/issues/48))
+   * CC0/32 bank select indicates bank for articulation
+   * Articulations can be expressed either as native program change events or custom CC events
+* When the [js_ReaScriptAPI extension](https://forum.cockos.com/showthread.php?t=212174) is installed (**strongly recommended!**):
+   * You can now pin the Reaticulate window when floating
+   * Some new actions and features become available
+   * Much improved focusing behavior
+* New action "Focus articulation filter" (which works best when the js_ReaScriptAPI extension is installed)
+* New action "Activate articulation slot number by CC on default channel" which can be used to activate articulations based on their position in the bank list ([#58](https://github.com/jtackaberry/reaticulate/issues/58))
+* New action "Insert last activated articulation into MIDI item on default channel" to insert the last activated articulation into MIDI item at edit cursor (same behavior as right clicking the articulation)
+* New option "Track section follows focused FX window" (with associated toggle action) (requires js_ReaScriptAPI extension)
+* New option "Track selection follows MIDI editor target item" (with associated toggle action)
+   * This is most conveniently paired with the "Options: MIDI track list/media item lane selection is linked to editability"
+* New action "Select last selected track"
+* Various new actions to select but not activate articulations, plus an action to activate currently selected articulation ([#59](https://github.com/jtackaberry/reaticulate/issues/59))
+  * Running the action to activate currently selected articulation twice in rapid succession will cause it to insert into MIDI item
+* On pages that scroll, scrollbars will appear when the mouse hovers toward the right edge
+
+
+## Minor Enhancements
+* Added a new "Behaviors" section on Settings page
+* Activating an articulation now scrolls it into view in the GUI ([#50](https://github.com/jtackaberry/reaticulate/issues/50])
+* Improved First Run experience (especially for portable Reaper installations) ([#46](https://github.com/jtackaberry/reaticulate/issues/46))
+* Minor cosmetic improvements with drag-and-drop to reorder banks on the track configuration page
+
+## Bug Fixes
+
+* Fixed regression in control surface feedback when reopening a project
+* Force control surface update on track selection (workaround for https://forum.cockos.com/showthread.php?p=2077098)
+* Ensure articulations on same MIDI tick as notes are processed before the notes ([#53](https://github.com/jtackaberry/reaticulate/issues/53))
+* Other minor fixes
+
+
 # 0.2.93 (prerelease) - June 9, 2019
 
 ## New Features
