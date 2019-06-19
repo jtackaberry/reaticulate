@@ -472,16 +472,18 @@ function rtk.update()
                 end
                 rtk.drag_candidates = nil
             end
-            -- After a mouse up or mousewheel event, inject a mousemove event to cause any widgets
-            -- under the mouse to draw the hover state.
-            if event.type == rtk.Event.MOUSEUP or event.type == rtk.Event.MOUSEWHEEL then
-                rtk.widget:_handle_event(0, 0, _get_mousemove_event(false), false)
-            end
+
             if rtk._reflow_queued then
                 -- One of the event handlers has requested a reflow.  It'd happen on the next
                 -- update() but we do it now before drawing just to avoid potential flickering.
                 rtk.reflow()
                 rtk._draw_queued = true
+            end
+            -- Now that we have reflowed (maybe), after a mouse up or mousewheel
+            -- event, inject a mousemove event to cause any widgets under the
+            -- mouse to draw the hover state.
+            if event.type == rtk.Event.MOUSEUP or event.type == rtk.Event.MOUSEWHEEL then
+                rtk.widget:_handle_event(0, 0, _get_mousemove_event(false), false)
             end
             -- If the event was marked as handled, or if one of the handlers explicitly requested a
             -- redraw (or a reflow in which case we implicitly redraw) then do so now.  Otherwise
