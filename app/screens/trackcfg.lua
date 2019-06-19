@@ -241,8 +241,8 @@ function screen.create_bank_ui()
     -- Warning row
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
     bankbox.warning = row
-    row:add(rtk.ImageBox:new({image=screen.error_icon}), {valign=rtk.Widget.CENTER})
-    row.label = row:add(rtk.Label:new(), {valign=rtk.Widget.CENTER})
+    row:add(rtk.ImageBox:new({image=screen.error_icon}), {valign=rtk.Widget.TOP})
+    row.label = row:add(rtk.Label:new({wrap=true}), {valign=rtk.Widget.CENTER})
     return bankbox
 end
 
@@ -274,7 +274,7 @@ function screen.check_errors()
                 -- (in which case the error will appear with the later bank)
                 local previous = banks[conflict.source]
                 if channel == 17 or (previous and (previous.channel == 17 or channel == previous.channel)) then
-                    local label = "Error: bank conflict on same channel:\n" .. conflict.source.name
+                    local label = "Error: bank conflict on same channel: " .. conflict.source.name
                     bankbox.warning.label:attr('label', label)
                     bankbox.warning:show()
                     log("Conflict: %s with program %s on channel %s", conflict.source.name, conflict.program, channel)
