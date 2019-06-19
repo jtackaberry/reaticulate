@@ -1,3 +1,16 @@
+# Reaticulate 0.3.1 bugfix release
+June 19, 2019
+
+This is a small bug fix release, mostly to fix a nontrivial regression introduced in 0.3.0.
+
+Bug Fixes
+
+* Fix bug where custom user banks would show up in the Factory submenu instead of the User submenu
+* Fix bug where sometimes the GUI would not adjust after resizing its dimensions
+* Allow long bank messages to wrap in the Track Settings screen
+
+
+
 # Reaticulate 0.3.0 Released
 June 17, 2019
 
