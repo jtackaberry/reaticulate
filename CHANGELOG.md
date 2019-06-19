@@ -1,3 +1,14 @@
+# 0.3.1 - June 19, 2019
+
+This is a small bug fix release.
+
+## Bug Fixes
+
+* Fix bug where custom user banks would show up in the Factory submenu instead of the User submenu
+* Fix bug where sometimes the GUI would not adjust after resizing its dimensions
+* Allow long bank messages to wrap in the Track Settings screen
+
+
 # 0.3.0 - June 17, 2019
 
 Below is a list of changes since 0.2.0.
