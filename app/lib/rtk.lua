@@ -3180,7 +3180,12 @@ function rtk.OptionMenu:_reflow_get_label_size(boxw, boxh)
             w, h = item_w, item_h
         end
     end
-    return rtk.layout_gfx_string(self.label, false, true, boxw, boxh)
+    local lw, lh, lhs, vlabel = rtk.layout_gfx_string(self.label, false, true, boxw, boxh)
+    -- Expand label dimensions based on the largest item in the list, while still
+    -- clamping it to the box size.
+    lw = math.min(math.max(w, lw), boxw)
+    lh = math.min(math.max(h, lh), boxh)
+    return lw, lh, lhs, vlabel
 end
 
 
