@@ -2996,6 +2996,10 @@ end
 
 
 rtk.Label = class('rtk.Label', rtk.Widget)
+rtk.Label.static._attr_filters.textalign = {
+    left=rtk.Widget.LEFT,
+    center=rtk.Widget.CENTER
+}
 
 function rtk.Label:initialize(attrs)
     rtk.Widget.initialize(self)
