@@ -224,8 +224,9 @@ end
 
 
 local Bank = class('Bank')
-function Bank:initialize(factory, msb, lsb, name, attrs)
-    self.factory = factory
+function Bank:initialize(filename, msb, lsb, name, attrs)
+    self.filename = filename
+    self.factory = filename == reabank.reabank_filename_factory
     self.msb = tonumber(msb)
     self.lsb = tonumber(lsb)
     self.name = name
