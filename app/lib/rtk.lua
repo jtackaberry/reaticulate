@@ -3114,7 +3114,7 @@ function rtk.ImageBox:_draw(px, py, offx, offy, sx, sy, event)
         y = y + self.ch - self.bpadding
     end
 
-    self.image:draw(x, y, rtk.scale)
+    self.image:draw(x, y, rtk.scale, nil, self.alpha)
     self:ondraw(offx, offy, event)
 end
 
