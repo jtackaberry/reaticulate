@@ -651,11 +651,15 @@ function rtk.set_font(font, size, scale, flags)
 end
 
 
-function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, align)
-    -- Common case where the string fits in the box.
+function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, justify)
     local w, h = gfx.measurestr(s)
-    if w <= boxw or (not wrap and not truncate) then
-        return w, h, h, s
+    -- Common case where the string fits in the box.  But first if the
+    -- string contains a newline and we're center justifying then
+    -- we need to take the slow path.
+    if justify ~= rtk.Widget.CENTER or not s:find('\n') then
+        if w <= boxw or (not wrap and not truncate) then
+            return w, h, h, s
+        end
     end
     -- Text exceeds bounding box.
     if not wrap and truncate then
@@ -690,7 +694,7 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, align)
         local substr = s:sub(startpos, endpos)
         local ch = s:sub(endpos, endpos)
         local w, _ = gfx.measurestr(substr)
-        if w > boxw then
+        if w > boxw or ch == '\n' then
             if wrappos == startpos then
                 wrappos = endpos - 1
             end
@@ -702,6 +706,8 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, align)
         end
         if ch == ' ' or ch == '-' or ch == ',' or ch == '.' then
             wrappos = endpos
+        elseif ch == '\n' then
+            addsegment('')
         end
     end
     if startpos ~= len then
@@ -714,7 +720,7 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, align)
     -- fixed, then we will have to return the unconcatenated segments with
     -- position data included, and implement a separate draw function to process
     -- them.  Meanwhile, this is good enough for now.
-    if align == rtk.Widget.CENTER then
+    if justify == rtk.Widget.CENTER then
         local spacew, _ = gfx.measurestr(' ')
         for n, line in ipairs(segments) do
             -- How much space we have to add to the line to get it centered
