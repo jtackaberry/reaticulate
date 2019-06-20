@@ -2236,32 +2236,34 @@ function rtk.Box:_reflow_step1(w, h, viewport)
             spacing = 0
         elseif widget.visible == true then
             local ww, wh = 0, 0
+            local minw = attrs.minw or 0
+            local minh = attrs.minh or 0
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
             -- Reflow at 0,0 coords just to get the native dimensions.  Will adjust position in second pass.
             if not attrs.expand or attrs.expand == 0 then
                 if self.direction == rtk.Box.HORIZONTAL then
                     local child_maxw = remaining_size - lpadding - rpadding - spacing
-                    local minw = attrs.minw or 0
                     child_maxw = math.max(child_maxw, minw)
+                    local child_maxh = math.max(minh, h - tpadding - bpadding)
                     _, _, ww, wh = widget:reflow(
                         0,
                         0,
                         child_maxw,
-                        h - tpadding - bpadding,
+                        child_maxh,
                         nil,
                         attrs.fillh == rtk.Box.FILL_TO_PARENT,
                         viewport
                     )
                     ww = math.max(ww, minw)
                 else
+                    local child_maxw = math.max(minw, w - lpadding - rpadding)
                     local child_maxh = remaining_size - tpadding - bpadding - spacing
-                    local minh = attrs.minh or 0
                     child_maxh = math.max(child_maxh, minh)
                     _, _, ww, wh = widget:reflow(
                         0,
                         0,
-                        w - lpadding - rpadding,
+                        child_maxw,
                         child_maxh,
                         attrs.fillw == rtk.Box.FILL_TO_PARENT,
                         nil,
