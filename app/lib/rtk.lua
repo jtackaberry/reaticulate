@@ -664,7 +664,7 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, justify)
     -- Text exceeds bounding box.
     if not wrap and truncate then
         -- This isn't exactly the most efficient.
-        local truncated = s
+        local truncated = ''
         for i = 1, s:len() do
             local segment = s:sub(1, i)
             local lw, _ = gfx.measurestr(segment)
