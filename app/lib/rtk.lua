@@ -2317,17 +2317,19 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             maxh = math.max(maxh, offset)
         elseif widget.visible == true then
             local wx, wy, ww, wh
+            local minw = attrs.minw or 0
             local minh = attrs.minh or 0
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
+                local child_maxw = math.max(minw, w - lpadding - rpadding)
                 local child_maxh = (expand_unit_size * attrs.expand) - tpadding - bpadding - spacing
                 child_maxh = math.floor(math.max(child_maxh, minh))
                 wx, wy, ww, wh = widget:reflow(
                     self.lpadding + lpadding,
                     offset + tpadding + spacing,
-                    w - lpadding - rpadding,
+                    child_maxw,
                     child_maxh,
                     attrs.fillw and attrs.fillw ~= 0,
                     attrs.fillh and attrs.fillh ~= 0,
@@ -2415,15 +2417,17 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
             local lpadding, rpadding = attrs.lpadding or 0, attrs.rpadding or 0
             local tpadding, bpadding = attrs.tpadding or 0, attrs.bpadding or 0
             local minw = attrs.minw or 0
+            local minh = attrs.minh or 0
             if attrs.expand and attrs.expand > 0 then
                 -- This is an expanded child which was not reflown in pass 1, so do it now.
                 local child_maxw = (expand_unit_size * attrs.expand) - lpadding - rpadding - spacing
                 child_maxw = math.floor(math.max(child_maxw, minw))
+                local child_maxh = math.max(minh, h - tpadding - bpadding)
                 wx, wy, ww, wh = widget:reflow(
                     offset + lpadding + spacing,
                     self.tpadding + tpadding,
                     child_maxw,
-                    h - tpadding - bpadding,
+                    child_maxh,
                     attrs.fillw == rtk.Box.FILL_TO_PARENT,
                     attrs.fillh == rtk.Box.FILL_TO_PARENT,
                     viewport
