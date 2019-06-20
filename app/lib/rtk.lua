@@ -665,15 +665,16 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, justify)
     if not wrap and truncate then
         -- This isn't exactly the most efficient.
         local truncated = ''
+        local lw = 0
         for i = 1, s:len() do
             local segment = s:sub(1, i)
-            local lw, _ = gfx.measurestr(segment)
+            lw, _ = gfx.measurestr(segment)
             if lw > boxw then
                 break
             end
             truncated = segment
         end
-        return w, h, h, truncated
+        return lw, h, h, truncated
     end
 
     -- We'll need to wrap the string.  Do the expensive work.
