@@ -116,8 +116,7 @@ Hopefully the GUI will be fairly intuitive.  Here are some tips that may not be 
       insert the program change message in the MIDI item
 * __Right clicking__ on the other hand will *always* insert a program change at the edit cursor
     * This also works from the arrange view even if the MIDI editor is closed
-* When you left or right click an articulation, Reaticulate will focus the MIDI editor if it's open,
-  or the arrange view if it's not.  This is *usually* what you want to avoid focus-stealing
+* When you left or right click an articulation, Reaticulate will refocus the window that previously had focus before activating the articulation.  (This is only true when the js_ReaScriptAPI extension is installed.  If it's not installed, if MIDI editor if it's open it will focus that, and focus the arrange view otherwise.) This is *usually* what you want to avoid focus-stealing.
 * When an articulation is activated, the source channel that articulation is active on is denoted by
   a number on the right edge of the articulation
     * If a bank's source channel is set to __Omni__ in the track configuration, then it's possible
