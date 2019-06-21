@@ -124,7 +124,7 @@ Hopefully the GUI will be fairly intuitive.  Here are some tips that may not be 
       active will be listed here.
 * __Middle clicking__ an articulation will clear its assignment from all source channels (at least
   as far as the UI is concerned)
-* There's no vertical scrollbar in the UI yet.  Use the __scroll wheel__ on your mouse to scroll the view as needed.
+* To scroll large bank lists, a vertical scrollbar will appear by hovering over the right edge of Reaticulate's window.  Of course you can always use the __scroll wheel__ on your mouse anywhere within the window to scroll the view as needed.
 * You can adjust the zoom level of the UI by using ctrl-mousewheel
 * As you hover over an articulation, the status bar at the bottom of the UI will describe what output events will be sent
 * The articulations filter works by fuzzy substring match, so for example `trp` would match `trill P4`
