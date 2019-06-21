@@ -72,7 +72,7 @@ Once added, each bank has a few UI elements:
     * When set to *Source* it means that output events will be sent to the same MIDI channel the
       program change message came in on
 * A delete button ![Delete
-  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/release/img/delete_white_18x18.png)
+  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/delete_white_18x18.png)
   which removes the bank from the track
 * A drag handle ![Drag
   icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/drag_vertical_24x24.png)
@@ -148,9 +148,17 @@ All actions are prefixed with `Reaticulate` so you can easily find them by searc
 | `Set default MIDI Channel by CC` | Sending value `<n>` on the CC bound to this action will set the default channel to `<n>`.
 | `Set default MIDI Channel to <n>` | Sets the default channel to `<n>`. There are 16 separate actions for the 16 different MIDI channels.
 | `Activate articulation by CC in group <n> on default channel (MIDI CC relative or mousewheel)` | Scrolls through the articulations in group `<n>`.  It can be convenient to bind this action to an encoder as a quick way to flip through articulations from a control surface.
+| `Activate articulation by slot number by CC on default channel` | Whereas earlier actions activate an articulation based on the program number (denoted as the CC value), this action activates an articulation by its position in the list of articulations.  So binding a CC to this action and sending value 2 will activate the second articulation in the list.
 | `Activate previous/next articulation in group <n> on default channel` | These actions can be assigned to previous/next keys (or control surface buttons) to discretely scroll through the articulations on group `<n>`
+| `Select articulation by CC (MIDI CC relative or mousewheel)` | Unlike the *activate* actions, this action merely selects the articulation in the bank list but doesn't activate it yet.  You'll need to activate the selected articulation after (see below).
+| `Select next/previous articulation` | These actions select (but not activate) the next or previous articulation in the bank list, relative to the currently selected articulation
+| `Activate selected articulation on default channel` | After having selected an articulation visually via one of the *Select* actions, this action will activate the selected articulation. Pro tip: triggering this action twice in rapid succession will force-insert the program change event into the current MIDI item at the edit cursor.
+| `Insert last activated articulation into MIDI item on default channel` | Will force-insert the program change event for the last activated articulation into the MIDI item at the editor cursor.
+| `Focus articulation filter` | Focus Reaticulate's articulation filter text input in the bank list to rapidly find a desired articulation by searching.  (This works best when the js_ReaScript API extension is installed.)
 | `Disable/Enable/Toggle feedback to MIDI feedback device` | If feedback is configured (see below), these actions control whether or not it's active.  If not configured, these actions do nothing.
 | `Sync current state on selected track to MIDI feedback device` | Replays all last seen CCs and current articulations on all channels to the MIDI feedback device (if configured).
+| `Toggle track selection follow focused FX window` | If enabled, when an FX window is floated, Reaticulate will automatically select its track.  (Requires the js_ReaScriptAPI extension.)
+| `Toggle track selection follows MIDI editor target item` | If enabled, when you select a MIDI item in the MIDI editor for writes, Reaticulate will automatically select that track so the bank list updates to reflect that track's articulations.  This is most conveniently paired with the "Options: MIDI track list/media item lane selection is linked to editability" so that merely selecting an item in the MIDI editor will both enable it for edits and automatically select the track.
 
 
 # Feedback to Control Surface

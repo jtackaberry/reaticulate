@@ -2,6 +2,16 @@
 title: Download
 ---
 
+# Prerequisites
+
+* The [SWS extension](http://www.sws-extension.org/) is required to run Reaticulate
+* It is *highly* recommended that you install the [js_ReaScriptAPI extension](https://forum.cockos.com/showthread.php?t=212174), which enables much improved focusing behavior and unlocks several of Reaticulate's features
+  * If you have ReaPack installed, this extension can be installed via `Extensions | ReaPack | Browse Packages` and searching for `reascriptapi`.  
+
+Be sure to restart Reaper after installing any extensions.
+
+# Installation
+
 ## The Easy Way (ReaPack)
 
 If your DAW is connected to the Internet, you can install Reaticulate as a ReaPack repository.
@@ -22,15 +32,6 @@ Once you have ReaPack installed:
 </p>
 
 Now's a good time to read more about [how to use Reaticulate](usage).
-
-### Updating
-
-Access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated
-to the latest version.
-
-If Reaticulate does update, you should restart Reaper to ensure the latest version of all
-Reaticulate scripts are running.
-
 
 ### Living on the edge?
 
@@ -57,17 +58,7 @@ It's possible to switch between the release and prerelease ReaPacks, but you fir
 Reaticulate before following the above installation instructions again.  (Don't worry, your custom
 banks won't be affected.)
 
-Follow these steps below to uninstall.
-
-### Uninstalling
-
-Follow these steps to uninstall the Reaticulate ReaPack:
-
-1. Close current project (if one is open)
-1. Menu: `Extensions | ReaPack | Manage Repositories`
-1. Right click Reaticulate and click Uninstall
-1. Click ok and say yes to the prompt
-1. Restart Reaper (necessary to stop existing Reaticulate instance)
+See the *Uninstalling* section below for instructions on how to first remove an existing version of Reaticulate if you want to switch between release and prerelease.
 
 
 ## The Hard Way (Manual)
@@ -84,3 +75,25 @@ instructions:
 1. In Reaper, open the Actions dialog and click the `Load ...` button in the bottom right
 1. Navigate to `Scripts/Reaticulate/actions/` and select all files in that directory, and then click the Open button
 1. Invoke the action `Script: Reaticulate_Main.lua` from the actions list
+
+
+# Updating
+
+Access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated
+to the latest version.
+
+If Reaticulate does update, you should restart Reaper to ensure the latest version of all
+Reaticulate scripts are running.
+
+
+
+# Uninstalling
+
+Follow these steps to uninstall the Reaticulate ReaPack:
+
+1. Close current project (if one is open)
+1. Menu: `Extensions | ReaPack | Manage Repositories`
+1. Right click Reaticulate and click Uninstall
+1. Click ok and say yes to the prompt
+1. Restart Reaper (necessary to stop existing Reaticulate instance)
+
