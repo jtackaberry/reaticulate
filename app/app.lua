@@ -174,17 +174,31 @@ function App:activate_articulation(art, refocus, force_insert, channel)
 
     local bank = art:get_bank()
     local channel = bank:get_src_channel(channel or app.default_channel) - 1
-    local take = nil
 
+    local recording = reaper.GetAllProjectPlayStates(0) & 4 ~= 0
+    if recording then
+        -- If the transport is recording then stuff the program change instead of
+        -- insertion.  This ensures the events are part of the undo state of the
+        -- record action, and an undo action will undo the entire record action.
+        -- Otherwise, with insertion, you end up with articulations in the undo
+        -- history independent of the recording, which would be unexpected.
+        reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, bank.msb)
+        reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, bank.lsb)
+        reaper.StuffMIDIMessage(0, 0xc0 + channel, art.program, 0)
+        return
+    end
+
+    -- Find active take for articulation insertion.
+    local take = nil
     -- If MIDI Editor is open, use the current take there.
     local hwnd = reaper.MIDIEditor_GetActive()
     if hwnd then
         -- Magic value 32060 is the MIDI editor context
         local stepInput = reaper.GetToggleCommandStateEx(32060, 40481)
-        if stepInput == 1 or force_insert then
+        if stepInput == 1 or (force_insert and force_insert ~= 0) then
             take = reaper.MIDIEditor_GetTake(hwnd)
         end
-    elseif force_insert then
+    elseif force_insert and force_insert ~= 0 then
         -- No active MIDI editor and we want to force insert.  Try to find the current
         -- take on the selected track based on edit cursor position.
         --
@@ -203,8 +217,8 @@ function App:activate_articulation(art, refocus, force_insert, channel)
             end
         end
     end
-    reaper.PreventUIRefresh(1)
     if reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
+        reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock2(0)
         -- Take was found (either because MIDI editor is open with step input enabled or because
         -- force insert was used), so inject the PC event at the current cursor position.
@@ -243,15 +257,10 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         reaper.UpdateItemInProject(item)
         rfx.activate_articulation(channel, art.program)
         reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. art.name .. ")", -1)
+        reaper.PreventUIRefresh(-1)
     else
         rfx.activate_articulation(channel, art.program)
     end
-    reaper.PreventUIRefresh(-1)
-    -- XXX: temporarily disable message stuffing.  It shouldn't be necessary as
-    -- articulations are activated by communication with the RFX now.
-    -- reaper.StuffMIDIMessage(0, 0xb0 + channel, 0, bank.msb)
-    -- reaper.StuffMIDIMessage(0, 0xb0 + channel, 0x20, bank.lsb)
-    -- reaper.StuffMIDIMessage(0, 0xc0 + channel, art.program, 0)
 
     -- Set articulation as pending.
     local idx = (channel + 1) + (art.group << 8)
