@@ -1,3 +1,12 @@
+# 0.3.2 - August 3, 2019
+
+This is release fixes a regression introduced in 0.3.0.
+
+## Bug Fixes
+
+* Fix articulation activations during live recording
+
+
 # 0.3.1 - June 19, 2019
 
 This is a small bug fix release.
