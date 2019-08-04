@@ -3,7 +3,7 @@ August 4, 2019
 
 This is release fixes a regression introduced in 0.3.0.
 
-## Bug Fixes
+### Bug Fixes
 
 * Fix articulation activations during live recording
 
@@ -13,7 +13,7 @@ June 19, 2019
 
 This is a small bug fix release, mostly to fix a nontrivial regression introduced in 0.3.0.
 
-## Bug Fixes
+### Bug Fixes
 
 * Fix bug where custom user banks would show up in the Factory submenu instead of the User submenu
 * Fix bug where sometimes the GUI would not adjust after resizing its dimensions
