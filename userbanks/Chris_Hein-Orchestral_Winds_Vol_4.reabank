@@ -1,0 +1,96 @@
+//----------------------------------------------------------------------------
+// Source: Kitarraman - https://forum.cockos.com/showpost.php?p=2089107&postcount=328
+//
+
+//! g="Chris Hein/Orchestral Winds/Vol. 4 Bassoons" n="Basson 1"
+Bank 11 96 Chris Hein Orchestral Winds Bassoon1
+//! c=long-dark i=vibrato o=note:21
+21 Sus Vib (Auto Xfade)
+//! c=long-light i=vibrato o=note:22
+22 Sus Vib (Vel+Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sus Vib (Vel)
+//! c=long-dark i=note-whole o=note:25
+25 Sustain (Vel)
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=fx i=fx o=note:28
+28 Flutter Tng (Vel+Xfade)
+//! c=short i=note-eight o=note:29
+29 Short 1 (Vel)
+//! c=short i=note-quarter o=note:30
+30 Short 2 (Vel)
+//! c=short i=note-eight o=note:31
+31 Short 3 (Vel)
+//! c=short i=note-sixteenth o=note:32
+32 Short 4 (Vel)
+//! c=short i=note-sixteenth o=note:33
+33 Short 5 (Vel)
+//! c=short i=note-sixteenth o=note:34
+34 Short 6 (Vel)
+
+//! g="Chris Hein/Orchestral Winds/Vol. 4 Bassoons" n="Basson Barock"
+Bank 11 97 Chris Hein Orchestral Winds Bassoon Barock
+//! c=long-dark i=vibrato o=note:21
+21 Sus Vib (Auto Xfade)
+//! c=long-light i=vibrato o=note:22
+22 Sus Vib (Vel+Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sus Vib (Vel)
+//! c=long-dark i=note-whole o=note:25
+25 Sustain (Vel)
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=fx i=fx o=note:28
+28 Flutter Tng (Vel+Xfade)
+//! c=short i=note-eight o=note:29
+29 Short 1 (Vel)
+//! c=short i=note-quarter o=note:30
+30 Short 2 (Vel)
+//! c=short i=note-eight o=note:31
+31 Short 3 (Vel)
+//! c=short i=note-sixteenth o=note:32
+32 Short 4 (Vel)
+//! c=short i=note-sixteenth o=note:33
+33 Short 5 (Vel)
+//! c=short i=note-sixteenth o=note:34
+34 Short 6 (Vel)
+
+//! g="Chris Hein/Orchestral Winds/Vol. 4 Bassoons" n="Contra Basson"
+Bank 11 98 Chris Hein Orchestral Winds Contra Bassoon
+//! c=long-dark i=vibrato o=note:21
+21 Sus Vib (Auto Xfade)
+//! c=long-light i=vibrato o=note:22
+22 Sus Vib (Vel+Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sus Vib (Vel)
+//! c=long-dark i=note-whole o=note:25
+25 Sustain (Vel)
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=fx i=fx o=note:28
+28 Flutter Tng (Vel+Xfade)
+//! c=short i=note-eight o=note:29
+29 Short 1 (Vel)
+//! c=short i=note-quarter o=note:30
+30 Short 2 (Vel)
+//! c=short i=note-eight o=note:31
+31 Short 3 (Vel)
+//! c=short i=note-sixteenth o=note:32
+32 Short 4 (Vel)
+//! c=short i=note-sixteenth o=note:33
+33 Short 5 (Vel)
+//! c=short i=note-sixteenth o=note:34
+34 Short 6 (Vel)

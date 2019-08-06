@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------------
+// Source: WolfgangAgustus - https://forum.cockos.com/showpost.php?p=2136835&postcount=403
+//
+//! g="Spitfire/Harp" n="Harp Main Techniques"
+//! m="Set patch to UACC"
+Bank 1 1 SH - main techniques
+//! c=long i=note-whole o=cc:32,1
+1 normale
+//! c=long-dark i=harp-pdlt o=cc:32,18
+18 pres de la table
+//! c=long-light i=note-whole o=cc:32,29
+29 flageolet
+//! c=legato i=legato o=cc:32,2
+2 slid
+//! c=long i=tremolo o=cc:32,11
+11 bisbigliando
+//! c=fx i=fx o=cc:32,90
+90 fx
+
+//! g="Spitfire/Harp" n="Harp Glissandi Manual"
+//! m="Set patch to UACC"
+Bank 1 2 SH - glissandi manual
+//! c=legato i=legato-portamento o=cc:32,121
+121 whole tone
+//! c=legato i=legato-portamento o=cc:32,122
+122 minor harmonic
+//! c=legato i=legato-portamento o=cc:32,123
+123 minor melodic
+//! c=legato i=legato-portamento o=cc:32,124
+124 major
+//! c=legato i=legato-portamento o=cc:32,125
+125 pentatonic
+//! c=legato i=legato-portamento o=cc:32,126
+126 diminished
+
+//! g="Spitfire/Harp" n="Harp Glissandi Legato"
+//! m="Set patch to UACC"
+Bank 1 3 SH - glissandi legato
+//! c=legato i=legato-portamento o=cc:32,118
+118 scale gliss
+//! c=legato i=legato-portamento o=cc:32,119
+119 full gliss & swirls

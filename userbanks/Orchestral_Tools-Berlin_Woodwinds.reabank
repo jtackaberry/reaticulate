@@ -1,0 +1,214 @@
+//----------------------------------------------------------------------------
+// Source: daeavelwyn - https://forum.cockos.com/showpost.php?p=2149051&postcount=500
+//
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Piccolo"
+//! m=""
+Bank 2 1 OT-BW - Piccolo
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain whitout vib - C#1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=short i=trill o=note:28
+5 Measured Trills +2 - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+//! c=short-light i=dblstop-5th-eighth o=note:31
+8 Doubles - G1
+//! c=short-light i=run-minor o=note:32
+9 Triples - G#1
+//! c=long-dark i=tenuto-eighth o=note:33
+10 Portato Short - A1
+//! c=long-dark i=tenuto-quarter o=note:34
+11 Portato Long- A#1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Flute1"
+//! m=""
+Bank 2 2 OT-BW - Flute1
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain expressivo vib - C#1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+//! c=short i=trill o=note:31
+8 Measured Trills +1 - G1
+//! c=short-light i=dblstop-5th-eighth o=note:34
+11 Doubles - A#1
+//! c=short-light i=run-minor o=note:35
+12 Triples - B1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Flute2"
+//! m=""
+Bank 2 3 OT-BW - Flute2
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain expressivo vib - C#1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+//! c=short-light i=dblstop-5th-eighth o=note:31
+8 Doubles - G1
+//! c=short-light i=run-minor o=note:32
+9 Triples - G#1
+//! c=short i=trill o=note:33
+10 Measured Trills +1 - A1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Oboe1"
+//! m=""
+Bank 2 5 OT-BW - Oboe1
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain without vib - C#1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Oboe2"
+//! m=""
+Bank 2 6 OT-BW - Oboe2
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain without vib - C#1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="English Horn"
+//! m=""
+Bank 2 7 OT-BW - English Horn
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain without vib - C#1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Clarinet1"
+//! m=""
+Bank 2 8 OT-BW - Clarinet1
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+//! c=short-light i=dblstop-5th-eighth o=note:31
+8 Doubles - G1
+//! c=short-light i=run-minor o=note:32
+9 Triples - G#1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Clarinet2"
+//! m=""
+Bank 2 9 OT-BW - Clarinet2
+//! c=legato i=note-whole o=note:24
+1 Sustain romantic vib - C1
+//! c=short-dark i=staccato o=note:26
+3 Staccato - D1
+//! c=short-dark i=spiccato o=note:27
+4 Staccato short - D#1
+//! c=long-dark i=tenuto-eighth o=note:28
+5 Portato Short - E1
+//! c=short i=trill-min2 o=note:29
+6 Trills+1 - F1
+//! c=short i=trill-maj2 o=note:30
+7 Trills+2 - F#1
+//! c=short-light i=dblstop-5th-eighth o=note:31
+8 Doubles - G1
+//! c=short-light i=run-minor o=note:32
+9 Triples - G#1
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Bassoon"
+//! m=""
+Bank 2 10 OT-BW - Bassoon
+//! c=legato i=note-whole o=note:96
+1 Sustain romantic vib - C7
+//! c=legato i=note-whole  o=note:97
+2 Sustain without vib - C#7
+//! c=short-dark i=staccato o=note:98
+3 Staccato - D7
+//! c=long-dark i=tenuto-eighth o=note:100
+5 Portato Short - E7
+//! c=short i=trill-min2 o=note:101
+6 Trills+1 - F7
+//! c=short i=trill-maj2 o=note:102
+7 Trills+2 - F#7
+//! c=short-light i=dblstop-5th-eighth o=note:103
+8 Doubles - G7
+//! c=short-light i=run-minor o=note:104
+9 Triples - G#7
+
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Extras"
+//! m="Berlin Woodwinds common CC messages"
+Bank 2 126 OT-BW - Extras
+//! c=art1 i=legato g=1 o=cc:30,127
+1 Legato On
+//! c=art1 i=legato g=1 o=cc:30,0
+2 Legato Off
+//! c=art3 i=crescendo g=3 o=cc:52,127
+3 Niente On
+//! c=art3 i=crescendo g=3 o=cc:52,0
+4 Niente Off
+//! c=art4 i=fx g=4 o=cc:53,127
+5 Soft Layer On
+//! c=art4 i=fx g=4 o=cc:53,0
+6 Soft Layer Off
+
+//! g="Orchestral Tools/Berlin Woodwinds" n="Extras 2"
+//! m="Berlin Woodwinds common CC messages"
+Bank 2 125 OT-BW - Extras 2
+//! c=art5 i=fx o=cc:54,127
+9 Cutoff Filter On
+//! c=art5 i=fx o=cc:54,0
+10 Cutoff Filter Off

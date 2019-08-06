@@ -1,0 +1,46 @@
+//----------------------------------------------------------------------------
+// Source: Vincent Sermonne - https://forum.cockos.com/showpost.php?p=2148554&postcount=476
+//
+//! g="Spitfire/Albion ONE Orchestra" n="Strings"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+Bank 66 18 Albion ONE - Strings
+//! c=short i=spiccato o=cc:32,3
+3 spiccato
+//! c=short i=staccato o=cc:32,20
+20 staccato
+//! c=short-light i=pizz o=cc:32,41
+41 pizzicato
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long-light i=note-whole o=cc:32,66
+66  long
+//! c=long-light i=con-sord o=cc:32,90
+90 long-sourd
+//! c=long-dark i=tremolo o=cc:32,96
+96 tremolo
+//! c=long-light i=note o=cc:32,116
+116 Fort Oct short
+//! c=long-light i=note-whole o=cc:32,127
+127 Fort Oct long
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Albion ONE/Legacy" n="String High"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+Bank 66 25 Albion ONE - Legacy - String High
+//! c=short i=staccato o=cc:32,1
+1 short ostinatum
+//! c=short i=spiccato o=cc:32,20
+20 spiccato ostinatum
+//! c=short i=staccato o=cc:32,42
+42 short octave
+//! c=long i=note-whole o=cc:32,58
+58 long octave
+//! c=long-light i=con-sord o=cc:32,90
+90 con sord octave
+//! c=fx i=fx o=cc:32,93
+93 fx1
+//! c=fx i=fx o=cc:32,110
+110 fx2
+//! c=fx i=fx o=cc:32,127
+127 fx3
+

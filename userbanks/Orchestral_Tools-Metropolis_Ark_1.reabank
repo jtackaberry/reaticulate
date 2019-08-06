@@ -1,0 +1,320 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//----------------------------------------------------------------------------
+//! g="Orchestral Tools/Metropolis Ark 1" n="Kommandanten Trumpets a4 Multi"
+Bank 12 1 OTMA1 Kommandanten Trumpets a4
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato-half o=note:25
+55 marcato long
+//! c=short i=marcato-quarter o=note:26
+52 marcato short
+//! c=short i=staccato o=note:27
+40 staccato
+//! c=fx i=staccato o=note:28
+62 staccato cluster
+//! c=fx i=crescendo o=note:29
+90 cluster crescendo long
+//! c=fx i=crescendo o=note:30
+91 cluster crescendo short
+//! c=long i=crescendo o=note:31
+102 crescendo long
+//! c=long i=crescendo o=note:32
+106 crescendo short
+//! c=long i=crescendo o=note:33
+107 swell
+//! c=fx i=crescendo o=note:34
+109 cresc fluttertongue
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Schwarzdorn Horns a9 Multi"
+Bank 12 2 OTMA1 Schwarzdorn Horns a9
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=marcato-half o=note:97
+55 marcato long
+//! c=short i=marcato-quarter o=note:98
+52 marcato short
+//! c=short i=staccato o=note:99
+40 staccato
+//! c=short i=rips o=note:100
+100 octave rips
+//! c=long i=crescendo o=note:101
+102 crescendo long
+//! c=long i=crescendo o=note:102
+106 crescendo short
+//! c=long i=crescendo o=note:103
+107 swell long
+//! c=long i=crescendo o=note:104
+108 swell short
+//! c=fx i=crescendo o=note:105
+109 cresc fluttertongue
+//! c=fx i=crescendo o=note:106
+90 cluster crescendo long
+//! c=fx i=crescendo o=note:107
+91 cluster crescendo short
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Schwarzdorn Horns a9 Legato"
+Bank 12 3 OTMA1 Schwarzdorn Horns a9 Legato
+//! c=legato i=legato o=@2
+20 legato
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Rotdorn Horns a3 Multi"
+Bank 12 4 OTMA1 Rotdorn Horns a3
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=marcato-half o=note:97
+55 marcato long
+//! c=short i=marcato-quarter o=note:98
+52 marcato short
+//! c=short i=staccato o=note:99
+40 staccato
+//! c=long i=crescendo o=note:100
+102 crescendo long
+//! c=long i=crescendo o=note:101
+106 crescendo short
+//! c=long i=crescendo o=note:102
+107 swell long
+//! c=long i=crescendo o=note:103
+108 swell short
+//! c=fx i=crescendo o=note:104
+109 cresc fluttertongue
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Friedrich Bass Trombones a3 Multi"
+Bank 12 5 OTMA1 Friedrich Bass Trombones a3
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=marcato-half o=note:97
+55 marcato long
+//! c=short i=marcato-quarter o=note:98
+52 marcato short
+//! c=short i=staccato o=note:99
+40 staccato
+//! c=long i=crescendo o=note:100
+102 crescendo long
+//! c=long i=crescendo o=note:101
+106 crescendo short
+//! c=long i=crescendo o=note:102
+107 swell long
+//! c=long i=crescendo o=note:103
+108 swell short
+//! c=fx i=crescendo o=note:104
+109 cresc fluttertongue
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Koenigsberger Cimbassi a3 Multi"
+Bank 12 6 OTMA1 Koenigsberger Cimbassi a3
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=marcato-half o=note:97
+55 marcato long
+//! c=short i=marcato-quarter o=note:98
+52 marcato short
+//! c=short i=staccato o=note:99
+40 staccato
+//! c=long i=crescendo o=note:100
+102 crescendo long
+//! c=long i=crescendo o=note:101
+106 crescendo short
+//! c=fx i=crescendo o=note:102
+109 cresc fluttertongue
+//! c=long i=crescendo o=note:103
+107 swell long
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Hindenburg Tubas a3 Multi"
+Bank 12 7 OTMA1 Hindenburg Tubas a3
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=marcato-half o=note:97
+55 marcato long
+//! c=short i=marcato-quarter o=note:98
+52 marcato short
+//! c=short i=staccato o=note:99
+40 staccato
+//! c=long i=crescendo o=note:100
+102 crescendo long
+//! c=long i=crescendo o=note:101
+106 crescendo short
+//! c=fx i=crescendo o=note:102
+109 cresc fluttertongue
+//! c=long i=crescendo o=note:103
+107 swell long
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Aarauer Choir (Low) Multi"
+Bank 12 8 OTMA1 Aarauer Choir Multi
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato-half o=note:25
+55 marcato long
+//! c=short i=marcato-quarter o=note:26
+52 marcato short
+//! c=short i=staccato o=note:27
+40 staccato
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Choir Men Legato"
+Bank 12 9 OTMA1 Choir Men Legato
+//! c=legato i=legato o=@2
+20 legato
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i=note-quarter o=note:21
+40 rr reset
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Choir Men Gliss/FX"
+Bank 12 10 OTMA1 Choir Men Gliss/FX
+//! c=fx i=fx o=@3
+31 gliss
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i=note-quarter o=note:21
+40 rr reset
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Viktoria Choir (High) Multi"
+Bank 12 11 OTMA1 Viktoria Choir Multi
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato-half o=note:25
+55 marcato long
+//! c=short i=marcato-quarter o=note:26
+52 marcato short
+//! c=short i=staccato o=note:27
+40 staccato
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Choir Women Legato"
+Bank 12 12 OTMA1 Choir Women Legato
+//! c=legato i=legato o=@2
+20 legato
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i=note-quarter o=note:21
+40 rr reset
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Choir Women Gliss/FX"
+Bank 12 13 OTMA1 Choir Women Gliss/FX
+//! c=fx i=fx o=@3
+31 gliss
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i=note-quarter o=note:21
+40 rr reset
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Finckenstein Strings (High) Multi"
+Bank 12 14 OTMA1 Finckenstein Strings
+//! c=long i=harmonics-natural o=note:24
+3 octaves
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=long i=tremolo o=note:26
+11 tremolo
+//! c=short i=marcato-half o=note:27
+55 portato long
+//! c=short i=marcato-quarter o=note:28
+52 portato short
+//! c=short i=spiccato o=note:29
+45 spiccato octave
+//! c=short i=spiccato o=note:30
+42 spiccato
+//! c=short i=spiccato o=note:31
+44 blurred spiccato
+//! c=short-dark i=pizz-bartok o=note:32
+57 bartok col legno
+//! c=long i=crescendo o=note:33
+102 crescendo long
+//! c=long i=crescendo o=note:34
+106 crescendo short
+//! c=long i=crescendo o=note:35
+107 swell
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Strings High Legato 8va"
+Bank 12 15 OTMA1 Strings High Legato 8va
+//! c=legato i=legato o=@2
+20 legato
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i=note-quarter o=note:21
+40 rr reset
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Wolfenstein Strings (Low) Multi"
+Bank 12 16 OTMA1 Wolfenstein Strings
+//! c=long i=harmonics-natural o=note:24
+3 octaves
+//! c=long i=tremolo o=note:25
+11 tremolo octave
+//! c=short i=marcato-half o=note:26
+55 portato long
+//! c=short i=marcato-quarter o=note:27
+52 portato short
+//! c=short i=spiccato o=note:28
+45 spiccato octave
+//! c=short-dark i=pizz-bartok o=note:29
+57 bartok col legno
+//! c=long i=crescendo o=note:30
+102 crescendo long
+//! c=long i=crescendo o=note:31
+106 crescendo short
+//! c=long i=crescendo o=note:32
+107 swell
+//! c=long i=dcrescendocrescendo o=note:33
+103 tremolo decrescendo
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Strings Low Legato 8va"
+Bank 12 17 OTMA1 Strings Low Legato 8va
+//! c=legato i=legato o=@2
+20 legato
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i=note-quarter o=note:21
+40 rr reset
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Holbein Bassoons a4 Multi"
+Bank 12 18 OTMA1 Holbein Bassoons a4
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=marcato-half o=note:97
+55 marcato long
+//! c=short i=marcato-quarter o=note:98
+52 marcato short
+//! c=short i=staccato o=note:99
+40 staccato
+//! c=long i=crescendo o=note:100
+102 crescendo long
+//! c=long i=crescendo o=note:101
+106 crescendo short
+//! c=long i=crescendo o=note:102
+107 swell long
+//! c=long i=crescendo o=note:103
+108 swell short
+//! c=fx i=crescendo o=note:104
+109 cresc fluttertongue
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Carnack Contrabassoons a4 Multi"
+Bank 12 19 OTMA1 Carnack Contrabassoons a4
+//! c=long i=note-whole o=note:84
+1 sustain
+//! c=short i=marcato-half o=note:85
+55 marcato long
+//! c=short i=marcato-quarter o=note:86
+52 marcato short
+//! c=short i=staccato o=note:87
+40 staccato
+//! c=long i=crescendo o=note:88
+102 crescendo long
+//! c=long i=crescendo o=note:89
+106 crescendo short
+//! c=long i=crescendo o=note:90
+107 swell long
+//! c=long i=crescendo o=note:91
+108 swell short
+//! c=fx i=crescendo o=note:92
+109 cresc fluttertongue
+
+//! g="Orchestral Tools/Metropolis Ark 1" n="Drake Piano"
+Bank 12 20 OTMA1 Drake Piano
+//! c=long i=note-whole o=note:0
+1 sustain pedal
+//! c=short i= o=note:117
+40 rr reset
+
+//----------------------------------------------------------------------------
+// MISSING MET ARK1 GUITARS AND BASS ARTICULATIONS
+//----------------------------------------------------------------------------

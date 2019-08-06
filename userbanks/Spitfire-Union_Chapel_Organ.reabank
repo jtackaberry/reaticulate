@@ -1,0 +1,122 @@
+//----------------------------------------------------------------------------
+// Source: WolfgangAgustus - https://forum.cockos.com/showpost.php?p=2139567&postcount=406
+//
+//! g="Spitfire/Keyboards/Organ" n="Swell Division Presets"
+//! m="Set patch to unlocked artic. at C0-F0."
+Bank 1 6 SUCO - Swell Division
+//! c=default i=note-whole o=note:26/note:27
+1 Celeste (p)
+//! c=default i=note-whole o=note:25/note:28
+2 (D)iapason and (F)lute (mp)
+//! c=default i=note-whole o=note:25/note:28/note:29
+3 D, F & Mixture (p)
+//! c=default i=note-whole o=note:24/note:26/note:27
+4 All Strings (mf)
+//! c=default i=note-whole o=note:25/note:26/note:27/note:28/note:29
+5 Full Coupling Division (f)
+//! c=default i=note-whole o=note:24/note:25/note:26/note:27/note:28/note:29
+6 Full Division (ff)
+//! c=legato-dark i=note-whole o=note:24
+24 Contra Gamba 16'
+//! c=short i=note-whole o=note:25
+25 Open Diapason 8'
+//! c=legato i=note-whole o=note:26
+26 Salcional 8'
+//! c=legato i=note-whole o=note:27
+27 Vox Angelica 8'
+//! c=long-light i=note-whole o=note:28
+28 Flote 4'
+//! c=textured i=note-whole o=note:29
+29 Mixture
+
+//! g="Spitfire/Keyboards/Organ" n="Great Division Presets"
+//! m="Set patch to unlocked artic. at C0-G#0"
+Bank 1 7 SUCO - Great Division
+//! c=default i=note-whole o=note:25/note:27
+1 Soft (mp)
+//! c=default i=note-whole o=note:25/note:32
+2 Flute 8' & Principal 2' (mp)
+//! c=default i=note-whole o=note:25/note:27/note:32
+3 Soft with 2' (mf)
+//! c=default i=note-whole o=note:24/note:28
+4 Principal 8' & 4' (mf)
+//! c=default i=note-whole o=note:24/note:32
+5 Principal 8' & 2' (mf)
+//! c=default i=note-whole o=note:24/note:28/note:32
+6 (PC)Principal Chorus (f)
+//! c=default i=note-whole o=note:24/note:25/note:27/note:28/note:32
+7 (F)lutes & PC (f)
+//! c=default i=note-whole o=note:26/note:29
+8 (R)eeds Only (ff)
+//! c=default i=note-whole o=note:24/note:28/note:26/note:29/note:32
+9 PC & R (ff)
+//! c=default i=note-whole o=note:24/note:28/note:26/note:29/note:32/note:25/note:27
+10 F, PC & R (ff)
+//! c=default i=note-whole o=note:24/note:25/note:27/note:28/note:31/note:32
+11 F, PC & (Mut)ation (ff)
+//! c=default i=note-whole o=note:24/note:25/note:27/note:28/note:30/note:32
+12 F, PC & (Mix)ture (ff)
+//! c=default i=note-whole o=note:24/note:28/note:26/note:29/note:32/note:25/note:27/note:31
+13 F, PC, R, Mut (fff)
+//! c=default i=note-whole o=note:24/note:28/note:26/note:29/note:32/note:25/note:27/note:30
+14 F, PC, R, Mix (fff)
+//! c=default i=note-whole o=note:24/note:28/note:26/note:29/note:32/note:25/note:27/note:30/note:31
+15 Full Divison (fff)
+//! c=short-dark i=note-whole o=note:24
+24 Open Diapason 8'
+//! c=long-dark i=note-whole o=note:25
+25 Stopped Diapason 8'
+//! c=fx i=note-whole o=note:26
+26 Trumpet 8'
+//! c=long-dark i=note-whole o=note:27
+27 Flautodolce 8'
+//! c=short i=note-whole o=note:28
+28 Principal 4'
+//! c=fx i=note-whole o=note:29
+29 Clarion 4'
+//! c=texture i=note-whole o=note:30
+30 Mixture III
+//! c=short-light i=note-whole o=note:31
+31 Twelfth 2 & 2/3'
+//! c=short-light i=note-whole o=note:32
+32 Fifteenth 2'
+
+//! g="Spitfire/Keyboards/Organ" n="Choir Division Presets"
+//! m="Set patch to unlocked artic. at C0-E0."
+Bank 1 8 SUCO - Choir Division
+//! c=default i=note-whole o=note:25/note:26
+1 Strings and Principal (pp)
+//! c=default i=note-whole o=note:24/note:27
+2 Flutes 8' & 4' (p)
+//! c=default i=note-whole o=note:24/note:28
+3 Flutes 8' & 2' (mp)
+//! c=default i=note-whole o=note:24/note:27/note:28
+4 Flute Chorus (mf)
+//! c=default i=note-whole o=note:24/note:26/note:27/note:28
+5 Principal and Flute Chorus (f)
+//! c=default i=note-whole o=note:24/note:25/note:26/note:27/note:28
+6 Full Division (ff)
+//! c=long-dark i=note-whole o=note:24
+24 Claribel Flute 8'
+//! c=short i=note-whole o=note:25
+25 Dulciana 8'
+//! c=legato i=note-whole o=note:26
+26 Viol d'Amore 8'
+//! c=long i=note-whole o=note:27
+27 Concert Flute 4'
+//! c=long-light i=note-whole o=note:28
+28 Piccolo 2'
+
+//! g="Spitfire/Keyboards/Organ" n="Pedal Division Presets"
+//! m="Set patch to unlocked artic. at C0-D0."
+Bank 1 9 SUCO - Pedal Division
+//! c=default i=note-whole o=note:26/note:25
+1 Mezzo Forte
+//! c=default i=note-whole o=note:24/note:25/note:26
+2 Forte
+//! c=long-dark i=note-whole o=note:26
+26 Bourdon 16'
+//! c=short-dark i=note-whole o=note:25
+25 Open Diapason 16'
+//! c=fx i=note-whole o=note:24
+24 Ophiclide 16'

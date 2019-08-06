@@ -1,0 +1,381 @@
+//----------------------------------------------------------------------------
+// Source: blawler - https://github.com/jtackaberry/reaticulate/issues/22
+//
+
+
+// Red Room Audio "Palette" articulations
+// For "Symphonic Scetchpad" and "Melodics Brush Pack 1"
+// Notes: Full and Chamber versions use the same articulations 
+// Notes: Supports layered articulations - tenuto, marcato and some sustains layer staccato for stronger attack.
+// Rev for Version 1.1 update April 2018  NO changes to Sketchpad. Con Sord inst. plus several articulations added to BP1
+// Apr-23-2018  BHLawler at gmail
+
+//! g="Red Room Audio/Palette" n="Strings"
+Bank 13 1 Strings
+//! c=long i=note-whole o=note:96
+1  sustain
+//! c=long i=bow-down o=note:96/note:99
+2  sustain+stacc
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=long-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=spiccato o=note:100
+42  spiccato
+//! c=short-dark i=pizz o=note:101
+56  pizz
+//! c=fx i=trill o=note:102
+70  trill m2
+//! c=fx i=trill-maj2 o=note:103
+71  trill M2
+
+
+//! g="Red Room Audio/Palette" n="Woodwins"
+Bank 13 2 Woodwins
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=long i=bow-down o=note:96/note:99
+2   sustain+stacc
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+//! c=fx i=trill o=note:102
+70  trill m2
+//! c=fx i=trill-maj2 o=note:103
+71  trill M2
+
+//! g="Red Room Audio/Palette" n="Brass"
+//! clone="Red Room Audio/Palette/ Woodwins"
+Bank 13 3 Brass
+
+
+//! g="Red Room Audio/Palette" n="Choir"
+Bank 13 4 Choir
+//! c=long i=note-whole o=note:24
+90 AH sustain
+//! c=short i=staccato o=note:25
+91 AH staccato
+//! c=long i=note-whole o=note:26
+92 OH sustain
+//! c=short i=staccato o=note:27
+93 OH staccato
+//! c=long i=note-whole o=note:28
+94 MM sustain
+//! c=short i=staccato o=note:29
+95 MM staccato
+
+
+
+//  Palette Melodics Brush-Pack
+//
+
+//! g="Red Room Audio/Palette" n="BP1 Violin Octaves"
+Bank 13 5 BP1 Violin Octaves
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=spiccato o=note:100
+42  spiccato
+//! c=fx i=trill o=note:102
+70  trill m2
+//! c=fx i=trill-maj2 o=note:103
+71  trill M2
+
+//! g="Red Room Audio/Palette" n="BP1 Violin Octaves Con Sord."
+Bank 13 6 BP1 Violin Octaves Con Sord.
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+
+//! g="Red Room Audio/Palette" n="BP1 Celli+Basses Octaves"
+Bank 13 7 BP1 Celli+Basses Octaves
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=spiccato o=note:100
+42  spiccato
+
+//! g="Red Room Audio/Palette" n="BP1 Flutes+Piccolo Octaves"
+Bank 13 8 BP1 Flutes+Piccolo Octaves
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+//! c=fx i=rip o=note:104
+100 rip
+
+//! g="Red Room Audio/Palette" n="BP1 Oboe+Bassoon Octaves"
+Bank 13 9 BP1 Oboe+Bassoon Octaves
+//! c=legato i=legato o=note:95
+20 legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+//! c=fx i=rip o=note:104
+100 rip
+
+//! g="Red Room Audio/Palette" n="BP1 Bass Clar+Contrabassoon Octaves"
+Bank 13 10 BP1 Bass Clar+Contrabassoon Octaves
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-dark i=rip o=note:104
+100 rip
+
+//! g="Red Room Audio/Palette" n="BP1 Trumpets+Horns Octaves"
+Bank 13 11 BP1 Trumpets+Horns Octaves
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+
+//! g="Red Room Audio/Palette" n="BP1 Tuba+Trombone Octaves"
+Bank 13 12 BP1 Tuba+Trombone Octaves
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+
+//! g="Red Room Audio/Palette" n="BP1 Horns"
+//! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
+Bank 13 13 BP1 Horns
+
+//! g="Red Room Audio/Palette" n="BP1 Trumpet Octaves"
+//! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
+Bank 13 14 BP1 Trumpet Octaves
+
+//! g="Red Room Audio/Palette" n="BP1 Low Brass + Low Strings"
+//! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
+Bank 13 15 BP1 Low Brass + Low Strings
+
+//! g="Red Room Audio/Palette" n="BP1 Horns + Violins Octaves"
+//! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
+Bank 13 16 BP1 Horns + Violins Octaves
+
+//! g="Red Room Audio/Palette" n="BP1 Solo Violin"
+Bank 13 17 BP1 Solo Violin
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=spiccato o=note:100
+42  spiccato
+//! c=short-dark i=pizz o=note:101
+56  pizz
+//! c=fx i=trill o=note:102
+70  trill m2
+//! c=fx i=trill-maj2 o=note:103
+71  trill M2
+//! c=fx i=tremolo-measured o=note:108
+30  trem 16th
+
+//! g="Red Room Audio/Palette" n="BP1 Solo Cello"
+//! clone="Red Room Audio/Palette/BP1 Solo Violin"
+Bank 13 18 BP1 Solo Cello
+
+//! g="Red Room Audio/Palette" n="BP1 Solo Flute"
+Bank 13 19 BP1 Solo Flute
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+//! c=fx i=trill o=note:102
+70  trill m2
+//! c=fx i=trill-maj2 o=note:103
+71  trill M2
+//! c=fx i=rip o=note:104
+100 rip
+//! c=fx i=multitounged o=note:106
+75  multitoungex2
+//! c=textured i=multitounged o=note:108
+77  multitoungex3
+
+
+//! g="Red Room Audio/Palette" n="BP1 Solo Oboe"
+Bank 13 20 BP1 Solo Oboe
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+//! c=fx i=trill o=note:101
+70  trill m2
+//! c=fx i=trill-maj2 o=note:102
+71  trill M2
+//! c=fx i=multitounged o=note:106
+75  multitoungex2
+//! c=textured i=multitounged o=note:108
+77  multitoungex3
+
+//! g="Red Room Audio/Palette" n="BP1 Solo Trumpet"
+Bank 13 21 BP1 Solo Trumpet
+//! c=legato i=legato o=note:95
+20  legato
+//! c=long i=note-whole o=note:96
+1   sustain
+//! c=legato-dark i=note-half o=note:97
+55  marcato
+//! c=legato-dark i=marcato o=note:97/note:99
+54  marcato+stacc
+//! c=short-dark i=note-quarter o=note:98
+51  tenuto
+//! c=long-light i=accented-quarter o=note:98/note:99
+50  tenuto+stacc
+//! c=short i=staccato o=note:99
+40  staccato
+//! c=short-light i=staccato o=note:100
+42  staccatissimo
+//! c=fx i=trill o=note:102
+70  trill m2
+//! c=fx i=trill-maj2 o=note:103
+71  trill M2
+//! c=fx i=rip o=note:104
+100 rip
+//! c=fx i=fall o=note:105
+101 fall
+//! c=fx i=multitounged o=note:106
+75  multitoungex2
+//! c=textured i=multitounged o=note:108
+77  multitoungex3
+
+//! g="Red Room Audio/Palette" n="BP1 Solo Horn"
+//! clone="Red Room Audio/Palette/BP1 Solo Trumpet"
+Bank 13 22 BP1 Solo Horn
+
+
+

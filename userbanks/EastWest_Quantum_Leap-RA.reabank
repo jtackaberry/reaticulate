@@ -1,0 +1,740 @@
+//----------------------------------------------------------------------------
+// Source: WolfgangAgustus - https://forum.cockos.com/showpost.php?p=2139478&postcount=405
+//
+//! g="EastWest Quantum Leap/RA/Americas/Plucked" n="Dobro Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 1 EWQLRA - Dobro
+//! c=long i=note-whole o=note:24
+24 sustain
+//! c=long-dark i=note-whole o=note:25
+25 sustain slow slid
+//! c=legato-light i=legato-gliss o=note:26
+26 slide perfect 4th up
+//! c=legato-light i=legato-gliss o=note:27
+27 slide perfect 4th up vibrato
+//! c=legato i=legato-gliss o=note:28
+28 slur up and down
+//! c=legato i=legato-gliss o=note:29
+29 slide whole-tone up fall
+//! c=legato-light i=legato-gliss o=note:30
+30 slide whole-tone up
+//! c=fx i=legato-gliss o=note:31
+31 tremolo fx whole-tone up
+//! c=fx i=tremolo o=note:32
+32 tremolo fx
+//! c=legato-dark i=legato-gliss o=note:33
+33 slide fast down
+//! c=legato-dark i=legato-gliss o=note:34
+34 slide fast up
+//! c=legato-light i=legato-gliss o=note:35
+35 slide power up var. a
+//! c=legato-light i=legato-gliss o=note:89
+89 slide power up var. b
+//! c=textured i=legato-gliss o=note:90
+90 slide full down
+//! c=textured i=legato-gliss o=note:91
+91 slide full up
+//! c=fx i=fx o=note:92
+92 fx
+
+//! g="EastWest Quantum Leap/RA/Americas/Plucked" n="Mandolin Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 2 EWQLRA - Mandolin
+//! c=long i=note-whole o=note:24
+24 sustain round-robin
+//! c=legato i=legato-slurred o=note:25
+25 slide up
+//! c=long-dark i=tremolo o=note:26
+26 tremolo slow
+//! c=long-light i=tremolo o=note:27
+27 tremolo fast
+//! c=legato-light i=phrase o=note:28
+28 live 2
+
+//! g="EastWest Quantum Leap/RA/Americas/Wind" n="Cedar Flute Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 3 EWQLRA - Cedar Flute
+//! c=legato-dark i=legato-vibrato o=note:24
+24 legato vibrato expressive
+//! c=legato-light i=legato o=note:25
+25 legato non-vibrato
+//! c=legato i=legato-vibrato o=note:26
+26 legato expressive 2 rr
+//! c=long i=fall o=note:27
+27 fall
+//! c=long i=vibrato o=note:28
+28 sustain expressive vibrato
+//! c=short i=staccato o=note:29
+29 staccato
+//! c=legato i=phrase o=note:30
+30 expressive melody 1
+//! c=legato i=phrase o=note:31
+31 expressive melody 2
+//! c=long-light i=tremolo o=note:32
+32 flutter toungue
+
+//! g="EastWest Quantum Leap/RA/Americas/Wind" n="Pan Flute Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 4 EWQLRA - Pan Flute
+//! c=long-dark i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-light i=note-whole o=note:25
+25 sustain non-vibrato
+//! c=long i=vibrato o=note:26
+26 sustain mod vibrato
+//! c=short i=staccato o=note:27
+27 staccato round-robin
+
+//! g="EastWest Quantum Leap/RA/Europe/Bowed" n="Gadulka Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 5 EWQLRA - Galduka
+//! c=long-dark i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-light i=note-whole o=note:25
+25 sustain non-vibrato
+//! c=fx i=alt-wave-double o=note:26
+26 double bow expressive
+//! c=fx i=note-whole o=note:27
+27 bow down + up rr
+//! c=long i=tremolo o=note:28
+28 tremolo
+//! c=short i=staccato o=note:29
+29 staccato
+
+//! g="EastWest Quantum Leap/RA/Europe/Bowed" n="Hardanger Fiddle Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 6 EWQLRA - Hardanger Fiddle
+//! c=long-dark i=vibrato o=note:24
+24 sustain vibrato
+//! c=legato i=legato o=note:25
+25 legato non-vibrato rr
+//! c=long i=vibrato o=note:26
+26 expressive vibrato
+//! c=long-light i=note-whole o=note:27
+27 expressive non-vibrato
+//! c=short i=note-half o=note:28
+28 short round-robin
+//! c=short i=spiccato o=note:29
+29 spiccato round-robin
+//! c=legato i=phrase o=note:30
+30 melody
+//! c=fx i=trill-min2 o=note:31
+31 trill half-tone
+//! c=fx i=trill-maj2 o=note:32
+32 trill whole-tone
+
+//! g="EastWest Quantum Leap/RA/Europe/Bowed" n="Hurdy Gurdy Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 7 EWQLRA - Hurdy Gurdy
+//! c=long i=note-whole o=note:24
+24 sustain non-vibrato
+//! c=long-dark i=note-whole o=note:25
+25 double low
+//! c=long-light i=note-whole o=note:26
+26 double high
+//! c=long i=note-whole o=note:27
+27 drone 1
+//! c=long i=note-whole o=note:28
+28 drone 3
+//! c=long i=note-whole o=note:29
+29 drone 5
+
+//! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Alphorn Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 8 EWQLRA - Alphorn
+//! c=long-dark i=vibrato o=note:84
+84 sustain vibrato
+//! c=long i=note-whole o=note:85
+85 sustain
+//! c=long-light i=note-whole o=note:86
+86 non-vibrato
+//! c=long i=cresc-f-half o=note:87
+87 crescendo long
+//! c=short i=cresc-f-half o=note:88
+88 crescendo short
+//! c=legato-dark i=legato-gliss o=note:89
+89 slide ocatave down
+//! c=legato-light i=legato-gliss o=note:90
+90 slide octave up
+//! c=short i=staccato o=note:91
+91 staccato
+
+//! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Bass Recorder"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 9 EWQLRA - Bass Recorder
+//! c=long i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-dark i=vibrato o=note:25
+25 expressive vibrato fast
+//! c=long-light i=vibrato o=note:26
+26 expressive vibrato
+
+//! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Irish Whistle Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 10 EWQLRA - Irish Whistle
+//! c=long-light i=vibrato o=note:24
+24 irish vibrato
+//! c=long-dark i=vibrato o=note:25
+25 western vibrato
+//! c=long i=note-whole o=note:26
+26 non-vibrato
+//! c=legato-light i=legato-slurred o=note:27
+27 bend whole-tone up
+//! c=legato i=legato-slurred o=note:28
+28 bend half-tone up
+//! c=short i=note-half o=note:29
+29 short
+//! c=short i=staccato o=note:30
+30 staccato 3 rr
+//! c=long i=acciaccatura-quarter o=note:31
+31 grace down
+//! c=long i=multitongued o=note:32
+32 double toungue
+//! c=legato i=phrase o=note:33
+33 ornament
+//! c=long i=harmonics o=note:34
+34 long harm. multitoungue
+//! c=short i=harmonics o=note:35
+35 short harm. multitoungue
+
+//! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Launeddas"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 11 EWQLRA - Launeddas
+//! c=long i=note-whole o=note:24
+24 non-vibrato
+//! c=long-light i=acciaccatura-quarter o=note:25
+25 grace
+//! c=long i=trill-maj2 o=note:26
+26 trill sustain
+
+//! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Uilleann Pipes Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 12 EWQLRA - Uilleann Pipes
+//! c=long i=note-whole o=note:24
+24 basic velocity sensitive
+//! c=long-dark i=vibrato o=note:25
+25 vibrato velocity sensitive
+//! c=legato i=legato-slurred o=note:26
+26 expressive bend velocity sensitive
+//! c=legato i=phrase o=note:27
+27 live
+
+//! g="EastWest Quantum Leap/RA/Far East/Bowed" n="Erhu Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 13 EWQLRA - Erhu
+//! c=long i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-light i=vibrato o=note:25
+25 expressive vibrato soft
+//! c=long-dark i=vibrato o=note:26
+26 expressive vibrato slow
+//! c=short i=vibrato o=note:27
+27 expressive vibrato fast
+//! c=legato i=legato o=note:28
+28 legato
+//! c=long-dark i=note-whole o=note:29
+29 non-vibrato hard
+//! c=long i=legato-gliss o=note:30
+30 slide down 1
+//! c=long i=legato-gliss o=note:31
+31 slide up 2
+//! c=short i=staccato o=note:32
+32 staccato
+//! c=long i=trill-maj2 o=note:33
+33 trill
+
+//! g="EastWest Quantum Leap/RA/Far East/Plucked" n="Koto Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 14 EWQLRA - Koto
+//! c=long-dark i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-light i=vibrato o=note:25
+25 expressive vibrato
+//! c=long i=note-whole o=note:26
+26 non-vibrato
+//! c=long i=legato-slurred o=note:27
+27 whole-tone bend up
+//! c=short i=harp-pdlt o=note:28
+28 pick scrape
+//! c=short i=multitongued o=note:29
+29 double hit
+//! c=long i=tremolo o=note:30
+30 tremolo
+
+//! g="EastWest Quantum Leap/RA/Far East/Plucked" n="Shamisen Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 15 EWQLRA - Shamisen
+//! c=long-light i=note-whole o=note:24
+24 pick soft
+//! c=long i=note-whole o=note:25
+25 sustain
+//! c=long-dark i=vibrato o=note:26
+26 vibrato fast
+//! c=long-light i=vibrato o=note:27
+27 soft vibrato
+//! c=long i=legato-slurred o=note:28
+28 slur
+
+//! g="EastWest Quantum Leap/RA/Far East/Winds" n="Dizi Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 16 EWQLRA - Dizi
+//! c=long-dark i=vibrato o=note:24
+24 sustain vibrato
+//! c=long i=cresc-mf-half o=note:25
+25 expressive vibrato mf
+//! c=long i=cresc-f-half o=note:26
+26 expressive vibrato f
+//! c=legato i=legato o=note:27
+27 legato
+//! c=long i=note-whole o=note:28
+28 non-vibrato
+//! c=short i=trill-maj2 o=note:29
+29 staccato trill
+//! c=long i=trill-maj2 o=note:30
+30 trill
+//! c=long-dark i=tremolo o=note:31
+31 tremolo
+//! c=long-light i=tremolo o=note:32
+32 flutter toungue
+//! c=long i=trill-maj2 o=note:33
+33 trill sustain up
+//! c=long i=trill-maj2 o=note:34
+34 trill sustain down
+
+//! g="EastWest Quantum Leap/RA/Far East/Winds" n="Rag Dung Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 17 EWQLRA - Rag Dung
+//! c=long i=note-whole o=note:24
+24 non-vibrato
+//! c=long-light i=vibrato o=note:25
+25 sustain vibrato slow
+//! c=long-dark i=vibrato o=note:26
+26 sustain vibrato
+
+//! g="EastWest Quantum Leap/RA/Far East/Winds" n="Shakuhachi Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 18 EWQLRA - Shakuhachi
+//! c=long-dark i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-light i=vibrato o=note:25
+25 expressive vibrato
+//! c=legato i=legato-vibrato o=note:26
+26 legato vibrato
+//! c=legato i=legato o=note:27
+27 legato non-vibrato
+//! c=long i=note-whole o=note:28
+28 non-vibrato
+//! c=long i=harmonics o=note:29
+29 harmonics sustain
+//! c=short-light i=harmonics-natural-eighth o=note:30
+30 harmonics short
+//! c=short-dark i=harmonics-natural-eighth o=note:31
+31 spit harmonics
+//! c=fx i=harmonics o=note:32
+32 harmonics fx soft
+//! c=long i=trill-maj2 o=note:33
+33 trill
+//! c=legato i=trill-maj2 o=note:34
+34 p5 harmonic trill
+//! c=long i=trill-maj2 o=note:35
+35 slow trill sustain
+//! c=legato i=phrase o=note:36
+36 melody japanese
+//! c=fx i=harmonics o=note:37
+37 harmonic fx loud
+
+//! g="EastWest Quantum Leap/RA/India/Bowed" n="Baritone Violin Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 19 EWQLRA - Baritone Violin
+//! c=legato i=legato-vibrato o=note:24
+24 legato vibrato
+//! c=legato i=cresc-f-half o=note:25
+25 legato vibrato f
+//! c=legato i=cresc-mf-half o=note:26
+26 legato expressive mf
+//! c=long i=note-whole o=note:27
+27 sustain
+//! c=short i=cresc-mf-half o=note:28
+28 vibrato swell shorts
+//! c=short i=harmonics o=note:29
+29 short harmonics
+//! c=long-dark i=marcato o=note:30
+30 marcato vibrato longs
+//! c=long i=trill o=note:31
+31 slow ornament longs
+//! c=short i=spiccato o=note:32
+32 spiccato
+//! c=short i=staccato o=note:33
+33 staccato
+
+//! g="EastWest Quantum Leap/RA/India/Bowed" n="Esraj Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 20 EWQLRA - Esraj
+//! c=long i=note-whole o=note:24
+24 sustain
+//! c=long-light i=note-whole o=note:25
+25 long (stop on bow)
+//! c=short i=note-half o=note:26
+26 short
+//! c=long-dark i=note-whole o=note:27
+27 long (3 rebow)
+//! c=long i=note-whole o=note:28
+28 long (2 rebow)
+//! c=legato i=legato-slurred o=note:29
+29 slide half-tone up
+//! c=legato i=legato-slurred o=note:30
+30 slide half-tone down
+//! c=legato i=legato-slurred o=note:31
+31 slide whole-tone up
+//! c=legato i=legato-slurred o=note:32
+32 slide whole-tone down
+//! c=legato i=legato-slurred o=note:33
+33 slide minor 3rd up
+//! c=legato i=legato-slurred o=note:34
+34 slide minor 3rd down
+//! c=legato i=legato-slurred o=note:35
+35 slide major 3rd up
+//! c=legato i=legato-slurred o=note:36
+36 slide major 3rd down
+//! c=legato i=legato-slurred o=note:37
+37 slide perfect 4th up
+//! c=legato i=legato-slurred o=note:38
+38 slide perfect 4th down
+//! c=short i=trill o=note:39
+39 ornament half-tone up
+//! c=short i=trill o=note:40
+40 ornament half-tone down
+
+//! g="EastWest Quantum Leap/RA/India/Bowed" n="Sarangi Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 21 EWQLRA - Sarangi
+//! c=short i=vibrato o=note:24
+24 short vibrato
+//! c=long-light i=vibrato o=note:25
+25 long (vibrato light)
+//! c=long-dark i=vibrato o=note:26
+26 long (vibrato heavy)
+//! c=long i=note-whole o=note:27
+27 long non-vibrato
+//! c=long i=legato-slurred o=note:28
+28 bend down
+//! c=long i=legato-slurred o=note:29
+29 bend up
+//! c=short i=trill o=note:30
+30 short ornament
+//! c=legato i=phrase o=note:31
+31 trill p4 bend
+//! c=legato i=phrase o=note:32
+32 maj3 bend ornament
+//! c=legato i=phrase o=note:33
+33 p4 bend ornament slow
+//! c=legato i=phrase o=note:34
+34 maj2 trill ornament
+//! c=legato i=phrase o=note:35
+35 p4 bend ornament fast
+//! c=legato i=phrase o=note:36
+36 bend trill down
+//! c=legato i=phrase o=note:37
+37 bend down rebow
+
+//! g="EastWest Quantum Leap/RA/India/Plucked" n="Sitar Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 22 EWQLRA - Sitar
+//! c=long i=note-whole o=note:24
+24 sustain down
+//! c=long i=note-whole o=note:25
+25 sustain up
+//! c=legato i=legato-slurred o=note:26
+26 slide up half-tone
+//! c=legato i=legato-slurred o=note:27
+27 slide up whole-tone
+//! c=fx i=fx o=note:28
+28 fx
+//! c=fx i=tremolo o=note:29
+29 tremolo bend fx
+//! c=long i=tremolo o=note:30
+30 tremolo
+//! c=long i=legato-slurred o=note:31
+31 bend vibrato half-tone
+//! c=long i=legato-slurred o=note:32
+32 bend vibrato whole-tone
+
+//! g="EastWest Quantum Leap/RA/India/Wind" n="Bansuri Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 23 EWQLRA - Bansuri
+//! c=long i=vibrato o=note:24
+24 sustain vibrato
+//! c=legato i=legato-vibrato o=note:25
+25 legato vibrato
+//! c=long i=note-whole o=note:26
+26 sustain non-vibrato
+//! c=long i=harmonics o=note:27
+27 harmonics
+//! c=fx i=harmonics o=note:28
+28 harmonic fx
+//! c=long i=legato-vibrato o=note:29
+29 bend long vibrato
+//! c=long i=legato-slurred o=note:30
+30 bend whole-tone up
+//! c=long i=tremolo o=note:31
+31 flutter toungue cresc mf
+//! c=long i=tremolo o=note:32
+32 flutter toungue long
+//! c=long i=harmonics o=note:33
+33 spit long
+//! c=short i=harmonics o=note:34
+34 spit short
+//! c=legato i=legato-runs o=note:35
+35 scalar runs up-down
+
+//! g="EastWest Quantum Leap/RA/Middle East/Bowed" n="Mid East Fiddle Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 24 EWQLRA - Mid East Fiddle
+//! c=long i=vibrato o=note:24
+24 sustain vibrato
+//! c=long i=note-whole o=note:25
+25 non-vibrato
+//! c=short i=sfz o=note:26
+26 sforzando
+//! c=long i=legato-slurred o=note:27
+27 slur up fast
+//! c=long i=legato-slurred o=note:28
+28 slur up slow
+//! c=long i=legato-slurred o=note:29
+29 slur down fast
+//! c=long i=legato-slurred o=note:30
+30 slur down slow
+//! c=legato i=legato-runs o=note:31
+31 min3 turn runs fast
+//! c=legato i=legato-runs o=note:32
+32 min3 turn runs slow
+//! c=legato i=phrase o=note:33
+33 long trill min3 down run
+
+//! g="EastWest Quantum Leap/RA/Middle East/Bowed" n="Mid East String Section Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 25 EWQLRA - Mid East String Section
+//! c=long i=vibrato o=note:24
+24 long sustain vibrato
+//! c=long-dark i=cresc-mf-half o=note:25
+25 long vibrato swell mf
+//! c=legato i=legato o=note:26
+26 legato
+//! c=legato i=legato-slurred o=note:27
+27 slur up
+//! c=legato i=legato-slurred o=note:28
+28 slur down
+//! c=legato i=trill-min3 o=note:29
+29 minor 3rd grace
+
+//! g="EastWest Quantum Leap/RA/Middle East/Bowed" n="Yali Tambur Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 26 EWQLRA - Yali Tambur
+//! c=long i=legato o=note:24
+24 legato long
+//! c=short i=legato o=note:25
+25 legato short
+//! c=short i=cresc-mf-half o=note:26
+26 short swell mf
+//! c=short i=note-half o=note:27
+27 short f-p vibrato
+//! c=long i=trill-min3 o=note:28
+28 minor 3rd grace
+//! c=legato i=legato-slurred o=note:29
+29 slide whole-tone up
+//! c=long i=trill-min2 o=note:30
+30 trill half-tone
+//! c=long i=trill-maj2 o=note:31
+31 trill whole-tone
+//! c=long i=trill-min2 o=note:32
+32 half-tone grace slow trill
+//! c=fx i=legato-slurred o=note:33
+33 slide fx
+
+//! g="EastWest Quantum Leap/RA/Middle East/Plucked" n="Oud Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 27 EWQLRA - Oud
+//! c=long i=note-whole o=note:24
+24 long non-vibrato
+//! c=long i=vibrato o=note:25
+25 long vibrato
+//! c=long-dark i=vibrato o=note:26
+26 long gaudy vibrato
+//! c=legato i=legato-slurred o=note:27
+27 bend up
+//! c=legato i=legato-slurred o=note:28
+28 bend down
+//! c=long i=tremolo o=note:29
+29 long tremolo
+//! c=short i=tremolo o=note:30
+30 short tremolo vibrato
+
+//! g="EastWest Quantum Leap/RA/Middle East/Plucked" n="Santoor Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 28 EWQLRA - Santoor
+//! c=long i=note-whole o=note:24
+24 sustain
+//! c=long i=con-sord o=note:25
+25 muted
+//! c=long i=sfz o=note:26
+26 sfortzando tremolo
+//! c=short i=tremolo o=note:27
+27 short tremolo
+//! c=long-light i=tremolo o=note:28
+28 long tremolo
+//! c=long i=cresc-f-half o=note:29
+29 tremolo swell f
+//! c=short-dark i=trill-maj2 o=note:30
+30 short trill whole-tone hard
+//! c=short-light i=trill-maj2 o=note:31
+31 short trill whole-tone soft
+//! c=long i=tremolo o=note:32
+32 tremolo
+
+//! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Armenian Duduk Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 29 EWQLRA - Armenian Duduk
+//! c=long i=vibrato o=note:24
+24 sustain vibrato
+//! c=long-light i=note-whole o=note:25
+25 non-vibrato soft
+//! c=long-dark i=note-whole o=note:26
+26 non-vibrato hard
+//! c=short i=cresc-f-half o=note:27
+27 fast vibrato swell f
+//! c=short i=cresc-mf-half o=note:28
+28 short vibrato swell mf
+//! c=short i=cresc-mf-half o=note:29
+29 slow vibrato swell mf
+//! c=short i=cresc-f-half o=note:30
+30 short vibrato swell f
+//! c=long i=acciaccatura-quarter o=note:31
+31 vibrato grace swell mf
+//! c=short i=legato-slurred o=note:32
+32 short half-tone up
+//! c=long i=legato-slurred o=note:33
+33 long half-tone up
+//! c=long i=legato-slurred o=note:34
+34 whole-tone up
+//! c=legato i=phrase o=note:35
+35 melody 1
+//! c=legato i=phrase o=note:36
+36 melody 2
+//! c=legato i=phrase o=note:37
+37 melody 3
+
+//! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Bulgarian Duduk Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 30 EWQLRA - Bulgarian Duduk
+//! c=long i=vibrato o=note:24
+24 long vibrato slow
+//! c=long i=note-whole o=note:25
+25 sustain non-vibrato
+//! c=legato i=legato o=note:26
+26 legato
+//! c=short i=cresc-f-half o=note:27
+27 vibrato swell f
+//! c=short i=cresc-mf-half o=note:28
+28 vibrato swell mf
+//! c=long i=cresc-mf-half o=note:29
+29 vibrato slow swell mf
+//! c=short i=staccato o=note:30
+30 staccato
+//! c=short i=trill-min2 o=note:31
+31 short ornament
+//! c=short i=legato-slurred o=note:32
+32 short bend up
+//! c=long i=trill-min2 o=note:33
+33 long slow ornament fp
+//! c=long i=vibrato o=note:34
+34 vibrato ornament minor 2nd
+//! c=long i=legato-slurred o=note:35
+35 bend up vibrato
+//! c=long i=note-whole o=note:36
+36 vibrato ornament major 2nd
+//! c=legato i=phrase o=note:37
+37 ornament vibrato
+
+//! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Turkish Duduk Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 31 EWQLRA - Turkish Duduk
+//! c=long i=vibrato o=note:24
+24 long vibrato swell
+//! c=legato-light i=legato-vibrato o=note:25
+25 legato vibrato slow
+//! c=long i=note-whole o=note:26
+26 long vibrato slow
+//! c=legato-dark i=legato-vibrato o=note:27
+27 legato vibrato fast
+//! c=long i=trill-min2 o=note:28
+28 vibrato trill fast
+//! c=long i=trill-min2 o=note:29
+29 vibrato trill slow
+//! c=long i=legato-slurred o=note:30
+30 bend minor 3rd down
+//! c=legato i=legato-slurred o=note:31
+31 slur down
+//! c=legato i=legato-slurred o=note:32
+32 slur up
+//! c=short i=staccato o=note:33
+33 staccato
+//! c=legato i=phrase o=note:34
+34 melody 1
+//! c=legato i=phrase o=note:35
+35 melody 2
+//! c=legato i=phrase o=note:36
+36 melody 3
+//! c=long i=legato-slurred o=note:37
+37 bend up slow
+//! c=long i=legato-slurred o=note:38
+38 bend up fast
+
+//! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Ney Flute Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 32 EWQLRA - Ney Flute
+//! c=long i=vibrato o=note:24
+24 long vibrato
+//! c=long i=vibrato o=note:25
+25 long start vibrato
+//! c=long i=legato-vibrato o=note:26
+26 legato vibrato
+//! c=long i=note-whole o=note:27
+27 non-vibrato
+//! c=short i=acciaccatura-quarter o=note:28
+28 grace
+//! c=long i=fall o=note:29
+29 sustain vibrato fall
+//! c=long i=acciaccatura-quarter o=note:30
+30 grace fast
+//! c=long i=acciaccatura-quarter o=note:31
+31 grace slow
+//! c=long i=acciaccatura-quarter o=note:32
+32 grace slow vibrato
+//! c=long i=trill-min3 o=note:33
+33 trill minor 3rd
+
+//! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Zurna Techniques"
+//! m="Make Sure KS is on default range from C0"
+Bank 2 33 EWQLRA - Zurna
+//! c=long i=vibrato o=note:24
+24 long vibrato
+//! c=long i=note-whole o=note:25
+25 long non-vibrato
+//! c=long i=note-whole o=note:26
+26 long expressive
+//! c=legato i=legato o=note:27
+27 legato
+//! c=legato i=legato-vibrato o=note:28
+28 legato vibrato
+//! c=long i=acciaccatura-quarter o=note:29
+29 grace
+//! c=long i=trill o=note:30
+30 trill vibrato
+//! c=legato i=phrase o=note:31
+31 melody 1
+//! c=legato i=phrase o=note:32
+32 melody 2
+//! c=legato i=phrase o=note:33
+33 melody 3
+//! c=legato i=phrase o=note:34
+34 melody 4

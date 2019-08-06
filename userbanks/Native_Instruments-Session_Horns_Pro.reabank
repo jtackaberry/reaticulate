@@ -1,0 +1,151 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//----------------------------------------------------------------------------
+// Create custom 2 channel multis in Kontakt with 2 tracks per instrument to access all available articulations for solo instruments in Session Horns Pro.
+// Load the articulations sequentially in the Main>Keyswitches Menu from C-1 to G#-1 in Channel 1, and continue from C-1 on Channel 2.
+// I recommend saving these custom multis for quick reloading in future projects.
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Alto Sax Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+Bank 21 1 NISHP Alto Sax Custom Multi
+//! c=long i=note-whole o=note@1:12
+1 sustain
+//! c=long i=vibrato o=note@1:13
+16 vibrato
+//! c=short i=marcato-half o=note@1:14
+55 marcato long
+//! c=short i=marcato o=note@1:15
+52 marcato medium
+//! c=short i=staccato o=note@1:16
+40 staccato
+//! c=short i=staccatissimo-stopped o=note@1:17
+42 staccatissimo
+//! c=short i=rip o=note@1:18
+100 rips
+//! c=long i=acciaccatura-quarter o=note@1:19
+77 grace
+//! c=long i=acciaccatura-quarter o=note@1:20
+78 grace vibrato
+//! c=long i=crescendo o=note@2:12
+106 fp 2beat
+//! c=long i=crescendo o=note@2:13
+107 fp 4beat
+//! c=long i=tremolo-measured o=note@2:14
+11 growl
+//! c=long i=tremolo-measured o=note@2:15
+14 growl vibrato
+//! c=long i=trill-min2 o=note@2:16
+70 trill m2
+//! c=long i=trill-maj2 o=note@2:17
+71 trill M2
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Baritone Sax Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Alto Sax Custom Multi"
+Bank 21 2 NISHP Baritone Sax Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Bass Trombone Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+Bank 21 3 NISHP Bass Trombone Custom Multi
+//! c=long i=note-whole o=note@1:12
+1 sustain
+//! c=long i=vibrato o=note@1:13
+16 vibrato
+//! c=short i=marcato-half o=note@1:14
+55 marcato long
+//! c=short i=marcato o=note@1:15
+52 marcato medium
+//! c=short i=staccato o=note@1:16
+40 staccato
+//! c=short i=staccatissimo-stopped o=note@1:17
+42 staccatissimo
+//! c=short i=rip o=note@1:18
+100 rips
+//! c=long i=acciaccatura-quarter o=note@1:19
+77 grace
+//! c=long i=acciaccatura-quarter o=note@1:20
+78 grace vibrato
+//! c=long i=crescendo o=note@2:12
+106 fp 2beat
+//! c=long i=crescendo o=note@2:13
+107 fp 4beat
+//! c=long i=tremolo-measured o=note@2:14
+11 growl
+//! c=long i=tremolo-measured o=note@2:15
+14 growl vibrato
+//! c=long i=vibrato-molto o=note@2:16
+90 shake
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Flugelhorn Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
+Bank 21 4 NISHP Flugelhorn Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Mute Trumpet Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
+Bank 21 5 NISHP Mute Trumpet Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Tenor Sax Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Alto Sax Custom Multi"
+Bank 21 6 NISHP Tenor Sax Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Tenor Trombone Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
+Bank 21 7 NISHP Tenor Trombone Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Trumpet 1 Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
+Bank 21 8 NISHP Trumpet 1 Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Trumpet 2 Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
+Bank 21 9 NISHP Trumpet 2 Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Tuba Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+//! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
+Bank 21 10 NISHP Tuba Custom Multi
+
+//! g="Native Instruments/Session Horns Pro/Ensemble" n="Keyswitch Custom Multi"
+//! m="Two channel patches, Dynamic control w CC11"
+Bank 21 11 NISHP Keyswitch Custom Multi
+//! c=long i=note-whole o=note@1:12
+1 sustain
+//! c=long i=vibrato o=note@1:13
+16 vibrato
+//! c=short i=marcato-half o=note@1:14
+55 marcato long
+//! c=short i=marcato o=note@1:15
+52 marcato medium
+//! c=short i=staccato o=note@1:16
+40 staccato
+//! c=short i=staccatissimo-stopped o=note@1:17
+42 staccatissimo
+//! c=short i=rip o=note@1:18
+100 rips
+//! c=long i=acciaccatura-quarter o=note@1:19
+77 grace
+//! c=long i=acciaccatura-quarter o=note@1:20
+78 grace vibrato
+//! c=long i=crescendo o=note@2:12
+106 fp 2beat
+//! c=long i=crescendo o=note@2:13
+107 fp 4beat
+//! c=long i=tremolo-measured o=note@2:14
+11 growl
+//! c=long i=tremolo-measured o=note@2:15
+14 growl vibrato
+//! c=long i=vibrato-molto o=note@2:16
+90 shake
+//! c=long i=trill-min2 o=note@2:17
+70 trill m2
+//! c=long i=trill-maj2 o=note@2:18
+71 trill M2

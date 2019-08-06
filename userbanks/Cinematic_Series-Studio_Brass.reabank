@@ -1,0 +1,53 @@
+//----------------------------------------------------------------------------
+// Source: axb312 - https://vi-control.net/community/threads/reaticulate-articulation-management-for-reaper-0-3-0-now-available.66851/post-4326513
+//
+
+//! g="Cinematic Series/Studio Brass" n="Section"
+//! chase=1,2,5,11,20,64-69
+Bank 2 1 Cinematic Studio Brass Section
+
+//! c=legato i=legato o=note:24,1/note:34,65
+20 Legato
+//! c=long i=note-whole o=note:24,1/note:34,1
+21 Sustain
+//! c=short i=spiccato o=note:29,1
+
+42 Repetitions
+//! c=short i=spiccato o=note:29,33
+41 Staccatissimo
+//! c=short i=staccato o=note:29,65
+40 Staccato
+//! c=short i=sfz o=note:29,127
+54 Sfz
+
+//! c=short i=staccato o=note:25,1
+1 Short Mutes
+//! c=long i=note-whole o=note:25,65/note:34,1
+2 Sustained mutes
+//! c=legato i=con-sord o=note:25,65/note:34,65
+3 Legato mutes
+
+//! c=fx i=multitongues o=note:28,1/note:34,1
+4 Sustained Fluttertongue
+//! c=fx i=multitongues o=note:28,1/note:34,65
+5 Legato Fluttertongue
+
+//! c=fx i=trill-maj2 o=note:27,1/note:34,1
+6 Sustained Trills
+//! c=fx i=trill-maj2 o=note:27,1/note:34,65
+7 Legato Trills
+
+//! c=short i=multitongues o=note:26
+8 Double Tongue
+
+//! c=short i=marcato o=note:30,1/note:34,1
+9 Marcato w/o repetition overlay
+//! c=short i=marcato o=note:30,1/note:34,65
+10 Marcato legato w/o repetition overlay
+//! c=short i=marcato o=note:30,127/note:34,1
+11 Marcato w repetition overlay
+//! c=short i=marcato o=note:30,127/note:34,65
+12 Marcato legato w repetition overlay
+
+//! c=fx i=rip o=note:31
+13 Rips

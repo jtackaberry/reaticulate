@@ -1,0 +1,1032 @@
+//----------------------------------------------------------------------------
+// Source: Kitarraman - https://forum.cockos.com/showpost.php?p=2089115&postcount=330
+//
+
+//! g="8Dio/Requiem Professional" n="Choral FX"
+Bank 12 1 8Dio Requiem Pro Choral FX
+//! c=fx i=fx o=note:24
+24 Body Perc
+//! c=fx i=fx o=note:25
+25 Consonants
+//! c=fx i=fx o=note:26
+26 Sweeps
+//! c=fx i=fx o=note:27
+27 Numbers
+//! c=fx i=fx o=note:28
+28 Trill
+//! c=fx i=fx o=note:29
+29 Woo-Ah
+//! c=fx i=fx o=note:30
+30 Ambiences
+//! c=fx i=fx o=note:31
+31 Fah-fre-su
+//! c=fx i=fx o=note:32
+32 Gliss
+//! c=fx i=fx o=note:33
+33 Shrill
+//! c=fx i=fx o=note:34
+35 Male Sweep
+//! c=fx i=fx o=note:36
+37 Female Sweep
+
+//! g="8Dio/Requiem Professional" n="Looped Marcato"
+Bank 12 2 8Dio Requiem Pro Looped Marcato
+//! c=fx i=fx o=note:21
+21 Ag
+//! c=fx i=fx o=note:22
+22 Cre
+//! c=fx i=fx o=note:23
+23 Cru
+//! c=fx i=fx o=note:24
+24 Do
+//! c=fx i=fx o=note:25
+25 Fah
+//! c=fx i=fx o=note:26
+26 Fis
+//! c=fx i=fx o=note:27
+27 Glo
+//! c=fx i=fx o=note:28
+28 Ky
+//! c=fx i=fx o=note:29
+29 Mus
+//! c=fx i=fx o=note:30
+30 Nis
+//! c=fx i=fx o=note:31
+31 Nus
+//! c=fx i=fx o=note:32
+32 Rhi
+//! c=fx i=fx o=note:33
+33 Sanc
+//! c=fx i=fx o=note:34
+34 Sin
+//! c=fx i=fx o=note:35
+35 Son
+//! c=fx i=fx o=note:36
+36 Tus
+
+//! g="8Dio/Requiem Professional" n="Marcato"
+Bank 12 3 8Dio Requiem Pro Looped Marcato
+//! c=fx i=fx o=note:21
+21 Ag
+//! c=fx i=fx o=note:22
+22 Cre
+//! c=fx i=fx o=note:23
+23 Cru
+//! c=fx i=fx o=note:24
+24 Do
+//! c=fx i=fx o=note:25
+25 Fah
+//! c=fx i=fx o=note:26
+26 Fis
+//! c=fx i=fx o=note:27
+27 Glo
+//! c=fx i=fx o=note:28
+28 Ky
+//! c=fx i=fx o=note:29
+29 Mus
+//! c=fx i=fx o=note:30
+30 Nis
+//! c=fx i=fx o=note:31
+31 Nus
+//! c=fx i=fx o=note:32
+32 Rhi
+//! c=fx i=fx o=note:33
+33 Sanc
+//! c=fx i=fx o=note:34
+34 Sin
+//! c=fx i=fx o=note:35
+35 Son
+//! c=fx i=fx o=note:36
+36 Tus
+
+//! g="8Dio/Requiem Professional" n="Poly Solo Baritone"
+Bank 12 4 8Dio Requiem Pro Poly Solo Baritone
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Secun
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Secun XF
+
+//! g="8Dio/Requiem Professional" n="Poly Solo Bass"
+Bank 12 5 8Dio Requiem Pro Poly Solo Bass
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Lumi
+//! c=fx i=fx o=note:33
+33 Mori
+//! c=fx i=fx o=note:34
+34 Omega
+//! c=fx i=fx o=note:35
+35 Origin
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Lumi XF
+//! c=legato-light i=fx o=note:97
+97 Mori XF
+//! c=legato-light i=fx o=note:98
+98 Omega XF
+//! c=legato-light i=fx o=note:99
+99 Origin XF
+
+//! g="8Dio/Requiem Professional" n="Poly Solo Soprano 1"
+Bank 12 6 8Dio Requiem Pro Poly Solo Soprano 1
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Secun
+//! c=fx i=fx o=note:33
+33 Spiri
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Secun XF
+//! c=legato-light i=fx o=note:97
+97 Spiri XF
+
+//! g="8Dio/Requiem Professional" n="Poly Solo Soprano 2"
+Bank 12 7 8Dio Requiem Pro Poly Solo Soprano 2
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Lumi
+//! c=fx i=fx o=note:33
+33 Mori
+//! c=fx i=fx o=note:34
+34 Origin
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Lumi XF
+//! c=legato-light i=fx o=note:97
+97 Mori XF
+//! c=legato-light i=fx o=note:98
+98 Origin XF
+
+//! g="8Dio/Requiem Professional" n="Poly Solo Tenor"
+Bank 12 8 8Dio Requiem Pro Poly Solo Tenor
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Secun
+//! c=fx i=fx o=note:33
+33 Spiris
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Secun XF
+//! c=legato-light i=fx o=note:97
+97 Spiri XF
+
+//! g="8Dio/Requiem Professional" n="Poly Sustain Fast"
+Bank 12 9 8Dio Requiem Pro Poly Sustain Fast
+//! c=fx i=fx o=note:16
+16 Adora
+//! c=fx i=fx o=note:17
+17 Apoca
+//! c=fx i=fx o=note:18
+18 Credo
+//! c=fx i=fx o=note:19
+19 Cruchi
+//! c=fx i=fx o=note:20
+20 Domi
+//! c=fx i=fx o=note:21
+21 Incar
+//! c=fx i=fx o=note:22
+22 Lumi
+//! c=fx i=fx o=note:23
+23 Mori
+//! c=fx i=fx o=note:24
+24 Omega
+//! c=fx i=fx o=note:25
+25 Origin
+//! c=fx i=fx o=note:26
+26 Resu
+//! c=fx i=fx o=note:27
+27 Script
+//! c=fx i=fx o=note:28
+28 Apast
+//! c=fx i=fx o=note:29
+29 Dema
+//! c=fx i=fx o=note:30
+30 Exmus
+//! c=fx i=fx o=note:31
+31 Extra
+//! c=fx i=fx o=note:32
+32 Ladi
+//! c=fx i=fx o=note:33
+33 Pisc
+//! c=fx i=fx o=note:34
+34 Dema
+//! c=fx i=fx o=note:35
+35 Apoc
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Lumi XF
+//! c=legato-light i=fx o=note:95
+95 Mori XF
+//! c=legato-light i=fx o=note:96
+96 Omega XF
+//! c=legato-light i=fx o=note:97
+97 Origin XF
+//! c=legato-light i=fx o=note:98
+98 Resu XF
+//! c=legato-light i=fx o=note:99
+99 Script XF
+//! c=legato-light i=fx o=note:100
+100 Apast XF
+//! c=legato-light i=fx o=note:101
+101 Dema XF
+//! c=legato-light i=fx o=note:102
+102 Exmus XF
+//! c=legato-light i=fx o=note:103
+103 Extra XF
+//! c=legato-light i=fx o=note:104
+104 Ladi XF
+//! c=legato-light i=fx o=note:105
+105 Pisc XF
+//! c=legato-light i=fx o=note:106
+106 Dema XF
+//! c=legato-light i=fx o=note:107
+107 Apoc XF
+
+//! g="8Dio/Requiem Professional" n="Poly Sustain Men Slow"
+Bank 12 10 8Dio Requiem Pro Poly Sustain Men Slow
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Lumi
+//! c=fx i=fx o=note:31
+31 Mori
+//! c=fx i=fx o=note:32
+32 Omega
+//! c=fx i=fx o=note:33
+33 Origin
+//! c=fx i=fx o=note:34
+34 Resu
+//! c=fx i=fx o=note:35
+35 Script
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Lumi XF
+//! c=legato-light i=fx o=note:95
+95 Mori XF
+//! c=legato-light i=fx o=note:96
+96 Omega XF
+//! c=legato-light i=fx o=note:97
+97 Origin XF
+//! c=legato-light i=fx o=note:98
+98 Resu XF
+//! c=legato-light i=fx o=note:99
+99 Script XF
+
+//! g="8Dio/Requiem Professional" n="Poly Sustain Women Slow"
+Bank 12 11 8Dio Requiem Pro Poly Sustain Women Slow
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Lumi
+//! c=fx i=fx o=note:31
+31 Mori
+//! c=fx i=fx o=note:32
+32 Omega
+//! c=fx i=fx o=note:33
+33 Origin
+//! c=fx i=fx o=note:34
+34 Resu
+//! c=fx i=fx o=note:35
+35 Script
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Lumi XF
+//! c=legato-light i=fx o=note:95
+95 Mori XF
+//! c=legato-light i=fx o=note:96
+96 Omega XF
+//! c=legato-light i=fx o=note:97
+97 Origin XF
+//! c=legato-light i=fx o=note:98
+98 Resu XF
+//! c=legato-light i=fx o=note:99
+99 Script XF
+
+//! g="8Dio/Requiem Professional" n="Staccato"
+Bank 12 12 8Dio Requiem Pro Staccato
+//! c=fx i=fx o=note:21
+21 Ag
+//! c=fx i=fx o=note:22
+22 Cre
+//! c=fx i=fx o=note:23
+23 Cru
+//! c=fx i=fx o=note:24
+24 Do
+//! c=fx i=fx o=note:25
+25 Fah
+//! c=fx i=fx o=note:26
+26 Fis
+//! c=fx i=fx o=note:27
+27 Glo
+//! c=fx i=fx o=note:28
+28 Ky
+//! c=fx i=fx o=note:29
+29 Ladi
+//! c=fx i=fx o=note:30
+30 Mus
+//! c=fx i=fx o=note:31
+31 Nis
+//! c=fx i=fx o=note:32
+32 Nus
+//! c=fx i=fx o=note:33
+33 Rhi
+//! c=fx i=fx o=note:34
+34 Rru
+//! c=fx i=fx o=note:35
+35 Sanc
+//! c=fx i=fx o=note:36
+36 Sart
+//! c=fx i=fx o=note:37
+37 Sin
+//! c=fx i=fx o=note:38
+38 Son
+//! c=fx i=fx o=note:39
+39 Tus
+
+//! g="8Dio/Requiem Professional" n="Staccato FX"
+Bank 12 13 8Dio Requiem Pro Staccato
+//! c=fx i=fx o=note:24
+24 La
+//! c=fx i=fx o=note:25
+25 Meh
+//! c=fx i=fx o=note:26
+26 La Cluster
+
+//! g="8Dio/Requiem Professional" n="Vowel Sustain Men"
+Bank 12 14 8Dio Requiem Pro Vowel Sustain Men
+//! c=fx i=fx o=note:21
+21 Ooh 1
+//! c=fx i=fx o=note:22
+22 Ooh 2
+//! c=fx i=fx o=note:23
+23 Ooh 3
+//! c=fx i=fx o=note:24
+24 Oh
+//! c=fx i=fx o=note:25
+25 Uhm
+//! c=fx i=fx o=note:26
+26 Uum
+//! c=fx i=fx o=note:27
+27 Ahh
+//! c=fx i=fx o=note:28
+28 Ah
+//! c=fx i=fx o=note:29
+29 Aw
+//! c=fx i=fx o=note:30
+30 Ae
+//! c=fx i=fx o=note:31
+31 Ehh
+//! c=fx i=fx o=note:32
+32 Eh
+//! c=fx i=fx o=note:33
+33 Ee
+//! c=fx i=fx o=note:34
+34 Ih
+//! c=fx i=fx o=note:35
+35 Ohm
+//! c=fx i=fx o=note:36
+36 Mm
+
+//! g="8Dio/Requiem Professional" n="Vowel Sustain Women"
+Bank 12 15 8Dio Requiem Pro Vowel Sustain Women
+//! c=fx i=fx o=note:21
+21 Ooh 1
+//! c=fx i=fx o=note:22
+22 Ooh 2
+//! c=fx i=fx o=note:23
+23 Ooh 3
+//! c=fx i=fx o=note:24
+24 Oh
+//! c=fx i=fx o=note:25
+25 Uhm
+//! c=fx i=fx o=note:26
+26 Uum
+//! c=fx i=fx o=note:27
+27 Ahh
+//! c=fx i=fx o=note:28
+28 Ah
+//! c=fx i=fx o=note:29
+29 Aw
+//! c=fx i=fx o=note:30
+30 Ae
+//! c=fx i=fx o=note:31
+31 Ehh
+//! c=fx i=fx o=note:32
+32 Eh
+//! c=fx i=fx o=note:33
+33 Ee
+//! c=fx i=fx o=note:34
+34 Ih
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Solo Baritone LITE"
+Bank 12 16 8Dio Requiem Pro Poly Solo Baritone LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Secun
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Secun XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Solo Bass LITE"
+Bank 12 17 8Dio Requiem Pro Poly Solo Bass LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Lumi
+//! c=fx i=fx o=note:33
+33 Mori
+//! c=fx i=fx o=note:34
+34 Omega
+//! c=fx i=fx o=note:35
+35 Origin
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Lumi XF
+//! c=legato-light i=fx o=note:97
+97 Mori XF
+//! c=legato-light i=fx o=note:98
+98 Omega XF
+//! c=legato-light i=fx o=note:99
+99 Origin XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Solo Soprano 1 LITE"
+Bank 12 18 8Dio Requiem Pro Poly Solo Soprano 1 LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Secun
+//! c=fx i=fx o=note:33
+33 Spiri
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Secun XF
+//! c=legato-light i=fx o=note:97
+97 Spiri XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Solo Soprano 2 LITE"
+Bank 12 19 8Dio Requiem Pro Poly Solo Soprano 2 LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Lumi
+//! c=fx i=fx o=note:33
+33 Mori
+//! c=fx i=fx o=note:34
+34 Origin
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Lumi XF
+//! c=legato-light i=fx o=note:97
+97 Mori XF
+//! c=legato-light i=fx o=note:98
+98 Origin XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Solo Tenor LITE"
+Bank 12 20 8Dio Requiem Pro Poly Solo Tenor LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Resu
+//! c=fx i=fx o=note:31
+31 Script
+//! c=fx i=fx o=note:32
+32 Secun
+//! c=fx i=fx o=note:33
+33 Spiris
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Resu XF
+//! c=legato-light i=fx o=note:95
+95 Script XF
+//! c=legato-light i=fx o=note:96
+96 Secun XF
+//! c=legato-light i=fx o=note:97
+97 Spiri XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Sustain Fast LITE"
+Bank 12 21 8Dio Requiem Pro Poly Sustain Fast LITE
+//! c=fx i=fx o=note:16
+16 Adora
+//! c=fx i=fx o=note:17
+17 Apoca
+//! c=fx i=fx o=note:18
+18 Credo
+//! c=fx i=fx o=note:19
+19 Cruchi
+//! c=fx i=fx o=note:20
+20 Domi
+//! c=fx i=fx o=note:21
+21 Incar
+//! c=fx i=fx o=note:22
+22 Lumi
+//! c=fx i=fx o=note:23
+23 Mori
+//! c=fx i=fx o=note:24
+24 Omega
+//! c=fx i=fx o=note:25
+25 Origin
+//! c=fx i=fx o=note:26
+26 Resu
+//! c=fx i=fx o=note:27
+27 Script
+//! c=fx i=fx o=note:28
+28 Apast
+//! c=fx i=fx o=note:29
+29 Dema
+//! c=fx i=fx o=note:30
+30 Exmus
+//! c=fx i=fx o=note:31
+31 Extra
+//! c=fx i=fx o=note:32
+32 Ladi
+//! c=fx i=fx o=note:33
+33 Pisc
+//! c=fx i=fx o=note:34
+34 Dema
+//! c=fx i=fx o=note:35
+35 Apoc
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Lumi XF
+//! c=legato-light i=fx o=note:95
+95 Mori XF
+//! c=legato-light i=fx o=note:96
+96 Omega XF
+//! c=legato-light i=fx o=note:97
+97 Origin XF
+//! c=legato-light i=fx o=note:98
+98 Resu XF
+//! c=legato-light i=fx o=note:99
+99 Script XF
+//! c=legato-light i=fx o=note:100
+100 Apast XF
+//! c=legato-light i=fx o=note:101
+101 Dema XF
+//! c=legato-light i=fx o=note:102
+102 Exmus XF
+//! c=legato-light i=fx o=note:103
+103 Extra XF
+//! c=legato-light i=fx o=note:104
+104 Ladi XF
+//! c=legato-light i=fx o=note:105
+105 Pisc XF
+//! c=legato-light i=fx o=note:106
+106 Dema XF
+//! c=legato-light i=fx o=note:107
+107 Apoc XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Sustain Men Slow LITE"
+Bank 12 22 8Dio Requiem Pro Poly Sustain Men Slow LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Lumi
+//! c=fx i=fx o=note:31
+31 Mori
+//! c=fx i=fx o=note:32
+32 Omega
+//! c=fx i=fx o=note:33
+33 Origin
+//! c=fx i=fx o=note:34
+34 Resu
+//! c=fx i=fx o=note:35
+35 Script
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Lumi XF
+//! c=legato-light i=fx o=note:95
+95 Mori XF
+//! c=legato-light i=fx o=note:96
+96 Omega XF
+//! c=legato-light i=fx o=note:97
+97 Origin XF
+//! c=legato-light i=fx o=note:98
+98 Resu XF
+//! c=legato-light i=fx o=note:99
+99 Script XF
+
+//! g="8Dio/Requiem Professional/LITE" n="Poly Sustain Women Slow LITE"
+Bank 12 23 8Dio Requiem Pro Poly Sustain Women Slow LITE
+//! c=fx i=fx o=note:24
+24 Adora
+//! c=fx i=fx o=note:25
+25 Apoca
+//! c=fx i=fx o=note:26
+26 Credo
+//! c=fx i=fx o=note:27
+27 Cruchi
+//! c=fx i=fx o=note:28
+28 Domi
+//! c=fx i=fx o=note:29
+29 Incar
+//! c=fx i=fx o=note:30
+30 Lumi
+//! c=fx i=fx o=note:31
+31 Mori
+//! c=fx i=fx o=note:32
+32 Omega
+//! c=fx i=fx o=note:33
+33 Origin
+//! c=fx i=fx o=note:34
+34 Resu
+//! c=fx i=fx o=note:35
+35 Script
+//! c=legato-light i=fx o=note:88
+88 Adora XF
+//! c=legato-light i=fx o=note:89
+89 Apoca XF
+//! c=legato-light i=fx o=note:90
+90 Credo XF
+//! c=legato-light i=fx o=note:91
+91 Cruchi XF
+//! c=legato-light i=fx o=note:92
+92 Domi XF
+//! c=legato-light i=fx o=note:93
+93 Incar XF
+//! c=legato-light i=fx o=note:94
+94 Lumi XF
+//! c=legato-light i=fx o=note:95
+95 Mori XF
+//! c=legato-light i=fx o=note:96
+96 Omega XF
+//! c=legato-light i=fx o=note:97
+97 Origin XF
+//! c=legato-light i=fx o=note:98
+98 Resu XF
+//! c=legato-light i=fx o=note:99
+99 Script XF

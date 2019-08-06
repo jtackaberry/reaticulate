@@ -1,0 +1,465 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Woodwind Quintet"
+Bank 11 44 SSWS Woodwind Quintet
+//! c=long i=note-whole o=note:0
+1 sustain
+//! c=short i=staccato o=note:1
+40 staccato
+//! c=long i=crescendo o=note:2
+102 crescendo
+//! c=long i=decrescendo o=note:3
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Flute"
+Bank 11 45 SSWS Flute
+//! c=long i=vibrato o=note:12
+16 vibrato all
+//! c=long i=tremolo-measured o=note:13
+11 flutter
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:15
+28 staccato dbl tng
+//! c=long i=crescendo o=note:16
+102 crescendo
+//! c=long i=decrescendo o=note:17
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Flute Sustain"
+Bank 11 46 SSWS Flute Sustain
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=vibrato o=note:13
+16 vibrato all
+//! c=long-light i=vibrato o=note:14
+19 piano vibrato
+//! c=long-dark i=vibrato o=note:15
+2 forte vibrato
+//! c=long i=tremolo-measured o=note:16
+11 flutter
+//! c=long i=trill-min2 o=note:17
+70 trill m2
+//! c=long i=trill-maj2 o=note:18
+71 trill M2
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Flute Staccato"
+Bank 11 47 SSWS Flute Staccato
+//! c=short i=staccato o=note:12
+40 staccato
+//! c=short-light i=staccato o=note:13
+48 staccato piano
+//! c=short-dark i=staccato o=note:14
+49 staccato forte
+//! c=short i=staccato o=note:15
+45 overtone staccato
+//! c=short i=multitongued o=note:16
+62 staccato dbl tng
+//! c=short-light i=staccato o=note:17
+63 stacc tng stop piano
+//! c=short-dark i=staccato o=note:18
+64 stacc tng stop forte
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Flute Legato"
+Bank 11 48 SSWS Flute Legato
+//! c=legato i=legato o=note:12
+20 legato
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Flute Expression"
+Bank 11 49 SSWS Flute Expression
+//! c=long i=crescendo o=note:12
+102 crescendo
+//! c=long i=decrescendo o=note:13
+103 decrescendo
+//! c=long i=sfz o=note:14
+52 sfz
+//! c=long i=crescendo o=note:15
+109 swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Flute Effects"
+Bank 11 50 SSWS Flute Effects
+//! c=long i=fall o=note:12
+12 falls
+//! c=long i=fall o=note:13
+13 flourish dn
+//! c=long i=fall o=note:14
+14 flourish
+//! c=long i=fall o=note:15
+15 flourish long
+//! c=long i=rip-downward o=note:16
+16 sweep dn
+//! c=short i=rip o=note:17
+17 sweep up staccato
+//! c=short i=sfz o=note:18
+18 overtone sfz
+//! c=long i=crescendo o=note:19
+19 overtone swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Oboe"
+Bank 11 51 SSWS Oboe
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=trill-min2 o=note:13
+70 trill m2
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:15
+28 staccato dbl tng
+//! c=long i=crescendo o=note:16
+102 crescendo
+//! c=long i=decrescendo o=note:17
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Oboe Sustain"
+Bank 11 52 SSWS Oboe Sustain
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long-light i=note-whole o=note:13
+8 sustain piano
+//! c=long-dark i=note-whole o=note:14
+9 sustain forte
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+//! c=long i=trill-maj2 o=note:16
+71 trill M2
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Oboe Staccato"
+Bank 11 53 SSWS Oboe Staccato
+//! c=short i=staccato o=note:12
+40 staccato
+//! c=short-light i=staccato o=note:13
+48 staccato piano
+//! c=short-dark i=staccato o=note:14
+49 staccato forte
+//! c=short i=multitongued o=note:15
+62 staccato dbl tng
+//! c=short i=multitongued o=note:16
+63 staccato triple tng
+//! c=short-light i=marcato o=note:17
+53 staccato long piano
+//! c=short-dark i=marcato o=note:18
+54 staccato long forte
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Oboe Legato"
+Bank 11 54 SSWS Oboe Legato
+//! c=legato i=legato o=note:12
+20 legato
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Oboe Expression"
+Bank 11 55 SSWS Oboe Expression
+//! c=long i=crescendo o=note:12
+102 crescendo
+//! c=long i=decrescendo o=note:13
+103 decrescendo
+//! c=long i=sfz o=note:14
+52 sfz
+//! c=long i=crescendo o=note:15
+109 swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Oboe Effects"
+Bank 11 56 SSWS Oboe Effects
+//! c=long i=note-whole o=note:12
+12 flourish dn long
+//! c=long i=note-whole o=note:13
+13 flourish dn octave
+//! c=short i=note-whole o=note:14
+14 flourish dn short
+//! c=long i=note-whole o=note:15
+15 flourish dramatic
+//! c=long i=note-whole o=note:16
+16 flourish dramatic hold
+//! c=short i=note-whole o=note:17
+17 flourish dramatic short
+//! c=short i=note-whole o=note:18
+18 flourish up short
+//! c=long i=legato-runs o=note:19
+19 arpeggio maj up
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Clarinet"
+Bank 11 57 SSWS Clarinet
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=trill-min2 o=note:13
+70 trill m2
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:15
+28 staccato dbl tng
+//! c=long i=crescendo o=note:16
+102 crescendo
+//! c=long i=decrescendo o=note:17
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Clarinet Sustain"
+Bank 11 58 SSWS Clarinet Sustain
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long-light i=note-whole o=note:13
+8 sustain piano
+//! c=long-dark i=note-whole o=note:14
+9 sustain forte
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+//! c=long i=trill-maj2 o=note:16
+71 trill M2
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Clarinet Staccato"
+Bank 11 59 SSWS Clarinet Staccato
+//! c=short i=staccato o=note:12
+40 staccato
+//! c=short-light i=staccato o=note:13
+48 staccato piano
+//! c=short-dark i=staccato o=note:14
+49 staccato forte
+//! c=short i=multitongued o=note:15
+62 staccato dbl tng
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Clarinet Legato"
+Bank 11 60 SSWS Clarinet Legato
+//! c=legato i=legato o=note:12
+20 legato
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Clarinet Expression"
+Bank 11 61 SSWS Clarinet Expression
+//! c=long i=crescendo o=note:12
+102 crescendo
+//! c=long i=decrescendo o=note:13
+103 decrescendo
+//! c=long i=sfz o=note:14
+52 sfz
+//! c=long i=crescendo o=note:15
+109 swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Clarinet Effects"
+Bank 11 62 SSWS Clarinet Effects
+//! c=short i=note-whole o=note:12
+12 flourish dn short
+//! c=long i=note-whole o=note:13
+13 flourish dn long
+//! c=short i=note-whole o=note:14
+14 flourish up short
+//! c=long i=note-whole o=note:15
+15 flourish up long
+//! c=long i=legato-runs o=note:16
+16 arpeggio maj up
+//! c=fx i=fx o=note:17
+17 valve click
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Saxophone"
+Bank 11 63 SSWS Saxophone
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=trill-min2 o=note:13
+70 trill m2
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:15
+28 staccato dbl tng
+//! c=long i=crescendo o=note:16
+102 crescendo
+//! c=long i=decrescendo o=note:17
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Saxophone Sustain"
+Bank 11 64 SSWS Saxophone Sustain
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long-light i=note-whole o=note:13
+8 sustain piano
+//! c=long-dark i=note-whole o=note:14
+9 sustain forte
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+//! c=long i=trill-maj2 o=note:16
+71 trill M2
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Saxophone Staccato"
+Bank 11 65 SSWS Saxophone Staccato
+//! c=short i=staccato o=note:12
+40 staccato
+//! c=short-light i=staccato o=note:13
+48 staccato piano
+//! c=short-dark i=staccato o=note:14
+49 staccato forte
+//! c=short i=multitongued o=note:15
+62 staccato dbl tng
+//! c=short i=multitongued o=note:16
+63 staccato-light dbl tng piano
+//! c=short-dark i=multitongued o=note:17
+64 staccato dbl tng forte
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Saxophone Legato"
+Bank 11 66 SSWS Saxophone Legato
+//! c=legato i=legato o=note:12
+20 legato
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Saxophone Expression"
+Bank 11 67 SSWS Saxophone Expression
+//! c=long i=crescendo o=note:12
+102 crescendo
+//! c=long i=decrescendo o=note:13
+103 decrescendo
+//! c=long i=sfz o=note:14
+52 sfz
+//! c=long i=crescendo o=note:15
+109 swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Saxophone Effects"
+Bank 11 68 SSWS Saxophone Effects
+//! c=long i=note-whole o=note:12
+12 flourish dn long
+//! c=long i=note-whole o=note:13
+13 flourish up long
+//! c=short i=rip-downward o=note:14
+14 flourish down rip
+//! c=short i=rip o=note:15
+15 flourish up rip
+//! c=short i=note-whole o=note:16
+16 flourish down short
+//! c=long i=note-whole o=note:17
+17 flourish up dramatic
+//! c=short i=note-whole o=note:18
+18 flourish up short
+//! c=long i=legato-runs o=note:19
+19 arpeggio maj up
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Bassoon"
+Bank 11 69 SSWS Bassoon
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=trill-min2 o=note:13
+70 trill m2
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:15
+28 staccato dbl tng
+//! c=long i=crescendo o=note:16
+102 crescendo
+//! c=long i=decrescendo o=note:17
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Bassoon Sustain"
+Bank 11 70 SSWS Bassoon Sustain
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long-light i=note-whole o=note:13
+8 sustain piano
+//! c=long-dark i=note-whole o=note:14
+9 sustain forte
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+//! c=long i=trill-maj2 o=note:16
+71 trill M2
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Bassoon Staccato"
+Bank 11 71 SSWS Bassoon Staccato
+//! c=short i=staccato o=note:12
+40 staccato
+//! c=short-light i=staccato o=note:13
+48 staccato piano
+//! c=short-dark i=staccato o=note:14
+49 staccato forte
+//! c=short i=multitongued o=note:15
+62 staccato dbl tng
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Bassoon Legato"
+Bank 11 72 SSWS Bassoon Legato
+//! c=legato i=legato o=note:12
+20 legato
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Bassoon Expression"
+Bank 11 73 SSWS Bassoon Expression
+//! c=long i=crescendo o=note:12
+102 crescendo
+//! c=long i=decrescendo o=note:13
+103 decrescendo
+//! c=long i=sfz o=note:14
+52 sfz
+//! c=long i=crescendo o=note:15
+109 swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Bassoon Effects"
+Bank 11 74 SSWS Bassoon Effects
+//! c=long i=note-whole o=note:12
+12 pitch bend
+//! c=long i=note-whole o=note:13
+13 warm up
+//! c=short i=rip-downward o=note:14
+14 flourish down short
+//! c=short i=rip o=note:15
+15 flourish up short
+//! c=long i=harmonics o=note:16
+16 overtone sustain
+//! c=long i=legato-runs o=note:17
+17 arpeggio maj up
+//! c=fx i=fx o=note:18
+18 valve click
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Contrabassoon"
+Bank 11 75 SSWS Contrabassoon
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long-light i=note-whole o=note:13
+8 sustain piano
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:15
+28 staccato dbl tng
+//! c=long i=crescendo o=note:16
+102 crescendo
+//! c=long i=decrescendo o=note:17
+103 decrescendo
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Contrabassoon Sustain"
+Bank 11 76 SSWS Contrabassoon Sustain
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long-light i=note-whole o=note:13
+8 sustain piano
+//! c=long-dark i=note-whole o=note:14
+9 sustain forte
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Contrabassoon Staccato"
+Bank 11 77 SSWS Contrabassoon Staccato
+//! c=short i=staccato o=note:12
+40 staccato
+//! c=short-light i=staccato o=note:13
+48 staccato piano
+//! c=short-dark i=staccato o=note:14
+49 staccato forte
+//! c=short i=multitongued o=note:15
+62 staccato dbl tng
+//! c=short i=multitongued o=note:16
+63 staccato-light dbl tng piano
+//! c=short-dark i=multitongued o=note:17
+64 staccato dbl tng forte
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Contrabassoon Legato"
+Bank 11 78 SSWS Contrabassoon Legato
+//! c=legato i=legato o=note:12
+20 legato
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Contrabassoon Expression"
+Bank 11 79 SSWS Contrabassoon Expression
+//! c=long i=crescendo o=note:12
+102 crescendo
+//! c=long i=decrescendo o=note:13
+103 decrescendo
+//! c=long i=sfz o=note:14
+52 sfz
+//! c=long i=crescendo o=note:15
+109 swell
+
+//! g="Native Instruments/Symphony Series/Woodwind Solo" n="Contrabassoon Effects"
+Bank 11 80 SSWS Contrabassoon Effects
+//! c=long i=note-whole o=note:12
+12 flourish up long
+//! c=long i=note-whole o=note:13
+13 flourish dramatic
+//! c=short i=staccato o=note:14
+14 staccato tng stop
+//! c=long i=legato-runs o=note:15
+15 arpeggio octave

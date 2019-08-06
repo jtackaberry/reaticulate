@@ -1,0 +1,118 @@
+//----------------------------------------------------------------------------
+// Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
+//
+//! g="XSample/Strings" n="Strings Play"
+Bank 01 1 Strings play
+
+//! c=legato i=legato o=cc:68,127
+126 legato on
+//! c=legato i=legato o=cc:68,1
+127 legato off
+//! c=legato i=vibrato g=1 o=cc:00,0
+89 Vibrato Volume - CC1 and Velocity
+//! c=legato i=vibrato g=1 o=cc:00,26
+90 Vibrato xfade by CC2 Volume - CC1
+//! c=long i=tremolo g=1 o=cc:00,4
+91 Tremolo Volume - CC1
+//! c=long i=tremolo-sul-pont g=1 o=cc:00,17
+92 Tremolo Sul Pont Volume - CC1
+//! c=long i=harmonics g=1 o=cc:00,5
+93 Harmonics Volume - CC1 and Velocity
+//! c=short i=spiccato g=1 o=cc:00,7/cc:01,00/cc:22,11
+94 Spiccato Volume - Velocity
+//! c=short i=marcato-quarter g=1 o=cc:00,7/cc:01,127/cc:22,11
+95 Marcato Volume - Velocity
+//! c=textured i=pizz g=1 o=cc:0,8/cc:01,00/cc:22,4
+96 Pizz. Volume - Velocity
+//! c=textured i=pizz-bartok g=1 o=cc:0,8/cc:01,127/cc:22,11
+97 Pizz. Bartok Volume - Velocity
+//! c=textured i=col-legno g=1 o=cc:0,9/cc:22,11
+98 Col Legno Volume - Velocity
+//! c=default i=vibrato-con-sord g=1 o=cc:0,3
+99 Vibrato con sord. Volume - CC1 and Velocity
+//! c=default i=vibrato-con-sord g=1 o=cc:0,28
+100 Vibrato con sord. xfade by CC2 Volume - CC1
+//! c=fx i=list g=1 o=cc:82,21
+101 Round robin off
+//! c=fx i=list g=1 o=cc:82,0
+102 Round robin on repetition
+//! c=fx i=list g=1 o=cc:82,42
+103 Round robin on repetition random
+//! c=fx i=list g=1 o=cc:82,63
+104 Round robin always
+//! c=fx i=list g=1 o=cc:82,84
+105 Round robin always random
+//! c=fx i=list g=1 o=cc:82,105
+106 Round robin always indiv.
+
+
+//----------------------------------------------------------------------------
+// Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
+//
+//! g="XSample/Strings" n="Strings Score"
+Bank 1 1 Strings Score
+
+//! c=legato i=legato o=cc:68,127
+126 legato on
+//! c=legato i=legato o=cc:68,1
+127 legato off
+//! c=legato i=vibrato g=1 o=cc:00,00
+00 vibrato cc1
+//! c=legato i=legato-vibrato g=1 o=cc:00,01
+01 senza vibrato cc1
+//! c=default i=vibrato-con-sord g=1 o=cc:00,02
+02 vibrato con sord. cc1
+//! c=default i=legato-vibrato g=1 o=cc:00,03
+03 senza vibrato con sord. cc1
+//! c=long i=tremolo g=1 o=cc:00,04
+04 tremolo cc1
+//! c=long i=harmonics g=1 o=cc:00,05
+05 harmonics cc1
+//! c=short i=spiccato g=1 o=cc:00,06
+06 spiccato velocity
+//! c=short i=marcato-quarter g=1 o=cc:00,07
+07 marcato velocity
+//! c=textured i=pizz g=1 o=cc:00,08
+08 pizz. velocity
+//! c=textured i=pizz-bartok g=1 o=cc:00,09
+09 pizz. bartok velocity
+//! c=textured i=col-legno g=1 o=cc:00,10
+10 col legno velocity
+//! c=fx i=fx g=1 o=cc:00,11
+11 finger velocity
+//! c=fx i=note-sixteenth g=1 o=cc:00,12
+12 sul pont. short velocity (C-b, V-c)
+//! c=fx i=sul-pont g=1 o=cc:00,13
+13 sul pont. cc1
+//! c=fx i=tremolo-sul-pont g=1 o=cc:00,14
+14 sul pont. tremolo cc1
+//! c=fx i=tremolo-harmonics g=1 o=cc:00,15
+15 harmonics tremolo cc1
+//! c=fx i=legato-gliss g=1 o=cc:00,16
+16 harmonics gliss. cc1
+//! c=default i=legato-gliss g=1 o=cc:00,17
+17 harmonics gliss. con sord. cc1
+//! c=fx i=tremolo-harmonics-a g=1 o=cc:00,18
+18 harmonics gliss. tremolo cc1
+//! c=default i=tremolo-harmonics-a g=1 o=cc:00,19
+19 harmonics gliss. tremolo con sord. cc1  (C-b)
+//! c=fx i=legato-gliss g=1 o=cc:00,20
+20 harmonics gliss. artificial cc1 (V-no, V-la)
+//! c=fx i=run-major g=1 o=cc:00,21
+21 glissandi cc1 (V-c)
+//! c=default i=run-major g=1 o=cc:00,22
+22 glissandi con sord. cc1 (V-c)
+//! c=fx i=run-major g=1 o=cc:00,23
+23 short gliss. cc1 (C-b)
+//! c=fx i=list g=1 o=cc:82,21
+101 Round robin off
+//! c=fx i=list g=1 o=cc:82,0
+102 Round robin on repetition
+//! c=fx i=list g=1 o=cc:82,42
+103 Round robin on repetition random
+//! c=fx i=list g=1 o=cc:82,63
+104 Round robin always
+//! c=fx i=list g=1 o=cc:82,84
+105 Round robin always random
+//! c=fx i=list g=1 o=cc:82,105
+106 Round robin always indiv.

@@ -1,0 +1,40 @@
+//----------------------------------------------------------------------------
+// Source: gmgmgm - https://forum.cockos.com/showpost.php?p=1918287&postcount=23
+//
+//! g="Embertone" n="Fischer Viola"
+//! m="Embertone Fischer Viola 1.0"
+Bank 37 10 Embertone - Viola
+//! c=textured i=vibrato g=2 n="default vibrato" o=note:27
+27 vib default
+//! c=textured i=vibrato g=2 n="progressive vibrato" o=note:28
+28 vib prog
+//! c=textured i=vibrato g=2 n="open string vibrato" o=note:29
+29 vib open
+//! c=textured i=vibrato g=2 n="gentle vibrato" o=note:30
+30 vib gentle
+//! c=textured i=vibrato g=2 n="passionate vibrato" o=note:31
+31 vib passion
+//! c=long-dark i=note-whole g=3 n="sord/sul off" o=note:43/note:42
+43 sord-sul off
+//! c=long-dark i=con-sord g=3 n="con sord" o=note:41/note:43
+41 con sord
+//! c=long-dark i=sul-pont g=3 n="sul pont" o=note:42/note:44
+44 sul pont
+//! c=long-light i=sul-tasto g=3 n="sul tasto" o=note:42/note:45
+45 sul tasto
+//! c=long-dark i=sul-pont g=3 n="sul pont/con sord" o=note:41/note:44
+48 cs sul pont
+//! c=long-light i=sul-tasto g=3 n="sul tasto/con sord" o=note:41/note:45
+49 cs sul tasto
+//! c=fx i=bow-up g=4 n="color on" o=note:33
+33 color on
+//! c=fx i=bow-down g=4 n="color off" o=note:34
+34 color off
+//! c=long i=note-whole o=note:36
+36 sustain
+//! c=short i=staccato o=note:38
+38 staccato
+//! c=short i=pizz o=note:39
+39 pizz
+//! c=short-dark i=tremolo o=note:40
+40 tremolo

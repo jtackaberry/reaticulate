@@ -1,0 +1,134 @@
+//----------------------------------------------------------------------------
+// Source: WolfgangAgustus - https://forum.cockos.com/showpost.php?p=2136835&postcount=403
+//
+//! g="Spitfire/Percussion/Pitched" n="Celeste Techinques"
+//! m="Make sure KS is on C0"
+Bank 1 4 SP - Celeste
+//! c=long i=note-whole o=note:24
+24 normal
+//! c=long i=note-whole o=note:25
+25 expressivo
+//! c=short i=short o=note:26
+26 tight
+
+//! g="Spitfire/Percussion/Pitched" n="Glockenspiel Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 10 SP - Glockenspiel
+//! c=long i=note-whole o=note:24
+24 normal
+//! c=long-light i=note-whole o=note:25
+25 muted
+//! c=long-dark i=note-whole o=note:26
+26 hard sticks
+//! c=long i=tremolo o=note:27
+27 roll
+
+//! g="Spitfire/Percussion/Pitched" n="Marimba Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 11 SP - Marimba
+//! c=long i=note-whole o=note:24
+24 normal
+//! c=long i=tremolo o=note:25
+25 roll
+
+//! g="Spitfire/Percussion/Pitched" n="Timpani Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 12 SP - Timpani
+//! c=long i=note-whole o=note:24
+24 normal
+//! c=long-light i=note-whole o=note:25
+25 muted
+//! c=long i=tremolo o=note:26
+26 roll
+//! c=long-light i=tremolo o=note:27
+27 roll muted
+//! c=textured i=cresc-mf-half o=note:28
+28 swell mf
+//! c=textured i=cresc-f-half o=note:29
+29 swell f
+
+//! g="Spitfire/Percussion/Pitched" n="Tubular Bells Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 13 SP - Tubular Bells
+//! c=long i=note-whole o=note:24
+24 normal
+//! c=long-light i=note-whole o=note:25
+25 muted
+
+//! g="Spitfire/Percussion/Pitched" n="Vibraphone Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 14 SP - Vibraphone
+//! c=long i=note-whole o=note:24
+24 normal
+//! c=long i=vibrato o=note:25
+25 motor sustain
+//! c=long i=tremolo o=note:26
+26 roll
+
+//! g="Spitfire/Percussion/Non-Pitched/Drums" n="Snare Position"
+//! m="Make sure KS is on C0"
+Bank 1 15 SP - Snares & Field Drm
+//! c=textured i=note-whole o=note:24
+24 snare on
+//! c=textured i=note-whole o=note:25
+25 snare off
+
+//! g="Spitfire/Percussion/Non-Pitched/Drums" n="Gong Drum Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 16 SP - Gong Drum
+//! c=long i=note-whole o=note:24
+24 sticks
+//! c=long-dark i=note-whole o=note:25
+25 wood mallets
+
+//! g="Spitfire/Percussion/Non-Pitched/Toys" n="Guiro Types"
+//! m="Make sure KS is on C0"
+Bank 1 17 SP - Guiro
+//! c=long i=note-whole o=note:24
+24 normal guiro
+//! c=long-light i=note-whole o=note:25
+25 glass guiro
+//! c=long-dark i=note-whole o=note:26
+26 reco-reco
+
+//! g="Spitfire/Percussion/Non-Pitched/Metals" n="Cymbal Hi/Low Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 18 SP - Cymbal Hi/Lo
+//! c=long-light i=note-whole o=note:24
+24 soft mallets
+//! c=long-dark i=note-whole o=note:25
+25 hard mallets
+//! c=long i=note-whole o=note:26
+26 brushed
+
+//! g="Spitfire/Percussion/Non-Pitched/Metals" n="Cymbal Med Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 19 SP - Cymbal Med
+//! c=long-light i=note-whole o=note:24
+24 soft mallets
+//! c=long-dark i=note-whole o=note:25
+25 hard mallets
+
+//! g="Spitfire/Percussion/Non-Pitched/Metals" n="Trash Metals Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 20 SP - Trash Metals
+//! c=long i=note-whole o=note:24
+24 metal
+//! c=long-light i=note-whole o=note:25
+25 plastic
+
+//! g="Spitfire/Percussion/Non-Pitched/Woods" n="Temple Blocks Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 21 SP - Temple Blocks
+//! c=long-light i=note-whole o=note:24
+24 soft mallets
+//! c=long-dark i=note-whole o=note:25
+25 hard mallets
+
+//! g="Spitfire/Percussion/Non-Pitched/Woods" n="Wood Blocks Techniques"
+//! m="Make sure KS is on C0"
+Bank 1 22 SP - Wood Blocks
+//! c=long i=note-whole o=note:24
+24 sticks
+//! c=long-light i=note-whole o=note:25
+25 rubber mallets

@@ -1,0 +1,21 @@
+//----------------------------------------------------------------------------
+// Source: sveinpetter - https://forum.cockos.com/showpost.php?p=1987704&postcount=180
+//
+//! g="Spectrasonics/Trilian" n="Ac1 Bass" off=0
+Bank 14 1 Tr - Ac1 Bass
+//! c=long-light i=phrase o=note-hold:0
+0 Vanleg-Normal
+//! c=long i=note-half o=note-hold:28
+28 E1-GlissUp
+//! c=long i=note-half o=note-hold:29
+29 F1-SlideDown
+//! c=long i=note-half o=note-hold:30
+30 F#1-SlideUp
+//! c=long i=note-half o=note-hold:31
+31 G1-SlideUpDown
+//! c=long i=note-half o=note-hold:32
+32 G#1-Harmonics
+//! c=long i=note-half o=note-hold:33
+33 A1-Staccato
+//! c=long i=note-half o=note-hold:34
+34 A#1-X-Notes

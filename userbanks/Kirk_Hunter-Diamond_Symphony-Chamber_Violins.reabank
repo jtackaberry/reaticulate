@@ -1,0 +1,30 @@
+//----------------------------------------------------------------------------
+// Source: Vincent Sermonne - https://forum.cockos.com/showpost.php?p=2148554&postcount=476
+//
+
+//! g="Kirk Hunter/Diamond Symphony" n="Chamber Violins" off=20
+Bank 70 10 Kirk Hunter Diamond Symphony Chamber Violins
+//! c=long i=note-half o=note-hold:24
+104 Legato
+//! c=long i=note-quarter o=note-hold:25
+106 Addagio
+//! c=long i=note-whole o=note-hold:26
+107 Vivo Ped Double
+//! c=long i=marcato o=note-hold:27
+103 Marcato ped double
+//! c=long i=marcato o=note-hold:28
+9 Velo Marcato
+//! c=short i=spiccato o=note-hold:29
+42 spiccato ped double
+//! c=pizz i=pizz o=note-hold:30
+21 Pizzicato
+//! c=fast i=tremolo o=note-hold:31
+31 Tremolo
+//! c=trill i=trill o=note-hold:32
+22 Half step trill
+//! c=legato i=legato-runs o=note-hold:33
+33 whole step trill
+//! c=legato i=legato-portamento o=note-hold:34
+23 Slide down
+//! c=legato i=legato-portamento o=note-hold:35
+1 Slide up

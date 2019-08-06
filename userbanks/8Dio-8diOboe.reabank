@@ -1,0 +1,14 @@
+//----------------------------------------------------------------------------
+// Source: Kitarraman - https://forum.cockos.com/showpost.php?p=2089115&postcount=330
+//
+
+//! g="8Dio" n="8diOboe"
+Bank 11 109 8Dio 8diOboe
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=short i=marcato o=note:25
+25 Marc.  Exprs
+//! c=short-light i=marcato-half o=note:26
+26 Marc. Short
+//! c=short-dark i=staccatissimo-stopped o=note:27
+27 Staccatissimo

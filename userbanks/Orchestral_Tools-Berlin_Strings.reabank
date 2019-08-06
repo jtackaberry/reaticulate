@@ -1,0 +1,179 @@
+//----------------------------------------------------------------------------
+// Source: daeavelwyn - https://forum.cockos.com/showpost.php?p=2149051&postcount=500
+//
+
+//! g="Orchestral Tools/Berlin Strings" n="Violins 1"
+//! m="Using custom keyswitch (24 to 35)"
+Bank 1 1 OT-BS - V1
+//! c=legato i=note-whole  o=note:24
+1 Sustain Imm Romantic vibrato - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain - C#1
+//! c=short-dark i=pizz o=note:26
+3 Pizz - D1
+//! c=short-dark i=pizz-bartok o=note:27
+4 Pizz Perc - D#1
+//! c=short i=spiccato o=note:28
+5 Spiccatissimo - E1
+//! c=short i=spiccato o=note:29
+6 spiccato - F1
+//! c=short i=spiccato o=note:30
+7 Spiccato Expressivo - F#1
+//! c=short-light i=staccato o=note:31
+8 Staccato - G1
+//! c=short-light i=staccato-sfz o=note:32
+9 Staccato Bold FFF - G#1
+//! c=short-light i=staccato-sfz o=note:33
+10 Staccato Blurred - A1
+//! c=long-dark i=accented-quarter o=note:34
+11 Portato short- A#1
+
+//! g="Orchestral Tools/Berlin Strings" n="Violins 2"
+//! m="Using custom keyswitch (24 to 35)"
+Bank 1 2 OT-BS - V2
+//! c=legato i=note-whole o=note:24
+1 Sustain Imm Romantic vibrato  - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain - C#1
+//! c=short-dark i=pizz o=note:26
+3 Pizz - D1
+//! c=short i=spiccato o=note:29
+6 Spiccato - F1
+//! c=short i=spiccato o=note:30
+7 Spiccato Expressivo - F#1
+//! c=short-light i=staccato o=note:31
+8 Staccato - G1
+//! c=short-light i=staccato-sfz o=note:32
+9 Staccato Bold FFF - G#1
+//! c=short-light i=staccato-sfz o=note:33
+10 Staccato Blurred - A1
+//! c=long-dark i=accented-quarter o=note:34
+11 Portato short- A#1
+
+//! g="Orchestral Tools/Berlin Strings" n="Violas"
+//! m="Using custom keyswitch (24 to 35)"
+Bank 1 3 OT-BS - Va
+//! c=legato i=note-whole o=note:24
+1 Sustain Imm Romantic vibrato - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain - C#1
+//! c=short-dark i=pizz o=note:26
+3 Pizz - D1
+//! c=short-dark i=pizz-bartok o=note:27
+4 Pizz Perc - D#1
+//! c=short i=spiccato o=note:29
+6 Spiccato - F1
+//! c=short i=spiccato o=note:30
+7 Spiccato Expressivo - F#1
+//! c=short-light i=staccato o=note:31
+8 Staccato - G1
+//! c=short-light i=staccato-sfz o=note:32
+9 Staccato Bold FFF - G#1
+//! c=short-light i=staccato-sfz o=note:33
+10 Staccato Blurred - A1
+//! c=long-dark i=accented-quarter o=note:34
+11 Portato short- A#1
+
+//! g="Orchestral Tools/Berlin Strings" n="Celli"
+//! m="Using custom keyswitch (24 to 35)"
+Bank 1 4 OT-BS - Cello
+//! c=legato i=note-whole o=note:24
+1 Sustain Imm Romantic vibrato - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain - C#1
+//! c=short-dark i=pizz o=note:26
+3 Pizz - D1
+//! c=short i=spiccato o=note:29
+6 Spiccato - F1
+//! c=short i=spiccato o=note:30
+7 Spiccato Expressivo - F#1
+//! c=short-light i=staccato o=note:31
+8 Staccato - G1
+//! c=short-light i=staccato-sfz o=note:33
+10 Staccato Blurred - A1
+//! c=long-dark i=accented-quarter o=note:34
+11 Portato short- A#1
+//! c=long-dark i=accented-quarter o=note:35
+12 Portato long - B1
+
+//! g="Orchestral Tools/Berlin Strings" n="Basses"
+//! m="Using custom keyswitch (96 to 107)"
+Bank 1 5 OT-BS - Basses
+//! c=legato i=note-whole o=note:96
+1 Sustain Imm Romantic vibrato - C7
+//! c=legato i=note-whole  o=note:97
+2 Sustain - C#7
+//! c=short-dark i=pizz o=note:98
+3 Pizz - D7
+//! c=short i=spiccato o=note:101
+6 Spiccato - F7
+//! c=short i=spiccato o=note:102
+7 Spiccato Expressivo - F#7
+//! c=short-light i=staccato o=note:103
+8 Staccato - G7
+//! c=short-light i=staccato-sfz o=note:104
+9 Staccato Bold FFF - G#7
+//! c=short-light i=marcato o=note:105
+10 Martele FFF - A7
+//! c=long-dark i=accented-quarter o=note:106
+11 Portato short- A#7
+//! c=long-dark i=accented-quarter o=note:107
+12 Portato long - B7
+
+//! g="Orchestral Tools/Berlin Strings" n="Basses Dynamics"
+//! m="Using custom keyswitch (84 to 95)"
+Bank 1 10 OT-BS - Basses Dynamics
+//! c=legato i=note-whole o=note:84
+1 << >> - C6
+//! c=legato i=note-whole  o=note:85
+2 < > - C#6
+//! c=short-dark i=pizz o=note:86
+3 < leg f> - D6
+//! c=short i=spiccato o=note:87
+4 ff> - D#6
+//! c=short i=spiccato o=note:88
+5 mf> - E6
+//! c=short-light i=staccato o=note:89
+6 < leg p> - F6
+//! c=short-light i=staccato-sfz o=note:90
+7 <ff - F#6
+//! c=short-light i=marcato o=note:91
+8 <mf - G6
+//! c=short-light i=marcato o=note:92
+9 ff/>- G#6
+//! c=short-light i=marcato o=note:93
+10 mf/> - A6
+//! c=short-light i=marcato o=note:94
+11 /<ff - A#6
+//! c=short-light i=marcato o=note:95
+12 /<mf - B6
+
+
+
+//! g="Orchestral Tools/Berlin Strings" n="Extras"
+//! m="CC messages like con sordino, legato..."
+Bank 1 126 OT-BS - Extras
+//! c=art1 i=legato g=1 o=cc:30,127
+101 Legato On
+//! c=art1 i=legato g=1 o=cc:30,0
+102 Legato Off
+//! c=art2 i=con-sord g=2 o=cc:16,127
+103 Con Sordino On
+//! c=art2 i=con-sord g=2 o=cc:16,0
+104 Con Sordino Off
+//! c=art3 i=crescendo g=3 o=cc:52,127
+105 Niente On
+//! c=art3 i=crescendo g=3 o=cc:52,0
+106 Niente Off
+//! c=art4 i=fx g=4 o=cc:53,127
+107 Soft Layer On
+//! c=art4 i=fx g=4 o=cc:53,0
+108 Soft Layer Off
+
+//! g="Orchestral Tools/Berlin Strings" n="Extras 2"
+//! m="CC messages like con sordino, legato..."
+Bank 1 125 OT-BS - Extras 2
+//! c=art5 i=fx o=cc:54,127
+109 Cutoff Filter On
+//! c=art5 i=fx o=cc:54,0
+110 Cutoff Filter Off

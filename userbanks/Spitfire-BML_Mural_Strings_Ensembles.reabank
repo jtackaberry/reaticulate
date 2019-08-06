@@ -1,0 +1,33 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//! g="Spitfire/BML Mural Strings Ensembles" n="Ensemble Palette"
+//! m="Set patch to UACC"
+Bank 18 1 Ensemble Palette
+//! c=long i=note-whole o=cc:32,1
+1 long
+//! c=long-light i=con-sord o=cc:32,7
+7 con sord
+//! c=long-dark i=sul-pont o=cc:32,18
+18 sul pont
+//! c=long-light i=flautando o=cc:32,8
+8 flautando
+//! c=long-light i=harmonics o=cc:32,10
+10 harmonics
+//! c=short i=spiccato o=cc:32,42
+42 spiccato
+//! c=short i=tenuto-quarter o=cc:32,50
+40 tenuto
+//! c=short-light i=pizz o=cc:32,56
+56 pizz
+//! c=short-dark i=pizz-bartok o=cc:32,57
+57 bartok pizz
+//! c=short-light i=col-legno o=cc:32,58
+58 col legno
+//! c=long-dark i=tremolo o=cc:32,11
+11 tremolo
+//! c=long i=trill-min2 o=cc:32,70
+70 trill m2
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2

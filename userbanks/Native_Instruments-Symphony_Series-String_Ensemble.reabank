@@ -1,0 +1,95 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Symphony Series/String Ensemble" n="String Ensemble"
+Bank 11 81 SSSE String Ensemble
+//! c=long i=note-whole o=note:101
+1 sustain
+//! c=long i=con-sord o=note:102
+7 con sord vibrato
+//! c=long i=tremolo o=note:103
+11 tremolo
+//! c=short i=staccato o=note:104
+40 staccato
+//! c=short i=spiccato o=note:105
+42 spiccato
+//! c=short i=pizz o=note:106
+56 pizzacato
+
+//! g="Native Instruments/Symphony Series/String Ensemble" n="Violins"
+Bank 11 82 SSSE Violins
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=con-sord o=note:25
+7 con sord vibrato
+//! c=long i=tremolo o=note:26
+11 tremolo
+//! c=long i=trill o=note:27
+70 trills
+//! c=long i=harmonics o=note:28
+10 harmonics
+//! c=short i=staccato o=note:29
+40 staccato
+//! c=short i=spiccato o=note:30
+42 spiccato
+//! c=short i=pizz o=note:31
+56 pizzacato
+
+//! g="Native Instruments/Symphony Series/String Ensemble" n="Violas"
+Bank 11 83 SSSE Violas
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=con-sord o=note:25
+7 con sord vibrato
+//! c=long i=tremolo o=note:26
+11 tremolo
+//! c=long i=trill o=note:27
+70 trills
+//! c=long i=harmonics o=note:28
+10 harmonics
+//! c=short i=staccato o=note:29
+40 staccato
+//! c=short i=spiccato o=note:30
+42 spiccato
+//! c=short i=pizz o=note:31
+56 pizzacato
+
+//! g="Native Instruments/Symphony Series/String Ensemble" n="Cellos"
+Bank 11 84 SSSE Cellos
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=con-sord o=note:25
+7 con sord vibrato
+//! c=long i=tremolo o=note:26
+11 tremolo
+//! c=legato i=legato-runs o=note:27
+100 octave runs
+//! c=long i=harmonics o=note:28
+10 harmonics
+//! c=short i=staccato o=note:29
+40 staccato
+//! c=short i=spiccato o=note:30
+42 spiccato
+//! c=short i=pizz o=note:31
+56 pizzacato
+
+//! g="Native Instruments/Symphony Series/String Ensemble" n="Basses"
+Bank 11 85 SSSE Basses
+//! c=legato i=legato o=note:72
+20 legato
+//! c=long i=con-sord o=note:73
+7 con sord vibrato
+//! c=long i=tremolo o=note:74
+11 tremolo
+//! c=long i=harmonics o=note:75
+10 harmonics
+//! c=short i=marcato o=note:76
+52 marcato
+//! c=short i=staccato o=note:77
+40 staccato
+//! c=short i=spiccato o=note:78
+42 spiccato
+//! c=short i=pizz o=note:79
+56 pizzacato

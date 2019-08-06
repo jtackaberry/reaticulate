@@ -1,0 +1,26 @@
+//----------------------------------------------------------------------------
+// Source: PrimeEagle - https://forum.cockos.com/showpost.php?p=1945655&postcount=144
+//
+/! g="Musical Sampling/Trailer Strings" n="Trailer Violins (Full)"
+Bank 30 116 Trailer Violins (Full)
+
+//! c=default i=phrase g=1 o=@1
+1 Adventure
+//! c=long i=note-whole g=1 o=note@2:26
+4 Sustain, Full (Xfade)
+//! c=long i=note-whole g=1 o=note@2:27
+5 Sustain, Soft (Xfade)
+//! c=short i=spiccato g=1 o=note@2:24
+2 Spiccato/Staccato (Xfade)
+//! c=short i=spiccato g=1 o=note@2:28
+6 Spiccato (Velocity)
+//! c=short i=staccato g=1 o=note@2:29
+7 Staccato (Velocity)
+//! c=short-dark i=marcato g=1 o=note@2:25
+3 Marcato (Xfade)
+//! c=short-dark i=marcato g=1 o=note@2:30
+8 Marcato (Velocity)
+//! c=default i=list g=2 o=cc@1:12,127/cc@2:12,127
+9 To Silence On
+//! c=default i=list g=2 o=cc@1:12,0/cc@2:12,0
+10 To Silence Off

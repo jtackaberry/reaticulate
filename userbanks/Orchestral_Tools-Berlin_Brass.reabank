@@ -1,0 +1,95 @@
+//----------------------------------------------------------------------------
+// Source: daeavelwyn - https://forum.cockos.com/showpost.php?p=2149051&postcount=500
+//
+
+//! g="Orchestral Tools/Berlin Brass" n="Horn1"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 1 OT-BB - Horn1
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Horn2"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 2 OT-BB - Horn2
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Horn3"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 3 OT-BB - Horn3
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Horn4"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 4 OT-BB - Horn4
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Trumpet1"
+//! m=""
+Bank 3 5 OT-BB - Trumpet1
+//! c=legato i=note-whole o=note:24
+1 Sustain - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain Soft - C#1
+//! c=legato i=note-whole  o=note:25
+3 Sustain Attack - D1
+//! c=short-dark i=staccato o=note:26
+4 Staccato short - D#1
+//! c=long-dark i=staccato o=note:27
+5 Staccato - E1
+//! c=short i=marcato o=note:28
+6 Marcato short - F1
+//! c=short i=marcato o=note:29
+7 Marcato long - F#1
+//! c=long i=crescendo o=note:30
+8 Cresc. Short- G1
+//! c=long i=crescendo o=note:31
+9 Cresc. Long short - G#1
+//! c=long i=crescendo o=note:32
+10 Swell Short short - A1
+//! c=long i=crescendo o=note:33
+11 Swell Long short - A#1
+//! c=long i=decrescendo o=note:34
+12 Forte Piano - B1
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Trumpet2"
+//! m="Using custom keyswitch (24 to 35)"
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 6 OT-BB - Trumpet2
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Trumpet3"
+//! m="Using custom keyswitch (24 to 35)"
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 7 OT-BB - Trumpet3
+ 
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Trombone1"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 8 OT-BB - Trombone1
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Trombone2"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 9 OT-BB - Trombone2
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Bass Trombone"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 10 OT-BB - Bass Trombone
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Tuba"
+//! m=""
+//! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+Bank 3 11 OT-BB - Tuba
+ 
+ 
+//! g="Orchestral Tools/Berlin Brass" n="Extras"
+//! m="CC messages legato..."
+Bank 3 126 OT-BB - Extras
+//! c=legato i=legato g=1 o=cc:30,127
+101 Legato On
+//! c=legato i=long g=1 o=cc:30,0
+102 Legato Off
+//! c=legato i=legato g=2 o=cc:52,127
+103 Niente On
+//! c=legato i=long g=2 o=cc:52,0
+104 Niente Off

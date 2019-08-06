@@ -1,0 +1,97 @@
+//----------------------------------------------------------------------------
+// Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
+//
+//! g="XSample/Woodwinds" n="Woodwinds Play"
+Bank 1 1 Woodwinds Play
+
+//! c=legato i=legato o=cc:68,127
+126 legato on
+//! c=legato i=legato o=cc:68,1
+127 legato off
+
+//! c=legato i=vibrato g=1 o=cc:00,00/cc:02,00
+00 Vibrato Volume - CC1 (not cl.)
+
+//! c=legato i=vibrato g=1 o=cc:00,15
+15 Vibrato xfade by CC2 Volume - CC1 (not cl.)
+
+//! c=short i=tremolo g=1 o=cc:00,03/cc:02,00
+03 Flutter Volume - CC1 (not bs.)
+
+//! c=short i=staccato g=1 o=cc:00,02
+02 Staccato/Secco xfade by CC1 Volume - Velocity (bfl., fl., picc.)
+//! c=short i=staccatissimo-stopped g=1 o=cc:00,04
+04 Secco/Key noises xfade by Velocity (bfl., fl., picc.)
+//! c=default i=multitongued g=1 o=cc:00,05/cc:02,00
+05 Multiphonics Volume - CC1
+//! c=default i=staccato-dig g=1 o=cc:00,06
+06 Keys Volume - Velocity
+
+//! c=fx i=list g=1 o=cc:82,21
+101 Round robin off
+//! c=fx i=list g=1 o=cc:82,0
+102 Round robin on repetition
+//! c=fx i=list g=1 o=cc:82,42
+103 Round robin on repetition random
+//! c=fx i=list g=1 o=cc:82,63
+104 Round robin always
+//! c=fx i=list g=1 o=cc:82,84
+105 Round robin always random
+//! c=fx i=list g=1 o=cc:82,105
+106 Round robin always indiv.
+
+
+//! g="XSample/Woodwinds" n="Woodwinds Score"
+Bank 04 1 Woodwinds Score
+//! c=legato i=legato o=cc:68,127
+126 legato on
+//! c=legato i=legato o=cc:68,1
+127 legato off
+//! c=legato i=vibrato g=1 o=cc:00,00
+00 standard cc1
+//! c=legato i=note-whole g=1 o=cc:00,01
+01 senza vibrato cc1 (fl., ob., eh., ob. d’amore, bs., cbs.)
+//! c=short i=staccato g=1 o=cc:00,02
+02 staccato velocity
+//! c=short i=staccatissimo-stopped g=1 o=cc:00,05
+05 secco velocity (bfl., fl., picc.)
+//! c=short i=tremolo g=1 o=cc:00,03
+03 flutter cc1 (ob., eh., cl., bcl., bh., fl., picc.)
+//! c=default i=staccato-dig g=1 o=cc:00,07
+07 key noises velocity
+//! c=default i=multitongued g=1 o=cc:00,06
+06 multiphonics cc1
+//! c=default i=rest-quarter g=1 o=cc:00,08
+08 whistle cc1 (fl. c3/c4)
+//! c=default i=ghost-eighth g=1 o=cc:00,09
+09 chat whistle velocity (fl., bfl. c1/f1)
+//! c=default i=alt-circle g=1 o=cc:00,10
+10 crow velocity (ob. d’amore., ob., eh., bs., cbs.)
+//! c=default i=alt-wave-double g=1 o=cc:00,12
+12 with s-noise cc1 (fl. c1/c2)
+//! c=default i=staccato-overblown g=1 o=cc:00,13
+13 with blow-noise cc1 (fl. c1/c2)
+//! c=default i=fx g=1 o=cc:00,04
+04 slap velocity (bs., cbs., bfl.)
+//! c=default i=tremolo-ghost g=1 o=cc:00,14
+14 air noises cc1
+//! c=default i=phrase-tremolo g=1 o=cc:00,15
+15 rolls cc1 (ob.)
+//! c=default i=alt-x g=1 o=cc:00,11
+11 helicopter velocity (bs. c-1/e1)
+//! c=default i=run-major g=1 o=cc:00,16
+16 glissandi cc1 (bcl.)
+//! c=fx i=list g=1 o=cc:82,21
+101 Round robin off
+//! c=fx i=list g=1 o=cc:82,0
+102 Round robin on repetition
+//! c=fx i=list g=1 o=cc:82,42
+103 Round robin on repetition random
+//! c=fx i=list g=1 o=cc:82,63
+104 Round robin always
+//! c=fx i=list g=1 o=cc:82,84
+105 Round robin always random
+//! c=fx i=list g=1 o=cc:82,105
+106 Round robin always indiv.
+
+

@@ -1,0 +1,67 @@
+//----------------------------------------------------------------------------
+// Source: axb312 - https://vi-control.net/community/threads/reaticulate-articulation-management-for-reaper-0-3-0-now-available.66851/post-4326516
+//
+
+//! g="8Dio/Claire Alto Flute" n="Legato"
+//! chase=1,11
+
+Bank 7 1 Legato
+
+//! c=legato i=legato o=note:24
+20 Natural Legato
+
+//! c=legato i=legato o=note:25
+21 Soft 1 - Gentle, light vibrato
+
+//! c=legato i=legato o=note:26
+22 Soft 2 - Gentle, progressing vibrato
+
+//! c=legato i=legato o=note:27
+23 Medium
+
+//! c=legato i=legato o=note:28
+24 Strong
+
+//! c=short i=staccato o=note:30
+25 Staccattissimo
+
+//! c=short i=marcato o=note:31
+26 Marcato
+
+
+//----------------------------------------------------------------------------
+//! g="8Dio/Claire Alto Flute" n="Trills"
+//! chase=1,11
+
+Bank 7 2 Trills
+
+//! c=long i=trill-min3 o=note:28
+20 Minor 2nd Trill
+
+//! c=long i=trill-maj2 o=note:29
+21 Major 2nd Trill
+
+
+//----------------------------------------------------------------------------
+//! g="8Dio/Claire Alto Flute" n="Bonus"
+//! chase=1,11
+
+Bank 7 3 Bonus
+
+//! c=legato i=legato-runs o=note:24
+20 Major run
+
+//! c=legato i=legato-runs o=note:25
+21 Major run 2 Oct
+
+//! c=legato i=legato-runs o=note:26
+22 Minor run up
+
+//! c=legato i=legato-runs o=note:27
+23 Minor run 2 Oct
+
+//! c=fx i=fx o=note:28
+24 Breaths
+
+//! c=fx i=fx o=note:29
+25 Valve clicks

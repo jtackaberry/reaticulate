@@ -1,0 +1,359 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Brass Quartet"
+Bank 10 26 SSBS Brass Quartet
+//! c=long-light i=note-whole o=note:24
+8 sustain soft
+//! c=long-dark i=note-whole o=note:25
+9 sustain forte
+//! c=short-light i=staccato o=note:26
+48 staccato piano
+//! c=short-dark i=staccato o=note:27
+49 staccato forte
+//! c=long i=sfz o=note:28
+52 sfz fast
+//! c=long i=sfz o=note:29
+55 sfz slow
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet"
+Bank 10 27 SSBS Trumpet
+//! c=long-light i=note-whole o=note:24
+8 sustain soft
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+//! c=long i=note-whole o=note:27
+6 cup mute
+//! c=long i=note-whole o=note:28
+12 harmon mute
+//! c=long i=note-whole o=note:29
+7 straight
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Sustain"
+Bank 10 28 SSBS Trumpet Sustain
+//! c=long-light i=note-whole o=note:24
+8 sustain soft
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+//! c=long i=note-whole o=note:27
+6 cup mute
+//! c=long i=note-whole o=note:28
+12 harmon mute
+//! c=long i=note-whole o=note:29
+7 straight
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Staccato"
+Bank 10 29 SSBS Trumpet Staccato
+//! c=short-light i=staccato o=note:24
+48 staccato piano
+//! c=short-dark i=staccato-sfz o=note:25
+49 staccato forte
+//! c=short i=multitongued o=note:26
+75 triple tng
+//! c=short i=staccato-breath o=note:27
+42 tongue stop
+//! c=short i=staccato-con-sord o=note:28
+47 cup mute
+//! c=short i=staccato-con-sord o=note:29
+62 harmon mute
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Legato"
+Bank 10 30 SSBS Trumpet Legato
+//! c=legato i=legato o=note:24
+20 legato
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Expression"
+Bank 10 31 SSBS Trumpet Expression
+//! c=long-dark i=sfz o=note:24
+106 sfz fast
+//! c=long-dark i=sfz o=note:25
+107 sfz mute
+//! c=long-dark i=sfz o=note:26
+108 sfz slow
+//! c=long i=note-whole o=note:27
+109 swell fast
+//! c=long i=note-whole o=note:28
+112 swell medium
+//! c=long i=note-quarter o=note:29
+113 swell slow
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Effects"
+Bank 10 32 SSBS Trumpet Effects
+//! c=long i=note-whole o=note:24
+90 bend up
+//! c=fx i=rest-quarter o=note:25
+91 breath
+//! c=long i=fall o=note:26
+100 fall fast
+//! c=long i=fall o=note:27
+99 fall slow
+//! c=short i=note-whole o=note:28
+41 short
+//! c=long i=tremolo-measured o=note:29
+11 flutter
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1"
+Bank 10 33 SSBS Horn 1
+//! c=long-light i=note-whole o=note:24
+8 sustain soft
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+//! c=short-light i=staccato o=note:27
+48 staccato piano
+//! c=short-dark i=staccato-sfz o=note:28
+49 staccato forte
+//! c=short i=multitongued o=note:29
+75 triple tng
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Sustain"
+Bank 10 34 SSBS Horn 1 Sustain
+//! c=long-light i=note-whole o=note:24
+8 sustain soft
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Staccato"
+Bank 10 35 SSBS Horn 1 Staccato
+//! c=short-light i=staccato o=note:24
+48 staccato piano
+//! c=short-dark i=staccato-sfz o=note:25
+49 staccato forte
+//! c=short i=multitongued o=note:26
+75 triple tng
+//! c=short i=staccato-breath o=note:27
+42 tongue stop
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Legato"
+Bank 10 36 SSBS Horn 1 Legato
+//! c=legato i=legato o=note:24
+20 legato
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Expression"
+Bank 10 37 SSBS Horn 1 Expression
+//! c=short-dark i=rip o=note:24
+25 blast fff
+//! c=long-dark i=sfz o=note:25
+106 sfz fast
+//! c=long-dark i=sfz o=note:26
+108 sfz slow
+//! c=long i=note-whole o=note:27
+109 swell fast
+//! c=long i=note-quarter o=note:28
+113 swell slow
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn Effects"
+Bank 10 38 SSBS Horn Effects
+//! c=fx i=rest-quarter o=note:24
+91 Breath
+//! c=long i=rip o=note:25
+100 Sweep Down-Up
+//! c=long i=rip o=note:26
+99 Sweep Up
+//! c=long i=rip o=note:27
+98 Sweep Up-Down
+//! c=long i=trill o=note:28
+70 Trill
+//! c=long i=tremolo-measured o=note:29
+29 Bend Stopped
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2"
+Bank 10 39 SSBS Horn 2
+//! c=long-light i=note-whole o=note:24
+8 sustain piano
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+//! c=long i=stopped o=note:27
+7 stop mute
+//! c=short-light i=staccato o=note:28
+48 staccato piano
+//! c=short-dark i=staccato-sfz o=note:29
+49 staccato forte
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Sustain"
+Bank 10 40 SSBS Horn 2 Sustain
+//! c=long-light i=note-whole o=note:24
+8 sustain piano
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+//! c=long i=stopped o=note:27
+7 stop mute
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Staccato"
+Bank 10 41 SSBS Horn 2 Staccato
+//! c=short-light i=staccato o=note:24
+48 staccato piano
+//! c=short-dark i=staccato-sfz o=note:25
+49 staccato forte
+//! c=short i=staccato-con-sord o=note:26
+47 staccato stop mute
+//! c=short i=multitongued o=note:27
+75 triple tng
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Legato"
+Bank 10 42 SSBS Horn 2 Legato
+//! c=legato i=legato o=note:24
+20 legato
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Expression"
+Bank 10 43 SSBS Horn 2 Expression
+//! c=long-dark i=sfz o=note:24
+106 sfz fast
+//! c=long-dark i=sfz o=note:25
+108 sfz slow
+//! c=long i=note-whole o=note:26
+109 swell fast
+//! c=long i=note-quarter o=note:27
+113 swell slow
+//! c=long i=trill-min2 o=note:28
+70 trill
+//! c=long i=fx o=note:28
+77 trill spin
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone"
+Bank 10 44 SSBS Trombone
+//! c=long-light i=note-whole o=note:24
+8 sustain piano
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+//! c=short-light i=staccato o=note:27
+48 staccato piano
+//! c=short i=staccato o=note:28
+41 staccato mezzo
+//! c=short-dark i=staccato o=note:29
+49 staccato forte
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Sustain"
+Bank 10 45 SSBS Trombone Sustain
+//! c=long-light i=note-whole o=note:24
+8 sustain piano
+//! c=long i=note-whole o=note:25
+1 sustain mezzo
+//! c=long-dark i=note-whole o=note:26
+9 sustain forte
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Staccato"
+Bank 10 46 SSBS Trombone Staccato
+//! c=short-light i=staccato o=note:24
+48 staccato piano
+//! c=short i=staccato o=note:25
+41 staccato mezzo
+//! c=short-dark i=staccato o=note:26
+49 staccato forte
+//! c=short-dark i=staccato-sfz o=note:27
+54 staccato fff
+//! c=short i=staccato o=note:28
+42 staccato tng stop
+//! c=short i=multitongued o=note:29
+75 staccato triple tng
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Legato"
+Bank 10 47 SSBS Trombone Legato
+//! c=legato i=legato o=note:24
+20 legato
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Expression"
+Bank 10 48 SSBS Trombone Expression
+//! c=long-dark i=sfz o=note:24
+106 sfz fast
+//! c=long-dark i=sfz o=note:25
+108 sfz slow
+//! c=long i=note-whole o=note:26
+109 swell fast
+//! c=short i=staccato o=note:27
+42 tng stop
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Effects"
+Bank 10 49 SSBS Trombone Effects
+//! c=long i=gliss o=note:24
+24 bend long
+//! c=long i=gliss o=note:25
+25 bend short
+//! c=fx i=rest-quarter o=note:26
+91 breath
+//! c=fx i=fx o=note:27
+93 cow
+//! c=long i=gliss o=note:28
+94 didgeridoo
+//! c=short i=fall o=note:29
+101 fast fall
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba"
+Bank 10 50 SSBS Tuba
+//! c=long-light i=note-whole o=note:24
+8 sustain piano
+//! c=long-dark i=note-whole o=note:25
+9 sustain forte
+//! c=short-light i=staccato o=note:26
+48 staccato piano
+//! c=short-dark i=staccato o=note:27
+49 staccato forte
+//! c=short i=staccato o=note:28
+42 tng stop
+//! c=short i=multitongued o=note:29
+75 staccato dbl tng
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Sustain"
+Bank 10 51 SSBS Tuba Sustain
+//! c=long-light i=note-whole o=note:24
+8 sustain piano
+//! c=long-dark i=note-whole o=note:25
+9 sustain forte
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Staccato"
+Bank 10 52 SSBS Tuba Staccato
+//! c=short-light i=staccato o=note:26
+48 staccato piano
+//! c=short-dark i=staccato o=note:27
+49 staccato forte
+//! c=short i=staccato o=note:28
+42 staccato tng stop
+//! c=short i=multitongued o=note:29
+75 staccato dbl tng
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Legato"
+Bank 10 53 SSBS Tuba Legato
+//! c=legato i=legato o=note:24
+20 legato
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Expression"
+Bank 10 54 SSBS Tuba Expression
+//! c=long-dark i=sfz o=note:24
+106 sfz fast
+//! c=long-dark i=sfz o=note:25
+108 sfz slow
+//! c=long i=crescendo o=note:26
+102 crescendo
+//! c=long i=note-whole o=note:27
+109 swell fast
+//! c=short i=note-whole o=note:28
+113 swell slow
+
+//! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Effects"
+Bank 10 55 SSBS Tuba Effects
+//! c=fx i=fx o=note:24
+90 ping high
+//! c=long i=fall o=note:25
+91 Sweep Down Hold
+//! c=fx i=fall o=note:26
+92 sweep down ping
+//! c=fx i=fall o=note:27
+93 sweep down staccato
+//! c=fx i=rip o=note:28
+94 sweep up hold
+//! c=fx i=rip o=note:29
+95 sweep up staccato

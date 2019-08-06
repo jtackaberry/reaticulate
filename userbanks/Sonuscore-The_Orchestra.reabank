@@ -1,0 +1,157 @@
+//----------------------------------------------------------------------------
+// Source: blawler - https://github.com/jtackaberry/reaticulate/issues/22
+//
+
+// Sonuscore "The Orchestra" articulation map for Reaticulate (Reaper)
+// Version Apr-23-2018 bhlawler at gmail (there were no changes for the 1.1 February 2018 update)
+// Notes: +stacc denotes layer of staccato + base articulation
+
+//! g="Sonuscore/The Orchestra"
+//! n="First Violins"
+Bank 15 1 First Violins
+//! c=legato i=legato o=note:27
+20  legato
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=long i=note-whole o=note:25
+1  sustain
+//! c=long i=note-whole o=note:25/note:24
+2  sustain+stacc
+//! c=long-light i=note-half o=note:26
+55 marcato
+//! c=long-light i=marcato o=note:26/note:24
+54 marcato+stacc
+//! c=fx i=tremolo o=note:28
+70 tremolo
+//! c=short-light i=spiccato o=note:29
+56 pizz
+
+//! g="Sonuscore/The Orchestra"
+//! n="Second Violins"
+//! clone="Sonuscore/The Orchestra/First Violins"
+Bank 15 2 Second Violins
+
+//! g="Sonuscore/The Orchestra"
+//! n="Violas"
+//! clone="Sonuscore/The Orchestra/First Violins"
+Bank 15 3 Violas
+
+//! g="Sonuscore/The Orchestra"
+//! n="Cellos"
+//! clone="Sonuscore/The Orchestra/First Violins"
+Bank 15 4 Cellos
+
+//! g="Sonuscore/The Orchestra"
+//! n="Basses"
+//! clone="Sonuscore/The Orchestra/First Violins"
+Bank 15 5 Basses
+
+//! g="Sonuscore/The Orchestra"
+//! n="French Horns"
+Bank 15 6 French Horns
+//! c=legato i=legato o=note:27
+20  legato
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=long i=note-whole o=note:25
+1  sustain
+//! c=long i=note-whole o=note:25/note:24
+2  sustain+stacc
+//! c=long-light i=note-half o=note:26
+55 marcato
+//! c=long-light i=marcato o=note:26/note:24
+54 marcato+stacc
+
+//! g="Sonuscore/The Orchestra"
+//! n="Trumpets"
+//! clone="Sonuscore/The Orchestra/French Horns"
+Bank 15 7 Trumpets
+
+//! g="Sonuscore/The Orchestra"
+//! n="Trombones"
+//! clone="Sonuscore/The Orchestra/French Horns"
+Bank 15 8 Trombones
+
+//! g="Sonuscore/The Orchestra"
+//! n="Low Brass"
+Bank 15 9 Low Brass
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=long i=note-whole o=note:25
+1  sustain
+//! c=long i=note-whole o=note:25/note:24
+2  sustain+stacc
+//! c=long-light i=note-half o=note:26
+55 marcato
+//! c=long-light i=marcato o=note:26/note:24
+54 marcato+stacc
+
+//! g="Sonuscore/The Orchestra"
+//! n="Flutes"
+//! clone="Sonuscore/The Orchestra/French Horns"
+Bank 15 10 Flutes
+
+//! g="Sonuscore/The Orchestra"
+//! n="Clarinets"
+//! clone="Sonuscore/The Orchestra/French Horns"
+Bank 15 11 Clarinets
+
+//! g="Sonuscore/The Orchestra"
+//! n="Oboes"
+//! clone="Sonuscore/The Orchestra/French Horns"
+Bank 15 12 Oboes
+
+//! g="Sonuscore/The Orchestra"
+//! n="Bassoons"
+//! clone="Sonuscore/The Orchestra/French Horns"
+Bank 15 13 Bassoons
+
+//! g="Sonuscore/The Orchestra"
+//! n="Contrabassoon"
+//! clone="Sonuscore/The Orchestra/Low Brass"
+Bank 15 14 Contrabassoons
+
+//! g="Sonuscore/The Orchestra"
+//! n="FemChoir Staccatos"
+Bank 15 15 FemChoir Staccatos
+//! c=short i=staccato o=note:24
+83  La
+//! c=short i=staccato o=note:25
+84  Ci
+//! c=short i=staccato o=note:26
+85  Mus
+//! c=short i=staccato o=note:27
+86  In
+//! c=short i=staccato o=note:28
+87  Sa
+//! c=short i=staccato o=note:29
+88  Ni
+//! c=short i=staccato o=note:30
+89  Tur
+//! c=short i=staccato o=note:31
+90  Le
+//! c=short i=staccato o=note:32
+91  Kra
+//! c=short i=staccato o=note:33
+92  Ma
+//! c=short i=staccato o=note:34
+93  Nu
+
+//! g="Sonuscore/The Orchestra"
+//! n="FemChoir Sustains"
+Bank 15 16 FemChoir Sustains
+//! c=long i=note-whole o=note:24
+83  Ah
+//! c=long i=note-whole o=note:25
+84  Oh
+
+//! g="Sonuscore/The Orchestra"
+//! n="MenChoir Staccatos"
+//! clone="Sonuscore/The Orchestra/FemChoir Staccatos"
+Bank 15 17 MenChoir Staccatos
+
+//! g="Sonuscore/The Orchestra"
+//! n="MenChoir Sustains"
+//! clone="Sonuscore/The Orchestra/FemChoir Sustains"
+Bank 15 18 MenChoir Sustains
+

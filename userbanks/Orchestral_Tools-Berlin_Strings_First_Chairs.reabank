@@ -1,0 +1,73 @@
+//----------------------------------------------------------------------------
+// Source: daeavelwyn - https://forum.cockos.com/showpost.php?p=2149051&postcount=500
+//
+
+//! g="Orchestral Tools/Berlin Strings First Chairs" n="Violin 1"
+//! m="Using custom keyswitch (24 to 35)"
+Bank 1 20 OT-1st chairs - V1
+//! c=legato i=note-whole  o=note:24
+1 Sustain Imm - C1
+//! c=legato i=note-whole  o=note:25
+2 Sustain Soft - C#1
+//! c=legato i=pizz o=note:26
+3 Sustain Attack - D1
+//! c=short-dark i=staccato o=note:27
+4 Staccato- D#1
+//! c=short-dark i=spiccato o=note:28
+5 Spiccato - E1
+//! c=long-dark i=tenuto-quarter o=note:29
+6 Portato short- F1
+//! c=long-dark i=tenuto-quarter o=note:30
+7 Portato long - F#1
+//! c=short i=pizz o=note:31
+8 Pizz - G1
+//! c=textured i=tremolo-measured o=note:32
+9 Tremolo - G#1
+//! c=textured i=trill-min2 o=note:33
+10 Trills 1 - A1
+//! c=textured i=trill-maj2 o=note:34
+11 Trilss 2- A#1
+
+//! g="Orchestral Tools/Berlin Strings First Chairs" n="Violin 2"
+//! m="Using custom keyswitch (24 to 35)"
+//! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
+Bank 1 21 OT-1st chairs - V2
+
+//! g="Orchestral Tools/Berlin Strings First Chairs" n="Viola"
+//! m="Using custom keyswitch (24 to 35)"
+//! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
+Bank 1 22 OT-1st chairs - Va
+
+//! g="Orchestral Tools/Berlin Strings First Chairs" n="Cello"
+//! m="Using custom keyswitch (24 to 35)"
+//! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
+Bank 1 23 OT-1st chairs - Vc
+
+
+//! g="Orchestral Tools/Berlin Strings First Chairs" n="Extras"
+//! m="CC messages like con sordino, legato..."
+Bank 1 124 OT-BS - Extras
+//! c=art1 i=legato g=1 o=cc:30,127
+101 Legato On
+//! c=art1 i=legato g=1 o=cc:30,0
+102 Legato Off
+//! c=art2 i=con-sord g=2 o=cc:16,127
+103 Con Sordino On
+//! c=art2 i=con-sord g=2 o=cc:16,0
+104 Con Sordino Off
+//! c=art3 i=crescendo g=3 o=cc:52,127
+105 Niente On
+//! c=art3 i=crescendo g=3 o=cc:52,0
+106 Niente Off
+//! c=art4 i=fx g=4 o=cc:53,127
+107 Soft Layer On
+//! c=art4 i=fx g=4 o=cc:53,0
+108 Soft Layer Off
+
+//! g="Orchestral Tools/Berlin Strings First Chairs" n="Extras 2"
+//! m="CC messages like con sordino, legato..."
+Bank 1 125 OT-BS - Extras 2
+//! c=art5 i=fx o=cc:54,127
+109 Cutoff Filter On
+//! c=art5 i=fx o=cc:54,0
+110 Cutoff Filter Off

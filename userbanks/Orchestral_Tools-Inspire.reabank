@@ -1,0 +1,171 @@
+//----------------------------------------------------------------------------
+// Source: Sekkleman - https://forum.cockos.com/showpost.php?p=1925933&postcount=99
+//
+//! g="Orchestral Tools/Inspire" n="01-1 Full Orchestra Multi"
+Bank 12 1 BOI Full Orchestra Multi
+//! c=long i=note-whole o=note:5
+1 sustain
+//! c=short i=staccato o=note:6
+40 staccato
+//! c=fx i=fx o=note:7
+62 fx
+
+//! g="Orchestral Tools/Inspire" n="02-1 Strings Whole Ensemble Multi"
+Bank 12 2 BOI Strings Whole Ensemble Multi
+//! c=long i=note-whole o=note:5
+1 sustain immediate
+//! c=long i=note-whole o=note:6
+2 sustain soft
+//! c=short i=spiccato o=note:7
+42 spiccato
+//! c=short-light i=pizz o=note:8
+56 pizz
+//! c=long i=tremolo o=note:9
+11 tremolo
+//! c=long-light i=con-sord g=2 o=cc:16,127
+7 con sordino on
+//! c=long-light i=con-sord g=2 o=cc:16,0
+6 con sordino off
+
+//! g="Orchestral Tools/Inspire" n="02-2 First Chairs Whole Ensemble Multi"
+Bank 12 3 BOI First Chairs Whole Ensemble Multi
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=spiccato o=note:25
+42 spiccato
+//! c=long-light i=con-sord g=2 o=cc:16,127
+7 con sordino on
+//! c=long-light i=con-sord g=2 o=cc:16,0
+6 con sordino off
+
+//! g="Orchestral Tools/Inspire" n="02-3 High Strings 8va Multi"
+Bank 12 4 BOI High Strings 8va Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=spiccato o=note:25
+42 spiccato
+//! c=long-light i=con-sord g=2 o=cc:16,127
+7 con sordino on
+//! c=long-light i=con-sord g=2 o=cc:16,0
+6 con sordino off
+
+//! g="Orchestral Tools/Inspire" n="02-4 Low Strings 8va Multi"
+Bank 12 5 BOI Low Strings 8va Multi
+//! c=legato i=legato o=note:96
+20 legato
+//! c=short i=spiccato o=note:97
+42 spiccato
+//! c=short-light i=pizz o=note:98
+56 pizz
+//! c=long-light i=con-sord g=2 o=cc:16,127
+7 con sordino on
+//! c=long-light i=con-sord g=2 o=cc:16,0
+6 con sordino off
+
+//! g="Orchestral Tools/Inspire" n="02-5 Violins I & II Multi"
+Bank 12 6 BOI Violins I & II Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=spiccato o=note:25
+42 spiccato
+//! c=long-light i=con-sord g=2 o=cc:16,127
+7 con sordino on
+//! c=long-light i=con-sord g=2 o=cc:16,0
+6 con sordino off
+
+//! g="Orchestral Tools/Inspire" n="03-1 Brass Whole Ensemble Multi"
+Bank 12 7 BOI Brass Whole Ensemble Multi
+//! c=long i=note-whole o=note:96
+1 sustain immediate
+//! c=long i=note-whole o=note:97
+2 sustain soft
+//! c=short i=staccato o=note:98
+40 staccato
+//! c=long i=marcato o=note:99
+9 marcato
+
+//! g="Orchestral Tools/Inspire" n="03-2 Brass Muted Ensemble Multi"
+Bank 12 8 BOI Brass Muted Ensemble Multi
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=staccato o=note:97
+40 staccato
+
+//! g="Orchestral Tools/Inspire" n="03-3 Trumpet & Horns 8va Multi"
+Bank 12 9 BOI Trumpet & Horns 8va Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=staccato o=note:25
+40 staccato
+//! c=long i=marcato o=note:26
+9 marcato
+
+//! g="Orchestral Tools/Inspire" n="03-4 Trombones & Tuba 8va Multi"
+Bank 12 10 BOI Trombones & Tuba 8va Multi
+//! c=long i=note-whole o=note:96
+1 sustain
+//! c=short i=staccato o=note:97
+40 staccato
+//! c=long i=marcato o=note:98
+9 marcato
+
+//! g="Orchestral Tools/Inspire" n="03-5 Solo Horn Multi"
+Bank 12 11 BOI Solo Horn Multi
+//! c=legato i=legato o=note:96
+20 legato
+//! c=short i=staccato o=note:97
+40 staccato
+
+//! g="Orchestral Tools/Inspire" n="03-6 Solo Trumpet Multi"
+Bank 12 12 BOI Solo Trumpet Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain vibrato
+//! c=short i=staccato o=note:26
+40 staccato
+
+//! g="Orchestral Tools/Inspire" n="04-1 Woodwinds Whole Ensemble Multi"
+Bank 12 13 BOI Woodwinds Whole Ensemble Multi
+//! c=long i=note-whole o=note:5
+1 sustain
+//! c=short i=staccato o=note:6
+40 staccato
+//! c=long i=trill o=note:7
+70 trill half tone
+//! c=long i=trill o=note:8
+71 trill full tone
+
+//! g="Orchestral Tools/Inspire" n="04-2 Flutes & Clarinets 8va Multi"
+Bank 12 14 BOI Flutes & Clarinets 8va Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain vibrato
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=long i=trill o=note:27
+70 trill half tone
+//! c=long i=trill o=note:28
+71 trill full tone
+
+//! g="Orchestral Tools/Inspire" n="04-3 Bassoons & Clarinets 8va Multi"
+Bank 12 15 BOI Bassoons & Clarinets 8va Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=staccato o=note:25
+40 staccato
+
+//! g="Orchestral Tools/Inspire" n="04-4 Solo Flute Multi"
+Bank 12 16 BOI Solo Flute Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=staccato o=note:25
+40 staccato
+
+//! g="Orchestral Tools/Inspire" n="04-5 Solo Clarinet Multi"
+Bank 12 17 BOI Solo Clarinet Multi
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=staccato o=note:25
+40 staccato

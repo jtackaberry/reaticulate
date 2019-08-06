@@ -1,0 +1,449 @@
+//----------------------------------------------------------------------------
+// Source: extall - https://forum.cockos.com/showpost.php?p=2044804&postcount=279
+//
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="3 Flutes"
+//! m="Use original KS Master preset"
+Bank 33 2 EWQLSO - Woodwinds 3 Flutes
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+20 legato
+//! c=legato i=legato o=note:26
+21 sus legato
+//! c=fx i=trill o=note:27
+70 trill half step
+//! c=fx i=trill o=note:28
+71 trill whole step
+//! c=long-light i=note-whole o=note:29
+2 long non vib
+//! c=fx i=fx o=note:30
+103 exp diminuendo
+//! c=short i=staccato o=note:31
+44 staccato
+//! c=fx i=fx o=note:32
+90 glissando L
+//! c=fx i=fx o=note:33
+91 glissando S
+//! c=fx i=fx o=note:34
+92 grace
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="3 Oboes"
+//! m="Use original KS Master preset"
+Bank 33 3 EWQLSO - Woodwinds 3 Oboes
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+20 sus legato
+//! c=legato i=legato o=note:26
+37 exp legato
+//! c=legato i=legato o=note:27
+21 legato
+//! c=fx i=trill o=note:28
+70 trill half step
+//! c=fx i=trill o=note:29
+71 trill whole step
+//! c=long-light i=note-whole o=note:30
+2 long non vib
+//! c=fx i=fx o=note:31
+90 exp
+//! c=short i=staccato o=note:32
+44 staccato
+//! c=fx i=fx o=note:33
+92 grace
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="Solo Bassoon"
+//! m="Use original KS Master preset"
+Bank 33 6 EWQLSO - Woodwinds Solo Bassoon
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+20 legato
+//! c=legato i=legato o=note:26
+37 sus legato
+//! c=legato i=legato o=note:27
+21 exp legato
+//! c=fx i=trill o=note:28
+70 trill half step
+//! c=fx i=trill o=note:29
+71 trill whole step
+//! c=long-light i=note-whole o=note:30
+2 long non vib
+//! c=short i=note-eighth o=note:31
+40 exp short
+//! c=fx i=fx o=note:32
+102 exp long crescendo
+//! c=short i=staccato o=note:33
+44 staccato
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="Solo Flute"
+//! m="Use original KS Master preset"
+Bank 33 11 EWQLSO - Woodwinds Solo Flute
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+20 legato
+//! c=legato i=legato o=note:26
+37 sus legato
+//! c=legato i=legato o=note:27
+27 lyr legato
+//! c=legato i=legato o=note:28
+21 exp legato
+//! c=short i=note-eighth o=note:29
+43 flutter
+//! c=fx i=trill o=note:30
+70 trill half step
+//! c=fx i=trill o=note:31
+71 trill whole step
+//! c=fx i=sfz o=note:32
+90 sfz vib
+//! c=long-light i=note-whole o=note:33
+2 lyrical
+//! c=long-light i=note-whole o=note:34
+91 slow exp
+//! c=long-light i=note-whole o=note:35
+92 slow exp 2
+//! c=short i=staccato o=note:36
+42 short staccato
+//! c=short i=staccato o=note:37
+44 staccato
+//! c=fx i=fx o=note:38
+93 8va run dn
+//! c=fx i=fx o=note:39
+94 8va run up/dn
+//! c=fx i=fx o=note:40
+95 8va run up
+//! c=fx i=fx o=note:41
+96 fall
+//! c=fx i=fx o=note:42
+97 grace
+//! c=fx i=fx o=note:43
+98 psycho run dn
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="4 Trumpets"
+//! m="Use original KS Master preset"
+Bank 33 17 EWQLSO - Brass 4 Trumpets
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=long i=note-whole o=note:25
+2 forte piano
+//! c=legato i=legato o=note:26
+37 sus legato
+//! c=fx i=sfz o=note:27
+90 sfz
+//! c=short i=staccato o=note:28
+44 staccato
+//! c=fx i=crescendo o=note:29
+102 crescendo
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="6 French Horns"
+//! m="Use original KS Master preset"
+Bank 33 18 EWQLSO - Brass 6 French Horns
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=long i=note-whole o=note:25
+7 mute sus
+//! c=long i=note-whole o=note:26
+9 sus acc
+//! c=long i=note-whole o=note:27
+19 forte piano
+//! c=long i=note-whole o=note:28
+8 sus mellow
+//! c=legato i=legato o=note:29
+37 sus legato
+//! c=legato i=legato-portamento o=note:30
+31 port legato
+//! c=legato i=legato o=note:31
+20 legato
+//! c=fx i=trill o=note:32
+70 trill half step
+//! c=fx i=trill o=note:33
+71 trill whole step
+//! c=fx i=note-half o=note:34
+62 port
+//! c=short i=marcato-half o=note:84
+52 1sec marcato
+//! c=short i=marcato o=note:85
+55 3sec marcato
+//! c=short i=staccato o=note:86
+44 stac long
+//! c=short i=staccato o=note:87
+42 stac short
+//! c=fx i=cresc-quarter o=note:88
+102 1sec cres
+//! c=fx i=cresc-half o=note:89
+106 2sec cres
+//! c=fx i=crescendo o=note:90
+107 3sec cres
+//! c=fx i=fx o=note:91
+90 flutter cres fast
+//! c=fx i=fx o=note:92
+91 clusters
+//! c=fx i=fx o=note:93
+92 clstr bnd whole tone
+//! c=fx i=fx o=note:94
+93 shake
+//! c=fx i=fx o=note:95
+94 fx hell
+//! c=fx i=fx o=note:96
+95 rips s
+//! c=fx i=fx o=note:97
+96 rips x
+//! c=fx i=fx o=note:98
+97 rips l
+//! c=fx i=fx o=note:99
+98 rips f
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="Solo Trumpet 1"
+//! m="Use original KS Master preset"
+Bank 33 22 EWQLSO - Brass Solo Trumpet 1
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+37 sus legato
+//! c=legato i=legato o=note:26
+27 port legato
+//! c=legato i=legato o=note:27
+21 exp legato
+//! c=fx i=note-half o=note:28
+62 port
+//! c=fx i=fx o=note:29
+90 exp
+//! c=long i=note-whole o=note:30
+16 sus vib
+//! c=short i=staccato o=note:31
+44 staccato
+//! c=fx i=sfz o=note:32
+91 sfz crec
+//! c=legato i=legato o=note:33
+33 slur
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="Solo Tuba"
+//! m="Use original KS Master preset"
+Bank 33 24 EWQLSO - Brass Solo Tuba
+
+//! c=long i=note-whole o=note:72
+1 long
+//! c=long i=note-whole o=note:73
+7 mute sus
+//! c=legato i=legato o=note:74
+37 sus legato
+//! c=legato i=legato o=note:75
+21 exp legato
+//! c=short i=marcato o=note:76
+55 marc
+//! c=fx i=fx o=note:77
+90 exp
+//! c=fx i=sfz o=note:78
+91 sfz
+//! c=short i=staccato o=note:79
+44 staccato
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="9 Double Basses"
+//! m="Use original KS Master preset"
+Bank 33 27 EWQLSO - 9 Double Basses
+
+//! c=long i=note-whole o=note:72
+1 long
+//! c=long i=note-whole o=note:73
+8 sus vib soft
+//! c=legato i=legato o=note:74
+20 sus legato
+//! c=legato i=legato o=note:75
+21 exp leg
+//! c=long i=tremolo o=note:76
+11 trem
+//! c=fx i=note-whole o=note:77
+62 port
+//! c=fx i=fx o=note:78
+90 exp fast
+//! c=fx i=fx o=note:79
+91 exp
+//! c=fx i=crescendo o=note:80
+102 crescendo
+//! c=long i=note-whole o=note:81
+19 forte piano
+//! c=fx i=sfz o=note:82
+92 sfz
+//! c=short i=staccato o=note:83
+40 quick up/dn
+//! c=short i=staccato o=note:84
+41 mart up/dn
+//! c=short i=pizz o=note:85
+56 pizz
+//! c=fx i=fx o=note:86
+93 slaps
+//! c=fx i=fx o=note:87
+94 fx
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="10 Cellos"
+//! m="Use original KS Master preset"
+Bank 33 28 EWQLSO - 10 Cellos
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+20 legato
+//! c=legato i=legato o=note:26
+21 sus legato
+//! c=legato i=legato o=note:27
+31 port leg
+//! c=legato i=legato o=note:28
+37 exp lyr legato
+//! c=long i=tremolo o=note:29
+11 trem
+//! c=fx i=trill o=note:30
+70 trill half step
+//! c=fx i=trill o=note:31
+71 trill whole step
+//! c=fx i=note-whole o=note:32
+62 port
+//! c=fx i=fx o=note:33
+90 exp lyr fast
+//! c=fx i=fx o=note:34
+91 exp vib fast
+//! c=fx i=fx o=note:88
+92 exp lyr
+//! c=fx i=fx o=note:89
+93 exp vib
+//! c=fx i=fx o=note:90
+94 exp crec
+//! c=short i=staccato o=note:91
+41 mart up/dn
+//! c=short i=marcato o=note:92
+55 marc
+//! c=short i=pizz o=note:93
+56 pizz
+//! c=short i=spiccato o=note:94
+42 spiccato
+//! c=short i=col-legno o=note:95
+58 col legno
+//! c=short i=pizz-bartok o=note:96
+57 bartok pizz
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="11 Violins"
+//! m="Use original KS Master preset"
+Bank 33 30 EWQLSO - 11 Violins
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+21 sus legato
+//! c=legato i=legato o=note:26
+37 exp leg
+//! c=legato i=legato o=note:27
+38 lyr legato
+//! c=legato i=legato o=note:28
+20 legato
+//! c=long i=tremolo o=note:29
+11 tremolo
+//! c=fx i=trill o=note:30
+70 trill half step
+//! c=fx i=trill o=note:31
+71 trill whole step
+//! c=long-light i=note-whole o=note:32
+8 lyr A
+//! c=long-light i=note-whole o=note:33
+19 lyr B
+//! c=fx i=fx o=note:34
+90 exp
+//! c=fx i=fx o=note:35
+103 exp diminuendo
+//! c=fx i=fx o=note:36
+34 grand detache
+//! c=fx i=fx o=note:37
+91 harmonics
+//! c=fx i=fx o=note:38
+92 run simulator
+//! c=short i=staccato o=note:39
+40 quick up/dn
+//! c=short i=marcato o=note:40
+52 mart up/dn marc
+//! c=short i=staccato o=note:41
+44 staccato
+//! c=short i=spiccato o=note:42
+42 spiccato
+//! c=short i=staccato o=note:43
+41 mart up/dn
+//! c=short i=col-legno o=note:44
+58 col legno
+//! c=fx i=fx o=note:45
+93 scratch fx
+//! c=fx i=fx o=note:46
+105 5th slide dn
+//! c=fx i=fx o=note:47
+106 5th slide up
+//! c=fx i=fx o=note:48
+94 psycho rip
+//! c=fx i=fx o=note:49
+95 clusters
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="18 Violins"
+//! m="Use original KS Master preset"
+Bank 33 31 EWQLSO - 18 Violins
+
+//! c=long i=note-whole o=note:24
+1 long
+//! c=legato i=legato o=note:25
+20 legato
+//! c=legato i=legato o=note:26
+21 sus legato
+//! c=legato i=legato o=note:27
+37 exp leg
+//! c=legato i=legato o=note:28
+38 lyr legato
+//! c=long i=tremolo o=note:29
+11 trem leg
+//! c=long i=note-whole o=note:30
+2 non vib
+//! c=long-light i=note-whole o=note:31
+8 lyrical
+//! c=long-light i=note-whole o=note:32
+9 lyr fast
+//! c=fx i=fx o=note:33
+90 exp fast
+//! c=fx i=fx o=note:34
+91 exp
+//! c=short i=staccato o=note:35
+40 quick up/dn
+//! c=short i=staccato o=note:36
+41 mart up/dn
+//! c=short i=marcato o=note:37
+55 marc long
+//! c=short i=pizz o=note:38
+56 pizz
+//! c=short i=marcato o=note:39
+52 marc shrt
+//! c=short i=spiccato o=note:40
+42 spiccato
+//! c=short i=pizz-bartok o=note:41
+57 bartok pizz
+//! c=fx i=fx o=note:42
+92 clstr and air
+//! c=fx i=fx o=note:43
+93 pendereki
+//! c=legato i=legato o=note:44
+94 slur fst
+//! c=legato i=legato o=note:45
+95 slur med
+//! c=legato i=legato o=note:46
+96 slur slow

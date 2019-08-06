@@ -1,0 +1,20 @@
+//----------------------------------------------------------------------------
+// Source: WolfgangAgustus - https://forum.cockos.com/showpost.php?p=2136835&postcount=403
+//
+//! g="Spitfire/Keyboards/Harpsichord" n="Harpsichord Stops"
+//! m="Set globally all stops for C0-F#0 by Keyswitch (CTRL+Click to set Spitfire KS values for this instrument)"
+Bank 1 5 SHC - Harpsichord
+//! c=long i=note-whole o=note:24
+24 low 8'
+//! c=long i=note-whole o=note:25
+25 hi 8'
+//! c=long i=note-whole o=note:26
+26 hi & low 8'
+//! c=long i=note-whole o=note:27
+27 hi and low 8' & hi 4'
+//! c=long i=note-whole o=note:28
+28 hi 4' & lo 8'
+//! c=long i=note-whole o=note:29
+29 low 8' buffered (lute)
+//! c=long i=note-whole o=note:30
+30 hi 8' buffered (lute)

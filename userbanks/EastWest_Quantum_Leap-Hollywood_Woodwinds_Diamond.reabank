@@ -1,0 +1,383 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//----------------------------------------------------------------------------
+// CHECK THE C= & I= for PORTATO throughout EWHB
+// This note applies to Hollywood Diamond Percussion and Strings. 
+// Apply to Bank 15 and Bank 16. 
+// Note that the PLAY Engine maps C0 to Key 36.
+// There are NUMEROUS additional non-KS patches for every instrument family in the library that are not mapped below.
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Alto Flute KS"
+Bank 14 18 EW Alto Flute KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=long i=vibrato o=note:39
+91 vibrato nv vb mod
+//! c=long-dark i=accented-half o=note:40
+2 sus accent
+//! c=legato i=legato o=note:41
+20 legato rep
+//! c=short i=staccato o=note:42
+40 staccato
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bass Clarinet KS"
+Bank 14 19 EW Bass Clarinet KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 exp vibrato
+//! c=long-dark i=accented-half o=note:38
+2 sus accent
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=long i=trill-min2 o=note:43
+70 trill m2
+//! c=long i=trill-maj2 o=note:44
+71 trill M2
+//! c=long i=fx o=note:45
+91 fx long
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bass Flute KS"
+Bank 14 20 EW Bass Flute KS
+//! c=long i=vibrato o=note:36
+16 vibrato
+//! c=long i=vibrato-molto o=note:37
+90 exp vibrato
+//! c=long-dark i=accented-half o=note:38
+2 sus accent
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccato o=note:40
+40 staccato
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bassoon KS"
+Bank 14 21 EW Bassoon KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=long i=trill-min2 o=note:43
+70 trill m2
+//! c=long i=trill-maj2 o=note:44
+71 trill M2
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bassoon Runs FX KS"
+Bank 14 22 EW Bassoon Runs FX KS
+//! c=legato i=legato-runs o=note:36
+111 8va run down
+//! c=legato i=legato-runs o=note:37
+110 8va run up
+//! c=legato i=legato-runs o=note:38
+113 maj run down
+//! c=legato i=legato-runs o=note:39
+112 major run up 
+//! c=legato i=legato-runs o=note:40
+115 min run down
+//! c=legato i=legato-runs o=note:41
+114 min run up
+//! c=legato i=legato-runs o=note:42
+117 wt run down
+//! c=legato i=legato-runs o=note:43
+116 wt run up
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Contrabassoon KS"
+Bank 14 23 EW Contrabassoon KS
+//! c=long i=note-whole o=note:72
+1 sustain
+//! c=long i=vibrato o=note:73
+16 vibrato
+//! c=long i=vibrato-molto o=note:74
+90 exp vibrato
+//! c=long i=vibrato o=note:75
+91 vibrato nv vb mod
+//! c=long-dark i=accented-half o=note:76
+2 sus accent
+//! c=legato i=legato o=note:77
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:78
+42 staccatissimo
+//! c=short i=staccato o=note:79
+40 staccato
+//! c=short-dark i=accented-quarter o=note:80
+52 marcato short
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Clarinet KS"
+Bank 14 24 EW Clarinet KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 exp vibrato
+//! c=long-dark i=accented-half o=note:38
+2 sus accent
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=long i=trill-min2 o=note:43
+70 trill m2
+//! c=long i=trill-maj2 o=note:44
+71 trill M2
+//! c=long i=fx o=note:45
+91 fx long
+//! c=short i=fx o=note:46
+92 fx short
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Clarinet Runs FX KS"
+Bank 14 25 EW Clarinet Runs FX KS
+//! c=legato i=legato-runs o=note:36
+111 8va run down
+//! c=legato i=legato-runs o=note:37
+110 8va run up
+//! c=legato i=legato-runs o=note:38
+113 maj run down
+//! c=legato i=legato-runs o=note:39
+112 major run up 
+//! c=legato i=legato-runs o=note:40
+115 min run down
+//! c=legato i=legato-runs o=note:41
+114 min run up
+//! c=legato i=legato-runs o=note:42
+117 wt run down
+//! c=legato i=legato-runs o=note:43
+116 wt run up
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="English Horn KS"
+Bank 14 26 EW English Horn KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=long i=vibrato o=note:39
+91 vibrato nv vb mod
+//! c=long-dark i=accented-half o=note:40
+2 sus accent
+//! c=legato i=legato o=note:41
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:42
+42 staccatissimo
+//! c=short i=staccato o=note:43
+40 staccato
+//! c=short-dark i=accented-quarter o=note:44
+52 marcato short
+//! c=long i=trill-min2 o=note:45
+70 trill m2
+//! c=long i=trill-maj2 o=note:46
+71 trill M2
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 1 KS"
+Bank 14 27 EW Flute 1 KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=long i=harmonics =note:43
+10 sing
+//! c=long i=tremolo-measured o=note:44
+11 flutter
+//! c=long i=trill-min2 o=note:45
+70 trill m2
+//! c=long i=trill-maj2 o=note:46
+71 trill M2
+//! c=short i=multitongued o=note:47
+75 rep fast
+//! c=short i=multitongued o=note:48
+77 rep med
+//! c=short i=multitongued o=note:49
+78 rep slow
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 1 Runs FX KS"
+Bank 14 28 EW Flute 1 Runs FX KS
+//! c=legato i=legato-runs o=note:36
+111 8va run down
+//! c=legato i=legato-runs o=note:37
+110 8va run up
+//! c=legato i=legato-runs o=note:38
+113 maj run down
+//! c=legato i=legato-runs o=note:39
+112 major run up 
+//! c=legato i=legato-runs o=note:40
+115 min run down
+//! c=legato i=legato-runs o=note:41
+114 min run up
+//! c=legato i=legato-runs o=note:42
+117 wt run down
+//! c=legato i=legato-runs o=note:43
+116 wt run up
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 2 KS"
+Bank 14 29 EW Flute 2 KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=long i=tremolo-measured o=note:43
+11 flutter
+//! c=long i=trill-min2 o=note:44
+70 trill m2
+//! c=long i=trill-maj2 o=note:45
+71 trill M2
+//! c=short i=multitongued o=note:46
+75 rep fast
+//! c=short i=multitongued o=note:47
+77 rep med
+//! c=short i=multitongued o=note:48
+78 rep slow
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 2 Runs FX KS"
+Bank 14 30 EW Flute 2 Runs FX KS
+//! c=legato i=legato-runs o=note:36
+111 8va run down
+//! c=legato i=legato-runs o=note:37
+110 8va run up
+//! c=legato i=legato-runs o=note:38
+113 maj run down
+//! c=legato i=legato-runs o=note:39
+112 major run up 
+//! c=legato i=legato-runs o=note:40
+115 min run down
+//! c=legato i=legato-runs o=note:41
+114 min run up
+//! c=legato i=legato-runs o=note:42
+117 wt run down
+//! c=legato i=legato-runs o=note:43
+116 wt run up
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Oboe KS"
+Bank 14 31 EW Oboe KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=long i=trill-min2 o=note:43
+70 trill m2
+//! c=long i=trill-maj2 o=note:44
+71 trill M2
+//! c=short i=multitongued o=note:45
+77 rep med
+//! c=short i=multitongued o=note:46
+78 rep slow
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Oboe Runs FX KS"
+Bank 14 32 EW Oboe Runs FX KS
+//! c=legato i=legato-runs o=note:36
+111 8va run down
+//! c=legato i=legato-runs o=note:37
+110 8va run up
+//! c=legato i=legato-runs o=note:38
+113 maj run down
+//! c=legato i=legato-runs o=note:39
+112 major run up 
+//! c=legato i=legato-runs o=note:40
+115 min run down
+//! c=legato i=legato-runs o=note:41
+114 min run up
+//! c=legato i=legato-runs o=note:42
+117 wt run down
+//! c=legato i=legato-runs o=note:43
+116 wt run up
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Piccolo KS"
+Bank 14 33 EW Piccolo KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long-dark i=accented-half o=note:38
+2 sus accent
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=short i=staccatissimo-stopped o=note:40
+42 staccatissimo
+//! c=short i=staccato o=note:41
+40 staccato
+//! c=long i=tremolo-measured o=note:42
+11 flutter
+//! c=long i=trill-min2 o=note:43
+70 trill m2
+//! c=long i=trill-maj2 o=note:44
+71 trill M2
+//! c=short i=multitongued o=note:45
+75 rep fast
+//! c=short i=multitongued o=note:46
+77 rep med
+//! c=short i=multitongued o=note:47
+78 rep slow
+//! c=long i=fx o=note:48
+91 fx long
+
+//! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Piccolo Runs FX KS"
+Bank 14 34 EW Piccolo Runs FX KS
+//! c=legato i=legato-runs o=note:36
+111 8va run down
+//! c=legato i=legato-runs o=note:37
+110 8va run up
+//! c=legato i=legato-runs o=note:38
+113 maj run down
+//! c=legato i=legato-runs o=note:39
+112 major run up 
+//! c=legato i=legato-runs o=note:40
+115 min run down
+//! c=legato i=legato-runs o=note:41
+114 min run up
+//! c=legato i=legato-runs o=note:42
+117 wt run down
+//! c=legato i=legato-runs o=note:43
+116 wt run up

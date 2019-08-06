@@ -1,0 +1,277 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Full Brass"
+Bank 17 1 Ensemble Full Brass
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=staccato o=note:25
+40 staccato
+//! c=short i=tenuto-quarter o=note:26
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:27
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Trumpets"
+Bank 17 2 Ensemble Trumpets
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=trill-maj2 o=note:29
+71 trill M2
+//! c=long i=trill-min2 o=note:30
+70 trill m2
+//! c=long i=rip o=note:31
+100 rip
+//! c=long i=fall o=note:32
+101 fall
+//! c=short i=multitongued o=note:33
+75 multitongue
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Horns"
+Bank 17 3 Ensemble Horns
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=trill-maj2 o=note:29
+71 trill M2
+//! c=long i=trill-min2 o=note:30
+70 trill m2
+//! c=long i=rip o=note:31
+100 rip
+//! c=long i=fall o=note:32
+101 fall
+//! c=short i=multitongued o=note:33
+75 multitongue
+//! c=long i=tremolo-measured o=note:34
+11 flutter
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Trombones"
+Bank 17 4 Ensemble Trombones
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=tremolo-measured o=note:29
+11 flutter
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Low Brass"
+Bank 17 5 Ensemble Low Brass
+//! c=legato i=legato o=note:72
+20 legato
+//! c=long i=note-whole o=note:73
+1 sustain
+//! c=short i=staccato o=note:74
+40 staccato
+//! c=short i=tenuto-quarter o=note:75
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:76
+52 marcato
+//! c=long i=rip o=note:77
+100 rip
+//! c=long i=fall o=note:78
+101 fall
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Orchestrator"
+Bank 17 6 Ensemble Orchestrator
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=staccato o=note:25
+40 staccato
+//! c=short i=tenuto-quarter o=note:26
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:27
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Chordmaker"
+Bank 17 7 Ensemble Chordmaker
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=staccato o=note:25
+40 staccato
+//! c=short i=tenuto-quarter o=note:26
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:27
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Piccolo Trumpet"
+Bank 17 8 Solo Piccolo Trumpet
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=trill-maj2 o=note:29
+71 trill M2
+//! c=long i=trill-min2 o=note:30
+70 trill m2
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Trumpet"
+Bank 17 9 Solo Trumpet
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=trill-maj2 o=note:29
+71 trill M2
+//! c=long i=trill-min2 o=note:30
+70 trill m2
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Flugelhorn"
+Bank 17 10 Solo Flugelhorn
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=trill-maj2 o=note:29
+71 trill M2
+//! c=long i=trill-min2 o=note:30
+70 trill m2
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Horn"
+Bank 17 11 Solo Horn
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+//! c=long i=trill-maj2 o=note:29
+71 trill M2
+//! c=long i=trill-min2 o=note:30
+70 trill m2
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Trombone"
+Bank 17 12 Solo Trombone
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 sustain
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=tenuto-quarter o=note:27
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:28
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Tuba"
+Bank 17 13 Solo Tuba
+//! c=legato i=legato o=note:72
+20 legato
+//! c=long i=note-whole o=note:73
+1 sustain
+//! c=short i=staccato o=note:74
+40 staccato
+//! c=short i=tenuto-quarter o=note:75
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:76
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Orchestrator"
+Bank 17 14 Solo Orchestrator
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=staccato o=note:25
+40 staccato
+//! c=short i=tenuto-quarter o=note:26
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:27
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Chordmaker"
+Bank 17 15 Solo Chordmaker
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=staccato o=note:25
+40 staccato
+//! c=short i=tenuto-quarter o=note:26
+50 tenuto
+//! c=short-dark i=accented-quarter o=note:27
+52 marcato
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Full Brass FX"
+Bank 17 16 Full Brass FX
+//! c=long i=rips o=note:24
+90 atonal rips and falls
+//! c=long i=rips o=note:25
+91 a tonal rips plus falls
+//! c=fx i=fx o=note:26
+92 clusters
+//! c=fx i=fx o=note:27
+93 lydecker cinematic
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Horns FX"
+Bank 17 17 Horns FX
+//! c=long i=rips o=note:24
+90 rips pulses and flurries
+//! c=fx i=fx o=note:25
+93 lydecker cinematic
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Trumpets FX"
+Bank 17 18 Trumpets FX
+//! c=long i=rips o=note:24
+90 atonal rips and falls
+//! c=short i=fx o=note:25
+91 stabs and loose lips
+//! c=fx i=fx o=note:26
+93 lydecker cinematic
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Trombones FX"
+Bank 17 19 Trombones FX
+//! c=long i=rips o=note:24
+90 step slides and risers
+//! c=long i=fx o=note:25
+91 flutters and flybys
+//! c=fx i=fx o=note:26
+93 lydecker cinematic
+
+//! g="Impact Soundworks/Bravura Scoring Brass" n="Low Brass FX"
+Bank 17 20 Low Brass FX
+//! c=long i=rips o=note:24
+90 stabs and scoops
+//! c=long i=fx o=note:25
+91 flutter swells and flybys
+//! c=fx i=fx o=note:26
+92 sneaks and cows

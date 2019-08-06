@@ -1,0 +1,392 @@
+//----------------------------------------------------------------------------
+// Source: Kitarraman - https://forum.cockos.com/showpost.php?p=2089107&postcount=328
+//
+//! g="Chris Hein/Orchestral Brass" n="French Horn 1"
+Bank 11 97 Chris Hein Orchestral Brass French Horn 1
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (Auto Xfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=long-light i=note-whole o=note:25
+25 Sustain (Vel)
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="French Horn 2"
+Bank 11 98 Chris Hein Orchestral Brass French Horn 2
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (Auto Xfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=long-dark i=note-whole o=note:25
+25 Sustain (Vel)
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="French Horn 3"
+Bank 11 99 Chris Hein Orchestral Brass French Horn 3
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (Auto Xfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=long-dark i=note-whole o=note:25
+25 Sustain (Vel)
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="French Horns Ensemble"
+Bank 11 100 Chris Hein Orchestral Brass French Horn Ensemble
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (Vel)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=rip o=note:32
+32 Rip 2
+//! c=fx i=fall o=note:33
+33 Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trombone 1"
+Bank 11 101 Chris Hein Orchestral Brass Trombone 1
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trombone 2"
+Bank 11 102 Chris Hein Orchestral Brass Trombone 2
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trombone 3"
+Bank 11 103 Chris Hein Orchestral Brass Trombone 3
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trombones Ensemble"
+Bank 11 104 Chris Hein Orchestral Brass Trombone Ensemble
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (Vel)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=rip o=note:32
+32 Rip 2
+//! c=fx i=fall o=note:33
+33 Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trumpet 1"
+Bank 11 105 Chris Hein Orchestral Brass Trumpet 1
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trumpet 2"
+Bank 11 106 Chris Hein Orchestral Brass Trumpet 2
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trumpet 3"
+Bank 11 107 Chris Hein Orchestral Brass Trumpet 3
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=fx o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=fall o=note:32
+32 Fall
+//! c=short-dark i=note-sixteenth o=note:33
+33 Play Fall
+//! c=short-dark i=note-sixteenth o=note:34
+34 Key-Vibrato Up
+
+//! g="Chris Hein/Orchestral Brass" n="Trumpets Ensemble"
+Bank 11 108 Chris Hein Orchestral Brass Trumpet Ensemble
+//! c=long-dark i=vibrato o=note:21
+21 Sustain (AutoXfade)
+//! c=long-light i=vibrato o=note:22
+22 Sustain (Xfade)
+//! c=long i=note-whole o=note:23
+23 Sustain (Vel+Xfade)
+//! c=long-dark i=vibrato o=note:24
+24 Sustain (Vel)
+//! c=legato-light i=crescendo o=note:25
+25 Crescendo
+//! c=fx i=crescendo o=note:26
+26 Dyn Exp Long (Vel)
+//! c=fx i=fx o=note:27
+27 Dyn Exp Short (Vel)
+//! c=short i=note-eight o=note:28
+28 Short 1 (Vel)
+//! c=short i=note-quarter o=note:29
+29 Short 4 (Vel)
+//! c=short i=note-eight o=note:30
+30 Short 6 (Vel)
+//! c=fx i=rip o=note:31
+31 Rip 1
+//! c=fx i=rip o=note:32
+32 Rip 2
+//! c=fx i=fall o=note:33
+33 Fall
+//! c=short i=note-sixteenth o=note:34
+34 (Vedere cosa cazzo fa questo)
+//! c=legato-light i=crescendo o=note:35
+35 Crescendo
+//! c=fx i=fall o=note:36
+36 Fall
+//! c=long i=note-whole o=note:37
+37 Sustain
+//! c=fx i=rip o=note:38
+38 Rip 1
+//! c=fx i=rip o=note:39
+39 Rip 2
+//! c=legato-light i=run-major o=note:40
+40 Run Up
+//! c=legato-light i=run-minor o=note:41
+41 Run Down
+//! c=fx i=fx o=note:42
+42 Play Last Note
+//! c=short i=fall o=note:43
+43 Fall

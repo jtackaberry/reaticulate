@@ -1,0 +1,99 @@
+//----------------------------------------------------------------------------
+// Source: sfiks - https://forum.cockos.com/showpost.php?p=1926832&postcount=101
+//
+
+//! g="Samplemodeling" n="Trumpet"
+//! off=15
+Bank 02 1 Samplemodeling Trumpet
+
+//! c=default i=rest-quarter g=1
+15 Reset
+
+// All before note articulations MUST be note-hold
+//! c=legato i=accented-quarter g=1 o=note-hold:00/note-hold:36
+00 before note - Hard attack
+
+//! c=legato i=crescendo g=1 o=note-hold:00/note-hold:37
+01 before note - Soft attack
+
+//! c=legato i=legato-gliss g=1 o=note-hold:00/note-hold:38
+02 before note - Bend up
+
+//! c=legato i=fx g=1 o=note-hold:46
+10 before note - Mute toggle
+
+//! c=short i=decrescendo g=1 o=note-hold:00/note:39
+03 during note - Decrescendo
+
+//! c=short i=legato-gliss g=1 o=note-hold:00/note:40
+04 during note - Bend down
+
+//! c=short i=vibrato g=1 o=note-hold:00/note:41
+05 during note - Vibrato light end
+
+//! c=short i=vibrato-molto g=1 o=note-hold:00/note:42
+06 during note - Vibrato short end
+
+//! c=short i=fall g=1 o=note-hold:00/note-hold:47,127
+12 during note - Short fall
+
+//! c=short i=fall g=1 o=note-hold:00/note-hold:47,64
+13 during note - Medium fall
+
+//! c=short i=fall g=1 o=note-hold:00/note-hold:47,10
+14 during note - Long fall
+
+//! c=short i=decrescendo g=1 o=note-hold:00/note-hold:39/note-hold:40
+30 during note - Decrescendo & Bend down
+
+//! c=short i=decrescendo g=1 o=note-hold:00/note-hold:39/note-hold:41
+31 during note - Decrescendo & Vibrato light
+
+//! c=short i=vibrato g=1 o=note-hold:45/note-hold:40
+32 during note - Vibrato release & Bend down
+
+//f#
+//! c=short i=fall g=1 o=note-hold:48/note-hold:42,1
+42 during note - Doit long
+
+//g
+//! c=short i=fall g=1 o=note-hold:48/note-hold:43,1
+43 during note - Half valve up
+
+//g#
+//! c=short i=fall g=1 o=note-hold:48/note-hold:44,1
+44 during note - Chromatic fall long
+
+//a
+//! c=short i=fall g=1 o=note-hold:48/note-hold:45,0
+45 during note - Chromatic fall
+
+//! c=long i=legato-portamento g=1 o=note-hold:43
+07 during note - Bend down release 64
+
+//! c=long i=legato-fast g=1 o=note-hold:44
+08 during note - Short release 64
+
+//! c=long i=vibrato g=1 o=note-hold:45
+09 during note - Vibrato release 64
+
+//! c=fx i=legato g=1 o=note-hold:00/note-hold:49
+23 legato to Staccato
+
+//! c=fx i=legato g=1 o=note-hold:00/note-hold:50
+24 legato to Semi-legato
+
+//! c=fx i=legato g=1 o=note-hold:00/note-hold:48
+22 legato - Automated split
+
+//c
+//! c=fx i=legato g=1 o=note-hold:48/note-hold:36
+36 legato - Chromatic split
+
+//c#
+//! c=fx i=legato g=1 o=note-hold:48/note-hold:37
+37 legato - Semi-chromatic split
+
+//d
+//! c=fx i=legato g=1 o=note-hold:48/note-hold:38
+38 legato - Half valve split

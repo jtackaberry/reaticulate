@@ -1,0 +1,416 @@
+//----------------------------------------------------------------------------
+// Source bradleybboone: https://github.com/jtackaberry/reaticulate/issues/17
+//
+
+//----------------------------------------------------------------------------
+// CHECK THE C= & I= for PORTATO throughout EWHB
+// This note applies to Hollywood Diamond Percussion and Strings. 
+// Apply to Bank 15 and Bank 16. 
+// Note that the PLAY Engine maps C0 to Key 36.
+// There are NUMEROUS additional non-KS patches for every instrument family in the library that are not mapped below.
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="2 Horns KS"
+Bank 14 1 EW 2 Horns Sus_Short KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=accented-quarter o=note:37
+2 sus accent
+//! c=long-dark i=accented-half o=note:38
+9 sus marcato long
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=legato i=note-quarter o=note:40
+21 portato
+//! c=short-dark i=accented-half o=note:41
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=short-dark i=staccatissimo-stopped o=note:43
+42 staccatissimo
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="2 Horns FX KS"
+Bank 14 2 EW 2 Horns FX KS
+//! c=long i=trill-min2 o=note:36
+70 trill m2
+//! c=long i=trill-maj2 o=note:37
+71 trill M2
+//! c=long i=crescendo o=note:38
+102 cresc slow
+//! c=long i=crescendo o=note:39
+106 cresc med
+//! c=long i=crescendo o=note:40
+107 cresc fast
+//! c=fx i=rip o=note:41
+100 rip shake
+//! c=fx i=rip o=note:42
+108 rips 2
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="2 Trumpets KS"
+Bank 14 3 EW 2 Trumpets Sus_Short KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=accented-quarter o=note:37
+2 sus accent
+//! c=long-dark i=accented-half o=note:38
+9 sus marcato long
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=legato i=note-quarter o=note:40
+21 portato
+//! c=short-dark i=accented-half o=note:41
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=short-dark i=staccatissimo-stopped o=note:43
+42 staccatissimo
+//! c=short-dark i=crescendo o=note:44
+102 sfz cresc
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="2 Trumpets FX KS"
+Bank 14 4 EW 2 Trumpets FX KS
+//! c=long i=trill-min2 o=note:36
+70 trill m2
+//! c=long i=trill-maj2 o=note:37
+71 trill M2
+//! c=long i=crescendo o=note:38
+102 cresc slow
+//! c=long i=crescendo o=note:39
+106 cresc med
+//! c=long i=crescendo o=note:40
+107 cresc fast
+//! c=long i=tremolo-measured o=note:41
+11 fluttertongue
+//! c=long i=fall o=note:42
+101 fall long
+//! c=long i=fall o=note:43
+106 fall short
+//! c=long i=vibrato-molto o=note:44
+19 shake
+//! c=fx i=rip o=note:45
+100 rips
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="3 Trombones KS"
+Bank 14 5 EW 3 Trombones Sus_Short KS
+//! c=long i=note-whole o=note:85
+1 sustain
+//! c=long i=accented-quarter o=note:86
+2 sus accent
+//! c=long-dark i=accented-half o=note:87
+9 sus marcato long
+//! c=legato i=legato o=note:88
+20 legato rep
+//! c=legato i=note-quarter o=note:89
+21 portato
+//! c=short-dark i=accented-half o=note:90
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:91
+52 marcato short
+//! c=short-dark i=staccatissimo-stopped o=note:92
+42 staccatissimo
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="3 Trombones FX KS"
+Bank 14 6 EW 3 Trombones FX KS
+//! c=long i=crescendo o=note:85
+102 cresc slow
+//! c=long i=crescendo o=note:86
+106 cresc med
+//! c=long i=crescendo o=note:87
+107 cresc fast
+//! c=long i=tremolo-measured o=note:88
+11 fluttertongue
+//! c=long i=fx o=note:89
+106 cluster
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="3 Trumpets KS"
+Bank 14 7 EW 3 Trumpets Sus_Short KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=accented-quarter o=note:37
+2 sus accent
+//! c=long-dark i=accented-half o=note:38
+9 sus marcato long
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=legato i=note-quarter o=note:40
+21 portato
+//! c=short-dark i=accented-half o=note:41
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=short-dark i=staccato o=note:43
+40 staccato
+//! c=short-dark i=staccatissimo-stopped o=note:44
+42 staccatissimo
+//! c=short-dark i=crescendo o=note:45
+102 sfz cresc
+//! c=short i=multitongued o=note:46
+75 triple tng
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="3 Trumpets FX KS"
+Bank 14 8 EW 3 Trumpets FX KS
+//! c=long i=trill-min2 o=note:36
+70 trill m2
+//! c=long i=trill-maj2 o=note:37
+71 trill M2
+//! c=long i=crescendo o=note:38
+102 cresc slow
+//! c=long i=crescendo o=note:39
+106 cresc med
+//! c=long i=crescendo o=note:40
+107 cresc fast
+//! c=long i=tremolo-measured o=note:41
+11 fluttertongue
+//! c=long i=fx o=note:42
+106 cluster
+//! c=long i=fx o=note:43
+107 cluster bend
+//! c=fx i=rip o=note:44
+100 rips
+//! c=fx i=rip o=note:45
+108 rises and oddities
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="6 Horns KS"
+Bank 14 9 EW 6 Horns Sus_Short KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=accented-quarter o=note:37
+2 sus accent
+//! c=long-dark i=accented-half o=note:38
+9 sus marcato long
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=legato i=note-quarter o=note:40
+21 portato
+//! c=short-dark i=accented-half o=note:41
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=short-dark i=staccatissimo-stopped o=note:43
+42 staccatissimo
+//! c=short-dark i=sfz o=note:44
+49 sfz
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="6 Horns FX KS"
+Bank 14 10 EW 6 Horns FX KS
+//! c=long i=trill-min2 o=note:36
+70 trill m2
+//! c=long i=trill-maj2 o=note:37
+71 trill M2
+//! c=long i=crescendo o=note:38
+102 cresc slow
+//! c=long i=crescendo o=note:39
+106 cresc med
+//! c=long i=crescendo o=note:40
+107 cresc fast
+//! c=long i=tremolo-measured o=note:41
+11 fluttertongue
+//! c=long i=fx o=note:42
+106 cluster
+//! c=fx i=rip o=note:43
+100 rip shake
+//! c=fx i=rip o=note:44
+108 rips 2
+//! c=long i=fx o=note:45
+109 sus fx
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="Low Brass KS"
+Bank 14 11 EW Low Brass Sus_Short KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=accented-quarter o=note:37
+2 sus accent
+//! c=short-dark i=staccatissimo-stopped o=note:38
+42 staccatissimo
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles"" n="Low Brass FX KS"
+Bank 14 12 EW Low Brass FX KS
+//! c=fx i=fx o=note:72
+90 cluster bend
+//! c=fx i=fx o=note:73
+91 chaos fx
+//! c=fx i=fx o=note:74
+92 cluster dance fx
+//! c=fx i=fx o=note:75
+93 clusters blast
+//! c=fx i=fx o=note:76
+94 clusters tight
+//! c=fx i=fx o=note:77
+95 clusters wide
+//! c=long i=fx o=note:78
+96 creepy sustain
+//! c=long i=crescendo o=note:79
+107 cresc fast
+//! c=long i=crescendo o=note:80
+106 cresc med
+//! c=fx i=fx o=note:81
+97 elephants
+//! c=long i=tremolo-measured o=note:82
+11 fluttertongue
+//! c=long i=tremolo-measured o=note:83
+98 flutter cresc fast
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Cimbasso KS"
+Bank 14 13 EW Cimbasso KS
+//! c=long i=note-whole o=note:73
+1 sustain
+//! c=long i=accented-half o=note:74
+2 sus accent
+//! c=long-dark i=accented-quarter o=note:75
+9 sus marcato short
+//! c=short-dark i=accented-quarter o=note:76
+52 marcato short
+//! c=short i=staccatissimo-stopped o=note:77
+42 staccatissimo
+//! c=long i=crescendo o=note:78
+102 cresc slow
+//! c=long i=tremolo-measured o=note:79
+11 fluttertongue
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Horn KS"
+Bank 14 14 EW Horn KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 pitch waver
+//! c=long i=accented-quarter o=note:38
+2 sus accent
+//! c=long-dark i=accented-half o=note:39
+9 sus marcato long
+//! c=legato i=legato o=note:40
+20 legato rep
+//! c=legato i=note-quarter o=note:41
+21 portato long
+//! c=legato i=note-eighth o=note:42
+24 portato short
+//! c=short-dark i=accented-half o=note:43
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:44
+52 marcato short
+//! c=short i=staccatissimo-stopped o=note:45
+42 staccatissimo
+//! c=short-dark i=crescendo o=note:46
+102 sfz cresc
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Horn FX KS"
+Bank 14 15 EW Horn FX KS
+//! c=long i=trill-maj2 o=note:36
+71 trill M2
+//! c=long i=crescendo o=note:37
+102 cresc slow
+//! c=long i=crescendo o=note:38
+106 cresc med
+//! c=long i=crescendo o=note:39
+107 cresc fast
+//! c=fx i=rip o=note:40
+100 rip shake slow
+//! c=fx i=rip o=note:41
+90 rip shake med
+//! c=fx i=rip o=note:42
+91 rip shake long
+//! c=long i=vibrato-molto o=note:43
+19 shake med
+//! c=long i=vibrato-molto o=note:44
+92 shake fast
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trombone KS"
+Bank 14 16 EW Trombone KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=accented-quarter o=note:37
+2 sus accent
+//! c=long-dark i=accented-half o=note:38
+9 sus marcato long
+//! c=legato i=legato o=note:39
+20 legato rep
+//! c=legato i=note-quarter o=note:40
+21 portato
+//! c=short-dark i=accented-half o=note:41
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:42
+52 marcato short
+//! c=short i=staccatissimo-stopped o=note:43
+42 staccatissimo
+//! c=short-dark i=crescendo o=note:44
+102 sfz cresc
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trombone FX KS"
+Bank 14 17 EW Trombone FX KS
+//! c=long i=crescendo o=note:36
+102 cresc slow
+//! c=long i=crescendo o=note:37
+106 cresc med
+//! c=long i=crescendo o=note:38
+107 cresc fast
+//! c=long i=tremolo-measured o=note:39
+11 fluttertongue
+//! c=fx i=rip o=note:40
+100 rip 
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trumpet KS"
+Bank 14 18 EW Trumpet KS
+//! c=long i=note-whole o=note:36
+1 sustain
+//! c=long i=vibrato o=note:37
+16 vibrato
+//! c=long i=vibrato-molto o=note:38
+90 exp vibrato
+//! c=long i=vibrato-molto o=note:39
+91 mariachi vibrato
+//! c=long i=accented-quarter o=note:40
+2 sus accent
+//! c=legato i=legato o=note:41
+20 legato rep
+//! c=short-dark i=accented-half o=note:42
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:43
+52 marcato short
+//! c=short i=staccato o=note:44
+40 staccato
+//! c=short i=staccatissimo-stopped o=note:45
+42 staccatissimo
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trumpet FX KS"
+Bank 14 19 EW Trumpet FX KS
+//! c=long i=trill-min2 o=note:36
+70 trill m2
+//! c=long i=trill-maj2 o=note:37
+71 trill M2
+//! c=long i=crescendo o=note:38
+102 cresc slow
+//! c=long i=crescendo o=note:39
+106 cresc med
+//! c=long i=crescendo o=note:40
+107 cresc fast
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Tuba KS"
+Bank 14 20 EW Tuba KS
+//! c=long i=note-whole o=note:72
+1 sustain
+//! c=long i=accented-quarter o=note:73
+2 sus accent
+//! c=long-dark i=accented-half o=note:74
+9 sus marcato long
+//! c=legato i=legato o=note:75
+20 legato rep
+//! c=legato i=note-quarter o=note:76
+21 portato
+//! c=short-dark i=accented-half o=note:77
+55 marcato long
+//! c=short-dark i=accented-quarter o=note:78
+52 marcato short
+//! c=short i=staccatissimo-stopped o=note:79
+42 staccatissimo
+
+//! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Tuba FX KS"
+Bank 14 21 EW Tuba FX KS
+//! c=long i=crescendo o=note:72
+102 cresc slow
+//! c=long i=crescendo o=note:73
+106 cresc med
+//! c=long i=crescendo o=note:74
+107 cresc fast
+//! c=long i=tremolo-measured o=note:75
+11 fluttertongue
+//! c=short-dark i=crescendo o=note:76
+102 sfz cresc

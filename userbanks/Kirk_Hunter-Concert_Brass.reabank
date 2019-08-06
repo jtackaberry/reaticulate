@@ -1,0 +1,136 @@
+
+//----------------------------------------------------------------------------
+// Source: Jason Lyon - https://forum.cockos.com/showpost.php?p=1966721&postcount=164
+//
+
+//! g="Kirk Hunter/Concert Brass 2" n="KH Fr Horn"
+Bank 18 1 KH - FrHn
+
+//! c=long i=legato o=note:85
+1 sustain
+//! c=long i=legato-slurred o=note:89
+2 adagio
+//! c=short i=marcato o=note:86
+54 acc pp
+//! c=short i=marcato o=note:87
+54 acc mf
+//! c=short i=marcato o=note:88
+54 acc ff
+//! c=short i=staccato o=note:90
+59 stacc
+
+//! c=short-dark i=rip o=note:23
+100 rip
+
+//! c=fx g=2 i=fx o=note:30
+106 solo
+//! c=fx g=2 i=fx o=note:29
+107 a2
+//! c=fx g=2 i=fx o=note:28
+108 a4
+//! c=fx g=2 i=fx o-note:27
+109 a8
+
+//----------------------------------------------------------------------------
+
+//! g="Kirk Hunter/Concert Brass 2" n="KH Tpt"
+Bank 18 2 KH - Tpt
+
+//! c=long i=legato o=note:25
+1 sustain
+//! c=long i=legato-slurred o=note:29
+2 adagio
+//! c=short i=marcato o=note:26
+54 acc pp
+//! c=short i=marcato o=note:27
+54 acc mf
+//! c=short i=marcato o=note:28
+54 acc ff
+//! c=short i=staccato o=note:30
+40 stacc
+
+//! c=short-dark i=rip o=note:23
+100 rip
+
+//! c=fx g=2 i=fx o=note:42
+106 solo
+//! c=fx g=2 i=fx o=note:41
+107 a2
+//! c=fx g=2 i=fx o=note:40
+108 a4
+
+//----------------------------------------------------------------------------
+
+//! g="Kirk Hunter/Concert Brass 2" n="KH Tbn"
+Bank 18 3 KH - Tbn
+
+//! c=long i=legato o=note:85
+1 sustain
+//! c=long i=legato-slurred o=note:89
+2 adagio
+//! c=short i=marcato o=note:86
+54 acc pp
+//! c=short i=marcato o=note:87
+54 acc mf
+//! c=short i=marcato o=note:88
+54 acc ff
+//! c=short i=staccato o=note:90
+40 stacc
+
+//! c=short-dark i=rip o=note:23
+100 rip
+
+//! c=fx g=2 i=fx o=note:30
+106 solo
+//! c=fx g=2 i=fx o=note:29
+107 a2
+//! c=fx g=2 i=fx o=note:28
+108 a4
+//! c=fx g=2 i=fx o-note:27
+109 a8
+
+//----------------------------------------------------------------------------
+
+//! g="Kirk Hunter/Concert Brass 2" n="KH Tuba"
+Bank 18 4 KH - Tuba
+
+//! c=long i=legato o=note:85
+1 sustain
+//! c=long i=legato-slurred o=note:89
+2 adagio
+//! c=short i=marcato o=note:86
+54 acc pp
+//! c=short i=marcato o=note:87
+54 acc mf
+//! c=short i=marcato o=note:88
+54 acc ff
+//! c=short i=staccato o=note:90
+40 stacc
+
+
+//----------------------------------------------------------------------------
+
+// KIRK HUNTER CONCERT BRASS LEGACY
+//
+
+//! g="Kirk Hunter/Concert Brass Legacy" n="KH Brass Ens"
+Bank 20 1 KH - Brass Ens
+
+//! c=long i=legato o=note:97
+1 sustain
+//! c=long i=legato-slurred o=note:101
+20 adagio
+//! c=long i=legato-slurred o=note:98
+21 allegro
+//! c=long i=legato-slurred o=note:99
+28 vivo
+//! c=long i=sfz o=note:102
+49 sfz
+//! c=short i=marcato o=note:100
+52 marc
+//! c=short i=staccato o=note:103
+40 staccato
+//! c=long i=con-sord o=note:104
+7 con sord
+//! c=long i=note-whole o=note:106
+109 senza sord

@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------------
+// Source: Kitarraman - https://forum.cockos.com/showpost.php?p=2141304&postcount=416
+//
+//! g="Native Instruments/Symphony Essentials/Brass Ensemble" n="Horns Ensemble (Multi)"
+//! m="All articulations are loaded across 3 instances of the patch on channels 1-3."
+Bank 12 91 Horns Ensemble
+//! c=#FF0000 i=note-whole o=note@1:24
+24 Sustain All
+//! c=#FF0000 i=note-whole o=note@1:25
+25 Sustain Single Tongue
+//! c=#FF0000 i=note-whole o=note@1:26
+26 Sustain Flutter Tongue
+//! c=#FF0000 i=trill o=note@1:27
+27 Trill Semi Tone
+//! c=#FF0000 i=crescendo o=note@1:28
+28 Sust. Crescendo
+//! c=#FF0000 i=decrescendo o=note@1:29
+29 Sust. Decrescendo
+//! c=#FF0000 i=stopped o=note@1:30
+30 Sust. Stop Mute
+//! c=#40FF00 i=staccato o=note@1:31
+31 Staccato
+//! c=#40FF00 i=staccato o=note@2:24
+32 Staccato Velocity
+//! c=#40FF00 i=staccatissimo-stopped o=note@2:25
+33 Stac. Stop Mute
+//! c=#00BFFF i=crescendo o=note@2:26
+34 Crescendo
+//! c=#00BFFF i=decrescendo o=note@2:27
+35 Decrescendo
+//! c=#00BFFF i=sfz o=note@2:28
+36 Sforzando
+//! c=#00BFFF i=sfz o=note@2:29
+37 Sfz Slow
+//! c=#00BFFF i=note-whole o=note@2:30
+38 Swell
+//! c=#00BFFF i=note-whole o=note@2:31
+39 Swell Slow
+//! c=#00BFFF i=staccatissimo-stopped o=note@3:24
+40 Marc Stop Mute
+//! c=#00BFFF i=fanfare o=note@3:25
+41 Blast
