@@ -15,7 +15,7 @@ Let's first get some terminology and basic operational stuff out of the way:
 
 * A __patch__ refers to a set of articulations offered by some virtual instrument on a single channel
     * For example Spitfire's Chamber Strings Ensembles patch running in Kontakt
-* A __Bank__ defines a set of articulations that typically describes some multi-articulation patch
+* A __bank__ defines a set of articulations that typically describes some multi-articulation patch
     * __Factory banks__ are distributed with Reaticulate and you won't directly change these, but
       you can use them
     * __User banks__ are custom banks made by you

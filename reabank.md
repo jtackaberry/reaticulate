@@ -11,7 +11,7 @@ assembles from both the distributed factory banks and your own custom banks.  Re
 REAPER's resource directory (which you can find by invoking the REAPER action "Show REAPER
 Resource path"), these files are:
 
-1. Factory banks: `Scripts/Reaticulate/app/Reaticulate-factory.reabank`
+1. Factory banks: `Scripts/Reaticulate/Reaticulate-factory.reabank`
 2. User banks: `Data/Reaticulate.reabank`
 
 (Reaticulate combines these files into a file it manages called `Data/Reaticulate-tmp*.reabank`.

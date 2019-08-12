@@ -24,14 +24,9 @@ Once you have ReaPack installed:
 1. Paste in this URL: `http://reaticulate.com/release.xml`
 1. Double click the newly added Reaticulate item in the repository list
 1. Click the `Install/update Reaticulate` button and select `Install all packages`
-1. Invoke the action `Script: Reaticulate_Main.lua` from the actions list
 
-<p class='warning'>
-    Tip: in Reaticulate's Settings page, you can configure it to automatically start
-    when Reaper starts.
-</p>
+Now's a good time to read more about [how to launch and use Reaticulate](usage).
 
-Now's a good time to read more about [how to use Reaticulate](usage).
 
 ### Living on the edge?
 
