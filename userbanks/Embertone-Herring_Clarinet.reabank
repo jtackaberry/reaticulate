@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------
 // Source: axb312 - https://vi-control.net/community/threads/reaticulate-articulation-management-for-reaper-0-3-0-now-available.66851/post-4326515
+//         Stevie - https://vi-control.net/community/threads/reaticulate-articulation-management-for-reaper-0-3-0-now-available.66851/post-4420939
 //
-
 //! g="Embertone" n="Herring Clarinet"
 //! chase=1,15,96
 //! m="Velocity less than 13 is portamento. Velocity at 127 is ornament"
@@ -16,7 +16,7 @@ Bank 3 1 Embertone Herring Clarinet
 //! c=short i=staccato o=note:38
 40 Short
 
-//! c=fx i=trill-min3 o=note:39
-36 Trill Minor hotkey
-//! c=fx i=trill-maj2 o=note:40
-37 Trill Major hotkey
+//! c=long i=trill-min2 o=note:36/note-hold:39
+70 Trill Minor
+//! c=long i=trill-maj2 o=note:36/note-hold:40
+71 Trill Major
