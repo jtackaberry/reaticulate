@@ -10,7 +10,7 @@ Bank 3 1 Embertone Herring Clarinet
 
 //! c=legato i=legato o=note:36/note:41
 20 Legato
-//! c=legato i=legato o=note:36/note:37
+//! c=legato i=legato o=note:36/note:41/note-hold:37
 21 Tongued Legato
 
 //! c=short i=staccato o=note:38
