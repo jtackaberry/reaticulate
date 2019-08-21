@@ -1857,6 +1857,13 @@ function rtk.Viewport:onscroll() end
 -------------------------------------------------------------------------------------------------------------
 
 rtk.Container = class('rtk.Container', rtk.Widget)
+-- Flexspaces can be added to boxes to consume all remaining available space
+-- (depending on box dimension) not needed by siblings in the same box.
+--
+-- BEWARE: Nesting boxes where the inner box is a non-expanded child of the
+-- outer box and has a flexspace will consume all remaining space from the outer
+-- box, even if the outer box has subsequent children.  Children after the
+-- flexspace will have no more available room (their bounding box will be 0).
 rtk.Container.static.FLEXSPACE = nil
 
 function rtk.Container:initialize(attrs)
@@ -3022,6 +3029,7 @@ function rtk.Label:initialize(attrs)
     self.label = 'Label'
     self.color = rtk.theme.text
     self.wrap = false
+    self.truncate = true
     self.font, self.fontsize, self.fontflags = table.unpack(rtk.fonts.label or rtk.fonts.default)
     self.fontscale = 1.0
     self.textalign = rtk.Widget.LEFT
@@ -3034,7 +3042,7 @@ function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
 
     local lw, lh
     rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
-    lw, lh, _, self.vlabel = rtk.layout_gfx_string(self.label, self.wrap, true,
+    lw, lh, _, self.vlabel = rtk.layout_gfx_string(self.label, self.wrap, self.truncate,
                                                    boxw - self.lpadding - self.rpadding,
                                                    boxy - self.tpadding - self.bpadding,
                                                    self.textalign)
