@@ -22,11 +22,16 @@ local screen = {
 }
 
 function screen.init()
-    screen.widget = rtk.Container:new()
-    local box = screen.widget:add(rtk.VBox:new(), {halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1})
+    screen.error_icon = rtk.Image:new(Path.join(Path.imagedir, "alert_circle_outline_white_96x96.png"))
 
-    screen.message = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}, wrap=true, textalign=rtk.Widget.CENTER})
-    box:add(screen.message, {halign=rtk.Widget.CENTER})
+    screen.widget = rtk.Container:new()
+    local box = screen.widget:add(rtk.VBox:new(), {halign='center', valign='center', expand=1})
+
+    screen.icon = rtk.ImageBox:new({image=screen.error_icon, alpha=0.5})
+    box:add(screen.icon, {halign='center', bpadding=20})
+
+    screen.message = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}, wrap=true, textalign='center'})
+    box:add(screen.message, {halign='center', lpadding=10, rpadding=10})
 
     icon = rtk.Image:new(Path.join(Path.imagedir, "add_circle_outline_white_18x18.png"))
     screen.button = rtk.Button:new({
@@ -35,13 +40,11 @@ function screen.init()
         tpadding=5, bpadding=5, lpadding=5, rpadding=10
     })
     screen.button.onclick = function()
-        -- This is infuriating and much lamer than it should be just to install an FX
-        -- at the top of the chain.  I pine for mature APIs.
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock()
         local fx = reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, 1)
         reaper.TrackFX_CopyToTrack(app.track, fx, app.track, 0, true)
-        reaper.Undo_EndBlock("Add Reaticulate FX", -1)
+        reaper.Undo_EndBlock("Add Reaticulate FX", UNDO_STATE_FX)
         reaper.PreventUIRefresh(-1)
         rfx.sync(rfx.track, true)
         -- Trigger the track changed callback to ensure any actions dependend on the RFX are
@@ -50,7 +53,7 @@ function screen.init()
         screen.update()
     end
 
-    box:add(screen.button, {halign=rtk.Widget.CENTER, tpadding=20})
+    box:add(screen.button, {halign='center', tpadding=20})
 end
 
 function screen.update()
@@ -60,13 +63,30 @@ function screen.update()
     if app.track then
         local enabled = reaper.GetMediaTrackInfo_Value(app.track, "I_FXEN")
         if enabled == 1 then
-            label = 'Reaticulate is not enabled for this track'
-            screen.button:show()
+            if rfx.error and rfx.error ~= rfx.ERROR_MISSING_RFX then
+                if rfx.error == rfx.ERROR_RFX_BYPASSED then
+                    label = 'The Reaticulate FX on this track is bypassed'
+                elseif rfx.error == rfx.ERROR_UNSUPPORTED_VERSION then
+                    label = 'The version of the Reaticulate FX on this track is not supported.\nTry restarting Reaper to ensure the latest versions of all scripts are running.'
+                elseif rfx.error == rfx.ERROR_BAD_MAGIC then
+                    label = 'The Reaticulate FX on this track is not recognized.'
+                else
+                    label = string.format('An unknown error has occurred with the Reaticulate FX (%s)', rfx.error)
+                end
+                screen.icon:show()
+                screen.button:hide()
+            else
+                label = 'Reaticulate is not enabled for this track'
+                screen.icon:hide()
+                screen.button:show()
+            end
         else
             label = 'Unbypass FX chain to enable'
+            screen.icon:show()
             screen.button:hide()
         end
     else
+        screen.icon:hide()
         screen.button:hide()
     end
     if label ~= screen.message.label then
