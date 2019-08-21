@@ -89,10 +89,13 @@ function BaseApp:add_screen(name, package)
     if type(screen) == 'table' and screen.init then
         screen.init()
         screen.name = name
-        if screen.toolbar then
-            screen.toolbar:hide()
-            self.toolbar:insert(1, screen.toolbar)
+        if not screen.toolbar then
+            -- Create a dummy toolbar for this screen to ensure app-wide toolbar
+            -- remains pushed to the right.
+            screen.toolbar = rtk.Spacer({h=0})
         end
+        screen.toolbar:hide()
+        self.toolbar:insert(1, screen.toolbar, {expand=1, fillw=true})
         screen.widget:hide()
     end
 end
@@ -112,7 +115,12 @@ function BaseApp:show_screen(screen)
         if self.viewport then
             self.viewport:attr('child', screen.widget)
         else
-            self.frame:replace(self.frame.content_position, screen.widget, {expand=1, fillw=true, fillh=true})
+            self.frame:replace(self.frame.content_position, screen.widget, {
+                expand=1,
+                fillw=true,
+                fillh=true,
+                minw=screen.minw
+            })
         end
         if screen.toolbar then
             screen.toolbar:show()
@@ -285,11 +293,10 @@ end
 
 function BaseApp:build_frame()
     local toolbar = rtk.HBox:new({spacing=0, bg=rtk.theme.window_bg})
-    toolbar:add(rtk.HBox.FLEXSPACE)
     self.toolbar = toolbar
 
     self.frame = rtk.VBox:new({position=rtk.Widget.FIXED, z=100})
-    self.frame:add(toolbar)
+    self.frame:add(toolbar, {minw=150})
 
     -- Add a placeholder widget that screens will replace.
     self.frame:add(rtk.VBox.FLEXSPACE)
