@@ -14,28 +14,33 @@
 
 desc:Reaticulate
 
-// byte 0: bits 0-3: program serial which increments when program has changed
-//         bits 4-7: notes serial which increments when notes have changed.
-//         Serial wraps as needed.
+// Attach to the global shared buffer for communication to the main Lua script.
+// This requires Reaper 5.97 or later.  See GMEM_IDX_* constants below.
+options:gmem=reaticulate
+
+// byte 0: serial to indicate gmem appdata has changed.  Wraps as needed.
 // byte 1: reabank version (mod 256)
 // byte 2: version
 // byte 3: magic
+//
 // Defaults to RFX_MAGIC + RFX_VERSION consts (defined below)
-slider1:704708608<0,2147483647,1>-Reaticulate metadata
-// Ideally we'll manage to keep everything we need in slider1 for constant
-// polling, but we'll reserve this one just in case.
-slider2:0<0,2147483647,1>-Reserved for future use
+slider1:704708608<0,2147483647,1>Reaticulate metadata
+
+// The index within the gmem buffer for the start of this instance's data
+slider2:0<0,2147483647,1>gmem index
 
 // Bitmap of MIDI channels with active (held) notes.  Used by the
 // GUI to indicate activity on channels.
 slider3:0<0,2147483647,1>-Active Notes
 
-slider4:0<0,2147483647,1>-Unused
+slider4:0<0,2147483647,1>instance id
 slider5:0<0,2147483647,1>-Unused
 slider6:0<0,2147483647,1>-Unused
 slider7:0<0,2147483647,1>-Unused
 slider8:0<0,2147483647,1>-Unused
-slider9:0<0,2147483647,1>-Unused
+
+// For debugging
+slider9:0<0,16,1>Show debug info for channel
 
 // This group of sliders communicates information about each MIDI channel
 // back to the GUI.  Each slider value is defined as:
@@ -43,8 +48,8 @@ slider9:0<0,2147483647,1>-Unused
 //     byte 1: current program number for group 2; 128 == disabled
 //     byte 2: current program number for group 3; 128 == disabled
 //     byte 3: current program number for group 4; see slider26 for disabled
-slider10:8421504<0,2147483647,1>-Reaticulate data for channel 1
-slider11:8421504<0,2147483647,1>-Reaticulate data for channel 2
+slider10:8421504<0,2147483647,1>Reaticulate data for channel 1
+slider11:8421504<0,2147483647,1>Reaticulate data for channel 2
 slider12:8421504<0,2147483647,1>-Reaticulate data for channel 3
 slider13:8421504<0,2147483647,1>-Reaticulate data for channel 4
 slider14:8421504<0,2147483647,1>-Reaticulate data for channel 5
@@ -106,15 +111,14 @@ slider59:0<0,2147483647,1>-Reaticulate Track Data 29
 
 slider60:0<0,2147483647,1>-Unused
 slider61:0<0,2147483647,1>-Unused
-slider62:0<0,2147483647,1>-Unused
+slider62:0<0,2147483647,1>History Serial
 
-// For debugging
-slider63:0<0,16,1>Show debug info for channel
+slider63:0<0,2147483647,1>-Unused
 
 
-// Special assembler-esque interface used by the GUI for programming
-// the RFX.  See OPCODE_* constants below.
-slider64:0<0,2147483647,1>-opcode
+// Special assembler-esque interface used by the GUI for programming the RFX.
+// See OPCODE_* constants below.
+slider64:42<0,2147483647,1>opcode
 
 in_pin:none
 out_pin:none
@@ -141,17 +145,116 @@ MAX_GROUPS = 4;
 MAX_HELD_KEYSWITCHES = 8;
 MAX_BANKS = 16;
 MAX_CHANNELS = 16;
+MAX_UNDO_SLOTS = 100;
 
-// Opcode is the high byte of slider 64.  Up to 128 opcodes supported (since
-// the high byte loses the MSB for signedness).
+// The GMEM_IDX_* constants refer to the index number within the gmem shared
+// buffer. These are initialized by the main script.
 //
-// Each opcode takes 3 8-bit arguments (the lower bytes of slider 64) where
-// the semantics of each argument is defined by the specific opcode.
+// If this index is set to GMEM_MAGIC then we know the main script as
+// initialized the global parameters (rfx offset, stride, etc)
+GMEM_GIDX_MAGIC = 0;
+GMEM_MAGIC = 0xbadc0de;
+
+// Version number of gmem communication protocol with main script.  If this
+// value changes on us, we must reinitialize our instance gmem based on the
+// global parameters.
+GMEM_GIDX_VERSION = 1;
+// A monotonically increasing serial as set by the main script.  We use it to
+// determine if the main script has restarted, and if so, we reset our gmem
+// index and await a new assignment.
+GMEM_GIDX_SERIAL = 2;
+// A bitmap that tracks available RFX instance ids, used to calculate our
+// gmem_index.  See gmem_allocate().
+GMEM_GIDX_ID_BITMAP_OFFSET = 3;
+// The default channel used by the main app.  Cached in default_channel.
+GMEM_GIDX_DEFAULT_CHANNEL = 4;
+GMEM_GIDX_RFX_OFFSET = 5;
+GMEM_GIDX_RFX_STRIDE = 6;
+
+
+// Offset for sequence of opcodes relative to gmem_index (see OPCODE_*).
 //
-// Do nothing.  (Programmer slider is in this state by default.)
+// Slot 0 at this offset is the size of the committed opcode queue length, while
+// slot 1 is the size of the uncommitted queue length.
+//
+// Afterward there are 1 or more opcode records.  See OPCODE_* below for more.
+GMEM_GIDX_OPCODES_OFFSET = 20;
+// Offset for data dumps from the main app relative to gmem_index.
+GMEM_GIDX_APP_DATA_OFFSET = 21;
+
+// Offset for start of RFX instance data.  The arrangement of the instance data
+// is dependent on RFX_VERSION.
+//
+// When the serial portion of slider1 (byte 0) changes, the main script will
+// read the instance data.  The arrangement of instance data attempts to be
+// extensible and forward compatible, and there is some optimization to ensure
+// the main script doesn't need to read everything.
+//
+// RFX_VERSION 2
+//
+//   slot 0: bitmap of things that have changed.  RFX sets, main script clears.
+//     bit 0: unused
+//     bit 1: active notes
+//     bit 2: programs
+//     bit 3: CCs for default channel
+//
+//    slots 1-32: each of these slots contains an offset within the instance
+//                data buffer for the type of data described by bits 1-31 of
+//                slot 0.  Offset is encoded in bits 0-15 and length in bits
+//                16-31.
+//
+//   slot[slot[1] & 0xffff] (active notes):
+//   - Bitmap of MIDI channels with active (held) notes.  Used by the
+//     GUI to indicate activity on channels.
+//
+//   slot[slot[2] & 0xffff] (programs):
+//    - groups of 16 slots that define programs on group n
+//      slot 0: program for channel 1 on group 1
+//      slot 1: program for channel 2 on group 1
+//      ...
+//      slot 15: program for channel 16 group 1
+//
+//      This arrangement allows support of more than 4 groups.  It's a bit
+//      wasteful in that we're leaving bits 9-31 unused but that space can
+//      be used for future purposes, and with the gmem buffer we aren't as
+//      constrained for space as we were with sliders.
+//
+//   slot[slot[3] & 0xffff] (CC):
+//    - 128 slots, where each slot[n] represents the value for CC n on
+//      the default channel.
+
+GMEM_GIDX_INSTANCE_DATA_OFFSET = 22;
+
+
+// A bitmap of things the main script is interested in having us process, such
+// as writing certain instance data, feedback to controller, etc.  (Current
+// programs is implied.)
+GMEM_GIDX_SUBSCRIPTION_OFFSET = 23;
+
+
+// Starting at slot 3 of opcodes gmem region are 1 or more opcode record.
+// An opcode record consists of 1 or more slots where:
+//       Slot 0: bits 0-7 is the opcode and bits 8-15 are the number of args
+//    Slot 1..n: opcode arguments where n is the number of args
+//               depending on the opcode
+//
+// As this is stored in the gmem buffer, each slot is a 32-bit value.
+//
+
+// Most of the opcode parameters assume only 8-bit sizes rather than
+// 32 bits, which is a relic of a previous design.  This can be optimized
+// in the future.
+
+
+// DEPRECATED: do nothing.
 OPCODE_NOOP = 0;
-// Clear all configuration (articulations, etc.).  No arguments.
+
+// Clear all configuration (articulations, etc.).  If reset is non-zero, then
+// current programs will also be reset (TODO).
+// (reset)
 OPCODE_CLEAR = 1;
+
+// Activates the articulation on the given channel.
 // (channel, program)
 OPCODE_ACTIVATE_ARTICULATION = 2;
 
@@ -203,6 +306,35 @@ OPCODE_SET_BANK_CHASE_CC = 10;
 // (filter_program)
 OPCODE_SET_OUTPUT_EVENT_INFO1 = 11;
 
+// Sets the opaque app data.  No arguments are needed: all details are
+// stored in the gmem offset for appdata.
+// ()
+OPCODE_SET_APPDATA = 12;
+
+// Unsets the current articulation for the given channel and group.
+//
+// (channel, group)
+OPCODE_CLEAR_ARTICULATION = 13;
+
+// Push current program state onto the history stack based on the current value
+// of the undo serial slider.  We watch for changes to the undo serial slider
+// to detect when an undo has occurred.
+// ()
+OPCODE_PUSH_HISTORY = 14;
+
+// Updates the gmem instance data region with the current state of the CCs.
+// Called by the main script when the main script when the default channel
+// changes.
+// ()
+OPCODE_UPDATE_CURRENT_CCS = 15;
+
+
+// Sets the things we need to update the gmem instance data for (active
+// notes, CCs, etc.).  See SUBSCRIPTION_* constants below.  Enabling a
+// subscription will cause an immediate sync to the instance data.
+//
+// (subscription_bitmap)
+OPCODE_SUBSCRIBE = 16;
 
 
 // Constants that apply to the flags parameter for OPCODE_SET_ARTICULATION_INFO
@@ -224,10 +356,40 @@ OUTPUT_TYPE_NOTE_HOLD = 4;
 OUTPUT_TYPE_ARTICULATION = 5;
 
 
-// bits 0-3 of slider 1
-program_serial = 0;
-// bits 4-7 of slider 1
-notes_serial = 0;
+// Constants for the subscription bitmap for OPCODE_SUBSCRIBE.
+SUBSCRIPTION_NONE = 0;
+SUBSCRIPTION_CC = 1 << 0;
+SUBSCRIPTION_NOTES = 1 << 1;
+
+
+// LSB of slider 1
+change_serial = -1;
+// If 1, increments the change_serial at the end of @block
+queue_increment_serial = 0;
+
+
+undo_serial = -1;
+
+// The global instance number of this RFX.  Initialized in @serialize
+instance_id = -1;
+// The gmem offset for communication with the main script.  All instances
+// share the gmem buffer, and each instance gets its own space in the buffer.
+// There are 8M 32-bit slots available in the gmem buffer.  The main script
+// sets our gmem index by updating slider 2.
+gmem_index = 0;
+
+// gmem[GMEM_GIDX_SERIAL] is set by the main script and is a monotonically
+// increasing serial (wall clock basically).  gmem_serial is a copy of this
+// value at the time gmem_index is initialized.  If at any time
+// gmem[GMEM_GIDX_SERIAL] != gmem_serial then it means the main script has
+// restarted.
+gmem_serial = 0;
+gmem_version = 0;
+
+// 0 = stored data not yet deserialized, JSFX not initialized
+// 1 = stored data deserialized, gmem index alocated
+// 2 = First execution of @block has occurred
+instantiating = 0;
 
 // Persisted, and tracks the version of the serialized instance data
 serialized_version = 0;
@@ -245,9 +407,7 @@ _dummy = 21000;
 //
 // The value is the has the requested program for the channel in b0 and b1
 // contains 0x01 if the activation has yet to occur, or 0x02 if it occurred.
-// This is needed to filter duplicate program changes, because when an
-// articulation is activated from the GUI, it sends both a MIDI event and
-// OPCODE_ACTIVATE_ARTICULATION.
+// This is needed to filter duplicate program changes.
 pending_activations = 20200; // size: 16
 // Non-zero if the pending_activations array needs to be enumerated
 // on the next @block.
@@ -343,12 +503,17 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 //      bits 4-7: group number
 //        byte 1: articulation flags
 //        byte 2: "off" (release) program for articulations with note-hold outputs.
+//
 // Slot 1: v0+
 //      bits 0-3: source channel
 //      bits 4-7: articulation record version
 //     bytes 1-2: indicates the offset (from 0) into the banks array this
 //                articulation belongs to.
+//
+// TODO: https://github.com/jtackaberry/reaticulate/issues/72
 // Slot 2: v1+ - reserved for future expansion
+// Slot 3-?: v2+
+
 //
 // Following the base articulation information slots, there are n*m slots for
 // output events, where n is the # of output events and m is dependent on
@@ -362,11 +527,23 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 //     bits 8-14: parameter 1 (context depends on output type)
 //        bit 15: if set, this output event should not setup channel routing
 //    bits 16-22: parameter 2 (context depends on output type)
-// Slot 1: v1
+// TODO: https://github.com/jtackaberry/reaticulate/issues/42
+//        bit 23: if set, use current routing for destination and ignore
+//                bits 4-7
+// Slot 1: v1+
 //      bits 0-6: filter program number: if this program isn't already activated
 //                in another group on the same channel, then the output event
 //                will not be emitted.
 //         bit 7: if set, filtering will be performed.
+// TODO: https://github.com/jtackaberry/reaticulate/issues/73
+//     bits 8-11: the MIDI bus number for the articulation (0 = bus 1).
+//                v0 output events are always on bus 1.
+// TODO: https://github.com/jtackaberry/reaticulate/issues/74
+//        bit 12: if set, send to all MIDI channels on the defined bus.
+// TODO: https://github.com/jtackaberry/reaticulate/issues/10
+//    bits 13-19: parameter 2 upper limit (if 0, then not a range)
+//
+
 articulations = 200000; // size: (3 + 16*2) * 128 * 16 = 71680 (upper bound for v1)
 
 // The last articulation created by OPCODE_NEW_ARTICULATION.
@@ -395,6 +572,15 @@ articulations_by_output_event = 300000; // size: (256 + 128 * 128) * 16 = 266240
 //
 // Regenerated on instantiation.
 program_by_articulation = 600000; // size: (2 + 16) * 128 * 16 = 36864 (upper bound)
+
+
+
+// When activate() is called, keeps track of all articulation programs that were
+// triggered to prevent infinite recursion (by means of art output event types).
+// This is 4 slots where each slot is a 32-bit bitmap, representing all 128
+// programs.
+activated_programs = 640000; // size: 4
+
 
 
 // Given a source channel and group number, we need to identify currently held
@@ -458,6 +644,41 @@ last_new_bank = 0;
 // Last PC mpos delta by channel.  Events must be offset by this amount to ensure they
 // follow articulation output events.
 program_change_mpos_delta = 670000; // size: 16
+
+// Current programs on each channel indexed by group.  Arranged in sets of 4
+// consecutive slots, with each set of 4 representing a different articuulation
+// group.  The 4 slots hold the program number for 16 MIDI channels.  See
+// GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the same.
+current_programs = 670100;
+current_programs_len = 16 * MAX_GROUPS;
+
+// Length of appdata array.
+appdata_len = 0;
+// Length of original appdata passed by app before having been expanded
+// to avoid MSB clobbering caused by JS serialization.
+appdata_orig_len = 0;
+
+// This appdata is serialized.
+appdata = 680000;  // size:  40000 (upper bound)
+
+// Maps undo serial (index) to the position in the undo_history array.
+// We support 100 different undo history states.  This is treated as a
+// ring buffer.
+HISTORY_SLOT_SIZE = current_programs_len;
+undo_history = 1000000 + MAX_UNDO_SLOTS;
+
+// Bitmap of SUBSCRIPTION_* constants based on last OPCODE_SUBSCRIBE
+subscriptions = SUBSCRIPTION_NONE;
+
+
+
+function increment_serial()
+(
+    change_serial = (change_serial + 1) % 256;
+    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ff00) | change_serial;
+    sliderchange(1);
+);
+
 
 function get_articulation_version_record_size(version)
 (
@@ -524,34 +745,21 @@ function get_articulation(channel, program)
 );
 
 
-function is_program_active(channel, program)
-local(control)
-(
-    control = slider(SLIDER_OFFSET_CONTROL + channel);
-    (control & 0xff == program ||
-     (control & 0xff00) >> 8 == program ||
-     (control & 0xff0000) >> 16 == program ||
-     ((control & 0x7f000000) >> 24 == program && slider26 & (1 << channel) != 0)
-    );
-);
-
-
-function is_program_active_for_group(channel, group, program)
-(
-    (group < 3) ? (
-        program < 128;
-    ) : (
-        slider26 & (1 << channel) != 0;
-    );
-);
-
-
 function get_active_program(channel, group)
 local(program)
 (
-    program = (slider(SLIDER_OFFSET_CONTROL + channel) >> (group * 8)) & 0xff;
-    is_program_active_for_group(channel, group, program) ? program : -1;
+    program = current_programs[(group * MAX_CHANNELS) + channel];
+    program == 128 ? -1 : program;
 );
+
+function is_program_active(channel, program)
+(
+    get_active_program(channel, 0) == program ||
+    get_active_program(channel, 1) == program ||
+    get_active_program(channel, 2) == program ||
+    get_active_program(channel, 3) == program;
+);
+
 
 
 function get_active_articulation(channel, group)
@@ -668,26 +876,399 @@ function get_output_event_filter_program(event)
 );
 
 
+function gmem_write_current_ccs()
+local(offset, poffset, channel, i)
+(
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    poffset = offset + (gmem[offset + 3] & 0xff);
+    channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
+    i = 0; loop(128,
+        gmem[poffset + i] = last_ccs_by_channel[channel * 16 + i];
+        i += 1;
+    );
+    gmem[offset] |= (1 << 3);
+);
+
+function gmem_write_current_programs()
+local(offset, poffset, i)
+(
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    // Write current programs to gmem buffer.
+    poffset = offset + (gmem[offset + 2] & 0xff);
+    i = 0; loop(current_programs_len,
+        gmem[poffset + i] = current_programs[i];
+        i += 1;
+    );
+    gmem[offset] |= (1 << 2);
+);
+
+
+function gmem_write_active_notes()
+local(offset, bitmap, notes, i)
+(
+    bitmap = 0;
+    notes = active_notes_by_channel;
+    i = 0; loop(16,
+        (notes[0] || notes[1] || notes[2] || notes[3] || notes[4]) ? (
+            bitmap |= (1 << i);
+        );
+        i += 1;
+        notes += 5;
+    );
+
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    (gmem[offset + 33] != bitmap) ? (
+        gmem[offset + 33] = bitmap;
+        gmem[offset] |= (1 << 1);
+        // Return 1 to indicate active notes bitmap changed.
+        1;
+    ) : (
+        // Return 0 to indicate active notes bitmap did not change.
+        0;
+    );
+);
+
+// This function initializes the instance's region in the gmem buffer, and
+// assumes a gmem instance index has already been allocated via gmem_allocate(),
+function gmem_init()
+local(offset, poffset, i)
+(
+    slider2 = gmem_index;
+    gmem_serial = gmem[GMEM_GIDX_SERIAL];
+
+    // ping = gmem[gmem_index + 2];
+    // gmem[gmem_index + 2] = ping + 1;
+
+    // Copy user data.  memcpy() does *not* work for gmem buffers.
+    offset = gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET];
+    gmem[offset + 0] = 1;
+    gmem[offset + 1] = appdata_orig_len;
+    gmem[offset + 2] = appdata_len;
+    i = 0; loop(appdata_len,
+        gmem[offset + 3 + i] = appdata[i];
+        i += 1;
+    );
+
+    //
+    // Write instance data to notify main script of current programs, CCs, etc.
+    //
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+
+    // First store offsets so main script knows where to look
+    //
+    // Active notes: size is just 1 slot
+    gmem[offset + 1] = (33) | (1 << 16);
+    // Current programs.  Size is 16 slots per group * MAX_GROUPS
+    gmem[offset + 2] = (33 + 1) | ((MAX_CHANNELS * MAX_GROUPS) << 16);
+    // Current CCs on default channel.  Size is 128 slots (for 128 CCs).
+    gmem[offset + 3] = (33 + 1 + (MAX_CHANNELS * MAX_GROUPS)) | (128 << 16);
+
+    gmem_write_current_programs();
+    gmem_write_current_ccs();
+);
+
+
+
+// Allocate a gmem index for this instance.
+//
+// The first order of business is to determine a unique instance id.  The
+// gmem buffer contains 100 slots for this purpose, acting as a giant
+// 3200 bit wide bitmap.  This means we can support up to 3200 RFX instances
+// across all currently loaded projects.  Should be enough. ;)
+//
+// We use an atomic test-and-set to reserve one of the instance slots, after
+// which time we update slider2 with the gmem index (via gmem_init() above).
+// At that point the main app is able to communicate with us via our gmem
+// instance region.
+//
+// The JSFX only ever reserves ids.  We rely on the main script to periodically
+// scan all current RFX instances and zero bits that refer to dead instances.
+// See rfx.gc() in the main app for more details.
+function gmem_allocate()
+local(version, offset, i, bitmap, bit, curval)
+(
+    version = gmem[GMEM_GIDX_VERSION];
+    (version != gmem_version && gmem[GMEM_GIDX_MAGIC] == GMEM_MAGIC) ? (
+        // Find first available instance id.
+        offset = gmem[GMEM_GIDX_ID_BITMAP_OFFSET];
+        i = 0;
+        while (instance_id == -1 && i < 100) (
+            bitmap = gmem[offset + i];
+            (bitmap != 0xffffffff) ? (
+                // There is at least one available instance id at this slow.
+                bit = 0;
+                while (instance_id == -1 && bit < 32) (
+                    (bitmap & (1 << bit) == 0) ? (
+                        // We found an available instance idea.  Try to claim it.
+                        curval = atomic_setifequal(gmem[offset + i], bitmap, bitmap | (1 << bit));
+                        (curval == bitmap) ? (
+                            // The candidate instance id is now claimed.
+                            instance_id = i * 32 + bit;
+                        );
+                    );
+                    bit += 1;
+                );
+            );
+            i += 1;
+        );
+        (instance_id != -1) ? (
+            gmem_index = gmem[GMEM_GIDX_RFX_OFFSET] + (instance_id * gmem[GMEM_GIDX_RFX_STRIDE]);
+            gmem_version = version;
+            gmem_init();
+        ) : (
+            // No available slots.
+            gmem_index = 0;
+            gmem_serial = 0;
+            gmem_version = 0;
+        );
+    );
+);
+
+function exec_opcode(opcode, a0, a1, a2, argc, argi)
+local(offset, bitmap, channel, num_outputs, event, program_offset, offset, version, i)
+(
+    (opcode == OPCODE_CLEAR) ? (
+        // Nuke it all from orbit.
+        memset(all_articulation_flags_by_channel, 0, 16);
+        memset(articulations_offsets, -1, 16 * 128);
+        memset(articulations_ptr, 0, 16 * 128);
+        memset(articulations, 0, (2 + 16) * 128 * 16);
+        memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
+        memset(program_by_articulation, 0, (2 + 16) * 128 * 16);
+        memset(banks, 0, MAX_CHANNELS * MAX_BANKS * 10);
+        articulations_len = 0;
+        last_new_articulation = 0;
+        last_new_output_event = 0;
+        banks_len = 0;
+        last_new_bank = 0;
+    );
+
+    // Arguments: (channel+version, msb, lsb)
+    (opcode == OPCODE_NEW_BANK) ? (
+        channel = a0 & 0x0f;
+        version = (a0 & 0xf0) >> 4;
+        last_new_bank = banks + banks_len;
+
+        // Now that the space is reserved, reset the events counter which we
+        // increment for each new event.
+        last_new_bank[0] = a0 | (a1 << 8) | (a2 << 16);
+        banks_len += get_bank_version_record_size(version);
+    );
+
+
+    // Arguments: (cc)
+    (opcode == OPCODE_SET_BANK_CHASE_CC) ? (
+        offset = floor(a0 / 24);
+        bitmap = 1 << (a0 - (offset * 24));
+        last_new_bank[1 + offset] |= bitmap;
+    );
+
+
+    // Arguments: (channel+version, program, num groups/outputs)
+    (opcode == OPCODE_NEW_ARTICULATION) ? (
+        channel = a0 & 0x0f;
+        // Number of events we need to reserve.
+        num_outputs = a2 & 0x0f;
+        last_new_articulation = articulations + articulations_len;
+
+        // Map new articulation to program/channel.
+        program_by_articulation[articulations_len] = a1 | (channel << 8);
+
+        articulations_offsets[channel * 128 + a1] = last_new_articulation - articulations;
+        articulations_ptr[channel * 128 + a1] = last_new_articulation;
+
+        // Now that the space is reserved, reset the events counter which we
+        // increment for each new event.
+        last_new_articulation[0] = a2 & 0xf0;
+        last_new_articulation[1] = a0 | (banks_len << 8);
+        articulations_len += get_articulation_output_event_offset(last_new_articulation, num_outputs);
+
+        last_new_articulation[0] = (last_new_articulation[0] & 0x7f0000ff) |
+                                   (gmem[argi + 3] << 8) | (gmem[argi + 4] << 16);
+    );
+
+    // Arguments: (type+dstchannel, param1+noroute, param2)
+    (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
+        // Get current number of output events for articulation to act as the index for the
+        // one being added now.
+        num_outputs = get_articulation_num_outputs(last_new_articulation);
+
+        // Get pointer to current output event.
+        event = last_new_articulation + get_articulation_record_size(last_new_articulation);
+        last_new_output_event = event;
+        event[0] = a0 | (a1 << 8) | (a2 << 16);
+
+        // v1 output events have additional options
+        get_articulation_version(last_new_articulation) >= 1 ? (
+            // filter program + filter enabled
+            event[1] = gmem[argi + 3];
+        );
+
+        // Increment events count.
+        last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
+
+        // Map output event back to articulation
+        update_output_event_map(a0 & 0x0f, a1, a2, last_new_articulation, num_outputs);
+    );
+
+    // Arguments: (channel, program)
+    (opcode == OPCODE_ACTIVATE_ARTICULATION) ? (
+        // FIXME: this needs to support multiple groups per channel
+        // 0x01 in byte 1 indicates the program requires activation.
+        pending_activations[a0] = a1 | 0x0100;
+        have_pending_activations = 1;
+    );
+
+    // Arguments: (channel group)
+    (opcode == OPCODE_CLEAR_ARTICULATION) ? (
+        program_offset = (a1 * MAX_CHANNELS) + a0;
+        current_programs[program_offset] = 128;
+
+        offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+        gmem[offset + 34 + program_offset] = 128;
+        gmem[offset] |= (1 << 2);
+        queue_increment_serial = 1;
+    );
+
+    // Arguments: (what)
+    (opcode == OPCODE_SYNC_TO_FEEDBACK_CONTROLLER) ? (
+        midi_feedback_sync_pending |= a0;
+    );
+
+    // Arguments: (enabled, bus)
+    (opcode == OPCODE_SET_CC_FEEDBACK_ENABLED) ? (
+        midi_feedback = (a1 & 0x0f) | (!!a0 << 4);
+    );
+
+    // Arguments: none
+    (opcode == OPCODE_SET_APPDATA) ? (
+        offset = gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET];
+        version = gmem[offset + 0];
+        (version == 1) ? (
+            appdata_orig_len = gmem[offset + 1];
+            appdata_len = gmem[offset + 2];
+            i = 0; loop(appdata_len,
+                appdata[i] = gmem[offset + 3 + i];
+                i += 1;
+            );
+        );
+    );
+
+    // Arguments: none
+    (opcode == OPCODE_PUSH_HISTORY) ? (
+        memcpy(undo_history + (slider62 * current_programs_len), current_programs, current_programs_len);
+        slider62 = (slider62 + 1) % MAX_UNDO_SLOTS;
+        undo_serial = slider62;
+        sliderchange(62);
+    );
+
+    // Arguments: none
+    (opcode == OPCODE_UPDATE_CURRENT_CCS) ? (
+        gmem_write_current_ccs();
+        queue_increment_serial = 1;
+    );
+
+    // Arguments: (bitmap of SUBSCRIPTION_* values)
+    (opcode == OPCODE_SUBSCRIBE) ? (
+        (a0 & SUBSCRIPTION_CC != 0 && subscription & SUBSCRIPTION_CC == 0) ? (
+            gmem_write_current_ccs();
+        );
+        (a0 & SUBSCRIPTION_NOTES != 0 && subscription & SUBSCRIPTION_NOTES == 0) ? (
+            gmem_write_active_notes();
+        );
+        (a0 != subscription) ? (
+            subscription = a0;
+            queue_increment_serial = 1;
+        )
+    );
+);
+
+
+function process_pending_opcodes()
+local(idx, n_opcodes, queue_size, argc)
+(
+    (gmem_index > 0) ? (
+        idx = opidx = gmem_index + gmem[GMEM_GIDX_OPCODES_OFFSET];
+        queue_size = gmem[idx];
+        (queue_size > 0) ? (
+            // First two slots in the opcode region are commited length and pending length.
+            // Skip over those.
+            idx += 2;
+            while (queue_size > 0) (
+                // Number of arguments for this opcode
+                argc = (gmem[idx + 0] >> 8) & 0xff;
+                // Execute the opcode, passing the first 3 directly as they are the most common,
+                // and then passing the gmem index for the opcode args in case more need to
+                // be accessed.
+                exec_opcode(gmem[idx + 0] & 0xff, gmem[idx + 1], gmem[idx + 2], gmem[idx + 3], argc, idx + 1);
+                // Increment index by the number of arguments plus 1 for the opcode itself
+                idx += argc + 1;
+                queue_size -= argc + 1;
+            );
+            // Zero out committed opcode queue size.  This unblocks main app
+            // from enqueuing more opcodes.
+            gmem[opidx] = 0;
+        );
+
+        /*
+        n_opcodes = gmem[idx];
+        (n_opcodes > 0) ? (
+            gmem[idx] = 0;
+            idx += 2;
+            loop(n_opcodes,
+                exec_opcode(gmem[idx + 0], gmem[idx + 1], gmem[idx + 2], gmem[idx + 3]);
+                idx += 4;
+            );
+        );
+        */
+    );
+);
+
+
+function process_undo(slot)
+local(idx, offset, channel, group, program)
+(
+    idx = slot * current_programs_len;
+    group = 0; loop(MAX_GROUPS,
+        channel = 0; loop(MAX_CHANNELS,
+            offset = (group * MAX_CHANNELS) + channel;
+            program = undo_history[idx + offset];
+            (program != current_programs[offset]) ? (
+                current_programs[offset] = program;
+                pending_activations[channel] = program | 0x0100;
+                have_pending_activations = 1;
+            );
+            channel += 1;
+        );
+        group += 1;
+    );
+    gmem_write_current_programs();
+    queue_increment_serial = 1;
+);
+
 @gfx
-slider63 ? (
+(slider9 || 1) ? (
+    gfx_h = 400;
     gfx_x = gfx_y = 0;
     gfx_r = gfx_g = gfx_b = gfx_a = 1;
-    channel = slider63 - 1;
+    channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL]; //slider9 - 1;
 
     gfx_printf("Reaticulate debug info\n");
+    gfx_printf("  serialized: reads=%d writes=%d   undo serial=%d   nundo=%d\n", nserr, nserw, undo_serial, nundo);
+    gfx_printf("  metadata: %d\n", slider1);
     gfx_printf("  version: %d\n", serialized_version);
-    gfx_printf("  serial: %d %d\n", program_serial, notes_serial);
+    gfx_printf("  serial: %d\n", change_serial);
     gfx_printf("  pending: %d\n", have_pending_activations);
-    gfx_printf("  active notes bitmap: %d\n", slider3);
-    gfx_printf("  program notification: %d\n", slider1 & 0x80);
+    gfx_printf("  active notes bitmap: %d\n", gmem[gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET] + 33]);
     gfx_printf("  articulations len: %d\n", articulations_len);
     gfx_printf("  play state: %d %f\n", play_state, play_position);
-    gfx_printf("  midi bus: %d\n", cc_feedback);
+    gfx_printf("  midi bus: %d\n", midi_feedback);
+    gfx_printf("  banks_len: %d\n", banks_len);
+    gfx_printf("  bank 0 chase 1: %d\n", banks[1]);
 
     gfx_printf("\nChannel %d debug info\n", channel + 1);
-    control = slider(SLIDER_OFFSET_CONTROL + channel);
     group = 0; loop(MAX_GROUPS,
-        program = (control >> (8 * group)) & 0xff;
+        program = get_active_program(channel, group);
         articulation = get_articulation(channel, program);
         num_outputs = get_articulation_num_outputs(articulation);
         flags = get_articulation_flags(articulation);
@@ -695,29 +1276,60 @@ slider63 ? (
         group_held = held_keyswitches + idx;
         note = group_held[0] & 0xff;
         dstchannels = group_held[1] & 0xffff;
-        gfx_printf("  %d: prog=%3d  art=%d outputs=%d flag=%3d held0=%2d ch %2d\n", group, program, articulation, num_outputs, flags, note, dstchannels);
+        bank = get_articulation_bank(articulation);
+        gfx_printf("  %d: prog=%3d  art=%d outputs=%d flag=%3d held0=%2d ch %2d  cc=%d\n", group, program, articulation, num_outputs, flags, note, dstchannels, bank[1]);
         group += 1;
     );
+
+    gfx_printf("\n\n");
+    gfx_printf("instance=%d  gmem_index=%d  gmem_serial=%d\n", instance_id, gmem_index, gmem_serial);
+
+    n_opcodes = gmem[gmem_index + gmem[GMEM_GIDX_OPCODES_OFFSET]];
+    gfx_printf("gmem n_opcodes=%d\n", n_opcodes);
+    gfx_printf("appdata: orig=%d serialied=%d offset=%d\n", appdata_orig_len, appdata_len, gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET]);
+
+    offset = gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET];
+    gfx_printf("current programs len: %d\n", current_programs_len);
+    gfx_printf("default chan: %d\n", gmem[GMEM_GIDX_DEFAULT_CHANNEL]);
+    gfx_printf("reinit: %d\n", instantiating);
 );
 
 
 @serialize
-file_var(0, serialized_version);
-file_mem(0, channel_map, 16);
-file_mem(0, _dummy, 16 * MAX_GROUPS); // old version of held_keyswitches
-file_mem(0, all_articulation_flags_by_channel, 16);
-file_mem(0, articulations_offsets, 16 * 128);
-file_var(0, articulations_len);
-file_mem(0, articulations, articulations_len);
-file_mem(0, last_ccs_by_channel, 16 * 128);
-file_var(0, midi_feedback);
-file_mem(0, held_keyswitches, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
-file_var(0, banks_len);
-file_mem(0, banks, banks_len);
+// Only serialize if we are writing, or if we're reading but also in the
+// process of instantiating.  This prevents clobbering cached data from
+// an ancient undo point.  This is important because Reaper stores undo
+// state at Undo_EndBlock rather than Undo_BeginBlock().  Because we
+// modify so much data in between undo blocks, we need to be cautious
+// about deserialization.
+//
+// Sliders will of course be restoded no matter what.  We can detect an
+// undo this way.
+(file_avail(0) < 0 || instantiating <= 1) ? (
+    file_var(0, serialized_version);
+    file_mem(0, channel_map, 16);
+    file_mem(0, _dummy, 16 * MAX_GROUPS); // old version of held_keyswitches
+    file_mem(0, all_articulation_flags_by_channel, 16);
+    file_mem(0, articulations_offsets, 16 * 128);
+    file_var(0, articulations_len);
+    file_mem(0, articulations, articulations_len);
+    file_mem(0, last_ccs_by_channel, 16 * 128);
+    file_var(0, midi_feedback);
+    file_mem(0, held_keyswitches, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
+    file_var(0, banks_len);
+    file_mem(0, banks, banks_len);
+    file_var(0, appdata_len);
+    file_var(0, appdata_orig_len);
+    file_mem(0, appdata, appdata_len);
+    file_var(0, current_programs_len);
+    file_mem(0, current_programs, current_programs_len);
+    nserr += 1;
+
+);
 
 // This is done exactly once in the life of the RFX.
 !serialized_version ? (
-    serialized_version = 2;
+    serialized_version = 3;
 
     // Initialize MIDI channel routing and held keyswitches per channel
     memset(held_keyswitches, 0, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
@@ -733,10 +1345,17 @@ file_mem(0, banks, banks_len);
 
     // For chasing.  It's almost not worth persisting, but I have future plans. :)
     memset(last_ccs_by_channel, -1, 16 * 128);
+
+    // Initialize current programs to no-program.
+    memset(current_programs, 128, current_programs_len);
 );
 
-// This is done when the RFX is instantiated.
- file_avail(0) >= 0 ? (
+
+// This is done when the RFX is re-instantiated or during undo.
+file_avail(0) >= 0 ? (
+    //
+    // Logic to perform migrations from previous RFX versions.
+    //
     (serialized_version == 1) ? (
         // In version 1, articulations_offsets was actually an absolute position
         // instead of a relative one.  We need to convert it to a relative position
@@ -747,6 +1366,39 @@ file_mem(0, banks, banks_len);
             i += 1;
         );
         serialized_version = 2;
+    );
+    (serialized_version == 2) ? (
+        // In version 2, current programs were stored in sliders.  For v3 we
+        // move them to a separate array and share via the gmem buffer.
+        channel = 0; loop(16,
+            control = slider(SLIDER_OFFSET_CONTROL + channel);
+            current_programs[(0 * MAX_CHANNELS) + channel] = (control & 0x000000ff) >> 0;
+            current_programs[(1 * MAX_CHANNELS) + channel] = (control & 0x0000ff00) >> 8;
+            current_programs[(2 * MAX_CHANNELS) + channel] = (control & 0x00ff0000) >> 16;
+            (slider26 & (1 << channel)) ? (
+                current_programs[(3 * MAX_CHANNELS) + channel] = (control & 0xff000000) >> 24;
+            ) : (
+                current_programs[(3 * MAX_CHANNELS) + channel] = 128;
+            );
+            channel += 1;
+        );
+        serialized_version = 3;
+    );
+
+    (instantiating == 0) ? (
+        // First initialization of JSFX.  Reset undo serial.
+        slider62 = 0;
+    );
+
+    (slider62 != undo_serial) ? (
+        // The undo slider doesn't match our cached undo serial, so an undo was
+        // performed.  We maintain our own undo state (at least for program changes)
+        // and can restore the program state from that undo serial.
+        (undo_serial != -1) ? (
+            process_undo(slider62);
+            nundo += 1;
+        );
+        undo_serial = slider62;
     );
 
     // Regenerate articulations_ptr
@@ -783,199 +1435,98 @@ file_mem(0, banks, banks_len);
         i += get_articulation_record_size(articulation);
     );
 
-    // Update slider1 to reflect any version changes.
-    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ffff);
+    // We're in a read (and by now will have restored all state), so allocate
+    // and initialize the gmem buffer if necessary.
+    (instance_id == -1) ? (
+        gmem_allocate();
+        instantiating = 1;
+    );
+) : (
+    nserw += 1;
 );
+
+// The code below is executed on any instantiation or undo.
+slider2 = gmem_index;
+slider4 = instance_id;
+sliderchange(2);
+sliderchange(4);
+
+
 
 @slider
-// Triggered by the GUI to program this instance.  There are some real caveats with
-// this approach.  See rfx.opcode() in the GUI code for commentary.
-//
-// MSB only has 7 usable bits, so we use it for opcode.  128 opcodes is more than enough.
-opcode = (slider64 & 0x7f000000) >> 24;
-(opcode != OPCODE_NOOP) ? (
-    b0 = (slider64 & 0xff);
-    b1 = (slider64 & 0xff00) >> 8;
-    b2 = (slider64 & 0xff0000) >> 16;
+// Opcode(s) triggered by the GUI.
+slider64 = 0;
+process_pending_opcodes();
 
-    (opcode == OPCODE_CLEAR) ? (
-        // Nuke it all from orbit.
-        memset(all_articulation_flags_by_channel, 0, 16);
-        memset(articulations_offsets, -1, 16 * 128);
-        memset(articulations_ptr, 0, 16 * 128);
-        memset(articulations, 0, (2 + 16) * 128 * 16);
-        memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
-        memset(program_by_articulation, 0, (2 + 16) * 128 * 16);
-        memset(banks, 0, MAX_CHANNELS * MAX_BANKS * 10);
-        articulations_len = 0;
-        last_new_articulation = 0;
-        last_new_output_event = 0;
-        banks_len = 0;
-        last_new_bank = 0;
-    );
-
-    // Arguments: b0=channel+version, b1=msb, b2=lsb
-    (opcode == OPCODE_NEW_BANK) ? (
-        channel = b0 & 0x0f;
-        version = (b0 & 0xf0) >> 4;
-        last_new_bank = banks + banks_len;
-
-        // Now that the space is reserved, reset the events counter which we
-        // increment for each new event.
-        last_new_bank[0] = b0 | (b1 << 8) | (b2 << 16);
-        banks_len += get_bank_version_record_size(version);
-    );
-
-
-    // Arguments: b0=cc
-    (opcode == OPCODE_SET_BANK_CHASE_CC) ? (
-        offset = floor(b0 / 24);
-        bitmap = 1 << (b0 - (offset * 24));
-        last_new_bank[1 + offset] |= bitmap;
-    );
-
-
-    // Arguments: b0=channel+version, b1=program, b2=num groups/outputs
-    (opcode == OPCODE_NEW_ARTICULATION) ? (
-        channel = b0 & 0x0f;
-        // Number of events we need to reserve.
-        num_outputs = b2 & 0x0f;
-        last_new_articulation = articulations + articulations_len;
-
-        // Map new articulation to program/channel.
-        program_by_articulation[articulations_len] = b1 | (channel << 8);
-
-        articulations_offsets[channel * 128 + b1] = last_new_articulation - articulations;
-        articulations_ptr[channel * 128 + b1] = last_new_articulation;
-
-        // Now that the space is reserved, reset the events counter which we
-        // increment for each new event.
-        last_new_articulation[0] = b2 & 0xf0;
-        last_new_articulation[1] = b0 | (banks_len << 8);
-        articulations_len += get_articulation_output_event_offset(last_new_articulation, num_outputs);
-    );
-
-    // Arguments: b0=flags, b1=off program, b2=unused
-    (opcode == OPCODE_SET_ARTICULATION_INFO) ? (
-        last_new_articulation[0] = (last_new_articulation[0] & 0x7f0000ff) | (b0 << 8) | (b1 << 16);
-    );
-
-    // Arguments: b0=type+dstchannel, b1=param1+noroute, b2=param2
-    (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
-        // Get current number of output events for articulation to act as the index for the
-        // one being added now.
-        num_outputs = get_articulation_num_outputs(last_new_articulation);
-
-        // Get pointer to current output event.
-        event = last_new_articulation + get_articulation_record_size(last_new_articulation);
-        last_new_output_event = event;
-        event[0] = b0 | (b1 << 8) | (b2 << 16);
-
-        // Increment events count.
-        last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
-
-        // Map output event back to articulation
-        update_output_event_map(b0 & 0x0f, b1, b2, last_new_articulation, num_outputs);
-    );
-
-    // Arguments: b0=filter program+filter enabeld, b1=unused, b2=unused
-    (opcode == OPCODE_SET_OUTPUT_EVENT_INFO1) ? (
-        // Requires v1 articulations but does not do version test.
-        last_new_output_event[1] = b0;
-    );
-
-    // Arguments: b0=channel, b1=program
-    (opcode == OPCODE_ACTIVATE_ARTICULATION) ? (
-        // FIXME: this needs to support multiple groups per channel
-        // 0x01 in byte 1 indicates the program requires activation.
-        pending_activations[b0] = b1 | 0x0100;
-        have_pending_activations = 1;
-    );
-
-    // Arguments: b0=what
-    (opcode == OPCODE_SYNC_TO_FEEDBACK_CONTROLLER) ? (
-        midi_feedback_sync_pending |= b0;
-    );
-
-    // Arguments: b0=enabled, b1=bus
-    (opcode == OPCODE_SET_CC_FEEDBACK_ENABLED) ? (
-        midi_feedback = (b1 & 0x0f) | (!!b0 << 4);
-    );
-
-    // Clear slider to prevent repeated evaluation of the same operation (in case some other
-    // slider gets updated.)
-    slider64 = OPCODE_NOOP;
-);
 
 
 
 
 @block
+(instantiating == 1) ? (
+    instantiating += 1;
+);
+
+gmem_allocate();
+process_pending_opcodes();
 
 
-function update_active_notes_for_gui(channel, note, state)
-local(notes, bitmap, i)
+
+function update_active_notes_for_gui(channel, note, note_on)
+local(notes, bitmap, i, offset)
 (
+    // Update the note in the active notes array to reflect its
+    // current note-on state.
     notes = active_notes_by_channel + (channel * 5);
     (note == -1) ? (
-        notes[0] = notes[1] = notes[2] = notes[3] = notes[4] = state;
+        notes[0] = notes[1] = notes[2] = notes[3] = notes[4] = note_on;
     ) : (
         bit = note % 31;
-        (state) ? (
+        (note_on) ? (
             notes[floor(note / 31)] |= (1 << bit);
         ) : (
             notes[floor(note / 31)] &= $~31 ~ (1 << bit);
         );
     );
 
-    bitmap = 0;
-    notes = active_notes_by_channel;
-    i = 0; loop(16,
-        (notes[0] || notes[1] || notes[2] || notes[3] || notes[4]) ? (
-            bitmap |= (1 << i);
+    (subscription & SUBSCRIPTION_NOTES != 0) ? (
+        gmem_write_active_notes() ? (
+            queue_increment_serial = 1;
         );
-        i += 1;
-        notes += 5;
     );
-    slider3 = bitmap;
-    sliderchange(3);
-    notes_serial = notes_serial < 15 ? notes_serial + 1 : 0;
-    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
-    sliderchange(1);
 );
 
+function update_current_ccs_for_gui(channel, cc, value)
+local(offset, poffset)
+(
+    (gmem_index > 0 && channel == gmem[GMEM_GIDX_DEFAULT_CHANNEL]) ? (
+        last_ccs_by_channel[channel * 16 + cc] = value;
+        // Does main app care about this data?
+        (subscription & SUBSCRIPTION_CC != 0) ? (
+            offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+            poffset = offset + (gmem[offset + 3] & 0xff);
+            (value != gmem[poffset + cc]) ? (
+                gmem[poffset + cc] = value;
+                gmem[offset] |= (1 << 3);
+                queue_increment_serial = 1;
+            );
+        );
+    );
+);
 
 function update_current_channel_program(channel, new_program, group, flags)
-local(control, shift, current_program)
+local(control, shift, current_program, offset, program_offset, mask)
 (
-    control = slider(SLIDER_OFFSET_CONTROL + channel);
-    shift = 8 * group;
-    current_program = (control >> shift) & 0xff;
+    // RFX v2 behavior
+    program_offset = (group * MAX_CHANNELS) + channel;
+    current_programs[program_offset] = new_program;
 
-    (new_program == current_program && flags & ARTICULATION_FLAG_TOGGLE) ? (
-        new_program = 128;
-    );
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    // Size is 16 slots per group * MAX_GROUPS
+    gmem[offset + 33 + 1 + program_offset] = new_program;
+    gmem[offset] |= (1 << 2);
 
-    mask = $~31 ~ (0xff << shift);
-    control = (control & mask) | (new_program << shift);
-    program_serial = program_serial < 15 ? program_serial + 1 : 0;
-    slider1 = RFX_MAGIC | RFX_VERSION | (slider1 & 0x0000ff00) | (notes_serial << 4) | program_serial;
-    slider(SLIDER_OFFSET_CONTROL + channel) = control;
-    (group == 3) ? (
-        // Previously mentioned kludge: MSB in slider is unusable, so we use slider26
-        // to track program set/cleared for group 4 (er, uh, group == 3 since we index
-        // from 0 -- Lua's indexing from 1 sure is a confusing pain in the ass).
-        (new_program == 128) ? (
-            mask = $~31 ~ (1 << channel);
-            slider26 = slider26 & mask;
-        ) : (
-            slider26 = slider26 | (1 << channel);
-        );
-        sliderchange(26);
-    );
-
-    sliderchange(1);
-    sliderchange(SLIDER_OFFSET_CONTROL + channel);
+    queue_increment_serial = 1;
 );
 
 
@@ -1164,7 +1715,10 @@ local(bank, msb, lsb, program)
 
 function _enqueue_articulation(program, channel, except_program)
 (
-    (program != except_program) ? (
+    // Do not enqueue articulation if it was already triggered since
+    // activate() was called.  Fixes #44.
+    (program != except_program && program != -1 &&
+     activated_programs[program / 32] & (1 << (program % 32)) == 0) ? (
         stack_push(program | (channel << 8));
     );
 );
@@ -1246,11 +1800,14 @@ function _activate(mpos, channel, program, articulation, do_update)
 local(articulation, num_outputs, group, control, current_program, flags,
       last_dstchannels, i, output_type, should_route)
 (
+    // Keep track that this program was already activated.  This helps us avoid
+    // infinite recursion that can be caused by the use of art output events.
+    // See also _enqueue_articulation() where this bitmap is checked.
+    activated_programs[program / 32] |= 1 << (program % 32);
     group = get_articulation_group(articulation);
     flags = get_articulation_flags(articulation);
     version = get_articulation_version(articulation);
-    control = slider(SLIDER_OFFSET_CONTROL + channel);
-    last_program = (control >> (8 * group)) & 0xff;
+    last_program = get_active_program(channel, group);
     (last_program != program || group == 3 || flags & ARTICULATION_FLAG_TOGGLE) ? (
         do_update ? (
             update_current_channel_program(channel, program, group, flags);
@@ -1295,16 +1852,14 @@ local(articulation, num_outputs, group, control, current_program, flags,
     update_channel_articulation_flags(channel);
     mpos = feedback_controller_articulation(mpos, channel, articulation, group);
 
-    // If the activated program acts as a filter for some other articulation's output events,
-    // retrigger all active articulations in the same group if they
+    // If the activated program acts as a filter for some other articulation's
+    // output events, retrigger all active articulations if they are different
+    // than this program that was just activated.
     (flags & ARTICULATION_FLAG_IS_FILTER) ? (
-        control = slider(SLIDER_OFFSET_CONTROL + channel);
-        _enqueue_articulation(control & 0xff, channel, program);
-        _enqueue_articulation((control & 0xff00) >> 8, channel, program);
-        _enqueue_articulation((control & 0xff0000) >> 16, channel, program);
-        slider26 & (1 << channel) ? (
-            _enqueue_articulation((control & 0x7f000000) >> 24, channel, program);
-        );
+        _enqueue_articulation(get_active_program(channel, 0), channel, program);
+        _enqueue_articulation(get_active_program(channel, 1), channel, program);
+        _enqueue_articulation(get_active_program(channel, 2), channel, program);
+        _enqueue_articulation(get_active_program(channel, 3), channel, program);
     );
     mpos;
 );
@@ -1312,6 +1867,9 @@ local(articulation, num_outputs, group, control, current_program, flags,
 function activate(mpos, channel, program)
 local (group, cascade_channel, cascade_program, cascade_articulation, cascade_group)
 (
+    // This array keeps track of activated programs to avoid loops via art
+    // output events.
+    memset(activated_programs, 0, 4);
     articulation = get_articulation(channel, program);
     articulation ? (
         mpos = _activate(mpos, channel, program, articulation, 1);
@@ -1404,6 +1962,7 @@ local(match, output_type, group, flags)
 
 
 memset(program_change_mpos_delta, 0, 16);
+
 while (midirecv(mpos, msg1, msg2, msg3)) (
     type = msg1 & 0xf0;
     channel = msg1 & 0x0f;
@@ -1422,7 +1981,6 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
         // tracking active notes, current CC values, chasing and antihanging,
         // and detecting if a manual keyswitch was triggered based on output
         // events.
-        control = slider(SLIDER_OFFSET_CONTROL + channel);
         dstchannels = channel_map[channel];
 
         // First note on/off handling.
@@ -1501,7 +2059,8 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                     );
                 ) : (
                     // Remember this CC value for chasing.
-                    last_ccs_by_channel[channel * 16 + msg2] = msg3;
+                    update_current_ccs_for_gui(channel, msg2, msg3);
+
                     // Handle anti CC hanging
                     (msg2 == 2 || msg2 == 64 || msg2 == 66) ? (
                         idx = channel * 16 + msg2;
@@ -1599,4 +2158,9 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
         channel += 1;
     );
     midi_feedback_sync_pending = 0;
+);
+
+(queue_increment_serial != 0) ? (
+    increment_serial();
+    queue_increment_serial = 0;
 );

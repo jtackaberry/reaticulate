@@ -33,16 +33,12 @@ function feedback.ontrackchange(last, cur)
         -- No feedback enabled.
         return
     end
-    rfx.push_state()
     if last and reaper.ValidatePtr2(0, last, "MediaTrack*") then
-        rfx.push_state(last)
         feedback._set_track_enabled(last, 0)
-        rfx.pop_state()
     end
     if cur and rfx.fx then
         -- Track must be monitored for MIDI input for CC feedback to be triggered.
         local input = reaper.GetMediaTrackInfo_Value(cur, "I_RECINPUT")
-        rfx.push_state(cur)
         if input and input & 4096 ~= 0 then
             -- Indicate to RFX that it should start sending CCs to bus 16
             feedback._set_track_enabled(cur, 1)
@@ -71,9 +67,7 @@ function feedback.ontrackchange(last, cur)
                 feedback._sync(feedback.SYNC_ALL)
             end
         end
-        rfx.pop_state()
     end
-    rfx.pop_state()
 end
 
 function feedback.scroll_mixer(track)
@@ -127,11 +121,9 @@ function feedback._set_track_enabled(track, enabled)
     if app.config.cc_feedback_device < 0 then
         enabled = 0
     end
-    -- FIXME: not validated, can't easily call rfx.validate()
-    local fx = rfx.get(track)
-    if fx >= 0 and rfx.params then
-        local param = enabled + (bus << 8) + ((rfx.OPCODE_SET_CC_FEEDBACK_ENABLED & 0x7f) << 24)
-        reaper.TrackFX_SetParam(track, fx, rfx.params.opcode, param)
+    local fx, _, _, _, _, _ = rfx.validate(track, rfx.get(track))
+    if fx ~= nil then
+        rfx.opcode(rfx.OPCODE_SET_CC_FEEDBACK_ENABLED, {enabled, bus}, track, fx)
     end
 end
 
@@ -202,6 +194,7 @@ function feedback.update_feedback_track_settings(dosync)
         if fx == -1 then
             log("CC feedback is enabled but BUS Translator FX not found")
         else
+            reaper.Undo_BeginBlock()
             rfx.push_state(feedback_track)
             reaper.TrackFX_SetParam(feedback_track, fx, 0, app.config.cc_feedback_active and 1 or 0)
             reaper.TrackFX_SetParam(feedback_track, fx, 1, 15)
@@ -213,7 +206,7 @@ function feedback.update_feedback_track_settings(dosync)
             end
             reaper.TrackFX_SetParam(feedback_track, fx, 4, articulation_cc)
             rfx.pop_state()
-
+            reaper.Undo_EndBlock("Reaticulate: update feedback track settings", UNDO_STATE_FX)
             if dosync then
                 feedback.ontrackchange(nil, app.track)
             end
@@ -231,16 +224,14 @@ function feedback.ensure_feedback_track()
 end
 
 function feedback._sync(what)
-    rfx.opcode(rfx.OPCODE_SYNC_TO_FEEDBACK_CONTROLLER, what)
+    rfx.opcode(rfx.OPCODE_SYNC_TO_FEEDBACK_CONTROLLER, {what})
 end
 
 function feedback.sync(track, what)
     if app.config.cc_feedback_device == -1 or not track or not rfx.fx then
         return
     end
-    rfx.push_state(track)
     feedback._sync(what or feedback.SYNC_ALL)
-    rfx.pop_state()
 end
 
 function feedback.set_active(active)

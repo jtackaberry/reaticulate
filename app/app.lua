@@ -64,9 +64,6 @@ function App:initialize(basedir)
     self.last_midi_hwnd = nil
     -- The last selected take in the MIDI editor.  nil if the editor is closed.
     self.last_midi_editor_take = nil
-    -- Last seen active notes bitmap from the current track RFX.  Just a copy of
-    -- rfx.active_notes so we can detect changes.
-    self.active_notes = 0
     -- Keys are 16-bit values with channel in byte 0, and group in byte 1 (offset from 1).
     self.active_articulations = {}
     -- Tracks articulations that have been activated but not yet processed by the RFX and/or
@@ -100,16 +97,11 @@ function App:initialize(basedir)
 end
 
 function App:ontrackchange(last, cur)
-    local lr, ltracknum, lfx, lparam = reaper.GetLastTouchedFX()
-    log("Last touched: lr=%s num=%s fx=%s param=%s", lr, ltracknum, lfx, lparam)
     reaper.PreventUIRefresh(1)
     self:sync_midi_editor()
     self.screens.banklist.filter_entry:onchange()
     feedback.ontrackchange(last, cur)
     if cur then
-        -- Sync control surface to new track.
-        -- https://forum.cockos.com/showthread.php?p=2077098
-        reaper.CSurf_OnTrackSelection(cur)
     end
     reaper.PreventUIRefresh(-1)
 end
@@ -255,8 +247,15 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         reaper.MIDI_InsertCC(take, false, false, ppq, 0xc0, channel, art.program, 0)
         local item = reaper.GetMediaItemTake_Item(take)
         reaper.UpdateItemInProject(item)
+
+        local serial = rfx.get_param(rfx.params.history_serial)
+        rfx.opcode(rfx.OPCODE_PUSH_HISTORY)
+        rfx.opcode_flush()
+
+        local track = reaper.GetMediaItem_Track(item)
+        reaper.MarkTrackItemsDirty(track, item)
+        reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. art.name .. ")", UNDO_STATE_ITEMS | UNDO_STATE_FX)
         rfx.activate_articulation(channel, art.program)
-        reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. art.name .. ")", -1)
         reaper.PreventUIRefresh(-1)
     else
         rfx.activate_articulation(channel, art.program)
@@ -310,7 +309,7 @@ function App:refocus()
 end
 
 function rfx.onartchange(channel, group, last_program, new_program, track_changed)
-    log("articulation change: %d -> %d  ch=%d  group=%d  track_changed=%s", last_program, new_program, channel, group, track_changed)
+    log("articulation change: %s -> %d  ch=%d  group=%d  track_changed=%s", last_program, new_program, channel, group, track_changed)
     local artidx = channel + (group << 8)
     local last_art = app.active_articulations[artidx]
     local channel_bit = 2^(channel - 1)
@@ -346,6 +345,12 @@ function rfx.onartchange(channel, group, last_program, new_program, track_change
     end
     rtk.queue_draw()
 end
+
+function rfx.onnoteschange(old_notes, new_notes)
+    -- Force redraw of articulation buttons to reflect state change
+    rtk.queue_draw()
+end
+
 
 local function _cmd_arg_to_channel(arg)
     local channel = tonumber(arg)
@@ -520,6 +525,7 @@ function App:set_default_channel(channel)
     self.default_channel = channel
     self.screens.banklist.highlight_channel_button(channel)
     self:sync_midi_editor(nil, true)
+    rfx.set_default_channel(channel)
     rtk.queue_draw()
 end
 
@@ -670,27 +676,55 @@ function App:refresh_banks()
     local t0 = os.clock()
     reabank.refresh()
     log("stage 0 refresh took %.03fs", os.clock() - t0)
+
+    -- TODO: at least with Reaper 5.980 (what I was using when tested)
+    -- this seems like it may be overkill.  So far all that's apparently
+    -- needed is to kick the active item in the MIDI editor.
+    --
+    -- Do more testing to be sure that's the case.
+
+    --[[
     -- Kick all media items on the current track as well as the selected media
-    -- item in the ass to recognize the changes made to the reabank.
+    -- item (if not on current track) in the ass to recognize the changes made
+    -- to the reabank.
     local item = reaper.GetSelectedMediaItem(0, 0)
-    if item then
+    if item and reaper.GetMediaItem_Track(item) ~= self.track then
         kick_item(item)
     end
     if self.track then
         for idx = 0, reaper.GetTrackNumMediaItems(self.track) - 1 do
             local item = reaper.GetTrackMediaItem(self.track, idx)
-            kick_item(item)
+            -- kick_item(item)
+        end
+    end
+    ]]--
+    local hwnd = reaper.MIDIEditor_GetActive()
+    if hwnd then
+        local take = reaper.MIDIEditor_GetTake(hwnd)
+        if take then
+            local item = reaper.GetMediaItemTake_Item(take)
+            if item then
+                kick_item(item)
+            end
         end
     end
 
     log("stage 1 refresh took %.03fs", os.clock() - t0)
-    -- Ensure redirection config for banks are synced to RFX.
     -- FIXME: this needs to work across all tracks.
-    rfx.sync_articulation_details()
+    -- Reindex banks to ensure the cached Bank object is the new version.  This
+    -- also stores the src/dstchannel attributes on the Bank objects based on
+    -- the current track.
+    --
+    -- This will implicitly call rfx.sync_banks_to_rfx() if the hashes have indeed
+    -- changed.
+    local synced = rfx.index_banks_by_channel()
     log("stage 2 refresh took %.03fs", os.clock() - t0)
+    local t1 = os.clock()
+    -- Force a resync of the RFX
     rfx.sync(rfx.track, true)
+    local t2 = os.clock()
     self:ontrackchange(nil, self.track)
-    log("stage 3 refresh took %.03fs", os.clock() - t0)
+    log("stage 3 refresh took %.03fs (sync=%s ontrackchange=%s)", os.clock() - t0, t2-t1, os.clock()-t2)
     -- Update articulation list to reflect any changes that were made to the Reabank template.
     self.screens.banklist.update()
     log("stage 4 refresh took %.03fs", os.clock() - t0)
@@ -698,32 +732,31 @@ function App:refresh_banks()
         self.screens.trackcfg.update()
     end
     log("bank refresh took %.03fs", os.clock() - t0)
+end
+
+function App:beat_reaper_into_submission()
     -- This is necessary if an existing Reaticulate-managed track references a non-Reaticulate
     -- bank.  Unfortunately it's *SLOW*.  And most of the time it shouldn't be necessary.
-    -- So we should probably move it to some action the user intentionally activates.
-    if false then
-        local t0 = os.clock()
-        for i = 0, reaper.CountTracks(0) - 1 do
-            local track = reaper.GetTrack(0, i)
-            -- local track = reaper.GetSelectedTrack(0, 0)
-            if rfx.get(track) then
-                -- Can't use reaper.Get/SetTrackStateChunk() which horks with large (>~5MB) chunks.
-                local fast = reaper.SNM_CreateFastString("")
-                local ok = reaper.SNM_GetSetObjectState(track, fast, false, false)
-                chunk = reaper.SNM_GetFastString(fast)
+    local t0 = os.clock()
+    for i = 0, reaper.CountTracks(0) - 1 do
+        local track = reaper.GetTrack(0, i)
+        if rfx.get(track) then
+            -- Can't use reaper.Get/SetTrackStateChunk() which horks with large (>~5MB) chunks.
+            local fast = reaper.SNM_CreateFastString("")
+            local ok = reaper.SNM_GetSetObjectState(track, fast, false, false)
+            chunk = reaper.SNM_GetFastString(fast)
+            reaper.SNM_DeleteFastString(fast)
+            -- log("BEFORE XML: %s", chunk:len())
+            if ok and chunk and chunk:find("MIDIBANKPROGFN") then
+                chunk = chunk:gsub('MIDIBANKPROGFN "[^"]*"', 'MIDIBANKPROGFN ""')
+                local fast = reaper.SNM_CreateFastString(chunk)
+                reaper.SNM_GetSetObjectState(track, fast, true, false)
+                -- log("AFTER XML: %s", chunk:len())
                 reaper.SNM_DeleteFastString(fast)
-                log("BEFORE XML: %s", chunk:len())
-                if ok and chunk and chunk:find("MIDIBANKPROGFN") then
-                    local fast = reaper.SNM_CreateFastString(chunk)
-                    chunk = chunk:gsub('MIDIBANKPROGFN "[^"]*"', 'MIDIBANKPROGFN ""')
-                    log("AFTER XML: %s", chunk:len())
-                    reaper.SNM_GetSetObjectState(track, fast, true, false)
-                    reaper.SNM_DeleteFastString(fast)
-                end
             end
         end
-        log("track chunk sweep took %.03fs", os.clock() - t0)
     end
+    log("track chunk sweep took %.03fs", os.clock() - t0)
 end
 
 function App:build_frame()
@@ -804,7 +837,6 @@ function App:build_frame()
     button.onclick = function()
         self:push_screen('settings')
     end
-    return self.frame
 end
 
 
@@ -856,10 +888,6 @@ function App:handle_onupdate()
             self:sync_midi_editor(hwnd)
             self.last_midi_hwnd = hwnd
         end
-        if rfx.active_notes ~= self.active_notes then
-            self.active_notes = rfx.active_notes
-            rtk.queue_draw()
-        end
     -- FIXME: if in trackcfg and then switched to a non-rfx track, we should
     -- swap the banklist's slot in the screen stack for the installer.
     elseif #self.screens.stack == 1 then
@@ -899,6 +927,8 @@ function App:handle_onupdate()
             end
         end
     end
+    -- rfx.gc()
+    rfx.opcode_commit_all()
 end
 
 function App:select_track(track)

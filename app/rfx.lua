@@ -18,6 +18,7 @@
 -- instances, including discovery, installation, and communication with the
 -- instances.
 
+local binser = require 'lib.binser'
 local reabank = require 'reabank'
 
 local NO_PROGRAM = 128
@@ -28,24 +29,139 @@ local rfx = {
     -- MSB of first parameter must be set to this or else it's not an RFX instance.
     MAGIC = 42 << 24,
 
-    -- Opcodes for programming the RFX.  See rfx.opcode().
+    -- Opcodes for programming the RFX.
+    --
+    -- See rfx.opcode(), and Reaticuate.jsfx for more details on the API.
     OPCODE_NOOP = 0,
     OPCODE_CLEAR = 1,
     OPCODE_ACTIVATE_ARTICULATION = 2,
     OPCODE_NEW_ARTICULATION = 3,
-    OPCODE_SET_ARTICULATION_INFO = 4,
+    --OPCODE_SET_ARTICULATION_INFO = 4,
     OPCODE_ADD_OUTPUT_EVENT = 5,
     OPCODE_SYNC_TO_FEEDBACK_CONTROLLER = 7,
     OPCODE_SET_CC_FEEDBACK_ENABLED = 8,
     OPCODE_NEW_BANK = 9,
     OPCODE_SET_BANK_CHASE_CC = 10,
-    OPCODE_SET_OUTPUT_EVENT_INFO1 = 11,
+    --OPCODE_SET_OUTPUT_EVENT_INFO1 = 11,
+
+    OPCODE_SET_APPDATA = 12,
+    OPCODE_CLEAR_ARTICULATION = 13,
+    OPCODE_PUSH_HISTORY = 14,
+    OPCODE_UPDATE_CURRENT_CCS = 15,
+    OPCODE_SUBSCRIBE = 16,
+
+    -- Shared gmem buffer indices offsets.  The indexes come in two flavors:
+    --    * global indices (GIDX): relative to gmem[0]
+    --    * instance indices (IIDX): relative to the instance's gmem_index
+
+    --
+    -- These are the global indices (relative to gmem[0]).  Most of them are
+    -- written in rfx.init()
+    --
+
+    -- Magic value so that RFX instances know we have initialized the global
+    -- gmem parameters.
+    GMEM_GIDX_MAGIC = 0,
+    -- The version number for the memory arrangement. The GMEM_VERSION will be
+    -- written here.  Probably will never be used but included to allow for
+    -- radically differnt arrangements.
+    GMEM_GIDX_VERSION = 1,
+    -- The monotonically increasing serial (wall clock) written once when the main
+    -- script is initialized.  This can be used by the RFX to detect when the main
+    -- script has restarted.
+    GMEM_GIDX_SERIAL = 2,
+    -- A shared region used (carefully) by the RFX instances to determine what gmem
+    -- slots are available for the per-RFX gmem index.  This data isn't opaque to
+    -- the main script: rfc.gc() will modify it.
+    GMEM_GIDX_ID_BITMAP_OFFSET = 3,
+    -- The current app default channel is stored at this index
+    GMEM_GIDX_DEFAULT_CHANNEL = 4,
+    GMEM_GIDX_RFX_OFFSET = 5,
+    GMEM_GIDX_RFX_STRIDE = 6,
+
+    -- Holds the value of GMEM_IIDX_OPCODES so the RFX knows where to read
+    GMEM_GIDX_OPCODES_OFFSET = 20,
+    -- Holds the value of GMEM_IIDX_APP_DATA so the RFX knows where to read/write
+    GMEM_GIDX_APP_DATA_OFFSET = 21,
+    -- Holds the value of GMEM_IIDX_INSTANCE_DATA so the RFX knows where to write
+    GMEM_GIDX_INSTANCE_DATA_OFFSET = 22,
+    -- Holds the value of GMEM_IIDX_INSTANCE_DATA_SUBSCRIPTION
+    GMEM_GIDX_SUBSCRIPTION_OFFSET = 23,
+
+
+    -- Global gmem parameters.  When these change (other than magic which can
+    -- never change), GMEM_VERSION must change too.
+    GMEM_VERSION = 1,
+    GMEM_MAGIC = 0xbadc0de,
+    -- Index from gmem buffer where the instance id bitmap begins.  See rfx.gc()
+    -- here and gmem_allocate() in Reaticulate.jsfx for more details.
+    GMEM_ID_BITMAP_OFFSET = 1000,
+    -- Index from gmem buffer where the first RFX instance region begins.
+    GMEM_RFX_OFFSET = 2000,
+    -- The number of slots for each RFX instance region.  Together with
+    -- GMEM_RFX_OFFSET and the id bitmap, RFX instances are able to allocate a
+    -- unique instance id and gmem_index.
+    GMEM_RFX_STRIDE = 3000,
+
+
+    --
+    -- These are the instance indicies, relative to the RFX's gmem_index
+    --
+
+    -- Slot (relative to gmem_index) that holds the main script's view of the
+    -- RFX's instance id.
+    GMEM_IIDX_INSTANCE_ID = 0,
+    -- Slot (relative to gmem_index) that holds the global serial written when
+    -- the RFX's gmem_index is allocated.
+    GMEM_IIDX_SERIAL = 1,
+    -- Slot (relative to gmem_index) that holds the the pong value (expected to
+    -- be the value written at GMEM_GIDX_PING)
+    GMEM_IIDX_PONG = 2,
+    -- This index holds a bitmap of things the main app is interested in
+    -- reading from instance data.  See SUBSCRIPTION_* constants.
+    GMEM_IIDX_INSTANCE_DATA_SUBSCRIPTION = 3,
+    -- Slot (relative to gmem_index) for enqueued opcodes to be executed by the RFX
+    GMEM_IIDX_OPCODES = 100,
+    -- Slot (relative to gmem_index) that holds the serialized application data as
+    -- stored by rfx.set_appdata().
+    GMEM_IIDX_APP_DATA = 1000,
+    -- Slot (relative to gmem_index) that holds data the instance is communicating
+    -- back to us, such as current selected programs or active notes.
+    GMEM_IIDX_INSTANCE_DATA = 2000,
+
+    -- The available number of slots for opcodes (GMEM_IIDX_INSTANCE_DATA - GMEM_IDX_APP_DATA)
+    GMEM_OPCODES_BUFFER_SIZE = 1000 - 100,
+
+    -- Constants for the rfx.error value.
+    ERROR_MISSING_RFX = 1,
+    ERROR_TRACK_FX_BYPASSED = 2,
+    ERROR_RFX_BYPASSED = 3,
+    ERROR_BAD_MAGIC = 4,
+    ERROR_UNSUPPORTED_VERSION = 5,
+    ERROR_DESERIALIZATION_FAILED = 6,
+
+
+    -- Constants for OPCODE_SUBSCRIBE.
+    SUBSCRIPTION_NONE = 0,
+    SUBSCRIPTION_CC = 1 << 0,
+    SUBSCRIPTION_NOTES = 1 << 1,
 
     params_by_version = {
-        [1 << 16] = {
+        [1] = {
             -- byte 0: change serial, byte 1: reabank version (mod 256), byte 2: RFX version, byte 3: magic
             -- This is the only parameter that must be hardcoded at 0 regardless of version.
             metadata = 0,
+            -- Index within the gmem buffer for the instance's start of data
+            gmem_index = 1,
+            instance_id = 3,
+
+            history_serial = 61,
+            opcode = 63,
+
+            --
+            -- Parameters below are DEPRECATED by communication via gmem buffer
+            --
+
             -- Bitmap of MIDI channels with active notes
             active_notes = 2,
             -- MIDI channel control data -- defines behaviour of the RFX instance for
@@ -69,14 +185,21 @@ local rfx = {
             --      byte 3: Bank LSB
             banks_start = 29,
             banks_end = 40,
-            opcode = 63,
+
         }
     },
+
+    last_instance_num = 0,
+    global_serial = 0,
+
     -- The current track (set via rfx.sync())
     track = nil,
     -- Reaper FX id of the Reaticulate FX on current track, or nil if
     -- no valid one was found.
     fx = nil,
+    -- If not nil, then is one of the ERROR constants above.  If this is set
+    -- then fx must be nil.
+    error = nil,
     -- Metadata field of current RFX, which contains the byte-packed values for
     -- magic, version and change serial.
     metadata = nil,
@@ -84,28 +207,45 @@ local rfx = {
     -- Version of the RFX instance (relevant iff fx isn't nil). Parsed from metadata.
     version = nil,
     -- The current change serial of the RFX.  When this changes without the track
-    -- changing, then an articulation has changed on at least one channel.  Parsed
-    -- from metadata.
-    program_serial = nil,
-    notes_serial = nil,
+    -- changing, then something about the RFX has changed and we consult slot 0 of
+    -- the instance app data.  Parsed from metadata.
+    serial = nil,
     -- The Reabank version that was used to build the MIDI channel control data.
     -- Parsed from metadata.
     reabank_version = nil,
     -- One of the params_by_version tables above, per the current RFX version
     params = nil,
+    -- Application data stored in the RFX
+    appdata = nil,
+    -- If not nil, is a list of banks referenced by the RFX but not available.
+    unknown_banks = nil,
+
+    -- gmem shared buffer index for this RFX.
+    gmem_index = 0,
+
+    -- If not nil, it's a map of gmem_index -> {track, fx} representing the RFX
+    -- instances that have queued opcodes that need to be committed.  These are
+    -- committed via rfx.opcode_commit_all().
+    rfx_awaiting_commit = nil,
 
     -- Current program numbers on this track indexed by MIDI channel and sub-indexed
     -- by group. Initialized in init()
     programs = {},
-    -- Maps channel number to list of bank objects for current track
+    -- Maps channel number to list of Bank objects for current track.  If the Bank objects
+    -- are regenerated (e.g. because reabank.refresh() is called) then this table must be
+    -- regenerated via rfx.index_banks_by_channel()
     banks_by_channel = {},
     -- Bitmap of channels with active notes
     active_notes = 0,
     -- Callback invoked when the articulation changes on a channel
     onartchange = function(channel, group, last, current, track_changed) end,
+    -- Callback invoked when active notes change
+    onnoteschange = function(old, new) end,
+    -- Callback invoked when CCs on default channel change
+    onccchange = function() end,
 
     -- Saved state so we don't butcher things like last touched FX and automation
-    -- by setting parameters on the RFX.
+    -- by setting parameters on the RFX.  See rfx.push_state().
     state = {
         depth = 0,
         tracks = {},
@@ -129,17 +269,63 @@ local output_type_to_rfx_param = {
     ["note"] = 3,
     ["note-hold"] = 4,
     ["art"] = 5,
+    -- TODO: https://github.com/jtackaberry/reaticulate/issues/60
+    ["pitch"] = 6,
+
 }
 
 function rfx.init()
-    -- rfx.params_by_version[2 << 16] = rfx.params_by_version[1 << 16];
+    reaper.gmem_attach('reaticulate')
+    rfx.global_serial = os.time()
+    reaper.gmem_write(rfx.GMEM_GIDX_SERIAL, rfx.global_serial)
+    reaper.gmem_write(rfx.GMEM_GIDX_ID_BITMAP_OFFSET, rfx.GMEM_ID_BITMAP_OFFSET)
+    reaper.gmem_write(rfx.GMEM_GIDX_RFX_OFFSET, rfx.GMEM_RFX_OFFSET)
+    reaper.gmem_write(rfx.GMEM_GIDX_RFX_STRIDE, rfx.GMEM_RFX_STRIDE)
+    reaper.gmem_write(rfx.GMEM_GIDX_OPCODES_OFFSET, rfx.GMEM_IIDX_OPCODES)
+    reaper.gmem_write(rfx.GMEM_GIDX_APP_DATA_OFFSET, rfx.GMEM_IIDX_APP_DATA)
+    reaper.gmem_write(rfx.GMEM_GIDX_INSTANCE_DATA_OFFSET, rfx.GMEM_IIDX_INSTANCE_DATA)
+    reaper.gmem_write(rfx.GMEM_GIDX_SUBSCRIPTION_OFFSET, rfx.GMEM_IIDX_INSTANCE_DATA_SUBSCRIPTION)
+
+    -- Now that all global gmem parameters have been initialized, write the version and
+    -- magic. RFX instances will watch for version changes and reassign gmem index
+    -- if changed, provided the magic is present.
+    reaper.gmem_write(rfx.GMEM_GIDX_VERSION, rfx.GMEM_VERSION)
+    reaper.gmem_write(rfx.GMEM_GIDX_MAGIC, rfx.GMEM_MAGIC)
+
     for channel = 1, 16 do
         rfx.programs[channel] = {NO_PROGRAM, NO_PROGRAM, NO_PROGRAM, NO_PROGRAM}
     end
+
+    -- rfx.params_by_version[2] = rfx.params_by_version[1]
 end
 
 function rfx.get(track)
     return reaper.TrackFX_GetByName(track, "Reaticulate", false)
+end
+
+-- TODO: implement me: enumrate all tracks in all subprojects, find RFX
+-- instances and update ID_BITMAP gmem region to reflect what's currently
+-- instantiated.
+--
+-- The Lua API doesn't have an atomic setifequal like JSFX, but it's ok because
+-- we only *zero* bits here, so there is no concern of a race.
+function rfx.gc()
+    for pidx = 0, 100 do
+        local proj, _ = reaper.EnumProjects(pidx, '')
+        if not proj then
+            break
+        end
+        for tidx = 0, reaper.CountTracks(proj) - 1 do
+            local track = reaper.GetTrack(proj, tidx)
+            local fx = rfx.get(track)
+            local fx, metadata, version, error = rfx.validate(track, fx)
+            if fx then
+                local params = rfx.params_by_version[version]
+                local id, _, _ = reaper.TrackFX_GetParam(track, fx, params.instance_id)
+                log("rfx: %s  track %s  id: %s", proj, track, id)
+            end
+        end
+    end
 end
 
 -- Discover the Reaticulate FX on the given track.  Sets rfx.fx to the fx id if valid, and returns
@@ -149,132 +335,289 @@ end
 -- This function is called frequently (for each deferred cycle) so it needs to be as efficient as
 -- possible for the common case of idling on a track.
 function rfx.sync(track, forced)
-    local track_changed = (track ~= rfx.track) or forced
+    local last_track = rfx.track
+    local last_fx = rfx.fx
+
+    local track_changed = (track ~= last_track) or forced
+    if track_changed and last_track and last_fx then
+        rfx.subscribe(rfx.SUBSCRIPTION_NONE)
+    end
+
     rfx.track = track
+    rfx.error = nil
     if not track then
         rfx.fx = nil
-    else
-        local fx = rfx.validate(track, rfx.get(track))
-        track_changed = track_changed or (fx ~= rfx.fx)
-        local metadata = rfx.metadata or 0
-        local program_serial = metadata & 0x0f
-        local notes_serial = metadata & 0xf0
-        local program_changed = (rfx.program_serial ~= program_serial)
-        local notes_changed = (rfx.notes_serial ~= notes_serial)
+        return track_changed
+    end
 
-        rfx.program_serial = program_serial
-        rfx.notes_serial = notes_serial
-        rfx.fx = fx
-        -- Track whether either the track changed or the RFX on the
-        -- current track changed.
-        if fx then
-            if track_changed then
-                -- Track changed, need to update banks_by_channel map
-                rfx.reabank_version = (rfx.metadata >> 8) & 0xff
-                if rfx.reabank_version ~= reabank.version % 256 then
-                    -- The control data was synced from a different reabank version, so need
-                    -- to regenerate.  (This implicitly calls sync_banks_by_channel())
-                    rfx.sync_articulation_details()
-                else
-                    -- Reabank version wasn't changed, so just sync the banks.
-                    rfx.sync_banks_by_channel()
-                end
+    local fx = rfx._sync_params(track, rfx.get(track))
+    track_changed = track_changed or (fx ~= rfx.fx)
+    local metadata = rfx.metadata or 0
+    local serial = metadata & 0xff;
+    local serial_changed = rfx.serial ~= serial or track_changed
+    rfx.serial = serial
+    rfx.fx = fx
+    -- Remember whether either the track changed or the RFX on the
+    -- current track changed.
+    if not fx then
+        return track_changed
+    end
+    if track_changed then
+        rfx.subscribe(rfx.SUBSCRIPTION_CC | rfx.SUBSCRIPTION_NOTES)
+        -- Track changed, need to update banks_by_channel map
+        rfx.reabank_version = (rfx.metadata >> 8) & 0xff
+        rfx.appdata = rfx.get_appdata()
+        -- FIXME: there *may* be a race on JSFX instantiation where magic is set
+        -- before appdata is.  This means appdata will be nil and will cause us
+        -- to initialize/migrate even if there was existing appdata.
+        if not rfx.appdata or not rfx.appdata.banks then
+            if rfx.get_param(rfx.params.banks_start) ~= 0 then
+                rfx._migrate_to_appdata()
+            else
+                rfx._init_appdata()
             end
-            if program_changed or track_changed then
-                -- Serial has changed with MSB=1 so an articulation has changed on at least one
-                -- channel.
-                group4_enabled = rfx.get_param(rfx.params.group_4_enabled_programs)
-                for param = rfx.params.control_start, rfx.params.control_end do
-                    local channel = (param - rfx.params.control_start) + 1
-                    local programs = rfx.get_param(param)
-                    for group = 1, 4 do
-                        local program = (programs >> (8 * (group - 1))) & 0xff
-                        if group == 4 then
-                            if group4_enabled & (1 << (channel - 1)) == 0 then
-                                program = NO_PROGRAM
-                            end
-                        end
-                        local last_program = rfx.programs[channel][group]
-                        if (track_changed and program ~= NO_PROGRAM) or last_program ~= program then
-                            rfx.onartchange(channel, group, last_program, program, track_changed)
-                        end
-                        rfx.programs[channel][group] = program
+        end
+        rfx.index_banks_by_channel()
+        rfx.onccchange()
+    end
+    if serial_changed then
+        local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_INSTANCE_DATA)
+        local change_bitmap = reaper.gmem_read(offset)
+        -- log("change bitmap: %s", change_bitmap)
+        if change_bitmap > 0 then
+            reaper.gmem_write(offset, 0)
+        end
+        if change_bitmap & (1 << 2) ~= 0 or track_changed then
+            -- Indicates the offset for program data plus the number of slots (from which we can
+            -- infer the number of groups, because it's 16 slots per group)
+            local info = reaper.gmem_read(offset + 2)
+            local programs_offset = info & 0xffff
+            local len = info >> 16
+            for group = 1, len / 16 do
+                for channel = 1, 16 do
+                    local program_offset = ((group - 1) * 16) + (channel - 1)
+                    local program = reaper.gmem_read(offset + programs_offset + program_offset)
+                    local last_program = rfx.programs[channel][group]
+                    if (track_changed and program ~= NO_PROGRAM) or last_program ~= program then
+                        rfx.onartchange(channel, group, last_program, program, track_changed)
                     end
+                    rfx.programs[channel][group] = program
                 end
             end
-            if notes_changed then
-                -- Sync active notes.
-                rfx.active_notes, _, _ = reaper.TrackFX_GetParam(track, fx, rfx.params.active_notes)
+        end
+        if change_bitmap & (1 << 1) ~= 0 then
+            -- Sync active notes.
+            local notes_offset = reaper.gmem_read(offset + 1) & 0xff
+            local last_notes = rfx.active_notes
+            rfx.active_notes = reaper.gmem_read(offset + notes_offset)
+            if rfx.active_notes ~= last_notes then
+                rfx.onnoteschange(last_notes, rfx.active_notes)
             end
+        end
+        if change_bitmap & (1 << 3) ~= 0 then
+            local cc_offset = reaper.gmem_read(offset + 3) & 0xff
+            local v = reaper.gmem_read(offset + cc_offset + 1)
+            rfx.onccchange()
         end
     end
     return track_changed
 end
 
--- Determine if the given fx is a legit Reaticulate FX.  It returns the suppled fx if valid, or
--- nil otherwise.  This function is called frequently (via rtk.sync())
-function rfx.validate(track, fx)
-    if fx == nil or fx == -1 then
-        return nil
-    end
+function rfx.get_cc_value(cc)
+    local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_INSTANCE_DATA)
+    local cc_offset = reaper.gmem_read(offset + 3) & 0xff
+    return reaper.gmem_read(offset + cc_offset + cc)
+end
 
-    local r, _, _ = reaper.TrackFX_GetParam(track, fx, 0)
-    if r < 0 then
+-- Validates the given fx and (if valid) sets the rfx table attributes according to the RFX
+-- instance.  If the RFX's gmem_index hasn't been set then allocate it now.
+--
+-- Returns the fx if valid, and nil otherwise in which case rfx.error will be set.
+--
+-- This function is called frequently (via rfx.sync())
+function rfx._sync_params(track, fx)
+    local fx, metadata, version, params, gmem_index, error = rfx.validate(track, fx)
+    if error then
+        rfx.error = error
         return nil
     end
-    local metadata = math.floor(r)
-    local magic = metadata & 0xff000000
-    if magic ~= rfx.MAGIC then
-        return nil
-    end
-
-    local version = metadata & 0x00ff0000
     if version ~= rfx.version then
-        local params = rfx.params_by_version[version]
-        if params == nil then
-            -- Unsupported RFX version
-            log("unsupported rfx version %s", version >> 16)
-            return nil
-        end
         rfx.version = version
         rfx.params = params
     end
+    rfx.gmem_index = gmem_index
     rfx.metadata = metadata
     return fx
 end
 
--- An iterator that yields (srcchannel, dstchannel, msb, lsb) for each bank
--- assigned to this track.  Channel starts at 1.
+
+-- Determine if the given fx is a legit Reaticulate FX.  It returns the suppled
+-- fx if valid, or nil otherwise.
+--
+-- Returns (fx, metadata, version, params, gmem_index, error) where all non-error parameters
+-- nil if the validation failed, in which case error will be set to an
+-- rfx.ERROR_* constant.
+--
+-- This function is called frequently (via rfx.sync())
+function rfx.validate(track, fx)
+    if fx == nil or fx == -1 then
+        return nil, nil, nil, nil, nil, rfx.ERROR_MISSING_RFX
+    end
+
+    local r, _, _ = reaper.TrackFX_GetParam(track, fx, 0)
+    if r < 0 then
+        return nil, nil, nil, nil, nil, rfx.ERROR_MISSING_RFX
+    end
+
+    if reaper.GetMediaTrackInfo_Value(track, "I_FXEN") ~= 1 then
+        return nil, nil, nil, nil, nil, rfx.ERROR_TRACK_FX_BYPASSED
+    end
+    if not reaper.TrackFX_GetEnabled(track, fx) then
+        return nil, nil, nil, nil, nil, rfx.ERROR_RFX_BYPASSED
+    end
+
+    local metadata = math.floor(r)
+    local magic = metadata & 0xff000000
+    if magic ~= rfx.MAGIC then
+        return nil, nil, nil, nil, nil, rfx.ERROR_BAD_MAGIC
+    end
+
+    local version = (metadata & 0x00ff0000) >> 16
+
+    local params = rfx.params
+    if version ~= rfx.version then
+        -- Params is different than currently cached one, so look it up.
+        params = rfx.params_by_version[version]
+        if params == nil then
+            return nil, nil, nil, nil, nil, rfx.ERROR_UNSUPPORTED_VERSION
+        end
+    end
+    local gmem_index, _, _ = reaper.TrackFX_GetParam(track, fx, params.gmem_index)
+    if gmem_index == 0 then
+        -- TODO: it's possible we just initialized the global gmem params, so
+        -- bump the opcode param to force the rfx to gmem_alloc() inside @slider
+        -- and then try fetching again.  But meanwhile, it's not the end of the
+        -- world if we wait until the next cycle, we'll just get a bit of a flicker.
+        log("ERROR: instance missing gmem_index")
+        return nil, nil, nil, nil, nil, rfx.ERROR_MISSING_RFX
+    end
+    return fx, metadata, version, params, gmem_index, nil
+end
+
+function rfx._init_appdata()
+    rfx.appdata = {
+        v = 1,
+        banks = {}
+    }
+    rfx.set_appdata(rfx.appdata)
+end
+
+
+function rfx._migrate_to_appdata()
+    if not rfx.appdata then
+        rfx.appdata = {v=1}
+    end
+    rfx.appdata.banks = {}
+    for param = rfx.params.banks_start, rfx.params.banks_end do
+        local b0, b1, b2, b3 = rfx.get_data(param)
+        if b2 > 0 and b3 > 0 then
+            local msblsb = (b2 << 8) | b3
+            local bank = reabank.get_bank_by_msblsb(msblsb)
+            local hash = bank and bank:hash() or nil
+            rfx.appdata.banks[#rfx.appdata.banks + 1] = {
+                t = 'b',
+                v = msblsb,
+                h = hash,
+                src = b0 + 1,
+                dst = b1 + 1
+            }
+        end
+    end
+    rfx.set_appdata(rfx.appdata)
+
+    -- Reset the bank parameters now that the banks have been migrated to
+    -- appdata.
+    for param = rfx.params.banks_start, rfx.params.banks_end do
+        rfx.set_param(param, 0)
+    end
+end
+
+
+
+function rfx.get_gmem_index(track, fx, offset)
+    if rfx.params then
+        local idx = rfx.gmem_index
+        if fx ~= nil then
+            -- RFX explicitly passed.  Discover offset.
+            idx, _, _ = reaper.TrackFX_GetParam(track, fx, rfx.params.gmem_index)
+        end
+        if idx <= 0 then
+            return nil
+        else
+            return idx + (offset or 0)
+        end
+    end
+end
+
+function rfx.set_default_channel(channel)
+    reaper.gmem_write(rfx.GMEM_GIDX_DEFAULT_CHANNEL, channel - 1)
+    if rfx.fx then
+        rfx.opcode(rfx.OPCODE_UPDATE_CURRENT_CCS)
+    end
+end
+
+-- Sets the current list of banks on the track.
+--
+-- Argument is a table of banks in the form {bank, srcchannel, dstchannel} where
+-- channels start at 1 and bank is a Bank object.
+--
+-- The user-supplied list is translated to a list of tables as below before
+-- storing to appdata:
+--     t: type: u=uuid b=msb/lsb
+--     v: val: uuid if type=u, msblsb if type=b
+--     h: hash = of last Bank object
+--     src: src channel
+--     dst: dst channel
+
+function rfx.set_banks(banks)
+    rfx.appdata.banks = {}
+    for _, bankinfo in ipairs(banks) do
+        bank, src, dst = table.unpack(bankinfo)
+        -- Note that hash is not set here but rather in sync_banks_to_rfx()
+        -- so that the current hash can be refreshed even if the bank assignment
+        -- doesn't change for the track.
+        rfx.appdata.banks[#rfx.appdata.banks + 1] = {
+            t = 'b',
+            v = bank.msblsb,
+            src = src,
+            dst = dst
+        }
+    end
+    -- This will implicitly call rfx.sync_banks_to_rfx() if necessary.
+    rfx.index_banks_by_channel()
+end
+
+
+-- An iterator that yields (bank, srcchannel, dstchannel, hash) for each bank
+-- assigned to this track.  Channel starts at 1, bank is a Bank object.
+--
+-- hash is the bank's hash at the time of set_banks(), which *could* be different
+-- than the Bank object's current hash.  If the caller wishes to do something about
+-- a hash inconsistency, it can resyn
 function rfx.get_banks()
     if not rfx.fx then
         -- RFX not loaded, so nothing to iterate over.
         return function() end
     end
-    local param = rfx.params.banks_start
+    local idx = 1
     return function()
-        if param <= rfx.params.banks_end then
-            local b0, b1, b2, b3 = rfx.get_data(param)
-            param = param + 1
-            if b2 > 0 and b3 > 0 then
-                return b0 + 1, b1 + 1, b2, b3
-            end
+        if rfx.appdata and rfx.appdata.banks and idx <= #rfx.appdata.banks then
+            local bankinfo = rfx.appdata.banks[idx]
+            local bank = reabank.get_bank_by_msblsb(bankinfo.v)
+            idx = idx + 1
+            return bank, bankinfo.src, bankinfo.dst, bankinfo.h
         end
     end
-end
-
--- Slot index and channel start at 1.  Caller will need to call rfx.sync_articulation_details()
--- after.
-function rfx.set_bank(slot, srcchannel, dstchannel, bank)
-    rfx.push_state(rfx.track)
-    if bank then
-        rfx.set_data(slot + rfx.params.banks_start - 1,
-                     srcchannel - 1, dstchannel - 1,
-                     bank.msb, bank.lsb)
-    else
-        -- Clear slot.
-        rfx.set_data(slot + rfx.params.banks_start - 1, 0, 0, 0)
-    end
-    rfx.pop_state()
 end
 
 
@@ -324,17 +667,24 @@ end
 
 
 -- Constructs the rfx.banks_by_channel map based on current banks list stored in the RFX.
-function rfx.sync_banks_by_channel()
+function rfx.index_banks_by_channel()
     if not rfx.fx then
         return
     end
     rfx.banks_by_channel = {}
-    for srcchannel, dstchannel, msb, lsb in rfx.get_banks() do
-        -- log("Track bank: %s -> %s   %s %s", srcchannel, dstchannel, msb, lsb)
-        local bank = reabank.get_bank(msb, lsb)
+    rfx.unknown_banks = nil
+    -- Will be set to true if there are any bank hash mismatches
+    local resync = false
+    for bank, srcchannel, dstchannel, hash in rfx.get_banks() do
         if not bank then
-            log("Error: RFX instance refers to undefined bank: msb=%s lsb=%s", msb, lsb)
+            if not rfx.unknown_banks then
+                rfx.unknown_banks = {}
+            end
+            -- TODO: should pass (TBD) uuid instead of hash
+            rfx.unknown_banks[#rfx.unknown_banks+1] = hash
+            log("Error: RFX instance refers to undefined bank with hash %s", hash)
         else
+            log("-- bank: %s  hash %s == %s", bank.name, hash, bank:hash())
             bank.srcchannel = srcchannel
             bank.dstchannel = dstchannel
             if srcchannel == 17 then
@@ -355,40 +705,43 @@ function rfx.sync_banks_by_channel()
                 end
                 banks_list[#banks_list + 1] = bank
             end
+            if hash ~= bank:hash() then
+                resync = true
+            end
         end
     end
-
-    -- Update the reabank version stored in the RFX
-    rfx.reabank_version = reabank.version % 256
-    local metadata = (rfx.metadata & 0xffff00ff) | (rfx.reabank_version << 8)
-    -- Only update the metadata if it actually changed.
-    if metadata ~= rfx.metadata then
-        rfx.push_state(rfx.track)
-        rfx.set_param(rfx.params.metadata, metadata)
-        rfx.pop_state()
+    if resync then
+        log("resyncing banks to RFX due to hash mismatch")
+        rfx.sync_banks_to_rfx()
+        return true
     end
 end
 
 -- Called when bank list is changed.  This sends the articulation details for all current
 -- banks in the bank list.
 -- TODO: will eventually need something like this that can sync all tracks in the project.
-function rfx.sync_articulation_details()
+function rfx.sync_banks_to_rfx()
     if not rfx.fx then
         return
     end
+    local t0=os.clock()
+    reaper.Undo_BeginBlock2(0)
     rfx.push_state(rfx.track)
     rfx.opcode(rfx.OPCODE_CLEAR)
-    rfx.sync_banks_by_channel()
-    for param = rfx.params.control_start, rfx.params.control_end do
-        local channel = param - rfx.params.control_start + 1
+    if not rfx.appdata or not rfx.appdata.banks then
+        -- This shouldn't happen.
+        return log("ERROR: unexpectedly no track appdata or banks")
+    end
+
+    for channel = 1, 16 do
         local banks = rfx.banks_by_channel[channel]
         if banks then
             for _, bank in ipairs(banks) do
                 bank:realize()
                 local param1 = (channel - 1) | (0 << 4)
-                rfx.opcode(rfx.OPCODE_NEW_BANK, param1, bank.msb, bank.lsb)
+                rfx.opcode(rfx.OPCODE_NEW_BANK, {param1, bank.msb, bank.lsb})
                 for _, cc in ipairs(bank:get_chase_cc_list()) do
-                    rfx.opcode(rfx.OPCODE_SET_BANK_CHASE_CC, cc)
+                    rfx.opcode(rfx.OPCODE_SET_BANK_CHASE_CC, {cc})
                 end
                 for _, art in ipairs(bank.articulations) do
                     local version = 0
@@ -396,23 +749,19 @@ function rfx.sync_articulation_details()
                     local outputs = art:get_outputs()
                     local version = 0
                     -- If the articulation has a conditional output event then we need to use a
-                    -- v1 articulation record to allow OPCODE_SET_OUTPUT_EVENT_INFO1 later.
+                    -- v1 articulation record which has a field for the output filter which is
+                    -- passed in OPCODE_ADD_OUTPUT_EVENT.
                     if art:has_conditional_output() then
                         version = 1
                     end
                     -- First nybble of param1 is source channel, while second is articulation record version.
                     local param1 = (channel - 1) | (version << 4)
-                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, param1, art.program, (group << 4) + #outputs)
-                    rfx.opcode(rfx.OPCODE_SET_ARTICULATION_INFO, art.flags, art.off or bank.off or 128, 0)
-
+                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, {param1, art.program, (group << 4) + #outputs,
+                                                             art.flags, art.off or bank.off or 128, 0})
                     for _, output in ipairs(outputs) do
-                        local dstchannel = output.channel
-                        if not dstchannel then
-                            if bank.dstchannel ~= 17 then
-                                dstchannel = bank.dstchannel
-                            else
-                                dstchannel = channel
-                            end
+                        local outchannel = output.channel or bank.dstchannel
+                        if outchannel == 17 then
+                            outchannel = channel
                         end
                         local param1 = tonumber(output.args[1] or 0)
                         local param2 = tonumber(output.args[2] or 0)
@@ -420,57 +769,57 @@ function rfx.sync_articulation_details()
                         if not output.route then
                             param1 = param1 | 0x80
                         end
-                        local typechannel = ((dstchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
-                        rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, typechannel, param1, param2)
-
+                        local typechannel = ((outchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
                         -- Set filter program if the output event is conditional.
                         local filter = output.filter_program and (output.filter_program | 0x80) or 0
-                        if version > 0 and filter > 0 then
-                            rfx.opcode(rfx.OPCODE_SET_OUTPUT_EVENT_INFO1, filter, 0, 0)
-                        end
+                        rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, {typechannel, param1, param2, filter})
                     end
                 end
             end
-        else
-            rfx.set_data(param, NO_PROGRAM, NO_PROGRAM, NO_PROGRAM, NO_PROGRAM)
         end
     end
+
+    -- Update the hash of all banks
+    local i = 1
+    for bank, _, _, _ in rfx.get_banks() do
+        rfx.appdata.banks[i].h = bank:hash()
+        i = i + 1
+    end
+    rfx.set_appdata(rfx.appdata)
+
     rfx.pop_state()
+    reaper.Undo_EndBlock2(0, "Reaticulate: update track banks (cannot be undone)", UNDO_STATE_FX)
+    log("sync articulations to rfx took: %s", os.clock()-t0)
 end
 
 -- Clears the current program for the given channel.  Channel and group
 -- are offset from 1.
 function rfx.clear_channel_program(channel, group)
-    if group == 4 then
-        local value = rfx.get_param(rfx.params.group_4_enabled_programs)
-        value = value & ~(1 << (channel - 1))
-        rfx.set_param(rfx.params.group_4_enabled_programs, value)
-    else
-        local param = rfx.params.control_start + channel - 1
-        local value = rfx.get_param(param)
-        local shift = 8 * (group - 1)
-        value = (value & ~(0xff << shift)) | (NO_PROGRAM << shift)
-        rfx.set_param(param, value)
-    end
+    rfx.opcode(rfx.OPCODE_CLEAR_ARTICULATION, {channel - 1, group - 1})
 end
 
 function rfx.activate_articulation(channel, program)
-    rfx.push_state(rfx.track)
-    rfx.opcode(rfx.OPCODE_ACTIVATE_ARTICULATION, channel, program)
-    rfx.pop_state()
-    -- It may be tempting to sync() now but the RFX will trigger the articulation
-    -- asynchronously, so syncing now will miss it most of the time.  Might as well
-    -- just wait for the next refresh.
+    rfx.opcode(rfx.OPCODE_ACTIVATE_ARTICULATION, {channel, program})
 end
 
+function rfx.subscribe(subscription, track, fx)
+    rfx.opcode(rfx.OPCODE_SUBSCRIBE, {subscription}, track, fx)
+end
 
--- Stores automation state of the given track as well as last touched FX to ensure that
--- that manipulation of the RFX is as transparent as possible.
+-- Stores automation state of the given track as well as last touched FX to
+-- ensure that that manipulation of the RFX is as transparent as possible.
 --
--- This is called enough that it tries to be light weight in the common case.  That is,
--- if track automation is read only, then there's no need to temporarily change it.
--- And if additionally there's no last touched FX, this function is effectively a
--- no-op (at least in that it does not leave side effects).
+-- In terms of RFX manipulation, this generally only needs to be called when
+-- rfx.opcode_flush() is called, because opcode_flush() sets a track parameter
+-- to kick the RFX.  In most cases, this can be avoided, except when a)
+-- immediate response is needed or b) we send more opcodes than can be queued,
+-- requiring a flush.
+--
+-- This tries to be light weight in the common case.  That is, if track
+-- automation is read only, then there's no need to temporarily change it. And
+-- if additionally there's no last touched FX, this function is effectively a
+-- no-op (at least in that it does not leave side effects). function
+
 function rfx.push_state(track)
     local state = rfx.state
     local track_mode = 0
@@ -620,25 +969,228 @@ end
 
 -- Lower level functions
 
--- Send an operation to program the RFX.  This is primarily used as a way to
--- load large amounts of data into the RFX whose size exceeds what can be stored
--- in the available FX parameters.
+-- Asynchronously invoke an RFX API via an "operation code" and a variable
+-- number of 32-bit parameters.  The invocation can be made synchronous via
+-- rfx.opcode_flush()
 --
--- This is perhaps a bit of a precarious hack: it only works because *all* parameters
--- set via TrackFX_SetParam are reliably seen by the JSFX.  This is either because
--- the @slider section in the JSFX is evaluated immediately and synchronously within
--- TrackFX_SetParam, or there is some queuing mechanism to allow all parameters to
--- be replayed within the JSFX asynchronously.
+-- This interface is a well-defined API between the main script and the
+-- Reaticulate JSFX.  There are opcodes to both control current behaviour as
+-- well as program how the RFX responds to articulation changes.
 --
--- This may depend too much on a coincidence of implementation.  If Reaper decides to
--- begin lazily evaluating FX parameters, perhaps as an optimization, this whole approach
--- will collapse.
+-- Opcodes are in the above OPCODE_* constants and each takes 0 or more 32-bit
+-- integer parameters, where the meaning of the parameters varies by opcode.
 --
--- For now, will take my chances: https://forum.cockos.com/showthread.php?p=1893338
+-- This works by appending the opcode and parameters to the opcode region of the
+-- RFX instance's gmem buffer.  Slot 0 contains the length of all *committed*
+-- opcodes plus parameters, after which point further opcodes may not enqueued
+-- until processed by the RFX. Slot 1 contains the length of uncommitted queued
+-- opcodes.  From slot 2 onward, each group of 1+n slots represents the opcode
+-- and its n parameters.
 --
-function rfx.opcode(opcode, b0, b1, b2)
-    rfx.set_data(rfx.params.opcode, b0 or 0, b1 or 0, b2 or 0, opcode)
+-- If the opcode region of the gmem buffer is full, a flush will be forced.
+-- Similarly, if there are committed opcodes, we will force a flush before
+-- enqueuing the new one.  A flush is accomplished by setting an FX parameter on
+-- the RFX, which causes it to synchronously process all committed queued
+-- opcodes (via @slider), allowing us to safely enqueue more.  See the comment
+-- below for more details.
+--
+-- Enqueued opcodes will not generate undo, but if a flush is forced because of
+-- one of the conditions mentioned above, then an undo point *may* be generated.
+-- (It's not clear when or why this happens sometimes and not others.)
+
+function rfx.opcode(opcode, args, track, fx)
+    local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_OPCODES)
+    if not offset then
+        -- This shouldn't happen.  Log an error and a stack trace.
+        log("ERROR: opcode() called on track without valid RFX")
+        return log(nil)
+    end
+    local n_committed = reaper.gmem_read(offset)
+
+    if n_committed > 0 then
+        -- We're trying to enqueue an opcode while there are committed opcodes
+        -- not yet processed by the RFX.  Although the main loop (via
+        -- App:handle_onupdate) commits all pending opcodes, it doesn't flush
+        -- them, lest we risk polluting undo history.  If we're here, it means
+        -- we committed in the last cycle and we're waiting for the RFX still.
+        -- Since we can't modify a committed queue, we forfeit our goal to
+        -- avoid polluting undo by writing an FX parameter to force the RFX's
+        -- @slider code to execute.
+        --
+        -- At least with Reaper at the time of writing, this is executed
+        -- synchronosly, so by the time TrackFX_SetParam() returns, @slider has
+        -- finished running (which means all queued opcodes have been processed)
+        --
+        -- If this happens more frequently in practice, we can consider double
+        -- buffering the opcode queue.
+        --
+        rfx.opcode_flush()
+        log("WARN: %s committed opcodes during enqueue", n_committed)
+        log(nil)
+
+        -- Sanity check that indeed the opcodes were synchronously executed by the RFX.
+        n_committed = reaper.gmem_read(offset)
+        if n_committed > 0 then
+            -- This shouldn't happen.  It means the RFX didn't respond synchrously.
+            -- The opcode is now lost.
+            return log("FATAL: opcode flush did not seem to work")
+        end
+
+    end
+    -- Number of arguments
+    local argc = args and #args or 0
+    -- Check to see if the queue is full and needs to be flushed.
+    local queue_size = reaper.gmem_read(offset + 1)
+
+    if queue_size + 1 + argc >= rfx.GMEM_OPCODES_BUFFER_SIZE then
+        -- The opcode queue gmem region is full, so we need to force the flush now.
+        rfx.opcode_flush(track, fx, offset)
+        queue_size = 0
+    end
+
+    -- Write the opcode and the provided arguments (if any) to the gmem buffer.
+    local opidx = offset + 2 + queue_size
+    reaper.gmem_write(opidx, opcode | (argc << 8))
+    for i = 1, argc do
+        reaper.gmem_write(opidx + i, args[i])
+    end
+    reaper.gmem_write(offset + 1, queue_size + 1 + argc)
+
+    if rfx.rfx_awaiting_commit == nil then
+        rfx.rfx_awaiting_commit = {}
+    end
+    if rfx.rfx_awaiting_commit[offset] == nil then
+        rfx.rfx_awaiting_commit[offset] = {track or rfx.track, fx or rfx.fx}
+    end
 end
+
+
+-- Commit previously enqueued opcodes to make them visible to the RFX. Commited
+-- opcodes will be executed asynchronously at some unspecified time unless
+-- rfx.opcode_flush() is called.
+function rfx._opcode_commit(track, fx, offset)
+    if offset == nil then
+        offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_OPCODES)
+    end
+    local n_buffered = reaper.gmem_read(offset + 1)
+    reaper.gmem_write(offset + 1, 0)
+    reaper.gmem_write(offset, n_buffered)
+    rfx.rfx_awaiting_commit[offset] = nil
+end
+
+-- Commit all enqueued opcodes across all tracks.
+function rfx.opcode_commit_all()
+    if rfx.rfx_awaiting_commit ~= nil then
+        for offset, trackfx in pairs(rfx.rfx_awaiting_commit) do
+            if reaper.ValidatePtr2(0, trackfx[1], "MediaTrack*") then
+                rfx._opcode_commit(trackfx[1], trackfx[2], offset)
+            end
+        end
+        rfx.rfx_awaiting_commit = nil
+    end
+end
+
+-- Synchronously flushes all pending opcodes on the given track.  This generates
+-- undo, so the caller is expected to wrap it in a begin/end undo block stanza
+-- if applicable.
+function rfx.opcode_flush(track, fx, offset)
+    if rfx.rfx_awaiting_commit then
+        rfx._opcode_commit(track, fx, offset)
+    end
+    rfx.push_state(track or rfx.track)
+    reaper.TrackFX_SetParam(track or rfx.track, fx or rfx.fx, rfx.params.opcode, 42)
+    rfx.pop_state()
+end
+
+
+
+-- Serialize and store the given appdata table in the RFX.
+function rfx.set_appdata(appdata)
+    if not rfx.track or not rfx.fx then
+        return false
+    end
+    local str = binser.serialize(appdata)
+    local offset = rfx.get_gmem_index(nil, nil, rfx.GMEM_IIDX_APP_DATA)
+    -- serialization protocol version (may not ever be used but allocating in case)
+    reaper.gmem_write(offset + 0, 1)
+    -- Length of original serialized string
+    reaper.gmem_write(offset + 1, #str)
+    -- Number of slots used up in gmem buffer.
+    reaper.gmem_write(offset + 2, math.ceil(#str / 3.0))
+    for i = 1, #str, 3 do
+        local b0, b1, b2 = str:byte(i, i + 3)
+        local packed = (b0 or 0) + ((b1 or 0) << 8) + ((b2 or 0) << 16)
+        -- log("write %s: %s %s %s -> %s", i, b0, b1, b2, packed)
+        reaper.gmem_write(offset + 3 + (i-1)/3, packed)
+    end
+    rfx.opcode(rfx.OPCODE_SET_APPDATA)
+    -- rfx.opcode_flush()
+end
+
+
+-- Reads the appdata table previously stored with rfx.set_appdata()
+--
+-- Userdata is automatically written to the gmem buffer when a gmem_index is
+-- assigned to the RFX.  So no need to send an opcode, just read the buffer
+-- right away.
+function rfx.get_appdata()
+    if not rfx.track or not rfx.fx then
+        return nil
+    end
+    local t0 = os.clock()
+    local offset = rfx.get_gmem_index(nil, nil, rfx.GMEM_IIDX_APP_DATA)
+    local appdata = nil
+    local version = reaper.gmem_read(offset + 0)
+    if version == 1 then
+        local strlen = reaper.gmem_read(offset + 1)
+        local bytes = {}
+        for i = 1, strlen, 3 do
+            local packed = reaper.gmem_read(offset + 3 + (i-1)/3)
+            bytes[#bytes+1] = string.char(packed & 0xff)
+            bytes[#bytes+1] = string.char((packed >> 8) & 0xff)
+            bytes[#bytes+1] = string.char((packed >> 16) & 0xff)
+            -- log("Input %s: %s %s %s -> %s", i, packed & 0xff, (packed >> 8) & 0xff, (packed >> 16) & 0xff, packed)
+        end
+        local str = table.concat(bytes, '', 1, strlen)
+
+        status, appdata = pcall(binser.deserialize, str)
+        local t1 = os.clock()
+        if not status then
+            log("ERROR: deserialization of %s bytes failed: %s", #str, appdata)
+            return nil
+        end
+        log("deserialize ver=%s from %s took: %s", version, offset, t1-t0, version)
+        log("resulting data: sz=%s   %s\n", strlen, table.tostring(appdata))
+        return appdata[1]
+    else
+        log("Error: could not understand rfx stored data (serialization version %s)", version)
+    end
+
+    return appdata
+end
+
+
+--
+-- Functions to fetch data from FX parameters.
+--
+function rfx.get_param(param, value)
+    if rfx.track and rfx.fx then
+        local r, _, _ = reaper.TrackFX_GetParam(rfx.track, rfx.fx, param)
+        if r >= 0 then
+            return math.floor(r) & 0xffffffff
+        end
+    end
+    return nil
+end
+
+
+function rfx.set_param(param, value)
+    if rfx.track and rfx.fx then
+        return reaper.TrackFX_SetParam(rfx.track, rfx.fx, param, value or 0)
+    end
+    return false
+end
+
 
 function rfx.get_data(param)
     if rfx.track and rfx.fx then
@@ -665,23 +1217,5 @@ function rfx.set_data(param, b0, b1, b2, b3)
     return false
 end
 
-
-function rfx.get_param(param, value)
-    if rfx.track and rfx.fx then
-        local r, _, _ = reaper.TrackFX_GetParam(rfx.track, rfx.fx, param)
-        if r >= 0 then
-            return math.floor(r) & 0xffffffff
-        end
-    end
-    return nil
-end
-
-
-function rfx.set_param(param, value)
-    if rfx.track and rfx.fx then
-        return reaper.TrackFX_SetParam(rfx.track, rfx.fx, param, value or 0)
-    end
-    return false
-end
 
 return rfx

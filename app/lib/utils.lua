@@ -13,7 +13,29 @@
 -- limitations under the License.
 
 
--- Miscellaneous utility functions
+-- Miscellaneous utility functions and constants.
+
+-- Undo constants per https://forum.cockos.com/showpost.php?p=2090533&postcount=27
+UNDO_STATE_ALL = -1
+-- track/master vol/pan/routing, routing/hwout envelopes too
+UNDO_STATE_TRACKCFG = 1
+-- track/master fx
+UNDO_STATE_FX = 2
+-- track items
+UNDO_STATE_ITEMS = 4
+-- loop selection, markers, regions, extensions
+UNDO_STATE_MISCCFG = 8
+-- freeze state
+UNDO_STATE_FREEZE = 16
+-- non-FX envelopes only
+UNDO_STATE_TRACKENV = 32
+UNDO_STATE_FXENV = 64
+-- FX envelopes, implied by UNDO_STATE_FX too.  Contents of automation items not
+-- position, length, rate etc of automation items, which is part of envelope state
+UNDO_STATE_POOLEDENVS = 128
+--ARA state
+UNDO_STATE_FX_ARA = 256
+
 
 Path = {
     sep = package.config:sub(1, 1),
@@ -60,7 +82,11 @@ end
 
 function string.strip(s)
     return s:match('^%s*(.-)%s*$')
- end
+end
+
+function math.round(n)
+    return n % 1 >= 0.5 and math.ceil(n) or math.floor(n)
+end
 
 function read_file(fname)
     local f, err = io.open(fname)
@@ -152,7 +178,7 @@ function open_url(url)
     if reaper.GetOS():starts('Win') then
         reaper.ExecProcess(string.format('cmd.exe /C start /B "" "%s"', url), -2)
     elseif reaper.GetOS():starts('OSX') then
-        os.execute(string.format('open "" "%s"', url))
+        os.execute(string.format('open "%s"', url))
     else
         reaper.ShowMessageBox(
             "Sorry, I don't know how to open URLs on this operating system.",

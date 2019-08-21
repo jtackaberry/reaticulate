@@ -89,15 +89,15 @@ function screen.init()
 end
 
 function screen.sync_banks_to_rfx()
+    local banks = {}
     for n = 1, #screen.banklist.children do
         local bankbox = screen.banklist:get_child(n)
         local bank = reabank.get_bank_by_msblsb(bankbox.bank_menu.selected_id)
         local srcchannel = channel_menu_to_channel(bankbox.srcchannel_menu.selected)
         local dstchannel = channel_menu_to_channel(bankbox.dstchannel_menu.selected)
-        rfx.set_bank(n, srcchannel, dstchannel, bank)
+        banks[#banks+1] = {bank, srcchannel, dstchannel}
     end
-    rfx.sync_articulation_details()
-    screen.check_errors()
+    rfx.set_banks(banks)
 end
 
 -- Position: -1 = before, 1 = after.  If target is nil, then always move to
@@ -202,12 +202,11 @@ function screen.create_bank_ui()
     delete_button.onclick = function()
         -- TODO: provide some means of undo (a la mobile phones)
         screen.banklist:remove(bankbox)
-        rfx.set_bank(#screen.banklist.children + 1, nil, nil, nil)
         screen.sync_banks_to_rfx()
         app.screens.banklist.update()
     end
 
-    bankbox.bank_menu.onchange = function()
+    bankbox.bank_menu.onchange = function(self)
         local bank = reabank.get_bank_by_msblsb(bankbox.bank_menu.selected_id)
         local slot = screen.banklist:get_child_index(bankbox)
         if not slot then
@@ -216,8 +215,7 @@ function screen.create_bank_ui()
         else
             local srcchannel = channel_menu_to_channel(bankbox.srcchannel_menu.selected)
             local dstchannel = channel_menu_to_channel(bankbox.dstchannel_menu.selected)
-            rfx.set_bank(slot, srcchannel, dstchannel, bank)
-            rfx.sync_articulation_details()
+            screen.sync_banks_to_rfx()
             if bank.off ~= nil then
                 -- New bank with off program.  Activate that program now.
                 local art = bank:get_articulation_by_program(bank.off)
@@ -289,14 +287,14 @@ end
 function screen.update()
     screen.widget:scrollto(0, 0)
     screen.banklist:clear()
-    for srcchannel, dstchannel, msb, lsb in rfx.get_banks() do
+    for bank, srcchannel, dstchannel, hash in rfx.get_banks() do
         local bankbox = screen.create_bank_ui()
         bankbox.srcchannel_menu:select(channel_to_channel_menu(srcchannel), false)
         bankbox.dstchannel_menu:select(channel_to_channel_menu(dstchannel), false)
         -- Set the option menu label which will be used if the MSB/LSB isn't found
         -- in the bank list.
-        bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s, %s)', msb, lsb))
-        bankbox.bank_menu:select(tostring((msb << 8) + lsb), false)
+        bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s)', hash))
+        bankbox.bank_menu:select(tostring((bank.msb << 8) + bank.lsb), false)
         screen.banklist:add(bankbox)
     end
     screen.check_errors()

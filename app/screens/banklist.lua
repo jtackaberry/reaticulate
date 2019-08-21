@@ -140,7 +140,7 @@ function screen.draw_button_midi_channel(art, button, offx, offy, event)
             x = x - (lw + 15)
             local y = offy + button.cy + (button.ch - lh) / 2
             button:setcolor('#ffffff')
-            local fill = (channel == hover_channel) or (app.active_notes & (1 << channel) > 0)
+            local fill = (channel == hover_channel) or (rfx.active_notes & (1 << channel) > 0)
             gfx.rect(x - 5, y - 1, lw + 10, lh + 2, fill)
             if fill then
                 button:setcolor('#000000')
@@ -228,8 +228,8 @@ function screen.show_track_banks()
             visible_by_msblsb[msblsb] = 1
         end
     end
-    for _, _, msb, lsb in rfx.get_banks() do
-        showbank(msb, lsb)
+    for bank, _, _, hash in rfx.get_banks() do
+        showbank(bank.msb, bank.lsb)
     end
     screen.visible_banks = visible
     if #visible > 0 then

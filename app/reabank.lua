@@ -13,13 +13,19 @@
 -- limitations under the License.
 
 require 'lib.utils'
+require 'lib.crc32'
 local rtk = require 'lib.rtk'
 
 local reabank = {
+    DEFAULT_CHASE_CCS = '1,2,11,64-69',
+
     reabank_filename_factory = nil,
     reabank_filename_user = nil,
     filename_tmp = nil,
     version = nil,
+    -- Just the factory banks
+    banks_factory = nil,
+    -- User and factory banks combined
     banks = {},
     -- Maps fully qualified group/name to bank object.
     banks_by_path = {},
@@ -34,8 +40,6 @@ local reabank = {
 
 }
 
-local DEFAULT_CHASE_CCS = '1,2,11,64-69'
-
 local function insert_program_change(take, selected, ppq, channel, bank_msb, bank_lsb, program)
     reaper.MIDI_InsertCC(take, selected, false, ppq, 0xb0, channel, 0, bank_msb)
     reaper.MIDI_InsertCC(take, selected, false, ppq, 0xb0, channel, 32, bank_lsb)
@@ -46,7 +50,7 @@ end
 
 
 
-local Articulation = class('Articulation')
+Articulation = class('Articulation')
 Articulation.static.FLAG_CHASE = 1 << 0
 Articulation.static.FLAG_ANTIHANG = 1 << 1
 Articulation.static.FLAG_ANTIHANG_CC = 1 << 2
@@ -257,6 +261,41 @@ function Bank:initialize(filename, msb, lsb, name, attrs)
     -- in the UI.
     self.hidden = (self.flags & Articulation.FLAG_HIDDEN) ~= 0
     self.flags = self.flags & ~Articulation.FLAG_HIDDEN
+    -- Cached value from hash()
+    self._hash = nil
+end
+
+function Bank:hash()
+    if self._hash then
+        return self._hash
+    end
+    -- TODO: Should we have an option to only hash things used by the RFX?
+    local arts = {}
+    for _, art in pairs(self.articulations_by_program) do
+        arts[#arts+1] = {
+            art.program,
+            art.name,
+            art.group,
+            art.flags,
+            art.iconname,
+            art.color,
+            art.outputs,
+        }
+    end
+
+    local bankinfo = {
+        self.name,
+        self.shortname,
+        self.group,
+        self.flags,
+        self.chase,
+        self.clone,
+        self.off,
+        self.message,
+        arts
+    }
+    self._hash = crc32(table.tostring(bankinfo))
+    return self._hash
 end
 
 function Bank:add_articulation(art)
@@ -308,7 +347,7 @@ function Bank:get_chase_cc_list()
         return self._chase
     end
     ccs = {}
-    chase = self.chase or DEFAULT_CHASE_CCS
+    chase = self.chase or reabank.DEFAULT_CHASE_CCS
     for _, elem in ipairs(chase:split(',')) do
         if elem:find('-') then
             subrange = elem:split('-')
@@ -324,12 +363,26 @@ function Bank:get_chase_cc_list()
 end
 
 
-
 function Bank:get_path()
     if not self.group then
         return self.shortname or self.name
     else
         return self.group .. '/' .. (self.shortname or self.name)
+    end
+end
+
+
+-- Returns vendor, product, patch name
+function Bank:get_name_info()
+    if not self.group then
+        return nil, nil, self.shortname
+    else
+        if not self.group:find('/') then
+            return nil, self.group, self.shortname
+        else
+            vendor, product = self.group:match('([^/]+)/(.+)')
+            return vendor, product, self.shortname
+        end
     end
 end
 
@@ -390,8 +443,8 @@ local function parse_properties(line)
 end
 
 
-function reabank.parse(filename, banks)
-    banks = banks or {}
+function reabank.parse(filename)
+    banks = {}
     -- Track banks which are cloned
     cloned = {}
     local f = io.open(filename)
@@ -466,8 +519,13 @@ function reabank.parse(filename, banks)
 end
 
 function reabank.parseall()
-    local banks = reabank.parse(reabank.reabank_filename_factory)
-    return reabank.parse(reabank.reabank_filename_user, banks)
+    if not reabank.banks_factory then
+        reabank.banks_factory = reabank.parse(reabank.reabank_filename_factory)
+    else
+        log("skipping factory parse")
+    end
+    local user_banks = reabank.parse(reabank.reabank_filename_user)
+    return table.merge(table.merge({}, reabank.banks_factory), user_banks)
 end
 
 function reabank.create_user_reabank_if_missing()
@@ -559,7 +617,6 @@ function reabank.init()
 
     -- Either tmp reabank doesn't exist or factory banks have changed, so regenerate.
     log("generating new reabank")
-    reabank.banks = reabank.parse(reabank.reabank_filename_factory)
     reabank.refresh()
     reaper.SetExtState("reaticulate", "factory_bank_size", tostring(cur_factory_bank_size), true)
     log("Refreshed reabank %s parsed in %.03fs", reabank.filename_tmp, os.clock() - t0)
@@ -600,9 +657,9 @@ function reabank.get_bank(msb, lsb)
     return reabank.get_bank_by_msblsb((msb << 8) + lsb)
 end
 
-function reabank.get_bank_by_msblsb(msglsb)
+function reabank.get_bank_by_msblsb(msblsb)
     -- math.floor() used to cast float to int
-    return reabank.banks[math.floor(msglsb)]
+    return reabank.banks[math.floor(msblsb or 0)]
 end
 
 function reabank.to_menu()
