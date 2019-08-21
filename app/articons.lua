@@ -162,6 +162,7 @@ articons.names = {
     "tremolo-150",
     "tremolo-150-con-sord",
     "tremolo-180",
+    "tremolo-180-con-sord",
     "tremolo-con-sord",
     "tremolo-con-sord-sul-pont",
     "tremolo-ghost",
