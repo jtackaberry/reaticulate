@@ -25,6 +25,10 @@ function BaseApp:initialize(appid, title, basedir)
                               "SWS extension missing", 0)
         return false
     end
+    if not reaper.gmem_read then
+        reaper.ShowMessageBox("Reaticulate requires Reaper v5.97 or later", "Reaper version too old", 0)
+        return false
+    end
     app = self
     Path.init(basedir)
     Path.imagedir = Path.join(Path.basedir, 'img')
