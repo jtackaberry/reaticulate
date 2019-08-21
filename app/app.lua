@@ -746,6 +746,11 @@ function App:build_frame()
             'Open in Default App',
             'Show in Finder'
         })
+    else
+        menubutton:setmenu({
+            'Edit in Editor',
+            'Show in File Browser'
+        })
     end
 
     local toolbar = self.toolbar
@@ -768,6 +773,13 @@ function App:build_frame()
             elseif self.selected == 3 then
                 local path = Path.join(Path.resourcedir, "Data")
                 os.execute('open "' .. path .. '"')
+            end
+		else
+            if self.selected == 1 then
+                os.execute('xdg-open "' .. reabank.reabank_filename_user .. '"')
+            elseif self.selected == 2 then
+                local path = Path.join(Path.resourcedir, "Data")
+                os.execute('xdg-open "' .. path .. '"')
             end
         end
     end
