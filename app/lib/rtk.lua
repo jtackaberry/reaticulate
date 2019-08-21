@@ -242,6 +242,11 @@ function log(fmt, ...)
             -- Clear console
             reaper.ShowConsoleMsg(fmt)
         else
+            local r, err = pcall(string.format, fmt, ...)
+            if not r then
+                log()
+                error(err)
+            end
             reaper.ShowConsoleMsg(string.format(fmt .. "\n", ...))
         end
     end
@@ -622,7 +627,11 @@ end
 
 
 local function _run()
-    rtk.update()
+    local status, err = pcall(rtk.update)
+    if not status then
+        reaper.ShowConsoleMsg(debug.traceback() .. "\n")
+        error(err)
+    end
     if rtk.running then
         reaper.defer(_run)
     end
