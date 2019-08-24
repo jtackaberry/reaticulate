@@ -856,13 +856,19 @@ function get_output_event_param1(event)
 
 function get_output_event_param2(event)
 (
-    (event[0] & 0xff0000) >> 16;
+    (event[0] & 0x7f0000) >> 16;
 );
 
 function get_output_event_should_route(event)
 (
     !(event[0] & 0x8000);
 );
+
+function get_output_event_use_current_routing(event)
+(
+    (event[0] & 0x800000) != 0;
+);
+
 
 // Returns -1 if no filtering.
 function get_output_event_filter_program(event)
@@ -1087,7 +1093,7 @@ local(offset, bitmap, channel, num_outputs, event, program_offset, offset, versi
                                    (gmem[argi + 3] << 8) | (gmem[argi + 4] << 16);
     );
 
-    // Arguments: (type+dstchannel, param1+noroute, param2)
+    // Arguments: (type+dstchannel, param1+noroute, param2+currentroute)
     (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
         // Get current number of output events for articulation to act as the index for the
         // one being added now.
@@ -1108,7 +1114,7 @@ local(offset, bitmap, channel, num_outputs, event, program_offset, offset, versi
         last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
 
         // Map output event back to articulation
-        update_output_event_map(a0 & 0x0f, a1, a2, last_new_articulation, num_outputs);
+        update_output_event_map(a0 & 0x0f, a1, a2 & 0x7f, last_new_articulation, num_outputs);
     );
 
     // Arguments: (channel, program)
@@ -1251,7 +1257,7 @@ local(idx, offset, channel, group, program)
     gfx_h = 400;
     gfx_x = gfx_y = 0;
     gfx_r = gfx_g = gfx_b = gfx_a = 1;
-    channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL]; //slider9 - 1;
+    channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
 
     gfx_printf("Reaticulate debug info\n");
     gfx_printf("  serialized: reads=%d writes=%d   undo serial=%d   nundo=%d\n", nserr, nserw, undo_serial, nundo);
@@ -1530,7 +1536,8 @@ local(control, shift, current_program, offset, program_offset, mask)
 );
 
 
-function midisend_multidst(mpos, dstchannels, basemsg1, msg2, msg3) local(channel, bit)
+function midisend_multidst(mpos, dstchannels, basemsg1, msg2, msg3)
+local(channel, bit)
 (
     // A bit obtuse, but optimized for fewer/lower destination channels.
     // Stops looping once all destination channels have been hit.
@@ -1725,7 +1732,7 @@ function _enqueue_articulation(program, channel, except_program)
 
 
 function emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels)
-local(flags, output_type, dstchannel, param1, param2, should_route)
+local(flags, output_type, dstchannel, dstchannels, param1, param2, should_route, use_current_routing, ch)
 (
     flags = get_articulation_flags(articulation);
     output_type = get_output_event_type(event);
@@ -1733,18 +1740,27 @@ local(flags, output_type, dstchannel, param1, param2, should_route)
     param1 = get_output_event_param1(event);
     param2 = get_output_event_param2(event);
     should_route = get_output_event_should_route(event);
+    use_current_routing = get_output_event_use_current_routing(event);
+
+    (use_current_routing) ? (
+        // Output event wants to use existing routing that was set up by a prior
+        // articulation.
+        dstchannels = last_dstchannels;
+    ) : (
+        dstchannels = 1 << dstchannel;
+    );
 
     (output_type == OUTPUT_TYPE_PROGRAM) ? (
-        midisend(mpos + 1, MIDI_EVENT_PROGRAM + dstchannel, param1, 0);
+        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_PROGRAM, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE) ? (
-        midisend(mpos + 1, MIDI_EVENT_NOTE_ON + dstchannel, param1, param2 ? param2 : 127);
+        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, param1, param2 ? param2 : 127);
         // Here we send the note-offs with a large enough offset to ensure they follow all
         // note-ons from the list of output events for this articulation.  This causes
         // multiple note output events to simulate pressing the keys simultaneously.
         //
         // Fixes #20.
-        midisend(mpos + 50, MIDI_EVENT_NOTE_OFF + dstchannel, param1, 0);
+        mpos = midisend_multidst(mpos + 50, dstchannels, MIDI_EVENT_NOTE_OFF, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE_HOLD) ? (
         off_program = get_articulation_off_program(articulation);
@@ -1752,20 +1768,27 @@ local(flags, output_type, dstchannel, param1, param2, should_route)
             // Ensure note-on velocity is 127 if not otherwise defined.
             param2 = param2 ? param2 : 127;
             add_held_keyswitch(channel, group, param1, param2, dstchannel);
-            midisend(mpos + 1, MIDI_EVENT_NOTE_ON + dstchannel, param1, param2);
+            mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, param1, param2);
         ) : (
             add_held_keyswitch(channel, group, 0, 0, 0);
         );
     );
     (output_type == OUTPUT_TYPE_CC) ? (
-        midisend(mpos + 1, MIDI_EVENT_CC + dstchannel, param1, param2);
+        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_CC, param1, param2);
         // FIXME: send for midi feedback
     );
     (output_type == OUTPUT_TYPE_ARTICULATION) ? (
         // Here we have a referenced articulation we need to follow.  Push the articulation
         // details onto the stack so that activate() below can continue processing them.
-        // FIXME: we should propagate should_route to the new articulation
-        _enqueue_articulation(param1, dstchannel, program);
+        //
+        // Enqueue articulation to all dstchannels
+        ch = 0; loop(16,
+            ((dstchannels & (1 << ch)) != 0) ? (
+                // TODO: should we propagate should_route to the new articulation?
+                _enqueue_articulation(param1, ch, program);
+            );
+            ch += 1;
+        );
     );
 
     (should_route) ? (
@@ -1774,10 +1797,10 @@ local(flags, output_type, dstchannel, param1, param2, should_route)
             // need to chase CCs to the new dst channel.
             mpos = chase_ccs(mpos, articulation, channel, dstchannel);
         );
-        // Include dstchannel for output event in the dstchannels bitmap.
-        channel_map[channel] |= (1 << dstchannel);
+        // Include dstchannels for output event in the dstchannels bitmap.
+        channel_map[channel] |= dstchannels;
     );
-    mpos + 2;
+    mpos;
 );
 
 

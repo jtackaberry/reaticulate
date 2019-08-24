@@ -761,14 +761,22 @@ function rfx.sync_banks_to_rfx()
                                                              art.flags, art.off or bank.off or 128, 0})
                     for _, output in ipairs(outputs) do
                         local outchannel = output.channel or bank.dstchannel
-                        if outchannel == 17 then
-                            outchannel = channel
-                        end
                         local param1 = tonumber(output.args[1] or 0)
                         local param2 = tonumber(output.args[2] or 0)
-                        -- Set bit 7 of param1 if this output event should not setup routing
                         if not output.route then
+                            -- Set bit 7 of param1 if this output event should not setup routing
                             param1 = param1 | 0x80
+                        end
+                        if outchannel == 17 then
+                            outchannel = channel
+                        elseif outchannel == -1 then
+                            -- Route output event to channels set up by previous articulation.
+                            param2 = param2 | 0x80
+                            -- This option implies output.route == false
+                            param1 = param1 | 0x80
+                            -- outchannel will be ignored by the RFX here, but set it to something
+                            -- that ensures we don't try to bitshift a negative number below.
+                            outchannel = 1
                         end
                         local typechannel = ((outchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
                         -- Set filter program if the output event is conditional.

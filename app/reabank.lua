@@ -129,7 +129,12 @@ function Articulation:get_outputs()
                         output.type = part
                     end
                 elseif prefix == '@' then
-                    output.channel = tonumber(part)
+                    if part == '-' then
+                        output.route = false
+                        output.channel = -1
+                    else
+                        output.channel = tonumber(part)
+                    end
                 elseif prefix == ':' then
                     output.args = part:split(',')
                 elseif prefix == '%' then
