@@ -160,6 +160,13 @@ function Articulation:describe_outputs()
     for n, output in ipairs(outputs) do
         local s = nil
         local verb = 'Sends'
+        local channel = nil
+        if output.channel == -1 then
+            channel = 'current channels'
+        elseif output.channel then
+            channel = string.format('ch %d', output.channel)
+        end
+
         if output.type == 'program' then
             s = string.format('program change %d', output.args[1] or 0)
         elseif output.type == 'cc' then
@@ -182,13 +189,13 @@ function Articulation:describe_outputs()
             else
                 s = 'undefined articulation'
             end
-        elseif output.type == nil and output.channel then
+        elseif output.type == nil and channel then
             verb = 'Routes'
-            s = string.format('to ch %d', output.channel)
+            s = string.format('to %s', channel)
         end
         if s then
             if output.type and output.channel then
-                s = s .. string.format(' on ch %d', output.channel)
+                s = s .. string.format(' on %s', channel)
             end
             if last_verb then
                 if verb == last_verb then
