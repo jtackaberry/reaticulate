@@ -138,6 +138,7 @@ ext_midi_bus = 1;
 RFX_MAGIC = (42 << 24);
 RFX_VERSION = (1 << 16);
 
+MIDI_EVENT_PITCH = 0xe0;
 MIDI_EVENT_PROGRAM = 0xc0;
 MIDI_EVENT_CC = 0xb0;
 MIDI_EVENT_NOTE_ON = 0x90;
@@ -357,6 +358,7 @@ OUTPUT_TYPE_CC = 2;
 OUTPUT_TYPE_NOTE = 3;
 OUTPUT_TYPE_NOTE_HOLD = 4;
 OUTPUT_TYPE_ARTICULATION = 5;
+OUTPUT_TYPE_PITCH = 6;
 
 
 // Constants for the subscription bitmap for OPCODE_SUBSCRIBE.
@@ -1778,6 +1780,9 @@ local(flags, output_type, dstchannel, dstchannels, param1, param2, should_route,
     (output_type == OUTPUT_TYPE_CC) ? (
         mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_CC, param1, param2);
         // FIXME: send for midi feedback
+    );
+    (output_type == OUTPUT_TYPE_PITCH) ? (
+        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_PITCH, param1, param2);
     );
     (output_type == OUTPUT_TYPE_ARTICULATION) ? (
         // Here we have a referenced articulation we need to follow.  Push the articulation

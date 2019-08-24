@@ -270,7 +270,6 @@ local output_type_to_rfx_param = {
     ["note"] = 3,
     ["note-hold"] = 4,
     ["art"] = 5,
-    -- TODO: https://github.com/jtackaberry/reaticulate/issues/60
     ["pitch"] = 6,
 
 }
@@ -777,6 +776,12 @@ function rfx.sync_banks_to_rfx()
                             -- outchannel will be ignored by the RFX here, but set it to something
                             -- that ensures we don't try to bitshift a negative number below.
                             outchannel = 1
+                        end
+                        if output.type == 'pitch' then
+                            -- Convert 14-bit pitch value to MSB/LSB parameters.
+                            param1 = math.max(-8192, math.min(8191, param1)) + 8192
+                            param2 = (param1 >> 7) & 0x7f
+                            param1 = param1 & 0x7f
                         end
                         local typechannel = ((outchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
                         -- Set filter program if the output event is conditional.

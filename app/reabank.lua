@@ -180,6 +180,8 @@ function Articulation:describe_outputs()
             else
                 s = string.format('note %s vel %d', name, output.args[2] or 127)
             end
+        elseif output.type == 'pitch' then
+            s = string.format('pitch bend val %d', output.args[1] or 0)
         elseif output.type == 'art' then
             local program = tonumber(output.args[1] or 0)
             local bank = self:get_bank()
