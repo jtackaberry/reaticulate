@@ -1042,7 +1042,7 @@ function rfx.opcode(opcode, args, track, fx)
     -- Check to see if the queue is full and needs to be flushed.
     local queue_size = reaper.gmem_read(offset + 1)
 
-    if queue_size + 1 + argc >= rfx.GMEM_OPCODES_BUFFER_SIZE then
+    if 2 + queue_size + 1 + argc >= rfx.GMEM_OPCODES_BUFFER_SIZE then
         -- The opcode queue gmem region is full, so we need to force the flush now.
         rfx.opcode_flush(track, fx, offset)
         queue_size = 0
