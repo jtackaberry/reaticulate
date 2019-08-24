@@ -29,11 +29,8 @@ slider1:704708608<0,2147483647,1>Reaticulate metadata
 // The index within the gmem buffer for the start of this instance's data
 slider2:0<0,2147483647,1>gmem index
 
-// Bitmap of MIDI channels with active (held) notes.  Used by the
-// GUI to indicate activity on channels.
-slider3:0<0,2147483647,1>-Active Notes
-
-slider4:0<0,2147483647,1>instance id
+slider3:0<0,2147483647,1>-Unused
+slider4:0<0,2147483647,1>-instance id
 slider5:0<0,2147483647,1>-Unused
 slider6:0<0,2147483647,1>-Unused
 slider7:0<0,2147483647,1>-Unused
@@ -42,12 +39,15 @@ slider8:0<0,2147483647,1>-Unused
 // For debugging
 slider9:0<0,16,1>Show debug info for channel
 
-// This group of sliders communicates information about each MIDI channel
-// back to the GUI.  Each slider value is defined as:
-//     byte 0: current program number for group 1; 128 == disabled
-//     byte 1: current program number for group 2; 128 == disabled
-//     byte 2: current program number for group 3; 128 == disabled
-//     byte 3: current program number for group 4; see slider26 for disabled
+
+// DEPRECATED: can be removed in the future when serialized_version < 3 support
+// is dropped.
+//
+// This group of sliders communicates information about each MIDI channel back
+// to the GUI.  Each slider value is defined as: byte 0: current program number
+// for group 1; 128 == disabled byte 1: current program number for group 2; 128
+// == disabled byte 2: current program number for group 3; 128 == disabled byte
+// 3: current program number for group 4; see slider26 for disabled
 slider10:8421504<0,2147483647,1>Reaticulate data for channel 1
 slider11:8421504<0,2147483647,1>Reaticulate data for channel 2
 slider12:8421504<0,2147483647,1>-Reaticulate data for channel 3
@@ -74,6 +74,9 @@ slider27:0<0,2147483647,1>-Unused
 slider28:0<0,2147483647,1>-Unused
 slider29:0<0,2147483647,1>-Unused
 
+// DEPRECATED: can be removed in the future when serialized_version < 3 support
+// is dropped.
+//
 // This group of sliders is used just to provide track-specific data storage
 // for the GUI.  The actual encoding of these values is defined
 // within that script and this JSFX is agnostic.  This is used, for example,
@@ -118,7 +121,7 @@ slider63:0<0,2147483647,1>-Unused
 
 // Special assembler-esque interface used by the GUI for programming the RFX.
 // See OPCODE_* constants below.
-slider64:42<0,2147483647,1>opcode
+slider64:42<0,2147483647,1>-opcode
 
 in_pin:none
 out_pin:none
