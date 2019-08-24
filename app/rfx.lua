@@ -18,6 +18,7 @@
 -- instances, including discovery, installation, and communication with the
 -- instances.
 
+local log = require 'lib.log'
 local binser = require 'lib.binser'
 local reabank = require 'reabank'
 
@@ -322,7 +323,7 @@ function rfx.gc()
             if fx then
                 local params = rfx.params_by_version[version]
                 local id, _, _ = reaper.TrackFX_GetParam(track, fx, params.instance_id)
-                log("rfx: %s  track %s  id: %s", proj, track, id)
+                log.debug("rfx: %s  track %s  id: %s", proj, track, id)
             end
         end
     end
@@ -383,7 +384,6 @@ function rfx.sync(track, forced)
     if serial_changed then
         local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_INSTANCE_DATA)
         local change_bitmap = reaper.gmem_read(offset)
-        -- log("change bitmap: %s", change_bitmap)
         if change_bitmap > 0 then
             reaper.gmem_write(offset, 0)
         end
@@ -498,7 +498,7 @@ function rfx.validate(track, fx)
         -- bump the opcode param to force the rfx to gmem_alloc() inside @slider
         -- and then try fetching again.  But meanwhile, it's not the end of the
         -- world if we wait until the next cycle, we'll just get a bit of a flicker.
-        log("ERROR: instance missing gmem_index")
+        log.error("rfx: instance missing gmem_index")
         return nil, nil, nil, nil, nil, rfx.ERROR_MISSING_RFX
     end
     return fx, metadata, version, params, gmem_index, nil
@@ -682,9 +682,9 @@ function rfx.index_banks_by_channel()
             end
             -- TODO: should pass (TBD) uuid instead of hash
             rfx.unknown_banks[#rfx.unknown_banks+1] = hash
-            log("Error: RFX instance refers to undefined bank with hash %s", hash)
+            log.error("rfx: instance refers to undefined bank with hash %s", hash)
         else
-            log("-- bank: %s  hash %s == %s", bank.name, hash, bank:hash())
+            log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, hash, bank:hash())
             bank.srcchannel = srcchannel
             bank.dstchannel = dstchannel
             if srcchannel == 17 then
@@ -711,7 +711,7 @@ function rfx.index_banks_by_channel()
         end
     end
     if resync then
-        log("resyncing banks to RFX due to hash mismatch")
+        log.info("rfx: resyncing banks due to hash mismatch")
         rfx.sync_banks_to_rfx()
         return true
     end
@@ -724,14 +724,15 @@ function rfx.sync_banks_to_rfx()
     if not rfx.fx then
         return
     end
-    local t0=os.clock()
+    if not rfx.appdata or not rfx.appdata.banks then
+        -- This shouldn't happen.
+        return log.error("rfx: unexpectedly no track appdata or banks")
+    end
+
+    log.time_start()
     reaper.Undo_BeginBlock2(0)
     rfx.push_state(rfx.track)
     rfx.opcode(rfx.OPCODE_CLEAR)
-    if not rfx.appdata or not rfx.appdata.banks then
-        -- This shouldn't happen.
-        return log("ERROR: unexpectedly no track appdata or banks")
-    end
 
     for channel = 1, 16 do
         local banks = rfx.banks_by_channel[channel]
@@ -789,7 +790,8 @@ function rfx.sync_banks_to_rfx()
 
     rfx.pop_state()
     reaper.Undo_EndBlock2(0, "Reaticulate: update track banks (cannot be undone)", UNDO_STATE_FX)
-    log("sync articulations to rfx took: %s", os.clock()-t0)
+    log.info("rfx: sync articulations done")
+    log.time_end()
 end
 
 -- Clears the current program for the given channel.  Channel and group
@@ -963,7 +965,6 @@ function rfx.pop_state()
         reaper.SetGlobalAutomationOverride(state.global_automation_override)
     end
     reaper.PreventUIRefresh(-1)
-    -- log("push/pop took %f", os.clock() - state.t0)
 end
 
 
@@ -1002,8 +1003,7 @@ function rfx.opcode(opcode, args, track, fx)
     local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_OPCODES)
     if not offset then
         -- This shouldn't happen.  Log an error and a stack trace.
-        log("ERROR: opcode() called on track without valid RFX")
-        return log(nil)
+        return log.exception("rfx: opcode() called on track without valid RFX")
     end
     local n_committed = reaper.gmem_read(offset)
 
@@ -1025,15 +1025,15 @@ function rfx.opcode(opcode, args, track, fx)
         -- buffering the opcode queue.
         --
         rfx.opcode_flush()
-        log("WARN: %s committed opcodes during enqueue", n_committed)
-        log(nil)
+        log.warn("rfx: %s committed opcodes during enqueue", n_committed)
+        log.trace()
 
         -- Sanity check that indeed the opcodes were synchronously executed by the RFX.
         n_committed = reaper.gmem_read(offset)
         if n_committed > 0 then
             -- This shouldn't happen.  It means the RFX didn't respond synchrously.
             -- The opcode is now lost.
-            return log("FATAL: opcode flush did not seem to work")
+            return log.fatal("rfx: opcode flush did not seem to work")
         end
 
     end
@@ -1120,7 +1120,6 @@ function rfx.set_appdata(appdata)
     for i = 1, #str, 3 do
         local b0, b1, b2 = str:byte(i, i + 3)
         local packed = (b0 or 0) + ((b1 or 0) << 8) + ((b2 or 0) << 16)
-        -- log("write %s: %s %s %s -> %s", i, b0, b1, b2, packed)
         reaper.gmem_write(offset + 3 + (i-1)/3, packed)
     end
     rfx.opcode(rfx.OPCODE_SET_APPDATA)
@@ -1141,6 +1140,7 @@ function rfx.get_appdata()
     local offset = rfx.get_gmem_index(nil, nil, rfx.GMEM_IIDX_APP_DATA)
     local appdata = nil
     local version = reaper.gmem_read(offset + 0)
+    log.debug("rfx: read version=%s from offset=%s", version, offset)
     if version == 1 then
         local strlen = reaper.gmem_read(offset + 1)
         local bytes = {}
@@ -1149,21 +1149,20 @@ function rfx.get_appdata()
             bytes[#bytes+1] = string.char(packed & 0xff)
             bytes[#bytes+1] = string.char((packed >> 8) & 0xff)
             bytes[#bytes+1] = string.char((packed >> 16) & 0xff)
-            -- log("Input %s: %s %s %s -> %s", i, packed & 0xff, (packed >> 8) & 0xff, (packed >> 16) & 0xff, packed)
         end
         local str = table.concat(bytes, '', 1, strlen)
 
         status, appdata = pcall(binser.deserialize, str)
         local t1 = os.clock()
         if not status then
-            log("ERROR: deserialization of %s bytes failed: %s", #str, appdata)
+            log.error("rfx: deserialization of %s bytes failed: %s", #str, appdata)
             return nil
         end
-        log("deserialize ver=%s from %s took: %s", version, offset, t1-t0, version)
-        log("resulting data: sz=%s   %s\n", strlen, table.tostring(appdata))
+        log.debug("rfx: deserialize ver=%s from %s took: %s", version, offset, t1-t0, version)
+        log.debug2("rfx: resulting data: sz=%s   %s\n", strlen, table.tostring(appdata))
         return appdata[1]
     else
-        log("Error: could not understand rfx stored data (serialization version %s)", version)
+        log.error("rfx: could not understand rfx stored data (serialization version %s)", version)
     end
 
     return appdata

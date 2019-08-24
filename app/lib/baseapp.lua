@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+local log = require 'lib.log'
 local rtk = require 'lib.rtk'
 require 'lib.utils'
 
@@ -72,7 +73,17 @@ function BaseApp:initialize(appid, title, basedir)
     rtk.onkeypresspost = function(event) self:handle_onkeypresspost(event) end
 
     self:get_config()
-    self:set_debug(self.config.debug_level or 0)
+
+    -- Migration from boolean debug to logging level
+    if self.config.debug_level == true or self.config.debug_level == 1 then
+        self.config.debug_level = log.DEBUG
+        self:save_config()
+    elseif self.config.debug_level == false or self.config.debug_level == 0 then
+        self.config.debug_level = log.ERROR
+        self:save_config()
+    end
+
+    self:set_debug(self.config.debug_level or log.ERROR)
     self:set_theme()
     rtk.init(self.title, self.config.w, self.config.h, self.config.dockstate, self.config.x, self.config.y)
     self:build_frame()
@@ -109,7 +120,7 @@ function BaseApp:show_screen(screen)
         end
     end
     if screen then
-        log("showing screen %s", screen.name)
+        log.info("baseapp: showing screen %s", screen.name)
         screen.update()
         screen.widget:show()
         if self.viewport then
@@ -217,12 +228,8 @@ end
 function BaseApp:set_debug(level)
     self.config.debug_level = level
     self:save_config()
-    if level == 0 then
-        rtk.debug = false
-    else
-        rtk.debug = true
-        log("Reaticulate debugging is enabled")
-    end
+    log.level = level or log.ERROR
+    log.info("baseapp: Reaticulate log level is %s", log.level_name())
 end
 
 function BaseApp:handle_ondock()
@@ -231,7 +238,7 @@ function BaseApp:handle_ondock()
         self.config.last_dockstate = rtk.dockstate
     end
     if rtk.hwnd and rtk.has_js_reascript_api then
-        log('js_ReaScriptAPI extension is available')
+        log.info('baseapp: js_ReaScriptAPI extension is available')
         reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
     end
     self:save_config()
@@ -272,7 +279,7 @@ function BaseApp:set_theme()
     local bg = int2hex(reaper.GSC_mainwnd(20))
     -- Determine from theme background color if we should use the light or dark theme.
     local luma = color2luma(bg)
-    log("set theme bg: %s", bg)
+    log.debug("baseapp: theme bg is %s", bg)
     -- bg = '#252525'
     if luma > 0.7 then
         -- FIXME: dark icons!
@@ -351,7 +358,7 @@ function BaseApp:send_command(appid, cmd, ...)
         if cmdlist:len() > 200 then
             -- Too many queued commands.  Target appid not responding.  Truncate the existing
             -- list.
-            log("%s not responding", appid)
+            log.warn("baseapp: %s not responding", appid)
             cmdlist = ''
         else
             cmdlist = cmdlist .. ' '
@@ -405,7 +412,6 @@ function BaseApp:check_commands()
         local val = reaper.GetExtState(self.appid, "command")
         reaper.DeleteExtState(self.appid, "command", false)
         for cmd, arg in val:gmatch('(%S+)=([^"]%S*)') do
-            -- log("cmd: %s %s", cmd, arg)
             if cmd:starts('?') then
                 -- This request expects an async reply.  Command will be in the form:
                 -- ?cmd:appid,serial
@@ -421,7 +427,7 @@ function BaseApp:check_commands()
                     self.cmdcallbacks[serial] = nil
                     self.cmdpending = self.cmdpending - 1
                 else
-                    log("error: %s received reply to unknown request %s", self.appid, serial)
+                    log.error("baseapp: %s received reply to unknown request %s", self.appid, serial)
                 end
             else
                 self:handle_command(cmd, arg)

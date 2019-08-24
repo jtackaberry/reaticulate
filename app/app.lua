@@ -14,6 +14,7 @@
 
 local BaseApp = require 'lib.baseapp'
 local rtk = require 'lib.rtk'
+local log = require 'lib.log'
 local rfx = require 'rfx'
 local reabank = require 'reabank'
 local articons = require 'articons'
@@ -52,7 +53,6 @@ function App:initialize(basedir)
     if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
         return
     end
-    -- log("")
 
     -- Currently selected track (or nil if no track is selected)
     self.track = nil
@@ -309,7 +309,7 @@ function App:refocus()
 end
 
 function rfx.onartchange(channel, group, last_program, new_program, track_changed)
-    log("articulation change: %s -> %d  ch=%d  group=%d  track_changed=%s", last_program, new_program, channel, group, track_changed)
+    log.info("app: articulation change: %s -> %d  ch=%d  group=%d  track_changed=%s", last_program, new_program, channel, group, track_changed)
     local artidx = channel + (group << 8)
     local last_art = app.active_articulations[artidx]
     local channel_bit = 2^(channel - 1)
@@ -495,7 +495,7 @@ function App:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
         self.config[cfgitem] = value
         self:save_config()
     end
-    log("set toggle option: %s -> %s", cfgitem, value)
+    log.info("app: set toggle option: %s -> %s", cfgitem, value)
 
     if not cmd_id and self.config_map_to_script[cfgitem] then
         local section, filename = table.unpack(self.config_map_to_script[cfgitem])
@@ -620,7 +620,7 @@ function App:handle_ondock()
 end
 
 function BaseApp:handle_onkeypresspost(event)
-    log("keypress: keycode=%d  handled=%s  char=%s", event.keycode, event.handled, event.char)
+    log.debug("app: keypress: keycode=%d  handled=%s  char=%s", event.keycode, event.handled, event.char)
     if not event.handled then
         if self:current_screen() == self.screens.banklist then
             if event.keycode >= 49 and event.keycode <= 57 then
@@ -673,9 +673,9 @@ function App:refresh_banks()
         reaper.SNM_DeleteFastString(fast)
     end
 
-    local t0 = os.clock()
+    log.time_start()
     reabank.refresh()
-    log("stage 0 refresh took %.03fs", os.clock() - t0)
+    log.debug("app: refresh: stage 0 done")
 
     -- TODO: at least with Reaper 5.980 (what I was using when tested)
     -- this seems like it may be overkill.  So far all that's apparently
@@ -709,7 +709,7 @@ function App:refresh_banks()
         end
     end
 
-    log("stage 1 refresh took %.03fs", os.clock() - t0)
+    log.debug("app: refresh: stage 1 done")
     -- FIXME: this needs to work across all tracks.
     -- Reindex banks to ensure the cached Bank object is the new version.  This
     -- also stores the src/dstchannel attributes on the Bank objects based on
@@ -718,26 +718,29 @@ function App:refresh_banks()
     -- This will implicitly call rfx.sync_banks_to_rfx() if the hashes have indeed
     -- changed.
     local synced = rfx.index_banks_by_channel()
-    log("stage 2 refresh took %.03fs", os.clock() - t0)
-    local t1 = os.clock()
+    if not synced then
+        rfx.sync_banks_to_rfx()
+    end
+    log.debug("app: refresh: stage 2 done")
     -- Force a resync of the RFX
     rfx.sync(rfx.track, true)
-    local t2 = os.clock()
+    log.debug("app: refresh: stage 3 (track)")
     self:ontrackchange(nil, self.track)
-    log("stage 3 refresh took %.03fs (sync=%s ontrackchange=%s)", os.clock() - t0, t2-t1, os.clock()-t2)
+    log.debug("app: refresh: stage 3 done")
     -- Update articulation list to reflect any changes that were made to the Reabank template.
     self.screens.banklist.update()
-    log("stage 4 refresh took %.03fs", os.clock() - t0)
+    log.debug("app: refresh: stage 4 done")
     if self:current_screen() == self.screens.trackcfg then
         self.screens.trackcfg.update()
     end
-    log("bank refresh took %.03fs", os.clock() - t0)
+    log.info("app: refresh: done")
+    log.time_end()
 end
 
 function App:beat_reaper_into_submission()
     -- This is necessary if an existing Reaticulate-managed track references a non-Reaticulate
     -- bank.  Unfortunately it's *SLOW*.  And most of the time it shouldn't be necessary.
-    local t0 = os.clock()
+    log.time_start()
     for i = 0, reaper.CountTracks(0) - 1 do
         local track = reaper.GetTrack(0, i)
         if rfx.get(track) then
@@ -746,17 +749,16 @@ function App:beat_reaper_into_submission()
             local ok = reaper.SNM_GetSetObjectState(track, fast, false, false)
             chunk = reaper.SNM_GetFastString(fast)
             reaper.SNM_DeleteFastString(fast)
-            -- log("BEFORE XML: %s", chunk:len())
             if ok and chunk and chunk:find("MIDIBANKPROGFN") then
                 chunk = chunk:gsub('MIDIBANKPROGFN "[^"]*"', 'MIDIBANKPROGFN ""')
                 local fast = reaper.SNM_CreateFastString(chunk)
                 reaper.SNM_GetSetObjectState(track, fast, true, false)
-                -- log("AFTER XML: %s", chunk:len())
                 reaper.SNM_DeleteFastString(fast)
             end
         end
     end
-    log("track chunk sweep took %.03fs", os.clock() - t0)
+    log.debug('app: finished track chunk sweep')
+    log.time_end()
 end
 
 function App:build_frame()
@@ -948,7 +950,7 @@ function App:select_track_from_fx_window()
         if tracknum then
             local track = reaper.GetTrack(0, tracknum - 1)
             self:select_track(track)
-            log("Selecting track %s due to focused FX", tracknum)
+            log.debug("app: selecting track %s due to focused FX", tracknum)
             break
         end
         w = reaper.JS_Window_GetParent(w)

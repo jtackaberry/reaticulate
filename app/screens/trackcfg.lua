@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+local log = require 'lib.log'
 local rtk = require 'lib.rtk'
 local rfx = require 'rfx'
 local reabank = require 'reabank'
@@ -211,7 +212,7 @@ function screen.create_bank_ui()
         local slot = screen.banklist:get_child_index(bankbox)
         if not slot then
             -- Shouldn't be possible, but handle it anyway.
-            log("ERROR: can't find bank in bank list")
+            log.error("trackcfg: can't find bank in bank list")
         else
             local srcchannel = channel_menu_to_channel(bankbox.srcchannel_menu.selected)
             local dstchannel = channel_menu_to_channel(bankbox.dstchannel_menu.selected)
@@ -275,7 +276,7 @@ function screen.check_errors()
                     local label = "Error: bank conflict on same channel: " .. conflict.source.name
                     bankbox.warning.label:attr('label', label)
                     bankbox.warning:show()
-                    log("Conflict: %s with program %s on channel %s", conflict.source.name, conflict.program, channel)
+                    log.warn("trackcfg: conflict: %s with program %s on channel %s", conflict.source.name, conflict.program, channel)
                 end
             else
                 bankbox.warning:hide()

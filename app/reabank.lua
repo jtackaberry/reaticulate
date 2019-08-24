@@ -14,6 +14,7 @@
 
 require 'lib.utils'
 require 'lib.crc32'
+local log = require 'lib.log'
 local rtk = require 'lib.rtk'
 
 local reabank = {
@@ -522,7 +523,7 @@ function reabank.parseall()
     if not reabank.banks_factory then
         reabank.banks_factory = reabank.parse(reabank.reabank_filename_factory)
     else
-        log("skipping factory parse")
+        log.debug("skipping factory parse")
     end
     local user_banks = reabank.parse(reabank.reabank_filename_user)
     return table.merge(table.merge({}, reabank.banks_factory), user_banks)
@@ -553,7 +554,7 @@ local function set_reabank_file(reabank)
     if err then
         -- Can't read REAPER's ini file.  This shouldn't happen.  Something is wrong with the
         -- installation.
-        return fatal_error("Failed to read REAPER's ini file: " .. tostring(err))
+        return app.fatal_error("Failed to read REAPER's ini file: " .. tostring(err))
     end
     if ini:find("mididefbankprog=") then
         ini = ini:gsub("mididefbankprog=[^\n]*", "mididefbankprog=" .. reabank)
@@ -566,10 +567,10 @@ local function set_reabank_file(reabank)
             ini = ini:sub(1, pos + 8) .. "mididefbankprog=" .. reabank .. "\n" .. ini:sub(pos + 9)
         end
     end
-    log("Updating ini file %s", inifile)
+    log.info("updating ini file %s", inifile)
     err = write_file(inifile, ini)
     if err then
-        return fatal_error("Failed to write ini file: " .. tostring(err))
+        return app.fatal_error("Failed to write ini file: " .. tostring(err))
     end
 end
 
@@ -590,16 +591,16 @@ local function get_reabank_file()
 end
 
 function reabank.init()
-    local t0 = os.clock()
     reabank.reabank_filename_factory = Path.join(Path.basedir, "Reaticulate-factory.reabank")
     reabank.reabank_filename_user = Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")
-    log("Reabank files: factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)
+    log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)
+    log.time_start()
 
     local cur_factory_bank_size, err = file_size(reabank.reabank_filename_factory)
     local file = get_reabank_file() or ''
     local tmpnum = file:lower():match("-tmp(%d+).")
     if tmpnum and file_exists(file) then
-        log("tmp rebeank exists: %s", file)
+        log.debug("reabank: tmp file exists: %s", file)
         reabank.version = tonumber(tmpnum)
         reabank.filename_tmp = file
         -- Determine if the factory bank has changed file size.  If it has (because e.g. the user
@@ -608,18 +609,20 @@ function reabank.init()
         if cur_factory_bank_size == tonumber(last_factory_bank_size) then
             reabank.menu = nil
             reabank.banks = reabank.parseall()
-            log("Existing reabank %s parsed in %.03fs", reabank.filename_tmp, os.clock() - t0)
+            log.info("reabank: existing materialized reabank parsed")
+            log.time_end()
             return
         else
-            log("factory bank has changed: cur=%s last=%s", cur_factory_bank_size, last_factory_bank_size)
+            log.info("reabank: factory bank has changed: cur=%s last=%s", cur_factory_bank_size, last_factory_bank_size)
         end
     end
 
     -- Either tmp reabank doesn't exist or factory banks have changed, so regenerate.
-    log("generating new reabank")
+    log.info("reabank: generating new reabank")
     reabank.refresh()
     reaper.SetExtState("reaticulate", "factory_bank_size", tostring(cur_factory_bank_size), true)
-    log("Refreshed reabank %s parsed in %.03fs", reabank.filename_tmp, os.clock() - t0)
+    log.info("reabank: refreshed reabank %s", reabank.filename_tmp)
+    log.time_end()
 end
 
 
@@ -635,19 +638,25 @@ function reabank.refresh()
     local header = "// Generated file.  DO NOT EDIT!  CONTENTS WILL BE LOST!\n"
     header = header .. "// Edit this instead: " .. reabank.reabank_filename_user .. "\n\n\n\n"
 
+    log.time_start()
     reabank.banks = reabank.parseall()
+    log.info("reabank: parsed all banks")
     local err = write_file(newfile, header .. reabank.banks_to_reabank_string())
     if err then
-        return fatal_error("Failed to write Reabank file: " .. tostring(err))
+        log.time_end()
+        return app.fatal_error("Failed to write Reabank file: " .. tostring(err))
     end
+    log.debug('reabank: wrote %s', newfile)
     set_reabank_file(newfile)
+    log.info('reabank: installed new bank')
 
     if reabank.filename_tmp and reaper.file_exists(reabank.filename_tmp) then
-        log("deleting old reabank file: %s", reabank.filename_tmp)
+        log.info("reabank: deleting old reabank file: %s", reabank.filename_tmp)
         os.remove(reabank.filename_tmp)
     end
     reabank.filename_tmp = newfile
-    log("switched to new reabank file: %s", newfile)
+    log.info("reabank: finished switching to new reabank file: %s", newfile)
+    log.time_end()
     reabank.version = tmpnum
     reabank.menu = nil
 end

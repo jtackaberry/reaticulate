@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+local log = require 'lib.log'
 local rtk = require 'lib.rtk'
 local feedback = require 'feedback'
 
@@ -110,7 +111,7 @@ function screen.init()
     local row = add_row(section, "MIDI Device:", 75, 2)
     local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
     menu.onchange = function(menu)
-        log("Changed MIDI CC feedback device: %s", menu.selected_id)
+        log.info("settings: changed MIDI CC feedback device: %s", menu.selected_id)
         last_device = app.config.cc_feedback_device
         app.config.cc_feedback_device = tonumber(menu.selected_id)
         app:save_config()
@@ -139,7 +140,7 @@ function screen.init()
     menu:setmenu({'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})
     menu:select(app.config.cc_feedback_bus or 1)
     menu.onchange = function(menu)
-        log("Changed MIDI CC feedback bus: %s", menu.selected)
+        log.info("settings: changed MIDI CC feedback bus: %s", menu.selected)
         app.config.cc_feedback_bus = menu.selected
         app:save_config()
         feedback.update_feedback_track_settings(true)
@@ -188,12 +189,19 @@ function screen.init()
         app:save_config()
     end
 
-    local row = add_row(section, "Debug:", 75)
+    local row = add_row(section, "Log Level:", 75)
     local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
-    menu:setmenu({'Disabled', 'Enabled'})
-    menu:select((app.config.debug_level or 0) + 1)
+    -- Populate optionmenu with title-cased log levels
+    local options = {}
+    for level, name in pairs(log.levels) do
+        name = name:sub(1, 1):upper() .. name:sub(2):lower()
+        options[#options+1] = {name, level}
+    end
+    table.sort(options, function(a, b) return a[2] > b[2] end)
+    menu:setmenu(options)
+    menu:select(app.config.debug_level or logging.ERROR)
     menu.onchange = function(menu)
-        app:set_debug(menu.selected - 1)
+        app:set_debug(menu.selected_id)
     end
 
 

@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+local log = require 'lib.log'
 local rfx = require 'rfx'
 
 local feedback = {
@@ -192,7 +193,8 @@ function feedback.update_feedback_track_settings(dosync)
         reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)
         local fx = reaper.TrackFX_GetByName(feedback_track, BUS_TRANSLATOR_FX_NAME, false)
         if fx == -1 then
-            log("CC feedback is enabled but BUS Translator FX not found")
+            -- If this happens it's a bug.
+            log.error("feedback: CC feedback is enabled but BUS Translator FX not found")
         else
             reaper.Undo_BeginBlock()
             rfx.push_state(feedback_track)

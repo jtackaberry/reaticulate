@@ -18,6 +18,7 @@
 --
 -- A modest UI library for Reaper, inspired by gtk+.
 --
+local log = require 'lib.log'
 class = require 'lib.middleclass'
 
 -------------------------------------------------------------------------------------------------------------
@@ -77,7 +78,6 @@ end
 local rtk = {
     has_js_reascript_api = reaper.JS_Window_GetFocus ~= nil,
 
-    debug = false,
     scale = 1,
     x = 0,
     y = 0,
@@ -234,24 +234,6 @@ local rtk = {
     _dest_stack = {}
 }
 
-function log(fmt, ...)
-    if rtk.debug then
-        if not fmt then
-            reaper.ShowConsoleMsg(debug.traceback() .. "\n")
-        elseif fmt == "" then
-            -- Clear console
-            reaper.ShowConsoleMsg(fmt)
-        else
-            local r, err = pcall(string.format, fmt, ...)
-            if not r then
-                log()
-                error(err)
-            end
-            reaper.ShowConsoleMsg(string.format(fmt .. "\n", ...))
-        end
-    end
-end
-
 function rtk.push_dest(dest)
     rtk._dest_stack[#rtk._dest_stack + 1] = gfx.dest
     gfx.dest = dest
@@ -299,7 +281,7 @@ function rtk.reflow(full)
     end
     local reflow_time = os.clock() - t0
     if reflow_time > 0.05 then
-        log("WARN: slow rtk reflow: %s", reflow_time)
+        log.warn("rtk: slow reflow: %s", reflow_time)
     end
     rtk.onreflow()
 end
@@ -629,7 +611,7 @@ end
 local function _run()
     local status, err = pcall(rtk.update)
     if not status then
-        reaper.ShowConsoleMsg(debug.traceback() .. "\n")
+        log.exception('rtk: update failed: %s', err)
         error(err)
     end
     if rtk.running then
@@ -2234,7 +2216,7 @@ function rtk.Box:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     end
     self.cw = math.max(outerw, (fillw and w) or self.w or 0)
     self.ch = math.max(outerh, (fillh and h) or self.h or 0)
-    -- log("%s (box): box=%s,%s  expand=%s spacing=%s  fill=%s,%s  inner=%s,%s (s1=%s,%s)   wh=%s,%s -> cxy=%s,%s cwh=%s,%s", self.id, boxw, boxh, expand_unit_size, self.spacing, fillw, fillh, innerw, innerh, s1w, s1h, w, h, self.cx, self.cy, self.cw, self.ch)
+    -- log.debug("rtk: %s (box): box=%s,%s  expand=%s spacing=%s  fill=%s,%s  inner=%s,%s (s1=%s,%s)   wh=%s,%s -> cxy=%s,%s cwh=%s,%s", self.id, boxw, boxh, expand_unit_size, self.spacing, fillw, fillh, innerw, innerh, s1w, s1h, w, h, self.cx, self.cy, self.cw, self.ch)
 end
 
 
