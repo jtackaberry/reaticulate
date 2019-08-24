@@ -527,7 +527,6 @@ articulations_ptr = 40000; // size: 16 * 128 = 2048
 //     bits 8-14: parameter 1 (context depends on output type)
 //        bit 15: if set, this output event should not setup channel routing
 //    bits 16-22: parameter 2 (context depends on output type)
-// TODO: https://github.com/jtackaberry/reaticulate/issues/42
 //        bit 23: if set, use current routing for destination and ignore
 //                bits 4-7
 // Slot 1: v1+
