@@ -134,7 +134,7 @@ marked as required.
 <tr>
     <td style='text-align: center'>clone</td>
     <td>
-        Clones the articulations in the specified fully qualified bank name (which is groupname/bankname).
+        Clones the articulations <i>from</i> the referenced bank, specified as a fully qualified bank name (i.e. the groupname/bankname format), <i>to</i> the current bank which contains the clone attribute.  The cloned articulations will appear after any articulations explicitly defined in the current bank.
     </td>
 </tr>
 <tr>
