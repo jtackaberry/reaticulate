@@ -796,7 +796,7 @@ function App:build_frame()
             if self.selected == 1 then
                 reaper.ExecProcess('cmd.exe /C start /B notepad ' .. reabank.reabank_filename_user, -2)
             elseif self.selected == 2 then
-                reaper.ExecProcess('cmd.exe /C start /B ' .. reabank.reabank_filename_user, -2)
+                reaper.ExecProcess('cmd.exe /C start /B "" "' .. reabank.reabank_filename_user .. '"', -2)
             elseif self.selected == 3 then
                 reaper.ExecProcess('cmd.exe /C explorer /select,' .. reabank.reabank_filename_user, -2)
             end
