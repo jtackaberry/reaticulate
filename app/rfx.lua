@@ -37,13 +37,14 @@ local rfx = {
     OPCODE_CLEAR = 1,
     OPCODE_ACTIVATE_ARTICULATION = 2,
     OPCODE_NEW_ARTICULATION = 3,
-    --OPCODE_SET_ARTICULATION_INFO = 4,
+    OPCODE_ADD_ARTICULATION_EXTENSION = 4,
     OPCODE_ADD_OUTPUT_EVENT = 5,
+    OPCODE_ADD_OUTPUT_EVENT_EXTENSION = 6,
     OPCODE_SYNC_TO_FEEDBACK_CONTROLLER = 7,
     OPCODE_SET_CC_FEEDBACK_ENABLED = 8,
     OPCODE_NEW_BANK = 9,
     OPCODE_SET_BANK_CHASE_CC = 10,
-    --OPCODE_SET_OUTPUT_EVENT_INFO1 = 11,
+    OPCODE_FINALIZE_ARTICULATIONS = 11,
 
     OPCODE_SET_APPDATA = 12,
     OPCODE_CLEAR_ARTICULATION = 13,
@@ -370,7 +371,7 @@ function rfx.sync(track, forced)
         -- FIXME: there *may* be a race on JSFX instantiation where magic is set
         -- before appdata is.  This means appdata will be nil and will cause us
         -- to initialize/migrate even if there was existing appdata.
-        if not rfx.appdata or not rfx.appdata.banks then
+        if type(rfx.appdata) ~= 'table' or not rfx.appdata.banks then
             if rfx.get_param(rfx.params.banks_start) ~= 0 then
                 rfx._migrate_to_appdata()
             else
@@ -513,7 +514,7 @@ end
 
 
 function rfx._migrate_to_appdata()
-    if not rfx.appdata then
+    if type(rfx.appdata) ~= 'table' then
         rfx.appdata = {v=1}
     end
     rfx.appdata.banks = {}
@@ -738,26 +739,20 @@ function rfx.sync_banks_to_rfx()
         if banks then
             for _, bank in ipairs(banks) do
                 bank:realize()
-                local param1 = (channel - 1) | (0 << 4)
+                local param1 = (channel - 1) | (0 << 4) -- 0 is bank version
                 rfx.opcode(rfx.OPCODE_NEW_BANK, {param1, bank.msb, bank.lsb})
                 for _, cc in ipairs(bank:get_chase_cc_list()) do
                     rfx.opcode(rfx.OPCODE_SET_BANK_CHASE_CC, {cc})
                 end
                 for _, art in ipairs(bank.articulations) do
-                    local version = 0
+                    local version = 2
                     local group = art.group - 1
                     local outputs = art:get_outputs()
-                    local version = 0
-                    -- If the articulation has a conditional output event then we need to use a
-                    -- v1 articulation record which has a field for the output filter which is
-                    -- passed in OPCODE_ADD_OUTPUT_EVENT.
-                    if art:has_conditional_output() then
-                        version = 1
-                    end
                     -- First nybble of param1 is source channel, while second is articulation record version.
                     local param1 = (channel - 1) | (version << 4)
-                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, {param1, art.program, (group << 4) + #outputs,
+                    rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, {param1, art.program, group,
                                                              art.flags, art.off or bank.off or 128, 0})
+
                     for _, output in ipairs(outputs) do
                         local outchannel = output.channel or bank.dstchannel
                         local param1 = tonumber(output.args[1] or 0)
@@ -784,15 +779,18 @@ function rfx.sync_banks_to_rfx()
                             param1 = param1 & 0x7f
                         end
                         local typechannel = ((outchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
-                        -- Set filter program if the output event is conditional.
-                        local filter = output.filter_program and (output.filter_program | 0x80) or 0
-                        rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, {typechannel, param1, param2, filter})
+                        rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, {typechannel, param1, param2})
+                        if output.filter_program then
+                            -- Set filter program if the output event is conditional.
+                            rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT_EXTENSION, {0, output.filter_program | 0x80})
+                        end
                     end
                 end
             end
         end
     end
 
+    rfx.opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)
     -- Update the hash of all banks
     local i = 1
     for bank, _, _, _ in rfx.get_banks() do

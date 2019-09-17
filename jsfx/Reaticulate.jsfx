@@ -134,6 +134,16 @@ out_pin:none
 ext_noinit = 1;
 ext_midi_bus = 1;
 
+// Returns a buffer index with enough room for 'sz' slots.
+_last_buffer_index = 0;
+function getptr(sz)
+local(p)
+(
+    p = _last_buffer_index;
+    _last_buffer_index += sz;
+    p;
+);
+
 // Misc constants
 RFX_MAGIC = (42 << 24);
 RFX_VERSION = (1 << 16);
@@ -146,10 +156,23 @@ MIDI_EVENT_NOTE_OFF = 0x80;
 SLIDER_OFFSET_CONTROL = 10;
 SLIDER_OPCODE = 64;
 MAX_GROUPS = 4;
+MAX_OUTPUT_EVENTS = 16;
 MAX_HELD_KEYSWITCHES = 8;
 MAX_BANKS = 16;
 MAX_CHANNELS = 16;
 MAX_UNDO_SLOTS = 100;
+MAX_APPDATA_SLOTS = 1000;
+
+// These control the size of the articulations_lut array which can get pretty
+// big as the number of extensions increases.  Increase these constants as
+// extensions get allocated.
+MAX_ARTICULATION_EXTENSIONS = 4; // must not exceed 16
+MAX_OUTPUT_EVENT_EXTENSIONS = 2; // must not exceed 16
+// The number of slots for each articulation in articulations_lut.  2 slots for
+// the articulation record (ptr to articulation and program+channel) +
+// extensions, and 2 slots for each output event (ptr to output event and art
+// version).
+ARTICULATION_LUT_RECORD_SIZE = 2 + MAX_ARTICULATION_EXTENSIONS + (2 + MAX_OUTPUT_EVENT_EXTENSIONS) * MAX_OUTPUT_EVENTS;
 
 // The GMEM_IDX_* constants refer to the index number within the gmem shared
 // buffer. These are initialized by the main script.
@@ -270,11 +293,14 @@ OPCODE_ACTIVATE_ARTICULATION = 2;
 // (channel+version, program, value)
 OPCODE_NEW_ARTICULATION = 3;
 
-// (flags, off program, unused)
-OPCODE_SET_ARTICULATION_INFO = 4;
+// (extension number, ...)
+OPCODE_ADD_ARTICULATION_EXTENSION = 4;
 
 // (type+dstchannel, param1, param2)
 OPCODE_ADD_OUTPUT_EVENT = 5;
+
+// (extension number, ...)
+OPCODE_ADD_OUTPUT_EVENT_EXTENSION = 6;
 
 // Syncs current state to the MIDI bus defined in OPECODE_SET_CC_FEEDBACK_ENABLED.
 // The first argument is a bitmap indicating what should be synced.
@@ -303,12 +329,8 @@ OPCODE_NEW_BANK = 9;
 // (cc)
 OPCODE_SET_BANK_CHASE_CC = 10;
 
-// Sets additional parameters for the last output event added with
-// OPCODE_ADD_OUTPUT_EVENT.  Requires an articulation record version of
-// 1 or later.
-//
-// (filter_program)
-OPCODE_SET_OUTPUT_EVENT_INFO1 = 11;
+
+OPCODE_FINALIZE_ARTICULATIONS = 11;
 
 // Sets the opaque app data.  No arguments are needed: all details are
 // stored in the gmem offset for appdata.
@@ -341,7 +363,7 @@ OPCODE_UPDATE_CURRENT_CCS = 15;
 OPCODE_SUBSCRIBE = 16;
 
 
-// Constants that apply to the flags parameter for OPCODE_SET_ARTICULATION_INFO
+// Constants that apply to the flags parameter for OPCODE_NEW_ARTICULATION
 ARTICULATION_FLAG_CHASE = 1 << 0;
 ARTICULATION_FLAG_ANTIHANG = 1 << 1;
 ARTICULATION_FLAG_ANTIHANG_CC = 1 << 2;
@@ -365,6 +387,12 @@ OUTPUT_TYPE_PITCH = 6;
 SUBSCRIPTION_NONE = 0;
 SUBSCRIPTION_CC = 1 << 0;
 SUBSCRIPTION_NOTES = 1 << 1;
+
+// As close as we can get to an array of constants in JSFX.
+ARTICULATION_EXTENSION_SIZES = getptr(16);
+OUTPUT_EVENT_EXTENSION_SIZES = getptr(16);
+OUTPUT_EVENT_EXTENSION_SIZES[0] = 1;
+OUTPUT_EVENT_EXTENSION_SIZES[1] = 2;
 
 
 // LSB of slider 1
@@ -401,10 +429,13 @@ serialized_version = 0;
 
 // Array to map source channel to destination channels.  Value is a 16-bit
 // bitmap where each bit is a MIDI channel.
-channel_map = 20000;  // size: 16
-
-// Placeholder for old version of held_keyswitches
-_dummy = 21000;
+// TODO: when supporting multiple buses, change this to 17 slots per channel
+// where slot 0 is a 16-bit bitmap of which buses have channels mapped, and
+// the remaining 16 slots are the channel bitmap on bus 1, bus 2, etc.
+// Size will be 17*16 which means the pending_activations array (and the ones
+// following) will need to shift out.
+// channel_map = 20000;  // size: 16
+channel_map = getptr(MAX_CHANNELS);
 
 // Used for opcode-based articulation activation. Tracks by MIDI channel
 // what the requested articulation is.  @slider section handles updating
@@ -413,7 +444,7 @@ _dummy = 21000;
 // The value is the has the requested program for the channel in b0 and b1
 // contains 0x01 if the activation has yet to occur, or 0x02 if it occurred.
 // This is needed to filter duplicate program changes.
-pending_activations = 20200; // size: 16
+pending_activations = getptr(MAX_CHANNELS);
 // Non-zero if the pending_activations array needs to be enumerated
 // on the next @block.
 have_pending_activations = 0;
@@ -423,7 +454,7 @@ last_play_state = 0;
 // Array to track active notes per channel.  Each channel is a bitmap of 5 adjacent
 // 31-bit integers where each bit is a note.  (31 bits due to obnoxious signed issue.)
 // This is used by the GUI to show activity on MIDI channels.
-active_notes_by_channel = 20300; // size: 16*5 = 80
+active_notes_by_channel = getptr(MAX_CHANNELS * 5);
 
 // Array to track which destination channel on which a note is active for a
 // given source channel.  Indexed by source channel and note number, and the
@@ -434,7 +465,10 @@ active_notes_by_channel = 20300; // size: 16*5 = 80
 // on a given source channel, the RFX tracks the destination channel the
 // event was ultimately routed to.  We ensure that subsequent note-offs coming
 // in on the same channel will be sent to the channel the note was routed to.
-active_dstchannels_by_note = 20400; // size: 16 * 128 * 2 = 4096
+active_dstchannels_by_note = getptr(MAX_CHANNELS * 128 * 2);
+
+// Placeholder for old version of held_keyswitches
+_dummy = getptr(16 * MAX_GROUPS);
 
 // Array to track which destination channels on which a CC is active for a
 // given source channel.  Indexed by source channel and CC number, and
@@ -446,7 +480,7 @@ active_dstchannels_by_note = 20400; // size: 16 * 128 * 2 = 4096
 // the antihangcc flag enabled at the time the CC event occurred.  When
 // we see a zero-value CC, we then replay that event on all destination
 // channels.
-active_channels_by_cc = 25000; // size: 16 * 128 = 2048
+active_channels_by_cc = getptr(MAX_CHANNELS * 128);
 
 
 // Tracks last CC values received on a given channel.  Indexed by MIDI channel
@@ -454,7 +488,7 @@ active_channels_by_cc = 25000; // size: 16 * 128 = 2048
 // that no CC was seen.
 //
 // This is used for CC chasing and CC feedback.
-last_ccs_by_channel = 30000; // size: 16 * 128 = 2048
+last_ccs_by_channel = getptr(MAX_CHANNELS * 128);
 
 // Bits 0-3 indicate the MIDI bus for feedback.  Bit 7 is whether feedback
 // is enabled.
@@ -468,93 +502,9 @@ midi_feedback_sync_pending = 0;
 // flags for articulations across all groups for that channel.  Used to make
 // behaviour decisions (e.g. CC chasing): if any active articulation on any
 // group for the channel needs the behaviour, then it will happen.
-all_articulation_flags_by_channel = 32500; // size: 16
+all_articulation_flags_by_channel = getptr(MAX_CHANNELS);
 
 
-// Length of the articulations array.
-articulations_len = 0;
-
-// Array that maps a program to the appropriate position in the articulations
-// array.  Indexed by MIDI channel (byte 1) and program number (byte 0).  A value
-// of -1 indicates this program/channel combination has no assigned articulation.
-//
-// This value is maintained and persisted but it's not otherwise used directly.
-// Instead it's translated to articulations_ptr to provide a directly useable
-// pointer to an articulation in this JSFX instance.
-//
-// JS serialization munges the MSB but 24 bits is still plenty big to
-// represent an offset.
-articulations_offsets = 33000;  // size: 16 * 128 = 2048
-
-// Array that maps a program to the appropriate position in the articulations
-// array.  Indexed by MIDI channel and program number.
-articulations_ptr = 40000; // size: 16 * 128 = 2048
-
-
-// Array holding all configured articulations.  This array holds variable
-// sized records, whose size varies by articulation and depends on factors
-// such as the articulation record version and number of output events.
-//
-// The record version is indicated in slot 1 bits 4-7 where the following
-// versions are defined:
-//
-//     v0: each record is 2 + n slots, where n is the # of output events.
-//     v1: each record is 3 + 2n slots, where n is the # of output events.
-//
-// This array is indexed via articulations_ptr.
-//
-// Slot 0: v0+ - articulation information
-//      bits 0-3: number of output events (see below)
-//      bits 4-7: group number
-//        byte 1: articulation flags
-//        byte 2: "off" (release) program for articulations with note-hold outputs.
-//
-// Slot 1: v0+
-//      bits 0-3: source channel
-//      bits 4-7: articulation record version
-//     bytes 1-2: indicates the offset (from 0) into the banks array this
-//                articulation belongs to.
-//
-// TODO: https://github.com/jtackaberry/reaticulate/issues/72
-// Slot 2: v1+ - reserved for future expansion
-// Slot 3-?: v2+
-
-//
-// Following the base articulation information slots, there are n*m slots for
-// output events, where n is the # of output events and m is dependent on
-// the articulation record version.
-//
-// Slot 0: v0+
-//      bits 0-3: output type (see OUTPUT_TYPE_* constants)
-//      bits 4-7: the destination MIDI channel for the articulation.  Subsequent
-//                incoming events are routed to this channel when the articulation
-//                is activated, in addition to output event.
-//     bits 8-14: parameter 1 (context depends on output type)
-//        bit 15: if set, this output event should not setup channel routing
-//    bits 16-22: parameter 2 (context depends on output type)
-//        bit 23: if set, use current routing for destination and ignore
-//                bits 4-7
-// Slot 1: v1+
-//      bits 0-6: filter program number: if this program isn't already activated
-//                in another group on the same channel, then the output event
-//                will not be emitted.
-//         bit 7: if set, filtering will be performed.
-// TODO: https://github.com/jtackaberry/reaticulate/issues/73
-//     bits 8-11: the MIDI bus number for the articulation (0 = bus 1).
-//                v0 output events are always on bus 1.
-// TODO: https://github.com/jtackaberry/reaticulate/issues/74
-//        bit 12: if set, send to all MIDI channels on the defined bus.
-// TODO: https://github.com/jtackaberry/reaticulate/issues/10
-//    bits 13-19: parameter 2 upper limit (if 0, then not a range)
-//
-
-articulations = 200000; // size: (3 + 16*2) * 128 * 16 = 71680 (upper bound for v1)
-
-// The last articulation created by OPCODE_NEW_ARTICULATION.
-last_new_articulation = 0;
-
-// The latest output event creater by OPCODE_ADD_OUTPUT_EVENT.
-last_new_output_event = 0;
 
 // Maps output events to articulations.  The first 24 bits of the value is a
 // pointer to the articulation, and the MSB holds the output event number of
@@ -568,22 +518,14 @@ last_new_output_event = 0;
 //
 // NB: normally the high byte is obliterated during serialization, but we'll use it
 // here because this array is not serialized.  It's regenerated on instantiation.
-articulations_by_output_event = 300000; // size: (256 + 128 * 128) * 16 = 266240
-
-// Maps an articulation index to the program and channel number for
-// that articulation.  Byte 0 (LSB) contains the program number and bits 0-3 of
-// byte 1 contains the channel.
-//
-// Regenerated on instantiation.
-program_by_articulation = 600000; // size: (2 + 16) * 128 * 16 = 36864 (upper bound)
-
+articulations_by_output_event = getptr((128 + 128 + 128*128) * MAX_CHANNELS);
 
 
 // When activate() is called, keeps track of all articulation programs that were
 // triggered to prevent infinite recursion (by means of art output event types).
 // This is 4 slots where each slot is a 32-bit bitmap, representing all 128
 // programs.
-activated_programs = 640000; // size: 4
+activated_programs = getptr(4);
 
 
 
@@ -614,10 +556,7 @@ activated_programs = 640000; // size: 4
 
 // There will be no gaps, so if the first slot is 0, then there are no held
 // keyswitches for that channel/group.
-held_keyswitches = 650000; // size: 16 * MAX_GROUPS * 8 * 2 = 1024
-
-// Length of the banks array.
-banks_len = 0;
+held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * 8 * 2);
 
 // Array holding all configured banks.  This array holds variable
 // sized records, whose size depends on the bank record version.
@@ -639,40 +578,169 @@ banks_len = 0;
 // Slot 5: v0 - CC chase bitmap for CCs 96-119
 // Slot 6: v0 - CC chase bitmap for CCs 120-127
 // Slots 7-9: unused
-banks = 660000; // size: MAX_CHANNELS * MAX_BANKS * 10 = 2560
+banks = getptr(MAX_CHANNELS * MAX_BANKS * 10);
+
+// Length of the banks array.
+banks_len = 0;
 
 // The last articulation created by OPCODE_NEW_BANK.
 last_new_bank = 0;
 
-
 // Last PC mpos delta by channel.  Events must be offset by this amount to ensure they
 // follow articulation output events.
-program_change_mpos_delta = 670000; // size: 16
+program_change_mpos_delta = getptr(MAX_CHANNELS);
 
 // Current programs on each channel indexed by group.  Arranged in sets of 4
 // consecutive slots, with each set of 4 representing a different articuulation
 // group.  The 4 slots hold the program number for 16 MIDI channels.  See
 // GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the same.
-current_programs = 670100;
 current_programs_len = 16 * MAX_GROUPS;
+current_programs = getptr(current_programs_len);
 
+// This appdata is serialized.
+appdata = getptr(MAX_APPDATA_SLOTS);
 // Length of appdata array.
 appdata_len = 0;
 // Length of original appdata passed by app before having been expanded
 // to avoid MSB clobbering caused by JS serialization.
 appdata_orig_len = 0;
 
-// This appdata is serialized.
-appdata = 680000;  // size:  40000 (upper bound)
-
 // Maps undo serial (index) to the position in the undo_history array.
 // We support 100 different undo history states.  This is treated as a
 // ring buffer.
+undo_history = getptr(MAX_UNDO_SLOTS * HISTORY_SLOT_SIZE);
+
+// Each history record contains the state of all current programs across all
+// channels and groups.  This is equivalent to current_programs_len.
 HISTORY_SLOT_SIZE = current_programs_len;
-undo_history = 1000000 + MAX_UNDO_SLOTS;
+
 
 // Bitmap of SUBSCRIPTION_* constants based on last OPCODE_SUBSCRIBE
 subscriptions = SUBSCRIPTION_NONE;
+
+
+
+// Array that maps a program to the appropriate position in the articulations
+// array.  Indexed by MIDI channel (byte 1) and program number (byte 0).  A value
+// of -1 indicates this program/channel combination has no assigned articulation.
+//
+// This value is maintained and persisted but it's not otherwise used directly.
+// Instead it's translated to articulations_lut to provide a directly useable
+// pointer to an articulation in this JSFX instance.
+//
+// JS serialization munges the MSB but 24 bits is still plenty big to
+// represent an offset.
+articulations_offsets = getptr(MAX_CHANNELS * 128);
+
+// Array that maps a program to the appropriate position in the articulations
+// array.  Indexed by MIDI channel and program number.  Not serialized.
+//
+// The size of each record depends on the number of allocated extensions and
+// is defined in ARTICULATION_LUT_RECORD_SIZE.
+//
+//   slot 0: ptr to articulation header
+//   slot 1: bits 0-7: program number, bits 8-11: channel number
+//   followed by MAX_ARTICULATION_EXTENSIONS slots where each slot is
+//      - ptr to articulation extension
+//   followed by (1 + MAX_OUTPUT_EVENT_EXTENSIONS) * MAX_OUTPUT_EVENTS slots
+//   where each sub-record is:
+//      - ptr to nth output event (0 >= n <= MAX_OUTPUT_EVENTS)
+//      - followed by MAX_OUTPUT_EVENT_EXTENSIONS where each slot is
+//          - ptr to output event extension
+
+articulations_lut = getptr(MAX_CHANNELS * 128 * ARTICULATION_LUT_RECORD_SIZE);
+
+// The index into the articulations buffer (below) of the last articulation
+// created by OPCODE_NEW_ARTICULATION.
+last_new_articulation = 0;
+
+// The latest output event creater by OPCODE_ADD_OUTPUT_EVENT.
+last_new_output_event = 0;
+
+
+// Array holding all configured articulations.  This array holds variable
+// sized records, whose size varies by articulation and depends on factors
+// such as the articulation record version and number of output events.
+//
+// The record version is indicated in slot 1 bits 4-7 where the following
+// versions are defined:
+//
+//     v0: each FIXED sized record is 2 + n slots, where n is the # of output events. (DEPRECATED)
+//     v1: each FIXED sized record is 3 + 2n slots, where n is the # of output events. (DEPRECATED)
+//     v2: each VARIABLE sized record is 3+x + 2(n+y), where
+//             x is the variable size of articulation extensions
+//             n is the # of output events
+//             y is the variable size of output event extensions which can vary by output event
+//
+//         Being variable sized, v2 is more cumbersome to work with and requires a large
+//         intermediate lookup table, but it is also more future-proof.
+//
+// This array is indexed via articulations_lut.
+//
+// Slot 0: v0+ - articulation information
+//      bits 0-3: number of output events (see below)
+//      bits 4-7: group number
+//        byte 1: articulation flags
+//        byte 2: "off" (release) program for articulations with note-hold outputs.
+//
+// Slot 1: v0+
+//      bits 0-3: source channel
+//      bits 4-7: articulation record version
+//     bytes 1-2: indicates the offset (from 0) into the banks array this
+//                articulation belongs to.
+//
+// Slot 2: v1 - UNUSED
+// Slot 2: v2
+//    bits 0-15: a 16-bit bitmap of extensions for this articulations. Extension
+//               records begin at slot 3 and precede output events.
+//   bits 16-23: reserved for future expansion
+
+// TODO: https://github.com/jtackaberry/reaticulate/issues/72
+
+//
+// Following the base articulation information slots, there are n*m slots for
+// output events, where n is the # of output events and m is dependent on
+// the articulation record version.
+//
+// Slot 0: v0+
+//      bits 0-3: output type (see OUTPUT_TYPE_* constants)
+//      bits 4-7: the destination MIDI channel for the articulation.  Subsequent
+//                incoming events are routed to this channel when the articulation
+//                is activated, in addition to output event.
+//     bits 8-14: parameter 1 (context depends on output type)
+//        bit 15: if set, this output event should not setup channel routing
+//    bits 16-22: parameter 2 (context depends on output type)
+//        bit 23: if set, use current routing for destination and ignore
+//                bits 4-7
+// Slot 1: v1
+//      bits 0-6: filter program number: if this program isn't already activated
+//                in another group on the same channel, then the output event
+//                will not be emitted.
+//         bit 7: if set, filtering will be performed.
+//     bits 8-23: UNUSED
+//
+// Slot 1: v2
+//     bits 0-15: a 16-bit bitmap of extensions.  Extension records begin at slot 2.
+//    bits 16-23: reserved for future expansion
+
+// 7 (filter) + 4 (bus) + 1 (send all chan) + 7 (upper limit)
+
+// TODO: https://github.com/jtackaberry/reaticulate/issues/73
+//     bits 8-11: the MIDI bus number for the articulation (0 = bus 1).
+//                v0 output events are always on bus 1.
+// TODO: https://github.com/jtackaberry/reaticulate/issues/74
+//        bit 12: if set, send to all MIDI channels on the defined bus.
+// TODO: https://github.com/jtackaberry/reaticulate/issues/10
+//    bits 13-19: parameter 2 upper limit (if 0, then not a range)
+//
+
+// NOTE: This must be the last array defined.  The articulations array is
+// variable size and depends on how many output events each articulation has and
+// which extensions (if any) are used.
+articulations = getptr(0);
+
+// Length of the articulations array.
+articulations_len = 0;
 
 
 
@@ -686,17 +754,28 @@ function increment_serial()
 
 function get_articulation_version_record_size(version)
 (
-    (version == 0) ? 2 : (
-        (version == 1) ? 3;
+    (version >= 1) ? 3 : (
+        (version == 0) ? 2;
     );
 );
 
 function get_articulation_version_output_event_size(version)
 (
-    (version == 0) ? 1 : (
-        (version == 1) ? 2;
+    (version >= 1) ? 2 : (
+        (version == 0) ? 1;
     );
 );
+
+function get_articulation_extension_size(ext)
+(
+    ARTICULATION_EXTENSION_SIZES[ext];
+);
+
+function get_output_event_extension_size(ext)
+(
+    OUTPUT_EVENT_EXTENSION_SIZES[ext];
+);
+
 
 function get_bank_version_record_size(version)
 (
@@ -719,7 +798,6 @@ function get_bank_lsb(bank)
 );
 
 
-
 function update_output_event_map(type, b1, b2, articulation, event_idx)
 local(idx, channel)
 (
@@ -736,17 +814,22 @@ local(idx, channel)
         );
     );
     (idx != -1) ? (
-        channel = articulation[1] & 0x0f;
+        channel = articulation[0][1] & 0x0f;
         idx += (256 + 128 * 128) * channel;
         articulations_by_output_event[idx] = articulation + (event_idx << 24);
     );
 );
 
 
+// Returns the position to the LUT for this articulation.  This is
+// opaque to the caller which will just consider this a pointer to the
+// articulation, but internally (within the various articulation functions)
+// it is used as a LUT into the articulations array.
 function get_articulation(channel, program)
 (
-    articulations_ptr[channel * 128 + program];
+    articulations_lut + (channel * 128 + program) * ARTICULATION_LUT_RECORD_SIZE;
 );
+
 
 
 function get_active_program(channel, group)
@@ -773,115 +856,216 @@ local(program)
     (program != -1) ? get_articulation(channel, program) : 0;
 );
 
-
-function get_articulation_program(articulation)
+function get_articulation_program(artlut)
 (
-    program_by_articulation[articulation - articulations] & 0xff;
+    artlut[1] & 0xff;
 );
 
 
-function get_articulation_num_outputs(articulation)
+function get_articulation_num_outputs(artlut)
 (
-    articulation[0] & 0x0f;
+    artlut[0][0] & 0x0f;
 );
 
 
-function get_articulation_group(articulation)
+function get_articulation_group(artlut)
 (
-    (articulation[0] & 0xf0) >> 4;
+    (artlut[0][0] & 0xf0) >> 4;
 );
 
 
-function get_articulation_flags(articulation)
+function get_articulation_flags(artlut)
 (
-    (articulation[0] & 0xff00) >> 8;
+    (artlut[0][0] & 0xff00) >> 8;
 );
 
 
-function get_articulation_off_program(articulation)
+function get_articulation_off_program(artlut)
 (
-    (articulation[0] & 0x7f0000) >> 16;
+    (artlut[0][0] & 0x7f0000) >> 16;
 );
 
 
-function get_articulation_channel(articulation)
+function get_articulation_channel(artlut)
 (
-    articulation[1] & 0x0f;
+    artlut[0][1] & 0x0f;
 );
 
-function get_articulation_version(articulation)
+function get_articulation_version(artlut)
 (
-    (articulation[1] & 0xf0) >> 4;
+    (artlut[0][1] & 0xf0) >> 4;
 );
 
-function get_articulation_bank(articulation)
+function get_articulation_bank(artlut)
 (
-    ((articulation[1] & 0xffff00) >> 8) + banks;
+    ((artlut[0][1] & 0xffff00) >> 8) + banks;
 );
 
-
-function get_articulation_output_event_offset(articulation, n)
-local(version)
+function get_articulation_extensions_bitmap(artlut)
 (
-    version = get_articulation_version(articulation);
-    get_articulation_version_record_size(version) + get_articulation_version_output_event_size(version) * n;
+    (get_articulation_version(artlut) == 2) ? (
+        artlut[0][2] & 0xffff;
+    );
 );
 
-
-function get_articulation_record_size(articulation)
+function get_articulation_extension(artlut, ext)
 (
-    get_articulation_output_event_offset(articulation, get_articulation_num_outputs(articulation));
-);
-
-
-function get_articulation_output_event(articulation, n)
-(
-    articulation + get_articulation_output_event_offset(articulation, n);
+    artlut[2 + ext];
 );
 
 
-function get_output_event_type(event)
+// Returns the size of the fixed portion of the articulation record (i.e.
+// excluding extensions)
+function get_articulation_record_header_size(artlut)
+local(version, extensions, len)
 (
-    event[0] & 0x0f;
+    version = get_articulation_version(artlut);
+    (version == 0) ? 2 : (
+        (version == 1) ? 3;
+    );
 );
 
 
-function get_output_event_dstchannel(event)
+function get_articulation_output_event(artlut, n)
 (
-    (event[0] & 0xf0) >> 4;
+    artlut + 2 + MAX_ARTICULATION_EXTENSIONS + (2+MAX_OUTPUT_EVENT_EXTENSIONS)*n;
+);
+
+function get_output_event_version(eventlut)
+(
+    eventlut[1] & 0x0f;
+);
+
+function get_output_event_type(eventlut)
+(
+    eventlut[0][0] & 0x0f;
 );
 
 
-function get_output_event_param1(event)
+function get_output_event_dstchannel(eventlut)
 (
-    (event[0] & 0x7f00) >> 8;
+    (eventlut[0][0] & 0xf0) >> 4;
 );
 
 
-function get_output_event_param2(event)
+function get_output_event_param1(eventlut)
 (
-    (event[0] & 0x7f0000) >> 16;
+    (eventlut[0][0] & 0x7f00) >> 8;
 );
 
-function get_output_event_should_route(event)
+
+function get_output_event_param2(eventlut)
 (
-    !(event[0] & 0x8000);
+    (eventlut[0][0] & 0x7f0000) >> 16;
 );
 
-function get_output_event_use_current_routing(event)
+function get_output_event_should_route(eventlut)
 (
-    (event[0] & 0x800000) != 0;
+    !(eventlut[0][0] & 0x8000);
 );
 
+function get_output_event_use_current_routing(eventlut)
+(
+    (eventlut[0][0] & 0x800000) != 0;
+);
+
+
+function get_output_event_extensions_bitmap(eventlut)
+(
+    (get_output_event_version(eventlut) >= 2) ? (
+        eventlut[0][1] & 0xffff;
+    );
+);
+
+function get_output_event_extension(eventlut, ext)
+(
+    eventlut[2 + ext];
+);
 
 // Returns -1 if no filtering.
-function get_output_event_filter_program(event)
+function get_output_event_filter_program(eventlut)
+local(version, filter, ext)
 (
+    version = get_output_event_version(eventlut);
+    (version >= 2) ? (
+        ext = get_output_event_extension(eventlut, 0);
+        filter = ext ? ext[0] : 0;
+    ) : (
+        // v1 articulation
+        filter = (version == 1) ? eventlut[0][1];
+    );
     // Requires v1+ articulations, but does not do a version test.
-    (event[1] & 0x80) ? (
-        event[1] & 0x7f;
+    (filter & 0x80) ? (
+        filter & 0x7f;
     ) : (
         -1;
+    );
+);
+
+function generate_articulation_luts()
+local(i, j, k, version, ext, ptr, idx, oidx, channel, program, articulation, event, type, param1, param2)
+(
+    memset(articulations_lut, 0, (MAX_CHANNELS*128) + ARTICULATION_LUT_RECORD_SIZE);
+    // Regenerated via update_output_event_map() below.
+    memset(articulations_by_output_event, 0, (256 + 128 * 128) * MAX_CHANNELS);
+
+    // Loop over (serialized) articulations offsets
+    i = 0; loop(MAX_CHANNELS * 128,
+        offset = articulations_offsets[i];
+        (articulations_offsets[i] != -1) ? (
+            // Update articulations_lut
+            ptr = articulations + offset;
+            idx = i * ARTICULATION_LUT_RECORD_SIZE;
+            channel = i / 128;
+            program = i % 128;
+            articulations_lut[idx] = ptr;
+            articulations_lut[idx + 1] = program | (channel << 8);
+            articulation = articulations_lut + idx;
+
+            version = get_articulation_version(articulation);
+            ptr += get_articulation_version_record_size(version);
+
+            // Add pointers to any enabled articulation extensions
+            ext = get_articulation_extensions_bitmap(articulation);
+            j = 0; loop(MAX_ARTICULATION_EXTENSIONS,
+                (ext & (1 << j) != 0) ? (
+                    articulations_lut[idx + 2 + j] = ptr;
+                    ptr += get_articulation_extension_size(j);
+                );
+                j += 1;
+            );
+
+            // Advance pointer to articulation to first output event.
+            idx += 2 + MAX_ARTICULATION_EXTENSIONS;
+            num_outputs = get_articulation_num_outputs(articulation);
+            j = 0; loop(num_outputs,
+                // Add output event to LUT before calling get_articulation_output_event
+                oidx = idx + (2 + MAX_OUTPUT_EVENT_EXTENSIONS)*j;
+                articulations_lut[oidx + 0] = ptr;
+                // Store articulation version as part of the output event LUT
+                articulations_lut[oidx + 1] = version;
+                ptr += get_articulation_version_output_event_size(version);
+
+                event = get_articulation_output_event(articulation, j);
+                type = get_output_event_type(event);
+                param1 = get_output_event_param1(event);
+                param2 = get_output_event_param2(event);
+                update_output_event_map(type, param1, param2, articulation, j);
+
+                // Add pointers to any enabled output event extensions
+                ext = get_output_event_extensions_bitmap(event);
+                k = 0; loop(MAX_OUTPUT_EVENT_EXTENSIONS,
+                    (ext & (1 << k) != 0) ? (
+                        articulations_lut[oidx + 2 + k] = ptr;
+                        ptr += get_output_event_extension_size(k);
+                    );
+                    k += 1;
+                );
+                j += 1;
+            );
+            idx += MAX_OUTPUT_EVENTS * (2 + MAX_OUTPUT_EVENT_EXTENSIONS);
+        );
+        i += 1;
     );
 );
 
@@ -1035,16 +1219,17 @@ local(version, offset, i, bitmap, bit, curval)
 );
 
 function exec_opcode(opcode, a0, a1, a2, argc, argi)
-local(offset, bitmap, channel, num_outputs, event, program_offset, offset, version, i)
+local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, version, i)
 (
     (opcode == OPCODE_CLEAR) ? (
         // Nuke it all from orbit.
-        memset(all_articulation_flags_by_channel, 0, 16);
-        memset(articulations_offsets, -1, 16 * 128);
-        memset(articulations_ptr, 0, 16 * 128);
+        memset(all_articulation_flags_by_channel, 0, MAX_CHANNELS);
+        memset(articulations_offsets, -1, MAX_CHANNELS * 128);
         memset(articulations, 0, (2 + 16) * 128 * 16);
-        memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
-        memset(program_by_articulation, 0, (2 + 16) * 128 * 16);
+        // articulations_lut and articulations_by_output_event aren't cleared
+        // now.  It will be regenerated after all articulations have been pushed
+        // and OPCODE_FINALIZE_ARTICULATIONS called.
+
         memset(banks, 0, MAX_CHANNELS * MAX_BANKS * 10);
         articulations_len = 0;
         last_new_articulation = 0;
@@ -1058,9 +1243,6 @@ local(offset, bitmap, channel, num_outputs, event, program_offset, offset, versi
         channel = a0 & 0x0f;
         version = (a0 & 0xf0) >> 4;
         last_new_bank = banks + banks_len;
-
-        // Now that the space is reserved, reset the events counter which we
-        // increment for each new event.
         last_new_bank[0] = a0 | (a1 << 8) | (a2 << 16);
         banks_len += get_bank_version_record_size(version);
     );
@@ -1074,57 +1256,66 @@ local(offset, bitmap, channel, num_outputs, event, program_offset, offset, versi
     );
 
 
-    // Arguments: (channel+version, program, num groups/outputs)
+    // Arguments: (channel+version, program, group, flags, off_program)
     (opcode == OPCODE_NEW_ARTICULATION) ? (
+        version = (a0 & 0xf0) >> 4;
         channel = a0 & 0x0f;
-        // Number of events we need to reserve.
-        num_outputs = a2 & 0x0f;
         last_new_articulation = articulations + articulations_len;
 
-        // Map new articulation to program/channel.
-        program_by_articulation[articulations_len] = a1 | (channel << 8);
-
         articulations_offsets[channel * 128 + a1] = last_new_articulation - articulations;
-        articulations_ptr[channel * 128 + a1] = last_new_articulation;
 
-        // Now that the space is reserved, reset the events counter which we
-        // increment for each new event.
-        last_new_articulation[0] = a2 & 0xf0;
+        // Initialize articulation with 0 output events.  This will be incremented by
+        // OPCODE_ADD_OUTPUT_EVENT.
+        last_new_articulation[0] = 0 | (a2 << 4) | (gmem[argi + 3] << 8) | (gmem[argi + 4] << 16);
         last_new_articulation[1] = a0 | (banks_len << 8);
-        articulations_len += get_articulation_output_event_offset(last_new_articulation, num_outputs);
+        articulations_len += get_articulation_version_record_size(version);
+    );
 
-        last_new_articulation[0] = (last_new_articulation[0] & 0x7f0000ff) |
-                                   (gmem[argi + 3] << 8) | (gmem[argi + 4] << 16);
+    // Arguments: (extension #, ...)
+    (opcode == OPCODE_ADD_ARTICULATION_EXTENSION) ? (
+        // Assumes articulation record must be v2 or else we wouldn't have been called.
+        last_new_articulation[2] |= (1 << a0);
+        ext = articulations + articulations_len;
+        articulations_len += get_articulation_extension_size(a0);
     );
 
     // Arguments: (type+dstchannel, param1+noroute, param2+currentroute)
     (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
-        // Get current number of output events for articulation to act as the index for the
-        // one being added now.
-        num_outputs = get_articulation_num_outputs(last_new_articulation);
-
         // Get pointer to current output event.
-        event = last_new_articulation + get_articulation_record_size(last_new_articulation);
+        event = articulations + articulations_len;
         last_new_output_event = event;
         event[0] = a0 | (a1 << 8) | (a2 << 16);
 
+        // TODO: can remove this as we won't support opcodes from older versions of the lua script
         // v1 output events have additional options
-        get_articulation_version(last_new_articulation) >= 1 ? (
+        version = (last_new_articulation[1] & 0xf0) >> 4;
+        version == 1 ? (
             // filter program + filter enabled
             event[1] = gmem[argi + 3];
         );
 
         // Increment events count.
+        num_outputs = last_new_articulation[0] & 0x0f;
         last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
+        articulations_len += get_articulation_version_output_event_size(version);
+    );
 
-        // Map output event back to articulation
-        update_output_event_map(a0 & 0x0f, a1, a2 & 0x7f, last_new_articulation, num_outputs);
+    // Arguments: (extension #, ...)
+    (opcode == OPCODE_ADD_OUTPUT_EVENT_EXTENSION) ? (
+        // Assumes articulation record must be v2 or else we wouldn't have been called.
+        last_new_output_event[1] |= (1 << a0);
+        ext = articulations + articulations_len;
+        (a0 == 0) ? (
+            ext[0] = a1;
+        );
+        articulations_len += get_output_event_extension_size(a0);
     );
 
     // Arguments: (channel, program)
     (opcode == OPCODE_ACTIVATE_ARTICULATION) ? (
         // FIXME: this needs to support multiple groups per channel
-        // 0x01 in byte 1 indicates the program requires activation.
+        //
+        // 0x01 in a1 indicates the program requires activation.
         pending_activations[a0] = a1 | 0x0100;
         have_pending_activations = 1;
     );
@@ -1189,7 +1380,11 @@ local(offset, bitmap, channel, num_outputs, event, program_offset, offset, versi
         (a0 != subscription) ? (
             subscription = a0;
             queue_increment_serial = 1;
-        )
+        );
+    );
+
+    (opcode == OPCODE_FINALIZE_ARTICULATIONS) ? (
+        generate_articulation_luts();
     );
 );
 
@@ -1219,18 +1414,6 @@ local(idx, n_opcodes, queue_size, argc)
             // from enqueuing more opcodes.
             gmem[opidx] = 0;
         );
-
-        /*
-        n_opcodes = gmem[idx];
-        (n_opcodes > 0) ? (
-            gmem[idx] = 0;
-            idx += 2;
-            loop(n_opcodes,
-                exec_opcode(gmem[idx + 0], gmem[idx + 1], gmem[idx + 2], gmem[idx + 3]);
-                idx += 4;
-            );
-        );
-        */
     );
 );
 
@@ -1317,7 +1500,7 @@ local(idx, offset, channel, group, program)
 // undo this way.
 (file_avail(0) < 0 || instantiating <= 1) ? (
     file_var(0, serialized_version);
-    file_mem(0, channel_map, 16);
+    file_mem(0, channel_map, MAX_CHANNELS);
     file_mem(0, _dummy, 16 * MAX_GROUPS); // old version of held_keyswitches
     file_mem(0, all_articulation_flags_by_channel, 16);
     file_mem(0, articulations_offsets, 16 * 128);
@@ -1342,8 +1525,8 @@ local(idx, offset, channel, group, program)
     serialized_version = 3;
 
     // Initialize MIDI channel routing and held keyswitches per channel
-    memset(held_keyswitches, 0, 16 * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
-    i = 0; loop(16,
+    memset(held_keyswitches, 0, MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
+    i = 0; loop(MAX_CHANNELS,
         channel_map[i] = 1 << i;
         i += 1;
     );
@@ -1369,9 +1552,9 @@ file_avail(0) >= 0 ? (
     (serialized_version == 1) ? (
         // In version 1, articulations_offsets was actually an absolute position
         // instead of a relative one.  We need to convert it to a relative position
-        // now as we'll generate articulations_ptr below.
+        // now as we'll generate articulations_lut below.
         i = 0; loop(16 * 128,
-            // 200000 was the position of articulations_ptr in v1
+            // 200000 was the position of articulations_lut in v1
             articulations_offsets[i] -= 200000;
             i += 1;
         );
@@ -1411,39 +1594,8 @@ file_avail(0) >= 0 ? (
         undo_serial = slider62;
     );
 
-    // Regenerate articulations_ptr
-    i = 0; loop(16 * 128,
-        articulations_ptr[i] = articulations_offsets[i] + articulations;
-        i += 1;
-    );
+    generate_articulation_luts();
 
-    // Regenerate program_by_articulation
-    memset(program_by_articulation, 0, (2 + 16) * 128 * 16);
-    i = 0; loop(16 * 128,
-        channel = i / 128;
-        program = i % 128;
-        offset = articulations_offsets[i];
-        (offset != -1) ? (
-            program_by_articulation[offset] = program | (channel << 8);
-        );
-        i += 1;
-    );
-
-    // Regenerate articulations_by_output_event
-    memset(articulations_by_output_event, 0, (256 + 128 * 128) * 16);
-    i = 0; while (i < articulations_len) (
-        articulation = articulations + i;
-        num_outputs = get_articulation_num_outputs(articulation);
-        j = 0; loop(num_outputs,
-            event = get_articulation_output_event(articulation, j);
-            type = get_output_event_type(event);
-            param1 = get_output_event_param1(event);
-            param2 = get_output_event_param2(event);
-            update_output_event_map(type, param1, param2, articulation, j);
-            j += 1;
-        );
-        i += get_articulation_record_size(articulation);
-    );
 
     // We're in a read (and by now will have restored all state), so allocate
     // and initialize the gmem buffer if necessary.
@@ -1527,8 +1679,13 @@ local(offset, poffset)
 function update_current_channel_program(channel, new_program, group, flags)
 local(control, shift, current_program, offset, program_offset, mask)
 (
-    // RFX v2 behavior
     program_offset = (group * MAX_CHANNELS) + channel;
+    current_program = current_programs[program_offset];
+
+    (new_program == current_program && flags & ARTICULATION_FLAG_TOGGLE) ? (
+        new_program = 128;
+    );
+
     current_programs[program_offset] = new_program;
 
     offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
@@ -1838,7 +1995,7 @@ local(articulation, num_outputs, group, control, current_program, flags,
     flags = get_articulation_flags(articulation);
     version = get_articulation_version(articulation);
     last_program = get_active_program(channel, group);
-    (last_program != program || group == 3 || flags & ARTICULATION_FLAG_TOGGLE) ? (
+    (last_program != program || flags & ARTICULATION_FLAG_TOGGLE) ? (
         do_update ? (
             update_current_channel_program(channel, program, group, flags);
         );
@@ -2019,7 +2176,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
             // the current program for the channel.
             !update_current_channel_program_by_output_event(type, channel, msg2, msg3) ? (
                 // Wasn't a keyswitch, so track the note-on event and update the GUI.
-                noteinfo = active_dstchannels_by_note + channel * 16 * 2 + msg2 * 2;
+                noteinfo = active_dstchannels_by_note + channel * MAX_CHANNELS * 2 + msg2 * 2;
                 noteinfo[0] |= dstchannels;
                 update_active_notes_for_gui(channel, msg2, 1);
             );
@@ -2027,7 +2184,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
             // It's not a note-on, check to see if it's a note-off.
             (type == MIDI_EVENT_NOTE_OFF || (type == MIDI_EVENT_NOTE_ON && msg3 == 0)) ? (
                 // Send note off to previous channel the note-on had been routed to (if applicable)
-                noteinfo = active_dstchannels_by_note + channel * 16 * 2 + msg2 * 2;
+                noteinfo = active_dstchannels_by_note + channel * MAX_CHANNELS * 2 + msg2 * 2;
                 last_flags = all_articulation_flags_by_channel[channel];
                 (last_flags & ARTICULATION_FLAG_ANTIHANG) ? (
                     // Send the note-off to all dstchannels the note-on was sent
@@ -2082,9 +2239,9 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                     update_active_notes_for_gui(channel, -1, 0);
                     // Now loop over dstchannels and clear the active notes
                     // we're tracking.
-                    i = 0; loop(16,
+                    i = 0; loop(MAX_CHANNELS,
                         (dstchannels & (1 << i)) ? (
-                            active_dstchannels_by_note[i * 16 * 2 + msg2 * 2] = 0;
+                            active_dstchannels_by_note[i * MAX_CHANNELS * 2 + msg2 * 2] = 0;
                         );
                     );
                 ) : (
@@ -2093,7 +2250,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 
                     // Handle anti CC hanging
                     (msg2 == 2 || msg2 == 64 || msg2 == 66) ? (
-                        idx = channel * 16 + msg2;
+                        idx = channel * MAX_CHANNELS + msg2;
                         bitmap = active_channels_by_cc[idx];
                         (msg3 > 0) ? (
                             // Are there current dstchannels that aren't already included
