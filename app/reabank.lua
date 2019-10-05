@@ -130,10 +130,21 @@ function Articulation:get_outputs()
                     end
                 elseif prefix == '@' then
                     if part == '-' then
+                        -- Use current routing for output event.
                         output.route = false
-                        output.channel = -1
+                        output.channel = 0
+                        output.bus = 0
                     else
-                        output.channel = tonumber(part)
+                        if part:find('%.') then
+                            local channel, bus = part:match('(%d*).(%d*)')
+                            output.channel = tonumber(channel)
+                            output.bus = tonumber(bus)
+                        else
+                            output.channel = tonumber(part)
+                            -- Default to the bus defined at the bank level when the
+                            -- bank is mapped to a track
+                            output.bus = nil
+                        end
                     end
                 elseif prefix == ':' then
                     output.args = part:split(',')

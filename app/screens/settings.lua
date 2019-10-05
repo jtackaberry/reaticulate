@@ -199,9 +199,9 @@ function screen.init()
     end
     table.sort(options, function(a, b) return a[2] > b[2] end)
     menu:setmenu(options)
-    menu:select(app.config.debug_level or logging.ERROR)
+    menu:select(app.config.debug_level or log.ERROR)
     menu.onchange = function(menu)
-        app:set_debug(menu.selected_id)
+        app:set_debug(tonumber(menu.selected_id))
     end
 
 

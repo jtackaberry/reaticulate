@@ -25,21 +25,11 @@ local screen = {
     error_icon = nil
 }
 
-local function channel_menu_to_channel(channel)
-    if channel == 1 then
-        return 17
-    else
-        return channel - 1
-    end
+local function channel_menu_to_channel(id)
+    local n = tonumber(id)
+    return n & 0xff, (n & 0xff00) >> 8
 end
 
-local function channel_to_channel_menu(channel)
-    if channel == 17 then
-        return 1
-    else
-        return channel + 1
-    end
-end
 
 function screen.init()
     screen.error_icon = rtk.Image:new(Path.join(Path.imagedir, "warning_amber_24x24.png"))
@@ -86,6 +76,40 @@ function screen.init()
         end
     end
     vbox:add(add_bank_button, {lpadding=20, tpadding=20, bpadding=40})
+
+    -- Build menus for src and dst channels
+    screen.src_channel_menu = {{'Omni', 17}}
+    for i = 1, 16 do
+        screen.src_channel_menu[#screen.src_channel_menu+1] = {
+            string.format('Ch %d', i),
+            i
+        }
+    end
+
+    screen.dst_channel_menu = {
+        {'Bus 1', nil, rtk.OptionMenu.ITEM_DISABLED},
+        rtk.OptionMenu.SEPARATOR,
+        {'Source', 17 | (1 << 8)}
+    }
+    for i = 1, 16 do
+        screen.dst_channel_menu[#screen.dst_channel_menu+1] = {string.format('Ch %d', i), i | (1 << 8)}
+    end
+    screen.dst_channel_menu[#screen.dst_channel_menu+1] = rtk.OptionMenu.SEPARATOR
+    for i = 2, 16 do
+        local submenu = {{'Source', 17 | (i << 8), 0, string.format('%d/Source', i, 0)}}
+        for j = 1, 16 do
+            submenu[#submenu + 1] = {
+                string.format('Ch %d', j),
+                j | (i << 8),
+                0,
+                string.format('Ch %d/%d', i, j)
+            }
+        end
+        screen.dst_channel_menu[#screen.dst_channel_menu+1] = {
+            string.format('Bus %d', i),
+            submenu
+        }
+    end
     screen.update()
 end
 
@@ -94,9 +118,9 @@ function screen.sync_banks_to_rfx()
     for n = 1, #screen.banklist.children do
         local bankbox = screen.banklist:get_child(n)
         local bank = reabank.get_bank_by_msblsb(bankbox.bank_menu.selected_id)
-        local srcchannel = channel_menu_to_channel(bankbox.srcchannel_menu.selected)
-        local dstchannel = channel_menu_to_channel(bankbox.dstchannel_menu.selected)
-        banks[#banks+1] = {bank, srcchannel, dstchannel}
+        local srcchannel, _ = channel_menu_to_channel(bankbox.srcchannel_menu.selected_id)
+        local dstchannel, dstbus = channel_menu_to_channel(bankbox.dstchannel_menu.selected_id)
+        banks[#banks+1] = {bank, srcchannel, dstchannel, dstbus}
     end
     rfx.set_banks(banks)
 end
@@ -175,24 +199,17 @@ function screen.create_bank_ui()
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
     row:add(rtk.Spacer({w=24, h=24}))
 
-    local channel_menu = {
-        'Omni', 'Ch 1', 'Ch 2', 'Ch 3', 'Ch 4',
-        'Ch 5', 'Ch 6', 'Ch 7', 'Ch 8',
-         'Ch 9', 'Ch 10', 'Ch 11', 'Ch 12',
-         'Ch 13', 'Ch 14', 'Ch 15', 'Ch 16'
-    }
-
     bankbox.srcchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.srcchannel_menu, {lpadding=0, expand=1, fillw=true})
-    bankbox.srcchannel_menu:setmenu(channel_menu)
+    bankbox.srcchannel_menu:setmenu(screen.src_channel_menu)
     bankbox.srcchannel_menu:attr('selected', 1)
 
     row:add(rtk.Label:new({label=' → '}), {valign=rtk.Widget.CENTER})
 
-    channel_menu[1] = 'Source'
+
     bankbox.dstchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.dstchannel_menu, {lpadding=0, expand=1, fillw=true})
-    bankbox.dstchannel_menu:setmenu(channel_menu)
+    bankbox.dstchannel_menu:setmenu(screen.dst_channel_menu)
     bankbox.dstchannel_menu:attr('selected', 1)
 
     local delete_button = app:make_button("delete_white_18x18.png", nil, true, {
@@ -214,8 +231,6 @@ function screen.create_bank_ui()
             -- Shouldn't be possible, but handle it anyway.
             log.error("trackcfg: can't find bank in bank list")
         else
-            local srcchannel = channel_menu_to_channel(bankbox.srcchannel_menu.selected)
-            local dstchannel = channel_menu_to_channel(bankbox.dstchannel_menu.selected)
             screen.sync_banks_to_rfx()
             if bank.off ~= nil then
                 -- New bank with off program.  Activate that program now.
@@ -251,7 +266,7 @@ function screen.check_errors()
     for n = 1, #screen.banklist.children do
         local bankbox = screen.banklist:get_child(n)
         local bank = reabank.get_bank_by_msblsb(bankbox.bank_menu.selected_id)
-        local channel = channel_menu_to_channel(bankbox.srcchannel_menu.selected)
+        local channel = tonumber(bankbox.srcchannel_menu.selected_id)
         local info = nil
 
         if bank.message then
@@ -288,10 +303,10 @@ end
 function screen.update()
     screen.widget:scrollto(0, 0)
     screen.banklist:clear()
-    for bank, srcchannel, dstchannel, hash in rfx.get_banks() do
+    for bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
         local bankbox = screen.create_bank_ui()
-        bankbox.srcchannel_menu:select(channel_to_channel_menu(srcchannel), false)
-        bankbox.dstchannel_menu:select(channel_to_channel_menu(dstchannel), false)
+        bankbox.srcchannel_menu:select(tostring(srcchannel), false)
+        bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
         -- Set the option menu label which will be used if the MSB/LSB isn't found
         -- in the bank list.
         bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s)', hash))

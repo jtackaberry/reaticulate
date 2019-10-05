@@ -160,6 +160,7 @@ MAX_OUTPUT_EVENTS = 16;
 MAX_HELD_KEYSWITCHES = 8;
 MAX_BANKS = 16;
 MAX_CHANNELS = 16;
+MAX_BUSES = 16;
 MAX_UNDO_SLOTS = 100;
 MAX_APPDATA_SLOTS = 1000;
 
@@ -427,15 +428,27 @@ instantiating = 0;
 // Persisted, and tracks the version of the serialized instance data
 serialized_version = 0;
 
-// Array to map source channel to destination channels.  Value is a 16-bit
-// bitmap where each bit is a MIDI channel.
-// TODO: when supporting multiple buses, change this to 17 slots per channel
-// where slot 0 is a 16-bit bitmap of which buses have channels mapped, and
-// the remaining 16 slots are the channel bitmap on bus 1, bus 2, etc.
-// Size will be 17*16 which means the pending_activations array (and the ones
-// following) will need to shift out.
-// channel_map = 20000;  // size: 16
-channel_map = getptr(MAX_CHANNELS);
+// Array to map source channel to destination channels.  Indexed by source
+// channel, and the value has 1 + MAX_BUSES (17) slots, where the first slot is
+// a bitmap of which buses have mapped channels, and the next 16 slots each hold
+// a 16-bit bitmap for the 16 dest channels on that bus.  This set of 17 slots
+// is henceforth known as a DSTBUSCHAN.
+//
+// The DSTBUSCHAN layout is a bit awkward but is optimized for lookups given a
+// source channel, so all the buses for that src channel are contiguous.
+channel_map = getptr(MAX_CHANNELS * (1 + MAX_BUSES));
+// Old version of channel map from v2 serialization.  Loaded for v2-to-v3
+// migration purposes.
+_channel_map_v2 = getptr(MAX_CHANNELS);
+
+// Buffers used by some functions to hold a local copy of a set of dstchannels
+// across all buses (plus 1 slot for the bus bitmap).
+last_dstbuschan = getptr(1 + MAX_BUSES);
+cur_dstbuschan = getptr(1 + MAX_BUSES);
+// Keeps track of which channels/buses have been chased during an articulation
+// activation.  This array lacks the first slot containing a bitmap of buses
+// as it's just a lookup table and isn't iterated over.
+chased_dstbuschan = getptr(MAX_BUSES);
 
 // Used for opcode-based articulation activation. Tracks by MIDI channel
 // what the requested articulation is.  @slider section handles updating
@@ -444,6 +457,8 @@ channel_map = getptr(MAX_CHANNELS);
 // The value is the has the requested program for the channel in b0 and b1
 // contains 0x01 if the activation has yet to occur, or 0x02 if it occurred.
 // This is needed to filter duplicate program changes.
+//
+// Not serialized.
 pending_activations = getptr(MAX_CHANNELS);
 // Non-zero if the pending_activations array needs to be enumerated
 // on the next @block.
@@ -451,43 +466,48 @@ have_pending_activations = 0;
 
 last_play_state = 0;
 
-// Array to track active notes per channel.  Each channel is a bitmap of 5 adjacent
-// 31-bit integers where each bit is a note.  (31 bits due to obnoxious signed issue.)
-// This is used by the GUI to show activity on MIDI channels.
+// Array to track active notes per source channel.  Each channel is a bitmap of
+// 5 adjacent 31-bit integers where each bit is a note.  (31 bits due to
+// obnoxious signed issue.) This is used by the GUI to show activity on MIDI
+// channels.
+//
+// Not serialized.
 active_notes_by_channel = getptr(MAX_CHANNELS * 5);
 
 // Array to track which destination channel on which a note is active for a
 // given source channel.  Indexed by source channel and note number, and the
-// value has 2 slots although only the first is used: it holds a bitmap for
-// the 16 dest channels, and the active articulation when the note was pressed.
+// value is a 17-slot DSTBUSCHAN for that note.
 //
-// This is used to for anti note hanging.  When a note-on event is observed
-// on a given source channel, the RFX tracks the destination channel the
-// event was ultimately routed to.  We ensure that subsequent note-offs coming
-// in on the same channel will be sent to the channel the note was routed to.
-active_dstchannels_by_note = getptr(MAX_CHANNELS * 128 * 2);
+// This is used to for anti note hanging.  When a note-on event is observed on a
+// given source channel, the RFX tracks the destination channel the event was
+// ultimately routed to.  We ensure that subsequent note-offs coming in on the
+// same channel will be sent to the channel the note was routed to.
+//
+// Not serialized.
+active_dstchannels_by_note = getptr(MAX_CHANNELS * 128 * (1+MAX_BUSES));
 
 // Placeholder for old version of held_keyswitches
 _dummy = getptr(16 * MAX_GROUPS);
 
-// Array to track which destination channels on which a CC is active for a
-// given source channel.  Indexed by source channel and CC number, and
-// the value is a bitmap for all destination channels that we sent a non-zero
-// CC value to.
+// Array to track which destination channels on which a CC is active for a given
+// source channel.  Indexed by source channel and CC number, and the value is a
+// 17-slot DSTBUSCHAN representing the channels that have tracked non-zero CC
+// values.
 //
-// This is used for anti CC hanging (for CC 2, 64, and 66).  A channel
-// is only added to the bitmap when the currently active articulation has
-// the antihangcc flag enabled at the time the CC event occurred.  When
-// we see a zero-value CC, we then replay that event on all destination
-// channels.
-active_channels_by_cc = getptr(MAX_CHANNELS * 128);
+// This is used for anti CC hanging (for CC 2, 64, and 66).  A channel is only
+// added to the bitmap when the currently active articulation has the antihangcc
+// flag enabled at the time the CC event occurred.  When we see a zero-value CC,
+// we then replay that event on all destination channels.
+active_channels_by_cc = getptr(MAX_CHANNELS * 128 * (1+MAX_BUSES));
 
 
-// Tracks last CC values received on a given channel.  Indexed by MIDI channel
-// and CC number, and value is the last seen CC value.  A value of -1 indicates
-// that no CC was seen.
+// Tracks last CC values received on a given source channel.  Indexed by MIDI
+// channel and CC number, and value is the last seen CC value.  A value of -1
+// indicates that no CC was seen.
 //
 // This is used for CC chasing and CC feedback.
+//
+// Serialized.
 last_ccs_by_channel = getptr(MAX_CHANNELS * 128);
 
 // Bits 0-3 indicate the MIDI bus for feedback.  Bit 7 is whether feedback
@@ -502,6 +522,8 @@ midi_feedback_sync_pending = 0;
 // flags for articulations across all groups for that channel.  Used to make
 // behaviour decisions (e.g. CC chasing): if any active articulation on any
 // group for the channel needs the behaviour, then it will happen.
+//
+// Serialized.
 all_articulation_flags_by_channel = getptr(MAX_CHANNELS);
 
 
@@ -518,6 +540,8 @@ all_articulation_flags_by_channel = getptr(MAX_CHANNELS);
 //
 // NB: normally the high byte is obliterated during serialization, but we'll use it
 // here because this array is not serialized.  It's regenerated on instantiation.
+//
+// Not serialized.
 articulations_by_output_event = getptr((128 + 128 + 128*128) * MAX_CHANNELS);
 
 
@@ -525,6 +549,8 @@ articulations_by_output_event = getptr((128 + 128 + 128*128) * MAX_CHANNELS);
 // triggered to prevent infinite recursion (by means of art output event types).
 // This is 4 slots where each slot is a 32-bit bitmap, representing all 128
 // programs.
+//
+// Not serialized.
 activated_programs = getptr(4);
 
 
@@ -552,11 +578,13 @@ activated_programs = getptr(4);
 // Slot 0: LSB of value contains the note number, and next 8 bits contains
 //         the velocity the note-on was sent at, in case it needs to be
 //         retriggered.  A value of 0 means no note was held at this slot.
-// Slot 1: Low 16-bits contains the dstchannels bitmap.
-
+// Slot 1: bits 0-3 is the dst channel for the note, and bits 4-7 is the bus.
+//
 // There will be no gaps, so if the first slot is 0, then there are no held
 // keyswitches for that channel/group.
-held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * 8 * 2);
+//
+// Serialized.
+held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
 
 // Array holding all configured banks.  This array holds variable
 // sized records, whose size depends on the bank record version.
@@ -578,6 +606,8 @@ held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * 8 * 2);
 // Slot 5: v0 - CC chase bitmap for CCs 96-119
 // Slot 6: v0 - CC chase bitmap for CCs 120-127
 // Slots 7-9: unused
+//
+// Serialized.
 banks = getptr(MAX_CHANNELS * MAX_BANKS * 10);
 
 // Length of the banks array.
@@ -586,18 +616,26 @@ banks_len = 0;
 // The last articulation created by OPCODE_NEW_BANK.
 last_new_bank = 0;
 
-// Last PC mpos delta by channel.  Events must be offset by this amount to ensure they
-// follow articulation output events.
+// Last PC mpos delta by source channel.  Events must be offset by this amount
+// to ensure they follow articulation output events.
+//
+// Not serialized.
 program_change_mpos_delta = getptr(MAX_CHANNELS);
 
-// Current programs on each channel indexed by group.  Arranged in sets of 4
-// consecutive slots, with each set of 4 representing a different articuulation
-// group.  The 4 slots hold the program number for 16 MIDI channels.  See
-// GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the same.
+// Current programs on each source channel indexed by group.  Arranged in sets
+// of 4 consecutive slots, with each set of 4 representing a different
+// articuulation group.  The 4 slots hold the program number for 16 source MIDI
+// channels.  See GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the
+// same.
+//
+// Serialized.
 current_programs_len = 16 * MAX_GROUPS;
 current_programs = getptr(current_programs_len);
 
-// This appdata is serialized.
+// Opaque data pushed to us by the application.  We persist it on the track
+// on behalf of the main app.
+//
+// Serialized.
 appdata = getptr(MAX_APPDATA_SLOTS);
 // Length of appdata array.
 appdata_len = 0;
@@ -608,6 +646,8 @@ appdata_orig_len = 0;
 // Maps undo serial (index) to the position in the undo_history array.
 // We support 100 different undo history states.  This is treated as a
 // ring buffer.
+//
+// Not serialized.
 undo_history = getptr(MAX_UNDO_SLOTS * HISTORY_SLOT_SIZE);
 
 // Each history record contains the state of all current programs across all
@@ -621,19 +661,20 @@ subscriptions = SUBSCRIPTION_NONE;
 
 
 // Array that maps a program to the appropriate position in the articulations
-// array.  Indexed by MIDI channel (byte 1) and program number (byte 0).  A value
-// of -1 indicates this program/channel combination has no assigned articulation.
+// array.  Indexed by source MIDI channel (byte 1) and program number (byte 0).
+// A value of -1 indicates this program/channel combination has no assigned
+// articulation.
 //
 // This value is maintained and persisted but it's not otherwise used directly.
 // Instead it's translated to articulations_lut to provide a directly useable
 // pointer to an articulation in this JSFX instance.
 //
-// JS serialization munges the MSB but 24 bits is still plenty big to
-// represent an offset.
+// Serialized.  JS serialization munges the MSB but 24 bits is still plenty big
+// to represent an offset.
 articulations_offsets = getptr(MAX_CHANNELS * 128);
 
 // Array that maps a program to the appropriate position in the articulations
-// array.  Indexed by MIDI channel and program number.  Not serialized.
+// array.  Indexed by source MIDI channel and program number.  Not serialized.
 //
 // The size of each record depends on the number of allocated extensions and
 // is defined in ARTICULATION_LUT_RECORD_SIZE.
@@ -647,7 +688,8 @@ articulations_offsets = getptr(MAX_CHANNELS * 128);
 //      - ptr to nth output event (0 >= n <= MAX_OUTPUT_EVENTS)
 //      - followed by MAX_OUTPUT_EVENT_EXTENSIONS where each slot is
 //          - ptr to output event extension
-
+//
+// Not serialized.
 articulations_lut = getptr(MAX_CHANNELS * 128 * ARTICULATION_LUT_RECORD_SIZE);
 
 // The index into the articulations buffer (below) of the last articulation
@@ -721,22 +763,20 @@ last_new_output_event = 0;
 //
 // Slot 1: v2
 //     bits 0-15: a 16-bit bitmap of extensions.  Extension records begin at slot 2.
-//    bits 16-23: reserved for future expansion
+//    bits 16-19: MIDI bus for destination channel
+//    bits 20-23: reserved for future expansion
 
-// 7 (filter) + 4 (bus) + 1 (send all chan) + 7 (upper limit)
 
-// TODO: https://github.com/jtackaberry/reaticulate/issues/73
-//     bits 8-11: the MIDI bus number for the articulation (0 = bus 1).
-//                v0 output events are always on bus 1.
-// TODO: https://github.com/jtackaberry/reaticulate/issues/74
-//        bit 12: if set, send to all MIDI channels on the defined bus.
-// TODO: https://github.com/jtackaberry/reaticulate/issues/10
-//    bits 13-19: parameter 2 upper limit (if 0, then not a range)
-//
+// TODO: these need extensions:
+//  https://github.com/jtackaberry/reaticulate/issues/73
+//  https://github.com/jtackaberry/reaticulate/issues/74
+//  https://github.com/jtackaberry/reaticulate/issues/10
 
 // NOTE: This must be the last array defined.  The articulations array is
 // variable size and depends on how many output events each articulation has and
 // which extensions (if any) are used.
+//
+// Serialized.
 articulations = getptr(0);
 
 // Length of the articulations array.
@@ -751,6 +791,10 @@ function increment_serial()
     sliderchange(1);
 );
 
+function get_channel_dstbuschan(channel)
+(
+    channel_map + (channel * (1+MAX_BUSES));
+);
 
 function get_articulation_version_record_size(version)
 (
@@ -947,6 +991,10 @@ function get_output_event_dstchannel(eventlut)
     (eventlut[0][0] & 0xf0) >> 4;
 );
 
+function get_output_event_dstbus(eventlut)
+(
+    (eventlut[0][1] & 0x0f0000) >> 16;
+);
 
 function get_output_event_param1(eventlut)
 (
@@ -961,7 +1009,9 @@ function get_output_event_param2(eventlut)
 
 function get_output_event_should_route(eventlut)
 (
-    !(eventlut[0][0] & 0x8000);
+    // The bit is set when the output event does not want to modify routing, so
+    // we *should* route when the bit is not set.
+    (eventlut[0][0] & 0x8000) == 0;
 );
 
 function get_output_event_use_current_routing(eventlut)
@@ -1279,12 +1329,16 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
         articulations_len += get_articulation_extension_size(a0);
     );
 
-    // Arguments: (type+dstchannel, param1+noroute, param2+currentroute)
+    // Arguments: (type+dstchannel+dstbus, param1+noroute, param2+currentroute)
     (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
         // Get pointer to current output event.
         event = articulations + articulations_len;
         last_new_output_event = event;
-        event[0] = a0 | (a1 << 8) | (a2 << 16);
+        event[0] = (a0 & 0xff) | (a1 << 8) | (a2 << 16);
+        // Bits 16-19 of slot 1 hold the dst bus which is passed to us here in
+        // bits 8-11 of the first parameter.  Ok, that's a bit convoluted, but
+        // it avoids using an extra parameter for this opcode.
+        event[1] = (a0 & 0x0f00) << 8;
 
         // TODO: can remove this as we won't support opcodes from older versions of the lua script
         // v1 output events have additional options
@@ -1446,7 +1500,9 @@ local(idx, offset, channel, group, program)
     gfx_r = gfx_g = gfx_b = gfx_a = 1;
     channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
 
+    dstbuschan = get_channel_dstbuschan(channel);
     gfx_printf("Reaticulate debug info\n");
+    gfx_printf("  routing: chan=%d bus=%d 1=%d\n", channel, dstbuschan[0], dstbuschan[1]);
     gfx_printf("  serialized: reads=%d writes=%d   undo serial=%d   nundo=%d\n", nserr, nserw, undo_serial, nundo);
     gfx_printf("  metadata: %d\n", slider1);
     gfx_printf("  version: %d\n", serialized_version);
@@ -1496,11 +1552,11 @@ local(idx, offset, channel, group, program)
 // modify so much data in between undo blocks, we need to be cautious
 // about deserialization.
 //
-// Sliders will of course be restoded no matter what.  We can detect an
+// Sliders will of course be restored no matter what.  We can detect an
 // undo this way.
 (file_avail(0) < 0 || instantiating <= 1) ? (
     file_var(0, serialized_version);
-    file_mem(0, channel_map, MAX_CHANNELS);
+    file_mem(0, _channel_map_v2, MAX_CHANNELS); // old v2 version of channel_map
     file_mem(0, _dummy, 16 * MAX_GROUPS); // old version of held_keyswitches
     file_mem(0, all_articulation_flags_by_channel, 16);
     file_mem(0, articulations_offsets, 16 * 128);
@@ -1516,6 +1572,8 @@ local(idx, offset, channel, group, program)
     file_mem(0, appdata, appdata_len);
     file_var(0, current_programs_len);
     file_mem(0, current_programs, current_programs_len);
+    // New for multibus
+    file_mem(0, channel_map, MAX_CHANNELS * (1 + MAX_BUSES));
     nserr += 1;
 
 );
@@ -1524,11 +1582,18 @@ local(idx, offset, channel, group, program)
 !serialized_version ? (
     serialized_version = 3;
 
-    // Initialize MIDI channel routing and held keyswitches per channel
+    // Initialize held keyswitches per channel
     memset(held_keyswitches, 0, MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
-    i = 0; loop(MAX_CHANNELS,
-        channel_map[i] = 1 << i;
-        i += 1;
+
+    // Initialize channel routing.  By default, source channels map to the same
+    // destination channel on bus 1.
+    channel = 0; loop(MAX_CHANNELS,
+        idx = channel * (1 + MAX_BUSES);
+        // Set bus 1 as containing a mapping for this source channel.
+        channel_map[idx] = (1 << 0);
+        // Now set the channel bit for bus 1's dstchannel bitmap.
+        channel_map[idx + 1] = 1 << channel;
+        channel += 1;
     );
 
     // Offset 0 is the first slot of the articulations array, so we initialize
@@ -1575,6 +1640,42 @@ file_avail(0) >= 0 ? (
             );
             channel += 1;
         );
+
+        // Version 2 channel map values were each a 16-bit dstchannels bitmap.
+        // Convert it to the multi-bus format used for v3 (described above for
+        // channels_map)
+        channel = 0; loop(MAX_CHANNELS,
+            (_channel_map_v2[channel] != 0) ? (
+                idx = channel * (1 + MAX_BUSES);
+                // Source channel is mapped to some dst.
+                // Set bus 1 as containing a mapping.
+                channel_map[idx] = (1 << 0);
+                // Map copy the original dstchannel bitmap to bus 1 for this src
+                // channel.
+                channel_map[idx + 1] = _channel_map_v2[channel];
+            );
+            // Clear old array now that it's been migrated.
+            memset(_channel_map_v2, 0, MAX_CHANNELS);
+            channel += 1;
+        );
+
+        // held_keyswitches changed such that slot 1 is no longer a dstchannels
+        // bitmap but now contains the single dstchannel and dstbus of the
+        // note-hold output event.
+        channel = 0; loop(MAX_CHANNELS,
+            group = 0; loop(MAX_GROUPS,
+                idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
+                i = held_keyswitches[idx + 1];
+                (i > 0) ? (
+                    // Fetch set bit from dstchannels bitmap and use as channel number.  Bus is fixed at
+                    // 1 (offset from 0) since that's all older versions supported.
+                    held_keyswitches[idx + 1] = ((log(i) / log(2)) & 0x0f) | (0 << 4);
+                );
+                group += 1;
+            );
+            channel += 1;
+        );
+
         serialized_version = 3;
     );
 
@@ -1716,16 +1817,68 @@ local(channel, bit)
 );
 
 
-function _set_held_keyswitch(noteinfo, param1, param2, dstchannel)
+function midisend_multibus(mpos, dstbuschan, dstbuschan_except, basemsg1, msg2, msg3)
+local(buses, bus, bit, dstchannels)
+(
+    buses = dstbuschan[0];
+    // Fast common path with just bus 1 active.
+    (buses == 0x0001) ? (
+        dstchannels = dstbuschan[1];
+        dstbuschan_except ? (
+            dstchannels &= $~16 ~ dstbuschan_except[1+bus];
+        );
+        midi_bus = 0;
+        mpos = midisend_multidst(mpos, dstchannels, basemsg1, msg2, msg3);
+    ) : (
+        bus = 0;
+        while (buses) (
+            bit = 1 << bus;
+            (buses & bit) ? (
+                dstchannels = dstbuschan[1+bus];
+                dstbuschan_except ? (
+                    dstchannels &= $~16 ~ dstbuschan_except[1+bus];
+                );
+                midi_bus = bus;
+                mpos = midisend_multidst(mpos, dstchannels, basemsg1, msg2, msg3);
+                buses &= $~16 ~ bit;
+            );
+            bus += 1;
+        );
+        midi_bus = 0;
+    );
+    mpos;
+);
+
+
+// ORs all bitmaps from the src dstbuschan array onto dst.
+function merge_dstbuschan_arrays(dst, src)
+local(i)
+(
+    (src[0] == 1) ? (
+        // Fast, common path with just bus 1.
+        dst[0] |= 1;
+        dst[1] |= src[1];
+    ) : (
+        // Merge channel bitmap across all buses, including the bus bitmap
+        // (first slot).
+        i = 0; loop(1 + MAX_BUSES,
+            dst[i] |= src[i];
+            i+=1;
+        );
+    );
+);
+
+
+function _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus)
 (
     noteinfo[0] = param1 | (param2 << 8);
-    noteinfo[1] |= 1 << dstchannel;
+    noteinfo[1] = dstchannel | (dstbus << 4);
 );
 
 
 // Returns 1 if successful (slot available) and 0 if no available slots.
-function add_held_keyswitch(channel, group, param1, param2, dstchannel)
-local (idx, dstchannels, group_held, i)
+function add_held_keyswitch(channel, group, param1, param2, dstchannel, dstbus)
+local (idx, group_held, i)
 (
     idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
     group_held = held_keyswitches + idx;
@@ -1733,7 +1886,7 @@ local (idx, dstchannels, group_held, i)
     i = 0;
     // Optimize for the common case and assume first slot is free.
     !noteinfo[0] ? (
-        _set_held_keyswitch(noteinfo, param1, param2, dstchannel);
+        _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus);
     ) : (
         // First slot is taken, so find a free one.
         while (noteinfo[0] && i < MAX_HELD_KEYSWITCHES) (
@@ -1741,7 +1894,7 @@ local (idx, dstchannels, group_held, i)
             i += 1;
         );
         (i < MAX_HELD_KEYSWITCHES) ? (
-            _set_held_keyswitch(noteinfo, param1, param2, dstchannel);
+            _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus);
             1;
         ) : (
             0;
@@ -1751,23 +1904,26 @@ local (idx, dstchannels, group_held, i)
 
 
 function _send_held_keyswitch_note(mpos, channel, group, retrigger)
-local(dstchannels, idx, group_held, i, note, dstchannels, velocity)
+local(idx, group_held, i, note, dstchannel, dstbus, velocity)
 (
     idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
     group_held = held_keyswitches + idx;
     noteinfo = group_held;
     i = 0;
-    // Push a sentinel.  Safely unique as the dstchannels bitmap (the lower 16 bits)
-    // will never be 0.
-    stack_push(0x42420000);
+    // Push a sentinel.  Safely unique as the dstchannel and dstbus are 7 bit
+    // values so the high bit can't be 1.
+    stack_push(0xffffffff);
     // Send deferred note-offs for previously triggered keyswitches in this group.
     while (noteinfo[0] && i < MAX_HELD_KEYSWITCHES) (
         note = noteinfo[0] & 0xff;
-        dstchannels = noteinfo[1] & 0xffff;
-        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, note, 0);
+        dstchannel = noteinfo[1] & 0x0f;
+        dstbus = (noteinfo[1] & 0xf0) >> 4;
+        midi_bus = dstbus;
+        midisend(mpos, MIDI_EVENT_NOTE_ON + dstchannel, note, 0);
+        mpos += 1;
         retrigger ? (
             velocity = (noteinfo[0] & 0xff00) >> 8;
-            stack_push((note << 24) | (velocity << 16) | dstchannels);
+            stack_push((note << 16) | (velocity << 8) | (dstbus << 4) | dstchannel);
         ) : (
             // Clear slot now that it's released.
             memset(noteinfo, 0, 2);
@@ -1780,16 +1936,19 @@ local(dstchannels, idx, group_held, i, note, dstchannels, velocity)
     // we now need to send note-on events for.  This ensures even during retriggering
     // we preserve the fix for #26 (to ensure multiple note-hold output events simulate
     // being pressed together).
-    while (stack_peek(0) != 0x42420000) (
+    while (stack_peek(0) != 0xffffffff) (
         stack_pop(i);
-        note = (i & 0xff000000) >> 24;
-        velocity = (i & 0xff0000) >> 16;
-        dstchannels = i & 0xffff;
-        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, note, velocity);
+        note = (i & 0xff000000) >> 16;
+        velocity = (i & 0xff0000) >> 8;
+        dstbus = (i & 0xf0) >> 4;
+        dstchannel = i & 0x0f;
+        midi_bus = dstbus;
+        midisend(mpos, MIDI_EVENT_NOTE_ON + dstchannel, note, velocity);
         mpos += 1;
     );
     // Pop sentinel
     stack_pop();
+    midi_bus = 0;
     mpos;
 );
 
@@ -1817,23 +1976,38 @@ local (group)
     mpos;
 );
 
+function should_antihang_cc(cc)
+(
+    (cc == 2 || cc == 64 || cc == 66);
+);
 
-function chase_ccs(mpos, articulation, src, dst)
-local(ccs, i, bank, offset, bitmap)
+function chase_ccs(mpos, articulation, src, dst, dstbus)
+local(ccs, i, bank, offset, bitmap, val, idx)
 (
     ccs = last_ccs_by_channel + (src * 16);
     bank = get_articulation_bank(articulation);
+    midi_bus = dstbus;
     i = 0; loop(128,
         offset = floor(i / 24);
         bitmap = 1 << (i - (offset * 24));
         (bank[1 + offset] & bitmap) ? (
             (ccs[i] != -1) ? (
-                midisend(mpos, MIDI_EVENT_CC + dst, i, ccs[i]);
+                val = ccs[i];
+                midisend(mpos, MIDI_EVENT_CC + dst, i, val);
+                (should_antihang_cc(i) && val > 0) ? (
+                    // This is a CC we're tracking for anti-hanging, and since we just
+                    // sent a non-zero value to the dst channel as part of CC chasing,
+                    // we track the channel for this CC.
+                    idx = (src * MAX_CHANNELS * (1+MAX_BUSES)) + (i * (1+MAX_BUSES));
+                    active_channels_by_cc[idx] |= (1 << dstbus);
+                    active_channels_by_cc[idx + 1 + dstbus] |= (1 << dst);
+                );
                 mpos += 1;
             );
         );
         i += 1;
     );
+    midi_bus = 0;
     mpos;
 );
 
@@ -1881,90 +2055,108 @@ local(bank, msb, lsb, program)
 );
 
 
-function _enqueue_articulation(program, channel, except_program)
+function _enqueue_articulation(channel, bus, program, except_program, overrides)
 (
     // Do not enqueue articulation if it was already triggered since
     // activate() was called.  Fixes #44.
     (program != except_program && program != -1 &&
      activated_programs[program / 32] & (1 << (program % 32)) == 0) ? (
-        stack_push(program | (channel << 8));
+        stack_push(channel | (bus << 4) | (program << 8) | (overrides << 16));
     );
 );
 
 
-function emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels)
-local(flags, output_type, dstchannel, dstchannels, param1, param2, should_route, use_current_routing, ch)
+function emit_output_event(mpos, channel, bus, program, group, articulation, event, overrides, last_dstbuschan)
+local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus,
+      param1, param2, should_route, use_current_routing, ch)
 (
     flags = get_articulation_flags(articulation);
     output_type = get_output_event_type(event);
     dstchannel = get_output_event_dstchannel(event);
+    dstchannel_bit = (1 << dstchannel);
+    dstbus = get_output_event_dstbus(event);
     param1 = get_output_event_param1(event);
     param2 = get_output_event_param2(event);
-    should_route = get_output_event_should_route(event);
-    use_current_routing = get_output_event_use_current_routing(event);
+    should_route = (overrides & 0x01) ? 0 : get_output_event_should_route(event);
+    use_current_routing = (overrides & 0x02) ? 1 : get_output_event_use_current_routing(event);
+    (overrides & 0x04) ? dstbus = bus;
 
     (use_current_routing) ? (
         // Output event wants to use existing routing that was set up by a prior
         // articulation.
-        dstchannels = last_dstchannels;
+        dstbuschan = last_dstbuschan;
     ) : (
-        dstchannels = 1 << dstchannel;
+        // Use global array defined in @init as our local buffer.
+        dstbuschan = cur_dstbuschan;
+        // We technically don't need to memset since we're reassigning the bus
+        // bitmap.
+        dstbuschan[0] = (1 << dstbus);
+        dstbuschan[1 + dstbus] = dstchannel_bit;
     );
 
     (output_type == OUTPUT_TYPE_PROGRAM) ? (
-        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_PROGRAM, param1, 0);
+        mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_PROGRAM, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE) ? (
-        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, param1, param2 ? param2 : 127);
+        mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_NOTE_ON, param1, param2 ? param2 : 127);
         // Here we send the note-offs with a large enough offset to ensure they follow all
         // note-ons from the list of output events for this articulation.  This causes
         // multiple note output events to simulate pressing the keys simultaneously.
         //
         // Fixes #20.
-        mpos = midisend_multidst(mpos + 50, dstchannels, MIDI_EVENT_NOTE_OFF, param1, 0);
+        mpos = midisend_multibus(mpos + 50, dstbuschan, 0, MIDI_EVENT_NOTE_OFF, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE_HOLD) ? (
         off_program = get_articulation_off_program(articulation);
         (program != off_program || off_program > 127) ? (
             // Ensure note-on velocity is 127 if not otherwise defined.
             param2 = param2 ? param2 : 127;
-            add_held_keyswitch(channel, group, param1, param2, dstchannel);
-            mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_NOTE_ON, param1, param2);
+            add_held_keyswitch(channel, group, param1, param2, dstchannel, dstbus);
+            mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_NOTE_ON, param1, param2);
         ) : (
-            add_held_keyswitch(channel, group, 0, 0, 0);
+            add_held_keyswitch(channel, group, 0, 0, 0, 0);
         );
     );
     (output_type == OUTPUT_TYPE_CC) ? (
-        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_CC, param1, param2);
+        mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_CC, param1, param2);
         // FIXME: send for midi feedback
     );
     (output_type == OUTPUT_TYPE_PITCH) ? (
-        mpos = midisend_multidst(mpos, dstchannels, MIDI_EVENT_PITCH, param1, param2);
+        mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_PITCH, param1, param2);
     );
     (output_type == OUTPUT_TYPE_ARTICULATION) ? (
         // Here we have a referenced articulation we need to follow.  Push the articulation
         // details onto the stack so that activate() below can continue processing them.
-        //
-        // Enqueue articulation to all dstchannels
-        ch = 0; loop(16,
-            ((dstchannels & (1 << ch)) != 0) ? (
-                // TODO: should we propagate should_route to the new articulation?
-                _enqueue_articulation(param1, ch, program);
-            );
-            ch += 1;
-        );
+        // The source channel of the enqueued articulation will assume this calling parent
+        // articulation's dst channel.
+        _enqueue_articulation(dstchannel, dstbus, param1, program,
+                              !should_route | (use_current_routing << 1) | 0x04 /* use dstbus */);
     );
 
-    (should_route) ? (
-        (last_dstchannels & (1 << dstchannel) == 0 && flags & ARTICULATION_FLAG_CHASE) ? (
-            // New dst channel was not already in previous destination channel list, so
-            // need to chase CCs to the new dst channel.
-            mpos = chase_ccs(mpos, articulation, channel, dstchannel);
+    (should_route && !use_current_routing) ? (
+        (last_dstbuschan[1+dstbus] & dstchannel_bit == 0 &&
+         chased_dstbuschan[dstbus] & dstchannel_bit == 0 &&
+         flags & ARTICULATION_FLAG_CHASE) ? (
+            // New dst channel was not already in previous destination channel
+            // list and has not already been chased, so need to chase CCs to the
+            // new dst channel.
+            mpos = chase_ccs(mpos, articulation, channel, dstchannel, dstbus);
+            chased_dstbuschan[dstbus] |= dstchannel_bit;
         );
-        // Include dstchannels for output event in the dstchannels bitmap.
-        channel_map[channel] |= dstchannels;
+
+        // Include dstchannel for output event in the dstchannels bitmap.  Because of
+        // !use_current_routing above for this conditional, we know that only dstchannel
+        // is relevant, and we don't need to merge all of the dstbuschan array setup
+        // at the top of this function.  (And because we don't need it, we reuse the
+        // variable name here for the channel_map ptr.)
+        dstbuschan = get_channel_dstbuschan(channel);
+        dstbuschan[0] |= (1 << dstbus);
+        dstbuschan[1 + dstbus] |= dstchannel_bit;
+        this.routing_changed = 1;
+    ) : (
+        this.routing_changed = 0;
     );
-    mpos;
+    this.mpos = mpos;
 );
 
 
@@ -1983,9 +2175,9 @@ local(group, articulation, flags)
 );
 
 
-function _activate(mpos, channel, program, articulation, do_update)
+function _activate(mpos, channel, bus, program, articulation, do_update, overrides, last_dstbuschan)
 local(articulation, num_outputs, group, control, current_program, flags,
-      last_dstchannels, i, output_type, should_route)
+      i, routing_changed, r)
 (
     // Keep track that this program was already activated.  This helps us avoid
     // infinite recursion that can be caused by the use of art output events.
@@ -1993,13 +2185,16 @@ local(articulation, num_outputs, group, control, current_program, flags,
     activated_programs[program / 32] |= 1 << (program % 32);
     group = get_articulation_group(articulation);
     flags = get_articulation_flags(articulation);
-    version = get_articulation_version(articulation);
     last_program = get_active_program(channel, group);
     (last_program != program || flags & ARTICULATION_FLAG_TOGGLE) ? (
         do_update ? (
             update_current_channel_program(channel, program, group, flags);
         );
     );
+
+    // Track whether we had any output events that setup routing.  This is returned
+    // to the caller to decide if routing should be restored.
+    routing_changed = 0;
 
     num_outputs = get_articulation_num_outputs(articulation);
     (num_outputs > 0) ? (
@@ -2009,26 +2204,17 @@ local(articulation, num_outputs, group, control, current_program, flags,
         //
         // This, combined with supporting multiple held notes per group, fixes #20.
         mpos = send_deferred_note_off(mpos, channel, group);
-        // This program has output events.  Before processing them, clear the channel
-        // routing map.
-        last_dstchannels = channel_map[channel];
-        channel_map[channel] = 0;
-        // Track whether we had any output events that setup routing.
-        should_route = 0;
+
         i = 0; loop(num_outputs,
             event = get_articulation_output_event(articulation, i);
-            filter_program = version > 0 ? get_output_event_filter_program(event) : -1;
+            filter_program = get_output_event_filter_program(event);
             (filter_program < 0 || is_program_active(channel, filter_program)) ? (
-                output_type = get_output_event_type(event);
-                should_route |= get_output_event_should_route(event);
-                mpos = emit_output_event(mpos, channel, program, group, articulation, event, last_dstchannels);
+                r.emit_output_event(mpos, channel, bus, program, group, articulation,
+                                    event, overrides, last_dstbuschan);
+                mpos = r.mpos;
+                routing_changed |= r.routing_changed;
             );
             i += 1;
-        );
-        // If all output events were set to not setup routing, then here we restore the
-        // channel map we had before.
-        (channel_map[channel] == 0 && !should_route) ? (
-            channel_map[channel] = last_dstchannels;
         );
     ) : (
         // There are no output events defined for this program.  We're not going to
@@ -2043,23 +2229,38 @@ local(articulation, num_outputs, group, control, current_program, flags,
     // output events, retrigger all active articulations if they are different
     // than this program that was just activated.
     (flags & ARTICULATION_FLAG_IS_FILTER) ? (
-        _enqueue_articulation(get_active_program(channel, 0), channel, program);
-        _enqueue_articulation(get_active_program(channel, 1), channel, program);
-        _enqueue_articulation(get_active_program(channel, 2), channel, program);
-        _enqueue_articulation(get_active_program(channel, 3), channel, program);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 0), program, overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 1), program, overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 2), program, overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 3), program, overrides);
     );
-    mpos;
+
+    this.mpos = mpos;
+    this.routing_changed = routing_changed;
 );
 
 function activate(mpos, channel, program)
-local (group, cascade_channel, cascade_program, cascade_articulation, cascade_group)
+local (group, cascade_channel, cascade_program, cascade_articulation, cascade_group, cascade_overrides,
+       dstbuschan, routing_changed, r)
 (
     // This array keeps track of activated programs to avoid loops via art
     // output events.
     memset(activated_programs, 0, 4);
+    // This array tracks which dstchannels have had CCs chased.
+    memset(chased_dstbuschan, 0, MAX_BUSES);
+
     articulation = get_articulation(channel, program);
     articulation ? (
-        mpos = _activate(mpos, channel, program, articulation, 1);
+        dstbuschan = get_channel_dstbuschan(channel);
+        // Remember last dst channels in case routing needs to be restored below.
+        memcpy(last_dstbuschan, dstbuschan, 1 + MAX_BUSES);
+        // Now clear the original dstbuschan within channel_map.
+        memset(dstbuschan, 0, 1 + MAX_BUSES);
+
+        r._activate(mpos, channel, 0 /* src bus */, program, articulation, 1 /* update GUI */,
+                    0 /* no overrides */, last_dstbuschan);
+        routing_changed = r.routing_changed;
+        mpos = r.mpos;
         // If the articulation had an OUTPUT_TYPE_ARTICULATION output event, then _activate()
         // will have pushed the articulation details onto the stack, which we can now
         // follow.
@@ -2069,18 +2270,28 @@ local (group, cascade_channel, cascade_program, cascade_articulation, cascade_gr
             group = get_articulation_group(articulation);
             while (stack_peek(0)) (
                 stack_pop(artinfo);
-                cascade_channel = (artinfo & 0xff00) >> 8;
-                cascade_program = artinfo & 0xff;
+                cascade_channel = (artinfo & 0x0000000f) >> 0;
+                cascade_bus = (artinfo & 0x000000f0) >> 4;
+                cascade_program = (artinfo & 0x0000ff00) >> 8;
+                cascade_overrides = (artinfo & 0x00ff0000) >> 16;
                 cascade_articulation = get_articulation(cascade_channel, cascade_program);
                 (cascade_articulation) ? (
                     cascade_group = get_articulation_group(cascade_articulation);
                     // Trigger the referenced articulation but don't actually cause the UI
                     // to update unless the group is different than the initial entry
                     // articulation's group.
-                    mpos = _activate(mpos, cascade_channel, cascade_program,
-                                     cascade_articulation, cascade_group != group);
+                    r._activate(mpos, cascade_channel, cascade_bus, cascade_program,
+                                cascade_articulation, cascade_group != group,
+                                cascade_overrides, last_dstbuschan);
+                    mpos = r.mpos;
+                    routing_changed |= r.routing_changed;
                 );
             );
+        );
+        // If none of the processed output events modified routing, then here we
+        // restore the channel map we had before.
+        (dstbuschan[0] == 0 && !routing_changed) ? (
+            memcpy(dstbuschan, last_dstbuschan, 1 + MAX_BUSES);
         );
     );
     mpos;
@@ -2131,6 +2342,11 @@ local(match, output_type, group, flags)
     );
 );
 
+function get_active_dstchannels_by_note(channel, note)
+(
+    active_dstchannels_by_note + (channel * MAX_CHANNELS * (1+MAX_BUSES)) + (note * (1+MAX_BUSES));
+);
+
 
 // Process articulations triggered via OPCODE_ACTIVATE_ARTICULATION
 (have_pending_activations) ? (
@@ -2168,35 +2384,34 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
         // tracking active notes, current CC values, chasing and antihanging,
         // and detecting if a manual keyswitch was triggered based on output
         // events.
-        dstchannels = channel_map[channel];
+        dstbuschan = get_channel_dstbuschan(channel);
 
         // First note on/off handling.
         (type == MIDI_EVENT_NOTE_ON && msg3 > 0) ? (
             // Is the new note a keyswitch for an articulation?  If so, update
             // the current program for the channel.
             !update_current_channel_program_by_output_event(type, channel, msg2, msg3) ? (
-                // Wasn't a keyswitch, so track the note-on event and update the GUI.
-                noteinfo = active_dstchannels_by_note + channel * MAX_CHANNELS * 2 + msg2 * 2;
-                noteinfo[0] |= dstchannels;
+                // Wasn't a keyswitch, so track the note-on event (if required) and update the GUI.
+                flags = all_articulation_flags_by_channel[channel];
+                (flags & ARTICULATION_FLAG_ANTIHANG) ? (
+                    noteinfo = get_active_dstchannels_by_note(channel, msg2);
+                    merge_dstbuschan_arrays(noteinfo, dstbuschan);
+                );
                 update_active_notes_for_gui(channel, msg2, 1);
             );
         ) : (
             // It's not a note-on, check to see if it's a note-off.
             (type == MIDI_EVENT_NOTE_OFF || (type == MIDI_EVENT_NOTE_ON && msg3 == 0)) ? (
                 // Send note off to previous channel the note-on had been routed to (if applicable)
-                noteinfo = active_dstchannels_by_note + channel * MAX_CHANNELS * 2 + msg2 * 2;
-                last_flags = all_articulation_flags_by_channel[channel];
-                (last_flags & ARTICULATION_FLAG_ANTIHANG) ? (
-                    // Send the note-off to all dstchannels the note-on was sent
-                    // to except for the current dstchannels since we're going to
-                    // do that below.
-                    last_dstchannels = noteinfo[0] & ($~16 ~ dstchannels);
-                    mpos = midisend_multidst(mpos, last_dstchannels, type, msg2, msg3);
-                );
+                noteinfo = get_active_dstchannels_by_note(channel, msg2);
+                // Send the note-off to all dstchannels the note-on was sent to
+                // except for the current dstchannels since we're going to do
+                // that below.
+                mpos = midisend_multibus(mpos, noteinfo, dstbuschan, type, msg2, msg3);
                 // Now that we've sent the note-off event to all the channels that had
                 // seen the note-on (those not in the current dstchannels list anyway),
                 // we can reset it.
-                noteinfo[0] = 0;
+                memset(noteinfo, 0, 1 + MAX_BUSES);
                 update_active_notes_for_gui(channel, msg2, 0);
 
                 // For articulations doing note-hold outputs, if the note that was released
@@ -2230,52 +2445,53 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                 (flags & ARTICULATION_FLAG_BLOCK_BANK_CHANGE == 0) ? (
                     // No, send it along.
                     update_current_channel_program_by_output_event(type, channel, msg2, msg3);
-                    mpos = midisend_multidst(mpos, dstchannels, type, msg2, msg3);
+                    mpos = midisend_multibus(mpos, dstbuschan, 0, type, msg2, msg3);
                 );
             ) : (
                 (msg2 == 123) ? (
                     // All notes off for destination MIDI channels.  Tell GUI
                     // that notes turned off for source channel.
                     update_active_notes_for_gui(channel, -1, 0);
-                    // Now loop over dstchannels and clear the active notes
-                    // we're tracking.
-                    i = 0; loop(MAX_CHANNELS,
-                        (dstchannels & (1 << i)) ? (
-                            active_dstchannels_by_note[i * MAX_CHANNELS * 2 + msg2 * 2] = 0;
+                    // Clear all active notes for all dstchannels that are about to receive
+                    // the CC123.
+                    noteinfo = get_active_dstchannels_by_note(channel, 0);
+                    idx = 0; loop(128,
+                        bus = 0; loop(MAX_BUSES,
+                            noteinfo[idx + 1 + bus] &= $~16 ~ dstbuschan[1 + bus];
+                            noteinfo[idx + 1 + bus] == 0 ? (
+                                // We've cleared all notes for this bus, so zero the bit in the
+                                // bus bitmap.
+                                noteinfo[idx] &= $~16 ~ (1 << bus);
+                            );
+                            bus += 1;
                         );
+                        idx += 17;
                     );
                 ) : (
                     // Remember this CC value for chasing.
                     update_current_ccs_for_gui(channel, msg2, msg3);
 
                     // Handle anti CC hanging
-                    (msg2 == 2 || msg2 == 64 || msg2 == 66) ? (
-                        idx = channel * MAX_CHANNELS + msg2;
-                        bitmap = active_channels_by_cc[idx];
+                    should_antihang_cc(msg2) ? (
+                        idx = (channel * MAX_CHANNELS * (1+MAX_BUSES)) + (msg2 * (1+MAX_BUSES));
+                        bitmap = active_channels_by_cc + idx;
                         (msg3 > 0) ? (
-                            // Are there current dstchannels that aren't already included
-                            // in the CC's dstchannels?
-                            (dstchannels & ($~16 ~ bitmap)) ? (
-                                // Yes, so add them if the articulation has the antihangcc flag.
-                                flags = all_articulation_flags_by_channel[channel];
-                                (flags & ARTICULATION_FLAG_ANTIHANG_CC) ? (
-                                    // Yes, articulation has the CC antihang flag.
-                                    active_channels_by_cc[idx] |= dstchannels;
-                                );
+                            flags = all_articulation_flags_by_channel[channel];
+                            (flags & ARTICULATION_FLAG_ANTIHANG_CC) ? (
+                                merge_dstbuschan_arrays(bitmap, dstbuschan);
                             );
                         ) : (
                             // Replay this 0-value CC on all previous dst channels for this CC except
                             // on the current dstchannel since that's aleady about to happen.
-                            bitmap &= $~16 ~ dstchannels;
-                            mpos = midisend_multidst(mpos, bitmap, type, msg2, 0);
-                            active_channels_by_cc[idx] = 0;
+                            mpos = midisend_multibus(mpos, bitmap, dstbuschan, type, msg2, 0);
+                            memset(bitmap, 0, 1 + MAX_BUSES);
                         );
                     );
                 );
                 // Detect manual articulation changes via CC (if applicable), and finally route the
                 // event to the current destination channels.
                 update_current_channel_program_by_output_event(type, channel, msg2, msg3);
-                mpos = midisend_multidst(mpos, dstchannels, type, msg2, msg3);
+                mpos = midisend_multibus(mpos, dstbuschan, 0, type, msg2, msg3);
                 // This might be a bit too aggressive.  If Reaper generates CC123 on transport
                 // play, then we will already retrigger held notes below.  Doing it again
                 // here may be unnecessary.  So disable for now.
@@ -2289,7 +2505,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
             );
         ) : (
             // Non-CC MIDI event (including notes).  Route away.
-            mpos = midisend_multidst(mpos, dstchannels, type, msg2, msg3);
+            mpos = midisend_multibus(mpos, dstbuschan, 0, type, msg2, msg3);
         );
     );
 );

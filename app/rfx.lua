@@ -529,7 +529,9 @@ function rfx._migrate_to_appdata()
                 v = msblsb,
                 h = hash,
                 src = b0 + 1,
-                dst = b1 + 1
+                dst = b1 + 1,
+                -- Older versions did not support custom output bus and assumed 1.
+                dstbus = 1
             }
         end
     end
@@ -576,13 +578,14 @@ end
 --     t: type: u=uuid b=msb/lsb
 --     v: val: uuid if type=u, msblsb if type=b
 --     h: hash = of last Bank object
---     src: src channel
---     dst: dst channel
+--     src: src channel (offset from 1, 17 = Omni)
+--     dst: dst channel (offset from 1, 17 = Source)
+--  dstbus: dst bus (offset from 1)
 
 function rfx.set_banks(banks)
     rfx.appdata.banks = {}
     for _, bankinfo in ipairs(banks) do
-        bank, src, dst = table.unpack(bankinfo)
+        bank, src, dstchannel, dstbus = table.unpack(bankinfo)
         -- Note that hash is not set here but rather in sync_banks_to_rfx()
         -- so that the current hash can be refreshed even if the bank assignment
         -- doesn't change for the track.
@@ -590,7 +593,8 @@ function rfx.set_banks(banks)
             t = 'b',
             v = bank.msblsb,
             src = src,
-            dst = dst
+            dst = dstchannel,
+            dstbus = dstbus
         }
     end
     -- This will implicitly call rfx.sync_banks_to_rfx() if necessary.
@@ -615,7 +619,7 @@ function rfx.get_banks()
             local bankinfo = rfx.appdata.banks[idx]
             local bank = reabank.get_bank_by_msblsb(bankinfo.v)
             idx = idx + 1
-            return bank, bankinfo.src, bankinfo.dst, bankinfo.h
+            return bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus, bankinfo.h
         end
     end
 end
@@ -675,7 +679,7 @@ function rfx.index_banks_by_channel()
     rfx.unknown_banks = nil
     -- Will be set to true if there are any bank hash mismatches
     local resync = false
-    for bank, srcchannel, dstchannel, hash in rfx.get_banks() do
+    for bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
         if not bank then
             if not rfx.unknown_banks then
                 rfx.unknown_banks = {}
@@ -687,6 +691,7 @@ function rfx.index_banks_by_channel()
             log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, hash, bank:hash())
             bank.srcchannel = srcchannel
             bank.dstchannel = dstchannel
+            bank.dstbus = dstbus
             if srcchannel == 17 then
                 -- Omni: bank is available on all channels
                 for srcchannel = 1, 16 do
@@ -755,6 +760,7 @@ function rfx.sync_banks_to_rfx()
 
                     for _, output in ipairs(outputs) do
                         local outchannel = output.channel or bank.dstchannel
+                        local outbus = output.bus or bank.dstbus or 1
                         local param1 = tonumber(output.args[1] or 0)
                         local param2 = tonumber(output.args[2] or 0)
                         if not output.route then
@@ -763,14 +769,15 @@ function rfx.sync_banks_to_rfx()
                         end
                         if outchannel == 17 then
                             outchannel = channel
-                        elseif outchannel == -1 then
+                        elseif outchannel == 0 then
                             -- Route output event to channels set up by previous articulation.
                             param2 = param2 | 0x80
                             -- This option implies output.route == false
                             param1 = param1 | 0x80
-                            -- outchannel will be ignored by the RFX here, but set it to something
+                            -- outchannel and bus will be ignored by the RFX here, but set it to something
                             -- that ensures we don't try to bitshift a negative number below.
                             outchannel = 1
+                            outbus = 1
                         end
                         if output.type == 'pitch' then
                             -- Convert 14-bit pitch value to MSB/LSB parameters.
@@ -778,10 +785,12 @@ function rfx.sync_banks_to_rfx()
                             param2 = (param1 >> 7) & 0x7f
                             param1 = param1 & 0x7f
                         end
-                        local typechannel = ((outchannel - 1) << 4) + (output_type_to_rfx_param[output.type] or 0)
+                        local typechannel = (output_type_to_rfx_param[output.type] or 0) |
+                                            ((outchannel - 1) << 4) |
+                                            ((outbus - 1) << 8)
                         rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, {typechannel, param1, param2})
                         if output.filter_program then
-                            -- Set filter program if the output event is conditional.
+                            -- Filter program is set: add output event extension 0.
                             rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT_EXTENSION, {0, output.filter_program | 0x80})
                         end
                     end
@@ -793,7 +802,7 @@ function rfx.sync_banks_to_rfx()
     rfx.opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)
     -- Update the hash of all banks
     local i = 1
-    for bank, _, _, _ in rfx.get_banks() do
+    for bank, _, _, _, _ in rfx.get_banks() do
         rfx.appdata.banks[i].h = bank:hash()
         i = i + 1
     end
