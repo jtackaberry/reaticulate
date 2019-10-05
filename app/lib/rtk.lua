@@ -3220,7 +3220,7 @@ function rtk.OptionMenu:onattr(attr, value, trigger)
         --     local id = self._id_by_idx[value]
         --     item = self._item_by_id[id]
         -- end
-        local idx = self._idx_by_id[value]
+        local idx = self._idx_by_id[tostring(value)] or self._idx_by_id[value]
         if idx then
             -- Index exists by id.
             value = idx
@@ -3260,7 +3260,7 @@ function rtk.OptionMenu:_build_submenu(submenu)
             self._item_by_idx[#self._item_by_idx + 1] = {label=label, id=id, flags=flags, buttonlabel=buttonlabel}
             -- Map this index to the user id (or a stringified version of the
             -- index if no user id is given)
-            self._idx_by_id[id or #self._item_by_idx] = #self._item_by_idx
+            self._idx_by_id[tostring(id or #self._item_by_idx)] = #self._item_by_idx
             if not flags or flags & rtk.OptionMenu.ITEM_HIDDEN == 0 then
                 if flags then
                     if flags & rtk.OptionMenu.ITEM_CHECKED ~= 0 then
