@@ -2143,8 +2143,8 @@ function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
             -- Expand the size of the container accoridng to the child's size
             -- and x,y coordinates offset within the container (now that any
             -- repositioning has been completed caused by alignment above).
-            innerw = math.max(innerw, ww + widget.cx)
-            innerh = math.max(innerh, wh + widget.cy)
+            innerw = math.max(innerw, ww + widget.cx - self.lpadding)
+            innerh = math.max(innerh, wh + widget.cy - self.tpadding)
             self:_add_reflowed_child(widgetattrs, attrs.z or widget.z or 0)
         else
             widget.realized = false
@@ -2309,13 +2309,13 @@ end
 
 -- Second pass over all children
 function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
-    local offset = self.tpadding
+    local offset = 0
     local spacing = 0
     local third_pass = {}
     for n, widgetattrs in ipairs(self.children) do
         local widget, attrs = table.unpack(widgetattrs)
         if widget == rtk.Container.FLEXSPACE then
-            offset = offset + expand_unit_size * (attrs.expand or 1)
+            offset = offset + self.tpadding + expand_unit_size * (attrs.expand or 1)
             spacing = 0
             -- Ensure box size reflects flexspace in case this is the last child in the box.
             maxh = math.max(maxh, offset)
@@ -2332,7 +2332,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 child_maxh = math.floor(math.max(child_maxh, minh))
                 wx, wy, ww, wh = widget:reflow(
                     self.lpadding + lpadding,
-                    offset + tpadding + spacing,
+                    offset + self.tpadding + tpadding + spacing,
                     child_maxw,
                     child_maxh,
                     attrs.fillw and attrs.fillw ~= 0,
@@ -2366,7 +2366,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 elseif attrs.halign == rtk.Widget.RIGHT then
                     offx = offx + maxw - widget.cw
                 end
-                local offy = offset + tpadding + spacing
+                local offy = offset + self.tpadding + tpadding + spacing
                 if attrs.fillw ~= rtk.Box.FILL_TO_SIBLINGS then
                     widget.cx = widget.cx + offx
                     widget.cy = widget.cy + offy
@@ -2406,13 +2406,13 @@ end
 -- to be refactored better, by using more tables with indexes rather than unpacking
 -- to separate variables.
 function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
-    local offset = self.lpadding
+    local offset = 0
     local spacing = 0
     local third_pass = {}
     for n, widgetattrs in ipairs(self.children) do
         local widget, attrs = table.unpack(widgetattrs)
         if widget == rtk.Container.FLEXSPACE then
-            offset = offset + expand_unit_size * (attrs.expand or 1)
+            offset = offset + self.lpadding + expand_unit_size * (attrs.expand or 1)
             spacing = 0
             -- Ensure box size reflects flexspace in case this is the last child in the box.
             maxw = math.max(maxw, offset)
@@ -2428,7 +2428,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 child_maxw = math.floor(math.max(child_maxw, minw))
                 local child_maxh = math.max(minh, h - tpadding - bpadding)
                 wx, wy, ww, wh = widget:reflow(
-                    offset + lpadding + spacing,
+                    offset + self.lpadding + lpadding + spacing,
                     self.tpadding + tpadding,
                     child_maxw,
                     child_maxh,
@@ -2461,7 +2461,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
                 elseif attrs.valign == rtk.Widget.BOTTOM then
                     offy = offy + maxh - widget.ch
                 end
-                local offx = offset + lpadding + spacing
+                local offx = offset + self.lpadding + lpadding + spacing
                 if attrs.fillh ~= rtk.Box.FILL_TO_SIBLINGS then
                     widget.cx = widget.cx + offx
                     widget.cy = widget.cy + offy
