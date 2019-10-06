@@ -223,6 +223,22 @@ function screen.init()
             open_url('https://forum.cockos.com/showthread.php?t=212174')
         end
     end
+
+    local button = screen.vbox:add(
+        rtk.Button({
+            label="Reaticulate Website",
+            icon=rtk.Image:new(Path.join(Path.imagedir, "link_18x18.png")),
+            color=rtk.theme.accent_subtle,
+            cursor=rtk.mouse.cursors.hand,
+            flags=rtk.Button.FLAT,
+            tpadding=7, bpadding=7, lpadding=10, rpadding=10,
+            alpha=0.6
+        }),
+        {tpadding=40, halign='center'}
+    )
+    button.onclick = function()
+        open_url('https://reaticulate.com')
+    end
 end
 
 function screen.update()
