@@ -202,7 +202,7 @@ function screen.create_bank_ui()
     bankbox.srcchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.srcchannel_menu, {lpadding=0, expand=1, fillw=true})
     bankbox.srcchannel_menu:setmenu(screen.src_channel_menu)
-    bankbox.srcchannel_menu:attr('selected', 1)
+    bankbox.srcchannel_menu:select(17)
 
     row:add(rtk.Label:new({label=' → '}), {valign=rtk.Widget.CENTER})
 
@@ -210,7 +210,7 @@ function screen.create_bank_ui()
     bankbox.dstchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.dstchannel_menu, {lpadding=0, expand=1, fillw=true})
     bankbox.dstchannel_menu:setmenu(screen.dst_channel_menu)
-    bankbox.dstchannel_menu:attr('selected', 1)
+    bankbox.dstchannel_menu:select(17 | (1<<8))
 
     local delete_button = app:make_button("delete_white_18x18.png", nil, true, {
         color={0.5, 0.2, 0.2, 1},
