@@ -2495,6 +2495,7 @@ rtk.Button = class('rtk.Button', rtk.Widget)
 rtk.Button.static.FULL_SURFACE = 0
 rtk.Button.static.FLAT_ICON = 1
 rtk.Button.static.FLAT_LABEL = 2
+rtk.Button.static.FLAT = 1 | 3
 rtk.Button.static.ICON_RIGHT = 4
 rtk.Button.static.NO_HOVER = 8
 rtk.Button.static.NO_SEPARATOR = 16
@@ -2518,8 +2519,12 @@ function rtk.Button:initialize(attrs)
     self.rspace = 5
     self.font, self.fontsize = table.unpack(rtk.fonts.button or rtk.fonts.default)
     self.fontscale = 1.0
+    self.fontflags = 0
     self.hover = false
     self:setattrs(attrs)
+    if type(self.icon) == 'string' then
+        self.icon = rtk.Image.make_icon(self.icon)
+    end
     if not self.flags then
         self.flags = rtk.Button.FULL_SURFACE
         if self.icon == nil then
@@ -2543,7 +2548,7 @@ end
 -- when rendered with the current font.  This can be used for alignment
 -- calculations.
 function rtk.Button:_reflow_get_label_size(boxw, boxh)
-    rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
+    rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
     return rtk.layout_gfx_string(self.label, self.wrap, true, boxw, boxh)
 end
 
@@ -2691,7 +2696,7 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
     if self.vlabel then
         gfx.x = lx
         gfx.y = sy + (self.ch - self.lh) / 2
-        rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
+        rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
         self:setcolor(textcolor)
         gfx.drawstr(self.vlabel)
     end
@@ -2699,7 +2704,7 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
 end
 
 function rtk.Button:_draw_icon(x, y, hovering)
-    self.icon:draw(x, y, rtk.scale)
+    self.icon:draw(x, y, rtk.scale, nil, self.alpha)
 end
 
 function rtk.Button:onclick(event)
