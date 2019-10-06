@@ -764,7 +764,7 @@ end
 function App:build_frame()
     BaseApp.build_frame(self)
 
-    local icon = rtk.Image:new(Path.join(Path.imagedir, "edit_white_18x18.png"))
+    local icon = self:get_image("edit_white_18x18.png")
     local menubutton = rtk.OptionMenu:new({
         icon=icon, flags=rtk.Button.FLAT_ICON | rtk.OptionMenu.HIDE_LABEL,
         tpadding=5, bpadding=5, lpadding=5, rpadding=5

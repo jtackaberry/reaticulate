@@ -32,8 +32,8 @@ end
 
 
 function screen.init()
-    screen.error_icon = rtk.Image:new(Path.join(Path.imagedir, "warning_amber_24x24.png"))
-    screen.info_icon = rtk.Image:new(Path.join(Path.imagedir, "info_outline_white_24x24.png"))
+    screen.error_icon = app:get_image("warning_amber_24x24.png")
+    screen.info_icon = app:get_image("info_outline_white_24x24.png")
     local vbox = rtk.VBox:new()
     screen.widget = rtk.Viewport({child=vbox, rpadding=10})
 

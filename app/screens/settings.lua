@@ -63,7 +63,7 @@ local function add_row(section, label, w, spacing)
 end
 
 function screen.init()
-    screen.warning_icon = rtk.Image:new(Path.join(Path.imagedir, "warning_amber_24x24.png"))
+    screen.warning_icon = app:get_image("warning_amber_24x24.png")
     screen.vbox = rtk.VBox({rpadding=10})
     screen.widget = rtk.Viewport({child=screen.vbox})
     screen.toolbar = rtk.HBox:new({spacing=0})
@@ -227,7 +227,7 @@ function screen.init()
     local button = screen.vbox:add(
         rtk.Button({
             label="Reaticulate Website",
-            icon=rtk.Image:new(Path.join(Path.imagedir, "link_18x18.png")),
+            icon=app:get_image("link_18x18.png"),
             color=rtk.theme.accent_subtle,
             cursor=rtk.mouse.cursors.hand,
             flags=rtk.Button.FLAT,

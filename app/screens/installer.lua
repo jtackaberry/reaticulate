@@ -22,7 +22,7 @@ local screen = {
 }
 
 function screen.init()
-    screen.error_icon = rtk.Image:new(Path.join(Path.imagedir, "alert_circle_outline_white_96x96.png"))
+    screen.error_icon = app:get_image("alert_circle_outline_white_96x96.png")
 
     screen.widget = rtk.Container:new()
     local box = screen.widget:add(rtk.VBox:new(), {halign='center', valign='center', expand=1})
@@ -33,7 +33,7 @@ function screen.init()
     screen.message = rtk.Label:new({fontsize=24, color={1, 1, 1, 0.5}, wrap=true, textalign='center'})
     box:add(screen.message, {halign='center', lpadding=10, rpadding=10})
 
-    icon = rtk.Image:new(Path.join(Path.imagedir, "add_circle_outline_white_18x18.png"))
+    icon = app:get_image("add_circle_outline_white_18x18.png")
     screen.button = rtk.Button:new({
         icon=icon, label="Add Reaticulate FX", space=10,
         color={0.3, 0.3, 0.3, 1},
