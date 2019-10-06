@@ -153,6 +153,7 @@ local rtk = {
     themes = {
         dark = {
             accent = '#47abff',
+            accent_subtle = '#306088',
             window_bg = '#252525',
             text = '#ffffff',
             text_faded = '#bbbbbb',
@@ -166,6 +167,7 @@ local rtk = {
         },
         light = {
             accent = '#47abff',
+            accent_subtle = '#a1d3fc',
             window_bg = '#dddddd',
             button = '#888888',
             buttontext = '#ffffff',
