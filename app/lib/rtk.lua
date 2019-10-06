@@ -182,8 +182,9 @@ local rtk = {
     },
 
     fonts = {
-        BOLD = 98,
-        ITALICS = 105,
+        BOLD = string.byte('b'),
+        ITALICS = string.byte('i') << 8,
+        UNDERLINE = string.byte('u') << 16,
         -- nil values will use default
         -- FIXME: do something sane for flags
         default = {'Calibri', 18},
