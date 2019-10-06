@@ -1040,11 +1040,11 @@ function rtk.Widget:_draw_borders(offx, offy, all, t, r, b, l)
     end
     if r then
         local thickness, offset = self:_unpack_border(r)
-        gfx.rect(self.cx + offx + self.cw + offset, self.cy + offy, thickness, self.ch, 1)
+        gfx.rect(self.cx + offx + self.cw + offset, self.cy + offy - thickness, thickness, self.ch, 1)
     end
     if b then
         local thickness, offset = self:_unpack_border(b)
-        gfx.rect(self.cx + offx, self.cy + offy + self.ch + offset, self.cw, thickness, 1)
+        gfx.rect(self.cx + offx, self.cy + offy + self.ch + offset - thickness, self.cw, thickness, 1)
     end
     if l then
         local thickness, offset = self:_unpack_border(l)
