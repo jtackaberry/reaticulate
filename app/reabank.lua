@@ -141,8 +141,12 @@ function Articulation:get_outputs()
                         if part:find('%.') then
                             local channel, bus = part:match('(%d*).(%d*)')
                             output.channel = tonumber(channel)
-                            output.bus = tonumber(bus) or 1
-                            self.buses = self.buses | (1 << (output.bus - 1))
+                            output.bus = tonumber(bus)
+                            -- If bus is invalid, it will be nil which means we default
+                            -- to the dst bus at the track level.
+                            if output.bus then
+                                self.buses = self.buses | (1 << (output.bus - 1))
+                            end
                         else
                             output.channel = tonumber(part)
                             -- Default to the bus defined at the bank level when the
