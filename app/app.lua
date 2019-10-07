@@ -728,14 +728,32 @@ function App:refresh_banks()
     self:ontrackchange(nil, self.track)
     log.debug("app: refresh: stage 3 done")
     -- Update articulation list to reflect any changes that were made to the Reabank template.
+    -- If the banks have changed then rfx.onhashchanged() will have already been called via
+    -- rfx.sync() above.
     self.screens.banklist.update()
     log.debug("app: refresh: stage 4 done")
-    if self:current_screen() == self.screens.trackcfg then
-        self.screens.trackcfg.update()
-    end
-    log.info("app: refresh: done")
+    log.warn("app: refresh: done")
     log.time_end()
 end
+
+
+function App:check_banks_for_errors()
+    if self:current_screen() == self.screens.trackcfg then
+        -- Track configuration screen is visible, so update the UI.  This
+        -- implicitly checks for errors and will persist appdata if needed.
+        self.screens.trackcfg.update()
+    else
+        self.screens.trackcfg.check_errors_and_set_appdata()
+    end
+    self.screens.banklist.update_error_box()
+end
+
+
+function rfx.onhashchange()
+    -- Bank hash has changed, so re-check for errors.
+    app:check_banks_for_errors()
+end
+
 
 function App:beat_reaper_into_submission()
     -- This is necessary if an existing Reaticulate-managed track references a non-Reaticulate

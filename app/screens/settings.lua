@@ -123,6 +123,8 @@ function screen.init()
             feedback.ensure_feedback_track()
             feedback.update_feedback_track_settings(true)
         end
+        -- If we enabled/disabled feedback, re-check for bus 16 conflicts.
+        app:check_banks_for_errors()
     end
     screen.midi_device_menu = menu
 

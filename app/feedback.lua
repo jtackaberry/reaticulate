@@ -29,9 +29,12 @@ local BUS_TRANSLATOR_MAGIC = 0x42424242
 local BUS_TRANSLATOR_FX_NAME = 'Feedback Translate.jsfx'
 
 
+function feedback.is_enabled()
+    return (app.config.cc_feedback_device or -1) >= 0 and app.config.cc_feedback_active
+end
+
 function feedback.ontrackchange(last, cur)
-    if (app.config.cc_feedback_device or -1) < 0 or not app.config.cc_feedback_active then
-        -- No feedback enabled.
+    if not feedback.is_enabled() then
         return
     end
     if last and reaper.ValidatePtr2(0, last, "MediaTrack*") then
@@ -230,7 +233,7 @@ function feedback._sync(what)
 end
 
 function feedback.sync(track, what)
-    if app.config.cc_feedback_device == -1 or not track or not rfx.fx then
+    if not feedback.is_enabled() or not track or not rfx.fx then
         return
     end
     feedback._sync(what or feedback.SYNC_ALL)

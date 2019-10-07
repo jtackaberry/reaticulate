@@ -16,6 +16,7 @@ local log = require 'lib.log'
 local rtk = require 'lib.rtk'
 local rfx = require 'rfx'
 local reabank = require 'reabank'
+local feedback = require 'feedback'
 
 local screen = {
     widget = nil,
@@ -113,7 +114,7 @@ function screen.init()
     screen.update()
 end
 
-function screen.sync_banks_to_rfx()
+function screen.set_banks_from_banklist()
     local banks = {}
     for n = 1, #screen.banklist.children do
         local bankbox = screen.banklist:get_child(n)
@@ -123,6 +124,11 @@ function screen.sync_banks_to_rfx()
         banks[#banks+1] = {bank, srcchannel, dstchannel, dstbus}
     end
     rfx.set_banks(banks)
+    screen.check_errors_and_update_ui()
+    -- This will also write appdata (which contains the bank list and error
+    -- code) to the rfx.
+    rfx.sync_banks_to_rfx()
+    app.screens.banklist.update()
 end
 
 -- Position: -1 = before, 1 = after.  If target is nil, then always move to
@@ -145,8 +151,7 @@ function screen.move_bankbox(bankbox, target, position)
 end
 
 function screen.move_bankbox_finish()
-    screen.sync_banks_to_rfx()
-    app.screens.banklist.update()
+    screen.set_banks_from_banklist()
 end
 
 function screen.create_bank_ui()
@@ -220,8 +225,7 @@ function screen.create_bank_ui()
     delete_button.onclick = function()
         -- TODO: provide some means of undo (a la mobile phones)
         screen.banklist:remove(bankbox)
-        screen.sync_banks_to_rfx()
-        app.screens.banklist.update()
+        screen.set_banks_from_banklist()
     end
 
     bankbox.bank_menu.onchange = function(self)
@@ -231,7 +235,7 @@ function screen.create_bank_ui()
             -- Shouldn't be possible, but handle it anyway.
             log.error("trackcfg: can't find bank in bank list")
         else
-            screen.sync_banks_to_rfx()
+            screen.set_banks_from_banklist()
             if bank.off ~= nil then
                 -- New bank with off program.  Activate that program now.
                 local art = bank:get_articulation_by_program(bank.off)
@@ -239,8 +243,6 @@ function screen.create_bank_ui()
                     app:activate_articulation(art)
                 end
             end
-            screen.check_errors()
-            app.screens.banklist.update()
         end
     end
     bankbox.srcchannel_menu.onchange = bankbox.bank_menu.onchange
@@ -260,14 +262,67 @@ function screen.create_bank_ui()
     return bankbox
 end
 
-function screen.check_errors()
+-- An iterator that returns errors (if any) for each bank
+function screen.get_errors()
     local conflicts = rfx.get_banks_conflicts()
+    local get_next_bank = rfx.get_banks()
+    local feedback_enabled = feedback.is_enabled()
     local banks = {}
-    for n = 1, #screen.banklist.children do
+    local n = 0
+
+    return function()
+        local bank, srcchannel, dstchannel, dstbus, hash = get_next_bank()
+        if not bank then
+            return
+        end
+
+        local error = rfx.ERROR_NONE
+        local conflict = nil
+
+        if (bank.buses & (1 << 15) > 0 or dstbus == 16) and feedback_enabled then
+            error = rfx.ERROR_BUS_CONFLICT
+        end
+        if banks[bank] then
+            -- Other errors take precedence but set if currently no error
+            if not error then
+                error = rfx.ERROR_DUPLICATE_BANK
+            end
+        else
+            banks[bank] = {idx=n, channel=srcchannel}
+            conflict = conflicts[bank]
+            if conflict and conflict.source ~= bank then
+                -- There is a channel behaviour conflict.  Verify the channel conflict with the previously
+                -- listed bank, to rule out the possiblity of a later duplicate bank causing the conflict
+                -- (in which case the error will appear with the later bank)
+                local previous = banks[conflict.source]
+                if srcchannel == 17 or (previous and (previous.channel == 17 or srcchannel == previous.channel)) then
+                    error = rfx.ERROR_PROGRAM_CONFLICT
+                end
+            end
+        end
+
+        n = n + 1
+        return n, bank, error, conflict
+    end
+end
+
+local function _max_error(a, b)
+    return (a and b) and math.max(a, b) or a or b
+end
+
+local function _set_error(error)
+    local changed = error ~= rfx.appdata.err
+    rfx.set_error(error)
+    return changed
+end
+
+-- Updates the UI according to any existing bank errors and sets rfx.error
+-- accordingly.  Returns true if the rfx.error changed, which the caller
+-- may use to decide if rfx.set_appdata() should be called.
+function screen.check_errors_and_update_ui()
+    local error = nil
+    for n, bank, bank_error, conflict in screen.get_errors() do
         local bankbox = screen.banklist:get_child(n)
-        local bank = reabank.get_bank_by_msblsb(bankbox.bank_menu.selected_id)
-        local channel = tonumber(bankbox.srcchannel_menu.selected_id)
-        local info = nil
 
         if bank.message then
             bankbox.info.label:attr('label', bank.message)
@@ -276,31 +331,47 @@ function screen.check_errors()
             bankbox.info:hide()
         end
 
-        if banks[bank] then
-            bankbox.warning.label:attr('label', 'Error: bank is already listed above.')
-            bankbox.warning:show()
-        else
-            banks[bank] = {bankbox=bankbox, channel=channel}
-            local conflict = conflicts[bank]
-            if conflict and conflict.source ~= bank then
-                -- There is a channel behaviour conflict.  Verify the channel conflict with the previously
-                -- listed bank, to rule out the possiblity of a later duplicate bank causing the conflict
-                -- (in which case the error will appear with the later bank)
-                local previous = banks[conflict.source]
-                if channel == 17 or (previous and (previous.channel == 17 or channel == previous.channel)) then
-                    local label = "Error: bank conflict on same channel: " .. conflict.source.name
-                    bankbox.warning.label:attr('label', label)
-                    bankbox.warning:show()
-                    log.warn("trackcfg: conflict: %s with program %s on channel %s", conflict.source.name, conflict.program, channel)
-                end
-            else
-                bankbox.warning:hide()
-            end
+        local errmsg = nil
+        if bank_error == rfx.ERROR_BUS_CONFLICT then
+            errmsg = 'Error: bank uses bus 16 which conflicts with MIDI controller feedback feature'
+        elseif bank_error == rfx.ERROR_DUPLICATE_BANK then
+            errmsg = 'Error: bank is already listed above.'
+        elseif bank_error == rfx.ERROR_PROGRAM_CONFLICT then
+            errmsg = "Error: program numbers on the same source channel conflicts with " .. conflict.source.name
         end
+        screen.set_bankbox_warning(bankbox, errmsg)
+        error = _max_error(error, bank_error)
+    end
+    return _set_error(error)
+end
+
+-- Checks the current track banks for errors and sets rfx.error accordingly. If
+-- changed, rfx.set_appdata() is called.  This function does not depend on the
+-- UI and is meant for use when the trackcfg screen is not visible.
+function screen.check_errors_and_set_appdata()
+    local error = nil
+    for n, bank, bank_error, conflict in screen.get_errors() do
+        error = _max_error(error, bank_error)
+    end
+    log.info("-> set error: %s -> %s", rfx.appdata.err, error)
+    if _set_error(error) then
+        rfx.set_appdata(rfx.appdata)
+    end
+end
+
+function screen.set_bankbox_warning(bankbox, msg)
+    if msg then
+        bankbox.warning.label:attr('label', msg)
+        bankbox.warning:show()
+    else
+        bankbox.warning:hide()
     end
 end
 
 function screen.update()
+    if not rfx.fx then
+        return
+    end
     screen.widget:scrollto(0, 0)
     screen.banklist:clear()
     for bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
@@ -313,7 +384,9 @@ function screen.update()
         bankbox.bank_menu:select(tostring((bank.msb << 8) + bank.lsb), false)
         screen.banklist:add(bankbox)
     end
-    screen.check_errors()
+    if screen.check_errors_and_update_ui() then
+        rfx.set_appdata(rfx.appdata)
+    end
 end
 
 return screen

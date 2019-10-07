@@ -110,12 +110,15 @@ function Articulation:initialize(bank, program, name, attrs)
     self._has_conditional_output = nil
     table.merge(self, attrs)
     self.group = tonumber(self.group or 1)
-
     self.flags = _parse_flags(self.flags, bank.flags)
+    -- 16-bit bitmap of buses that output events are specifically targeting.  Will
+    -- be valid after get_outputs() is called.
+    self.buses = nil
 end
 
 function Articulation:get_outputs()
     if not self._outputs then
+        self.buses = 0
         self._has_conditional_output = false
         self._outputs = {}
         for spec in (self.outputs or ''):gmatch('([^/]+)') do
@@ -139,6 +142,7 @@ function Articulation:get_outputs()
                             local channel, bus = part:match('(%d*).(%d*)')
                             output.channel = tonumber(channel)
                             output.bus = tonumber(bus)
+                            self.buses = self.buses | (1 << (output.bus - 1))
                         else
                             output.channel = tonumber(part)
                             -- Default to the bus defined at the bank level when the

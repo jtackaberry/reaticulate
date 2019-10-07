@@ -135,12 +135,27 @@ local rfx = {
     GMEM_OPCODES_BUFFER_SIZE = 1000 - 100,
 
     -- Constants for the rfx.error value.
+    ERROR_NONE = nil,
+    -- These are critical errors that will be set when rfx.fx == nil
     ERROR_MISSING_RFX = 1,
     ERROR_TRACK_FX_BYPASSED = 2,
     ERROR_RFX_BYPASSED = 3,
     ERROR_BAD_MAGIC = 4,
     ERROR_UNSUPPORTED_VERSION = 5,
     ERROR_DESERIALIZATION_FAILED = 6,
+
+
+    -- These are non-critical application level errors that can occur even when
+    -- rfx.fx is valid, and usually indicate some possible issue with
+    -- functionality.  This will be set via rfx.set_error(), in which case it is
+    -- persisted in rfx appdata as rfx.appdata.err and restored when the track
+    -- is selected.
+    --
+    -- These should be listed in ascending order of severity as when there are
+    -- multiple errors on a bank, the highest will be used.
+    ERROR_DUPLICATE_BANK = 1,
+    ERROR_BUS_CONFLICT = 2,
+    ERROR_PROGRAM_CONFLICT = 3,
 
 
     -- Constants for OPCODE_SUBSCRIBE.
@@ -245,6 +260,8 @@ local rfx = {
     onnoteschange = function(old, new) end,
     -- Callback invoked when CCs on default channel change
     onccchange = function() end,
+    -- Callback invoked when selecting a track with a different bank hash
+    onhashchange = function() end,
 
     -- Saved state so we don't butcher things like last touched FX and automation
     -- by setting parameters on the RFX.  See rfx.push_state().
@@ -345,7 +362,7 @@ function rfx.sync(track, forced)
     end
 
     rfx.track = track
-    rfx.error = nil
+    rfx.error = rfx.ERROR_NONE
     if not track then
         rfx.fx = nil
         return track_changed
@@ -378,7 +395,11 @@ function rfx.sync(track, forced)
                 rfx._init_appdata()
             end
         end
-        rfx.index_banks_by_channel()
+        if rfx.index_banks_by_channel() then
+            log.info("rfx: resyncing banks due to hash mismatch")
+            rfx.onhashchange()
+            rfx.sync_banks_to_rfx()
+        end
         rfx.onccchange()
     end
     if serial_changed then
@@ -568,6 +589,10 @@ function rfx.set_default_channel(channel)
     end
 end
 
+function rfx.set_error(error)
+    rfx.appdata.err = error
+end
+
 -- Sets the current list of banks on the track.
 --
 -- Argument is a table of banks in the form {bank, srcchannel, dstchannel} where
@@ -598,7 +623,7 @@ function rfx.set_banks(banks)
         }
     end
     -- This will implicitly call rfx.sync_banks_to_rfx() if necessary.
-    rfx.index_banks_by_channel()
+    return rfx.index_banks_by_channel()
 end
 
 
@@ -634,6 +659,7 @@ function rfx.get_banks_conflicts()
         local banks = rfx.banks_by_channel[channel]
         if banks then
             for _, bank in ipairs(banks) do
+                local buses = 0
                 for _, art in ipairs(bank.articulations) do
                     local idx = 128 * channel + art.program
                     -- Keep track of output events, because conflicting programs with the same output
@@ -641,6 +667,7 @@ function rfx.get_banks_conflicts()
                     --
                     -- FIXME: order shouldn't matter either, but this implementation requires same order.
                     local outputs = table.tostring(art:get_outputs())
+                    buses = buses | art.buses
                     -- Has this program been seen before?
                     local first = programs[idx]
                     if not first then
@@ -663,6 +690,7 @@ function rfx.get_banks_conflicts()
                         end
                     end
                 end
+                bank.buses = buses
             end
         end
     end
@@ -670,7 +698,11 @@ function rfx.get_banks_conflicts()
 end
 
 
--- Constructs the rfx.banks_by_channel map based on current banks list stored in the RFX.
+-- Constructs the rfx.banks_by_channel map based on current banks list stored in
+-- the RFX.
+--
+-- Returns true if hashes have changed and rfx.sync_banks_to_rfx() needs to be
+-- called, false if hashes haven't changed, and nil if rfx is invalid.
 function rfx.index_banks_by_channel()
     if not rfx.fx then
         return
@@ -715,11 +747,7 @@ function rfx.index_banks_by_channel()
             end
         end
     end
-    if resync then
-        log.info("rfx: resyncing banks due to hash mismatch")
-        rfx.sync_banks_to_rfx()
-        return true
-    end
+    return resync
 end
 
 -- Called when bank list is changed.  This sends the articulation details for all current
@@ -1210,7 +1238,7 @@ function rfx.set_param(param, value)
     return false
 end
 
-
+-- Legacy function used for migration purposes
 function rfx.get_data(param)
     if rfx.track and rfx.fx then
         local r = rfx.get_param(param)

@@ -28,6 +28,21 @@ local screen = {
     -- to true when the "Focus articulation filter" action is activated.
     filter_refocus_on_activation = false,
     selected_articulation = nil,
+
+    error_msgs = {
+        [rfx.ERROR_PROGRAM_CONFLICT] =
+            'Some banks on this track have conflicting program numbers. ' ..
+            'Some articulations may not work as expected.',
+        [rfx.ERROR_BUS_CONFLICT] =
+            'A bank on this track uses bus 16 which conflicts with the MIDI ' ..
+            'controller feedback feature. Avoid the use of bus 16 in your banks ' ..
+            "or disable MIDI feedback in Reaticulate's global settings.",
+        [rfx.ERROR_DUPLICATE_BANK] =
+            'The same bank is mapped to this track multiple times which is not ' ..
+            'allowed.  Only one instance will appear below.',
+        default = 'There is some issue with the banks on this track. ' ..
+                  'Open the Track Settings page to learn more.'
+    }
 }
 
 -- SublimeText style substring match
@@ -241,6 +256,17 @@ function screen.show_track_banks()
     end
 end
 
+function screen.update_error_box()
+    if not rfx.fx or not rfx.appdata.err then
+        screen.errorbox:hide()
+    else
+        local msg = screen.error_msgs[rfx.appdata.err] or screen.error_msgs.default
+        screen.errormsg:attr('label', msg)
+        screen.errorbox:show()
+    end
+end
+
+
 function screen.focus_filter()
     screen.filter_entry:focus()
     screen.filter_refocus_on_activation = not rtk.in_window
@@ -307,6 +333,24 @@ function screen.init()
             topbar:add(row, {tpadding=0, halign=rtk.Widget.CENTER})
         end
     end
+
+    screen.errorbox = rtk.VBox({
+        bg='#3f0000',
+        tborder='#ff0000',
+        bborder='#ff0000',
+        tpadding=20, bpadding=20,
+        lpadding=10, rpadding=10
+    })
+    local hbox = screen.errorbox:add(rtk.HBox())
+    hbox:add(rtk.ImageBox:new({image=app:get_image("error_outline_24x24.png")}))
+    screen.errormsg = hbox:add(rtk.Label({wrap=true}), {lpadding=10, valign='center'})
+    local button = app:make_button("edit_white_18x18.png", "Open Track Settings")
+    button.onclick = function()
+        app:push_screen('trackcfg')
+    end
+    screen.errorbox:add(button, {halign='center', tpadding=20})
+    screen.widget:add(screen.errorbox, {fillw=true})
+
     screen.banks = rtk.VBox({bpadding=20})
     screen.viewport = rtk.Viewport({child=screen.banks})
     screen.widget:add(screen.viewport, {fillw=true})
@@ -501,6 +545,7 @@ end
 
 function screen.update()
     screen.clear_selected_articulation()
+    screen.update_error_box()
     screen.show_track_banks()
 end
 
