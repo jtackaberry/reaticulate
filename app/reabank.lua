@@ -141,7 +141,7 @@ function Articulation:get_outputs()
                         if part:find('%.') then
                             local channel, bus = part:match('(%d*).(%d*)')
                             output.channel = tonumber(channel)
-                            output.bus = tonumber(bus)
+                            output.bus = tonumber(bus) or 1
                             self.buses = self.buses | (1 << (output.bus - 1))
                         else
                             output.channel = tonumber(part)
