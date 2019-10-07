@@ -1224,17 +1224,5 @@ function rfx.get_data(param)
 end
 
 
-function rfx.set_data(param, b0, b1, b2, b3)
-    if rfx.track and rfx.fx then
-        if b0 == nil or b1 == nil or b2 == nil or b3 == nil then
-            local ob0, ob1, ob2, ob3 = rfx.get_data(param)
-            b0, b1, b2, b3 = b0 or ob0, b1 or ob1, b2 or ob2, b3 or ob3
-        end
-        local value = b0 + (b1 << 8) + (b2 << 16) + ((b3 & 0x7f) << 24)
-        r = reaper.TrackFX_SetParam(rfx.track, rfx.fx, param, value)
-    end
-    return false
-end
-
 
 return rfx
