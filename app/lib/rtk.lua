@@ -106,7 +106,8 @@ local rtk = {
     -- true if the currently dragging widget is eligible to be dropped and false
     -- otherwise.  When false, it means ondrop*() handlers will never be called.
     -- This should be set to false by the widget's ondragstart() handler.  This
-    -- is useful for e.g. scrollbars.
+    -- is useful for drag-only widgets such scrollbars that want to leverage the
+    -- global drag-handling logic without any need for droppability.
     --
     -- TODO: this is better signalled via an ondragstart() return value or possible
     -- via the event object.
@@ -1125,7 +1126,7 @@ end
 -- offx and offy refer to the widget's parent's position relative to screen
 -- origin (top left).  This is different than the offset coordinates of
 -- _draw() because these are always screen coordinates, regardless of whether
--- the widget is being rendered into a backing store.
+-- the widget is being rendered into a backing store (such as a viewport).
 --
 -- If clipped is true, it means the parent viewport has indicated that the
 -- mouse is currently outside the viewport.  This can be used to filter mouse
@@ -1135,12 +1136,12 @@ end
 --
 -- When an event is marked as handled, a redraw is automatically performed.
 -- If the a redraw is required when an event isn't explicitly marked as
--- handled, such as in the case of a blur event, then rtk.queue_redraw() must
+-- handled, such as in the case of a blur event, then rtk.queue_draw() must
 -- be called.
 --
 -- The default widget implementation handles mouse events only
 function rtk.Widget:_handle_event(offx, offy, event, clipped)
-    if self:_hovering(offx, offy) and not clipped then
+    if not clipped and self:_hovering(offx, offy) then
         event:set_widget_hovering(self, offx, offy)
         -- rtk.set_mouse_cursor(self.cursor)
         if event.type == rtk.Event.MOUSEMOVE then
@@ -3232,12 +3233,6 @@ function rtk.OptionMenu:onattr(attr, value, trigger)
         self._menustr = self:_build_submenu(self.menu)
     elseif attr == 'selected' then
         -- First lookup by user id.
-        -- local item = self._item_by_id[value]
-        -- if not item then
-        --     -- Can't find by item id, try as index.
-        --     local id = self._id_by_idx[value]
-        --     item = self._item_by_id[id]
-        -- end
         local idx = self._idx_by_id[tostring(value)] or self._idx_by_id[value]
         if idx then
             -- Index exists by id.
@@ -3301,7 +3296,7 @@ function rtk.OptionMenu:onmousedown(event)
         gfx.x, gfx.y = self.sx + self.cx + self.last_offx, self.sy + self.cy + self.last_offy + self.ch
         local choice = gfx.showmenu(self._menustr)
         if choice > 0 then
-            self:attr('selected', choice)
+            self:select(choice)
         end
     end
     -- Force a redraw and then defer opening the popup menu so we get a UI refresh with the
