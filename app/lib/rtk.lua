@@ -325,6 +325,7 @@ function rtk.update()
     if rtk.onupdate() == false then
         return true
     end
+    local now = os.clock()
 
     if gfx.w ~= rtk.w or gfx.h ~= rtk.h then
         rtk.w, rtk.h = gfx.w, gfx.h
@@ -418,6 +419,7 @@ function rtk.update()
     end
 
     if event then
+        event.time = now
         -- rtk.mouse.down = gfx.mouse_cap & rtk.mouse.BUTTON_MASK
         rtk.mouse.x = gfx.mouse_x
         rtk.mouse.y = gfx.mouse_y
@@ -975,7 +977,6 @@ function rtk.Widget:initialize()
     -- Box supplied from parent on last reflow
     self.box = nil
 
-
     -- Window x/y offsets that were supplied in last draw.  These coordinates
     -- indicate where the widget is drawn within the overall backing store, but
     -- may not be screen coordinates e.g. in the case of a viewport.
@@ -988,6 +989,8 @@ function rtk.Widget:initialize()
     self.sx = nil
     self.sy = nil
 
+    -- Time of last click time (for measuring double clicks)
+    self.last_click_time = 0
 
     -- Indicates whether the widget should be rendered by its parent.
     self.visible = true
@@ -1200,6 +1203,10 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
             end
         elseif event.type == rtk.Event.MOUSEUP then
             if not event.handled and self:focused() then
+                if event.time - self.last_click_time <= 0.5 then
+                    self:ondblclick(event)
+                end
+                self.last_click_time = event.time
                 rtk.set_mouse_cursor(self.cursor)
                 self:onclick(event)
                 event:set_handled(self)
@@ -1438,6 +1445,9 @@ function rtk.Widget:onmousewheel(event) end
 
 -- Called when the mouse button is released over a focused widget.
 function rtk.Widget:onclick(event) end
+
+-- Called after two successive onclick events occur within 500ms.
+function rtk.Widget:ondblclick(event) end
 
 -- Called once when the mouse is moved to within the widget's bounding box.
 -- Returning rtk.Event.STOP_PROPAGATION indicates that the widget is opaque
