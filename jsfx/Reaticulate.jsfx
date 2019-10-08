@@ -993,7 +993,14 @@ function get_output_event_dstchannel(eventlut)
 
 function get_output_event_dstbus(eventlut)
 (
-    (eventlut[0][1] & 0x0f0000) >> 16;
+    // TODO: this function can be simplified when dropping v1 support
+    (get_output_event_version(eventlut) >= 2) ? (
+        (eventlut[0][1] & 0x0f0000) >> 16;
+    ) : (
+        // Older versions didn't support multiple buses, always bus 1 (indexed
+        // from 0).
+        0;
+    )
 );
 
 function get_output_event_param1(eventlut)
@@ -1036,6 +1043,7 @@ function get_output_event_extension(eventlut, ext)
 function get_output_event_filter_program(eventlut)
 local(version, filter, ext)
 (
+    // TODO: this function can be simplified when dropping v1 support
     version = get_output_event_version(eventlut);
     (version >= 2) ? (
         ext = get_output_event_extension(eventlut, 0);
