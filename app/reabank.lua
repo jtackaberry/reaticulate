@@ -117,52 +117,54 @@ function Articulation:initialize(bank, program, name, attrs)
 end
 
 function Articulation:get_outputs()
-    if not self._outputs then
-        self.buses = 0
-        self._has_conditional_output = false
-        self._outputs = {}
-        for spec in (self.outputs or ''):gmatch('([^/]+)') do
-            output = {type=nil, channel=nil, args={}, route=true, filter_program=nil}
-            for prefix, part in ('/' .. spec):gmatch('([/@:%%])([^@:%%]+)') do
-                if prefix == '/' then
-                    if part:starts('-') then
-                        output.route = false
-                        output.type = part:sub(2)
-                    else
-                        output.type = part
-                    end
-                elseif prefix == '@' then
-                    if part == '-' then
-                        -- Use current routing for output event.
-                        output.route = false
-                        output.channel = 0
-                        output.bus = 0
-                    else
-                        if part:find('%.') then
-                            local channel, bus = part:match('(%d*).(%d*)')
-                            output.channel = tonumber(channel)
-                            output.bus = tonumber(bus)
-                            -- If bus is invalid, it will be nil which means we default
-                            -- to the dst bus at the track level.
-                            if output.bus then
-                                self.buses = self.buses | (1 << (output.bus - 1))
-                            end
-                        else
-                            output.channel = tonumber(part)
-                            -- Default to the bus defined at the bank level when the
-                            -- bank is mapped to a track
-                            output.bus = nil
-                        end
-                    end
-                elseif prefix == ':' then
-                    output.args = part:split(',')
-                elseif prefix == '%' then
-                    output.filter_program = tonumber(part)
-                    self._has_conditional_output = true
+    if self._outputs then
+        return self._outputs
+    end
+
+    self.buses = 0
+    self._has_conditional_output = false
+    self._outputs = {}
+    for spec in (self.outputs or ''):gmatch('([^/]+)') do
+        output = {type=nil, channel=nil, args={}, route=true, filter_program=nil}
+        for prefix, part in ('/' .. spec):gmatch('([/@:%%])([^@:%%]+)') do
+            if prefix == '/' then
+                if part:starts('-') then
+                    output.route = false
+                    output.type = part:sub(2)
+                else
+                    output.type = part
                 end
+            elseif prefix == '@' then
+                if part == '-' then
+                    -- Use current routing for output event.
+                    output.route = false
+                    output.channel = 0
+                    output.bus = 0
+                else
+                    if part:find('%.') then
+                        local channel, bus = part:match('(%d*).(%d*)')
+                        output.channel = tonumber(channel)
+                        output.bus = tonumber(bus)
+                        -- If bus is invalid, it will be nil which means we default
+                        -- to the dst bus at the track level.
+                        if output.bus then
+                            self.buses = self.buses | (1 << (output.bus - 1))
+                        end
+                    else
+                        output.channel = tonumber(part)
+                        -- Default to the bus defined at the bank level when the
+                        -- bank is mapped to a track
+                        output.bus = nil
+                    end
+                end
+            elseif prefix == ':' then
+                output.args = part:split(',')
+            elseif prefix == '%' then
+                output.filter_program = tonumber(part)
+                self._has_conditional_output = true
             end
-            self._outputs[#self._outputs+1] = output
         end
+        self._outputs[#self._outputs+1] = output
     end
     return self._outputs
 end
