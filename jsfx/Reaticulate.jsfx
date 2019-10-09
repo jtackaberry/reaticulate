@@ -1123,7 +1123,7 @@ local(version, filter, ext)
 function generate_articulation_luts()
 local(i, j, k, version, ext, ptr, idx, oidx, channel, program, articulation, event, type, param1, param2)
 (
-    memset(articulations_lut, 0, (MAX_CHANNELS*128) + ARTICULATION_LUT_RECORD_SIZE);
+    memset(articulations_lut, 0, (MAX_CHANNELS*128) * ARTICULATION_LUT_RECORD_SIZE);
     // Regenerated via update_output_event_map() below.
     memset(articulations_by_output_event, 0, (256 + 128 * 128) * MAX_CHANNELS);
 
