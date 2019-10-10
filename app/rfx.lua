@@ -414,8 +414,8 @@ function rfx.sync(track, forced)
             local info = reaper.gmem_read(offset + 2)
             local programs_offset = info & 0xffff
             local len = info >> 16
-            for group = 1, len / 16 do
-                for channel = 1, 16 do
+            for channel = 1, 16 do
+                for group = 1, len / 16 do
                     local program_offset = ((group - 1) * 16) + (channel - 1)
                     local program = reaper.gmem_read(offset + programs_offset + program_offset)
                     local last_program = rfx.programs[channel][group]
