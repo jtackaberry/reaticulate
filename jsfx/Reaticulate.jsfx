@@ -1696,11 +1696,19 @@ file_avail(0) >= 0 ? (
     (serialized_version == 2) ? (
         // In version 2, current programs were stored in sliders.  For v3 we
         // move them to a separate array and share via the gmem buffer.
-        channel = 0; loop(16,
+        channel = 0; loop(MAX_CHANNELS,
             control = slider(SLIDER_OFFSET_CONTROL + channel);
-            current_programs[(0 * MAX_CHANNELS) + channel] = (control & 0x000000ff) >> 0;
-            current_programs[(1 * MAX_CHANNELS) + channel] = (control & 0x0000ff00) >> 8;
-            current_programs[(2 * MAX_CHANNELS) + channel] = (control & 0x00ff0000) >> 16;
+            // Loop through groups 0-2
+            i = 0; loop(MAX_GROUPS - 1,
+                program = (control >> (8 * i)) & 0xff;
+                // If MSB is set, program is undefined so set to 128 (regardless of
+                // what the lower bits may be as previous versions didn't clear these)
+                current_programs[(i * MAX_CHANNELS) + channel] = program & 0x80 ? 128 : program;
+                i += 1;
+            );
+            // Group 4 program was stored in the channel control but we only had 31 bits to
+            // work with, and slider26 held what would normally have been the MSB indicating
+            // if the program is set.
             (slider26 & (1 << channel)) ? (
                 current_programs[(3 * MAX_CHANNELS) + channel] = (control & 0xff000000) >> 24;
             ) : (
