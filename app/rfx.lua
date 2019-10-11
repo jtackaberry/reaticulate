@@ -535,6 +535,7 @@ end
 
 
 function rfx._migrate_to_appdata()
+    log.debug('migrating old RFX version to use appdata')
     if type(rfx.appdata) ~= 'table' then
         rfx.appdata = {v=1}
     end
@@ -544,6 +545,9 @@ function rfx._migrate_to_appdata()
         if b2 > 0 and b3 > 0 then
             local msblsb = (b2 << 8) | b3
             local bank = reabank.get_bank_by_msblsb(msblsb)
+            if not bank then
+                log.error('unable to migrate unknown bank msb=%d lsb=%d', b2, b3)
+            end
             local hash = bank and bank:hash() or nil
             rfx.appdata.banks[#rfx.appdata.banks + 1] = {
                 t = 'b',
