@@ -78,8 +78,10 @@ function log.exception(fmt, ...)
     log.log(log.ERROR, debug.traceback(), fmt, ...)
 end
 
-function log.trace()
-    reaper.ShowConsoleMsg(debug.traceback() .. '\n')
+function log.trace(level)
+    if log.level <= (level or log.DEBUG) then
+        reaper.ShowConsoleMsg(debug.traceback() .. '\n')
+    end
 end
 
 function log.time_start()

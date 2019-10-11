@@ -1074,8 +1074,8 @@ function rfx.opcode(opcode, args, track, fx)
         -- buffering the opcode queue.
         --
         rfx.opcode_flush()
-        log.warn("rfx: %s committed opcodes during enqueue", n_committed)
-        log.trace()
+        log.warn("rfx: %s committed opcodes during enqueue, forced a flush", n_committed)
+        log.trace(log.INFO)
 
         -- Sanity check that indeed the opcodes were synchronously executed by the RFX.
         n_committed = reaper.gmem_read(offset)
