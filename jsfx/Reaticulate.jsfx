@@ -479,9 +479,6 @@ gmem_version = 0;
 // 2 = First execution of @block has occurred
 instantiating = 0;
 
-// Persisted, and tracks the version of the serialized instance data
-serialized_version = 0;
-
 // Array to map source channel to destination channels.  Indexed by source
 // channel, and the value has DSTBUSCHAN_LEN (17) slots, where the first slot is
 // a bitmap of which buses have mapped channels, and the next 16 slots each hold
@@ -565,9 +562,6 @@ active_channels_by_cc = getptr(MAX_CHANNELS * 128 * DSTBUSCHAN_LEN);
 // Serialized.
 last_ccs_by_channel = getptr(MAX_CHANNELS * 128);
 
-// Bits 0-3 indicate the MIDI bus for feedback.  Bit 7 is whether feedback
-// is enabled.
-midi_feedback = 0;
 // If non-zero, indicates on next @block we should sync to the feedback bus.
 // Value represents a bitmap as defined in OPCODE_SYNC_TO_FEEDBACK_CONTROLLER
 // above.
@@ -679,9 +673,6 @@ held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
 // Serialized.
 banks = getptr(MAX_CHANNELS * MAX_BANKS * 10);
 
-// Length of the banks array.
-banks_len = 0;
-
 // The last articulation created by OPCODE_NEW_BANK.
 last_new_bank = 0;
 
@@ -698,19 +689,13 @@ program_change_mpos_delta = getptr(MAX_CHANNELS);
 // same.
 //
 // Serialized.
-current_programs_len = MAX_CHANNELS * MAX_GROUPS;
-current_programs = getptr(current_programs_len);
+current_programs = getptr(MAX_CHANNELS * MAX_GROUPS);
 
 // Opaque data pushed to us by the application.  We persist it on the track
 // on behalf of the main app.
 //
 // Serialized.
 appdata = getptr(MAX_APPDATA_SLOTS);
-// Length of appdata array.
-appdata_len = 0;
-// Length of original appdata passed by app before having been expanded
-// to avoid MSB clobbering caused by JS serialization.
-appdata_orig_len = 0;
 
 // Maps undo serial (index) to the position in the undo_history array.
 // We support 100 different undo history states.  This is treated as a
@@ -847,9 +832,6 @@ last_new_output_event = 0;
 //
 // Serialized.
 articulations = getptr(0);
-
-// Length of the articulations array.
-articulations_len = 0;
 
 
 function clamp(v, vmin, vmax)
@@ -1751,6 +1733,31 @@ local(idx, offset, channel, group, program)
 
 
 @serialize
+!serialized_version ? (
+    // If we haven't ever instantiated, initialize serialized variables to
+    // defaults. We don't do this in @init per documentation guidance which says
+    // there are cases where @init could execute *after* @serialize.
+    //
+    // Fixes #65.
+
+    // Persisted, and tracks the version of the serialized instance data
+    serialized_version = 0;
+    // Length of the articulations array.
+    articulations_len = 0;
+    // Bits 0-3 indicate the MIDI bus for feedback.  Bit 7 is whether feedback
+    // is enabled.
+    midi_feedback = 0;
+    // Length of the banks array.
+    banks_len = 0;
+    // Length of appdata array.
+    appdata_len = 0;
+    // Length of original appdata passed by app before having been expanded
+    // to avoid MSB clobbering caused by JS serialization.
+    appdata_orig_len = 0;
+    // Length of current_programs array
+    current_programs_len = MAX_CHANNELS * MAX_GROUPS;
+);
+
 // Only serialize if we are writing, or if we're reading but also in the
 // process of instantiating.  This prevents clobbering cached data from
 // an ancient undo point.  This is important because Reaper stores undo
