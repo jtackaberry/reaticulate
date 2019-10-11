@@ -1815,11 +1815,14 @@ Bank 65 6 SSB - Horns a2 - Core
 50 tenuto
 //! c=short i=staccato o=cc:32,40
 40 staccato
+//! c=short i=spiccato o=cc:32,42
+42 staccatissimo
 //! c=long i=trill-min2 o=cc:32,70
 70 trill m2
 //! c=long i=trill-maj2 o=cc:32,71
 71 trill M2
-
+//! c=long i=multitongued o=cc:32,75
+75 multitongued
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Decorative"
@@ -2663,8 +2666,6 @@ Bank 65 60 SSB - Horn Solo - Extras
 //! g="Spitfire/Symphonic Brass/Horns" n="Horns a2 - Extras"
 //! chase=1,11,16-21,64-69  m="Add'l individual articulations (use UACC)"
 Bank 65 61 SSB - Horns a2 - Extras
-//! c=long i=multitongued o=cc:32,75
-75 multitongued
 //! c=short i=spiccato o=cc:32,49
 49 bells up staccatissimo
 
