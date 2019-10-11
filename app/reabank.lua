@@ -116,6 +116,39 @@ function Articulation:initialize(bank, program, name, attrs)
     self.buses = nil
 end
 
+function Articulation:has_transforms()
+    return self.velrange or self.pitchrange or self.transpose or self.velocity
+end
+
+-- Returns (transpose, velocity, min pitch, max pitch, min velocity, max velocity).
+-- No-op defaults are returned if values are not specified in the articulation
+-- definition (or if the values that *are* specified are invalid).
+function Articulation:get_transforms()
+    if self._transforms then
+        return self._transforms
+    end
+    -- Defaults
+    local transforms = {0, 1.0, 0, 127, 0, 127}
+    if self.transpose then
+        transforms[1] = tonumber(self.transpose) or 0
+    end
+    if self.velocity then
+        transforms[2] = tonumber(self.velocity) or 1
+    end
+    if self.pitchrange then
+        local min, max = self.pitchrange:match('(%d*)-?(%d*)')
+        transforms[3] = tonumber(min) or 0
+        transforms[4] = tonumber(max) or 127
+    end
+    if self.velrange then
+        local min, max = self.velrange:match('(%d*)-?(%d*)')
+        transforms[5] = tonumber(min) or 0
+        transforms[6] = tonumber(max) or 127
+    end
+    self._transforms = transforms
+    return transforms
+end
+
 function Articulation:get_outputs()
     if self._outputs then
         return self._outputs
@@ -528,6 +561,11 @@ function reabank.parse(filename)
             merge(metadata, 'clone', props.clone)
             merge(metadata, 'chase', props.chase)
             merge(metadata, 'spacer', props.spacer)
+            -- Transformations
+            merge(metadata, 'velrange', props.velrange)
+            merge(metadata, 'pitchrange', props.pitchrange)
+            merge(metadata, 'transpose', props.transpose)
+            merge(metadata, 'velocity', props.velocity)
             if props.colors then
                 reabank.parse_colors(props.colors)
             end
