@@ -243,8 +243,10 @@ function screen.show_track_banks()
             visible_by_msblsb[msblsb] = 1
         end
     end
-    for bank, _, _, hash in rfx.get_banks() do
-        showbank(bank.msb, bank.lsb)
+    for _, bank, _, _, hash in rfx.get_banks() do
+        if bank then
+            showbank(bank.msb, bank.lsb)
+        end
     end
     screen.visible_banks = visible
     if #visible > 0 then

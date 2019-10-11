@@ -627,7 +627,7 @@ function rfx.set_banks(banks)
 end
 
 
--- An iterator that yields (bank, srcchannel, dstchannel, hash) for each bank
+-- An iterator that yields (idx, bank, srcchannel, dstchannel, hash) for each bank
 -- assigned to this track.  Channel starts at 1, bank is a Bank object.
 --
 -- hash is the bank's hash at the time of set_banks(), which *could* be different
@@ -644,7 +644,10 @@ function rfx.get_banks()
             local bankinfo = rfx.appdata.banks[idx]
             local bank = reabank.get_bank_by_msblsb(bankinfo.v)
             idx = idx + 1
-            return bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus, bankinfo.h
+            -- The main point of also including idx is to ensure that we don't yield
+            -- nil as the first value if bank could not be found, which would terminate
+            -- the iterator.
+            return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus, bankinfo.h
         end
     end
 end
@@ -711,7 +714,7 @@ function rfx.index_banks_by_channel()
     rfx.unknown_banks = nil
     -- Will be set to true if there are any bank hash mismatches
     local resync = false
-    for bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
+    for _, bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
         if not bank then
             if not rfx.unknown_banks then
                 rfx.unknown_banks = {}
@@ -829,10 +832,8 @@ function rfx.sync_banks_to_rfx()
 
     rfx.opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)
     -- Update the hash of all banks
-    local i = 1
-    for bank, _, _, _, _ in rfx.get_banks() do
+    for i, bank, _, _, _, _ in rfx.get_banks() do
         rfx.appdata.banks[i].h = bank:hash()
-        i = i + 1
     end
     rfx.set_appdata(rfx.appdata)
 

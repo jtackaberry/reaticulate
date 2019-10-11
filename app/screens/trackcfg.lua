@@ -268,10 +268,9 @@ function screen.get_errors()
     local get_next_bank = rfx.get_banks()
     local feedback_enabled = feedback.is_enabled()
     local banks = {}
-    local n = 0
 
     return function()
-        local bank, srcchannel, dstchannel, dstbus, hash = get_next_bank()
+        local n, bank, srcchannel, dstchannel, dstbus, hash = get_next_bank()
         if not bank then
             return
         end
@@ -301,7 +300,6 @@ function screen.get_errors()
             end
         end
 
-        n = n + 1
         return n, bank, error, conflict
     end
 end
@@ -374,15 +372,17 @@ function screen.update()
     end
     screen.widget:scrollto(0, 0)
     screen.banklist:clear()
-    for bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
-        local bankbox = screen.create_bank_ui()
-        bankbox.srcchannel_menu:select(tostring(srcchannel), false)
-        bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
-        -- Set the option menu label which will be used if the MSB/LSB isn't found
-        -- in the bank list.
-        bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s)', hash))
-        bankbox.bank_menu:select(tostring((bank.msb << 8) + bank.lsb), false)
-        screen.banklist:add(bankbox)
+    for _, bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
+        if bank then
+            local bankbox = screen.create_bank_ui()
+            bankbox.srcchannel_menu:select(tostring(srcchannel), false)
+            bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
+            -- Set the option menu label which will be used if the MSB/LSB isn't found
+            -- in the bank list.
+            bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s)', hash))
+            bankbox.bank_menu:select(tostring((bank.msb << 8) + bank.lsb), false)
+            screen.banklist:add(bankbox)
+        end
     end
     if screen.check_errors_and_update_ui() then
         rfx.set_appdata(rfx.appdata)
