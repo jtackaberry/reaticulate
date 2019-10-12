@@ -19,6 +19,7 @@ local reabank = require 'reabank'
 local feedback = require 'feedback'
 
 local screen = {
+    minw = 250,
     widget = nil,
     -- VBox containing the list of banks
     banklist = nil,

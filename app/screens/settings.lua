@@ -18,6 +18,7 @@ local feedback = require 'feedback'
 
 
 local screen = {
+    minw = 200,
     widget = nil,
     midi_device_menu = nil,
     warning_icon = nil,

@@ -18,7 +18,7 @@ local reabank = require 'reabank'
 local articons = require 'articons'
 
 local screen = {
-    name = 'banklist',
+    minw = 250,
     widget = nil,
     midi_channel_buttons = {},
     visible_banks = {},
