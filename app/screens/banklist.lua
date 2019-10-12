@@ -171,8 +171,41 @@ end
 
 function screen.create_banklist_ui(bank)
     bank.vbox = rtk.VBox:new({spacing=10})
+
+    -- Box for Bank name and info button
+    local hbox = rtk.HBox()
+    bank.vbox:add(hbox, {lpadding=10, tpadding=#reabank.banks > 0 and 40 or 20, bpadding=10})
+    -- Bank name
     bank.heading = rtk.Heading:new({label=bank.shortname or bank.name})
-    bank.vbox:add(bank.heading, {lpadding=10, tpadding=#reabank.banks > 0 and 40 or 20, bpadding=10})
+    hbox:add(bank.heading, {valign='center'})
+    hbox:add(rtk.HBox.FLEXSPACE)
+    -- Bank message button, which is only added if message exists
+    if bank.message then
+        local button = app:make_button("info_outline_white_18x18.png")
+        button.alpha = bank.message and 1.0 or 0.7
+        hbox:add(button, {valign='center', rpadding=10})
+
+        -- Box for bank message and info icon
+        local msgbox = rtk.HBox({spacing=10, focusable=true})
+        bank.vbox:add(msgbox, {lpadding=10, rpadding=10, bpadding=10})
+        -- Info icon
+        msgbox:add(rtk.ImageBox:new({image=app:get_image('info_outline_white_24x24.png')}), {valign='top'})
+        -- Bank message text
+        local label = msgbox:add(rtk.Label({label=bank.message, wrap=true}), {valign='center'})
+        -- Info button toggles visibility of message box and remembers that
+        -- setting as part of the RFX bank userdata
+        button.onclick = function()
+            msgbox:toggle()
+            button.alpha = msgbox.visible and 1.0 or 0.5
+            rfx.set_bank_userdata(bank, 'showinfo', msgbox.visible)
+        end
+        -- For convenience, clicking on the message box itself also hides.
+        msgbox.onclick = button.onclick
+        -- Initialize visibility of box (and button opacity) based on RFX bank
+        -- userdata setting, defaulting to hidden.
+        msgbox:attr('visible', rfx.get_bank_userdata(bank, 'showinfo') or false)
+        button.alpha = msgbox.visible and 1.0 or 0.5
+    end
 
     for n, art in ipairs(bank.articulations) do
         local color = art.color or reabank.colors.default
