@@ -565,7 +565,6 @@ function App:activate_selected_articulation(channel, refocus)
             banklist.clear_filter()
         end)
     end
-    self.last_activation_timestamp = os.clock()
 end
 
 -- distance < 0 means previous, otherwise means next.  If group is nil, try all
