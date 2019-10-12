@@ -76,7 +76,7 @@ function App:initialize(basedir)
     self.last_activated_articulation = nil
     -- Timestamp of the previous activation of a selected articulation.  Used to implement
     -- "double click" functionality for the "Activate selected articulation" action.
-    self.last_selected_activation_timestamp = nil
+    self.last_activation_timestamp = nil
     -- Last non-Reaticulate focused window hwnd (if JS ext is installed)
     self.saved_focus_window = nil
 
@@ -157,7 +157,7 @@ local function delete_program_events_at_ppq(take, idx, max, ppq)
 end
 
 function App:activate_articulation(art, refocus, force_insert, channel)
-    if art.program < 0 then
+    if not art or art.program < 0 then
         return false
     end
     if refocus then
@@ -179,6 +179,15 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         reaper.StuffMIDIMessage(0, 0xc0 + channel, art.program, 0)
         return
     end
+
+    -- Force insert if activated within 500ms
+    if not force_insert then
+        local delta = os.clock() - (self.last_activation_timestamp or 0)
+        if delta < 0.5 then
+            force_insert = true
+        end
+    end
+    self.last_activation_timestamp = os.clock()
 
     -- Find active take for articulation insertion.
     local take = nil
@@ -547,19 +556,16 @@ end
 function App:activate_selected_articulation(channel, refocus)
     local banklist = self.screens.banklist
     local current = banklist.get_selected_articulation()
-    local delta = os.clock() - (self.last_selected_activation_timestamp or 0)
-    local insert = false
-    if not current and delta < 0.5 then
-        insert = true
+    if not current then
         current = self.last_activated_articulation
     end
     if current then
-        self:activate_articulation(target, refocus, insert, channel)
+        self:activate_articulation(target, refocus, false, channel)
         reaper.defer(function()
             banklist.clear_filter()
         end)
     end
-    self.last_selected_activation_timestamp = os.clock()
+    self.last_activation_timestamp = os.clock()
 end
 
 -- distance < 0 means previous, otherwise means next.  If group is nil, try all
