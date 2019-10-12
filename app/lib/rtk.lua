@@ -827,7 +827,7 @@ function rtk.Image:create(w, h)
 end
 
 function rtk.Image:clone()
-    local newimg = rtk.Image:create(self.width, self.height)
+    local newimg = rtk.Image():create(self.width, self.height)
     newimg:drawfrom(self.id, 0, 0, 0, 0, self.width, self.height)
     return newimg
 end
