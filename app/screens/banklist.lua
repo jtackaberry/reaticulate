@@ -228,24 +228,20 @@ function screen.show_track_banks()
     -- Now (re)add all the banks to the list in the order stored in the RFX.
     local visible = {}
     local visible_by_msblsb = {}
-    function showbank(msb, lsb)
-        local msblsb = (msb << 8) + lsb
-        if visible_by_msblsb[msblsb] then
+    function showbank(bank)
+        if visible_by_msblsb[bank.msblsb] then
             return
         end
-        local bank = reabank.get_bank_by_msblsb(msblsb)
-        if bank then
-            if not bank.vbox then
-                screen.create_banklist_ui(bank)
-            end
-            screen.banks:add(bank.vbox:show())
-            visible[#visible+1] = bank
-            visible_by_msblsb[msblsb] = 1
+        if not bank.vbox then
+            screen.create_banklist_ui(bank)
         end
+        screen.banks:add(bank.vbox:show())
+        visible[#visible+1] = bank
+        visible_by_msblsb[bank.msblsb] = 1
     end
-    for _, bank, _, _, hash in rfx.get_banks() do
+    for _, bank, _, _, hash, userdata in rfx.get_banks() do
         if bank then
-            showbank(bank.msb, bank.lsb)
+            showbank(bank)
         end
     end
     screen.visible_banks = visible

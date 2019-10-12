@@ -125,7 +125,7 @@ local rfx = {
     -- Slot (relative to gmem_index) for enqueued opcodes to be executed by the RFX
     GMEM_IIDX_OPCODES = 100,
     -- Slot (relative to gmem_index) that holds the serialized application data as
-    -- stored by rfx.set_appdata().
+    -- stored by rfx._write_appdata().
     GMEM_IIDX_APP_DATA = 1000,
     -- Slot (relative to gmem_index) that holds data the instance is communicating
     -- back to us, such as current selected programs or active notes.
@@ -240,8 +240,9 @@ local rfx = {
     -- gmem shared buffer index for this RFX.
     gmem_index = 0,
 
-    -- If not nil, it's a map of gmem_index -> {track, fx} representing the RFX
-    -- instances that have queued opcodes that need to be committed.  These are
+    -- If not nil, it's a map of gmem_index -> {track, fx, appdata} representing
+    -- the RFX instances that have queued opcodes that need to be committed and,
+    -- if not nil, the appdata which should be stored during commit.  These are
     -- committed via rfx.opcode_commit_all().
     rfx_awaiting_commit = nil,
 
@@ -384,7 +385,7 @@ function rfx.sync(track, forced)
         rfx.subscribe(rfx.SUBSCRIPTION_CC | rfx.SUBSCRIPTION_NOTES)
         -- Track changed, need to update banks_by_channel map
         rfx.reabank_version = (rfx.metadata >> 8) & 0xff
-        rfx.appdata = rfx.get_appdata()
+        rfx.appdata = rfx._read_appdata()
         -- FIXME: there *may* be a race on JSFX instantiation where magic is set
         -- before appdata is.  This means appdata will be nil and will cause us
         -- to initialize/migrate even if there was existing appdata.
@@ -530,7 +531,7 @@ function rfx._init_appdata()
         v = 1,
         banks = {}
     }
-    rfx.set_appdata(rfx.appdata)
+    rfx.queue_write_appdata()
 end
 
 
@@ -560,7 +561,7 @@ function rfx._migrate_to_appdata()
             }
         end
     end
-    rfx.set_appdata(rfx.appdata)
+    rfx.queue_write_appdata()
 
     -- Reset the bank parameters now that the banks have been migrated to
     -- appdata.
@@ -572,17 +573,18 @@ end
 
 
 function rfx.get_gmem_index(track, fx, offset)
-    if rfx.params then
-        local idx = rfx.gmem_index
-        if fx ~= nil then
-            -- RFX explicitly passed.  Discover offset.
-            idx, _, _ = reaper.TrackFX_GetParam(track, fx, rfx.params.gmem_index)
-        end
-        if idx <= 0 then
-            return nil
-        else
-            return idx + (offset or 0)
-        end
+    if not rfx.params then
+        return
+    end
+    local idx = rfx.gmem_index
+    if fx and track and (rfx.track ~= track or rfx.fx ~= fx) then
+        -- RFX explicitly passed.  Discover offset from that.
+        idx, _, _ = reaper.TrackFX_GetParam(track, fx, rfx.params.gmem_index)
+    end
+    if idx <= 0 then
+        return nil
+    else
+        return idx + (offset or 0)
     end
 end
 
@@ -594,7 +596,10 @@ function rfx.set_default_channel(channel)
 end
 
 function rfx.set_error(error)
-    rfx.appdata.err = error
+    if error ~= rfx.appdata.err then
+        rfx.appdata.err = error
+        rfx.queue_write_appdata()
+    end
 end
 
 -- Sets the current list of banks on the track.
@@ -604,12 +609,13 @@ end
 --
 -- The user-supplied list is translated to a list of tables as below before
 -- storing to appdata:
---     t: type: u=uuid b=msb/lsb
---     v: val: uuid if type=u, msblsb if type=b
---     h: hash = of last Bank object
+--       t: type: u=uuid b=msb/lsb
+--       v: val: uuid if type=u, msblsb if type=b
+--       h: hash = of last Bank object
 --     src: src channel (offset from 1, 17 = Omni)
 --     dst: dst channel (offset from 1, 17 = Source)
 --  dstbus: dst bus (offset from 1)
+--      ud: user data (only set if present)
 
 function rfx.set_banks(banks)
     rfx.appdata.banks = {}
@@ -631,12 +637,13 @@ function rfx.set_banks(banks)
 end
 
 
--- An iterator that yields (idx, bank, srcchannel, dstchannel, hash) for each bank
--- assigned to this track.  Channel starts at 1, bank is a Bank object.
+-- An iterator that yields (idx, bank, srcchannel, dstchannel, hash, userdata)
+-- for each bank assigned to this track.  Channel starts at 1, bank is a Bank
+-- object.
 --
--- hash is the bank's hash at the time of set_banks(), which *could* be different
--- than the Bank object's current hash.  If the caller wishes to do something about
--- a hash inconsistency, it can resyn
+-- hash is the bank's hash at the time of set_banks(), which *could* be
+-- different than the Bank object's current hash.  If the caller wishes to do
+-- something about a hash inconsistency, it can resyn
 function rfx.get_banks()
     if not rfx.fx then
         -- RFX not loaded, so nothing to iterate over.
@@ -651,11 +658,44 @@ function rfx.get_banks()
             -- The main point of also including idx is to ensure that we don't yield
             -- nil as the first value if bank could not be found, which would terminate
             -- the iterator.
-            return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus, bankinfo.h
+            return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus, bankinfo.h, bankinfo.ud
         end
     end
 end
 
+local function _get_bank_appdata_record(bank)
+    if not rfx.appdata or not rfx.appdata.banks then
+        return nil
+    end
+    -- XXX: O(n) - may need a lookup table if this gets called a lot
+    for n, bankdata in ipairs(rfx.appdata.banks) do
+        if bankdata.v == bank.msblsb then
+            return bankdata
+        end
+    end
+end
+
+function rfx.get_bank_userdata(bank, attr)
+    local bankdata = _get_bank_appdata_record(bank)
+    if bankdata and bankdata.ud then
+        return bankdata.ud[attr]
+    end
+end
+
+function rfx.set_bank_userdata(bank, attr, value)
+    local bankdata = _get_bank_appdata_record(bank)
+    if not bankdata then
+        log.error('bank %s not found in appdata', bank.name)
+        return false
+    end
+    if not bankdata.ud then
+        bankdata.ud = {[attr] = value}
+    else
+        bankdata.ud[attr] = value
+    end
+    rfx.queue_write_appdata()
+    return true
+end
 
 function rfx.get_banks_conflicts()
     -- Tracks program details where the key is 128 * channel + program
@@ -718,7 +758,7 @@ function rfx.index_banks_by_channel()
     rfx.unknown_banks = nil
     -- Will be set to true if there are any bank hash mismatches
     local resync = false
-    for _, bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
+    for _, bank, srcchannel, dstchannel, dstbus, hash, _ in rfx.get_banks() do
         if not bank then
             if not rfx.unknown_banks then
                 rfx.unknown_banks = {}
@@ -849,10 +889,10 @@ function rfx.sync_banks_to_rfx()
 
     rfx.opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)
     -- Update the hash of all banks
-    for i, bank, _, _, _, _ in rfx.get_banks() do
+    for i, bank, _, _, _, userdata in rfx.get_banks() do
         rfx.appdata.banks[i].h = bank:hash()
     end
-    rfx.set_appdata(rfx.appdata)
+    rfx.queue_write_appdata()
 
     rfx.pop_state()
     reaper.Undo_EndBlock2(0, "Reaticulate: update track banks (cannot be undone)", UNDO_STATE_FX)
@@ -1122,14 +1162,25 @@ function rfx.opcode(opcode, args, track, fx)
     end
     reaper.gmem_write(offset + 1, queue_size + 1 + argc)
 
+    rfx._queue_commit(offset, track or rfx.track, fx or rfx.fx)
+end
+
+function rfx._queue_commit(offset, track, fx, appdata)
+    offset = offset or rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_OPCODES)
     if rfx.rfx_awaiting_commit == nil then
-        rfx.rfx_awaiting_commit = {}
-    end
-    if rfx.rfx_awaiting_commit[offset] == nil then
-        rfx.rfx_awaiting_commit[offset] = {track or rfx.track, fx or rfx.fx}
+        rfx.rfx_awaiting_commit = {[offset] = {track, fx, appdata}}
+    else
+        if rfx.rfx_awaiting_commit[offset] == nil then
+            rfx.rfx_awaiting_commit[offset] = {track, fx, appdata}
+        elseif appdata then
+            rfx.rfx_awaiting_commit[offset][3] = appdata
+        end
     end
 end
 
+function rfx.queue_write_appdata(track, fx, appdata)
+    rfx._queue_commit(nil, track or rfx.track, fx or rfx.fx, appdata or rfx.appdata)
+end
 
 -- Commit previously enqueued opcodes to make them visible to the RFX. Commited
 -- opcodes will be executed asynchronously at some unspecified time unless
@@ -1148,6 +1199,9 @@ end
 function rfx.opcode_commit_all()
     if rfx.rfx_awaiting_commit ~= nil then
         for offset, trackfx in pairs(rfx.rfx_awaiting_commit) do
+            if trackfx[3] then
+                rfx._write_appdata(trackfx[1], trackfx[2], trackfx[3])
+            end
             if reaper.ValidatePtr2(0, trackfx[1], "MediaTrack*") then
                 rfx._opcode_commit(trackfx[1], trackfx[2], offset)
             end
@@ -1171,12 +1225,11 @@ end
 
 
 -- Serialize and store the given appdata table in the RFX.
-function rfx.set_appdata(appdata)
-    if not rfx.track or not rfx.fx then
-        return false
-    end
+function rfx._write_appdata(track, fx, appdata)
     local str = binser.serialize(appdata)
-    local offset = rfx.get_gmem_index(nil, nil, rfx.GMEM_IIDX_APP_DATA)
+    -- TODO: check size of str to ensure it fixes within bounds (we have room
+    -- for 1000 24-bit slots, so 3k of appdata)
+    local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_APP_DATA)
     -- serialization protocol version (may not ever be used but allocating in case)
     reaper.gmem_write(offset + 0, 1)
     -- Length of original serialized string
@@ -1189,16 +1242,15 @@ function rfx.set_appdata(appdata)
         reaper.gmem_write(offset + 3 + (i-1)/3, packed)
     end
     rfx.opcode(rfx.OPCODE_SET_APPDATA)
-    -- rfx.opcode_flush()
 end
 
 
--- Reads the appdata table previously stored with rfx.set_appdata()
+-- Reads the appdata table previously stored with rfx._write_appdata()
 --
 -- Userdata is automatically written to the gmem buffer when a gmem_index is
 -- assigned to the RFX.  So no need to send an opcode, just read the buffer
 -- right away.
-function rfx.get_appdata()
+function rfx._read_appdata()
     if not rfx.track or not rfx.fx then
         return nil
     end

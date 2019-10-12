@@ -743,7 +743,7 @@ function App:check_banks_for_errors()
         -- implicitly checks for errors and will persist appdata if needed.
         self.screens.trackcfg.update()
     else
-        self.screens.trackcfg.check_errors_and_set_appdata()
+        self.screens.trackcfg.check_errors()
     end
     self.screens.banklist.update_error_box()
 end

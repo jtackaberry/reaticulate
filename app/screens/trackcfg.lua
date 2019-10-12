@@ -138,9 +138,9 @@ function screen.move_bankbox(bankbox, target, position)
         if target then
             local bankboxidx = screen.banklist:get_child_index(bankbox)
             local targetidx = screen.banklist:get_child_index(target)
-            if bankboxidx > targetidx then
+            if bankboxidx > targetidx and position < 0 then
                 screen.banklist:reorder_before(bankbox, target)
-            else
+            elseif targetidx > bankboxidx and position > 0 then
                 screen.banklist:reorder_after(bankbox, target)
             end
         else
@@ -270,7 +270,7 @@ function screen.get_errors()
     local banks = {}
 
     return function()
-        local n, bank, srcchannel, dstchannel, dstbus, hash = get_next_bank()
+        local n, bank, srcchannel, dstchannel, dstbus, hash, userdata = get_next_bank()
         if not bank then
             return
         end
@@ -308,11 +308,6 @@ local function _max_error(a, b)
     return (a and b) and math.max(a, b) or a or b
 end
 
-local function _set_error(error)
-    local changed = error ~= rfx.appdata.err
-    rfx.set_error(error)
-    return changed
-end
 
 -- Updates the UI according to any existing bank errors and sets rfx.error
 -- accordingly.  Returns true if the rfx.error changed, which the caller
@@ -340,21 +335,19 @@ function screen.check_errors_and_update_ui()
         screen.set_bankbox_warning(bankbox, errmsg)
         error = _max_error(error, bank_error)
     end
-    return _set_error(error)
+    rfx.set_error(error)
 end
 
--- Checks the current track banks for errors and sets rfx.error accordingly. If
--- changed, rfx.set_appdata() is called.  This function does not depend on the
--- UI and is meant for use when the trackcfg screen is not visible.
-function screen.check_errors_and_set_appdata()
+-- Checks the current track banks for errors and sets rfx.error accordingly.
+-- This function does not depend on the UI and is meant for use when the
+-- trackcfg screen is not visible.
+function screen.check_errors()
     local error = nil
     for n, bank, bank_error, conflict in screen.get_errors() do
         error = _max_error(error, bank_error)
     end
     log.info("-> set error: %s -> %s", rfx.appdata.err, error)
-    if _set_error(error) then
-        rfx.set_appdata(rfx.appdata)
-    end
+    rfx.set_error(error)
 end
 
 function screen.set_bankbox_warning(bankbox, msg)
@@ -372,7 +365,7 @@ function screen.update()
     end
     screen.widget:scrollto(0, 0)
     screen.banklist:clear()
-    for _, bank, srcchannel, dstchannel, dstbus, hash in rfx.get_banks() do
+    for _, bank, srcchannel, dstchannel, dstbus, hash, userdata in rfx.get_banks() do
         if bank then
             local bankbox = screen.create_bank_ui()
             bankbox.srcchannel_menu:select(tostring(srcchannel), false)
@@ -384,9 +377,7 @@ function screen.update()
             screen.banklist:add(bankbox)
         end
     end
-    if screen.check_errors_and_update_ui() then
-        rfx.set_appdata(rfx.appdata)
-    end
+    screen.check_errors_and_update_ui()
 end
 
 return screen
