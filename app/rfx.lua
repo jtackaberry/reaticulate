@@ -793,6 +793,19 @@ function rfx.sync_banks_to_rfx()
                     rfx.opcode(rfx.OPCODE_NEW_ARTICULATION, {param1, art.program, group,
                                                              art.flags, art.off or bank.off or 128, 0})
 
+                    -- Append extensions to the articulation before adding the output events.
+                    if art:has_transforms() then
+                        -- Add transform extension.
+                        local transforms = art:get_transforms()
+                        rfx.opcode(rfx.OPCODE_ADD_ARTICULATION_EXTENSION, {
+                            -- Transform extension
+                            0,
+                            (transforms[1] + 128) | ((transforms[2] * 100) << 8),
+                            transforms[3] | (transforms[4] << 8),
+                            transforms[5] | (transforms[6] << 8)
+                        })
+                    end
+
                     for _, output in ipairs(outputs) do
                         local outchannel = output.channel or bank.dstchannel
                         local outbus = output.bus or bank.dstbus or 1
