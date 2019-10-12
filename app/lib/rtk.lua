@@ -700,12 +700,12 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, justify)
                 addsegment(string.strip(s:sub(startpos, wrappos)))
                 startpos = wrappos + 1
                 wrappos = endpos
+            else
+                addsegment('')
             end
         end
         if ch == ' ' or ch == '-' or ch == ',' or ch == '.' then
             wrappos = endpos
-        elseif ch == '\n' then
-            addsegment('')
         end
     end
     if startpos ~= len then
