@@ -191,21 +191,19 @@ function App:activate_articulation(art, refocus, force_insert, channel)
 
     -- Find active take for articulation insertion.
     local take = nil
-    -- If MIDI Editor is open, use the current take there.
-    local hwnd = reaper.MIDIEditor_GetActive()
-    if hwnd then
-        -- Magic value 32060 is the MIDI editor context
-        local stepInput = reaper.GetToggleCommandStateEx(32060, 40481)
-        if stepInput == 1 or (force_insert and force_insert ~= 0) then
+    if force_insert and force_insert ~= 0 then
+        -- If MIDI Editor is open, use the current take there.
+        local hwnd = reaper.MIDIEditor_GetActive()
+        if hwnd then
             take = reaper.MIDIEditor_GetTake(hwnd)
         end
-    elseif force_insert and force_insert ~= 0 then
-        -- No active MIDI editor and we want to force insert.  Try to find the current
-        -- take on the selected track based on edit cursor position.
+
+        -- If no active take in MIDI editor, try to find the current take on the
+        -- selected track based on edit cursor position.
         --
         -- FIXME: might support multiple selected tracks.
         local track = reaper.GetSelectedTrack(0, 0)
-        if track then
+        if not take and track then
             local cursor = reaper.GetCursorPosition()
             for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
                 local item = reaper.GetTrackMediaItem(track, idx)
