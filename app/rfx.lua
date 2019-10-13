@@ -671,7 +671,7 @@ local function _get_bank_appdata_record(bank)
     end
     -- XXX: O(n) - may need a lookup table if this gets called a lot
     for n, bankdata in ipairs(rfx.appdata.banks) do
-        if bankdata.v == bank.msblsb then
+        if tostring(bankdata.v) == tostring(bank.msblsb) then
             return bankdata
         end
     end
