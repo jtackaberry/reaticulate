@@ -842,7 +842,7 @@ function rfx.sync_banks_to_rfx()
                         rfx.opcode(rfx.OPCODE_ADD_ARTICULATION_EXTENSION, {
                             -- Transform extension
                             0,
-                            (transforms[1] + 128) | ((transforms[2] * 100) << 8),
+                            (transforms[1] + 128) | (math.floor(transforms[2] * 100) << 8),
                             transforms[3] | (transforms[4] << 8),
                             transforms[5] | (transforms[6] << 8)
                         })
