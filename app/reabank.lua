@@ -544,12 +544,6 @@ function reabank.parse(filename)
         elseif line:starts("//!") then
             -- Reaticulate metadata for the next program/bank
             local props = parse_properties(line)
-            for key, value in line:gmatch('(%w+)=([^"]%S*)') do
-                props[key] = value
-            end
-            for key, value in line:gmatch('(%w+)="([^"]*)"') do
-                props[key] = value
-            end
             merge(metadata, 'color', props.c)
             merge(metadata, 'iconname', props.i)
             merge(metadata, 'shortname', props.n)
