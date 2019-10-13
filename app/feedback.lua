@@ -21,6 +21,7 @@ local feedback = {
     SYNC_ALL = 1 | 2,
 
     track = nil,
+    track_guid = nil
 }
 
 -- A special value we set on the BUS Translator JSFX to identify whether the instance
@@ -133,7 +134,8 @@ end
 
 
 function feedback.get_feedback_track()
-    if feedback.track and reaper.ValidatePtr2(0, feedback.track, "MediaTrack*") then
+    if feedback.track and reaper.ValidatePtr2(0, feedback.track, "MediaTrack*") and
+       reaper.GetTrackGUID(feedback.track) == feedback.track_guid then
         return feedback.track
     end
     -- Locate feedback track (whichever track has the BUS Translator FX)
@@ -146,6 +148,7 @@ function feedback.get_feedback_track()
             if val == BUS_TRANSLATOR_MAGIC then
                 -- Remember for future calls
                 feedback.track = track
+                feedback.track_guid = reaper.GetTrackGUID(track)
                 return track
             end
         end
@@ -156,10 +159,12 @@ end
 -- Creates a track for MIDI feedback.  Assumes the caller has already checked that
 -- none already exists via get_feedback_track().
 function feedback.create_feedback_track()
+    log.info('creating track for MIDI feedback')
     reaper.PreventUIRefresh(1)
     local idx = reaper.CountTracks(0)
     reaper.InsertTrackAtIndex(idx, false)
     feedback.track = reaper.GetTrack(0, idx)
+    feedback.track_guid = reaper.GetTrackGUID(feedback.track)
     reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)
     -- Install FX.
     local fx = reaper.TrackFX_AddByName(feedback.track, BUS_TRANSLATOR_FX_NAME, 0, 1)
