@@ -597,7 +597,7 @@ function rfx.set_default_channel(channel)
 end
 
 function rfx.set_error(error)
-    if error ~= rfx.appdata.err then
+    if rfx.appdata and error ~= rfx.appdata.err then
         rfx.appdata.err = error
         rfx.queue_write_appdata()
     end
