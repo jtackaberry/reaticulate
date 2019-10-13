@@ -274,9 +274,14 @@ function BaseApp:handle_onmousewheel(event)
 end
 
 function BaseApp:set_theme()
-    -- COLOR_BTNHIGHLIGHT which corresponds to "Main window 3D highlight" theme element.
-    -- FIXME: apparently broken on Mac
-    local bg = int2hex(reaper.GSC_mainwnd(20))
+    -- Default to COLOR_BTNHIGHLIGHT which corresponds to "Main window 3D
+    -- highlight" theme element.
+    local idx = 20
+    if reaper.GetOS():starts('OSX') then
+        -- Determined empirically on Mac to match the theme background.
+        idx = 1
+    end
+    local bg = int2hex(reaper.GSC_mainwnd(idx))
     -- Determine from theme background color if we should use the light or dark theme.
     local luma = color2luma(bg)
     log.debug("baseapp: theme bg is %s", bg)
