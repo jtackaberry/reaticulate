@@ -72,7 +72,7 @@ function screen.init()
             reaper.ShowMessageBox("You have reached the limit of banks for this track.",
                                   "Too many banks :(", 0)
         else
-            local bankbox = screen.create_bank_ui()
+            local bankbox = screen.create_bank_ui(nil, 17, 17, 1)
             screen.banklist:add(bankbox)
             bankbox.bank_menu.onchange()
         end
@@ -119,10 +119,9 @@ function screen.set_banks_from_banklist()
     local banks = {}
     for n = 1, #screen.banklist.children do
         local bankbox = screen.banklist:get_child(n)
-        local bank = reabank.get_bank_by_msblsb(bankbox.bank_menu.selected_id)
         local srcchannel, _ = channel_menu_to_channel(bankbox.srcchannel_menu.selected_id)
         local dstchannel, dstbus = channel_menu_to_channel(bankbox.dstchannel_menu.selected_id)
-        banks[#banks+1] = {bank, srcchannel, dstchannel, dstbus}
+        banks[#banks+1] = {bankbox.bank_menu.selected_id or bankbox.msblsb, srcchannel, dstchannel, dstbus}
     end
     rfx.set_banks(banks)
     screen.check_errors_and_update_ui()
@@ -155,10 +154,13 @@ function screen.move_bankbox_finish()
     screen.set_banks_from_banklist()
 end
 
-function screen.create_bank_ui()
+function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
     local bankbox = rtk.VBox:new({spacing=10, tpadding=10, bpadding=10})
     local banklist_menu_spec = reabank.to_menu()
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
+
+    -- Fallback in case bank_menu.selected_id is nil
+    bankbox.msblsb = msblsb
 
     bankbox.ondropfocus = function(self, event, _, srcbankbox)
         return true
@@ -199,7 +201,15 @@ function screen.create_bank_ui()
     row:add(bank_menu, {expand=1, fillw=true, rpadding=0})
     bankbox.bank_menu = bank_menu
     bank_menu:setmenu(banklist_menu_spec)
-    bank_menu:select(1)
+
+    -- If msblsb is nil it means we're initializing a fresh bank and just select the
+    -- first item.
+    bank_menu:select(msblsb and tostring(msblsb) or 1, false)
+    if not bank_menu.selected_id then
+        -- Bank was not found on the local system.
+        local label = string.format('Unknown Bank (%s, %s)', msblsb >> 8, msblsb & 0xff)
+        bankbox.bank_menu:attr('label', label)
+    end
 
     -- Channel row
     local row = bankbox:add(rtk.HBox:new({spacing=10}))
@@ -208,7 +218,7 @@ function screen.create_bank_ui()
     bankbox.srcchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.srcchannel_menu, {lpadding=0, expand=1, fillw=true})
     bankbox.srcchannel_menu:setmenu(screen.src_channel_menu)
-    bankbox.srcchannel_menu:select(17)
+    bankbox.srcchannel_menu:select(tostring(srcchannel), false)
 
     row:add(rtk.Label:new({label=' → '}), {valign=rtk.Widget.CENTER})
 
@@ -216,7 +226,8 @@ function screen.create_bank_ui()
     bankbox.dstchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
     row:add(bankbox.dstchannel_menu, {lpadding=0, expand=1, fillw=true})
     bankbox.dstchannel_menu:setmenu(screen.dst_channel_menu)
-    bankbox.dstchannel_menu:select(17 | (1<<8))
+    bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
+
 
     local delete_button = app:make_button("delete_white_18x18.png", nil, true, {
         color={0.5, 0.2, 0.2, 1},
@@ -271,36 +282,35 @@ function screen.get_errors()
     local banks = {}
 
     return function()
-        local n, bank, srcchannel, dstchannel, dstbus, hash, userdata = get_next_bank()
-        if not bank then
-            return
-        end
-
+        local n, bank, srcchannel, dstchannel, dstbus, hash, userdata, msblsb = get_next_bank()
         local error = rfx.ERROR_NONE
         local conflict = nil
 
-        if (bank.buses & (1 << 15) > 0 or dstbus == 16) and feedback_enabled then
-            error = rfx.ERROR_BUS_CONFLICT
-        end
-        if banks[bank] then
-            -- Other errors take precedence but set if currently no error
-            if not error then
-                error = rfx.ERROR_DUPLICATE_BANK
-            end
+        if not bank then
+            error = rfx.ERROR_UNKNOWN_BANK
         else
-            banks[bank] = {idx=n, channel=srcchannel}
-            conflict = conflicts[bank]
-            if conflict and conflict.source ~= bank then
-                -- There is a channel behaviour conflict.  Verify the channel conflict with the previously
-                -- listed bank, to rule out the possiblity of a later duplicate bank causing the conflict
-                -- (in which case the error will appear with the later bank)
-                local previous = banks[conflict.source]
-                if srcchannel == 17 or (previous and (previous.channel == 17 or srcchannel == previous.channel)) then
-                    error = rfx.ERROR_PROGRAM_CONFLICT
+            if (bank.buses & (1 << 15) > 0 or dstbus == 16) and feedback_enabled then
+                error = rfx.ERROR_BUS_CONFLICT
+            end
+            if banks[bank] then
+                -- Other errors take precedence but set if currently no error
+                if not error then
+                    error = rfx.ERROR_DUPLICATE_BANK
+                end
+            else
+                banks[bank] = {idx=n, channel=srcchannel}
+                conflict = conflicts[bank]
+                if conflict and conflict.source ~= bank then
+                    -- There is a channel behaviour conflict.  Verify the channel conflict with the previously
+                    -- listed bank, to rule out the possiblity of a later duplicate bank causing the conflict
+                    -- (in which case the error will appear with the later bank)
+                    local previous = banks[conflict.source]
+                    if srcchannel == 17 or (previous and (previous.channel == 17 or srcchannel == previous.channel)) then
+                        error = rfx.ERROR_PROGRAM_CONFLICT
+                    end
                 end
             end
         end
-
         return n, bank, error, conflict
     end
 end
@@ -318,7 +328,7 @@ function screen.check_errors_and_update_ui()
     for n, bank, bank_error, conflict in screen.get_errors() do
         local bankbox = screen.banklist:get_child(n)
 
-        if bank.message then
+        if bank and bank.message then
             bankbox.info.label:attr('label', bank.message)
             bankbox.info:show()
         else
@@ -332,6 +342,8 @@ function screen.check_errors_and_update_ui()
             errmsg = 'Error: bank is already listed above.'
         elseif bank_error == rfx.ERROR_PROGRAM_CONFLICT then
             errmsg = "Error: program numbers on the same source channel conflicts with " .. conflict.source.name
+        elseif bank_error == rfx.ERROR_UNKNOWN_BANK then
+            errmsg = 'Error: This bank could not be found on this system and will not be shown on the main screen.'
         end
         screen.set_bankbox_warning(bankbox, errmsg)
         error = _max_error(error, bank_error)
@@ -347,7 +359,6 @@ function screen.check_errors()
     for n, bank, bank_error, conflict in screen.get_errors() do
         error = _max_error(error, bank_error)
     end
-    log.info("-> set error: %s -> %s", rfx.appdata.err, error)
     rfx.set_error(error)
 end
 
@@ -366,15 +377,9 @@ function screen.update()
     end
     screen.widget:scrollto(0, 0)
     screen.banklist:clear()
-    for _, bank, srcchannel, dstchannel, dstbus, hash, userdata in rfx.get_banks() do
-        if bank then
-            local bankbox = screen.create_bank_ui()
-            bankbox.srcchannel_menu:select(tostring(srcchannel), false)
-            bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
-            -- Set the option menu label which will be used if the MSB/LSB isn't found
-            -- in the bank list.
-            bankbox.bank_menu:attr('label', string.format('Unknown Bank (%s)', hash))
-            bankbox.bank_menu:select(tostring((bank.msb << 8) + bank.lsb), false)
+    for _, bank, srcchannel, dstchannel, dstbus, hash, userdata, msblsb in rfx.get_banks() do
+        if msblsb then
+            local bankbox = screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
             screen.banklist:add(bankbox)
         end
     end

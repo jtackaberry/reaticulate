@@ -40,6 +40,9 @@ local screen = {
         [rfx.ERROR_DUPLICATE_BANK] =
             'The same bank is mapped to this track multiple times which is not ' ..
             'allowed.  Only one instance will appear below.',
+        [rfx.ERROR_UNKNOWN_BANK] =
+            'A bank assigned to this track could not be found on the local system ' ..
+            'and will not be shown below.',
         default = 'There is some issue with the banks on this track. ' ..
                   'Open the Track Settings page to learn more.'
     }
@@ -272,7 +275,7 @@ function screen.show_track_banks()
         visible[#visible+1] = bank
         visible_by_msblsb[bank.msblsb] = 1
     end
-    for _, bank, _, _, hash, userdata in rfx.get_banks() do
+    for _, bank, _, _, hash, userdata, msblsb in rfx.get_banks() do
         if bank then
             showbank(bank)
         end

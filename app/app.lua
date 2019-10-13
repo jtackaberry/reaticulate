@@ -103,6 +103,11 @@ function App:ontrackchange(last, cur)
     feedback.ontrackchange(last, cur)
     if cur then
     end
+    -- TODO: ought to call self:check_banks_for_errors() here but we don't want to
+    -- do this blindly on every track change, rather only when the the track has
+    -- not been visited since project load.  Unfortunately it's not clear how to
+    -- detect project reload.
+    -- self:check_banks_for_errors()
     reaper.PreventUIRefresh(-1)
 end
 

@@ -156,6 +156,7 @@ local rfx = {
     ERROR_DUPLICATE_BANK = 1,
     ERROR_BUS_CONFLICT = 2,
     ERROR_PROGRAM_CONFLICT = 3,
+    ERROR_UNKNOWN_BANK = 4,
 
 
     -- Constants for OPCODE_SUBSCRIBE.
@@ -547,7 +548,7 @@ function rfx._migrate_to_appdata()
             local msblsb = (b2 << 8) | b3
             local bank = reabank.get_bank_by_msblsb(msblsb)
             if not bank then
-                log.error('unable to migrate unknown bank msb=%d lsb=%d', b2, b3)
+                log.warn('unable to migrate unknown bank msb=%d lsb=%d', b2, b3)
             end
             local hash = bank and bank:hash() or nil
             rfx.appdata.banks[#rfx.appdata.banks + 1] = {
@@ -604,8 +605,8 @@ end
 
 -- Sets the current list of banks on the track.
 --
--- Argument is a table of banks in the form {bank, srcchannel, dstchannel} where
--- channels start at 1 and bank is a Bank object.
+-- Argument is a table of banks in the form {msblsb, srcchannel, dstchannel} where
+-- channels start at 1.
 --
 -- The user-supplied list is translated to a list of tables as below before
 -- storing to appdata:
@@ -620,13 +621,13 @@ end
 function rfx.set_banks(banks)
     rfx.appdata.banks = {}
     for _, bankinfo in ipairs(banks) do
-        bank, src, dstchannel, dstbus = table.unpack(bankinfo)
+        msblsb, src, dstchannel, dstbus = table.unpack(bankinfo)
         -- Note that hash is not set here but rather in sync_banks_to_rfx()
         -- so that the current hash can be refreshed even if the bank assignment
         -- doesn't change for the track.
         rfx.appdata.banks[#rfx.appdata.banks + 1] = {
             t = 'b',
-            v = bank.msblsb,
+            v = msblsb,
             src = src,
             dst = dstchannel,
             dstbus = dstbus
@@ -637,7 +638,7 @@ function rfx.set_banks(banks)
 end
 
 
--- An iterator that yields (idx, bank, srcchannel, dstchannel, hash, userdata)
+-- An iterator that yields (idx, bank, srcchannel, dstchannel, hash, userdata, msblsb)
 -- for each bank assigned to this track.  Channel starts at 1, bank is a Bank
 -- object.
 --
@@ -658,7 +659,8 @@ function rfx.get_banks()
             -- The main point of also including idx is to ensure that we don't yield
             -- nil as the first value if bank could not be found, which would terminate
             -- the iterator.
-            return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus, bankinfo.h, bankinfo.ud
+            return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus,
+                   bankinfo.h, bankinfo.ud, bankinfo.v
         end
     end
 end
@@ -758,14 +760,14 @@ function rfx.index_banks_by_channel()
     rfx.unknown_banks = nil
     -- Will be set to true if there are any bank hash mismatches
     local resync = false
-    for _, bank, srcchannel, dstchannel, dstbus, hash, _ in rfx.get_banks() do
+    for _, bank, srcchannel, dstchannel, dstbus, hash, _, msblsb in rfx.get_banks() do
         if not bank then
             if not rfx.unknown_banks then
                 rfx.unknown_banks = {}
             end
-            -- TODO: should pass (TBD) uuid instead of hash
-            rfx.unknown_banks[#rfx.unknown_banks+1] = hash
-            log.error("rfx: instance refers to undefined bank with hash %s", hash)
+            -- TODO: should pass (TBD) uuid instead of msblsb
+            rfx.unknown_banks[#rfx.unknown_banks+1] = msblsb
+            log.warn("rfx: instance refers to undefined bank %s", msblsb)
         else
             log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, hash, bank:hash())
             bank.srcchannel = srcchannel
@@ -890,7 +892,7 @@ function rfx.sync_banks_to_rfx()
     rfx.opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)
     -- Update the hash of all banks
     for i, bank, _, _, _, userdata in rfx.get_banks() do
-        rfx.appdata.banks[i].h = bank:hash()
+        rfx.appdata.banks[i].h = bank and bank:hash() or nil
     end
     rfx.queue_write_appdata()
 
