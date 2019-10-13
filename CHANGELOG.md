@@ -97,11 +97,11 @@ Below is a list of changes since 0.2.0.
   js_ReaScriptAP extension is installed)
 + New action "Activate articulation slot number by CC on default channel"
   which can be used to activate articulations based on their position in
-  the bank list (#58)
+  the bank list ([#58](https://github.com/jtackaberry/reaticulate/issues/58))
 + New action to insert the last activated articulation into MIDI item at
   edit cursor (same behavior as right clicking the articulation)
 + Various new actions to select but not activate articulations, plus an
-  action to activate currently selected articulation (#59)
+  action to activate currently selected articulation ([#59](https://github.com/jtackaberry/reaticulate/issues/59))
     * Running the action to activate currently selected articulation
       twice in rapid succession will cause it to insert into MIDI item
 + On pages that scroll, scrollbars will appear when the mouse hovers toward
@@ -120,45 +120,45 @@ Below is a list of changes since 0.2.0.
 
 ## New Features
 
-+ Activating an articulation now scrolls it into view in the GUI (#50)
-+ Articulations are now fed back to control surface (#48)
++ Activating an articulation now scrolls it into view in the GUI ([#50](https://github.com/jtackaberry/reaticulate/issues/50))
++ Articulations are now fed back to control surface ([#48](https://github.com/jtackaberry/reaticulate/issues/48))
     * CC0/32 bank select indicates bank for articulation
     * Articulations can be expressed either as native program change events or
       custom CC events
-+ Improve First Run experience (especially for portable Reaper installations) (#46)
++ Improve First Run experience (especially for portable Reaper installations) ([#46](https://github.com/jtackaberry/reaticulate/issues/46))
 + Minor cosmetic improvements with drag-and-drop to reorder banks on the track
   configuration page
 
 ## Bug Fixes
 
-- Ensure articulations on same MIDI tick as notes are processed before the notes (#53)
+- Ensure articulations on same MIDI tick as notes are processed before the notes ([#53](https://github.com/jtackaberry/reaticulate/issues/53))
 
 
 # 0.2.0 - July 2, 2018
 ## New Features
 
 - Added support for MIDI CC feedback to a control surface or other controller
-- Articulation output events may refer to other articulations in the same bank via new 'art' output type (#18)
-- Articulations can now be inserted from the arrange view (or MIDI editor without step input needing to be enabled) by right clicking the articulation button (#28)
-- Banks can now specify which CCs should be chased.  Factory banks are much more selective about what's chased. (#33)
-- Added support for conditional output events, where output events may now be optionally dependent on the state of articulations in other groups (#32)
-- Output events to specific target MIDI channels can now be optionally configured to not affect future routing (#30)
+- Articulation output events may refer to other articulations in the same bank via new 'art' output type ([#18](https://github.com/jtackaberry/reaticulate/issues/18))
+- Articulations can now be inserted from the arrange view (or MIDI editor without step input needing to be enabled) by right clicking the articulation button ([#28](https://github.com/jtackaberry/reaticulate/issues/28))
+- Banks can now specify which CCs should be chased.  Factory banks are much more selective about what's chased. ([#33](https://github.com/jtackaberry/reaticulate/issues/33))
+- Added support for conditional output events, where output events may now be optionally dependent on the state of articulations in other groups ([#32](https://github.com/jtackaberry/reaticulate/issues/32))
+- Output events to specific target MIDI channels can now be optionally configured to not affect future routing ([#30](https://github.com/jtackaberry/reaticulate/issues/30))
 - Added Settings UI to configure Reaticulate to autostart when Reaper starts
 
 ## Minor Enhancements
 - Spacebar in Reaticulate's window will now toggle transport and focus arrange view
-- Bank list in track configuration can now be reordered via drag-and-drop (#37)
-- Ctrl-left/right now skips words in the articulation filter text input box (#9)
-- Existing program changes at edit cursor will be removed before inserting a new one (#35)
+- Bank list in track configuration can now be reordered via drag-and-drop ([#37](https://github.com/jtackaberry/reaticulate/issues/37))
+- Ctrl-left/right now skips words in the articulation filter text input box ([#9](https://github.com/jtackaberry/reaticulate/issues/9))
+- Existing program changes at edit cursor will be removed before inserting a new one ([#35](https://github.com/jtackaberry/reaticulate/issues/35))
 
 ## Bug fixes
 - Fixed problem where UI may not use correct background color from theme
-- Fixed parsing of invalid colors and icons (#13)
-- Fixed "Add Reaticulate FX" button not working after first install (#15)
-- Fixed ultra critical bug where trill-min2 and trill-maj2 icons were swapped (#16)
-- Fixed routing issue when articulation had no output events defined (#27)
-- For articulations with multiple note outputs, all note-ons will now be sent before any note-offs (#20)
-- Articulations with multiple note-hold outputs now works as expected (#26)
+- Fixed parsing of invalid colors and icons ([#13](https://github.com/jtackaberry/reaticulate/issues/13))
+- Fixed "Add Reaticulate FX" button not working after first install ([#15](https://github.com/jtackaberry/reaticulate/issues/15))
+- Fixed ultra critical bug where trill-min2 and trill-maj2 icons were swapped ([#16](https://github.com/jtackaberry/reaticulate/issues/16))
+- Fixed routing issue when articulation had no output events defined ([#27](https://github.com/jtackaberry/reaticulate/issues/27))
+- For articulations with multiple note outputs, all note-ons will now be sent before any note-offs ([#20](https://github.com/jtackaberry/reaticulate/issues/20))
+- Articulations with multiple note-hold outputs now works as expected ([#26](https://github.com/jtackaberry/reaticulate/issues/26))
 - Fixed embarrasing bug where channel 16 couldn't be used for bank's source channel
 - Reduced the likelihood of Reaticulate munging the last touched FX
 - Other minor bug fixes
