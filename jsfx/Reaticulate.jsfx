@@ -1179,7 +1179,8 @@ local(ext, transform)
         transform[2] = (1 << 31) | (ext[1] & 0xffff);
         // Velocity multiplier.  Out of paranoia, we don't allow zero values
         // (is there a good use-case for that?) and instead treat them as 1.0.
-        transform[3] = (((ext[0] >> 8) & 0x3ff) / 100.0) || 1.0;
+        transform[3] = (((ext[0] >> 8) & 0x3ff) / 100.0);
+        (transform[3] == 0) ? transform[3] = 1.0;
         // Min/max velocity
         transform[4] = ext[2] & 0xffff;
     );
