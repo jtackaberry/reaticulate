@@ -2045,7 +2045,7 @@ local(buses, bus, bit, dstchannels)
     (buses == 0x0001) ? (
         dstchannels = dstbuschan[1];
         dstbuschan_except ? (
-            dstchannels &= $~16 ~ dstbuschan_except[1+bus];
+            dstchannels &= $~16 ~ dstbuschan_except[1];
         );
         midi_bus = 0;
         mpos = midisend_multidst(mpos, dstchannels, basemsg1, msg2, msg3);
@@ -2677,11 +2677,10 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 
                 // Now that we've sent the note-off event to all the channels
                 // that had seen the note-on (those not in the current
-                // dstbuschan anyway), we can reset it.  We just need to clear
-                // the bus bitmap to do the job, and we mustn't clear the
+                // dstbuschan anyway), we can reset it.  We mustn't clear the
                 // transform data as that's used later when we send the note-off
                 // on the current channel.
-                noteinfo[0] = 0;
+                memset(noteinfo, 0, DSTBUSCHAN_LEN);
                 update_active_notes_for_gui(channel, msg2, 0);
 
                 // For articulations doing note-hold outputs, if the note that was released
