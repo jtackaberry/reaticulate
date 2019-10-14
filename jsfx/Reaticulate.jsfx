@@ -19,7 +19,7 @@ desc:Reaticulate
 options:gmem=reaticulate
 
 // byte 0: serial to indicate gmem appdata has changed.  Wraps as needed.
-// byte 1: reabank version (mod 256)
+// byte 1: unused
 // byte 2: version
 // byte 3: magic
 //
