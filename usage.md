@@ -71,6 +71,9 @@ Once added, each bank has a few UI elements:
       listening on
     * When set to *Source* it means that output events will be sent to the same MIDI channel the
       program change message came in on
+    * (Prerelease) The destination MIDI bus can be specified for more advanced setups.  When
+      *Source* is used, the destination bus is overriden but the destination channel will be the
+      same as the source channel.
 * A delete button ![Delete
   icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/delete_white_18x18.png)
   which removes the bank from the track
@@ -112,9 +115,7 @@ Hopefully the GUI will be fairly intuitive.  Here are some tips that may not be 
     * There are also a number of actions relating the default channel (see later)
 * __Left clicking__ on an articulation will change articulations by sending the output events defined
   for that articulation in the bank using the default channel as the source channel for the articulation
-    * If you have the MIDI editor open and step input is enabled, then left clicking will also
-      insert the program change message in the MIDI item
-* __Right clicking__ on the other hand will *always* insert a program change at the edit cursor
+* __Right clicking__ or (prerelease) __double clicking__ on the other hand will insert a program change at the edit cursor
     * This also works from the arrange view even if the MIDI editor is closed
 * When you left or right click an articulation, Reaticulate will refocus the window that previously had focus before activating the articulation.  (This is only true when the js_ReaScriptAPI extension is installed.  If it's not installed, if MIDI editor if it's open it will focus that, and focus the arrange view otherwise.) This is *usually* what you want to avoid focus-stealing.
 * When an articulation is activated, the source channel that articulation is active on is denoted by
@@ -160,6 +161,8 @@ All actions are prefixed with `Reaticulate` so you can easily find them by searc
 | `Toggle track selection follows MIDI editor target item` | If enabled, when you select a MIDI item in the MIDI editor for writes, Reaticulate will automatically select that track so the bank list updates to reflect that track's articulations.  This is most conveniently paired with the "Options: MIDI track list/media item lane selection is linked to editability" so that merely selecting an item in the MIDI editor will both enable it for edits and automatically select the track.
 
 
+(Prerelease) Note: if any of the "Activate" actions are triggered twice within 500ms of each other, the articulation will be inserted into the MIDI item at the edit cursor (if one exists).  This allows you to use the same actions from, say, a control surface to both temporarily enable articulations *and* insert them into current items.
+
 # Feedback to Control Surface
 
 ## Overview
@@ -174,6 +177,11 @@ controller:
 
 If multiple tracks are selected, then the first selected track will be synced to the control
 surface.
+
+This is implemented by means of a hidden track called "MIDI Feedback (Reaticulate)" and
+which the Reaticulate JSFX installed on the track communicates with via MIDI bus 16.
+Consequently, if you enable this feature, you won't be able to assign banks to tracks on
+bus 16 (or use banks with output events that explicitly address bus 16).
 
 <p class='warning'>
   Feedback is only sent to the control surface when the selected track is both armed for recording

@@ -187,6 +187,14 @@ marked as required.
         for an articulation (as is default).  For example: 1,2,5,11-21,92-120.  (Default: 1,2,11,64-69)
     </td>
 </tr>
+<tr>
+    <td style='text-align: center'>m</td>
+    <td>
+        A custom message displayed in the track configuration page and (prerelease) optionally the main
+        articulation list screen.  This usually provides some special instructions about how to configure
+        the virtual instrument to be compatible with the bank, or other performance details.
+    </td>
+</tr>
 </table>
 
 
@@ -194,7 +202,7 @@ marked as required.
 
 ## Attributes for Program lines
 
-And programs can be decorated with these attributes:
+Programs can be decorated with these attributes:
 
 <table>
 <tr><th style='text-align: center'>Name</th><th>Description</th></tr>
@@ -244,6 +252,48 @@ And programs can be decorated with these attributes:
         for the gory details.
     </td>
 </tr>
+<tr>
+    <td style='text-align: center'>spacer</td>
+    <td>
+        Inserts some padding above the articulation when displayed in Reaticulate's main
+        articulation list screen.<br/><br/>
+
+        The value is a number that controls the amount of padding but generally a value of
+        <code>1</code> will provide a sufficient visual separation.
+    </td>
+</tr>
+<tr>
+    <td style='text-align: center'>transpose<br/><code>(prerelease)</code></td>
+    <td>
+        A value between -127 and 127 which defines how many pitches incoming notes should be
+        transposed after the articulation is activated.
+    </td>
+</tr>
+<tr>
+    <td style='text-align: center'>velocity<br/><code>(prerelease)</code></td>
+    <td>
+        A multiplier between 0.00 and 10.00 (up to 2 decimals of precision) that will be applied
+        to incoming note velocities.  The note-off velocity (if it exists -- it's quite rare)
+        will also be multiplied by this value.
+    </td>
+</tr>
+<tr>
+    <td style='text-align: center'>pitchrange<br/><code>(prerelease)</code></td>
+    <td>
+        A value in the form <code>min-max</code> defining the lower and upper limits that
+        incoming note pitch numbers will be clamped to.  For example a value of
+        <code>40-70</code> will force all notes with pitch values below 40 to be 40, and
+        values above 70 to be 70.
+    </td>
+</tr>
+<tr>
+    <td style='text-align: center'>velrange<br/><code>(prerelease)</code></td>
+    <td>
+        A value in the form <code>min-max</code> defining the lower and upper limits that
+        incoming note velocities will be clamped to.  For example a value of <code>32-64</code> will
+        force all notes with velocities below 32 to be 32, and velocities above 64 to be 64.
+    </td>
+</tr>
 </table>
 
 ## Program Numbers
@@ -287,7 +337,7 @@ output event roughly takes the form `type@channel:arg1,arg2` (no whitespace allo
 A more formal specification for a single output event would look like this:
 
 ```
-[-][type][@channel][:arg1[,arg2]][%filter_program]
+[-][type][@channel[.bus]][:arg1[,arg2]][%filter_program]
 ```
 
 Where elements enclosed in square brackets are optional, and where:
@@ -296,19 +346,42 @@ Where elements enclosed in square brackets are optional, and where:
 * Output events prefixed with `-` don't affect the routing of future MIDI events.  Otherwise, if channels
   are not prefixed this way then any future user-generated MIDI event will be routed to this channel when
   the articulation is activated.
+
 * `type` defines the type of output event (see below), e.g. note, cc, etc.
-* `@channel` specifies the destination MIDI channel of the output event and unless `type` is
-  prefixed with `-` it implies subsequent MIDI events will also be routed to that destination
-  channel. When channel is not specified, the destination channel will be dictated by the
-  destination channel the defined by the user when the bank was configured on the track.  See the
-  [usage page](usage#track-setup) for more information on source and destination channels.
+
+* `@channel` specifies the destination MIDI channel of the output event and, unless `type` is
+  prefixed with `-`, it implies subsequent MIDI events will also be routed to that destination
+  channel.
+
+  When channel is not specified, the destination channel will be dictated by the
+  destination channel the defined by the user when the bank was configured on the track.  (See the
+  [usage page](usage#track-setup) for more information on source and destination channels.)
+
+  (Prerelease) Alternatively, a special channel value of `-` will direct the
+  output event to the destination(s) setup by the previously activated
+  articulation.
+
+* `.bus` (prerelease) specifies the destination bus of the output event and subsequent incoming
+   events when the articulation is activated.  `bus` is a value between 1 and 16.
+
+  As with the channel, if not specified the default bus will be dictated by the
+  destination bus for the bank's track configuration. If the bus is defined but
+  not the channel (e.g. `@.4`) then then the default channel will be used but
+  the bus will be overridden.
+
+  If you use Reaticulate's MIDI controller feedback feature, you won't be able to assign
+  bus 16 as this bus is used by the feedback feature internally.
+
 * `arg1` and `arg2` depend on the type
+
 * `%filter_program` if defined will only emit the output event if the specified program number
   `filter_program` is currently active on the same channel in another group.  This allows
-  the state of other groups to modify the output events emitted by the articulation.  For example,
-  you might have an articulation group that specifies normal attack vs hard attack with different
-  programs.  A single sustain articulation could then emit different keyswitches depending on
-  whether the normal or hard attack is selected in the group.
+  the state of other groups to modify the output events emitted by the articulation.
+
+  For example, you might have an articulation group that specifies normal attack
+  vs hard attack with different programs.  A single sustain articulation could
+  then emit different keyswitches depending on whether the normal or hard attack
+  is selected in the group.
 
 Possible output event types are:
 
@@ -318,6 +391,7 @@ Possible output event types are:
 | cc        | A CC event, with `arg1` indicating the CC number and `arg2` defining the CC value
 | note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity.  `arg2` is optional and if not specified the default velocity is 127.  (It's not possible to specify the note-off velocity, however.  This is a seldom used feature of MIDI.)
 | note-hold | A note-on event, where `arg1` and `arg2` are according to the `note` type.  The corresponding note-off event is deferred until the next articulation is activated.  This is useful with patches that use non-latching keyswitches.
+| pitch (prerelease)     | A pitch bend event, where `arg1` is the 14-bit pitch bend value between -8192 and 8192 and `arg2` is not used.
 | art       | Activate another articulation in the same bank, with `arg1` being the articulation program number and `arg2` is omitted.  This can be used to create composite articulations.  For example if you have articulation groups for con sordino/senza sordino and legato/non-legato, you could have another composite articulation for non-legato sustain con sordino that references the articulations in the other groups.
 
 Be aware that if multiple `note` output events are specified for a given articulation, all note-on
@@ -400,6 +474,7 @@ Bank 42 7 Bohemian Violin Exp1
 //! c=long-dark i=note-whole g=2 f=toggle o=note:35
 35 chords
 
+//! spacer=1
 //! c=long-light i=phrase
 0 performer
 //! c=long i=note-half o=note-hold:24
@@ -407,6 +482,7 @@ Bank 42 7 Bohemian Violin Exp1
 //! c=long-light i=legato-bowed2 o=note-hold:41
 41 rebow
 
+//! spacer=1
 //! c=fx i=phrase g=3 o=note:48
 48 improv
 //! c=fx i=phrase g=3 o=note:49
@@ -414,6 +490,8 @@ Bank 42 7 Bohemian Violin Exp1
 //! c=fx i=phrase g=3 o=note:50
 50 emotive
 ```
+
+This example also uses the `spacer` attribute to provide a visual separation between the groups.
 
 ### Contextual articulations based on state of other groups
 

@@ -217,7 +217,7 @@ channel, otherwise the output event will be filtered (i.e. not emitted).
 
 This allows articulations to be contextual based on articulations in other groups.
 
-Filter programs are optional, and are specified by appending `[%program]` to the output event spec.
+Filter programs are optional, and are specified by appending `%program` to the output event spec.
 
 For example, consider a library such as Berlin Brass with its expansion packs, where trumpet
 articulations can be performed unmuted, or with straight mutes, or with harmon mutes.  You _could_
