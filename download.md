@@ -21,7 +21,7 @@ it](https://reapack.com/).
 
 Once you have ReaPack installed:
 1. Open the menu: `Extensions | ReaPack | Import a Repository`
-1. Paste in this URL: `http://reaticulate.com/release.xml`
+1. Paste in this URL: `https://reaticulate.com/release.xml`
 1. Double click the newly added Reaticulate item in the repository list
 1. Click the `Install/update Reaticulate` button and select `Install all packages`
 
@@ -34,7 +34,7 @@ Pre-releases are made available from time to time and can give an earlier previe
 or fixes.  For the pre-release version, instead of the above ReaPack URL, use this one:
 
 ```
-http://reaticulate.com/prerelease.xml
+https://reaticulate.com/prerelease.xml
 ```
 
 This ReaPack will always contain the latest version, whether a release, or a subsequent pre-release.

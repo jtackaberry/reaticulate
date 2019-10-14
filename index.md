@@ -10,14 +10,14 @@ Version 0.3.0 is now available!  Read about the <a href='{% link news.md %}'>new
 Install it with [ReaPack](https://reapack.com/):
 
 ```
-http://reaticulate.com/release.xml
+https://reaticulate.com/release.xml
 ```
 
 Or if you're feeling particularly adventurous and always want the latest version
 even if it's a pre-release:
 
 ```
-http://reaticulate.com/prerelease.xml
+https://reaticulate.com/prerelease.xml
 ```
 
 For more details on installation, [check the download page](download).
