@@ -1014,6 +1014,20 @@ function get_articulation_output_event(artlut, n)
     artlut + 2 + MAX_ARTICULATION_EXTENSIONS + (2+MAX_OUTPUT_EVENT_EXTENSIONS)*n;
 );
 
+// Gets the active program for the channel and group and validates that
+// the program still refers to an articulation assigned to the given group.
+// If not, it returns -1.
+function get_active_program_check(channel, group)
+local(program, art)
+(
+    program = get_active_program(channel, group);
+    program != -1 ? (
+        art = get_articulation(channel, program);
+        get_articulation_group(art) == group ? program : -1;
+    ) : (
+        -1;
+    );
+);
 
 
 //
@@ -2475,13 +2489,19 @@ local(articulation, num_outputs, group, control, current_program, flags,
     mpos = feedback_controller_articulation(mpos, channel, articulation, group);
 
     // If the activated program acts as a filter for some other articulation's
-    // output events, retrigger all active articulations if they are different
-    // than this program that was just activated.
+    // output events, retrigger all active articulations.  Existing triggered
+    // articulations (including this one) will not be retriggered because
+    // _enqueue_articulation() ignores them.  This is why we don't bother to skip
+    // retriggering on the current group.
     (flags & ARTICULATION_FLAG_IS_FILTER) ? (
-        _enqueue_articulation(channel, bus, get_active_program(channel, 0), overrides);
-        _enqueue_articulation(channel, bus, get_active_program(channel, 1), overrides);
-        _enqueue_articulation(channel, bus, get_active_program(channel, 2), overrides);
-        _enqueue_articulation(channel, bus, get_active_program(channel, 3), overrides);
+        // Use the _check() variant to ensure that we don't retrigger a program
+        // that either doesn't exist or refers to the wrong group than the one
+        // given.  This is a fairly rare case but it can happen when the bank
+        // definition changes after articulations have been activated.
+        _enqueue_articulation(channel, bus, get_active_program_check(channel, 0), overrides);
+        _enqueue_articulation(channel, bus, get_active_program_check(channel, 1), overrides);
+        _enqueue_articulation(channel, bus, get_active_program_check(channel, 2), overrides);
+        _enqueue_articulation(channel, bus, get_active_program_check(channel, 3), overrides);
     );
 
     this.mpos = mpos;
