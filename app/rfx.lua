@@ -207,6 +207,7 @@ local rfx = {
         }
     },
 
+    last_gmem_gc_time = 0,
     last_instance_num = 0,
     global_serial = 0,
 
@@ -323,13 +324,41 @@ function rfx.get(track)
     return reaper.TrackFX_GetByName(track, "Reaticulate", false)
 end
 
--- TODO: implement me: enumrate all tracks in all subprojects, find RFX
--- instances and update ID_BITMAP gmem region to reflect what's currently
--- instantiated.
+
+-- The JSFX instances autonomously allocate their own instance ids
+-- based on 100 32-bit slots in the ID_BITMAP gmem region.  As instances come
+-- and go, the instance id normally just continuously increases.
 --
--- The Lua API doesn't have an atomic setifequal like JSFX, but it's ok because
--- we only *zero* bits here, so there is no concern of a race.
+-- This function scans all active RFX instances and adjusts the gmem
+-- instance slots based on what's current, effectively zeroing the bits
+-- for defunct RFX.
+--
+-- It's safe to invoke this function frequently as it self-throttles.
 function rfx.gc()
+    -- Because this function involves enumerating every track across every
+    -- loaded project, it's not exactly cheap.  So we only bother doing this
+    -- when we have ~1000 gmem ids already allocated (offset 30).
+    --
+    -- Mask low 32-bits before comparison because gmem_read() returns a 64-bit
+    -- value on 64-bit architectures.
+    if reaper.gmem_read(rfx.GMEM_ID_BITMAP_OFFSET + 30) & 0xffffffff ~= 0xffffffff then
+        -- Not under enough pressure yet to bother
+        return
+    end
+    local now = os.clock()
+    if now - rfx.last_gmem_gc_time < 30 then
+        -- Don't do this more than once per 30 seconds.
+        return
+    end
+    rfx.last_gmem_gc_time = now
+
+    log.time_start()
+    -- Iterate through all projects and tracks and determine the RFX instance ids
+    -- for all valid RFX.  Create a set of 100 32-bit bitmaps according to what
+    -- is expected to be in the gmem id bitmap slots based on the current RFX.
+    slots = {}
+    -- Tiny bit of paranoia about an infinite loop, so cap the number of currently
+    -- loaded projects we'll check to 100.  Surely that's enough.
     for pidx = 0, 100 do
         local proj, _ = reaper.EnumProjects(pidx, '')
         if not proj then
@@ -342,10 +371,32 @@ function rfx.gc()
             if fx then
                 local params = rfx.params_by_version[version]
                 local id, _, _ = reaper.TrackFX_GetParam(track, fx, params.instance_id)
-                log.debug("rfx: %s  track %s  id: %s", proj, track, id)
+                local idx = math.floor(id / 32)
+                local bit = (1 << (id % 32))
+                if (slots[idx] or 0) & bit == 0 then
+                    slots[idx] = (slots[idx] or 0) | bit
+                else
+                    log.error('BUG: track %s does not have a unique Reaticulate instance id!', track)
+                end
             end
         end
     end
+
+    for i = 0, 100 do
+        local bitmap = reaper.gmem_read(rfx.GMEM_ID_BITMAP_OFFSET + i) & 0xffffffff
+        -- The Lua API doesn't have an atomic setifequal like JSFX.  We solve
+        -- this by only cleaning slots that have all 32 bits set, which the JSFX
+        -- will not touch.
+        if bitmap == 0xffffffff and slots[i] ~= 0xffffffff then
+            log.debug('rfx: gc slot %d: %x != %x', i, bitmap, slots[i] or 0)
+            reaper.gmem_write(rfx.GMEM_ID_BITMAP_OFFSET + i, slots[i] or 0)
+        end
+        if bitmap ~= 0 then
+            log.debug2('slot %d: %x -> %x', i, bitmap, slots[i] or 0)
+        end
+    end
+    log.debug('rfx: gc complete')
+    log.time_end()
 end
 
 -- Discover the Reaticulate FX on the given track.  Sets rfx.fx to the fx id if valid, and returns
@@ -403,6 +454,7 @@ function rfx.sync(track, forced)
             rfx.sync_banks_to_rfx()
         end
         rfx.onccchange()
+        rfx.gc()
     end
     if serial_changed then
         local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_INSTANCE_DATA)
