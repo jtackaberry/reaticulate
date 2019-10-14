@@ -24,10 +24,10 @@ options:gmem=reaticulate
 // byte 3: magic
 //
 // Defaults to RFX_MAGIC + RFX_VERSION consts (defined below)
-slider1:704708608<0,2147483647,1>Reaticulate metadata
+slider1:704708608<0,2147483647,1>-Reaticulate metadata
 
 // The index within the gmem buffer for the start of this instance's data
-slider2:0<0,2147483647,1>gmem index
+slider2:0<0,2147483647,1>-gmem index
 
 slider3:0<0,2147483647,1>-Unused
 slider4:0<0,2147483647,1>-instance id
@@ -37,7 +37,7 @@ slider7:0<0,2147483647,1>-Unused
 slider8:0<0,2147483647,1>-Unused
 
 // For debugging
-slider9:0<0,16,1>Show debug info for channel
+slider9:1<0,1,1{Off, On}>Show Debugging
 
 
 // DEPRECATED: can be removed in the future when serialized_version < 3 support
@@ -48,8 +48,8 @@ slider9:0<0,16,1>Show debug info for channel
 // for group 1; 128 == disabled byte 1: current program number for group 2; 128
 // == disabled byte 2: current program number for group 3; 128 == disabled byte
 // 3: current program number for group 4; see slider26 for disabled
-slider10:8421504<0,2147483647,1>Reaticulate data for channel 1
-slider11:8421504<0,2147483647,1>Reaticulate data for channel 2
+slider10:8421504<0,2147483647,1>-Reaticulate data for channel 1
+slider11:8421504<0,2147483647,1>-Reaticulate data for channel 2
 slider12:8421504<0,2147483647,1>-Reaticulate data for channel 3
 slider13:8421504<0,2147483647,1>-Reaticulate data for channel 4
 slider14:8421504<0,2147483647,1>-Reaticulate data for channel 5
@@ -114,7 +114,7 @@ slider59:0<0,2147483647,1>-Reaticulate Track Data 29
 
 slider60:0<0,2147483647,1>-Unused
 slider61:0<0,2147483647,1>-Unused
-slider62:0<0,2147483647,1>History Serial
+slider62:0<0,2147483647,1>-History Serial
 
 slider63:0<0,2147483647,1>-Unused
 
@@ -1749,7 +1749,7 @@ local(idx, n_opcodes, queue_size, argc)
 
 
 @gfx
-(slider9 || 1) ? (
+(slider9 > 0) ? (
     gfx_h = 400;
     gfx_x = gfx_y = 0;
     gfx_r = gfx_g = gfx_b = gfx_a = 1;
@@ -1757,45 +1757,41 @@ local(idx, n_opcodes, queue_size, argc)
 
     dstbuschan = get_channel_dstbuschan(channel);
     gfx_printf("Reaticulate debug info\n");
-    gfx_printf("  routing: chan=%d bus=%d 1=%d\n", channel, dstbuschan[0], dstbuschan[1]);
-    gfx_printf("  serialized: reads=%d writes=%d   undo serial=%d   nundo=%d\n", nserr, nserw, undo_serial, nundo);
     gfx_printf("  metadata: %d\n", slider1);
+    gfx_printf("  initializing: %d\n", instantiating);
+    gfx_printf("  routing: chan=%d bus=%d bus1=%d\n", channel, dstbuschan[0], dstbuschan[1]);
+    gfx_printf("  serialize: reads=%d  writes=%d   undo serial=%d   nundo=%d\n", nserr, nserw, undo_serial, nundo);
     gfx_printf("  version: %d\n", serialized_version);
-    gfx_printf("  serial: %d\n", change_serial);
-    gfx_printf("  pending: %d\n", have_pending_activations);
-    gfx_printf("  active notes bitmap: %d\n", gmem[gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET] + 33]);
-    gfx_printf("  articulations len: %d\n", articulations_len);
-    gfx_printf("  play state: %d %f\n", play_state, play_position);
-    gfx_printf("  midi bus: %d\n", midi_feedback);
-    gfx_printf("  banks_len: %d\n", banks_len);
-    gfx_printf("  bank 0 chase 1: %d\n", banks[1]);
+    gfx_printf("  change serial: %d\n", change_serial);
+    gfx_printf("  active notes bitmap: %d\n", gmem[gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET] + GMEM_INSTANCE_DATA_FIRST_IDX]);
+    gfx_printf("  feedback bus: %d\n", midi_feedback);
+    gfx_printf("  lengths: banks=%d articulations=%d current_programs=%d\n", banks_len, articulations_len, current_programs_len);
 
-    gfx_printf("\nChannel %d debug info\n", channel + 1);
+    gfx_printf("\nChannel %d debug info (pending=%d)\n", channel + 1, have_pending_activations);
     group = 0; loop(MAX_GROUPS,
         program = get_active_program(channel, group);
         articulation = get_articulation(channel, program);
         num_outputs = get_articulation_num_outputs(articulation);
         flags = get_articulation_flags(articulation);
+        ext = get_articulation_extensions_bitmap(articulation);
+        ext0 = get_articulation_extension(articulation, 0);
         idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
         group_held = held_keyswitches + idx;
         note = group_held[0] & 0xff;
-        dstchannels = group_held[1] & 0xffff;
+        dst = group_held[1] & 0xffff;
         bank = get_articulation_bank(articulation);
-        gfx_printf("  %d: prog=%3d  art=%d outputs=%d flag=%3d held0=%2d ch %2d  cc=%d\n", group, program, articulation, num_outputs, flags, note, dstchannels, bank[1]);
+        gfx_printf("  %d: prog=%3d  art=%d outputs=%d flag=%3d held0=%2d @%2d.%02d  extbits=%d ext0=%d\n",
+                   group, program, articulation, num_outputs, flags, note, dst & 0x0f, (dst >> 4) & 0x0f, ext, ext0);
         group += 1;
     );
 
     gfx_printf("\n\n");
-    gfx_printf("instance=%d  gmem_index=%d  gmem_serial=%d\n", instance_id, gmem_index, gmem_serial);
+    gfx_printf("instance=%d  gmem_index=%d (slider=%d)  gmem_serial=%d\n", instance_id, gmem_index, slider2, gmem_serial);
 
     n_opcodes = gmem[gmem_index + gmem[GMEM_GIDX_OPCODES_OFFSET]];
-    gfx_printf("gmem n_opcodes=%d\n", n_opcodes);
-    gfx_printf("appdata: orig=%d serialied=%d offset=%d\n", appdata_orig_len, appdata_len, gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET]);
-
     offset = gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET];
-    gfx_printf("current programs len: %d\n", current_programs_len);
-    gfx_printf("default chan: %d\n", gmem[GMEM_GIDX_DEFAULT_CHANNEL]);
-    gfx_printf("reinit: %d\n", instantiating);
+    gfx_printf("gmem n_opcodes=%d\n", n_opcodes);
+    gfx_printf("appdata: orig=%d serialized=%d offset=%d\n", appdata_orig_len, appdata_len, offset);
 );
 
 
