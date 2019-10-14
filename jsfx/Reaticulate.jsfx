@@ -290,7 +290,7 @@ OPCODE_ACTIVATE_ARTICULATION = 2;
 // the group number and the next 4 bits indicate the number of output
 // events that will follow.
 //
-// (channel+version, program, value)
+// (channel+version, program, group, flags, off_program)
 OPCODE_NEW_ARTICULATION = 3;
 
 // Appends a new extension for the articulation previously set by
@@ -301,7 +301,7 @@ OPCODE_NEW_ARTICULATION = 3;
 // (extension number, ...)
 OPCODE_ADD_ARTICULATION_EXTENSION = 4;
 
-// (type+dstchannel, param1, param2)
+// (type+dstchannel+dstbus+haschan+hasbus, param1+noroute, param2+usedefaultroute)
 OPCODE_ADD_OUTPUT_EVENT = 5;
 
 // Appends a new extension for the output event previously set by
@@ -818,7 +818,9 @@ last_new_output_event = 0;
 // Slot 1: v2
 //     bits 0-15: a 16-bit bitmap of extensions.  Extension records begin at slot 2.
 //    bits 16-19: MIDI bus for destination channel
-//    bits 20-23: reserved for future expansion
+//        bit 20: set if the output event explicitly defines a dst channel
+//        bit 21: set if the output event explicitly defines a dst bus
+//    bits 22-23: reserved for future expansion
 
 
 // TODO: these need extensions:
@@ -1080,6 +1082,22 @@ function get_output_event_dstbus(eventlut)
         // from 0).
         0;
     )
+);
+
+function has_output_event_explicit_dstchannel(eventlut)
+(
+    // TODO: this function can be simplified when dropping v1 support
+    (get_output_event_version(eventlut) >= 2) ? (
+        (eventlut[0][1] >> 20) & 0x01;
+    );
+);
+
+function has_output_event_explicit_dstbus(eventlut)
+(
+    // TODO: this function can be simplified when dropping v1 support
+    (get_output_event_version(eventlut) >= 2) ? (
+        (eventlut[0][1] >> 21) & 0x01;
+    );
 );
 
 
@@ -1517,16 +1535,19 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
         articulations_len += i;
     );
 
-    // Arguments: (type+dstchannel+dstbus, param1+noroute, param2+currentroute)
+    // Arguments: (type+dstchannel+dstbus+haschan+hasbus, param1+noroute, param2+usedefaultroute)
     (opcode == OPCODE_ADD_OUTPUT_EVENT) ? (
         // Get pointer to current output event.
         event = articulations + articulations_len;
         last_new_output_event = event;
         event[0] = (a0 & 0xff) | (a1 << 8) | (a2 << 16);
         // Bits 16-19 of slot 1 hold the dst bus which is passed to us here in
-        // bits 8-11 of the first parameter.  Ok, that's a bit convoluted, but
-        // it avoids using an extra parameter for this opcode.
+        // bits 8-11 of the first arg.  Ok, that's a bit convoluted, but it
+        // avoids using an extra parameter for this opcode.
         event[1] = (a0 & 0x0f00) << 8;
+        // Bit 12 of a0 == bit 20 of slot 1 which is whether event has explicit dst chan
+        // Bit 13 of a0 == bit 21 of slot 1 which is whether event has explicit dst bus
+        event[1] |= (a0 & 0x3000) << 8;
 
         // TODO: can remove this as we won't support opcodes from older versions of the lua script
         // v1 output events have additional options
@@ -2289,31 +2310,31 @@ local(bank, msb, lsb, program)
 );
 
 
-function _enqueue_articulation(channel, bus, program, except_program, overrides)
+function _enqueue_articulation(channel, bus, program, overrides)
 (
     // Do not enqueue articulation if it was already triggered since
     // activate() was called.  Fixes #44.
-    (program != except_program && program != -1 &&
-     activated_programs[program / 32] & (1 << (program % 32)) == 0) ? (
+    (program != -1 && activated_programs[program / 32] & (1 << (program % 32)) == 0) ? (
         stack_push(channel | (bus << 4) | (program << 8) | (overrides << 16));
     );
 );
 
 
 function emit_output_event(mpos, channel, bus, program, group, articulation, event, overrides, last_dstbuschan)
-local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus,
+local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus, has_dstchan, has_dstbus,
       param1, param2, should_route, use_current_routing, ch)
 (
+    has_dstchan = has_output_event_explicit_dstchannel(event);
+    has_dstbus = has_output_event_explicit_dstbus(event);
     flags = get_articulation_flags(articulation);
     output_type = get_output_event_type(event);
-    dstchannel = get_output_event_dstchannel(event);
+    dstchannel = has_dstchan ? get_output_event_dstchannel(event) : channel;
     dstchannel_bit = (1 << dstchannel);
-    dstbus = get_output_event_dstbus(event);
+    dstbus = has_dstbus ? get_output_event_dstbus(event) : bus;
     param1 = get_output_event_param1(event);
     param2 = get_output_event_param2(event);
     should_route = (overrides & 0x01) ? 0 : get_output_event_should_route(event);
     use_current_routing = (overrides & 0x02) ? 1 : get_output_event_use_current_routing(event);
-    (overrides & 0x04) ? dstbus = bus;
 
     (use_current_routing) ? (
         // Output event wants to use existing routing that was set up by a prior
@@ -2359,12 +2380,21 @@ local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus,
         mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_PITCH, param1, param2);
     );
     (output_type == OUTPUT_TYPE_ARTICULATION) ? (
-        // Here we have a referenced articulation we need to follow.  Push the articulation
-        // details onto the stack so that activate() below can continue processing them.
-        // The source channel of the enqueued articulation will assume this calling parent
-        // articulation's dst channel.
-        _enqueue_articulation(dstchannel, dstbus, param1, program,
-                              !should_route | (use_current_routing << 1) | 0x04 /* use dstbus */);
+        // Here we have a referenced articulation we need to follow.  Push the
+        // articulation details onto the stack so that activate() below can
+        // continue processing them.
+        //
+        // The source channel and bus of the enqueued articulation will assume
+        // this calling parent articulation's dst channel and bus in case the
+        // any of the cascade articulations' output event(s) do not explicitly
+        // define a channel or bus.
+        _enqueue_articulation(dstchannel, dstbus, param1,
+                              !should_route | (use_current_routing << 1));
+        // Unless this art output event has an explicit dst channel or bus,
+        // skip routing and defer to the cascade articulations(s).
+        (!has_dstchan && !has_dstbus) ? (
+            should_route = 0;
+        );
     );
 
     (should_route && !use_current_routing) ? (
@@ -2448,10 +2478,10 @@ local(articulation, num_outputs, group, control, current_program, flags,
     // output events, retrigger all active articulations if they are different
     // than this program that was just activated.
     (flags & ARTICULATION_FLAG_IS_FILTER) ? (
-        _enqueue_articulation(channel, bus, get_active_program(channel, 0), program, overrides);
-        _enqueue_articulation(channel, bus, get_active_program(channel, 1), program, overrides);
-        _enqueue_articulation(channel, bus, get_active_program(channel, 2), program, overrides);
-        _enqueue_articulation(channel, bus, get_active_program(channel, 3), program, overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 0), overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 1), overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 2), overrides);
+        _enqueue_articulation(channel, bus, get_active_program(channel, 3), overrides);
     );
 
     this.mpos = mpos;
@@ -2459,8 +2489,8 @@ local(articulation, num_outputs, group, control, current_program, flags,
 );
 
 function activate(mpos, channel, program)
-local (group, cascade_channel, cascade_program, cascade_articulation, cascade_group, cascade_overrides,
-       dstbuschan, routing_changed, r, transform, g, active)
+local (group, cascade_channel, cascade_program, cascade_articulation, cascade_overrides,
+       cascade_group_bit, visited_groups, dstbuschan, routing_changed, r, transform, g, active)
 (
     // This array keeps track of activated programs to avoid loops via art
     // output events.
@@ -2500,6 +2530,7 @@ local (group, cascade_channel, cascade_program, cascade_articulation, cascade_gr
         // This allows a form of indirection between articulations.  Fixes #18.
         stack_peek(0) ? (
             group = get_articulation_group(articulation);
+            visited_groups = 1 << group;
             while (stack_peek(0)) (
                 stack_pop(artinfo);
                 cascade_channel = (artinfo & 0x0000000f) >> 0;
@@ -2508,15 +2539,16 @@ local (group, cascade_channel, cascade_program, cascade_articulation, cascade_gr
                 cascade_overrides = (artinfo & 0x00ff0000) >> 16;
                 cascade_articulation = get_articulation(cascade_channel, cascade_program);
                 (cascade_articulation) ? (
-                    cascade_group = get_articulation_group(cascade_articulation);
+                    cascade_group_bit = 1 << get_articulation_group(cascade_articulation);
                     // Trigger the referenced articulation but don't actually cause the UI
-                    // to update unless the group is different than the initial entry
-                    // articulation's group.
+                    // to update unless the articulation is for a group we haven't yet
+                    // activated an articulation for (between parent and cascades).
                     r._activate(mpos, cascade_channel, cascade_bus, cascade_program,
-                                cascade_articulation, cascade_group != group,
+                                cascade_articulation, visited_groups & cascade_group_bit == 0,
                                 cascade_overrides, last_dstbuschan);
                     mpos = r.mpos;
                     routing_changed |= r.routing_changed;
+                    visited_groups |= cascade_group_bit;
                     // Ensure transformation from the cascade articulation is applied
                     // to the parent articulation's src channel (not the cascade channel).
                     // This may get overwritten below if the parent articulation itself

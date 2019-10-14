@@ -877,7 +877,9 @@ function rfx.sync_banks_to_rfx()
                         end
                         local typechannel = (output_type_to_rfx_param[output.type] or 0) |
                                             ((outchannel - 1) << 4) |
-                                            ((outbus - 1) << 8)
+                                            ((outbus - 1) << 8) |
+                                            ((output.channel and 1 or 0) << 12) |
+                                            ((output.bus and 1 or 0) << 13)
                         rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, {typechannel, param1, param2})
                         if output.filter_program then
                             -- Filter program is set: add output event extension 0.
