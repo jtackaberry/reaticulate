@@ -1,3 +1,54 @@
+# 0.3.90 - October 14, 2019
+
+## Overview
+
+Although this release contains several new features and fixes, the bulk of the work has been toward a significant internal design overhaul of how the main app communicates with the per-track Reaticulate JSFX instances ([#62](https://github.com/jtackaberry/reaticulate/issues/62)), plus improved flexibility of how articulation and output event options are processed by the JSFX.
+
+These changes pave the way for more sophisticated features than were previously possible (some of which are included in this release), but despite my best efforts in testing, the sheer volume and complexity of these changes means regressions are probable.
+
+Your help testing this pre-release is very much appreciated.  Do **backup your projects first** as those saved with this version will be incompatible with older Reaticulate versions.  (This is generally true of major releases.)
+
+Note: Reaper 5.97 (released on February 21, 2019) or later is now required.
+
+
+## New Features
+
+* This release introduces support for multiple MIDI buses.  Anywhere previously involving a destination MIDI channel can now optionally include a MIDI bus number as well.  Among other things, this allows for better integration with Vienna Ensemble Pro. ([#73](https://github.com/jtackaberry/reaticulate/issues/73))
+* Articulations can now define transformations to incoming notes after the articulation is activated.  These include transposing the notes, a velocity multiplier, and pitch and velocity range clamping. ([#72](https://github.com/jtackaberry/reaticulate/issues/72))
+* Output events can now be routed to destination channels set up by the previous articulation by using `-` as the channel ([#42](https://github.com/jtackaberry/reaticulate/issues/42))
+* Output events can now send pitch bend MIDI messages ([#60](https://github.com/jtackaberry/reaticulate/issues/60))
+* Double clicking an articulation or invoking any of the activate articulation actions twice within 500ms will force insert the articulation in the MIDI item at the edit cursor.  (This is equivalent to right clicking, which behavior still exists.)
+   - The old behavior of always inserting when step record is enabled has been removed in favor of this consistent approach.
+
+
+Documentation on the website (https://reaticulate.com) has been updated to reflect these new features.
+
+
+
+## Minor Enhancements
+
+* Bank messages (set with the 'm' attribute in the bank definition) can now be viewed from Reaticulate's main articulation list screen
+* Errors and other problems with banks or track configuration are now more visible in the articulation list screen
+* Linux: preliminary support
+* Added tremolo-180-con-sord icon
+* Many other small GUI refinements
+
+
+
+## Bug Fixes
+
+* Fixed problem where insertion of articulations could not be undone by Reaper's undo action
+* Fixed bug where 'art' type output events combined with filter programs could hang Reaper (infinite loop)
+* Fixed bug where activating an articulation that acts as a filter to another articulation's 'art' output events could activate the wrong child program
+* Fixed bug when MIDI controller feedback was enabled where Reaticulate would sometimes install sends to the wrong track when a new project was opened
+* Mac: use the Reaper theme background color for Reaticulate's window
+* Fixed bug when opening the Reabank file editor on Windows when the path contained spaces
+* Fixed rare crash when last touch fx becomes invalid
+* Factory banks: Fixed trills and tongued legato for the Herring Clarinet
+* Do not clear serialized variables in @init per JSFX docs ([#65](https://github.com/jtackaberry/reaticulate/issues/65))
+
+
+
 # 0.3.2 - August 3, 2019
 
 This is release fixes a regression introduced in 0.3.0.
