@@ -383,7 +383,7 @@ function rfx.sync(track, forced)
         return track_changed
     end
     if track_changed then
-        rfx.subscribe(rfx.SUBSCRIPTION_CC | rfx.SUBSCRIPTION_NOTES)
+        rfx.subscribe(rfx.SUBSCRIPTION_NOTES) -- | rfx.SUBSCRIPTION_CC)
         -- Track changed, need to update banks_by_channel map
         rfx.reabank_version = (rfx.metadata >> 8) & 0xff
         rfx.appdata = rfx._read_appdata()
@@ -430,7 +430,7 @@ function rfx.sync(track, forced)
         end
         if change_bitmap & (1 << 1) ~= 0 then
             -- Sync active notes.
-            local notes_offset = reaper.gmem_read(offset + 1) & 0xff
+            local notes_offset = reaper.gmem_read(offset + 1) & 0xffff
             local last_notes = rfx.active_notes
             rfx.active_notes = reaper.gmem_read(offset + notes_offset)
             if rfx.active_notes ~= last_notes then
@@ -438,7 +438,7 @@ function rfx.sync(track, forced)
             end
         end
         if change_bitmap & (1 << 3) ~= 0 then
-            local cc_offset = reaper.gmem_read(offset + 3) & 0xff
+            local cc_offset = reaper.gmem_read(offset + 3) & 0xffff
             local v = reaper.gmem_read(offset + cc_offset + 1)
             rfx.onccchange()
         end
@@ -448,7 +448,7 @@ end
 
 function rfx.get_cc_value(cc)
     local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_INSTANCE_DATA)
-    local cc_offset = reaper.gmem_read(offset + 3) & 0xff
+    local cc_offset = reaper.gmem_read(offset + 3) & 0xffff
     return reaper.gmem_read(offset + cc_offset + cc)
 end
 

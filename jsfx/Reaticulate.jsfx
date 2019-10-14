@@ -220,7 +220,7 @@ GMEM_GIDX_APP_DATA_OFFSET = 21;
 // RFX_VERSION 2
 //
 //   slot 0: bitmap of things that have changed.  RFX sets, main script clears.
-//     bit 0: unused
+//     bit 0: unused (explicitly to ensure bit n corresponds to slot n)
 //     bit 1: active notes
 //     bit 2: programs
 //     bit 3: CCs for default channel
@@ -251,6 +251,9 @@ GMEM_GIDX_APP_DATA_OFFSET = 21;
 //      the default channel.
 
 GMEM_GIDX_INSTANCE_DATA_OFFSET = 22;
+// Helper constant that points within the instance data to the slot of the
+// first change data, which is equivalent to slot[1] & 0xffff;
+GMEM_INSTANCE_DATA_FIRST_IDX = 33;
 
 
 // A bitmap of things the main script is interested in having us process, such
@@ -646,6 +649,10 @@ transform_by_channel = getptr(MAX_CHANNELS * TRANSFORM_LEN);
 // There will be no gaps, so if the first slot is 0, then there are no held
 // keyswitches for that channel/group.
 //
+// Note: we don't need to store the dstbuschan here. A note-hold output event
+// can only have 1 destination bus.  So we track that in slot 1 along with
+// the channel.
+//
 // Serialized.
 held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
 
@@ -685,8 +692,8 @@ program_change_mpos_delta = getptr(MAX_CHANNELS);
 // Current programs on each source channel indexed by group.  Arranged in sets
 // of 4 consecutive slots, with each set of 4 representing a different
 // articuulation group.  The 4 slots hold the program number for 16 source MIDI
-// channels.  See GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the
-// same.
+// channels.  A value of 128 indicates that the program is not set.  See
+// GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the same.
 //
 // Serialized.
 current_programs = getptr(MAX_CHANNELS * MAX_GROUPS);
@@ -1333,35 +1340,8 @@ local(i, j, k, version, ext, ptr, idx, oidx, channel, group, program, articulati
 );
 
 
-function gmem_write_current_ccs()
-local(offset, poffset, channel, i)
-(
-    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
-    poffset = offset + (gmem[offset + 3] & 0xff);
-    channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
-    i = 0; loop(128,
-        gmem[poffset + i] = last_ccs_by_channel[channel * MAX_CHANNELS + i];
-        i += 1;
-    );
-    gmem[offset] |= (1 << 3);
-);
-
-function gmem_write_current_programs()
-local(offset, poffset, i)
-(
-    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
-    // Write current programs to gmem buffer.
-    poffset = offset + (gmem[offset + 2] & 0xff);
-    i = 0; loop(current_programs_len,
-        gmem[poffset + i] = current_programs[i];
-        i += 1;
-    );
-    gmem[offset] |= (1 << 2);
-);
-
-
 function gmem_write_active_notes()
-local(offset, bitmap, notes, i)
+local(bitmap, notes, i, offset, poffset)
 (
     bitmap = 0;
     notes = active_notes_by_channel;
@@ -1374,8 +1354,10 @@ local(offset, bitmap, notes, i)
     );
 
     offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
-    (gmem[offset + 33] != bitmap) ? (
-        gmem[offset + 33] = bitmap;
+    poffset = offset + (gmem[offset + 1] & 0xffff);
+
+    (gmem[poffset] != bitmap) ? (
+        gmem[poffset] = bitmap;
         gmem[offset] |= (1 << 1);
         // Return 1 to indicate active notes bitmap changed.
         1;
@@ -1385,16 +1367,42 @@ local(offset, bitmap, notes, i)
     );
 );
 
+
+function gmem_write_current_programs()
+local(offset, poffset, i)
+(
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    poffset = offset + (gmem[offset + 2] & 0xffff);
+    // Write current programs to gmem buffer.
+    i = 0; loop(current_programs_len,
+        gmem[poffset + i] = current_programs[i];
+        i += 1;
+    );
+    gmem[offset] |= (1 << 2);
+);
+
+
+function gmem_write_current_ccs()
+local(offset, poffset, channel, i)
+(
+    offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    poffset = offset + (gmem[offset + 3] & 0xffff);
+    channel = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
+    i = 0; loop(128,
+        gmem[poffset + i] = last_ccs_by_channel[channel * MAX_CHANNELS + i];
+        i += 1;
+    );
+    gmem[offset] |= (1 << 3);
+);
+
+
 // This function initializes the instance's region in the gmem buffer, and
 // assumes a gmem instance index has already been allocated via gmem_allocate(),
 function gmem_init()
-local(offset, poffset, i)
+local(offset, poffset, i, len)
 (
     slider2 = gmem_index;
     gmem_serial = gmem[GMEM_GIDX_SERIAL];
-
-    // ping = gmem[gmem_index + 2];
-    // gmem[gmem_index + 2] = ping + 1;
 
     // Copy user data.  memcpy() does *not* work for gmem buffers.
     offset = gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET];
@@ -1413,12 +1421,23 @@ local(offset, poffset, i)
 
     // First store offsets so main script knows where to look
     //
+    // Starting offset for instance data
+    i = GMEM_INSTANCE_DATA_FIRST_IDX;
+
     // Active notes: size is just 1 slot
-    gmem[offset + 1] = (33) | (1 << 16);
+    len = 1;
+    gmem[offset + 1] = i | (len << 16);
+    i += len;
+
     // Current programs.  Size is 16 slots per group * MAX_GROUPS
-    gmem[offset + 2] = (33 + 1) | ((MAX_CHANNELS * MAX_GROUPS) << 16);
+    len = MAX_CHANNELS * MAX_GROUPS;
+    gmem[offset + 2] = i | (len << 16);
+    i += len;
+
     // Current CCs on default channel.  Size is 128 slots (for 128 CCs).
-    gmem[offset + 3] = (33 + 1 + (MAX_CHANNELS * MAX_GROUPS)) | (128 << 16);
+    len = 128;
+    gmem[offset + 3] = i | (len << 16);
+    i += len;
 
     gmem_write_current_programs();
     gmem_write_current_ccs();
@@ -2023,7 +2042,7 @@ local(offset, poffset)
         // Does main app care about this data?
         (subscription & SUBSCRIPTION_CC != 0) ? (
             offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
-            poffset = offset + (gmem[offset + 3] & 0xff);
+            poffset = offset + (gmem[offset + 3] & 0xffff);
             (value != gmem[poffset + cc]) ? (
                 gmem[poffset + cc] = value;
                 gmem[offset] |= (1 << 3);
@@ -2034,20 +2053,22 @@ local(offset, poffset)
 );
 
 function update_current_channel_program(channel, new_program, group, flags)
-local(control, shift, current_program, offset, program_offset, mask)
+local(control, shift, current_program, offset, poffset, program_offset, mask)
 (
-    program_offset = (group * MAX_CHANNELS) + channel;
     current_program = current_programs[program_offset];
 
     (new_program == current_program && flags & ARTICULATION_FLAG_TOGGLE) ? (
         new_program = 128;
     );
 
+    program_offset = (group * MAX_CHANNELS) + channel;
     current_programs[program_offset] = new_program;
 
     offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
+    poffset = offset + (gmem[offset + 2] & 0xffff);
+
     // Size is 16 slots per group * MAX_GROUPS
-    gmem[offset + 33 + 1 + program_offset] = new_program;
+    gmem[poffset + program_offset] = new_program;
     gmem[offset] |= (1 << 2);
 
     queue_increment_serial = 1;
