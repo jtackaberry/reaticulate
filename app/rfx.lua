@@ -48,7 +48,7 @@ local rfx = {
 
     OPCODE_SET_APPDATA = 12,
     OPCODE_CLEAR_ARTICULATION = 13,
-    OPCODE_PUSH_HISTORY = 14,
+    OPCODE_ADVANCE_HISTORY = 14,
     OPCODE_UPDATE_CURRENT_CCS = 15,
     OPCODE_SUBSCRIBE = 16,
 
@@ -910,8 +910,8 @@ function rfx.clear_channel_program(channel, group)
     rfx.opcode(rfx.OPCODE_CLEAR_ARTICULATION, {channel - 1, group - 1})
 end
 
-function rfx.activate_articulation(channel, program)
-    rfx.opcode(rfx.OPCODE_ACTIVATE_ARTICULATION, {channel, program})
+function rfx.activate_articulation(channel, program, flags)
+    rfx.opcode(rfx.OPCODE_ACTIVATE_ARTICULATION, {channel, program, flags or 0})
 end
 
 function rfx.subscribe(subscription, track, fx)

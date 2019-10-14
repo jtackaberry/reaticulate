@@ -359,7 +359,7 @@ OPCODE_CLEAR_ARTICULATION = 13;
 // of the undo serial slider.  We watch for changes to the undo serial slider
 // to detect when an undo has occurred.
 // ()
-OPCODE_PUSH_HISTORY = 14;
+OPCODE_ADVANCE_HISTORY = 14;
 
 // Updates the gmem instance data region with the current state of the CCs.
 // Called by the main script when the main script when the default channel
@@ -704,16 +704,18 @@ current_programs = getptr(MAX_CHANNELS * MAX_GROUPS);
 // Serialized.
 appdata = getptr(MAX_APPDATA_SLOTS);
 
+
+// Each history record contains the state of all current programs across all
+// channels and groups.  This is equivalent to current_programs_len.
+HISTORY_SLOT_SIZE = MAX_CHANNELS * MAX_GROUPS;
+
 // Maps undo serial (index) to the position in the undo_history array.
 // We support 100 different undo history states.  This is treated as a
 // ring buffer.
 //
 // Not serialized.
 undo_history = getptr(MAX_UNDO_SLOTS * HISTORY_SLOT_SIZE);
-
-// Each history record contains the state of all current programs across all
-// channels and groups.  This is equivalent to current_programs_len.
-HISTORY_SLOT_SIZE = current_programs_len;
+memset(undo_history, 128, MAX_UNDO_SLOTS * HISTORY_SLOT_SIZE);
 
 
 // Bitmap of SUBSCRIPTION_* constants based on last OPCODE_SUBSCRIBE
@@ -1500,6 +1502,35 @@ local(version, offset, i, bitmap, bit, curval)
     );
 );
 
+
+function save_history(slot)
+(
+    memcpy(undo_history + (slot * current_programs_len), current_programs, current_programs_len);
+);
+
+
+function process_undo(slot)
+local(idx, offset, channel, group, program)
+(
+    idx = slot * current_programs_len;
+    group = 0; loop(MAX_GROUPS,
+        channel = 0; loop(MAX_CHANNELS,
+            offset = (group * MAX_CHANNELS) + channel;
+            program = undo_history[idx + offset];
+            (program != current_programs[offset]) ? (
+                current_programs[offset] = program;
+                pending_activations[channel] = program | 0x0100;
+                have_pending_activations = 1;
+            );
+            channel += 1;
+        );
+        group += 1;
+    );
+    gmem_write_current_programs();
+    queue_increment_serial = 1;
+);
+
+
 function exec_opcode(opcode, a0, a1, a2, argc, argi)
 local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, version, i)
 (
@@ -1608,12 +1639,14 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
         articulations_len += i;
     );
 
-    // Arguments: (channel, program)
+    // Arguments: (channel, program, flags)
     (opcode == OPCODE_ACTIVATE_ARTICULATION) ? (
         // FIXME: this needs to support multiple groups per channel
         //
-        // 0x01 in a1 indicates the program requires activation.
-        pending_activations[a0] = a1 | 0x0100;
+        // Byte 0 holds the program number, byte 1 holds internal flags (where
+        // 0x01 indicates the program requires activation in the next @block),
+        // and byte 2 holds user flags.
+        pending_activations[a0] = a1 | 0x0100 | (a2 << 16);
         have_pending_activations = 1;
     );
 
@@ -1653,8 +1686,8 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
     );
 
     // Arguments: none
-    (opcode == OPCODE_PUSH_HISTORY) ? (
-        memcpy(undo_history + (slider62 * current_programs_len), current_programs, current_programs_len);
+    (opcode == OPCODE_ADVANCE_HISTORY) ? (
+        slider62 == 0 ? save_history(slider62);
         slider62 = (slider62 + 1) % MAX_UNDO_SLOTS;
         undo_serial = slider62;
         sliderchange(62);
@@ -1714,27 +1747,6 @@ local(idx, n_opcodes, queue_size, argc)
     );
 );
 
-
-function process_undo(slot)
-local(idx, offset, channel, group, program)
-(
-    idx = slot * current_programs_len;
-    group = 0; loop(MAX_GROUPS,
-        channel = 0; loop(MAX_CHANNELS,
-            offset = (group * MAX_CHANNELS) + channel;
-            program = undo_history[idx + offset];
-            (program != current_programs[offset]) ? (
-                current_programs[offset] = program;
-                pending_activations[channel] = program | 0x0100;
-                have_pending_activations = 1;
-            );
-            channel += 1;
-        );
-        group += 1;
-    );
-    gmem_write_current_programs();
-    queue_increment_serial = 1;
-);
 
 @gfx
 (slider9 || 1) ? (
@@ -1811,6 +1823,8 @@ local(idx, offset, channel, group, program)
     appdata_orig_len = 0;
     // Length of current_programs array
     current_programs_len = MAX_CHANNELS * MAX_GROUPS;
+    // Initialize current_programs to no program set.
+    memset(current_programs, 128, current_programs_len);
 );
 
 // Only serialize if we are writing, or if we're reading but also in the
@@ -1843,8 +1857,13 @@ local(idx, offset, channel, group, program)
     // New for multibus
     file_mem(0, channel_map, MAX_CHANNELS * DSTBUSCHAN_LEN);
     nserr += 1;
-
 );
+
+
+(instance_id == -1) ? (
+    gmem_allocate();
+);
+
 
 // This is done exactly once in the life of the RFX.
 !serialized_version ? (
@@ -1955,13 +1974,6 @@ file_avail(0) >= 0 ? (
         serialized_version = 3;
     );
 
-    (instantiating == 0) ? (
-        // First initialization of JSFX.  Do startup things.
-        generate_articulation_luts();
-        // Reset undo serial.
-        slider62 = 0;
-    );
-
     (slider62 != undo_serial) ? (
         // The undo slider doesn't match our cached undo serial, so an undo was
         // performed.  We maintain our own undo state (at least for program changes)
@@ -1973,14 +1985,19 @@ file_avail(0) >= 0 ? (
         undo_serial = slider62;
     );
 
-    // We're in a read (and by now will have restored all state), so allocate
-    // and initialize the gmem buffer if necessary.
-    (instance_id == -1) ? (
-        gmem_allocate();
-        instantiating = 1;
-    );
+    // We're in a read (and by now will have restored all state), regenerate LUTs
+    // and write current state to gmem buffer.
+    generate_articulation_luts();
+    gmem_init();
 ) : (
     nserw += 1;
+);
+
+(instantiating == 0) ? (
+    // First initialization of JSFX.  Do startup things.
+    // Reset undo serial.
+    slider62 = 0;
+    instantiating = 1;
 );
 
 // The code below is executed on any instantiation or undo.
@@ -2672,11 +2689,18 @@ function get_active_dstbuschan_by_note(channel, note)
     channel = 0; loop(MAX_CHANNELS,
         program = pending_activations[channel];
         (program & 0x0100) ? (
+            // User flag which indicates we should remember this articulation change
+            // in the undo history.
+            history_flag = program & 0x010000;
             program = program & 0xff;
             // Set byte 1 to 0x02 to indicate the requested program change is processed.
             pending_activations[channel] = program | 0x0200;
             activate(0, channel, program);
+            (history_flag) ? (
+                save_history(undo_serial);
+            );
         );
+
         channel += 1;
     );
 );

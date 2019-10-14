@@ -260,14 +260,22 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         local item = reaper.GetMediaItemTake_Item(take)
         reaper.UpdateItemInProject(item)
 
-        local serial = rfx.get_param(rfx.params.history_serial)
-        rfx.opcode(rfx.OPCODE_PUSH_HISTORY)
+        -- Advances the undo history serial slider in the JSFX.  This causes the
+        -- old value to be retained in Reaper's undo history.  We actually store
+        -- the state for the new undo slot below in rfx.activate_articulation().
+        rfx.opcode(rfx.OPCODE_ADVANCE_HISTORY)
         rfx.opcode_flush()
 
         local track = reaper.GetMediaItem_Track(item)
         reaper.MarkTrackItemsDirty(track, item)
         reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. art.name .. ")", UNDO_STATE_ITEMS | UNDO_STATE_FX)
-        rfx.activate_articulation(channel, art.program)
+        -- The 1 for flags indicates this articulation (plus other channels)
+        -- should be saved by the JSFX in the new undo history slot (having
+        -- advanced it above).  This allows redo after an undo if it's the last
+        -- program change in the undo history, and also ensures that if we undo
+        -- we restore this articulation instead of temporary changes the user
+        -- may have done in the interim.
+        rfx.activate_articulation(channel, art.program, 1)
         reaper.PreventUIRefresh(-1)
     else
         rfx.activate_articulation(channel, art.program)
