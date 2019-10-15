@@ -915,7 +915,6 @@ function App:handle_onupdate()
     -- Having called rfx.sync(), if rfx.fx is set then this is a Reaticulate-enabled track.
     if rfx.fx then
         -- If the main screen is hidden, show it now.
-        -- XXX: uncomment me
         if #self.screens.stack == 1 and current_screen ~= self.screens.banklist then
             self:replace_screen('banklist')
         end
@@ -924,13 +923,17 @@ function App:handle_onupdate()
             self:sync_midi_editor(hwnd)
             self.last_midi_hwnd = hwnd
         end
-    -- FIXME: if in trackcfg and then switched to a non-rfx track, we should
-    -- swap the banklist's slot in the screen stack for the installer.
     elseif #self.screens.stack == 1 then
         self.screens.installer.update()
         if current_screen ~= self.screens.installer then
             self:replace_screen('installer')
         end
+    elseif current_screen == self.screens.trackcfg then
+        -- If currently in trackcfg and we switched to a non-rfx track, then
+        -- back out of the trackcfg screen and show the installer.
+        self.screens.installer.update()
+        self:pop_screen()
+        self:replace_screen('installer')
     end
 
     local hwnd = rfx.fx and self.last_midi_hwnd or reaper.MIDIEditor_GetActive()
