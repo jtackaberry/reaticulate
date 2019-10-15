@@ -133,6 +133,8 @@ local rfx = {
 
     -- The available number of slots for opcodes (GMEM_IIDX_INSTANCE_DATA - GMEM_IDX_APP_DATA)
     GMEM_OPCODES_BUFFER_SIZE = 1000 - 100,
+    -- Available number of slots for app data
+    GMEM_APP_DATA_BUFFER_SIZE = 2000 - 1000,
 
     -- Constants for the rfx.error value.
     ERROR_NONE = nil,
@@ -573,7 +575,7 @@ function rfx.validate(track, fx)
         -- bump the opcode param to force the rfx to gmem_alloc() inside @slider
         -- and then try fetching again.  But meanwhile, it's not the end of the
         -- world if we wait until the next cycle, we'll just get a bit of a flicker.
-        log.error("rfx: instance missing gmem_index")
+        log.warn("rfx: instance missing gmem_index")
         return nil, nil, nil, nil, nil, rfx.ERROR_MISSING_RFX
     end
     return fx, metadata, version, params, gmem_index, nil
@@ -1283,8 +1285,13 @@ end
 -- Serialize and store the given appdata table in the RFX.
 function rfx._write_appdata(track, fx, appdata)
     local str = binser.serialize(appdata)
-    -- TODO: check size of str to ensure it fixes within bounds (we have room
-    -- for 1000 24-bit slots, so 3k of appdata)
+    if #str > rfx.GMEM_APP_DATA_BUFFER_SIZE * 3 then
+        -- We don't have enough room to store the app data.  This really shouldn't
+        -- happen except in case of a bug, so log the critical error (which will
+        -- cause the console to popup if it's not already visible) and bail.
+        log.critical('rfx: instance app data exceeds allowable size (%s)', #str)
+        return
+    end
     local offset = rfx.get_gmem_index(track, fx, rfx.GMEM_IIDX_APP_DATA)
     -- serialization protocol version (may not ever be used but allocating in case)
     reaper.gmem_write(offset + 0, 1)
