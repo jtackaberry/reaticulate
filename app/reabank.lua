@@ -215,10 +215,13 @@ function Articulation:describe_outputs()
         local s = nil
         local verb = 'Sends'
         local channel = nil
-        if output.channel == -1 then
+        if output.channel == 0 then
             channel = 'current channels'
         elseif output.channel then
             channel = string.format('ch %d', output.channel)
+        end
+        if output.bus then
+            channel = (channel and (channel .. ' ') or '') .. string.format('bus %s', output.bus)
         end
 
         if output.type == 'program' then
