@@ -2810,6 +2810,9 @@ function rtk.Entry:calcview()
     local curx = self.positions[self.caret]
     local curoffset = curx - self.loffset
     local contentw = self.cw - (self.lpadding + self.rpadding)
+    if self.icon then
+        contentw = contentw - self.icon.width - 5
+    end
     if curoffset < 0 then
         self.loffset = curx
     elseif curoffset > contentw then
@@ -2819,7 +2822,8 @@ end
 
 function rtk.Entry:_rendertext(x, y)
     rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
-    self.image:drawfrom(gfx.dest, x + self.lpadding, y + self.tpadding, 0, 0, self.image.width, self.image.height)
+    self.image:drawfrom(gfx.dest, x + self.lpadding, y + self.tpadding,
+                        self.loffset, 0, self.image.width, self.image.height)
     rtk.push_dest(self.image.id)
     self:setcolor(rtk.theme.text)
     gfx.x, gfx.y = 0, 0
@@ -2910,7 +2914,7 @@ end
 -- Given absolute coords of the text area, determine the caret position from
 -- the mouse down event.
 function rtk.Entry:caret_from_mousedown(x, y, event)
-    local relx = self.loffset + event.x - x
+    local relx = self.loffset + event.x - x - (self.icon and (self.icon.width + 5) or 0)
     for i = 1, self.value:len() + 1 do
         if relx < self.positions[i] then
             return i - 1
