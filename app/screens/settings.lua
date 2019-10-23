@@ -63,6 +63,13 @@ local function add_row(section, label, w, spacing)
     return row
 end
 
+
+function add_tip(section, lpadding, text)
+    local label = rtk.Label:new({label=text, focusable=true, wrap=true})
+    return section:add(label, {lpadding=lpadding, valign=rtk.Widget.CENTER, spacing=20})
+end
+
+
 function screen.init()
     screen.warning_icon = app:get_image("warning_amber_24x24.png")
     screen.vbox = rtk.VBox({rpadding=10})
@@ -129,9 +136,8 @@ function screen.init()
     end
     screen.midi_device_menu = menu
 
-    local row = add_row(section, "", 75)
-    local info = row:add(rtk.Label:new({focusable=true, wrap=true}), {valign=rtk.Widget.CENTER, spacing=20})
-    info:attr('label', 'Device must be enabled for output.')
+    local info = add_tip(section, 85, 'Device must be enabled for output')
+    info.cursor = rtk.mouse.cursors.hand
     info.onmouseenter = function() return true end
     info.onclick = function()
         -- If the label is clicked open the Prefs dialog.
@@ -207,6 +213,24 @@ function screen.init()
         app:set_debug(tonumber(menu.selected_id))
     end
 
+    local row = add_row(section, "Background:", 75)
+    local text = row:add(rtk.Entry({label="Hex code", w=75}))
+    local icon = app:get_image("edit_white_18x18.png")
+    local button = row:add(rtk.Button({icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3, color='#ff0000'}))
+    button.onclick = function()
+        local ok, color = reaper.GR_SelectColor(0)
+        if ok ~= 0 then
+            text:attr('value', int2hex(color))
+        end
+    end
+    text.onchange = function(text)
+        local bg = (text.value and #text.value > 0) and text.value or rtk.get_reaper_theme_bg()
+        button:attr('color', bg)
+        app.config.bg = text.value
+        app:save_config()
+    end
+    text:attr('value', app.config.bg)
+    add_tip(section, 85, 'Leave empty to use theme default.  Restart needed!')
 
     -- Show a warning if the js_ReaScriptAPI isn't installed.
     if not rtk.has_js_reascript_api then
