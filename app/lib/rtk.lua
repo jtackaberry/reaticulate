@@ -1196,14 +1196,19 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                 table.insert(rtk.drag_candidates, self)
             end
         elseif event.type == rtk.Event.MOUSEUP then
-            if not event.handled and self:focused() then
-                if event.time - self.last_click_time <= 0.5 then
-                    self:ondblclick(event)
+            if not event.handled then
+                if self:onmouseup() then
+                    event:set_handled(self)
                 end
-                self.last_click_time = event.time
-                rtk.set_mouse_cursor(self.cursor)
-                self:onclick(event)
-                event:set_handled(self)
+                if self:focused() then
+                    rtk.set_mouse_cursor(self.cursor)
+                    self:onclick(event)
+                    if event.time - self.last_click_time <= 0.5 then
+                        self:ondblclick(event)
+                    end
+                    self.last_click_time = event.time
+                    event:set_handled(self)
+                end
             end
             -- rtk.dragging and rtk.dropping are also nulled (as needed) in rtk.update()
             if rtk.dropping == self then
@@ -1429,6 +1434,10 @@ function rtk.Widget:onmousedown(event)
         return false
     end
 end
+
+-- Called when the mouse button is released over the widget, which may or
+-- may not be a focused widget (or even focusable)
+function rtk.Widget:onmouseup(event) end
 
 -- Called when the mousewheel is moved while hovering.  The default
 -- implementation does nothing.  Returning true indicates the event
