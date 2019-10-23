@@ -1,3 +1,26 @@
+# 0.3.91 - October 23, 2019
+
+These are the changes since the last prerelease (0.3.90):
+
+## New Features
+
+* Allow user-configurable background color (in Settings page)
+
+
+## Minor Enhangements
+
+* Improved text entry widget behavior
+* Add bus number to output event description in status bar
+* Clean up after deleted/deactivated Reaticulate JSFX instances ([#77](https://github.com/jtackaberry/reaticulate/issues/77))
+* Minor robustness improvements
+
+## Bug Fixes
+
+* Fix regression from 0.3.90 where output events' destination channels would be ignored
+* Fix unreadable status bar text on light themes
+
+
+
 # 0.3.90 - October 14, 2019
 
 ## Overview
