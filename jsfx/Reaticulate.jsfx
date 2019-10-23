@@ -37,7 +37,7 @@ slider7:0<0,2147483647,1>-Unused
 slider8:0<0,2147483647,1>-Unused
 
 // For debugging
-slider9:1<0,1,1{Off, On}>Show Debugging
+slider9:0<0,1,1{Off, On}>Show Debugging
 
 
 // DEPRECATED: can be removed in the future when serialized_version < 3 support
@@ -1211,11 +1211,11 @@ local(idx, channel)
 function update_transform_for_channel(channel, articulation)
 local(ext, transform)
 (
-    transform = transform_by_channel + (channel * TRANSFORM_LEN);
     ext = get_articulation_extension(articulation, ARTICULATION_EXTENSION_TRANSFORM);
     // Convert transformation data from the articulation extension, which is
     // a little bit more tightly packed than the transform_by_channel array format.
     (ext) ? (
+        transform = transform_by_channel + (channel * TRANSFORM_LEN);
         // Signals there are active transformations.  If this is set to 0 then
         // we can skip the transforms when sending the MIDI events.
         transform[0] = 1;
@@ -1619,17 +1619,10 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
         // Bit 13 of a0 == bit 21 of slot 1 which is whether event has explicit dst bus
         event[1] |= (a0 & 0x3000) << 8;
 
-        // TODO: can remove this as we won't support opcodes from older versions of the lua script
-        // v1 output events have additional options
-        version = (last_new_articulation[1] & 0xf0) >> 4;
-        version == 1 ? (
-            // filter program + filter enabled
-            event[1] = gmem[argi + 3];
-        );
-
         // Increment events count.
         num_outputs = last_new_articulation[0] & 0x0f;
         last_new_articulation[0] = (last_new_articulation[0] & 0x7ffffff0) + (num_outputs + 1);
+        version = (last_new_articulation[1] & 0xf0) >> 4;
         articulations_len += get_output_event_record_size_by_version(version);
     );
 
