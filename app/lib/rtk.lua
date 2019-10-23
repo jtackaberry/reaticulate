@@ -35,9 +35,9 @@ function table.merge(dst, src)
 end
 
 function hex2rgb(s)
-    local r = tonumber(s:sub(2, 3), 16)
-    local g = tonumber(s:sub(4, 5), 16)
-    local b = tonumber(s:sub(6, 7), 16)
+    local r = tonumber(s:sub(2, 3), 16) or 0
+    local g = tonumber(s:sub(4, 5), 16) or 0
+    local b = tonumber(s:sub(6, 7), 16) or 0
     local a = tonumber(s:sub(8, 9), 16)
     return r / 255, g / 255, b / 255, a ~= nil and a / 255 or 1.0
 end
@@ -162,8 +162,9 @@ local rtk = {
             buttontext = '#ffffff',
             entry_border_hover = '#3a508e',
             entry_border_focused = '#4960b8',
-            entry_bg = '#353535',
+            entry_bg = '#5f5f5f7f',
             entry_label = '#ffffff8f',
+            entry_selection_bg = '#0066bb',
             scrollbar = '#ffffff',
         },
         light = {
@@ -176,8 +177,9 @@ local rtk = {
             text_faded = '#555555',
             entry_border_hover = '#3a508e',
             entry_border_focused = '#4960b8',
-            entry_bg = '#cccccc',
+            entry_bg = '#eeeeee7f',
             entry_label = '#0000007f',
+            entry_selection_bg = '#9fcef4',
             scrollbar = '#000000',
         }
     },
@@ -526,6 +528,18 @@ function rtk.update()
         rtk.onmove(last_x, last_y)
     end
 end
+
+function rtk.get_reaper_theme_bg()
+    -- Default to COLOR_BTNHIGHLIGHT which corresponds to "Main window 3D
+    -- highlight" theme element.
+    local idx = 20
+    if reaper.GetOS():starts('OSX') then
+        -- Determined empirically on Mac to match the theme background.
+        idx = 1
+    end
+    return int2hex(reaper.GSC_mainwnd(idx))
+end
+
 
 function rtk.set_theme(name, iconpath, overrides)
     rtk.theme = {}
@@ -962,6 +976,9 @@ function rtk.Widget:initialize()
     self.alpha = 1.0
     -- Mouse cursor to display when mouse is hovering over widget
     self.cursor = nil
+    -- If true, dragging widgets will cause parent viewports (if any) to display
+    -- the scrollbar while the child is dragging
+    self.show_scrollbar_on_drag = false
 
     -- Computed coordinates relative to widget parent container
     self.cx = nil
@@ -1273,8 +1290,11 @@ function rtk.Widget:_filter_attr(attr, value)
 end
 
 
-function rtk.Widget:setcolor(s)
+function rtk.Widget:setcolor(s, amul)
     local r, g, b, a = color2rgba(s)
+    if amul then
+        a = a * amul
+    end
     gfx.set(r, g, b, a * self.alpha)
     return self
 end
@@ -1713,7 +1733,7 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
 
     if event.type == rtk.Event.MOUSEMOVE then
         local vscroll_in_gutter = false
-        if child_dragging then
+        if child_dragging and rtk.dragging.show_scrollbar_on_drag then
             if rtk.mouse.y - 20 < y then
                 self:scrollby(10, -math.max(5, math.abs(y - rtk.mouse.y)))
             elseif rtk.mouse.y + 20 > y + self.ch then
@@ -1722,7 +1742,9 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
             -- Show scrollbar when we have a child dragging.
             self._vscrolla.target = 0.19
             self._vscrolla.delta = 0.03
-            event:set_handled(self)
+            -- XXX: commented out as it seems unnecessary but unsure why it was there
+            -- to begin with.
+            -- event:set_handled(self)
         elseif not rtk.dragging and not event.handled and hovering then
             if self.vscrollbar ~= rtk.Viewport.SCROLLBAR_NEVER and self._vscrollh > 0 then
                 local gutterx = self._vscrollx + offx - self.vscrollbar_gutter
@@ -2726,8 +2748,6 @@ end
 
 -------------------------------------------------------------------------------------------------------------
 
--- TODO: handle text selection with mouse and keyboard
--- TODO: handle ctrl-left/right for word skip
 rtk.Entry = class('rtk.Entry', rtk.Widget)
 rtk.Entry.static.MAX_WIDTH = 1024
 function rtk.Entry:initialize(attrs)
@@ -2747,6 +2767,7 @@ function rtk.Entry:initialize(attrs)
     self.icon = nil
     self.icon_alpha = 0.6
     self.label = ''
+    self.color = rtk.theme.text
     self.bg = rtk.theme.entry_bg
     self.border = {rtk.theme.entry_border_focused}
     self.border_hover = {rtk.theme.entry_border_hover}
@@ -2756,7 +2777,11 @@ function rtk.Entry:initialize(attrs)
     self.lpos = 1
     self.rpos = nil
     self.loffset = 0
-    self.anchor = -1
+    -- Character position where selection was started
+    self.selanchor = nil
+    -- Character position where where selection ends (which may be less than or
+    -- greater than the anchor)
+    self.selend = nil
     -- Array mapping character index to x offset
     self.positions = {0}
     self.image = rtk.Image:new()
@@ -2768,6 +2793,11 @@ function rtk.Entry:initialize(attrs)
     self.caretctr = 0
     self._blinking = false
     self._dirty = false
+    -- A table of prior states for ctrl-z undo.  Each entry is is an array
+    -- of {text, caret, selanchor, selend}
+    self._history = nil
+    self._last_dblclick_time = 0
+    self._num_dblclicks = 0
 
 end
 
@@ -2809,6 +2839,7 @@ function rtk.Entry:calcpositions(startfrom)
 end
 
 function rtk.Entry:calcview()
+    -- TODO: handle case where text is deleted from end, we want to keep the text right justified
     local curx = self.positions[self.caret]
     local curoffset = curx - self.loffset
     local contentw = self.cw - (self.lpadding + self.rpadding)
@@ -2822,16 +2853,26 @@ function rtk.Entry:calcview()
     end
 end
 
+
 function rtk.Entry:_rendertext(x, y)
     rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
     self.image:drawfrom(gfx.dest, x + self.lpadding, y + self.tpadding,
                         self.loffset, 0, self.image.width, self.image.height)
     rtk.push_dest(self.image.id)
-    self:setcolor(rtk.theme.text)
+
+    if self.selanchor then
+        local a, b  = self:get_selection_range()
+        self:setcolor(rtk.theme.entry_selection_bg)
+        gfx.rect(self.positions[a], 0, self.positions[b] - self.positions[a], self.image.height, 1)
+    end
+
+    self:setcolor(self.color)
     gfx.x, gfx.y = 0, 0
     gfx.drawstr(self.value)
     rtk.pop_dest()
+    self._dirty = false
 end
+
 
 function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
     rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
@@ -2870,7 +2911,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
     if self.label and #self.value == 0 then
         rtk.set_font(self.font, self.fontsize, self.fontscale, rtk.fonts.ITALICS)
         gfx.x, gfx.y = x + lpadding, y + self.tpadding
-        self:setcolor(rtk.theme.entry_label)
+        self:setcolor(self.color, 0.5)
         gfx.drawstr(self.label)
     end
 
@@ -2880,7 +2921,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
         end
     end
     if hover and event and event.type == rtk.Event.MOUSEDOWN then
-        self.caret = self:caret_from_mousedown(x + sx, y + sy, event)
+        self.caret = self:_caret_from_mouse_event(x + sx, y + sy, event)
     end
     if focused then
         if not self._blinking then
@@ -2892,7 +2933,7 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
         if self.caretctr % 32 < 16 then
             -- Draw caret
             local curx = x + self.positions[self.caret] + lpadding - self.loffset
-            self:setcolor(rtk.theme.text)
+            self:setcolor(self.color)
             gfx.line(curx, y + self.tpadding, curx, y + self.ch - self.bpadding, 0)
         end
     else
@@ -2915,9 +2956,9 @@ end
 
 -- Given absolute coords of the text area, determine the caret position from
 -- the mouse down event.
-function rtk.Entry:caret_from_mousedown(x, y, event)
+function rtk.Entry:_caret_from_mouse_event(x, y, event)
     local relx = self.loffset + event.x - x - (self.icon and (self.icon.width + 5) or 0)
-    for i = 1, self.value:len() + 1 do
+    for i = 2, self.value:len() + 1 do
         if relx < self.positions[i] then
             return i - 1
         end
@@ -2925,36 +2966,139 @@ function rtk.Entry:caret_from_mousedown(x, y, event)
     return self.value:len() + 1
 end
 
+function rtk.Entry:_get_word_left(spaces)
+    local caret = self.caret
+    if spaces then
+        while caret > 1 and self.value:sub(caret - 1, caret - 1) == ' ' do
+            caret = caret - 1
+        end
+    end
+    while caret > 1 and self.value:sub(caret - 1, caret - 1) ~= ' ' do
+        caret = caret - 1
+    end
+    return caret
+end
+
+function rtk.Entry:_get_word_right(spaces)
+    local caret = self.caret
+    local len = self.value:len()
+    while caret <= len and self.value:sub(caret, caret) ~= ' ' do
+        caret = caret + 1
+    end
+    if spaces then
+        while caret <= len and self.value:sub(caret, caret) == ' ' do
+            caret = caret + 1
+        end
+    end
+    return caret
+end
+
+
+function rtk.Entry:select_all()
+    self.selanchor = 1
+    self.selend = self.value:len() + 1
+    self._dirty = true
+    rtk.queue_draw()
+end
+
+function rtk.Entry:select_range(a, b)
+    local len = self.value:len()
+    if len == 0 or not a then
+        -- Regardless of what was asked, there is nothing to select.
+        self.selanchor = nil
+    else
+        self.selanchor = math.max(1, a)
+        self.selend = math.min(len + 1, b)
+    end
+    self._dirty = true
+    rtk.queue_draw()
+end
+
+function rtk.Entry:get_selection_range()
+    if self.selanchor then
+        return math.min(self.selanchor, self.selend), math.max(self.selanchor, self.selend)
+    end
+end
+
+function rtk.Entry:_copy_selection()
+    if self.selanchor then
+        local a, b = self:get_selection_range()
+        local text = self.value:sub(a, b - 1)
+        reaper.CF_SetClipboard(text)
+    end
+end
+
+function rtk.Entry:delete_selection()
+    if self.selanchor then
+        self:_push_history()
+        local a, b = self:get_selection_range()
+        self:delete_range(a - 1, b)
+        if self.caret > self.selanchor then
+            self.caret = math.max(1, self.caret - (b-a))
+        end
+        self._dirty = true
+        rtk.queue_draw()
+    end
+    return self.value:len()
+end
+
+function rtk.Entry:delete_range(a, b)
+    self.value = self.value:sub(1, a) .. self.value:sub(b)
+    self._dirty = true
+end
+
+function rtk.Entry:insert(text)
+    -- FIXME: honor self.max based on current len and size of text
+    self.value = self.value:sub(0, self.caret - 1) .. text .. self.value:sub(self.caret)
+    self:calcpositions(self.caret)
+    self.caret = self.caret + text:len()
+    self._dirty = true
+    rtk.queue_draw()
+    self:onchange()
+end
+
+function rtk.Entry:_push_history()
+    if not self._history then
+        self._history = {}
+    end
+    self._history[#self._history + 1] = {self.value, self.caret, self.selanchor, self.selend}
+end
+
+function rtk.Entry:_pop_history()
+    if self._history and #self._history > 0 then
+        local state = table.remove(self._history, #self._history)
+        self.value, self.caret, self.selanchor, self.selend = table.unpack(state)
+        self:calcpositions()
+        rtk.queue_draw()
+        self:onchange()
+    end
+end
+
 function rtk.Entry:_handle_event(offx, offy, event, clipped)
     if event.handled then
         return
     end
     rtk.Widget._handle_event(self, offx, offy, event, clipped)
-    if event.type == rtk.Event.KEY and self:focused() then
+    if not self:focused() then
+        return
+    end
+    if event.type == rtk.Event.KEY then
         if self:onkeypress(event) == false then
             return
         end
         event:set_handled(self)
         local len = self.value:len()
+        local orig_caret = self.caret
+        local selecting = event.shift
         if event.keycode == rtk.keycodes.LEFT then
             if event.ctrl then
-                while self.caret > 1 and self.value:sub(self.caret - 1, self.caret - 1) == ' ' do
-                    self.caret = self.caret - 1
-                end
-                while self.caret > 1 and self.value:sub(self.caret - 1, self.caret - 1) ~= ' ' do
-                    self.caret = self.caret - 1
-                end
+                self.caret = self:_get_word_left(true)
             else
                 self.caret = math.max(1, self.caret - 1)
             end
         elseif event.keycode == rtk.keycodes.RIGHT then
             if event.ctrl then
-                while self.caret <= len and self.value:sub(self.caret, self.caret) ~= ' ' do
-                    self.caret = self.caret + 1
-                end
-                while self.caret <= len and self.value:sub(self.caret, self.caret) == ' ' do
-                    self.caret = self.caret + 1
-                end
+                self.caret = self:_get_word_right(true)
             else
                 self.caret = math.min(self.caret + 1, len + 1)
             end
@@ -2963,30 +3107,100 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
         elseif event.keycode == rtk.keycodes.END then
             self.caret = self.value:len() + 1
         elseif event.keycode == rtk.keycodes.DELETE then
-            self.value = self.value:sub(1, self.caret - 1) .. self.value:sub(self.caret + 1)
+            if self.selanchor then
+                self:delete_selection()
+            else
+                if event.ctrl then
+                    self:_push_history()
+                    self:delete_range(self.caret - 1, self:_get_word_right(true))
+                else
+                    self:delete_range(self.caret - 1, self.caret + 1)
+                end
+            end
             self:calcpositions(self.caret)
             self:onchange()
-        elseif event.keycode == rtk.keycodes.BACKSPACE and self.caret > 1 then
-            self.value = self.value:sub(1, self.caret - 2) .. self.value:sub(self.caret)
-            self.caret = math.max(1, self.caret - 1)
-            self:calcpositions(self.caret)
-            self:onchange()
-        elseif event.char and not event.ctrl and (len == 0 or self.positions[len] < rtk.Entry.MAX_WIDTH) then
-            -- TODO: implement ctrl-c/ctrl-x/ctrl-v
-            if not self.max or len < self.max then
-                self.value = self.value:sub(0, self.caret - 1) .. event.char .. self.value:sub(self.caret)
+        elseif event.keycode == rtk.keycodes.BACKSPACE then
+            if self.caret > 1 then
+                if self.selanchor then
+                    self:delete_selection()
+                else
+                    if event.ctrl then
+                        self:_push_history()
+                        self.caret = self:_get_word_left(true)
+                        self:delete_range(self.caret - 1, orig_caret)
+                    else
+                        self:delete_range(self.caret - 2, self.caret)
+                        self.caret = math.max(1, self.caret - 1)
+                    end
+                end
                 self:calcpositions(self.caret)
-                self.caret = self.caret + 1
                 self:onchange()
+            end
+        elseif event.char and not event.ctrl and (len == 0 or self.positions[len] < rtk.Entry.MAX_WIDTH) then
+            len = self:delete_selection()
+            self:insert(event.char)
+            selecting = false
+        elseif event.ctrl and event.char and not event.shift then
+            if event.char == 'a' and len > 0 then
+                self:select_all()
+                -- Ensure selection doesn't get reset below because shift isn't pressed.
+                selecting = nil
+            elseif event.char == 'c' then
+                self:_copy_selection()
+                return
+            elseif event.char == 'x' then
+                self:_copy_selection()
+                self:delete_selection()
+            elseif event.char == 'v' then
+                self:delete_selection()
+                local fast = reaper.SNM_CreateFastString("")
+                local str =  reaper.CF_GetClipboardBig(fast)
+                self:insert(str)
+                reaper.SNM_DeleteFastString(fast)
+            elseif event.char == 'z' then
+                self:_pop_history()
+                selecting = nil
             end
         else
             return
         end
-        -- Reset caret
+        if selecting then
+            if not self.selanchor then
+                self.selanchor = orig_caret
+            end
+            self.selend = self.caret
+        elseif selecting == false then
+            self.selanchor = nil
+        end
+        -- Reset blinker
         self.caretctr = 0
         self:calcview()
         self._dirty = true
+        log.info('keycode=%s char=%s caret=%s ctrl=%s shift=%s sel: %s-%s', event.keycode, event.char, self.caret, event.ctrl, event.shift, self.selanchor, self.selend)
     end
+end
+
+function rtk.Entry:ondragstart(event)
+    self.selanchor = self.caret
+    self.selend = self.caret
+    return true
+end
+
+function rtk.Entry:ondragmousemove(event)
+    local ax = self.last_offx + self.sx + self.cx
+    local ay = self.last_offy + self.sy + self.cy
+    local selend = self:_caret_from_mouse_event(ax, ay, event)
+    if selend == self.selend then
+        return
+    end
+    self.selend = selend
+    -- This will force a reflow of this widget.
+    self:attr('caret', selend)
+end
+
+function rtk.Entry:ondragend(event)
+    -- Reset double click timer
+    self.last_click_time  = 0
 end
 
 function rtk.Entry:_filter_attr(attr, value)
@@ -2999,8 +3213,12 @@ end
 
 
 function rtk.Entry:onattr(attr, value, trigger)
+    -- Calling superclass here will queue reflow, which in turn will
+    -- automatically dirty rendered text and calcview().
     rtk.Widget.onattr(self, attr, value, trigger)
     if attr == 'value' then
+        self._history = nil
+        self.selanchor = nil
         -- After setting value, ensure caret does not extend past end of value.
         if self.caret >= value:len() then
             self.caret = value:len() + 1
@@ -3008,11 +3226,35 @@ function rtk.Entry:onattr(attr, value, trigger)
         if trigger then
             self:onchange()
         end
+    elseif attr == 'caret' then
+        self.caret = clamp(value, 1, self.value:len() + 1)
     end
 end
 
 function rtk.Entry:onclick(event)
-    rtk.Widget.focus(self)
+    if rtk.dragging ~= self then
+        self:select_range(nil)
+        rtk.Widget.focus(self)
+    end
+end
+
+function rtk.Entry:ondblclick(event)
+    if event.time - self._last_dblclick_time < 0.7 then
+        self._num_dblclicks = self._num_dblclicks + 1
+    else
+        self._last_dblclick_time = event.time
+        self._num_dblclicks = 1
+    end
+
+    if self._num_dblclicks == 2 then
+        -- Triple click selects all text
+        self:select_all()
+    else
+        local left = self:_get_word_left(false)
+        local right = self:_get_word_right(true)
+        self.caret = right
+        self:select_range(left, right)
+    end
 end
 
 function rtk.Entry:onchange() end
