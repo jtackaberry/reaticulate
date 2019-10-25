@@ -861,10 +861,12 @@ function App:build_frame()
     self.toolbar.dock.onclick = function()
         -- Restore last dock position but default to right dock if not previously docked.
         gfx.dock(self.config.last_dockstate or 513)
+        rtk.update()
     end
 
     self.toolbar.undock.onclick = function()
         gfx.dock(0)
+        rtk.update()
     end
 
     self:update_dock_buttons()
