@@ -826,7 +826,7 @@ function App:build_frame()
     toolbar:add(menubutton)
     menubutton.onchange = function(self)
         reabank.create_user_reabank_if_missing()
-        if reaper.GetOS():starts('Win') then
+        if rtk.os.windows then
             if self.selected == 1 then
                 reaper.ExecProcess('cmd.exe /C start /B notepad ' .. reabank.reabank_filename_user, -2)
             elseif self.selected == 2 then
@@ -834,7 +834,7 @@ function App:build_frame()
             elseif self.selected == 3 then
                 reaper.ExecProcess('cmd.exe /C explorer /select,' .. reabank.reabank_filename_user, -2)
             end
-        elseif reaper.GetOS():starts('OSX') then
+        elseif rtk.os.mac then
             if self.selected == 1 then
                 os.execute('open -a TextEdit "' .. reabank.reabank_filename_user .. '"')
             elseif self.selected == 2 then

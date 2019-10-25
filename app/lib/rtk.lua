@@ -195,6 +195,9 @@ local rtk = {
         button = nil,
         entry  = nil,
         heading = {'Calibri', 22, 98},
+
+        -- Font size multiplier, adjusted by platform
+        multiplier = 1.0
     },
 
     keycodes = {
@@ -212,6 +215,13 @@ local rtk = {
         END         = 6647396,
         INSERT      = 6909555,
         DELETE      = 6579564,
+    },
+
+    -- Set in rtk.init()
+    os = {
+        mac = false,
+        windows = false,
+        linux = false
     },
 
     onupdate = function() end,
@@ -591,6 +601,18 @@ function rtk._handle_dock_change(dockstate)
 end
 
 function rtk.init(title, w, h, dockstate, x, y)
+    -- Detect platform
+    local os = reaper.GetOS()
+    if os:starts('Win') then
+        rtk.os.windows = true
+    elseif os:starts('OSX') then
+        rtk.os.mac = true
+        rtk.fonts.multiplier = 0.9
+    elseif os:starts('Linux') then
+        rtk.os.linux = true
+        rtk.fonts.multiplier = 0.8
+    end
+
     -- Reusable event object.
     rtk._event = rtk.Event:new()
     rtk._backingstore = rtk.Image:new():create(w, h)
@@ -651,7 +673,7 @@ end
 
 
 function rtk.set_font(font, size, scale, flags)
-    gfx.setfont(1, font, size * scale * rtk.scale, flags or 0)
+    gfx.setfont(1, font, size * scale * rtk.scale * rtk.fonts.multiplier, flags or 0)
 end
 
 
@@ -2730,7 +2752,9 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
     end
     if self.vlabel then
         gfx.x = lx
-        gfx.y = sy + (self.ch - self.lh) / 2
+        -- XXX: it's unclear why we need to fudge the extra pixel on
+        -- OS X but it fixes alignment.
+        gfx.y = sy + (self.ch - self.lh) / 2 + (rtk.os.mac and 1 or 0)
         rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
         self:setcolor(textcolor)
         gfx.drawstr(self.vlabel)
