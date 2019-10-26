@@ -2444,8 +2444,8 @@ function rtk.Box:_reflow_step1(w, h, viewport)
                     )
                     wh = math.max(wh, minh)
                 end
-                maxw = math.max(maxw, ww)
-                maxh = math.max(maxh, wh)
+                maxw = math.max(maxw, ww + lpadding + rpadding)
+                maxh = math.max(maxh, wh + tpadding + bpadding)
                 if self.direction == rtk.Box.HORIZONTAL then
                     remaining_size = remaining_size - ww - lpadding - rpadding - spacing
                 else
