@@ -1296,8 +1296,10 @@ end
 -- prevent circular calls.
 function rtk.Widget:attr(attr, value, trigger)
     value = self:_filter_attr(attr, value)
-    self[attr] = value
-    self:onattr(attr, value, trigger == nil or trigger)
+    if value ~= self[attr] then
+        self[attr] = value
+        self:onattr(attr, value, trigger == nil or trigger)
+    end
     -- Return self to allow chaining multiple attributes
     return self
 end
