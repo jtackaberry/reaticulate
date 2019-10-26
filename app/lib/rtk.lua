@@ -727,12 +727,15 @@ function rtk.focus()
     end
 end
 
+local function _log_error(err)
+    log.exception('rtk: %s', err)
+end
 
 local function _run()
-    local status, err = pcall(rtk.update)
+    local status, err = xpcall(rtk.update, _log_error)
     if not status then
-        log.exception('rtk: update failed: %s', err)
         error(err)
+        return
     end
     if rtk.running then
         reaper.defer(_run)

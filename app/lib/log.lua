@@ -37,7 +37,7 @@ local log = {
     tl = nil,
 }
 
-local function flush_queue()
+function log.flush()
     reaper.ShowConsoleMsg(table.concat(log.queue))
     log.queue = {}
 end
@@ -49,7 +49,7 @@ local function enqueue(msg)
     -- into a single ShowConsoleMsg() call which significantly improves performance.
     local qlen = #log.queue
     if qlen == 0 then
-        reaper.defer(flush_queue)
+        reaper.defer(log.flush)
     end
     log.queue[qlen + 1] = msg
 end
@@ -97,6 +97,7 @@ end
 
 function log.exception(fmt, ...)
     log.log(log.ERROR, debug.traceback(), fmt, ...)
+    log.flush()
 end
 
 function log.trace(level)
