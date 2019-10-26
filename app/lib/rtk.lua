@@ -607,7 +607,7 @@ function rtk.init(title, w, h, dockstate, x, y)
         rtk.os.windows = true
     elseif os:starts('OSX') then
         rtk.os.mac = true
-        rtk.fonts.multiplier = 0.9
+        rtk.fonts.multiplier = 0.8
     elseif os:starts('Linux') then
         rtk.os.linux = true
         rtk.fonts.multiplier = 0.8
