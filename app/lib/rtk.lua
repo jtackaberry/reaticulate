@@ -84,6 +84,9 @@ local rtk = {
     w = gfx.w,
     h = gfx.h,
 
+    -- Frame rate (measured in rtk.update)
+    fps = 30,
+
     -- Last observed dock state for the window
     dockstate = nil,
     -- true if the mouse is positioned within the UI window
@@ -247,8 +250,80 @@ local rtk = {
     -- The last unique id assigned to a widget object
     _last_widget_serial = 0,
     -- A stack of blit dest ids,
-    _dest_stack = {}
+    _dest_stack = {},
+    -- A map of currently processing animations keyed on widget id and attr
+    -- name.  Each entry is a table in the form: {widget, attribute name,
+    -- easingfn, srcval, dstval, pct, pctstep, do_reflow, donefn}
+    _animations = {},
+    _animations_len = 0,
+    _easing_functions = {},
+    _frame_count = 0,
+    _frame_time = nil,
 }
+
+--
+-- Animation functions
+--
+local function _easing_linear(srcval, dstval, pct)
+    return srcval + (pct * (dstval - srcval))
+end
+
+
+local function _do_animations(now)
+    -- Calculate frame rate (rtk.fps)
+    if not rtk._frame_time then
+        rtk._frame_time = now
+        rtk._frame_count = 0
+    else
+        local duration = now - rtk._frame_time
+        if duration > 2 then
+            rtk.fps = rtk._frame_count / duration
+            rtk._frame_time = now
+            rtk._frame_count = 0
+        end
+    end
+    rtk._frame_count = rtk._frame_count + 1
+
+    -- Execute pending animations
+    if rtk._animations_len > 0 then
+        -- Queue tracking donefn for completed animations.  We don't want to
+        -- invoke the callbacks within the loop in case the callback queues
+        -- another animation.
+        local donefuncs = nil
+        for key, animation in pairs(rtk._animations) do
+            local widget, attr, easingfn, srcval, dstval, pct, pctstep, do_reflow, donefn = table.unpack(animation)
+            local pct = pct + pctstep
+            local lim = dstval > srcval and math.min or math.max
+            local newval = lim(dstval, easingfn(srcval, dstval, pct))
+            widget[attr] = newval
+            if newval == dstval then
+                -- Animation is done.
+                rtk._animations[key] = nil
+                rtk._animations_len = rtk._animations_len - 1
+                if donefn then
+                    if not donefuncs then
+                        donefuncs = {}
+                    end
+                    donefuncs[#donefuncs + 1] = {donefn, widget}
+                end
+                log.debug2('animation: done %s: %s -> %s on %s (%s)', attr, srcval, dstval, widget, widget.id)
+            else
+                animation[6] = pct
+            end
+            if do_reflow then
+                rtk._reflow_queued = true
+            end
+        end
+        if donefuncs then
+            for _, cbinfo in ipairs(donefuncs) do
+                cbinfo[1](cbinfo[2])
+            end
+        end
+        -- True indicates animations were performed
+        return true
+    end
+end
+
 
 function rtk.push_dest(dest)
     rtk._dest_stack[#rtk._dest_stack + 1] = gfx.dest
@@ -332,6 +407,7 @@ local function _get_mousemove_event(generated)
     return event
 end
 
+
 function rtk.update()
     gfx.update()
     local need_draw = rtk._draw_queued
@@ -339,6 +415,8 @@ function rtk.update()
         return true
     end
     local now = os.clock()
+
+    need_draw = _do_animations(now) or need_draw
 
     if gfx.w ~= rtk.w or gfx.h ~= rtk.h then
         rtk.w, rtk.h = gfx.w, gfx.h
@@ -612,6 +690,9 @@ function rtk.init(title, w, h, dockstate, x, y)
         rtk.os.linux = true
         rtk.fonts.multiplier = 0.8
     end
+
+    -- Register easing functions by name for rtk.Widget:animate()
+    rtk._easing_functions['linear'] = _easing_linear
 
     -- Reusable event object.
     rtk._event = rtk.Event:new()
