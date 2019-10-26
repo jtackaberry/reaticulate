@@ -148,6 +148,8 @@ local rtk = {
             size_all = 32646,
             size_ns = 32645,
             size_ew = 32644,
+            size_sw_ne = 32643,
+            size_nw_se = 32642,
             pointer_loading = 32650,
             pointer_help = 32651
         },
