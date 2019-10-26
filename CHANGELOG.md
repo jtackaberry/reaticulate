@@ -1,3 +1,26 @@
+# 0.3.92 - October 26, 2019
+
+These are the changes since the last prerelease (0.3.91):
+
+## New Features
+
+* Add option for undocked windows to be borderless (requires a fairly recent version of the js_ReaScript_API extension)
+* When the MIDI editor is open and notes are selected, articulations will insert just ahead of the first selected note rather than the edit cursor
+* Much better support for light themes
+
+
+
+## Minor Enhangements
+
+* Minor cosmetic enhancements, especially on Mac
+
+
+## Bug Fixes
+
+* Fix regression from 0.3.90 where output events may not be sent to the proper channel. (The fix for this in 0.3.91 was incomplete.)
+
+
+
 # 0.3.91 - October 23, 2019
 
 These are the changes since the last prerelease (0.3.90):
