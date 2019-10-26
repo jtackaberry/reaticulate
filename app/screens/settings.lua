@@ -91,6 +91,24 @@ function screen.init()
     screen.toolbar:add(back_button)
 
 
+    -- Show a warning if the js_ReaScriptAPI isn't installed.
+    if not rtk.has_js_reascript_api then
+        local hbox = screen.vbox:add(rtk.HBox:new({spacing=10}), {tpadding=20, bpadding=20, lpadding=20, rpadding=20})
+        hbox:add(rtk.ImageBox:new({image=screen.warning_icon}), {valign=rtk.Widget.TOP})
+        local vbox = hbox:add(rtk.VBox())
+        local label = vbox:add(rtk.Label({wrap=true}), {valign=rtk.Widget.CENTER})
+        label:attr(
+            'label',
+            "Reaticulate runs best when the js_ReaScriptAPI extension is installed."
+        )
+        local button = vbox:add(
+            rtk.Button({label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5}),
+            {tpadding=10}
+        )
+        button.onclick = function()
+            open_url('https://forum.cockos.com/showthread.php?t=212174')
+        end
+    end
 
     --
     -- Section: Behavior
@@ -142,7 +160,6 @@ function screen.init()
     end
     text:attr('value', app.config.bg)
     add_tip(section, 85, 'Leave blank to detect from theme. Restart required.')
-
 
     --
     -- Section: Feedback to Control Surface
@@ -245,26 +262,6 @@ function screen.init()
         app:set_debug(tonumber(menu.selected_id))
     end
 
-
-    -- Show a warning if the js_ReaScriptAPI isn't installed.
-    if not rtk.has_js_reascript_api then
-        local hbox = screen.vbox:add(rtk.HBox:new({spacing=10}), {tpadding=50, lpadding=20, rpadding=20})
-        hbox:add(rtk.ImageBox:new({image=screen.warning_icon}), {valign=rtk.Widget.TOP})
-        local vbox = hbox:add(rtk.VBox())
-        local label = vbox:add(rtk.Label({wrap=true}), {valign=rtk.Widget.CENTER})
-        label:attr(
-            'label',
-            "Reaticulate runs best when the js_ReaScriptAPI extension is installed."
-        )
-        local button = vbox:add(
-            rtk.Button({label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5}),
-            {tpadding=10}
-        )
-        button.onclick = function()
-            open_url('https://forum.cockos.com/showthread.php?t=212174')
-        end
-    end
-
     local button = screen.vbox:add(
         rtk.Button({
             label="Reaticulate Website",
@@ -275,7 +272,7 @@ function screen.init()
             tpadding=7, bpadding=7, lpadding=10, rpadding=10,
             alpha=0.6
         }),
-        {tpadding=40, halign='center'}
+        {tpadding=40, halign='center', stretch=true}
     )
     button.onclick = function()
         open_url('https://reaticulate.com')
