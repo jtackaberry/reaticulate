@@ -196,11 +196,24 @@ function App:activate_articulation(art, refocus, force_insert, channel)
 
     -- Find active take for articulation insertion.
     local take = nil
+    local ppq = nil
     if force_insert and force_insert ~= 0 then
         -- If MIDI Editor is open, use the current take there.
         local hwnd = reaper.MIDIEditor_GetActive()
         if hwnd then
             take = reaper.MIDIEditor_GetTake(hwnd)
+            -- If any notes are selected, choose the insertion point just ahead
+            -- of the note-on of the first selected note.
+            local idx = reaper.MIDI_EnumSelNotes(take, -1)
+            if idx ~= -1 then
+                local r, _, _, noteppq, _, _, _, _ = reaper.MIDI_GetNote(take, idx)
+                if r then
+                    -- Insert the articulation 3ms prior to the note-on.
+                    local offset = reaper.MIDI_GetPPQPosFromProjTime(take, 0.003) -
+                                   reaper.MIDI_GetPPQPosFromProjTime(take, 0)
+                    ppq = math.ceil(noteppq - offset)
+                end
+            end
         end
 
         -- If no active take in MIDI editor, try to find the current take on the
@@ -233,8 +246,11 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         --
         -- If the events at the ppq are program changes, we delete them (as we're about to replace
         -- them).
-        local cursor = reaper.GetCursorPosition()
-        local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
+        if not ppq then
+            -- There is no note selected in an open MIDI item, so default to the edit cursor
+            local cursor = reaper.GetCursorPosition()
+            ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
+        end
 
         local _, _, n_events, _ = reaper.MIDI_CountEvts(take)
         local skip = math.floor(n_events / 2)
