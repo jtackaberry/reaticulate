@@ -3586,10 +3586,10 @@ function rtk.OptionMenu:initialize(attrs)
     if not self.icon then
         if not rtk.OptionMenu._icon then
             -- Generate a new simple triangle icon for the button.
-            local icon = rtk.Image:new():create(24, 18)
+            local icon = rtk.Image:new():create(28, 18)
             self:setcolor(rtk.theme.text)
             rtk.push_dest(icon.id)
-            gfx.triangle(10, 6,  18, 6,  14, 10)
+            gfx.triangle(12, 7,  20, 7,  16, 11)
             rtk.pop_dest()
             rtk.OptionMenu.static._icon = icon
         end
