@@ -1270,9 +1270,12 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
             self:ondragmousemove(event, rtk.dragarg)
         end
         if self.hovering == true then
-            self:onmouseleave(event)
-            rtk.queue_draw()
-            self.hovering = false
+            -- Be sure not to trigger mouseleave if we're dragging this widget
+            if rtk.dragging ~= self then
+                self:onmouseleave(event)
+                rtk.queue_draw()
+                self.hovering = false
+            end
         elseif event.buttons ~= 0 and rtk.dropping then
             if rtk.dropping == self then
                 -- Dragging extended outside the bounds of the last drop target (we know because
