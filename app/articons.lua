@@ -21,10 +21,10 @@ local articons = {
 
 function articons.init(imagedir)
     articons.icons = {}
-    local img = rtk.Image:new(Path.join(imagedir, "articulations.png"))
+    local img = rtk.Image(Path.join(imagedir, "articulations.png"))
     for n = 1, img.width / 32 do
         local name = articons.names[n]
-        articons.icons[name] = rtk.Image:new(img, 32 * (n - 1), 0, 32, -1)
+        articons.icons[name] = rtk.Image(img, 32 * (n - 1), 0, 32, -1)
     end
 end
 

@@ -20,8 +20,7 @@ local feedback = require 'feedback'
 local screen = {
     minw = 200,
     widget = nil,
-    midi_device_menu = nil,
-    warning_icon = nil,
+    midi_device_menu = nil
 }
 
 
@@ -46,18 +45,18 @@ local function update_startup_action(start)
 end
 
 
-local function make_section(title)
-    local heading = rtk.Heading:new({label=title})
-    screen.vbox:add(heading, {
+local function make_section(vbox, title)
+    local heading = rtk.Heading{label=title}
+    vbox:add(heading, {
         lpadding=10, tpadding=20, bpadding=15
     })
-    return screen.vbox:add(rtk.VBox:new({spacing=10, lpadding=20, bpadding=20}))
+    return vbox:add(rtk.VBox{spacing=10, lpadding=20, bpadding=20})
 end
 
 local function add_row(section, label, w, spacing)
-    local row = section:add(rtk.HBox:new({spacing=10}), {spacing=spacing})
+    local row = section:add(rtk.HBox{spacing=10}, {spacing=spacing})
     row:add(
-        rtk.Label:new({label=label, w=w, halign=rtk.Widget.RIGHT}),
+        rtk.Label{label=label, w=w, halign=rtk.Widget.RIGHT},
         {valign=rtk.Widget.CENTER}
     )
     return row
@@ -65,23 +64,18 @@ end
 
 
 function add_tip(section, lpadding, text)
-    local label = rtk.Label:new({label=text, focusable=true, wrap=true})
+    local label = rtk.Label{label=text, focusable=true, wrap=true}
     return section:add(label, {lpadding=lpadding, valign=rtk.Widget.CENTER, spacing=20})
 end
 
 function make_cb(label)
-    return rtk.CheckBox({
-        wrap=true,
-        ivalign=rtk.Widget.TOP,
-        label=label
-    })
+    return rtk.CheckBox{label=label, wrap=true, ivalign=rtk.Widget.TOP}
 end
 
 function screen.init()
-    screen.warning_icon = rtk.Image.make_icon('24-warning_amber')
-    screen.vbox = rtk.VBox({rpadding=10})
-    screen.widget = rtk.Viewport({child=screen.vbox})
-    screen.toolbar = rtk.HBox:new({spacing=0})
+    screen.vbox = rtk.VBox{rpadding=10}
+    screen.widget = rtk.Viewport{child=screen.vbox}
+    screen.toolbar = rtk.HBox{spacing=0}
 
     -- Back button: return to bank list
     local back_button = app:make_button('18-arrow_back', 'Back')
@@ -93,16 +87,16 @@ function screen.init()
 
     -- Show a warning if the js_ReaScriptAPI isn't installed.
     if not rtk.has_js_reascript_api then
-        local hbox = screen.vbox:add(rtk.HBox:new({spacing=10}), {tpadding=20, bpadding=20, lpadding=20, rpadding=20})
-        hbox:add(rtk.ImageBox:new({image=screen.warning_icon}), {valign=rtk.Widget.TOP})
+        local hbox = screen.vbox:add(rtk.HBox{spacing=10}, {tpadding=20, bpadding=20, lpadding=20, rpadding=20})
+        hbox:add(rtk.ImageBox{image='24-warning_amber'}, {valign=rtk.Widget.TOP})
         local vbox = hbox:add(rtk.VBox())
-        local label = vbox:add(rtk.Label({wrap=true}), {valign=rtk.Widget.CENTER})
+        local label = vbox:add(rtk.Label{wrap=true}, {valign=rtk.Widget.CENTER})
         label:attr(
             'label',
             "Reaticulate runs best when the js_ReaScriptAPI extension is installed."
         )
         local button = vbox:add(
-            rtk.Button({label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5}),
+            rtk.Button{label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5},
             {tpadding=10}
         )
         button.onclick = function()
@@ -113,7 +107,7 @@ function screen.init()
     --
     -- Section: Behavior
     --
-    local section = make_section("Behavior")
+    local section = make_section(screen.vbox, "Behavior")
     screen.cb_track_follows_midi_editor = make_cb('Track selection follows MIDI editor target item')
     screen.cb_track_follows_midi_editor.onchange = function(cb)
         app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)
@@ -124,7 +118,6 @@ function screen.init()
     screen.cb_track_follows_fx_focus.onchange = function(cb)
         app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)
     end
-
     if rtk.has_js_reascript_api then
         section:add(screen.cb_track_follows_fx_focus)
     end
@@ -132,7 +125,7 @@ function screen.init()
     --
     -- Section: Appearance
     --
-    local section = make_section("Appearance")
+    local section = make_section(screen.vbox, "Appearance")
     screen.cb_undocked_borderless = make_cb('Use borderless window when undocked')
     screen.cb_undocked_borderless.onchange = function(cb)
         app.config.borderless = cb.value ~= 0
@@ -143,9 +136,8 @@ function screen.init()
     end
 
     local row = add_row(section, "Background:", 75)
-    local text = row:add(rtk.Entry({label=rtk.get_reaper_theme_bg(), w=75}))
-    local icon = rtk.Image.make_icon('18-edit')
-    local button = row:add(rtk.Button({icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3}))
+    local text = row:add(rtk.Entry{label=rtk.get_reaper_theme_bg(), w=75})
+    local button = row:add(rtk.Button{icon='18-edit', lpadding=5, rpadding=5, tpadding=3, bpadding=3})
     button.onclick = function()
         local ok, color = reaper.GR_SelectColor(0)
         if ok ~= 0 then
@@ -164,9 +156,9 @@ function screen.init()
     --
     -- Section: Feedback to Control Surface
     --
-    local section = make_section("Feedback to Control Surface")
+    local section = make_section(screen.vbox, "Feedback to Control Surface")
     local row = add_row(section, "MIDI Device:", 75, 2)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
+    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
     menu.onchange = function(menu)
         log.info("settings: changed MIDI CC feedback device: %s", menu.selected_id)
         last_device = app.config.cc_feedback_device
@@ -194,7 +186,7 @@ function screen.init()
     end
 
     local row = add_row(section, "MIDI Bus:", 75)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
+    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
     menu:setmenu({'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})
     menu:select(app.config.cc_feedback_bus or 1)
     menu.onchange = function(menu)
@@ -205,11 +197,11 @@ function screen.init()
     end
 
     local row = add_row(section, "Articulations:", 75)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
+    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
     menu:setmenu({"Program Changes", "CC values"})
 
     local row = add_row(section, "CC #:", 75)
-    local text = row:add(rtk.Entry:new({label="CC number", w=75}))
+    local text = row:add(rtk.Entry{label="CC number", w=75})
     text.onchange = function(text)
         -- TODO: validate value is a number
         app.config.cc_feedback_articulations_cc = tonumber(text.value)
@@ -236,9 +228,9 @@ function screen.init()
     --
     -- Section: Misc Settings
     --
-    local section = make_section("Misc Settings")
+    local section = make_section(screen.vbox, "Misc Settings")
     local row = add_row(section, "Autostart:", 75)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
+    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
     menu:setmenu({'Never', 'When REAPER starts'})
     menu:select((app.config.autostart or 0) + 1)
     menu.onchange = function(menu)
@@ -248,7 +240,7 @@ function screen.init()
     end
 
     local row = add_row(section, "Log Level:", 75)
-    local menu = row:add(rtk.OptionMenu:new({tpadding=3, bpadding=3}))
+    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
     -- Populate optionmenu with title-cased log levels
     local options = {}
     for level, name in pairs(log.levels) do
@@ -263,15 +255,13 @@ function screen.init()
     end
 
     local button = screen.vbox:add(
-        rtk.Button({
-            label="Reaticulate Website",
-            icon=rtk.Image.make_icon('18-link'),
-            color=rtk.theme.accent_subtle,
+        rtk.Button{
+            icon='18-link', label="Reaticulate Website",
+            color=rtk.theme.accent_subtle, alpha=0.6,
             cursor=rtk.mouse.cursors.hand,
             flags=rtk.Button.FLAT,
             tpadding=7, bpadding=7, lpadding=10, rpadding=10,
-            alpha=0.6
-        }),
+        },
         {tpadding=40, halign='center', stretch=true}
     )
     button.onclick = function()

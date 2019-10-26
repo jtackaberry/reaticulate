@@ -798,11 +798,10 @@ end
 function App:build_frame()
     BaseApp.build_frame(self)
 
-    local icon = rtk.Image.make_icon('18-edit')
-    local menubutton = rtk.OptionMenu:new({
-        icon=icon, flags=rtk.Button.FLAT_ICON | rtk.OptionMenu.HIDE_LABEL,
+    local menubutton = rtk.OptionMenu{
+        icon='18-edit', flags=rtk.Button.FLAT_ICON | rtk.OptionMenu.HIDE_LABEL,
         tpadding=5, bpadding=5, lpadding=5, rpadding=5
-    })
+    }
     if reaper.GetOS():starts('Win') then
         menubutton:setmenu({
             'Edit in Notepad',

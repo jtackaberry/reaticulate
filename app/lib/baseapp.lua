@@ -104,7 +104,7 @@ function BaseApp:add_screen(name, package)
         if not screen.toolbar then
             -- Create a dummy toolbar for this screen to ensure app-wide toolbar
             -- remains pushed to the right.
-            screen.toolbar = rtk.Spacer({h=0})
+            screen.toolbar = rtk.Spacer{h=0}
         end
         screen.toolbar:hide()
         -- Set min width for toolbar to at least make sure Back button is
@@ -182,21 +182,16 @@ local function _swallow_event(self, event)
     return false
 end
 
-function BaseApp:make_button(iconfile, label, textured, attrs)
-    local icon = nil
+function BaseApp:make_button(icon, label, textured, attrs)
     local button = nil
-    if iconfile then
-        icon = rtk.Image.make_icon(iconfile)
-    end
     if label then
         flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.FLAT_LABEL | rtk.Button.NO_SEPARATOR)
-        button = rtk.Button:new({icon=icon, label=label,
-                                    flags=flags, tpadding=5, bpadding=5, lpadding=5,
-                                    rpadding=10})
+        button = rtk.Button{icon=icon, label=label, flags=flags,
+                            tpadding=5, bpadding=5, lpadding=5, rpadding=10}
     else
         flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.NO_SEPARATOR)
-        button = rtk.Button:new({icon=icon, flags=flags,
-                                tpadding=5, bpadding=5, lpadding=5, rpadding=5})
+        button = rtk.Button{icon=icon, flags=flags,
+                            tpadding=5, bpadding=5, lpadding=5, rpadding=5}
     end
     button:setattrs(attrs)
     -- Default drag handler prevents lower-zindex widgets from handling drags.
@@ -327,25 +322,25 @@ function BaseApp:set_statusbar(label)
 end
 
 function BaseApp:build_frame()
-    local toolbar = rtk.HBox:new({spacing=0, bg=rtk.theme.window_bg})
+    local toolbar = rtk.HBox{spacing=0, bg=rtk.theme.window_bg}
     self.toolbar = toolbar
 
-    self.frame = rtk.VBox:new({position=rtk.Widget.FIXED, z=100})
+    self.frame = rtk.VBox{position=rtk.Widget.FIXED, z=100}
     self.frame:add(toolbar, {minw=150})
 
     -- Add a placeholder widget that screens will replace.
     self.frame:add(rtk.VBox.FLEXSPACE)
     self.frame.content_position = #self.frame.children
 
-    self.statusbar = rtk.HBox:new({
+    self.statusbar = rtk.HBox{
         bg=rtk.theme.window_bg,
         lpadding=10,
         tpadding=5,
         bpadding=5,
         rpadding=10,
         z=110
-    })
-    self.statusbar.label = self.statusbar:add(rtk.Label:new({color=rtk.theme.text_faded}), {expand=1})
+    }
+    self.statusbar.label = self.statusbar:add(rtk.Label{color=rtk.theme.text_faded}, {expand=1})
     self.frame:add(self.statusbar, {fillw=true})
 
     rtk.widget:add(self.frame)
@@ -393,8 +388,7 @@ function BaseApp:_setup_borderless_handlers()
         reaper.JS_Window_Move(rtk.hwnd, x, y)
     end
 
-    local icon = rtk.Image.make_icon('24-resize_bottom_right')
-    local imgbox = rtk.ImageBox({image=icon, z=200, cursor=rtk.mouse.cursors.size_nw_se, alpha=0.4})
+    local imgbox = rtk.ImageBox{image='24-resize_bottom_right', z=200, cursor=rtk.mouse.cursors.size_nw_se, alpha=0.4}
     imgbox.onmouseenter = function(self)
         if app.config.borderless then
             self:animate('alpha', 1, 0.1)

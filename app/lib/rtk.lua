@@ -699,8 +699,8 @@ function rtk.init(title, w, h, dockstate, x, y)
     rtk._easing_functions['linear'] = _easing_linear
 
     -- Reusable event object.
-    rtk._event = rtk.Event:new()
-    rtk._backingstore = rtk.Image:new():create(w, h)
+    rtk._event = rtk.Event()
+    rtk._backingstore = rtk.Image():create(w, h)
     rtk.title = title
     rtk.x, rtk.y = x or 0, y or 0
     rtk.w, rtk.h = w, h
@@ -915,7 +915,7 @@ rtk.Image = class('rtk.Image')
 rtk.Image.static.last_index = -1
 
 function rtk.Image.make_icon(name)
-    return rtk.Image:new(rtk.theme.iconpath .. '/' .. name .. '.png')
+    return rtk.Image(rtk.theme.iconpath .. '/' .. name .. '.png')
 end
 
 function rtk.Image:initialize(src, sx, sy, sw, sh)
@@ -1771,7 +1771,7 @@ function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     local innerw = self.cw - self.lpadding - self.rpadding
     local innerh = self.ch - self.tpadding - self.bpadding
     if not self._backingstore then
-        self._backingstore = rtk.Image:new():create(innerw, innerh)
+        self._backingstore = rtk.Image():create(innerw, innerh)
     else
         self._backingstore:resize(innerw, innerh, false)
     end
@@ -2674,6 +2674,16 @@ rtk.Button.static.ICON_RIGHT = 4
 rtk.Button.static.NO_HOVER = 8
 rtk.Button.static.NO_SEPARATOR = 16
 
+local function _filter_image(value)
+    if type(value) == 'string' then
+        return rtk.Image.make_icon(value)
+    else
+        return value
+    end
+end
+
+rtk.Button.static._attr_filters.icon = _filter_image
+
 
 function rtk.Button:initialize(attrs)
     rtk.Widget.initialize(self)
@@ -2696,9 +2706,6 @@ function rtk.Button:initialize(attrs)
     self.fontflags = 0
     self.hover = false
     self:setattrs(attrs)
-    if type(self.icon) == 'string' then
-        self.icon = rtk.Image.make_icon(self.icon)
-    end
     if not self.flags then
         self.flags = rtk.Button.FULL_SURFACE
         if self.icon == nil then
@@ -2891,6 +2898,8 @@ end
 
 rtk.Entry = class('rtk.Entry', rtk.Widget)
 rtk.Entry.static.MAX_WIDTH = 1024
+rtk.Entry.static._attr_filters.icon = _filter_image
+
 function rtk.Entry:initialize(attrs)
     rtk.Widget.initialize(self)
     self.focusable = true
@@ -2925,7 +2934,7 @@ function rtk.Entry:initialize(attrs)
     self.selend = nil
     -- Array mapping character index to x offset
     self.positions = {0}
-    self.image = rtk.Image:new()
+    self.image = rtk.Image()
     self.image:create()
 
     self.lpos = 5
@@ -3491,6 +3500,7 @@ end
 
 
 rtk.ImageBox = class('rtk.ImageBox', rtk.Widget)
+rtk.ImageBox.static._attr_filters.image = _filter_image
 
 function rtk.ImageBox:initialize(attrs)
     rtk.Widget.initialize(self)
@@ -3586,7 +3596,7 @@ function rtk.OptionMenu:initialize(attrs)
     if not self.icon then
         if not rtk.OptionMenu._icon then
             -- Generate a new simple triangle icon for the button.
-            local icon = rtk.Image:new():create(28, 18)
+            local icon = rtk.Image():create(28, 18)
             self:setcolor(rtk.theme.text)
             rtk.push_dest(icon.id)
             gfx.triangle(12, 7,  20, 7,  16, 11)

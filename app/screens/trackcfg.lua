@@ -34,12 +34,12 @@ end
 
 
 function screen.init()
+    local vbox = rtk.VBox()
+    screen.widget = rtk.Viewport{child=vbox, rpadding=10}
+    screen.toolbar = rtk.HBox{spacing=0}
+
     screen.error_icon = rtk.Image.make_icon('24-warning_amber')
     screen.info_icon = rtk.Image.make_icon('24-info_outline')
-    local vbox = rtk.VBox:new()
-    screen.widget = rtk.Viewport({child=vbox, rpadding=10})
-
-    screen.toolbar = rtk.HBox:new({spacing=0})
 
     -- Back button: return to bank list
     local back_button = app:make_button('18-arrow_back', 'Back')
@@ -50,14 +50,14 @@ function screen.init()
     end
     screen.toolbar:add(back_button)
 
-    local heading = rtk.Heading:new({label="Track Articulations"})
+    local heading = rtk.Heading{label="Track Articulations"}
     vbox:add(heading, {
         lpadding=10, tpadding=10, bpadding=20
     })
 
-    screen.banklist = vbox:add(rtk.VBox:new({spacing=10}), {lpadding=10})
+    screen.banklist = vbox:add(rtk.VBox{spacing=10}, {lpadding=10})
 
-    local spacer = rtk.Spacer({h=150, w=1.0, y=0, z=10})
+    local spacer = rtk.Spacer{h=150, w=1.0, y=0, z=10}
     spacer.ondropfocus = function(self, event, _, srcbankbox)
         screen.move_bankbox(srcbankbox, nil)
         return true
@@ -155,9 +155,9 @@ function screen.move_bankbox_finish()
 end
 
 function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
-    local bankbox = rtk.VBox:new({spacing=10, tpadding=10, bpadding=10})
+    local bankbox = rtk.VBox{spacing=10, tpadding=10, bpadding=10}
     local banklist_menu_spec = reabank.to_menu()
-    local row = bankbox:add(rtk.HBox:new({spacing=10}))
+    local row = bankbox:add(rtk.HBox{spacing=10})
 
     -- Fallback in case bank_menu.selected_id is nil
     bankbox.msblsb = msblsb
@@ -177,12 +177,12 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
     end
 
     -- Bank row
-    local drag_handle = rtk.ImageBox:new({
+    local drag_handle = rtk.ImageBox{
         image=rtk.Image.make_icon('24-drag_vertical'),
         cursor='ruler_scroll',
         w=24,
         halign=rtk.Widget.CENTER
-    })
+    }
     drag_handle.ondragstart = function(event)
         bankbox.bg = '#5b7fac30'
         bankbox.tborder = {'#497ab7', 2}
@@ -197,7 +197,7 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
     end
     drag_handle.onmouseenter = function() return true end
     row:add(drag_handle)
-    local bank_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
+    local bank_menu = rtk.OptionMenu{tpadding=3, bpadding=3}
     row:add(bank_menu, {expand=1, fillw=true, rpadding=0})
     bankbox.bank_menu = bank_menu
     bank_menu:setmenu(banklist_menu_spec)
@@ -212,18 +212,18 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
     end
 
     -- Channel row
-    local row = bankbox:add(rtk.HBox:new({spacing=10}))
-    row:add(rtk.Spacer({w=24, h=24}))
+    local row = bankbox:add(rtk.HBox{spacing=10})
+    row:add(rtk.Spacer{w=24, h=24})
 
-    bankbox.srcchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
+    bankbox.srcchannel_menu = rtk.OptionMenu{tpadding=3, bpadding=3}
     row:add(bankbox.srcchannel_menu, {lpadding=0, expand=1, fillw=true})
     bankbox.srcchannel_menu:setmenu(screen.src_channel_menu)
     bankbox.srcchannel_menu:select(tostring(srcchannel), false)
 
-    row:add(rtk.Label:new({label=' → '}), {valign=rtk.Widget.CENTER})
+    row:add(rtk.Label{label=' → '}, {valign=rtk.Widget.CENTER})
 
 
-    bankbox.dstchannel_menu = rtk.OptionMenu:new({tpadding=3, bpadding=3})
+    bankbox.dstchannel_menu = rtk.OptionMenu{tpadding=3, bpadding=3}
     row:add(bankbox.dstchannel_menu, {lpadding=0, expand=1, fillw=true})
     bankbox.dstchannel_menu:setmenu(screen.dst_channel_menu)
     bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
@@ -261,16 +261,16 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
     bankbox.dstchannel_menu.onchange = bankbox.bank_menu.onchange
 
     -- Info row
-    local row = bankbox:add(rtk.HBox:new({spacing=10}))
+    local row = bankbox:add(rtk.HBox{spacing=10})
     bankbox.info = row
-    row:add(rtk.ImageBox:new({image=screen.info_icon}), {valign=rtk.Widget.TOP})
-    row.label = row:add(rtk.Label:new({wrap=true}), {valign=rtk.Widget.CENTER})
+    row:add(rtk.ImageBox{image=screen.info_icon}, {valign=rtk.Widget.TOP})
+    row.label = row:add(rtk.Label{wrap=true}, {valign=rtk.Widget.CENTER})
 
     -- Warning row
-    local row = bankbox:add(rtk.HBox:new({spacing=10}))
+    local row = bankbox:add(rtk.HBox{spacing=10})
     bankbox.warning = row
-    row:add(rtk.ImageBox:new({image=screen.error_icon}), {valign=rtk.Widget.TOP})
-    row.label = row:add(rtk.Label:new({wrap=true}), {valign=rtk.Widget.CENTER})
+    row:add(rtk.ImageBox{image=screen.error_icon}, {valign=rtk.Widget.TOP})
+    row.label = row:add(rtk.Label{wrap=true}, {valign=rtk.Widget.CENTER})
     return bankbox
 end
 

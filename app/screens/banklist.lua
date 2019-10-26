@@ -173,13 +173,13 @@ end
 
 
 function screen.create_banklist_ui(bank)
-    bank.vbox = rtk.VBox:new({spacing=10})
+    bank.vbox = rtk.VBox{spacing=10}
 
     -- Box for Bank name and info button
     local hbox = rtk.HBox()
     bank.vbox:add(hbox, {lpadding=10, tpadding=#reabank.banks > 0 and 40 or 20, bpadding=10})
     -- Bank name
-    bank.heading = rtk.Heading:new({label=bank.shortname or bank.name})
+    bank.heading = rtk.Heading{label=bank.shortname or bank.name}
     hbox:add(bank.heading, {valign='center'})
     hbox:add(rtk.HBox.FLEXSPACE)
     -- Bank message button, which is only added if message exists
@@ -189,12 +189,12 @@ function screen.create_banklist_ui(bank)
         hbox:add(button, {valign='center', rpadding=10})
 
         -- Box for bank message and info icon
-        local msgbox = rtk.HBox({spacing=10, focusable=true})
+        local msgbox = rtk.HBox{spacing=10, focusable=true}
         bank.vbox:add(msgbox, {lpadding=10, rpadding=10, bpadding=10})
         -- Info icon
-        msgbox:add(rtk.ImageBox:new({image=rtk.Image.make_icon('24-info_outline')}), {valign='top'})
+        msgbox:add(rtk.ImageBox{image='24-info_outline'}, {valign='top'})
         -- Bank message text
-        local label = msgbox:add(rtk.Label({label=bank.message, wrap=true}), {valign='center'})
+        local label = msgbox:add(rtk.Label{label=bank.message, wrap=true}, {valign='center'})
         -- Info button toggles visibility of message box and remembers that
         -- setting as part of the RFX bank userdata
         button.onclick = function()
@@ -219,7 +219,7 @@ function screen.create_banklist_ui(bank)
         local textcolor = color2luma(color) > 0.7 and '#000000' or '#ffffff'
         art.icon = articons.get(art.iconname) or articons.get('note-eighth')
         local flags = art.channels > 0 and 0 or rtk.Button.FLAT_LABEL
-        art.button = rtk.Button:new({
+        art.button = rtk.Button{
             -- Prefix a bit of whitespace to distance from icon
             label='  ' .. (art.shortname or art.name),
             icon=art.icon,
@@ -228,14 +228,18 @@ function screen.create_banklist_ui(bank)
             tpadding=1, rpadding=1, bpadding=1, lpadding=1,
             flags=flags,
             rspace=40
-        })
+        }
         -- Make button width fill container (with 10px margin at right)
         art.button:resize(-10, nil)
-        art.button.onclick = function(button, event) app:onartclick(art, event) end
+        art.button.onclick = function(button, event)
+            app:onartclick(art, event)
+        end
         art.button.ondraw = function(button, offx, offy, event)
             screen.draw_button_midi_channel(art, button, offx, offy, event)
         end
-        art.button.onmouseleave = function(button, event) app:set_statusbar(nil) end
+        art.button.onmouseleave = function(button, event)
+            app:set_statusbar(nil)
+        end
         art.button.onmouseenter = function(button, event)
             if not art.outputstr then
                 art.outputstr = art:describe_outputs()
@@ -314,9 +318,10 @@ end
 
 
 function screen.init()
-    screen.widget = rtk.VBox:new()
+    screen.widget = rtk.VBox()
+    screen.toolbar = rtk.HBox{spacing=0}
 
-    local topbar = rtk.VBox:new({
+    local topbar = rtk.VBox{
         spacing=0,
         bg=rtk.theme.window_bg,
         y=0,
@@ -324,39 +329,37 @@ function screen.init()
         tpadding=0,
         bpadding=15,
         z=50
-    })
-    screen.toolbar = rtk.HBox:new({spacing=0})
+    }
     screen.widget:add(topbar, {lpadding=0})
 
     local track_button = app:make_button('18-view_list')
-    screen.toolbar:add(track_button, {rpadding=0})
     track_button.onclick = function()
         app:push_screen('trackcfg')
     end
+    screen.toolbar:add(track_button, {rpadding=0})
     screen.toolbar:add(rtk.HBox.FLEXSPACE)
 
     -- Filter text entry
-    local row = topbar:add(rtk.HBox:new({spacing=10}), {tpadding=10})
-    local icon = rtk.Image.make_icon('18-search')
-    local entry = rtk.Entry:new({icon=icon, label="Filter articulations", bg2='#0000007f'})
-    screen.filter_entry = entry
+    local row = topbar:add(rtk.HBox{spacing=10}, {tpadding=10})
+    local entry = rtk.Entry{icon='18-search', label="Filter articulations", bg2='#0000007f'}
     entry.onkeypress = handle_filter_keypress
     entry.onchange = function(self)
         screen.filter_articulations(self.value:lower())
     end
     row:add(entry, {expand=1, fillw=true, lpadding=20, rpadding=20})
+    screen.filter_entry = entry
 
     -- MIDI channel button rows
-    row = rtk.HBox:new({spacing=2})
+    row = rtk.HBox{spacing=2}
     topbar:add(row, {tpadding=20, halign=rtk.Widget.CENTER})
     for channel = 1, 16 do
         local label = string.format("%02d", channel)
-        local button = rtk.Button:new({
+        local button = rtk.Button{
             label=label, color=rtk.theme.entry_border_focused, w=25, h=20,
             textcolor='#ffffff',
             fontscale=0.9, halign=rtk.Widget.CENTER,
             flags=rtk.Button.FLAT_LABEL
-        })
+        }
         local button = row:add(button)
         button.onclick = function()
             app:set_default_channel(channel)
@@ -364,21 +367,21 @@ function screen.init()
         end
         screen.midi_channel_buttons[channel] = button
         if channel == 8 then
-            row = rtk.HBox:new({spacing=2})
+            row = rtk.HBox{spacing=2}
             topbar:add(row, {tpadding=0, halign=rtk.Widget.CENTER})
         end
     end
 
-    screen.errorbox = rtk.VBox({
+    screen.errorbox = rtk.VBox{
         bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',
         tborder='#ff0000',
         bborder='#ff0000',
         tpadding=20, bpadding=20,
         lpadding=10, rpadding=10
-    })
+    }
     local hbox = screen.errorbox:add(rtk.HBox())
-    hbox:add(rtk.ImageBox:new({image=rtk.Image.make_icon('24-alert_circle_outline')}))
-    screen.errormsg = hbox:add(rtk.Label({wrap=true}), {lpadding=10, valign='center'})
+    hbox:add(rtk.ImageBox{image='24-alert_circle_outline'})
+    screen.errormsg = hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})
     local button = app:make_button('18-edit', 'Open Track Settings')
     button.onclick = function()
         app:push_screen('trackcfg')
@@ -386,26 +389,30 @@ function screen.init()
     screen.errorbox:add(button, {halign='center', tpadding=20})
     screen.widget:add(screen.errorbox, {fillw=true})
 
-    screen.banks = rtk.VBox({bpadding=20})
-    screen.viewport = rtk.Viewport({child=screen.banks})
+    -- screen.cc1 = screen.widget:add(rtk.HBox{w=0.99, h=20, bg='#ff0000'})
+    -- screen.cc1:add(rtk.Label{label="Mod"})
+    -- screen.cc64 = screen.widget:add(rtk.HBox{w=0.99, h=20, bg='#ff00ff'})
+    -- screen.cc64:add(rtk.Label{label="Sustain"})
+    screen.banks = rtk.VBox{bpadding=20}
+    screen.viewport = rtk.Viewport{child=screen.banks}
     screen.widget:add(screen.viewport, {fillw=true})
 
     -- Info / button when no banks are configured on track (hidden when there are banks)
-    screen.no_banks_box = rtk.VBox:new()
+    screen.no_banks_box = rtk.VBox()
     screen.widget:add(screen.no_banks_box, {
         halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1, bpadding=100
     })
-    local label = rtk.Label:new({
+    local label = rtk.Label{
         label="No banks on this track", fontsize=24,
         color={1, 1, 1, 0.5}
-    })
+    }
     screen.no_banks_box:add(label, {halign=rtk.Widget.CENTER})
 
-    local button = rtk.Button:new({
+    local button = rtk.Button{
         icon=track_button.icon, label="Edit Track Banks",
         space=10, color={0.3, 0.3, 0.3, 1},
         tpadding=5, bpadding=5, lpadding=5, rpadding=10
-    })
+    }
     screen.no_banks_box:add(button, {halign=rtk.Widget.CENTER, tpadding=20})
     button.onclick = track_button.onclick
 end
