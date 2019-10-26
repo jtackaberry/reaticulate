@@ -1398,24 +1398,11 @@ function rtk.Widget:scrolltoview(tpadding, bpadding)
 end
 
 function rtk.Widget:hide()
-    if self.visible == true then
-        self.visible = false
-        rtk.queue_reflow()
-    end
-    return self
+    return self:attr('visible', false)
 end
 
 function rtk.Widget:show()
-    if self.visible == false then
-        self.visible = true
-        rtk.queue_reflow()
-        -- Set realized to false in case show() has been called from within a
-        -- draw() handler for another widget earlier in the scene graph.  We
-        -- need to make sure that this widget isn't drawn until it has a chance
-        -- to reflow.
-        self.realized = false
-    end
-    return self
+    return self:attr('visible', true)
 end
 
 function rtk.Widget:toggle()
@@ -1452,9 +1439,42 @@ function rtk.Widget:focused()
 end
 
 
+function rtk.Widget:animate(attr, dstval, duration, props, donefn)
+    local srcval = self[attr]
+    assert(type(srcval) == 'number')
+
+    local easingfn = rtk._easing_functions[props and props.easing or 'linear']
+    assert(type(easingfn) == 'function')
+
+    local key = string.format('%d.%s', self.id, attr)
+    if not rtk._animations[key] then
+        rtk._animations_len = rtk._animations_len + 1
+    end
+
+    local pctstep = 1.0 / (rtk.fps * duration)
+    rtk._animations[key] = {
+        self, attr, _easing_linear,
+        srcval, dstval, 0, pctstep,
+        (props and props.reflow) and true or false,
+        donefn
+    }
+end
+
 -- Called when an attribute is set via attr()
 function rtk.Widget:onattr(attr, value, trigger)
-    rtk.queue_reflow(self)
+    if attr == 'visible' then
+        -- Toggling visibility, must reflow entire scene
+        rtk.queue_reflow()
+        if value == true then
+            -- Set realized to false in case show() has been called from within a
+            -- draw() handler for another widget earlier in the scene graph.  We
+            -- need to make sure that this widget isn't drawn until it has a chance
+            -- to reflow.
+            self.realized = false
+        end
+    else
+        rtk.queue_reflow(self)
+    end
 end
 
 -- Called before any drawing from within the internal draw method.
