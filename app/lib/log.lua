@@ -32,9 +32,28 @@ local log = {
     level = 40,
 
     timers = {},
+    queue = {},
     t0 = nil,
     tl = nil,
 }
+
+local function flush_queue()
+    reaper.ShowConsoleMsg(table.concat(log.queue))
+    log.queue = {}
+end
+
+
+local function enqueue(msg)
+    -- Handle the actual display of log messages asynchronously so as not to include any
+    -- logging overhead in timing measurements and also lets us coalesce multiple log messages
+    -- into a single ShowConsoleMsg() call which significantly improves performance.
+    local qlen = #log.queue
+    if qlen == 0 then
+        reaper.defer(flush_queue)
+    end
+    log.queue[qlen + 1] = msg
+end
+
 
 function log.log(level, tail, fmt, ...)
     if level < log.level then
@@ -57,10 +76,12 @@ function log.log(level, tail, fmt, ...)
         prefix = prefix .. string.format('(%.0f / %.0f ms)  ', last, total)
         timer[2] = now
     end
-    reaper.ShowConsoleMsg(prefix .. err .. '\n')
+
+    local msg = prefix .. err .. '\n'
     if tail then
-        reaper.ShowConsoleMsg(tail .. '\n')
+        msg = msg .. tail .. '\n'
     end
+    enqueue(msg)
 end
 
 function log.level_name(level)
@@ -70,7 +91,7 @@ end
 function log.clear()
     if log.level <= log.INFO then
         reaper.ShowConsoleMsg("")
-        reaper.ShowConsoleMsg("cleared: " .. tostring(log.level) .. "\n")
+        log.queue = {}
     end
 end
 
@@ -80,13 +101,13 @@ end
 
 function log.trace(level)
     if log.level <= (level or log.DEBUG) then
-        reaper.ShowConsoleMsg(debug.traceback() .. '\n')
+        enqueue(debug.traceback() .. '\n')
     end
 end
 
 function log.time_start()
     if log.level <= log.INFO then
-        reaper.ShowConsoleMsg("\n")
+        enqueue("\n")
     end
     local now = os.clock()
     table.insert(log.timers, {now, now})
@@ -96,7 +117,7 @@ end
 
 function log.time_end()
     if log.level <= log.INFO then
-        reaper.ShowConsoleMsg("\n")
+        enqueue("\n")
     end
     table.remove(log.timers)
     log.t0 = nil
