@@ -184,7 +184,7 @@ function screen.create_banklist_ui(bank)
     hbox:add(rtk.HBox.FLEXSPACE)
     -- Bank message button, which is only added if message exists
     if bank.message then
-        local button = app:make_button("info_outline_white_18x18.png")
+        local button = app:make_button('18-info_outline')
         button.alpha = bank.message and 1.0 or 0.7
         hbox:add(button, {valign='center', rpadding=10})
 
@@ -192,7 +192,7 @@ function screen.create_banklist_ui(bank)
         local msgbox = rtk.HBox({spacing=10, focusable=true})
         bank.vbox:add(msgbox, {lpadding=10, rpadding=10, bpadding=10})
         -- Info icon
-        msgbox:add(rtk.ImageBox:new({image=app:get_image('info_outline_white_24x24.png')}), {valign='top'})
+        msgbox:add(rtk.ImageBox:new({image=rtk.Image.make_icon('24-info_outline')}), {valign='top'})
         -- Bank message text
         local label = msgbox:add(rtk.Label({label=bank.message, wrap=true}), {valign='center'})
         -- Info button toggles visibility of message box and remembers that
@@ -328,7 +328,7 @@ function screen.init()
     screen.toolbar = rtk.HBox:new({spacing=0})
     screen.widget:add(topbar, {lpadding=0})
 
-    local track_button = app:make_button("view_list_white_18x18.png")
+    local track_button = app:make_button('18-view_list')
     screen.toolbar:add(track_button, {rpadding=0})
     track_button.onclick = function()
         app:push_screen('trackcfg')
@@ -337,7 +337,7 @@ function screen.init()
 
     -- Filter text entry
     local row = topbar:add(rtk.HBox:new({spacing=10}), {tpadding=10})
-    local icon = app:get_image('search_white_18.png')
+    local icon = rtk.Image.make_icon('18-search')
     local entry = rtk.Entry:new({icon=icon, label="Filter articulations", bg2='#0000007f'})
     screen.filter_entry = entry
     entry.onkeypress = handle_filter_keypress
@@ -353,6 +353,7 @@ function screen.init()
         local label = string.format("%02d", channel)
         local button = rtk.Button:new({
             label=label, color=rtk.theme.entry_border_focused, w=25, h=20,
+            textcolor='#ffffff',
             fontscale=0.9, halign=rtk.Widget.CENTER,
             flags=rtk.Button.FLAT_LABEL
         })
@@ -369,16 +370,16 @@ function screen.init()
     end
 
     screen.errorbox = rtk.VBox({
-        bg='#3f0000',
+        bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',
         tborder='#ff0000',
         bborder='#ff0000',
         tpadding=20, bpadding=20,
         lpadding=10, rpadding=10
     })
     local hbox = screen.errorbox:add(rtk.HBox())
-    hbox:add(rtk.ImageBox:new({image=app:get_image("error_outline_24x24.png")}))
+    hbox:add(rtk.ImageBox:new({image=rtk.Image.make_icon('24-alert_circle_outline')}))
     screen.errormsg = hbox:add(rtk.Label({wrap=true}), {lpadding=10, valign='center'})
-    local button = app:make_button("edit_white_18x18.png", "Open Track Settings")
+    local button = app:make_button('18-edit', 'Open Track Settings')
     button.onclick = function()
         app:push_screen('trackcfg')
     end

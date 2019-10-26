@@ -158,6 +158,7 @@ local rtk = {
     theme = nil,
     themes = {
         dark = {
+            dark = true,
             accent = '#47abff',
             accent_subtle = '#306088',
             window_bg = '#252525',
@@ -173,11 +174,12 @@ local rtk = {
             scrollbar = '#ffffff',
         },
         light = {
+            light = true,
             accent = '#47abff',
             accent_subtle = '#a1d3fc',
             window_bg = '#dddddd',
-            button = '#888888',
-            buttontext = '#ffffff',
+            button = '#dededebb',
+            buttontext = '#000000',
             text = '#000000',
             text_faded = '#555555',
             entry_border_hover = '#3a508e',
@@ -964,9 +966,13 @@ function rtk.Image:clear(r, g, b, a)
 end
 
 function rtk.Image:load(path)
-    rtk.Image.static.last_index = rtk.Image.static.last_index + 1
-    self.id = gfx.loadimg(rtk.Image.last_index, path)
-    self.width, self.height = gfx.getimgdim(self.id)
+    self.id = gfx.loadimg(rtk.Image.static.last_index + 1, path)
+    if self.id ~= -1 then
+        rtk.Image.static.last_index = self.id
+        self.width, self.height = gfx.getimgdim(self.id)
+    else
+        self.width, self.height = -1, -1
+    end
     return self
 end
 
@@ -3728,9 +3734,9 @@ rtk.CheckBox.static._icon_unchecked = nil
 
 function rtk.CheckBox:initialize(attrs)
     if rtk.CheckBox.static._icon_unchecked == nil then
-        rtk.CheckBox.static._icon_unchecked = rtk.Image.make_icon('checkbox-unchecked')
-        rtk.CheckBox.static._icon_checked = rtk.Image.make_icon('checkbox-checked')
-        rtk.CheckBox.static._icon_intermediate = rtk.Image.make_icon('checkbox-intermediate')
+        rtk.CheckBox.static._icon_unchecked = rtk.Image.make_icon('18-checkbox-unchecked')
+        rtk.CheckBox.static._icon_checked = rtk.Image.make_icon('18-checkbox-checked')
+        rtk.CheckBox.static._icon_intermediate = rtk.Image.make_icon('18-checkbox-intermediate')
         rtk.CheckBox.static._icon_hover = rtk.CheckBox.static._icon_unchecked:clone():accent()
     end
     self._value_map = {

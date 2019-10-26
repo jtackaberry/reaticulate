@@ -34,15 +34,15 @@ end
 
 
 function screen.init()
-    screen.error_icon = app:get_image("warning_amber_24x24.png")
-    screen.info_icon = app:get_image("info_outline_white_24x24.png")
+    screen.error_icon = rtk.Image.make_icon('24-warning_amber')
+    screen.info_icon = rtk.Image.make_icon('24-info_outline')
     local vbox = rtk.VBox:new()
     screen.widget = rtk.Viewport({child=vbox, rpadding=10})
 
     screen.toolbar = rtk.HBox:new({spacing=0})
 
     -- Back button: return to bank list
-    local back_button = app:make_button("arrow_back_white_18x18.png", "Back")
+    local back_button = app:make_button('18-arrow_back', 'Back')
     back_button.onclick = function()
         -- Force a resync of RFX to ensure channel assignments for banks get refreshed in the bank list.
         rfx.sync(rfx.track, true)
@@ -65,7 +65,7 @@ function screen.init()
 
     vbox:add(spacer, {tpadding=-20, bpadding=-130})
 
-    local add_bank_button = app:make_button("add_circle_outline_white_18x18.png", "Add Bank", true)
+    local add_bank_button = app:make_button('18-add_circle_outline', 'Add Bank', true)
     add_bank_button.onclick = function()
         local limit = rfx.params.banks_end - rfx.params.banks_start + 1
         if #screen.banklist.children >= limit then
@@ -178,7 +178,7 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
 
     -- Bank row
     local drag_handle = rtk.ImageBox:new({
-        image=app:get_image('drag_vertical_24x24.png'),
+        image=rtk.Image.make_icon('24-drag_vertical'),
         cursor='ruler_scroll',
         w=24,
         halign=rtk.Widget.CENTER
@@ -229,9 +229,9 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
     bankbox.dstchannel_menu:select(tostring(dstchannel | (dstbus << 8)), false)
 
 
-    local delete_button = app:make_button("delete_white_18x18.png", nil, true, {
-        color={0.5, 0.2, 0.2, 1},
-        textcolor='#ffffff', tpadding=3, bpadding=3
+    local delete_button = app:make_button('18-delete', nil, true, {
+        color=rtk.theme.dark and '#af3333' or '#ff8f96',
+        tpadding=3, bpadding=3
     })
     row:add(delete_button, {rpadding=10})
     delete_button.onclick = function()

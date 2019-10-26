@@ -177,10 +177,6 @@ end
 
 
 -- App-wide utility functions
-function BaseApp:get_image(file)
-    return rtk.Image:new(Path.join(Path.imagedir, file))
-end
-
 local function _swallow_event(self, event)
     event:set_handled(self)
     return false
@@ -190,19 +186,19 @@ function BaseApp:make_button(iconfile, label, textured, attrs)
     local icon = nil
     local button = nil
     if iconfile then
-        icon = self:get_image(iconfile)
-        if label then
-            flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.FLAT_LABEL | rtk.Button.NO_SEPARATOR)
-            button = rtk.Button:new({icon=icon, label=label,
-                                     flags=flags, tpadding=5, bpadding=5, lpadding=5,
-                                     rpadding=10})
-        else
-            flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.NO_SEPARATOR)
-            button = rtk.Button:new({icon=icon, flags=flags,
-                                    tpadding=5, bpadding=5, lpadding=5, rpadding=5})
-        end
-        button:setattrs(attrs)
+        icon = rtk.Image.make_icon(iconfile)
     end
+    if label then
+        flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.FLAT_LABEL | rtk.Button.NO_SEPARATOR)
+        button = rtk.Button:new({icon=icon, label=label,
+                                    flags=flags, tpadding=5, bpadding=5, lpadding=5,
+                                    rpadding=10})
+    else
+        flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.NO_SEPARATOR)
+        button = rtk.Button:new({icon=icon, flags=flags,
+                                tpadding=5, bpadding=5, lpadding=5, rpadding=5})
+    end
+    button:setattrs(attrs)
     -- Default drag handler prevents lower-zindex widgets from handling drags.
     -- So if the user drags the button, it prevents drag handlers for widgets
     -- underneath from triggering.
@@ -315,8 +311,7 @@ function BaseApp:set_theme()
     log.debug("baseapp: theme bg is %s", bg)
     -- bg = '#252525'
     if luma > 0.7 then
-        -- FIXME: dark icons!
-        rtk.set_theme('light', Path.join(Path.imagedir, 'icons-light'), {window_bg=bg})
+        rtk.set_theme('light', Path.join(Path.imagedir, 'icons-dark'), {window_bg=bg})
     else
         rtk.set_theme('dark', Path.join(Path.imagedir, 'icons-light'), {window_bg=bg})
     end
@@ -369,8 +364,8 @@ function BaseApp:_set_window_pinned(pinned)
 end
 
 function BaseApp:_setup_borderless_handlers()
-    self.toolbar.pin = self.toolbar:add(self:make_button("pin_off_18x18.png"), {rpadding=15})
-    self.toolbar.unpin = self.toolbar:add(self:make_button("pin_on_18x18.png"), {rpadding=15})
+    self.toolbar.pin = self.toolbar:add(self:make_button('18-pin_off'), {rpadding=15})
+    self.toolbar.unpin = self.toolbar:add(self:make_button('18-pin_on'), {rpadding=15})
     self.toolbar.pin.onclick = function() self:_set_window_pinned(true) end
     self.toolbar.unpin.onclick = function() self:_set_window_pinned(false) end
     self:_set_window_pinned(false)
@@ -398,7 +393,7 @@ function BaseApp:_setup_borderless_handlers()
         reaper.JS_Window_Move(rtk.hwnd, x, y)
     end
 
-    local icon = self:get_image('resize_bottom_right_24x24.png')
+    local icon = rtk.Image.make_icon('24-resize_bottom_right')
     local imgbox = rtk.ImageBox({image=icon, z=200, cursor=rtk.mouse.cursors.size_nw_se, alpha=0.4})
     imgbox.onmouseenter = function(self)
         if app.config.borderless then

@@ -798,7 +798,7 @@ end
 function App:build_frame()
     BaseApp.build_frame(self)
 
-    local icon = self:get_image("edit_white_18x18.png")
+    local icon = rtk.Image.make_icon('18-edit')
     local menubutton = rtk.OptionMenu:new({
         icon=icon, flags=rtk.Button.FLAT_ICON | rtk.OptionMenu.HIDE_LABEL,
         tpadding=5, bpadding=5, lpadding=5, rpadding=5
@@ -853,11 +853,11 @@ function App:build_frame()
         end
     end
 
-    local button = toolbar:add(self:make_button("loop_white_18x18.png"))
+    local button = toolbar:add(self:make_button('18-loop'))
     button.onclick = function() reaper.defer(function() app:refresh_banks() end) end
 
-    self.toolbar.dock = toolbar:add(self:make_button("dock_window_white_18x18.png"))
-    self.toolbar.undock = toolbar:add(self:make_button("undock_window_white_18x18.png"))
+    self.toolbar.dock = toolbar:add(self:make_button('18-dock_window'))
+    self.toolbar.undock = toolbar:add(self:make_button('18-undock_window'))
     self.toolbar.dock.onclick = function()
         -- Restore last dock position but default to right dock if not previously docked.
         gfx.dock(self.config.last_dockstate or 513)
@@ -871,7 +871,7 @@ function App:build_frame()
 
     self:update_dock_buttons()
 
-    local button = toolbar:add(self:make_button("settings_white_18x18.png"), {rpadding=0})
+    local button = toolbar:add(self:make_button('18-settings'), {rpadding=0})
     button.onclick = function()
         self:push_screen('settings')
     end

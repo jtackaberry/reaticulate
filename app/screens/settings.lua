@@ -78,13 +78,13 @@ function make_cb(label)
 end
 
 function screen.init()
-    screen.warning_icon = app:get_image("warning_amber_24x24.png")
+    screen.warning_icon = rtk.Image.make_icon('24-warning_amber')
     screen.vbox = rtk.VBox({rpadding=10})
     screen.widget = rtk.Viewport({child=screen.vbox})
     screen.toolbar = rtk.HBox:new({spacing=0})
 
     -- Back button: return to bank list
-    local back_button = app:make_button("arrow_back_white_18x18.png", "Back")
+    local back_button = app:make_button('18-arrow_back', 'Back')
     back_button.onclick = function()
         app:pop_screen()
     end
@@ -125,8 +125,8 @@ function screen.init()
     end
 
     local row = add_row(section, "Background:", 75)
-    local text = row:add(rtk.Entry({label="Hex code", w=75}))
-    local icon = app:get_image("edit_white_18x18.png")
+    local text = row:add(rtk.Entry({label=rtk.get_reaper_theme_bg(), w=75}))
+    local icon = rtk.Image.make_icon('18-edit')
     local button = row:add(rtk.Button({icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3}))
     button.onclick = function()
         local ok, color = reaper.GR_SelectColor(0)
@@ -268,7 +268,7 @@ function screen.init()
     local button = screen.vbox:add(
         rtk.Button({
             label="Reaticulate Website",
-            icon=app:get_image("link_18x18.png"),
+            icon=rtk.Image.make_icon('18-link'),
             color=rtk.theme.accent_subtle,
             cursor=rtk.mouse.cursors.hand,
             flags=rtk.Button.FLAT,
