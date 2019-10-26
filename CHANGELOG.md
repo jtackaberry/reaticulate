@@ -10,7 +10,7 @@ These are the changes since the last prerelease (0.3.91):
 
 
 
-## Minor Enhangements
+## Minor Enhancements
 
 * Minor cosmetic enhancements, especially on Mac
 
@@ -30,7 +30,7 @@ These are the changes since the last prerelease (0.3.90):
 * Allow user-configurable background color (in Settings page)
 
 
-## Minor Enhangements
+## Minor Enhancements
 
 * Improved text entry widget behavior
 * Add bus number to output event description in status bar
