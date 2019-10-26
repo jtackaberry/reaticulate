@@ -2453,11 +2453,14 @@ function rtk.Box:_reflow_step1(w, h, viewport)
                 end
             else
                 expand_units = expand_units + attrs.expand
-                -- if self.direction == rtk.Box.HORIZONTAL and attrs.minw then
-                --     remaining_size = remaining_size + attrs.minw
-                -- elseif self.direction == rtk.Box.VERTICAL and attrs.minh then
-                --     remaining_size = remaining_size + attrs.minh
-                -- end
+            end
+            -- Stretch applies to the opposite direction of the box, unlike expand
+            -- which is the same direction.  So e.g. stretch in a VBox will force the
+            -- box's width to fill its parent.
+            if self.direction == rtk.Box.VERTICAL and attrs.stretch then
+                maxw = w
+            elseif self.direction == rtk.Box.HORIZONTAL and attrs.stretch then
+                maxh = h
             end
             spacing = attrs.spacing or self.spacing
             self:_add_reflowed_child(widgetattrs, attrs.z or widget.z or 0)
