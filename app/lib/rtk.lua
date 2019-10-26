@@ -3193,6 +3193,7 @@ function rtk.Entry:delete_selection()
         end
         self._dirty = true
         rtk.queue_draw()
+        self:onchange()
     end
     return self.value:len()
 end
