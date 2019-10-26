@@ -69,6 +69,13 @@ function add_tip(section, lpadding, text)
     return section:add(label, {lpadding=lpadding, valign=rtk.Widget.CENTER, spacing=20})
 end
 
+function make_cb(label)
+    return rtk.CheckBox({
+        wrap=true,
+        ivalign=rtk.Widget.TOP,
+        label=label
+    })
+end
 
 function screen.init()
     screen.warning_icon = app:get_image("warning_amber_24x24.png")
@@ -89,21 +96,13 @@ function screen.init()
     -- Section: Behavior
     --
     local section = make_section("Behavior")
-    screen.cb_track_follows_midi_editor = rtk.CheckBox({
-        wrap=true,
-        ivalign=rtk.Widget.TOP,
-        label="Track selection follows MIDI editor target item"
-    })
+    screen.cb_track_follows_midi_editor = make_cb('Track selection follows MIDI editor target item')
     screen.cb_track_follows_midi_editor.onchange = function(cb)
         app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)
     end
     section:add(screen.cb_track_follows_midi_editor)
 
-    screen.cb_track_follows_fx_focus = rtk.CheckBox({
-        wrap=true,
-        ivalign=rtk.Widget.TOP,
-        label="Track selection follows FX focus"
-    })
+    screen.cb_track_follows_fx_focus = make_cb('Track selection follows FX focus')
     screen.cb_track_follows_fx_focus.onchange = function(cb)
         app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)
     end
@@ -111,6 +110,39 @@ function screen.init()
     if rtk.has_js_reascript_api then
         section:add(screen.cb_track_follows_fx_focus)
     end
+
+    --
+    -- Section: Appearance
+    --
+    local section = make_section("Appearance")
+    screen.cb_undocked_borderless = make_cb('Use borderless window when undocked')
+    screen.cb_undocked_borderless.onchange = function(cb)
+        app.config.borderless = cb.value ~= 0
+        app:handle_ondock()
+    end
+    if reaper.JS_Window_SetStyle then
+        section:add(screen.cb_undocked_borderless)
+    end
+
+    local row = add_row(section, "Background:", 75)
+    local text = row:add(rtk.Entry({label="Hex code", w=75}))
+    local icon = app:get_image("edit_white_18x18.png")
+    local button = row:add(rtk.Button({icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3}))
+    button.onclick = function()
+        local ok, color = reaper.GR_SelectColor(0)
+        if ok ~= 0 then
+            text:attr('value', int2hex(color))
+        end
+    end
+    text.onchange = function(text)
+        local bg = (text.value and #text.value > 0) and text.value or rtk.get_reaper_theme_bg()
+        button:attr('color', bg)
+        app.config.bg = text.value
+        app:save_config()
+    end
+    text:attr('value', app.config.bg)
+    add_tip(section, 85, 'Leave blank to detect from theme. Restart required.')
+
 
     --
     -- Section: Feedback to Control Surface
@@ -213,24 +245,6 @@ function screen.init()
         app:set_debug(tonumber(menu.selected_id))
     end
 
-    local row = add_row(section, "Background:", 75)
-    local text = row:add(rtk.Entry({label="Hex code", w=75}))
-    local icon = app:get_image("edit_white_18x18.png")
-    local button = row:add(rtk.Button({icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3, color='#ff0000'}))
-    button.onclick = function()
-        local ok, color = reaper.GR_SelectColor(0)
-        if ok ~= 0 then
-            text:attr('value', int2hex(color))
-        end
-    end
-    text.onchange = function(text)
-        local bg = (text.value and #text.value > 0) and text.value or rtk.get_reaper_theme_bg()
-        button:attr('color', bg)
-        app.config.bg = text.value
-        app:save_config()
-    end
-    text:attr('value', app.config.bg)
-    add_tip(section, 85, 'Leave empty to use theme default.  Restart needed!')
 
     -- Show a warning if the js_ReaScriptAPI isn't installed.
     if not rtk.has_js_reascript_api then
@@ -280,6 +294,7 @@ function screen.update()
     screen.midi_device_menu:select(tostring(app.config.cc_feedback_device) or 1)
     screen.cb_track_follows_fx_focus:attr('value', app:get_toggle_option('track_selection_follows_fx_focus'), false)
     screen.cb_track_follows_midi_editor:attr('value', app:get_toggle_option('track_selection_follows_midi_editor'), false)
+    screen.cb_undocked_borderless:attr('value', app.config.borderless, false)
 end
 
 return screen

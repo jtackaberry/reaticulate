@@ -60,7 +60,8 @@ function BaseApp:initialize(appid, title, basedir)
         h = 480,
         dockstate = 0,
         scale = 1.0,
-        bg = nil
+        bg = nil,
+        borderless = false
     });
     self.viewport = nil
 
@@ -106,7 +107,9 @@ function BaseApp:add_screen(name, package)
             screen.toolbar = rtk.Spacer({h=0})
         end
         screen.toolbar:hide()
-        self.toolbar:insert(1, screen.toolbar, {expand=1, fillw=true})
+        -- Set min width for toolbar to at least make sure Back button is
+        -- reachable.
+        self.toolbar:insert(1, screen.toolbar, {expand=1, fillw=true, minw=50})
         screen.widget:hide()
     end
 end
@@ -178,6 +181,11 @@ function BaseApp:get_image(file)
     return rtk.Image:new(Path.join(Path.imagedir, file))
 end
 
+local function _swallow_event(self, event)
+    event:set_handled(self)
+    return false
+end
+
 function BaseApp:make_button(iconfile, label, textured, attrs)
     local icon = nil
     local button = nil
@@ -195,6 +203,10 @@ function BaseApp:make_button(iconfile, label, textured, attrs)
         end
         button:setattrs(attrs)
     end
+    -- Default drag handler prevents lower-zindex widgets from handling drags.
+    -- So if the user drags the button, it prevents drag handlers for widgets
+    -- underneath from triggering.
+    button.ondragstart = _swallow_event
     return button
 end
 
@@ -237,9 +249,29 @@ function BaseApp:handle_ondock()
     if (rtk.dockstate or 0) & 0x01 ~= 0 then
         self.config.last_dockstate = rtk.dockstate
     end
+    self.toolbar.pin:hide()
+    self.toolbar.unpin:hide()
+    self.resize_grip:hide()
     if rtk.hwnd and rtk.has_js_reascript_api then
         log.info('baseapp: js_ReaScriptAPI extension is available')
-        reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
+        if rtk.dockstate == 0 then
+            if reaper.JS_Window_SetStyle then
+                if self.config.borderless then
+                    reaper.JS_Window_SetStyle(rtk.hwnd, 'POPUP')
+                    -- Resize to original dimensions to account for the lack of window border.
+                    reaper.JS_Window_Resize(rtk.hwnd, rtk.w, rtk.h)
+                    self:_set_window_pinned(self.config.pinned)
+                    self.resize_grip:show()
+                else
+                    reaper.JS_Window_SetStyle(rtk.hwnd, 'CAPTION,SIZEBOX,SYSMENU')
+                    reaper.JS_Window_SetZOrder(rtk.hwnd, 'NOTOPMOST')
+                    -- XXX: there's a bug on Windows: https://forum.cockos.com/showthread.php?p=2195902#post2195902
+                    reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
+                end
+            else
+                reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
+            end
+        end
     end
     self:save_config()
 end
@@ -322,8 +354,74 @@ function BaseApp:build_frame()
     self.frame:add(self.statusbar, {fillw=true})
 
     rtk.widget:add(self.frame)
-
     self:set_statusbar('')
+    if reaper.JS_Window_SetStyle then
+        self:_setup_borderless_handlers()
+    end
+end
+
+function BaseApp:_set_window_pinned(pinned)
+    reaper.JS_Window_SetZOrder(rtk.hwnd, pinned and 'TOPMOST' or 'NOTOPMOST')
+    self.toolbar.pin:attr('visible', not pinned)
+    self.toolbar.unpin:attr('visible', pinned)
+    self.config.pinned = pinned
+    self:save_config()
+end
+
+function BaseApp:_setup_borderless_handlers()
+    self.toolbar.pin = self.toolbar:add(self:make_button("pin_off_18x18.png"), {rpadding=15})
+    self.toolbar.unpin = self.toolbar:add(self:make_button("pin_on_18x18.png"), {rpadding=15})
+    self.toolbar.pin.onclick = function() self:_set_window_pinned(true) end
+    self.toolbar.unpin.onclick = function() self:_set_window_pinned(false) end
+    self:_set_window_pinned(false)
+
+    self.toolbar.ondragstart = function(self, event)
+        if reaper.JS_Window_Move and rtk.dockstate == 0 and app.config.borderless then
+            local _, wx, wy, _, _ = reaper.JS_Window_GetClientRect(rtk.hwnd)
+            self._drag_start_ex, self._drag_start_ey = event.x, event.y
+            self._drag_start_wx, self._drag_start_wy = wx, wy
+            self._drag_start_ww, self._drag_start_wh = rtk.w, rtk.h
+            return true
+        else
+            -- Prevent ondragmove from firing.
+            return false
+        end
+    end
+    self.toolbar.ondragmousemove = function(self, event)
+        local _, wx, wy, _, _ = reaper.JS_Window_GetClientRect(rtk.hwnd)
+        local x, y = wx + (event.x - self._drag_start_ex)
+        if rtk.os.mac then
+            y = (wy - self._drag_start_wh) - (event.y - self._drag_start_ey)
+        else
+            y = wy + (event.y - self._drag_start_ey)
+        end
+        reaper.JS_Window_Move(rtk.hwnd, x, y)
+    end
+
+    local icon = self:get_image('resize_bottom_right_24x24.png')
+    local imgbox = rtk.ImageBox({image=icon, z=200, cursor=rtk.mouse.cursors.size_nw_se, alpha=0.4})
+    imgbox.onmouseenter = function(self)
+        if app.config.borderless then
+            self:animate('alpha', 1, 0.1)
+            return true
+        end
+    end
+    imgbox.onmouseleave = function(self, event)
+        if app.config.borderless then
+            self:animate('alpha', 0.4, 0.25)
+        end
+    end
+    imgbox.ondragstart = self.toolbar.ondragstart
+    imgbox.ondragmousemove = function(self, event)
+        local x = event.x - self._drag_start_ex
+        local y = event.y - self._drag_start_ey
+        reaper.JS_Window_Resize(rtk.hwnd, self._drag_start_ww + x, self._drag_start_wh + y)
+        if rtk.os.mac then
+            reaper.JS_Window_Move(rtk.hwnd, self._drag_start_wx, self._drag_start_wy - self._drag_start_wh - y)
+        end
+    end
+    self.resize_grip = imgbox
+    rtk.widget:add(imgbox, {valign='bottom', halign='right'})
 end
 
 function BaseApp:handle_onupdate()
