@@ -929,11 +929,18 @@ function rfx.sync_banks_to_rfx()
                             param2 = (param1 >> 7) & 0x7f
                             param1 = param1 & 0x7f
                         end
+                        -- The output event is considered to have an explicit channel if
+                        -- either the output event itself defines a target channel or
+                        -- the bank is assigned on the track to an explicit channel rather
+                        -- than Source.  Likewise, the bus is considered to be explicit if
+                        -- defined by the output event or on the track config > 1.
+                        local haschannel = output.channel or bank.dstchannel ~= 17
+                        local hasbus = output.bus or bank.dstbus ~= 1
                         local typechannel = (output_type_to_rfx_param[output.type] or 0) |
                                             ((outchannel - 1) << 4) |
                                             ((outbus - 1) << 8) |
-                                            ((output.channel and 1 or 0) << 12) |
-                                            ((output.bus and 1 or 0) << 13)
+                                            ((haschannel and 1 or 0) << 12) |
+                                            ((hasbus and 1 or 0) << 13)
                         rfx.opcode(rfx.OPCODE_ADD_OUTPUT_EVENT, {typechannel, param1, param2})
                         if output.filter_program then
                             -- Filter program is set: add output event extension 0.
