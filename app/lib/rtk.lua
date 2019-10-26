@@ -2909,7 +2909,7 @@ function rtk.Entry:_rendertext(x, y)
                         self.loffset, 0, self.image.width, self.image.height)
     rtk.push_dest(self.image.id)
 
-    if self.selanchor then
+    if self.selanchor and self:focused() then
         local a, b  = self:get_selection_range()
         self:setcolor(rtk.theme.entry_selection_bg)
         gfx.rect(self.positions[a], 0, self.positions[b] - self.positions[a], self.image.height, 1)
@@ -2922,8 +2922,21 @@ function rtk.Entry:_rendertext(x, y)
     self._dirty = false
 end
 
+function rtk.Entry:onblur()
+    if self.selanchor then
+        -- There is a selection, so force a redraw to ensure the selection is
+        -- hidden.
+        self._dirty = true
+    end
+end
 
 function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
+    if offy ~= self.last_offy or offx ~= self.last_offx then
+        -- If we've scrolled within a viewport since last draw, force
+        -- _rendertext() to repaint the background into the Entry's
+        -- local backing store.
+        self._dirty = true
+    end
     rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
 
     local x, y = self.cx + offx, self.cy + offy
@@ -2948,13 +2961,14 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
     local lpadding = self.lpadding
     if self.icon then
         local a = self.icon_alpha + (focused and 0.2 or 0)
-        self.icon:draw(x + lpadding, y + (self.ch - self.icon.height * rtk.scale) / 2, rtk.scale, nil, a)
+        self.icon:draw(x + lpadding, y + (self.ch - self.icon.height * rtk.scale) / 2, rtk.scale, nil, a * self.alpha)
         lpadding = lpadding + self.icon.width + 5
     end
 
     self.image:drawregion(
         self.loffset, 0, x + lpadding, y + self.tpadding,
-        self.cw - lpadding - self.rpadding, self.ch - self.tpadding - self.bpadding
+        self.cw - lpadding - self.rpadding, self.ch - self.tpadding - self.bpadding,
+        nil, nil, self.alpha
     )
 
     if self.label and #self.value == 0 then
@@ -3225,7 +3239,7 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
         self.caretctr = 0
         self:calcview()
         self._dirty = true
-        log.info('keycode=%s char=%s caret=%s ctrl=%s shift=%s sel: %s-%s', event.keycode, event.char, self.caret, event.ctrl, event.shift, self.selanchor, self.selend)
+        log.debug('keycode=%s char=%s caret=%s ctrl=%s shift=%s sel: %s-%s', event.keycode, event.char, self.caret, event.ctrl, event.shift, self.selanchor, self.selend)
     end
 end
 
