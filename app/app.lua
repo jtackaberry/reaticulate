@@ -168,8 +168,9 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         return false
     end
     if refocus then
-        -- Delay a refocus by 500ms to give a chance for double click.
-        self:refocus_delayed(0.5)
+        -- If not already force inserting, delay a refocus by 500ms to give a chance for
+        -- double click.
+        self:refocus_delayed(force_insert and 0 or 0.5)
     end
 
     local bank = art:get_bank()
