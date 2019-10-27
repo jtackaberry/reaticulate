@@ -79,6 +79,8 @@ function App:initialize(basedir)
     self.last_activation_timestamp = nil
     -- Last non-Reaticulate focused window hwnd (if JS ext is installed)
     self.saved_focus_window = nil
+    -- If not nil, is the time a deferred refocus should trigger.
+    self.refocus_target_time = nil
 
     self:add_screen('installer', 'screens.installer')
     self:add_screen('banklist', 'screens.banklist')
@@ -166,7 +168,8 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         return false
     end
     if refocus then
-        reaper.defer(function() self:refocus() end)
+        -- Delay a refocus by 500ms to give a chance for double click.
+        self:refocus_delayed(0.5)
     end
 
     local bank = art:get_bank()
@@ -324,10 +327,26 @@ function App:activate_articulation_if_exists(art, refocus, force_insert)
     end
 end
 
-function App:refocus()
-    if self.saved_focus_window then
-        local title = reaper.JS_Window_GetTitle(self.saved_focus_window)
-        reaper.JS_Window_SetFocus(self.saved_focus_window)
+function App:refocus_delayed(delay, hwnd, defer)
+    local now = os.clock()
+    hwnd = hwnd or self.saved_focus_window
+    if not self.refocus_target_time then
+        self.refocus_target_time = now + delay
+        defer = true
+    end
+    if now >= self.refocus_target_time then
+        self.refocus_target_time = nil
+        self:refocus(hwnd)
+    elseif defer then
+        reaper.defer(function() self:refocus_delayed(delay, hwnd, true) end)
+    end
+end
+
+function App:refocus(hwnd)
+    hwnd = hwnd or self.saved_focus_window
+    if hwnd then
+        local title = reaper.JS_Window_GetTitle(hwnd)
+        reaper.JS_Window_SetFocus(hwnd)
     else
         -- No JS extension so we do our best at guessing.
         -- If the MIDI editor is open, focus.
