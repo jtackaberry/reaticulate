@@ -782,10 +782,11 @@ function rtk.layout_gfx_string(s, wrap, truncate, boxw, boxh, justify)
         local lw = 0
         for i = 1, s:len() do
             local segment = s:sub(1, i)
-            lw, _ = gfx.measurestr(segment)
-            if lw > boxw then
+            local segment_lw, _ = gfx.measurestr(segment)
+            if segment_lw > boxw then
                 break
             end
+            lw = segment_lw
             truncated = segment
         end
         return lw, h, h, truncated
