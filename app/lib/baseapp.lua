@@ -240,9 +240,11 @@ function BaseApp:handle_ondock()
     if (rtk.dockstate or 0) & 0x01 ~= 0 then
         self.config.last_dockstate = rtk.dockstate
     end
-    self.toolbar.pin:hide()
-    self.toolbar.unpin:hide()
-    self.resize_grip:hide()
+    if self.toolbar.pin then
+        self.toolbar.pin:hide()
+        self.toolbar.unpin:hide()
+        self.resize_grip:hide()
+    end
     if rtk.hwnd and rtk.has_js_reascript_api then
         log.info('baseapp: js_ReaScriptAPI extension is available')
         if rtk.dockstate == 0 then
