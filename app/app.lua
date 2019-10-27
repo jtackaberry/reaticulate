@@ -194,6 +194,11 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         local delta = os.clock() - (self.last_activation_timestamp or 0)
         if delta < 0.5 then
             force_insert = true
+            if refocus then
+                -- Immediately refocus and override the delayed refocus from the first
+                -- click.
+                self:refocus_delayed(0)
+            end
         end
     end
     self.last_activation_timestamp = os.clock()
@@ -331,15 +336,22 @@ end
 function App:refocus_delayed(delay, hwnd, defer)
     local now = os.clock()
     hwnd = hwnd or self.saved_focus_window
-    if not self.refocus_target_time then
+    if delay then
+        if not self.refocus_target_time then
+            -- Refocus not already running.
+            defer = true
+        end
+        -- Set (or reset) target time
         self.refocus_target_time = now + delay
-        defer = true
+    elseif not self.refocus_target_time then
+        -- Cancelled (or completed immediately by passing delay=0)
+        return
     end
     if now >= self.refocus_target_time then
         self.refocus_target_time = nil
         self:refocus(hwnd)
     elseif defer then
-        reaper.defer(function() self:refocus_delayed(delay, hwnd, true) end)
+        reaper.defer(function() self:refocus_delayed(nil, hwnd, true) end)
     end
 end
 
