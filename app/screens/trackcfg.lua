@@ -233,7 +233,7 @@ function screen.create_bank_ui(msblsb, srcchannel, dstchannel, dstbus)
         color=rtk.theme.dark and '#af3333' or '#ff8f96',
         tpadding=3, bpadding=3
     })
-    row:add(delete_button, {rpadding=10})
+    row:add(delete_button)
     delete_button.onclick = function()
         -- TODO: provide some means of undo (a la mobile phones)
         screen.banklist:remove(bankbox)
