@@ -131,29 +131,54 @@ function App:onartclick(art, event)
     end
 end
 
+function App:get_take_at_edit_cursor()
+    -- FIXME: might support multiple selected tracks.
+    local track = reaper.GetSelectedTrack(0, 0)
+    if not track then
+        return
+    end
+    local cursor = reaper.GetCursorPosition()
+    for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
+        local item = reaper.GetTrackMediaItem(track, idx)
+        local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
+        local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
+        if cursor >= startpos and cursor <= endpos then
+            return reaper.GetActiveTake(item)
+        end
+    end
+end
+
 -- Deletes all bank select or program change events at the given ppq.
 -- The caller passes an index of a CC event which must exist at the ppq,
 -- but in case there are multiple events at that ppq, it's not required that
 -- it's the first.
-local function delete_program_events_at_ppq(take, idx, max, ppq)
+local function _delete_program_events_at_ppq(take, channel, idx, max, startppq, endppq)
     -- The supplied index is at the ppq, but there may be others ahead of it.  So
     -- rewind to the first.
     while idx >= 0 do
-        local rv, selected, muted, evtppq, command, chan, msg2, msg3 = reaper.MIDI_GetCC(take, idx)
-        if evtppq ~= ppq then
+        local rv, selected, muted, evtppq, command, evtchan, msg2, msg3 = reaper.MIDI_GetCC(take, idx)
+        if evtppq ~= startppq then
             break
         end
         idx = idx - 1
     end
+    local lastmsb, lastlsb, msb, lsb, program = nil, nil, nil, nil, nil
     idx = idx + 1
     -- Now idx is the first CC at ppq.  Enumerate subsequent events and delete
     -- any bank selects or program changes until we move off the ppq.
     while idx < max do
-        local rv, selected, muted, evtppq, command, chan, msg2, msg3 = reaper.MIDI_GetCC(take, idx)
-        if evtppq ~= ppq then
-            return
+        local rv, selected, muted, evtppq, command, evtchan, msg2, msg3 = reaper.MIDI_GetCC(take, idx)
+        if evtppq < startppq or evtppq > endppq then
+            break
         end
-        if (command == 0xb0 and (msg2 == 0 or msg2 == 0x20)) or (command == 0xc0) then
+        if command == 0xb0 and msg2 == 0 and channel == evtchan then
+            lastmsb = msg3
+            reaper.MIDI_DeleteCC(take, idx)
+        elseif command == 0xb0 and msg2 == 32 and channel == evtchan then
+            lastlsb = msg3
+            reaper.MIDI_DeleteCC(take, idx)
+        elseif command == 0xc0 and channel == evtchan then
+            msb, lsb, program = lastmsb, lastlsb, msg2
             reaper.MIDI_DeleteCC(take, idx)
         else
             -- If we deleted the event, we don't advance idx because the old value would
@@ -161,6 +186,142 @@ local function delete_program_events_at_ppq(take, idx, max, ppq)
             idx = idx + 1
         end
     end
+    return msb, lsb, program
+end
+
+local function _get_cc_idx_at_ppq(take, ppq)
+    -- This is a bit tragic.  There's no native function to get a list of MIDI events given a
+    -- ppq.  So knowing that the event indexes will be ordered by time, we do a binary search
+    -- across the events until we converge on the ppq.
+    local _, _, n_events, _ = reaper.MIDI_CountEvts(take)
+    local skip = math.floor(n_events / 2)
+    local idx = skip
+    local previdx, prevppq = nil, nil
+    local nextidx, nextppq = nil, nil
+    while idx > 0 and idx < n_events and skip > 0.5 do
+        local rv, _, _, evtppq, _, evtchan, _, _ = reaper.MIDI_GetCC(take, idx)
+        skip = skip / 2
+        if evtppq > ppq then
+            nextidx, nextppq = idx, evtppq
+            -- Event is ahead of target ppq, back up.
+            idx = idx - math.ceil(skip)
+        elseif evtppq < ppq then
+            previdx, prevppq = idx, evtppq
+            -- Event is behind target ppq, skip ahead.
+            idx = idx + math.ceil(skip)
+        else
+            return true, previdx, prevppq, idx, evtppq, n_events
+        end
+    end
+    return false, previdx, prevppq, nextidx, nextppq, n_events
+end
+
+local function _delete_program_changes(take, channel, startppq, endppq)
+    local found, _, _, idx, ppq, n_events = _get_cc_idx_at_ppq(take, startppq)
+    if not ppq or ppq < startppq or ppq > endppq then
+        return
+    end
+    local msb, lsb, program = _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, endppq)
+    return msb, lsb, program
+end
+
+local function _insert_program_change(take, ppq, channel, msb, lsb, program, overwrite)
+    -- If the events at the ppq are program changes, we delete them (as we're
+    -- about to replace them).
+    local found, _, _, idx, _, n_events = _get_cc_idx_at_ppq(take, ppq)
+    if found then
+        -- FIXME: this doesn't actually work.  found indicates that *some* event
+        -- is found at that ppq, not that specifically a program change is
+        -- found.
+        if not overwrite then
+            log.exception('TODO: fix this bug')
+            return
+        end
+        _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, ppq)
+    end
+    -- Insert program change at ppq
+    reaper.MIDI_InsertCC(take, false, false, ppq, 0xb0, channel, 0, msb)
+    reaper.MIDI_InsertCC(take, false, false, ppq, 0xb0, channel, 32, lsb)
+    reaper.MIDI_InsertCC(take, false, false, ppq, 0xc0, channel, program, 0)
+end
+
+-- Identify all selected notes and queue an insertion at the first
+-- selected note and at any note where there is a gap in the selection
+-- (i.e. there is an unselected note before the selected note).
+local function _get_insertion_points_by_selected_notes(take)
+    -- List of {ppq, channel} the articulation should be inserted at (assuming
+    -- force_insert is true)
+    local insert_ppqs = {}
+    -- Table of {startppq, endppq, channel} indicating the ranges between which all
+    -- program changes should be deleted prior to insertion.
+    local delete_ppqs = {}
+    -- Insertions at notes are offset by this amount (3ms)
+    -- Offset used for insertions at notes.
+    local offset = 0
+    -- XXX: disabled for now as it may not be necessary and it's a
+    -- kludge worth avoiding if possible.
+    -- offset = reaper.MIDI_GetPPQPosFromProjTime(take, 0.003) -
+    --          reaper.MIDI_GetPPQPosFromProjTime(take, 0)
+
+    local idx = -1
+    -- Contiguous selection ranges by channel.
+    -- channel -> {startidx, startppq, endidx, endppq}
+    local selranges = {}
+    -- There is something about the way MIDI_EnumSelNotes() works that
+    -- makes me suspicious about infinite loops.  So out of paranoia we
+    -- ensure we don't loop more than there are notes in the take.
+    local paranoia_counter = 0
+    local _, n_notes, _, _ = reaper.MIDI_CountEvts(take)
+    while paranoia_counter <= n_notes do
+        local nextidx = reaper.MIDI_EnumSelNotes(take, idx)
+        if nextidx == -1 then
+            break
+        end
+        local r, _, _, noteppq, noteppqend, notechan, _, _ = reaper.MIDI_GetNote(take, nextidx)
+        if not r then
+            -- This shouldn't happen, so abort altogether if it does.
+            break
+        end
+        -- Loop through all unselected notes between last selected
+        -- note and this selected note (if any) and look for gaps.
+        -- We also insert at the next selected note of any gap (per
+        -- channel)
+        if idx ~= -1 then
+            for unselidx = idx + 1, nextidx - 1 do
+                local r, _, _, _, _, unselchan, _, _ = reaper.MIDI_GetNote(take, unselidx)
+                if not r then
+                    -- Again, shouldn't really happen.
+                    break
+                end
+                local selinfo = selranges[unselchan]
+                if selinfo and selinfo[3] then
+                    -- We have an unselected note which means we've started a gap
+                    -- on this channel, but there was previously a contiguous selection
+                    -- range.  Mark programs in that range for deletion.
+                    delete_ppqs[#delete_ppqs + 1] = {selinfo[2], selinfo[4], unselchan}
+                end
+                selranges[unselchan] = nil
+            end
+        end
+        if not selranges[notechan] then
+            -- Always insert articulation at first selected note of channel.
+            insert_ppqs[#insert_ppqs + 1] = {math.ceil(noteppq - offset), notechan}
+            selranges[notechan] = {nextidx, noteppq - offset, nil, nil}
+        else
+            selranges[notechan][3] = nextidx
+            selranges[notechan][4] = noteppq - offset
+        end
+        idx = nextidx
+        paranoia_counter = paranoia_counter + 1
+    end
+    for ch, selinfo in pairs(selranges) do
+        if selinfo[3] then
+            -- Delete programs in all remaining ranges at the end of the
+            -- selection (after all gaps) on each channel.
+            delete_ppqs[#delete_ppqs + 1] = {selinfo[2], selinfo[4], ch}
+        end
+    end
+    return insert_ppqs, delete_ppqs
 end
 
 function App:activate_articulation(art, refocus, force_insert, channel)
@@ -205,83 +366,42 @@ function App:activate_articulation(art, refocus, force_insert, channel)
 
     -- Find active take for articulation insertion.
     local take = nil
-    local ppq = nil
+    local insert_ppqs, delete_ppqs = nil, nil
     if force_insert and force_insert ~= 0 then
         -- If MIDI Editor is open, use the current take there.
         local hwnd = reaper.MIDIEditor_GetActive()
         if hwnd then
             take = reaper.MIDIEditor_GetTake(hwnd)
-            -- If any notes are selected, choose the insertion point just ahead
-            -- of the note-on of the first selected note.
-            local idx = reaper.MIDI_EnumSelNotes(take, -1)
-            if idx ~= -1 then
-                local r, _, _, noteppq, _, _, _, _ = reaper.MIDI_GetNote(take, idx)
-                if r then
-                    -- Insert the articulation 3ms prior to the note-on.
-                    local offset = reaper.MIDI_GetPPQPosFromProjTime(take, 0.003) -
-                                   reaper.MIDI_GetPPQPosFromProjTime(take, 0)
-                    ppq = math.ceil(noteppq - offset)
-                end
-            end
+            insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
         end
 
         -- If no active take in MIDI editor, try to find the current take on the
         -- selected track based on edit cursor position.
-        --
-        -- FIXME: might support multiple selected tracks.
-        local track = reaper.GetSelectedTrack(0, 0)
-        if not take and track then
-            local cursor = reaper.GetCursorPosition()
-            for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
-                local item = reaper.GetTrackMediaItem(track, idx)
-                local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
-                local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
-                if cursor >= startpos and cursor <= endpos then
-                    take = reaper.GetActiveTake(item)
-                    break
-                end
-            end
-        end
+        take = self:get_take_at_edit_cursor()
     end
     if reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock2(0)
-        -- Take was found (either because MIDI editor is open with step input enabled or because
-        -- force insert was used), so inject the PC event at the current cursor position.
+        -- Take was found and is valid, so insert articulation.
 
-        -- This is a bit tragic.  There's no native function to get a list of MIDI events given a
-        -- ppq.  So knowing that the event indexes will be ordered by time, we do a binary search
-        -- across the events until we converge on the ppq.
-        --
-        -- If the events at the ppq are program changes, we delete them (as we're about to replace
-        -- them).
-        if not ppq then
-            -- There is no note selected in an open MIDI item, so default to the edit cursor
-            local cursor = reaper.GetCursorPosition()
-            ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
-        end
-
-        local _, _, n_events, _ = reaper.MIDI_CountEvts(take)
-        local skip = math.floor(n_events / 2)
-        local idx = skip
-        while idx > 0 and idx < n_events and skip > 0.5 do
-            local rv, _, _, evtppq, _, _, _, _ = reaper.MIDI_GetCC(take, idx)
-            skip = skip / 2
-            if evtppq > ppq then
-                -- Event is ahead of target ppq, back up.
-                idx = idx - math.ceil(skip)
-            elseif evtppq < ppq then
-                -- Event is behind target ppq, skip ahead.
-                idx = idx + math.ceil(skip)
-            else
-                delete_program_events_at_ppq(take, idx, n_events, ppq)
-                break
+        if delete_ppqs then
+            for _, range in ipairs(delete_ppqs) do
+                local startppq, endppq, delchan = table.unpack(range)
+                local msb, lsb, program = _delete_program_changes(take, delchan, startppq, endppq)
             end
         end
-        -- Insert program change at ppq
-        reaper.MIDI_InsertCC(take, false, false, ppq, 0xb0, channel, 0, bank.msb)
-        reaper.MIDI_InsertCC(take, false, false, ppq, 0xb0, channel, 32, bank.lsb)
-        reaper.MIDI_InsertCC(take, false, false, ppq, 0xc0, channel, art.program, 0)
+
+        if not insert_ppqs or #insert_ppqs == 0 then
+            -- There are no notes selected in an open MIDI item, so use the edit
+            -- cursor as the position for the articulation insertion, and the current
+            -- channel.
+            local cursor = reaper.GetCursorPosition()
+            insert_ppqs = {{reaper.MIDI_GetPPQPosFromProjTime(take, cursor), channel}}
+        end
+
+        for _, ppqchan in ipairs(insert_ppqs) do
+            _insert_program_change(take, ppqchan[1], ppqchan[2], bank.msb, bank.lsb, art.program, true)
+        end
         local item = reaper.GetMediaItemTake_Item(take)
         reaper.UpdateItemInProject(item)
 
