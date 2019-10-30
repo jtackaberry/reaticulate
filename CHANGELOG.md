@@ -1,3 +1,20 @@
+# 0.3.93 - October 29, 2019
+
+These are the changes since the last prerelease (0.3.92):
+
+# Minor Enhancements
+
+* More intelligent articulation insertion logic when notes are selected.  Program changes will now be inserted at gaps in the selection, and the channel of the note will be used for the program change rather than the default channel.
+* Delay refocusing the MIDI editor (if open) when double clicking articlations to reduce window focus flicker
+
+
+## Bug Fixes
+
+* Fix minor text cropping bug when the window is a certain width
+
+
+
+
 # 0.3.92 - October 26, 2019
 
 These are the changes since the last prerelease (0.3.91):
@@ -5,7 +22,7 @@ These are the changes since the last prerelease (0.3.91):
 ## New Features
 
 * Add option for undocked windows to be borderless (requires a fairly recent version of the js_ReaScript_API extension)
-* When the MIDI editor is open and notes are selected, articulations will insert just ahead of the first selected note rather than the edit cursor
+* When the MIDI editor is open and notes are selected, articulations will insert just ahead of the first selected note rather than at the edit cursor
 * Much better support for light themes
 
 
