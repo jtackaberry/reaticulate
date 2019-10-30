@@ -164,7 +164,7 @@ function screen.draw_button_midi_channel(art, button, offx, offy, event)
                 button:setcolor('#000000')
             end
             gfx.x = x
-            gfx.y = y
+            gfx.y = y + (rtk.os.mac and 1 or 0)
             gfx.drawstr(channel + 1)
         end
     end
