@@ -3289,7 +3289,7 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
             self:calcpositions(self.caret)
             self:onchange()
         elseif event.keycode == rtk.keycodes.BACKSPACE then
-            if self.caret > 1 then
+            if self.caret >= 1 then
                 if self.selanchor then
                     self:delete_selection()
                 else
