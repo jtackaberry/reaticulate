@@ -186,3 +186,11 @@ function open_url(url)
         )
     end
 end
+
+function convert_native_color(color)
+    if reaper.GetOS():starts('OSX') then
+        return ((color & 0xff) << 16) | (color & 0xff00) | ((color >> 16) & 0xff)
+    else
+        return color
+    end
+end

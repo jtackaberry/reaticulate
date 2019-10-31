@@ -122,6 +122,7 @@ function screen.init()
         section:add(screen.cb_track_follows_fx_focus)
     end
 
+
     --
     -- Section: Appearance
     --
@@ -139,9 +140,12 @@ function screen.init()
     local text = row:add(rtk.Entry{label=rtk.get_reaper_theme_bg(), w=75})
     local button = row:add(rtk.Button{icon='18-edit', lpadding=5, rpadding=5, tpadding=3, bpadding=3})
     button.onclick = function()
-        local ok, color = reaper.GR_SelectColor(0)
+        local default = rtk.get_reaper_theme_bg()
+        local bg = (text.value and #text.value > 0) and text.value or default
+        local ok, color = reaper.GR_SelectColor(0, convert_native_color(hex2int(bg)))
         if ok ~= 0 then
-            text:attr('value', int2hex(color))
+            local bg = int2hex(convert_native_color(color))
+            text:attr('value', bg == default and '' or bg)
         end
     end
     text.onchange = function(text)
@@ -152,6 +156,7 @@ function screen.init()
     end
     text:attr('value', app.config.bg)
     add_tip(section, 85, 'Leave blank to detect from theme. Restart required.')
+
 
     --
     -- Section: Feedback to Control Surface
@@ -222,7 +227,6 @@ function screen.init()
         app:save_config()
     end
     menu:select(app.config.cc_feedback_articulations or 2)
-
 
 
     --
