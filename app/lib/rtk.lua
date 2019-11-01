@@ -3237,6 +3237,7 @@ function rtk.Entry:_pop_history()
     if self._history and #self._history > 0 then
         local state = table.remove(self._history, #self._history)
         self.value, self.caret, self.selanchor, self.selend = table.unpack(state)
+        self._dirty = true
         self:calcpositions()
         rtk.queue_draw()
         self:onchange()
