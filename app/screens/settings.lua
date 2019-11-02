@@ -122,6 +122,13 @@ function screen.init()
         section:add(screen.cb_track_follows_fx_focus)
     end
 
+    screen.cb_insert_at_note_selection = make_cb('Insert articulations based on selected notes when MIDI editor is open')
+    screen.cb_insert_at_note_selection.onchange = function(cb)
+        app.config.art_insert_at_selected_notes = cb.value == 1 and true or false
+        app:save_config()
+    end
+    section:add(screen.cb_insert_at_note_selection)
+
 
     --
     -- Section: Appearance
@@ -285,6 +292,7 @@ function screen.update()
     screen.midi_device_menu:select(tostring(app.config.cc_feedback_device) or 1)
     screen.cb_track_follows_fx_focus:attr('value', app:get_toggle_option('track_selection_follows_fx_focus'), false)
     screen.cb_track_follows_midi_editor:attr('value', app:get_toggle_option('track_selection_follows_midi_editor'), false)
+    screen.cb_insert_at_note_selection:attr('value', app.config.art_insert_at_selected_notes, false)
     screen.cb_undocked_borderless:attr('value', app.config.borderless, false)
 end
 

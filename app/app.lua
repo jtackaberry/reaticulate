@@ -42,6 +42,10 @@ function App:initialize(basedir)
 
         -- If true, focusing an FX window will select the corresponding track.
         track_selection_follows_fx_focus = false,
+
+        -- If true, articulation insertions will be inserted at selected note positions
+        -- when the MIDI editor is open.
+        art_insert_at_selected_notes = true,
     }
 
     self.config_map_to_script = {
@@ -372,7 +376,9 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         local hwnd = reaper.MIDIEditor_GetActive()
         if hwnd then
             take = reaper.MIDIEditor_GetTake(hwnd)
-            insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
+            if self.config.art_insert_at_selected_notes then
+                insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
+            end
         end
 
         -- If no active take in MIDI editor, try to find the current take on the
