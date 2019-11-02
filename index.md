@@ -25,10 +25,10 @@ For more details on installation, [check the download page](download).
 If you'd prefer to watch a video of ceaseless blathering than reading this website:
 
 <div data-s9e-mediaembed="youtube" style="display:block;width:100%;max-width:90%"><div
-style="overflow:hidden;position:relative;padding-bottom:56.25%"><iframe allowfullscreen=""
+style="overflow:hidden;position:relative;padding-bottom:56.25%"><div class='iframe' allowfullscreen=""
 scrolling="no" style="background:url(https://i.ytimg.com/vi/1gDJUIrecE8/hqdefault.jpg) 50% 50% /
 cover;border:0;height:100%;left:0;position:absolute;width:100%"
-src="https://www.youtube.com/embed/1gDJUIrecE8"></iframe></div></div>
+src="https://www.youtube.com/embed/1gDJUIrecE8"></div></div></div>
 
 
 This is an alpha preview.  Please [report the bugs you inevitably find via GitHub](https://github.com/jtackaberry/reaticulate/issues).

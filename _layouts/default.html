@@ -57,5 +57,19 @@
         ga('send', 'pageview');
       </script>
     {% endif %}
+    <script type="text/javascript">
+      // Replaces div of class iframe with actual iframes, since commonmark doesn't seem to
+      // be passing <iframe> tags through.
+      $iframes = $('div.iframe');
+      $iframes.replaceWith(function(n) {
+        var old = $iframes.get(n);
+        var $new = $('<iframe>');
+        for (var i = 0; i < old.attributes.length; i++) {
+          var a = old.attributes[i];
+          $new.attr(a.name, a.value);
+        }
+        return $new;
+      });
+    </script>
   </body>
 </html>
