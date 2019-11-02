@@ -7,7 +7,7 @@ title: Contact
 The best way to report bugs or request features is through
 [GitHub Issues](https://github.com/jtackaberry/reaticulate/issues).
 
-It does require a GitHub account, but having a ticket open helps me track the issue better.
+It does require a (free) GitHub account, but having a ticket open helps me track the issue better.
 
 ## Forums
 

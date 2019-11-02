@@ -115,8 +115,9 @@ Hopefully the GUI will be fairly intuitive.  Here are some tips that may not be 
     * There are also a number of actions relating the default channel (see later)
 * __Left clicking__ on an articulation will change articulations by sending the output events defined
   for that articulation in the bank using the default channel as the source channel for the articulation
-* __Right clicking__ or (prerelease) __double clicking__ on the other hand will insert a program change at the edit cursor
-    * This also works from the arrange view even if the MIDI editor is closed
+* __Right clicking__ or __double clicking__ on the other hand will insert a program change into a MIDI item
+    * If the MIDI editor is open and the option *Insert articulations based on selected notes* (in Reaticulate's Settings page) is enabled, then program changes will be inserted at the first note of any contiguous subset of selected notes
+    * If that option is disabled or the MIDI editor is closed (you're working in Reaper's Arrange view), program changes will be inserted at the edit cursor postion
 * When you left or right click an articulation, Reaticulate will refocus the window that previously had focus before activating the articulation.  (This is only true when the js_ReaScriptAPI extension is installed.  If it's not installed, if MIDI editor if it's open it will focus that, and focus the arrange view otherwise.) This is *usually* what you want to avoid focus-stealing.
 * When an articulation is activated, the source channel that articulation is active on is denoted by
   a number on the right edge of the articulation

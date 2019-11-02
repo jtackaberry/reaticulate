@@ -190,7 +190,7 @@ marked as required.
 <tr>
     <td style='text-align: center'>m</td>
     <td>
-        A custom message displayed in the track configuration page and (prerelease) optionally the main
+        A custom message displayed in the track configuration page and optionally the main
         articulation list screen.  This usually provides some special instructions about how to configure
         the virtual instrument to be compatible with the bank, or other performance details.
     </td>
@@ -263,14 +263,14 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>transpose<br/><code>(prerelease)</code></td>
+    <td style='text-align: center'>transpose</td>
     <td>
         A value between -127 and 127 which defines how many pitches incoming notes should be
         transposed after the articulation is activated.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>velocity<br/><code>(prerelease)</code></td>
+    <td style='text-align: center'>velocity</td>
     <td>
         A multiplier between 0.00 and 10.00 (up to 2 decimals of precision) that will be applied
         to incoming note velocities.  The note-off velocity (if it exists -- it's quite rare)
@@ -278,7 +278,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>pitchrange<br/><code>(prerelease)</code></td>
+    <td style='text-align: center'>pitchrange</td>
     <td>
         A value in the form <code>min-max</code> defining the lower and upper limits that
         incoming note pitch numbers will be clamped to.  For example a value of
@@ -287,7 +287,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>velrange<br/><code>(prerelease)</code></td>
+    <td style='text-align: center'>velrange</td>
     <td>
         A value in the form <code>min-max</code> defining the lower and upper limits that
         incoming note velocities will be clamped to.  For example a value of <code>32-64</code> will
@@ -357,11 +357,10 @@ Where elements enclosed in square brackets are optional, and where:
   destination channel the defined by the user when the bank was configured on the track.  (See the
   [usage page](usage#track-setup) for more information on source and destination channels.)
 
-  (Prerelease) Alternatively, a special channel value of `-` will direct the
-  output event to the destination(s) setup by the previously activated
-  articulation.
+  Alternatively, a special channel value of `-` will direct the output event to
+  the destination(s) setup by the previously activated articulation.
 
-* `.bus` (prerelease) specifies the destination bus of the output event and subsequent incoming
+* `.bus` specifies the destination bus of the output event and subsequent incoming
    events when the articulation is activated.  `bus` is a value between 1 and 16.
 
   As with the channel, if not specified the default bus will be dictated by the
@@ -391,7 +390,7 @@ Possible output event types are:
 | cc        | A CC event, with `arg1` indicating the CC number and `arg2` defining the CC value
 | note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity.  `arg2` is optional and if not specified the default velocity is 127.  (It's not possible to specify the note-off velocity, however.  This is a seldom used feature of MIDI.)
 | note-hold | A note-on event, where `arg1` and `arg2` are according to the `note` type.  The corresponding note-off event is deferred until the next articulation is activated.  This is useful with patches that use non-latching keyswitches.
-| pitch (prerelease)     | A pitch bend event, where `arg1` is the 14-bit pitch bend value between -8192 and 8192 and `arg2` is not used.
+| pitch     | A pitch bend event, where `arg1` is the 14-bit pitch bend value between -8192 and 8192 and `arg2` is not used.
 | art       | Activate another articulation in the same bank, with `arg1` being the articulation program number and `arg2` is omitted.  This can be used to create composite articulations.  For example if you have articulation groups for con sordino/senza sordino and legato/non-legato, you could have another composite articulation for non-legato sustain con sordino that references the articulations in the other groups.
 
 Be aware that if multiple `note` output events are specified for a given articulation, all note-on
