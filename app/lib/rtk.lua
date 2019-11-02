@@ -3375,7 +3375,7 @@ end
 
 function rtk.Entry:_filter_attr(attr, value)
     if attr == 'value' then
-        return value or ''
+        return value and tostring(value) or ''
     else
         return rtk.Widget._filter_attr(self, attr, value)
     end
