@@ -15,14 +15,15 @@ These are the changes since the last stable release (0.3.2):
 * Output events can now send pitch bend MIDI messages ([#60](https://github.com/jtackaberry/reaticulate/issues/60))
 * Double clicking an articulation or invoking any of the "activate articulation" actions twice within 500ms will force-insert the articulation in the MIDI item.  (This is equivalent to right clicking, which behavior still exists.)
    - The old behavior of always inserting when step record is enabled has been removed in favor of this consistent approach.
-* Much better support for light themes
-* Add option for undocked windows to be borderless (requires a fairly recent version of the js_ReaScript_API extension)
-* Allow user-configurable background color (in Settings page)
+* Much better support for light themes ([#6](https://github.com/jtackaberry/reaticulate/issues/6))
+* Added option for undocked windows to be borderless (requires a fairly recent version of the js_ReaScript_API extension)
+* Allow user-configurable background color (in Settings page) ([#78](https://github.com/jtackaberry/reaticulate/issues/78))
 
 
 ## Minor Enhancements
 
-* Bank messages (set with the 'm' attribute in the bank definition) can now be viewed from Reaticulate's main articulation list screen
+* Added a new 'spacer' articulation attribute which adds visual padding above the articulation when shown in Reaticulate's UI ([#66](https://github.com/jtackaberry/reaticulate/issues/66))
+* Bank messages (set with the 'm' attribute in the bank definition) can now be viewed from Reaticulate's main articulation list screen ([#68](https://github.com/jtackaberry/reaticulate/issues/68))
 * Improved text entry widget behavior with text selection, copy/paste, etc.
 * Errors and other problems with banks or track configuration are now more visible in the articulation list screen
 * Linux: preliminary support
@@ -33,10 +34,11 @@ These are the changes since the last stable release (0.3.2):
 
 ## Bug Fixes
 
-* Fixed problem where insertion of articulations could not be undone by Reaper's undo action
-* Fixed bug where 'art' type output events combined with filter programs could hang Reaper (infinite loop)
+* Fixed problem where insertion of articulations could not be undone by Reaper's undo action ([#47](https://github.com/jtackaberry/reaticulate/issues/47))
+* Fixed bug where 'art' type output events combined with filter programs could hang Reaper (infinite loop) ([#44](https://github.com/jtackaberry/reaticulate/issues/44))
 * Fixed bug where activating an articulation that acts as a filter to another articulation's 'art' output events could activate the wrong child program
 * Fixed bug when MIDI controller feedback was enabled where Reaticulate would sometimes install sends to the wrong track when a new project was opened
+* Avoid reloading all other track FX when Reaticulate is installed on a track ([#1](https://github.com/jtackaberry/reaticulate/issues/1))
 * Mac: use the Reaper theme background color for Reaticulate's window
 * Fixed bug when opening the Reabank file editor on Windows when the path contained spaces
 * Fixed rare crash when last touch fx becomes invalid
