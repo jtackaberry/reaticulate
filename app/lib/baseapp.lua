@@ -300,7 +300,7 @@ end
 
 function BaseApp:set_theme()
     local bg = self.config.bg
-    if not bg or #bg <= 1 then
+    if not bg or type(bg) ~= 'string' or #bg <= 1 then
         bg = rtk.get_reaper_theme_bg()
     end
     -- Determine from theme background color if we should use the light or dark theme.
