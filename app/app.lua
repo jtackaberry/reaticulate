@@ -380,7 +380,7 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         if not hwnd and rfx.track then
             -- Is the inline MIDI editor open on any selected take on the
             -- current track, use the select-by-note logic if enabled.
-            for idx = 0, reaper.CountSelectedMediaItems(0) do
+            for idx = 0, reaper.CountSelectedMediaItems(0) - 1 do
                 local item = reaper.GetSelectedMediaItem(0, idx)
                 if reaper.GetMediaItem_Track(item) == rfx.track then
                     local itemtake = reaper.GetActiveTake(item)
