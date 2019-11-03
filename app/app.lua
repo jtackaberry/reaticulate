@@ -376,14 +376,29 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         local hwnd = reaper.MIDIEditor_GetActive()
         if hwnd then
             take = reaper.MIDIEditor_GetTake(hwnd)
-            if self.config.art_insert_at_selected_notes then
-                insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
+        end
+        if not hwnd and rfx.track then
+            -- Is the inline MIDI editor open on any selected take on the
+            -- current track, use the select-by-note logic if enabled.
+            for idx = 0, reaper.CountSelectedMediaItems(0) do
+                local item = reaper.GetSelectedMediaItem(0, idx)
+                if reaper.GetMediaItem_Track(item) == rfx.track then
+                    local itemtake = reaper.GetActiveTake(item)
+                    if reaper.BR_IsMidiOpenInInlineEditor(itemtake) then
+                        take = itemtake
+                        break
+                    end
+                end
             end
         end
-
-        -- If no active take in MIDI editor, try to find the current take on the
-        -- selected track based on edit cursor position.
-        take = self:get_take_at_edit_cursor()
+        if take and self.config.art_insert_at_selected_notes then
+            insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
+        else
+            -- If no active take in MIDI editor (inline or otherwise), try to
+            -- find the current take on the selected track based on edit cursor
+            -- position.
+            take = self:get_take_at_edit_cursor()
+        end
     end
     if reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
         reaper.PreventUIRefresh(1)
