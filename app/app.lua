@@ -1140,7 +1140,7 @@ function App:handle_onupdate()
                 self.last_midi_editor_take = take
                 if take and reaper.ValidatePtr(take, "MediaItem_Take*") then
                     local take_track = reaper.GetMediaItemTake_Track(take)
-                    self:select_track(take_track)
+                    self:select_track(take_track, false)
                 end
             end
         else
@@ -1165,12 +1165,14 @@ function App:handle_onupdate()
     rfx.opcode_commit_all()
 end
 
-function App:select_track(track)
+function App:select_track(track, scroll_arrange)
     reaper.PreventUIRefresh(1)
     reaper.SetOnlyTrackSelected(track)
     feedback.scroll_mixer(track)
-    -- Track: Vertical scroll selected tracks into view.
-    reaper.Main_OnCommandEx(40913, 0, 0)
+    if scroll_arrange then
+        -- Track: Vertical scroll selected tracks into view.
+        reaper.Main_OnCommandEx(40913, 0, 0)
+    end
     reaper.PreventUIRefresh(-1)
 end
 
@@ -1181,7 +1183,7 @@ function App:select_track_from_fx_window()
         local tracknum = title:match('Track (%d+)')
         if tracknum then
             local track = reaper.GetTrack(0, tracknum - 1)
-            self:select_track(track)
+            self:select_track(track, true)
             log.debug("app: selecting track %s due to focused FX", tracknum)
             break
         end
