@@ -372,52 +372,57 @@ function App:activate_articulation(art, refocus, force_insert, channel)
     local take = nil
     local insert_ppqs, delete_ppqs = nil, nil
     if force_insert and force_insert ~= 0 then
-        -- If MIDI Editor is open, use the current take there.
-        local hwnd = reaper.MIDIEditor_GetActive()
-        if hwnd then
-            take = reaper.MIDIEditor_GetTake(hwnd)
-        end
-        if not hwnd and rfx.track then
-            -- Is the inline MIDI editor open on any selected take on the
-            -- current track, use the select-by-note logic if enabled.
-            for idx = 0, reaper.CountSelectedMediaItems(0) - 1 do
-                local item = reaper.GetSelectedMediaItem(0, idx)
-                if reaper.GetMediaItem_Track(item) == rfx.track then
-                    local itemtake = reaper.GetActiveTake(item)
-                    if reaper.BR_IsMidiOpenInInlineEditor(itemtake) then
-                        take = itemtake
-                        break
+        if self.config.art_insert_at_selected_notes then
+            -- We want to insert the articulation based on selected notes.
+            -- So look for the best take to find selected notes.
+
+            -- If MIDI Editor is open, use the current take there.
+            local hwnd = reaper.MIDIEditor_GetActive()
+            if hwnd then
+                take = reaper.MIDIEditor_GetTake(hwnd)
+            end
+            if not hwnd and rfx.track then
+            -- MIDI editor isn't open.  If the inline MIDI editor open on any
+            -- selected take on the current track, look there for selected
+            -- notes.
+                for idx = 0, reaper.CountSelectedMediaItems(0) - 1 do
+                    local item = reaper.GetSelectedMediaItem(0, idx)
+                    if reaper.GetMediaItem_Track(item) == rfx.track then
+                        local itemtake = reaper.GetActiveTake(item)
+                        if reaper.BR_IsMidiOpenInInlineEditor(itemtake) then
+                            take = itemtake
+                            break
+                        end
                     end
                 end
             end
+            if take then
+                -- We have a take.  Check it for selected notes.
+                insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
+            end
         end
-        if take and self.config.art_insert_at_selected_notes then
-            insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take)
-        else
-            -- If no active take in MIDI editor (inline or otherwise), try to
-            -- find the current take on the selected track based on edit cursor
-            -- position.
+
+        -- If we haven't managed to find selected notes (assuming the feature is
+        -- even enabled), then fall back to the take at the edit cursor and use
+        -- the cursor position for the articulation insertion point.  This may not
+        -- be the take active in the MIDI editor either, if the edit cursor is
+        -- somewhere else.
+        if not insert_ppqs or #insert_ppqs == 0 then
             take = self:get_take_at_edit_cursor()
+            local cursor = reaper.GetCursorPosition()
+            insert_ppqs = {{reaper.MIDI_GetPPQPosFromProjTime(take, cursor), channel}}
         end
     end
     if reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
+        -- If we're here, take is valid and insert_ppqs will have been set.
+        -- delete_ppqs may still be nil.
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock2(0)
-        -- Take was found and is valid, so insert articulation.
-
         if delete_ppqs then
             for _, range in ipairs(delete_ppqs) do
                 local startppq, endppq, delchan = table.unpack(range)
                 local msb, lsb, program = _delete_program_changes(take, delchan, startppq, endppq)
             end
-        end
-
-        if not insert_ppqs or #insert_ppqs == 0 then
-            -- There are no notes selected in an open MIDI item, so use the edit
-            -- cursor as the position for the articulation insertion, and the current
-            -- channel.
-            local cursor = reaper.GetCursorPosition()
-            insert_ppqs = {{reaper.MIDI_GetPPQPosFromProjTime(take, cursor), channel}}
         end
 
         for _, ppqchan in ipairs(insert_ppqs) do
