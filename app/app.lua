@@ -944,9 +944,14 @@ function App:refresh_banks()
     -- rfx.sync() above.
     self.screens.banklist.update()
     if self:current_screen() == self.screens.trackcfg then
-        -- If we're on the trackcfg screen, ensure any existing bank OptionMenus
-        -- get updated to reflect the changes.
-        self.screens.trackcfg.update()
+        -- If the any of the bank hashes change on the current track, we will have fired
+        -- onhashchanged() which will update the trackcfg screen, however if banks were added
+        -- or removed (even if the removed bank was currently assigned to the track), then
+        -- onhashchanged() will not be called.  So we need to call check_banks_for_errors()
+        -- explicitly.
+        --
+        -- FIXME: avoid double calling check_banks_for_errors()
+        self:check_banks_for_errors()
     end
     log.debug("app: refresh: stage 4 done")
     log.warn("app: refresh: done")
