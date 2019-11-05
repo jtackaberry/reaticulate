@@ -1,9 +1,19 @@
+# 0.4.1 - November 4, 2019
+
+## Bug Fixes
+
+* Fixed a bug with the inline MIDI editor when the option to insert articulations at selected notes was enabled
+* Fixed a related bug where articulations would fail to insert at the edit cursor if the active item in the MIDI editor was different than the one under the edit cursor
+* When "Track selection follows MIDI editor target item" is enabled, don't vertically scroll the arrange view to show the track as that behavior ends up being particularly obnoxious
+
+
+
 # 0.4.0 - November 2, 2019
 
-These are the changes since the last stable release (0.3.2):
-
-
 **Note:** Reaper 5.97 (released on February 21, 2019) or later is now required.
+
+
+These are the changes since the last stable release (0.3.2):
 
 
 ## New Features
