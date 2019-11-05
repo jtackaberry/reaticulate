@@ -409,8 +409,10 @@ function App:activate_articulation(art, refocus, force_insert, channel)
         -- somewhere else.
         if not insert_ppqs or #insert_ppqs == 0 then
             take = self:get_take_at_edit_cursor()
-            local cursor = reaper.GetCursorPosition()
-            insert_ppqs = {{reaper.MIDI_GetPPQPosFromProjTime(take, cursor), channel}}
+            if take then
+                local cursor = reaper.GetCursorPosition()
+                insert_ppqs = {{reaper.MIDI_GetPPQPosFromProjTime(take, cursor), channel}}
+            end
         end
     end
     if reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
