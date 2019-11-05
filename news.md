@@ -1,3 +1,18 @@
+# Reaticulate 0.4.1 Released
+*November 4, 2019*
+
+0.4.1 tidies up a few loose threads that slipped through in 0.4.0.
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed a bug with the inline MIDI editor when the option to insert articulations at selected notes was enabled
+* Fixed a related bug where articulations would fail to insert at the edit cursor if the active item in the MIDI editor was different than the one under the edit cursor
+* When "Track selection follows MIDI editor target item" is enabled, don't vertically scroll the arrange view to show the track as that behavior ends up being particularly obnoxious
+
+
+
 # Reaticulate 0.4.0 Released
 *November 2, 2019*
 
