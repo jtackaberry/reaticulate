@@ -943,6 +943,11 @@ function App:refresh_banks()
     -- If the banks have changed then rfx.onhashchanged() will have already been called via
     -- rfx.sync() above.
     self.screens.banklist.update()
+    if self:current_screen() == self.screens.trackcfg then
+        -- If we're on the trackcfg screen, ensure any existing bank OptionMenus
+        -- get updated to reflect the changes.
+        self.screens.trackcfg.update()
+    end
     log.debug("app: refresh: stage 4 done")
     log.warn("app: refresh: done")
     log.time_end()
