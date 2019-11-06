@@ -146,7 +146,7 @@ function App:get_take_at_edit_cursor()
         local item = reaper.GetTrackMediaItem(track, idx)
         local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
         local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
-        if cursor >= startpos and cursor <= endpos then
+        if cursor >= startpos and cursor < endpos then
             return reaper.GetActiveTake(item)
         end
     end
