@@ -1,3 +1,14 @@
+# Reaticulate 0.4.2 Released
+*November 8, 2019*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed inserting articulations when the edit cursor is at the boundary between two MIDI items
+* Fixed a regression with the track configuration screen where it failed to properly reflect additions or removals of banks when the Refresh toolbar button was pressed
+
+
 # Reaticulate 0.4.1 Released
 *November 4, 2019*
 
