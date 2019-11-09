@@ -5,7 +5,7 @@ title: Usage
 # First Run
 
 * Open Reaper's Actions list (the `?` key by default) and run `Script: Reaticulate_Main.lua`
-* The UI window can be docked by clicking the Dock icon in the toolbar ![Dock icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-settings.png)
+* The UI window can be docked by clicking the Dock icon in the toolbar ![Dock icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-dock_window.png)
   * After that you can control it like any other docked window in Reaper
 * If you want Reaticulate to automatically start each time Reaper is launched (recommended), click the settings icon ![Settings icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-settings.png) and enable the autostart option
 
