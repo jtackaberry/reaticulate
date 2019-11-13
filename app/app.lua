@@ -35,6 +35,7 @@ function App:initialize(basedir)
         -- Togglable via action
         cc_feedback_active = true,
         autostart = 0,
+        art_colors = nil,
 
         -- If true, if the MIDI editor is open, the item that is target for event insertion
         -- will dictate which track is selected in the TCP.
@@ -86,15 +87,24 @@ function App:initialize(basedir)
     -- If not nil, is the time a deferred refocus should trigger.
     self.refocus_target_time = nil
 
+    articons.init(Path.imagedir)
+    rfx.init()
+    reabank.init()
+    rtk.scale = self.config.scale
+
+    -- Migrate colors from reabank to 
+    if not self.config.art_colors then
+        self.config.art_colors = {}
+        for color, value in pairs(reabank.default_colors) do
+            if reabank.colors[color] and reabank.colors[color] ~= value then
+                self.config.art_colors[color] = value
+            end
+        end
+    end
     self:add_screen('installer', 'screens.installer')
     self:add_screen('banklist', 'screens.banklist')
     self:add_screen('trackcfg', 'screens.trackcfg')
     self:add_screen('settings', 'screens.settings')
-
-    rfx.init()
-    reabank.init()
-    articons.init(Path.imagedir)
-    rtk.scale = self.config.scale
 
     self:set_statusbar('Reaticulate')
     self:replace_screen('banklist')
@@ -796,6 +806,15 @@ function App:get_active_articulation(channel, group)
     end
 end
 
+
+function App:get_articulation_color(color)
+    local cfg = self.config.art_colors[color]
+    if cfg and cfg:len() > 0 then
+        return cfg
+    else
+        return reabank.default_colors[color] or reabank.default_colors.default
+    end
+end
 
 function App:insert_last_articulation(channel)
     local art = self.last_activated_articulation

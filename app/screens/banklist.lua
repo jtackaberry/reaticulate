@@ -214,7 +214,7 @@ function screen.create_banklist_ui(bank)
         local color = art.color or reabank.colors.default
         local textcolor = '#ffffff'
         if not color:starts('#') then
-            color = reabank.colors[color] or reabank.colors.default
+            color = app:get_articulation_color(color)
         end
         local textcolor = color2luma(color) > 0.7 and '#000000' or '#ffffff'
         art.icon = articons.get(art.iconname) or articons.get('note-eighth')

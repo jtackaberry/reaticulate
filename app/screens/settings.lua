@@ -15,12 +15,30 @@
 local log = require 'lib.log'
 local rtk = require 'lib.rtk'
 local feedback = require 'feedback'
+local articons = require 'articons'
+local reabank = require 'reabank'
 
 
 local screen = {
     minw = 200,
     widget = nil,
-    midi_device_menu = nil
+    midi_device_menu = nil,
+
+    art_colors = {
+        {'Default', 'default', 'note-whole'},
+        {'Short', 'short', 'note-eighth'},
+        {'Short Light', 'short-light', 'staccato-con-sord'},
+        {'Short Dark', 'short-dark', 'pizz-bartok'},
+        {'Legato', 'legato', 'legato'},
+        {'Legato Light', 'legato-light', 'legato-flautando'},
+        {'Legato Dark', 'legato-dark', 'legato-sul-pont'},
+        {'Long', 'long', 'note-whole'},
+        {'Long Light', 'long-light', 'sul-tasto'},
+        {'Long Dark', 'long-dark', 'sul-pont'},
+        {'Textured', 'textured', 'frozen'},
+        {'FX', 'fx', 'fx'}
+    },
+    art_color_entries = {}
 }
 
 
@@ -68,8 +86,45 @@ function add_tip(section, lpadding, text)
     return section:add(label, {lpadding=lpadding, valign=rtk.Widget.CENTER, spacing=20})
 end
 
-function make_cb(label)
+local function make_cb(label)
     return rtk.CheckBox{label=label, wrap=true, ivalign=rtk.Widget.TOP}
+end
+
+local function add_color_input(row, label, icon, pad, onset)
+    local text = row:add(rtk.Entry{label=label, textwidth=7}, {valign='center', fillw=false})
+    local attrs
+    if pad then
+        attrs = {icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3}
+    else
+        attrs = {icon=icon}
+    end
+    local button = row:add(rtk.Button(attrs))
+    local undo = row:add(app:make_button('18-undo'))
+    undo.onclick = function()
+        if not text:pop_history() and text.original then
+            text:attr('value', text.original)
+        end
+    end
+    button.onclick = function()
+        local bg = (text.value and #text.value > 0) and text.value or label or ''
+        local ok, color = reaper.GR_SelectColor(0, convert_native_color(hex2int(bg)))
+        if ok ~= 0 then
+            text:push_history()
+            text:attr('value', int2hex(convert_native_color(color)))
+        end
+    end
+    text.onchange = function(text)
+        if text.value == label then
+            text:attr('value', '', text.value, false)
+        end
+        local bg = (text.value and #text.value > 0) and text.value or label or ''
+        button:attr('color', bg)
+        -- Only execute callback after first
+        if onset then
+            onset(text, button, bg)
+        end
+    end
+    return text
 end
 
 function screen.init()
@@ -144,23 +199,14 @@ function screen.init()
     end
 
     local row = add_row(section, "Background:", 75)
-    local text = row:add(rtk.Entry{label=rtk.get_reaper_theme_bg(), w=75})
-    local button = row:add(rtk.Button{icon='18-edit', lpadding=5, rpadding=5, tpadding=3, bpadding=3})
-    button.onclick = function()
-        local default = rtk.get_reaper_theme_bg()
-        local bg = (text.value and #text.value > 0) and text.value or default
-        local ok, color = reaper.GR_SelectColor(0, convert_native_color(hex2int(bg)))
-        if ok ~= 0 then
-            local bg = int2hex(convert_native_color(color))
-            text:attr('value', bg == default and '' or bg)
-        end
-    end
-    text.onchange = function(text)
-        local bg = (text.value and #text.value > 0) and text.value or rtk.get_reaper_theme_bg()
-        button:attr('color', bg)
-        app.config.bg = text.value
-        app:save_config()
-    end
+    local text = add_color_input(row, rtk.get_reaper_theme_bg(), '18-edit', true,
+        function(text, button)
+            if text.value ~= app.config.bg then
+                app.config.bg = text.value
+                app:save_config()
+            end
+        end)
+    text.original = rtk.get_reaper_theme_bg()
     text:attr('value', app.config.bg)
     add_tip(section, 85, 'Leave blank to detect from theme. Restart required.')
 
@@ -265,6 +311,30 @@ function screen.init()
         app:set_debug(tonumber(menu.selected_id))
     end
 
+
+    --
+    -- Section: Articulation Colors
+    --
+    local section = make_section(screen.vbox, "Default Articulation Colors")
+    local box = section:add(rtk.FlowBox{vspacing=10, hspacing=20})
+    for _, record in ipairs(screen.art_colors) do
+        local name, color, icon = table.unpack(record)
+        local row = add_row(box, name .. ":", 80)
+        local default = reabank.default_colors[color]
+        local text = add_color_input(row, default, articons.get(icon), false, function(text, button)
+            local cfgval = (text.value == default or text.value == '') and nil or text.value
+            text.value = cfgval and text.value or ''
+            if cfgval ~= app.config.art_colors[color] then
+                app.config.art_colors[color] = cfgval
+                app:save_config()
+                -- FIXME: do something lighter weight to refresh colors
+                app:refresh_banks(true)
+            end
+        end)
+        text.original = default
+        screen.art_color_entries[color] = text
+    end
+
     local button = screen.vbox:add(
         rtk.Button{
             icon='18-link', label="Reaticulate Website",
@@ -294,6 +364,10 @@ function screen.update()
     screen.cb_track_follows_midi_editor:attr('value', app:get_toggle_option('track_selection_follows_midi_editor'), false)
     screen.cb_insert_at_note_selection:attr('value', app.config.art_insert_at_selected_notes, false)
     screen.cb_undocked_borderless:attr('value', app.config.borderless, false)
+    for color, text in pairs(screen.art_color_entries) do
+        text:attr('value', app:get_articulation_color(color), true)
+    end
+
 end
 
 return screen

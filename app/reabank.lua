@@ -32,9 +32,24 @@ local reabank = {
     banks_by_path = {},
     articulation_map = {},
     menu = nil,
-    colors = {
-        ['default'] = '#666666'
+    -- Default articulation colors.
+    default_colors = {
+        ['default'] = '#666666',
+        ['short'] = '#6c30c6',
+        ['short-light'] = '#9630c6',
+        ['short-dark'] = '#533bca',
+        ['legato'] = '#218561',
+        ['legato-dark'] = '#1c5e46',
+        ['legato-light'] = '#49ba91',
+        ['long'] = '#305fc6',
+        ['long-light'] = '#4474e1',
+        ['long-dark'] = '#2c4b94',
+        ['textured'] = '#9909bd',
+        ['fx'] = '#883333'
     },
+    -- These have now been moved from reabank file to application settings, but
+    -- for transition purposes we still set these the reabank is parsed.
+    colors = {},
     textcolors = {
         ['default'] = '#ffffff'
     }
