@@ -436,6 +436,7 @@ function rfx.sync(track, forced)
         return track_changed
     end
     if track_changed then
+        local migrated = false
         rfx.subscribe(rfx.SUBSCRIPTION_NOTES) -- | rfx.SUBSCRIPTION_CC)
         -- Track changed, need to update banks_by_channel map
         rfx.reabank_version = (rfx.metadata >> 8) & 0xff
@@ -446,11 +447,15 @@ function rfx.sync(track, forced)
         if type(rfx.appdata) ~= 'table' or not rfx.appdata.banks then
             if rfx.get_param(rfx.params.banks_start) ~= 0 then
                 rfx._migrate_to_appdata()
+                -- Ensure we call sync_banks_to_rfx() just below.  In 0.4.0 we changed the
+                -- way dirty detection was done (by moving from reabank version to the
+                -- bank hash) so we just blindly resync if we've done a migration.
+                migrated = true
             else
                 rfx._init_appdata()
             end
         end
-        if rfx.index_banks_by_channel() then
+        if rfx.index_banks_by_channel() or migrated then
             log.info("rfx: resyncing banks due to hash mismatch")
             rfx.onhashchange()
             rfx.sync_banks_to_rfx()
