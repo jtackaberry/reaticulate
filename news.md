@@ -1,3 +1,15 @@
+# Reaticulate 0.4.3 Released
+*November 17, 2019*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed a crasher on OSX when "Track selection follows FX focus" is enabled
+* Fixed bug where duplicating tracks containing the Reaticulate JSFX may not reflect the same bank assignments
+* Fixed an issue loading projects or importing track templates saved with older versions of Reaticulate where changes made to banks would not be automatically synced to the track
+
+
 # Reaticulate 0.4.2 Released
 *November 8, 2019*
 
