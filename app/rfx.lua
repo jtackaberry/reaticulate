@@ -962,7 +962,7 @@ function rfx.sync_banks_to_rfx()
     for i, bank, _, _, _, userdata in rfx.get_banks() do
         rfx.appdata.banks[i].h = bank and bank:hash() or nil
     end
-    rfx.queue_write_appdata()
+    rfx._write_appdata(rfx.track, rfx.fx, rfx.appdata)
 
     rfx.pop_state()
     reaper.Undo_EndBlock2(0, "Reaticulate: update track banks (cannot be undone)", UNDO_STATE_FX)
