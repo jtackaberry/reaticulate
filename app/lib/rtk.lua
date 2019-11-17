@@ -415,6 +415,18 @@ end
 function rtk.update()
     gfx.update()
     local need_draw = rtk._draw_queued
+
+    -- Check focus.  Ensure focused_hwnd is updated *before* calling onupdate()
+    -- handler.
+    if rtk.has_js_reascript_api then
+        rtk.focused_hwnd = reaper.JS_Window_GetFocus()
+        local focused = rtk.hwnd == rtk.focused_hwnd
+        if focused ~= rtk.is_focused then
+            rtk.is_focused = focused
+            need_draw = true
+        end
+    end
+
     if rtk.onupdate() == false then
         return true
     end
@@ -477,16 +489,6 @@ function rtk.update()
         rtk.onkeypresspre(event)
     elseif char < 0 then
         rtk.onclose()
-    end
-
-    -- Check focus
-    if rtk.has_js_reascript_api then
-        rtk.focused_hwnd = reaper.JS_Window_GetFocus()
-        local focused = rtk.hwnd == rtk.focused_hwnd
-        if focused ~= rtk.is_focused then
-            rtk.is_focused = focused
-            need_draw = true
-        end
     end
 
     local last_in_window = rtk.in_window
