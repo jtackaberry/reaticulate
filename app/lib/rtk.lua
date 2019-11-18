@@ -1,4 +1,3 @@
-
 -- Copyright 2017-2019 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
@@ -76,9 +75,30 @@ end
 -------------------------------------------------------------------------------------------------------------
 
 local rtk = {
+    ---
+    -- User-settable values that control rtk behavior.
+    ---
+    long_press_delay = 0.5,
+    double_click_delay = 0.5,
+
+    onupdate = function() end,
+    onreflow = function() end,
+    onmove = function() end,
+    onresize = function() end,
+    ondock = function() end,
+    onclose = function() end,
+    onkeypresspre = function(event) end,
+    onkeypresspost = function(event) end,
+    onmousewheel = function(event) end,
+
+
+    ---
+    -- Values set and managed by rtk
+    ---
     has_js_reascript_api = reaper.JS_Window_GetFocus ~= nil,
 
     scale = 1,
+    alpha = 1,
     x = 0,
     y = 0,
     w = gfx.w,
@@ -121,6 +141,13 @@ local rtk = {
     -- The user argument as returned by ondragstart() for the currently dragging
     -- widget
     dragarg = nil,
+    -- The widget the mouse is currently pressed on which has returned true to
+    -- its onmousedown() handler.  Note that only tracking one widget isn't
+    -- technically correct because the user could e.g. press LMB on widget 1,
+    -- drag over and press RMB on widget 2.  But it's probably not worth handling
+    -- that edge case.
+    mouse_pressed_widget = nil,
+    mouse_pressed_time = 0,
     -- True will the app is running.  rtk.quit() will set this to false.
     running = true,
     -- hwnd of the gfx window (iff JS extension is installed)
@@ -153,6 +180,15 @@ local rtk = {
             pointer_loading = 32650,
             pointer_help = 32651
         },
+    },
+
+    -- Meta key states (if js_ReaScriptAPI extension is installed)
+    keys = {
+        shift = false,
+        ctrl = false,
+        meta = false,
+        time = 0,
+        systime = 0,
     },
 
     theme = nil,
@@ -231,16 +267,6 @@ local rtk = {
         linux = false
     },
 
-    onupdate = function() end,
-    onreflow = function() end,
-    onmove = function() end,
-    onresize = function() end,
-    ondock = function() end,
-    onclose = function() end,
-    onkeypresspre = function(event) end,
-    onkeypresspost = function(event) end,
-    onmousewheel = function(event) end,
-
     _event = nil,
     _reflow_queued = false,
     -- Set of specific widgets that need to be reflowed on next update.  If
@@ -296,10 +322,14 @@ local function _do_animations(now)
         local donefuncs = nil
         for key, animation in pairs(rtk._animations) do
             local widget, attr, easingfn, srcval, dstval, pct, pctstep, do_reflow, donefn = table.unpack(animation)
-            local pct = pct + pctstep
             local lim = dstval > srcval and math.min or math.max
             local newval = lim(dstval, easingfn(srcval, dstval, pct))
-            widget[attr] = newval
+            if type(widget) == 'function' then
+                widget(newval, attr)
+            else
+                widget[attr] = newval
+            end
+            local pct = pct + pctstep
             if newval == dstval then
                 -- Animation is done.
                 rtk._animations[key] = nil
@@ -310,7 +340,7 @@ local function _do_animations(now)
                     end
                     donefuncs[#donefuncs + 1] = {donefn, widget}
                 end
-                log.debug2('animation: done %s: %s -> %s on %s (%s)', attr, srcval, dstval, widget, widget.id)
+                log.debug2('animation: done %s: %s -> %s on %s', attr, srcval, dstval, widget)
             else
                 animation[6] = pct
             end
@@ -328,6 +358,23 @@ local function _do_animations(now)
     end
 end
 
+function rtk.queue_animation(kwargs)
+    assert(kwargs and kwargs.key)
+    local easingfn = rtk._easing_functions[kwargs.easing or 'linear']
+    assert(type(easingfn) == 'function')
+    -- Other types not supported yet
+    assert(type(kwargs.src) == 'number')
+
+    -- key, widget_or_func, attr_or_userarg, easingfn, src, dst, duration, reflow, donefn)
+    if not rtk._animations[kwargs.key] then
+        rtk._animations_len = rtk._animations_len + 1
+    end
+    local pctstep = 1.0 / (rtk.fps * kwargs.duration)
+    rtk._animations[kwargs.key] = {
+        kwargs.widget or kwargs.func, kwargs.attr or kwargs.args, easingfn,
+        kwargs.src, kwargs.dst, 0, pctstep, kwargs.reflow, kwargs.donefn
+    }
+end
 
 function rtk.push_dest(dest)
     rtk._dest_stack[#rtk._dest_stack + 1] = gfx.dest
@@ -415,6 +462,18 @@ end
 function rtk.update()
     gfx.update()
     local need_draw = rtk._draw_queued
+
+    -- Check focus.  Ensure focused_hwnd is updated *before* calling onupdate()
+    -- handler.
+    if rtk.has_js_reascript_api then
+        rtk.focused_hwnd = reaper.JS_Window_GetFocus()
+        local focused = rtk.hwnd == rtk.focused_hwnd
+        if focused ~= rtk.is_focused then
+            rtk.is_focused = focused
+            need_draw = true
+        end
+    end
+
     if rtk.onupdate() == false then
         return true
     end
@@ -454,6 +513,10 @@ function rtk.update()
                 event = _get_mouse_button_event(64)
             end
         end
+    elseif rtk.mouse_pressed_widget and rtk.mouse.down ~= 0 then
+        -- Mouse button is currently pressing on a widget.  Generate mousemove
+        -- events to give the onlongpress() handler a chance to fire.
+        event = _get_mousemove_event(true)
     end
 
     -- Generate key event
@@ -479,15 +542,6 @@ function rtk.update()
         rtk.onclose()
     end
 
-    -- Check focus
-    if rtk.has_js_reascript_api then
-        rtk.focused_hwnd = reaper.JS_Window_GetFocus()
-        local focused = rtk.hwnd == rtk.focused_hwnd
-        if focused ~= rtk.is_focused then
-            rtk.is_focused = focused
-            need_draw = true
-        end
-    end
 
     local last_in_window = rtk.in_window
     rtk.in_window = gfx.mouse_x >= 0 and gfx.mouse_y >= 0 and gfx.mouse_x <= gfx.w and gfx.mouse_y <= gfx.h
@@ -574,7 +628,7 @@ function rtk.update()
                 -- handler triggered from _draw() queues a redraw it won't get
                 -- lost.
                 rtk._draw_queued = false
-                rtk.widget:_draw(0, 0, 0, 0, 0, 0, event)
+                rtk.widget:_draw(0, 0, 0, 0, 0, 0, rtk.alpha, event)
                 rtk._backingstore:resize(rtk.w, rtk.h, false)
                 rtk._backingstore:drawfrom(-1)
             else
@@ -725,6 +779,17 @@ function rtk.focus()
     else
         return false
     end
+end
+
+function rtk.get_clipboard()
+    local fast = reaper.SNM_CreateFastString("")
+    local data =  reaper.CF_GetClipboardBig(fast)
+    reaper.SNM_DeleteFastString(fast)
+    return data
+end
+
+function rtk.set_clipboard(data)
+    reaper.CF_SetClipboard(data)
 end
 
 local function _log_error(err)
@@ -972,6 +1037,7 @@ end
 function rtk.Image:load(path)
     self.id = gfx.loadimg(rtk.Image.static.last_index + 1, path)
     if self.id ~= -1 then
+        self.path = path
         rtk.Image.static.last_index = self.id
         self.width, self.height = gfx.getimgdim(self.id)
     else
@@ -1064,21 +1130,27 @@ function rtk.Widget:initialize()
     self.id = rtk._last_widget_serial
     rtk._last_widget_serial = rtk._last_widget_serial + 1
 
-    -- User defined coords
+    -- User defined geometry.
+    --
+    -- x and y coordinates are relative to the parent container and can be negtive.
     self.x = 0
     self.y = 0
+    -- Width and height are unspecified by default, which means they will choose
+    -- an appropriate size based on the parent's bounding box and the widget's
+    -- natural desired size.
+    --
+    -- If w and h are between 0.0 and 1.0, they are fractions of the the bounding
+    -- box imposed by our parent.  If they're negative, then they are relative to
+    -- the far edge of the bounding box, so e.g. w=-50 means the width is 50px
+    -- less than the bounding box width.
     self.w = nil
     self.h = nil
 
     -- Padding that subclasses *should* implement.
     --
-    -- NOTE: this works like CSS's content-box box sizing model where padding is over
-    -- and above content.  Consequently, a child may end up with a size larger than
-    -- a parent container offers, due to added padding.
-    --
-    -- If this is undesirable, then instead of specifying the padding as part of the
-    -- child's attributes, specify the padding as additional attributes to the
-    -- container's add() method.
+    -- NOTE: this works like CSS's border-box box sizing model where padding is
+    -- included in the widget's dimensions.  If the w or h attr is specified, then
+    -- it includes padding as well and the inner content will shrink accordingly.
     self.lpadding = 0
     self.tpadding = 0
     self.rpadding = 0
@@ -1095,7 +1167,8 @@ function rtk.Widget:initialize()
     -- the scrollbar while the child is dragging
     self.show_scrollbar_on_drag = false
 
-    -- Computed coordinates relative to widget parent container
+    -- Computed geometry relative to widget parent container's outer (border)
+    -- coordinates. This includes padding per the border-box style box model.
     self.cx = nil
     self.cy = nil
     self.cw = nil
@@ -1118,22 +1191,38 @@ function rtk.Widget:initialize()
     -- Time of last click time (for measuring double clicks)
     self.last_click_time = 0
 
-    -- Indicates whether the widget should be rendered by its parent.
+    -- Indicates whether the widget should be rendered by its parent.  If false,
+    -- this is equivlent to CSS's display:none where it is not considered as
+    -- part of layout during reflow().  Containers will not invoke _draw() on
+    -- invisible widgets.
     self.visible = true
-    -- A ghost widget is one that takes up space in terms of layout but is
-    -- otherwise not drawn.
+    -- A ghost widget is one that takes up space in terms of layout and will have
+    -- its geometry calculated in reflow() but is otherwise not drawn.  This
+    -- is similar to CSS's visibility:hidden.  Also, unlike visible=false,
+    -- containers will invoke _draw() on ghost widgets, but normally _draw() will
+    -- return immediately.
     self.ghost = false
     -- True if the widget is ready to be drawn (it is initialized and reflowed)
     self.realized = false
-    -- The widget's ancestor viewport as of last reflow.  Can be nil if there
-    -- is no containing viewport.
+    -- The widget's closest ancestor viewport as of last reflow.  Can be nil if
+    -- there is no containing viewport.
     self.viewport = nil
-    -- Set to true if the mouse is hovering over the widget
+    -- Set to true if the mouse is hovering over the widget *and* if onmouseover()
+    -- had returned a non-false value.
     self.hovering = false
 
 
     self.debug_color = {math.random(), math.random(), math.random()}
 end
+
+
+function rtk.Widget:__tostring()
+    return string.format('%s[%s] (%d,%d %dx%d)',
+        self.class.name:sub(5), self.id,
+        self.cx, self.cy, self.cw, self.ch
+    )
+end
+
 
 function rtk.Widget:setattrs(attrs)
     if attrs ~= nil then
@@ -1150,66 +1239,85 @@ function rtk.Widget:draw_debug_box(offx, offy)
     end
 end
 
-function rtk.Widget:_unpack_border(border)
+function rtk.Widget:_unpack_border(border, alpha)
     local color, thickness, padding = table.unpack(border)
-    self:setcolor(color or rtk.theme.button)
+    self:setcolor(color or rtk.theme.button, alpha)
     return thickness or 1, padding or 0
 end
 
 
-function rtk.Widget:_draw_borders(offx, offy, all, t, r, b, l)
+function rtk.Widget:_draw_borders(offx, offy, all, t, r, b, l, alpha)
     if all then
-        local thickness, offset = self:_unpack_border(all)
+        local thickness, offset = self:_unpack_border(all, alpha)
         -- TODO: support thickness
         gfx.rect(self.cx + offx - offset, self.cy + offy - offset, self.cw + offset, self.ch + offset, 0)
     end
     if t then
-        local thickness, offset = self:_unpack_border(t)
+        local thickness, offset = self:_unpack_border(t, alpha)
         gfx.rect(self.cx + offx, self.cy + offy - offset, self.cw, thickness, 1)
     end
     if r then
-        local thickness, offset = self:_unpack_border(r)
+        local thickness, offset = self:_unpack_border(r, alpha)
         gfx.rect(self.cx + offx + self.cw + offset, self.cy + offy - thickness, thickness, self.ch, 1)
     end
     if b then
-        local thickness, offset = self:_unpack_border(b)
+        local thickness, offset = self:_unpack_border(b, alpha)
         gfx.rect(self.cx + offx, self.cy + offy + self.ch + offset - thickness, self.cw, thickness, 1)
     end
     if l then
-        local thickness, offset = self:_unpack_border(l)
+        local thickness, offset = self:_unpack_border(l, alpha)
         gfx.rect(self.cx + offx - offset, self.cy + offy, thickness, self.ch, 1)
     end
 end
 
 function rtk.Widget:_hovering(offx, offy)
     local x, y = self.cx + offx, self.cy + offy
+    --log.debug2('rtk: %s hover: point=%s,%s  c=%s,%s  off=%s,%s  s=%s,%s  xy=%s,%s wh=%s,%s', self.foobar,
+    --           rtk.mouse.x, rtk.mouse.y, self.cx, self.cy, offx, offy, self.sx, self.sy, x, y, self.cw, self.ch)
     return rtk.in_window and
            point_in_box(rtk.mouse.x, rtk.mouse.y, x, y, self.cw, self.ch)
 end
 
-local function resolve(coord, box, default)
-    if coord and box then
-        if coord < -1 then
-            return box + coord
-        elseif coord <= 1 then
-            return math.abs(box * coord)
+local function _get_content_dimension(size, bounds, natural, padding, fill)
+    if size then
+        if bounds and size < -1 then
+            -- Relative to the far edge.
+            return bounds + size - padding
+        elseif bounds and size <= 1.0 then
+            -- A percentage of the bounding box.  This includes 1.0, which is equivalent to
+            -- 100% of the bounding box, which means that an explicit size of 1 possible.
+            return math.abs(bounds * size) - padding
+        else
+            return size - padding
         end
     end
-    return coord or default
+    -- If we're here, size was not specified.
+    if fill and bounds then
+        return bounds - padding
+    else
+        -- We're allowed to use our natural size, so don't reduce by padding.  Allow
+        -- border box to expand with padding (caller's responsibility).
+        return natural
+    end
 end
 
-function rtk.Widget:_resolvesize(boxw, boxh, w, h, defw, defh)
-    return resolve(w, boxw, defw), resolve(h, boxh, defh)
+function rtk.Widget:_get_content_size(boxw, boxh, fillw, fillh, natw, nath)
+    local w = _get_content_dimension(self.w, boxw, natw, self.lpadding + self.rpadding, fillw)
+    local h = _get_content_dimension(self.h, boxh, nath, self.tpadding + self.bpadding, fillh)
+    return w, h
 end
 
-
-function rtk.Widget:_resolvepos(boxx, boxy, x, y, defx, defy)
-    return x + boxx, y + boxy
+function rtk.Widget:_get_content_pos(boxx, boxy)
+    return self.x + boxx, self.y + boxy
 end
+
 
 function rtk.Widget:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    self.cw, self.ch = self:_resolvesize(boxw, boxh, self.w, self.h, boxw, boxh)
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, nil, nil)
+    -- Default our natural inner size to the box without our padding
+    self.cw = w or (boxw - self.lpadding - self.rpadding)
+    self.ch = h or (boxh - self.tpadding - self.bpadding)
 end
 
 -- Draws the widget.  Subclasses override.
@@ -1225,8 +1333,8 @@ end
 -- sx and sy are the screen coordinates of the current drawing target.
 --
 -- event is the rtk.Event object that occurred at the time of the redraw.
-function rtk.Widget:_draw(px, py, offx, offy, sx, sy, event)
-    self.last_offx, self.last_offy = offx, offy
+function rtk.Widget:_draw(px, py, offx, offy, sx, sy, alpha, event)
+    self.last_offx, self.last_offy, self.last_alpha = offx, offy, alpha
     self.sx, self.sy = sx, sy
     self.px, self.py = px, py
     return false
@@ -1234,9 +1342,9 @@ end
 
 -- Draws the widget background.  This isn't called by the default _draw() method
 -- and is left up to subclasses to call explicitly at the appropriate time.
-function rtk.Widget:_draw_bg(offx, offy, event)
+function rtk.Widget:_draw_bg(offx, offy, alpha, event)
     if self.bg and not self.ghost then
-        self:setcolor(self.bg)
+        self:setcolor(self.bg, alpha)
         gfx.rect(self.cx + offx, self.cy + offy, self.cw, self.ch, 1)
     end
 end
@@ -1279,6 +1387,12 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                     -- No mouse buttons pressed or the widget currently has focus.  We
                     -- set the widget as hovering and mark the event as handled if the
                     -- onmouseenter() handler returns true.
+
+                    -- FIXME: we use self.hovering as the flag to determine if
+                    -- onmouseenter() was invoked but it means it onmouseenter() returns
+                    -- false thus preventing hover, we keep firing it over and over.  We
+                    -- need some other flag to control the triggering of this and
+                    -- onmouseleave()
                     if not event.handled and self:onmouseenter(event) then
                         self.hovering = true
                         rtk.set_mouse_cursor(self.cursor)
@@ -1304,6 +1418,7 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                     end
                 end
             else
+                -- In here, self.hovering is true
                 if event.handled then
                     -- We were and technically still are hovering, but another widget has handled this
                     -- event.  One scenario is a a higher z-index container that's partially obstructing
@@ -1313,12 +1428,28 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                 else
                     rtk.set_mouse_cursor(self.cursor)
                     self:onmousemove(event)
+                    -- Check to see if we should fire long press handler.
+                    if rtk.mouse_pressed_widget == self and rtk.dragging ~= self and
+                       rtk.mouse_pressed_time > 0 and
+                       event.time - rtk.mouse_pressed_time >= rtk.long_press_delay then
+                        if self:focused() and self:onlongpress(event) then
+                            event:set_handled(self)
+                            -- Signal to mouseup logic below that we have handled the long
+                            -- press and onclick() should not be fired.
+                            rtk.mouse_pressed_time = 0
+                        else
+                            rtk.mouse_pressed_widget = nil
+                        end
+                    end
                 end
             end
         elseif event.type == rtk.Event.MOUSEDOWN then
             if not event.handled and self:onmousedown(event) then
                 event:set_handled(self)
                 rtk.set_mouse_cursor(self.cursor)
+                -- Track widget for onlongpress() handler.
+                rtk.mouse_pressed_widget = self
+                rtk.mouse_pressed_time = os.clock()
             end
             -- Register this widget as a drag candidate.  If the mouse moves with the button
             -- pressed, onupdate() will invoke ondragstart() for us.
@@ -1329,17 +1460,19 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
             end
         elseif event.type == rtk.Event.MOUSEUP then
             if not event.handled then
-                if self:onmouseup() then
+                if self:onmouseup(event) then
                     event:set_handled(self)
                 end
                 if self:focused() then
                     rtk.set_mouse_cursor(self.cursor)
-                    self:onclick(event)
-                    if event.time - self.last_click_time <= 0.5 then
-                        self:ondblclick(event)
+                    if rtk.mouse_pressed_widget ~= self or rtk.mouse_pressed_time ~= 0 then
+                        self:onclick(event)
+                        if event.time - self.last_click_time <= rtk.double_click_delay then
+                            self:ondblclick(event)
+                        end
+                        event:set_handled(self)
                     end
                     self.last_click_time = event.time
-                    event:set_handled(self)
                 end
             end
             -- rtk.dragging and rtk.dropping are also nulled (as needed) in rtk.update()
@@ -1348,6 +1481,9 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
                 if self:ondrop(event, rtk.dragging, rtk.dragarg) then
                     event:set_handled(self)
                 end
+            end
+            if rtk.mouse_pressed_widget == self then
+                rtk.mouse_pressed_widget = nil
             end
             rtk.queue_draw()
         elseif event.type == rtk.Event.MOUSEWHEEL then
@@ -1373,7 +1509,7 @@ function rtk.Widget:_handle_event(offx, offy, event, clipped)
             if rtk.dropping == self then
                 -- Dragging extended outside the bounds of the last drop target (we know because
                 -- (we're not hovering), so need to reset.
-                rtk.dropping:ondropblur(event, rtk.dragging, rtk.dragarg)
+                self:ondropblur(event, rtk.dragging, rtk.dragarg)
                 rtk.dropping = nil
             end
             rtk.queue_draw()
@@ -1389,9 +1525,10 @@ end
 -- prevent circular calls.
 function rtk.Widget:attr(attr, value, trigger)
     value = self:_filter_attr(attr, value)
-    if value ~= self[attr] then
+    local oldval = self[attr]
+    if value ~= oldval or trigger then
         self[attr] = value
-        self:onattr(attr, value, trigger == nil or trigger)
+        self:onattr(attr, value, oldval, trigger == nil or trigger)
     end
     -- Return self to allow chaining multiple attributes
     return self
@@ -1429,6 +1566,15 @@ function rtk.Widget:resize(w, h)
     return self
 end
 
+-- Calculates and returns the widget's geometry given the containing bounding box.
+--
+-- If fillw or fillh is specified, it requests that the widget consume the entirety
+-- of the bounding box in that dimension.  The semantics of this varies by widget.
+-- For example, buttons will stretch their surface to fit, while labels will
+-- render normally but consider the filled dimension for alignment purposes.
+--
+-- The box model is akin to CSS's border-box which means the calculated width and
+-- height includes the widget's padding.
 function rtk.Widget:reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     if not boxx then
         -- reflow() called with no arguments to indicate local reflow needed without
@@ -1532,29 +1678,18 @@ function rtk.Widget:focused()
 end
 
 
-function rtk.Widget:animate(attr, dstval, duration, props, donefn)
-    local srcval = self[attr]
-    assert(type(srcval) == 'number')
-
-    local easingfn = rtk._easing_functions[props and props.easing or 'linear']
-    assert(type(easingfn) == 'function')
-
-    local key = string.format('%d.%s', self.id, attr)
-    if not rtk._animations[key] then
-        rtk._animations_len = rtk._animations_len + 1
+function rtk.Widget:animate(kwargs)
+    assert(kwargs and kwargs.attr)
+    kwargs.key = string.format('%d.%s', self.id, kwargs.attr)
+    kwargs.widget = self
+    if not kwargs.src then
+        kwargs.src = self[kwargs.attr]
     end
-
-    local pctstep = 1.0 / (rtk.fps * duration)
-    rtk._animations[key] = {
-        self, attr, _easing_linear,
-        srcval, dstval, 0, pctstep,
-        (props and props.reflow) and true or false,
-        donefn
-    }
+    rtk.queue_animation(kwargs)
 end
 
 -- Called when an attribute is set via attr()
-function rtk.Widget:onattr(attr, value, trigger)
+function rtk.Widget:onattr(attr, value, oldval, trigger)
     if attr == 'visible' then
         -- Toggling visibility, must reflow entire scene
         rtk.queue_reflow()
@@ -1571,13 +1706,13 @@ function rtk.Widget:onattr(attr, value, trigger)
 end
 
 -- Called before any drawing from within the internal draw method.
-function rtk.Widget:ondrawpre(offx, offy, event) end
+function rtk.Widget:ondrawpre(offx, offy, alpha, event) end
 
 
 -- Called after the widget is finished drawing from within the internal
 -- draw method.  The callback may augment the widget's appearance by drawing
 -- over top it.
-function rtk.Widget:ondraw(offx, offy, event) end
+function rtk.Widget:ondraw(offx, offy, alpha, event) end
 
 -- Called when the mouse button is clicked over the widget.  The default
 -- implementation focuses the widget if the focusable attribute is true.
@@ -1609,15 +1744,20 @@ function rtk.Widget:onmousewheel(event) end
 -- Called when the mouse button is released over a focused widget.
 function rtk.Widget:onclick(event) end
 
--- Called after two successive onclick events occur within 500ms.
+-- Called after two successive onclick events occur within 500ms over a focused widget.
 function rtk.Widget:ondblclick(event) end
 
--- Called once when the mouse is moved to within the widget's bounding box.
+-- Called after the mouse has consistently been held down for 500ms over a focused widget.
+-- If the callback returns true, the event is considered handled and onclick() will *not*
+-- be fired on mouseup.
+function rtk.Widget:onlongpress(event) end
+
+-- Called once when the mouse is moved to within the widget's geometry.
 -- Returning rtk.Event.STOP_PROPAGATION indicates that the widget is opaque
 -- and should block lower z-index widgets from receiving the mousemove event.
 -- Returning any non-nil value treats the widget as hovering.
 --
--- If the mouse moves while the pointer stays within the widget's bounding box
+-- If the mouse moves while the pointer stays within the widget's geometry
 -- this callback isn't reinvoked.
 function rtk.Widget:onmouseenter(event)
     if self.focusable then
@@ -1626,7 +1766,7 @@ function rtk.Widget:onmouseenter(event)
 end
 
 -- Called once when the mouse was previously hovering over a widget but then moves
--- outside its bounding box.
+-- outside its geometry.
 function rtk.Widget:onmouseleave(event) end
 
 function rtk.Widget:onmousemove(event) end
@@ -1667,7 +1807,7 @@ function rtk.Widget:ondropmousemove(event, source, dragarg) end
 
 
 -- Called after a ondropfocus() when the widget being dragged leaves the
--- target widget's bounding box.
+-- target widget's geometry.
 function rtk.Widget:ondropblur(event, source, dragarg) end
 
 -- Called when a valid draggable widget has been dropped onto a valid
@@ -1717,7 +1857,7 @@ function rtk.Viewport:initialize(attrs)
     self.hscrollbar_gutter = 50
 
     self:setattrs(attrs)
-    self:onattr('child', self.child, true)
+    self:onattr('child', self.child, nil, true)
     self._backingstore = nil
     -- If scroll*() is called then the offset is dirtied so that it can be clamped
     -- upon next draw or event.
@@ -1740,45 +1880,39 @@ end
 -- end
 
 function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, boxw, boxh)
-
-    local child_max_w = w - self.lpadding - self.rpadding
-    local child_max_h = h - self.tpadding - self.bpadding
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, nil, nil)
+    -- Default our natural inner size to the box without our padding
+    local inner_maxw = w or (boxw - self.lpadding - self.rpadding)
+    local inner_maxh = h or (boxh - self.tpadding - self.bpadding)
+    local innerw, innerh = inner_maxw, inner_maxh
 
     -- FIXME: viewport dimensions calculation assumes vertical scrolling viewport
     if self.child and self.child.visible == true then
         local wx, wy, ww, wh = self.child:reflow(
-            0,
-            0,
-            child_max_w,
-            child_max_h,
-            fillw,
-            fillh,
+            -- box
+            0, 0, inner_maxw, inner_maxh,
+            -- Explicitly pass false to child widget for fill flags to prevent
+            -- clamping to the above box.  The child of a viewport should
+            -- express its full size and reflow within that, while the viewport
+            -- simply scrolls within it.
+            false, false,
+            -- Set the child's viewport to us
             self
         )
         -- Computed size of viewport takes into account widget's size and x/y offset within
-        -- the viewport.
-        self.cw, self.ch = math.max(ww + wx, (fillw and w) or self.w or 0), h
-        -- Truncate child dimensions to our constraining box unless the dimension was
-        -- explicitly specified.
-        if not self.w then
-            self.cw = math.min(self.cw, boxw)
-        end
-        if not self.h then
-            self.ch = math.min(self.ch, boxh)
-        end
-    else
-        self.cw, self.ch = w, h
+        -- the viewport, clamping to the viewport's box.
+        innerw = clamp(ww + wx, fillw and inner_maxw or 0, boxw)
     end
 
-    local innerw = self.cw - self.lpadding - self.rpadding
-    local innerh = self.ch - self.tpadding - self.bpadding
     if not self._backingstore then
         self._backingstore = rtk.Image():create(innerw, innerh)
     else
         self._backingstore:resize(innerw, innerh, false)
     end
+
+    self.cw = (w or innerw) + self.lpadding + self.rpadding
+    self.ch = (h or innerh) + self.tpadding + self.bpadding
 
     -- Calculate geometry for scrollbars
     self._vscrollh = 0
@@ -1793,8 +1927,8 @@ function rtk.Viewport:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
     self._needs_clamping = true
 end
 
-function rtk.Viewport:onattr(attr, value, trigger)
-    rtk.Widget.onattr(self, attr, value, trigger)
+function rtk.Viewport:onattr(attr, value, oldval, trigger)
+    rtk.Widget.onattr(self, attr, value, oldval, trigger)
     if attr == 'child' and value then
         self.child.viewport = self
         self.child.parent = self
@@ -1802,31 +1936,34 @@ function rtk.Viewport:onattr(attr, value, trigger)
     end
 end
 
-function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, event)
-    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
+function rtk.Viewport:_draw(px, py, offx, offy, sx, sy, alpha, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, alpha, event)
     local x = self.cx + offx + self.lpadding
     local y = self.cy + offy + self.tpadding
     if y + self.ch < 0 or y > rtk.h or self.ghost then
         -- Viewport is not visible
         return false
     end
-    self:ondrawpre(offx, offy, event)
-    self:_draw_bg(offx, offy, event)
+    self:ondrawpre(offx, offy, alpha, event)
+    self:_draw_bg(offx, offy, alpha, event)
     if self.child and self.child.realized then
         self:_clamp()
         -- Redraw the backing store, first "clearing" it according to what's currently painted
         -- underneath it.
         self._backingstore:drawfrom(gfx.dest, x, y, 0, 0, self._backingstore.width, self._backingstore.height)
         rtk.push_dest(self._backingstore.id)
-        self.child:_draw(0, 0, -self.vx, -self.vy, sx + x, sy + y, event)
+        self.child:_draw(0, 0, -self.vx, -self.vy, sx + x, sy + y, alpha * self.alpha, event)
         rtk.pop_dest()
         self._backingstore:drawregion(0, 0, x, y, self.cw, self.ch)
+        if self.child.debug then
+            self.child:draw_debug_box(x, y)
+        end
 
         self:_draw_scrollbars(px, py, offx, offy, sx, sy, event)
     end
 
-    self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder)
-    self:ondraw(offx, offy, event)
+    self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder, alpha)
+    self:ondraw(offx, offy, alpha, event)
     if self._needs_onscroll then
         self:onscroll(self._needs_onscroll[1], self._needs_onscroll[2])
         self._needs_onscroll = nil
@@ -1875,9 +2012,12 @@ function rtk.Viewport:_handle_event(offx, offy, event, clipped)
         local vscroll_in_gutter = false
         if child_dragging and rtk.dragging.show_scrollbar_on_drag then
             if rtk.mouse.y - 20 < y then
-                self:scrollby(10, -math.max(5, math.abs(y - rtk.mouse.y)))
+                -- XXX: x offset of 10 is wrong and once we add support for
+                -- horizontal scrolling it will need to be changed to 0, but for
+                -- now it ends up being a cheeky way to spot child reflow bugs.
+                self:scrollby(0, -math.max(5, math.abs(y - rtk.mouse.y)))
             elseif rtk.mouse.y + 20 > y + self.ch then
-                self:scrollby(10, math.max(5, math.abs(y + self.ch - rtk.mouse.y)))
+                self:scrollby(0, math.max(5, math.abs(y + self.ch - rtk.mouse.y)))
             end
             -- Show scrollbar when we have a child dragging.
             self._vscrolla.target = 0.19
@@ -2224,8 +2364,8 @@ function rtk.Container:_handle_event(offx, offy, event, clipped)
 end
 
 
-function rtk.Container:_draw(px, py, offx, offy, sx, sy, event)
-    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
+function rtk.Container:_draw(px, py, offx, offy, sx, sy, alpha, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, alpha, event)
     local x, y = self.cx + offx, self.cy + offy
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -2233,11 +2373,12 @@ function rtk.Container:_draw(px, py, offx, offy, sx, sy, event)
         return false
     end
 
-    self:ondrawpre(offx, offy, event)
-    self:_draw_bg(offx, offy, event)
+    self:ondrawpre(offx, offy, alpha, event)
+    self:_draw_bg(offx, offy, alpha, event)
 
     -- Draw children from lowest z-index to highest.  Children at the same z level are
     -- drawn in insertion order.
+    local child_alpha = alpha * self.alpha
     for _, z in ipairs(self._z_indexes) do
         for _, widgetattrs in ipairs(self._reflowed_children[z]) do
             local widget, attrs = table.unpack(widgetattrs)
@@ -2247,13 +2388,15 @@ function rtk.Container:_draw(px, py, offx, offy, sx, sy, event)
                     wx = self.cx + px
                     wy = self.cy + py
                 end
-                widget:_draw(self.cx + px, self.cy + py, wx, wy, sx, sy, event)
-                -- widget:draw_debug_box(wx, wy)
+                widget:_draw(self.cx + px, self.cy + py, wx, wy, sx, sy, child_alpha, event)
+                if widget.debug then
+                    widget:draw_debug_box(wx, wy)
+                end
             end
         end
     end
-    self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder)
-    self:ondraw(offx, offy, event)
+    self:_draw_borders(offx, offy, self.border, self.tborder, self.rborder, self.bborder, self.lborder, alpha)
+    self:ondraw(offx, offy, alpha, event)
 end
 
 function rtk.Container:_add_reflowed_child(widgetattrs, z)
@@ -2275,11 +2418,11 @@ function rtk.Container:_determine_zorders()
 end
 
 function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
-    local x, y = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, boxw, boxh)
-
-    local child_w = w - self.lpadding - self.rpadding
-    local child_h = h - self.tpadding - self.bpadding
+    local x, y = self:_get_content_pos(boxx, boxy)
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, nil, nil)
+    -- Default our natural inner size to the box without our padding
+    local inner_maxw = w or (boxw - self.lpadding - self.rpadding)
+    local inner_maxh = h or (boxh - self.tpadding - self.bpadding)
 
     local innerw, innerh = 0, 0
     self._reflowed_children = {}
@@ -2293,8 +2436,8 @@ function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
             local wx, wy, ww, wh = widget:reflow(
                 self.lpadding + lpadding,
                 self.tpadding + tpadding,
-                math.max(child_w - lpadding - rpadding, attrs.minw or 0),
-                math.max(child_h - tpadding - bpadding, attrs.minh or 0),
+                math.max(inner_maxw, attrs.minw or 0),
+                math.max(inner_maxh, attrs.minh or 0),
                 attrs.fillw,
                 attrs.fillh,
                 viewport
@@ -2302,18 +2445,18 @@ function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
             ww = math.max(ww, attrs.minw or 0)
             wh = math.max(wh, attrs.minh or 0)
             if attrs.halign == rtk.Widget.RIGHT then
-                widget.cx = wx + (w - ww)
-                widget.box[1] = w - ww
+                widget.cx = wx + (inner_maxw - ww)
+                widget.box[1] = inner_maxw - ww
             elseif attrs.halign == rtk.Widget.CENTER then
-                widget.cx = wx + (w - ww) / 2
-                widget.box[1] = (w - ww) / 2
+                widget.cx = wx + (inner_maxw - ww) / 2
+                widget.box[1] = (inner_maxw - ww) / 2
             end
             if attrs.valign == rtk.Widget.BOTTOM then
-                widget.cy = wy + (h - wh)
-                widget.box[2] = h - wh
+                widget.cy = wy + (inner_maxh - wh)
+                widget.box[2] = inner_maxh - wh
             elseif attrs.valign == rtk.Widget.CENTER then
-                widget.cy = wy + (h - wh) / 2
-                widget.box[2] = (h - wh) / 2
+                widget.cy = wy + (inner_maxh - wh) / 2
+                widget.box[2] = (inner_maxh - wh) / 2
             end
             -- Expand the size of the container accoridng to the child's size
             -- and x,y coordinates offset within the container (now that any
@@ -2328,9 +2471,11 @@ function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
 
     self:_determine_zorders()
 
-    -- Set our own dimensions, so add self padding to inner dimensions
-    outerw = innerw + self.lpadding + self.rpadding
-    outerh = innerh + self.tpadding + self.bpadding
+    self.cx, self.cy = x, y
+    self.cw = (w or innerw) + self.lpadding + self.rpadding
+    self.ch = (h or innerh) + self.tpadding + self.bpadding
+end
+
 
     self.cx, self.cy, self.cw, self.ch = x, y, math.max(outerw, self.w or 0), math.max(outerh, self.h or 0)
 end
@@ -2369,32 +2514,30 @@ end
 
 
 function rtk.Box:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, boxw, boxh)
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, nil, nil)
+    -- Default our natural inner size to the box without our padding
+    local inner_maxw = w or (boxw - self.lpadding - self.rpadding)
+    local inner_maxh = h or (boxh - self.tpadding - self.bpadding)
 
-    local child_w = w - self.lpadding - self.rpadding
-    local child_h = h - self.tpadding - self.bpadding
-
-    local innerw, innerh, expand_unit_size = self:_reflow_step1(child_w, child_h, viewport)
-    -- local s1w, s1h = innerw, innerh
-    local innerw, innerh = self:_reflow_step2(child_w, child_h, innerw, innerh, expand_unit_size, viewport)
-
-    -- Set our own dimensions, so add self padding to inner dimensions
-    outerw = innerw + self.lpadding + self.rpadding
-    outerh = innerh + self.tpadding + self.bpadding
+    -- Now determine our actual natural dimensions based on child widgets.
+    local innerw, innerh, expand_unit_size = self:_reflow_step1(inner_maxw, inner_maxh, viewport)
+    local s1w, s1h = innerw, innerh
+    innerw, innerh = self:_reflow_step2(inner_maxw, inner_maxh, innerw, innerh, expand_unit_size, viewport)
 
     -- self.w/self.h could be negative or fractional, which is ok because
-    -- resolvesize() returns the correct value.  If that's the case, force fill
-    -- to be enabled so our cw/ch calculation below uses the resolved values.
-    if self.w and self.w < 1.0 then
-        fillw = true
-    end
-    if self.h and self.h < 1.0 then
-        fillh = true
-    end
-    self.cw = math.max(outerw, (fillw and w) or self.w or 0)
-    self.ch = math.max(outerh, (fillh and h) or self.h or 0)
-    -- log.debug("rtk: %s (box): box=%s,%s  expand=%s spacing=%s  fill=%s,%s  inner=%s,%s (s1=%s,%s)   wh=%s,%s -> cxy=%s,%s cwh=%s,%s", self.id, boxw, boxh, expand_unit_size, self.spacing, fillw, fillh, innerw, innerh, s1w, s1h, w, h, self.cx, self.cy, self.cw, self.ch)
+    -- _get_content_size() returns the correct value.  If that's the case, force
+    -- fill to be enabled so our cw/ch calculation below uses the resolved
+    -- values.
+    fillw = fillw or (self.w and self.w < 1.0)
+    fillh = fillh or (self.h and self.h < 1.0)
+    innerw = w or math.max(innerw, fillw and inner_maxw or 0)
+    innerh = h or math.max(innerh, fillh and inner_maxh or 0)
+    -- Calculate border box to include our padding
+    self.cw = innerw + self.lpadding + self.rpadding
+    self.ch = innerh + self.tpadding + self.bpadding
+
+    -- log.debug("rtk: %s (box): box=%s,%s  wh=%s,%s  inner_max=%s,%s  expand=%s spacing=%s  fill=%s,%s  inner=%s,%s (s1=%s,%s)  -> cxy=%s,%s cwh=%s,%s", self.id, boxw, boxh, w, h, inner_maxw, inner_maxh, expand_unit_size, self.spacing, fillw, fillh, innerw, innerh, s1w, s1h, self.cx, self.cy, self.cw, self.ch)
 end
 
 
@@ -2493,7 +2636,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
     for n, widgetattrs in ipairs(self.children) do
         local widget, attrs = table.unpack(widgetattrs)
         if widget == rtk.Container.FLEXSPACE then
-            offset = offset + self.tpadding + expand_unit_size * (attrs.expand or 1)
+            offset = offset + expand_unit_size * (attrs.expand or 1)
             spacing = 0
             -- Ensure box size reflects flexspace in case this is the last child in the box.
             maxh = math.max(maxh, offset)
@@ -2564,7 +2707,7 @@ function rtk.VBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
     if #third_pass > 0 then
         for n, widgetinfo in ipairs(third_pass) do
             local widget, ox, oy = table.unpack(widgetinfo)
-            widget:reflow(ox, oy, maxw, child_maxh, true, nil, viewport)
+            widget:reflow(ox, oy, maxw, maxh, true, nil, viewport)
         end
     end
     return maxw, maxh
@@ -2590,7 +2733,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
     for n, widgetattrs in ipairs(self.children) do
         local widget, attrs = table.unpack(widgetattrs)
         if widget == rtk.Container.FLEXSPACE then
-            offset = offset + self.lpadding + expand_unit_size * (attrs.expand or 1)
+            offset = offset + expand_unit_size * (attrs.expand or 1)
             spacing = 0
             -- Ensure box size reflects flexspace in case this is the last child in the box.
             maxw = math.max(maxw, offset)
@@ -2659,7 +2802,7 @@ function rtk.HBox:_reflow_step2(w, h, maxw, maxh, expand_unit_size, viewport)
     if #third_pass > 0 then
         for n, widgetinfo in ipairs(third_pass) do
             local widget, ox, oy = table.unpack(widgetinfo)
-            widget:reflow(ox, oy, child_maxw, maxh, nil, true, viewport)
+            widget:reflow(ox, oy, maxw, maxh, nil, true, viewport)
         end
     end
     return maxw, maxh
@@ -2695,6 +2838,8 @@ function rtk.Button:initialize(attrs)
     self.label = nil
     -- If true, wraps the label to the bounding box on reflow.
     self.wrap = false
+    -- If true, truncates the label to fit the bounding box.
+    self.truncate = true
     self.icon = nil
     -- Icon vertical alignment when text is wrapped
     self.ivalign = rtk.Widget.CENTER
@@ -2734,21 +2879,12 @@ end
 -- calculations.
 function rtk.Button:_reflow_get_label_size(boxw, boxh)
     rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
-    return rtk.layout_gfx_string(self.label, self.wrap, true, boxw, boxh)
+    return rtk.layout_gfx_string(self.label, self.wrap, self.truncate, boxw, boxh)
 end
 
 function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h)
-
-    if w == nil and fillw then
-        -- Requested to fill box width, so set inner width (box width minus internal padding)
-        w = boxw - self.lpadding - self.rpadding
-    end
-    if h == nil and fillh then
-        -- Requested to fill box height.
-        h = boxh - self.tpadding - self.bpadding
-    end
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, nil, nil)
 
     if self.label ~= nil then
         -- Calculate the viewable portion of the label
@@ -2775,16 +2911,16 @@ function rtk.Button:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
 end
 
 
-function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
-    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
+function rtk.Button:_draw(px, py, offx, offy, sx, sy, alpha, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, alpha, event)
     local x, y = self.cx + offx, self.cy + offy
-    local sx, sy, sw, sh = x, y, 0, 0
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
         -- Widget not viewable on viewport
         return false
     end
 
+    local sx, sy, sw, sh = x, y, 0, 0
     -- TODO: finish support for alignment attributes
     local hover = event:is_widget_hovering(self) or self.hover
     local lx, ix, sepx = nil, nil, nil
@@ -2838,32 +2974,33 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
         end
     end
 
-    self:ondrawpre(offx, offy, event)
+    self:ondrawpre(offx, offy, alpha, event)
+    local amul = self.alpha * alpha
     local r, g, b, a = color2rgba(self.color)
-    a = a * self.alpha
+    a = a * amul
     if sw and sh and sw > 0 and sh > 0 then
         if hover and rtk.mouse.down ~= 0 and self:focused() then
             r, g, b = r*0.8, g*0.8, b*0.8
             gfx.gradrect(sx, sy, sw, sh, r, g, b, a,  0, 0, 0, 0,   -r/50, -g/50, -b/50, 0)
-            gfx.set(1, 1, 1, 0.2 * self.alpha)
+            gfx.set(1, 1, 1, 0.2 * amul)
             gfx.rect(sx, sy, sw, sh, 0)
         else
             local mul = hover and 0.8 or 1
             local d = hover and 400 or -75
             gfx.gradrect(sx, sy, sw, sh, r, g, b, a*mul,  0, 0, 0, 0,   r/d, g/d, b/d, 0)
             if hover then
-                gfx.set(r*1.3, g*1.3, b*1.3, self.alpha)
+                gfx.set(r*1.3, g*1.3, b*1.3, amul)
             else
-                gfx.set(1, 1, 1, 0.1 * self.alpha)
+                gfx.set(1, 1, 1, 0.1 * amul)
             end
             gfx.rect(sx, sy, sw, sh, 0)
         end
         if sepx and draw_separator and self.flags & rtk.Button.NO_SEPARATOR == 0 then
-            gfx.set(0, 0, 0, 0.3 * self.alpha)
+            gfx.set(0, 0, 0, 0.3 * amul)
             gfx.line(sepx, sy + 1, sepx, sy + sh - 2)
         end
     end
-    gfx.set(1, 1, 1, self.alpha)
+    gfx.set(1, 1, 1, amul)
     if self.icon then
         local iy
         if self.vlabel and self.ivalign ~= rtk.Widget.CENTER then
@@ -2876,7 +3013,7 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
             -- Center icon vertically according to computed height
             iy = sy + (self.ch - self.icon.height * rtk.scale) / 2
         end
-        self:_draw_icon(ix, iy, hover)
+        self:_draw_icon(ix, iy, hover, alpha)
     end
     if self.vlabel then
         gfx.x = lx
@@ -2884,14 +3021,14 @@ function rtk.Button:_draw(px, py, offx, offy, sx, sy, event)
         -- OS X but it fixes alignment.
         gfx.y = sy + (self.ch - self.lh) / 2 + (rtk.os.mac and 1 or 0)
         rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
-        self:setcolor(textcolor)
+        self:setcolor(textcolor, alpha)
         gfx.drawstr(self.vlabel)
     end
-    self:ondraw(offx, offy, event)
+    self:ondraw(offx, offy, alpha, event)
 end
 
-function rtk.Button:_draw_icon(x, y, hovering)
-    self.icon:draw(x, y, rtk.scale, nil, self.alpha)
+function rtk.Button:_draw_icon(x, y, hovering, alpha)
+    self.icon:draw(x, y, rtk.scale, nil, self.alpha * alpha)
 end
 
 function rtk.Button:onclick(event)
@@ -2966,16 +3103,16 @@ function rtk.Entry:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
         -- Compute dimensions based on font and size
         rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
         maxw, maxh = gfx.measurestr(string.rep("D", self.textwidth))
-    elseif not self.h then
+    else
+        -- No hints given on dimensions, so make something up.
         rtk.set_font(self.font, self.fontsize, self.fontscale, 0)
-        _, maxh = gfx.measurestr("Dummy!")
+        maxw, maxh = gfx.measurestr("Dummy string!")
     end
 
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h,
-                                   (not fillw and maxw) or (boxw - self.lpadding - self.rpadding),
-                                   (not fillh and maxh) or (boxh - self.tpadding - self.bpadding))
-    self.cw, self.ch = w + self.lpadding + self.rpadding, h + self.tpadding + self.bpadding
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, maxw, maxh)
+    self.cw = w + self.lpadding + self.rpadding
+    self.ch = h + self.tpadding + self.bpadding
 
     self.image:resize(rtk.Entry.MAX_WIDTH, maxh)
     self:calcpositions()
@@ -2996,14 +3133,14 @@ function rtk.Entry:calcview()
     -- TODO: handle case where text is deleted from end, we want to keep the text right justified
     local curx = self.positions[self.caret]
     local curoffset = curx - self.loffset
-    local contentw = self.cw - (self.lpadding + self.rpadding)
+    local innerw = self.cw - (self.lpadding + self.rpadding)
     if self.icon then
-        contentw = contentw - self.icon.width - 5
+        innerw = innerw - self.icon.width - 5
     end
     if curoffset < 0 then
         self.loffset = curx
-    elseif curoffset > contentw then
-        self.loffset = curx - contentw
+    elseif curoffset > innerw then
+        self.loffset = curx - innerw
     end
 end
 
@@ -3035,14 +3172,14 @@ function rtk.Entry:onblur()
     end
 end
 
-function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
+function rtk.Entry:_draw(px, py, offx, offy, sx, sy, alpha, event)
     if offy ~= self.last_offy or offx ~= self.last_offx then
         -- If we've scrolled within a viewport since last draw, force
         -- _rendertext() to repaint the background into the Entry's
         -- local backing store.
         self._dirty = true
     end
-    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, alpha, event)
 
     local x, y = self.cx + offx, self.cy + offy
     local focused = self:focused() and rtk.is_focused
@@ -3054,38 +3191,40 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
 
     local hover = event:is_widget_hovering(self)
 
-    self:ondrawpre(offx, offy, event)
+    self:ondrawpre(offx, offy, alpha, event)
     -- Paint background first because _rendertext() will copy to the backing store and
     -- render the text over top it.
-    self:_draw_bg(offx, offy, event)
+    self:_draw_bg(offx, offy, alpha, event)
 
     if self._dirty then
         self:_rendertext(x, y)
     end
 
+    local amul = self.alpha * alpha
     local lpadding = self.lpadding
     if self.icon then
-        local a = self.icon_alpha + (focused and 0.2 or 0)
-        self.icon:draw(x + lpadding, y + (self.ch - self.icon.height * rtk.scale) / 2, rtk.scale, nil, a * self.alpha)
+        local a = self.icon_alpha * alpha + (focused and 0.2 or 0)
+        self.icon:draw(x + lpadding, y + (self.ch - self.icon.height * rtk.scale) / 2,
+                       rtk.scale, nil, a * amul)
         lpadding = lpadding + self.icon.width + 5
     end
 
     self.image:drawregion(
         self.loffset, 0, x + lpadding, y + self.tpadding,
         self.cw - lpadding - self.rpadding, self.ch - self.tpadding - self.bpadding,
-        nil, nil, self.alpha
+        nil, nil, amul
     )
 
     if self.label and #self.value == 0 then
         rtk.set_font(self.font, self.fontsize, self.fontscale, rtk.fonts.ITALICS)
         gfx.x, gfx.y = x + lpadding, y + self.tpadding
-        self:setcolor(self.color, 0.5)
+        self:setcolor(self.color, 0.5 * alpha)
         gfx.drawstr(self.label)
     end
 
     if hover then
         if not focused then
-            self:_draw_borders(offx, offy, self.border_hover)
+            self:_draw_borders(offx, offy, self.border_hover, nil, nil, nil, nil, alpha)
         end
     end
     if hover and event and event.type == rtk.Event.MOUSEDOWN then
@@ -3097,17 +3236,17 @@ function rtk.Entry:_draw(px, py, offx, offy, sx, sy, event)
             -- cursor needs to blink.
             self:_blink()
         end
-        self:_draw_borders(offx, offy, self.border)
+        self:_draw_borders(offx, offy, self.border, nil, nil, nil, nil, alpha)
         if self.caretctr % 32 < 16 then
             -- Draw caret
             local curx = x + self.positions[self.caret] + lpadding - self.loffset
-            self:setcolor(self.color)
+            self:setcolor(self.color, alpha)
             gfx.line(curx, y + self.tpadding, curx, y + self.ch - self.bpadding, 0)
         end
     else
         self._blinking = false
     end
-    self:ondraw(offx, offy, event)
+    self:ondraw(offx, offy, alpha, event)
 end
 
 function rtk.Entry:_blink()
@@ -3192,13 +3331,13 @@ function rtk.Entry:_copy_selection()
     if self.selanchor then
         local a, b = self:get_selection_range()
         local text = self.value:sub(a, b - 1)
-        reaper.CF_SetClipboard(text)
+        rtk.set_clipboard(text)
     end
 end
 
 function rtk.Entry:delete_selection()
     if self.selanchor then
-        self:_push_history()
+        self:push_history()
         local a, b = self:get_selection_range()
         self:delete_range(a - 1, b)
         if self.caret > self.selanchor then
@@ -3226,14 +3365,14 @@ function rtk.Entry:insert(text)
     self:onchange()
 end
 
-function rtk.Entry:_push_history()
+function rtk.Entry:push_history(value)
     if not self._history then
         self._history = {}
     end
-    self._history[#self._history + 1] = {self.value, self.caret, self.selanchor, self.selend}
+    self._history[#self._history + 1] = {value or self.value, self.caret, self.selanchor, self.selend}
 end
 
-function rtk.Entry:_pop_history()
+function rtk.Entry:pop_history()
     if self._history and #self._history > 0 then
         local state = table.remove(self._history, #self._history)
         self.value, self.caret, self.selanchor, self.selend = table.unpack(state)
@@ -3241,6 +3380,9 @@ function rtk.Entry:_pop_history()
         self:calcpositions()
         rtk.queue_draw()
         self:onchange()
+        return true
+    else
+        return false
     end
 end
 
@@ -3281,7 +3423,7 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
                 self:delete_selection()
             else
                 if event.ctrl then
-                    self:_push_history()
+                    self:push_history()
                     self:delete_range(self.caret - 1, self:_get_word_right(true))
                 else
                     self:delete_range(self.caret - 1, self.caret + 1)
@@ -3295,7 +3437,7 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
                     self:delete_selection()
                 else
                     if event.ctrl then
-                        self:_push_history()
+                        self:push_history()
                         self.caret = self:_get_word_left(true)
                         self:delete_range(self.caret - 1, orig_caret)
                     else
@@ -3323,12 +3465,10 @@ function rtk.Entry:_handle_event(offx, offy, event, clipped)
                 self:delete_selection()
             elseif event.char == 'v' then
                 self:delete_selection()
-                local fast = reaper.SNM_CreateFastString("")
-                local str =  reaper.CF_GetClipboardBig(fast)
+                local str = rtk.get_clipboard()
                 self:insert(str)
-                reaper.SNM_DeleteFastString(fast)
             elseif event.char == 'z' then
-                self:_pop_history()
+                self:pop_history()
                 selecting = nil
             end
         else
@@ -3382,12 +3522,12 @@ function rtk.Entry:_filter_attr(attr, value)
 end
 
 
-function rtk.Entry:onattr(attr, value, trigger)
+function rtk.Entry:onattr(attr, value, oldval, trigger)
     -- Calling superclass here will queue reflow, which in turn will
     -- automatically dirty rendered text and calcview().
-    rtk.Widget.onattr(self, attr, value, trigger)
+    rtk.Widget.onattr(self, attr, value, oldval, trigger)
     if attr == 'value' then
-        self._history = nil
+        -- self._history = nil
         self.selanchor = nil
         -- After setting value, ensure caret does not extend past end of value.
         if self.caret >= value:len() then
@@ -3456,36 +3596,30 @@ function rtk.Label:initialize(attrs)
 end
 
 function rtk.Label:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, fillw and boxw or nil, fillh and boxh or nil)
-
-    local lw, lh
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
     rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
-    lw, lh, _, self.vlabel = rtk.layout_gfx_string(self.label, self.wrap, self.truncate,
-                                                   boxw - self.lpadding - self.rpadding,
-                                                   boxy - self.tpadding - self.bpadding,
-                                                   self.textalign)
+    self.lw, self.lh, _, self.vlabel = rtk.layout_gfx_string(
+        self.label, self.wrap, self.truncate,
+        boxw - self.lpadding - self.rpadding,
+        boxy - self.tpadding - self.bpadding,
+        self.textalign
+    )
 
-    if not w then
-        w = lw + (self.lpadding + self.rpadding) * rtk.scale
-    end
-    if not h then
-        h = lh + (self.tpadding + self.bpadding) * rtk.scale
-    end
-    self.lw, self.lh = lw, lh
-    self.cw, self.ch = w, h
+    local w, h = self:_get_content_size(boxw, boxh, fillw, fillh, self.lw, self.lh)
+    self.cw = w + self.lpadding + self.rpadding
+    self.ch = h + self.tpadding + self.bpadding
 end
 
-function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
-    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
+function rtk.Label:_draw(px, py, offx, offy, sx, sy, alpha, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, alpha, event)
     local x, y = self.cx + offx, self.cy + offy
 
     if y + self.ch < 0 or y > rtk.h or self.ghost then
         -- Widget not viewable on viewport
         return
     end
-    self:ondrawpre(offx, offy, event)
-    self:_draw_bg(offx, offy, event)
+    self:ondrawpre(offx, offy, alpha, event)
+    self:_draw_bg(offx, offy, alpha, event)
     if self.halign == rtk.Widget.LEFT then
         gfx.x = x + self.lpadding
     elseif self.halign == rtk.Widget.CENTER then
@@ -3495,10 +3629,10 @@ function rtk.Label:_draw(px, py, offx, offy, sx, sy, event)
     end
     -- TODO: support vertical alignment options.  Defaults to center.
     gfx.y = y + (self.ch - self.lh) / 2
-    self:setcolor(self.color)
+    self:setcolor(self.color, alpha)
     rtk.set_font(self.font, self.fontsize, self.fontscale, self.fontflags)
     gfx.drawstr(self.vlabel, 0, x + self.cw, y + self.ch)
-    self:ondraw(offx, offy, event)
+    self:ondraw(offx, offy, alpha, event)
 end
 
 -------------------------------------------------------------------------------------------------------------
@@ -3519,19 +3653,19 @@ end
 -- end
 
 function rtk.ImageBox:_reflow(boxx, boxy, boxw, boxh, fillw, fillh, viewport)
-    self.cx, self.cy = self:_resolvepos(boxx, boxy, self.x, self.y, boxx, boxy)
-    local w, h = self:_resolvesize(boxw, boxh, self.w, self.h, fillw and boxw or nil, fillh and boxh or nil)
-
+    self.cx, self.cy = self:_get_content_pos(boxx, boxy)
+    local w, h
     if self.image then
-        w, h = w or self.image.width, h or self.image.height
+        w, h = self:_get_content_size(boxw, boxh, fillw, fillh, self.image.width, self.image.height)
     else
         w, h = 0, 0
     end
-    self.cw, self.ch = w, h
+    self.cw = w + self.lpadding + self.rpadding
+    self.ch = h + self.tpadding + self.bpadding
 end
 
-function rtk.ImageBox:_draw(px, py, offx, offy, sx, sy, event)
-    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, event)
+function rtk.ImageBox:_draw(px, py, offx, offy, sx, sy, alpha, event)
+    rtk.Widget._draw(self, px, py, offx, offy, sx, sy, alpha, event)
     local x, y = self.cx + offx, self.cy + offy
 
     if not self.image or y + self.ch < 0 or y > rtk.h or self.ghost then
@@ -3539,8 +3673,8 @@ function rtk.ImageBox:_draw(px, py, offx, offy, sx, sy, event)
         return
     end
 
-    self:ondrawpre(offx, offy, event)
-    self:_draw_bg(offx, offy, event)
+    self:ondrawpre(offx, offy, alpha, event)
+    self:_draw_bg(offx, offy, alpha, event)
 
     if self.halign == rtk.Widget.LEFT then
         x = x + self.lpadding
@@ -3558,8 +3692,8 @@ function rtk.ImageBox:_draw(px, py, offx, offy, sx, sy, event)
         y = y + self.ch - self.bpadding
     end
 
-    self.image:draw(x, y, rtk.scale, nil, self.alpha)
-    self:ondraw(offx, offy, event)
+    self.image:draw(x, y, rtk.scale, nil, self.alpha * alpha)
+    self:ondraw(offx, offy, alpha, event)
 end
 
 function rtk.ImageBox:onmousedown(event)
@@ -3642,7 +3776,7 @@ function rtk.OptionMenu:select(value, trigger)
 end
 
 
-function rtk.OptionMenu:onattr(attr, value, trigger)
+function rtk.OptionMenu:onattr(attr, value, oldval, trigger)
     if attr == 'menu' then
         self._item_by_idx = {}
         self._idx_by_id = {}
@@ -3662,13 +3796,13 @@ function rtk.OptionMenu:onattr(attr, value, trigger)
                 self.label = item.buttonlabel or item.label
             end
             self.selected_id = item.id
-            rtk.Button.onattr(self, attr, value, trigger)
+            rtk.Button.onattr(self, attr, value, oldval, trigger)
             if trigger then
                 self:onchange()
             end
         end
     else
-        rtk.Button.onattr(self, attr, value, trigger)
+        rtk.Button.onattr(self, attr, value, oldval, trigger)
     end
 end
 
@@ -3720,8 +3854,8 @@ function rtk.OptionMenu:onmousedown(event)
     -- Force a redraw and then defer opening the popup menu so we get a UI refresh with the
     -- button pressed before pening the menu, which is modal and blocks further redraws.
     rtk.Button.onmousedown(self, event)
-    self:_draw(self.px, self.py, self.last_offx, self.last_offy, self.sx, self.sy, event)
-    self:ondraw(self.last_offx, self.last_offy, event)
+    self:_draw(self.px, self.py, self.last_offx, self.last_offy, self.sx, self.sy, self.last_alpha, event)
+    self:ondraw(self.last_offx, self.last_offy, self.last_alpha, event)
     if self._menustr ~= nil then
         reaper.defer(popup)
     end
@@ -3799,7 +3933,7 @@ function rtk.CheckBox:_filter_attr(attr, value)
     return value
 end
 
-function rtk.CheckBox:onattr(attr, value, trigger)
+function rtk.CheckBox:onattr(attr, value, oldval, trigger)
     if attr == 'value' then
         self.icon = self._value_map[value] or self._value_map[0]
         if trigger then
@@ -3808,10 +3942,10 @@ function rtk.CheckBox:onattr(attr, value, trigger)
     end
 end
 
-function rtk.CheckBox:_draw_icon(x, y, hovering)
-    rtk.Button._draw_icon(self, x, y, hovering)
+function rtk.CheckBox:_draw_icon(x, y, hovering, alpha)
+    rtk.Button._draw_icon(self, x, y, hovering, alpha)
     if hovering then
-        rtk.CheckBox._icon_hover:draw(x, y, rtk.scale)
+        rtk.CheckBox._icon_hover:draw(x, y, rtk.scale, nil, alpha)
     end
 end
 
