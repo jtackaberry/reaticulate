@@ -1200,9 +1200,9 @@ local(idx, channel)
         );
     );
     (idx != -1) ? (
-        channel = articulation[0][1] & 0x0f;
+        channel = get_articulation_channel(articulation);
         idx += (256 + 128 * 128) * channel;
-        articulations_by_output_event[idx] = articulation + (event_idx << 24);
+        articulations_by_output_event[idx] = articulation | (event_idx << 24);
     );
 );
 
@@ -1349,15 +1349,15 @@ local(i, j, k, version, ext, ptr, idx, oidx, channel, group, program, articulati
 
 
 function gmem_write_active_notes()
-local(bitmap, notes, i, offset, poffset)
+local(bitmap, notes, channel, offset, poffset)
 (
     bitmap = 0;
     notes = active_notes_by_channel;
-    i = 0; loop(16,
+    channel = 0; loop(MAX_CHANNELS,
         (notes[0] || notes[1] || notes[2] || notes[3] || notes[4]) ? (
-            bitmap |= (1 << i);
+            bitmap |= (1 << channel);
         );
-        i += 1;
+        channel += 1;
         notes += 5;
     );
 
@@ -1719,18 +1719,21 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
 
 
 function process_pending_opcodes()
-local(idx, n_opcodes, queue_size, argc)
+local(idx, opidx, n_opcodes, queue_size, argc)
 (
     (gmem_index > 0) ? (
-        idx = opidx = gmem_index + gmem[GMEM_GIDX_OPCODES_OFFSET];
+        idx = gmem_index + gmem[GMEM_GIDX_OPCODES_OFFSET];
+        opidx = idx;
         queue_size = gmem[idx];
         (queue_size > 0) ? (
             // First two slots in the opcode region are commited length and pending length.
             // Skip over those.
             idx += 2;
             while (queue_size > 0) (
-                // Number of arguments for this opcode
-                argc = (gmem[idx + 0] >> 8) & 0xff;
+                // Number of arguments for this opcode.  A little defensive
+                // coding here ensures argc can't be negative lest we risk an
+                // infinite loop.
+                argc = max(0, (gmem[idx + 0] >> 8) & 0xff);
                 // Execute the opcode, passing the first 3 directly as they are the most common,
                 // and then passing the gmem index for the opcode args in case more need to
                 // be accessed.
