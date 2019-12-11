@@ -2173,6 +2173,11 @@ local(i)
     );
 );
 
+// Returns 1 if the channel and bus is found in the given dstbuschan.
+function dstbuschan_contains(dstbuschan, channel, bus)
+(
+    (dstbuschan[0] & (1 << bus) != 0) && (dstbuschan[1 + bus] & (1 << channel) != 0);
+);
 
 function _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus)
 (
@@ -2629,8 +2634,8 @@ local (group, cascade_channel, cascade_program, cascade_articulation, cascade_ov
 );
 
 
-function get_articulation_by_output_event(type, channel, msg2, msg3)
-local(idx, value)
+function get_articulation_by_output_event(dstbuschan, type, channel, msg2, msg3)
+local(articulation, event, idx, value, dstchan, dstbus)
 (
     idx = -1;
     (type == MIDI_EVENT_NOTE_ON || type == MIDI_EVENT_NOTE_OFF) ? (
@@ -2644,24 +2649,33 @@ local(idx, value)
             );
         );
     );
+    this.articulation = 0;
     (idx != -1) ? (
         idx += (256 + 128 * 128) * channel;
         value = articulations_by_output_event[idx];
-        this.articulation = value & 0x00ffffff;
-        this.articulation ? (
-            this.event = get_articulation_output_event(this.articulation, value >> 24);
+        value != 0 ? (
+            articulation = value & 0x00ffffff;
+            // The given MIDI event came in on a source channel that matches
+            // an output event for some articulation on the same source channel.
+            // We only consider this a match if the output event's dst channel
+            // and dst bus exists within the given dstbuschan.  In other words,
+            // the given MIDI event is doing to be sent to the same target as
+            // the output event would have gone.
+            event = get_articulation_output_event(articulation, value >> 24);
+            dstchan = get_output_event_dstchannel(event);
+            dstbus = get_output_event_dstbus(event);
+            dstbuschan_contains(dstbuschan, dstchan, dstbus) ? (
+                this.articulation = articulation;
+                this.event = event;
+            );
         );
-    ) : (
-        this.articulation = 0;
-        this.event = 0;
     );
 );
 
-function update_current_channel_program_by_output_event(type, channel, msg2, msg3)
-local(match, output_type, group, flags)
+function update_current_channel_program_by_output_event(dstbuschan, type, channel, msg2, msg3)
+local(match, program, group, flags)
 (
-    match.get_articulation_by_output_event(type, channel, msg2, msg3);
-    output_type = get_output_event_type(match.event);
+    match.get_articulation_by_output_event(dstbuschan, type, channel, msg2, msg3);
     (match.articulation) ? (
         program = get_articulation_program(match.articulation);
         group = get_articulation_group(match.articulation);
@@ -2733,7 +2747,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
             transform = get_transform_for_channel(channel);
             // Is the new note a keyswitch for an articulation?  If so, update
             // the current program for the channel.
-            !update_current_channel_program_by_output_event(type, channel, msg2, msg3) ? (
+            !update_current_channel_program_by_output_event(dstbuschan, type, channel, msg2, msg3) ? (
                 // Wasn't a keyswitch, so track the note-on event (if required) and update the GUI.
                 flags = all_articulation_flags_by_channel[channel];
                 (flags & ARTICULATION_FLAG_ANTIHANG) ? (
@@ -2783,7 +2797,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                 // is the current program for the channel, since it's now being
                 // released, if the active articulation has a release program defined,
                 // set it to that.
-                match.get_articulation_by_output_event(type, channel, msg2, msg3);
+                match.get_articulation_by_output_event(dstbuschan, type, channel, msg2, msg3);
                 (match.articulation && get_output_event_type(match.event) == OUTPUT_TYPE_NOTE_HOLD) ? (
                     // The note being released maps to an output event of some articulation on this
                     // channel. Check now to see if that articulation is currently active for the
@@ -2809,7 +2823,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                 flags = all_articulation_flags_by_channel[channel];
                 (flags & ARTICULATION_FLAG_BLOCK_BANK_CHANGE == 0) ? (
                     // No, send it along.
-                    update_current_channel_program_by_output_event(type, channel, msg2, msg3);
+                    update_current_channel_program_by_output_event(dstbuschan, type, channel, msg2, msg3);
                     mpos = midisend_multibus(mpos, dstbuschan, 0, type, msg2, msg3);
                 );
             ) : (
@@ -2855,7 +2869,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
                 );
                 // Detect manual articulation changes via CC (if applicable), and finally route the
                 // event to the current destination channels.
-                update_current_channel_program_by_output_event(type, channel, msg2, msg3);
+                update_current_channel_program_by_output_event(dstbuschan, type, channel, msg2, msg3);
                 mpos = midisend_multibus(mpos, dstbuschan, 0, type, msg2, msg3);
                 // This might be a bit too aggressive.  If Reaper generates CC123 on transport
                 // play, then we will already retrigger held notes below.  Doing it again
