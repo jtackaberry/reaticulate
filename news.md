@@ -1,3 +1,13 @@
+# Reaticulate 0.4.4 Released
+*December 14, 2019*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed a bug where detecting manual articulation activation by output event (manual keyswitch or CC) would fail to take into account current destination channel/bus routing and could improperly reflect an articulation change in the GUI
+
+
 # Reaticulate 0.4.3 Released
 *November 17, 2019*
 
