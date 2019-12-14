@@ -1,3 +1,10 @@
+# 0.4.4 - December 14, 2019
+
+## Bug Fixes
+
+* Fixed a bug where detecting manual articulation activation by output event (manual keyswitch or CC) would fail to take into account current destination channel/bus routing and improperly reflect an articulation change in the GUI
+
+
 # 0.4.3 - November 17, 2019
 
 ## Bug Fixes
