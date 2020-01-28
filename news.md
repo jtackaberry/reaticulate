@@ -284,10 +284,10 @@ A new `spacer` articulation attribute allows visually separating groups of artic
 * Do not clear serialized variables in @init per JSFX docs ([#65](https://github.com/jtackaberry/reaticulate/issues/65))
 
 
-
+<!--
 <details>
 <summary>Show older news ...</summary>
-
+-->
 
 # Reaticulate 0.3.2 bugfix release
 *August 4, 2019*
@@ -588,4 +588,6 @@ information-dense right now but I intend to polish it up over time.
 - Reduced the likelihood of Reaticulate munging the last touched FX
 - Other minor bug fixes
 
+<!--
 </details>
+-->
