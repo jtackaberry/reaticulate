@@ -2195,16 +2195,15 @@ function _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus)
 
 // Returns 1 if successful (slot available) and 0 if no available slots.
 function add_held_keyswitch(channel, group, param1, param2, dstchannel, dstbus)
-local (idx, group_held, i)
+local (idx, noteinfo, i)
 (
     idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
-    group_held = held_keyswitches + idx;
-    noteinfo = group_held;
-    i = 0;
+    noteinfo = held_keyswitches + idx;
     // Optimize for the common case and assume first slot is free.
     !noteinfo[0] ? (
         _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus);
     ) : (
+        i = 0;
         // First slot is taken, so find a free one.
         while (noteinfo[0] && i < MAX_HELD_KEYSWITCHES) (
             noteinfo += 2;
@@ -2221,11 +2220,10 @@ local (idx, group_held, i)
 
 
 function _send_held_keyswitch_note(mpos, channel, group, retrigger)
-local(idx, group_held, i, note, dstchannel, dstbus, velocity)
+local(idx, noteinfo, i, note, dstchannel, dstbus, velocity)
 (
     idx = (MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2 * channel) + (group * MAX_HELD_KEYSWITCHES * 2);
-    group_held = held_keyswitches + idx;
-    noteinfo = group_held;
+    noteinfo = held_keyswitches + idx;
     i = 0;
     // Push a sentinel.  Safely unique as the dstchannel and dstbus are 7 bit
     // values so the high bit can't be 1.
@@ -2915,7 +2913,7 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
         // Transport started playing.  Anticipate either forged note-offs or CC123 All Notes Off
         // coming from Reaper.
         //
-        // Empircally, CC123 comes after the forged note-offs.  If it comes in the next block then
+        // Empirically, CC123 comes after the forged note-offs.  If it comes in the next block then
         // we'll miss it (in which case see above comment about CC123), but in testing it seems to
         // come in the same block as the explicit note-offs.  This is why we set the mpos a fair bit
         // ahead in the block, to ensure they come after the CC123.
