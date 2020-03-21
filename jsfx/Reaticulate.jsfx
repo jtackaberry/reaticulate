@@ -482,6 +482,9 @@ gmem_version = 0;
 // 2 = First execution of @block has occurred
 instantiating = 0;
 
+// Increments each @block iteration
+tick = 0;
+
 // Array to map source channel to destination channels.  Indexed by source
 // channel, and the value has DSTBUSCHAN_LEN (17) slots, where the first slot is
 // a bitmap of which buses have mapped channels, and the next 16 slots each hold
@@ -645,6 +648,10 @@ transform_by_channel = getptr(MAX_CHANNELS * TRANSFORM_LEN);
 //         the velocity the note-on was sent at, in case it needs to be
 //         retriggered.  A value of 0 means no note was held at this slot.
 // Slot 1: bits 0-3 is the dst channel for the note, and bits 4-7 is the bus.
+//         bits 8-31: tick when the held keyswitch was added.  See
+//         _send_held_keyswitch_note() for rationale.  It's ok that we use
+//         bits 25-31 even though this array is serialized, because this
+//         data isn't actually needed between invocations.
 //
 // There will be no gaps, so if the first slot is 0, then there are no held
 // keyswitches for that channel/group.
@@ -2182,7 +2189,7 @@ function dstbuschan_contains(dstbuschan, channel, bus)
 function _set_held_keyswitch(noteinfo, param1, param2, dstchannel, dstbus)
 (
     noteinfo[0] = param1 | (param2 << 8);
-    noteinfo[1] = dstchannel | (dstbus << 4);
+    noteinfo[1] = dstchannel | (dstbus << 4) | ((tick & 0xffffff) << 8);
 );
 
 
@@ -2225,18 +2232,31 @@ local(idx, group_held, i, note, dstchannel, dstbus, velocity)
     stack_push(0xffffffff);
     // Send deferred note-offs for previously triggered keyswitches in this group.
     while (noteinfo[0] && i < MAX_HELD_KEYSWITCHES) (
-        note = noteinfo[0] & 0xff;
-        dstchannel = noteinfo[1] & 0x0f;
-        dstbus = (noteinfo[1] & 0xf0) >> 4;
-        midi_bus = dstbus;
-        midisend(mpos, MIDI_EVENT_NOTE_ON + dstchannel, note, 0);
-        mpos += 1;
-        retrigger ? (
-            velocity = (noteinfo[0] & 0xff00) >> 8;
-            stack_push((note << 16) | (velocity << 8) | (dstbus << 4) | dstchannel);
-        ) : (
-            // Clear slot now that it's released.
-            memset(noteinfo, 0, 2);
+        // If we're retriggering the keyswitch it means the transport has changed to
+        // playing.  In that case, only send the note-off (and queue note-on) if the held
+        // keyswitch wasn't registered in the same tick.  This avoids a redundant pair of
+        // note-off/note-on for note-hold articulations that are chased by Reaper on
+        // transport start.  This is mainly cosmetic but may avoid edge cases with some
+        // virtual instruments.
+        //
+        // Because held_keyswitches array is persisted (and the tick value along with it),
+        // there is a remote edge case where future reinstantions of the JSFX observe
+        // transport start at exactly the same tick even though it's a different moment in
+        // time.  This probability is vanishingly small so we'll ignore it.
+        (!retrigger || (noteinfo[1] >> 8) != tick & 0xffffff) ? (
+            note = noteinfo[0] & 0xff;
+            dstchannel = noteinfo[1] & 0x0f;
+            dstbus = (noteinfo[1] & 0xf0) >> 4;
+            midi_bus = dstbus;
+            midisend(mpos, MIDI_EVENT_NOTE_ON + dstchannel, note, 0);
+            mpos += 1;
+            retrigger ? (
+                velocity = (noteinfo[0] & 0xff00) >> 8;
+                stack_push((note << 16) | (velocity << 8) | (dstbus << 4) | dstchannel);
+            ) : (
+                // Clear slot now that it's released.
+                memset(noteinfo, 0, 2);
+            );
         );
         noteinfo += 2;
         i += 1;
@@ -2692,6 +2712,8 @@ function get_active_dstbuschan_by_note(channel, note)
         (note * (DSTBUSCHAN_LEN + TRANSFORM_LEN));
 );
 
+
+tick += 1;
 
 // Process articulations triggered via OPCODE_ACTIVATE_ARTICULATION
 (have_pending_activations) ? (
