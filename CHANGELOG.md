@@ -1,3 +1,10 @@
+# 0.4.5 - March 21, 2020
+
+## Bug Fixes
+
+* Fixed bug with note-hold keyswitch retriggering incorrectly on transport start
+
+
 # 0.4.4 - December 14, 2019
 
 ## Bug Fixes
