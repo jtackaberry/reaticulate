@@ -1,3 +1,13 @@
+# Reaticulate 0.4.5 Released
+*March 21, 2020*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed bug with note-hold keyswitch retriggering incorrectly on transport start
+
+
 # Reaticulate 0.4.4 Released
 *December 14, 2019*
 
