@@ -2266,8 +2266,8 @@ local(idx, noteinfo, i, note, dstchannel, dstbus, velocity)
     // being pressed together).
     while (stack_peek(0) != 0xffffffff) (
         stack_pop(i);
-        note = (i & 0xff000000) >> 16;
-        velocity = (i & 0xff0000) >> 8;
+        note = (i >> 16) & 0xff;
+        velocity = (i >> 8) & 0xff;
         dstbus = (i & 0xf0) >> 4;
         dstchannel = i & 0x0f;
         midi_bus = dstbus;
@@ -2441,8 +2441,6 @@ local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus, has_ds
             param2 = param2 ? param2 : 127;
             add_held_keyswitch(channel, group, param1, param2, dstchannel, dstbus);
             mpos = midisend_multibus(mpos, dstbuschan, 0, MIDI_EVENT_NOTE_ON, param1, param2);
-        ) : (
-            add_held_keyswitch(channel, group, 0, 0, 0, 0);
         );
     );
     (output_type == OUTPUT_TYPE_CC) ? (
