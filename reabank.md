@@ -247,7 +247,6 @@ Programs can be decorated with these attributes:
     <td style='text-align: center'>o</td>
     <td>
         One or more output events that describe the action taken when the articulation is triggered.<br/><br/>
-
         This is where things get fun. See the <a href='#output-events'>Output Events</a> section below
         for the gory details.
     </td>
@@ -257,7 +256,6 @@ Programs can be decorated with these attributes:
     <td>
         Inserts some padding above the articulation when displayed in Reaticulate's main
         articulation list screen.<br/><br/>
-
         The value is a number that controls the amount of padding but generally a value of
         <code>1</code> will provide a sufficient visual separation.
     </td>
