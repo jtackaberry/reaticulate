@@ -71,7 +71,6 @@ instructions:
 1. Navigate to `Scripts/Reaticulate/actions/` and select all files in that directory, and then click the Open button
 1. Invoke the action `Script: Reaticulate_Main.lua` from the actions list
 
-
 # Updating
 
 Access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated
@@ -80,6 +79,12 @@ to the latest version.
 If Reaticulate does update, you should restart Reaper to ensure the latest version of all
 Reaticulate scripts are running.
 
+
+# Download Bank Files
+
+We're currently lacking a good way of sharing bank files, but for now, various user-contributed banks [have been curated on this GitHub page](https://github.com/jtackaberry/reaticulate/tree/master/userbanks).
+
+Scroll down [that page](https://github.com/jtackaberry/reaticulate/tree/master/userbanks) for installation instructions.
 
 
 # Uninstalling
