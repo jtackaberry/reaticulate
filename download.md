@@ -4,7 +4,7 @@ title: Download
 
 # Prerequisites
 
-* The [SWS extension](http://www.sws-extension.org/) is required to run Reaticulate
+* The [SWS extension](https://www.sws-extension.org/) is required to run Reaticulate
 * It is *highly* recommended that you install the [js_ReaScriptAPI extension](https://forum.cockos.com/showthread.php?t=212174), which enables much improved focusing behavior and unlocks several of Reaticulate's features
   * If you have ReaPack installed, this extension can be installed via `Extensions | ReaPack | Browse Packages` and searching for `reascriptapi`.  
 

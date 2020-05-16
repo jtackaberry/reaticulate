@@ -209,7 +209,7 @@ controller's current state.  There are many devices with this capability, but so
   where the encoders are configurable
 ![floating](img/controlsurface.jpg)
 * [MIDI Fighter Twister](https://store.djtechtools.com/products/midi-fighter-twister)
-* [iCON Platform-M](http://iconproaudio.com/product/platform-m-plus/) (when configured in custom
+* [iCON Platform-M](https://iconproaudio.com/product/platform-m-plus/) (when configured in custom
   mode)
 
 Many control surfaces with motorized faders (such as the one depicted right) can be configured such

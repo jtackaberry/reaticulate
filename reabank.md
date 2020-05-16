@@ -534,7 +534,7 @@ cause the appropriate output event to be emitted for the new mute type.
 ![floating](img/artcolors.png)
 
 The `c` program attribute defines the color of the button for the articulation, which is either
-a [HTML color code](http://htmlcolorcodes.com/) or one of the predefined names.  When `c` isn't
+a [HTML color code](https://htmlcolorcodes.com/) or one of the predefined names.  When `c` isn't
 specified, then the default color is used.
 
 The image right shows the available names and their out-of-the-box colors.
