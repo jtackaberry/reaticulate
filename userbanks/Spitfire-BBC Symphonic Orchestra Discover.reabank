@@ -1,0 +1,94 @@
+//----------------------------------------------------------------------------
+// BBC Symphonic Orchestra Discover
+//
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Violins 1"
+Bank 51 1 Discover Violins 1
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=short i=spiccato o=note:1
+42 spiccato
+//! c=short-light i=pizz o=note:2
+56 pizzicato
+//! c=long-dark i=tremolo o=note:3
+11 tremolo
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Violins 2"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
+Bank 51 2 Discover Violins 2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Violas"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
+Bank 51 3 Discover Violas
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Celli"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
+Bank 51 4 Discover Celli
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Basses"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
+Bank 51 5 Discover Basses
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Horns a4"
+Bank 51 6 Discover Horns a4
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=short i=spiccato o=note:1
+41 staccatissimo
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Trumpets a3"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
+Bank 51 7 Discover Trumpets a3
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Tenor Trombones a3"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
+Bank 51 8 Discover Tenor Trombones a3
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Bass Trombones a2"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
+Bank 51 9 Discover Bass Trombones a2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Tuba"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
+Bank 51 10 Discover Tuba
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Flutes a3"
+Bank 51 11 Discover Flutes a3
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=short i=spiccato o=note:1
+41 staccatissimo
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Piccolo"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
+Bank 51 12 Discover Piccolo
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Oboes a3"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
+Bank 51 13 Discover Oboes a3
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Clarinets a3"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
+Bank 51 14 Discover Clarinets a3
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Bassoons a3"
+//! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
+Bank 51 15 Discover Bassoons a3
