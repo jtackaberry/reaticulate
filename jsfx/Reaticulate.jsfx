@@ -1486,11 +1486,11 @@ local(version, offset, i, bitmap, bit, curval)
         while (instance_id == -1 && i < 100) (
             bitmap = gmem[offset + i];
             (bitmap != 0xffffffff) ? (
-                // There is at least one available instance id at this slow.
+                // There is at least one available instance id at this slot.
                 bit = 0;
                 while (instance_id == -1 && bit < 32) (
                     (bitmap & (1 << bit) == 0) ? (
-                        // We found an available instance idea.  Try to claim it.
+                        // We found an available instance id.  Try to claim it.
                         curval = atomic_setifequal(gmem[offset + i], bitmap, bitmap | (1 << bit));
                         (curval == bitmap) ? (
                             // The candidate instance id is now claimed.
