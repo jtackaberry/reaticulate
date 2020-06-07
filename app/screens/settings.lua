@@ -316,7 +316,7 @@ function screen.init()
     -- Section: Articulation Colors
     --
     local section = make_section(screen.vbox, "Default Articulation Colors")
-    local box = section:add(rtk.FlowBox{vspacing=10, hspacing=20})
+    local box = section:add(rtk.VBox{vspacing=10, hspacing=20})
     for _, record in ipairs(screen.art_colors) do
         local name, color, icon = table.unpack(record)
         local row = add_row(box, name .. ":", 80)

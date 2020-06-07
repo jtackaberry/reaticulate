@@ -125,7 +125,7 @@ local function handle_filter_keypress(self, event)
     end
 end
 
-function screen.draw_button_midi_channel(art, button, offx, offy, event)
+function screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
     local hovering = event:is_widget_hovering(button) or button.hover
     if not hovering and not art:is_active() then
         -- No channel boxes to draw.
@@ -234,8 +234,8 @@ function screen.create_banklist_ui(bank)
         art.button.onclick = function(button, event)
             app:onartclick(art, event)
         end
-        art.button.ondraw = function(button, offx, offy, event)
-            screen.draw_button_midi_channel(art, button, offx, offy, event)
+        art.button.ondraw = function(button, offx, offy, alpha, event)
+            screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
         end
         art.button.onmouseleave = function(button, event)
             app:set_statusbar(nil)

@@ -2477,10 +2477,6 @@ function rtk.Container:_reflow(boxx, boxy, boxw, boxh, fillw, filly, viewport)
 end
 
 
-    self.cx, self.cy, self.cw, self.ch = x, y, math.max(outerw, self.w or 0), math.max(outerh, self.h or 0)
-end
-
-
 -------------------------------------------------------------------------------------------------------------
 rtk.Box = class('rtk.Box', rtk.Container)
 rtk.Box.static.HORIZONTAL = 1
