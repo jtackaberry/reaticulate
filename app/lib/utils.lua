@@ -171,7 +171,8 @@ function table.fromstring(str)
 end
 
 function note_to_name(note)
-    return string.format('%s%d', notes[(note % 12) + 1], math.floor(note / 12) - 2)
+    local offset = 2 - reaper.SNM_GetIntConfigVar("midioctoffs", 0)
+    return string.format('%s%d', notes[(note % 12) + 1], math.floor(note / 12) - offset)
 end
 
 function open_url(url)
