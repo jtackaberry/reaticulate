@@ -233,9 +233,9 @@ function Articulation:describe_outputs()
             local name = note_to_name(note)
             verb = output.type == 'note' and 'Sends' or 'Holds'
             if (output.args[2] or 127) == 127 then
-                s = string.format('note %s', name)
+                s = string.format('note %s (%d)', name, note)
             else
-                s = string.format('note %s vel %d', name, output.args[2] or 127)
+                s = string.format('note %s (%d) vel %d', name, note, output.args[2] or 127)
             end
         elseif output.type == 'pitch' then
             s = string.format('pitch bend val %d', output.args[1] or 0)
