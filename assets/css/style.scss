@@ -42,16 +42,17 @@ body {
 
 @media screen and (min-width: 600px) {
     .nav li {
-        width: 120px;
+        padding: 0 0.5em 0 0.5em;
         border-bottom: none;
         height: 30px;
         line-height: 30px;
         font-size: 1em;
-    }
-
-    .nav li {
         display: inline-block;
         margin-right: -4px;
+    }
+
+    .nav li a {
+        padding: 0 0.75em 0 0.75em;
     }
 
 }
