@@ -186,7 +186,7 @@ Bank 50 12 BBC - Horns a4
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Trumpet"
-//! clone="Spitfire/BBC Symphonic Orchestra/Brass/Horn"
+//! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Horn"
 Bank 50 13 BBC - Trumpet
 
 //----------------------------------------------------------------------------
@@ -410,6 +410,23 @@ Bank 50 31 BBC - Bass Clarinet
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Contrabass Clarinet"
 Bank 50 32 BBC - Cor Anglais
 
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Bass Flute"
+Bank 50 42 BBC - Bass Flute
+
+
+//! c=long i=note-whole o=note:1
+1 long
+//! c=long i=trill-maj2 o=note:2
+71 trill M2
+//! c=long i=trill-min2 o=note:3
+70 trill m2
+//! c=short i=spiccato o=note:4
+41 staccatissimo
+//! c=short i=tenuto-eighth o=note:5
+50 tenuto
+//! c=short i=marcato-quarter o=note:6
+52 marcato
 
 
 //----------------------------------------------------------------------------
@@ -488,18 +505,12 @@ Bank 50 35 BBC - Harp
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Marimba"
-Bank 50 36 BBC - Marimba
+Bank 50 43 BBC - Marimba
 
-//! c=long i=note-whole o=note:0
-1 sustained
-//! c=short i=staccato o=note:1
-101 damped
-//! c=short i=staccato o=note:2
-102 damped medium
-//! c=long i=note-whole o=note:3
-103 bisbigliando trem
-//! c=fx i=fx o=note:4
-104 gliss fx
+//! c=short i=staccato o=note:0
+100 hits
+//! c=long i=note-whole o=note:1
+101 rolls
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Celesta"
@@ -547,7 +558,7 @@ Bank 50 40 BBC - Vibraphone
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Crotales"
-Bank 50 39 BBC - Crotales
+Bank 50 41 BBC - Crotales
 
 //! c=short i=staccato o=note:0
 100 hits
