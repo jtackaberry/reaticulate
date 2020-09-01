@@ -259,7 +259,10 @@ function BaseApp:handle_ondock()
                     reaper.JS_Window_SetStyle(rtk.hwnd, 'CAPTION,SIZEBOX,SYSMENU')
                     reaper.JS_Window_SetZOrder(rtk.hwnd, 'NOTOPMOST')
                     -- XXX: there's a bug on Windows: https://forum.cockos.com/showthread.php?p=2195902#post2195902
-                    reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
+                    -- reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
+                    -- So we reuse our internal implementation that was originally
+                    -- implemented for for borderless windows.
+                    self:_set_window_pinned(self.config.pinned)
                 end
             else
                 reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
