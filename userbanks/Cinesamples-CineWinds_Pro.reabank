@@ -1,0 +1,273 @@
+
+//----------------------------------------------------------------------------
+// Source: Stephan Römer - https://github.com/jtackaberry/reaticulate/issues/113
+//
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Alto Flute"
+Bank 19 8 CWP - Alto Flute
+
+//! c=legato i=legato o=note:36
+20 legato
+//! c=short i=marcato-quarter o=note:41
+52 marcato
+//! c=short i=tenuto-eighth o=note:40
+50 tenuto
+//! c=short i=staccato o=note:38
+40 staccato
+//! c=short i=multitongued o=note:38/note-hold:37
+75 staccato double tongue
+//! c=short i=multitongued o=note:38/note-hold:39
+77 staccato triple tongue
+//! c=long i=trill-min2 o=note:43
+70 trill m2
+//! c=long i=trill-maj2 o=note:45
+71 trill M2
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Bass Flute"
+Bank 19 9 CWP - Bass Flute
+
+//! c=legato i=legato o=note:36
+20 legato
+//! c=short i=marcato-quarter o=note:41
+52 marcato
+//! c=short i=tenuto-eighth o=note:40
+50 tenuto
+//! c=short i=staccato o=note:38
+40 staccato
+//! c=short i=multitongued o=note:38/note-hold:37
+75 staccato double tongue
+//! c=short i=multitongued o=note:38/note-hold:39
+77 staccato triple tongue
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - English Horn"
+//! clone="Cinesamples/CineWinds Pro/CWP - Alto Flute"
+Bank 19 10 CWP - English Horn
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Eb Clarinet"
+//! clone="Cinesamples/CineWinds Pro/CWP - Alto Flute"
+Bank 19 11 CWP - Eb Clarinet
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Bass Clarinet"
+Bank 19 12 CWP - Bass Clarinet
+
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=marcato-quarter o=note:29
+52 marcato
+//! c=short i=tenuto-eighth o=note:28
+50 tenuto
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=multitongued o=note:26/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:26/note-hold:27
+77 staccato triple tongue
+//! c=long i=trill-min2 o=note:31
+70 trill m2
+//! c=long i=trill-maj2 o=note:33
+71 trill M2
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Contrabasson"
+Bank 19 13 CWP - Contrabasson
+
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=marcato-quarter o=note:29
+52 marcato
+//! c=short i=tenuto-eighth o=note:28
+50 tenuto
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=multitongued o=note:26/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:26/note-hold:27
+77 staccato triple tongue
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Contrabass Clarinet"
+Bank 19 14 CWP - Contrabass Clarinet
+
+//! c=legato i=legato o=note:24
+20 legato
+//! c=short i=marcato-quarter o=note:28
+52 marcato
+//! c=short i=staccato o=note:26
+40 staccato
+//! c=short i=multitongued o=note:26/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:26/note-hold:27
+77 staccato triple tongue
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Full Ensemble PRO"
+Bank 19 15 CWP - Full Ensemble PRO
+
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=short i=marcato-quarter o=note:17
+52 marcato
+//! c=short i=tenuto-eighth o=note:16
+50 tenuto
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:14/note-hold:13
+75 staccato double tongue
+//! c=short i=multitongued o=note:14/note-hold:15
+77 staccato triple tongue
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Irish Flute"
+Bank 19 20 CWP - Irish Flute
+
+//! c=legato i=legato o=note:29
+20 legato
+//! c=legato i=legato o=note-hold:30
+21 ornamented legato
+//! c=short i=marcato-quarter o=note:28
+52 marcato
+//! c=short i=tenuto-eighth o=note:26
+50 tenuto
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=short i=multitongued o=note:24/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:24/note-hold:27
+77 staccato triple tongue
+//! c=fx i=phrase o=note-hold:32
+90 short turn
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Penny Whistle"
+//! clone="Cinesamples/CineWinds Pro/CWP - Irish Flute"
+Bank 19 21 CWP - Penny Whistle
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Soprano Recorder"
+Bank 19 22 CWP - Soprano Recorder
+
+//! c=legato i=legato o=note:29
+20 legato
+//! c=short i=marcato-quarter o=note:28
+52 marcato
+//! c=short i=tenuto-eighth o=note:26
+50 tenuto
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=short i=multitongued o=note:24/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:24/note-hold:27
+77 staccato triple tongue
+//! c=long i=trill-min2 o=note-hold:31
+70 trill m2
+//! c=long i=trill-maj2 o=note-hold:33
+71 trill M2
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Tenor Recorder"
+//! clone="Cinesamples/CineWinds Pro/CWP - Soprano Recorder"
+Bank 19 23 CWP - Tenor Recorder
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Renaissance Flute"
+Bank 19 23 CWP - Renaissance Flute
+
+//! c=legato i=legato o=note:29
+20 legato
+//! c=short i=marcato-quarter o=note:28
+52 marcato
+//! c=short i=tenuto-eighth o=note:26
+50 tenuto
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=short i=multitongued o=note:24/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:24/note-hold:27
+77 staccato triple tongue
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Baroque Flute"
+Bank 19 24 CWP - Baroque Flute
+
+//! c=legato i=legato o=note:29
+20 legato
+//! c=short i=marcato-quarter o=note:28
+52 marcato
+//! c=short i=tenuto-eighth o=note:26
+50 tenuto
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=short i=multitongued o=note:24/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:24/note-hold:27
+77 staccato triple tongue
+//! c=fx i=phrase o=note-hold:32
+90 short turn
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Soprano Shawm"
+//! clone="Cinesamples/CineWinds Pro/CWP - Renaissance Flute"
+Bank 19 25 CWP - Soprano Shawm
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Border Pipes"
+Bank 19 26 CWP - Border Pipes
+
+//! c=legato i=legato
+20 legato
+//! c=fx i=phrase o=note-hold:36
+90 ornamented sustain 1
+//! c=fx i=phrase o=note-hold:38
+91 ornamented sustain 2
+//! c=fx i=phrase o=note-hold:40
+92 ornamented sustain 3
+//! c=fx i=phrase o=note-hold:41
+93 ornamented sustain 4
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Renaissance Pipes"
+Bank 19 27 CWP - Renaissance Pipes
+
+//! c=legato i=legato
+20 legato
+//! c=legato i=legato o=note-hold:30
+21 ornamented legato
+//! c=fx i=phrase o=note-hold:36
+90 ornamented sustain 1
+//! c=fx i=phrase o=note-hold:38
+91 ornamented sustain 2
+//! c=fx i=phrase o=note-hold:40
+92 ornamented sustain 3
+//! c=fx i=phrase o=note-hold:41
+93 ornamented sustain 4
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Uilleann Pipes"
+//! clone="Cinesamples/CineWinds Pro/CWP - Renaissance Pipes"
+Bank 19 28 CWP - Uilleann Pipes
+
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Pro" n="CWP - Duduk"
+Bank 19 29 CWP - Duduk
+
+//! c=legato i=legato o=note:29
+20 legato
+//! c=short i=staccato o=note:24
+40 staccato
+//! c=short i=multitongued o=note:24/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:24/note-hold:27
+77 staccato triple tongue
+//! c=fx i=phrase o=note-hold:40
+92 ornamented sustain 1
+//! c=fx i=phrase o=note-hold:41
+93 ornamented sustain 2
+//! c=fx i=phrase o=note-hold:32
+90 short turn
+//! c=fx i=phrase o=note-hold:30
+105 slide down
