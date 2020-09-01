@@ -1,92 +1,111 @@
 
 //----------------------------------------------------------------------------
-// Source: Jason Lyon - https://forum.cockos.com/showpost.php?p=1966721&postcount=164
+// Source: Stephan Römer - https://github.com/jtackaberry/reaticulate/issues/111
 //
 
-//! g="Cinesamples/Cinewinds Core" n="CWC Piccolo"
-Bank 19 1 CWC - Piccolo
+//! g="Cinesamples/CineWinds Core" n="CWC - Piccolo Flute"
+Bank 19 1 CWC - Piccolo Flute
 
-//! c=long i=legato o=note:36
-1 sustain
+//! c=legato i=legato o=note:36
+20 legato
 //! c=short i=marcato-quarter o=note:41
-52 marc
+52 marcato
 //! c=short i=tenuto-eighth o=note:40
-50 ten
+50 tenuto
 //! c=short i=staccato o=note:38
-40 stacc
+40 staccato
+//! c=short i=multitongued o=note:38/note-hold:37
+75 staccato double tongue
+//! c=short i=multitongued o=note:38/note-hold:39
+77 staccato triple tongue
 //! c=long i=trill-min2 o=note:43
-70 tr m2
+70 trill m2
 //! c=long i=trill-maj2 o=note:45
-71 tr M2
+71 trill M2
 
 //----------------------------------------------------------------------------
-
-//! g="Cinesamples/Cinewinds Core" n="CWC Flt"
-Bank 19 2 CWC - Flt
-
-//! c=long i=legato o=note:36
-1 sustain
-//! c=short i=marcato-quarter o=note:41
-52 marc
-//! c=short i=tenuto-eighth o=note:40
-50 ten
-//! c=short i=staccato o=note:38
-40 stacc
-//! c=long i=trill-min2 o=note:43
-70 tr m2
-//! c=long i=trill-maj2 o=note:45
-71 tr M2
+//! g="Cinesamples/CineWinds Core" n="CWC - Flute"
+//! clone="Cinesamples/CineWinds Core/CWC - Piccolo Flute"
+Bank 19 2 CWC - Flute
 
 //----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Core" n="CWC - Oboe 1"
+//! clone="Cinesamples/CineWinds Core/CWC - Piccolo"
+Bank 19 3 CWC - Oboe 1
 
-//! g="Cinesamples/Cinewinds Core" n="CWC Oboe"
-Bank 19 3 CWC - Oboe
+//! g="Cinesamples/CineWinds Core" n="CWC - Oboe 2"
+Bank 19 4 CWC - Oboe 2
 
-//! c=long i=legato o=note:36
-1 sustain
-//! c=short i=marcato-quarter o=note:41
-52 marc
-//! c=short i=tenuto-eighth o=note:40
-50 ten
+//! c=legato i=legato o=note:36
+20 legato
+//! c=short i=marcato-quarter o=note:40
+52 marcato
 //! c=short i=staccato o=note:38
-40 stacc
-//! c=long i=trill-min2 o=note:43
-70 tr m2
-//! c=long i=trill-maj2 o=note:45
-71 tr M2
+40 staccato
+//! c=short i=multitongued o=note:38/note-hold:37
+75 staccato double tongue
+//! c=short i=multitongued o=note:38/note-hold:39
+77 staccato triple tongue
 
 //----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Core" n="CWC - Clarinet"
+Bank 19 5 CWC - Clarinet
 
-//! g="Cinesamples/Cinewinds Core" n="CWC Clnt"
-Bank 19 4 CWC - Clnt
-
-//! c=long i=legato o=note:24
-1 sustain
+//! c=legato i=legato o=note:24
+20 legato
 //! c=short i=marcato-quarter o=note:29
-52 marc
+52 marcato
 //! c=short i=tenuto-eighth o=note:28
-50 ten
+50 tenuto
 //! c=short i=staccato o=note:26
-40 stacc
+40 staccato
+//! c=short i=multitongued o=note:26/note-hold:37
+75 staccato double tongue
+//! c=short i=multitongued o=note:26/note-hold:39
+77 staccato triple tongue
 //! c=long i=trill-min2 o=note:31
-70 tr m2
+70 trill m2
 //! c=long i=trill-maj2 o=note:33
-71 tr M2
+71 trill M2
 
 //----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Core" n="CWC - Bassoon"
+Bank 19 6 CWC - Bassoon
 
-//! g="Cinesamples/Cinewinds Core" n="CWC Bassn"
-Bank 19 5 CWC - Bassn
+//! c=legato i=legato o=note:12
+20 legato
+//! c=short i=marcato-quarter o=note:17
+52 marcato
+//! c=short i=tenuto-eighth o=note:16
+50 tenuto
+//! c=short i=staccato o=note:14
+40 staccato
+//! c=short i=multitongued o=note:14/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:14/note-hold:27
+77 staccato triple tongue
+//! c=long i=trill-min2 o=note:19
+70 trill m2
+//! c=long i=trill-maj2 o=note:21
+71 trill M2
 
-//! c=long i=legato o=note:12
+//----------------------------------------------------------------------------
+//! g="Cinesamples/CineWinds Core" n="CWC - Full Ensemble"
+Bank 19 7 CWC - Full Ensemble
+
+//! c=long i=note-whole o=note:12
 1 sustain
 //! c=short i=marcato-quarter o=note:17
-52 marc
+52 marcato
 //! c=short i=tenuto-eighth o=note:16
-50 ten
+50 tenuto
 //! c=short i=staccato o=note:14
-40 stacc
+40 staccato
+//! c=short i=multitongued o=note:14/note-hold:25
+75 staccato double tongue
+//! c=short i=multitongued o=note:14/note-hold:27
+77 staccato triple tongue
 //! c=long i=trill-min2 o=note:19
-70 tr m2
+70 trill m2
 //! c=long i=trill-maj2 o=note:21
-71 tr M2
+71 trill M2
