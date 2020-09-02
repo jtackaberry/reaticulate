@@ -1,0 +1,235 @@
+//----------------------------------------------------------------------------
+// Source: DoubleGrit - https://github.com/jtackaberry/reaticulate/issues/108
+//
+// Covers all "KEY" patches, doesn't control the toggle-button commands
+// (Legato, Repetition etc) due to current implementation clashes.
+// Use CCs for those instead.
+//----------------------------------------------------------------------------
+
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 1 French Horn Solo"
+Bank 30 10 OBC French Horn Solo
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato o=note:25
+55 marcato long
+//! c=short i=marcato-quarter o=note:26
+52 marcato short
+//! c=short i=staccato o=note:27
+40 staccato
+//! c=short i=spiccato o=note:28
+42 staccatissimo
+//! c=long i=crescendo o=note:29
+102 crescendo
+//! c=long i=decrescendo o=note:30
+103 diminuendo
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 2 French Horn Section"
+Bank 30 11 OBC French Horn Section
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato o=note:25
+55 marcato long
+//! c=short i=marcato-half o=note:26
+41 marcato mid
+//! c=short i=marcato-quarter o=note:27
+52 marcato short
+//! c=short i=staccato o=note:28
+40 staccato
+//! c=long i=crescendo o=note:29
+102 crescendo
+//! c=long i=vibrato o=note:30
+16 expressivo
+//! c=textured i=stopped o=note:31
+7 stopped
+//! c=fx i=rip o=note:32
+100 rip
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 3a Bb Trumpet Solo"
+Bank 30 12 OBC Bb Trumpet Solo
+//! c=long i=vibrato o=note:24
+16 sustain vibrato
+//! c=long i=note-whole o=note:25
+1 sustain non-vibrato
+//! c=long i=note-whole o=note:26
+8 sustain soft
+//! c=long i=note-whole o=note:27
+17 sustain highblow only
+//! c=short i=marcato o=note:28
+55 marcato long
+//! c=short i=marcato-quarter o=note:29
+52 marcato short
+//! c=short i=staccato o=note:30
+40 staccato
+//! c=short i=spiccato o=note:31
+42 staccatissimo
+//! c=long i=crescendo o=note:32
+102 crescendo slow
+//! c=short i=crescendo o=note:33
+106 crescendo fast
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 3b Piccolo Trumpet Solo"
+Bank 30 13 OBC Piccolo Trumpet Solo
+//! c=long i=note-whole o=note:24
+9 sustain hard
+//! c=long i=note-whole o=note:25
+8 sustain soft
+//! c=long i=note-whole o=note:26
+17 sustain highblow only
+//! c=short i=marcato o=note:27
+55 marcato long
+//! c=short i=marcato-quarter o=note:28
+52 marcato short
+//! c=short i=staccato o=note:29
+40 staccato
+//! c=short i=spiccato o=note:30
+42 staccatissimo
+//! c=long i=crescendo o=note:31
+102 crescendo slow
+//! c=short i=crescendo o=note:32
+106 crescendo fast
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 4 Trumpet Section"
+Bank 30 14 OBC Trumpet Section
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato o=note:25
+55 marcato long
+//! c=short i=marcato-half o=note:26
+41 marcato mid
+//! c=short i=marcato-quarter o=note:27
+52 marcato short
+//! c=short i=staccato o=note:28
+40 staccato
+//! c=short i=spiccato o=note:29
+42 staccatissimo
+//! c=long i=crescendo o=note:30
+102 crescendo slow
+//! c=short i=crescendo o=note:31
+106 crescendo fast
+//! c=long i=decrescendo o=note:32
+103 diminuendo
+//! c=long i=vibrato o=note:33
+16 expressivo
+//! c=fx i=fall o=note:34
+100 fall
+//! c=short i=spiccato o=note:35
+62 stab
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 5a Bass Trombone Solo"
+Bank 30 15 OBC Bass Trombone Solo
+//! c=long i=note-whole o=note:60
+1 sustain
+//! c=short i=marcato o=note:61
+55 marcato long
+//! c=short i=marcato-quarter o=note:62
+52 marcato short
+//! c=short i=staccato o=note:63
+40 staccato
+//! c=short i=accented-half o=note:64
+54 accented marcato
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 5b Tenor Trombone Solo"
+Bank 30 16 OBC Tenor Trombone Solo
+//! c=long i=note-whole o=note:76
+1 sustain
+//! c=long i=note-whole o=note:77
+9 sustain hard
+//! c=short i=marcato o=note:78
+55 marcato long
+//! c=short i=marcato-quarter o=note:79
+52 marcato short
+//! c=short i=staccato o=note:80
+40 staccato
+//! c=short i=spiccato o=note:81
+42 staccatissimo
+//! c=long i=crescendo o=note:82
+102 crescendo slow
+//! c=short i=crescendo o=note:83
+106 crescendo fast
+//! c=long i=vibrato o=note:84
+16 expressivo
+//! c=long i=decrescendo o=note:85
+103 diminuendo
+//! c=fx i=phrase o=note:86
+107 Phrase
+//! c=fx i=fx o=note:87
+90 effects
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 6 Trombone Section"
+Bank 30 17 OBC Trombone Section
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=short i=marcato o=note:25
+55 marcato long
+//! c=short i=marcato-half o=note:26
+41 marcato mid
+//! c=short i=marcato-quarter o=note:27
+52 marcato short
+//! c=short i=staccato o=note:28
+40 staccato
+//! c=short i=spiccato o=note:29
+42 staccatissimo
+//! c=long i=stopped o=note:30
+7 sustain muted
+//! c=long i=decrescendo o=note:31
+103 diminuendo
+//! c=long i=crescendo o=note:32
+102 crescendo slow
+//! c=short i=crescendo o=note:33
+106 crescendo fast
+//! c=fx i=crescendo o=note:34
+107 crescendo flutter
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 7 Tuba"
+Bank 30 18 OBC Tuba
+//! c=long i=note-whole o=note:65
+1 sustain
+//! c=long i=note-whole o=note:66
+9 sustain hard
+//! c=short i=marcato o=note:67
+55 marcato long
+//! c=short i=marcato-quarter o=note:68
+52 marcato short
+//! c=short i=staccato o=note:69
+40 staccato
+//! c=short i=spiccato o=note:70
+42 staccatissimo
+//! c=fx i=staccato o=note:71
+40 staccato klezmer
+//! c=long i=vibrato o=note:72
+16 expressivo
+//! c=long i=crescendo o=note:73
+102 crescendo slow
+//! c=short i=crescendo o=note:74
+106 crescendo fast
+//! c=long i=decrescendo o=note:75
+103 diminuendo
+//! c=fx i=phrase o=note:86
+107 Phrase
+//! c=fx i=fx o=note:87
+90 effects
+
+
+//! g="ProjectSam/Orchestral Brass Classic" n="OBC 8 Cimbasso"
+Bank 30 19 OBC Cimbasso
+//! c=long i=note-whole o=note:77
+1 sustain
+//! c=long i=note-whole o=note:78
+9 sustain hard
+//! c=short i=marcato o=note:79
+55 marcato
+//! c=short i=staccato o=note:80
+40 staccato
+//! c=short i=spiccato o=note:81
+42 staccatissimo
+//! c=long i=crescendo o=note:82
+102 crescendo slow
+//! c=short i=crescendo o=note:83
+106 crescendo fast
+//! c=long i=decrescendo o=note:84
+103 diminuendo
+//! c=fx i=phrase o=note:85
+107 Phrase
+//! c=fx i=fx o=note:86
+90 effects
