@@ -1746,6 +1746,8 @@ Bank 65 2 SSB - Horn Solo - Core
 50 tenuto
 //! c=short i=staccato o=cc:32,40
 40 staccato
+//! c=short i=spiccato o=cc:32,42
+42 staccatissimo
 //! c=long i=trill-min2 o=cc:32,70
 70 trill m2
 //! c=long i=trill-maj2 o=cc:32,71
