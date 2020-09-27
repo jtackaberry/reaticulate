@@ -1,0 +1,925 @@
+/----------------------------------------------------------------------------
+// Source: Stephan Römer - https://github.com/jtackaberry/reaticulate/issues/114
+//
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Piccolo Flute"
+Bank 45 25 VSL SYNC - Piccolo Flute
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36/cc:1,0
+20 legato (prog vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,127
+21 legato (vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,0
+32 legato fast (prog vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,127
+37 legato fast (vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,0
+38 legato auto speed (prog vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,127
+39 legato auto speed (vib)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,127
+16 sustain (vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+53 marcato (vib)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato short
+//! c=short i=staccato o=note:24/note:38
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:41
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:28/note:36
+11 flutter
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:28/note:40
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:28/note:41
+83 fast repetition 160
+//! c=#E1491C i=multitongued o=note:28/note:42
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:28/note:43
+82 fast repetition 180
+//! c=#E1491C i=multitongued o=note:28/note:44
+85 fast repetition 200
+//! c=#E1491C i=multitongued o=note:28/note:45
+86 fast repetition 220
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Flute 1"
+Bank 45 26 VSL SYNC - Flute 1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:26/note:37/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:26/note:38/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato short
+//! c=short i=staccato o=note:24/note:38
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:41
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:28/note:36
+11 flutter
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:28/note:40
+83 fast repetition 170
+//! c=#E1491C i=multitongued o=note:28/note:41
+82 fast repetition 180
+//! c=#E1491C i=multitongued o=note:28/note:42
+84 fast repetition 190
+//! c=#E1491C i=multitongued o=note:28/note:43
+85 fast repetition 200
+//! c=#E1491C i=multitongued o=note:28/note:44
+86 fast repetition 210
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Flute 2"
+Bank 45 27 VSL SYNC - Flute 2
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:26/note:37/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:26/note:38/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato short
+//! c=short i=staccato o=note:24/note:38
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:41
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:28/note:36
+11 flutter
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:28/note:40
+83 fast repetition 160
+//! c=#E1491C i=multitongued o=note:28/note:41
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:28/note:42
+82 fast repetition 180
+//! c=#E1491C i=multitongued o=note:28/note:43
+85 fast repetition 190
+//! c=#E1491C i=multitongued o=note:28/note:44
+86 fast repetition 200
+//! c=#E1491C i=multitongued o=note:28/note:45
+87 fast repetition 210
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Oboe (French)"
+Bank 45 28 VSL SYNC - Oboe (French)
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:26/note:37/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:26/note:38/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato short
+//! c=short i=staccato o=note:24/note:38
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:41
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:28/note:36
+11 flutter
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Oboe (Vienna)"
+//! clone="VSL/SYNCHRON-ized Woodwinds/VSL SYNC - Oboe (French)"
+Bank 46 28 VSL SYNC - Oboe (Vienna)
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - English Horn"
+//! clone="VSL/SYNCHRON-ized Woodwinds/VSL SYNC - Oboe (French)"
+Bank 46 29 VSL SYNC - English Horn
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Clarinet Bb 1"
+Bank 45 30 VSL SYNC - Clarinet Bb 1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato (no vib)
+//! c=legato i=legato o=note:26/note:37
+32 legato fast (no vib)
+//! c=legato i=legato o=note:26/note:38
+38 legato auto speed (no vib)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain (prog vib)
+//! c=long i=marcato o=note:25/note:37
+52 marcato (prog vib)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato short
+//! c=short i=staccato o=note:24/note:38
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:41
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:28/note:36
+11 flutter
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:28/note:40
+83 fast repetition 140
+//! c=#E1491C i=multitongued o=note:28/note:41
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:28/note:42
+84 fast repetition 160
+//! c=#E1491C i=multitongued o=note:28/note:43
+85 fast repetition 170
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Clarinet Bb 2"
+Bank 45 31 VSL SYNC - Clarinet Bb 2
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:26/note:36/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:26/note:37/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:26/note:37/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:26/note:38/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:26/note:38/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:25/note:36/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato short
+//! c=short i=staccato o=note:24/note:38
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:24/note:41
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:28/note:36
+11 flutter
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:28/note:37/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:28/note:38
+83 fast repetition 140
+//! c=#E1491C i=multitongued o=note:28/note:39
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:28/note:40
+84 fast repetition 160
+//! c=#E1491C i=multitongued o=note:28/note:41
+85 fast repetition 170
+//! c=#E1491C i=multitongued o=note:28/note:42
+82 fast repetition 180
+//! c=#E1491C i=multitongued o=note:28/note:43
+86 fast repetition 200
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bass Clarinet"
+Bank 45 32 VSL SYNC - Bass Clarinet
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato (no vib)
+//! c=legato i=legato o=note:86/note:97
+32 legato fast (no vib)
+//! c=legato i=legato o=note:86/note:98
+38 legato auto speed (no vib)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain (no vib)
+//! c=long i=marcato o=note:85/note:97
+52 marcato (no vib)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato short
+//! c=short i=staccato o=note:84/note:98
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:100
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:101
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:88/note:96
+11 flutter
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:88/note:98
+70 halftone trill
+//! c=long i=trill-maj2 o=note:88/note:99
+71 wholetone trill
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bassoon 1"
+Bank 45 33 VSL SYNC - Bassoon 1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:86/note:96/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:86/note:96/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:86/note:97/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:86/note:97/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:86/note:97/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:86/note:98/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:86/note:98/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:86/note:98/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:85/note:96/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:85/note:96/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:85/note:97/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:85/note:97/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato short
+//! c=short i=staccato o=note:84/note:98
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:100
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:101
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:88/note:96
+11 flutter
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- trills ----------------------------------------------
+
+//! c=long i=trill-min2 o=note:88/note:98
+70 halftone trill
+//! c=long i=trill-maj2 o=note:88/note:99
+71 wholetone trill
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:88/note:100
+83 fast repetition 140
+//! c=#E1491C i=multitongued o=note:88/note:101
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:88/note:102
+84 fast repetition 160
+//! c=#E1491C i=multitongued o=note:88/note:103
+85 fast repetition 170
+//! c=#E1491C i=multitongued o=note:88/note:104
+82 fast repetition 180
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bassoon 2"
+Bank 45 34 VSL SYNC - Bassoon 2
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:86/note:96/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:86/note:96/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:86/note:97/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:86/note:97/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:86/note:97/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:86/note:98/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:86/note:98/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:86/note:98/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:85/note:96/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:85/note:96/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:85/note:97/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:85/note:97/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato short
+//! c=short i=staccato o=note:84/note:98
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:100
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:101
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:88/note:96
+11 flutter
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,127
+19 flutter marcato (stac layer)
+
+//! spacer=1
+
+//--------------------- repetitions ----------------------------------------
+
+//! c=#E1491C i=multitongued o=note:88/note:98
+83 fast repetition 140
+//! c=#E1491C i=multitongued o=note:88/note:99
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:88/note:100
+84 fast repetition 160
+//! c=#E1491C i=multitongued o=note:88/note:101
+85 fast repetition 170
+//! c=#E1491C i=multitongued o=note:88/note:102
+82 fast repetition 180
+
+//---------------------------------------------------------------------------
+//! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Contrabassoon"
+Bank 45 35 VSL SYNC - Contrabassoon
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96/cc:1,0
+20 legato (no vib)
+//! c=legato i=legato o=note:86/note:96/cc:1,64
+21 legato (vib)
+//! c=legato i=legato o=note:86/note:96/cc:1,127
+113 legato (vib XF)
+//! c=legato i=legato o=note:86/note:97/cc:1,0
+32 legato fast (no vib)
+//! c=legato i=legato o=note:86/note:97/cc:1,64
+37 legato fast (vib)
+//! c=legato i=legato o=note:86/note:97/cc:1,127
+114 legato fast (vib XF)
+//! c=legato i=legato o=note:86/note:98/cc:1,0
+38 legato auto speed (no vib)
+//! c=legato i=legato o=note:86/note:98/cc:1,64
+39 legato auto speed (vib)
+//! c=legato i=legato o=note:86/note:98/cc:1,127
+115 legato auto speed (vib XF)
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96/cc:1,0
+1 sustain (prog vib)
+//! c=long i=note-whole o=note:85/note:96/cc:1,64
+16 sustain (vib)
+//! c=long i=note-whole o=note:85/note:96/cc:1,127
+116 sustain (vib XF)
+//! c=long i=marcato o=note:85/note:97/cc:1,0
+52 marcato (prog vib)
+//! c=long i=marcato o=note:85/note:97/cc:1,64
+53 marcato (vib)
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+117 marcato (vib XF)
+
+//! spacer=1
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato short
+//! c=short i=staccato o=note:84/note:98
+63 portato medium
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+64 legato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:100
+65 portato repetition
+//! c=#A12E0C i=note-sixteenth o=note:84/note:101
+66 staccato repetition
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- flutter ---------------------------------------------
+
+//! c=long-dark i=tremolo o=note:88/note:96
+11 flutter
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,0
+14 flutter marcato
+//! c=long-dark i=tremolo o=note:88/note:97/cc:3,127
+19 flutter marcato (stac layer)
