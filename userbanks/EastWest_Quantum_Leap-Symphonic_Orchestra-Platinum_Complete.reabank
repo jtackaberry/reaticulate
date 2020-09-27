@@ -1,0 +1,1135 @@
+//----------------------------------------------------------------------------
+// Source: UserZero - https://forum.cockos.com/showpost.php?p=2343292&postcount=1072
+//
+
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Piccolo Flute"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+Bank 13 1 EWQLSO Platinum Woodwinds - Solo Piccolo Flute
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato-light i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=textured i=legato o=note:27
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:28
+71 Trill ht
+//! c=short i=trill-maj2 o=note:29
+72 Trill wt
+//! c=long-light i=alt-x o=note:30
+14 Sus Non Vib
+//! c=default i=alt-wave o=note:31
+6 Exp
+//! c=short i=staccato o=note:32
+43 Stacc RRx3
+//! c=short-light i=fall o=note:33
+111 8va Run Dn
+//! c=short-light i=fx o=note:34
+112 8va Run up/Dn
+//! c=short-light i=rip o=note:35
+113 8va Run up
+//! c=long i=legato-gliss o=note:36
+114 Gliss
+//! c=short-dark i=fall o=note:37
+121 Psycho Fall
+//! c=short-light i=rip o=note:38
+122 Rips up 3rd
+//! c=short-light i=rip o=note:39
+124 Rips up 5th
+//! c=short-light i=rip o=note:40
+120 Rips WT
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Flute"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+Bank 13 2 EWQLSO Platinum Woodwinds - Solo Flute
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato-light i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=legato-light i=legato o=note:27
+23 Lyr-Leg
+//! c=textured i=legato o=note:28
+24 Exp-Leg
+//! c=long i=tremolo o=note:29
+12 Flutter
+//! c=short-dark i=trill-min2 o=note:30
+71 Trill ht
+//! c=short i=trill-maj2 o=note:31
+72 Trill wt
+//! c=long i=sfz o=note:32
+15 Sfz Vib
+//! c=long i=alt-wave o=note:33
+18 Lyrical
+//! c=textured i=alt-wave o=note:34
+19 Slow Exp
+//! c=textured i=alt-wave-double o=note:35
+20 Slw Exp 2
+//! c=short-light i=staccatissimo-stopped o=note:36
+47 Short Stac
+//! c=short-light i=staccato o=note:37
+43 Stac
+//! c=short-light i=fall o=note:38
+111 8va Run Dn
+//! c=short-light i=fx o=note:39
+112 8va Run Up/Dn
+//! c=short-light i=rip o=note:40
+122 8va Run Up
+//! c=short i=fall o=note:41
+123 Fall
+//! c=short i=acciaccatura-quarter o=note:42
+113 Grace Notes
+//! c=short-dark i=fall o=note:43
+121 Psycho Run Dn RR
+
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Alto Flute"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 3 EWQLSO Platinum Woodwinds - Solo Alto Flute
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=legato i=legato o=note:26
+22 Legato
+//! c=long-light i=alt-x o=note:27
+14 Sus Non Vib
+//! c=legato-light i=legato o=note:28
+23 Exp Leg Lyr
+//! c=textured i=legato o=note:29
+24 Exp Leg
+//! c=textured i=alt-wave o=note:30
+20 Exp
+//! c=short-dark i=staccato o=note:31
+43 Stacc RRx3
+//! c=short-light i=fx o=note:32
+112 Run Up/Dn
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Ensembles" n="3 Flutes"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 4 EWQLSO Platinum Woodwinds - 3 Flutes
+//! c=long i=vibrato o=note:24
+1 Sus
+//! c=legato i=legato o=note:25
+22 Legato
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=short-dark i=trill-min2 o=note:27
+71 Trill ht
+//! c=short i=trill-maj2 o=note:28
+72 Trill wt
+//! c=long-light i=alt-x o=note:29
+14 Non Vib
+//! c=textured i=decrescendo o=note:30
+60 Exp Dim
+//! c=short i=staccato o=note:31
+43 Stacc RRx3
+//! c=long i=legato-gliss o=note:32
+114 Gliss L
+//! c=short i=legato-gliss o=note:33
+115 Gliss S
+//! c=short i=acciaccatura-quarter o=note:34
+113 Grace
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Oboe"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 5 EWQLSO Platinum Woodwinds - Solo Oboe
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato-light i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=textured i=legato o=note:27
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:28
+71 Trill ht
+//! c=short i=trill-maj2 o=note:29
+72 Trill wt
+//! c=long-light i=note-whole o=note:30
+14 Non Vib
+//! c=textured i=alt-wave o=note:31
+19 Exp P
+//! c=textured i=vibrato o=note:32
+20 Exp Vib
+//! c=long i=sfz o=note:33
+15 Sfz
+//! c=short-light i=staccato o=note:34
+43 Stacc RRx3
+//! c=short-light i=fall o=note:35
+123 Fall
+//! c=long i=legato-gliss o=note:36
+114 Gliss
+//! c=short i=acciaccatura-quarter o=note:37
+113 Grace
+
+//----------------------------------------------------------------------------
+// First articulation mismarked - it's not vibrato.
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Ensembles" n="3 Oboes"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 6 EWQLSO Platinum Woodwinds - 3 Oboes
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=textured i=legato o=note:26
+5 Exp-Leg
+//! c=legato i=legato o=note:27
+22 Legato
+//! c=short-dark i=trill-min2 o=note:28
+71 Trill ht
+//! c=short i=trill-maj2 o=note:29
+72 Trill wt
+//! c=long-light i=note-whole o=note:30
+14 Non Vib
+//! c=textured i=alt-wave o=note:31
+19 Exp
+//! c=short-light i=staccato o=note:32
+43 Stacc RRx3
+//! c=short i=acciaccatura-quarter o=note:33
+113 Grace
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo English Horn"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 7 EWQLSO Platinum Woodwinds - Solo English Horn
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato i=legato o=note:25
+22 Legato
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=textured i=legato o=note:27
+5 Exp-Leg
+//! c=long-light i=alt-x o=note:28
+14 Non Vib
+//! c=textured i=alt-wave o=note:29
+19 Exp
+//! c=short-light i=staccato o=note:30
+43 Stacc RRx3
+//! c=short-light i=fall o=note:31
+123 Fall
+//! c=long i=legato-gliss o=note:32
+114 Gliss
+//! c=short i=acciaccatura-quarter o=note:33
+113 Grace Notes
+//! c=short i=legato-portamento o=note:34
+111 Slide
+
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo English Horn 2"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 8 EWQLSO Platinum Woodwinds - Solo English Horn 2
+//! c=long i=vibrato o=note:24
+1 Sus
+//! c=legato i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:27
+30 Port-Leg
+//! c=textured i=legato o=note:28
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:29
+71 Trill ht
+//! c=short i=trill-maj2 o=note:30
+72 Trill wt
+//! c=long i=legato-portamento o=note:31
+31 Port
+//! c=textured i=alt-wave o=note:32
+19 Exp
+//! c=short-light i=staccato o=note:33
+43 Stacc RRx3
+//! c=short i=acciaccatura-quarter o=note:34
+113 Grace Notes
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Clarinet"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 9 EWQLSO Platinum Woodwinds - Solo Clarinet
+//! c=long-light i=note-whole o=note:24
+14 Sus Non Vib
+//! c=legato-light i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:27
+30 Port-Leg
+//! c=textured i=legato o=note:28
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:29
+71 Trill ht
+//! c=short i=trill-maj2 o=note:30
+72 Trill wt
+//! c=long i=legato-portamento o=note:31
+31 Port
+//! c=textured i=alt-wave o=note:32
+27 Exp Fast
+//! c=textured i=crescendo o=note:33
+61 Exp Slow Crec
+//! c=short i=marcato o=note:34
+49 Marc
+//! c=short i=staccato o=note:35
+43 Stac
+//! c=short-light i=fall o=note:36
+111 8va Run Dn
+//! c=short-light i=fx o=note:37
+112 8va Run Up/Dn
+//! c=short-light i=rip o=note:38
+122 8va Run Up
+//! c=short i=acciaccatura-quarter o=note:39
+113 Grace Notes
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Ensembles" n="3 Clarinets"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 10 EWQLSO Platinum Woodwinds - 3 Clarinets
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=legato i=legato-portamento o=note:26
+22 Q-Leg
+//! c=short i=staccato o=note:27
+43 Stacc RRx3
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Bass Clarinet"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 11 EWQLSO Platinum Woodwinds - Solo Bass Clarinet
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=legato i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:27
+30 Port-Leg
+//! c=textured i=legato o=note:28
+5 Exp-Leg
+//! c=long i=legato-portamento o=note:29
+31 Port
+//! c=textured i=alt-wave o=note:30
+27 Exp Fast
+//! c=short i=marcato o=note:31
+49 Marc
+//! c=short i=staccato o=note:32
+43 Stacc RRx3
+//! c=long i=legato-gliss o=note:33
+114 Gliss
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Bassoon"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 12 EWQLSO Platinum Woodwinds - Solo Bassoon
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=textured i=legato o=note:27
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:28
+71 Trill ht
+//! c=short i=trill-maj2 o=note:29
+72 Trill wt
+//! c=long-light i=alt-x o=note:30
+14 Non Vib
+//! c=short i=alt-wave o=note:31
+19 Exp Shrt
+//! c=textured i=crescendo o=note:32
+20 Exp Lng Crec
+//! c=short-light i=staccato o=note:33
+43 Stacc RRx3
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Contrabassoon"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 13 EWQLSO Platinum Woodwinds - Solo Contrabassoon
+//! c=long i=vibrato o=note:72
+1 Sus
+//! c=legato i=legato o=note:73
+22 Legato
+//! c=long i=legato o=note:74
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:75
+30 Port-Leg
+//! c=textured i=legato o=note:76
+5 Exp-Leg
+//! c=long i=legato-portamento o=note:77
+31 Port
+//! c=short i=alt-wave o=note:78
+20 Exp Short
+//! c=textured i=alt-wave o=note:79
+19 Exp
+//! c=short-light i=staccato o=note:80
+43 Stacc RRx3
+//! c=long i=legato-gliss o=note:81
+114 Gliss
+//! c=short i=acciaccatura-quarter o=note:82
+113 Grace Notes
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo French Horn"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 14 EWQLSO Platinum Brass - Solo French Horn
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=legato i=legato-portamento o=note:26
+22 QLeg
+//! c=short i=marcato o=note:27
+49 Marc
+//! c=long i=sfz o=note:28
+18 Sfz Crec
+//! c=short-light i=staccato o=note:29
+43 Stacc RR
+
+//----------------------------------------------------------------------------
+// NB: Rips S and Rips L labels are swapped in EW's KS list - corrected here.
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="6 French Horns"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 15 EWQLSO Platinum Brass - 6 French Horns
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long-dark i=con-sord o=note:25
+2 Mute Sus
+//! c=long-light i=accented-quarter o=note:26
+3 Sus Acc
+//! c=long-dark i=accented-half o=note:27
+4 Forte Piano
+//! c=long-light i=con-sord o=note:28
+5 Sus Mellow
+//! c=long i=legato o=note:29
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:30
+30 Port-Leg
+//! c=legato i=legato-portamento o=note:31
+22 QLeg
+//! c=short-dark i=trill-min2 o=note:32
+71 Trill ht
+//! c=short i=trill-maj2 o=note:33
+72 Trill wt
+//! c=long i=legato-portamento o=note:34
+31 Port
+//! c=long-dark i=marcato o=note:84
+49 1sec Marc
+//! c=long-light i=marcato o=note:85
+50 3sec Marc
+//! c=long-light i=staccato o=note:86
+32 Stac Long
+//! c=long-dark i=staccato o=note:87
+47 Stac Sht
+//! c=long-light i=cresc-quarter o=note:88
+100 1sec Cres
+//! c=long-light i=cresc-half o=note:89
+101 2sec Cres
+//! c=long-light i=crescendo o=note:90
+102 3sec Cres
+//! c=long-light i=tremolo-ghost o=note:91
+93 Flutter Cres Fast
+//! c=long-light i=list o=note:92
+111 Clusters
+//! c=long-dark i=fall o=note:93
+112 Clstr Bnd wt
+//! c=short i=tremolo-measured o=note:94
+119 Shake
+//! c=long-dark i=fx o=note:95
+120 FX Hell
+//! c=short-light i=rip o=note:96
+122 Rips L
+//! c=long-light i=rip o=note:97
+123 Rips X
+//! c=short-dark i=fx o=note:98
+124 Rips S
+//! c=short i=rip o=note:99
+125 Rips F
+//! c=long i=con-sord o=note:100
+64 Stop
+//! c=long-light i=con-sord o=note:101
+65 Stop Fst
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Piccolo Trumpet"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 16 EWQLSO Platinum Brass - Solo Piccolo Trumpet
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=short-dark i=trill-min2 o=note:26
+71 Trill ht
+//! c=short i=trill-maj2 o=note:27
+72 Trill wt
+//! c=short i=marcato o=note:28
+49 Marc
+//! c=short i=staccato o=note:29
+43 Stacc RR
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Trumpet 1"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 17 EWQLSO Platinum Brass - Solo Trumpet 1
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:26
+30 Port-Leg
+//! c=textured i=legato o=note:27
+5 Exp-Leg
+//! c=long i=legato-portamento o=note:28
+31 Port
+//! c=textured i=alt-wave o=note:29
+19 Exp
+//! c=long-light i=vibrato o=note:30
+2 Sus Vib
+//! c=short i=staccato o=note:31
+43 Stacc RR
+//! c=long i=sfz o=note:32
+18 Sfz Crec
+//! c=long-light i=legato-bowed o=note:33
+122 Slur
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Trumpet 2"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 18 EWQLSO Platinum Brass - Solo Trumpet 2
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:26
+30 Port-Leg
+//! c=legato i=legato-portamento o=note:27
+22 QLeg
+//! c=long i=legato-vibrato o=note:28
+23 QLeg Vib
+//! c=long i=legato-portamento o=note:29
+31 Port
+//! c=short i=marcato o=note:30
+49 Marc
+//! c=long i=marcato o=note:31
+50 Marc Vib Lng
+//! c=textured i=vibrato o=note:32
+20 Exp Vib
+//! c=short-light i=staccato o=note:33
+43 Stacc RRx5
+//! c=long-light i=rip o=note:34
+122 8va Sl Up
+//! c=long-light i=cresc-quarter o=note:35
+100 1sec Cres
+//! c=long-light i=cresc-half o=note:36
+101 2sec Cres
+//! c=long-light i=crescendo o=note:37
+102 3sec Cres Fltr
+//! c=short-light i=fall o=note:38
+123 Falls
+//! c=long-light i=tremolo-ghost o=note:39
+93 Flutter Cres Fst
+//! c=long-light i=rip o=note:40
+124 Rips
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="2 Trumpets"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 19 EWQLSO Platinum Brass - 2 Trumpets
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=con-sord o=note:25
+2 Mute Sus
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:27
+30 Port-Leg
+//! c=legato i=legato-portamento o=note:28
+22 QLeg
+//! c=short-dark i=trill_min2 o=note:29
+71 Trill ht
+//! c=short i=trill_maj2 o=note:30
+72 Trill wt
+//! c=long i=legato-portamento o=note:31
+31 Port
+//! c=short i=marcato o=note:32
+49 Marc
+//! c=short i=staccato-con-sord o=note:33
+51 Mute Stac RR
+//! c=short-light i=staccato-dig o=note:34
+65 Repetitions
+//! c=short i=staccato o=note:35
+43 Stac RRx4
+//! c=long-light i=cresc-quarter o=note:36
+100 1 Sec Cres
+//! c=long-light i=cresc-half o=note:37
+101 2 Sec Cres
+//! c=long-light i=tremolo-150-con-sord o=note:38
+102 Mute Cres Fltr
+//! c=long i=tremolo-180-con-sord o=note:39
+103 Mute Cres Fst
+//! c=short-light i=rip o=note:40
+122 Mute Rip
+//! c=textured i=fx o=note:41
+120 Arp FX
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="4 Trumpets"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 20 EWQLSO Platinum Brass - 4 Trumpets
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long-light i=accented-quarter o=note:25
+4 Forte Piano
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=sfz o=note:27
+15 Sfz
+//! c=short-light i=staccato o=note:28
+43 Stacc RRx3
+//! c=long-light i=crescendo o=note:29
+20 Crec
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Trombone"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 21 EWQLSO Platinum Brass - Solo Trombone
+//! c=long i=note-whole o=note:84
+1 Sus
+//! c=long-dark i=con-sord o=note:85
+2 Mute Sus
+//! c=long i=legato o=note:86
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:87
+30 Port-Leg
+//! c=legato i=legato-portamento o=note:88
+22 QLeg
+//! c=long i=legato-portamento o=note:89
+31 Port
+//! c=short i=marcato o=note:90
+49 Marc
+//! c=short-light i=staccato o=note:91
+43 Stac RRx3
+//! c=long-dark i=sfz o=note:92
+18 Bass Sfz Crec
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="4 Trombones"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 22 EWQLSO Platinum Brass - 4 Trombones
+//! c=long-light i=note-whole o=note:84
+1 Sus
+//! c=long-dark i=con-sord o=note:85
+2 Mute Sus
+//! c=long-dark i=accented-half o=note:86
+4 Forte Piano
+//! c=long i=legato o=note:87
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:88
+30 Port-Leg
+//! c=legato i=legato-portamento o=note:89
+22 QLeg
+//! c=long i=tremolo o=note:90
+12 Flutter
+//! c=long i=legato-portamento o=note:91
+31 Port
+//! c=short i=marcato o=note:92
+49 Marc
+//! c=short-light i=marcato o=note:93
+50 Marc S Acc
+//! c=short-dark i=marcato o=note:94
+47 Mute Stac RR
+//! c=short i=staccato o=note:95
+43 Stac RR
+//! c=long-light i=cresc-quarter o=note:96
+100 1sec Cres
+//! c=long-light i=cresc-half o=note:97
+101 2sec Cres
+//! c=long-light i=crescendo o=note:98
+102 3sec Cres
+//! c=long i=tremolo-180-con-sord o=note:99
+13 Mute Fltr Cres Fst
+//! c=long-light i=list o=note:100
+111 Clusters
+//! c=long-dark i=fall o=note:101
+112 Bn Dn HT
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Tuba"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 23 EWQLSO Platinum Brass - Solo Tuba
+//! c=long-light i=note-whole o=note:72
+1 Sus
+//! c=long i=con-sord o=note:73
+2 Mute Sus
+//! c=long i=legato o=note:74
+21 Sus-Leg
+//! c=textured i=legato o=note:75
+5 Exp-Leg
+//! c=short i=marcato o=note:76
+49 Marc
+//! c=textured i=marcato o=note:77
+19 Exp
+//! c=short i=sfz o=note:78
+15 Sfz
+//! c=short i=staccato o=note:79
+43 Stacc RRx3
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="3 Wagner Tuben"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 24 EWQLSO Platinum Brass - 3 Wagner Tuben
+
+//! c=long-light i=note-whole o=note:24
+1 Big Sus
+//! c=long i=legato-portamento o=note:25
+31 Sus Port
+//! c=long i=alt-wave o=note:26
+18 Sus DXF
+//! c=long i=legato o=note:27
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:28
+30 Port-Leg
+//! c=short-light i=rip o=note:29
+123 Rips
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Violin"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 25 EWQLSO Platinum Strings - Solo Violin
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib Hrd
+//! c=long i=note-whole o=note:25
+2 Non Vib Sft
+//! c=legato i=legato-portamento o=note:26
+22 QLeg
+//! c=long i=legato o=note:27
+21 Sus-Leg
+//! c=textured i=legato o=note:28
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:29
+71 Trill ht
+//! c=short i=trill-maj2 o=note:30
+72 Trill wt
+//! c=textured-dark i=crescendo o=note:31
+18 Exp 1
+//! c=textured i=cresc-half o=note:32
+19 Exp 2
+//! c=textured-light i=crescendo o=note:33
+20 Exp Crec
+//! c=textured i=legato-flautando o=note:34
+66 Exp p
+//! c=long i=vibrato o=note:35
+67 Sus Vib Sft
+//! c=legato i=vibrato o=note:36
+3 Leg Vib
+//! c=short-light i=marcato o=note:37
+54 Mart Up/Dn
+//! c=short i=marcato o=note:38
+53 Marc Nvb Hrd
+//! c=short i=pizz o=note:39
+61 Pizz RR
+//! c=short i=staccato o=note:40
+43 Stacc RR
+//! c=short i=col-legno o=note:41
+63 Col Legno RR
+//! c=short-light i=legato-portamento o=note:42
+111 5th Slide Up
+//! c=short i=legato-portamento o=note:43
+112 8va Slide Up
+//! c=short-dark i=fall o=note:44
+113 8vb Slide Dn
+//! c=long i=legato-bowed o=note:45
+114 Slur
+
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="18 Violins"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 26 EWQLSO Platinum Strings - 18 Violins
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=textured i=legato o=note:27
+5 Exp-Leg
+//! c=textured-light i=legato o=note:28
+11 Lyr-Leg
+//! c=long i=legato-tremolo o=note:29
+81 Trem-Leg
+//! c=long i=note-whole o=note:30
+2 Non Vib
+//! c=textured-dark i=legato-vibrato o=note:31
+18 Lyrical
+//! c=textured-light i=vibrato o=note:32
+17 Lyr Fst
+//! c=textured-dark i=vibrato o=note:33
+20 Exp Fst
+//! c=textured i=vibrato o=note:34
+19 Exp
+//! c=short-light i=marcato o=note:35
+44 Quick Up/Dn
+//! c=short-dark i=marcato o=note:36
+48 Mart Up/Dn
+//! c=long i=marcato o=note:37
+50 Marc Long
+//! c=short i=pizz o=note:38
+61 Pizz RR
+//! c=short i=marcato o=note:39
+49 Marc Shrt
+//! c=short i=spiccato o=note:40
+41 Spicc RR
+//! c=short i=pizz-bartok o=note:41
+62 Bartok Pizz RR
+//! c=long i=fx o=note:42
+111 Clstr & Air
+//! c=short i=fx o=note:43
+112 Pendereki
+//! c=short-light i=acciaccatura-quarter o=note:44
+113 Slur Fst
+//! c=short i=acciaccatura-quarter o=note:45
+114 Slur Med
+//! c=short-dark i=acciaccatura-quarter o=note:46
+115 Slur Slw
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="11 Violins"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 27 EWQLSO Platinum Strings - 11 Violins
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=textured i=legato o=note:26
+5 Exp-Leg
+//! c=textured-light i=legato o=note:27
+3 Lyr-Leg
+//! c=legato i=legato-portamento o=note:28
+22 QLeg
+//! c=long i=tremolo o=note:29
+81 Tremolo
+//! c=short-dark i=trill-min2 o=note:30
+71 Trill ht
+//! c=short i=trill-maj2 o=note:31
+72 Trill wt
+//! c=textured-light i=vibrato o=note:32
+20 Lyr A
+//! c=textured-dark i=vibrato o=note:33
+18 Lyr B
+//! c=textured i=vibrato o=note:34
+19 Exp
+//! c=textured-dark i=decrescendo o=note:35
+66 Exp Dim
+//! c=long i=vibrato o=note:36
+67 Grand Detache
+//! c=long i=harmonics-natural o=note:37
+29 Harmonics
+//! c=short i=acciaccatura-quarter o=note:38
+50 Run Simulator
+//! c=short-light i=staccato o=note:39
+64 Quick Up/Dn
+//! c=short-light i=marcato o=note:40
+65 Mart Up/Dn Marc
+//! c=short i=staccato o=note:41
+43 Stac RR
+//! c=short i=spicatto o=note:42
+41 Spic 2 Run
+//! c=short-dark i=marcato o=note:43
+49 Mart Up/Dn
+//! c=short i=col-legno o=note:44
+63 Col Legno RR
+//! c=short i=fx o=note:45
+114 Sratch FX
+//! c=long i=vibrato o=note:46
+111 5th Slide Dn
+//! c=long i=vibrato o=note:47
+112 5th Slide Up
+//! c=long i=vibrato o=note:48
+122 Psycho Rip
+//! c=long i=vibrato o=note:49
+113 Clusters
+//! c=legato i=legato-flautando o=note:50
+28 QLeg Flaut
+//! c=legato i=con-sord o=note:51
+30 QLeg Sord
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Viola"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 28 EWQLSO Platinum Strings - Solo Viola
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=long i=note-whole o=note:25
+2 Non Vib RR
+//! c=legato i=legato-portamento o=note:26
+22 QLeg
+//! c=long i=legato o=note:27
+21 Sus-Leg
+//! c=textured i=legato o=note:28
+5 Exp-Leg
+//! c=short-dark i=trill-min2 o=note:29
+71 Trill ht
+//! c=short i=trill-maj2 o=note:30
+72 Trill wt
+//! c=textured-dark i=crescendo o=note:31
+18 Exp 1
+//! c=textured i=cresc-half o=note:32
+19 Exp 2
+//! c=textured-light i=crescendo o=note:33
+20 Exp 3
+//! c=textured i=legato-flautando o=note:34
+66 Exp Vib Sft
+//! c=short-light i=marcato o=note:35
+54 Mart RR
+//! c=short-dark i=marcato o=note:36
+53 Marc Hrd RR
+//! c=short i=pizz o=note:37
+61 Pizz RR
+//! c=long i=vibrato o=note:38
+41 Spicatto RR
+//! c=short i=col-legno o=note:39
+63 Col Legno RR
+//! c=short i=legato-portamento o=note:40
+112 8va Slide Up
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="10 Violas"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 29 EWQLSO Platinum Strings - 10 Violas
+
+//! c=long i=note-whole o=note:24
+1 Sus
+//! c=long i=legato o=note:25
+21 Sus-Leg
+//! c=textured i=legato o=note:26
+5 Exp-Leg
+//! c=legato i=legato-portamento o=note:27
+22 QLeg
+//! c=long i=tremolo o=note:28
+81 Tremolo
+//! c=short-dark i=trill-min2 o=note:29
+71 Trill ht
+//! c=short i=trill-maj2 o=note:30
+72 Trill wt
+//! c=textured-light i=legato o=note:31
+18 Exp Leg Acc
+//! c=textured-light i=note-whole o=note:32
+19 Exp Fast
+//! c=textured i=alt-wave o=note:33
+20 Exp Slow
+//! c=legato-light i=legato-flautando o=note:34
+28 QLeg Flaut
+//! c=legato i=legato-con-sord o=note:35
+30 QLeg Sord
+//! c=short-dark i=marcato o=note:36
+65 Mart Up/Dn
+//! c=short i=marcato o=note:37
+49 Marc Shrt
+//! c=short i=pizz o=note:38
+61 Pizz RR
+//! c=short i=staccato o=note:39
+43 Stacc RR
+//! c=short i=col-legno o=note:40
+63 Col Legno RR
+//! c=short i=pizz-bartok o=note:41
+62 Bartok Pizz RR
+//! c=long i=tremolo-sul-pont o=note:42
+83 Sul Pont
+
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Cello"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 30 EWQLSO Platinum Strings - Solo Cello
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib Smooth
+//! c=legato i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=note-whole o=note:27
+2 Non Vib
+//! c=textured-light i=cresc-half o=note:28
+18 Exp Dn
+//! c=textured-dark i=cresc-half o=note:29
+19 Exp Up
+//! c=textured i=alt-wave o=note:30
+20 Dbl Bow Exp
+//! c=textured i=vibrato o=note:31
+66 Exp Vib
+//! c=textured i=alt-wave o=note:32
+67 Dbl Bow
+//! c=short-light i=marcato o=note:88
+54 Mart Up/Dn
+//! c=short i=marcato o=note:89
+53 Marc
+//! c=short i=pizz o=note:90
+61 Pizz RR
+//! c=short i=col-legno o=note:91
+63 Col Legno
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="10 Cellos"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 31 EWQLSO Platinum Strings - 10 Cellos
+
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=legato i=legato-portamento o=note:25
+22 QLeg
+//! c=long i=legato o=note:26
+21 Sus-Leg
+//! c=long i=legato-portamento o=note:27
+30 Port-Leg
+//! c=textured-light i=legato o=note:28
+18 Exp-Lyr-Leg
+//! c=long i=tremolo o=note:29
+81 Tremolo
+//! c=short-dark i=trill-min2 o=note:30
+71 Trill ht
+//! c=short i=trill-maj2 o=note:31
+72 Trill wt
+//! c=long i=legato-portamento o=note:32
+31 Port
+//! c=textured-light i=alt-wave o=note:33
+19 Exp Lyr Fst
+//! c=textured-light i=vibrato o=note:34
+20 Exp Vib Fst
+//! c=textured i=alt-wave o=note:88
+66 Exp Lyr
+//! c=textured-light i=vibrato o=note:89
+67 Exp Vib
+//! c=textured i=crescendo o=note:90
+68 Exp Crec
+//! c=short-light i=marcato o=note:91
+54 Mart Up/Dn
+//! c=short i=marcato o=note:92
+53 Marc RR
+//! c=short i=pizz o=note:93
+61 Pizz RR
+//! c=short i=spiccato o=note:94
+41 Spiccato RR
+//! c=short i=col-legno o=note:95
+63 Col Legno RR
+//! c=short i=pizz-bartok o=note:96
+62 Bartok Pizz
+
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Contrabass"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 32 EWQLSO Platinum Strings - Solo Contrabass
+
+//! c=long i=vibrato o=note:72
+1 Sus Vib
+//! c=legato i=legato-portamento o=note:73
+22 QLeg
+//! c=long i=legato o=note:74
+21 Sus-Leg
+//! c=textured i=legato o=note:75
+5 Exp-Leg
+//! c=textured-light i=alt-wave o=note:76
+18 Lyr-Leg
+//! c=long i=note-whole o=note:77
+2 Sus Non Vib
+//! c=textured-light i=note-whole o=note:78
+20 Lyrical
+//! c=textured i=alt-wave o=note:79
+19 Exp
+//! c=short i=marcato o=note:80
+53 Marc RR
+//! c=short-light i=marcato o=note:81
+54 Mart RR
+//! c=short i=pizz o=note:82
+61 Pizz RR
+//! c=short i=spicatto o=note:83
+41 Spicatto RR
+//! c=short i=col-legno o=note:84
+63 Col Legno RR
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="9 Double Basses"
+//! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
+
+Bank 13 33 EWQLSO Platinum Strings - 9 Double Basses
+
+//! c=long i=vibrato o=note:72
+1 Sus Vib
+//! c=long i=vibrato-con-sord o=note:73
+2 Sus Vib Sft
+//! c=long i=legato o=note:74
+21 Sus-Leg
+//! c=textured i=legato o=note:75
+5 Exp-Leg
+//! c=long i=tremolo o=note:76
+81 Trem
+//! c=long i=legato-portamento o=note:77
+31 Port
+//! c=textured-light i=note-whole o=note:78
+18 Exp Fst
+//! c=textured i=alt-wave o=note:79
+19 Exp
+//! c=long i=crescendo o=note:80
+20 Crec
+//! c=long-dark i=accented-half o=note:81
+4 Forte Piano
+//! c=long i=sfz o=note:82
+15 Sfz
+//! c=short-light i=marcato o=note:83
+44 Quick Up/Dn
+//! c=short i=marcato o=note:84
+65 Mart Up/Dn
+//! c=short i=pizz o=note:85
+61 Pizz
+//! c=short i=staccatissimo-stopped o=note:86
+111 Slaps
+//! c=short i=fx o=note:87
+112 FX
