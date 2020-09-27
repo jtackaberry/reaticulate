@@ -1,0 +1,385 @@
+//----------------------------------------------------------------------------
+// Source: Ugurcan Orcun - http://gameaud.io/blogs/reaticulate-banks-era
+//
+
+//! g="Best Service/Dark Era/Strings" n="Tagelharpa"
+Bank 41 1 Tagelharpa
+
+//! c=#1FCCC9 i=note-whole o=note:36 g=1
+36 4 Beats
+//! c=#1FC2C4 i=note-half o=note:37 g=1
+37 3.5 Beats
+//! c=#18A19E i=note-half o=note:38 g=1
+38 3 Beats
+//! c=#189296 i=note-half o=note:39 g=1
+39 2.5 Beats
+//! c=#11585E i=note-half o=note:40 g=1
+40 2 Beats
+//! c=#09262B i=note-quarter o=note:41 g=1
+41 1.5 Beat
+//! c=#0C1E24 i=note-quarter o=note:42 g=1
+42 1 Beat
+//! c=#09151A i=note-eighth o=note:43 g=1
+43 0.5 Beat
+//! c=#06151A i=staccato o=note:44 g=1
+44 Staccato
+
+//! spacer=1
+//! c=legato i=phrase o=note:81 g=2
+81 Rhythm A
+//! c=legato i=phrase o=note:82 g=2
+82 Rhythm B
+//! c=legato i=phrase o=note:83 g=2
+83 Rhythm C
+//! c=legato i=phrase o=note:84 g=2
+84 Rhythm D
+//! c=legato i=phrase o=note:85 g=2
+85 Rhythm E
+//! c=legato i=phrase o=note:86 g=2
+86 Rhythm F
+//! c=legato i=phrase o=note:87 g=2
+87 Rhythm G
+//! c=legato i=phrase o=note:88 g=2
+88 Rhythm H
+//! c=legato i=phrase o=note:89 g=2
+89 Rhythm I
+//! c=legato i=phrase o=note:90 g=2
+90 Rhythm J
+
+
+
+//! g="Best Service/Dark Era/Strings" n="Crwth"
+Bank 41 2 Crwth
+//! c=legato i=phrase o=note:93
+93 Rhythm A
+//! c=legato i=phrase o=note:94
+94 Rhythm B
+//! c=legato i=phrase o=note:95
+95 Rhythm C
+//! c=legato i=phrase o=note:96
+96 Rhythm D
+//! c=legato i=phrase o=note:97
+97 Rhythm E
+//! c=legato i=phrase o=note:98
+98 Rhythm F
+//! c=legato i=phrase o=note:99
+99 Rhythm G
+//! c=legato i=phrase o=note:100
+100 Rhythm H
+//! c=legato i=phrase o=note:101
+101 Rhythm I
+//! c=legato i=phrase o=note:102
+102 Rhythm J
+
+//! spacer=1
+//! c=#59E04E i=note-whole o=note:36
+36 4 Beats
+//! c=#4EC444 i=note-half o=note:37
+37 3.5 Beats
+//! c=#43A83B i=note-half o=note:38
+38 3 Beats
+//! c=#388C31 i=note-half o=note:39
+39 2.5 Beats
+//! c=#2C7027 i=note-half o=note:40
+40 2 Beats
+//! c=#21541D i=note-quarter o=note:41
+41 1.5 Beat
+//! c=#163814 i=note-quarter o=note:42
+42 1 Beat
+//! c=#0B1C0A i=note-eighth o=note:43
+43 0.5 Beat
+//! c=#0B1C0A i=staccato o=note:44
+44 Staccato
+
+//! g="Best Service/Dark Era/Strings" n="Cologne / Trossingen Lyre"
+Bank 41 3 Cologne / Trossingen Lyre
+//! c=default o=note:36
+36 Finger
+//! c=default o=note:38
+38 Plectrum
+//! c=fx i=harmonics o=note:40
+40 Harmonics
+
+//! g="Best Service/Dark Era/Strings" n="Col. / Tros. Lyre Strummed"
+Bank 41 4 Col. / Tros. Lyre Strummed
+//! c=default o=note:36
+36 C Tuning
+//! c=default o=note:37
+37 C# Tuning
+//! c=#7385BB o=note:38
+38 D Tuning
+//! c=default o=note:39
+39 D# Tuning
+//! c=default o=note:40
+40 E Tuning
+//! c=default o=note:41
+41 F Tuning
+//! c=default o=note:42
+42 F# Tuning
+//! c=default o=note:43
+43 G Tuning
+//! c=default o=note:44
+44 G# Tuning
+//! c=default o=note:45
+45 A Tuning
+//! c=default o=note:46
+46 A# Tuning
+//! c=default o=note:47
+47 B Tuning
+
+//! g="Best Service/Dark Era/Wind" n="Deer Bone Flute" off=0
+Bank 41 5 Deer Bone Flute
+//! i=legato c=long
+0 Legato
+//! i=trill-maj2 c=short-light o=note-hold:37
+37 Mordent 1
+//! i=trill-maj2 c=short-light o=note-hold:38
+38 Mordent 2
+//! i=tremolo-measured c=short-dark o=note-hold:39
+39 Trill 1
+//! i=tremolo-measured c=short-dark o=note-hold:40
+40 Trill 2
+//! i=trill c=long o=note-hold:41
+41 Long Trills 1
+//! i=trill c=long o=note-hold:42
+42 Long Trills 2
+//! i=multitongued c=long-light o=note-hold:43
+43 Flutter Tongue
+//! i=phrase-tremolo-cresc c=long-dark o=note-hold:44
+44 Flutter Crescendo
+//! i=fall c=short-dark o=note-hold:45
+45 Falls
+//! i=staccato c=short o=note-hold:46
+46 Staccato
+//! i=fx c=fx o=note-hold:47
+47 FX
+
+//! g="Best Service/Dark Era/Wind" n="Vulture Bone Flute" off=0
+Bank 41 6 Vulture Bone Flute
+//! i=legato c=long
+0 Legato
+//! i=trill-maj2 c=short-light o=note-hold:37
+37 Mordent 1
+//! i=trill c=short-dark o=note-hold:38
+38 Short Trill
+//! i=trill c=short-dark o=note-hold:39
+39 Mid Trill
+//! i=tremolo c=long-light o=note-hold:40
+40 Flutter
+//! i=trill-maj3 c=long-dark o=note-hold:41
+41 Triplet 1
+//! i=trill-maj3 c=short-dark o=note-hold:42
+42 Triplet 2
+//! i=staccato c=short o=note-hold:43
+43 Staccato
+
+//! g="Best Service/Dark Era/Wind" n="Double Flute" off=0
+Bank 41 7 Double Flute
+//! i=legato c=long
+0 Legato
+//! i=acciaccatura-quarter c=short-light o=note-hold:37
+37 Mordent 1
+//! i=acciaccatura-quarter c=short-light o=note-hold:38
+38 Mordent 2
+//! i=legato-gliss c=short-dark o=note-hold:39
+39 Bend
+//! i=trill-maj2 c=short-dark o=note-hold:40
+40 Trill 1
+//! i=trill-maj3 c=short-dark o=note-hold:41
+41 Trill 2
+//! i=fx c=fx o=note-hold:42
+42 Triplet
+
+
+//! g="Best Service/Dark Era/Wind" n="Elderwood Flute" off=0
+Bank 41 8 Elderwood Flute
+//! i=legato c=long
+0 Legato Natural
+//! i=default o=note-hold:37
+37 Legato Non Vibrato
+//! i=default o=note-hold:38
+38 Flutter Long
+//! i=default o=note-hold:39
+39 Flutter Med
+//! i=default o=note-hold:40
+40 Flutter Short
+//! i=default o=note-hold:41
+41 Mordent 1
+//! i=default o=note-hold:43
+43 Mordent 2
+//! i=default o=note-hold:44
+44 Marcato Expressive
+//! i=default o=note-hold:45
+45 Overblown
+//! i=default o=note-hold:46
+46 Gliss Short
+//! i=default o=note-hold:47
+47 Gliss Long
+
+//! g="Best Service/Dark Era/Wind" n="Fujara" off=0
+Bank 41 9 Fujara
+//! i=legato c=long
+0 Legato Hard Attack
+//! i=default o=note-hold:37
+37 Legato Soft Attack
+//! i=default o=note-hold:38
+38 Triplet 1
+//! i=default o=note-hold:39
+39 Triplet 2
+
+//! g="Best Service/Dark Era/Wind" n="White Horn" off=0
+Bank 41 10 White Horn
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Mordent Up
+//! i=default o=note-hold:38
+38 Mordent Down
+//! i=default o=note-hold:39
+39 Mordent Up/Fall
+//! i=default o=note-hold:40
+40 Mordent Down/Fall
+//! i=default o=note-hold:41
+41 Trill 1
+//! i=default o=note-hold:42
+42 Trill 1/Fall
+//! i=default o=note-hold:43
+43 Long Trill
+//! i=default o=note-hold:44
+44 Long Trill 2
+//! i=default o=note-hold:45
+45 Crescendo Short
+//! i=default o=note-hold:46
+46 Crescendo Long
+//! i=default o=note-hold:47
+47 Decrescendo
+//! i=default o=note-hold:48
+48 Flutter Tongue
+//! i=default o=note-hold:49
+49 Flutter Cresc. Short
+//! i=default o=note-hold:50
+50 Flutter Cresc. Long
+//! i=default o=note-hold:51
+51 Flutter Decrescendo
+//! i=default o=note-hold:52
+52 Repetition
+//! i=default o=note-hold:53
+53 Marcato
+//! i=default o=note-hold:54
+54 Staccato
+
+//! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
+Bank 41 11 Overtone Flute
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Bending
+//! i=default o=note-hold:38
+39 Trill
+//! i=default o=note-hold:39
+40 Expressive Vibrato
+//! i=default o=note-hold:40
+41 Flutter Tongue
+//! i=default o=note-hold:41
+42 Triplet
+//! i=default o=note-hold:42
+43 Staccato
+
+//! g="Best Service/Dark Era/Vocal" n="Shouts 1"
+Bank 41 12 Shouts 1
+//! i=default o=note:36
+36 Ha
+//! i=default o=note:37
+37 He
+//! i=default o=note:38
+39 Hi
+//! i=default o=note:39
+40 Ho
+//! i=default o=note:40
+41 Hu
+//! i=default o=note:41
+41 Hey
+//! i=default o=note:42
+42 Au
+//! i=default o=note:43
+43 Ua
+//! i=default o=note:44
+44 Sho
+
+//! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
+Bank 41 13 Kargyraa Legato
+//! i=default o=note:36
+36 Vowel 1
+//! i=default o=note:37
+37 Vowel 2
+//! i=default o=note:38
+38 Vowel 3
+//! i=default o=note:39
+39 Vowel 4
+//! i=default o=note:40
+40 Vowel 5
+//! i=default o=note:41
+41 Vowel 6
+//! i=default o=note:42
+42 Vowel 7
+
+//! g="Best Service/Dark Era/Vocal" n="Khomeii"
+Bank 41 14 Khoomei
+//! c=default o=note:43
+43 G Tuning
+//! c=default o=note:44
+44 G# Tuning
+//! c=default o=note:45
+45 A Tuning
+//! c=default o=note:46
+46 A# Tuning
+//! c=default o=note:47
+47 B Tuning
+//! i=default o=note:48
+48 C Tuning
+//! i=default o=note:49
+49 C# Tuning
+//! i=default o=note:50
+50 D Tuning
+//! i=default o=note:51
+51 D# Tuning
+//! i=default o=note:52
+52 E Tuning
+//! i=default o=note:53
+53 F Tuning
+//! i=default o=note:54
+54 F# Tuning
+
+//! g="Best Service/Dark Era/Vocal" n="Sygyt"
+Bank 41 15 Sygyt
+//! c=default o=note:41
+41 F Tuning
+//! c=default o=note:42
+42 F# Tuning
+//! c=default o=note:43
+43 G Tuning
+//! c=default o=note:44
+44 G# Tuning
+//! c=default o=note:45
+45 A Tuning
+//! c=default o=note:46
+46 A# Tuning
+//! c=default o=note:47
+47 B Tuning
+//! i=default o=note:48
+48 C Tuning
+//! i=default o=note:49
+49 C# Tuning
+//! i=default o=note:50
+50 D Tuning
+//! i=default o=note:51
+51 D# Tuning
+//! i=default o=note:52
+52 E Tuning
+
+//! g="Best Service/Dark Era/Vocal" n="Whispers"
+Bank 41 16 Whispers
+//! c=default o=note:36
+36 F Tuning
+//! c=default o=note:37
+37 F# Tuning

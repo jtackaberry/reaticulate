@@ -1,0 +1,577 @@
+//----------------------------------------------------------------------------
+// Source: Ugurcan Orcun - http://gameaud.io/blogs/reaticulate-banks-era
+//
+
+//! g="Best Service/Era II/Brass" n="Cornetto" off=0
+Bank 41 60 Cornetto
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Staccato
+//! i=default o=note-hold:38
+38 Marcato
+
+//! g="Best Service/Era II/Brass" n="Natural Trumpet" off=0
+Bank 41 61 Natural Trumpet
+//! i=legato c=long
+0 Legato Marcato
+//! i=default o=note-hold:37
+37 Legato
+//! i=default o=note-hold:38
+38 Short Stac.
+//! i=default o=note-hold:39
+39 Long Stac.
+//! i=default o=note-hold:40
+40 Marcato
+//! i=default o=note-hold:41
+41 Short Cresc.
+//! i=default o=note-hold:42
+42 Short Marc. Cresc.
+//! i=default o=note-hold:43
+43 Long Cresc.
+//! i=default o=note-hold:44
+44 Long Marc. Cresc.
+
+//! g="Best Service/Era II/Brass" n="Sackbut" off=0
+Bank 41 62 Sackbut
+//! i=legato c=long
+0 Legato Marcato
+//! i=default o=note-hold:37
+37 Legato
+//! i=default o=note-hold:38
+38 Short Stac.
+//! i=default o=note-hold:39
+39 Lonc Stac.
+//! i=default o=note-hold:40
+40 Marcato
+//! i=default o=note-hold:41
+41 Short Cresc.
+//! i=default o=note-hold:42
+42 Short Marc. Cresc.
+//! i=default o=note-hold:43
+43 Long Cresc.
+//! i=default o=note-hold:44
+44 Long Marc. Cresc.
+
+//! g="Best Service/Era II/Winds/Flute" n="Gemshorn" off=0
+Bank 41 63 Gemshorn
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+49 Staccato
+
+//! g="Best Service/Era II/Winds/Flute" n="Two Holed Flute" off=0
+Bank 41 64 Two Holed Flute
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Mordent
+//! i=default o=note-hold:38
+38 Long Gliss.
+//! i=default o=note-hold:39
+39 Short Gliss.
+//! i=default o=note-hold:40
+40 Ornament
+//! i=default o=note-hold:41
+41 Short Trill
+//! i=default o=note-hold:42
+42 Long Trill
+//! i=default o=note-hold:43
+43 Staccato
+
+//! g="Best Service/Era II/Winds/Flute" n="Rein. Recorders" off=48
+Bank 41 65 Reinnesance Recorders
+//! i=legato c=long
+48 Legato
+//! i=default o=note-hold:49
+49 Marcato
+//! i=default o=note-hold:50
+50 Staccato
+//! i=default o=note-hold:51
+51 Mordent
+//! i=default o=note-hold:52
+52 Short Trill
+
+//! g="Best Service/Era II/Winds/Flute" n="Trad. Sopr. Recorder" off=48
+Bank 41 66 Trad. Sopr. Recorder
+//! i=legato c=long
+48 Legato
+//! i=default o=note-hold:49
+49 Marcato
+//! i=default o=note-hold:50
+50 Staccato
+//! i=default o=note-hold:51
+51 Short Trill
+//! i=default o=note-hold:52
+52 Long Trill
+//! i=default o=note-hold:53
+53 Mordent
+
+//! g="Best Service/Era II/Winds/Flute" n="Trad. Wood Flute" off=48
+Bank 41 66 Trad. Wood Flute
+//! i=legato c=long
+48 Legato
+//! i=default o=note-hold:49
+49 Marcato
+//! i=default o=note-hold:50
+50 Staccato
+//! i=default o=note-hold:51
+51 Mordent
+//! i=default o=note-hold:52
+52 Glissando
+//! i=default o=note-hold:53
+53 Short Trill
+//! i=default o=note-hold:54
+54 Long Trill
+//! i=default o=note-hold:55
+55 Ornament
+
+//! g="Best Service/Era II/Winds/Flute" n="Whistle" off=0
+Bank 41 67 Whistle
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Mordent
+//! i=default o=note-hold:38
+38 Ornament
+//! i=default o=note-hold:39
+39 Ornament 2
+//! i=default o=note-hold:40
+40 Short Gliss.
+//! i=default o=note-hold:41
+41 Long Gliss.
+//! i=default o=note-hold:42
+42 Stac. 1
+//! i=default o=note-hold:43
+43 Stac. 2
+
+//! g="Best Service/Era II/Winds/Flute" n="Wooden Transverse Flute" off=0
+Bank 41 68 Wooden Transverse Flute
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Fast Repetition
+//! i=default o=note-hold:38
+38 Mordent
+//! i=default o=note-hold:39
+39 Overblown
+//! i=default o=note-hold:40
+40 Mord. Overblown
+//! i=default o=note-hold:41
+41 Flutter Tongue 1
+//! i=default o=note-hold:42
+42 Flutter Tongue 2
+//! i=default o=note-hold:43
+43 Staccato 2
+
+//! g="Best Service/Era II/Winds/Reeds" n="Bagpipes" off=0
+Bank 41 69 Bagpipes
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:49
+49 Ornament 1
+//! i=default o=note-hold:50
+50 Ornament 2
+//! i=default o=note-hold:51
+51 Ornament 3
+//! i=default o=note-hold:52
+52 Ornament 4
+//! i=default o=note-hold:53
+53 Ornament 5
+//! i=default o=note-hold:54
+54 Ornament 6
+//! i=default o=note-hold:55
+55 Ornament 7
+//! i=default o=note-hold:56
+56 Ornament 8
+
+//! g="Best Service/Era II/Winds/Reeds" n="Crumhorns" off=0
+Bank 41 70 Crumhorns
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:49
+49 Marcato
+//! i=default o=note-hold:50
+50 Staccato
+//! i=default o=note-hold:51
+51 Short Trill
+//! i=default o=note-hold:52
+52 Long Trill
+//! i=default o=note-hold:53
+53 Mordent
+
+//! g="Best Service/Era II/Winds/Reeds" n="Crumhorn Bass" off=0
+Bank 41 71 Crumhorn Bass
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:25
+25 Marcato
+//! i=default o=note-hold:26
+26 Staccato
+//! i=default o=note-hold:27
+27 Short Trill
+//! i=default o=note-hold:28
+28 Long Trill
+//! i=default o=note-hold:29
+29 Mordent
+
+//! g="Best Service/Era II/Winds/Shawms" n="Bombarde" off=0
+Bank 41 72 Bombarde
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:37
+37 Marcato
+//! i=default o=note-hold:38
+38 Staccato
+//! i=default o=note-hold:39
+39 Short Trill
+//! i=default o=note-hold:40
+40 Long Trill
+//! i=default o=note-hold:41
+41 Mordent
+
+//! g="Best Service/Era II/Winds/Shawms" n="Chirmia" off=0
+Bank 41 73 Chirmia
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:49
+49 Marcato
+//! i=default o=note-hold:50
+50 Staccato
+//! i=default o=note-hold:51
+51 Short Trill
+//! i=default o=note-hold:52
+52 Long Trill
+//! i=default o=note-hold:53
+53 Mordent
+
+//! g="Best Service/Era II/Winds/War Horns" n="Anyafil Calls" off=0
+Bank 41 74 Anyafil Calls
+//! i=default o=note:36
+36 Ornament 1
+//! i=default o=note:37
+37 Ornament 2
+//! i=default o=note:38
+38 Ornament 3
+//! i=default o=note:39
+39 Ornament 4
+//! i=default o=note:40
+40 Ornament 5
+//! i=default o=note:41
+41 Ornament 6
+//! i=default o=note:42
+42 Ornament 7
+//! i=default o=note:43
+43 Ornament 8
+//! i=default o=note:44
+44 Ornament 9
+//! i=default o=note:45
+45 Ornament 10
+//! i=default o=note:46
+46 Ornament 11
+//! i=default o=note:47
+47 Ornament 12
+//! i=default o=note:48
+48 Ornament 13
+//! i=default o=note:49
+49 Ornament 14
+//! i=default o=note:50
+50 Ornament 15
+//! i=default o=note:51
+51 Ornament 16
+//! i=default o=note:52
+52 Ornament 17
+//! i=default o=note:53
+53 Ornament 18
+//! i=default o=note:54
+54 Ornament 19
+//! i=default o=note:55
+55 Ornament 20
+//! i=default o=note:56
+56 Ornament 21
+//! i=default o=note:57
+57 Ornament 22
+//! i=default o=note:58
+58 Ornament 23
+//! i=default o=note:59
+59 Ornament 24
+//! i=default o=note:60
+60 Ornament 25
+//! i=default o=note:61
+61 Ornament 26
+
+//! g="Best Service/Era II/Winds/War Horns" n="Anyafil / Shofar" off=0
+Bank 41 75 Anyafil / Shofar
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:37
+37 Staccato
+
+//! g="Best Service/Era II/Winds/War Horns" n="Shofar Calls" off=0
+Bank 41 76 Shofar Calls
+//! i=default o=note:36
+36 Ornament 1
+//! i=default o=note:37
+37 Ornament 2
+//! i=default o=note:38
+38 Ornament 3
+//! i=default o=note:39
+39 Ornament 4
+//! i=default o=note:40
+40 Ornament 5
+//! i=default o=note:41
+41 Ornament 6
+//! i=default o=note:42
+42 Ornament 7
+//! i=default o=note:43
+43 Ornament 8
+//! i=default o=note:44
+44 Ornament 9
+//! i=default o=note:45
+45 Ornament 10
+//! i=default o=note:46
+46 Ornament 11
+//! i=default o=note:47
+47 Ornament 12
+//! i=default o=note:48
+48 Ornament 13
+//! i=default o=note:49
+49 Ornament 14
+//! i=default o=note:50
+50 Ornament 15
+//! i=default o=note:51
+51 Ornament 16
+//! i=default o=note:52
+52 Ornament 17
+//! i=default o=note:53
+53 Ornament 18
+//! i=default o=note:54
+54 Ornament 19
+//! i=default o=note:55
+55 Ornament 20
+//! i=default o=note:56
+56 Ornament 21
+//! i=default o=note:57
+57 Ornament 22
+//! i=default o=note:58
+58 Ornament 23
+//! i=default o=note:59
+59 Ornament 24
+//! i=default o=note:60
+60 Ornament 25
+//! i=default o=note:61
+61 Ornament 26
+//! i=default o=note:62
+62 Ornament 27
+//! i=default o=note:63
+63 Ornament 28
+//! i=default o=note:64
+64 Ornament 29
+//! i=default o=note:65
+65 Ornament 30
+//! i=default o=note:66
+66 Ornament 31
+//! i=default o=note:67
+67 Ornament 32
+//! i=default o=note:68
+68 Ornament 33
+
+//! g="Best Service/Era II/Winds/War Horns" n="Celtibertic Warhorn" off=0
+Bank 41 77 Celtibertic Warhorn
+//! i=default o=note:36
+36 Ornament 1
+//! i=default o=note:37
+37 Ornament 2
+//! i=default o=note:38
+38 Ornament 3
+//! i=default o=note:39
+39 Ornament 4
+//! i=default o=note:40
+40 Ornament 5
+//! i=default o=note:41
+41 Ornament 6
+//! i=default o=note:42
+42 Ornament 7
+//! i=default o=note:43
+43 Ornament 8
+//! i=default o=note:44
+44 Ornament 9
+//! i=default o=note:45
+45 Ornament 10
+//! i=default o=note:46
+46 Ornament 11
+//! i=default o=note:47
+47 Ornament 12
+
+//! g="Best Service/Era II/Winds/War Horns" n="War Horn" off=0
+Bank 41 78 War Horn
+//! i=default o=note:36
+36 Ornament 1
+//! i=default o=note:37
+37 Ornament 2
+//! i=default o=note:38
+38 Ornament 3
+//! i=default o=note:39
+39 Ornament 4
+//! i=default o=note:40
+40 Ornament 5
+//! i=default o=note:41
+41 Ornament 6
+//! i=default o=note:42
+42 Ornament 7
+//! i=default o=note:43
+43 Ornament 8
+//! i=default o=note:44
+44 Ornament 9
+//! i=default o=note:45
+45 Ornament 10
+//! i=default o=note:46
+46 Ornament 11
+//! i=default o=note:47
+47 Ornament 12
+
+//! g="Best Service/Era II/Strings/Bowed" n="Bass Viola de Gamba" off=0
+Bank 41 79 Bass Viola de Gamba
+//! i=legato c=long
+0 Sustain Poly
+//! i=default o=note-hold:25
+25 Staccato
+//! i=default o=note-hold:26
+26 Pizzicato
+
+//! g="Best Service/Era II/Strings/Bowed" n="Tenor Viola de Gamba" off=0
+Bank 41 80 Tenor Viola de Gamba
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Legato Soft
+//! i=default o=note-hold:38
+38 Marcato
+//! i=default o=note-hold:39
+39 Manual Bow
+//! i=default o=note-hold:40
+40 Pizzicato
+//! i=default o=note-hold:41
+41 Staccato
+
+//! g="Best Service/Era II/Strings/Bowed" n="Bowed Psaltery" off=0
+Bank 41 81 Bowed Psaltery
+//! i=legato c=long
+0 Sustain
+//! i=default o=note-hold:37
+37 Marcato
+//! i=default o=note-hold:38
+38 Staccato 1
+//! i=default o=note-hold:39
+39 Staccato 2
+
+//! g="Best Service/Era II/Strings/Bowed" n="Fiddle Grooves" off=0
+Bank 41 82 Fiddle Grooves
+//! i=default o=note-hold:38
+38 D Root
+//! i=default o=note-hold:43
+43 D Root
+//! i=default o=note-hold:45
+45 D Root
+
+//! g="Best Service/Era II/Strings/Bowed" n="Fidule" off=0
+Bank 41 83 Fidule
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Staccato
+//! spacer=1
+//! i=default f=toggle o=cc:5,0 g=2
+126 Drone On
+//! i=default f=toggle o=cc:5,127 g=2
+127 Drone Off
+
+//! g="Best Service/Era II/Strings/Bowed" n="Nyckelharpa" off=0
+Bank 41 84 Nyckelharpa
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Marcato
+//! i=default o=note-hold:38
+38 Staccato
+//! i=default o=note-hold:39
+39 Triplet
+
+//! g="Best Service/Era II/Strings/Bowed" n="Viola de Roda" off=0
+Bank 41 85 Viola de Roda
+//! i=legato c=long
+0 Legato
+//! i=default o=note-hold:37
+37 Vibrato 1
+//! i=default o=note-hold:38
+38 Vibrato 2
+
+//! g="Best Service/Era II/Strings/Plucked" n="Baroque Guitar" off=0
+Bank 41 86 Baroque Guitar
+//! i=legato c=long
+0 Sustain
+//! i=default o=note-hold:37
+37 Legato
+//! i=default o=note-hold:38
+38 Chords
+//! i=default o=note-hold:39
+39 Looped Chords
+
+//! g="Best Service/Era II/Strings/Plucked" n="Bass Citole" off=0
+Bank 41 87 Bass Citole
+//! i=legato c=long
+0 Polyphonic
+//! i=default o=note-hold:37
+37 Legato
+//! i=default o=note-hold:38
+38 Slow Chords
+//! i=default o=note-hold:39
+39 Fast Chords
+//! i=default o=note-hold:40
+40 Fast Chords Muted
+
+//! g="Best Service/Era II/Strings/Plucked" n="Gittern"
+Bank 41 87 Gittern
+//! i=default o=note:36
+36 Polyphonic
+//! i=default o=note:37
+37 Legato
+//! i=default o=note:38
+38 Slow Chords
+//! i=default o=note:39
+39 Fast Chords
+//! i=default o=note:40
+40 Trill
+
+//! g="Best Service/Era II/Strings/Plucked" n="Langeleik"
+Bank 41 88 Langeleik
+//! i=default o=note:36
+36 Pluck Style 1
+//! i=default o=note:37
+37 Pluck Style 2
+//! i=default o=note:38
+38 Pluck Style 3
+//! i=default o=note:39
+39 Pluck Style 4
+//! i=default o=note:40
+40 Pluck Style 5
+
+//! g="Best Service/Era II/Strings/Plucked" n="Renaissance Lute"
+Bank 41 89 Renaissance Lute
+//! i=legato o=note:36
+36 Sustain
+//! i=default o=note:37
+37 Legato
+
+//! g="Best Service/Era II/Strings/Plucked" n="Medieval Lute"
+Bank 41 90 Medieval Lute
+//! i=legato o=note:36
+36 Polyphonic
+//! i=default o=note:37
+37 Legato
+//! i=default o=note:38
+38 Slow Chords
+//! i=default o=note:39
+39 Fast Chords
+//! i=default o=note:40
+40 Fast Chords Muted
