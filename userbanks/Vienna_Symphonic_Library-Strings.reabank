@@ -1,0 +1,4884 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/110
+//
+// Link to detailed installation instructions:
+//
+// https://www.vsl.co.at/community/posts/t53083-Comprehensive-Articulation-Management-System-for-VSL-Libraries--for-REAPER-users#post287931
+//
+// NOTE: there are VI presets available for all banks at the above URL.
+
+
+// TABLE OF CONTENTS
+//
+// DIRECTIONS: Use *Ctrl-F* to quickly jump to the articulation banks using the names listed below.
+//
+// ~~~~~~~~~~~~~~
+// STRINGS - SOLO
+// ~~~~~~~~~~~~~~
+//		Violin I
+//		Violin I (Mute)
+//		Violin II
+//		Viola
+//		Viola (Mute)
+//		Cello I
+//		Cello I (Mute)
+//		Cello II
+//		Bass
+//		Bass (Mute)
+// ~~~~~~~~~~~~~~~~~
+// STRINGS - CHAMBER
+// ~~~~~~~~~~~~~~~~~
+//		Violins - a6
+//		Violins - a6 (Mute)
+//		Violas - a4
+//		Violas - a4 (Mute)
+//		Cellos - a3
+//		Cellos - a3 (Mute)
+//		Basses - a2
+//		Basses - a2 (Mute)
+// ~~~~~~~~~~~~~~~~~~~~
+// STRINGS - ORCHESTRAL
+// ~~~~~~~~~~~~~~~~~~~~
+//		Violins - a14
+//		Violins - a14 (Mute)
+//		Violas - a10
+//		Violas - a10 (Mute)
+//		Cellos - a8
+//		Cellos - a8 (Mute)
+//		Basses - a6
+// ~~~~~~~~~~~~~~~~~~~~~~
+// STRINGS - APPASSIONATA
+// ~~~~~~~~~~~~~~~~~~~~~~
+//		Violins - a20
+//		Violins - a20 (Mute)
+//		Violas - a14
+//		Violas - a14 (Mute)
+//		Cellos - a12
+//		Cellos - a12
+//		Basses - a10
+// ~~~~~
+// HARPS
+// ~~~~~
+//		Harp I
+//		Harp II
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//												     ----STRINGS----
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//											  ~~~~~~ STRINGS - SOLO ~~~~~~~
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+// ********
+// VIOLIN I
+// ********
+
+//! g="VSL - STRINGS/Solo" n="Violin I"
+Bank 4 1 Violin I
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+2 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+3 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=legato-sul-g o=note:1/note:12/note:115
+6 Perf. Legato, Sul
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (ProgVib)
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+8 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+9 Perf. Portamento
+//! c=legato i=alt-gypsy o=note:1/note:12/note:119
+10 Perf. Zigane
+//! c=legato i=legato-bowed o=note:1/note:12/note:120
+11 Perf. Detache
+//! c=legato i=marcato o=note:1/note:12/note:121
+12 Perf. Marcato
+//! c=legato i=marcato-quarter o=note:1/note:12/note:122
+13 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:12/note:123
+14 Perf. Spiccato
+//! c=legato i=spiccato-feathered o=note:1/note:12/note:124
+15 Perf. Spiccato, Fast
+//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+16 Perf. Harsh
+//! c=legato i=legato-gliss o=note:1/note:13/note:114
+17 Perf. Gliss G
+//! c=legato i=legato-gliss o=note:1/note:13/note:115
+18 Perf. Gliss D
+//! c=legato i=legato-gliss o=note:1/note:13/note:116
+19 Perf. Gliss A
+//! c=legato i=legato-gliss o=note:1/note:13/note:117
+20 Perf. Gliss E
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long (Vib)
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+24 Detache, Long (NoVib)
+//! c=short i=pizz o=note:2/note:13/note:113
+25 Pizzicato
+//! c=short i=pizz o=note:2/note:13/note:114
+26 Pizzicato, Secco
+//! c=short i=pizz-bartok o=note:2/note:13/note:115
+27 Pizzicato, Snap
+//! c=short i=col-legno o=note:2/note:13/note:116
+28 Col Legno
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+31 Sustain (NoVib)
+//! c=long i=marcato o=note:3/note:12/note:116
+32 Sustain, Marcato
+//! c=long i=vibrato-molto o=note:3/note:12/note:117
+33 Sustain (Espr.)
+//! c=long i=vibrato o=note:3/note:12/note:118
+34 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato (Slow)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+36 Rep. Legato (Fast)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+39 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato (Slow)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:114
+41 Rep. Portato (Med)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:115
+42 Rep. Portato (Fast)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:113
+43 Bow Vibrato (Slow)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:114
+44 Bow Vibrato (Fast)
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+//! c=legato-light i=trill o=note:6/note:12/note:116
+54 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+55 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+56 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+57 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+58 Trill, Acc (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+59 Trill, Acc (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+60 Trill, Acc+Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+61 Trill, Acc+Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+//! c=fx i=harmonics o=note:7/note:12/note:115
+64 A. Harm - Perf. Rep
+//! c=fx i=harmonics o=note:7/note:12/note:116
+65 A. Harm - Glissando
+//! c=fx i=harmonics-natural o=note:7/note:12/note:117
+66 N. Harm - Sustain
+//! c=fx i=harmonics-natural o=note:7/note:12/note:118
+67 N. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:119
+68 N. Harm - Glissando
+
+//!spacer=1
+//! c=short-dark i=sul-pont o=note:8/note:12/note:113
+69 SUL PONT - Staccato
+//! c=short-dark i=sul-pont o=note:8/note:12/note:114
+70 SUL PONT - Detache
+//! c=short-dark i=sul-pont o=note:8/note:12/note:115
+71 SUL PONT - Sustain
+//! c=short-dark i=sul-pont o=note:8/note:12/note:116
+72 SUL PONT - Sfz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:117
+73 SUL PONT - Sffz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:118
+74 SUL PONT - Tremolo
+//! c=short-dark i=sul-pont o=note:8/note:12/note:119
+75 SUL PONT - Tremolo, fA
+//! c=short-dark i=sul-pont o=note:8/note:12/note:120
+76 SUL PONT - Tremolo, Auto
+//! c=short-dark i=sul-pont o=note:8/note:12/note:121
+77 SUL PONT - Perf. Rep
+
+//!spacer=1
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:113
+78 SUL TASTO - Staccato
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:114
+79 SUL TASTO - Detache
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:115
+80 SUL TASTO - Sustain
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:116
+81 SUL TASTO - Sfz
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:117
+82 SUL TASTO - Tremolo
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:118
+83 SUL TASTO - Tremolo, fA
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:119
+84 SUL TASTO - Tremolo, Auto
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:113
+85 Grace Note m2, Slow
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:114
+86 Grace Note M2, Slow
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:115
+87 Grace Note m2, Fast
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:116
+88 Grace Note M2, Fast
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:117
+89 Grace Zigane, m2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:118
+90 Grace Zigane, M2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:119
+91 Grace Zigane, m3
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:120
+92 Grace Zigane, M3
+//! c=textured i=legato-gliss o=note:9/note:12/note:121
+93 Glissando 8ve, Med
+//! c=textured i=legato-gliss o=note:9/note:12/note:122
+94 Glissando 8ve, Fast
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:115
+97 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+101 Med - 1.5s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+102 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:116
+104 pFp - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:118
+110 Fast Rep 200bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:113
+111 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:114
+112 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:115
+113 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:116
+114 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:117
+115 Fast Rep, Dyn 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:118
+116 Fast Rep, Dyn 200bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:113
+117 Ricochet 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:114
+118 Ricochet 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:115
+119 Ricochet 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:116
+120 Ricochet 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:117
+121 Ricochet 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:118
+122 Ricochet 210bpm
+
+//! c=#E1491C i=riccochet o=note:11/note:15/note:113
+123 Ricochet x3
+//! c=#E1491C i=riccochet o=note:11/note:15/note:114
+124 Ricochet, Acc
+//! c=#E1491C i=riccochet o=note:11/note:15/note:115
+125 Ricochet, Rit.
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***************
+// VIOLIN I (MUTE)
+// ***************
+
+//! g="VSL - STRINGS/Solo" n="Violin I (Mute)"
+Bank 4 2 Violin I (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato (Vib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:114
+5 Perf. Legato (NoVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:115
+6 Perf. Legato (ProgVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:117
+8 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:118
+9 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+10 Perf. Portamento
+//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+11 Perf. Marcato
+//! c=legato i=spiccato-brushed o=note:1/note:12/note:121
+12 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:116
+25 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=vibrato o=note:3/note:12/note:115
+34 Sustain (ProgVib)
+//! c=long i=note-whole o=note:3/note:12/note:116
+31 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:115
+97 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+104 pFp - 4s
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+70 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 18bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *********
+// VIOLIN II
+// *********
+
+//! g="VSL - STRINGS/Solo" n="Violin II"
+Bank 4 3 Violin II
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato-vibrato o=note:1/note:12/note:113
+10 Perf. Legato (Vib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:114
+11 Perf. Legato (ProgVib)
+//! c=legato i=legato o=note:1/note:12/note:115
+12 Perf. Legato (NoVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+13 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-portamento o=note:1/note:12/note:117
+14 Perf. Portamento (Vib)
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+15 Perf. Portamento (ProgVib)
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+16 Perf. Portamento (NoVib)
+//! c=legato i=legato-portamento o=note:1/note:12/note:120
+17 Perf. Portamento (Vib X-Fade)
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long (Vib)
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+23 Detache, Long (NoVib)
+//! c=short i=pizz o=note:2/note:13/note:117
+24 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=vibrato o=note:3/note:12/note:115
+32 Sustain (ProgVib)
+//! c=long i=note-whole o=note:3/note:12/note:116
+33 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato (Vib)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+41 Rep. Legato (NoVib)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:115
+42 Rep. Legato (Vib X-Fade)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+43 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+44 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:116
+53 Fp (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:117
+54 Sfz (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:118
+55 Sffz (NoVib)
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+60 Tremolo (X-Fade NoVib)
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Cresc, Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Cresc, Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Cresc, Med - 4s
+//! c=long-dark i=decrescendo o=note:7/note:13/note:113
+73 Dim, Med - 2s
+//! c=long-dark i=decrescendo o=note:7/note:13/note:114
+74 Dim, Med - 3s
+//! c=long-dark i=decrescendo o=note:7/note:13/note:115
+75 Dim, Med - 4s
+//! c=long-dark i=crescendo o=note:7/note:14/note:113
+76 Cresc, Str - 2s
+//! c=long-dark i=crescendo o=note:7/note:14/note:114
+77 Cresc, Str - 3s
+//! c=long-dark i=crescendo o=note:7/note:14/note:115
+78 Cresc, Str - 4s
+//! c=long-dark i=decrescendo o=note:7/note:15/note:113
+79 Dim, Str - 2s
+//! c=long-dark i=decrescendo o=note:7/note:15/note:114
+80 Dim, Str - 3s
+//! c=long-dark i=decrescendo o=note:7/note:15/note:115
+81 Dim, Str - 4s
+//! c=long-dark i=alt-wave o=note:7/note:16/note:113
+82 pFp - 2s
+//! c=long-dark i=alt-wave o=note:7/note:16/note:114
+83 pFp - 4s
+//! c=long-dark i=alt-wave o=note:7/note:16/note:115
+84 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+90 Fast Rep 140bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+91 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+92 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+93 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+94 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:118
+95 Fast Rep 200bpm
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *****
+// VIOLA
+// *****
+
+//! g="VSL - STRINGS/Solo" n="Viola"
+Bank 4 70 Viola
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+2 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+3 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=legato-sul-c o=note:1/note:12/note:115
+6 Perf. Legato, Sul
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (ProgVib)
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+8 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+9 Perf. Portamento
+//! c=legato i=alt-gypsy o=note:1/note:12/note:119
+10 Perf. Zigane
+//! c=legato i=marcato o=note:1/note:12/note:121
+12 Perf. Marcato
+//! c=legato i=marcato-quarter o=note:1/note:12/note:122
+13 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:12/note:123
+14 Perf. Spiccato
+//! c=legato i=spiccato-feathered o=note:1/note:12/note:124
+15 Perf. Spiccato, Fast
+//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+16 Perf. Harsh
+//! c=legato i=legato-gliss o=note:1/note:13/note:114
+17 Perf. Gliss C
+//! c=legato i=legato-gliss o=note:1/note:13/note:115
+18 Perf. Gliss G
+//! c=legato i=legato-gliss o=note:1/note:13/note:116
+19 Perf. Gliss D
+//! c=legato i=legato-gliss o=note:1/note:13/note:117
+20 Perf. Gliss A
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:113
+25 Pizzicato
+//! c=short i=pizz-bartok o=note:2/note:13/note:115
+27 Pizzicato, Snap
+//! c=short i=col-legno o=note:2/note:13/note:116
+28 Col Legno
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+31 Sustain (NoVib)
+//! c=long i=marcato o=note:3/note:12/note:116
+32 Sustain, Marcato
+//! c=long i=vibrato-molto o=note:3/note:12/note:117
+33 Sustain (Espr.)
+//! c=long i=vibrato o=note:3/note:12/note:118
+34 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato (Slow)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+36 Rep. Legato (Fast)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+39 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+//! c=legato-light i=trill o=note:6/note:12/note:116
+54 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+55 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+56 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+57 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+58 Trill, Acc (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+59 Trill, Acc (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+60 Trill, Acc+Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+61 Trill, Acc+Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+//! c=fx i=harmonics o=note:7/note:12/note:115
+64 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:117
+66 N. Harm - Sustain
+//! c=fx i=harmonics-natural o=note:7/note:12/note:118
+67 N. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:119
+68 N. Harm - Glissando
+
+//!spacer=1
+//! c=short-dark i=sul-pont o=note:8/note:12/note:113
+69 SUL PONT - Staccato
+//! c=short-dark i=sul-pont o=note:8/note:12/note:114
+70 SUL PONT - Detache
+//! c=short-dark i=sul-pont o=note:8/note:12/note:115
+71 SUL PONT - Sustain
+//! c=short-dark i=sul-pont o=note:8/note:12/note:116
+72 SUL PONT - Sfz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:117
+73 SUL PONT - Sffz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:118
+74 SUL PONT - Tremolo
+//! c=short-dark i=sul-pont o=note:8/note:12/note:119
+75 SUL PONT - Tremolo, fA
+//! c=short-dark i=sul-pont o=note:8/note:12/note:120
+76 SUL PONT - Tremolo, Auto
+//! c=short-dark i=sul-pont o=note:8/note:12/note:121
+77 SUL PONT - Perf. Rep
+
+//!spacer=1
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:113
+78 SUL TASTO - Staccato
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:114
+79 SUL TASTO - Detache
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:115
+80 SUL TASTO - Sustain
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:116
+81 SUL TASTO - Sfz
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:117
+82 SUL TASTO - Tremolo
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:118
+83 SUL TASTO - Tremolo, fA
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:119
+84 SUL TASTO - Tremolo, Auto
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:113
+85 Grace Note m2
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:114
+86 Grace Note M2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:117
+89 Grace Zigane, m2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:118
+90 Grace Zigane, M2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:119
+91 Grace Zigane, m3
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:120
+92 Grace Zigane, M3
+//! c=textured i=legato-gliss o=note:9/note:12/note:121
+93 Glissando 8ve
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+101 Med - 1.5s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+102 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:116
+104 pFp - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:113
+111 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:114
+112 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:115
+113 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:116
+114 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:117
+115 Fast Rep, Dyn 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:113
+117 Ricochet 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:114
+118 Ricochet 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:115
+119 Ricochet 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:116
+120 Ricochet 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:117
+121 Ricochet 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:118
+122 Ricochet 210bpm
+
+//! c=#E1491C i=riccochet o=note:11/note:15/note:113
+123 Ricochet x3
+//! c=#E1491C i=riccochet o=note:11/note:15/note:114
+124 Ricochet, Acc
+//! c=#E1491C i=riccochet o=note:11/note:15/note:115
+125 Ricochet, Rit.
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ************
+// VIOLA (MUTE)
+// ************
+
+//! g="VSL - STRINGS/Solo" n="Viola (Mute)"
+Bank 4 4 Viola (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato (Vib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:114
+5 Perf. Legato (NoVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:115
+6 Perf. Legato (ProgVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:117
+8 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:118
+9 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+10 Perf. Portamento
+//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+11 Perf. Marcato
+//! c=legato i=spiccato-brushed o=note:1/note:12/note:121
+12 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:116
+25 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=vibrato o=note:3/note:12/note:115
+34 Sustain (ProgVib)
+//! c=long i=note-whole o=note:3/note:12/note:116
+31 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:115
+97 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+104 pFp - 4s
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+70 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 18bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *******
+// CELLO I
+// *******
+
+//! g="VSL - STRINGS/Solo" n="Cello I"
+Bank 4 5 Cello I
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+2 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+3 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=legato-sul-c o=note:1/note:12/note:115
+6 Perf. Legato, Sul
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (ProgVib)
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+8 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+9 Perf. Portamento
+//! c=legato i=alt-gypsy o=note:1/note:12/note:119
+10 Perf. Zigane
+//! c=legato i=marcato o=note:1/note:12/note:121
+12 Perf. Marcato
+//! c=legato i=marcato-quarter o=note:1/note:12/note:122
+13 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:12/note:123
+14 Perf. Spiccato
+//! c=legato i=spiccato-feathered o=note:1/note:12/note:124
+15 Perf. Spiccato, Fast
+//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+16 Perf. Harsh
+//! c=legato i=legato-gliss o=note:1/note:13/note:114
+17 Perf. Gliss C
+//! c=legato i=legato-gliss o=note:1/note:13/note:115
+18 Perf. Gliss G
+//! c=legato i=legato-gliss o=note:1/note:13/note:116
+19 Perf. Gliss D
+//! c=legato i=legato-gliss o=note:1/note:13/note:117
+20 Perf. Gliss A
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:113
+25 Pizzicato
+//! c=short i=pizz o=note:2/note:13/note:114
+26 Pizzicato, Secco
+//! c=short i=pizz-bartok o=note:2/note:13/note:115
+27 Pizzicato, Snap
+//! c=short i=col-legno o=note:2/note:13/note:116
+28 Col Legno
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+31 Sustain (NoVib)
+//! c=long i=marcato o=note:3/note:12/note:116
+32 Sustain, Marcato
+//! c=long i=vibrato-molto o=note:3/note:12/note:117
+33 Sustain (Espr.)
+//! c=long i=vibrato o=note:3/note:12/note:118
+34 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato (Slow)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+36 Rep. Legato (Fast)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+39 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:113
+43 Bow Vibrato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+//! c=legato-light i=trill o=note:6/note:12/note:116
+54 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+55 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+56 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+57 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+58 Trill, Acc (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+59 Trill, Acc (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+60 Trill, Acc+Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+61 Trill, Acc+Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+//! c=fx i=harmonics o=note:7/note:12/note:115
+64 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:117
+66 N. Harm - Sustain
+//! c=fx i=harmonics-natural o=note:7/note:12/note:118
+67 N. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:119
+68 N. Harm - Glissando
+
+//!spacer=1
+//! c=short-dark i=sul-pont o=note:8/note:12/note:113
+69 SUL PONT - Staccato
+//! c=short-dark i=sul-pont o=note:8/note:12/note:114
+70 SUL PONT - Detache
+//! c=short-dark i=sul-pont o=note:8/note:12/note:115
+71 SUL PONT - Sustain
+//! c=short-dark i=sul-pont o=note:8/note:12/note:116
+72 SUL PONT - Sfz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:117
+73 SUL PONT - Sffz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:118
+74 SUL PONT - Tremolo
+//! c=short-dark i=sul-pont o=note:8/note:12/note:119
+75 SUL PONT - Tremolo, fA
+//! c=short-dark i=sul-pont o=note:8/note:12/note:120
+76 SUL PONT - Tremolo, Auto
+//! c=short-dark i=sul-pont o=note:8/note:12/note:121
+77 SUL PONT - Perf. Rep
+
+//!spacer=1
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:113
+78 SUL TASTO - Staccato
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:114
+79 SUL TASTO - Detache
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:115
+80 SUL TASTO - Sustain
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:116
+81 SUL TASTO - Sfz
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:117
+82 SUL TASTO - Tremolo
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:118
+83 SUL TASTO - Tremolo, fA
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:119
+84 SUL TASTO - Tremolo, Auto
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:113
+85 Grace Note m2
+//! c=textured i=acciaccatura-quarter o=note:9/note:12/note:114
+86 Grace Note M2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:117
+89 Grace Zigane, m2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:118
+90 Grace Zigane, M2
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:119
+91 Grace Zigane, m3
+//! c=textured i=alt-gypsy-eighth o=note:9/note:12/note:120
+92 Grace Zigane, M3
+//! c=textured i=legato-gliss o=note:9/note:12/note:121
+93 Glissando 8ve, Med
+//! c=textured i=legato-gliss o=note:9/note:12/note:122
+94 Glissando 8ve, Fast
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+101 Med - 1.5s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+102 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:116
+104 pFp - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 140bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:113
+111 Fast Rep, Dyn 140bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:114
+112 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:115
+113 Fast Rep, Dyn 16bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:116
+114 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:13/note:117
+115 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:113
+117 Ricochet 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:114
+118 Ricochet 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:115
+119 Ricochet 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:116
+120 Ricochet 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:117
+121 Ricochet 190bpm
+//! c=#E1491C i=riccochet o=note:11/note:14/note:118
+122 Ricochet 210bpm
+
+//! c=#E1491C i=riccochet o=note:11/note:15/note:113
+123 Ricochet x3
+//! c=#E1491C i=riccochet o=note:11/note:15/note:114
+124 Ricochet, Acc
+//! c=#E1491C i=riccochet o=note:11/note:15/note:115
+125 Ricochet, Rit.
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// **************
+// CELLO I (MUTE)
+// **************
+
+//! g="VSL - STRINGS/Solo" n="Cello I (Mute)"
+Bank 4 6 Cello I (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato (Vib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:114
+5 Perf. Legato (NoVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:115
+6 Perf. Legato (ProgVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:117
+8 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:118
+9 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+10 Perf. Portamento
+//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+11 Perf. Marcato
+//! c=legato i=spiccato-brushed o=note:1/note:12/note:121
+12 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:116
+25 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=vibrato o=note:3/note:12/note:115
+34 Sustain (ProgVib)
+//! c=long i=note-whole o=note:3/note:12/note:116
+31 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:115
+97 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+104 pFp - 4s
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+70 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 18bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ********
+// CELLO II
+// ********
+
+//! g="VSL - STRINGS/Solo" n="Cello II"
+Bank 4 7 Cello II
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato-vibrato o=note:1/note:12/note:113
+10 Perf. Legato (Vib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:114
+11 Perf. Legato (ProgVib)
+//! c=legato i=legato o=note:1/note:12/note:115
+12 Perf. Legato (NoVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+13 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-portamento o=note:1/note:12/note:117
+14 Perf. Portamento (Vib)
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+15 Perf. Portamento (ProgVib)
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+16 Perf. Portamento (NoVib)
+//! c=legato i=legato-portamento o=note:1/note:12/note:120
+17 Perf. Portamento (Vib X-Fade)
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long (Vib)
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+23 Detache, Long (NoVib)
+//! c=short i=pizz o=note:2/note:13/note:117
+24 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=vibrato o=note:3/note:12/note:115
+32 Sustain (ProgVib)
+//! c=long i=note-whole o=note:3/note:12/note:116
+33 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato (Vib)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+41 Rep. Legato (NoVib)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:115
+42 Rep. Legato (Vib X-Fade)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+43 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+44 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:116
+53 Fp (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:117
+54 Sfz (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:118
+55 Sffz (NoVib)
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+60 Tremolo (X-Fade NoVib)
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Cresc, Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Cresc, Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Cresc, Med - 4s
+//! c=long-dark i=decrescendo o=note:7/note:13/note:113
+73 Dim, Med - 2s
+//! c=long-dark i=decrescendo o=note:7/note:13/note:114
+74 Dim, Med - 3s
+//! c=long-dark i=decrescendo o=note:7/note:13/note:115
+75 Dim, Med - 4s
+//! c=long-dark i=crescendo o=note:7/note:14/note:113
+76 Cresc, Str - 2s
+//! c=long-dark i=crescendo o=note:7/note:14/note:114
+77 Cresc, Str - 3s
+//! c=long-dark i=crescendo o=note:7/note:14/note:115
+78 Cresc, Str - 4s
+//! c=long-dark i=decrescendo o=note:7/note:15/note:113
+79 Dim, Str - 2s
+//! c=long-dark i=decrescendo o=note:7/note:15/note:114
+80 Dim, Str - 3s
+//! c=long-dark i=decrescendo o=note:7/note:15/note:115
+81 Dim, Str - 4s
+//! c=long-dark i=alt-wave o=note:7/note:16/note:113
+82 pFp - 2s
+//! c=long-dark i=alt-wave o=note:7/note:16/note:114
+83 pFp - 4s
+//! c=long-dark i=alt-wave o=note:7/note:16/note:115
+84 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+90 Fast Rep 140bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+91 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+92 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+93 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+94 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:118
+95 Fast Rep 200bpm
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ****
+// BASS
+// ****
+
+//! g="VSL - STRINGS/Solo" n="Bass"
+Bank 4 8 Bass
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+2 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+3 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+8 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+9 Perf. Portamento
+//! c=legato i=marcato o=note:1/note:12/note:121
+12 Perf. Marcato
+//! c=legato i=marcato-quarter o=note:1/note:12/note:122
+13 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:12/note:123
+14 Perf. Spiccato
+//! c=legato i=spiccato-feathered o=note:1/note:12/note:124
+15 Perf. Spiccato, Fast
+//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+16 Perf. Harsh
+//! c=legato i=legato-gliss o=note:1/note:13/note:114
+17 Perf. Gliss
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:113
+25 Pizzicato
+//! c=short i=pizz-bartok o=note:2/note:13/note:115
+27 Pizzicato, Snap
+//! c=short i=col-legno o=note:2/note:13/note:116
+28 Col Legno
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+31 Sustain (NoVib)
+//! c=long i=marcato o=note:3/note:12/note:116
+32 Sustain, Marcato
+//! c=long i=vibrato o=note:3/note:12/note:118
+34 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato (Slow)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+36 Rep. Legato (Fast)
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+39 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+//! c=legato-light i=trill o=note:6/note:12/note:116
+54 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+55 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+56 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+57 Trill, Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+//! c=fx i=harmonics o=note:7/note:12/note:115
+64 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:117
+66 N. Harm - Sustain
+//! c=fx i=harmonics-natural o=note:7/note:12/note:118
+67 N. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:12/note:119
+68 N. Harm - Glissando
+
+//!spacer=1
+//! c=short-dark i=sul-pont o=note:8/note:12/note:113
+69 SUL PONT - Staccato
+//! c=short-dark i=sul-pont o=note:8/note:12/note:114
+70 SUL PONT - Detache
+//! c=short-dark i=sul-pont o=note:8/note:12/note:115
+71 SUL PONT - Sustain
+//! c=short-dark i=sul-pont o=note:8/note:12/note:116
+72 SUL PONT - Sfz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:117
+73 SUL PONT - Sffz
+//! c=short-dark i=sul-pont o=note:8/note:12/note:118
+74 SUL PONT - Tremolo
+//! c=short-dark i=sul-pont o=note:8/note:12/note:119
+75 SUL PONT - Tremolo, fA
+//! c=short-dark i=sul-pont o=note:8/note:12/note:120
+76 SUL PONT - Tremolo, Auto
+//! c=short-dark i=sul-pont o=note:8/note:12/note:121
+77 SUL PONT - Perf. Rep
+
+//!spacer=1
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:113
+78 SUL TASTO - Staccato
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:114
+79 SUL TASTO - Detache
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:115
+80 SUL TASTO - Sustain
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:116
+81 SUL TASTO - Sfz
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:117
+82 SUL TASTO - Tremolo
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:118
+83 SUL TASTO - Tremolo, fA
+//! c=short-dark i=sul-tasto o=note:8/note:13/note:119
+84 SUL TASTO - Tremolo, Auto
+
+//!spacer=1
+//! c=textured i=legato-gliss o=note:9/note:12/note:121
+93 Glissando 8ve, Med
+//! c=textured i=legato-gliss o=note:9/note:12/note:122
+94 Glissando 8ve, Fast
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+101 Med - 1.5s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+102 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:116
+104 pFp - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***********
+// BASS (MUTE)
+// ***********
+
+//! g="VSL - STRINGS/Solo" n="Bass (Mute)"
+Bank 4 9 Bass (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+0 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+1 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato (Vib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:114
+5 Perf. Legato (NoVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:115
+6 Perf. Legato (ProgVib)
+//! c=legato i=legato-vibrato o=note:1/note:12/note:116
+7 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:117
+8 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:118
+9 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+10 Perf. Portamento
+//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+11 Perf. Marcato
+//! c=legato i=spiccato-brushed o=note:1/note:12/note:121
+12 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+21 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:13/note:116
+25 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+29 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+30 Sustain (Vib)
+//! c=long i=vibrato o=note:3/note:12/note:115
+34 Sustain (ProgVib)
+//! c=long i=note-whole o=note:3/note:12/note:116
+31 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+35 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+37 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+38 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+40 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+45 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+46 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+47 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+48 Tremolo (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+49 Tremolo, fA (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+50 Tremolo, Auto (X-Fade Vib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+51 Tremolo (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+52 Tremolo, fA (X-Fade NoVib)
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:118
+53 Tremolo, Auto (X-Fade NoVib)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+62 A. Harm - Staccato
+//! c=fx i=harmonics o=note:7/note:12/note:114
+63 A. Harm - Sustain
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:10/note:12/note:113
+95 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:114
+96 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:12/note:115
+97 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:113
+98 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:114
+99 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:13/note:115
+100 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:10/note:14/note:113
+103 pFp - 2s
+//! c=long-dark i=crescendo o=note:10/note:14/note:114
+104 pFp - 4s
+//! c=long-dark i=crescendo o=note:10/note:14/note:115
+70 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:11/note:12/note:113
+105 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:114
+106 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:115
+107 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:116
+108 Fast Rep 18bpm
+//! c=#E1491C i=riccochet o=note:11/note:12/note:117
+109 Fast Rep 190bpm
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//											  ~~~~~ STRINGS - CHAMBER ~~~~~
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+// ************
+// VIOLINS - a6
+// ************
+
+//! g="VSL - STRINGS/Chamber" n="Violins - a6"
+Bank 4 10 Violins - a6
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+9 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+10 Perf. Legato, Slur
+//! c=legato i=legato-sul-g o=note:1/note:12/note:115
+11 Perf. Legato, Sul
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+12 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+13 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+14 Perf. Portamento
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+15 Perf. Zigane
+//! c=legato i=legato o=note:1/note:12/note:120
+16 Perf. Marcato
+//! c=legato i=legato-fast o=note:1/note:12/note:121
+17 Perf. Marcato, Medium
+//! c=legato i=spiccato o=note:1/note:12/note:122
+18 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:12/note:123
+19 Perf. Spiccato, Medium
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+21 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+24 Pizzicato
+//! c=short i=pizz-bartok o=note:2/note:12/note:118
+25 Pizzicato, Snap
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+31 Sustain (S.Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:115
+32 Sustain (Espr. X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:116
+33 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:117
+34 Sustain (Espr.)
+//! c=long i=note-whole o=note:3/note:12/note:118
+35 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+42 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+43 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+44 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+59 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+60 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+61 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+64 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+65 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+66 Baroque Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+67 Baroque Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+68 Baroque Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+69 Baroque Trill, Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+70 A. Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:12/note:114
+71 A. Harm - Sus
+//! c=fx i=harmonics o=note:7/note:12/note:115
+72 A. Harm - Sus, fA
+//! c=fx i=harmonics o=note:7/note:12/note:116
+73 A. Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:12/note:117
+74 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:13/note:113
+75 N. Harm - Sus
+//! c=fx i=harmonics-natural o=note:7/note:13/note:114
+76 N. Harm - Sus, fA
+//! c=fx i=harmonics-natural o=note:7/note:13/note:115
+77 N. Harm - Sus, Auto
+//! c=fx i=harmonics-natural o=note:7/note:13/note:116
+78 N. Harm - Gliss
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:113
+80 Grace Note (Z), m2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:114
+81 Grace Note (Z), M2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:115
+82 Grace Note (Z), m3
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:116
+83 Grace Note (Z), M3
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+90 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+91 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+92 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+93 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+94 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+95 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:113
+96 Med - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:114
+97 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:115
+98 Med - 4s (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+100 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+101 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+102 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+103 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+104 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+105 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+106 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+107 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+108 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+109 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+//*******************
+//VIOLINS - a6 (MUTE)
+//*******************
+
+//! g="VSL - STRINGS/Chamber" n="Violins - a6 (Mute)"
+Bank 4 11 Violins - a6 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+3 Perf. Legato (Vib)
+//! c=legato i=legato o=note:1/note:12/note:114
+4 Perf. Legato (NoVib)
+//! c=legato i=legato o=note:1/note:12/note:115
+5 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+6 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+7 Perf. Trill
+//! c=legato i=legato-slurred o=note:1/note:12/note:118
+8 Perf. Legato, Slur
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+9 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:12/note:120
+10 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:116
+23 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+32 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+70 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+71 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+72 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+73 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+74 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+75 pFp - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+76 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+77 pFp - 6s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+78 pFp - 8s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+84 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***********
+// VIOLAS - a4
+// ***********
+
+//! g="VSL - STRINGS/Chamber" n="Violas - a4"
+Bank 4 12 Violas - a4
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+9 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+10 Perf. Legato, Slur
+//! c=legato i=legato-sul-c o=note:1/note:12/note:115
+11 Perf. Legato, Sul
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+12 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+13 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+14 Perf. Portamento
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+15 Perf. Zigane
+//! c=legato i=legato o=note:1/note:12/note:120
+16 Perf. Marcato
+//! c=legato i=legato-fast o=note:1/note:12/note:121
+17 Perf. Marcato, Medium
+//! c=legato i=spiccato o=note:1/note:12/note:122
+18 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:12/note:123
+19 Perf. Spiccato, Medium
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+21 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+24 Pizzicato
+//! c=short i=pizz-bartok o=note:2/note:12/note:118
+25 Pizzicato, Snap
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+31 Sustain (S.Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:115
+32 Sustain (Espr. X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:116
+33 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:117
+34 Sustain (Espr.)
+//! c=long i=note-whole o=note:3/note:12/note:118
+35 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+42 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+43 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+44 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+59 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+60 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+61 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+64 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+65 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+66 Baroque Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+67 Baroque Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+68 Baroque Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+69 Baroque Trill, Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+70 A. Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:12/note:114
+71 A. Harm - Sus
+//! c=fx i=harmonics o=note:7/note:12/note:115
+72 A. Harm - Sus, fA
+//! c=fx i=harmonics o=note:7/note:12/note:116
+73 A. Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:12/note:117
+74 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:13/note:113
+75 N. Harm - Sus
+//! c=fx i=harmonics-natural o=note:7/note:13/note:114
+76 N. Harm - Sus, fA
+//! c=fx i=harmonics-natural o=note:7/note:13/note:115
+77 N. Harm - Sus, Auto
+//! c=fx i=harmonics-natural o=note:7/note:13/note:116
+78 N. Harm - Gliss
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:113
+80 Grace Note (Z), m2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:114
+81 Grace Note (Z), M2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:115
+82 Grace Note (Z), m3
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:116
+83 Grace Note (Z), M3
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+90 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+91 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+92 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+93 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+94 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+95 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:113
+96 Med - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:114
+97 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:115
+98 Med - 4s (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+100 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+101 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+102 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+103 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+104 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+105 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+106 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+107 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+108 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+109 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ******************
+// VIOLAS - a4 (MUTE)
+// ******************
+
+//! g="VSL - STRINGS/Chamber" n="Violas - a4 (Mute)"
+Bank 4 13 Violas - a4 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+3 Perf. Legato (Vib)
+//! c=legato i=legato o=note:1/note:12/note:114
+4 Perf. Legato (NoVib)
+//! c=legato i=legato o=note:1/note:12/note:115
+5 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+6 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+7 Perf. Trill
+//! c=legato i=legato-slurred o=note:1/note:12/note:118
+8 Perf. Legato, Slur
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+9 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:12/note:120
+10 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:116
+23 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+32 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+70 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+71 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+72 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+73 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+74 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+75 pFp - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+76 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+77 pFp - 6s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+78 pFp - 8s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+84 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***********
+// CELLOS - a3
+// ***********
+
+//! g="VSL - STRINGS/Chamber" n="Cellos - a3"
+Bank 4 14 Cellos - a3
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+9 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+10 Perf. Legato, Slur
+//! c=legato i=legato-sul-c o=note:1/note:12/note:115
+11 Perf. Legato, Sul
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+12 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+13 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+14 Perf. Portamento
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+15 Perf. Zigane
+//! c=legato i=legato o=note:1/note:12/note:120
+16 Perf. Marcato
+//! c=legato i=legato-fast o=note:1/note:12/note:121
+17 Perf. Marcato, Medium
+//! c=legato i=spiccato o=note:1/note:12/note:122
+18 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:12/note:123
+19 Perf. Spiccato, Medium
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+21 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+23 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+24 Pizzicato
+//! c=short i=pizz-bartok o=note:2/note:12/note:118
+25 Pizzicato, Snap
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:114
+31 Sustain (S.Vib X-Fade)
+//! c=long i=vibrato o=note:3/note:12/note:115
+32 Sustain (Espr. X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:116
+33 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:117
+34 Sustain (Espr.)
+//! c=long i=note-whole o=note:3/note:12/note:118
+35 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+42 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+43 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+44 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+59 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+60 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+61 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+64 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+65 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+66 Baroque Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+67 Baroque Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+68 Baroque Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+69 Baroque Trill, Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+70 A. Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:12/note:114
+71 A. Harm - Sus
+//! c=fx i=harmonics o=note:7/note:12/note:115
+72 A. Harm - Sus, fA
+//! c=fx i=harmonics o=note:7/note:12/note:116
+73 A. Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:12/note:117
+74 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:13/note:113
+75 N. Harm - Sus
+//! c=fx i=harmonics-natural o=note:7/note:13/note:114
+76 N. Harm - Sus, fA
+//! c=fx i=harmonics-natural o=note:7/note:13/note:115
+77 N. Harm - Sus, Auto
+//! c=fx i=harmonics-natural o=note:7/note:13/note:116
+78 N. Harm - Gliss
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:113
+80 Grace Note (Z), m2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:114
+81 Grace Note (Z), M2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:115
+82 Grace Note (Z), m3
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:116
+83 Grace Note (Z), M3
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+90 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+91 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+92 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+93 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+94 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+95 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:113
+96 Med - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:114
+97 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:115
+98 Med - 4s (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+100 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+101 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+102 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+103 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+104 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+105 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+106 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+107 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+108 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+109 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ******************
+// CELLOS - a3 (MUTE)
+// ******************
+
+//! g="VSL - STRINGS/Chamber" n="Cellos - a3 (Mute)"
+Bank 4 15 Cellos - a3 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+3 Perf. Legato (Vib)
+//! c=legato i=legato o=note:1/note:12/note:114
+4 Perf. Legato (NoVib)
+//! c=legato i=legato o=note:1/note:12/note:115
+5 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+6 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+7 Perf. Trill
+//! c=legato i=legato-slurred o=note:1/note:12/note:118
+8 Perf. Legato, Slur
+//! c=legato i=legato-portamento o=note:1/note:12/note:119
+9 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:12/note:120
+10 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:116
+23 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+32 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+70 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+71 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+72 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+73 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+74 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+75 pFp - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+76 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+77 pFp - 6s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+78 pFp - 8s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+84 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***********
+// BASSES - a2
+// ***********
+
+//! g="VSL - STRINGS/Chamber" n="Basses - a2"
+Bank 4 16 Basses - a2
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+9 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+10 Perf. Legato, Slur
+//! c=legato i=legato-fast o=note:1/note:12/note:115
+11 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:116
+12 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:117
+13 Perf. Portamento
+//! c=legato i=legato o=note:1/note:12/note:118
+14 Perf. Marcato
+//! c=legato i=legato-fast o=note:1/note:12/note:119
+15 Perf. Marcato, Medium
+//! c=legato i=spiccato o=note:1/note:12/note:120
+16 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:12/note:121
+17 Perf. Spiccato, Medium
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:116
+23 Pizzicato
+//! c=short i=pizz-bartok o=note:2/note:12/note:117
+24 Pizzicato, Snap
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+32 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+42 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+43 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+44 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+59 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+60 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+61 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+64 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+65 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:120
+66 Baroque Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:121
+67 Baroque Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:122
+68 Baroque Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:123
+69 Baroque Trill, Dyn (WT)
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:12/note:113
+70 A. Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:12/note:114
+71 A. Harm - Sus
+//! c=fx i=harmonics o=note:7/note:12/note:115
+72 A. Harm - Sus, fA
+//! c=fx i=harmonics o=note:7/note:12/note:116
+73 A. Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:12/note:117
+74 A. Harm - Perf. Rep
+//! c=fx i=harmonics-natural o=note:7/note:13/note:113
+75 N. Harm - Sus
+//! c=fx i=harmonics-natural o=note:7/note:13/note:114
+76 N. Harm - Sus, fA
+//! c=fx i=harmonics-natural o=note:7/note:13/note:115
+77 N. Harm - Sus, Auto
+//! c=fx i=harmonics-natural o=note:7/note:13/note:116
+78 N. Harm - Gliss
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+90 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+91 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+92 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+93 Str - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+94 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+95 Str - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:113
+96 Med - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:114
+97 Med - 3s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:14/note:115
+98 Med - 4s (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+100 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+101 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+102 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+103 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+104 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+105 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+106 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+107 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+108 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+109 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ******************
+// BASSES - a2 (MUTE)
+// ******************
+
+//! g="VSL - STRINGS/Chamber" n="Basses - a2 (Mute)"
+Bank 4 17 Basses - a2 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+3 Perf. Legato (Vib)
+//! c=legato i=legato o=note:1/note:12/note:114
+4 Perf. Legato (NoVib)
+//! c=legato i=legato o=note:1/note:12/note:115
+5 Perf. Legato (Vib X-Fade)
+//! c=legato i=legato-fast o=note:1/note:12/note:116
+6 Perf. Legato, Med.
+//! c=legato i=trill-maj2 o=note:1/note:12/note:117
+7 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:118
+8 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:12/note:119
+9 Perf. Spiccato
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:116
+23 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+32 Sustain (NoVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+50 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+51 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+52 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+70 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+71 Med - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+72 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+73 Med - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+74 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+75 pFp - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+76 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+77 pFp - 6s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+78 pFp - 8s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+84 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//											  ~~~ STRINGS - ORCHESTRAL ~~~~
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *************
+// VIOLINS - a14
+// *************
+
+//! g="VSL - STRINGS/Orchestral" n="Violins - a14"
+Bank 4 18 Violins - a14
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:117
+5 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+6 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+7 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+8 Perf. Trill
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
+9 Perf. Slur
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
+10 Perf. Slur, Fast
+//! c=legato i=legato o=note:1/note:12/note:118
+11 Perf. Legato, 4Vel
+//! c=legato i=legato-sul-g o=note:1/note:12/note:119
+12 Perf. Legato, Sul
+//! c=legato i=legato-portamento o=note:1/note:12/note:120
+13 Perf. Portamento
+//! c=legato i=legato-tremolo o=note:1/note:12/note:121
+14 Perf. Tremolo
+//! c=legato i=legato o=note:1/note:13/note:113
+15 Perf. Marcato
+//! c=legato i=legato o=note:1/note:13/note:114
+16 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:115
+17 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:13/note:116
+18 Perf. Spiccato, Fast
+//! c=legato i=legato-gliss o=note:1/note:13/note:117
+19 Perf. Glissando, G
+//! c=legato i=legato-gliss o=note:1/note:13/note:118
+20 Perf. Glissando, D
+//! c=legato i=legato-gliss o=note:1/note:13/note:119
+21 Perf. Glissando, A
+//! c=legato i=legato-gliss o=note:1/note:13/note:120
+22 Perf. Glissando, E
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+23 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+24 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+25 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+26 Detache, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+27 Pizzicato
+//! c=short i=pizz o=note:2/note:12/note:118
+28 Pizzicato, Slow
+//! c=short i=pizz-bartok o=note:2/note:12/note:119
+29 Pizzicato, Bartok
+//! c=short i=col-legno o=note:2/note:12/note:120
+30 Col Legno
+//! c=short i=col-legno o=note:2/note:12/note:121
+31 Col Legno, Slow
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+32 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+33 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+34 Sustain (NoVib)
+//! c=long i=flautando o=note:3/note:12/note:116
+35 Flautando
+//! c=long i=flautando o=note:3/note:12/note:117
+36 Flautando, Fast
+//! c=long i=flautando o=note:3/note:12/note:118
+37 Flautando, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+38 Rep. Legato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+39 Rep. Legato, Fast
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+40 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+41 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+42 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+43 Rep. Portato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:114
+44 Rep. Portato, Fast
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:113
+45 Bow Vibrato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:114
+46 Bow Vibrato, Fast
+//! c=#E1491C i=pizz o=note:4/note:17/note:113
+114 Rep. Pizzicato, Slow
+//! c=#E1491C i=pizz o=note:4/note:17/note:114
+115 Rep. Pizzicato, Fast
+//! c=#E1491C i=multitongued o=note:4/note:16/note:113
+47 Perf. Upbeat a1 (Slow)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:114
+48 Perf. Upbeat a2 (Slow)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:115
+49 Perf. Upbeat a1 (Fast)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:116
+50 Perf. Upbeat a2 (Fast)
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+51 Fp (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+52 Sfz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+53 Sffz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:116
+54 Fp (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:117
+55 Sfz (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:118
+56 Sffz (NoVib)
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+57 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+58 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+59 Tremolo, Auto
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+60 Tremolo, Dyn 2s
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+61 Tremolo, pFp 3s
+//! c=legato-light i=trill o=note:6/note:13/note:113
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:114
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:115
+64 Trill (m3)
+//! c=legato-light i=trill o=note:6/note:13/note:116
+65 Trill (M3)
+//! c=legato-light i=trill o=note:6/note:13/note:117
+66 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:118
+67 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:119
+68 Trill, pFp (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:120
+69 Trill, pFp (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:121
+70 Trill, Acc (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:122
+71 Trill, Acc (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:123
+72 Trill, Acc-Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:124
+73 Trill, Acc-Dyn (WT)
+
+//!spacer=1
+//! c=long-light i=sul-pont o=note:7/note:12/note:113
+74 Pont - Stacc
+//! c=long-light i=sul-pont o=note:7/note:12/note:114
+75 Pont - Sus
+//! c=long-light i=sul-pont o=note:7/note:12/note:115
+76 Pont - Sus, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:116
+77 Pont - Sus, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:117
+78 Pont - Sfz
+//! c=long-light i=sul-pont o=note:7/note:12/note:118
+79 Pont - Trem
+//! c=long-light i=sul-pont o=note:7/note:12/note:119
+80 Pont - Trem, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:120
+81 Pont - Trem, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:121
+82 Pont - Dyn 1.5s
+//! c=long-light i=sul-pont o=note:7/note:12/note:122
+83 Pont - Dyn 2s
+//! c=long-light i=sul-pont o=note:7/note:12/note:123
+84 Pont - Dyn 4s
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:13/note:113
+85 Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:13/note:114
+86 Harm - Sus
+//! c=fx i=harmonics o=note:7/note:13/note:115
+87 Harm - Sus, Fast
+//! c=fx i=harmonics o=note:7/note:13/note:116
+88 Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:13/note:117
+89 Harm - Perf Rep
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:113
+90 Grace Note, m2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:114
+91 Grace Note, M2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:115
+92 Glissando, 8ve
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+93 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+94 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+95 Str - 1s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+96 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:117
+97 Str - 6s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+98 Str - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+99 Str - 4s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+100 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+101 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+102 pFp - 6s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+103 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+104 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+105 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+106 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+107 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+108 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+109 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+110 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+111 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+112 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ********************
+// VIOLINS - a14 (MUTE)
+// ********************
+
+//! g="VSL - STRINGS/Orchestral" n="Violins - a14 (Mute)"
+Bank 4 19 Violins - a14
+
+//! c=legato i=legato o=note:1/note:12/note:113
+1 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+2 Perf. Slur
+//! c=legato i=legato-portamento o=note:1/note:12/note:115
+3 Perf. Portamento
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+10 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+11 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+12 Pizzicato
+
+//!spacer=1
+//! c=long i=note-whole o=note:3/note:12/note:113
+20 Sustain
+//! c=long i=note-whole o=note:3/note:12/note:114
+21 Sustain, fA
+//! c=long i=note-whole o=note:3/note:12/note:115
+22 Sustain, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+30 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+31 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+32 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+40 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+41 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+50 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+51 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+52 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+53 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+54 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+55 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+56 Trill, Dyn (WT)
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+60 Dyn - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+61 Dyn - 4s
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ************
+// VIOLAS - a10
+// ************
+
+//! g="VSL - STRINGS/Orchestral" n="Violas - a10"
+Bank 4 20 Violas - a10
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:117
+5 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+6 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+7 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+8 Perf. Trill
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
+9 Perf. Slur
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
+10 Perf. Slur, Fast
+//! c=legato i=legato o=note:1/note:12/note:118
+11 Perf. Legato, 4Vel
+//! c=legato i=legato-sul-c o=note:1/note:12/note:119
+12 Perf. Legato, Sul
+//! c=legato i=legato-portamento o=note:1/note:12/note:120
+13 Perf. Portamento
+//! c=legato i=legato-tremolo o=note:1/note:12/note:121
+14 Perf. Tremolo
+//! c=legato i=legato o=note:1/note:13/note:113
+15 Perf. Marcato
+//! c=legato i=legato o=note:1/note:13/note:114
+16 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:115
+17 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:13/note:116
+18 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+23 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+24 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+25 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+26 Detache, Long
+//! c=short i=tenuto-eighth o=note:2/note:13/note:113
+113 Portato, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+27 Pizzicato
+//! c=short i=pizz o=note:2/note:12/note:118
+28 Pizzicato, Slow
+//! c=short i=pizz-bartok o=note:2/note:12/note:119
+29 Pizzicato, Bartok
+//! c=short i=col-legno o=note:2/note:12/note:120
+30 Col Legno
+//! c=short i=col-legno o=note:2/note:12/note:121
+31 Col Legno, Slow
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+32 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+33 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+34 Sustain (NoVib)
+//! c=long i=flautando o=note:3/note:12/note:116
+35 Flautando
+//! c=long i=flautando o=note:3/note:12/note:117
+36 Flautando, Fast
+//! c=long i=flautando o=note:3/note:12/note:118
+37 Flautando, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+38 Rep. Legato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+39 Rep. Legato, Fast
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+40 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+41 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+42 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+43 Rep. Portato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:114
+44 Rep. Portato, Fast
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:113
+45 Bow Vibrato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:15/note:114
+46 Bow Vibrato, Fast
+//! c=#E1491C i=pizz o=note:4/note:17/note:113
+114 Rep. Pizzicato, Slow
+//! c=#E1491C i=pizz o=note:4/note:17/note:114
+115 Rep. Pizzicato, Fast
+//! c=#E1491C i=multitongued o=note:4/note:16/note:113
+47 Perf. Upbeat a1 (Slow)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:114
+48 Perf. Upbeat a2 (Slow)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:115
+49 Perf. Upbeat a1 (Fast)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:116
+50 Perf. Upbeat a2 (Fast)
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+51 Fp (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+52 Sfz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+53 Sffz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:116
+54 Fp (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:117
+55 Sfz (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:118
+56 Sffz (NoVib)
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+57 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+58 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+59 Tremolo, Auto
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+60 Tremolo, Dyn 2s
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+61 Tremolo, pFp 3s
+//! c=legato-light i=trill o=note:6/note:13/note:113
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:114
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:115
+66 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:116
+67 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:117
+68 Trill, pFp (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:118
+69 Trill, pFp (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:119
+70 Trill, Acc (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:120
+71 Trill, Acc (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:121
+72 Trill, Acc-Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:122
+73 Trill, Acc-Dyn (WT)
+
+//!spacer=1
+//! c=long-light i=sul-pont o=note:7/note:12/note:113
+74 Pont - Stacc
+//! c=long-light i=sul-pont o=note:7/note:12/note:114
+75 Pont - Sus
+//! c=long-light i=sul-pont o=note:7/note:12/note:115
+76 Pont - Sus, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:116
+77 Pont - Sus, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:117
+78 Pont - Sfz
+//! c=long-light i=sul-pont o=note:7/note:12/note:118
+79 Pont - Trem
+//! c=long-light i=sul-pont o=note:7/note:12/note:119
+80 Pont - Trem, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:120
+81 Pont - Trem, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:121
+82 Pont - Dyn 1.5s
+//! c=long-light i=sul-pont o=note:7/note:12/note:122
+83 Pont - Dyn 2s
+//! c=long-light i=sul-pont o=note:7/note:12/note:123
+84 Pont - Dyn 4s
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:13/note:113
+85 Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:13/note:114
+86 Harm - Sus
+//! c=fx i=harmonics o=note:7/note:13/note:115
+87 Harm - Sus, Fast
+//! c=fx i=harmonics o=note:7/note:13/note:116
+88 Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:13/note:117
+89 Harm - Perf Rep
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:113
+90 Grace Note, m2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:114
+91 Grace Note, M2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:115
+92 Glissando, 8ve
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+93 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+94 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+95 Str - 1s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+96 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:117
+97 Str - 6s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+98 Str - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+99 Str - 4s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+100 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+101 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+102 pFp - 6s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+103 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+104 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+105 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+106 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+107 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+108 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+109 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+110 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+111 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+112 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *******************
+// VIOLAS - a10 (MUTE)
+// *******************
+
+//! g="VSL - STRINGS/Orchestral" n="Violas - a10 (Mute)"
+Bank 4 21 Violas - a10 (Mute)
+
+//! c=legato i=legato o=note:1/note:12/note:113
+1 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+2 Perf. Slur
+//! c=legato i=legato-portamento o=note:1/note:12/note:115
+3 Perf. Portamento
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+10 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+11 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+12 Pizzicato
+
+//!spacer=1
+//! c=long i=note-whole o=note:3/note:12/note:113
+20 Sustain
+//! c=long i=note-whole o=note:3/note:12/note:114
+21 Sustain, fA
+//! c=long i=note-whole o=note:3/note:12/note:115
+22 Sustain, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+30 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+31 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+32 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+40 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+41 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+50 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+51 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+52 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+53 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+54 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+55 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+56 Trill, Dyn (WT)
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+60 Dyn - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+61 Dyn - 4s
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***********
+// CELLOS - a8
+// ***********
+
+//! g="VSL - STRINGS/Orchestral" n="Cellos - a8"
+Bank 4 22 Cellos - a8
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:117
+5 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+6 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+7 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+8 Perf. Trill
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
+9 Perf. Slur
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
+10 Perf. Slur, Fast
+//! c=legato i=legato o=note:1/note:12/note:118
+11 Perf. Legato, 4Vel
+//! c=legato i=legato-sul-c o=note:1/note:12/note:119
+12 Perf. Legato, Sul
+//! c=legato i=legato-portamento o=note:1/note:12/note:120
+13 Perf. Portamento
+//! c=legato i=legato o=note:1/note:13/note:113
+15 Perf. Marcato
+//! c=legato i=legato o=note:1/note:13/note:114
+16 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:115
+17 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:13/note:116
+18 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+23 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+24 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+25 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+26 Detache, Long
+//! c=short i=tenuto-eighth o=note:2/note:13/note:113
+113 Portato, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+27 Pizzicato
+//! c=short i=pizz o=note:2/note:12/note:118
+28 Pizzicato, Slow
+//! c=short i=pizz-bartok o=note:2/note:12/note:119
+29 Pizzicato, Bartok
+//! c=short i=pizz o=note:2/note:13/note:114
+120 Pizzicato, Vibrato
+//! c=short i=col-legno o=note:2/note:12/note:120
+30 Col Legno
+//! c=short i=col-legno o=note:2/note:12/note:121
+31 Col Legno, Slow
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+32 Sustain (Vib X-Fade)
+//! c=long i=note-whole o=note:3/note:12/note:114
+33 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:115
+34 Sustain (NoVib)
+//! c=long i=flautando o=note:3/note:12/note:116
+35 Flautando
+//! c=long i=flautando o=note:3/note:12/note:117
+36 Flautando, Fast
+//! c=long i=flautando o=note:3/note:12/note:118
+37 Flautando, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+38 Rep. Legato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+39 Rep. Legato, Fast
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+40 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+41 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+42 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+43 Rep. Portato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:114
+44 Rep. Portato, Fast
+//! c=#E1491C i=pizz o=note:4/note:17/note:113
+114 Rep. Pizzicato, Slow
+//! c=#E1491C i=pizz o=note:4/note:17/note:114
+115 Rep. Pizzicato, Fast
+//! c=#E1491C i=multitongued o=note:4/note:16/note:113
+47 Perf. Upbeat a1 (Slow)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:114
+48 Perf. Upbeat a2 (Slow)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:115
+49 Perf. Upbeat a1 (Fast)
+//! c=#E1491C i=multitongued o=note:4/note:16/note:116
+50 Perf. Upbeat a2 (Fast)
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+51 Fp (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+52 Sfz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+53 Sffz (Vib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:116
+54 Fp (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:117
+55 Sfz (NoVib)
+//! c=#938C0B i=sfz o=note:5/note:12/note:118
+56 Sffz (NoVib)
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+57 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+58 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+59 Tremolo, Auto
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+60 Tremolo, Dyn 2s
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+61 Tremolo, pFp 3s
+//! c=legato-light i=trill o=note:6/note:13/note:113
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:114
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:115
+66 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:116
+67 Trill, Dyn (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:117
+68 Trill, pFp (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:118
+69 Trill, pFp (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:119
+70 Trill, Acc (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:120
+71 Trill, Acc (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:121
+72 Trill, Acc-Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:122
+73 Trill, Acc-Dyn (WT)
+
+//!spacer=1
+//! c=long-light i=sul-pont o=note:7/note:12/note:113
+74 Pont - Stacc
+//! c=long-light i=sul-pont o=note:7/note:12/note:114
+75 Pont - Sus
+//! c=long-light i=sul-pont o=note:7/note:12/note:115
+76 Pont - Sus, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:116
+77 Pont - Sus, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:117
+78 Pont - Sfz
+//! c=long-light i=sul-pont o=note:7/note:12/note:118
+79 Pont - Trem
+//! c=long-light i=sul-pont o=note:7/note:12/note:119
+80 Pont - Trem, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:120
+81 Pont - Trem, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:121
+82 Pont - Dyn 1.5s
+//! c=long-light i=sul-pont o=note:7/note:12/note:122
+83 Pont - Dyn 2.5s
+//! c=long-light i=sul-pont o=note:7/note:12/note:123
+84 Pont - Dyn 4s
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:13/note:113
+85 Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:13/note:114
+86 Harm - Sus
+//! c=fx i=harmonics o=note:7/note:13/note:115
+87 Harm - Sus, Fast
+//! c=fx i=harmonics o=note:7/note:13/note:116
+88 Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:13/note:117
+89 Harm - Perf Rep
+//! c=fx i=harmonics-natural o=note:7/note:13/note:118
+121 Harm - Nat. Stacc
+//! c=fx i=harmonics-natural o=note:7/note:13/note:119
+122 Harm - Nat. Sus
+
+//!spacer=1
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:113
+90 Grace Note, m2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:114
+91 Grace Note, M2
+//! c=textured i=acciaccatura-quarter o=note:8/note:12/note:115
+92 Glissando, 8ve
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+93 Med - 1.5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+94 Med - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+95 Str - 1s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+96 Str - 3s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:12/note:117
+97 Str - 5s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+98 Str - 2s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+99 Str - 4s (NoVib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+100 pFp - 2s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:116
+101 pFp - 4s (Vib)
+//! c=long-dark i=crescendo o=note:9/note:13/note:117
+102 pFp - 6s (Vib)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:10/note:12/note:113
+103 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:114
+104 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:115
+105 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:116
+106 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:12/note:117
+107 Fast Rep 190bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:113
+108 Fast Rep, Dyn 150bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:114
+109 Fast Rep, Dyn 160bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:115
+110 Fast Rep, Dyn 170bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:116
+111 Fast Rep, Dyn 180bpm
+//! c=#E1491C i=riccochet o=note:10/note:13/note:117
+112 Fast Rep, Dyn 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ******************
+// CELLOS - a8 (MUTE)
+// ******************
+
+//! g="VSL - STRINGS/Orchestral" n="Cellos - a8 (Mute)"
+Bank 4 23 Cellos - a8 (Mute)
+
+//! c=legato i=legato o=note:1/note:12/note:113
+1 Perf. Legato
+//! c=legato i=legato-slurred o=note:1/note:12/note:114
+2 Perf. Slur
+//! c=legato i=legato-portamento o=note:1/note:12/note:115
+3 Perf. Portamento
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+10 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+11 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+12 Pizzicato
+
+//!spacer=1
+//! c=long i=note-whole o=note:3/note:12/note:113
+20 Sustain
+//! c=long i=note-whole o=note:3/note:12/note:114
+21 Sustain, fA
+//! c=long i=note-whole o=note:3/note:12/note:115
+22 Sustain, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+30 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+31 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+32 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+40 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+41 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+50 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+51 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+52 Tremolo, Auto
+//! c=legato-light i=trill o=note:6/note:12/note:116
+53 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:117
+54 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:12/note:118
+55 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:12/note:119
+56 Trill, Dyn (WT)
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+60 Dyn - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+61 Dyn - 4s
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ***********
+// BASSES - a6
+// ***********
+
+//! g="VSL - STRINGS/Orchestral" n="Basses - a6"
+Bank 4 24 Basses - a6
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Marcato
+//! c=legato-dark i=phrase o=note:0/note:12/note:116
+4 SPEED - Spiccato
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+6 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+7 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+8 Perf. Trill
+//! c=legato i=legato-portamento o=note:1/note:12/note:120
+9 Perf. Portamento
+//! c=legato i=legato o=note:1/note:13/note:113
+10 Perf. Marcato
+//! c=legato i=legato o=note:1/note:13/note:114
+11 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:115
+12 Perf. Spiccato
+//! c=legato i=spiccato o=note:1/note:13/note:116
+13 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+23 Staccato, Short
+//! c=short i=staccato o=note:2/note:12/note:114
+24 Staccato, Long
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+25 Detache, Short
+//! c=short i=tenuto-eighth o=note:2/note:12/note:116
+26 Detache, Long
+//! c=short i=tenuto-eighth o=note:2/note:13/note:113
+113 Portato, Long
+//! c=short i=pizz o=note:2/note:12/note:117
+27 Pizzicato
+//! c=short i=pizz o=note:2/note:12/note:118
+28 Pizzicato, Slow
+//! c=short i=pizz-bartok o=note:2/note:12/note:119
+29 Pizzicato, Bartok
+//! c=short i=col-legno o=note:2/note:12/note:120
+30 Col Legno
+//! c=short i=col-legno o=note:2/note:12/note:121
+31 Col Legno, Slow
+
+//!spacer=1
+//! c=long i=note-whole o=note:3/note:12/note:113
+32 Sustain
+//! c=long i=note-whole o=note:3/note:12/note:114
+33 Sustain, fA
+//! c=long i=note-whole o=note:3/note:12/note:115
+34 Sustain, Auto
+//! c=long i=flautando o=note:3/note:12/note:116
+35 Flautando
+//! c=long i=flautando o=note:3/note:12/note:117
+36 Flautando, fA
+//! c=long i=flautando o=note:3/note:12/note:118
+37 Flautando, Auto
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+38 Rep. Legato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:114
+39 Rep. Legato, Fast
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+40 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+41 Rep. Staccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:115
+42 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+43 Rep. Portato, Slow
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:114
+44 Rep. Portato, Fast
+//! c=#E1491C i=pizz o=note:4/note:15/note:113
+114 Rep. Pizzicato, Slow
+//! c=#E1491C i=pizz o=note:4/note:15/note:114
+115 Rep. Pizzicato, Fast
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:113
+51 Fp
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+52 Sfz
+//! c=#938C0B i=sfz o=note:5/note:12/note:115
+53 Sffz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+57 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+58 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+59 Tremolo, Auto
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:116
+60 Tremolo, Dyn 2s
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:117
+61 Tremolo, pFp 4s
+//! c=legato-light i=trill o=note:6/note:13/note:113
+62 Trill (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:114
+63 Trill (WT)
+//! c=legato-light i=trill o=note:6/note:13/note:115
+66 Trill, Dyn (HT)
+//! c=legato-light i=trill o=note:6/note:13/note:116
+67 Trill, Dyn (WT)
+
+//!spacer=1
+//! c=long-light i=sul-pont o=note:7/note:12/note:113
+74 Pont - Stacc
+//! c=long-light i=sul-pont o=note:7/note:12/note:114
+75 Pont - Sus
+//! c=long-light i=sul-pont o=note:7/note:12/note:115
+76 Pont - Sus, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:116
+77 Pont - Sus, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:117
+78 Pont - Sfz
+//! c=long-light i=sul-pont o=note:7/note:12/note:118
+79 Pont - Trem
+//! c=long-light i=sul-pont o=note:7/note:12/note:119
+80 Pont - Trem, Fast
+//! c=long-light i=sul-pont o=note:7/note:12/note:120
+81 Pont - Trem, Auto
+//! c=long-light i=sul-pont o=note:7/note:12/note:121
+84 Pont - Dyn 4s
+
+//!spacer=1
+//! c=fx i=harmonics o=note:7/note:13/note:113
+85 Harm - Stacc
+//! c=fx i=harmonics o=note:7/note:13/note:114
+86 Harm - Sus
+//! c=fx i=harmonics o=note:7/note:13/note:115
+87 Harm - Sus, Fast
+//! c=fx i=harmonics o=note:7/note:13/note:116
+88 Harm - Sus, Auto
+//! c=fx i=harmonics o=note:7/note:13/note:117
+89 Harm - Perf Rep
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:9/note:12/note:113
+93 Med - 2s
+//! c=long-dark i=crescendo o=note:9/note:12/note:114
+94 Med - 3s
+//! c=long-dark i=crescendo o=note:9/note:12/note:115
+95 Str - 2s
+//! c=long-dark i=crescendo o=note:9/note:12/note:116
+96 Str - 3s
+//! c=long-dark i=crescendo o=note:9/note:12/note:117
+97 Str - 5s
+//! c=long-dark i=crescendo o=note:9/note:13/note:113
+100 pFp - 2s
+//! c=long-dark i=crescendo o=note:9/note:13/note:114
+101 pFp - 4s
+//! c=long-dark i=crescendo o=note:9/note:13/note:115
+102 pFp - 6s
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//											  ~~~ STRINGS - APPASSIONATA ~~~
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *************
+// VIOLINS - a20
+// *************
+
+//! g="VSL - STRINGS/Appassionata" n="Violins - a20"
+Bank 4 25 Violins - a20
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+6 Perf. Trill
+//! c=legato i=legato-slur o=note:1/note:12/note:116
+7 Perf. Slur
+//! c=legato i=legato-slur o=note:1/note:12/note:117
+8 Perf. Slur, Fast
+//! c=legato i=legato o=note:1/note:12/note:118
+9 Perf. Legato, 4Vel
+//! c=legato i=legato-sul-g o=note:1/note:12/note:119
+10 Perf. Legato, Sul G
+//! c=legato i=legato-vibrato o=note:1/note:12/note:120
+11 Perf. Legato (ProgVib)
+//! c=legato i=legato-sul-g o=note:1/note:12/note:121
+12 Perf. Legato (StrongVib)
+//! c=legato i=sfz o=note:1/note:13/note:113
+13 Perf. Sfz
+//! c=legato i=legato-portamento o=note:1/note:13/note:114
+14 Perf. Portamento
+//! c=legato i=marcato o=note:1/note:13/note:115
+15 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:116
+16 Perf. Spiccato, Fast
+//! c=legato i=staccato-dig o=note:1/note:13/note:117
+17 Perf. Harsh, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato, Tight
+//! c=short i=staccato o=note:2/note:12/note:114
+21 Staccato, Loose
+//! c=short i=tenuto-eighth o=note:2/note:12/note:115
+22 Detache
+//! c=short i=pizz o=note:2/note:12/note:116
+23 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (ProgVib)
+//! c=long i=vibrato-molto o=note:3/note:12/note:115
+32 Sustain (StrongVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:114
+42 Rep. Harsh
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+43 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+50 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Med - 4s
+//! c=long-dark i=crescendo o=note:7/note:12/note:116
+73 pFp - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:117
+74 pFp - 4s
+//! c=long-dark i=crescendo o=note:7/note:12/note:118
+75 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+84 Fast Rep 190bpm
+
+//!spacer=1
+//! c=fx i=rip o=note:9/note:12/note:113
+90 Grace Run
+//! c=fx i=rip o=note:9/note:12/note:114
+91 Grace Run, Fast
+//! c=fx i=fx o=note:9/note:12/note:115
+92 Cluster
+//! c=fx i=fx o=note:9/note:12/note:116
+93 Cluster, Tight
+//! c=fx i=pizz o=note:9/note:12/note:117
+94 Pizzicato, Random
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ********************
+// VIOLINS - a20 (MUTE)
+// ********************
+
+//! g="VSL - STRINGS/Appassionata" n="Violins - a20 (Mute)"
+Bank 4 26 Violins - a20 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+6 Perf. Trill
+//! c=legato i=legato-slur o=note:1/note:12/note:116
+7 Perf. Slur
+//! c=legato i=legato-slur o=note:1/note:12/note:117
+8 Perf. Slur, Fast
+//! c=legato i=legato-vibrato o=note:1/note:12/note:118
+9 Perf. Legato (ProgVib)
+//! c=legato i=sfz o=note:1/note:13/note:113
+10 Perf. Sfz
+//! c=legato i=legato-portamento o=note:1/note:13/note:114
+11 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:13/note:115
+12 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+22 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+50 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Med - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+84 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ************
+// VIOLAS - a14
+// ************
+
+//! g="VSL - STRINGS/Appassionata" n="Violas - a14"
+Bank 4 27 Violas - a14
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+6 Perf. Trill
+//! c=legato i=legato-slur o=note:1/note:12/note:116
+7 Perf. Slur
+//! c=legato i=legato-slur o=note:1/note:12/note:117
+8 Perf. Slur, Fast
+//! c=legato i=legato o=note:1/note:12/note:118
+9 Perf. Legato, 4Vel
+//! c=legato i=legato-vibrato o=note:1/note:12/note:120
+10 Perf. Legato (ProgVib)
+//! c=legato i=legato-sul-g o=note:1/note:12/note:121
+11 Perf. Legato (StrongVib)
+//! c=legato i=sfz o=note:1/note:13/note:113
+12 Perf. Sfz
+//! c=legato i=legato-portamento o=note:1/note:13/note:114
+13 Perf. Portamento
+//! c=legato i=marcato o=note:1/note:13/note:115
+14 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:116
+15 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+22 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (ProgVib)
+//! c=long i=vibrato-molto o=note:3/note:12/note:115
+32 Sustain (StrongVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+50 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Med - 4s
+//! c=long-dark i=crescendo o=note:7/note:12/note:116
+73 pFp - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:117
+74 pFp - 4s
+//! c=long-dark i=crescendo o=note:7/note:12/note:118
+75 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+84 Fast Rep 190bpm
+
+//!spacer=1
+//! c=fx i=rip o=note:9/note:12/note:113
+90 Grace Run
+//! c=fx i=rip o=note:9/note:12/note:114
+91 Grace Run, Fast
+//! c=fx i=fx o=note:9/note:12/note:115
+92 Cluster
+//! c=fx i=fx o=note:9/note:12/note:116
+93 Cluster, Tight
+//! c=fx i=pizz o=note:9/note:12/note:117
+94 Pizzicato, Random
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *******************
+// VIOLAS - a14 (MUTE)
+// *******************
+
+//! g="VSL - STRINGS/Appassionata" n="Violas - a14 (Mute)"
+Bank 4 28 Violas - a14 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+6 Perf. Trill
+//! c=legato i=legato-slur o=note:1/note:12/note:116
+7 Perf. Slur
+//! c=legato i=legato-slur o=note:1/note:12/note:117
+8 Perf. Slur, Fast
+//! c=legato i=legato-vibrato o=note:1/note:12/note:118
+9 Perf. Legato (ProgVib)
+//! c=legato i=sfz o=note:1/note:13/note:113
+10 Perf. Sfz
+//! c=legato i=legato-portamento o=note:1/note:13/note:114
+11 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:13/note:115
+12 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+22 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+50 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Med - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+84 Fast Rep 190bpm
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ************
+// CELLOS - a12
+// ************
+
+//! g="VSL - STRINGS/Appassionata" n="Cellos - a12"
+Bank 4 29 Cellos - a12
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+6 Perf. Trill
+//! c=legato i=legato-slur o=note:1/note:12/note:116
+7 Perf. Slur
+//! c=legato i=legato-slur o=note:1/note:12/note:117
+8 Perf. Slur, Fast
+//! c=legato i=legato o=note:1/note:12/note:118
+9 Perf. Legato, 4Vel
+//! c=legato i=legato-vibrato o=note:1/note:12/note:120
+10 Perf. Legato (ProgVib)
+//! c=legato i=legato-sul-g o=note:1/note:12/note:121
+11 Perf. Legato (StrongVib)
+//! c=legato i=sfz o=note:1/note:13/note:113
+12 Perf. Sfz
+//! c=legato i=legato-portamento o=note:1/note:13/note:114
+13 Perf. Portamento
+//! c=legato i=marcato o=note:1/note:13/note:115
+14 Perf. Marcato, Fast
+//! c=legato i=spiccato o=note:1/note:13/note:116
+15 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+22 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (ProgVib)
+//! c=long i=vibrato-molto o=note:3/note:12/note:115
+32 Sustain (StrongVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+50 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Med - 4s
+//! c=long-dark i=crescendo o=note:7/note:12/note:116
+73 pFp - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:117
+74 pFp - 4s
+//! c=long-dark i=crescendo o=note:7/note:12/note:118
+75 pFp - 6s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+83 Fast Rep 180bpm
+
+//!spacer=1
+//! c=fx i=rip o=note:9/note:12/note:113
+90 Grace Run
+//! c=fx i=rip o=note:9/note:12/note:114
+91 Grace Run, Fast
+//! c=fx i=fx o=note:9/note:12/note:115
+92 Cluster
+//! c=fx i=fx o=note:9/note:12/note:116
+93 Cluster, Tight
+//! c=fx i=pizz o=note:9/note:12/note:117
+94 Pizzicato, Random
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *******************
+// CELLOS - a12 (MUTE)
+// *******************
+
+//! g="VSL - STRINGS/Appassionata" n="Cellos - a12 (Mute)"
+Bank 4 30 Cellos - a12 (Mute)
+
+//! c=legato-dark i=phrase o=note:0/note:12/note:113
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0/note:12/note:114
+2 SPEED - Trill
+//! c=legato-dark i=phrase o=note:0/note:12/note:115
+3 SPEED - Slur
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12/note:113
+4 Perf. Legato
+//! c=legato i=legato-fast o=note:1/note:12/note:114
+5 Perf. Legato, Fast
+//! c=legato i=trill-maj2 o=note:1/note:12/note:115
+6 Perf. Trill
+//! c=legato i=legato-slur o=note:1/note:12/note:116
+7 Perf. Slur
+//! c=legato i=legato-slur o=note:1/note:12/note:117
+8 Perf. Slur, Fast
+//! c=legato i=legato-vibrato o=note:1/note:12/note:118
+9 Perf. Legato (ProgVib)
+//! c=legato i=sfz o=note:1/note:13/note:113
+10 Perf. Sfz
+//! c=legato i=legato-portamento o=note:1/note:13/note:114
+11 Perf. Portamento
+//! c=legato i=spiccato o=note:1/note:13/note:115
+12 Perf. Spiccato, Fast
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12/note:113
+20 Staccato
+//! c=short i=tenuto-eighth o=note:2/note:12/note:114
+21 Detache
+//! c=short i=pizz o=note:2/note:12/note:115
+22 Pizzicato
+
+//!spacer=1
+//! c=long i=vibrato o=note:3/note:12/note:113
+30 Sustain (Vib)
+//! c=long i=note-whole o=note:3/note:12/note:114
+31 Sustain (ProgVib)
+
+//!spacer=1
+//! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
+40 Rep. Legato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
+41 Rep. Spiccato
+//! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
+42 Rep. Portato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12/note:114
+50 Sfz
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
+60 Tremolo
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
+61 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:6/note:12/note:115
+62 Tremolo, Auto
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:7/note:12/note:113
+70 Med - 2s
+//! c=long-dark i=crescendo o=note:7/note:12/note:114
+71 Med - 3s
+//! c=long-dark i=crescendo o=note:7/note:12/note:115
+72 Med - 4s
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:8/note:12/note:113
+80 Fast Rep 150bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:114
+81 Fast Rep 160bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:115
+82 Fast Rep 170bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:116
+83 Fast Rep 180bpm
+//! c=#E1491C i=riccochet o=note:8/note:12/note:117
+84 Fast Rep 190bpm
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ************
+// BASSES - a10
+// ************
+
+//! g="VSL - STRINGS/Appassionata" n="Basses - a10"
+Bank 4 31 Basses - a10
+
+//! c=short i=staccato o=note:0/note:17/note:5
+1 Staccato
+//! c=long i=note-whole o=note:0/note:17/note:6
+2 Sustain
+//! c=#938C0B i=sfz o=note:0/note:17/note:7
+3 Sfz
+//! c=short-light i=pizz o=note:0/note:17/note:8
+4 Pizzicato
+//! c=legato-light i=tremolo-measured o=note:0/note:17/note:9
+5 Tremolo
+//! c=legato-light i=tremolo-measured o=note:0/note:17/note:10
+6 Tremolo, fA
+//! c=legato-light i=tremolo-measured o=note:0/note:17/note:11
+7 Tremolo, Auto
+//! c=#E1491C i=phrase-tremolo o=note:0/note:17/note:12
+8 Rep. Portato
+
+//!spacer=1
+//! c=short i=staccato o=note:0/note:18/note:5
+10 Staccato (Mute)
+//! c=long i=note-whole o=note:0/note:18/note:6
+11 Sustain (Mute)
+//! c=#938C0B i=sfz o=note:0/note:18/note:7
+12 Sfz (Mute)
+//! c=short-light i=pizz o=note:0/note:18/note:8
+13 Pizzicato (Mute)
+//! c=legato-light i=tremolo-measured o=note:0/note:18/note:9
+14 Tremolo (Mute)
+//! c=legato-light i=tremolo-measured o=note:0/note:18/note:10
+15 Tremolo, fA (Mute)
+//! c=legato-light i=tremolo-measured o=note:0/note:18/note:11
+16 Tremolo, Auto (Mute)
+//! c=#E1491C i=phrase-tremolo o=note:0/note:18/note:12
+17 Rep. Portato (Mute)
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//											  ~~~~~~~~~~~ HARPS ~~~~~~~~~~~~
+//											  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+// ******
+// HARP I
+// ******
+
+//! g="VSL - STRINGS/Harps" n="Harp I"
+Bank 4 32 Harp I
+
+//! c=short i=default o=note:113
+1 Normal
+//! c=short i=con-sord o=note:114
+2 Mute
+//! c=short i=harp-pdlt2 o=note:115
+3 Pres-de-la-table
+//! c=short i=harmonics-natural-eighth o=note:116
+4 Flageolette
+//! c=short i=tremolo-measured o=note:117
+5 Bisbigliando
+//! c=short i=con-sord o=note:118
+6 Normal+Release Mute
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *******
+// HARP II
+// *******
+
+//! g="VSL - STRINGS/Harps" n="Harp II"
+Bank 4 33 Harp II
+
+//! c=short i=default o=note:113
+1 Normal
+//! c=short i=con-sord o=note:114
+2 Mute
+//! c=short i=con-sord o=note:115
+3 Damp
+//! c=short i=harp-pdlt2 o=note:116
+4 Pres-de-la-table
+//! c=short i=fx o=note:117
+5 Nail
+//! c=short i=harmonics-natural-eighth o=note:118
+6 Flageolette
+//! c=short i=legato-gliss o=note:119
+7 Pedal Gliss
+//! c=short i=tremolo-measured o=note:120
+8 Bisbigliando
+//! c=short i=con-sord o=note:121
+9 Mute + Mute Release
+//! c=short i=legato-gliss o=note:122
+10 Normal + Pedal Gliss

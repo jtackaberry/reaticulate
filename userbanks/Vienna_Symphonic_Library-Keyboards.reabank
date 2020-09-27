@@ -1,0 +1,167 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/110
+//
+// Link to detailed installation instructions:
+//
+// https://www.vsl.co.at/community/posts/t53083-Comprehensive-Articulation-Management-System-for-VSL-Libraries--for-REAPER-users#post287931
+//
+// NOTE: there are VI presets available for all banks at the above URL.
+
+
+// TABLE OF CONTENTS
+//
+// DIRECTIONS: Use *Ctrl-F* to quickly jump to the articulation banks using the names listed below.
+//
+// ~~~~~~~~~~~~~~~~~~~~~~
+// KEYBOARDS
+// ~~~~~~~~~~~~~~~~~~~~~~
+//		Konzerthaus Organ
+//		Harmonium
+//		Harpsichord
+//		Prepared Piano
+//
+//-----------------------------------------------------------------------------------------------------------------------------
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//												--------KEYBOARDS-------
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//-----------------------------------------------------------------------------------------------------------------------------
+
+
+//! g="VSL - KEYBOARDS" n="Konzerthaus Organ"
+Bank 6 1 Konzerthaus Organ
+
+//! c=long i=list g=1 o=cc:3,0
+1  [MAN] Small P. Plenum
+//! c=long i=list g=1 o=cc:3,1
+2  [MAN] Large P. Plenum
+//! c=long i=list g=1 o=cc:3,2
+3  [MAN] Large P. Plenum + Reeds
+//! c=long i=list g=1 o=cc:3,3
+4  [MAN] String Choir I
+//! c=long i=list g=1 o=cc:3,4
+5  [MAN] String Choir II
+//! c=long i=list g=1 o=cc:3,5
+6  [MAN] Flutes I
+//! c=long i=list g=1 o=cc:3,6
+7  [MAN] Flutes II
+//! c=long i=list g=1 o=cc:3,7
+8  [MAN] Mod. Plenum A
+//! c=long i=list g=1 o=cc:3,8
+9  [MAN] Mod. Plenum B
+//! c=long i=list g=1 o=cc:3,9
+10  [MAN] Mod. Plenum C
+//! c=long i=list g=1 o=cc:3,10
+11  [MAN] Mod. Plenum D
+//! c=long i=list g=1 o=cc:3,11
+12  [MAN] Mod. Plenum E
+//! c=long i=list g=1 o=cc:3,12
+13  [MAN] Mod. Gedackt A
+//! c=long i=list g=1 o=cc:3,13
+14  [MAN] Mod. Gedackt B
+//! c=long i=list g=1 o=cc:3,14
+15  [MAN] Mod. Gedackt C
+//! c=long i=list g=1 o=cc:3,15
+16  [MAN] Mod. Gedackt D
+//! c=long i=list g=1 o=cc:3,16
+17  [MAN] Gedackt + Woodpipe
+//! c=long i=list g=1 o=cc:3,17
+18  [MAN] Gedackt + Piccolo
+//! c=long i=list g=1 o=cc:3,18
+19  [MAN] Gedackt + Sesquialtera
+//! c=long i=list g=1 o=cc:3,19
+20  [MAN] Gedackt + Oct + Kornett
+//! c=long i=list g=1 o=cc:3,20
+21  [MAN] Salicional + Unda maris
+//! c=long i=list g=1 o=cc:3,21
+22  [MAN] Trompete 16' + 8'
+//! c=long i=list g=1 o=cc:3,22
+23  [MAN] Krummhorn + Oboe
+
+//!spacer=1
+//! c=short i=list g=2 o=note:12/note:0
+60  [PED] Small P. Plenum
+//! c=short i=list g=2 o=note:12/note:1
+61  [PED] Large P. Plenum
+//! c=short i=list g=2 o=note:12/note:2
+63  [PED] Large P. Plenum + Reeds
+//! c=short i=list g=2 o=note:12/note:3
+64  [PED] String Choir I
+//! c=short i=list g=2 o=note:12/note:4
+65  [PED] String Choir II
+//! c=short i=list g=2 o=note:12/note:5
+66  [PED] Flutes I
+//! c=short i=list g=2 o=note:12/note:6
+67  [PED] Flutes II
+//! c=short i=list g=2 o=note:12/note:7
+68  [PED] Mod. Plenum A
+//! c=short i=list g=2 o=note:12/note:8
+69  [PED] Mod. Plenum B
+//! c=short i=list g=2 o=note:12/note:9
+70  [PED] Mod. Plenum C
+//! c=short i=list g=2 o=note:12/note:10
+71  [PED] Mod. Plenum D
+//! c=short i=list g=2 o=note:12/note:11
+72  [PED] Mod. Plenum E
+//! c=short i=list g=2 o=note:13/note:0
+73  [PED] Subbass + Gedacktbass
+
+
+//! g="VSL - KEYBOARDS" n="Harmonium"
+Bank 6 2 Harmonium
+
+//! c=long i=list o=note:113
+1 Aeoline
+//! c=long i=list o=note:114
+2 Basson-Hautbois
+//! c=long i=list o=note:115
+3 Clairon-Fifre
+//! c=long i=list o=note:116
+4 Clarinette-Bourdon
+//! c=long i=list o=note:117
+5 Flute-Coranglais
+//! c=long i=list o=note:118
+6 Grandjeu
+//! c=long i=list o=note:119
+7 Percussion
+//! c=long i=list o=note:120
+8 Voix-Celeste
+
+
+
+//! g="VSL - KEYBOARDS" n="Harpsichord"
+Bank 6 3 Harpsichord
+
+//! c=long i=list o=note:113
+1 8-Feet
+//! c=long i=list o=note:114
+2 8-Feet Double
+//! c=long i=list o=note:115
+3 Tutti
+
+
+
+//! g="VSL - KEYBOARDS" n="Prepared Piano"
+Bank 6 4 Prepared Piano
+
+//! c=long i=list o=note:113
+1 Chain
+//! c=long i=list o=note:114
+2 Double-screw
+//! c=long i=list o=note:115
+3 Harmonic
+//! c=long i=list o=note:116
+4 Harmonic, secco
+//! c=long i=list o=note:117
+5 Foil
+//! c=long i=list o=note:118
+6 Glass
+//! c=long i=list o=note:119
+7 Stick
+//! c=long i=list o=note:120
+8 Stick, roll
+//! c=long i=list o=note:121
+9 Glissando
