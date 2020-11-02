@@ -25,7 +25,7 @@ Once you have ReaPack installed:
 1. Double click the newly added Reaticulate item in the repository list
 1. Click the `Install/update Reaticulate` button and select `Install all packages`
 
-Now's a good time to read more about [how to launch and use Reaticulate](usage).
+Now's a good time to read more about [how to launch and use Reaticulate](usage.md).
 
 
 ### Living on the edge?
@@ -86,6 +86,7 @@ We're currently lacking a good way of sharing bank files, but for now, various u
 
 Scroll down [that page](https://github.com/jtackaberry/reaticulate/tree/master/userbanks) for installation instructions.
 
+If you've made banks of your own that you'd like to contribute, please either [create an account on GitHub](https://github.com/join) and then [open a new issue](https://github.com/jtackaberry/reaticulate/issues) and attach (or paste) the bank, or, if you prefer, you can [email it to me](contact.md).
 
 # Uninstalling
 

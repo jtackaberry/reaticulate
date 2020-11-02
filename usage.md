@@ -100,6 +100,8 @@ You can use these to get started, but of course you're almost certainly going to
     <a href='{% link reabank.md %}'><b>Click here to learn how to create your own custom banks for Reaticulate</b></a>.
 </p>
 
+You can also [download user-contributed banks](download.md#download-bank-files) for various libraries.
+
 # Usage
 
 ## GUI

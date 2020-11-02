@@ -3,6 +3,8 @@
 <p class='warning'>
     In the alpha preview of Reaticulate, there is no GUI for creating custom banks.
     It'll come, but for now, you'll need to understand the nitty gritty on this page.
+    <br/><br/>
+    You can also <a href="{% link download.md %}#download-bank-files">download user-contributed banks</a> for various libraries.
 </p>
 
 
