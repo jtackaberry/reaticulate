@@ -304,16 +304,36 @@ form of standardization is recommended because this allows using the
 at least its closest approximation) from a control surface, tablet, etc., no matter the
 underlying instrument.
 
-<p class='warning'>
-    Reaticulate's factory banks will conform as closely as possible to
-    <a href="https://spitfire-webassets.s3.amazonaws.com/pdfs/UACCv2spec.pdf">Spitfire's
-    UACC specification</a>.
-</p>
+The primary use case for program number standardization is having a set of common
+articulations configured on your MIDI controller for sketching purposes, which, thanks to
+common program numbers, can work regardless of the virtual instrument.  An idea can be
+expressed with basic articulations, and then you can go back over the MIDI item and
+finesse the articulations using Reaticulate's GUI.
 
-So, for example, by consistently using program 42 to map to spiccato, or some similar very
-short articulation, you could have a control surface send CC value 42 (via a CC number of
-your choice bound to the Activate Articulation action) to set spiccato, no matter what
-track is selected.
+To that end, in consideration of the sketching use case, we recommend using the following
+program numbers for these articulations, or the **closest approximation** of those
+articulations availabile in the patch:
+
+| Program # | Articulation |
+|-|-|
+| 20 | legato normale |
+| 1 | long normale / sustain (chords) |
+| 7 | long muted (e.g. con sordino) |
+| 17 | long soft (e.g. sul tasto or flautando) |
+| 9 | long hard (e.g. marcato) |
+| 10 | long harmonics |
+| 11 | tremolo or flutter |
+| 40 | short normale (e.g. staccato) |
+| 42 | shorter normale (e.g. spiccato) |
+| 52 | short hard (e.g. marcato short or staccato dig) |
+| 56 | pizzicato / plucked |
+| 70 | trill minor 2 |
+| 71 | trill major 2 |
+
+
+For articulations not included above or if there are multiple candidates, pick any program number not in the above table.  If at all possible, try to find a match against **[Spitfire's UACC specification](https://spitfire-webassets.s3.amazonaws.com/pdfs/UACCv2spec.pdf)** (which is where the numbering scheme above is derived).
+
+It's not crucial to find an exact match, but it's encouraged.  Use your better judgment.
 
 
 ## Output Events Specification
