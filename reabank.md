@@ -311,8 +311,8 @@ expressed with basic articulations, and then you can go back over the MIDI item 
 finesse the articulations using Reaticulate's GUI.
 
 To that end, in consideration of the sketching use case, we recommend using the following
-program numbers for these articulations, or the **closest approximation** of those
-articulations availabile in the patch:
+program numbers for these articulations, or the **closest approximation** of these
+articulations available in the patch:
 
 | Program # | Articulation |
 |-|-|
