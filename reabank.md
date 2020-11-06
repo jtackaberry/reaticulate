@@ -185,8 +185,10 @@ marked as required.
 <tr>
     <td valign="top" style='text-align: center'>chase</td>
     <td>
-        Comma-delimited list of CCs (or CC ranges) that should be chased when CC chasing is enabled
+        Comma-delimited list of CCs (or CC ranges) that should be "chased" when CC chasing is enabled
         for an articulation (as is default).  For example: 1,2,5,11-21,92-120.  (Default: 1,2,11,64-69)
+        <br/><br/>CC chasing occurs when switching articulations between patches across different MIDI channels.  For example, suppose you have long normale on channel 1 and long con sordino on channel 2 with long normale currently active. Say you've set CC1 to value 92 and played a note, and then activated the long con sordino articulation.  If CC1 is included here in the list of CCs to be chased, when long con sordino is activated, CC1 value 92 will be "chased" into the patch on channel 2, ensuring that your
+        next note with that articulation has the same dynamics level.<br/><br/>Another use case is with the sustain pedal.  Supposing you're on long normale and you hold the sustain pedal, press a note, and then activate long con sordino and press another note, if CC64 (sustain) is in the chase list, Reaticulate will chase the CC64 "pedal down" value into the next channel so that the second note with that articulation also sustains. Provided the <code>antihangcc</code> flag (mentioned above) is not disabled, when the sustain pedal is released, Reaticulate will send the CC64 value 0 (sustain pedal up) event into <i>both</i> channel 1 (long normale with the first note rining) and channel 2 (long con sordino with the second note ringing), which prevents the first note on the previous (but not currently active) MIDI channel from "hanging."
     </td>
 </tr>
 <tr>
