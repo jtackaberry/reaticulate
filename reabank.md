@@ -444,6 +444,8 @@ This one from Cinematic Studio Strings sends 3 separate notes at specific veloci
 and legato in addition to the sustains patch.
 
 ```go
+//! g="Reaticulate Examples" n="Multiple Note Outputs"
+Bank 42 1 Multiple Note Outputs
 //! c=long-light i=con-sord o=note:12/note:22,1/note:23,127
 7 con sordino
 ```
@@ -454,6 +456,8 @@ A generic example where we have 3 individual articulation patches on 3 separate 
 want to do simple routing only: no keyswitches needed by the underlying virtual instrument.
 
 ```go
+//! g="Reaticulate Examples" n="Simple Channel Routing"
+Bank 42 2 Simple Channel Routing
 //! c=legato i=legato o=@1
 20 legato
 //! c=long i=note-whole o=@2
@@ -469,6 +473,8 @@ the "beefy spiccato" program, where we are setting CSS as with spiccato but also
 another patch on channel 2.
 
 ```go
+//! g="Reaticulate Examples" n="Layering"
+Bank 42 3 Articulation Layering
 //! c=short i=spiccato o=note:17,1/note:23,1
 42 spiccato
 //! c=short-dark i=spiccato o=note:17,1/note:23,1/@2
@@ -490,8 +496,8 @@ Finally, the last 3 programs define the Performer styles, and unlike the others,
 latching keyswitches, so we use the `note` type for these.
 
 ```go
-//! g="VirHarmonic/Bohemian Violin" n="Expansion 1" off=0
-Bank 42 7 Bohemian Violin Exp1
+//! g="Reaticulate Examples" n="Bohemian Violin Exp1" off=0
+Bank 42 4 Bohemian Violin Exp1
 //! c=long-dark i=note-whole g=2 f=toggle o=note:35
 35 chords
 
@@ -530,6 +536,8 @@ channels.  A single articulation definition can route to the appropriate patch d
 which mute articulation is selected.
 
 ```go
+//! g="Reaticulate Examples" n="Contextual Articulations"
+Bank 42 5 Contextual Articulations
 //! c=long i=note-whole g=2
 120 unmuted
 //! c=long-light i=stopped g=2
