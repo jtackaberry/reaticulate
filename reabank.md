@@ -119,28 +119,28 @@ These are the supported attributes for Bank lines.  Attributes are optional unle
 marked as required.
 
 <table>
-<tr><th style='text-align: center'>Name</th><th>Description</th></tr>
+<tr><th style='text-align: center'>Name</th><th style='text-align: left'>Description</th></tr>
 <tr>
-    <td style='text-align: center'>g<br/><code>required</code></td>
+    <td valign="top" style='text-align: center'>g<br/><code>required</code></td>
     <td>
          Group name separated by slashes.  Used to build a menu hierarchy for the bank.
         Generally should be Vendor/Product.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>n</td>
+    <td valign="top" style='text-align: center'>n</td>
     <td>
         The name of the patch the bank describes.  If not specified, the Reabank name is used.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>clone</td>
+    <td valign="top" style='text-align: center'>clone</td>
     <td>
         Clones the articulations <i>from</i> the referenced bank, specified as a fully qualified bank name (i.e. the groupname/bankname format), <i>to</i> the current bank which contains the clone attribute.  The cloned articulations will appear after any articulations explicitly defined in the current bank.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>off</td>
+    <td valign="top" style='text-align: center'>off</td>
     <td>
         For articulations with note-hold outputs, this defines the "default program" when no note-hold
         articulation is active.  The GUI will show this program as active when a manually triggered
@@ -149,7 +149,7 @@ marked as required.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>f</td>
+    <td valign="top" style='text-align: center'>f</td>
     <td>
         Default articulation flags. Most can be overridden per articulation. Is a comma-delimited list of one
         or more of the options below.  Any option can be prefixed with <code>!</code> to negate it.
@@ -183,14 +183,14 @@ marked as required.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>chase</td>
+    <td valign="top" style='text-align: center'>chase</td>
     <td>
         Comma-delimited list of CCs (or CC ranges) that should be chased when CC chasing is enabled
         for an articulation (as is default).  For example: 1,2,5,11-21,92-120.  (Default: 1,2,11,64-69)
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>m</td>
+    <td valign="top" style='text-align: center'>m</td>
     <td>
         A custom message displayed in the track configuration page and optionally the main
         articulation list screen.  This usually provides some special instructions about how to configure
@@ -207,16 +207,16 @@ marked as required.
 Programs can be decorated with these attributes:
 
 <table>
-<tr><th style='text-align: center'>Name</th><th>Description</th></tr>
+<tr><th style='text-align: center'>Name</th><th style='text-align: left'>Description</th></tr>
 <tr>
-    <td style='text-align: center'>i<br/><code>required</code></td>
+    <td valign="top" style='text-align: center'>i<br/><code>required</code></td>
     <td>
         Articulation icon name.  See <a href='#articulation-icons'>Articulation Icons</a> section
         below for possible names.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>n</td>
+    <td valign="top" style='text-align: center'>n</td>
     <td>
         Overrides the articulation name for display in the articulation list in the Reaticulate UI.
         Program events as seen in the MIDI editor will use the program name specified on the uncommented
@@ -224,7 +224,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>c</td>
+    <td valign="top" style='text-align: center'>c</td>
     <td>
         Color for the articulation button.  Either the name of a color (see the
         <a href='#articulation-colors'>Articulation Colors</a> section below)
@@ -232,13 +232,13 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>f</td>
+    <td valign="top" style='text-align: center'>f</td>
     <td>
         Articulation flags as defined above. (Overrides the defaults set at the bank level.)
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>g</td>
+    <td valign="top" style='text-align: center'>g</td>
     <td>
         A group number between 1 and 4 (defaults to 1 if not specified).  Only one articulation within a
         group may be active at a time.<br/><br/>
@@ -246,7 +246,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>o</td>
+    <td valign="top" style='text-align: center'>o</td>
     <td>
         One or more output events that describe the action taken when the articulation is triggered.<br/><br/>
         This is where things get fun. See the <a href='#output-events'>Output Events</a> section below
@@ -254,7 +254,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>spacer</td>
+    <td valign="top" style='text-align: center'>spacer</td>
     <td>
         Inserts some padding above the articulation when displayed in Reaticulate's main
         articulation list screen.<br/><br/>
@@ -263,14 +263,14 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>transpose</td>
+    <td valign="top" style='text-align: center'>transpose</td>
     <td>
         A value between -127 and 127 which defines how many pitches incoming notes should be
         transposed after the articulation is activated.
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>velocity</td>
+    <td valign="top" style='text-align: center'>velocity</td>
     <td>
         A multiplier between 0.00 and 10.00 (up to 2 decimals of precision) that will be applied
         to incoming note velocities.  The note-off velocity (if it exists -- it's quite rare)
@@ -278,7 +278,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>pitchrange</td>
+    <td valign="top" style='text-align: center'>pitchrange</td>
     <td>
         A value in the form <code>min-max</code> defining the lower and upper limits that
         incoming note pitch numbers will be clamped to.  For example a value of
@@ -287,7 +287,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td style='text-align: center'>velrange</td>
+    <td valign="top" style='text-align: center'>velrange</td>
     <td>
         A value in the form <code>min-max</code> defining the lower and upper limits that
         incoming note velocities will be clamped to.  For example a value of <code>32-64</code> will
