@@ -243,6 +243,12 @@ function screen.init()
     local row = add_row(section, "Autostart:", 75)
     local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
     menu:setmenu({'Never', 'When REAPER starts'})
+    -- Needed for forward compatibility with master branch.
+    if app.config.autostart == true then
+        app.config.autostart = 1
+    else
+        app.config.autostart = 0
+    end
     menu:select((app.config.autostart or 0) + 1)
     menu.onchange = function(menu)
         update_startup_action(menu.selected == 2)
