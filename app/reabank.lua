@@ -537,13 +537,20 @@ function reabank.parse(filename)
         if line:starts("Bank", true) then
             -- Start of new bank
             local msb, lsb, name = line:match(".... +(%d+) +(%d+) +(.*)")
-            bank = Bank(filename, msb, lsb, name, metadata)
-            banks[bank.msblsb] = bank
-            reabank.banks_by_path[bank:get_path()] = bank
-            if bank.clone then
-                cloned[#cloned + 1] = bank
+            status, bank = xpcall(Bank,
+                function ()
+                    log.error('failed to load bank due to syntax error: %s', line)
+                end,
+                filename, msb, lsb, name, metadata
+            )
+            if bank then
+                banks[bank.msblsb] = bank
+                reabank.banks_by_path[bank:get_path()] = bank
+                if bank.clone then
+                    cloned[#cloned + 1] = bank
+                end
+                metadata = {}
             end
-            metadata = {}
         elseif line:starts("//!") then
             -- Reaticulate metadata for the next program/bank
             local props = parse_properties(line)
@@ -568,7 +575,7 @@ function reabank.parse(filename)
             end
         elseif line:len() > 0 and not line:starts("//") then
             program, name = line:match("(%d+) +(.*)")
-            if program and name then
+            if program and name and bank then
                 art = Articulation(bank, tonumber(program), name, metadata)
                 if art.flags & Articulation.FLAG_HIDDEN == 0 then
                     bank:add_articulation(art)
