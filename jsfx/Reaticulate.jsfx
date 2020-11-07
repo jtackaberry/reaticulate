@@ -2432,7 +2432,7 @@ local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus, has_ds
         // multiple note output events to simulate pressing the keys simultaneously.
         //
         // Fixes #20.
-        mpos = midisend_multibus(mpos + 50, dstbuschan, 0, MIDI_EVENT_NOTE_OFF, param1, 0);
+        midisend_multibus(mpos + 50, dstbuschan, 0, MIDI_EVENT_NOTE_OFF, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE_HOLD) ? (
         off_program = get_articulation_off_program(articulation);
