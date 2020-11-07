@@ -168,6 +168,8 @@ function feedback.create_feedback_track()
     reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)
     -- Install FX.
     local fx = reaper.TrackFX_AddByName(feedback.track, BUS_TRANSLATOR_FX_NAME, 0, 1)
+    -- Hide FX
+    reaper.TrackFX_Show(feedback.track, fx, 2)
     feedback.update_feedback_track_settings()
 
     reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)
