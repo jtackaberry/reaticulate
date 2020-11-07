@@ -1,3 +1,21 @@
+# Reaticulate 0.4.6 Released
+*November 7, 2020*
+
+## Full Change Log
+
+### Bug Fixes
+
+
+* Fixed regression where articulations with multiple note output events would fail to send all note-ons together before sending note-off events.
+* Reaticulate JSFX no longer popup when being added to tracks ([#120](https://github.com/jtackaberry/reaticulate/issues/120))
+* Improved robustness when loading malformed banks
+* Added hidden feature for shift-click on the reload toolbar icon to more scrub all MIDI items for misconfiguration that might prevent showing articulation names.
+* Fixed problem where autostart setting would not work reliably ([#107](https://github.com/jtackaberry/reaticulate/issues/107))
+* Improved relability of window pinning when Reaticulate is undocked
+* Added note number to articulation tooltip ([#96](https://github.com/jtackaberry/reaticulate/issues/96))
+* Now respects Reaper's MIDI octave name display offset configuration when displaying articulation tooltips
+
+
 # Reaticulate 0.4.5 Released
 *March 21, 2020*
 
