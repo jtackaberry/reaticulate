@@ -1059,7 +1059,14 @@ function App:build_frame()
     end
 
     local button = toolbar:add(self:make_button('18-loop'))
-    button.onclick = function() reaper.defer(function() app:refresh_banks() end) end
+    button.onclick = function(b, event)
+        reaper.defer(function()
+            app:refresh_banks(true)
+            if event.shift then
+                self:beat_reaper_into_submission()
+            end
+        end)
+    end
 
     self.toolbar.dock = toolbar:add(self:make_button('18-dock_window'))
     self.toolbar.undock = toolbar:add(self:make_button('18-undock_window'))
