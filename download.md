@@ -41,10 +41,8 @@ This ReaPack will always contain the latest version, whether a release, or a sub
 
 <p class='warning'>
     Pre-releases are kept as stable as possible, unfortunately by virtue of having less testing time they are
-    more likely to contain bugs.
-
-    Your feedback with pre-releases is very much appreciated.  See the <a href='{% link contact.md %}'>
-    contact page</a> for details on how to report issues.
+    more likely to contain bugs.<br/><br/>Your feedback with pre-releases is very much appreciated.
+    See the <a href='{% link contact.md %}'> contact page</a> for details on how to report issues.
 </p>
 
 
