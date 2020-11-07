@@ -69,7 +69,8 @@ function log.log(level, tail, fmt, ...)
     local msecs = string.sub(now - math.floor(now), 3, 5)
     local label = log.level_name(level)
     local prefix = string.format('%s.%s [%s]  ', os.date('%H:%M:%S'), msecs, label)
-    if #log.timers > 0 then
+    -- Only show timer data for warning level and below.
+    if level < log.ERROR and #log.timers > 0 then
         local timer = log.timers[#log.timers]
         local total = (now - timer[1]) * 1000
         local last = (now - timer[2]) * 1000
