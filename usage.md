@@ -46,6 +46,10 @@ to switch articulations.
   icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-add_circle_outline.png)
   __Add Bank__
 
+<p class='warning'>
+    During live recordings, when articulations are activated Reaticulate will inject the Program Change event into Reaper's Virtual MIDI Keyboard queue, so in order to ensure articulation changes get recorded, be sure to configure the track to input from All MIDI Inputs while recording (right click on the Record Arm button on the track and select <code>Input: MIDI | All MIDI Inputs | All Channels</code> (or any specific channel of your choice) from the menu.
+</p>
+
 A *bank* is a collection of articulations that generally describes a multi-articulation patch of a
 virtual instrument.  A track can contain a number of banks provided there are no conflicting
 articulations (program numbers) between banks assigned to the same MIDI source channel (see below)
