@@ -156,8 +156,8 @@ Bank 66 34 Albion V - Strings High - Soft and Wild
 
 //! c=long-light i=con-sord-bow-up o=cc:32,11
 7 pulsing con sord
-//! c=long-light i=con-sord-bow-up o=cc:32,12
-12 ricochet
+//! c=long-light i=con-sord-sul-pont-bow-up o=cc:32,12
+12 pulsing cs sul pont
 //! c=long i=sul-g o=cc:32,14
 112 sul g
 //! c=long i=tremolo-slurred o=cc:32,31
@@ -223,15 +223,15 @@ Bank 66 36 Albion V - Strings Low - Soft and Wild
 1 no rosin long
 //! c=long-light i=harmonics o=cc:32,11
 10 harmonics
-//! c=short-light i=pizz-sul-pont o=cc:32,48
-48 pizz sul pont
-//! c=short-light i=pizz-mix o=cc:32,49
-49 pizz sp/legno mix
+//! c=short-light i=pizz o=cc:32,48
+48 pizz harmonic bass
+//! c=short-light i=pizz o=cc:32,49
+49 pizz harmonic cello
 
 //! c=long-light i=con-sord-bow-up o=cc:32,13
 7 pulsing con sord
-//! c=long-light i=con-sord-bow-up o=cc:32,12
-12 ricochet
+//! c=long-light i=con-sord-sul-pont-bow-up o=cc:32,12
+12 pulsing cs sul pont
 //! c=long i=sul-c o=cc:32,15
 112 sul c
 //! c=long i=tremolo-slurred o=cc:32,31
@@ -297,15 +297,15 @@ Bank 66 40 Albion V - Strings Low + High - Soft and Wild
 1 no rosin long
 //! c=long-light i=harmonics o=cc@1:32,10/cc@2:32,11
 10 harmonics
-//! c=short-light i=pizz-sul-pont o=cc@1:32,48/cc@2:32,48
-48 pizz sul pont
-//! c=short-light i=pizz-mix o=cc@1:32,49/cc@2:32,49
-49 pizz sp/legno mix
+//! c=short-light i=pizz o=cc@1:32,48/cc@2:32,48
+48 pizz harmonic bass
+//! c=short-light i=pizz o=cc@1:32,49/cc@2:32,49
+49 pizz harmonic cello
 
 //! c=long-light i=con-sord-bow-up o=cc@1:32,11/cc@2:32,13
 7 pulsing con sord
-//! c=long-light i=con-sord-bow-up o=cc@1:32,12/cc@2:32,12
-12 ricochet
+//! c=long-light i=con-sord-sul-pont-bow-up o=cc@1:32,12/cc@2:32,12
+12 pulsing cs sul pont
 //! c=long i=sul-g o=cc@1:32,14/cc@2:32,15
 112 sul iv
 //! c=long i=tremolo-slurred o=cc@1:32,31/cc@2:32,31
