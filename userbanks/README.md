@@ -4,6 +4,7 @@ These banks are provided by other Reaticulate users.  They are **uncurated** and
 
 If you find problems, please [open an issue](https://github.com/jtackaberry/reaticulate/issues).
 
+And if you have a bank to contribute to this list, please also [open an issue](https://github.com/jtackaberry/reaticulate/issues) or pass it along via [email or one of the forums](https://reaticulate.com/contact.html).
 
 ## Installation
 
