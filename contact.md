@@ -21,5 +21,4 @@ threads:
 
 ## Email
 
-Open dialogue on one of the above forums is encouraged, but if you prefer email, my email address can be
-grabbed from my [personal website](https://urandom.ca/).
+Open dialogue on one of the above forums is encouraged, but if you prefer email, you can reach me [here](mailto:tack@urandom.ca).
