@@ -244,7 +244,11 @@ Programs can be decorated with these attributes:
     <td>
         A group number between 1 and 4 (defaults to 1 if not specified).  Only one articulation within a
         group may be active at a time.<br/><br/>
-        For consistency, it is recommended that you use group 1 for the main set of articulations.
+        For consistency, it is recommended that you use group 1 for the main set of articulations.<br/><br/>
+        Note that currently there is a limitation with groups: Groups are a Reaticulate construct that
+        Reaper itself doesn't know about.  Upon playback, Reaper will <i>only</i> chase the last program change on
+        the channel.  The desired behavior would be for Reaper to chase all articulations on all groups per
+        channel, but this isn't possible without some <a href="https://github.com/jtackaberry/reaticulate/issues/55">not-yet-implemented heroics</url>.
     </td>
 </tr>
 <tr>
