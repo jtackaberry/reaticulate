@@ -2077,13 +2077,13 @@ local(offset, poffset)
 function update_current_channel_program(channel, new_program, group, flags)
 local(control, shift, current_program, offset, poffset, program_offset, mask)
 (
+    program_offset = (group * MAX_CHANNELS) + channel;
     current_program = current_programs[program_offset];
 
     (new_program == current_program && flags & ARTICULATION_FLAG_TOGGLE) ? (
         new_program = 128;
     );
 
-    program_offset = (group * MAX_CHANNELS) + channel;
     current_programs[program_offset] = new_program;
 
     offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
