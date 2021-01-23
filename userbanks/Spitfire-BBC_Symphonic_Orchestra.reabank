@@ -154,8 +154,12 @@ Bank 50 11 BBC - Horn
 71 trill M2
 //! c=long i=trill-min2 o=note:9
 70 trill m2
-//! c=long-light i=sul-tasto o=note:10
-
+//! c=long i=note-whole o=note:10
+81 long (muted)
+//! c=short i=spiccato o=note:11
+82 staccatissimo (muted)
+//! c=short i=marcato-quarter o=note:12
+83 marcato(muted)
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Horns a4"
@@ -181,7 +185,12 @@ Bank 50 12 BBC - Horns a4
 71 trill M2
 //! c=long i=trill-min2 o=note:9
 70 trill m2
-//! c=long-light i=sul-tasto o=note:10
+//! c=long i=note-whole o=note:10
+81 long (muted)
+//! c=short i=spiccato o=note:11
+82 staccatissimo (muted)
+//! c=short i=marcato-quarter o=note:12
+83 marcato(muted)
 
 
 //----------------------------------------------------------------------------
@@ -199,7 +208,7 @@ Bank 50 14 BBC - Trumpets a3
 Bank 50 15 BBC - Tenor Trombone
 
 //! c=legato i=legato o=note:0
-20 legato
+20 legato (extended)
 //! c=long i=note-whole o=note:1
 1 long
 //! c=short i=spiccato o=note:2
@@ -214,6 +223,12 @@ Bank 50 15 BBC - Tenor Trombone
 11 flutter
 //! c=long i=multitongued o=note:7
 75 multitongued
+//! c=long i=note-whole o=note:8
+81 long (muted)
+//! c=short i=spiccato o=note:9
+82 staccatissimo (muted)
+//! c=short i=marcato-quarter o=note:10
+83 marcato(muted)
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Tenor Trombones a3"
@@ -227,8 +242,24 @@ Bank 50 17 BBC - Bass Trombones a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Tuba"
-//! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Tenor Trombone"
 Bank 50 18 BBC - Tuba
+
+//! c=legato i=legato o=note:0
+20 legato (extended)
+//! c=long i=note-whole o=note:1
+1 long
+//! c=short i=spiccato o=note:2
+41 staccatissimo
+//! c=short i=marcato-quarter o=note:3
+52 marcato
+//! c=long-dark i=cuivre o=note:4
+9 long cuivre
+//! c=short i=staccato-sfz o=note:5
+54 long sfz
+//! c=long-dark i=tremolo o=note:6
+11 flutter
+//! c=long i=multitongued o=note:7
+75 multitongued
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Contrabass Tuba"
@@ -427,6 +458,8 @@ Bank 50 42 BBC - Bass Flute
 50 tenuto
 //! c=short i=marcato-quarter o=note:6
 52 marcato
+//! c=long-dark i=tremolo o=note:7
+11 flutter
 
 
 //----------------------------------------------------------------------------
