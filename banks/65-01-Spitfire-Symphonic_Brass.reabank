@@ -938,10 +938,10 @@ Bank 65 57 SSB - Cimbassi a2 - Core
 //! g="Spitfire/Symphonic Brass/Cimbassi" n="Cimbassi a2 - Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
 Bank 65 58 SSB - Cimbassi a2 - Decorative
-//! c=short-dark i=rip o=cc:32,100
-100 rip
-//! c=short-dark i=fall o=cc:32,101
-101 fall
+//! c=short-dark i=rip o=cc:32,122
+122 rip
+//! c=short-dark i=fall o=cc:32,123
+123 fall
 
 
 //----------------------------------------------------------------------------
