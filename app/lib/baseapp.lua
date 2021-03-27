@@ -368,7 +368,7 @@ function BaseApp:_setup_borderless_handlers()
     self.toolbar.unpin = self.toolbar:add(self:make_button('18-pin_on'), {rpadding=15})
     self.toolbar.pin.onclick = function() self:_set_window_pinned(true) end
     self.toolbar.unpin.onclick = function() self:_set_window_pinned(false) end
-    self:_set_window_pinned(false)
+    self:_set_window_pinned(self.config.pinned)
 
     self.toolbar.ondragstart = function(self, event)
         if reaper.JS_Window_Move and rtk.dockstate == 0 and app.config.borderless then
