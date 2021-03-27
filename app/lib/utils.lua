@@ -167,7 +167,12 @@ end
 
 --- XXX: not safe for untrusted data!
 function table.fromstring(str)
-    return load('return ' .. str)()
+    local ok, result = pcall(load('return ' .. str))
+    if ok then
+        return result
+    else
+        return {}
+    end
 end
 
 function note_to_name(note)
