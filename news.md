@@ -1,3 +1,13 @@
+# Reaticulate 0.4.7 Released
+*March 27, 2021*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed bug where window pinned state was not preserved between restarts
+
+
 # Reaticulate 0.4.6 Released
 *November 7, 2020*
 
