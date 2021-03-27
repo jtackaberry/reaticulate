@@ -1,3 +1,9 @@
+# 0.4.7 - March 27, 2021
+
+## Bug Fixes
+
+* Fixed bug where window pinned state was not preserved between restarts
+
 # 0.4.6 - November 7, 2020
 
 ## Bug Fixes
