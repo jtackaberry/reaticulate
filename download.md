@@ -25,6 +25,10 @@ Once you have ReaPack installed:
 1. Double click the newly added Reaticulate item in the repository list
 1. Click the `Install/update Reaticulate` button and select `Install all packages`
 
+Here's a screen capture that depicts the above steps:
+
+![inline](img/install.gif)
+
 Now's a good time to read more about [how to launch and use Reaticulate](usage.md).
 
 
