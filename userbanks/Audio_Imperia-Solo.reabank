@@ -1,0 +1,60 @@
+//----------------------------------------------------------------------------
+// Audio Imperia - Solo
+// Source: Ugurcan Orcun - http://gameaud.io/
+// https://forum.cockos.com/showpost.php?p=2443412&postcount=1383
+//
+//!g="Audio Imperia/Solo" n="01 Strings Unified"
+Bank 41 91 Solo Violin/Viola/Cello
+//! c=#4A4A4A i=legato-bowed o=note:12 g=1
+12 Legato Rebowed
+//! c=#4A4A4A i=legato-portamento o=note:13 g=1
+13 Legato Slurred
+//! c=#3E3E3E i=note-whole o=note:14 g=1
+14 Sustained
+//! c=#747474 i=spiccato o=note:15 g=1
+15 Spiccato
+//! c=#747474 i=pizz o=note:16 g=1
+16 Pizzicato
+//! c=#3E3E3E i=tremolo o=note:17 g=1
+17 Tremolo
+//! c=#3E3E3E i=trill-min2 o=note:18 g=1
+18 Trill Half Tone
+//! c=#3E3E3E i=trill-maj2 o=note:19 g=1
+19 Trill Whole Tone
+
+//!g="Audio Imperia/Solo" n="02 Brass Unified"
+Bank 41 92 Solo Trumpet/French/Descant Horn
+//! c=#4A4A4A i=legato-bowed o=note:12 g=1
+12 Legato Fingered
+//! c=#4A4A4A i=legato-portamento o=note:13 g=1
+13 Legato Retongued
+//! c=#3E3E3E i=note-whole o=note:14 g=1
+14 Sustained
+//! c=#747474 i=staccato o=note:15 g=1
+15 Staccatissimo
+
+//!g="Audio Imperia/Solo" n="03 Woodwinds Unified"
+Bank 41 93 Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
+//! c=#4A4A4A i=legato-bowed o=note:12 g=1
+12 Legato Fingered
+//! c=#4A4A4A i=legato-portamento o=note:13 g=1
+13 Legato Retongued
+//! c=#3E3E3E i=note-whole o=note:14 g=1
+14 Sustained
+//! c=#747474 i=staccato o=note:15 g=1
+15 Staccatissimo
+//! c=#3E3E3E i=trill-min2 o=note:16 g=1
+16 Trill Half Tone
+//! c=#3E3E3E i=trill-maj2 o=note:17 g=1
+17 Trill Whole Tone
+
+//!g="Audio Imperia/Solo" n="04 Sopranos Unified"
+Bank 41 94 Solo Soprano Angelic/Operatic
+//! c=#4A4A4A i=phrase o=note:12 g=1
+12 Legato Aah
+//! c=#4A4A4A i=phrase o=note:13 g=1
+13 Legato Ooh
+//! c=#3E3E3E i=note-whole o=note:14 g=1
+14 Sustained Aah
+//! c=#3E3E3E i=note-whole o=note:15 g=1
+15 Sustained Ooh
