@@ -1,0 +1,226 @@
+//----------------------------------------------------------------------------
+// Source: Nick Golding (Flix) - https://github.com/jtackaberry/reaticulate/issues/123
+//
+//===========================================================================
+//! g="Spitfire/Solo Strings" n="Violin (Virtuoso)"
+Bank 30 63 Spitfire Solo Strings - Violin (Virtuoso)
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=long-light i=con-sord o=note:1
+7 long cs
+//! c=long-light i=flautando o=note:2
+8 long flautando
+//! c=long-light i=harmonics o=note:3
+10 long harmonics
+//! c=long-dark i=vibrato o=note:4
+19 long progressive
+//! c=long-dark i=sul-pont o=note:5
+18 long sul pont
+//! c=short i=staccato o=note:6
+40 staccato
+//! c=short i=spiccato o=note:7
+42 spiccato
+//! c=short-light i=pizz o=note:8
+56 pizzicato
+//! c=short-dark i=pizz-bartok o=note:9
+57 bartok pizz
+//! c=short-light i=col-legno o=note:10
+58 col legno
+//! c=short-light i=staccato-harmonics o=note:11
+61 short harmonics
+//! c=short-light i=spiccato-brushed-con-sord o=note:12
+62 short brushed baroque
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-maj2 o=note:14
+71 trill M2
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Solo Strings" n="Violin (1st Desk)"
+Bank 30 64 Spitfire Solo Strings - Violin (1st Desk)
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=long-light i=con-sord o=note:1
+7 long cs
+//! c=long-light i=flautando o=note:2
+8 long flautando
+//! c=long-light i=harmonics o=note:3
+10 long harmonics
+//! c=long-dark i=vibrato o=note:4
+19 long progressive
+//! c=short i=staccato o=note:5
+40 staccato
+//! c=short i=spiccato o=note:6
+42 spiccato
+//! c=short-light i=pizz o=note:7
+56 pizzicato
+//! c=short-dark i=pizz-bartok o=note:8
+57 bartok pizz
+//! c=short-light i=col-legno o=note:9
+58 col legno
+//! c=short-light i=pizz-b o=note:10
+63 mandolin pizz
+//! c=short-light i=staccato-harmonics o=note:11
+61 short harmonics
+//! c=short-light i=spiccato-brushed-con-sord o=note:12
+62 brushed baroque
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-maj2 o=note:14
+71 trill M2
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Solo Strings" n="Violin (Progressive)"
+Bank 30 65 Spitfire Solo Strings - Violin (Progressive)
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=long-light i=con-sord o=note:1
+7 long cs
+//! c=long-light i=flautando o=note:2
+8 long flautando
+//! c=long-light i=harmonics o=note:3
+10 long harmonics
+//! c=long-dark i=vibrato o=note:4
+19 long progressive
+//! c=long-dark i=sul-pont o=note:5
+18 long sul pont
+//! c=short i=staccato o=note:6
+40 staccato
+//! c=short i=spiccato o=note:7
+42 spiccato
+//! c=short-light i=pizz o=note:8
+56 pizzicato
+//! c=short-dark i=pizz-bartok o=note:9
+57 bartok pizz
+//! c=short-light i=col-legno o=note:10
+58 col legno
+//! c=short-light i=staccato-harmonics o=note:11
+61 short harmonics
+//! c=short-light i=spiccato-brushed-con-sord o=note:12
+62 short brushed baroque
+//! c=short-light i=pizz-b o=note:13
+63 mandolin pizz
+//! c=long-dark i=tremolo o=note:14
+11 tremolo
+//! c=long i=trill-maj2 o=note:15
+71 trill M2
+//! c=long i=trill-min2 o=note:16
+70 trill m2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Solo Strings" n="Viola"
+Bank 30 66 Spitfire Solo Strings - Viola
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=long-light i=con-sord o=note:1
+7 long cs
+//! c=long-light i=harmonics o=note:2
+10 long harmonics
+//! c=long-dark i=vibrato o=note:3
+19 long progressive
+//! c=long-dark i=sul-pont o=note:4
+18 long sul pont
+//! c=short i=staccato o=note:5
+40 staccato
+//! c=short i=spiccato o=note:6
+42 spiccato
+//! c=short-light i=pizz o=note:7
+56 pizzicato
+//! c=short-dark i=pizz-bartok o=note:8
+57 bartok pizz
+//! c=short-light i=col-legno o=note:9
+58 col legno
+//! c=short-light i=staccato-harmonics o=note:10
+61 short harmonics
+//! c=short-light i=spiccato-brushed-con-sord o=note:11
+62 brushed baroque
+//! c=short-light i=pizz-b o=note:12
+63 mandolin pizz
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-maj2 o=note:14
+71 trill M2
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Solo Strings" n="Cello"
+Bank 30 67 Spitfire Solo Strings - Cello
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=long-light i=con-sord o=note:1
+7 long cs
+//! c=long-light i=flautando o=note:2
+8 long flautando
+//! c=long-light i=harmonics o=note:3
+10 long harmonics
+//! c=long-dark i=vibrato o=note:4
+19 long progressive
+//! c=long-dark i=sul-pont o=note:5
+18 long sul pont
+//! c=short i=staccato o=note:6
+40 staccato
+//! c=short i=spiccato o=note:7
+42 spiccato
+//! c=short-light i=pizz o=note:8
+56 pizzicato
+//! c=short-dark i=pizz-bartok o=note:9
+57 bartok pizz
+//! c=short-light i=col-legno o=note:10
+58 col legno
+//! c=short-light i=staccato-harmonics o=note:11
+61 short harmonics
+//! c=short-light i=spiccato-brushed-con-sord o=note:12
+62 brushed baroque
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-maj2 o=note:14
+71 trill M2
+//! c=long i=trill-min2 o=note:15
+70 trill m2
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Solo Strings" n="Bass"
+Bank 30 68 Spitfire Solo Strings - Bass
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=long-light i=flautando o=note:1
+8 long flautando
+//! c=long-light i=harmonics o=note:2
+10 long harmonics
+//! c=long-dark i=vibrato o=note:3
+19 long progressive
+//! c=long-dark i=sul-pont o=note:4
+18 long sul pont
+//! c=short i=staccato o=note:5
+40 staccato
+//! c=short i=spiccato o=note:6
+42 spiccato
+//! c=short-light i=pizz o=note:7
+56 pizzicato
+//! c=short-dark i=pizz-bartok o=note:8
+57 bartok pizz
+//! c=short-light i=col-legno o=note:9
+58 col legno
+//! c=short-light i=staccato-harmonics o=note:10
+61 short harmonics
+//! c=short-light i=spiccato-brushed-con-sord o=note:11
+62 brushed baroque
+//! c=short i=pizz-c o=note:12
+64 pizz undamped
+//! c=long-dark i=tremolo o=note:13
+11 tremolo
+//! c=long i=trill-maj2 o=note:14
+71 trill M2
+//! c=long i=trill-min2 o=note:15
+70 trill m2
