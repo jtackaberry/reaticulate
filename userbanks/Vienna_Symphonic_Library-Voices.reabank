@@ -1,0 +1,132 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/127
+//
+
+// ************
+// VIENNA CHOIR
+// ************
+//! g="VSL - VOICES" n="Vienna Choir"
+Bank 30 61 Vienna Choir
+
+//! c=legato-dark i=list g=2
+100 AA
+//! c=legato-dark i=list g=2
+101 UU
+
+//!spacer=1
+//! c=legato-dark i=phrase o=note:0%100/note:113%100/note:115%101
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0%100/note:114%100/note:116%101
+2 SPEED - Legato, Espressivo
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12%100/note:13%101/note:113
+3 Perf. Legato
+//! c=legato i=legato-vibrato o=note:1/note:12%100/note:13%101/note:114
+4 Perf. Legato, Espressivo
+//! c=legato i=legato-fast o=note:1/note:12%100/note:13%101/note:115
+5 Perf. Trill
+//! c=legato i=legato-fast o=note:1/note:12%100/note:13%101/note:116
+6 Perf. Trill, Espressivo
+//! c=legato i=legato-gliss o=note:1/note:12%100/note:13%101/note:117
+7 Perf. Gliss
+//! c=legato i=fx o=note:1/note:12/note:118
+8 Perf. Cluster
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:113
+10 Staccato - Vowel
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:114
+11 Staccato - P
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:115
+12 Staccato - R
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:116
+13 Staccato - S
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:117
+14 Staccato - T
+
+//!spacer=1
+//! c=long i=note-whole o=note:3/note:12%100/note:13%101/note:113
+15 Sustain
+//! c=long i=note-whole o=note:3/note:12%100/note:13%101/note:114
+16 Sustain, Espressivo
+//! c=long i=note-whole o=note:3/note:12/note:115
+17 Sustain, Cluster
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12%100/note:13%101/note:113
+20 Sfz
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:6/note:12%100/note:13%101/note:113
+30 Dyn - 2s
+//! c=long-dark i=crescendo o=note:6/note:12%100/note:13%101/note:114
+31 Dyn - 3s
+//! c=long-dark i=crescendo o=note:6/note:12%100/note:13%101/note:115
+32 Dyn - 4s
+
+
+//----------------------------------------------------------------------------
+// ************
+// VIENNA CHOIR
+// ************
+
+//! g="VSL - VOICES" n="Vienna Choir"
+Bank 30 62 Vienna Choir
+
+//! c=legato-dark i=list g=2
+100 AA
+//! c=legato-dark i=list g=2
+101 UU
+
+//!spacer=1
+//! c=legato-dark i=phrase o=note:0%100/note:113%100/note:115%101
+1 SPEED - Legato
+//! c=legato-dark i=phrase o=note:0%100/note:114%100/note:116%101
+2 SPEED - Legato, Espressivo
+
+//!spacer=1
+//! c=legato i=legato o=note:1/note:12%100/note:13%101/note:113
+3 Perf. Legato
+//! c=legato i=legato-vibrato o=note:1/note:12%100/note:13%101/note:114
+4 Perf. Legato, Espressivo
+//! c=legato i=legato-fast o=note:1/note:12%100/note:13%101/note:115
+5 Perf. Trill
+//! c=legato i=legato-fast o=note:1/note:12%100/note:13%101/note:116
+6 Perf. Trill, Espressivo
+//! c=legato i=legato-gliss o=note:1/note:12%100/note:13%101/note:117
+7 Perf. Gliss
+//! c=legato i=fx o=note:1/note:12/note:118
+8 Perf. Cluster
+
+//!spacer=1
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:113
+10 Staccato - Vowel
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:114
+11 Staccato - P
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:115
+12 Staccato - R
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:116
+13 Staccato - S
+//! c=short i=staccato o=note:2/note:12%100/note:13%101/note:117
+14 Staccato - T
+
+//!spacer=1
+//! c=long i=note-whole o=note:3/note:12%100/note:13%101/note:113
+15 Sustain
+//! c=long i=note-whole o=note:3/note:12%100/note:13%101/note:114
+16 Sustain, Espressivo
+//! c=long i=note-whole o=note:3/note:12/note:115
+17 Sustain, Cluster
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:5/note:12%100/note:13%101/note:113
+20 Sfz
+
+//!spacer=1
+//! c=long-dark i=crescendo o=note:6/note:12%100/note:13%101/note:113
+30 Dyn - 2s
+//! c=long-dark i=crescendo o=note:6/note:12%100/note:13%101/note:114
+31 Dyn - 3s
+//! c=long-dark i=crescendo o=note:6/note:12%100/note:13%101/note:115
+32 Dyn - 4s

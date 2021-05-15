@@ -1,0 +1,301 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/127
+//
+// ****************
+// GANYMEDE (CHOIR)
+// ****************
+
+//! g="VSL - SYNCHRON/Big Bang Orchestra" n="Ganymede (Choir)"
+Bank 30 56 Ganymede (Choir)
+
+//! c=short i=staccato o=note:96
+1 Short
+//! c=long i=note-whole o=note:97
+2 Sustain
+//! c=long-dark i=vibrato o=note:98
+3 Espressivo
+//! c=legato i=legato o=note:99
+4 Legato
+//! c=long-light i=crescendo o=note:100
+5 Soft Swell
+//! c=textured i=sfz o=note:101
+6 Sforzato
+//! c=long-light i=crescendo o=note:102
+7 Swell, Short
+//! c=long-light i=crescendo o=note:103
+8 Swell, Long
+
+
+//----------------------------------------------------------------------------
+// ********************
+// HERCULES (LOW BRASS)
+// ********************
+
+//! g="VSL - SYNCHRON/Big Bang Orchestra" n="Hercules (Low Brass)"
+Bank 30 57 Hercules (Low Brass)
+
+//! c=textured i=list g=2 o=note:24
+100 w/o CB Tuba
+//! c=textured i=list g=2 o=note:26
+101 with CB Tuba
+
+//!spacer=1
+//! c=short i=staccato o=note:72/note:84
+1 Short, Bold
+//! c=short i=spiccato o=note:72/note:85
+2 Short, Agile
+
+//!spacer=1
+//! c=long i=note-whole o=note:73/note:84
+10 Long, Sustain
+//! c=long i=note-whole o=note:73/note:85
+11 Long, Soft
+//! c=long i=marcato o=note:73/note:86
+12 Long, Marcato
+//! c=long i=vibrato o=note:73/note:87
+13 Long, Espressivo
+
+//!spacer=1
+//! c=legato i=legato o=note:74/note:84/note:23
+20 Legato, Regular
+//! c=legato i=legato o=note:74/note:84/note:21
+21 Legato, Regular (FFF Layer)
+//! c=legato i=legato o=note:74/note:85
+22 Legato, Soft
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+30 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+31 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86
+32 Swell, Short
+//! c=#938C0B i=crescendo o=note:75/note:87
+33 Swell, Long
+//! c=#938C0B i=crescendo o=note:75/note:88
+34 Swell, Soft
+//! c=#938C0B i=crescendo o=note:75/note:89
+35 Swell, Very Soft
+//! c=#938C0B i=decrescendo o=note:75/note:90
+36 Diminuendo, Soft
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:76/note:84
+40 Fluttertongue
+//! c=legato-light i=trill o=note:76/note:85
+41 Trill (Half-Tone)
+//! c=legato-light i=trill o=note:76/note:86
+42 Trill (Whole-Tone)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:77/note:84
+50 Fast Rep, 120bpm
+//! c=#E1491C i=riccochet o=note:77/note:85
+51 Fast Rep, 140bpm
+//! c=#E1491C i=riccochet o=note:77/note:86
+52 Fast Rep, 160bpm
+
+//!spacer=1
+//! c=fx i=legato-gliss o=note:78/note:84
+60 Glissando, m2
+//! c=fx i=legato-gliss o=note:78/note:85
+61 Glissando, M2
+//! c=fx i=legato-gliss o=note:78/note:86
+61 Glissando, P4
+
+
+//----------------------------------------------------------------------------
+// *************************
+// IZAR (LOW BRASS CLUSTERS)
+// *************************
+
+//! g="VSL - SYNCHRON/Big Bang Orchestra" n="Izar (Low Brass Clusters)"
+Bank 30 58 Izar (Low Brass Clusters)
+
+//!spacer=1
+//! c=short i=staccato o=note:72/note:84
+1 Short, Bold
+//! c=short i=spiccato o=note:72/note:85
+2 Short, Agile
+
+//!spacer=1
+//! c=long i=note-whole o=note:73/note:84/note:23
+10 Long, Sustain
+//! c=long i=note-whole o=note:73/note:84/note:21
+11 Long, Sustain (FFF Layer)
+//! c=long i=note-whole o=note:73/note:85
+12 Long, Soft
+//! c=long i=marcato o=note:73/note:86
+13 Long, Marcato
+//! c=long i=vibrato o=note:73/note:87
+14 Long, Espressivo
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+30 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+31 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86
+32 Swell, Short
+//! c=#938C0B i=crescendo o=note:75/note:87
+33 Swell, Long
+//! c=#938C0B i=crescendo o=note:75/note:88
+34 Swell, Soft
+//! c=#938C0B i=crescendo o=note:75/note:89
+35 Swell, Very Soft
+//! c=#938C0B i=decrescendo o=note:75/note:90
+36 Diminuendo, Soft
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:76/note:84
+40 Fluttertongue
+//! c=legato-light i=trill o=note:76/note:85
+41 Trill (Half-Tone)
+//! c=legato-light i=trill o=note:76/note:86
+42 Trill (Whole-Tone)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:77/note:84
+50 Fast Rep, 120bpm
+//! c=#E1491C i=riccochet o=note:77/note:85
+51 Fast Rep, 140bpm
+//! c=#E1491C i=riccochet o=note:77/note:86
+52 Fast Rep, 160bpm
+
+//!spacer=1
+//! c=fx i=legato-gliss o=note:78/note:84
+60 Glissando, m2
+//! c=fx i=legato-gliss o=note:78/note:85
+61 Glissando, M2
+
+
+//----------------------------------------------------------------------------
+// ***************
+// JUPITER (HORNS)
+// ***************
+
+//! g="VSL - SYNCHRON/Big Bang Orchestra" n="Jupiter (Horns)"
+Bank 30 59 Jupiter (Horns)
+
+//! c=short i=staccato o=note:24/note:84
+1 Short, Bold
+//! c=short i=spiccato o=note:24/note:85
+2 Short, Agile
+
+//!spacer=1
+//! c=long i=note-whole o=note:25/note:84
+10 Long, Sustain
+//! c=long i=note-whole o=note:25/note:85
+11 Long, Soft
+//! c=long i=marcato o=note:25/note:86
+12 Long, Marcato
+//! c=long i=vibrato o=note:25/note:87
+13 Long, Espressivo
+
+//!spacer=1
+//! c=legato i=legato o=note:26/note:84
+20 Legato, Regular
+//! c=legato i=legato o=note:26/note:85
+21 Legato, Soft
+//! c=legato i=legato o=note:26/note:86
+22 Legato, Marcato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:27/note:84
+30 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:85
+31 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:86
+32 Swell, Short
+//! c=#938C0B i=crescendo o=note:27/note:87
+33 Swell, Long
+//! c=#938C0B i=crescendo o=note:27/note:88
+34 Swell, Soft
+//! c=#938C0B i=crescendo o=note:27/note:89
+35 Swell, Very Soft
+//! c=#938C0B i=decrescendo o=note:27/note:90
+36 Diminuendo, Soft
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:28/note:84
+40 Fluttertongue
+//! c=legato-light i=trill o=note:28/note:85
+41 Trill (Half-Tone)
+//! c=legato-light i=trill o=note:28/note:86
+42 Trill (Whole-Tone)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:84
+50 Fast Rep, 120bpm
+//! c=#E1491C i=riccochet o=note:29/note:85
+51 Fast Rep, 140bpm
+//! c=#E1491C i=riccochet o=note:29/note:86
+52 Fast Rep, 160bpm
+
+//!spacer=1
+//! c=fx i=legato-gliss o=note:30/note:84
+60 Rips
+
+
+//----------------------------------------------------------------------------
+// *********************
+// KOPERNIKUS (TRUMPETS)
+// *********************
+
+//! g="VSL - SYNCHRON/Big Bang Orchestra" n="Kopernikus (Trumpets)"
+Bank 30 60 Kopernikus (Trumpets)
+
+//! c=short i=staccato o=note:24/note:36
+1 Short, Bold
+//! c=short i=spiccato o=note:24/note:37
+2 Short, Agile
+
+//!spacer=1
+//! c=long i=note-whole o=note:25/note:36
+10 Long, Sustain
+//! c=long i=note-whole o=note:25/note:37
+11 Long, Soft
+//! c=long i=marcato o=note:25/note:38
+12 Long, Marcato
+//! c=long i=vibrato o=note:25/note:39
+13 Long, Espressivo
+
+//!spacer=1
+//! c=legato i=legato o=note:26/note:36
+20 Legato, Regular
+//! c=legato i=legato o=note:26/note:37
+21 Legato, Soft
+//! c=legato i=legato o=note:26/note:38
+22 Legato, Marcato
+
+//!spacer=1
+//! c=#938C0B i=sfz o=note:27/note:36
+30 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+31 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:38
+32 Swell, Short
+//! c=#938C0B i=crescendo o=note:27/note:39
+33 Swell, Long
+//! c=#938C0B i=crescendo o=note:27/note:40
+34 Swell, Soft
+//! c=#938C0B i=crescendo o=note:27/note:41
+35 Swell, Very Soft
+//! c=#938C0B i=decrescendo o=note:27/note:42
+36 Diminuendo, Soft
+
+//!spacer=1
+//! c=legato-light i=tremolo-measured o=note:28/note:36
+40 Fluttertongue
+//! c=legato-light i=trill o=note:28/note:37
+41 Trill (Half-Tone)
+//! c=legato-light i=trill o=note:28/note:38
+42 Trill (Whole-Tone)
+
+//!spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:36
+50 Fast Rep, 120bpm
+//! c=#E1491C i=riccochet o=note:29/note:37
+51 Fast Rep, 140bpm
+//! c=#E1491C i=riccochet o=note:29/note:38
+52 Fast Rep, 160bpm
