@@ -6,492 +6,479 @@
 //! g="Spitfire/London Contemporary Orchestra Strings/Main" n="a-Violins and b-Violas"
 //! m="Set patch to UACC. Use this for both Violins and Violas in main subfolder."
 Bank 30 72 SSB - a-Violins and b-Violas
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! c=Long Sul Tasto i=Long Sul Tasto o=cc:32,17
+//! c=default i=note-quarter o=cc:32,17
 17 Long Sul Tasto
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Slackened Soft/Cresc i=Slackened Soft/Cresc o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Slackened Soft/Cresc
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slackened Crescendo
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! c=Granular Trem i=Granular Trem o=cc:32,105
+//! c=default i=note-quarter o=cc:32,105
 105 Granular Trem
-//! c=Trem Sul Pont i=Trem Sul Pont o=cc:32,13
+//! c=default i=note-quarter o=cc:32,13
 13 Trem Sul Pont
 
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Main" n="c-Celli and d-Basses + Celli"
 //! m="Set patch to UACC. Use for both Celli and Basses in main subfolder. Slackened range C2-C3"
 Bank 30 73 SSB - c-Celli and d-Basses + Celli
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Long Slackened i=Long Slackened o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Long Slackened
-//! c=Short Slackened i=Short Slackened o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Short Slackened
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//--------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="a-Violins and b-Violas-Long Tech"
 //! m="Set patch to UACC. Use this for both Violins and Violas in Extended subfolder."
 Bank 30 74 SSB - a-Violins and b-Violas-Long Techniques
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Long Sul Pont i=Long Sul Pont o=cc:32,18
+//! c=default i=note-quarter o=cc:32,18
 18 Long Sul Pont
-//! c=Long Sul Tasto i=Long Sul Tasto o=cc:32,17
+//! c=default i=note-quarter o=cc:32,17
 17 Long Sul Tasto
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! Granular to Normal i=Granular to Normal o=cc:32,95
+//! c=default i=note-quarter o=cc:32,95
 95 Granular to Normal
-//! Slow Wide Vib i=Slow Wide Vib o=cc:32,98
+//! c=default i=note-quarter o=cc:32,98
 98 Slow Wide Vib
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! Wide Vibrato Quick i=Wide Vibrato Quick o=cc:32,100
+//! c=default i=note-quarter o=cc:32,100
 100 Wide Vibrato Quick
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! c=Slackened Soft/Cresc i=Slackened Soft/Cresc o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Slackened Soft/Cresc
-//! c=Trem Sul Pont i=Trem Sul Pont o=cc:32,13
+//! c=default i=note-quarter o=cc:32,13
 13 Trem Sul Pont
-//! c=Granular Trem i=Granular Trem o=cc:32,105
+//! c=default i=note-quarter o=cc:32,105
 105 Granular Trem
-//--------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="a-Violins and b-Violas-Short Tech"
 //! m="Set patch to UACC. Use this for both Violins and Violas in Extended subfolder."
 Bank 30 75 SSB - a-Violins and b-Violas-Short Techniques
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Harm i=Short Harm o=cc:32,61
+//! c=default i=note-quarter o=cc:32,61
 61 Short Harm
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
 
-//!------------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="c-Celli/d-Basses + Celli-Long Tech"
 //! m="Set patch to UACC. Use this for both Celli and Basses in Extended subfolder."
 Bank 30 76 SSB - c-Celli and d-Basses+Celli-Long Techniques
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! Granular to Normal i=Granular to Normal o=cc:32,95
+//! c=default i=note-quarter o=cc:32,95
 95 Granular to Normal
-//! Slow Wide Vib i=Slow Wide Vib o=cc:32,98
+//! c=default i=note-quarter o=cc:32,98
 98 Slow Wide Vib
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! c=Long Slackened i=Long Slackened o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Long Slackened
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="c-Celli-Short Techniques"
 //! m="Set patch to UACC. This patch included Bridge Scrapes."
 Bank 30 77 SSB - c-Celli-Short Techniques
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Slackened i=Short Slackened o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Short Slackened
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
 
-//!------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="d-Basses + Celli-Short Techniques"
 //! m="Set patch to UACC"
 Bank 30 78 SSB - d-Basses+Celli-Short Techniques
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Slackened i=Short Slackened o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Short Slackened
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="a-Violins"
 //! m="Set patch to UACC"
 Bank 30 79 SSB - Advanced/Individual Articulations
-//! c=Granular Trem i=Granular Trem o=cc:32,105
+//! c=default i=note-quarter o=cc:32,105
 105 Granular Trem
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! Granular to Normal i=Granular to Normal o=cc:32,95
+//! c=default i=note-quarter o=cc:32,95
 95 Granular to Normal
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Slackened Soft/Cresc i=Slackened Soft/Cresc o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Slackened Soft/Cresc
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! c=Long Sul Pont i=Long Sul Pont o=cc:32,18
+//! c=default i=note-quarter o=cc:32,18
 18 Long Sul Pont
-//! c=Long Sul Tasto i=Long Sul Tasto o=cc:32,17
+//! c=default i=note-quarter o=cc:32,17
 17 Long Sul Tasto
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! Wide Vibrato Quick i=Wide Vibrato Quick o=cc:32,100
+//! c=default i=note-quarter o=cc:32,100
 100 Wide Vibrato Quick
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! c=Slow Wide Vib i=Slow Wide Vib o=cc:32,98
+//! c=default i=note-quarter o=cc:32,98
 98 Slow Wide Vib
-//! c=Short Harm i=Short Harm o=cc:32,61
+//! c=default i=note-quarter o=cc:32,61
 61 Short Harm
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Trem Sul Pont i=Trem Sul Pont o=cc:32,13
+//! c=default i=note-quarter o=cc:32,13
 13 Trem Sul Pont
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="b-Violas"
 //! m="Set patch to UACC"
 Bank 30 80 SSB - Advanced/Individual Articulations
-//! c=Granular Trem i=Granular Trem o=cc:32,105
+//! c=default i=note-quarter o=cc:32,105
 105 Granular Trem
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! Granular to Normal i=Granular to Normal o=cc:32,95
+//! c=default i=note-quarter o=cc:32,95
 95 Granular to Normal
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Slackened Soft/Cresc i=Slackened Soft/Cresc o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Slackened Soft/Cresc
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! c=Long Sul Pont i=Long Sul Pont o=cc:32,18
+//! c=default i=note-quarter o=cc:32,18
 18 Long Sul Pont
-//! c=Long Sul Tasto i=Long Sul Tasto o=cc:32,17
+//! c=default i=note-quarter o=cc:32,17
 17 Long Sul Tasto
-//! c=Long Tailpiece i=Long Tailpiece o=cc:32,106
+//! c=default i=note-quarter o=cc:32,106
 106 Long Tailpiece
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! Wide Vibrato Quick i=Wide Vibrato Quick o=cc:32,100
+//! c=default i=note-quarter o=cc:32,100
 100 Wide Vibrato Quick
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! c=Slow Wide Vib i=Slow Wide Vib o=cc:32,98
+//! c=default i=note-quarter o=cc:32,98
 98 Slow Wide Vib
-//! c=Short Harm i=Short Harm o=cc:32,61
+//! c=default i=note-quarter o=cc:32,61
 61 Short Harm
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Trem Sul Pont i=Trem Sul Pont o=cc:32,13
+//! c=default i=note-quarter o=cc:32,13
 13 Trem Sul Pont
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="c-Celli"
 //! m="Set patch to UACC"
 Bank 30 81 SSB - Advanced/Individual Articulations
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! Granular to Normal i=Granular to Normal o=cc:32,95
+//! c=default i=note-quarter o=cc:32,95
 95 Granular to Normal
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Long Slackened i=Long Slackened o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Long Slackened
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! c=Long Tailpiece i=Long Tailpiece o=cc:32,106
+//! c=default i=note-quarter o=cc:32,106
 106 Long Tailpiece
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! Slow Wide Vib i=Slow Wide Vib o=cc:32,98
+//! c=default i=note-quarter o=cc:32,98
 98 Slow Wide Vib
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Slackened i=Short Slackened o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Short Slackened
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="d-Basses + Celli"
 //! m="Set patch to UACC"
 Bank 30 82 SSB - Advanced/Individual Articulations
-//! c=Open-Gran to Norm i=Open-Gran to Norm o=cc:32,92
+//! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
-//! c=Open-Granular Trem i=Open-Granular Trem o=cc:32,91
+//! c=default i=note-quarter o=cc:32,91
 91 Open-Granular Trem
-//! c=Open-Irregular Trem i=Open-Irregular Trem o=cc:32,93
+//! c=default i=note-quarter o=cc:32,93
 93 Open-Irregular Trem
-//! c=Open-Normale i=Open-Normale o=cc:32,94
+//! c=default i=note-quarter o=cc:32,94
 94 Open-Normale
-//! Granular to Normal i=Granular to Normal o=cc:32,95
+//! c=default i=note-quarter o=cc:32,95
 95 Granular to Normal
-//! c=Long Harmonics i=Long Harmonics o=cc:32,10
+//! c=default i=note-quarter o=cc:32,10
 10 Long Harmonics
-//! c=Long Super Pont i=Long Super Pont o=cc:32,96
+//! c=default i=note-quarter o=cc:32,96
 96 Long Super Pont
-//! c=Long Slackened i=Long Slackened o=cc:32,97
+//! c=default i=note-quarter o=cc:32,97
 97 Long Slackened
-//! c=Spectral Scrubs i=Spectral Scrubs o=cc:32,90
+//! c=default i=note-quarter o=cc:32,90
 90 Spectral Scrubs
-//! c=Twitchy i=Twitchy o=cc:32,101
+//! c=default i=note-quarter o=cc:32,101
 101 Twitchy
-//! c=Woozy Vib i=Woozy Vib o=cc:32,99
+//! c=default i=note-quarter o=cc:32,99
 99 Woozy Vib
-//! Slow Wide Vib i=Slow Wide Vib o=cc:32,98
+//! c=default i=note-quarter o=cc:32,98
 98 Slow Wide Vib
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Slackened i=Short Slackened o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Short Slackened
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 
-//!------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="a-Violins-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
 Bank 30 83 SSB - a-Violins-Light resources
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="a-Violins-Time Machine"
 //! m="Set patch to UACC"
 Bank 30 84 SSB - a-Violins-Time Machine
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Harm i=Short Harm o=cc:32,61
+//! c=default i=note-quarter o=cc:32,61
 61 Short Harm
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="b-Violas-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
 Bank 30 85 SSB - b-Violas-Light resources
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="b-Violas-Time Machine"
 //! m="Set patch to UACC"
 Bank 30 86 SSB - b-Violas-Time Machine
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Staccato Dig i=Staccato Dig o=cc:32,49
+//! c=default i=note-quarter o=cc:32,49
 49 Staccato Dig
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Short Harm i=Short Harm o=cc:32,61
+//! c=default i=note-quarter o=cc:32,61
 61 Short Harm
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="c-Celli-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
 Bank 30 87 SSB - c-Celli-Light resources
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="c-Celli-Time Machine"
 //! m="Set patch to UACC"
 Bank 30 88 SSB - c-Celli-Time M
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
-//! c=Bridge Scrapes i=Bridge Scrapes o=cc:32,102
+//! c=default i=note-quarter o=cc:32,102
 102 Bridge Scrapes
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="d-B+C-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
 Bank 30 89 SSB - d-B+C-Light resources
-//! c=Vivid Long i=Vivid Long o=cc:32,1
+//! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
 
-//!------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="d-B+C-Time Machine"
 //! m="Set patch to UACC"
 Bank 30 90 SSB - d-B+C-Time Machine
-//! c=Vivid Spiccato i=Vivid Spiccato o=cc:32,42
+//! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
-//! c=Percussive Pizzicato i=Percussive Pizzicato o=cc:32,103
+//! c=default i=note-quarter o=cc:32,103
 103 Percussive Pizzicato
-//! c=Slack Crescendo i=Slack Crescendo o=cc:32,104
+//! c=default i=note-quarter o=cc:32,104
 104 Slack Crescendo
