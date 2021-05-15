@@ -2,7 +2,7 @@
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Woodwinds" n="Woodwinds Play"
-Bank 1 1 Woodwinds Play
+Bank 29 15 Woodwinds Play
 
 //! c=legato i=legato o=cc:68,127
 126 legato on
@@ -42,7 +42,7 @@ Bank 1 1 Woodwinds Play
 
 
 //! g="XSample/Woodwinds" n="Woodwinds Score"
-Bank 04 1 Woodwinds Score
+Bank 29 16 Woodwinds Score
 //! c=legato i=legato o=cc:68,127
 126 legato on
 //! c=legato i=legato o=cc:68,1

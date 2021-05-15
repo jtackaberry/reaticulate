@@ -8,7 +8,7 @@
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Trumpet Solo Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 51 01 Trumpet Solo Articulations
+Bank 21 105 01 Trumpet Solo Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -20,7 +20,7 @@ Bank 20 51 01 Trumpet Solo Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Trumpets Ensemble Muted Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 52 03 Trumpets Ensemble Muted Articulations
+Bank 21 106 03 Trumpets Ensemble Muted Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -32,7 +32,7 @@ Bank 20 52 03 Trumpets Ensemble Muted Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Trumpets Ensemble Harmon Mute Art."
 //! m="Set Patch to Custom: Sustain Latch F0, Short 1/4 Latch C0"
-Bank 20 53 04 Trumpets Ensemble Harmon Mute Articulations
+Bank 21 107 04 Trumpets Ensemble Harmon Mute Articulations
 //! c=long i=note-whole o=note:29
 1 sustain
 //! c=short i=note-quarter o=note:24
@@ -40,7 +40,7 @@ Bank 20 53 04 Trumpets Ensemble Harmon Mute Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Horn Solo Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 55 05 Horn Solo Articulations
+Bank 21 108 05 Horn Solo Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -52,7 +52,7 @@ Bank 20 55 05 Horn Solo Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Horns Ensemble Stopped and Fluttered"
 //! m="Set Patch to Custom: Legato Latch F2, Short 1/8 Latch C2"
-Bank 20 57 Horns Ensemble Stopped and Fluttered
+Bank 21 109 Horns Ensemble Stopped and Fluttered
 //! c=long i=note-whole o=note:5
 1 sustain
 //! c=short i=note-eighth o=note:0
@@ -60,7 +60,7 @@ Bank 20 57 Horns Ensemble Stopped and Fluttered
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Trombone Solo Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 64 14 Trombone Solo Articulations
+Bank 21 110 14 Trombone Solo Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -72,7 +72,7 @@ Bank 20 64 14 Trombone Solo Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Trombones Ensemble Muted Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 65 16 Trombones Ensemble Muted Articulations
+Bank 21 111 16 Trombones Ensemble Muted Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -84,7 +84,7 @@ Bank 20 65 16 Trombones Ensemble Muted Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Tuba Solo Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 69 Tuba Solo Articulations
+Bank 21 112 Tuba Solo Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -96,7 +96,7 @@ Bank 20 69 Tuba Solo Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Monster Low Brass Art."
 //! m="Set Patch to Custom: Sustain Latch F4, Short 1/8 Latch C4"
-Bank 20 76 Monster Low Brass Articulations
+Bank 21 113 Monster Low Brass Articulations
 //! c=long i=note-whole o=note:77
 1 sustain
 //! c=short i=note-eighth o=note:72
@@ -104,7 +104,7 @@ Bank 20 76 Monster Low Brass Articulations
 
 //! g="Cinesamples/Cinebrass Pro" n="CBP Horns Ensemble fff Sustains and Shorts"
 //! m="Set Patch to Custom: Legato Latch F0, Short 1/8 Latch C0"
-Bank 20 80 Horns Ensemble fff Sustains and Shorts
+Bank 21 114 Horns Ensemble fff Sustains and Shorts
 //! c=long i=note-whole o=note:5
 1 sustain
 //! c=short i=note-eighth o=note:0

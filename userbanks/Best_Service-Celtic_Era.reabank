@@ -3,7 +3,7 @@
 //
 
 //! g="Best Service/Celtic Era/Winds" n="Irish Flute" off=0
-Bank 41 40 Irish Flute
+Bank 20 61 Irish Flute
 //! i=legato c=long
 0 Legato
 //! i=default o=note-hold:37
@@ -38,7 +38,7 @@ Bank 41 40 Irish Flute
 51 Overblown
 
 //! g="Best Service/Celtic Era/Winds" n="Whistles" off=0
-Bank 41 41 Irish Whistle / Low Whistle
+Bank 20 62 Irish Whistle / Low Whistle
 //! i=legato c=long
 0 Legato
 //! i=default o=note-hold:37
@@ -71,7 +71,7 @@ Bank 41 41 Irish Whistle / Low Whistle
 50 Long Staccato
 
 //! g="Best Service/Celtic Era/Winds" n="Highland Pipes" off=0
-Bank 41 42 Highland Pipes
+Bank 20 63 Highland Pipes
 //! i=legato c=long
 0 Legato
 //! i=default o=note-hold:37
@@ -96,7 +96,7 @@ Bank 41 42 Highland Pipes
 46 Lamluath
 
 //! g="Best Service/Celtic Era/Winds" n="Uilleann Pipes" off=0
-Bank 41 43 Uilleann Pipes
+Bank 20 64 Uilleann Pipes
 //! i=legato c=long
 0 Legato
 //! i=default o=note-hold:37
@@ -129,7 +129,7 @@ Bank 41 43 Uilleann Pipes
 50 Popping
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Fiddle" off=0
-Bank 41 44 Irish Fiddle
+Bank 20 65 Irish Fiddle
 //! i=legato c=long
 0 Finger Legato
 //! i=default o=note-hold:37
@@ -156,7 +156,7 @@ Bank 41 44 Irish Fiddle
 47 Marcato
 
 //! g="Best Service/Celtic Era/Strings" n="Acoustic Guitar" off=0
-Bank 41 45 Acoustic Guitar
+Bank 20 66 Acoustic Guitar
 //! i=legato c=long
 0 Sustain
 //! i=default o=note-hold:37
@@ -175,7 +175,7 @@ Bank 41 45 Acoustic Guitar
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Bouzouki" off=0
-Bank 41 46 Irish Bouzouki
+Bank 20 67 Irish Bouzouki
 //! i=legato c=long
 0 Sustain
 //! i=default o=note-hold:37
@@ -194,7 +194,7 @@ Bank 41 46 Irish Bouzouki
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Tenor Banjo" off=0
-Bank 41 47 Tenor Banjo
+Bank 20 68 Tenor Banjo
 //! i=legato c=long
 0 Sustain Poly
 //! i=default o=note-hold:37
@@ -207,7 +207,7 @@ Bank 41 47 Tenor Banjo
 40 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Strummed" off=0
-Bank 41 48 Strummed Guitar / Bouzouki
+Bank 20 69 Strummed Guitar / Bouzouki
 //! i=default o=note:36
 36 C Root
 //! i=default o=note:37
@@ -245,7 +245,7 @@ Bank 41 48 Strummed Guitar / Bouzouki
 53 7th Chords
 
 //! g="Best Service/Celtic Era/Ancient" n="Carnyx" off=0
-Bank 41 49 Carnyx
+Bank 20 70 Carnyx
 //! i=legato c=long
 0 Sustain Poly
 //! i=default o=note-hold:37
@@ -276,7 +276,7 @@ Bank 41 49 Carnyx
 49 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="Cornu" off=0
-Bank 41 50 Cornu
+Bank 20 71 Cornu
 //! i=legato c=long
 0 Sustain Poly
 //! i=default o=note-hold:37
@@ -301,7 +301,7 @@ Bank 41 50 Cornu
 46 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="War Horn" off=0
-Bank 41 51 War Horn
+Bank 20 72 War Horn
 //! i=legato c=long
 0 Sustain Poly
 //! i=default o=note-hold:37

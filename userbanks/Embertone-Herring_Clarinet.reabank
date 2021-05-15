@@ -6,7 +6,7 @@
 //! chase=1,15,96
 //! m="Velocity less than 13 is portamento. Velocity at 127 is ornament"
 
-Bank 3 1 Embertone Herring Clarinet
+Bank 23 4 Embertone Herring Clarinet
 
 //! c=legato i=legato o=note:36/note:41
 20 Legato

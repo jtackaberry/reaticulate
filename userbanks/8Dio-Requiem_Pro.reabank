@@ -3,7 +3,7 @@
 //
 
 //! g="8Dio/Requiem Professional" n="Choral FX"
-Bank 12 1 8Dio Requiem Pro Choral FX
+Bank 20 17 8Dio Requiem Pro Choral FX
 //! c=fx i=fx o=note:24
 24 Body Perc
 //! c=fx i=fx o=note:25
@@ -30,7 +30,7 @@ Bank 12 1 8Dio Requiem Pro Choral FX
 37 Female Sweep
 
 //! g="8Dio/Requiem Professional" n="Looped Marcato"
-Bank 12 2 8Dio Requiem Pro Looped Marcato
+Bank 20 18 8Dio Requiem Pro Looped Marcato
 //! c=fx i=fx o=note:21
 21 Ag
 //! c=fx i=fx o=note:22
@@ -65,7 +65,7 @@ Bank 12 2 8Dio Requiem Pro Looped Marcato
 36 Tus
 
 //! g="8Dio/Requiem Professional" n="Marcato"
-Bank 12 3 8Dio Requiem Pro Looped Marcato
+Bank 20 19 8Dio Requiem Pro Looped Marcato
 //! c=fx i=fx o=note:21
 21 Ag
 //! c=fx i=fx o=note:22
@@ -100,7 +100,7 @@ Bank 12 3 8Dio Requiem Pro Looped Marcato
 36 Tus
 
 //! g="8Dio/Requiem Professional" n="Poly Solo Baritone"
-Bank 12 4 8Dio Requiem Pro Poly Solo Baritone
+Bank 20 20 8Dio Requiem Pro Poly Solo Baritone
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -139,7 +139,7 @@ Bank 12 4 8Dio Requiem Pro Poly Solo Baritone
 96 Secun XF
 
 //! g="8Dio/Requiem Professional" n="Poly Solo Bass"
-Bank 12 5 8Dio Requiem Pro Poly Solo Bass
+Bank 20 21 8Dio Requiem Pro Poly Solo Bass
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -190,7 +190,7 @@ Bank 12 5 8Dio Requiem Pro Poly Solo Bass
 99 Origin XF
 
 //! g="8Dio/Requiem Professional" n="Poly Solo Soprano 1"
-Bank 12 6 8Dio Requiem Pro Poly Solo Soprano 1
+Bank 20 22 8Dio Requiem Pro Poly Solo Soprano 1
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -233,7 +233,7 @@ Bank 12 6 8Dio Requiem Pro Poly Solo Soprano 1
 97 Spiri XF
 
 //! g="8Dio/Requiem Professional" n="Poly Solo Soprano 2"
-Bank 12 7 8Dio Requiem Pro Poly Solo Soprano 2
+Bank 20 23 8Dio Requiem Pro Poly Solo Soprano 2
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -280,7 +280,7 @@ Bank 12 7 8Dio Requiem Pro Poly Solo Soprano 2
 98 Origin XF
 
 //! g="8Dio/Requiem Professional" n="Poly Solo Tenor"
-Bank 12 8 8Dio Requiem Pro Poly Solo Tenor
+Bank 20 24 8Dio Requiem Pro Poly Solo Tenor
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -323,7 +323,7 @@ Bank 12 8 8Dio Requiem Pro Poly Solo Tenor
 97 Spiri XF
 
 //! g="8Dio/Requiem Professional" n="Poly Sustain Fast"
-Bank 12 9 8Dio Requiem Pro Poly Sustain Fast
+Bank 20 25 8Dio Requiem Pro Poly Sustain Fast
 //! c=fx i=fx o=note:16
 16 Adora
 //! c=fx i=fx o=note:17
@@ -406,7 +406,7 @@ Bank 12 9 8Dio Requiem Pro Poly Sustain Fast
 107 Apoc XF
 
 //! g="8Dio/Requiem Professional" n="Poly Sustain Men Slow"
-Bank 12 10 8Dio Requiem Pro Poly Sustain Men Slow
+Bank 20 26 8Dio Requiem Pro Poly Sustain Men Slow
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -457,7 +457,7 @@ Bank 12 10 8Dio Requiem Pro Poly Sustain Men Slow
 99 Script XF
 
 //! g="8Dio/Requiem Professional" n="Poly Sustain Women Slow"
-Bank 12 11 8Dio Requiem Pro Poly Sustain Women Slow
+Bank 20 27 8Dio Requiem Pro Poly Sustain Women Slow
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -508,7 +508,7 @@ Bank 12 11 8Dio Requiem Pro Poly Sustain Women Slow
 99 Script XF
 
 //! g="8Dio/Requiem Professional" n="Staccato"
-Bank 12 12 8Dio Requiem Pro Staccato
+Bank 20 28 8Dio Requiem Pro Staccato
 //! c=fx i=fx o=note:21
 21 Ag
 //! c=fx i=fx o=note:22
@@ -549,7 +549,7 @@ Bank 12 12 8Dio Requiem Pro Staccato
 39 Tus
 
 //! g="8Dio/Requiem Professional" n="Staccato FX"
-Bank 12 13 8Dio Requiem Pro Staccato
+Bank 20 29 8Dio Requiem Pro Staccato
 //! c=fx i=fx o=note:24
 24 La
 //! c=fx i=fx o=note:25
@@ -558,7 +558,7 @@ Bank 12 13 8Dio Requiem Pro Staccato
 26 La Cluster
 
 //! g="8Dio/Requiem Professional" n="Vowel Sustain Men"
-Bank 12 14 8Dio Requiem Pro Vowel Sustain Men
+Bank 20 30 8Dio Requiem Pro Vowel Sustain Men
 //! c=fx i=fx o=note:21
 21 Ooh 1
 //! c=fx i=fx o=note:22
@@ -593,7 +593,7 @@ Bank 12 14 8Dio Requiem Pro Vowel Sustain Men
 36 Mm
 
 //! g="8Dio/Requiem Professional" n="Vowel Sustain Women"
-Bank 12 15 8Dio Requiem Pro Vowel Sustain Women
+Bank 20 31 8Dio Requiem Pro Vowel Sustain Women
 //! c=fx i=fx o=note:21
 21 Ooh 1
 //! c=fx i=fx o=note:22
@@ -624,7 +624,7 @@ Bank 12 15 8Dio Requiem Pro Vowel Sustain Women
 34 Ih
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Solo Baritone LITE"
-Bank 12 16 8Dio Requiem Pro Poly Solo Baritone LITE
+Bank 20 32 8Dio Requiem Pro Poly Solo Baritone LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -663,7 +663,7 @@ Bank 12 16 8Dio Requiem Pro Poly Solo Baritone LITE
 96 Secun XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Solo Bass LITE"
-Bank 12 17 8Dio Requiem Pro Poly Solo Bass LITE
+Bank 20 33 8Dio Requiem Pro Poly Solo Bass LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -714,7 +714,7 @@ Bank 12 17 8Dio Requiem Pro Poly Solo Bass LITE
 99 Origin XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Solo Soprano 1 LITE"
-Bank 12 18 8Dio Requiem Pro Poly Solo Soprano 1 LITE
+Bank 20 34 8Dio Requiem Pro Poly Solo Soprano 1 LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -757,7 +757,7 @@ Bank 12 18 8Dio Requiem Pro Poly Solo Soprano 1 LITE
 97 Spiri XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Solo Soprano 2 LITE"
-Bank 12 19 8Dio Requiem Pro Poly Solo Soprano 2 LITE
+Bank 20 35 8Dio Requiem Pro Poly Solo Soprano 2 LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -804,7 +804,7 @@ Bank 12 19 8Dio Requiem Pro Poly Solo Soprano 2 LITE
 98 Origin XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Solo Tenor LITE"
-Bank 12 20 8Dio Requiem Pro Poly Solo Tenor LITE
+Bank 20 36 8Dio Requiem Pro Poly Solo Tenor LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -847,7 +847,7 @@ Bank 12 20 8Dio Requiem Pro Poly Solo Tenor LITE
 97 Spiri XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Sustain Fast LITE"
-Bank 12 21 8Dio Requiem Pro Poly Sustain Fast LITE
+Bank 20 37 8Dio Requiem Pro Poly Sustain Fast LITE
 //! c=fx i=fx o=note:16
 16 Adora
 //! c=fx i=fx o=note:17
@@ -930,7 +930,7 @@ Bank 12 21 8Dio Requiem Pro Poly Sustain Fast LITE
 107 Apoc XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Sustain Men Slow LITE"
-Bank 12 22 8Dio Requiem Pro Poly Sustain Men Slow LITE
+Bank 20 38 8Dio Requiem Pro Poly Sustain Men Slow LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25
@@ -981,7 +981,7 @@ Bank 12 22 8Dio Requiem Pro Poly Sustain Men Slow LITE
 99 Script XF
 
 //! g="8Dio/Requiem Professional/LITE" n="Poly Sustain Women Slow LITE"
-Bank 12 23 8Dio Requiem Pro Poly Sustain Women Slow LITE
+Bank 20 39 8Dio Requiem Pro Poly Sustain Women Slow LITE
 //! c=fx i=fx o=note:24
 24 Adora
 //! c=fx i=fx o=note:25

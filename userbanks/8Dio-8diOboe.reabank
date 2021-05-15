@@ -3,7 +3,7 @@
 //
 
 //! g="8Dio" n="8diOboe"
-Bank 11 109 8Dio 8diOboe
+Bank 20 1 8Dio 8diOboe
 //! c=long i=note-whole o=note:24
 24 Sustain
 //! c=short i=marcato o=note:25

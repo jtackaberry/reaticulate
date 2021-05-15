@@ -3,7 +3,7 @@
 //
 
 //! g="Chris Hein/Orchestral Winds/Vol. 3 Oboes" n="Oboe 1"
-Bank 11 93 Chris Hein Orchestral Winds Eb Clarinet
+Bank 21 92 Chris Hein Orchestral Winds Eb Clarinet
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -46,7 +46,7 @@ Bank 11 93 Chris Hein Orchestral Winds Eb Clarinet
 40 Sustain (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 3 Oboes" n="Oboe D'amore 2"
-Bank 11 94 Chris Hein Orchestral Winds Oboe D'amore 2
+Bank 21 93 Chris Hein Orchestral Winds Oboe D'amore 2
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -89,7 +89,7 @@ Bank 11 94 Chris Hein Orchestral Winds Oboe D'amore 2
 40 Sustain (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 3 Oboes" n="English Horn"
-Bank 11 95 Chris Hein Winds English Horn
+Bank 21 94 Chris Hein Winds English Horn
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22

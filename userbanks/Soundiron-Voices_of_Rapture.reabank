@@ -2,7 +2,7 @@
 // Source: G-Sun - https://forum.cockos.com/showpost.php?p=2026002&postcount=261
 //
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Sustains Vowels"
-Bank 31 1 VoR - Soprano - Sustains - Wovels
+Bank 26 5 VoR - Soprano - Sustains - Wovels
 //! c=long i=AaP o=cc:20,0
 20  Aa P
 //! c=long i=AF o=cc:20,6
@@ -33,7 +33,7 @@ Bank 31 1 VoR - Soprano - Sustains - Wovels
 
 //--------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Sustains Phrases"
-Bank 31 2 VoR - Soprano - Sustains - Phrases
+Bank 26 6 VoR - Soprano - Sustains - Phrases
 //! c=long i=Ab inito o=cc:20,66
 31  Ab inito
 //! c=long i=Aduramus_Te o=cc:20,72
@@ -67,7 +67,7 @@ Bank 31 2 VoR - Soprano - Sustains - Phrases
 
 //-------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano True legato"
-Bank 31 3 VoR - Soprano - True legato
+Bank 26 7 VoR - Soprano - True legato
 //! c=short-light i=True Legato Aa o=cc:20,1
 50 Aa
 //! c=short-light i=Oo o=cc:20,124
@@ -80,7 +80,7 @@ Bank 31 3 VoR - Soprano - True legato
 
 //-------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Staccato"
-Bank 31 4 VoR - Soprano - Staccato
+Bank 26 8 VoR - Soprano - Staccato
 //! c=short-light i=Aa o=cc:20,10
 60 Aa
 //! c=short i=Ee o=cc:20,32

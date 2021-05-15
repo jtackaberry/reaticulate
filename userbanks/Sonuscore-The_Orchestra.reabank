@@ -8,7 +8,7 @@
 
 //! g="Sonuscore/The Orchestra"
 //! n="First Violins"
-Bank 15 1 First Violins
+Bank 25 114 First Violins
 //! c=legato i=legato o=note:27
 20  legato
 //! c=short i=staccato o=note:24
@@ -29,26 +29,26 @@ Bank 15 1 First Violins
 //! g="Sonuscore/The Orchestra"
 //! n="Second Violins"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 15 2 Second Violins
+Bank 25 115 Second Violins
 
 //! g="Sonuscore/The Orchestra"
 //! n="Violas"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 15 3 Violas
+Bank 25 116 Violas
 
 //! g="Sonuscore/The Orchestra"
 //! n="Cellos"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 15 4 Cellos
+Bank 25 117 Cellos
 
 //! g="Sonuscore/The Orchestra"
 //! n="Basses"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 15 5 Basses
+Bank 25 118 Basses
 
 //! g="Sonuscore/The Orchestra"
 //! n="French Horns"
-Bank 15 6 French Horns
+Bank 25 119 French Horns
 //! c=legato i=legato o=note:27
 20  legato
 //! c=short i=staccato o=note:24
@@ -65,16 +65,16 @@ Bank 15 6 French Horns
 //! g="Sonuscore/The Orchestra"
 //! n="Trumpets"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 15 7 Trumpets
+Bank 25 120 Trumpets
 
 //! g="Sonuscore/The Orchestra"
 //! n="Trombones"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 15 8 Trombones
+Bank 25 121 Trombones
 
 //! g="Sonuscore/The Orchestra"
 //! n="Low Brass"
-Bank 15 9 Low Brass
+Bank 25 122 Low Brass
 //! c=short i=staccato o=note:24
 40 staccato
 //! c=long i=note-whole o=note:25
@@ -89,31 +89,31 @@ Bank 15 9 Low Brass
 //! g="Sonuscore/The Orchestra"
 //! n="Flutes"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 15 10 Flutes
+Bank 25 123 Flutes
 
 //! g="Sonuscore/The Orchestra"
 //! n="Clarinets"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 15 11 Clarinets
+Bank 25 124 Clarinets
 
 //! g="Sonuscore/The Orchestra"
 //! n="Oboes"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 15 12 Oboes
+Bank 25 125 Oboes
 
 //! g="Sonuscore/The Orchestra"
 //! n="Bassoons"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 15 13 Bassoons
+Bank 25 126 Bassoons
 
 //! g="Sonuscore/The Orchestra"
 //! n="Contrabassoon"
 //! clone="Sonuscore/The Orchestra/Low Brass"
-Bank 15 14 Contrabassoons
+Bank 25 127 Contrabassoons
 
 //! g="Sonuscore/The Orchestra"
 //! n="FemChoir Staccatos"
-Bank 15 15 FemChoir Staccatos
+Bank 26 1 FemChoir Staccatos
 //! c=short i=staccato o=note:24
 83  La
 //! c=short i=staccato o=note:25
@@ -139,7 +139,7 @@ Bank 15 15 FemChoir Staccatos
 
 //! g="Sonuscore/The Orchestra"
 //! n="FemChoir Sustains"
-Bank 15 16 FemChoir Sustains
+Bank 26 2 FemChoir Sustains
 //! c=long i=note-whole o=note:24
 83  Ah
 //! c=long i=note-whole o=note:25
@@ -148,10 +148,10 @@ Bank 15 16 FemChoir Sustains
 //! g="Sonuscore/The Orchestra"
 //! n="MenChoir Staccatos"
 //! clone="Sonuscore/The Orchestra/FemChoir Staccatos"
-Bank 15 17 MenChoir Staccatos
+Bank 26 3 MenChoir Staccatos
 
 //! g="Sonuscore/The Orchestra"
 //! n="MenChoir Sustains"
 //! clone="Sonuscore/The Orchestra/FemChoir Sustains"
-Bank 15 18 MenChoir Sustains
+Bank 26 4 MenChoir Sustains
 

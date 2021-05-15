@@ -7,7 +7,7 @@
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Trumpets Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 81 01 Trumpets Ensemble Articulations
+Bank 21 99 01 Trumpets Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -19,7 +19,7 @@ Bank 20 81 01 Trumpets Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Two Horns Ensemble Art."
 //! m="Set Patch to Custom: Legato Latch F0, Short 1/8 Latch C0"
-Bank 20 84 04 Two Horns Ensemble Articulations
+Bank 21 100 04 Two Horns Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -27,7 +27,7 @@ Bank 20 84 04 Two Horns Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Trombone Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 89 09 Trombone Ensemble Articulations
+Bank 21 101 09 Trombone Ensemble Articulations
 //! c=long i=note-whole o=note:29
 1 sustain
 //! c=short i=note-eighth o=note:24
@@ -39,7 +39,7 @@ Bank 20 89 09 Trombone Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Six Horns Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-Bank 20 86 06 Six Horns Ensemble Articulations
+Bank 21 102 06 Six Horns Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -51,7 +51,7 @@ Bank 20 86 06 Six Horns Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Tuba + Bass Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map, then set Sus=F4, 1/8=C4, 1/4=D4, 1/2=E4"
-Bank 20 90 10 Bass + Tuba Ensemble Articulations
+Bank 21 103 10 Bass + Tuba Ensemble Articulations
 //! c=long i=note-whole o=note:77
 1 sustain
 //! c=short i=note-eighth o=note:72
@@ -63,7 +63,7 @@ Bank 20 90 10 Bass + Tuba Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Cimbasso + Bass Trombone Art."
 //! m="Set Patch to Custom: Sustain Latch F4, Short 1/8 Latch C4"
-Bank 20 91 11 Cimbasso + Bass Trombone Articulations
+Bank 21 104 11 Cimbasso + Bass Trombone Articulations
 //! c=long i=note-whole o=note:77
 1 sustain
 //! c=short i=note-eighth o=note:72

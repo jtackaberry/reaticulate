@@ -3,7 +3,7 @@
 //
 //! g="Spitfire/Percussion/Pitched" n="Celeste Techinques"
 //! m="Make sure KS is on C0"
-Bank 1 4 SP - Celeste
+Bank 26 75 SP - Celeste
 //! c=long i=note-whole o=note:24
 24 normal
 //! c=long i=note-whole o=note:25
@@ -13,7 +13,7 @@ Bank 1 4 SP - Celeste
 
 //! g="Spitfire/Percussion/Pitched" n="Glockenspiel Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 10 SP - Glockenspiel
+Bank 26 76 SP - Glockenspiel
 //! c=long i=note-whole o=note:24
 24 normal
 //! c=long-light i=note-whole o=note:25
@@ -25,7 +25,7 @@ Bank 1 10 SP - Glockenspiel
 
 //! g="Spitfire/Percussion/Pitched" n="Marimba Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 11 SP - Marimba
+Bank 26 77 SP - Marimba
 //! c=long i=note-whole o=note:24
 24 normal
 //! c=long i=tremolo o=note:25
@@ -33,7 +33,7 @@ Bank 1 11 SP - Marimba
 
 //! g="Spitfire/Percussion/Pitched" n="Timpani Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 12 SP - Timpani
+Bank 26 78 SP - Timpani
 //! c=long i=note-whole o=note:24
 24 normal
 //! c=long-light i=note-whole o=note:25
@@ -49,7 +49,7 @@ Bank 1 12 SP - Timpani
 
 //! g="Spitfire/Percussion/Pitched" n="Tubular Bells Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 13 SP - Tubular Bells
+Bank 26 79 SP - Tubular Bells
 //! c=long i=note-whole o=note:24
 24 normal
 //! c=long-light i=note-whole o=note:25
@@ -57,7 +57,7 @@ Bank 1 13 SP - Tubular Bells
 
 //! g="Spitfire/Percussion/Pitched" n="Vibraphone Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 14 SP - Vibraphone
+Bank 26 80 SP - Vibraphone
 //! c=long i=note-whole o=note:24
 24 normal
 //! c=long i=vibrato o=note:25
@@ -67,7 +67,7 @@ Bank 1 14 SP - Vibraphone
 
 //! g="Spitfire/Percussion/Non-Pitched/Drums" n="Snare Position"
 //! m="Make sure KS is on C0"
-Bank 1 15 SP - Snares & Field Drm
+Bank 26 81 SP - Snares & Field Drm
 //! c=textured i=note-whole o=note:24
 24 snare on
 //! c=textured i=note-whole o=note:25
@@ -75,7 +75,7 @@ Bank 1 15 SP - Snares & Field Drm
 
 //! g="Spitfire/Percussion/Non-Pitched/Drums" n="Gong Drum Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 16 SP - Gong Drum
+Bank 26 82 SP - Gong Drum
 //! c=long i=note-whole o=note:24
 24 sticks
 //! c=long-dark i=note-whole o=note:25
@@ -83,7 +83,7 @@ Bank 1 16 SP - Gong Drum
 
 //! g="Spitfire/Percussion/Non-Pitched/Toys" n="Guiro Types"
 //! m="Make sure KS is on C0"
-Bank 1 17 SP - Guiro
+Bank 26 83 SP - Guiro
 //! c=long i=note-whole o=note:24
 24 normal guiro
 //! c=long-light i=note-whole o=note:25
@@ -93,7 +93,7 @@ Bank 1 17 SP - Guiro
 
 //! g="Spitfire/Percussion/Non-Pitched/Metals" n="Cymbal Hi/Low Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 18 SP - Cymbal Hi/Lo
+Bank 26 84 SP - Cymbal Hi/Lo
 //! c=long-light i=note-whole o=note:24
 24 soft mallets
 //! c=long-dark i=note-whole o=note:25
@@ -103,7 +103,7 @@ Bank 1 18 SP - Cymbal Hi/Lo
 
 //! g="Spitfire/Percussion/Non-Pitched/Metals" n="Cymbal Med Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 19 SP - Cymbal Med
+Bank 26 85 SP - Cymbal Med
 //! c=long-light i=note-whole o=note:24
 24 soft mallets
 //! c=long-dark i=note-whole o=note:25
@@ -111,7 +111,7 @@ Bank 1 19 SP - Cymbal Med
 
 //! g="Spitfire/Percussion/Non-Pitched/Metals" n="Trash Metals Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 20 SP - Trash Metals
+Bank 26 86 SP - Trash Metals
 //! c=long i=note-whole o=note:24
 24 metal
 //! c=long-light i=note-whole o=note:25
@@ -119,7 +119,7 @@ Bank 1 20 SP - Trash Metals
 
 //! g="Spitfire/Percussion/Non-Pitched/Woods" n="Temple Blocks Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 21 SP - Temple Blocks
+Bank 26 87 SP - Temple Blocks
 //! c=long-light i=note-whole o=note:24
 24 soft mallets
 //! c=long-dark i=note-whole o=note:25
@@ -127,7 +127,7 @@ Bank 1 21 SP - Temple Blocks
 
 //! g="Spitfire/Percussion/Non-Pitched/Woods" n="Wood Blocks Techniques"
 //! m="Make sure KS is on C0"
-Bank 1 22 SP - Wood Blocks
+Bank 26 88 SP - Wood Blocks
 //! c=long i=note-whole o=note:24
 24 sticks
 //! c=long-light i=note-whole o=note:25

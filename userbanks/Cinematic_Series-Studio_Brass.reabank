@@ -4,7 +4,7 @@
 
 //! g="Cinematic Series/Studio Brass" n="Section"
 //! chase=1,2,5,11,20,64-69
-Bank 2 1 Cinematic Studio Brass Section
+Bank 21 98 Cinematic Studio Brass Section
 
 //! c=legato i=legato o=note:24,1/note:34,65
 20 Legato

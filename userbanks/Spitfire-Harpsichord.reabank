@@ -3,7 +3,7 @@
 //
 //! g="Spitfire/Keyboards/Harpsichord" n="Harpsichord Stops"
 //! m="Set globally all stops for C0-F#0 by Keyswitch (CTRL+Click to set Spitfire KS values for this instrument)"
-Bank 1 5 SHC - Harpsichord
+Bank 26 74 SHC - Harpsichord
 //! c=long i=note-whole o=note:24
 24 low 8'
 //! c=long i=note-whole o=note:25

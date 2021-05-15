@@ -3,7 +3,7 @@
 
 //----------------------------------------------------------------------------
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Brass Quartet"
-Bank 10 26 SSBS Brass Quartet
+Bank 23 111 SSBS Brass Quartet
 //! c=long-light i=note-whole o=note:24
 8 sustain soft
 //! c=long-dark i=note-whole o=note:25
@@ -18,7 +18,7 @@ Bank 10 26 SSBS Brass Quartet
 55 sfz slow
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet"
-Bank 10 27 SSBS Trumpet
+Bank 23 112 SSBS Trumpet
 //! c=long-light i=note-whole o=note:24
 8 sustain soft
 //! c=long i=note-whole o=note:25
@@ -33,7 +33,7 @@ Bank 10 27 SSBS Trumpet
 7 straight
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Sustain"
-Bank 10 28 SSBS Trumpet Sustain
+Bank 23 113 SSBS Trumpet Sustain
 //! c=long-light i=note-whole o=note:24
 8 sustain soft
 //! c=long i=note-whole o=note:25
@@ -48,7 +48,7 @@ Bank 10 28 SSBS Trumpet Sustain
 7 straight
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Staccato"
-Bank 10 29 SSBS Trumpet Staccato
+Bank 23 114 SSBS Trumpet Staccato
 //! c=short-light i=staccato o=note:24
 48 staccato piano
 //! c=short-dark i=staccato-sfz o=note:25
@@ -63,12 +63,12 @@ Bank 10 29 SSBS Trumpet Staccato
 62 harmon mute
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Legato"
-Bank 10 30 SSBS Trumpet Legato
+Bank 23 115 SSBS Trumpet Legato
 //! c=legato i=legato o=note:24
 20 legato
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Expression"
-Bank 10 31 SSBS Trumpet Expression
+Bank 23 116 SSBS Trumpet Expression
 //! c=long-dark i=sfz o=note:24
 106 sfz fast
 //! c=long-dark i=sfz o=note:25
@@ -83,7 +83,7 @@ Bank 10 31 SSBS Trumpet Expression
 113 swell slow
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trumpet Effects"
-Bank 10 32 SSBS Trumpet Effects
+Bank 23 117 SSBS Trumpet Effects
 //! c=long i=note-whole o=note:24
 90 bend up
 //! c=fx i=rest-quarter o=note:25
@@ -98,7 +98,7 @@ Bank 10 32 SSBS Trumpet Effects
 11 flutter
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1"
-Bank 10 33 SSBS Horn 1
+Bank 23 118 SSBS Horn 1
 //! c=long-light i=note-whole o=note:24
 8 sustain soft
 //! c=long i=note-whole o=note:25
@@ -113,7 +113,7 @@ Bank 10 33 SSBS Horn 1
 75 triple tng
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Sustain"
-Bank 10 34 SSBS Horn 1 Sustain
+Bank 23 119 SSBS Horn 1 Sustain
 //! c=long-light i=note-whole o=note:24
 8 sustain soft
 //! c=long i=note-whole o=note:25
@@ -122,7 +122,7 @@ Bank 10 34 SSBS Horn 1 Sustain
 9 sustain forte
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Staccato"
-Bank 10 35 SSBS Horn 1 Staccato
+Bank 23 120 SSBS Horn 1 Staccato
 //! c=short-light i=staccato o=note:24
 48 staccato piano
 //! c=short-dark i=staccato-sfz o=note:25
@@ -133,12 +133,12 @@ Bank 10 35 SSBS Horn 1 Staccato
 42 tongue stop
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Legato"
-Bank 10 36 SSBS Horn 1 Legato
+Bank 23 121 SSBS Horn 1 Legato
 //! c=legato i=legato o=note:24
 20 legato
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 1 Expression"
-Bank 10 37 SSBS Horn 1 Expression
+Bank 23 122 SSBS Horn 1 Expression
 //! c=short-dark i=rip o=note:24
 25 blast fff
 //! c=long-dark i=sfz o=note:25
@@ -151,7 +151,7 @@ Bank 10 37 SSBS Horn 1 Expression
 113 swell slow
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn Effects"
-Bank 10 38 SSBS Horn Effects
+Bank 23 123 SSBS Horn Effects
 //! c=fx i=rest-quarter o=note:24
 91 Breath
 //! c=long i=rip o=note:25
@@ -166,7 +166,7 @@ Bank 10 38 SSBS Horn Effects
 29 Bend Stopped
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2"
-Bank 10 39 SSBS Horn 2
+Bank 23 124 SSBS Horn 2
 //! c=long-light i=note-whole o=note:24
 8 sustain piano
 //! c=long i=note-whole o=note:25
@@ -181,7 +181,7 @@ Bank 10 39 SSBS Horn 2
 49 staccato forte
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Sustain"
-Bank 10 40 SSBS Horn 2 Sustain
+Bank 23 125 SSBS Horn 2 Sustain
 //! c=long-light i=note-whole o=note:24
 8 sustain piano
 //! c=long i=note-whole o=note:25
@@ -192,7 +192,7 @@ Bank 10 40 SSBS Horn 2 Sustain
 7 stop mute
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Staccato"
-Bank 10 41 SSBS Horn 2 Staccato
+Bank 23 126 SSBS Horn 2 Staccato
 //! c=short-light i=staccato o=note:24
 48 staccato piano
 //! c=short-dark i=staccato-sfz o=note:25
@@ -203,12 +203,12 @@ Bank 10 41 SSBS Horn 2 Staccato
 75 triple tng
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Legato"
-Bank 10 42 SSBS Horn 2 Legato
+Bank 23 127 SSBS Horn 2 Legato
 //! c=legato i=legato o=note:24
 20 legato
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Horn 2 Expression"
-Bank 10 43 SSBS Horn 2 Expression
+Bank 24 1 SSBS Horn 2 Expression
 //! c=long-dark i=sfz o=note:24
 106 sfz fast
 //! c=long-dark i=sfz o=note:25
@@ -223,7 +223,7 @@ Bank 10 43 SSBS Horn 2 Expression
 77 trill spin
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone"
-Bank 10 44 SSBS Trombone
+Bank 24 2 SSBS Trombone
 //! c=long-light i=note-whole o=note:24
 8 sustain piano
 //! c=long i=note-whole o=note:25
@@ -238,7 +238,7 @@ Bank 10 44 SSBS Trombone
 49 staccato forte
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Sustain"
-Bank 10 45 SSBS Trombone Sustain
+Bank 24 3 SSBS Trombone Sustain
 //! c=long-light i=note-whole o=note:24
 8 sustain piano
 //! c=long i=note-whole o=note:25
@@ -247,7 +247,7 @@ Bank 10 45 SSBS Trombone Sustain
 9 sustain forte
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Staccato"
-Bank 10 46 SSBS Trombone Staccato
+Bank 24 4 SSBS Trombone Staccato
 //! c=short-light i=staccato o=note:24
 48 staccato piano
 //! c=short i=staccato o=note:25
@@ -262,12 +262,12 @@ Bank 10 46 SSBS Trombone Staccato
 75 staccato triple tng
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Legato"
-Bank 10 47 SSBS Trombone Legato
+Bank 24 5 SSBS Trombone Legato
 //! c=legato i=legato o=note:24
 20 legato
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Expression"
-Bank 10 48 SSBS Trombone Expression
+Bank 24 6 SSBS Trombone Expression
 //! c=long-dark i=sfz o=note:24
 106 sfz fast
 //! c=long-dark i=sfz o=note:25
@@ -278,7 +278,7 @@ Bank 10 48 SSBS Trombone Expression
 42 tng stop
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Effects"
-Bank 10 49 SSBS Trombone Effects
+Bank 24 7 SSBS Trombone Effects
 //! c=long i=gliss o=note:24
 24 bend long
 //! c=long i=gliss o=note:25
@@ -293,7 +293,7 @@ Bank 10 49 SSBS Trombone Effects
 101 fast fall
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba"
-Bank 10 50 SSBS Tuba
+Bank 24 8 SSBS Tuba
 //! c=long-light i=note-whole o=note:24
 8 sustain piano
 //! c=long-dark i=note-whole o=note:25
@@ -308,14 +308,14 @@ Bank 10 50 SSBS Tuba
 75 staccato dbl tng
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Sustain"
-Bank 10 51 SSBS Tuba Sustain
+Bank 24 9 SSBS Tuba Sustain
 //! c=long-light i=note-whole o=note:24
 8 sustain piano
 //! c=long-dark i=note-whole o=note:25
 9 sustain forte
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Staccato"
-Bank 10 52 SSBS Tuba Staccato
+Bank 24 10 SSBS Tuba Staccato
 //! c=short-light i=staccato o=note:26
 48 staccato piano
 //! c=short-dark i=staccato o=note:27
@@ -326,12 +326,12 @@ Bank 10 52 SSBS Tuba Staccato
 75 staccato dbl tng
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Legato"
-Bank 10 53 SSBS Tuba Legato
+Bank 24 11 SSBS Tuba Legato
 //! c=legato i=legato o=note:24
 20 legato
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Expression"
-Bank 10 54 SSBS Tuba Expression
+Bank 24 12 SSBS Tuba Expression
 //! c=long-dark i=sfz o=note:24
 106 sfz fast
 //! c=long-dark i=sfz o=note:25
@@ -344,7 +344,7 @@ Bank 10 54 SSBS Tuba Expression
 113 swell slow
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Tuba Effects"
-Bank 10 55 SSBS Tuba Effects
+Bank 24 13 SSBS Tuba Effects
 //! c=fx i=fx o=note:24
 90 ping high
 //! c=long i=fall o=note:25

@@ -3,7 +3,7 @@
 //
 
 //! g="Chris Hein/Orchestral Winds/Vol. 1 Flutes" n="Flute Piccolo"
-Bank 11 86 Chris Hein Orchestral Winds Flute Piccolo
+Bank 21 85 Chris Hein Orchestral Winds Flute Piccolo
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -46,7 +46,7 @@ Bank 11 86 Chris Hein Orchestral Winds Flute Piccolo
 40 Sustain (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 1 Flutes" n="C-Flute 1"
-Bank 11 87 Chris Hein Orchestral Winds C-Flute 1
+Bank 21 86 Chris Hein Orchestral Winds C-Flute 1
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -89,7 +89,7 @@ Bank 11 87 Chris Hein Orchestral Winds C-Flute 1
 40 Sustain (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 1 Flutes" n="C-Flute 2"
-Bank 11 88 Chris Hein Orchestral Winds C-Flute 2
+Bank 21 87 Chris Hein Orchestral Winds C-Flute 2
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -132,7 +132,7 @@ Bank 11 88 Chris Hein Orchestral Winds C-Flute 2
 40 Sustain (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 1 Flutes" n="Alto Flute"
-Bank 11 89 Chris Hein Orchestral Winds Alto Flute
+Bank 21 88 Chris Hein Orchestral Winds Alto Flute
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22

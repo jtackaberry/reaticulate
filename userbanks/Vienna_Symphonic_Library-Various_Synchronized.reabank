@@ -63,7 +63,7 @@
 // ****************************
 
 //! g="VSL - SYNCHRON/SYN-zed Appassionata Strings" n="SYN-zed Appassionata Strings"
-Bank 7 1 SYN-zed Appassionata Strings
+Bank 28 91 SYN-zed Appassionata Strings
 
 //! c=textured i=list o=note:108 g=2
 120 VIBRATO - Strong
@@ -135,7 +135,7 @@ Bank 7 1 SYN-zed Appassionata Strings
 // ***********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Appassionata Strings" n="SYN-zed Appassionata Strings (Bass)"
-Bank 7 2 SYN-zed Appassionata Strings (Bass)
+Bank 28 92 SYN-zed Appassionata Strings (Bass)
 
 //! c=short i=staccato o=note:0
 0 Staccato
@@ -164,7 +164,7 @@ Bank 7 2 SYN-zed Appassionata Strings (Bass)
 // ****************
 
 //! g="VSL - SYNCHRON/SYN-zed Solo Strings" n="SYN-zed Violin I"
-Bank 7 10 SYN-zed Violin I
+Bank 28 93 SYN-zed Violin I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -464,7 +464,7 @@ Bank 7 10 SYN-zed Violin I
 // *************
 
 //! g="VSL - SYNCHRON/SYN-zed Solo Strings" n="SYN-zed Viola"
-Bank 7 11 SYN-zed Viola
+Bank 28 94 SYN-zed Viola
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -700,7 +700,7 @@ Bank 7 11 SYN-zed Viola
 // ***************
 
 //! g="VSL - SYNCHRON/SYN-zed Solo Strings" n="SYN-zed Cello I"
-Bank 7 12 SYN-zed Cello I
+Bank 28 95 SYN-zed Cello I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -943,7 +943,7 @@ Bank 7 12 SYN-zed Cello I
 // ************
 
 //! g="VSL - SYNCHRON/SYN-zed Solo Strings" n="SYN-zed Bass"
-Bank 7 13 SYN-zed Bass
+Bank 28 96 SYN-zed Bass
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:111
 0 SPEED - Legato
@@ -1129,7 +1129,7 @@ Bank 7 13 SYN-zed Bass
 // *****************
 
 //! g="VSL - SYNCHRON/SYN-zed Solo Strings" n="SYN-zed Violin II"
-Bank 7 14 SYN-zed Violin II
+Bank 28 97 SYN-zed Violin II
 
 //! c=default i=sul-g o=note:125 g=2
 126 OPEN STRINGS - Off
@@ -1346,7 +1346,7 @@ Bank 7 14 SYN-zed Violin II
 // ****************
 
 //! g="VSL - SYNCHRON/SYN-zed Solo Strings" n="SYN-zed Cello II"
-Bank 7 15 SYN-zed Cello II
+Bank 28 98 SYN-zed Cello II
 
 //! c=default i=sul-g o=note:125 g=2
 126 OPEN STRINGS - Off
@@ -1571,7 +1571,7 @@ Bank 7 15 SYN-zed Cello II
 // ***********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Strings" n="SYN-zed Dimension Strings - Regular"
-Bank 7 16 SYN-zed Dimension Strings - Regular
+Bank 28 99 SYN-zed Dimension Strings - Regular
 
 //! c=legato-dark i=phrase o=note:2/note:13
 18 SPEED - Legato
@@ -1730,7 +1730,7 @@ Bank 7 16 SYN-zed Dimension Strings - Regular
 // ********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Strings" n="SYN-zed Dimension Strings - Regular (Bass)"
-Bank 7 17 SYN-zed Dimension Strings - Regular (Bass)
+Bank 28 100 SYN-zed Dimension Strings - Regular (Bass)
 
 //! c=legato-dark i=phrase o=note:2/note:13
 18 SPEED - Legato
@@ -1869,7 +1869,7 @@ Bank 7 17 SYN-zed Dimension Strings - Regular (Bass)
 // ***********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Strings" n="SYN-zed Dimension Strings - Sordino"
-Bank 7 18 SYN-zed Dimension Strings - Sordino
+Bank 28 101 SYN-zed Dimension Strings - Sordino
 
 //! c=legato i=legato o=note:2/note:9
 4 Perf. Legato
@@ -1946,7 +1946,7 @@ Bank 7 18 SYN-zed Dimension Strings - Sordino
 // *************************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Strings" n="SYN-zed Dimension Strings - Sul Tasto"
-Bank 7 19 SYN-zed Dimension Strings - Sul Tasto
+Bank 28 102 SYN-zed Dimension Strings - Sul Tasto
 
 //! c=legato i=legato o=note:2/note:9
 4 Perf. Legato
@@ -2017,7 +2017,7 @@ Bank 7 19 SYN-zed Dimension Strings - Sul Tasto
 // *********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Brass" n="SYN-zed Dimension Brass - Regular"
-Bank 7 20 SYN-zed Dimension Brass - Regular
+Bank 28 103 SYN-zed Dimension Brass - Regular
 
 //! c=legato-dark i=phrase o=note:2/note:12
 12 SPEED - Legato
@@ -2139,7 +2139,7 @@ Bank 7 20 SYN-zed Dimension Brass - Regular
 // ***********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Brass" n="SYN-zed Dimension Brass - Low Brass"
-Bank 7 21 SYN-zed Dimension Brass - Low Brass
+Bank 28 104 SYN-zed Dimension Brass - Low Brass
 
 //! c=legato-dark i=phrase o=note:2/note:11
 6 SPEED - Legato
@@ -2207,7 +2207,7 @@ Bank 7 21 SYN-zed Dimension Brass - Low Brass
 // *******************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Brass" n="SYN-zed Dimension Brass - Muted"
-Bank 7 22 SYN-zed Dimension Brass - Muted
+Bank 28 105 SYN-zed Dimension Brass - Muted
 
 //! c=legato-dark i=phrase o=note:2/note:12
 12 SPEED - Legato
@@ -2325,7 +2325,7 @@ Bank 7 22 SYN-zed Dimension Brass - Muted
 // ********************************
 
 //! g="VSL - SYNCHRON/SYN-zed Dimension Brass" n="SYN-zed Dimension Brass - Wagner"
-Bank 7 23 SYN-zed Dimension Brass - Wagner
+Bank 28 106 SYN-zed Dimension Brass - Wagner
 
 //! c=legato-dark i=phrase o=note:2/note:13
 11 SPEED - Legato

@@ -3,7 +3,7 @@
 //
 
 //! g="Best Service/Dark Era/Strings" n="Tagelharpa"
-Bank 41 1 Tagelharpa
+Bank 20 73 Tagelharpa
 
 //! c=#1FCCC9 i=note-whole o=note:36 g=1
 36 4 Beats
@@ -49,7 +49,7 @@ Bank 41 1 Tagelharpa
 
 
 //! g="Best Service/Dark Era/Strings" n="Crwth"
-Bank 41 2 Crwth
+Bank 20 74 Crwth
 //! c=legato i=phrase o=note:93
 93 Rhythm A
 //! c=legato i=phrase o=note:94
@@ -92,7 +92,7 @@ Bank 41 2 Crwth
 44 Staccato
 
 //! g="Best Service/Dark Era/Strings" n="Cologne / Trossingen Lyre"
-Bank 41 3 Cologne / Trossingen Lyre
+Bank 20 75 Cologne / Trossingen Lyre
 //! c=default o=note:36
 36 Finger
 //! c=default o=note:38
@@ -101,7 +101,7 @@ Bank 41 3 Cologne / Trossingen Lyre
 40 Harmonics
 
 //! g="Best Service/Dark Era/Strings" n="Col. / Tros. Lyre Strummed"
-Bank 41 4 Col. / Tros. Lyre Strummed
+Bank 20 76 Col. / Tros. Lyre Strummed
 //! c=default o=note:36
 36 C Tuning
 //! c=default o=note:37
@@ -128,7 +128,7 @@ Bank 41 4 Col. / Tros. Lyre Strummed
 47 B Tuning
 
 //! g="Best Service/Dark Era/Wind" n="Deer Bone Flute" off=0
-Bank 41 5 Deer Bone Flute
+Bank 20 77 Deer Bone Flute
 //! i=legato c=long
 0 Legato
 //! i=trill-maj2 c=short-light o=note-hold:37
@@ -155,7 +155,7 @@ Bank 41 5 Deer Bone Flute
 47 FX
 
 //! g="Best Service/Dark Era/Wind" n="Vulture Bone Flute" off=0
-Bank 41 6 Vulture Bone Flute
+Bank 20 78 Vulture Bone Flute
 //! i=legato c=long
 0 Legato
 //! i=trill-maj2 c=short-light o=note-hold:37
@@ -174,7 +174,7 @@ Bank 41 6 Vulture Bone Flute
 43 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Double Flute" off=0
-Bank 41 7 Double Flute
+Bank 20 79 Double Flute
 //! i=legato c=long
 0 Legato
 //! i=acciaccatura-quarter c=short-light o=note-hold:37
@@ -192,7 +192,7 @@ Bank 41 7 Double Flute
 
 
 //! g="Best Service/Dark Era/Wind" n="Elderwood Flute" off=0
-Bank 41 8 Elderwood Flute
+Bank 20 80 Elderwood Flute
 //! i=legato c=long
 0 Legato Natural
 //! i=default o=note-hold:37
@@ -217,7 +217,7 @@ Bank 41 8 Elderwood Flute
 47 Gliss Long
 
 //! g="Best Service/Dark Era/Wind" n="Fujara" off=0
-Bank 41 9 Fujara
+Bank 20 81 Fujara
 //! i=legato c=long
 0 Legato Hard Attack
 //! i=default o=note-hold:37
@@ -228,7 +228,7 @@ Bank 41 9 Fujara
 39 Triplet 2
 
 //! g="Best Service/Dark Era/Wind" n="White Horn" off=0
-Bank 41 10 White Horn
+Bank 20 82 White Horn
 //! i=legato c=long
 0 Legato
 //! i=default o=note-hold:37
@@ -269,7 +269,7 @@ Bank 41 10 White Horn
 54 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
-Bank 41 11 Overtone Flute
+Bank 20 83 Overtone Flute
 //! i=legato c=long
 0 Legato
 //! i=default o=note-hold:37
@@ -286,7 +286,7 @@ Bank 41 11 Overtone Flute
 43 Staccato
 
 //! g="Best Service/Dark Era/Vocal" n="Shouts 1"
-Bank 41 12 Shouts 1
+Bank 20 84 Shouts 1
 //! i=default o=note:36
 36 Ha
 //! i=default o=note:37
@@ -307,7 +307,7 @@ Bank 41 12 Shouts 1
 44 Sho
 
 //! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
-Bank 41 13 Kargyraa Legato
+Bank 20 85 Kargyraa Legato
 //! i=default o=note:36
 36 Vowel 1
 //! i=default o=note:37
@@ -324,7 +324,7 @@ Bank 41 13 Kargyraa Legato
 42 Vowel 7
 
 //! g="Best Service/Dark Era/Vocal" n="Khomeii"
-Bank 41 14 Khoomei
+Bank 20 86 Khoomei
 //! c=default o=note:43
 43 G Tuning
 //! c=default o=note:44
@@ -351,7 +351,7 @@ Bank 41 14 Khoomei
 54 F# Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Sygyt"
-Bank 41 15 Sygyt
+Bank 20 87 Sygyt
 //! c=default o=note:41
 41 F Tuning
 //! c=default o=note:42
@@ -378,7 +378,7 @@ Bank 41 15 Sygyt
 52 E Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Whispers"
-Bank 41 16 Whispers
+Bank 20 88 Whispers
 //! c=default o=note:36
 36 F Tuning
 //! c=default o=note:37

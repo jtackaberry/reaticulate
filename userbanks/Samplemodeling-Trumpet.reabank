@@ -4,7 +4,7 @@
 
 //! g="Samplemodeling" n="Trumpet"
 //! off=15
-Bank 02 1 Samplemodeling Trumpet
+Bank 25 113 Samplemodeling Trumpet
 
 //! c=default i=rest-quarter g=1
 15 Reset

@@ -4,7 +4,7 @@
 
 //! g="Garritan/GPO5/Strings" n="Violins"
 //! m="Solo and Ensembles"
-Bank 01 1 GPO - Violins
+Bank 23 5 GPO - Violins
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -36,11 +36,11 @@ Bank 01 1 GPO - Violins
 
 //! g="Garritan/GPO5/Strings" n="Violas"
 //! clone="Garritan/GPO5/Strings/Violins"
-Bank 01 2 GPO - Violas
+Bank 23 6 GPO - Violas
 
 //! g="Garritan/GPO5/Strings" n="Celli"
 //! m="Solo and Ensembles"
-Bank 01 3 GPO - Celli
+Bank 23 7 GPO - Celli
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -72,7 +72,7 @@ Bank 01 3 GPO - Celli
 
 //! g="Garritan/GPO5/Strings" n="Double Bass"
 //! m="Solo and Ensembles"
-Bank 01 4 GPO - Double Bass
+Bank 23 8 GPO - Double Bass
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -104,11 +104,11 @@ Bank 01 4 GPO - Double Bass
 
 //! g="Garritan/GPO5/Strings" n="Full Strings"
 //! clone="Garritan/GPO5/Strings/Double Bass"
-Bank 01 5 GPO - Full Strings
+Bank 23 9 GPO - Full Strings
 
 //! g="Garritan/GPO5/Strings" n="GOS Violins"
 //! m="Solo and Ensembles"
-Bank 01 6 GOS - Violins
+Bank 23 10 GOS - Violins
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -140,11 +140,11 @@ Bank 01 6 GOS - Violins
 
 //! g="Garritan/GPO5/Strings" n="GOS Violas"
 //! clone="Garritan/GPO5/Strings/GOS Violins"
-Bank 01 7 GOS - Violas
+Bank 23 11 GOS - Violas
 
 //! g="Garritan/GPO5/Strings" n="GOS Celli"
 //! m="Solo and Ensembles"
-Bank 01 8 GOS - Celli
+Bank 23 12 GOS - Celli
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -176,7 +176,7 @@ Bank 01 8 GOS - Celli
 
 //! g="Garritan/GPO5/Strings" n="GOS DBass"
 //! m="Solo and Ensembles"
-Bank 01 9 GOS - DBass
+Bank 23 13 GOS - DBass
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -208,7 +208,7 @@ Bank 01 9 GOS - DBass
 
 //! g="Garritan/GPO5/WoodWinds" n="Flute"
 //! m="Solo"
-Bank 01 10 GPO - Flute
+Bank 23 14 GPO - Flute
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -222,7 +222,7 @@ Bank 01 10 GPO - Flute
 
 //! g="Garritan/GPO5/WoodWinds" n="Piccolo"
 //! m="Solo"
-Bank 01 11 GPO - Piccolo
+Bank 23 15 GPO - Piccolo
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -236,7 +236,7 @@ Bank 01 11 GPO - Piccolo
 
 //! g="Garritan/GPO5/Brass" n="PTrumpet"
 //! m="PTrumpet"
-Bank 01 12 GPO - PTrumpet
+Bank 23 16 GPO - PTrumpet
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -248,7 +248,7 @@ Bank 01 12 GPO - PTrumpet
 
 //! g="Garritan/GPO5/Brass" n="Trumpet"
 //! m="Solo"
-Bank 01 13 GPO - Trumpet
+Bank 23 17 GPO - Trumpet
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -260,7 +260,7 @@ Bank 01 13 GPO - Trumpet
 
 //! g="Garritan/GPO5/Brass" n="Trombone"
 //! m="Solo"
-Bank 01 14 GPO - Trombone
+Bank 23 18 GPO - Trombone
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -272,7 +272,7 @@ Bank 01 14 GPO - Trombone
 
 //! g="Garritan/GPO5/Brass" n="French Horns"
 //! m="Regular and SAM Solo"
-Bank 01 14 GPO - FHorn
+Bank 23 19 GPO - FHorn
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -284,11 +284,11 @@ Bank 01 14 GPO - FHorn
 
 //! g="Garritan/GPO5/Brass" n="SAM FHorn Plr"
 //! clone="Garritan/GPO5/Brass/French Horns"
-Bank 01 15 GPO SAM - FHorn Plr
+Bank 23 20 GPO SAM - FHorn Plr
 
 //! g="Garritan/GPO5/Brass" n="SAM FHorns Solo, Section"
 //! m="Same for SAM FHorns solo and sections"
-Bank 01 16 GPO SAM - FHorn Solo Section
+Bank 23 21 GPO SAM - FHorn Solo Section
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -302,7 +302,7 @@ Bank 01 16 GPO SAM - FHorn Solo Section
 
 //! g="Garritan/GPO5/Brass" n="SAM Trumpet"
 //! m="Same for SAM Trumpet solo and sections"
-Bank 01 17 GPO SAM - Trumpet
+Bank 23 22 GPO SAM - Trumpet
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -316,11 +316,11 @@ Bank 01 17 GPO SAM - Trumpet
 
 //! g="Garritan/GPO5/Brass" n="SAM PTrumpet"
 //! clone="Garritan/GPO5/Brass/SAM Trumpet"
-Bank 01 18 GPO SAM - PTrumpet
+Bank 23 23 GPO SAM - PTrumpet
 
 //! g="Garritan/GPO5/Brass" n="SAM Trumpet Plr"
 //! m="SAM Trumpet Plrs"
-Bank 01 19 GPO SAM - Trumpet Plr
+Bank 23 24 GPO SAM - Trumpet Plr
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -332,7 +332,7 @@ Bank 01 19 GPO SAM - Trumpet Plr
 
 //! g="Garritan/GPO5/Brass" n="SAM Trombone"
 //! m="Same for SAM Trombone solo and sections"
-Bank 01 20 GPO SAM - Trombone
+Bank 23 25 GPO SAM - Trombone
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -346,11 +346,11 @@ Bank 01 20 GPO SAM - Trombone
 
 //! g="Garritan/GPO5/Brass" n="SAM Bass Trombone"
 //! clone="Garritan/GPO5/Brass/SAM Trombone"
-Bank 01 21 GPO SAM - Bass Trombone
+Bank 23 26 GPO SAM - Bass Trombone
 
 //! g="Garritan/GPO5/Brass" n="SAM Trombone Plr"
 //! m="SAM Trombone Plrs"
-Bank 01 22 GPO SAM - Trombone Plr
+Bank 23 27 GPO SAM - Trombone Plr
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato i=note-quarter o=cc:64,0
@@ -362,11 +362,11 @@ Bank 01 22 GPO SAM - Trombone Plr
 
 //! g="Garritan/GPO5/Brass" n="SAM Tuba Solo"
 //! clone="Garritan/GPO5/Brass/SAM Trombone"
-Bank 01 23 GPO SAM - Tuba Solo
+Bank 23 28 GPO SAM - Tuba Solo
 
 //! g="Garritan/GPO5/Percussion" n="Crotales"
 //! m="Crotales"
-Bank 01 24 GPO - Crotales
+Bank 23 29 GPO - Crotales
 //! g=1 c=long-light i=note-whole o=note:48
 40 single hits
 //! g=1 c=short-light i=tremolo o=note:50
@@ -374,7 +374,7 @@ Bank 01 24 GPO - Crotales
 
 //! g="Garritan/GPO5/Percussion" n="Glockenspiel"
 //! m="Glockenspiel"
-Bank 01 25 GPO - Glockenspiel
+Bank 23 30 GPO - Glockenspiel
 //! g=1 c=long-light i=note-whole o=note:72
 40 single hits
 //! g=1 c=short-light i=tremolo o=note:74
@@ -382,7 +382,7 @@ Bank 01 25 GPO - Glockenspiel
 
 //! g="Garritan/GPO5/Percussion" n="Handbells"
 //! m="Handbells"
-Bank 01 26 GPO - Handbells
+Bank 23 31 GPO - Handbells
 //! g=1 c=long-light i=note-whole o=note:36
 40 single hits
 //! g=1 c=short-light i=tremolo o=note:38
@@ -390,7 +390,7 @@ Bank 01 26 GPO - Handbells
 
 //! g="Garritan/GPO5/Percussion" n="Marimba Grand Symph"
 //! m="Marimba"
-Bank 01 27 GPO - Marimba Grand Symph
+Bank 23 32 GPO - Marimba Grand Symph
 //! g=1 c=long-light i=note-whole o=note:24
 40 single hits
 //! g=1 c=short-light i=tremolo o=note:26
@@ -398,31 +398,31 @@ Bank 01 27 GPO - Marimba Grand Symph
 
 //! g="Garritan/GPO5/Percussion" n="Marimba"
 //! clone="Garritan/GPO5/Percussion/Handbells"
-Bank 01 28 GPO - Marimba
+Bank 23 33 GPO - Marimba
 
 //! g="Garritan/GPO5/Percussion" n="Perc. Accessories"
 //! clone="Garritan/GPO5/Percussion/Crotales"
-Bank 01 29 GPO - Perc Accessories
+Bank 23 34 GPO - Perc Accessories
 
 //! g="Garritan/GPO5/Percussion" n="Snares"
 //! clone="Garritan/GPO5/Percussion/Crotales"
-Bank 01 30 GPO - Snares
+Bank 23 35 GPO - Snares
 
 //! g="Garritan/GPO5/Percussion" n="Tubular Bells"
 //! clone="Garritan/GPO5/Percussion/Crotales"
-Bank 01 31 GPO - Tubular Bells
+Bank 23 36 GPO - Tubular Bells
 
 //! g="Garritan/GPO5/Percussion" n="Vibraphone"
 //! clone="Garritan/GPO5/Percussion/Handbells"
-Bank 01 32 GPO - Vibraphone
+Bank 23 37 GPO - Vibraphone
 
 //! g="Garritan/GPO5/Percussion" n="Xylophone"
 //! clone="Garritan/GPO5/Percussion/Glockenspiel"
-Bank 01 33 GPO - Xylophone
+Bank 23 38 GPO - Xylophone
 
 //! g="Garritan/GPO5/Percussion" n="Timpani"
 //! m="Timpani"
-Bank 01 34 GPO - Timpani
+Bank 23 39 GPO - Timpani
 //! g=1 c=long-light i=note-whole o=note:24
 40 single hits
 //! g=1 c=short-light i=tremolo o=note:26
@@ -432,7 +432,7 @@ Bank 01 34 GPO - Timpani
 
 //! g="Garritan/GPO5/Various" n="Concert Grand Harp"
 //! m="Concert Grand Harp"
-Bank 01 35 GPO - Concert Grand Harp
+Bank 23 40 GPO - Concert Grand Harp
 //! g=1 c=long i=note-quarter o=note:12
 40 chromatic harp
 //! g=1 c=long-light i=harp-pdlt o=note:14
@@ -442,7 +442,7 @@ Bank 01 35 GPO - Concert Grand Harp
 
 //! g="Garritan/GPO5/Various" n="Harp"
 //! m="Harp"
-Bank 01 36 GPO - Harp
+Bank 23 41 GPO - Harp
 //! g=1 c=long i=note-quarter o=note:12
 40 chromatic harp
 //! g=1 c=short-light i=legato-runs o=note:14
@@ -452,7 +452,7 @@ Bank 01 36 GPO - Harp
 
 //! g="Garritan/GPO5/Various" n="Harpsichord"
 //! m="Harpsichord"
-Bank 01 37 GPO - Harpsichord
+Bank 23 42 GPO - Harpsichord
 //! g=1 c=long o=note:24
 40 8 stop
 //! g=1 c=short-light o=note:26
@@ -462,7 +462,7 @@ Bank 01 37 GPO - Harpsichord
 
 //! g="Garritan/GPO5/Various" n="Choir SATB"
 //! m="Soprano, alto, tenor, bass"
-Bank 01 38 GPO - Choir SATB
+Bank 23 43 GPO - Choir SATB
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato o=cc:64,0
@@ -474,11 +474,11 @@ Bank 01 38 GPO - Choir SATB
 
 //! g="Garritan/GPO5/Various" n="Full Choir"
 //! clone="Garritan/GPO5/Various/Choir SATB"
-Bank 01 39 GPO - Full Choir
+Bank 23 44 GPO - Full Choir
 
 //! g="Garritan/GPO5/Various" n="Choir Children"
 //! m="Soprano, alto, tenor, bass"
-Bank 01 40 GPO - Choir Children
+Bank 23 45 GPO - Choir Children
 //! g=2 c=legato i=legato o=cc:64,127
 20 legato
 //! g=2 c=legato o=cc:64,0
@@ -492,4 +492,4 @@ Bank 01 40 GPO - Choir Children
 
 //! g="Garritan/GPO5/Various" n="Boys Choir"
 //! clone="Garritan/GPO5/Various/Choir Children"
-Bank 01 41 GPO - Boys Choir
+Bank 23 46 GPO - Boys Choir

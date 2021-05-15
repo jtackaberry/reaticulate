@@ -4,7 +4,7 @@
 
 //! g="Orchestral Tools/Berlin Strings" n="Violins 1"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 1 1 OT-BS - V1
+Bank 24 111 OT-BS - V1
 //! c=legato i=note-whole  o=note:24
 1 Sustain Imm Romantic vibrato - C1
 //! c=legato i=note-whole  o=note:25
@@ -30,7 +30,7 @@ Bank 1 1 OT-BS - V1
 
 //! g="Orchestral Tools/Berlin Strings" n="Violins 2"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 1 2 OT-BS - V2
+Bank 24 112 OT-BS - V2
 //! c=legato i=note-whole o=note:24
 1 Sustain Imm Romantic vibrato  - C1
 //! c=legato i=note-whole  o=note:25
@@ -52,7 +52,7 @@ Bank 1 2 OT-BS - V2
 
 //! g="Orchestral Tools/Berlin Strings" n="Violas"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 1 3 OT-BS - Va
+Bank 24 113 OT-BS - Va
 //! c=legato i=note-whole o=note:24
 1 Sustain Imm Romantic vibrato - C1
 //! c=legato i=note-whole  o=note:25
@@ -76,7 +76,7 @@ Bank 1 3 OT-BS - Va
 
 //! g="Orchestral Tools/Berlin Strings" n="Celli"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 1 4 OT-BS - Cello
+Bank 24 114 OT-BS - Cello
 //! c=legato i=note-whole o=note:24
 1 Sustain Imm Romantic vibrato - C1
 //! c=legato i=note-whole  o=note:25
@@ -98,7 +98,7 @@ Bank 1 4 OT-BS - Cello
 
 //! g="Orchestral Tools/Berlin Strings" n="Basses"
 //! m="Using custom keyswitch (96 to 107)"
-Bank 1 5 OT-BS - Basses
+Bank 24 115 OT-BS - Basses
 //! c=legato i=note-whole o=note:96
 1 Sustain Imm Romantic vibrato - C7
 //! c=legato i=note-whole  o=note:97
@@ -122,7 +122,7 @@ Bank 1 5 OT-BS - Basses
 
 //! g="Orchestral Tools/Berlin Strings" n="Basses Dynamics"
 //! m="Using custom keyswitch (84 to 95)"
-Bank 1 10 OT-BS - Basses Dynamics
+Bank 24 116 OT-BS - Basses Dynamics
 //! c=legato i=note-whole o=note:84
 1 << >> - C6
 //! c=legato i=note-whole  o=note:85
@@ -152,7 +152,7 @@ Bank 1 10 OT-BS - Basses Dynamics
 
 //! g="Orchestral Tools/Berlin Strings" n="Extras"
 //! m="CC messages like con sordino, legato..."
-Bank 1 126 OT-BS - Extras
+Bank 24 117 OT-BS - Extras
 //! c=art1 i=legato g=1 o=cc:30,127
 101 Legato On
 //! c=art1 i=legato g=1 o=cc:30,0
@@ -172,7 +172,7 @@ Bank 1 126 OT-BS - Extras
 
 //! g="Orchestral Tools/Berlin Strings" n="Extras 2"
 //! m="CC messages like con sordino, legato..."
-Bank 1 125 OT-BS - Extras 2
+Bank 24 118 OT-BS - Extras 2
 //! c=art5 i=fx o=cc:54,127
 109 Cutoff Filter On
 //! c=art5 i=fx o=cc:54,0

@@ -11,7 +11,7 @@
 // Apr-23-2018  BHLawler at gmail
 
 //! g="Red Room Audio/Palette" n="Strings"
-Bank 13 1 Strings
+Bank 25 91 Strings
 //! c=long i=note-whole o=note:96
 1  sustain
 //! c=long i=bow-down o=note:96/note:99
@@ -37,7 +37,7 @@ Bank 13 1 Strings
 
 
 //! g="Red Room Audio/Palette" n="Woodwins"
-Bank 13 2 Woodwins
+Bank 25 92 Woodwins
 //! c=long i=note-whole o=note:96
 1   sustain
 //! c=long i=bow-down o=note:96/note:99
@@ -61,11 +61,11 @@ Bank 13 2 Woodwins
 
 //! g="Red Room Audio/Palette" n="Brass"
 //! clone="Red Room Audio/Palette/ Woodwins"
-Bank 13 3 Brass
+Bank 25 93 Brass
 
 
 //! g="Red Room Audio/Palette" n="Choir"
-Bank 13 4 Choir
+Bank 25 94 Choir
 //! c=long i=note-whole o=note:24
 90 AH sustain
 //! c=short i=staccato o=note:25
@@ -85,7 +85,7 @@ Bank 13 4 Choir
 //
 
 //! g="Red Room Audio/Palette" n="BP1 Violin Octaves"
-Bank 13 5 BP1 Violin Octaves
+Bank 25 95 BP1 Violin Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -108,7 +108,7 @@ Bank 13 5 BP1 Violin Octaves
 71  trill M2
 
 //! g="Red Room Audio/Palette" n="BP1 Violin Octaves Con Sord."
-Bank 13 6 BP1 Violin Octaves Con Sord.
+Bank 25 96 BP1 Violin Octaves Con Sord.
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -125,7 +125,7 @@ Bank 13 6 BP1 Violin Octaves Con Sord.
 40  staccato
 
 //! g="Red Room Audio/Palette" n="BP1 Celli+Basses Octaves"
-Bank 13 7 BP1 Celli+Basses Octaves
+Bank 25 97 BP1 Celli+Basses Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -144,7 +144,7 @@ Bank 13 7 BP1 Celli+Basses Octaves
 42  spiccato
 
 //! g="Red Room Audio/Palette" n="BP1 Flutes+Piccolo Octaves"
-Bank 13 8 BP1 Flutes+Piccolo Octaves
+Bank 25 98 BP1 Flutes+Piccolo Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -165,7 +165,7 @@ Bank 13 8 BP1 Flutes+Piccolo Octaves
 100 rip
 
 //! g="Red Room Audio/Palette" n="BP1 Oboe+Bassoon Octaves"
-Bank 13 9 BP1 Oboe+Bassoon Octaves
+Bank 25 99 BP1 Oboe+Bassoon Octaves
 //! c=legato i=legato o=note:95
 20 legato
 //! c=long i=note-whole o=note:96
@@ -186,7 +186,7 @@ Bank 13 9 BP1 Oboe+Bassoon Octaves
 100 rip
 
 //! g="Red Room Audio/Palette" n="BP1 Bass Clar+Contrabassoon Octaves"
-Bank 13 10 BP1 Bass Clar+Contrabassoon Octaves
+Bank 25 100 BP1 Bass Clar+Contrabassoon Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -205,7 +205,7 @@ Bank 13 10 BP1 Bass Clar+Contrabassoon Octaves
 100 rip
 
 //! g="Red Room Audio/Palette" n="BP1 Trumpets+Horns Octaves"
-Bank 13 11 BP1 Trumpets+Horns Octaves
+Bank 25 101 BP1 Trumpets+Horns Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -224,7 +224,7 @@ Bank 13 11 BP1 Trumpets+Horns Octaves
 42  staccatissimo
 
 //! g="Red Room Audio/Palette" n="BP1 Tuba+Trombone Octaves"
-Bank 13 12 BP1 Tuba+Trombone Octaves
+Bank 25 102 BP1 Tuba+Trombone Octaves
 //! c=long i=note-whole o=note:96
 1   sustain
 //! c=legato-dark i=note-half o=note:97
@@ -240,22 +240,22 @@ Bank 13 12 BP1 Tuba+Trombone Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Horns"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
-Bank 13 13 BP1 Horns
+Bank 25 103 BP1 Horns
 
 //! g="Red Room Audio/Palette" n="BP1 Trumpet Octaves"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
-Bank 13 14 BP1 Trumpet Octaves
+Bank 25 104 BP1 Trumpet Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Low Brass + Low Strings"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
-Bank 13 15 BP1 Low Brass + Low Strings
+Bank 25 105 BP1 Low Brass + Low Strings
 
 //! g="Red Room Audio/Palette" n="BP1 Horns + Violins Octaves"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
-Bank 13 16 BP1 Horns + Violins Octaves
+Bank 25 106 BP1 Horns + Violins Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Violin"
-Bank 13 17 BP1 Solo Violin
+Bank 25 107 BP1 Solo Violin
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -283,10 +283,10 @@ Bank 13 17 BP1 Solo Violin
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Cello"
 //! clone="Red Room Audio/Palette/BP1 Solo Violin"
-Bank 13 18 BP1 Solo Cello
+Bank 25 108 BP1 Solo Cello
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Flute"
-Bank 13 19 BP1 Solo Flute
+Bank 25 109 BP1 Solo Flute
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -316,7 +316,7 @@ Bank 13 19 BP1 Solo Flute
 
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Oboe"
-Bank 13 20 BP1 Solo Oboe
+Bank 25 110 BP1 Solo Oboe
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -343,7 +343,7 @@ Bank 13 20 BP1 Solo Oboe
 77  multitoungex3
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Trumpet"
-Bank 13 21 BP1 Solo Trumpet
+Bank 25 111 BP1 Solo Trumpet
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -375,7 +375,7 @@ Bank 13 21 BP1 Solo Trumpet
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Horn"
 //! clone="Red Room Audio/Palette/BP1 Solo Trumpet"
-Bank 13 22 BP1 Solo Horn
+Bank 25 112 BP1 Solo Horn
 
 
 

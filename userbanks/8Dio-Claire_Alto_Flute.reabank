@@ -5,7 +5,7 @@
 //! g="8Dio/Claire Alto Flute" n="Legato"
 //! chase=1,11
 
-Bank 7 1 Legato
+Bank 20 14 Legato
 
 //! c=legato i=legato o=note:24
 20 Natural Legato
@@ -33,7 +33,7 @@ Bank 7 1 Legato
 //! g="8Dio/Claire Alto Flute" n="Trills"
 //! chase=1,11
 
-Bank 7 2 Trills
+Bank 20 15 Trills
 
 //! c=long i=trill-min3 o=note:28
 20 Minor 2nd Trill
@@ -46,7 +46,7 @@ Bank 7 2 Trills
 //! g="8Dio/Claire Alto Flute" n="Bonus"
 //! chase=1,11
 
-Bank 7 3 Bonus
+Bank 20 16 Bonus
 
 //! c=legato i=legato-runs o=note:24
 20 Major run

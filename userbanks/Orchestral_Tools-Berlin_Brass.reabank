@@ -5,26 +5,26 @@
 //! g="Orchestral Tools/Berlin Brass" n="Horn1"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 1 OT-BB - Horn1
+Bank 24 99 OT-BB - Horn1
  
 //! g="Orchestral Tools/Berlin Brass" n="Horn2"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 2 OT-BB - Horn2
+Bank 24 100 OT-BB - Horn2
  
 //! g="Orchestral Tools/Berlin Brass" n="Horn3"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 3 OT-BB - Horn3
+Bank 24 101 OT-BB - Horn3
  
 //! g="Orchestral Tools/Berlin Brass" n="Horn4"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 4 OT-BB - Horn4
+Bank 24 102 OT-BB - Horn4
  
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet1"
 //! m=""
-Bank 3 5 OT-BB - Trumpet1
+Bank 24 103 OT-BB - Trumpet1
 //! c=legato i=note-whole o=note:24
 1 Sustain - C1
 //! c=legato i=note-whole  o=note:25
@@ -53,38 +53,38 @@ Bank 3 5 OT-BB - Trumpet1
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet2"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 6 OT-BB - Trumpet2
+Bank 24 104 OT-BB - Trumpet2
  
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet3"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 7 OT-BB - Trumpet3
+Bank 24 105 OT-BB - Trumpet3
  
  
 //! g="Orchestral Tools/Berlin Brass" n="Trombone1"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 8 OT-BB - Trombone1
+Bank 24 106 OT-BB - Trombone1
  
 //! g="Orchestral Tools/Berlin Brass" n="Trombone2"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 9 OT-BB - Trombone2
+Bank 24 107 OT-BB - Trombone2
  
 //! g="Orchestral Tools/Berlin Brass" n="Bass Trombone"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 10 OT-BB - Bass Trombone
+Bank 24 108 OT-BB - Bass Trombone
  
 //! g="Orchestral Tools/Berlin Brass" n="Tuba"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
-Bank 3 11 OT-BB - Tuba
+Bank 24 109 OT-BB - Tuba
  
  
 //! g="Orchestral Tools/Berlin Brass" n="Extras"
 //! m="CC messages legato..."
-Bank 3 126 OT-BB - Extras
+Bank 24 110 OT-BB - Extras
 //! c=legato i=legato g=1 o=cc:30,127
 101 Legato On
 //! c=legato i=long g=1 o=cc:30,0

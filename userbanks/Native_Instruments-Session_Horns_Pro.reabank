@@ -10,7 +10,7 @@
 //----------------------------------------------------------------------------
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Alto Sax Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
-Bank 21 1 NISHP Alto Sax Custom Multi
+Bank 23 74 NISHP Alto Sax Custom Multi
 //! c=long i=note-whole o=note@1:12
 1 sustain
 //! c=long i=vibrato o=note@1:13
@@ -45,11 +45,11 @@ Bank 21 1 NISHP Alto Sax Custom Multi
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Baritone Sax Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Alto Sax Custom Multi"
-Bank 21 2 NISHP Baritone Sax Custom Multi
+Bank 23 75 NISHP Baritone Sax Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Bass Trombone Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
-Bank 21 3 NISHP Bass Trombone Custom Multi
+Bank 23 76 NISHP Bass Trombone Custom Multi
 //! c=long i=note-whole o=note@1:12
 1 sustain
 //! c=long i=vibrato o=note@1:13
@@ -82,41 +82,41 @@ Bank 21 3 NISHP Bass Trombone Custom Multi
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Flugelhorn Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
-Bank 21 4 NISHP Flugelhorn Custom Multi
+Bank 23 77 NISHP Flugelhorn Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Mute Trumpet Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
-Bank 21 5 NISHP Mute Trumpet Custom Multi
+Bank 23 78 NISHP Mute Trumpet Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Tenor Sax Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Alto Sax Custom Multi"
-Bank 21 6 NISHP Tenor Sax Custom Multi
+Bank 23 79 NISHP Tenor Sax Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Tenor Trombone Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
-Bank 21 7 NISHP Tenor Trombone Custom Multi
+Bank 23 80 NISHP Tenor Trombone Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Trumpet 1 Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
-Bank 21 8 NISHP Trumpet 1 Custom Multi
+Bank 23 81 NISHP Trumpet 1 Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Trumpet 2 Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
-Bank 21 9 NISHP Trumpet 2 Custom Multi
+Bank 23 82 NISHP Trumpet 2 Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Solo Instruments" n="Tuba Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
 //! clone="Native Instruments/Session Horns Pro/Solo Instruments/Bass Trombone Custom Multi"
-Bank 21 10 NISHP Tuba Custom Multi
+Bank 23 83 NISHP Tuba Custom Multi
 
 //! g="Native Instruments/Session Horns Pro/Ensemble" n="Keyswitch Custom Multi"
 //! m="Two channel patches, Dynamic control w CC11"
-Bank 21 11 NISHP Keyswitch Custom Multi
+Bank 23 84 NISHP Keyswitch Custom Multi
 //! c=long i=note-whole o=note@1:12
 1 sustain
 //! c=long i=vibrato o=note@1:13

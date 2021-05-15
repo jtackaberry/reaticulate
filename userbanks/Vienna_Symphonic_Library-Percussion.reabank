@@ -137,7 +137,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Timpanis" n="Timpani A"
-Bank 5 1 Timpani A
+Bank 27 49 Timpani A
 
 //! c=default i=default o=note:0/note:113
 0 Single Hits
@@ -197,7 +197,7 @@ Bank 5 1 Timpani A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Timpanis" n="Timpani B"
-Bank 5 2 Timpani B
+Bank 27 50 Timpani B
 
 //! c=default i=default o=note:0/note:113
 0 MED - Single Hits
@@ -342,7 +342,7 @@ Bank 5 2 Timpani B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Snare Drum A"
-Bank 5 3 Snare Drum A
+Bank 27 51 Snare Drum A
 
 //! c=default i=default o=note:0/note:113
 0 Snare ON
@@ -352,7 +352,7 @@ Bank 5 3 Snare Drum A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Snare Drum B"
-Bank 5 4 Snare Drum A
+Bank 27 52 Snare Drum A
 
 //! c=default i=default o=note:0/note:113
 0 Snare ON
@@ -362,7 +362,7 @@ Bank 5 4 Snare Drum A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Snare Ensemble"
-Bank 5 5 Snare Ensemble
+Bank 27 53 Snare Ensemble
 
 //! c=default i=default o=note:0/note:113
 0 Snare ON
@@ -376,7 +376,7 @@ Bank 5 5 Snare Ensemble
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Piccolo Drum"
-Bank 5 6 Piccolo Drum
+Bank 27 54 Piccolo Drum
 
 //! c=default i=default o=note:0/note:113
 0 Hits
@@ -384,7 +384,7 @@ Bank 5 6 Piccolo Drum
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Field Drum A"
-Bank 5 7 Field Drum A
+Bank 27 55 Field Drum A
 
 //! c=default i=default o=note:0/note:113
 0 On
@@ -394,7 +394,7 @@ Bank 5 7 Field Drum A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Field Drum B"
-Bank 5 8 Field Drum B
+Bank 27 56 Field Drum B
 
 //! c=default i=default o=note:0/note:113
 0 Hits
@@ -402,7 +402,7 @@ Bank 5 8 Field Drum B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Bass Drum A"
-Bank 5 9 Bass Drum A
+Bank 27 57 Bass Drum A
 
 //! c=default i=default o=note:0/note:113
 0 Soft
@@ -412,7 +412,7 @@ Bank 5 9 Bass Drum A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Bass Drum B"
-Bank 5 10 Bass Drum B
+Bank 27 58 Bass Drum B
 
 //! c=default i=default o=note:0/note:113
 0 Hits
@@ -420,7 +420,7 @@ Bank 5 10 Bass Drum B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Taiko Drums"
-Bank 5 11 Taiko Drums
+Bank 27 59 Taiko Drums
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -432,7 +432,7 @@ Bank 5 11 Taiko Drums
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Concert Toms"
-Bank 5 12 Concert Toms
+Bank 27 60 Concert Toms
 
 //! c=default i=default o=note:0/note:113
 0 Low
@@ -442,7 +442,7 @@ Bank 5 12 Concert Toms
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Roto Toms"
-Bank 5 13 Roto Toms
+Bank 27 61 Roto Toms
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -456,7 +456,7 @@ Bank 5 13 Roto Toms
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Drums and Toms" n="Tambourines"
-Bank 5 14 Tambourines
+Bank 27 62 Tambourines
 
 //! c=default i=default o=note:0/note:113
 0 Tambourine A
@@ -478,7 +478,7 @@ Bank 5 14 Tambourines
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Piatti A"
-Bank 5 15 Piatti A
+Bank 27 63 Piatti A
 
 //! c=default i=default o=note:0/note:113
 0 Hits
@@ -486,7 +486,7 @@ Bank 5 15 Piatti A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Piatti B"
-Bank 5 16 Piatti B
+Bank 27 64 Piatti B
 
 //! c=default i=default o=note:0/note:113
 0 11" Chinese
@@ -510,7 +510,7 @@ Bank 5 16 Piatti B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals A"
-Bank 5 17 Cymbals A
+Bank 27 65 Cymbals A
 
 //! c=default i=default o=note:0/note:113
 0 Stick
@@ -520,7 +520,7 @@ Bank 5 17 Cymbals A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals B"
-Bank 5 18 Cymbals B
+Bank 27 66 Cymbals B
 
 //! c=default i=default o=note:0/note:113
 0 Stick
@@ -533,7 +533,7 @@ Bank 5 18 Cymbals B
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals C"
-Bank 5 19 Cymbals C
+Bank 27 67 Cymbals C
 
 //! c=default i=default o=note:0/note:113
 0 Stick
@@ -544,7 +544,7 @@ Bank 5 19 Cymbals C
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals D"
-Bank 5 20 Cymbals D
+Bank 27 68 Cymbals D
 
 //! c=default i=default o=note:0/note:113
 0 Stick
@@ -557,7 +557,7 @@ Bank 5 20 Cymbals D
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, Crash"
-Bank 5 21 Cymbals, Crash
+Bank 27 69 Cymbals, Crash
 
 //! c=default i=default o=note:0/note:113
 0 15" Zildjian - Stick
@@ -586,7 +586,7 @@ Bank 5 21 Cymbals, Crash
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, China"
-Bank 5 22 Cymbals, China
+Bank 27 70 Cymbals, China
 
 //! c=default i=default o=note:0/note:113
 0 18" Zildjian - Stick
@@ -615,7 +615,7 @@ Bank 5 22 Cymbals, China
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, Ride"
-Bank 5 23 Cymbals, Ride
+Bank 27 71 Cymbals, Ride
 
 //! c=default i=default o=note:0/note:113
 0 20" Zildjian - Stick
@@ -644,7 +644,7 @@ Bank 5 23 Cymbals, Ride
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, Splash"
-Bank 5 24 Cymbals, Splash
+Bank 27 72 Cymbals, Splash
 
 //! c=default i=default o=note:0/note:113
 0 6" Zildjian - Stick
@@ -686,21 +686,21 @@ Bank 5 24 Cymbals, Splash
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Finger Cymbals"
-Bank 5 25 Finger Cymbals
+Bank 27 73 Finger Cymbals
 
 //! c=default i=default o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Tam-Tam A"
-Bank 5 26 Tam-Tam A
+Bank 27 74 Tam-Tam A
 
 //! c=default i=default o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Tam-Tam B"
-Bank 5 27 Tam-Tam B
+Bank 27 75 Tam-Tam B
 
 //! c=default i=default o=note:0/note:113
 0 52"
@@ -717,7 +717,7 @@ Bank 5 27 Tam-Tam B
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Tam-Tam C"
-Bank 5 28 Tam-Tam C
+Bank 27 76 Tam-Tam C
 
 //! c=default i=default o=note:0/note:113
 0 30"
@@ -736,7 +736,7 @@ Bank 5 28 Tam-Tam C
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Gongs"
-Bank 5 29 Gongs
+Bank 27 77 Gongs
 
 //! c=default i=default o=note:0/note:113
 0 SOFT - Standard
@@ -759,14 +759,14 @@ Bank 5 29 Gongs
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Chinese Gongs"
-Bank 5 30 Chinese Gongs
+Bank 27 78 Chinese Gongs
 
 //! c=default i=default o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Gongs"
-Bank 5 31 Peking Opera Gongs
+Bank 27 79 Peking Opera Gongs
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -783,7 +783,7 @@ Bank 5 31 Peking Opera Gongs
 
 
 //! g="VSL - PERCUSSION/Mallets" n="Celesta"
-Bank 5 32 Celesta
+Bank 27 80 Celesta
 
 //! c=default i=default o=note:0/note:113
 0 Sustain
@@ -797,7 +797,7 @@ Bank 5 32 Celesta
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Glockenspiel A"
-Bank 5 33 Glockenspiel A
+Bank 27 81 Glockenspiel A
 
 //! c=default i=default o=note:0/note:113
 0 METAL - Single Hits
@@ -842,7 +842,7 @@ Bank 5 33 Glockenspiel A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Glockenspiel B"
-Bank 5 34 Glockenspiel B
+Bank 27 82 Glockenspiel B
 
 //! c=default i=default o=note:0/note:113
 0 METAL - Single Hits
@@ -864,7 +864,7 @@ Bank 5 34 Glockenspiel B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Xylophone"
-Bank 5 35 Xylophone
+Bank 27 83 Xylophone
 
 //! c=default i=default o=note:0/note:113
 0 WOOD - Single Hits
@@ -928,7 +928,7 @@ Bank 5 35 Xylophone
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Vibraphone"
-Bank 5 36 Vibraphone
+Bank 27 84 Vibraphone
 
 //! c=default i=default o=note:0/note:113
 0 MED - Single Hits (NoVib)
@@ -983,7 +983,7 @@ Bank 5 36 Vibraphone
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Marimba"
-Bank 5 37 Marimba
+Bank 27 85 Marimba
 
 //! c=default i=default o=note:0/note:113
 0 HARD - Single Hits
@@ -1055,7 +1055,7 @@ Bank 5 37 Marimba
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Woodblocks"
-Bank 5 38 Woodblocks
+Bank 27 86 Woodblocks
 
 //! c=default i=default o=note:0/note:113
 0 WOOD
@@ -1069,7 +1069,7 @@ Bank 5 38 Woodblocks
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Temple Blocks"
-Bank 5 39 Temple Blocks
+Bank 27 87 Temple Blocks
 
 //! c=default i=default o=note:0/note:113
 0 WOOD - Single Hits
@@ -1120,7 +1120,7 @@ Bank 5 39 Temple Blocks
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Lithophone, Small"
-Bank 5 40 Lithophone, Small
+Bank 27 88 Lithophone, Small
 
 //! c=default i=default o=note:0/note:113
 0 Single Hits
@@ -1140,7 +1140,7 @@ Bank 5 40 Lithophone, Small
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Mallets" n="Stir Xylophone"
-Bank 5 41 Stir Xylophone
+Bank 27 89 Stir Xylophone
 
 //! c=default i=default o=note:0/note:113
 0 Small
@@ -1160,7 +1160,7 @@ Bank 5 41 Stir Xylophone
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Tubular Bells A"
-Bank 5 42 Tubular Bells A
+Bank 27 90 Tubular Bells A
 
 //! c=default i=default o=note:0/note:113
 0 MED - Single Hits
@@ -1180,7 +1180,7 @@ Bank 5 42 Tubular Bells A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Tubular Bells B"
-Bank 5 43 Tubular Bells B
+Bank 27 91 Tubular Bells B
 
 //! c=default i=default o=note:0/note:113
 0 MED - Single Hits
@@ -1202,7 +1202,7 @@ Bank 5 43 Tubular Bells B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Plate Bells"
-Bank 5 44 Plate Bells
+Bank 27 92 Plate Bells
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1210,7 +1210,7 @@ Bank 5 44 Plate Bells
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Hand Bells"
-Bank 5 45 Hand Bells
+Bank 27 93 Hand Bells
 
 //! c=default i=default o=note:0/note:113
 0 Metal
@@ -1222,7 +1222,7 @@ Bank 5 45 Hand Bells
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Cencerros"
-Bank 5 46 Cencerros
+Bank 27 94 Cencerros
 
 //! c=default i=default o=note:0/note:113
 0 FELT - Soft
@@ -1248,7 +1248,7 @@ Bank 5 46 Cencerros
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Cowbells"
-Bank 5 47 Cowbells
+Bank 27 95 Cowbells
 
 //! c=default i=default o=note:0/note:113
 0 Var 1 - Wool
@@ -1272,7 +1272,7 @@ Bank 5 47 Cowbells
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Church Bells"
-Bank 5 48 Church Bells
+Bank 27 96 Church Bells
 
 //! c=default i=default o=note:0/note:113
 0 Wood
@@ -1282,7 +1282,7 @@ Bank 5 48 Church Bells
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Burma Bells"
-Bank 5 49 Burma Bells
+Bank 27 97 Burma Bells
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1290,7 +1290,7 @@ Bank 5 49 Burma Bells
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Jingle Bells"
-Bank 5 50 Jingle Bells
+Bank 27 98 Jingle Bells
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1298,7 +1298,7 @@ Bank 5 50 Jingle Bells
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Bell Tree"
-Bank 5 51 Bell Tree
+Bank 27 99 Bell Tree
 
 //! c=default i=default o=note:0/note:113
 0 Metal
@@ -1308,7 +1308,7 @@ Bank 5 51 Bell Tree
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Bells" n="Bells, Misc."
-Bank 5 52 Bells, Misc.
+Bank 27 100 Bells, Misc.
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1325,7 +1325,7 @@ Bank 5 52 Bells, Misc.
 
 
 //! g="VSL - PERCUSSION/Other" n="Triangle"
-Bank 5 53 Triangle
+Bank 27 101 Triangle
 
 //! c=default i=default o=note:0/note:113
 0 Triangle A
@@ -1339,7 +1339,7 @@ Bank 5 53 Triangle
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Crotales"
-Bank 5 55 Crotales
+Bank 27 102 Crotales
 
 //! c=default i=default o=note:0/note:113
 0 Metal
@@ -1351,7 +1351,7 @@ Bank 5 55 Crotales
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Singing Bowls"
-Bank 5 56 Singing Bowls
+Bank 27 103 Singing Bowls
 
 //! c=default i=default o=note:0/note:113
 0 Wood
@@ -1363,7 +1363,7 @@ Bank 5 56 Singing Bowls
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Thundersheet"
-Bank 5 57 Thundersheet
+Bank 27 104 Thundersheet
 
 //! c=default i=default o=note:0/note:113
 0 Thundersheet A
@@ -1379,7 +1379,7 @@ Bank 5 57 Thundersheet
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Steel"
-Bank 5 58 Steel
+Bank 27 105 Steel
 
 //! c=default i=default o=note:0/note:113
 0 Rails
@@ -1391,7 +1391,7 @@ Bank 5 58 Steel
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Castanets"
-Bank 5 59 Castanets
+Bank 27 106 Castanets
 
 //! c=default i=default o=note:0/note:113
 0 Castanets
@@ -1399,7 +1399,7 @@ Bank 5 59 Castanets
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Honks"
-Bank 5 60 Honks
+Bank 27 107 Honks
 
 //! c=default i=default o=note:0/note:113
 0 Car Honks
@@ -1409,7 +1409,7 @@ Bank 5 60 Honks
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Chimes"
-Bank 5 61 Chimes
+Bank 27 108 Chimes
 
 //! c=default i=default o=note:0/note:113
 0 Glass
@@ -1421,7 +1421,7 @@ Bank 5 61 Chimes
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Anklung"
-Bank 5 62 Anklung
+Bank 27 109 Anklung
 
 //! c=default i=default o=note:0/note:113
 0 Short
@@ -1433,7 +1433,7 @@ Bank 5 62 Anklung
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Waterphone"
-Bank 5 63 Waterphone
+Bank 27 110 Waterphone
 
 //! c=default i=default o=note:0/note:113
 0 Basic
@@ -1451,7 +1451,7 @@ Bank 5 63 Waterphone
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Shaker"
-Bank 5 64 Shaker
+Bank 27 111 Shaker
 
 //! c=default i=default o=note:0/note:113
 0 Bamboo
@@ -1463,7 +1463,7 @@ Bank 5 64 Shaker
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Caxixi"
-Bank 5 65 Caxixi
+Bank 27 112 Caxixi
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1471,7 +1471,7 @@ Bank 5 65 Caxixi
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Guiro"
-Bank 5 66 Guiro
+Bank 27 113 Guiro
 
 //! c=default i=default o=note:0/note:113
 0 Wood
@@ -1481,7 +1481,7 @@ Bank 5 66 Guiro
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Claves"
-Bank 5 67 Claves
+Bank 27 114 Claves
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1489,7 +1489,7 @@ Bank 5 67 Claves
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Log Drum"
-Bank 5 68 Log Drum
+Bank 27 115 Log Drum
 
 //! c=default i=default o=note:0/note:113
 0 Hard
@@ -1503,7 +1503,7 @@ Bank 5 68 Log Drum
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Boobams"
-Bank 5 69 Boobams
+Bank 27 116 Boobams
 
 //! c=default i=default o=note:0/note:113
 0 STICK - Single Hits
@@ -1540,7 +1540,7 @@ Bank 5 69 Boobams
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Jingle Ring"
-Bank 5 70 Jingle Ring
+Bank 27 117 Jingle Ring
 
 //! c=default i=default o=note:0/note:113
 0 Jingle Ring A
@@ -1552,7 +1552,7 @@ Bank 5 70 Jingle Ring
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Bongos"
-Bank 5 71 Bongos
+Bank 27 118 Bongos
 
 //! c=default i=default o=note:0/note:113
 0 Standard
@@ -1560,7 +1560,7 @@ Bank 5 71 Bongos
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Other" n="Misc. Percussion"
-Bank 5 72 Misc. Percussion
+Bank 27 119 Misc. Percussion
 
 //! c=default i=default o=note:0/note:113
 0 Windmachine
@@ -1621,7 +1621,7 @@ Bank 5 72 Misc. Percussion
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Glass Harmonica"
-Bank 5 73 Glass Harmonica
+Bank 27 120 Glass Harmonica
 
 //! c=default i=default o=note:0/note:113
 0 Portato
@@ -1639,7 +1639,7 @@ Bank 5 73 Glass Harmonica
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Verrophone"
-Bank 5 74 Verrophone
+Bank 27 121 Verrophone
 
 //! c=default i=default o=note:0/note:113
 0 Staccato
@@ -1663,7 +1663,7 @@ Bank 5 74 Verrophone
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Musical Glasses A"
-Bank 5 75 Musical Glasses A
+Bank 27 122 Musical Glasses A
 
 //! c=default i=default o=note:0/note:113
 0 Staccato
@@ -1679,7 +1679,7 @@ Bank 5 75 Musical Glasses A
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Musical Glasses B"
-Bank 5 76 Musical Glasses B
+Bank 27 123 Musical Glasses B
 
 //! c=default i=default o=note:0/note:113
 0 Staccato
@@ -1703,7 +1703,7 @@ Bank 5 76 Musical Glasses B
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Musical Glasses C"
-Bank 5 77 Musical Glasses C
+Bank 27 124 Musical Glasses C
 
 //! c=default i=default o=note:0/note:113
 0 Staccato, Fast
@@ -1723,7 +1723,7 @@ Bank 5 77 Musical Glasses C
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Bottles"
-Bank 5 78 Bottles
+Bank 27 125 Bottles
 
 //! c=default i=default o=note:0/note:113
 0 Staccato
@@ -1739,7 +1739,7 @@ Bank 5 78 Bottles
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Lithophone"
-Bank 5 79 Lithophone
+Bank 27 126 Lithophone
 
 //! c=default i=default o=note:0/note:113
 0 SOFT - All
@@ -1807,7 +1807,7 @@ Bank 5 79 Lithophone
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Tam-Tam XXL"
-Bank 5 80 Tam-Tam XXL
+Bank 27 127 Tam-Tam XXL
 
 //! c=default i=default o=note:0/note:113
 0 Basic
@@ -1831,7 +1831,7 @@ Bank 5 80 Tam-Tam XXL
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //! g="VSL - PERCUSSION/Elements" n="Bass Waterphone"
-Bank 5 81 Bass Waterphone
+Bank 28 1 Bass Waterphone
 
 //! c=default i=default o=note:0/note:113
 0 Staccato A

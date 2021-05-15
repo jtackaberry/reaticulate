@@ -2,7 +2,7 @@
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Strings" n="Strings Play"
-Bank 01 1 Strings play
+Bank 29 13 Strings play
 
 //! c=legato i=legato o=cc:68,127
 126 legato on
@@ -50,7 +50,7 @@ Bank 01 1 Strings play
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Strings" n="Strings Score"
-Bank 1 1 Strings Score
+Bank 29 14 Strings Score
 
 //! c=legato i=legato o=cc:68,127
 126 legato on

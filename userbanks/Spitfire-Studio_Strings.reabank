@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-Core Techniques"
-Bank 1 65 a - Vln1 Core Techniques
+Bank 26 89 a - Vln1 Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -43,7 +43,7 @@ Bank 1 65 a - Vln1 Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-Legato performance"
-Bank 2 66 Vln 1-Legato performance
+Bank 26 90 Vln 1-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -52,7 +52,7 @@ Bank 2 66 Vln 1-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-Decorative Techniques"
-Bank 3 67 Vln1 Decorative Techniques
+Bank 26 91 Vln1 Decorative Techniques
 //! c=long i=con-sord-sul-pont o=cc:32,19
 19 con sordino sul ponte
 //! c=long i=con-sord-blend o=cc:32,5
@@ -89,7 +89,7 @@ Bank 3 67 Vln1 Decorative Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-FX"
-Bank 4 68 Vln 1-FX
+Bank 26 92 Vln 1-FX
 //! c=short-light i=fx o=cc:32,90
 90 grace note semitone
 //! c=short-light i=fx o=cc:32,91
@@ -116,7 +116,7 @@ Bank 4 68 Vln 1-FX
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-Legato performance"
-Bank 5 69 Vln 2-Legato performance
+Bank 26 93 Vln 2-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -125,7 +125,7 @@ Bank 5 69 Vln 2-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-Core Techniques"
-Bank 6 70 Vln2 Core Techniques
+Bank 26 94 Vln2 Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -163,7 +163,7 @@ Bank 6 70 Vln2 Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-Decorative Techniques"
-Bank 7 71 Vln2 Decorative Techniques
+Bank 26 95 Vln2 Decorative Techniques
 //! c=long i=con-sord-sul-pont o=cc:32,19
 19 con sordino sul ponte
 //! c=long i=con-sord-blend o=cc:32,5
@@ -196,7 +196,7 @@ Bank 7 71 Vln2 Decorative Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-FX"
-Bank 8 72 Vln2-FX
+Bank 26 96 Vln2-FX
 //! c=short-light i=fx o=cc:32,90
 90 grace note semitone
 //! c=short-light i=fx o=cc:32,91
@@ -223,7 +223,7 @@ Bank 8 72 Vln2-FX
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vlas-Legato performance"
-Bank 18 82 Vlas-Legato performance
+Bank 26 97 Vlas-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -232,7 +232,7 @@ Bank 18 82 Vlas-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vlas-Core Techniques"
-Bank 9 73 Vlas Core Techniques
+Bank 26 98 Vlas Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -271,7 +271,7 @@ Bank 9 73 Vlas Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vlas-Decorative Techniques"
-Bank 10 74 Vlas Decorative Techniques
+Bank 26 99 Vlas Decorative Techniques
 //! c=long i=con-sord-blend o=cc:32,5
 5 con sordino blend
 //! c=long i=tremolo o=cc:32,11
@@ -291,7 +291,7 @@ Bank 10 74 Vlas Decorative Techniques
 
 
 //! g="Spitfire/Studio Strings" n="Celli-Core Techniques"
-Bank 11 75 Celli Core Techniques
+Bank 26 100 Celli Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -330,7 +330,7 @@ Bank 11 75 Celli Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Celli-Legato performance"
-Bank 12 76 Celli-Legato performance
+Bank 26 101 Celli-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -339,7 +339,7 @@ Bank 12 76 Celli-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Celli-Decorative Techniques"
-Bank 13 77 Celli Decorative Techniques
+Bank 26 102 Celli Decorative Techniques
 //! c=long i=con-sord-sul-pont o=cc:32,19
 19 con sordino sul ponte
 //! c=long i=con-sord-blend o=cc:32,5
@@ -376,7 +376,7 @@ Bank 13 77 Celli Decorative Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Celli-FX"
-Bank 14 78 Celli 1-FX
+Bank 26 103 Celli 1-FX
 //! c=short-light i=fx o=cc:32,90
 90 grace note semitone
 //! c=short-light i=fx o=cc:32,91
@@ -391,7 +391,7 @@ Bank 14 78 Celli 1-FX
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Basses-Legato performance"
-Bank 15 79 Basses-Legato performance
+Bank 26 104 Basses-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -400,7 +400,7 @@ Bank 15 79 Basses-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Basses-Core Techniques"
-Bank 16 80 Basses Core Techniques
+Bank 26 105 Basses Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 
@@ -430,7 +430,7 @@ Bank 16 80 Basses Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Basses-Decorative Techniques"
-Bank 17 81 Basses Decorative Techniques
+Bank 26 106 Basses Decorative Techniques
 //! c=long i=tremolo o=cc:32,11
 11 tremolo
 //! c=long i=tremolo-150 o=cc:32,81

@@ -4,7 +4,7 @@
 //
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Fr Horn"
-Bank 18 1 KH - FrHn
+Bank 23 67 KH - FrHn
 
 //! c=long i=legato o=note:85
 1 sustain
@@ -34,7 +34,7 @@ Bank 18 1 KH - FrHn
 //----------------------------------------------------------------------------
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Tpt"
-Bank 18 2 KH - Tpt
+Bank 23 68 KH - Tpt
 
 //! c=long i=legato o=note:25
 1 sustain
@@ -62,7 +62,7 @@ Bank 18 2 KH - Tpt
 //----------------------------------------------------------------------------
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Tbn"
-Bank 18 3 KH - Tbn
+Bank 23 69 KH - Tbn
 
 //! c=long i=legato o=note:85
 1 sustain
@@ -92,7 +92,7 @@ Bank 18 3 KH - Tbn
 //----------------------------------------------------------------------------
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Tuba"
-Bank 18 4 KH - Tuba
+Bank 23 70 KH - Tuba
 
 //! c=long i=legato o=note:85
 1 sustain
@@ -114,7 +114,7 @@ Bank 18 4 KH - Tuba
 //
 
 //! g="Kirk Hunter/Concert Brass Legacy" n="KH Brass Ens"
-Bank 20 1 KH - Brass Ens
+Bank 23 71 KH - Brass Ens
 
 //! c=long i=legato o=note:97
 1 sustain

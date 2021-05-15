@@ -4,7 +4,7 @@
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Violin 1"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 1 20 OT-1st chairs - V1
+Bank 24 119 OT-1st chairs - V1
 //! c=legato i=note-whole  o=note:24
 1 Sustain Imm - C1
 //! c=legato i=note-whole  o=note:25
@@ -31,22 +31,22 @@ Bank 1 20 OT-1st chairs - V1
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Violin 2"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
-Bank 1 21 OT-1st chairs - V2
+Bank 24 120 OT-1st chairs - V2
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Viola"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
-Bank 1 22 OT-1st chairs - Va
+Bank 24 121 OT-1st chairs - Va
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Cello"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
-Bank 1 23 OT-1st chairs - Vc
+Bank 24 122 OT-1st chairs - Vc
 
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Extras"
 //! m="CC messages like con sordino, legato..."
-Bank 1 124 OT-BS - Extras
+Bank 24 123 OT-BS - Extras
 //! c=art1 i=legato g=1 o=cc:30,127
 101 Legato On
 //! c=art1 i=legato g=1 o=cc:30,0
@@ -66,7 +66,7 @@ Bank 1 124 OT-BS - Extras
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Extras 2"
 //! m="CC messages like con sordino, legato..."
-Bank 1 125 OT-BS - Extras 2
+Bank 24 124 OT-BS - Extras 2
 //! c=art5 i=fx o=cc:54,127
 109 Cutoff Filter On
 //! c=art5 i=fx o=cc:54,0
