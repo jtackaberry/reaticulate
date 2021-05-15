@@ -1,0 +1,176 @@
+//----------------------------------------------------------------------------
+// Source: Lenard Stockfisch (FishingForSound)
+// https://github.com/jtackaberry/reaticulate/issues/132
+//===========================================================================
+
+//! g="8Dio/Majestica/Strings" n="Long"
+Bank 29 37 8Dio Majestica Strings Long
+//! c=long i=note-whole o=cc:12,1
+1 Sustains
+//! c=long-dark i=note-whole o=cc:12,6
+2 Power Sustains
+//! c=long-light i=cresc-half o=cc:12,11
+104 Arc P-F-P
+//! c=long i=cresc-half o=cc:12,16
+106 Arc MP-F-MP
+//! c=long-dark i=cresc-half o=cc:12,21
+107 Arc FF-F-FF
+//! c=long-dark i=cresc-half o=cc:12,26
+108 Arc MP-MF
+
+//! g="8Dio/Majestica/Strings" n="Short"
+Bank 29 38 8Dio Majestica Strings Short
+//! c=short-light i=spiccato o=cc:12,1
+42 Spiccato
+//! c=short-light i=spiccato o=cc:12,6
+62 Spiccato Fast
+//! c=short i=marcato-quarter o=cc:12,11
+52 Marcato
+//! c=short-dark i=col-legno o=cc:12,16
+58 Col Legno
+//! c=short-dark i=pizz-bartok o=cc:12,21
+57 Bartok
+
+//! g="8Dio/Majestica/Strings" n="FX"
+Bank 29 39 8Dio Majestica Strings FX
+//! c=fx i=pizz-bartok o=cc:12,1
+57 Group Bartok
+//! c=fx i=spiccato o=cc:12,41
+90 Savage Hits
+//! c=fx i=phrase o=cc:12,81
+91 Savage Phrases
+
+//! g="8Dio/Majestica/Brass" n="Long"
+Bank 29 40 8Dio Majestica Brass Long
+//! c=long i=note-whole o=cc:12,1
+1 Sustains
+//! c=long-dark i=note-whole o=cc:12,6
+2 Power Sustains
+//! c=long i=con-sord o=cc:12,11
+7 Power Muted
+//! c=long-light i=cresc-half o=cc:12,16
+104 Arc P-MF-P
+//! c=long i=cresc-half o=cc:12,21
+106 Arc P-F-P
+//! c=long-dark i=cresc-half o=cc:12,26
+108 Arc Short
+
+//! g="8Dio/Majestica/Brass" n="Short"
+Bank 29 41 8Dio Majestica Brass Short
+//! c=short-light i=staccato o=cc:12,1
+40 Staccato
+//! c=short-light i=spiccato o=cc:12,6
+41 Staccatissimo
+//! c=short i=marcato-quarter o=cc:12,11
+52 Marcato
+//! c=short-dark i=marcato-quarter o=cc:12,16
+53 Muted Marcato
+
+//! g="8Dio/Majestica/Brass" n="FX"
+Bank 29 42 8Dio Majestica Brass FX
+//! c=fx i=rip o=cc:12,1
+101 Swoops/Rips
+//! c=fx i=rip o=cc:12,6
+100 Bends Up
+//! c=fx i=fall o=cc:12,11
+102 Bends Down
+//! c=fx i=fx o=cc:12,16
+106 Savage Hits
+//! c=fx i=phrase o=cc:12,21
+107 Savage Phrases
+//! c=fx i=fx o=cc:12,26
+108 Breathes
+
+//! g="8Dio/Majestica/Woodwinds" n="High Long"
+Bank 29 43 8Dio Majestica Woodwinds High Long
+//! c=long i=note-whole o=cc:12,1
+1 Sustains
+//! c=long-dark i=note-whole o=cc:12,6
+2 Power Sustains
+//! c=long-light i=cresc-half o=cc:12,11
+104 Arc P-F-P
+//! c=long i=cresc-half o=cc:12,16
+106 Arc F-FF-F
+//! c=long-dark i=vibrato o=cc:12,21
+11 Flutter Tongue
+//! c=long-dark i=trill-min2 o=cc:12,26
+70 Minor Trills
+//! c=long-dark i=trill-maj2 o=cc:12,31
+71 Major Trills
+
+//! g="8Dio/Majestica/Woodwinds" n="High Short"
+Bank 29 44 8Dio Majestica Woodwinds High Short
+//! c=short-light i=spiccato o=cc:12,1
+40 Staccatissimo
+//! c=short i=tremolo-measured o=cc:12,6
+41 Double Tongue
+//! c=short-dark i=marcato-quarter o=cc:12,11
+52 Marcato
+
+//! g="8Dio/Majestica/Woodwinds" n="Low Long"
+Bank 29 45 8Dio Majestica Woodwinds Low Long
+//! c=long i=note-whole o=cc:12,1
+1 Sustains
+//! c=long-dark i=note-whole o=cc:12,6
+2 Power Sustains
+//! c=long-light i=cresc-half o=cc:12,11
+104 Arc P-MF-P
+//! c=long i=cresc-half o=cc:12,16
+106 Arc MF-F-MF
+
+//! g="8Dio/Majestica/Woodwinds" n="Low Short"
+Bank 29 46 8Dio Majestica Woodwinds Low Short
+//! c=short-light i=spiccato o=cc:12,1
+40 Staccatissimo
+//! c=short i=tremolo-measured o=cc:12,6
+41 Double Tongue
+//! c=short-dark i=staccato o=cc:12,11
+51 Slap Note
+//! c=short-dark i=marcato-quarter o=cc:12,16
+52 Marcato
+
+//! g="8Dio/Majestica/Woodwinds" n="Low FX"
+Bank 29 47 8Dio Majestica Woodwinds Low FX
+//! c=fx i=phrase o=cc:12,21
+107 Savage Phrases Up
+//! c=fx i=phrase o=cc:12,81
+108 Savage Phrases Down
+
+//! g="8Dio/Majestica/Percussion" n="Low"
+Bank 29 48 8Dio Majestica Percussion Low
+//! c=short i=note-whole o=cc:12,1
+1 Tom Toms
+//! c=short i=note-whole o=cc:12,6
+2 Grand Cassas
+//! c=short i=note-whole o=cc:12,11
+3 Timpani Hits
+//! c=short i=note-whole o=cc:12,16
+4 Timpani Rolls
+//! c=short i=note-whole o=cc:12,21
+5 Timpani Cresc
+
+//! g="8Dio/Majestica/Percussion" n="High"
+Bank 29 49 8Dio Majestica Percussion High
+//! c=short i=note-whole o=cc:12,1
+1 Small Snares
+//! c=short i=note-whole o=cc:12,6
+2 Larg Snares
+//! c=short i=note-whole o=cc:12,11
+3 Tambourines
+//! c=short i=note-whole o=cc:12,16
+4 Anvils
+//! c=short i=note-whole o=cc:12,21
+5 Sticks/Claps
+
+//! g="8Dio/Majestica/Percussion" n="Cymbals"
+Bank 29 50 8Dio Majestica Percussion Cymbals
+//! c=short i=note-whole o=cc:12,1
+1 Cymbals
+//! c=short i=note-whole o=cc:12,6
+2 Scratches
+//! c=short i=note-whole o=cc:12,11
+3 Tam Tams
+//! c=short i=note-whole o=cc:12,16
+4 Small Gongs
+//! c=short i=note-whole o=cc:12,21
+5 Large Gongs

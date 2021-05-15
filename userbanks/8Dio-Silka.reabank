@@ -1,0 +1,245 @@
+//----------------------------------------------------------------------------
+// Source: Lenard Stockfisch (FishingForSound)
+// https://github.com/jtackaberry/reaticulate/issues/132
+//===========================================================================
+
+//! g="8Dio/Silka/" n="2 Syllable Arcs Fast MW"
+Bank 29 51 8Dio Silka 2 Syllable Arc Fast
+//! c=long i=cresc-half o=cc:12,1
+1 Oh-Soh
+//! c=long i=cresc-half o=cc:12,6
+2 Ah-Snow
+//! c=long i=cresc-half o=cc:12,11
+3 My-Spi
+//! c=long i=cresc-half o=cc:12,16
+4 The-Light
+//! c=long i=cresc-half o=cc:12,21
+5 My-Heart
+//! c=long i=cresc-half o=cc:12,26
+6 You-See
+
+//! g="8Dio/Silka/" n="2 Syllable Arcs Slow MW"
+Bank 29 52 8Dio Silka 2 Syllable Arc Slow
+//! c=long i=cresc-half o=cc:12,1
+1 Oh-Soh
+//! c=long i=cresc-half o=cc:12,6
+2 Ah-Loh
+//! c=long i=cresc-half o=cc:12,11
+3 Tu-Feh
+//! c=long i=cresc-half o=cc:12,16
+4 Sar-Leh
+//! c=long i=cresc-half o=cc:12,21
+5 Far-Tus
+//! c=long i=cresc-half o=cc:12,26
+6 Nu-Lus
+//! c=long i=cresc-half o=cc:12,31
+7 Mumble 1
+//! c=long i=cresc-half o=cc:12,36
+8 Mumble 2
+
+//! g="8Dio/Silka/" n="4 Syllable Soft Arcs"
+Bank 29 53 8Dio Silka 4 Syllable Soft Arcs
+//! c=long i=cresc-half o=cc:12,1
+1 I-Ne-Ver-Saw
+//! c=long i=cresc-half o=cc:12,6
+2 Eh-Lov-Sho-Deep
+//! c=long i=cresc-half o=cc:12,11
+3 In-Cru-Chi-Veeh
+//! c=long i=cresc-half o=cc:12,16
+4 In-Cru-Si-Noh
+//! c=long i=cresc-half o=cc:12,21
+5 Ex-Am-Me-Tu
+//! c=long i=cresc-half o=cc:12,26
+6 So-Is-The-Snow
+
+//! g="8Dio/Silka/" n="5 Syllable Soft Arcs"
+Bank 29 54 8Dio Silka 5 Syllable Soft Arcs
+//! c=long i=cresc-half o=cc:12,1
+1 Oh-Soh-Cru-Eh-Snoh
+//! c=long i=cresc-half o=cc:12,6
+2 Ah-Tu-Ma-Ni-Lohs
+//! c=long i=cresc-half o=cc:12,11
+3 Pre-Dee-Cry-Oh-Deh
+//! c=long i=cresc-half o=cc:12,16
+4 Oh-The-Ny-So-Lee
+//! c=long i=cresc-half o=cc:12,21
+5 Crise-Oh-Stan-In-Light
+//! c=long i=cresc-half o=cc:12,26
+6 Lov-In-San-Dee-Sight
+//! c=long i=cresc-half o=cc:12,31
+7 Oh-Soh-Cru-Eh-Sus
+//! c=long i=cresc-half o=cc:12,36
+8 Ah-Tu-Me-Leh-Nus
+//! c=long i=cresc-half o=cc:12,41
+9 Pre-Deh-Cru-Oh-Deh
+//! c=long i=cresc-half o=cc:12,46
+10 Oh-Neh-Mu-So-Leh
+//! c=long i=cresc-half o=cc:12,51
+11 Cree-Oh-Sta-Sem-Pus
+//! c=long i=cresc-half o=cc:12,56
+12 Lov-In-Thy-Tem-Sus
+
+//! g="8Dio/Silka/" n="Fast Repeated Staccato"
+Bank 29 55 8Dio Silka Fast Repeated Staccato
+//! c=short i=staccato o=cc:12,1
+1 No-no-oh
+//! c=short i=staccato o=cc:12,6
+2 Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,11
+3 Tu-Tu-Tus
+//! c=short i=staccato o=cc:12,16
+4 Da-Da-Dadada
+//! c=short-dark i=marcato o=cc:12,21
+5 No-no-oh Slow
+//! c=short-dark i=marcato o=cc:12,26
+6 Ah-Ah-Ah Slow
+//! c=short-dark i=marcato o=cc:12,31
+7 Tu-Tu-Tus Slow
+//! c=long i=cresc-half o=cc:12,36
+8 No-no-oh Slow Arc
+//! c=long i=cresc-half o=cc:12,41
+9 Ah-Ah-Ah Slow Arc
+//! c=long i=cresc-half o=cc:12,46
+10 Tu-Tu-Tus Slow Arc
+//! c=long i=cresc-half o=cc:12,51
+11 No-no-oh Dissonant Waves
+//! c=long i=cresc-half o=cc:12,56
+12 Ah-Ah-Ah Dissonant Waves
+//! c=long i=cresc-half o=cc:12,61
+13 Tu-Tu-Tus Dissonant Waves
+
+//! g="8Dio/Silka/" n="Legato Intimate"
+Bank 29 56 8Dio Silka Legato Intimate
+//! c=legato i=legato o=cc:12,1
+1 Ah
+//! c=legato i=legato o=cc:12,6
+2 Eh
+//! c=legato i=legato o=cc:12,11
+3 Oh
+//! c=legato i=legato o=cc:12,16
+4 Uh
+//! c=legato i=legato o=cc:12,21
+5 Mm
+
+//! g="8Dio/Silka/" n="Legato Staccato"
+Bank 29 57 8Dio Silka Legato Staccato
+//! c=short i=staccato o=cc:12,1
+1 Ah-Ah-Ah > Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,6
+2 Tu-Tu-Tu > Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,11
+3 No-No-No > Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,16
+4 Ah-Ah-Ah > Ah
+//! c=short i=staccato o=cc:12,21
+5 Tu-Tu-Tu > Ah
+//! c=short i=staccato o=cc:12,26
+6 No-No-No > Ah
+//! c=short i=staccato o=cc:12,31
+7 Uh(Sus) > Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,36
+8 Ah(Sus) > Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,41
+9 Mm(Sus) > Ah-Ah-Ah
+//! c=short i=staccato o=cc:12,46
+10 Ah-Ah-Ah > Ah(Sus)
+//! c=short i=staccato o=cc:12,51
+11 Tu-Tu-Tu > Ah(Sus)
+//! c=short i=staccato o=cc:12,56
+12 No-No-No > Ah(Sus)
+
+//! g="8Dio/Silka/" n="Legato Sustain"
+Bank 29 58 8Dio Silka Legato Sustain
+//! c=short i=staccato o=cc:12,1
+1 Uh > Ah
+//! c=short i=staccato o=cc:12,6
+2 Ah > Ah
+//! c=short i=staccato o=cc:12,11
+3 Mh > Ah
+//! c=short i=staccato o=cc:12,16
+4 Uh > Ah (Stacc)
+//! c=short i=staccato o=cc:12,21
+5 Ah > Ah (Stacc)
+//! c=short i=staccato o=cc:12,26
+6 Mh > Ah (Stacc)
+//! c=short i=staccato o=cc:12,31
+7 Da > Dah (Males)
+
+
+//! g="8Dio/Silka/" n="Sustains"
+Bank 29 59 8Dio Silka Sustains
+//! c=long i=cresc-half o=cc:12,1
+1 Oh (Arc MW)
+//! c=fx i=fx o=cc:12,6
+2 Cluster Yells (MW)
+//! c=fx i=fx o=cc:12,11
+3 Cluster Yells (MW) Loop
+//! c=long i=staccato o=cc:12,16
+4 Piano
+//! c=long i=staccato o=cc:12,21
+5 Piano Loop
+//! c=fx i=fx o=cc:12,26
+6 "Bzzzz"
+//! c=long i=staccato o=cc:12,31
+7 Rand Female Scatters
+//! c=long i=staccato o=cc:12,36
+8 Rand Male Scatters
+
+//! g="8Dio/Silka/" n="Trills and Shorts"
+Bank 29 60 8Dio Silka Trills and Shorts
+//! c=short i=trill-min2 o=cc:12,1
+1 Slow Trill - HT
+//! c=short i=trill-maj2 o=cc:12,6
+2 Slow Trill - WT
+//! c=short i=trill-min2 o=cc:12,11
+3 Fast Trill - HT
+//! c=short i=trill-maj2 o=cc:12,16
+4 Fast Tril - WT
+//! c=short i=trill-min2 o=cc:12,21
+5 Slow Trill - HT (Loop)
+//! c=short i=trill-maj2 o=cc:12,26
+6 Slow Trill - WT (Loop)
+//! c=short i=trill-min2 o=cc:12,31
+7 Fast Trill - HT (Loop)
+//! c=short i=trill-maj2 o=cc:12,36
+8 Fast Tril - WT (Loop)
+//! c=short i=staccato o=cc:12,41
+9 Staccato (MW)
+//! c=short i=staccato o=cc:12,46
+10 Staccato (Key Velocity)
+
+//! g="8Dio/Silka/" n="Triplets Loops"
+Bank 29 61 8Dio Silka Triplets Loops
+//! c=short i=note-eighth o=cc:12,1
+1 Do-Do-Bi-Do
+//! c=short i=note-eighth o=cc:12,6
+2 Tik-Ti-Ki-Tik
+//! c=short i=note-eighth o=cc:12,11
+3 San-Su-Ki-Sak
+//! c=short i=note-eighth o=cc:12,16
+4 Do-Do-Bi-Do (NT)
+//! c=short i=note-eighth o=cc:12,21
+5 Tik-Ti-Ki-Tik (NT)
+//! c=short i=note-eighth o=cc:12,26
+6 San-Su-Ki-Sak (NT)
+
+//! g="8Dio/Silka/" n="Triplets"
+Bank 29 62 8Dio Silka Triplets
+//! c=short i=note-eighth o=cc:12,1
+1 Do-Do-Bi-Do, Dooh
+//! c=short i=note-eighth o=cc:12,6
+2 Do-Do-Bi-Do, Dooh (Arc)
+//! c=short i=note-eighth o=cc:12,11
+3 Tik-Ti-Ki-Tik, Tik
+//! c=short i=note-eighth o=cc:12,16
+4 Tik-Ti-Ki-Tik, Tik (Arc)
+//! c=short i=note-eighth o=cc:12,21
+5 San-Su-Ki-Sak, San
+//! c=short i=note-eighth o=cc:12,26
+6 San-Su-Ki-Sak, San (Arc)
+//! c=short i=note-eighth o=cc:12,31
+7 Do-Do-Bi-Do, Dooh (NT)
+//! c=short i=note-eighth o=cc:12,36
+8 Tik-Ti-Ki-Tik, Tik (NT)
+//! c=short i=note-eighth o=cc:12,41
+9 San-Su-Ki-Sak, San (NT)

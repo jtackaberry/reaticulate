@@ -1,0 +1,210 @@
+//----------------------------------------------------------------------------
+// Source: Lenard Stockfisch (FishingForSound)
+// https://github.com/jtackaberry/reaticulate/issues/132
+//===========================================================================
+
+
+//! g="8Dio/Lacrimosa" n="Arcs"
+Bank 29 29 8Dio Lacrimosa Arcs
+//! c=long-light i=cresc-mf-half o=note:12
+24 Ah
+//! c=long-light i=cresc-mf-half o=note:13
+25 Ee
+//! c=long-light i=cresc-mf-half o=note:14
+26 Mm
+//! c=long-light i=cresc-mf-half o=note:15
+27 Oh
+//! c=long-light i=cresc-mf-half o=note:16
+28 Uh
+//! c=long-dark i=cresc-f-half o=note:17
+29 Ah
+//! c=long-dark i=cresc-f-half o=note:18
+30 Ee
+//! c=long-dark i=cresc-f-half o=note:19
+31 Mm
+//! c=long-dark i=cresc-f-half o=note:20
+32 Oh
+//! c=long-dark i=cresc-f-half o=note:21
+33 Uh
+
+//! g="8Dio/Lacrimosa" n="Marcato"
+//! m="Sequencer for easy use"
+Bank 29 30 8Dio Lacrimosa Marcato
+//! c=long-light i=marcato o=note:12
+24 Ah
+//! c=long-light i=marcato o=note:13
+25 Ee
+//! c=long-light i=marcato o=note:14
+26 Eh
+//! c=long-light i=marcato o=note:15
+27 Oh
+//! c=long-light i=marcato o=note:16
+28 Uh
+//! c=long-dark i=marcato o=note:17
+29 Mus
+//! c=long-dark i=marcato o=note:18
+30 Nar
+//! c=long-dark i=marcato o=note:19
+31 Rar
+//! c=long-dark i=marcato o=note:20
+32 Sis
+//! c=long-dark i=marcato o=note:21
+33 Zoh
+//! c=long-dark i=marcato o=note:22
+34 Ztoh
+
+//! g="8Dio/Lacrimosa" n="Sustain"
+//! m="Sequencer for easy use"
+Bank 29 31 8Dio Lacrimosa Sustain
+//! c=long-light i=note-whole o=note:12
+24 Ah
+//! c=long-light i=note-whole o=note:13
+25 Ee
+//! c=long-light i=note-whole o=note:14
+26 Eh
+//! c=long-light i=note-whole o=note:15
+27 Oh
+//! c=long-light i=note-whole o=note:16
+28 Uh
+//! c=long-dark i=note-whole o=note:17
+29 Mus
+//! c=long-dark i=note-whole o=note:18
+30 Nar
+//! c=long-dark i=note-whole o=note:19
+31 Rar
+//! c=long-dark i=note-whole o=note:20
+32 Sis
+//! c=long-dark i=note-whole o=note:21
+33 Zoh
+//! c=long-dark i=note-whole o=note:22
+34 Ztoh
+//! c=long i=note-whole o=note:23
+35 Mm
+//! c=long i=note-whole o=note:24
+36 Vv
+//! c=long i=note-whole o=note:25
+37 Zz
+
+//! g="8Dio/Lacrimosa" n="Multi Vowels"
+//! m="Sequencer for easy use"
+Bank 29 32 8Dio Lacrimosa Multi Vowels
+//! c=long-light i=legato o=note:12
+24 Er-So-Noh
+//! c=long-light i=legato o=note:13
+25 Eh-Na-Suh
+//! c=long-light i=legato o=note:14
+26 En-Toh-Sah
+//! c=long-light i=legato o=note:15
+27 Ex-Me-Tah
+//! c=long-light i=legato o=note:16
+28 Ex-Tah-See
+//! c=long-dark i=legato o=note:17
+29 Fen-Toh-Ree
+//! c=long-dark i=legato o=note:18
+30 Keh-La-Ruh
+//! c=long-dark i=legato o=note:19
+31 Meh-Sih-Larh
+//! c=long-dark i=legato o=note:20
+32 Me-Rah-Tee
+//! c=long-dark i=legato o=note:21
+33 Me-Sah-Leh
+//! c=long-dark i=legato o=note:22
+34 Noh-So-Varh
+//! c=long i=legato o=note:23
+35 Poh-Si-Nuh
+//! c=long i=legato o=note:24
+36 Si-Nu-Toh
+//! c=long i=legato o=note:25
+37 Son-Doh-Nah
+//! c=long i=legato o=note:26
+38 Ta-So-Feh
+//! c=long i=legato o=note:27
+39 Tem-Pu-Sarh
+//! c=long i=legato o=note:28
+40 Uh-Su-Teh
+//! c=long i=legato o=note:29
+41 Uhn-Do-Roh
+//! c=long i=legato o=note:30
+42 Ne-Xus
+//! c=long i=legato o=note:31
+43 Tem-Pus
+
+//! g="8Dio/Lacrimosa" n="Staccato"
+//! m="Sequencer for easy use"
+Bank 29 33 8Dio Lacrimosa Staccato
+//! c=short-light i=staccato o=note:12
+24 Ah
+//! c=short-light i=staccato o=note:13
+25 Ee
+//! c=short-light i=staccato o=note:14
+26 Eh
+//! c=short-light i=staccato o=note:15
+27 Oh
+//! c=short-light i=staccato o=note:16
+28 Uh
+//! c=short i=staccato o=note:17
+29 Dee
+//! c=short i=staccato o=note:18
+30 Ex
+//! c=short i=staccato o=note:19
+31 Hoh
+//! c=short i=staccato o=note:20
+32 Mem
+//! c=short i=staccato o=note:21
+33 Mus
+//! c=short i=staccato o=note:22
+34 Nar
+//! c=short i=staccato o=note:23
+35 Nee
+//! c=short-dark i=staccato o=note:24
+36 Pre
+//! c=short-dark i=staccato o=note:25
+37 Rar
+//! c=short-dark i=staccato o=note:26
+38 Ruh
+//! c=short-dark i=staccato o=note:27
+39 Seh
+//! c=short-dark i=staccato o=note:28
+40 Sis
+//! c=short-dark i=staccato o=note:29
+41 Suh
+//! c=short-dark i=staccato o=note:30
+42 Tus
+//! c=short-dark i=staccato o=note:31
+43 Vah
+//! c=short-dark i=staccato o=note:32
+44 Zar
+//! c=short-dark i=staccato o=note:33
+45 Zoh
+//! c=short-dark i=staccato o=note:34
+46 Ztoh
+
+//! g="8Dio/Lacrimosa" n="Legato"
+Bank 29 34 8Dio Lacrimosa Legato
+//! c=legato i=legato o=note:24
+24 Ah
+//! c=legato i=legato o=note:25
+25 Ee
+//! c=legato i=legato o=note:26
+26 Oh
+//! c=legato i=legato o=note:27
+27 Uh
+
+//! g="8Dio/Lacrimosa" n="Effects"
+Bank 29 35 8Dio Lacrimosa Effects
+//! c=fx i=harmonics o=note:24
+24 Whistle
+//! c=fx i=alt-x o=note:25
+25 Breaths
+//! c=fx i=fx o=note:26
+26 Fx
+
+//! g="8Dio/Lacrimosa" n="Non Tonal"
+Bank 29 36 8Dio Lacrimosa Non Tonal
+//! c=fx i=fx o=note:24
+24 Slow
+//! c=fx i=fx o=note:25
+25 Normal
+//! c=fx i=fx o=note:26
+26 Fast
+

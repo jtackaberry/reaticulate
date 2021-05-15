@@ -1,0 +1,109 @@
+//----------------------------------------------------------------------------
+// Source: Lenard Stockfisch (FishingForSound)
+// https://github.com/jtackaberry/reaticulate/issues/132
+//===========================================================================
+
+//! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="01 Solo Flute"
+Bank 30 10 BWW Solo Flute
+//! c=legato i=legato o=note:24
+20 Sustains Swell + Leg
+//! c=long i=note-whole o=note:25
+1 Sustains Swell
+//! c=legato i=legato-bowed o=note:26
+21 Sustains Expressive + Leg
+//! c=long i=vibrato-molto o=note:27
+2 Sustains Expressive
+//! c=short-light i=tenuto-half o=note:28
+52 Portato Long
+//! c=short i=tenuto-quarter o=note:29
+50 Portato Short
+//! c=short-dark i=staccato o=note:30
+40 Staccato
+//! c=textured i=phrase o=note:31
+77 Ornaments
+//! c=fx i=fx o=note:32
+90 Breath Noises
+
+//! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="02 Solo Alto Flute"
+Bank 30 11 BWW Solo Alto Flute
+//! c=legato i=legato o=note:24
+20 Sustains Swell + Leg
+//! c=long i=note-whole o=note:25
+1 Sustains Swell
+//! c=legato i=legato-bowed o=note:26
+21 Sustains Accented + Leg
+//! c=long i=vibrato-molto o=note:27
+2 Sustains Accented
+//! c=short-light i=tenuto-half o=note:28
+52 Portato Long
+//! c=short i=tenuto-quarter o=note:29
+50 Portato Short
+//! c=short-dark i=staccato o=note:30
+40 Staccato
+//! c=textured i=phrase o=note:31
+77 Ornaments
+//! c=fx i=fx o=note:32
+90 Breath Noises
+
+//! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="03 Solo Oboe"
+Bank 30 12 BWW Solo Oboe
+//! c=legato i=legato o=note:24
+20 Sustains Swell + Leg
+//! c=long i=note-whole o=note:25
+1 Sustains Swell
+//! c=legato i=legato-bowed o=note:26
+21 Sustains Expressive + Leg
+//! c=long i=vibrato-molto o=note:27
+2 Sustains Expressive
+//! c=short-light i=tenuto-half o=note:28
+52 Portato Long
+//! c=short i=tenuto-quarter o=note:29
+50 Portato Short
+//! c=short-dark i=staccato o=note:30
+40 Staccato
+//! c=textured i=phrase o=note:31
+77 Ornaments
+//! c=fx i=trill o=note:32
+70 Trills
+
+//! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="04 Solo English Horn"
+Bank 30 13 BWW Solo English Horn
+//! c=legato i=legato o=note:24
+20 Sustains Swell + Leg
+//! c=long i=note-whole o=note:25
+1 Sustains Swell
+//! c=legato i=legato-bowed o=note:26
+21 Sustains Expressive + Leg
+//! c=long i=vibrato-molto o=note:27
+2 Sustains Expressive
+//! c=short-light i=tenuto-half o=note:28
+52 Portato Long
+//! c=short i=tenuto-quarter o=note:29
+50 Portato Short
+//! c=short-dark i=staccato o=note:30
+40 Staccato
+//! c=textured i=phrase o=note:31
+77 Ornaments
+//! c=fx i=trill o=note:32
+70 Trills
+
+//! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="05 Solo Clarinet"
+Bank 30 14 BWW Solo Clarinet
+//! c=legato i=legato o=note:24
+20 Sustains Swell + Leg
+//! c=long i=note-whole o=note:25
+1 Sustains Swell
+//! c=legato i=legato-bowed o=note:26
+21 Sustains Expressive + Leg
+//! c=long i=vibrato-molto o=note:27
+2 Sustains Expressive
+//! c=short-light i=tenuto-half o=note:28
+52 Portato Long
+//! c=short i=tenuto-quarter o=note:29
+50 Portato Short
+//! c=short-dark i=staccato o=note:30
+40 Staccato
+//! c=textured i=phrase o=note:31
+77 Ornaments
+//! c=fx i=trill o=note:32
+70 Trills

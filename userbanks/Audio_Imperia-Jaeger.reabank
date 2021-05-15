@@ -1,0 +1,191 @@
+//----------------------------------------------------------------------------
+// Source: Lenard Stockfisch (FishingForSound)
+// https://github.com/jtackaberry/reaticulate/issues/132
+//===========================================================================
+
+//! g="Audio Imperia/Jaeger/Brass" n="01 - 3 Trumpets"
+Bank 29 63 AI JG 3 Trumpets
+//!c=legato i=legato o=note:12
+20 Legato
+//! c=long i=whole-note o=note:13
+1 Sustain
+//!c=short i=spiccato o=note:14
+42 Staccatissimo
+//!c=short i=staccato o=note:15
+41 Staccato
+//!c=short-light i=tenuto-quarter o=note:16
+44 Portato
+
+//! g="Audio Imperia/Jaeger/Brass" n="02 - 6 French Horns"
+Bank 29 64 AI JG 6 French Horns
+//!c=legato i=legato o=note:12
+20 Legato
+//! c=long i=whole-note o=note:13
+1 Sustain
+//!c=short i=spiccato o=note:14
+42 Staccatissimo
+//!c=short i=staccato o=note:15
+41 Staccato
+//!c=short-light i=tenuto-quarter o=note:16
+44 Portato
+//!c=fx i=rip o=note:17
+100 Rip
+
+//! g="Audio Imperia/Jaeger/Brass" n="03 - 4 Trombones"
+Bank 29 65 AI JG 4 Trombones
+//! c=long i=whole-note o=note:12
+1 Sustain
+//!c=short i=spiccato o=note:13
+42 Staccatissimo
+//!c=short i=staccato o=note:14
+41 Staccato
+
+//! g="Audio Imperia/Jaeger/Brass" n="04 - 2 Tubas"
+//! clone="Audio Imperia/Jaeger/Brass/03 - 4 Trombones"
+Bank 29 66 AI JG 2 Tubas
+
+//! g="Audio Imperia/Jaeger/Brass" n="05 - 12 French Horns"
+Bank 29 67 AI JG 12 French Horns
+//! c=long i=whole-note o=note:12
+1 Sustain
+//!c=short i=spiccato o=note:13
+42 Staccatissimo
+
+//! g="Audio Imperia/Jaeger/Brass" n="06 - Low Brass"
+//! clone="Audio Imperia/Jaeger/Brass/05 - 12 French Horns"
+Bank 29 68 AI JG Low Brass
+
+//! g="Audio Imperia/Jaeger/Brass" n="07 - 3 Trmpts + 6 FrnchHrns 8va"
+//! clone="Audio Imperia/Jaeger/Brass/01 - 3 Trumpets"
+Bank 29 69 AI JG 3Trmpts + 6FrnchHrns
+
+//! g="Audio Imperia/Jaeger/Brass" n="08 - 4 Trmbns + 2 Tbs 8va"
+//! clone="Audio Imperia/Jaeger/Brass/03 - 4 Trombones"
+Bank 29 70 AI JG 4Trmbns + 2Tbs
+
+//! g="Audio Imperia/Jaeger/Brass" n="09 - Brass - Full Ens"
+//! clone="Audio Imperia/Jaeger/Brass/03 - 4 Trombones"
+Bank 29 71 AI JG Brass - Full Ens
+
+//! g="Audio Imperia/Jaeger/Strings" n="01 - 16 Violins"
+Bank 29 72 AI JG Strings - 16 Violins
+//!c=legato i=legato o=note:12
+20 Legato
+//! c=long i=whole-note o=note:13
+1 Sustain
+//!c=textured i=tremolo o=note:14
+11 Tremolo
+//!c=short i=spiccato o=note:15
+42 Spiccato
+//!c=short i=staccato o=note:16
+41 Staccato
+//!c=short-light i=tenuto-quarter o=note:17
+44 Portato
+//! c=short-light i=col-legno o=note:18
+58 Col Legno
+//! c=short-light i=pizz-bartok o=note:19
+57 Bartok Pizzicato
+
+//! g="Audio Imperia/Jaeger/Strings" n="02 - 10 Violas"
+//! clone="Audio Imperia/Jaeger/Strings/01 - 16 Violins"
+Bank 29 73 AI JG Strings - 10 Violas
+
+//! g="Audio Imperia/Jaeger/Strings" n="03 - 6 Celli"
+//! clone="Audio Imperia/Jaeger/Strings/01 - 16 Violins"
+Bank 29 74 AI JG Strings - 6 Celli
+
+//! g="Audio Imperia/Jaeger/Strings" n="04 - 4 Double Basses"
+Bank 29 75 AI JG Strings - 4 Double Basses
+//! c=long i=whole-note o=note:12
+1 Sustain
+//!c=textured i=tremolo o=note:13
+11 Tremolo
+//!c=short i=spiccato o=note:14
+42 Spiccato
+//!c=short i=staccato o=note:15
+41 Staccato
+//!c=short-light i=tenuto-quarter o=note:16
+44 Portato
+//! c=short-light i=col-legno o=note:17
+58 Col Legno
+//! c=short-light i=pizz-bartok o=note:18
+57 Bartok Pizzicato
+
+//! g="Audio Imperia/Jaeger/Strings" n="05 - 16Vlns + 10Vlas 8va"
+//! clone="Audio Imperia/Jaeger/Strings/01 - 16 Violins"
+Bank 29 76 AI JG Strings - 16Vlns + 10Vlas 8va
+
+//! g="Audio Imperia/Jaeger/Strings" n="06 - 6Cll + 4DblBss 8va"
+//! clone="Audio Imperia/Jaeger/Strings/04 - 4 Double Basses"
+Bank 29 77 AI JG Strings - 6Cll + 4DblBss 8va
+
+//! g="Audio Imperia/Jaeger/Strings" n="07 - Strings Full Ens"
+//! clone="Audio Imperia/Jaeger/Strings/04 - 4 Double Basses"
+Bank 29 78 AI JG Strings - Full Ens
+
+//! g="Audio Imperia/Jaeger/Vocals" n="01 Vocals by Merethe Soltvedt"
+Bank 29 79 AI JG Vocals
+//! c=legato-dark i=legato o=note:12
+20 Legato Aah
+//!c=long-dark i=whole-note o=note:13
+1 Sustained Aah
+//!c=legato i=legato o=note:14
+21 Legato Ooh
+//!c=long i=whole-note o=note:15
+2 Sustained Ooh
+//!c=legato-light i=legato o=note:16
+22 Legato Mmm
+//! c=long-light i=whole-note o=note:17
+3 Sustained Mmm
+
+//! g="Audio Imperia/Talos" n="01 12 French Horns"
+Bank 29 80 AI Tls 12 Horns
+//!c=legato i=legato o=note:12
+20 Legato
+//! c=long i=whole-note o=note:13
+1 Sustain
+//! c=short-dark i=marcato-half o=note:14
+55 Marcarto Long
+//! c=short-dark i=marcato-quarter o=note:15
+52 Marcarto Short
+//!c=short i=staccato o=note:16
+41 Staccato
+//!c=short i=spiccato o=note:17
+42 Staccatissimo
+//!c=textured i=multitongued o=note:18
+75 Double Tongue
+//!c=textured i=multitongued o=note:19
+77 Tripple Tongue
+//!c=textured i=multitongued o=note:20
+78 Quadruple Tongue
+//!c=fx i=rip o=note:21
+100 Rip
+//!c=fx i=rip-downward o=note:22
+101 Bend
+
+//! g="Audio Imperia/Talos" n="02 Low Brass"
+Bank 29 81 AI Tls Low Brass
+//! c=long i=whole-note o=note:12
+1 Sustain
+//! c=short-dark i=marcato-half o=note:13
+55 Marcarto Long
+//! c=short-dark i=marcato-quarter o=note:14
+52 Marcarto Short
+//!c=short i=staccato o=note:15
+41 Staccato
+//!c=short i=spiccato o=note:16
+42 Staccatissimo
+//!c=fx i=rip o=note:17
+100 Rip
+//!c=fx i=rip-downward o=note:18
+101 Bend
+//!c=textured i=cresc-half o=note:19
+102 Crescendo Long
+//!c=textured i=cresc-quarter o=note:20
+106 Crescendo Short
+//!c=long i=alt-wave-double o=note:21
+11 Sustained Flutter Tongue
+//!c=textured i=cresc-half o=note:22
+107 Crescendo Long Fluttertongue
+//!c=textured i=cresc-quarter o=note:23
+108 Crescendo Short Fluttertongue
