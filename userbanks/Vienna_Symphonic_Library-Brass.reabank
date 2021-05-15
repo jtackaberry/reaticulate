@@ -3371,7 +3371,7 @@ Bank 27 33 Piccolo Trumpet
 71 pFp - 5s (Vib)
 //! c=long-dark i=crescendo o=note:7/note:14/note:114
 72 pFp - 9s (Vib)
-//! c=long-dark i=crescendo o=note:7/note:14note:115
+//! c=long-dark i=crescendo o=note:7/note:14/note:115
 73 pFp - 4s (NoVib)
 //! c=long-dark i=crescendo o=note:7/note:14/note:116
 74 pFp - 8s (NoVib)
@@ -4060,25 +4060,25 @@ Bank 27 36 Alto Trombone
 58 Fast Rep, Dyn 180bpm
 
 //!spacer=1
-//! c=textured i=legato-glissando o=note:9/note:12/note:113
+//! c=textured i=legato-gliss o=note:9/note:12/note:113
 60 Glissando, m2 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:114
+//! c=textured i=legato-gliss o=note:9/note:12/note:114
 61 Glissando, M2 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:115
+//! c=textured i=legato-gliss o=note:9/note:12/note:115
 62 Glissando, m3 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:116
+//! c=textured i=legato-gliss o=note:9/note:12/note:116
 63 Glissando, M3 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:117
+//! c=textured i=legato-gliss o=note:9/note:12/note:117
 64 Glissando, P4 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:118
+//! c=textured i=legato-gliss o=note:9/note:12/note:118
 65 Glissando, d5 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:119
+//! c=textured i=legato-gliss o=note:9/note:12/note:119
 66 Glissando, m3 (Slow)
-//! c=textured i=legato-glissando o=note:9/note:12/note:120
+//! c=textured i=legato-gliss o=note:9/note:12/note:120
 67 Glissando, M3 (Slow)
-//! c=textured i=legato-glissando o=note:9/note:12/note:121
+//! c=textured i=legato-gliss o=note:9/note:12/note:121
 68 Glissando, P4 (Slow)
-//! c=textured i=legato-glissando o=note:9/note:12/note:122
+//! c=textured i=legato-gliss o=note:9/note:12/note:122
 69 Glissando, d5 (Slow)
 
 //!spacer=1
@@ -4398,15 +4398,15 @@ Bank 27 38 Contrabass Trombone
 69 pFp - 6s
 
 //!spacer=1
-//! c=textured i=legato-glissando o=note:8/note:12/note:113
+//! c=textured i=legato-gliss o=note:8/note:12/note:113
 70 Glissando, m2
-//! c=textured i=legato-glissando o=note:8/note:12/note:114
+//! c=textured i=legato-gliss o=note:8/note:12/note:114
 71 Glissando, M2
-//! c=textured i=legato-glissando o=note:8/note:12/note:115
+//! c=textured i=legato-gliss o=note:8/note:12/note:115
 72 Glissando, m3
-//! c=textured i=legato-glissando o=note:8/note:12/note:116
+//! c=textured i=legato-gliss o=note:8/note:12/note:116
 73 Glissando, M3
-//! c=textured i=legato-glissando o=note:8/note:12/note:117
+//! c=textured i=legato-gliss o=note:8/note:12/note:117
 74 Glissando, P4
 
 //! c=textured i=fx o=note:9/note:12/note:113
@@ -4656,25 +4656,25 @@ Bank 27 39 Tenor Trombone
 75 Fast Rep, Dyn 190bpm
 
 //!spacer=1
-//! c=textured i=legato-glissando o=note:9/note:12/note:113
+//! c=textured i=legato-gliss o=note:9/note:12/note:113
 76 Glissando, m2 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:114
+//! c=textured i=legato-gliss o=note:9/note:12/note:114
 78 Glissando, M2 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:115
+//! c=textured i=legato-gliss o=note:9/note:12/note:115
 79 Glissando, m3 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:116
+//! c=textured i=legato-gliss o=note:9/note:12/note:116
 80 Glissando, M3 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:117
+//! c=textured i=legato-gliss o=note:9/note:12/note:117
 81 Glissando, P4 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:118
+//! c=textured i=legato-gliss o=note:9/note:12/note:118
 82 Glissando, d5 (Fast)
-//! c=textured i=legato-glissando o=note:9/note:12/note:119
+//! c=textured i=legato-gliss o=note:9/note:12/note:119
 83 Glissando, m3 (Slow)
-//! c=textured i=legato-glissando o=note:9/note:12/note:120
+//! c=textured i=legato-gliss o=note:9/note:12/note:120
 84 Glissando, M3 (Slow)
-//! c=textured i=legato-glissando o=note:9/note:12/note:121
+//! c=textured i=legato-gliss o=note:9/note:12/note:121
 85 Glissando, P4 (Slow)
-//! c=textured i=legato-glissando o=note:9/note:12/note:122
+//! c=textured i=legato-gliss o=note:9/note:12/note:122
 86 Glissando, d5 (Slow)
 
 //!spacer=1

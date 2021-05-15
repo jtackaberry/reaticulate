@@ -233,9 +233,9 @@ Bank 23 61 Solo Chordmaker
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Full Brass FX"
 Bank 23 62 Full Brass FX
-//! c=long i=rips o=note:24
+//! c=long i=rip o=note:24
 90 atonal rips and falls
-//! c=long i=rips o=note:25
+//! c=long i=rip o=note:25
 91 a tonal rips plus falls
 //! c=fx i=fx o=note:26
 92 clusters
@@ -244,14 +244,14 @@ Bank 23 62 Full Brass FX
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Horns FX"
 Bank 23 63 Horns FX
-//! c=long i=rips o=note:24
+//! c=long i=rip o=note:24
 90 rips pulses and flurries
 //! c=fx i=fx o=note:25
 93 lydecker cinematic
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Trumpets FX"
 Bank 23 64 Trumpets FX
-//! c=long i=rips o=note:24
+//! c=long i=rip o=note:24
 90 atonal rips and falls
 //! c=short i=fx o=note:25
 91 stabs and loose lips
@@ -260,7 +260,7 @@ Bank 23 64 Trumpets FX
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Trombones FX"
 Bank 23 65 Trombones FX
-//! c=long i=rips o=note:24
+//! c=long i=rip o=note:24
 90 step slides and risers
 //! c=long i=fx o=note:25
 91 flutters and flybys
@@ -269,7 +269,7 @@ Bank 23 65 Trombones FX
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Low Brass FX"
 Bank 23 66 Low Brass FX
-//! c=long i=rips o=note:24
+//! c=long i=rip o=note:24
 90 stabs and scoops
 //! c=long i=fx o=note:25
 91 flutter swells and flybys

@@ -20,11 +20,11 @@ Bank 21 89 Chris Hein Orchestral Winds Eb Clarinet
 27 Dyn Exp Short (Vel)
 //! c=fx i=fx o=note:28
 28 Flutter Tng (Vel+Xfade)
-//! c=short i=note-eight o=note:29
+//! c=short i=note-eighth o=note:29
 29 Short 1 (Vel)
 //! c=short i=note-quarter o=note:30
 30 Short 2 (Vel)
-//! c=short i=note-eight o=note:31
+//! c=short i=note-eighth o=note:31
 31 Short 3 (Vel)
 //! c=short i=note-sixteenth o=note:32
 32 Short 4 (Vel)
@@ -63,11 +63,11 @@ Bank 21 90 Chris Hein Orchestral Winds Bb Clarinet
 27 Dyn Exp Short (Vel)
 //! c=fx i=fx o=note:28
 28 Flutter Tng (Vel+Xfade)
-//! c=short i=note-eight o=note:29
+//! c=short i=note-eighth o=note:29
 29 Short 1 (Vel)
 //! c=short i=note-quarter o=note:30
 30 Short 2 (Vel)
-//! c=short i=note-eight o=note:31
+//! c=short i=note-eighth o=note:31
 31 Short 3 (Vel)
 //! c=short i=note-sixteenth o=note:32
 32 Short 4 (Vel)
@@ -106,11 +106,11 @@ Bank 21 91 Chris Hein Orchestral Winds Bass Clarinet
 27 Dyn Exp Short (Vel)
 //! c=fx i=fx o=note:28
 28 Flutter Tng (Vel+Xfade)
-//! c=short i=note-eight o=note:29
+//! c=short i=note-eighth o=note:29
 29 Short 1 (Vel)
 //! c=short i=note-quarter o=note:30
 30 Short 2 (Vel)
-//! c=short i=note-eight o=note:31
+//! c=short i=note-eighth o=note:31
 31 Short 3 (Vel)
 //! c=short i=note-sixteenth o=note:32
 32 Short 4 (Vel)

@@ -153,27 +153,27 @@ Bank 24 116 OT-BS - Basses Dynamics
 //! g="Orchestral Tools/Berlin Strings" n="Extras"
 //! m="CC messages like con sordino, legato..."
 Bank 24 117 OT-BS - Extras
-//! c=art1 i=legato g=1 o=cc:30,127
+//! c=default i=legato g=1 o=cc:30,127
 101 Legato On
-//! c=art1 i=legato g=1 o=cc:30,0
+//! c=default i=legato g=1 o=cc:30,0
 102 Legato Off
-//! c=art2 i=con-sord g=2 o=cc:16,127
+//! c=default i=con-sord g=2 o=cc:16,127
 103 Con Sordino On
-//! c=art2 i=con-sord g=2 o=cc:16,0
+//! c=default i=con-sord g=2 o=cc:16,0
 104 Con Sordino Off
-//! c=art3 i=crescendo g=3 o=cc:52,127
+//! c=default i=crescendo g=3 o=cc:52,127
 105 Niente On
-//! c=art3 i=crescendo g=3 o=cc:52,0
+//! c=default i=crescendo g=3 o=cc:52,0
 106 Niente Off
-//! c=art4 i=fx g=4 o=cc:53,127
+//! c=default i=fx g=4 o=cc:53,127
 107 Soft Layer On
-//! c=art4 i=fx g=4 o=cc:53,0
+//! c=default i=fx g=4 o=cc:53,0
 108 Soft Layer Off
 
 //! g="Orchestral Tools/Berlin Strings" n="Extras 2"
 //! m="CC messages like con sordino, legato..."
 Bank 24 118 OT-BS - Extras 2
-//! c=art5 i=fx o=cc:54,127
+//! c=default i=fx o=cc:54,127
 109 Cutoff Filter On
-//! c=art5 i=fx o=cc:54,0
+//! c=default i=fx o=cc:54,0
 110 Cutoff Filter Off

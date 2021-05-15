@@ -17,11 +17,11 @@ Bank 21 73 Chris Hein Orchestral Brass French Horn 1
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -48,11 +48,11 @@ Bank 21 74 Chris Hein Orchestral Brass French Horn 2
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -79,11 +79,11 @@ Bank 21 75 Chris Hein Orchestral Brass French Horn 3
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -110,11 +110,11 @@ Bank 21 76 Chris Hein Orchestral Brass French Horn Ensemble
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -141,11 +141,11 @@ Bank 21 77 Chris Hein Orchestral Brass Trombone 1
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -172,11 +172,11 @@ Bank 21 78 Chris Hein Orchestral Brass Trombone 2
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -203,11 +203,11 @@ Bank 21 79 Chris Hein Orchestral Brass Trombone 3
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -234,11 +234,11 @@ Bank 21 80 Chris Hein Orchestral Brass Trombone Ensemble
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -265,11 +265,11 @@ Bank 21 81 Chris Hein Orchestral Brass Trumpet 1
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -296,11 +296,11 @@ Bank 21 82 Chris Hein Orchestral Brass Trumpet 2
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -327,11 +327,11 @@ Bank 21 83 Chris Hein Orchestral Brass Trumpet 3
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1
@@ -358,11 +358,11 @@ Bank 21 84 Chris Hein Orchestral Brass Trumpet Ensemble
 26 Dyn Exp Long (Vel)
 //! c=fx i=fx o=note:27
 27 Dyn Exp Short (Vel)
-//! c=short i=note-eight o=note:28
+//! c=short i=note-eighth o=note:28
 28 Short 1 (Vel)
 //! c=short i=note-quarter o=note:29
 29 Short 4 (Vel)
-//! c=short i=note-eight o=note:30
+//! c=short i=note-eighth o=note:30
 30 Short 6 (Vel)
 //! c=fx i=rip o=note:31
 31 Rip 1

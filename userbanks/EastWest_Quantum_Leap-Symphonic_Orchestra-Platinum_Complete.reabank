@@ -574,9 +574,9 @@ Bank 22 103 EWQLSO Platinum Brass - 2 Trumpets
 30 Port-Leg
 //! c=legato i=legato-portamento o=note:28
 22 QLeg
-//! c=short-dark i=trill_min2 o=note:29
+//! c=short-dark i=trill-min2 o=note:29
 71 Trill ht
-//! c=short i=trill_maj2 o=note:30
+//! c=short i=trill-maj2 o=note:30
 72 Trill wt
 //! c=long i=legato-portamento o=note:31
 31 Port
@@ -746,11 +746,11 @@ Bank 22 109 EWQLSO Platinum Strings - Solo Violin
 71 Trill ht
 //! c=short i=trill-maj2 o=note:30
 72 Trill wt
-//! c=textured-dark i=crescendo o=note:31
+//! c=textured i=crescendo o=note:31
 18 Exp 1
 //! c=textured i=cresc-half o=note:32
 19 Exp 2
-//! c=textured-light i=crescendo o=note:33
+//! c=textured i=crescendo o=note:33
 20 Exp Crec
 //! c=textured i=legato-flautando o=note:34
 66 Exp p
@@ -792,17 +792,17 @@ Bank 22 110 EWQLSO Platinum Strings - 18 Violins
 21 Sus-Leg
 //! c=textured i=legato o=note:27
 5 Exp-Leg
-//! c=textured-light i=legato o=note:28
+//! c=textured i=legato o=note:28
 11 Lyr-Leg
 //! c=long i=legato-tremolo o=note:29
 81 Trem-Leg
 //! c=long i=note-whole o=note:30
 2 Non Vib
-//! c=textured-dark i=legato-vibrato o=note:31
+//! c=textured i=legato-vibrato o=note:31
 18 Lyrical
-//! c=textured-light i=vibrato o=note:32
+//! c=textured i=vibrato o=note:32
 17 Lyr Fst
-//! c=textured-dark i=vibrato o=note:33
+//! c=textured i=vibrato o=note:33
 20 Exp Fst
 //! c=textured i=vibrato o=note:34
 19 Exp
@@ -843,7 +843,7 @@ Bank 22 111 EWQLSO Platinum Strings - 11 Violins
 21 Sus-Leg
 //! c=textured i=legato o=note:26
 5 Exp-Leg
-//! c=textured-light i=legato o=note:27
+//! c=textured i=legato o=note:27
 3 Lyr-Leg
 //! c=legato i=legato-portamento o=note:28
 22 QLeg
@@ -853,13 +853,13 @@ Bank 22 111 EWQLSO Platinum Strings - 11 Violins
 71 Trill ht
 //! c=short i=trill-maj2 o=note:31
 72 Trill wt
-//! c=textured-light i=vibrato o=note:32
+//! c=textured i=vibrato o=note:32
 20 Lyr A
-//! c=textured-dark i=vibrato o=note:33
+//! c=textured i=vibrato o=note:33
 18 Lyr B
 //! c=textured i=vibrato o=note:34
 19 Exp
-//! c=textured-dark i=decrescendo o=note:35
+//! c=textured i=decrescendo o=note:35
 66 Exp Dim
 //! c=long i=vibrato o=note:36
 67 Grand Detache
@@ -873,7 +873,7 @@ Bank 22 111 EWQLSO Platinum Strings - 11 Violins
 65 Mart Up/Dn Marc
 //! c=short i=staccato o=note:41
 43 Stac RR
-//! c=short i=spicatto o=note:42
+//! c=short i=spiccato o=note:42
 41 Spic 2 Run
 //! c=short-dark i=marcato o=note:43
 49 Mart Up/Dn
@@ -914,11 +914,11 @@ Bank 22 112 EWQLSO Platinum Strings - Solo Viola
 71 Trill ht
 //! c=short i=trill-maj2 o=note:30
 72 Trill wt
-//! c=textured-dark i=crescendo o=note:31
+//! c=textured i=crescendo o=note:31
 18 Exp 1
 //! c=textured i=cresc-half o=note:32
 19 Exp 2
-//! c=textured-light i=crescendo o=note:33
+//! c=textured i=crescendo o=note:33
 20 Exp 3
 //! c=textured i=legato-flautando o=note:34
 66 Exp Vib Sft
@@ -955,9 +955,9 @@ Bank 22 113 EWQLSO Platinum Strings - 10 Violas
 71 Trill ht
 //! c=short i=trill-maj2 o=note:30
 72 Trill wt
-//! c=textured-light i=legato o=note:31
+//! c=textured i=legato o=note:31
 18 Exp Leg Acc
-//! c=textured-light i=note-whole o=note:32
+//! c=textured i=note-whole o=note:32
 19 Exp Fast
 //! c=textured i=alt-wave o=note:33
 20 Exp Slow
@@ -995,9 +995,9 @@ Bank 22 114 EWQLSO Platinum Strings - Solo Cello
 21 Sus-Leg
 //! c=long i=note-whole o=note:27
 2 Non Vib
-//! c=textured-light i=cresc-half o=note:28
+//! c=textured i=cresc-half o=note:28
 18 Exp Dn
-//! c=textured-dark i=cresc-half o=note:29
+//! c=textured i=cresc-half o=note:29
 19 Exp Up
 //! c=textured i=alt-wave o=note:30
 20 Dbl Bow Exp
@@ -1028,7 +1028,7 @@ Bank 22 115 EWQLSO Platinum Strings - 10 Cellos
 21 Sus-Leg
 //! c=long i=legato-portamento o=note:27
 30 Port-Leg
-//! c=textured-light i=legato o=note:28
+//! c=textured i=legato o=note:28
 18 Exp-Lyr-Leg
 //! c=long i=tremolo o=note:29
 81 Tremolo
@@ -1038,13 +1038,13 @@ Bank 22 115 EWQLSO Platinum Strings - 10 Cellos
 72 Trill wt
 //! c=long i=legato-portamento o=note:32
 31 Port
-//! c=textured-light i=alt-wave o=note:33
+//! c=textured i=alt-wave o=note:33
 19 Exp Lyr Fst
-//! c=textured-light i=vibrato o=note:34
+//! c=textured i=vibrato o=note:34
 20 Exp Vib Fst
 //! c=textured i=alt-wave o=note:88
 66 Exp Lyr
-//! c=textured-light i=vibrato o=note:89
+//! c=textured i=vibrato o=note:89
 67 Exp Vib
 //! c=textured i=crescendo o=note:90
 68 Exp Crec
@@ -1076,11 +1076,11 @@ Bank 22 116 EWQLSO Platinum Strings - Solo Contrabass
 21 Sus-Leg
 //! c=textured i=legato o=note:75
 5 Exp-Leg
-//! c=textured-light i=alt-wave o=note:76
+//! c=textured i=alt-wave o=note:76
 18 Lyr-Leg
 //! c=long i=note-whole o=note:77
 2 Sus Non Vib
-//! c=textured-light i=note-whole o=note:78
+//! c=textured i=note-whole o=note:78
 20 Lyrical
 //! c=textured i=alt-wave o=note:79
 19 Exp
@@ -1090,7 +1090,7 @@ Bank 22 116 EWQLSO Platinum Strings - Solo Contrabass
 54 Mart RR
 //! c=short i=pizz o=note:82
 61 Pizz RR
-//! c=short i=spicatto o=note:83
+//! c=short i=spiccato o=note:83
 41 Spicatto RR
 //! c=short i=col-legno o=note:84
 63 Col Legno RR
@@ -1113,7 +1113,7 @@ Bank 22 117 EWQLSO Platinum Strings - 9 Double Basses
 81 Trem
 //! c=long i=legato-portamento o=note:77
 31 Port
-//! c=textured-light i=note-whole o=note:78
+//! c=textured i=note-whole o=note:78
 18 Exp Fst
 //! c=textured i=alt-wave o=note:79
 19 Exp

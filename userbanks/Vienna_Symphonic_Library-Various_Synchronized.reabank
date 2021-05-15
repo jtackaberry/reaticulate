@@ -184,7 +184,7 @@ Bank 28 93 SYN-zed Violin I
 6 Perf. Legato, Fast
 //! c=legato i=legato-sul-g o=note:0/note:12/note:111
 7 Perf. Legato, Sulla Corda
-//! c=legato i=legato-vib o=note:0/note:12/note:112
+//! c=legato i=legato-vibrato o=note:0/note:12/note:112
 8 Perf. Legato (ProgVib)
 //! c=legato i=trill-maj2 o=note:0/note:13/note:108
 9 Perf. Trill
@@ -484,7 +484,7 @@ Bank 28 94 SYN-zed Viola
 6 Perf. Legato, Fast
 //! c=legato i=legato-sul-c o=note:0/note:12/note:111
 7 Perf. Legato, Sulla Corda
-//! c=legato i=legato-vib o=note:0/note:12/note:112
+//! c=legato i=legato-vibrato o=note:0/note:12/note:112
 8 Perf. Legato (ProgVib)
 //! c=legato i=trill-maj2 o=note:0/note:13/note:108
 9 Perf. Trill
@@ -2217,7 +2217,7 @@ Bank 28 105 SYN-zed Dimension Brass - Muted
 9 Perf. Legato
 //! c=legato i=trill-maj2 o=note:2/note:10
 10 Perf. Trill
-//! c=legato i=legato-glissando o=note:2/note:11
+//! c=legato i=legato-gliss o=note:2/note:11
 11 Legato, Glissando
 
 //!spacer=1

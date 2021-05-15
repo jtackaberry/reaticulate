@@ -7,7 +7,7 @@
 Bank 29 82 AI NCL Solo Violin
 //! c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustain
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="02 Solo Cello"
@@ -34,7 +34,7 @@ Bank 29 87 AI NCL Solo Horn
 Bank 29 88 AI NCL 16 Violins
 //!c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustained
 //!c=short i=spiccato o=note:14
 42 Spiccato
@@ -45,7 +45,7 @@ Bank 29 88 AI NCL 16 Violins
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="02 10 Violas"
 Bank 29 89 AI NCL 16 Violas
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustained
 //!c=short i=spiccato o=note:13
 42 Spiccato
@@ -78,7 +78,7 @@ Bank 29 94 AI NCL Full Ens
 Bank 29 95 AI NCL 3 Trumpets
 //!c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustained
 //!c=short i=staccato o=note:14
 42 Staccatissimo
@@ -89,7 +89,7 @@ Bank 29 96 AI NCL 6 French Horns
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="03 4 Trombones"
 Bank 29 97 AI NCL 4 Trombones
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustained
 //!c=short i=staccato o=note:13
 42 Staccatissimo
@@ -116,7 +116,7 @@ Bank 29 102 AI NCL Full Brass
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="01 2 Flutes"
 Bank 29 103 AI NCL 2 Flutes
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustained
 //! c=short i=staccato o=note:13
 42 Staccatissimo

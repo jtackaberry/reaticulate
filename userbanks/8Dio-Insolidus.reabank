@@ -208,15 +208,15 @@ Bank 29 27 8Dio Insolidus Multi Vowels 4-4 Swells 2
 
 //! g="8Dio/Insolidus" n="Shorts"
 Bank 29 28 8Dio Insolidus Shorts
-//! c=short i=tenuto o=cc:12,1
+//! c=short i=tenuto-quarter o=cc:12,1
 1 Tem (CC1 Dynamics)
-//! c=short i=tenuto o=cc:12,6
+//! c=short i=tenuto-quarter o=cc:12,6
 2 Sem (CC1 Dynamics)
-//! c=short i=tenuto o=cc:12,11
+//! c=short i=tenuto-quarter o=cc:12,11
 3 Ee (CC1 Dynamics)
-//! c=short i=tenuto o=cc:12,16
+//! c=short i=tenuto-quarter o=cc:12,16
 4 Um (CC1 Dynamics)
-//! c=short i=tenuto o=cc:12,21
+//! c=short i=tenuto-quarter o=cc:12,21
 5 Us (CC1 Dynamics)
-//! c=short i=tenuto o=cc:12,26
+//! c=short i=tenuto-quarter o=cc:12,26
 6 Tus (CC1 Dynamics)

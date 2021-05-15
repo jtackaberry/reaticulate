@@ -93,9 +93,9 @@ Bank 24 24 SSWE Flutes Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Effects"
 Bank 24 25 SSWE Flutes Effects
-//! c=short-light i=richochet o=note:12
+//! c=short-light i=riccochet o=note:12
 12 cluster stacc piano
-//! c=short-dark i=richochet o=note:13
+//! c=short-dark i=riccochet o=note:13
 13 cluster stacc forte
 //! c=long i=fx o=note:14
 14 cluster sustain1
@@ -208,9 +208,9 @@ Bank 24 31 SSWE Oboes Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Effects"
 Bank 24 32 SSWE Oboes Effects
-//! c=short-light i=richochet o=note:12
+//! c=short-light i=riccochet o=note:12
 12 3note stab
-//! c=short-dark i=richochet o=note:13
+//! c=short-dark i=riccochet o=note:13
 13 discord forte
 //! c=long i=crescendo o=note:14
 14 cluster crescendo
@@ -321,7 +321,7 @@ Bank 24 39 SSWE Clarinets Effects
 12 bend dn-up
 //! c=short i=staccato o=note:13
 13 cluster staccato
-//! c=long i=richochet o=note:14
+//! c=long i=riccochet o=note:14
 14 dissonance sustain
 //! c=long-dark i=note-whole o=note:15
 15 cluster forte

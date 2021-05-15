@@ -4,8 +4,8 @@
 
 //----------------------------------------------------------------------------
 // CHECK THE C= & I= for PORTATO throughout EWHB
-// This note applies to Hollywood Diamond Percussion and Strings. 
-// Apply to Bank 15 and Bank 16. 
+// This note applies to Hollywood Diamond Percussion and Strings.
+// Apply to Bank 15 and Bank 16.
 // Note that the PLAY Engine maps C0 to Key 36.
 // There are NUMEROUS additional non-KS patches for every instrument family in the library that are not mapped below.
 //----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ Bank 22 39 EW Bassoon Runs FX KS
 //! c=legato i=legato-runs o=note:38
 113 maj run down
 //! c=legato i=legato-runs o=note:39
-112 major run up 
+112 major run up
 //! c=legato i=legato-runs o=note:40
 115 min run down
 //! c=legato i=legato-runs o=note:41
@@ -157,7 +157,7 @@ Bank 22 42 EW Clarinet Runs FX KS
 //! c=legato i=legato-runs o=note:38
 113 maj run down
 //! c=legato i=legato-runs o=note:39
-112 major run up 
+112 major run up
 //! c=legato i=legato-runs o=note:40
 115 min run down
 //! c=legato i=legato-runs o=note:41
@@ -208,7 +208,7 @@ Bank 22 44 EW Flute 1 KS
 40 staccato
 //! c=short-dark i=accented-quarter o=note:42
 52 marcato short
-//! c=long i=harmonics =note:43
+//! c=long i=harmonics o=note:43
 10 sing
 //! c=long i=tremolo-measured o=note:44
 11 flutter
@@ -232,7 +232,7 @@ Bank 22 45 EW Flute 1 Runs FX KS
 //! c=legato i=legato-runs o=note:38
 113 maj run down
 //! c=legato i=legato-runs o=note:39
-112 major run up 
+112 major run up
 //! c=legato i=legato-runs o=note:40
 115 min run down
 //! c=legato i=legato-runs o=note:41
@@ -280,7 +280,7 @@ Bank 22 47 EW Flute 2 Runs FX KS
 //! c=legato i=legato-runs o=note:38
 113 maj run down
 //! c=legato i=legato-runs o=note:39
-112 major run up 
+112 major run up
 //! c=legato i=legato-runs o=note:40
 115 min run down
 //! c=legato i=legato-runs o=note:41
@@ -324,7 +324,7 @@ Bank 22 49 EW Oboe Runs FX KS
 //! c=legato i=legato-runs o=note:38
 113 maj run down
 //! c=legato i=legato-runs o=note:39
-112 major run up 
+112 major run up
 //! c=legato i=legato-runs o=note:40
 115 min run down
 //! c=legato i=legato-runs o=note:41
@@ -372,7 +372,7 @@ Bank 22 51 EW Piccolo Runs FX KS
 //! c=legato i=legato-runs o=note:38
 113 maj run down
 //! c=legato i=legato-runs o=note:39
-112 major run up 
+112 major run up
 //! c=legato i=legato-runs o=note:40
 115 min run down
 //! c=legato i=legato-runs o=note:41

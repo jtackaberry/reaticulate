@@ -192,23 +192,23 @@ Bank 25 6 OT-BW - Bassoon
 //! g="Orchestral Tools/Berlin Woodwinds" n="Extras"
 //! m="Berlin Woodwinds common CC messages"
 Bank 25 7 OT-BW - Extras
-//! c=art1 i=legato g=1 o=cc:30,127
+//! c=default i=legato g=1 o=cc:30,127
 1 Legato On
-//! c=art1 i=legato g=1 o=cc:30,0
+//! c=default i=legato g=1 o=cc:30,0
 2 Legato Off
-//! c=art3 i=crescendo g=3 o=cc:52,127
+//! c=default i=crescendo g=3 o=cc:52,127
 3 Niente On
-//! c=art3 i=crescendo g=3 o=cc:52,0
+//! c=default i=crescendo g=3 o=cc:52,0
 4 Niente Off
-//! c=art4 i=fx g=4 o=cc:53,127
+//! c=default i=fx g=4 o=cc:53,127
 5 Soft Layer On
-//! c=art4 i=fx g=4 o=cc:53,0
+//! c=default i=fx g=4 o=cc:53,0
 6 Soft Layer Off
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Extras 2"
 //! m="Berlin Woodwinds common CC messages"
 Bank 25 8 OT-BW - Extras 2
-//! c=art5 i=fx o=cc:54,127
+//! c=default i=fx o=cc:54,127
 9 Cutoff Filter On
-//! c=art5 i=fx o=cc:54,0
+//! c=default i=fx o=cc:54,0
 10 Cutoff Filter Off

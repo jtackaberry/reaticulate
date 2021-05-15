@@ -18,7 +18,7 @@ Bank 26 10 Albion ONE - Strings
 90 long-sourd
 //! c=long-dark i=tremolo o=cc:32,96
 96 tremolo
-//! c=long-light i=note o=cc:32,116
+//! c=long-light i=note-whole o=cc:32,116
 116 Fort Oct short
 //! c=long-light i=note-whole o=cc:32,127
 127 Fort Oct long

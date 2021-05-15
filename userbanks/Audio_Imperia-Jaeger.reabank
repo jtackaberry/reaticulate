@@ -7,7 +7,7 @@
 Bank 29 63 AI JG 3 Trumpets
 //!c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustain
 //!c=short i=spiccato o=note:14
 42 Staccatissimo
@@ -20,7 +20,7 @@ Bank 29 63 AI JG 3 Trumpets
 Bank 29 64 AI JG 6 French Horns
 //!c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustain
 //!c=short i=spiccato o=note:14
 42 Staccatissimo
@@ -33,7 +33,7 @@ Bank 29 64 AI JG 6 French Horns
 
 //! g="Audio Imperia/Jaeger/Brass" n="03 - 4 Trombones"
 Bank 29 65 AI JG 4 Trombones
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustain
 //!c=short i=spiccato o=note:13
 42 Staccatissimo
@@ -46,7 +46,7 @@ Bank 29 66 AI JG 2 Tubas
 
 //! g="Audio Imperia/Jaeger/Brass" n="05 - 12 French Horns"
 Bank 29 67 AI JG 12 French Horns
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustain
 //!c=short i=spiccato o=note:13
 42 Staccatissimo
@@ -71,7 +71,7 @@ Bank 29 71 AI JG Brass - Full Ens
 Bank 29 72 AI JG Strings - 16 Violins
 //!c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustain
 //!c=textured i=tremolo o=note:14
 11 Tremolo
@@ -96,7 +96,7 @@ Bank 29 74 AI JG Strings - 6 Celli
 
 //! g="Audio Imperia/Jaeger/Strings" n="04 - 4 Double Basses"
 Bank 29 75 AI JG Strings - 4 Double Basses
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustain
 //!c=textured i=tremolo o=note:13
 11 Tremolo
@@ -127,22 +127,22 @@ Bank 29 78 AI JG Strings - Full Ens
 Bank 29 79 AI JG Vocals
 //! c=legato-dark i=legato o=note:12
 20 Legato Aah
-//!c=long-dark i=whole-note o=note:13
+//!c=long-dark i=note-whole o=note:13
 1 Sustained Aah
 //!c=legato i=legato o=note:14
 21 Legato Ooh
-//!c=long i=whole-note o=note:15
+//!c=long i=note-whole o=note:15
 2 Sustained Ooh
 //!c=legato-light i=legato o=note:16
 22 Legato Mmm
-//! c=long-light i=whole-note o=note:17
+//! c=long-light i=note-whole o=note:17
 3 Sustained Mmm
 
 //! g="Audio Imperia/Talos" n="01 12 French Horns"
 Bank 29 80 AI Tls 12 Horns
 //!c=legato i=legato o=note:12
 20 Legato
-//! c=long i=whole-note o=note:13
+//! c=long i=note-whole o=note:13
 1 Sustain
 //! c=short-dark i=marcato-half o=note:14
 55 Marcarto Long
@@ -165,7 +165,7 @@ Bank 29 80 AI Tls 12 Horns
 
 //! g="Audio Imperia/Talos" n="02 Low Brass"
 Bank 29 81 AI Tls Low Brass
-//! c=long i=whole-note o=note:12
+//! c=long i=note-whole o=note:12
 1 Sustain
 //! c=short-dark i=marcato-half o=note:13
 55 Marcarto Long

@@ -74,7 +74,7 @@ Bank 27 13 SUCO - Great Division
 28 Principal 4'
 //! c=fx i=note-whole o=note:29
 29 Clarion 4'
-//! c=texture i=note-whole o=note:30
+//! c=textured i=note-whole o=note:30
 30 Mixture III
 //! c=short-light i=note-whole o=note:31
 31 Twelfth 2 & 2/3'

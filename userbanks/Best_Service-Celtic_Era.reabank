@@ -6,351 +6,351 @@
 Bank 20 61 Irish Flute
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fst Slide
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Slide
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Cuts
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Taps
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Bounces
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Doublings
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Short Rolls
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Rolls Fast
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Long Rolls Slow
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crann On Beat
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Crann Off Beat
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Triple Tonguing
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Staccato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Long Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Overblown
 
 //! g="Best Service/Celtic Era/Winds" n="Whistles" off=0
 Bank 20 62 Irish Whistle / Low Whistle
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fast Slide
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Slide
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Cuts
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Taps
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Bounces
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Doublings
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Short Rolls
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Rolls Fast
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Long Rolls Slow
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crann On Beat
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Crann Off Beat
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Triple Tonguing
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Staccato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Long Staccato
 
 //! g="Best Service/Celtic Era/Winds" n="Highland Pipes" off=0
 Bank 20 63 Highland Pipes
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Grace Note Ab
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Grace Note F
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Grace Note Eb
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Doubling
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Tripling
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Strike
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Slur
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Crumluath
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Torluath
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Lamluath
 
 //! g="Best Service/Celtic Era/Winds" n="Uilleann Pipes" off=0
 Bank 20 64 Uilleann Pipes
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fast Slide
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Slide
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Cuts
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Taps
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Bounce
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Doublings
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Short Rolls
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Rolls Fast
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Long Rolls Slow
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crann On Beat
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Crann Off Beat
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Triple Tonguing
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Staccato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Popping
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Fiddle" off=0
 Bank 20 65 Irish Fiddle
 //! i=legato c=long
 0 Finger Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Bowed Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Long Roll
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Short Roll
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Cuts
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Triplets
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Fast Slide
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Medium Slide
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Slow Slide
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Staccato
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Marcato
 
 //! g="Best Service/Celtic Era/Strings" n="Acoustic Guitar" off=0
 Bank 20 66 Acoustic Guitar
 //! i=legato c=long
 0 Sustain
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slide Up
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Slide Down
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Harmonics
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Harmonic Chords
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mute
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Bouzouki" off=0
 Bank 20 67 Irish Bouzouki
 //! i=legato c=long
 0 Sustain
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slide Up
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Slide Down
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Harmonics
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Harmonic Chords
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mute
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Tenor Banjo" off=0
 Bank 20 68 Tenor Banjo
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slide Up
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Slide Down
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Strummed" off=0
 Bank 20 69 Strummed Guitar / Bouzouki
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 C Root
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 C# Root
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 D Root
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 D# Root
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 E Root
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 F Root
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 F# Root
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 G Root
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 G# Root
-//! i=default o=note:45
+//! i=note-quarter o=note:45
 45 A Root
-//! i=default o=note:46
+//! i=note-quarter o=note:46
 46 A# Root
-//! i=default o=note:47
+//! i=note-quarter o=note:47
 47 B Root
 
 //! spacer=1
 
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 Open Chords
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 Major Chords
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 Minor Chords
-//! i=default o=note:53
+//! i=note-quarter o=note:53
 53 7th Chords
 
 //! g="Best Service/Celtic Era/Ancient" n="Carnyx" off=0
 Bank 20 70 Carnyx
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slurred Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Marcato Short
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Marcato Long
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Cresc. Short
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Cresc. Med
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Cresc. Long
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Flutter Tongue
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Flutter Cresc. Sh.
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Flutter Cresc. Med
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Flutter Cresc. Long
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="Cornu" off=0
 Bank 20 71 Cornu
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slurred Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Marc. Short
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Marc. Med
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Marc. Long
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Cresc. Short
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Cresc. Med
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Cresc. Long
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="War Horn" off=0
 Bank 20 72 War Horn
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato 
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slurred Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Mordent 1
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Mord. 1 Fall
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent 2
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mord. 2 Fall
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Mordent 3
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Mord. 3 Fall
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Cresc. Short
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Cresc. Med
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Cresc. Long
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Flutter Cresc. Short
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Flutter Cresc. Med
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Flutter Cresc. Long
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Decresc. Short
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Decresc. Med
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Decresc. Long
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Flut. Decresc. Sh.
-//! i=default o=note-hold:55
+//! i=note-quarter o=note-hold:55
 55 Flut. Decresc. Med
-//! i=default o=note-hold:56
+//! i=note-quarter o=note-hold:56
 56 Flut. Decresc. Long
-//! i=default o=note-hold:57
+//! i=note-quarter o=note-hold:57
 57 Flut. Decresc. Staccato
-//! i=default o=note-hold:58
+//! i=note-quarter o=note-hold:58
 58 Flut. Decresc. Marcato
-//! i=default o=note-hold:59
+//! i=note-quarter o=note-hold:59
 59 Flut. Decresc. Trill 1
-//! i=default o=note-hold:60
+//! i=note-quarter o=note-hold:60
 60 Flut. Decresc. Trill 2
-//! i=default o=note-hold:61
+//! i=note-quarter o=note-hold:61
 61 Flut. Decresc. Repetition

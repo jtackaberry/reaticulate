@@ -216,7 +216,7 @@ Bank 30 68 Spitfire Solo Strings - Bass
 61 short harmonics
 //! c=short-light i=spiccato-brushed-con-sord o=note:11
 62 brushed baroque
-//! c=short i=pizz-c o=note:12
+//! c=short i=pizz o=note:12
 64 pizz undamped
 //! c=long-dark i=tremolo o=note:13
 11 tremolo

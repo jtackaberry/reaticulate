@@ -16,11 +16,11 @@ Bank 23 72 Kirk Hunter Diamond Symphony Chamber Violins
 9 Velo Marcato
 //! c=short i=spiccato o=note-hold:29
 42 spiccato ped double
-//! c=pizz i=pizz o=note-hold:30
+//! c=short-light i=pizz o=note-hold:30
 21 Pizzicato
-//! c=fast i=tremolo o=note-hold:31
+//! c=long-dark i=tremolo o=note-hold:31
 31 Tremolo
-//! c=trill i=trill o=note-hold:32
+//! c=long i=trill o=note-hold:32
 22 Half step trill
 //! c=legato i=legato-runs o=note-hold:33
 33 whole step trill

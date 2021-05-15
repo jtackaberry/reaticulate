@@ -3,93 +3,93 @@
 //
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Sustains Vowels"
 Bank 26 5 VoR - Soprano - Sustains - Wovels
-//! c=long i=AaP o=cc:20,0
+//! c=long i=note-quarter o=cc:20,0
 20  Aa P
-//! c=long i=AF o=cc:20,6
+//! c=long i=note-quarter o=cc:20,6
 21  Aa f
-//! c=long i=EP o=cc:20,12
+//! c=long i=note-quarter o=cc:20,12
 22  Ee p
-//! c=long i=EF o=cc:20,18
+//! c=long i=note-quarter o=cc:20,18
 23  Ee f
-//! c=long i=EhP o=cc:20,24
+//! c=long i=note-quarter o=cc:20,24
 24  Eh p
-//! c=long i=EhF o=cc:20,30
+//! c=long i=note-quarter o=cc:20,30
 25  Eh f
-//! c=long i=Mm o=cc:20,36
+//! c=long i=note-quarter o=cc:20,36
 26  Mm
-//! c=long i=OhP o=cc:20,42
+//! c=long i=note-quarter o=cc:20,42
 27  Oh p
-//! c=long i=OhF o=cc:20,48
+//! c=long i=note-quarter o=cc:20,48
 28  Oh f
-//! c=long i=OoP o=cc:20,54
+//! c=long i=note-quarter o=cc:20,54
 29  Oo p
-//! c=long i=OoF o=cc:20,60
+//! c=long i=note-quarter o=cc:20,60
 30  Oo f
 
-//! c=legato  i=Legato_on g=2 o=cc:30,124
-70 Lagato on
-//! c=legato  i=Legato_off g=2 o=cc:30,0
-71 Lagato off
+//! c=legato  i=note-quarter g=2 o=cc:30,124
+70 Legato on
+//! c=legato  i=note-quarter g=2 o=cc:30,0
+71 Legato off
 
 //--------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Sustains Phrases"
 Bank 26 6 VoR - Soprano - Sustains - Phrases
-//! c=long i=Ab inito o=cc:20,66
+//! c=long i=note-quarter o=cc:20,66
 31  Ab inito
-//! c=long i=Aduramus_Te o=cc:20,72
+//! c=long i=note-quarter o=cc:20,72
 32  Aduramus Te
-//! c=long i=Agnus_Dei o=cc:20,75
+//! c=long i=note-quarter o=cc:20,75
 33  Agnus Dei
-//! c=long i=Amor_Aeternus o=cc:20,82
+//! c=long i=note-quarter o=cc:20,82
 34  Amor Aeternus
-//! c=long i=Deum o=cc:20,89
+//! c=long i=note-quarter o=cc:20,89
 35  Deum
-//! c=long i=Eleison o=cc:20,95
+//! c=long i=note-quarter o=cc:20,95
 36  Eleison
-//! c=long i=Hallaluja o=cc:20,101
+//! c=long i=note-quarter o=cc:20,101
 37  Hallaluja
-//! c=long i=Kyrie o=cc:20,106
+//! c=long i=note-quarter o=cc:20,106
 38  Kyrie
-//! c=long i=Metuo_Somnus o=cc:20,112
+//! c=long i=note-quarter o=cc:20,112
 39  Metuo Somnus
-//! c=long i=Noctem o=cc:20,118
+//! c=long i=note-quarter o=cc:20,118
 40  Noctem
-//! c=long i=Spiritu o=cc:20,124
+//! c=long i=note-quarter o=cc:20,124
 41  Spiritu
-//! c=long i=Vae Victis o=cc:20,127
+//! c=long i=note-quarter o=cc:20,127
 42  Vae Victis
 
-//! c=legato  i=Legato_on g=2 o=cc:30,124
-75 Lagato on
-//! c=legato  i=Legato_off g=2 o=cc:30,0
-76 Lagato off
+//! c=legato  i=note-quarter g=2 o=cc:30,124
+75 Legato on
+//! c=legato  i=note-quarter g=2 o=cc:30,0
+76 Legato off
 
 
 //-------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano True legato"
 Bank 26 7 VoR - Soprano - True legato
-//! c=short-light i=True Legato Aa o=cc:20,1
+//! c=short-light i=note-quarter o=cc:20,1
 50 Aa
-//! c=short-light i=Oo o=cc:20,124
+//! c=short-light i=note-quarter o=cc:20,124
 51 Oo
 
-//! c=legato  i=Legato_on g=3 o=cc:30,124
-80 Lagato on
-//! c=legato  i=Legato_off g=3 o=cc:30,0
-81 Lagato off
+//! c=legato  i=note-quarter g=3 o=cc:30,124
+80 Legato on
+//! c=legato  i=note-quarter g=3 o=cc:30,0
+81 Legato off
 
 //-------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Staccato"
 Bank 26 8 VoR - Soprano - Staccato
-//! c=short-light i=Aa o=cc:20,10
+//! c=short-light i=note-quarter o=cc:20,10
 60 Aa
-//! c=short i=Ee o=cc:20,32
+//! c=short i=note-quarter o=cc:20,32
 61 Ee
-//! c=short i=Eh Aa o=cc:20,56
+//! c=short i=note-quarter o=cc:20,56
 62 Eh
-//! c=short i=Mm o=cc:20,78
+//! c=short i=note-quarter o=cc:20,78
 63 Mm
-//! c=short i=Oh o=cc:20,100
+//! c=short i=note-quarter o=cc:20,100
 64 Oh
-//! c=short i=Oo o=cc:20,127
+//! c=short i=note-quarter o=cc:20,127
 65 Oo

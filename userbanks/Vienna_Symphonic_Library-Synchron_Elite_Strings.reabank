@@ -86,9 +86,9 @@ Bank 30 69 Violins/Violas (SES)
 73 Perf. Detache (SenzaVib)
 //! c=legato-dark i=legato-bowed2 o=note:35/note:36/note:43
 75 Perf. Detache, Agile (Vib)
-//! c=legato-dark i=legato-bowed2 o=note:35/note:37/note:44note:43
+//! c=legato-dark i=legato-bowed2 o=note:35/note:37/note:44/note:43
 76 Perf. Detache, Agile (MoltoVib)
-//! c=legato-dark i=legato-bowed2 o=note:35/note:38/note:45note:43
+//! c=legato-dark i=legato-bowed2 o=note:35/note:38/note:45/note:43
 77 Perf. Detache, Agile (SenzaVib)
 
 //!spacer=1

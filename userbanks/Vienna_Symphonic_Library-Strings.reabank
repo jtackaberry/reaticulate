@@ -127,7 +127,7 @@ Bank 28 45 Violin I
 14 Perf. Spiccato
 //! c=legato i=spiccato-feathered o=note:1/note:12/note:124
 15 Perf. Spiccato, Fast
-//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+//! c=legato i=staccato-dig o=note:1/note:13/note:113
 16 Perf. Harsh
 //! c=legato i=legato-gliss o=note:1/note:13/note:114
 17 Perf. Gliss G
@@ -400,7 +400,7 @@ Bank 28 46 Violin I (Mute)
 9 Perf. Trill
 //! c=legato i=legato-portamento o=note:1/note:12/note:119
 10 Perf. Portamento
-//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+//! c=legato i=marcato-quarter o=note:1/note:12/note:120
 11 Perf. Marcato
 //! c=legato i=spiccato-brushed o=note:1/note:12/note:121
 12 Perf. Spiccato
@@ -667,7 +667,7 @@ Bank 28 48 Viola
 14 Perf. Spiccato
 //! c=legato i=spiccato-feathered o=note:1/note:12/note:124
 15 Perf. Spiccato, Fast
-//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+//! c=legato i=staccato-dig o=note:1/note:13/note:113
 16 Perf. Harsh
 //! c=legato i=legato-gliss o=note:1/note:13/note:114
 17 Perf. Gliss C
@@ -914,7 +914,7 @@ Bank 28 49 Viola (Mute)
 9 Perf. Trill
 //! c=legato i=legato-portamento o=note:1/note:12/note:119
 10 Perf. Portamento
-//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+//! c=legato i=marcato-quarter o=note:1/note:12/note:120
 11 Perf. Marcato
 //! c=legato i=spiccato-brushed o=note:1/note:12/note:121
 12 Perf. Spiccato
@@ -1050,7 +1050,7 @@ Bank 28 50 Cello I
 14 Perf. Spiccato
 //! c=legato i=spiccato-feathered o=note:1/note:12/note:124
 15 Perf. Spiccato, Fast
-//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+//! c=legato i=staccato-dig o=note:1/note:13/note:113
 16 Perf. Harsh
 //! c=legato i=legato-gliss o=note:1/note:13/note:114
 17 Perf. Gliss C
@@ -1304,7 +1304,7 @@ Bank 28 51 Cello I (Mute)
 9 Perf. Trill
 //! c=legato i=legato-portamento o=note:1/note:12/note:119
 10 Perf. Portamento
-//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+//! c=legato i=marcato-quarter o=note:1/note:12/note:120
 11 Perf. Marcato
 //! c=legato i=spiccato-brushed o=note:1/note:12/note:121
 12 Perf. Spiccato
@@ -1565,7 +1565,7 @@ Bank 28 53 Bass
 14 Perf. Spiccato
 //! c=legato i=spiccato-feathered o=note:1/note:12/note:124
 15 Perf. Spiccato, Fast
-//! c=legato i=spiccato-dig o=note:1/note:13/note:113
+//! c=legato i=staccato-dig o=note:1/note:13/note:113
 16 Perf. Harsh
 //! c=legato i=legato-gliss o=note:1/note:13/note:114
 17 Perf. Gliss
@@ -1753,7 +1753,7 @@ Bank 28 54 Bass (Mute)
 9 Perf. Trill
 //! c=legato i=legato-portamento o=note:1/note:12/note:119
 10 Perf. Portamento
-//! c=legato i=marcato-eighth o=note:1/note:12/note:120
+//! c=legato i=marcato-quarter o=note:1/note:12/note:120
 11 Perf. Marcato
 //! c=legato i=spiccato-brushed o=note:1/note:12/note:121
 12 Perf. Spiccato
@@ -4175,9 +4175,9 @@ Bank 28 70 Violins - a20
 5 Perf. Legato, Fast
 //! c=legato i=trill-maj2 o=note:1/note:12/note:115
 6 Perf. Trill
-//! c=legato i=legato-slur o=note:1/note:12/note:116
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
 7 Perf. Slur
-//! c=legato i=legato-slur o=note:1/note:12/note:117
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
 8 Perf. Slur, Fast
 //! c=legato i=legato o=note:1/note:12/note:118
 9 Perf. Legato, 4Vel
@@ -4299,9 +4299,9 @@ Bank 28 71 Violins - a20 (Mute)
 5 Perf. Legato, Fast
 //! c=legato i=trill-maj2 o=note:1/note:12/note:115
 6 Perf. Trill
-//! c=legato i=legato-slur o=note:1/note:12/note:116
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
 7 Perf. Slur
-//! c=legato i=legato-slur o=note:1/note:12/note:117
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
 8 Perf. Slur, Fast
 //! c=legato i=legato-vibrato o=note:1/note:12/note:118
 9 Perf. Legato (ProgVib)
@@ -4389,9 +4389,9 @@ Bank 28 72 Violas - a14
 5 Perf. Legato, Fast
 //! c=legato i=trill-maj2 o=note:1/note:12/note:115
 6 Perf. Trill
-//! c=legato i=legato-slur o=note:1/note:12/note:116
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
 7 Perf. Slur
-//! c=legato i=legato-slur o=note:1/note:12/note:117
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
 8 Perf. Slur, Fast
 //! c=legato i=legato o=note:1/note:12/note:118
 9 Perf. Legato, 4Vel
@@ -4505,9 +4505,9 @@ Bank 28 73 Violas - a14 (Mute)
 5 Perf. Legato, Fast
 //! c=legato i=trill-maj2 o=note:1/note:12/note:115
 6 Perf. Trill
-//! c=legato i=legato-slur o=note:1/note:12/note:116
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
 7 Perf. Slur
-//! c=legato i=legato-slur o=note:1/note:12/note:117
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
 8 Perf. Slur, Fast
 //! c=legato i=legato-vibrato o=note:1/note:12/note:118
 9 Perf. Legato (ProgVib)
@@ -4596,9 +4596,9 @@ Bank 28 74 Cellos - a12
 5 Perf. Legato, Fast
 //! c=legato i=trill-maj2 o=note:1/note:12/note:115
 6 Perf. Trill
-//! c=legato i=legato-slur o=note:1/note:12/note:116
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
 7 Perf. Slur
-//! c=legato i=legato-slur o=note:1/note:12/note:117
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
 8 Perf. Slur, Fast
 //! c=legato i=legato o=note:1/note:12/note:118
 9 Perf. Legato, 4Vel
@@ -4710,9 +4710,9 @@ Bank 28 75 Cellos - a12 (Mute)
 5 Perf. Legato, Fast
 //! c=legato i=trill-maj2 o=note:1/note:12/note:115
 6 Perf. Trill
-//! c=legato i=legato-slur o=note:1/note:12/note:116
+//! c=legato i=legato-slurred o=note:1/note:12/note:116
 7 Perf. Slur
-//! c=legato i=legato-slur o=note:1/note:12/note:117
+//! c=legato i=legato-slurred o=note:1/note:12/note:117
 8 Perf. Slur, Fast
 //! c=legato i=legato-vibrato o=note:1/note:12/note:118
 9 Perf. Legato (ProgVib)
@@ -4840,7 +4840,7 @@ Bank 28 76 Basses - a10
 //! g="VSL - STRINGS/Harps" n="Harp I"
 Bank 28 77 Harp I
 
-//! c=short i=default o=note:113
+//! c=short i=note-quarter o=note:113
 1 Normal
 //! c=short i=con-sord o=note:114
 2 Mute
@@ -4862,7 +4862,7 @@ Bank 28 77 Harp I
 //! g="VSL - STRINGS/Harps" n="Harp II"
 Bank 28 78 Harp II
 
-//! c=short i=default o=note:113
+//! c=short i=note-quarter o=note:113
 1 Normal
 //! c=short i=con-sord o=note:114
 2 Mute

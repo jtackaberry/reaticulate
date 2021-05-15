@@ -195,132 +195,132 @@ Bank 21 1 Double Flute
 Bank 21 2 Elderwood Flute
 //! i=legato c=long
 0 Legato Natural
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato Non Vibrato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Flutter Long
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Flutter Med
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Flutter Short
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent 1
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Mordent 2
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Marcato Expressive
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Overblown
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Gliss Short
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Gliss Long
 
 //! g="Best Service/Dark Era/Wind" n="Fujara" off=0
 Bank 21 3 Fujara
 //! i=legato c=long
 0 Legato Hard Attack
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato Soft Attack
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Triplet 1
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Triplet 2
 
 //! g="Best Service/Dark Era/Wind" n="White Horn" off=0
 Bank 21 4 White Horn
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Mordent Up
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Mordent Down
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Mordent Up/Fall
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Mordent Down/Fall
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Trill 1
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Trill 1/Fall
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long Trill
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Trill 2
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Crescendo Short
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crescendo Long
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Decrescendo
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Flutter Tongue
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Flutter Cresc. Short
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Flutter Cresc. Long
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Flutter Decrescendo
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Repetition
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Marcato
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
 Bank 21 5 Overtone Flute
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Bending
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 39 Trill
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 40 Expressive Vibrato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 41 Flutter Tongue
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 42 Triplet
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 43 Staccato
 
 //! g="Best Service/Dark Era/Vocal" n="Shouts 1"
 Bank 21 6 Shouts 1
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Ha
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 He
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 39 Hi
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 40 Ho
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 41 Hu
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Hey
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Au
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 Ua
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 Sho
 
 //! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
 Bank 21 7 Kargyraa Legato
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Vowel 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Vowel 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Vowel 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Vowel 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Vowel 5
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Vowel 6
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Vowel 7
 
 //! g="Best Service/Dark Era/Vocal" n="Khomeii"
@@ -335,19 +335,19 @@ Bank 21 8 Khoomei
 46 A# Tuning
 //! c=default o=note:47
 47 B Tuning
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 C Tuning
-//! i=default o=note:49
+//! i=note-quarter o=note:49
 49 C# Tuning
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 D Tuning
-//! i=default o=note:51
+//! i=note-quarter o=note:51
 51 D# Tuning
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 E Tuning
-//! i=default o=note:53
+//! i=note-quarter o=note:53
 53 F Tuning
-//! i=default o=note:54
+//! i=note-quarter o=note:54
 54 F# Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Sygyt"
@@ -366,15 +366,15 @@ Bank 21 9 Sygyt
 46 A# Tuning
 //! c=default o=note:47
 47 B Tuning
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 C Tuning
-//! i=default o=note:49
+//! i=note-quarter o=note:49
 49 C# Tuning
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 D Tuning
-//! i=default o=note:51
+//! i=note-quarter o=note:51
 51 D# Tuning
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 E Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Whispers"
@@ -388,730 +388,730 @@ Bank 21 10 Whispers
 Bank 21 11 Baglama High / Low
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Halftone Vibrato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Short Trill Halftone
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Çapma
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Triplet
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Glissando
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long trill halftone
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Chord Down
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Chord Up
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Ending Chord
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Long Chord
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Rhythm 1
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Rhythm 2
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Rhythm 3
 
 //! g="Best Service/Ancient Era/Strings" n="Dutar" off=0
 Bank 21 12 Dutar
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Glissando
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Half Trill
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Triplet
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Tremolo
 
 //! g="Best Service/Ancient Era/Strings" n="Kopuz" off=0
 Bank 21 13 Kopuz
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Half Trill
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Çapma
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Long Chord
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Short Chord 4 Fingers
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Short Chord 1 Finger
 
 //! g="Best Service/Ancient Era/Strings" n="Rabab" off=0
 Bank 21 14 Rabab
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Halftone Vibrato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Trill
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Triplet
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Glissando
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Chikari
 
 //! g="Best Service/Ancient Era/Strings" n="Santoor" off=0
 Bank 21 15 Santoor
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Tremolo
 
 //! g="Best Service/Ancient Era/Strings" n="Tambur" off=0
 Bank 21 16 Tambur
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Glissando Up Short
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Glissando Down Short
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Glissando Up Long
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Çapma
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Çapma Long
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Fast Repetition
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Neck Vibrato
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Finger Vibrato
 
 //! g="Best Service/Ancient Era/Strings" n="Tar" off=0
 Bank 21 17 Tar
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Trill
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Halftone Trill
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Çapma
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Fast Repetition
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Glissando
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Finger Trill
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Vibrato
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Oud" off=0
 Bank 21 18 Turkish Oud
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Vibrato Legato
-//! i=default o=note-hold:39
-39 Vibrato 
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:39
+39 Vibrato
+//! i=note-quarter o=note-hold:40
 40 Slow Vibrato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Long Çapma
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Triplet
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Glissando
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Tremolo
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Chords
 
 //! g="Best Service/Ancient Era/Strings" n="Lyra I / II" off=0
 Bank 21 19 Lyra I / II
 //! i=legato c=long
 0 Finger Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Bow Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Marcato Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Short Trill Minor
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Short Trill Major
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Double Trill Minor
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Double Trill Major
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Jumping Trill
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Gliss. Vib. Tone
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Gliss. Vib. Half
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Gliss. Orn. Tone
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Gliss. Orn. Half
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Sustain Poly
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Marcato Poly
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Staccato
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Violin" off=0
 Bank 21 20 Turkish Violin
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Glissando Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Marcato Exp.
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Marcato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Staccato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent 1
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mordent 2
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Ornament 1
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Ornament 2
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Ornament 3
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Ornament 4
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Ornament 5
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Half Tone Gliss.
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Glissando
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Harmonics
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 No Vibrato
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Bow Change
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Ciftetelli Vibrato
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Ciftetelli Non Vibrato
 
 //! g="Best Service/Ancient Era/Winds" n="Armenian Duduk" off=0
 Bank 21 21 Armenian Duduk
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Mordent
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Ornament 1
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Ornament 2
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Ornament 3
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Ornament 4
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Short Trill
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long Trill
 
 //! g="Best Service/Ancient Era/Winds" n="Kaval" off=0
 Bank 21 22 Kaval
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Soft Ornaments
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Forte Ornaments
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Trill
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Staccato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Legato Falsetto
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Glissando Falsetto
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Trill Falsetto
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Falsetto Stac.
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Legato Clarinet
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Trill Clarinet
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Clarinet" off=0
 Bank 21 23 Turkish Clarinet
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Glissando
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Exp. Vibrato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Soft Bend Vib.
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Soft Bend Exp. Vib.
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Expressive
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mordent
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Staccato
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Mey" off=0
 Bank 21 24 Turkish Mey
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Mordent Up
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Mordent Down
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Ornament 1
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Ornament 2
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Cresc. Long
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Cresc. Short
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Decresc. Long
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Decresc. Short
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Glissando
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Phrases
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Ney" off=0
 Bank 21 25 Turkish Ney
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Non Vibrato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Vib. Slow to Fast
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Vib. Fast to Slow
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Ornament
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Short Trill
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Long Trill
-//! i=default o=note-hold:55
+//! i=note-quarter o=note-hold:55
 55 Mordent
-//! i=default o=note-hold:56
+//! i=note-quarter o=note-hold:56
 56 Stac. 1
-//! i=default o=note-hold:57
+//! i=note-quarter o=note-hold:57
 57 Stac. 2
-//! i=default o=note-hold:58
+//! i=note-quarter o=note-hold:58
 58 Short Bending
 
 //! g="Best Service/Ancient Era/Winds" n="Persian Ney" off=0
 Bank 21 26 Persian Ney
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Short Trill
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Long Trill
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Bend Staccato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Long Ornament 1
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long Ornament 2
 
 //! g="Best Service/Ancient Era/Winds" n="Zourna" off=0
 Bank 21 27 Zourna
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Non Vibrato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Short Trill
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Long Trill
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Long Ornament 1
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Long Ornament 2
 
 //! g="Best Service/Celtic Era/Winds" n="Irish Flute" off=0
 Bank 21 28 Irish Flute
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fst Slide
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Slide
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Cuts
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Taps
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Bounces
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Doublings
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Short Rolls
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Rolls Fast
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Long Rolls Slow
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crann On Beat
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Crann Off Beat
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Triple Tonguing
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Staccato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Long Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Overblown
 
 //! g="Best Service/Celtic Era/Winds" n="Whistles" off=0
 Bank 21 29 Irish Whistle / Low Whistle
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fast Slide
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Slide
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Cuts
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Taps
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Bounces
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Doublings
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Short Rolls
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Rolls Fast
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Long Rolls Slow
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crann On Beat
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Crann Off Beat
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Triple Tonguing
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Staccato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Long Staccato
 
 //! g="Best Service/Celtic Era/Winds" n="Highland Pipes" off=0
 Bank 21 30 Highland Pipes
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Grace Note Ab
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Grace Note F
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Grace Note Eb
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Doubling
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Tripling
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Strike
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Slur
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Crumluath
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Torluath
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Lamluath
 
 //! g="Best Service/Celtic Era/Winds" n="Uilleann Pipes" off=0
 Bank 21 31 Uilleann Pipes
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fast Slide
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Slide
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Cuts
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Taps
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Bounce
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Doublings
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Short Rolls
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Rolls Fast
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Long Rolls Slow
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crann On Beat
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Crann Off Beat
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Triple Tonguing
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Staccato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Popping
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Fiddle" off=0
 Bank 21 32 Irish Fiddle
 //! i=legato c=long
 0 Finger Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Bowed Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Long Roll
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Short Roll
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Cuts
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Triplets
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Fast Slide
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Medium Slide
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Slow Slide
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Staccato
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Marcato
 
 //! g="Best Service/Celtic Era/Strings" n="Acoustic Guitar" off=0
 Bank 21 33 Acoustic Guitar
 //! i=legato c=long
 0 Sustain
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slide Up
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Slide Down
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Harmonics
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Harmonic Chords
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mute
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Bouzouki" off=0
 Bank 21 34 Irish Bouzouki
 //! i=legato c=long
 0 Sustain
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slide Up
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Slide Down
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Harmonics
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Harmonic Chords
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mute
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Tenor Banjo" off=0
 Bank 21 35 Tenor Banjo
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slide Up
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Slide Down
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Strummed" off=0
 Bank 21 36 Strummed Guitar / Bouzouki
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 C Root
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 C# Root
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 D Root
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 D# Root
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 E Root
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 F Root
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 F# Root
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 G Root
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 G# Root
-//! i=default o=note:45
+//! i=note-quarter o=note:45
 45 A Root
-//! i=default o=note:46
+//! i=note-quarter o=note:46
 46 A# Root
-//! i=default o=note:47
+//! i=note-quarter o=note:47
 47 B Root
 
 //! spacer=1
 
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 Open Chords
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 Major Chords
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 Minor Chords
-//! i=default o=note:53
+//! i=note-quarter o=note:53
 53 7th Chords
 
 //! g="Best Service/Celtic Era/Ancient" n="Carnyx" off=0
 Bank 21 37 Carnyx
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slurred Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Marcato Short
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Marcato Long
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Cresc. Short
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Cresc. Med
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Cresc. Long
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Flutter Tongue
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Flutter Cresc. Sh.
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Flutter Cresc. Med
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Flutter Cresc. Long
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="Cornu" off=0
 Bank 21 38 Cornu
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slurred Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Marc. Short
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Marc. Med
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Marc. Long
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Cresc. Short
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Cresc. Med
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Cresc. Long
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="War Horn" off=0
 Bank 21 39 War Horn
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
-37 Legato 
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:37
+37 Legato
+//! i=note-quarter o=note-hold:38
 38 Slurred Legato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Mordent 1
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Mord. 1 Fall
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent 2
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Mord. 2 Fall
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Mordent 3
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Mord. 3 Fall
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Cresc. Short
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Cresc. Med
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Cresc. Long
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Flutter Cresc. Short
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Flutter Cresc. Med
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Flutter Cresc. Long
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Decresc. Short
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Decresc. Med
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Decresc. Long
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Flut. Decresc. Sh.
-//! i=default o=note-hold:55
+//! i=note-quarter o=note-hold:55
 55 Flut. Decresc. Med
-//! i=default o=note-hold:56
+//! i=note-quarter o=note-hold:56
 56 Flut. Decresc. Long
-//! i=default o=note-hold:57
+//! i=note-quarter o=note-hold:57
 57 Flut. Decresc. Staccato
-//! i=default o=note-hold:58
+//! i=note-quarter o=note-hold:58
 58 Flut. Decresc. Marcato
-//! i=default o=note-hold:59
+//! i=note-quarter o=note-hold:59
 59 Flut. Decresc. Trill 1
-//! i=default o=note-hold:60
+//! i=note-quarter o=note-hold:60
 60 Flut. Decresc. Trill 2
-//! i=default o=note-hold:61
+//! i=note-quarter o=note-hold:61
 61 Flut. Decresc. Repetition
 
 
@@ -1119,572 +1119,572 @@ Bank 21 39 War Horn
 Bank 21 40 Cornetto
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Staccato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Marcato
 
 //! g="Best Service/Era II/Brass" n="Natural Trumpet" off=0
 Bank 21 41 Natural Trumpet
 //! i=legato c=long
 0 Legato Marcato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Short Stac.
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Long Stac.
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Marcato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Short Cresc.
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Short Marc. Cresc.
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long Cresc.
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Marc. Cresc.
 
 //! g="Best Service/Era II/Brass" n="Sackbut" off=0
 Bank 21 42 Sackbut
 //! i=legato c=long
 0 Legato Marcato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Short Stac.
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Lonc Stac.
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Marcato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Short Cresc.
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Short Marc. Cresc.
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long Cresc.
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Marc. Cresc.
 
 //! g="Best Service/Era II/Winds/Flute" n="Gemshorn" off=0
 Bank 21 43 Gemshorn
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 49 Staccato
 
 //! g="Best Service/Era II/Winds/Flute" n="Two Holed Flute" off=0
 Bank 21 44 Two Holed Flute
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Mordent
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Long Gliss.
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Short Gliss.
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Ornament
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Short Trill
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Long Trill
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Staccato
 
 //! g="Best Service/Era II/Winds/Flute" n="Rein. Recorders" off=48
 Bank 21 45 Reinnesance Recorders
 //! i=legato c=long
 48 Legato
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Marcato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Mordent
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Short Trill
 
 //! g="Best Service/Era II/Winds/Flute" n="Trad. Sopr. Recorder" off=48
 Bank 21 46 Trad. Sopr. Recorder
 //! i=legato c=long
 48 Legato
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Marcato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Short Trill
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Long Trill
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Mordent
 
 //! g="Best Service/Era II/Winds/Flute" n="Trad. Wood Flute" off=48
 Bank 21 47 Trad. Wood Flute
 //! i=legato c=long
 48 Legato
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Marcato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Mordent
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Glissando
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Short Trill
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Long Trill
-//! i=default o=note-hold:55
+//! i=note-quarter o=note-hold:55
 55 Ornament
 
 //! g="Best Service/Era II/Winds/Flute" n="Whistle" off=0
 Bank 21 48 Whistle
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Mordent
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Ornament
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Ornament 2
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Short Gliss.
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Long Gliss.
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Stac. 1
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Stac. 2
 
 //! g="Best Service/Era II/Winds/Flute" n="Wooden Transverse Flute" off=0
 Bank 21 49 Wooden Transverse Flute
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Fast Repetition
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Mordent
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Overblown
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Mord. Overblown
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Flutter Tongue 1
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Flutter Tongue 2
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Staccato 2
 
 //! g="Best Service/Era II/Winds/Reeds" n="Bagpipes" off=0
 Bank 21 50 Bagpipes
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Ornament 1
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Ornament 2
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Ornament 3
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Ornament 4
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Ornament 5
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Ornament 6
-//! i=default o=note-hold:55
+//! i=note-quarter o=note-hold:55
 55 Ornament 7
-//! i=default o=note-hold:56
+//! i=note-quarter o=note-hold:56
 56 Ornament 8
 
 //! g="Best Service/Era II/Winds/Reeds" n="Crumhorns" off=0
 Bank 21 51 Crumhorns
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Marcato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Short Trill
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Long Trill
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Mordent
 
 //! g="Best Service/Era II/Winds/Reeds" n="Crumhorn Bass" off=0
 Bank 21 52 Crumhorn Bass
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:25
+//! i=note-quarter o=note-hold:25
 25 Marcato
-//! i=default o=note-hold:26
+//! i=note-quarter o=note-hold:26
 26 Staccato
-//! i=default o=note-hold:27
+//! i=note-quarter o=note-hold:27
 27 Short Trill
-//! i=default o=note-hold:28
+//! i=note-quarter o=note-hold:28
 28 Long Trill
-//! i=default o=note-hold:29
+//! i=note-quarter o=note-hold:29
 29 Mordent
 
 //! g="Best Service/Era II/Winds/Shawms" n="Bombarde" off=0
 Bank 21 53 Bombarde
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Marcato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Staccato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Short Trill
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Long Trill
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent
 
 //! g="Best Service/Era II/Winds/Shawms" n="Chirmia" off=0
 Bank 21 54 Chirmia
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Marcato
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Staccato
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Short Trill
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Long Trill
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Mordent
 
 //! g="Best Service/Era II/Winds/War Horns" n="Anyafil Calls" off=0
 Bank 21 55 Anyafil Calls
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Ornament 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Ornament 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Ornament 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Ornament 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Ornament 5
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Ornament 6
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Ornament 7
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 Ornament 8
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 Ornament 9
-//! i=default o=note:45
+//! i=note-quarter o=note:45
 45 Ornament 10
-//! i=default o=note:46
+//! i=note-quarter o=note:46
 46 Ornament 11
-//! i=default o=note:47
+//! i=note-quarter o=note:47
 47 Ornament 12
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 Ornament 13
-//! i=default o=note:49
+//! i=note-quarter o=note:49
 49 Ornament 14
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 Ornament 15
-//! i=default o=note:51
+//! i=note-quarter o=note:51
 51 Ornament 16
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 Ornament 17
-//! i=default o=note:53
+//! i=note-quarter o=note:53
 53 Ornament 18
-//! i=default o=note:54
+//! i=note-quarter o=note:54
 54 Ornament 19
-//! i=default o=note:55
+//! i=note-quarter o=note:55
 55 Ornament 20
-//! i=default o=note:56
+//! i=note-quarter o=note:56
 56 Ornament 21
-//! i=default o=note:57
+//! i=note-quarter o=note:57
 57 Ornament 22
-//! i=default o=note:58
+//! i=note-quarter o=note:58
 58 Ornament 23
-//! i=default o=note:59
+//! i=note-quarter o=note:59
 59 Ornament 24
-//! i=default o=note:60
+//! i=note-quarter o=note:60
 60 Ornament 25
-//! i=default o=note:61
+//! i=note-quarter o=note:61
 61 Ornament 26
 
 //! g="Best Service/Era II/Winds/War Horns" n="Anyafil / Shofar" off=0
 Bank 21 56 Anyafil / Shofar
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Staccato
 
 //! g="Best Service/Era II/Winds/War Horns" n="Shofar Calls" off=0
 Bank 21 57 Shofar Calls
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Ornament 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Ornament 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Ornament 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Ornament 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Ornament 5
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Ornament 6
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Ornament 7
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 Ornament 8
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 Ornament 9
-//! i=default o=note:45
+//! i=note-quarter o=note:45
 45 Ornament 10
-//! i=default o=note:46
+//! i=note-quarter o=note:46
 46 Ornament 11
-//! i=default o=note:47
+//! i=note-quarter o=note:47
 47 Ornament 12
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 Ornament 13
-//! i=default o=note:49
+//! i=note-quarter o=note:49
 49 Ornament 14
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 Ornament 15
-//! i=default o=note:51
+//! i=note-quarter o=note:51
 51 Ornament 16
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 Ornament 17
-//! i=default o=note:53
+//! i=note-quarter o=note:53
 53 Ornament 18
-//! i=default o=note:54
+//! i=note-quarter o=note:54
 54 Ornament 19
-//! i=default o=note:55
+//! i=note-quarter o=note:55
 55 Ornament 20
-//! i=default o=note:56
+//! i=note-quarter o=note:56
 56 Ornament 21
-//! i=default o=note:57
+//! i=note-quarter o=note:57
 57 Ornament 22
-//! i=default o=note:58
+//! i=note-quarter o=note:58
 58 Ornament 23
-//! i=default o=note:59
+//! i=note-quarter o=note:59
 59 Ornament 24
-//! i=default o=note:60
+//! i=note-quarter o=note:60
 60 Ornament 25
-//! i=default o=note:61
+//! i=note-quarter o=note:61
 61 Ornament 26
-//! i=default o=note:62
+//! i=note-quarter o=note:62
 62 Ornament 27
-//! i=default o=note:63
+//! i=note-quarter o=note:63
 63 Ornament 28
-//! i=default o=note:64
+//! i=note-quarter o=note:64
 64 Ornament 29
-//! i=default o=note:65
+//! i=note-quarter o=note:65
 65 Ornament 30
-//! i=default o=note:66
+//! i=note-quarter o=note:66
 66 Ornament 31
-//! i=default o=note:67
+//! i=note-quarter o=note:67
 67 Ornament 32
-//! i=default o=note:68
+//! i=note-quarter o=note:68
 68 Ornament 33
 
 //! g="Best Service/Era II/Winds/War Horns" n="Celtibertic Warhorn" off=0
 Bank 21 58 Celtibertic Warhorn
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Ornament 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Ornament 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Ornament 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Ornament 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Ornament 5
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Ornament 6
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Ornament 7
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 Ornament 8
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 Ornament 9
-//! i=default o=note:45
+//! i=note-quarter o=note:45
 45 Ornament 10
-//! i=default o=note:46
+//! i=note-quarter o=note:46
 46 Ornament 11
-//! i=default o=note:47
+//! i=note-quarter o=note:47
 47 Ornament 12
 
 //! g="Best Service/Era II/Winds/War Horns" n="War Horn" off=0
 Bank 21 59 War Horn
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Ornament 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Ornament 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Ornament 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Ornament 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Ornament 5
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Ornament 6
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Ornament 7
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 Ornament 8
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 Ornament 9
-//! i=default o=note:45
+//! i=note-quarter o=note:45
 45 Ornament 10
-//! i=default o=note:46
+//! i=note-quarter o=note:46
 46 Ornament 11
-//! i=default o=note:47
+//! i=note-quarter o=note:47
 47 Ornament 12
 
 //! g="Best Service/Era II/Strings/Bowed" n="Bass Viola de Gamba" off=0
 Bank 21 60 Bass Viola de Gamba
 //! i=legato c=long
 0 Sustain Poly
-//! i=default o=note-hold:25
+//! i=note-quarter o=note-hold:25
 25 Staccato
-//! i=default o=note-hold:26
+//! i=note-quarter o=note-hold:26
 26 Pizzicato
 
 //! g="Best Service/Era II/Strings/Bowed" n="Tenor Viola de Gamba" off=0
 Bank 21 61 Tenor Viola de Gamba
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato Soft
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Marcato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Manual Bow
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Pizzicato
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Staccato
 
 //! g="Best Service/Era II/Strings/Bowed" n="Bowed Psaltery" off=0
 Bank 21 62 Bowed Psaltery
 //! i=legato c=long
 0 Sustain
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Marcato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Staccato 1
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Staccato 2
 
 //! g="Best Service/Era II/Strings/Bowed" n="Fiddle Grooves" off=0
 Bank 21 63 Fiddle Grooves
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 D Root
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 D Root
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 D Root
 
 //! g="Best Service/Era II/Strings/Bowed" n="Fidule" off=0
 Bank 21 64 Fidule
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Staccato
 //! spacer=1
-//! i=default f=toggle o=cc:5,0 g=2
+//! i=note-quarter f=toggle o=cc:5,0 g=2
 126 Drone On
-//! i=default f=toggle o=cc:5,127 g=2
+//! i=note-quarter f=toggle o=cc:5,127 g=2
 127 Drone Off
 
 //! g="Best Service/Era II/Strings/Bowed" n="Nyckelharpa" off=0
 Bank 21 65 Nyckelharpa
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Marcato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Staccato
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Triplet
 
 //! g="Best Service/Era II/Strings/Bowed" n="Viola de Roda" off=0
 Bank 21 66 Viola de Roda
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Vibrato 1
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Vibrato 2
 
 //! g="Best Service/Era II/Strings/Plucked" n="Baroque Guitar" off=0
 Bank 21 67 Baroque Guitar
 //! i=legato c=long
 0 Sustain
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Chords
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Looped Chords
 
 //! g="Best Service/Era II/Strings/Plucked" n="Bass Citole" off=0
 Bank 21 68 Bass Citole
 //! i=legato c=long
 0 Polyphonic
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Slow Chords
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Fast Chords
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Fast Chords Muted
 
 //! g="Best Service/Era II/Strings/Plucked" n="Gittern"
 Bank 21 69 Gittern
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Polyphonic
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Legato
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Slow Chords
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Fast Chords
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Trill
 
 //! g="Best Service/Era II/Strings/Plucked" n="Langeleik"
 Bank 21 70 Langeleik
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Pluck Style 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Pluck Style 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Pluck Style 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Pluck Style 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Pluck Style 5
 
 //! g="Best Service/Era II/Strings/Plucked" n="Renaissance Lute"
 Bank 21 71 Renaissance Lute
 //! i=legato o=note:36
 36 Sustain
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Legato
 
 //! g="Best Service/Era II/Strings/Plucked" n="Medieval Lute"
 Bank 21 72 Medieval Lute
 //! i=legato o=note:36
 36 Polyphonic
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Legato
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Slow Chords
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Fast Chords
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Fast Chords Muted

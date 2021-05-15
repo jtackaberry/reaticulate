@@ -8,7 +8,7 @@ Bank 26 75 SP - Celeste
 24 normal
 //! c=long i=note-whole o=note:25
 25 expressivo
-//! c=short i=short o=note:26
+//! c=short i=note-eighth o=note:26
 26 tight
 
 //! g="Spitfire/Percussion/Pitched" n="Glockenspiel Techniques"

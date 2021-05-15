@@ -3881,7 +3881,7 @@ Bank 29 4 Bass Sax
 13 Perf. Trill
 //! c=legato i=legato o=note:1/note:12/note:117
 14 Perf. Grace
-//! c=legato i=legato-legato-gliss o=note:1/note:12/note:118
+//! c=legato i=legato-gliss o=note:1/note:12/note:118
 15 Perf. Gliss Up
 //! c=legato i=legato o=note:1/note:12/note:119
 16 Perf. Marcato

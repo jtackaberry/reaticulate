@@ -279,15 +279,15 @@ Bank 24 6 SSBS Trombone Expression
 
 //! g="Native Instruments/Symphony Series/Brass Solo" n="Trombone Effects"
 Bank 24 7 SSBS Trombone Effects
-//! c=long i=gliss o=note:24
+//! c=long i=legato-gliss o=note:24
 24 bend long
-//! c=long i=gliss o=note:25
+//! c=long i=legato-gliss o=note:25
 25 bend short
 //! c=fx i=rest-quarter o=note:26
 91 breath
 //! c=fx i=fx o=note:27
 93 cow
-//! c=long i=gliss o=note:28
+//! c=long i=legato-gliss o=note:28
 94 didgeridoo
 //! c=short i=fall o=note:29
 101 fast fall

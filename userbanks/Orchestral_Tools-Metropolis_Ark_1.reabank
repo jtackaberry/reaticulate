@@ -38,7 +38,7 @@ Bank 25 27 OTMA1 Schwarzdorn Horns a9
 52 marcato short
 //! c=short i=staccato o=note:99
 40 staccato
-//! c=short i=rips o=note:100
+//! c=short i=rip o=note:100
 100 octave rips
 //! c=long i=crescendo o=note:101
 102 crescendo long
@@ -254,7 +254,7 @@ Bank 25 41 OTMA1 Wolfenstein Strings
 106 crescendo short
 //! c=long i=crescendo o=note:32
 107 swell
-//! c=long i=dcrescendocrescendo o=note:33
+//! c=long i=decrescendo o=note:33
 103 tremolo decrescendo
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Strings Low Legato 8va"
@@ -312,7 +312,7 @@ Bank 25 44 OTMA1 Carnack Contrabassoons a4
 Bank 25 45 OTMA1 Drake Piano
 //! c=long i=note-whole o=note:0
 1 sustain pedal
-//! c=short i= o=note:117
+//! c=short i=rest-quarter o=note:117
 40 rr reset
 
 //----------------------------------------------------------------------------

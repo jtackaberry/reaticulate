@@ -27,9 +27,9 @@ Bank 21 98 Cinematic Studio Brass Section
 //! c=legato i=con-sord o=note:25,65/note:34,65
 3 Legato mutes
 
-//! c=fx i=multitongues o=note:28,1/note:34,1
+//! c=fx i=multitongued o=note:28,1/note:34,1
 4 Sustained Fluttertongue
-//! c=fx i=multitongues o=note:28,1/note:34,65
+//! c=fx i=multitongued o=note:28,1/note:34,65
 5 Legato Fluttertongue
 
 //! c=fx i=trill-maj2 o=note:27,1/note:34,1
@@ -37,7 +37,7 @@ Bank 21 98 Cinematic Studio Brass Section
 //! c=fx i=trill-maj2 o=note:27,1/note:34,65
 7 Legato Trills
 
-//! c=short i=multitongues o=note:26
+//! c=short i=multitongued o=note:26
 8 Double Tongue
 
 //! c=short i=marcato o=note:30,1/note:34,1

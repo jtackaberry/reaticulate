@@ -112,7 +112,7 @@ Bank 26 111 SStW - Clarinet Solo
 1 long
 //! c=long-light i=tremolo o=cc:32,11
 11 long flutter
-//! c=long-light i= staccato-sfz o=cc:32,18
+//! c=long-light i=staccato-sfz o=cc:32,18
 18 long sfz
 //! c=short-dark i=marcato o=cc:32,52
 52 marcato
@@ -137,7 +137,7 @@ Bank 26 112 SStW - Clarinets a3
 1 long
 //! c=long-light i=tremolo o=cc:32,11
 11 long flutter
-//! c=long-light i= staccato-sfz o=cc:32,18
+//! c=long-light i=staccato-sfz o=cc:32,18
 18 long sfz
 //! c=short-dark i=marcato o=cc:32,52
 52 marcato
@@ -162,7 +162,7 @@ Bank 26 113 SStW - Bass Clarinet
 1 long
 //! c=long-light i=tremolo o=cc:32,11
 11 long flutter
-//! c=long-light i= staccato-sfz o=cc:32,18
+//! c=long-light i=staccato-sfz o=cc:32,18
 18 long sfz
 //! c=short-dark i=marcato o=cc:32,52
 52 marcato

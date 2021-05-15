@@ -160,7 +160,7 @@ Bank 28 19 VSLse1 - Harp
 Bank 28 20 VSLse1 - Bosendorfer
 //! g=1 c=short i=note-quarter o=cc:64,0
 40 pedal up
-//! g=1 c=long i=note-whole o=c:64,127
+//! g=1 c=long i=note-whole o=cc:64,127
 1 sustain ped
 
 //! g="VSL/SE1/Harp & Perc" n="Celesta"

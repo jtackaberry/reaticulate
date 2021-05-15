@@ -6,22 +6,22 @@
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 99 OT-BB - Horn1
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Horn2"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 100 OT-BB - Horn2
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Horn3"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 101 OT-BB - Horn3
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Horn4"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 102 OT-BB - Horn4
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet1"
 //! m=""
 Bank 24 103 OT-BB - Trumpet1
@@ -49,47 +49,47 @@ Bank 24 103 OT-BB - Trumpet1
 11 Swell Long short - A#1
 //! c=long i=decrescendo o=note:34
 12 Forte Piano - B1
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet2"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 104 OT-BB - Trumpet2
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet3"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 105 OT-BB - Trumpet3
- 
- 
+
+
 //! g="Orchestral Tools/Berlin Brass" n="Trombone1"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 106 OT-BB - Trombone1
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Trombone2"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 107 OT-BB - Trombone2
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Bass Trombone"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 108 OT-BB - Bass Trombone
- 
+
 //! g="Orchestral Tools/Berlin Brass" n="Tuba"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
 Bank 24 109 OT-BB - Tuba
- 
- 
+
+
 //! g="Orchestral Tools/Berlin Brass" n="Extras"
 //! m="CC messages legato..."
 Bank 24 110 OT-BB - Extras
 //! c=legato i=legato g=1 o=cc:30,127
 101 Legato On
-//! c=legato i=long g=1 o=cc:30,0
+//! c=legato i=note-whole g=1 o=cc:30,0
 102 Legato Off
 //! c=legato i=legato g=2 o=cc:52,127
 103 Niente On
-//! c=legato i=long g=2 o=cc:52,0
+//! c=legato i=note-whole g=2 o=cc:52,0
 104 Niente Off

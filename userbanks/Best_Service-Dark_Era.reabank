@@ -195,132 +195,132 @@ Bank 20 79 Double Flute
 Bank 20 80 Elderwood Flute
 //! i=legato c=long
 0 Legato Natural
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato Non Vibrato
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Flutter Long
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Flutter Med
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Flutter Short
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Mordent 1
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Mordent 2
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Marcato Expressive
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Overblown
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Gliss Short
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Gliss Long
 
 //! g="Best Service/Dark Era/Wind" n="Fujara" off=0
 Bank 20 81 Fujara
 //! i=legato c=long
 0 Legato Hard Attack
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Legato Soft Attack
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Triplet 1
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Triplet 2
 
 //! g="Best Service/Dark Era/Wind" n="White Horn" off=0
 Bank 20 82 White Horn
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Mordent Up
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 38 Mordent Down
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 39 Mordent Up/Fall
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 40 Mordent Down/Fall
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 41 Trill 1
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 42 Trill 1/Fall
-//! i=default o=note-hold:43
+//! i=note-quarter o=note-hold:43
 43 Long Trill
-//! i=default o=note-hold:44
+//! i=note-quarter o=note-hold:44
 44 Long Trill 2
-//! i=default o=note-hold:45
+//! i=note-quarter o=note-hold:45
 45 Crescendo Short
-//! i=default o=note-hold:46
+//! i=note-quarter o=note-hold:46
 46 Crescendo Long
-//! i=default o=note-hold:47
+//! i=note-quarter o=note-hold:47
 47 Decrescendo
-//! i=default o=note-hold:48
+//! i=note-quarter o=note-hold:48
 48 Flutter Tongue
-//! i=default o=note-hold:49
+//! i=note-quarter o=note-hold:49
 49 Flutter Cresc. Short
-//! i=default o=note-hold:50
+//! i=note-quarter o=note-hold:50
 50 Flutter Cresc. Long
-//! i=default o=note-hold:51
+//! i=note-quarter o=note-hold:51
 51 Flutter Decrescendo
-//! i=default o=note-hold:52
+//! i=note-quarter o=note-hold:52
 52 Repetition
-//! i=default o=note-hold:53
+//! i=note-quarter o=note-hold:53
 53 Marcato
-//! i=default o=note-hold:54
+//! i=note-quarter o=note-hold:54
 54 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
 Bank 20 83 Overtone Flute
 //! i=legato c=long
 0 Legato
-//! i=default o=note-hold:37
+//! i=note-quarter o=note-hold:37
 37 Bending
-//! i=default o=note-hold:38
+//! i=note-quarter o=note-hold:38
 39 Trill
-//! i=default o=note-hold:39
+//! i=note-quarter o=note-hold:39
 40 Expressive Vibrato
-//! i=default o=note-hold:40
+//! i=note-quarter o=note-hold:40
 41 Flutter Tongue
-//! i=default o=note-hold:41
+//! i=note-quarter o=note-hold:41
 42 Triplet
-//! i=default o=note-hold:42
+//! i=note-quarter o=note-hold:42
 43 Staccato
 
 //! g="Best Service/Dark Era/Vocal" n="Shouts 1"
 Bank 20 84 Shouts 1
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Ha
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 He
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 39 Hi
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 40 Ho
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 41 Hu
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Hey
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Au
-//! i=default o=note:43
+//! i=note-quarter o=note:43
 43 Ua
-//! i=default o=note:44
+//! i=note-quarter o=note:44
 44 Sho
 
 //! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
 Bank 20 85 Kargyraa Legato
-//! i=default o=note:36
+//! i=note-quarter o=note:36
 36 Vowel 1
-//! i=default o=note:37
+//! i=note-quarter o=note:37
 37 Vowel 2
-//! i=default o=note:38
+//! i=note-quarter o=note:38
 38 Vowel 3
-//! i=default o=note:39
+//! i=note-quarter o=note:39
 39 Vowel 4
-//! i=default o=note:40
+//! i=note-quarter o=note:40
 40 Vowel 5
-//! i=default o=note:41
+//! i=note-quarter o=note:41
 41 Vowel 6
-//! i=default o=note:42
+//! i=note-quarter o=note:42
 42 Vowel 7
 
 //! g="Best Service/Dark Era/Vocal" n="Khomeii"
@@ -335,19 +335,19 @@ Bank 20 86 Khoomei
 46 A# Tuning
 //! c=default o=note:47
 47 B Tuning
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 C Tuning
-//! i=default o=note:49
+//! i=note-quarter o=note:49
 49 C# Tuning
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 D Tuning
-//! i=default o=note:51
+//! i=note-quarter o=note:51
 51 D# Tuning
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 E Tuning
-//! i=default o=note:53
+//! i=note-quarter o=note:53
 53 F Tuning
-//! i=default o=note:54
+//! i=note-quarter o=note:54
 54 F# Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Sygyt"
@@ -366,15 +366,15 @@ Bank 20 87 Sygyt
 46 A# Tuning
 //! c=default o=note:47
 47 B Tuning
-//! i=default o=note:48
+//! i=note-quarter o=note:48
 48 C Tuning
-//! i=default o=note:49
+//! i=note-quarter o=note:49
 49 C# Tuning
-//! i=default o=note:50
+//! i=note-quarter o=note:50
 50 D Tuning
-//! i=default o=note:51
+//! i=note-quarter o=note:51
 51 D# Tuning
-//! i=default o=note:52
+//! i=note-quarter o=note:52
 52 E Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Whispers"

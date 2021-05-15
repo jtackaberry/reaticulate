@@ -139,59 +139,59 @@
 //! g="VSL - PERCUSSION/Timpanis" n="Timpani A"
 Bank 27 49 Timpani A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Single Hits, Secco
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Gliss 5, Up
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Gliss 7, Up
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Gliss 5, Down
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Gliss 7, Down
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Upbeat x1
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Upbeat x2
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Upbeat x3
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 Perf. Rep, Slow
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 Perf. Rep, Fast
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 Roll
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 Dyn, Med - 1s
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 Dyn, Med - 2s
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 Dyn, Med - 3s
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 Dyn, Med - 4s
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 Dyn, Med - 6s
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 Dyn, Str - 1s
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 Dyn, Str - 2s
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 Dyn, Str - 3s
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 Dyn, Str - 4s
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 Dyn, Str - 6s
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 Roll Gliss 5, Up
-//! c=default i=default o=note:11/note:114
+//! c=default i=note-quarter o=note:11/note:114
 23 Roll Gliss 7, Up
 
-//! c=default i=default o=note:0/note:115
+//! c=default i=note-quarter o=note:0/note:115
 24 Roll Gliss 5, Down
-//! c=default i=default o=note:1/note:115
+//! c=default i=note-quarter o=note:1/note:115
 25 Roll Gliss 7, Down
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -199,136 +199,136 @@ Bank 27 49 Timpani A
 //! g="VSL - PERCUSSION/Timpanis" n="Timpani B"
 Bank 27 50 Timpani B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 MED - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 MED - Secco
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 MED - Coperto
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 MED - Gliss 1s, 1up
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 MED - Gliss 1s, 2up
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 MED - Gliss 1s, 3up
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 MED - Gliss 1s, 4up
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 MED - Gliss 1s, 5up
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 MED - Gliss 1s, Down
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 MED - Gliss 2s, 1up
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 MED - Gliss 2s, 2up
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 MED - Gliss 2s, 3up
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 MED - Gliss 2s, 4up
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 MED - Gliss 2s, 5up
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 MED - Gliss 2s, Down
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 MED - Upbeat x1
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 MED - Upbeat x2
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 MED - Upbeat x3
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 MED - Upbeat x4
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 MED - Perf. Rep (Slow)
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 MED - Perf. Rep (Med)
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 MED - Perf. Rep (Fast)
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 MED - Roll
-//! c=default i=default o=note:11/note:114
+//! c=default i=note-quarter o=note:11/note:114
 23 MED - Roll, Short
 
-//! c=default i=default o=note:0/note:115
+//! c=default i=note-quarter o=note:0/note:115
 24 MED - Dyn, Med. - 1s
-//! c=default i=default o=note:1/note:115
+//! c=default i=note-quarter o=note:1/note:115
 25 MED - Dyn, Med. - 2s
-//! c=default i=default o=note:2/note:115
+//! c=default i=note-quarter o=note:2/note:115
 26 MED - Dyn, Med. - 4s
-//! c=default i=default o=note:3/note:115
+//! c=default i=note-quarter o=note:3/note:115
 27 MED - Dyn, Str. - 1s
-//! c=default i=default o=note:4/note:115
+//! c=default i=note-quarter o=note:4/note:115
 28 MED - Dyn, Str. - 2s
-//! c=default i=default o=note:5/note:115
+//! c=default i=note-quarter o=note:5/note:115
 29 MED - Dyn, Str. - 4s
-//! c=default i=default o=note:6/note:115
+//! c=default i=note-quarter o=note:6/note:115
 30 MED - Roll Gliss 1s, 1up
-//! c=default i=default o=note:7/note:115
+//! c=default i=note-quarter o=note:7/note:115
 31 MED - Roll Gliss 1s, 2up
-//! c=default i=default o=note:8/note:115
+//! c=default i=note-quarter o=note:8/note:115
 32 MED - Roll Gliss 1s, 3up
-//! c=default i=default o=note:9/note:115
+//! c=default i=note-quarter o=note:9/note:115
 33 MED - Roll Gliss 1s, 4up
-//! c=default i=default o=note:10/note:115
+//! c=default i=note-quarter o=note:10/note:115
 34 MED - Roll Gliss 1s, 5up
-//! c=default i=default o=note:11/note:115
+//! c=default i=note-quarter o=note:11/note:115
 35 MED - Roll Gliss 1s, Down
 
-//! c=default i=default o=note:0/note:116
+//! c=default i=note-quarter o=note:0/note:116
 36 MED - Roll Gliss 2s, 1up
-//! c=default i=default o=note:1/note:116
+//! c=default i=note-quarter o=note:1/note:116
 37 MED - Roll Gliss 2s, 2up
-//! c=default i=default o=note:2/note:116
+//! c=default i=note-quarter o=note:2/note:116
 38 MED - Roll Gliss 2s, 3up
-//! c=default i=default o=note:3/note:116
+//! c=default i=note-quarter o=note:3/note:116
 39 MED - Roll Gliss 2s, 4up
-//! c=default i=default o=note:4/note:116
+//! c=default i=note-quarter o=note:4/note:116
 40 MED - Roll Gliss 2s, 5up
-//! c=default i=default o=note:5/note:116
+//! c=default i=note-quarter o=note:5/note:116
 41 MED - Roll Gliss 2s, Down
-//! c=default i=default o=note:6/note:116
+//! c=default i=note-quarter o=note:6/note:116
 42 HARD - Single Hits
-//! c=default i=default o=note:7/note:116
+//! c=default i=note-quarter o=note:7/note:116
 43 HARD - Upbeat x1
-//! c=default i=default o=note:8/note:116
+//! c=default i=note-quarter o=note:8/note:116
 44 HARD - Upbeat x2
-//! c=default i=default o=note:9/note:116
+//! c=default i=note-quarter o=note:9/note:116
 45 HARD - Upbeat x3
-//! c=default i=default o=note:10/note:116
+//! c=default i=note-quarter o=note:10/note:116
 46 HARD - Upbeat x4
-//! c=default i=default o=note:11/note:116
+//! c=default i=note-quarter o=note:11/note:116
 47 HARD - Rolls
 
-//! c=default i=default o=note:0/note:117
+//! c=default i=note-quarter o=note:0/note:117
 48 HARD - Dyn, Str. - 1s
-//! c=default i=default o=note:1/note:117
+//! c=default i=note-quarter o=note:1/note:117
 49 HARD - Dyn, Str. - 2s
-//! c=default i=default o=note:2/note:117
+//! c=default i=note-quarter o=note:2/note:117
 50 HARD - Dyn, Str. - 4s
-//! c=default i=default o=note:3/note:117
+//! c=default i=note-quarter o=note:3/note:117
 51 WOOD - Single Hits
-//! c=default i=default o=note:4/note:117
+//! c=default i=note-quarter o=note:4/note:117
 52 WOOD - Upbeat x1
-//! c=default i=default o=note:5/note:117
+//! c=default i=note-quarter o=note:5/note:117
 53 WOOD - Upbeat x2
-//! c=default i=default o=note:6/note:117
+//! c=default i=note-quarter o=note:6/note:117
 54 WOOD - Upbeat x3
-//! c=default i=default o=note:7/note:117
+//! c=default i=note-quarter o=note:7/note:117
 55 WOOD - Upbeat x4
-//! c=default i=default o=note:8/note:117
+//! c=default i=note-quarter o=note:8/note:117
 56 WOOD - Rolls
-//! c=default i=default o=note:9/note:117
+//! c=default i=note-quarter o=note:9/note:117
 57 WOOD - Dyn, Str. - 1s
-//! c=default i=default o=note:10/note:117
+//! c=default i=note-quarter o=note:10/note:117
 58 WOOD - Dyn, Str. - 2s
-//! c=default i=default o=note:11/note:117
+//! c=default i=note-quarter o=note:11/note:117
 59 WOOD - Dyn, Str. - 4s
 
-//! c=default i=default o=note:0/note:118
+//! c=default i=note-quarter o=note:0/note:118
 60 MED HARD - Single Hits
-//! c=default i=default o=note:1/note:118
+//! c=default i=note-quarter o=note:1/note:118
 61 FELT - Single Hits
-//! c=default i=default o=note:2/note:118
+//! c=default i=note-quarter o=note:2/note:118
 62 FINGER - Single Hits
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -344,9 +344,9 @@ Bank 27 50 Timpani B
 //! g="VSL - PERCUSSION/Drums and Toms" n="Snare Drum A"
 Bank 27 51 Snare Drum A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Snare ON
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Snare OFF
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -354,9 +354,9 @@ Bank 27 51 Snare Drum A
 //! g="VSL - PERCUSSION/Drums and Toms" n="Snare Drum B"
 Bank 27 52 Snare Drum A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Snare ON
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Snare OFF
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -364,13 +364,13 @@ Bank 27 52 Snare Drum A
 //! g="VSL - PERCUSSION/Drums and Toms" n="Snare Ensemble"
 Bank 27 53 Snare Ensemble
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Snare ON
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Snare OFF
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Brush
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Tmp
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -378,7 +378,7 @@ Bank 27 53 Snare Ensemble
 //! g="VSL - PERCUSSION/Drums and Toms" n="Piccolo Drum"
 Bank 27 54 Piccolo Drum
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Hits
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -386,9 +386,9 @@ Bank 27 54 Piccolo Drum
 //! g="VSL - PERCUSSION/Drums and Toms" n="Field Drum A"
 Bank 27 55 Field Drum A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 On
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Off
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -396,7 +396,7 @@ Bank 27 55 Field Drum A
 //! g="VSL - PERCUSSION/Drums and Toms" n="Field Drum B"
 Bank 27 56 Field Drum B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Hits
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -404,9 +404,9 @@ Bank 27 56 Field Drum B
 //! g="VSL - PERCUSSION/Drums and Toms" n="Bass Drum A"
 Bank 27 57 Bass Drum A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Soft
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Hard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ Bank 27 57 Bass Drum A
 //! g="VSL - PERCUSSION/Drums and Toms" n="Bass Drum B"
 Bank 27 58 Bass Drum B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Hits
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -422,11 +422,11 @@ Bank 27 58 Bass Drum B
 //! g="VSL - PERCUSSION/Drums and Toms" n="Taiko Drums"
 Bank 27 59 Taiko Drums
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Perf. Rep
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 FX
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -434,9 +434,9 @@ Bank 27 59 Taiko Drums
 //! g="VSL - PERCUSSION/Drums and Toms" n="Concert Toms"
 Bank 27 60 Concert Toms
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Low
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 High
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -444,13 +444,13 @@ Bank 27 60 Concert Toms
 //! g="VSL - PERCUSSION/Drums and Toms" n="Roto Toms"
 Bank 27 61 Roto Toms
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Perf. Rep
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Standard (Soft)
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Perf. Rep (Soft)
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -458,13 +458,13 @@ Bank 27 61 Roto Toms
 //! g="VSL - PERCUSSION/Drums and Toms" n="Tambourines"
 Bank 27 62 Tambourines
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Tambourine A
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Tambourine B
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Tambourine C
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Tambourine D
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -480,7 +480,7 @@ Bank 27 62 Tambourines
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Piatti A"
 Bank 27 63 Piatti A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Hits
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -488,23 +488,23 @@ Bank 27 63 Piatti A
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Piatti B"
 Bank 27 64 Piatti B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 11" Chinese
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 13" Zildjian Avedis
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 15" Zildjian Avedis
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 16" Avedis K1
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 16" Avedis K2
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 18" Istanbul Janissary
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 20" Istanbul Symphonic
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 20" Zildjian Avedis
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 22" Zildjian Avedis
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -512,9 +512,9 @@ Bank 27 64 Piatti B
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals A"
 Bank 27 65 Cymbals A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Mallet
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -522,253 +522,253 @@ Bank 27 65 Cymbals A
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals B"
 Bank 27 66 Cymbals B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Metal
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Brush
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals C"
 Bank 27 67 Cymbals C
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Metal
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals D"
 Bank 27 68 Cymbals D
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Metal
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Brush
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, Crash"
 Bank 27 69 Cymbals, Crash
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 15" Zildjian - Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 15" Zildjian - Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 15" Zildjian - Tmp
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 15" Zildjian - Brush
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 15" Zildjian - Rod
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 15" Zildjian - Bow
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 16" Zildjian - Stick
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 16" Zildjian - Mallet
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 16" Zildjian - Tmp
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 16" Zildjian - Brush
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 16" Zildjian - Rod
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 16" Zildjian - Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, China"
 Bank 27 70 Cymbals, China
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 18" Zildjian - Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 18" Zildjian - Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 18" Zildjian - Tmp
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 18" Zildjian - Brush
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 18" Zildjian - Rod
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 18" Zildjian - Bow
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 22" Zildjian - Stick
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 22" Zildjian - Mallet
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 22" Zildjian - Tmp
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 22" Zildjian - Brush
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 22" Zildjian - Rod
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 22" Zildjian - Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, Ride"
 Bank 27 71 Cymbals, Ride
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 20" Zildjian - Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 20" Zildjian - Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 20" Zildjian - Tmp
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 20" Zildjian - Brush
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 20" Zildjian - Rod
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 20" Zildjian - Bow
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 22" Zildjian - Stick
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 22" Zildjian - Mallet
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 22" Zildjian - Tmp
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 22" Zildjian - Brush
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 22" Zildjian - Rod
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 22" Zildjian - Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Cymbals, Splash"
 Bank 27 72 Cymbals, Splash
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 6" Zildjian - Stick
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 6" Zildjian - Mallet
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 6" Zildjian - Tmp
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 6" Zildjian - Brush
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 6" Zildjian - Rod
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 6" Zildjian - Bow
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 8" Zildjian - Stick
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 8" Zildjian - Mallet
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 8" Zildjian - Tmp
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 8" Zildjian - Brush
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 8" Zildjian - Rod
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 8" Zildjian - Bow
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 12" Zildjian - Stick
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 12" Zildjian - Mallet
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 12" Zildjian - Tmp
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 12" Zildjian - Brush
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 12" Zildjian - Rod
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 12" Zildjian - Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Finger Cymbals"
 Bank 27 73 Finger Cymbals
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Tam-Tam A"
 Bank 27 74 Tam-Tam A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Tam-Tam B"
 Bank 27 75 Tam-Tam B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 52"
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 60"
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 85"
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 100"
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 110"
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 130"
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Tam-Tam C"
 Bank 27 76 Tam-Tam C
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 30"
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 40"
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 50"
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 60"
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 70"
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 80"
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 90"
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Gongs"
 Bank 27 77 Gongs
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 SOFT - Standard
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 SOFT - Roll
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 SOFT - Roll, Cresc.
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 WOOD - Standard
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 WOOD - Roll
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 WOOD - Roll, Cresc.
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 METAL - Standard
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 BOW - Var. 1
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 BOW - Var. 2
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Chinese Gongs"
 Bank 27 78 Chinese Gongs
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //! g="VSL - PERCUSSION/Cymbals and Gongs" n="Gongs"
 Bank 27 79 Peking Opera Gongs
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -785,13 +785,13 @@ Bank 27 79 Peking Opera Gongs
 //! g="VSL - PERCUSSION/Mallets" n="Celesta"
 Bank 27 80 Celesta
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Sustain
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Sustain, Soft
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Staccato
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Glissando
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -799,44 +799,44 @@ Bank 27 80 Celesta
 //! g="VSL - PERCUSSION/Mallets" n="Glockenspiel A"
 Bank 27 81 Glockenspiel A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 METAL - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 METAL - Single Hits (Vib)
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 METAL - Roll
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 METAL - Roll, Cresc.
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 METAL - Roll, Chords
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 METAL - Glissando
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 WOOD - Single Hits
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 WOOD - Single Hits (Vib)
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 WOOD - Roll
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 PLASTIC - Single Hits
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 PLASTIC - Single Hits (Vib)
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 PLASTIC - Roll
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 PLASTIC - Roll, Cresc.
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 PLASTIC - Glissando
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 BIG METAL - Single Hits
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 BIG METAL - Single Hits (Vib)
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 BIG METAL - Roll
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 BIG METAL - Roll, Cresc.
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 BIG METAL - Glissando
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -844,21 +844,21 @@ Bank 27 81 Glockenspiel A
 //! g="VSL - PERCUSSION/Mallets" n="Glockenspiel B"
 Bank 27 82 Glockenspiel B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 METAL - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 METAL - Roll
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 METAL - Glissando, Fast
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 METAL - Glissando, Slow
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 WOOD - Single Hits
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 WOOD - Roll
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 PLASTIC - Single Hits
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 PLASTIC - Roll
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -866,63 +866,63 @@ Bank 27 82 Glockenspiel B
 //! g="VSL - PERCUSSION/Mallets" n="Xylophone"
 Bank 27 83 Xylophone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 WOOD - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 WOOD - Roll
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 WOOD - Roll, Dyn 0.5s
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 WOOD - Roll, Dyn 1s
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 WOOD - Roll, Dyn 3s
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 WOOD - Roll, Chords
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 WOOD - Glissando, Fast
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 WOOD - Glissando, Med
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 WOOD - Glissando, Slow
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 SOFT PLASTIC - Single Hits
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 SOFT PLASTIC - Roll
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 SOFT PLASTIC - Glissando, Fast
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 SOFT PLASTIC - Glissando, Med
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 SOFT PLASTIC - Glissando, Slow
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 MED PLASTIC - Single Hits
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 MED PLASTIC - Roll
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 MED PLASTIC - Glissando, Fast
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 MED PLASTIC - Glissando, Med
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 MED PLASTIC - Glissando, Slow
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 HARD PLASTIC - Single Hits
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 HARD PLASTIC - Rolls
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 HARD PLASTIC - Glissando, Fast
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 HARD PLASTIC - Glissando, Med
-//! c=default i=default o=note:11/note:114
+//! c=default i=note-quarter o=note:11/note:114
 23 HARD PLASTIC - Glissando, Slow
 
-//! c=default i=default o=note:0/note:115
+//! c=default i=note-quarter o=note:0/note:115
 24 YARN - Single Hits
-//! c=default i=default o=note:1/note:115
+//! c=default i=note-quarter o=note:1/note:115
 25 YARN - Roll
-//! c=default i=default o=note:2/note:115
+//! c=default i=note-quarter o=note:2/note:115
 26 CLUSTER - Single Hits
-//! c=default i=default o=note:3/note:115
+//! c=default i=note-quarter o=note:3/note:115
 27 CLUSTER - Roll
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -930,54 +930,54 @@ Bank 27 83 Xylophone
 //! g="VSL - PERCUSSION/Mallets" n="Vibraphone"
 Bank 27 84 Vibraphone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 MED - Single Hits (NoVib)
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 MED - Single Hits (SlowVib)
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 MED - Single Hits (FastVib)
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 MED - Single Hits, Secco
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 MED - Rolls
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 MED - Rolls, Dyn 2s
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 MED - Rolls, Dyn 4s
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 MED - Rolls, Chords
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 MED - Glissando, Fast
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 MED - Glissando, Slow
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 SOFT - Single Hits (NoVib)
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 SOFT - Single Hits (SlowVib)
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 SOFT - Single Hits (FastVib)
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 SOFT - Rolls
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 SOFT - Rolls, Dyn 2s
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 SOFT - Rolls, Dyn 4s
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 SOFT - Chords
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 HARD - Single Hits (NoVib)
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 HARD - Single Hits (SlowVib)
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 HARD - Single Hits (FastVib)
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 BOWED - Short (NoVib)
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 BOWED - Short (FastVib)
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 BOWED - Long (NoVib)
-//! c=default i=default o=note:11/note:114
+//! c=default i=note-quarter o=note:11/note:114
 23 BOWED - Long (FastVib)
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -985,71 +985,71 @@ Bank 27 84 Vibraphone
 //! g="VSL - PERCUSSION/Mallets" n="Marimba"
 Bank 27 85 Marimba
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 HARD - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 HARD - Single Hits, Secco
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 HARD - Roll
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 HARD - Roll, Dyn 1s
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 HARD - Roll, Dyn 2s
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 HARD - Roll, Dyn 4s
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 HARD - Roll, Chords
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 HARD - Glissando, Fast
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 HARD - Glissando, Slow
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 SOFT - Single Hits
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 SOFT - Single Hits, Secco
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 SOFT - Roll
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 SOFT - Roll, Dyn 1s
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 SOFT - Roll, Dyn 2s
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 SOFT - Roll, Dyn 4s
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 SOFT - Roll, Chords
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 SOFT - Glissando, Fast
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 SOFT - Glissando, Slow
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 VERY SOFT - Single Hits
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 VERY SOFT - Single Hits, Secco
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 VERY SOFT - Rolls
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 MED SOFT - Single Hits
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 MED SOFT - Rolls
-//! c=default i=default o=note:11/note:114
+//! c=default i=note-quarter o=note:11/note:114
 23 MED SOFT - Rolls, Chords
 
-//! c=default i=default o=note:0/note:115
+//! c=default i=note-quarter o=note:0/note:115
 24 XTRA HARD - Single Hits
-//! c=default i=default o=note:1/note:115
+//! c=default i=note-quarter o=note:1/note:115
 25 XTRA HARD - Rolls
-//! c=default i=default o=note:2/note:115
+//! c=default i=note-quarter o=note:2/note:115
 26 Rubber
-//! c=default i=default o=note:3/note:115
+//! c=default i=note-quarter o=note:3/note:115
 27 Superball
-//! c=default i=default o=note:4/note:115
+//! c=default i=note-quarter o=note:4/note:115
 28 Handle
-//! c=default i=default o=note:5/note:115
+//! c=default i=note-quarter o=note:5/note:115
 29 Finger
-//! c=default i=default o=note:6/note:115
+//! c=default i=note-quarter o=note:6/note:115
 30 Fingernail
-//! c=default i=default o=note:7/note:115
+//! c=default i=note-quarter o=note:7/note:115
 31 Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1057,13 +1057,13 @@ Bank 27 85 Marimba
 //! g="VSL - PERCUSSION/Mallets" n="Woodblocks"
 Bank 27 86 Woodblocks
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 WOOD
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 RUBBER
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 YARN
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 SOFT YARN
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1071,50 +1071,50 @@ Bank 27 86 Woodblocks
 //! g="VSL - PERCUSSION/Mallets" n="Temple Blocks"
 Bank 27 87 Temple Blocks
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 WOOD - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 WOOD - Upbeat x1
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 WOOD - Upbeat x2
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 WOOD - Upbeat x3
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 WOOD - Roll
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 WOOD - Roll, Dyn 1s
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 WOOD - Roll, Dyn 2s
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 WOOD - Roll, Dyn 4s
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 WOOD - Acc-Rit
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 WOOD - Glissando
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 YARN - Single Hits
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 YARN - Upbeat x1
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 YARN - Upbeat x2
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 YARN - Upbeat x3
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 YARN - Roll
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 YARN - Roll, Dyn 1s
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 YARN - Roll, Dyn 2s
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 YARN - Roll, Dyn 4s
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 YARN - Acc-Rit
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 YARN - Glissando
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 SOFT YARN
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 RUBBER
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1122,19 +1122,19 @@ Bank 27 87 Temple Blocks
 //! g="VSL - PERCUSSION/Mallets" n="Lithophone, Small"
 Bank 27 88 Lithophone, Small
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Upbeat x1
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Upbeat x2
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Upbeat x3
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Upbeat x4
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Roll
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Rubbed
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1142,11 +1142,11 @@ Bank 27 88 Lithophone, Small
 //! g="VSL - PERCUSSION/Mallets" n="Stir Xylophone"
 Bank 27 89 Stir Xylophone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Small
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Medium
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Large
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1162,19 +1162,19 @@ Bank 27 89 Stir Xylophone
 //! g="VSL - PERCUSSION/Bells" n="Tubular Bells A"
 Bank 27 90 Tubular Bells A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 MED - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 HARD - Single Hits
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 HARD - Roll
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 HARD - Roll, Cresc.
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 SOFT - Single Hits
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 SOFT - Roll
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 SOFT - Roll, Cresc.
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1182,21 +1182,21 @@ Bank 27 90 Tubular Bells A
 //! g="VSL - PERCUSSION/Bells" n="Tubular Bells B"
 Bank 27 91 Tubular Bells B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 MED - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 MED - Rolls
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 HARD - Single Hits
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 HARD - Rolls
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 SOFT - Single Hits
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 SOFT - Rolls
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 BRUSH - Rolls
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 FX
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1204,7 +1204,7 @@ Bank 27 91 Tubular Bells B
 //! g="VSL - PERCUSSION/Bells" n="Plate Bells"
 Bank 27 92 Plate Bells
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1212,11 +1212,11 @@ Bank 27 92 Plate Bells
 //! g="VSL - PERCUSSION/Bells" n="Hand Bells"
 Bank 27 93 Hand Bells
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Metal
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Triangle
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1224,25 +1224,25 @@ Bank 27 93 Hand Bells
 //! g="VSL - PERCUSSION/Bells" n="Cencerros"
 Bank 27 94 Cencerros
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 FELT - Soft
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 FELT - Hard
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 YARN - Soft
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 YARN - Med
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 YARN - Hard
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 WOOD
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 METAL
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 BOW
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 RUB STICK - Slow
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 RUB STICK - Fast
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1250,23 +1250,23 @@ Bank 27 94 Cencerros
 //! g="VSL - PERCUSSION/Bells" n="Cowbells"
 Bank 27 95 Cowbells
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Var 1 - Wool
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Var 1 - Wood
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Var 1 - Triangle
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Var 1 - Bow
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Var 1 - Rub Stick
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Var 2 - Wool
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Var 2 - Wood
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Var 2 - Triangle
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Var 2 - Rub Stick
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1274,9 +1274,9 @@ Bank 27 95 Cowbells
 //! g="VSL - PERCUSSION/Bells" n="Church Bells"
 Bank 27 96 Church Bells
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Wood
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Metal
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1284,7 +1284,7 @@ Bank 27 96 Church Bells
 //! g="VSL - PERCUSSION/Bells" n="Burma Bells"
 Bank 27 97 Burma Bells
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1292,7 +1292,7 @@ Bank 27 97 Burma Bells
 //! g="VSL - PERCUSSION/Bells" n="Jingle Bells"
 Bank 27 98 Jingle Bells
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1300,9 +1300,9 @@ Bank 27 98 Jingle Bells
 //! g="VSL - PERCUSSION/Bells" n="Bell Tree"
 Bank 27 99 Bell Tree
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Metal
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Triangle
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1310,7 +1310,7 @@ Bank 27 99 Bell Tree
 //! g="VSL - PERCUSSION/Bells" n="Bells, Misc."
 Bank 27 100 Bells, Misc.
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1327,13 +1327,13 @@ Bank 27 100 Bells, Misc.
 //! g="VSL - PERCUSSION/Other" n="Triangle"
 Bank 27 101 Triangle
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Triangle A
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Triangle B
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Triangle C
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Triangle D
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1341,11 +1341,11 @@ Bank 27 101 Triangle
 //! g="VSL - PERCUSSION/Other" n="Crotales"
 Bank 27 102 Crotales
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Metal
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Triangle
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Bow
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1353,11 +1353,11 @@ Bank 27 102 Crotales
 //! g="VSL - PERCUSSION/Other" n="Singing Bowls"
 Bank 27 103 Singing Bowls
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Wood
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Rubber
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Secco
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1365,15 +1365,15 @@ Bank 27 103 Singing Bowls
 //! g="VSL - PERCUSSION/Other" n="Thundersheet"
 Bank 27 104 Thundersheet
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Thundersheet A
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Thundersheet B
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Thundersheet C
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Thundersheet D
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Thundersheet E
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1381,11 +1381,11 @@ Bank 27 104 Thundersheet
 //! g="VSL - PERCUSSION/Other" n="Steel"
 Bank 27 105 Steel
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Rails
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Brakes
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Springs
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1393,7 +1393,7 @@ Bank 27 105 Steel
 //! g="VSL - PERCUSSION/Other" n="Castanets"
 Bank 27 106 Castanets
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Castanets
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1401,9 +1401,9 @@ Bank 27 106 Castanets
 //! g="VSL - PERCUSSION/Other" n="Honks"
 Bank 27 107 Honks
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Car Honks
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Bike Honks
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1411,11 +1411,11 @@ Bank 27 107 Honks
 //! g="VSL - PERCUSSION/Other" n="Chimes"
 Bank 27 108 Chimes
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Glass
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Metal
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Bamboo
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1423,11 +1423,11 @@ Bank 27 108 Chimes
 //! g="VSL - PERCUSSION/Other" n="Anklung"
 Bank 27 109 Anklung
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Short
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Medium
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Long
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1435,17 +1435,17 @@ Bank 27 109 Anklung
 //! g="VSL - PERCUSSION/Other" n="Waterphone"
 Bank 27 110 Waterphone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Basic
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Basic, Mod
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Pizzicato
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Repetition
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Arpeggio
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 FX
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1453,11 +1453,11 @@ Bank 27 110 Waterphone
 //! g="VSL - PERCUSSION/Other" n="Shaker"
 Bank 27 111 Shaker
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Bamboo
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Chrome
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Kiwi
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1465,7 +1465,7 @@ Bank 27 111 Shaker
 //! g="VSL - PERCUSSION/Other" n="Caxixi"
 Bank 27 112 Caxixi
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1473,9 +1473,9 @@ Bank 27 112 Caxixi
 //! g="VSL - PERCUSSION/Other" n="Guiro"
 Bank 27 113 Guiro
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Wood
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Gourd
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1483,7 +1483,7 @@ Bank 27 113 Guiro
 //! g="VSL - PERCUSSION/Other" n="Claves"
 Bank 27 114 Claves
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1491,13 +1491,13 @@ Bank 27 114 Claves
 //! g="VSL - PERCUSSION/Other" n="Log Drum"
 Bank 27 115 Log Drum
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Hard
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Medium
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Soft
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Wood
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1505,36 +1505,36 @@ Bank 27 115 Log Drum
 //! g="VSL - PERCUSSION/Other" n="Boobams"
 Bank 27 116 Boobams
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 STICK - Single Hits
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 STICK - Upbeat x1
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 STICK - Upbeat x2
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 STICK - Upbeat x3
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 STICK - Upbeat x4
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 STICK - Rebounds
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 STICK - Roll
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 STICK - Rim
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 YARN - Single Hits
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 YARN - Upbeat x1
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 YARN - Upbeat x2
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 YARN - Upbeat x3
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 YARN - Upbeat x4
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 YARN - Rebounds
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 YARN - Roll
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1542,11 +1542,11 @@ Bank 27 116 Boobams
 //! g="VSL - PERCUSSION/Other" n="Jingle Ring"
 Bank 27 117 Jingle Ring
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Jingle Ring A
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Jingle Ring B
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Jingle Ring C
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1554,7 +1554,7 @@ Bank 27 117 Jingle Ring
 //! g="VSL - PERCUSSION/Other" n="Bongos"
 Bank 27 118 Bongos
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Standard
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1562,52 +1562,52 @@ Bank 27 118 Bongos
 //! g="VSL - PERCUSSION/Other" n="Misc. Percussion"
 Bank 27 119 Misc. Percussion
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Windmachine
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Rainmaker
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Ocean Drums A
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Ocean Drums B
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Gun Shots
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Whip
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Hammer
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Ratchet
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Sirens
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 Bull Roarer
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 Spring Drum
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 Vibratone 1
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 Vibratone 2
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 Flexatone A - Static
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 Flexatone A - Glissandi
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 Flexatone A - FX
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 Flexatone B - Glissandi
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 Flexatone B - FX
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 Cuica 1
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 Cuica 2
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 Cuica 3
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 Waldtuefel
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 Lion Roar
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1623,17 +1623,17 @@ Bank 27 119 Misc. Percussion
 //! g="VSL - PERCUSSION/Elements" n="Glass Harmonica"
 Bank 27 120 Glass Harmonica
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Portato
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Sustain
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Trills
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Mallets
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Mallets, Secco
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Mallets, Glissando
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1641,23 +1641,23 @@ Bank 27 120 Glass Harmonica
 //! g="VSL - PERCUSSION/Elements" n="Verrophone"
 Bank 27 121 Verrophone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Staccato
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Portato
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Sustain
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Roll
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Trill
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Mallet
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Mallet, Secco
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Mallet, Chromatic Trill
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Mallet, Glissando
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1665,15 +1665,15 @@ Bank 27 121 Verrophone
 //! g="VSL - PERCUSSION/Elements" n="Musical Glasses A"
 Bank 27 122 Musical Glasses A
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Staccato
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Portato
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Sustain
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Roll
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Trill
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1681,23 +1681,23 @@ Bank 27 122 Musical Glasses A
 //! g="VSL - PERCUSSION/Elements" n="Musical Glasses B"
 Bank 27 123 Musical Glasses B
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Staccato
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Portato
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Sustain
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Roll
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Trill
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Mallet, Soft
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Mallet, Med
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Mallet, Hard
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Mallet, Glissando
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1705,19 +1705,19 @@ Bank 27 123 Musical Glasses B
 //! g="VSL - PERCUSSION/Elements" n="Musical Glasses C"
 Bank 27 124 Musical Glasses C
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Staccato, Fast
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Staccato, Slow
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Portato, Fast
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Portato, Slow
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Sustain
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Roll
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Mallet
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1725,15 +1725,15 @@ Bank 27 124 Musical Glasses C
 //! g="VSL - PERCUSSION/Elements" n="Bottles"
 Bank 27 125 Bottles
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Staccato
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Portato
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Sustain
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Sfz
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Flatter
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1741,67 +1741,67 @@ Bank 27 125 Bottles
 //! g="VSL - PERCUSSION/Elements" n="Lithophone"
 Bank 27 126 Lithophone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 SOFT - All
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 SOFT - All, Secco
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 SOFT - All, Roll
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 SOFT - All, Chord Roll
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 HARD - All
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 SUL PONT - All
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 SUL PONT - All, Secco
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Glissandi
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 SOFT - Low
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 SOFT - Low, Secco
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 MEDIUM - Low
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 MEDIUM - Low, Secco
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 MEDIUM - Low, Chord Roll
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 HARD - High
-//! c=default i=default o=note:2/note:114
+//! c=default i=note-quarter o=note:2/note:114
 14 HARD - High, Secco
-//! c=default i=default o=note:3/note:114
+//! c=default i=note-quarter o=note:3/note:114
 15 HARD - High, Chord Roll
-//! c=default i=default o=note:4/note:114
+//! c=default i=note-quarter o=note:4/note:114
 16 Finger
-//! c=default i=default o=note:5/note:114
+//! c=default i=note-quarter o=note:5/note:114
 17 Finger, Secco
-//! c=default i=default o=note:6/note:114
+//! c=default i=note-quarter o=note:6/note:114
 18 Nail
-//! c=default i=default o=note:7/note:114
+//! c=default i=note-quarter o=note:7/note:114
 19 Nail, Accent
-//! c=default i=default o=note:8/note:114
+//! c=default i=note-quarter o=note:8/note:114
 20 Stone, Small
-//! c=default i=default o=note:9/note:114
+//! c=default i=note-quarter o=note:9/note:114
 21 Stone, Big
-//! c=default i=default o=note:10/note:114
+//! c=default i=note-quarter o=note:10/note:114
 22 Needle, 3mm Center
-//! c=default i=default o=note:11/note:114
+//! c=default i=note-quarter o=note:11/note:114
 23 Needle, 3mm FX
 
-//! c=default i=default o=note:0/note:115
+//! c=default i=note-quarter o=note:0/note:115
 24 Needle, 5mm Side
-//! c=default i=default o=note:1/note:115
+//! c=default i=note-quarter o=note:1/note:115
 25 Needle, 5mm Pont
-//! c=default i=default o=note:2/note:115
+//! c=default i=note-quarter o=note:2/note:115
 26 Shatter, Portato
-//! c=default i=default o=note:3/note:115
+//! c=default i=note-quarter o=note:3/note:115
 27 Shatter, Accented
-//! c=default i=default o=note:4/note:115
+//! c=default i=note-quarter o=note:4/note:115
 28 Bow, Piano
-//! c=default i=default o=note:5/note:115
+//! c=default i=note-quarter o=note:5/note:115
 29 Bow, Forte
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1809,23 +1809,23 @@ Bank 27 126 Lithophone
 //! g="VSL - PERCUSSION/Elements" n="Tam-Tam XXL"
 Bank 27 127 Tam-Tam XXL
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Basic
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Flexatone
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Metal
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Paperbox
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Boardtube
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Plastic
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Fretsaw
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Misc 1
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Misc 2
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -1833,32 +1833,32 @@ Bank 27 127 Tam-Tam XXL
 //! g="VSL - PERCUSSION/Elements" n="Bass Waterphone"
 Bank 28 1 Bass Waterphone
 
-//! c=default i=default o=note:0/note:113
+//! c=default i=note-quarter o=note:0/note:113
 0 Staccato A
-//! c=default i=default o=note:1/note:113
+//! c=default i=note-quarter o=note:1/note:113
 1 Staccato B
-//! c=default i=default o=note:2/note:113
+//! c=default i=note-quarter o=note:2/note:113
 2 Portato A
-//! c=default i=default o=note:3/note:113
+//! c=default i=note-quarter o=note:3/note:113
 3 Portato B
-//! c=default i=default o=note:4/note:113
+//! c=default i=note-quarter o=note:4/note:113
 4 Sustain
-//! c=default i=default o=note:5/note:113
+//! c=default i=note-quarter o=note:5/note:113
 5 Repetitions
-//! c=default i=default o=note:6/note:113
+//! c=default i=note-quarter o=note:6/note:113
 6 Cresc, F
-//! c=default i=default o=note:7/note:113
+//! c=default i=note-quarter o=note:7/note:113
 7 Cresc, FF
-//! c=default i=default o=note:8/note:113
+//! c=default i=note-quarter o=note:8/note:113
 8 Tremolo, Cresc.
-//! c=default i=default o=note:9/note:113
+//! c=default i=note-quarter o=note:9/note:113
 9 Arpeggios
-//! c=default i=default o=note:10/note:113
+//! c=default i=note-quarter o=note:10/note:113
 10 FX Loops
-//! c=default i=default o=note:11/note:113
+//! c=default i=note-quarter o=note:11/note:113
 11 Hotrods
 
-//! c=default i=default o=note:0/note:114
+//! c=default i=note-quarter o=note:0/note:114
 12 Wood
-//! c=default i=default o=note:1/note:114
+//! c=default i=note-quarter o=note:1/note:114
 13 Strokes
