@@ -16,7 +16,7 @@ Bank 24 14 SSSE String Ensemble
 //! c=short i=spiccato o=note:105
 42 spiccato
 //! c=short i=pizz o=note:106
-56 pizzacato
+56 pizzicato
 
 //! g="Native Instruments/Symphony Series/String Ensemble" n="Violins"
 Bank 24 15 SSSE Violins
@@ -35,7 +35,7 @@ Bank 24 15 SSSE Violins
 //! c=short i=spiccato o=note:30
 42 spiccato
 //! c=short i=pizz o=note:31
-56 pizzacato
+56 pizzicato
 
 //! g="Native Instruments/Symphony Series/String Ensemble" n="Violas"
 Bank 24 16 SSSE Violas
