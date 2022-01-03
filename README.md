@@ -35,7 +35,7 @@ Next, configure REAPER to point to the source files in the cloned directory:
 1. Load all actions under `actions/*`
 2. Create a symbolic link for each file in `jsfx/` in REAPER's `Effects/` directory.
    (Windows instructions [here](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/) --
-   or use the very convenient [shell extension](https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html)
+   or use the very convenient [shell extension](https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html).)
 3. Start the `Reaticulate_Main.lua` action as usual.
 
 
