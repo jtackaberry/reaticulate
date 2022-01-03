@@ -37,9 +37,10 @@ if reaper.file_exists(basedir .. 'reaticulate.lua') then
 else
     -- Source code will be in this subdirectory.
     local appdir = basedir .. sep .. 'app' .. sep
-    -- Replace package.path rather than appending to it as this improves module
-    -- loading times (fewer paths to search) and we have no outside dependencies.
-    package.path = string.format("%s?.lua;%s?/init.lua", appdir, appdir)
+    -- Replace package.path rather than appending to it as this improves module loading
+    -- times (fewer paths to search) and we have no outside dependencies.  rtk is added as
+    -- a submodule so is explicitly included in the path.
+    package.path = string.format("%s?.lua;%s/rtk/?.lua;%s/rtk/?/init.lua", appdir, basedir, basedir)
     -- Source based installation
     local main = require 'main'
     main(basedir)

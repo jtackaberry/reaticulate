@@ -162,11 +162,8 @@ function App:initialize(basedir, t0, t1)
     self:add_screen('banklist', 'screens.banklist')
     self:add_screen('trackcfg', 'screens.trackcfg')
     self:add_screen('settings', 'screens.settings')
-    -- rtk.debug=true
-
     self:replace_screen('banklist')
-    -- self:push_screen('settings')
-    self:push_screen('trackcfg')
+
     self:set_default_channel(1)
     self:run()
     local now = reaper.time_precise()
