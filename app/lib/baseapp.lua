@@ -15,6 +15,7 @@
 local rtk = require 'rtk'
 local log = rtk.log
 local json = require 'lib.json'
+local metadata = require 'metadata'
 require 'lib.utils'
 
 local BaseApp = rtk.class('BaseApp', rtk.Application)
@@ -24,15 +25,15 @@ app = nil
 function BaseApp:initialize(appid, title, basedir)
     if not rtk.has_sws_extension then
         -- Sunk before we started.
-        reaper.ShowMessageBox("Reaticulate requires the SWS extensions (www.sws-extension.org).\n\nAborting!",
-                              "SWS extension missing", 0)
+        reaper.MB("Reaticulate requires the SWS extensions (www.sws-extension.org).\n\nAborting!",
+                  "SWS extension missing", 0)
         return false
     end
     -- Latest supported version is 5.975 due to support for P_EXT with GetSetTrackSendInfo_String().
     --
     -- See https://www.landoleet.org/old/whatsnew5.txt
     if not rtk.check_reaper_version(5, 975) then
-        reaper.ShowMessageBox('Sorry, Reaticulate requires REAPER v5.975 or later.', 'REAPER version too old', 0)
+        reaper.MB('Sorry, Reaticulate requires REAPER v5.975 or later.', 'REAPER version too old', 0)
         return false
     end
     app = self
@@ -72,7 +73,32 @@ function BaseApp:initialize(appid, title, basedir)
     self.config = self:get_config()
     rtk.scale.user = self.config.scale
 
-    -- Migration from boolean debug to logging level
+    -- Check to see if we should warn about being a prerelease.
+    if metadata._VERSION:find('pre') then
+        if not self.config.showed_prerelease_warning then
+            local response = reaper.MB(
+                'WARNING! You are using a pre-release version of Reaticulate.\n\n' ..
+                'Projects saved with this version of Reaticulate WILL NOT WORK if you downgrade to the stable ' ..
+                'release, and you will only be able to move forward to later versions. Please only use pre-releases ' ..
+                'if you can tolerate and are willing to report bugs. Be sure to backup your projects ' ..
+                'before re-saving.\n\n' ..
+                'Continue using this pre-release version?\n\n' ..
+                'If you answer OK, Reaticulate will continue on and this warning will not be displayed again.\n\n' ..
+                'If you Cancel, Reaticulate will abort and you can downgrade to a stable version via ReaPack.',
+                'UNSTABLE Reaticulate pre-release version in use',
+                1)
+            if response == 2 then
+                return false
+            end
+            self.config.showed_prerelease_warning = true
+        end
+    else
+        -- Not running a prerelease.  Reset the warning flag for the next time a
+        -- prerelease is installed.
+        self.config.showed_prerelease_warning = false
+    end
+
+    -- Migration from boolean debug used in 0.3.x to logging level introduced in 0.4.x
     if self.config.debug_level == true or self.config.debug_level == 1 then
         self.config.debug_level = log.DEBUG
         self:save_config()
