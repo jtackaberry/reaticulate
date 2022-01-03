@@ -1,6 +1,7 @@
 //----------------------------------------------------------------------------
 //! g="Cinematic Series/CS2" n="Ensemble and Basses"
 //! chase=1,2,5,11,20,64-69
+//! id=00000000-88d2-4517-8a29-a3535effb6ef
 Bank 70 2 Cinematic Strings 2 Ensemble and Basses
 //! c=legato i=legato g=2 o=note:20
 20 legato on
@@ -27,9 +28,9 @@ Bank 70 2 Cinematic Strings 2 Ensemble and Basses
 42 staccatissimo
 //! c=short i=staccato o=note:17,127
 40 staccato
-//! c=long i=marcato o=note:18,1
+//! c=long i=marcato-half o=note:18,1
 9 marcato+spic
-//! c=long i=marcato o=note:18,127
+//! c=long i=marcato-half o=note:18,127
 2 marcato+stac
 //! c=short-light i=pizz o=note:19
 56 pizz
@@ -38,6 +39,7 @@ Bank 70 2 Cinematic Strings 2 Ensemble and Basses
 //----------------------------------------------------------------------------
 //! g="Cinematic Series/CS2" n="Vn/Va/Vc"
 //! chase=1,2,5,11,20,64-69
+//! id=00000000-0c43-4c70-a9f9-9e6da046ecee
 Bank 70 3 Cinematic Strings 2 Vn/Va/Vc
 //! c=legato i=legato g=2 o=note:32
 20 legato on
@@ -64,9 +66,9 @@ Bank 70 3 Cinematic Strings 2 Vn/Va/Vc
 42 staccatissimo
 //! c=short i=staccato o=note:29,127
 40 staccato
-//! c=long i=marcato o=note:30,1
+//! c=long i=marcato-half o=note:30,1
 9 marcato+spic
-//! c=long i=marcato o=note:30,127
+//! c=long i=marcato-half o=note:30,127
 2 marcato+stac
 //! c=short-light i=pizz o=note:31
 56 pizz

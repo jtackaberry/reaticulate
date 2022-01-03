@@ -4,7 +4,8 @@
 //===========================================================================
 
 //! g="Audio Imperia/Jaeger/Brass" n="01 - 3 Trumpets"
-Bank 29 116 AI JG 3 Trumpets
+//! id=39cd976b-8d29-4296-91ad-1375b959db47
+Bank * * AI JG 3 Trumpets
 //!c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -17,7 +18,8 @@ Bank 29 116 AI JG 3 Trumpets
 44 Portato
 
 //! g="Audio Imperia/Jaeger/Brass" n="02 - 6 French Horns"
-Bank 29 117 AI JG 6 French Horns
+//! id=6879c37e-b505-4bd7-adc3-8efa38ac61a2
+Bank * * AI JG 6 French Horns
 //!c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -32,7 +34,8 @@ Bank 29 117 AI JG 6 French Horns
 100 Rip
 
 //! g="Audio Imperia/Jaeger/Brass" n="03 - 4 Trombones"
-Bank 29 118 AI JG 4 Trombones
+//! id=7cea86b2-661a-4e8d-92ff-801aa8220e2c
+Bank * * AI JG 4 Trombones
 //! c=long i=note-whole o=note:12
 1 Sustain
 //!c=short i=spiccato o=note:13
@@ -42,10 +45,12 @@ Bank 29 118 AI JG 4 Trombones
 
 //! g="Audio Imperia/Jaeger/Brass" n="04 - 2 Tubas"
 //! clone="Audio Imperia/Jaeger/Brass/03 - 4 Trombones"
-Bank 29 119 AI JG 2 Tubas
+//! id=6fa03611-b77f-443b-b6fa-4d59d083b94d
+Bank * * AI JG 2 Tubas
 
 //! g="Audio Imperia/Jaeger/Brass" n="05 - 12 French Horns"
-Bank 29 120 AI JG 12 French Horns
+//! id=c7f05d7f-0caa-48fe-ac7e-57e024db2827
+Bank * * AI JG 12 French Horns
 //! c=long i=note-whole o=note:12
 1 Sustain
 //!c=short i=spiccato o=note:13
@@ -53,22 +58,27 @@ Bank 29 120 AI JG 12 French Horns
 
 //! g="Audio Imperia/Jaeger/Brass" n="06 - Low Brass"
 //! clone="Audio Imperia/Jaeger/Brass/05 - 12 French Horns"
-Bank 29 121 AI JG Low Brass
+//! id=0e109b91-b54f-4480-bf4b-c42369beee52
+Bank * * AI JG Low Brass
 
 //! g="Audio Imperia/Jaeger/Brass" n="07 - 3 Trmpts + 6 FrnchHrns 8va"
 //! clone="Audio Imperia/Jaeger/Brass/01 - 3 Trumpets"
-Bank 29 122 AI JG 3Trmpts + 6FrnchHrns
+//! id=c609b80e-cd48-48f9-ae9e-c7f5d500ce81
+Bank * * AI JG 3Trmpts + 6FrnchHrns
 
 //! g="Audio Imperia/Jaeger/Brass" n="08 - 4 Trmbns + 2 Tbs 8va"
 //! clone="Audio Imperia/Jaeger/Brass/03 - 4 Trombones"
-Bank 29 123 AI JG 4Trmbns + 2Tbs
+//! id=2cb5efd4-d235-43f0-993d-83701fe90f44
+Bank * * AI JG 4Trmbns + 2Tbs
 
 //! g="Audio Imperia/Jaeger/Brass" n="09 - Brass - Full Ens"
 //! clone="Audio Imperia/Jaeger/Brass/03 - 4 Trombones"
-Bank 29 124 AI JG Brass - Full Ens
+//! id=6df971f0-4d30-430e-9851-a2930527a1d3
+Bank * * AI JG Brass - Full Ens
 
 //! g="Audio Imperia/Jaeger/Strings" n="01 - 16 Violins"
-Bank 29 125 AI JG Strings - 16 Violins
+//! id=0df88997-6153-409b-9e41-6898baee69da
+Bank * * AI JG Strings - 16 Violins
 //!c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -88,14 +98,17 @@ Bank 29 125 AI JG Strings - 16 Violins
 
 //! g="Audio Imperia/Jaeger/Strings" n="02 - 10 Violas"
 //! clone="Audio Imperia/Jaeger/Strings/01 - 16 Violins"
-Bank 29 126 AI JG Strings - 10 Violas
+//! id=8d20f933-0c13-43ce-843f-bc545dd0ea11
+Bank * * AI JG Strings - 10 Violas
 
 //! g="Audio Imperia/Jaeger/Strings" n="03 - 6 Celli"
 //! clone="Audio Imperia/Jaeger/Strings/01 - 16 Violins"
-Bank 29 127 AI JG Strings - 6 Celli
+//! id=e18ae839-fb12-42a6-ac50-a4a7c97a005a
+Bank * * AI JG Strings - 6 Celli
 
 //! g="Audio Imperia/Jaeger/Strings" n="04 - 4 Double Basses"
-Bank 30 1 AI JG Strings - 4 Double Basses
+//! id=623ff559-387e-4cf9-9994-f4c877f5710f
+Bank * * AI JG Strings - 4 Double Basses
 //! c=long i=note-whole o=note:12
 1 Sustain
 //!c=textured i=tremolo o=note:13
@@ -113,18 +126,22 @@ Bank 30 1 AI JG Strings - 4 Double Basses
 
 //! g="Audio Imperia/Jaeger/Strings" n="05 - 16Vlns + 10Vlas 8va"
 //! clone="Audio Imperia/Jaeger/Strings/01 - 16 Violins"
-Bank 30 2 AI JG Strings - 16Vlns + 10Vlas 8va
+//! id=67e96d50-bc6d-45de-8ab8-0708865910d8
+Bank * * AI JG Strings - 16Vlns + 10Vlas 8va
 
 //! g="Audio Imperia/Jaeger/Strings" n="06 - 6Cll + 4DblBss 8va"
 //! clone="Audio Imperia/Jaeger/Strings/04 - 4 Double Basses"
-Bank 30 3 AI JG Strings - 6Cll + 4DblBss 8va
+//! id=df1d5d33-669a-4234-9bbb-092c0ccc5541
+Bank * * AI JG Strings - 6Cll + 4DblBss 8va
 
 //! g="Audio Imperia/Jaeger/Strings" n="07 - Strings Full Ens"
 //! clone="Audio Imperia/Jaeger/Strings/04 - 4 Double Basses"
-Bank 30 4 AI JG Strings - Full Ens
+//! id=6006aeac-383b-4a30-99b8-56be16f3176f
+Bank * * AI JG Strings - Full Ens
 
 //! g="Audio Imperia/Jaeger/Vocals" n="01 Vocals by Merethe Soltvedt"
-Bank 30 5 AI JG Vocals
+//! id=45480ab5-dbe3-4f9e-8a5a-c6c4c80c8f30
+Bank * * AI JG Vocals
 //! c=legato-dark i=legato o=note:12
 20 Legato Aah
 //!c=long-dark i=note-whole o=note:13
@@ -139,7 +156,8 @@ Bank 30 5 AI JG Vocals
 3 Sustained Mmm
 
 //! g="Audio Imperia/Talos" n="01 12 French Horns"
-Bank 30 6 AI Tls 12 Horns
+//! id=331c6a96-d092-4c6a-a1b4-20ee1d03e767
+Bank * * AI Tls 12 Horns
 //!c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -164,7 +182,8 @@ Bank 30 6 AI Tls 12 Horns
 101 Bend
 
 //! g="Audio Imperia/Talos" n="02 Low Brass"
-Bank 30 7 AI Tls Low Brass
+//! id=d416f932-a3d9-4a51-a693-7d2dee2403a0
+Bank * * AI Tls Low Brass
 //! c=long i=note-whole o=note:12
 1 Sustain
 //! c=short-dark i=marcato-half o=note:13

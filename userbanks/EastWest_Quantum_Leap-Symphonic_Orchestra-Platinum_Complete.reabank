@@ -6,7 +6,8 @@
 //----------------------------------------------------------------------------
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Piccolo Flute"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
-Bank 22 85 EWQLSO Platinum Woodwinds - Solo Piccolo Flute
+//! id=4341d9ca-24bb-4723-9b95-717ee0738705
+Bank * * EWQLSO Platinum Woodwinds - Solo Piccolo Flute
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib
@@ -46,7 +47,8 @@ Bank 22 85 EWQLSO Platinum Woodwinds - Solo Piccolo Flute
 //----------------------------------------------------------------------------
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Flute"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
-Bank 22 86 EWQLSO Platinum Woodwinds - Solo Flute
+//! id=df4107e6-31c0-4851-9f5c-cb670268fef6
+Bank * * EWQLSO Platinum Woodwinds - Solo Flute
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib
@@ -94,7 +96,8 @@ Bank 22 86 EWQLSO Platinum Woodwinds - Solo Flute
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Alto Flute"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 87 EWQLSO Platinum Woodwinds - Solo Alto Flute
+//! id=44efd9b2-1ba0-419c-bfb0-bda34c420632
+Bank * * EWQLSO Platinum Woodwinds - Solo Alto Flute
 //! c=long i=vibrato o=note:24
 1 Sus Vib
 //! c=long i=legato o=note:25
@@ -118,7 +121,8 @@ Bank 22 87 EWQLSO Platinum Woodwinds - Solo Alto Flute
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Ensembles" n="3 Flutes"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 88 EWQLSO Platinum Woodwinds - 3 Flutes
+//! id=a3f6d336-23b4-4f43-87cf-33fa726776a0
+Bank * * EWQLSO Platinum Woodwinds - 3 Flutes
 //! c=long i=vibrato o=note:24
 1 Sus
 //! c=legato i=legato o=note:25
@@ -146,7 +150,8 @@ Bank 22 88 EWQLSO Platinum Woodwinds - 3 Flutes
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Oboe"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 89 EWQLSO Platinum Woodwinds - Solo Oboe
+//! id=d873cdc6-4787-4792-9047-2515c90d22f7
+Bank * * EWQLSO Platinum Woodwinds - Solo Oboe
 //! c=long i=vibrato o=note:24
 1 Sus Vib
 //! c=legato-light i=legato-portamento o=note:25
@@ -181,7 +186,8 @@ Bank 22 89 EWQLSO Platinum Woodwinds - Solo Oboe
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Ensembles" n="3 Oboes"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 90 EWQLSO Platinum Woodwinds - 3 Oboes
+//! id=74d2de38-8713-476b-ac8a-01a854c82439
+Bank * * EWQLSO Platinum Woodwinds - 3 Oboes
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long i=legato o=note:25
@@ -207,7 +213,8 @@ Bank 22 90 EWQLSO Platinum Woodwinds - 3 Oboes
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo English Horn"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 91 EWQLSO Platinum Woodwinds - Solo English Horn
+//! id=ecf48d9d-a6a7-4d1a-9608-c48c57bcfadc
+Bank * * EWQLSO Platinum Woodwinds - Solo English Horn
 //! c=long i=vibrato o=note:24
 1 Sus Vib
 //! c=legato i=legato o=note:25
@@ -236,7 +243,8 @@ Bank 22 91 EWQLSO Platinum Woodwinds - Solo English Horn
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo English Horn 2"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 92 EWQLSO Platinum Woodwinds - Solo English Horn 2
+//! id=afba9eb6-b3c2-4e07-bf05-9dc801400f55
+Bank * * EWQLSO Platinum Woodwinds - Solo English Horn 2
 //! c=long i=vibrato o=note:24
 1 Sus
 //! c=legato i=legato-portamento o=note:25
@@ -264,7 +272,8 @@ Bank 22 92 EWQLSO Platinum Woodwinds - Solo English Horn 2
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Clarinet"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 93 EWQLSO Platinum Woodwinds - Solo Clarinet
+//! id=9071c229-6b1f-41fe-8824-bfed3d6f5ded
+Bank * * EWQLSO Platinum Woodwinds - Solo Clarinet
 //! c=long-light i=note-whole o=note:24
 14 Sus Non Vib
 //! c=legato-light i=legato-portamento o=note:25
@@ -302,7 +311,8 @@ Bank 22 93 EWQLSO Platinum Woodwinds - Solo Clarinet
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Ensembles" n="3 Clarinets"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 94 EWQLSO Platinum Woodwinds - 3 Clarinets
+//! id=91cce4f3-7e5b-4ea5-8c6e-a9424606e3f0
+Bank * * EWQLSO Platinum Woodwinds - 3 Clarinets
 //! c=long i=vibrato o=note:24
 1 Sus Vib
 //! c=long i=legato o=note:25
@@ -316,7 +326,8 @@ Bank 22 94 EWQLSO Platinum Woodwinds - 3 Clarinets
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Bass Clarinet"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 95 EWQLSO Platinum Woodwinds - Solo Bass Clarinet
+//! id=0903eb07-c205-47e8-aa6d-ec6aec673110
+Bank * * EWQLSO Platinum Woodwinds - Solo Bass Clarinet
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=legato i=legato-portamento o=note:25
@@ -342,7 +353,8 @@ Bank 22 95 EWQLSO Platinum Woodwinds - Solo Bass Clarinet
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Bassoon"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 96 EWQLSO Platinum Woodwinds - Solo Bassoon
+//! id=afa6a35e-8ba5-4f9a-a71a-e22db04b2b3c
+Bank * * EWQLSO Platinum Woodwinds - Solo Bassoon
 //! c=long i=vibrato o=note:24
 1 Sus Vib
 //! c=legato i=legato-portamento o=note:25
@@ -368,7 +380,8 @@ Bank 22 96 EWQLSO Platinum Woodwinds - Solo Bassoon
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Woodwinds/Solo Instruments" n="Solo Contrabassoon"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 97 EWQLSO Platinum Woodwinds - Solo Contrabassoon
+//! id=5855a1cd-d5b7-46a8-ab7b-77368223e02a
+Bank * * EWQLSO Platinum Woodwinds - Solo Contrabassoon
 //! c=long i=vibrato o=note:72
 1 Sus
 //! c=legato i=legato o=note:73
@@ -396,7 +409,8 @@ Bank 22 97 EWQLSO Platinum Woodwinds - Solo Contrabassoon
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo French Horn"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 98 EWQLSO Platinum Brass - Solo French Horn
+//! id=f31a77b5-0c89-449f-a5af-6e2300012687
+Bank * * EWQLSO Platinum Brass - Solo French Horn
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long i=legato o=note:25
@@ -415,7 +429,8 @@ Bank 22 98 EWQLSO Platinum Brass - Solo French Horn
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="6 French Horns"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 99 EWQLSO Platinum Brass - 6 French Horns
+//! id=c7e2de4d-4a1c-4e66-8be5-3dae47d9af78
+Bank * * EWQLSO Platinum Brass - 6 French Horns
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long-dark i=con-sord o=note:25
@@ -479,7 +494,8 @@ Bank 22 99 EWQLSO Platinum Brass - 6 French Horns
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Piccolo Trumpet"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 100 EWQLSO Platinum Brass - Solo Piccolo Trumpet
+//! id=b18b9295-7c9e-4b6a-a868-ff536bd3f5db
+Bank * * EWQLSO Platinum Brass - Solo Piccolo Trumpet
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long i=legato o=note:25
@@ -497,7 +513,8 @@ Bank 22 100 EWQLSO Platinum Brass - Solo Piccolo Trumpet
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Trumpet 1"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 101 EWQLSO Platinum Brass - Solo Trumpet 1
+//! id=38bd00b3-ccdd-488a-a0b6-f95c1508ce48
+Bank * * EWQLSO Platinum Brass - Solo Trumpet 1
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long i=legato o=note:25
@@ -523,7 +540,8 @@ Bank 22 101 EWQLSO Platinum Brass - Solo Trumpet 1
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Trumpet 2"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 102 EWQLSO Platinum Brass - Solo Trumpet 2
+//! id=0b50195b-5511-4d74-aedb-3883ea810d57
+Bank * * EWQLSO Platinum Brass - Solo Trumpet 2
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long i=legato o=note:25
@@ -563,7 +581,8 @@ Bank 22 102 EWQLSO Platinum Brass - Solo Trumpet 2
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="2 Trumpets"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 103 EWQLSO Platinum Brass - 2 Trumpets
+//! id=22f2c99a-c491-45a3-8dae-d37651509ba9
+Bank * * EWQLSO Platinum Brass - 2 Trumpets
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long i=con-sord o=note:25
@@ -605,7 +624,8 @@ Bank 22 103 EWQLSO Platinum Brass - 2 Trumpets
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="4 Trumpets"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 104 EWQLSO Platinum Brass - 4 Trumpets
+//! id=d64f394f-8437-4655-a035-dabbc782677a
+Bank * * EWQLSO Platinum Brass - 4 Trumpets
 //! c=long i=note-whole o=note:24
 1 Sus
 //! c=long-light i=accented-quarter o=note:25
@@ -623,7 +643,8 @@ Bank 22 104 EWQLSO Platinum Brass - 4 Trumpets
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Trombone"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 105 EWQLSO Platinum Brass - Solo Trombone
+//! id=ded9fde0-1370-42d4-83a2-386a3e9df484
+Bank * * EWQLSO Platinum Brass - Solo Trombone
 //! c=long i=note-whole o=note:84
 1 Sus
 //! c=long-dark i=con-sord o=note:85
@@ -647,7 +668,8 @@ Bank 22 105 EWQLSO Platinum Brass - Solo Trombone
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="4 Trombones"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 106 EWQLSO Platinum Brass - 4 Trombones
+//! id=e0bef100-19cc-49ac-bdb0-8e23318983fb
+Bank * * EWQLSO Platinum Brass - 4 Trombones
 //! c=long-light i=note-whole o=note:84
 1 Sus
 //! c=long-dark i=con-sord o=note:85
@@ -689,7 +711,8 @@ Bank 22 106 EWQLSO Platinum Brass - 4 Trombones
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Solo Instruments" n="Solo Tuba"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 107 EWQLSO Platinum Brass - Solo Tuba
+//! id=141b4903-dedd-42ae-a9a4-cfdbe61b6ed9
+Bank * * EWQLSO Platinum Brass - Solo Tuba
 //! c=long-light i=note-whole o=note:72
 1 Sus
 //! c=long i=con-sord o=note:73
@@ -711,7 +734,8 @@ Bank 22 107 EWQLSO Platinum Brass - Solo Tuba
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Brass/Ensembles" n="3 Wagner Tuben"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 108 EWQLSO Platinum Brass - 3 Wagner Tuben
+//! id=a5a4ed7f-34d7-42a2-8946-781bd20a17ce
+Bank * * EWQLSO Platinum Brass - 3 Wagner Tuben
 
 //! c=long-light i=note-whole o=note:24
 1 Big Sus
@@ -730,7 +754,8 @@ Bank 22 108 EWQLSO Platinum Brass - 3 Wagner Tuben
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Violin"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 109 EWQLSO Platinum Strings - Solo Violin
+//! id=9ae74c11-c200-48f1-8570-90a3d339625e
+Bank * * EWQLSO Platinum Strings - Solo Violin
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib Hrd
@@ -782,7 +807,8 @@ Bank 22 109 EWQLSO Platinum Strings - Solo Violin
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="18 Violins"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 110 EWQLSO Platinum Strings - 18 Violins
+//! id=23911dfe-961e-483d-b027-56a08b3b467a
+Bank * * EWQLSO Platinum Strings - 18 Violins
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib
@@ -835,7 +861,8 @@ Bank 22 110 EWQLSO Platinum Strings - 18 Violins
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="11 Violins"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 111 EWQLSO Platinum Strings - 11 Violins
+//! id=222ab84f-9ae5-44a7-b35a-ad53f8231aae
+Bank * * EWQLSO Platinum Strings - 11 Violins
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib
@@ -898,7 +925,8 @@ Bank 22 111 EWQLSO Platinum Strings - 11 Violins
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Viola"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 112 EWQLSO Platinum Strings - Solo Viola
+//! id=ae2987f8-ddf9-455f-8ab4-7af2e80701d1
+Bank * * EWQLSO Platinum Strings - Solo Viola
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib
@@ -939,7 +967,8 @@ Bank 22 112 EWQLSO Platinum Strings - Solo Viola
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="10 Violas"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 113 EWQLSO Platinum Strings - 10 Violas
+//! id=e98d7001-20cf-4886-922b-88c9dd873550
+Bank * * EWQLSO Platinum Strings - 10 Violas
 
 //! c=long i=note-whole o=note:24
 1 Sus
@@ -985,7 +1014,8 @@ Bank 22 113 EWQLSO Platinum Strings - 10 Violas
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Cello"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 114 EWQLSO Platinum Strings - Solo Cello
+//! id=38e6926c-73ab-4713-ba9a-bcd495e5f4a5
+Bank * * EWQLSO Platinum Strings - Solo Cello
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib Smooth
@@ -1018,7 +1048,8 @@ Bank 22 114 EWQLSO Platinum Strings - Solo Cello
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="10 Cellos"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 115 EWQLSO Platinum Strings - 10 Cellos
+//! id=9e6a9408-3fc2-41f7-9a3a-7e67051a5e79
+Bank * * EWQLSO Platinum Strings - 10 Cellos
 
 //! c=long i=vibrato o=note:24
 1 Sus Vib
@@ -1066,7 +1097,8 @@ Bank 22 115 EWQLSO Platinum Strings - 10 Cellos
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Solo Instruments" n="Solo Contrabass"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 116 EWQLSO Platinum Strings - Solo Contrabass
+//! id=83bf2c8a-def1-45fe-8b37-99aaa33bf432
+Bank * * EWQLSO Platinum Strings - Solo Contrabass
 
 //! c=long i=vibrato o=note:72
 1 Sus Vib
@@ -1099,7 +1131,8 @@ Bank 22 116 EWQLSO Platinum Strings - Solo Contrabass
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Platinum Strings/Ensembles" n="9 Double Basses"
 //! chase=1,11,16-21,64-69  m="KS Master - Check loaded articulations"
 
-Bank 22 117 EWQLSO Platinum Strings - 9 Double Basses
+//! id=160941b3-70da-4714-a049-b5c0b61162ee
+Bank * * EWQLSO Platinum Strings - 9 Double Basses
 
 //! c=long i=vibrato o=note:72
 1 Sus Vib

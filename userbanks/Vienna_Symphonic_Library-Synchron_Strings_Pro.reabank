@@ -36,7 +36,8 @@
 // ********************
 
 //! g="VSL - SYNCHRON/Synchron Strings Pro" n="Violins/Violas (SSP)"
-Bank 30 53 Violins/Violas (SSP)
+//! id=ff4aa284-74f5-4240-aa58-ce42cffdfb99
+Bank * * Violins/Violas (SSP)
 
 //! spacer=1
 //! c=short i=staccato o=note:24/note:36/note:21
@@ -213,7 +214,8 @@ Bank 30 53 Violins/Violas (SSP)
 // ************
 
 //! g="VSL - SYNCHRON/Synchron Strings Pro" n="Cellos (SSP)"
-Bank 30 54 Cellos (SSP)
+//! id=8395dda1-5a53-452d-bcb0-1d54193226cd
+Bank * * Cellos (SSP)
 
 //! spacer=1
 //! c=short i=staccato o=note:24/note:84/note:21
@@ -390,7 +392,8 @@ Bank 30 54 Cellos (SSP)
 // ************
 
 //! g="VSL - SYNCHRON/Synchron Strings Pro" n="Basses (SSP)"
-Bank 30 55 Basses (SSP)
+//! id=6d9f9202-c3fe-4650-aede-38e464876f03
+Bank * * Basses (SSP)
 
 //! spacer=1
 //! c=short i=staccato o=note:72/note:84/note:21

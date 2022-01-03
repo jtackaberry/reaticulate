@@ -4,7 +4,8 @@
 //===========================================================================
 
 //! g="Cinematic Series/Cinematic Studio Woodwinds" n="Flutes"
-Bank 30 8 CSW Flutes
+//! id=62eba58a-9ada-487c-b188-65f2d9263a1a
+Bank * * CSW Flutes
 //! c=legato i=legato o=note:24,1/note:32,65
 20 legato
 //! c=long i=note-whole o=note:24/note:32,1
@@ -31,7 +32,8 @@ Bank 30 8 CSW Flutes
 19 marcato+spic
 
 //! g="Cinematic Series/Cinematic Studio Woodwinds" n="Non-Flutes"
-Bank 30 9 CSW Non-Flutes
+//! id=a58dfe8f-9946-4a1f-86e3-a1eb0639fa0d
+Bank * * CSW Non-Flutes
 //! c=legato i=legato o=note:24,1/note:32,65
 20 legato
 //! c=long i=note-whole o=note:24/note:32,1

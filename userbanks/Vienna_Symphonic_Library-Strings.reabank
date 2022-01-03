@@ -91,7 +91,8 @@
 // ********
 
 //! g="VSL - STRINGS/Solo" n="Violin I"
-Bank 28 45 Violin I
+//! id=daeca1ca-c7b4-42ca-8b8c-b6a389e1dab3
+Bank * * Violin I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -378,7 +379,8 @@ Bank 28 45 Violin I
 // ***************
 
 //! g="VSL - STRINGS/Solo" n="Violin I (Mute)"
-Bank 28 46 Violin I (Mute)
+//! id=9dd7c18a-3d75-4cf4-9540-0edb3196b164
+Bank * * Violin I (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -502,7 +504,8 @@ Bank 28 46 Violin I (Mute)
 // *********
 
 //! g="VSL - STRINGS/Solo" n="Violin II"
-Bank 28 47 Violin II
+//! id=79a1064b-f937-47d6-8831-cdbd6fbf8520
+Bank * * Violin II
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Trill
@@ -633,7 +636,8 @@ Bank 28 47 Violin II
 // *****
 
 //! g="VSL - STRINGS/Solo" n="Viola"
-Bank 28 48 Viola
+//! id=78a441d4-c8b5-411f-8847-ba8fc098c4f4
+Bank * * Viola
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -892,7 +896,8 @@ Bank 28 48 Viola
 // ************
 
 //! g="VSL - STRINGS/Solo" n="Viola (Mute)"
-Bank 28 49 Viola (Mute)
+//! id=c595e0d2-3e76-4a4b-b8f3-014658ee11a2
+Bank * * Viola (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -1016,7 +1021,8 @@ Bank 28 49 Viola (Mute)
 // *******
 
 //! g="VSL - STRINGS/Solo" n="Cello I"
-Bank 28 50 Cello I
+//! id=25f9cbfc-5a58-46a9-8c4b-1cea754e881b
+Bank * * Cello I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -1282,7 +1288,8 @@ Bank 28 50 Cello I
 // **************
 
 //! g="VSL - STRINGS/Solo" n="Cello I (Mute)"
-Bank 28 51 Cello I (Mute)
+//! id=2ecca65c-471b-4214-9c56-48b6b7b1bdb9
+Bank * * Cello I (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -1406,7 +1413,8 @@ Bank 28 51 Cello I (Mute)
 // ********
 
 //! g="VSL - STRINGS/Solo" n="Cello II"
-Bank 28 52 Cello II
+//! id=e155d443-f858-48c2-a412-1c13f1a4277a
+Bank * * Cello II
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Trill
@@ -1537,7 +1545,8 @@ Bank 28 52 Cello II
 // ****
 
 //! g="VSL - STRINGS/Solo" n="Bass"
-Bank 28 53 Bass
+//! id=9c9ec3de-e10d-4719-abee-54c8f4478512
+Bank * * Bass
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -1731,7 +1740,8 @@ Bank 28 53 Bass
 // ***********
 
 //! g="VSL - STRINGS/Solo" n="Bass (Mute)"
-Bank 28 54 Bass (Mute)
+//! id=ed04a3fd-7b82-421b-a914-6764d2b12f4f
+Bank * * Bass (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 0 SPEED - Legato
@@ -1865,7 +1875,8 @@ Bank 28 54 Bass (Mute)
 // ************
 
 //! g="VSL - STRINGS/Chamber" n="Violins - a6"
-Bank 28 55 Violins - a6
+//! id=13352c6b-fbb7-4d6e-8adb-f523a9d30108
+Bank * * Violins - a6
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2051,7 +2062,8 @@ Bank 28 55 Violins - a6
 //*******************
 
 //! g="VSL - STRINGS/Chamber" n="Violins - a6 (Mute)"
-Bank 28 56 Violins - a6 (Mute)
+//! id=daf89ac2-35f6-4720-95d1-c27ce7bdc295
+Bank * * Violins - a6 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2157,7 +2169,8 @@ Bank 28 56 Violins - a6 (Mute)
 // ***********
 
 //! g="VSL - STRINGS/Chamber" n="Violas - a4"
-Bank 28 57 Violas - a4
+//! id=fc976504-9411-47d0-8d3b-c829b4463b32
+Bank * * Violas - a4
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2343,7 +2356,8 @@ Bank 28 57 Violas - a4
 // ******************
 
 //! g="VSL - STRINGS/Chamber" n="Violas - a4 (Mute)"
-Bank 28 58 Violas - a4 (Mute)
+//! id=18bf7298-eabb-4683-bde5-40426af3fd35
+Bank * * Violas - a4 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2449,7 +2463,8 @@ Bank 28 58 Violas - a4 (Mute)
 // ***********
 
 //! g="VSL - STRINGS/Chamber" n="Cellos - a3"
-Bank 28 59 Cellos - a3
+//! id=77f9660b-b612-447b-9e93-e55fa55c997d
+Bank * * Cellos - a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2635,7 +2650,8 @@ Bank 28 59 Cellos - a3
 // ******************
 
 //! g="VSL - STRINGS/Chamber" n="Cellos - a3 (Mute)"
-Bank 28 60 Cellos - a3 (Mute)
+//! id=eaae6dee-2e50-449d-ae63-167de466ebc7
+Bank * * Cellos - a3 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2741,7 +2757,8 @@ Bank 28 60 Cellos - a3 (Mute)
 // ***********
 
 //! g="VSL - STRINGS/Chamber" n="Basses - a2"
-Bank 28 61 Basses - a2
+//! id=dd2a2e46-6cb0-4b38-bd57-76e7ae5c8b67
+Bank * * Basses - a2
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2905,7 +2922,8 @@ Bank 28 61 Basses - a2
 // ******************
 
 //! g="VSL - STRINGS/Chamber" n="Basses - a2 (Mute)"
-Bank 28 62 Basses - a2 (Mute)
+//! id=460dae14-bea5-47bd-9d37-8d868f4bbf72
+Bank * * Basses - a2 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3017,7 +3035,8 @@ Bank 28 62 Basses - a2 (Mute)
 // *************
 
 //! g="VSL - STRINGS/Orchestral" n="Violins - a14"
-Bank 28 63 Violins - a14
+//! id=62c4a67c-5cbb-480e-b490-49eb01dac67e
+Bank * * Violins - a14
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3277,7 +3296,8 @@ Bank 28 63 Violins - a14
 // ********************
 
 //! g="VSL - STRINGS/Orchestral" n="Violins - a14 (Mute)"
-Bank 28 64 Violins - a14
+//! id=70078edb-972c-4f0a-87f4-db5ed363ebc5
+Bank * * Violins - a14
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -3345,7 +3365,8 @@ Bank 28 64 Violins - a14
 // ************
 
 //! g="VSL - STRINGS/Orchestral" n="Violas - a10"
-Bank 28 65 Violas - a10
+//! id=98398761-b321-43d9-a942-1b68be9c52d8
+Bank * * Violas - a10
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3595,7 +3616,8 @@ Bank 28 65 Violas - a10
 // *******************
 
 //! g="VSL - STRINGS/Orchestral" n="Violas - a10 (Mute)"
-Bank 28 66 Violas - a10 (Mute)
+//! id=1dd416c8-3a32-40d9-868d-4b7d72b6fd65
+Bank * * Violas - a10 (Mute)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -3663,7 +3685,8 @@ Bank 28 66 Violas - a10 (Mute)
 // ***********
 
 //! g="VSL - STRINGS/Orchestral" n="Cellos - a8"
-Bank 28 67 Cellos - a8
+//! id=1a96f1c2-1b4f-4b5c-9fc3-ff9321959563
+Bank * * Cellos - a8
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3913,7 +3936,8 @@ Bank 28 67 Cellos - a8
 // ******************
 
 //! g="VSL - STRINGS/Orchestral" n="Cellos - a8 (Mute)"
-Bank 28 68 Cellos - a8 (Mute)
+//! id=b9bf05b0-fdc0-41d5-b2ab-40edbd3998c9
+Bank * * Cellos - a8 (Mute)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -3981,7 +4005,8 @@ Bank 28 68 Cellos - a8 (Mute)
 // ***********
 
 //! g="VSL - STRINGS/Orchestral" n="Basses - a6"
-Bank 28 69 Basses - a6
+//! id=312b757e-a9a5-4d31-bca1-47658ac1b628
+Bank * * Basses - a6
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4159,7 +4184,8 @@ Bank 28 69 Basses - a6
 // *************
 
 //! g="VSL - STRINGS/Appassionata" n="Violins - a20"
-Bank 28 70 Violins - a20
+//! id=5112ad5f-1924-4e0b-883d-944509d9defb
+Bank * * Violins - a20
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4283,7 +4309,8 @@ Bank 28 70 Violins - a20
 // ********************
 
 //! g="VSL - STRINGS/Appassionata" n="Violins - a20 (Mute)"
-Bank 28 71 Violins - a20 (Mute)
+//! id=ae823583-f1a9-4341-b046-d802b68ed258
+Bank * * Violins - a20 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4373,7 +4400,8 @@ Bank 28 71 Violins - a20 (Mute)
 // ************
 
 //! g="VSL - STRINGS/Appassionata" n="Violas - a14"
-Bank 28 72 Violas - a14
+//! id=ea0c699a-e704-4154-b6a8-93861ef068d0
+Bank * * Violas - a14
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4489,7 +4517,8 @@ Bank 28 72 Violas - a14
 // *******************
 
 //! g="VSL - STRINGS/Appassionata" n="Violas - a14 (Mute)"
-Bank 28 73 Violas - a14 (Mute)
+//! id=f1aa633d-107f-455d-89bc-524443bbb560
+Bank * * Violas - a14 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4580,7 +4609,8 @@ Bank 28 73 Violas - a14 (Mute)
 // ************
 
 //! g="VSL - STRINGS/Appassionata" n="Cellos - a12"
-Bank 28 74 Cellos - a12
+//! id=f9dbfee8-aa70-49aa-a951-7d90c27d2420
+Bank * * Cellos - a12
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4694,7 +4724,8 @@ Bank 28 74 Cellos - a12
 // *******************
 
 //! g="VSL - STRINGS/Appassionata" n="Cellos - a12 (Mute)"
-Bank 28 75 Cellos - a12 (Mute)
+//! id=1e53458b-b034-474b-a8c1-c08b41048267
+Bank * * Cellos - a12 (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4784,7 +4815,8 @@ Bank 28 75 Cellos - a12 (Mute)
 // ************
 
 //! g="VSL - STRINGS/Appassionata" n="Basses - a10"
-Bank 28 76 Basses - a10
+//! id=f0428ebd-fd55-47a9-9b2d-22320a2afee6
+Bank * * Basses - a10
 
 //! c=short i=staccato o=note:0/note:17/note:5
 1 Staccato
@@ -4838,7 +4870,8 @@ Bank 28 76 Basses - a10
 // ******
 
 //! g="VSL - STRINGS/Harps" n="Harp I"
-Bank 28 77 Harp I
+//! id=069a8d2e-3451-4416-ac3e-374f28005889
+Bank * * Harp I
 
 //! c=short i=note-quarter o=note:113
 1 Normal
@@ -4860,7 +4893,8 @@ Bank 28 77 Harp I
 // *******
 
 //! g="VSL - STRINGS/Harps" n="Harp II"
-Bank 28 78 Harp II
+//! id=b01f975f-64f5-41ea-83ae-8ee024fc67f5
+Bank * * Harp II
 
 //! c=short i=note-quarter o=note:113
 1 Normal

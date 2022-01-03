@@ -32,7 +32,8 @@
 
 
 //! g="VSL - KEYBOARDS" n="Konzerthaus Organ"
-Bank 27 45 Konzerthaus Organ
+//! id=e3213347-81df-460c-ba72-39d5321b0a9e
+Bank * * Konzerthaus Organ
 
 //! c=long i=list g=1 o=cc:3,0
 1  [MAN] Small P. Plenum
@@ -111,7 +112,8 @@ Bank 27 45 Konzerthaus Organ
 
 
 //! g="VSL - KEYBOARDS" n="Harmonium"
-Bank 27 46 Harmonium
+//! id=5a735fb8-cfbd-4ae0-9a25-6c4a8225c3bc
+Bank * * Harmonium
 
 //! c=long i=list o=note:113
 1 Aeoline
@@ -133,7 +135,8 @@ Bank 27 46 Harmonium
 
 
 //! g="VSL - KEYBOARDS" n="Harpsichord"
-Bank 27 47 Harpsichord
+//! id=126cbbba-ad6e-40e9-9dfe-7afcd015c8aa
+Bank * * Harpsichord
 
 //! c=long i=list o=note:113
 1 8-Feet
@@ -145,7 +148,8 @@ Bank 27 47 Harpsichord
 
 
 //! g="VSL - KEYBOARDS" n="Prepared Piano"
-Bank 27 48 Prepared Piano
+//! id=45fc8d1b-8167-4014-bb0d-4b60afb06174
+Bank * * Prepared Piano
 
 //! c=long i=list o=note:113
 1 Chain

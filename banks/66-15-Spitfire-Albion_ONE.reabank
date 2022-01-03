@@ -1,6 +1,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass High"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f458-409c-924a-241001b8079d
 Bank 66 15 Albion ONE - Brass High
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -15,6 +16,7 @@ Bank 66 15 Albion ONE - Brass High
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass Low"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-3c58-421f-9a73-5722aa66b289
 Bank 66 16 Albion ONE - Brass Low
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -29,6 +31,7 @@ Bank 66 16 Albion ONE - Brass Low
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass Mid"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-c834-4869-bd7a-2a9d2bd3e9db
 Bank 66 17 Albion ONE - Brass Mid
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -39,6 +42,7 @@ Bank 66 17 Albion ONE - Brass Mid
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Strings"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-85d0-4d08-86da-dfc364b2b2bf
 Bank 66 18 Albion ONE - Strings
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
@@ -63,6 +67,7 @@ Bank 66 18 Albion ONE - Strings
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Woods High"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-21e3-47f5-85bc-b3e4dbbca6d1
 Bank 66 19 Albion ONE - Woods High
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -77,6 +82,7 @@ Bank 66 19 Albion ONE - Woods High
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Woods Low"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-8bfd-485c-9c3f-de6f8c5b8ca6
 Bank 66 20 Albion ONE - Woods Low
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -87,6 +93,7 @@ Bank 66 20 Albion ONE - Woods Low
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Brass High"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-e112-4a1a-9098-d547ef3b4348
 Bank 66 21 Albion ONE - Legacy - Brass High
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -99,12 +106,14 @@ Bank 66 21 Albion ONE - Legacy - Brass High
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Brass Low"
 //! clone="Spitfire/Albion ONE/Legacy/Brass High"
+//! id=00000000-3f8e-4352-8308-766da3ac881b
 Bank 66 22 Albion ONE - Legacy - Brass Low
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Brass Mid"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-eb06-48a2-aa20-dac5dd1b4e08
 Bank 66 23 Albion ONE - Legacy - Brass Mid
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -113,6 +122,7 @@ Bank 66 23 Albion ONE - Legacy - Brass Mid
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Piano"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-134c-4dbb-a2ae-223b3b13deb1
 Bank 66 24 Albion ONE - Legacy - Piano
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -127,6 +137,7 @@ Bank 66 24 Albion ONE - Legacy - Piano
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="String High"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-92c6-4f4f-a257-5c898a664ad4
 Bank 66 25 Albion ONE - Legacy - String High
 //! c=short i=staccato o=cc:32,43
 43 short ostinatum
@@ -149,6 +160,7 @@ Bank 66 25 Albion ONE - Legacy - String High
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="String Low"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-1157-4e97-a04f-dcbd58689895
 Bank 66 26 Albion ONE - Legacy - String Low
 //! c=short i=marcato-quarter o=cc:32,44
 44 brush ostinatum
@@ -167,10 +179,11 @@ Bank 66 26 Albion ONE - Legacy - String Low
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Woodwind High"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-ea4f-45ec-91db-7ee2b92aa27e
 Bank 66 27 Albion ONE - Legacy - Woodwind High
 //! c=short i=staccato o=cc:32,40
 40 short
-//! c=short i=staccato-overblown o=cc:32,41
+//! c=short i=staccato-stopped o=cc:32,41
 41 short alt
 //! c=fx i=fx o=cc:32,90
 90 fx1
@@ -183,6 +196,7 @@ Bank 66 27 Albion ONE - Legacy - Woodwind High
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE/Legacy" n="Woodwind Low"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-6cae-4557-a72d-3b8449b4f8e2
 Bank 66 28 Albion ONE - Legacy - Woodwind Low
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -195,6 +209,7 @@ Bank 66 28 Albion ONE - Legacy - Woodwind Low
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Strings Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-5a9b-4047-a9f3-9068167c4b64
 Bank 66 126 Albion ONE - Strings Legato
 //! c=legato i=legato o=cc:32,26
 26 legato full strings (8ves)
@@ -209,6 +224,7 @@ Bank 66 126 Albion ONE - Strings Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Brass Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-3d86-4abd-96a9-f0e3afe23330
 Bank 66 127 Albion ONE - Brass Legato
 // Program numbers for low and mid brass intentionally swapped as mid brass
 // seems like a better choice for default legato.
@@ -224,6 +240,7 @@ Bank 66 127 Albion ONE - Brass Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Woods Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-1e71-45eb-bc85-085d2d3b4504
 Bank 66 125 Albion ONE - Woods Legato
 //! c=legato i=legato o=cc:32,23
 23 legato low woods
@@ -235,6 +252,7 @@ Bank 66 125 Albion ONE - Woods Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Strings High - Runs"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f86a-4a1a-a27e-8a6306520979
 Bank 66 124 Albion ONE - Strings High - Runs
 //! c=legato-dark i=legato-runs o=cc:32,90
 90 chrm asc 1 oct
@@ -289,6 +307,7 @@ Bank 66 124 Albion ONE - Strings High - Runs
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion ONE" n="Strings Low - Runs"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-d361-4069-9ffc-4dc6d017b791
 Bank 66 123 Albion ONE - Strings Low - Runs
 //! c=legato-dark i=legato-runs o=cc:32,90
 90 chrm asc 1 oct

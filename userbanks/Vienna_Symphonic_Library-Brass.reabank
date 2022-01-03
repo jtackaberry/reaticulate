@@ -71,7 +71,8 @@
 
 
 //! g="VSL - BRASS/Ensemble" n="Trumpets - a3"
-Bank 27 16 Trumpets - a3
+//! id=2f9c8604-80f3-4706-80a3-a5c64fb479c8
+Bank * * Trumpets - a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -301,7 +302,8 @@ Bank 27 16 Trumpets - a3
 //********************
 
 //! g="VSL - BRASS/Ensemble" n="Trumpets - a3 (Mute)"
-Bank 27 17 Trumpets - a3 (Mute)
+//! id=46face18-216d-4ddb-85d2-6896145af58f
+Bank * * Trumpets - a3 (Mute)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -455,7 +457,8 @@ Bank 27 17 Trumpets - a3 (Mute)
 //***********************
 
 //! g="VSL - BRASS/Ensemble" n="Trumpets - a6 (Fanfare)"
-Bank 27 18 Trumpets - a6 (Fanfare)
+//! id=a739afc8-517c-4a30-aa25-6aee4b367d40
+Bank * * Trumpets - a6 (Fanfare)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -635,7 +638,8 @@ Bank 27 18 Trumpets - a6 (Fanfare)
 //**************
 
 //! g="VSL - BRASS/Ensemble" n="Trombones - a3"
-Bank 27 19 Trombones - a3
+//! id=22b6cfff-e2c8-4e1e-a81f-2363c013249a
+Bank * * Trombones - a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -861,7 +865,8 @@ Bank 27 19 Trombones - a3
 //*********************
 
 //! g="VSL - BRASS/Ensemble" n="Trombones - a3 (Mute)"
-Bank 27 20 Trombones - a3 (Mute)
+//! id=151ac30d-f5f0-440e-b715-586ff638fc43
+Bank * * Trombones - a3 (Mute)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -995,7 +1000,8 @@ Bank 27 20 Trombones - a3 (Mute)
 //**********
 
 //! g="VSL - BRASS/Ensemble" n="Horns - a4"
-Bank 27 21 Horns - a4
+//! id=eed921d9-a354-46c2-8223-bbe0b20953ac
+Bank * * Horns - a4
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1199,7 +1205,8 @@ Bank 27 21 Horns - a4
 //********************
 
 //! g="VSL - BRASS/Ensemble" n="Horns - a4 (Stopped)"
-Bank 27 22 Horns - a4 (Stopped)
+//! id=b1c82504-9edf-47f9-8c95-f915a66e3424
+Bank * * Horns - a4 (Stopped)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -1315,7 +1322,8 @@ Bank 27 22 Horns - a4 (Stopped)
 //*****************
 
 //! g="VSL - BRASS/Ensemble" n="Horns - a8 (Epic)"
-Bank 27 23 Horns - a8 (Epic)
+//! id=24e3ed83-bbf6-488b-b67b-1beec7ede4fc
+Bank * * Horns - a8 (Epic)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -1505,7 +1513,8 @@ Bank 27 23 Horns - a8 (Epic)
 // **********
 
 //! g="VSL - BRASS/Bugles" n="Flugelhorn"
-Bank 27 24 Flugelhorn
+//! id=8f9c70c5-1b7e-4444-88c2-43322f83d97f
+Bank * * Flugelhorn
 
 //!spacer=1
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
@@ -1629,7 +1638,8 @@ Bank 27 24 Flugelhorn
 // *********
 
 //! g="VSL - BRASS/Bugles" n="Euphonium"
-Bank 27 25 Euphonium
+//! id=a56ff852-c77a-4b28-bc69-93bea534c4b7
+Bank * * Euphonium
 
 //!spacer=1
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
@@ -1829,7 +1839,8 @@ Bank 27 25 Euphonium
 
 
 //! g="VSL - BRASS/Horns" n="Horn, Viennese"
-Bank 27 26 Horn, Viennese
+//! id=ba965898-1e75-488f-b9b6-b3103667eeb5
+Bank * * Horn, Viennese
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2122,7 +2133,8 @@ Bank 27 26 Horn, Viennese
 // ************
 
 //! g="VSL - BRASS/Horns" n="Horn, Triple"
-Bank 27 27 Horn, Triple
+//! id=db9519cc-43fe-466e-a897-fb4e5e9c3c5b
+Bank * * Horn, Triple
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2324,7 +2336,8 @@ Bank 27 27 Horn, Triple
 // ***********
 
 //! g="VSL - BRASS/Horns" n="Wagner Tuba"
-Bank 27 28 Wagner Tuba
+//! id=914d53cc-129f-4315-9e94-a9856be62ec9
+Bank * * Wagner Tuba
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2486,7 +2499,8 @@ Bank 27 28 Wagner Tuba
 // *********
 
 //! g="VSL - BRASS/Trumpets" n="Trumpet C"
-Bank 27 29 Trumpet C
+//! id=d9aa4bbc-9142-4c6b-834e-3156d6aa548a
+Bank * * Trumpet C
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2742,7 +2756,8 @@ Bank 27 29 Trumpet C
 // ****************
 
 //! g="VSL - BRASS/Trumpets" n="Trumpet C (Mute)"
-Bank 27 30 Trumpet C (Mute)
+//! id=185604d8-c80d-46d4-bc7a-81682927f2dc
+Bank * * Trumpet C (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2954,7 +2969,8 @@ Bank 27 30 Trumpet C (Mute)
 // **********
 
 //! g="VSL - BRASS/Trumpets" n="Trumpet Bb"
-Bank 27 31 Trumpet Bb
+//! id=6ca2f024-c6f4-4179-bd64-fac99040717c
+Bank * * Trumpet Bb
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3082,7 +3098,8 @@ Bank 27 31 Trumpet Bb
 // *****************
 
 //! g="VSL - BRASS/Trumpets" n="Trumpet Bb (Mute)"
-Bank 27 32 Trumpet Bb (Mute)
+//! id=3a29115a-61c1-4587-93e9-d6ab31e684e6
+Bank * * Trumpet Bb (Mute)
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -3231,7 +3248,8 @@ Bank 27 32 Trumpet Bb (Mute)
 // ***************
 
 //! g="VSL - BRASS/Trumpets" n="Piccolo Trumpet"
-Bank 27 33 Piccolo Trumpet
+//! id=c85fd185-19ea-41fa-8f16-05cc47dd5b95
+Bank * * Piccolo Trumpet
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3477,7 +3495,8 @@ Bank 27 33 Piccolo Trumpet
 // ******
 
 //! g="VSL - BRASS/Trumpets" n="Cornet"
-Bank 27 34 Cornet
+//! id=16c7c324-abb9-4f7c-9b88-06887b1a3275
+Bank * * Cornet
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3677,7 +3696,8 @@ Bank 27 34 Cornet
 // ************
 
 //! g="VSL - BRASS/Trumpets" n="Bass Trumpet"
-Bank 27 35 Bass Trumpet
+//! id=373d1dc7-1537-482f-bbfe-44d1cebbe343
+Bank * * Bass Trumpet
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3936,7 +3956,8 @@ Bank 27 35 Bass Trumpet
 // *************
 
 //! g="VSL - BRASS/Trombones" n="Alto Trombone"
-Bank 27 36 Alto Trombone
+//! id=dafcaf8f-4148-45a5-8269-19e69d3af3f5
+Bank * * Alto Trombone
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4154,7 +4175,8 @@ Bank 27 36 Alto Trombone
 // *************
 
 //! g="VSL - BRASS/Trombones" n="Bass Trombone"
-Bank 27 37 Bass Trombone
+//! id=13665c6e-1319-4051-b2ff-e6ce200e6bb4
+Bank * * Bass Trombone
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4327,7 +4349,8 @@ Bank 27 37 Bass Trombone
 // *******************
 
 //! g="VSL - BRASS/Trombones" n="Contrabass Trombone"
-Bank 27 38 Contrabass Trombone
+//! id=1b6adf80-746e-4aa4-9e98-46f73044f47c
+Bank * * Contrabass Trombone
 
 //!spacer=1
 //! c=legato i=legato o=note:1/note:12/note:113
@@ -4478,7 +4501,8 @@ Bank 27 38 Contrabass Trombone
 // **************
 
 //! g="VSL - BRASS/Trombones" n="Tenor Trombone"
-Bank 27 39 Tenor Trombone
+//! id=b6061224-3a27-4b86-a223-d8ce4917acf8
+Bank * * Tenor Trombone
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4752,7 +4776,8 @@ Bank 27 39 Tenor Trombone
 // ***********************
 
 //! g="VSL - BRASS/Trombones" n="Tenor Trombone (Mute A)"
-Bank 27 40 Tenor Trombone (Mute A)
+//! id=43af999e-b582-4259-8809-708abe2d3638
+Bank * * Tenor Trombone (Mute A)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -4904,7 +4929,8 @@ Bank 27 40 Tenor Trombone (Mute A)
 // ***********************
 
 //! g="VSL - BRASS/Trombones" n="Tenor Trombone (Mute B)"
-Bank 27 41 Tenor Trombone (Mute B)
+//! id=0fb17f3d-c68d-4ffc-83ba-c9f761d019c9
+Bank * * Tenor Trombone (Mute B)
 
 //! c=legato i=legato o=note:1/note:12/note:113
 1 Perf. Legato
@@ -5067,7 +5093,8 @@ Bank 27 41 Tenor Trombone (Mute B)
 // ****
 
 //! g="VSL - BRASS/Tubas" n="Tuba"
-Bank 27 42 Tuba
+//! id=88d975cd-944a-4869-ad53-797b955ca89d
+Bank * * Tuba
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -5297,7 +5324,8 @@ Bank 27 42 Tuba
 // ***************
 
 //! g="VSL - BRASS/Tubas" n="Contrabass Tuba"
-Bank 27 43 Contrabass Tuba
+//! id=f76ca778-3028-4ba2-90e6-0dec563718e7
+Bank * * Contrabass Tuba
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -5467,7 +5495,8 @@ Bank 27 43 Contrabass Tuba
 // ********
 
 //! g="VSL - BRASS/Tubas" n="Cimbasso"
-Bank 27 44 Cimbasso
+//! id=5e7ed86f-b055-4119-ae7b-e3b69c6fb5d7
+Bank * * Cimbasso
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato

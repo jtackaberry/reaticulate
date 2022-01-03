@@ -1,4 +1,4 @@
- -- Copyright 2017-2019 Jason Tackaberry
+-- Copyright 2017-2022 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -12,17 +12,20 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-local log = require 'lib.log'
-local rtk = require 'lib.rtk'
+local rtk = require 'rtk'
 local feedback = require 'feedback'
 local articons = require 'articons'
 local reabank = require 'reabank'
-
+local rfx = require 'rfx'
+local metadata = require 'metadata'
+local log = rtk.log
 
 local screen = {
     minw = 200,
     widget = nil,
-    midi_device_menu = nil,
+
+    -- If true, handle chase CC updates when Back button is pressed
+    chase_ccs_dirty = false,
 
     art_colors = {
         {'Default', 'default', 'note-whole'},
@@ -53,88 +56,99 @@ dofile(basedir .. sep .. 'Reaticulate' .. sep .. 'actions' .. sep .. 'Reaticulat
 
 local function update_startup_action(start)
     local scriptfile = Path.join(reaper.GetResourcePath(), 'Scripts', '__startup.lua')
-    local script = read_file(scriptfile) or ''
-    name = name:gsub("%^a", "")
-    script = script:gsub('-- Begin Reaticulate.*-- End Reaticulate[^\n]*\n*', '')
+    local script = rtk.file.read(scriptfile) or ''
+    script = script:gsub('\n*-- Begin Reaticulate.*-- End Reaticulate[^\n]*', '')
     if start then
         script = script .. '\n\n' .. startup_script
     end
-    write_file(scriptfile, script)
+    rtk.file.write(scriptfile, script)
 end
 
 
-local function make_section(vbox, title)
-    local heading = rtk.Heading{label=title}
-    vbox:add(heading, {
-        lpadding=10, tpadding=20, bpadding=15
-    })
-    return vbox:add(rtk.VBox{spacing=10, lpadding=20, bpadding=20})
+local function make_section(parent, title)
+    local vbox = rtk.VBox{spacing=10, lpadding=20, bpadding=30}
+    local heading = rtk.Heading{title}
+    vbox:add(heading, {lpadding=-10, tpadding=20, bpadding=5})
+    return parent:add(vbox)
 end
 
 local function add_row(section, label, w, spacing)
     local row = section:add(rtk.HBox{spacing=10}, {spacing=spacing})
-    row:add(
-        rtk.Label{label=label, w=w, halign=rtk.Widget.RIGHT},
+    row.label = row:add(
+        rtk.Text{label, w=w, halign=rtk.Widget.RIGHT, wrap=false},
         {valign=rtk.Widget.CENTER}
     )
     return row
 end
 
-
-function add_tip(section, lpadding, text)
-    local label = rtk.Label{label=text, focusable=true, wrap=true}
-    return section:add(label, {lpadding=lpadding, valign=rtk.Widget.CENTER, spacing=20})
+local function add_tip(section, lpadding, text)
+    local label = rtk.Text{text, wrap=true}
+    return section:add(label, {lpadding=lpadding, valign='center'})
 end
 
-local function make_cb(label)
-    return rtk.CheckBox{label=label, wrap=true, ivalign=rtk.Widget.TOP}
-end
-
-local function add_color_input(row, label, icon, pad, onset)
-    local text = row:add(rtk.Entry{label=label, textwidth=7}, {valign='center', fillw=false})
-    local attrs
-    if pad then
-        attrs = {icon=icon, lpadding=5, rpadding=5, tpadding=3, bpadding=3}
+local function add_color_input(row, initial, default, icon, pad, onset)
+    local text = row:add(rtk.Entry{placeholder=default, textwidth=7}, {valign='center', fillw=false})
+    local attrs = {
+        icon=icon,
+        color=(initial and initial ~= '') and initial or default,
+    }
+    if not pad then
+        attrs.padding = 2
     else
-        attrs = {icon=icon}
+        attrs.gradient = 0
     end
-    local button = row:add(rtk.Button(attrs))
-    local undo = row:add(app:make_button('18-undo'))
+    local button = row:add(rtk.Button(attrs), {valign='center', spacing=5})
+    -- Spacing for the row hbox is 10, so compensate slightly with negative padding.
+    local undo = row:add(rtk.Button{icon=screen.icon_undo, flat=true, lpadding=5, rpadding=5})
+    undo:attr('disabled', initial == nil or initial == default or initial == '')
     undo.onclick = function()
-        if not text:pop_history() and text.original then
-            text:attr('value', text.original)
-        end
+        text:attr('value', default)
     end
     button.onclick = function()
-        local bg = (text.value and #text.value > 0) and text.value or label or ''
-        local ok, color = reaper.GR_SelectColor(0, convert_native_color(hex2int(bg)))
+        local bg = (text.value and #text.value > 0) and text.value or default or ''
+        local hwnd = reaper.BR_Win32_HwndToString(app.window.hwnd)
+        hwnd = reaper.BR_Win32_StringToHwnd(hwnd)
+        local ok, color = reaper.GR_SelectColor(hwnd, rtk.color.int(bg, true))
         if ok ~= 0 then
-            text:push_history()
-            text:attr('value', int2hex(convert_native_color(color)))
+            text:push_undo()
+            text:attr('value', rtk.color.int2hex(color, true))
         end
     end
     text.onchange = function(text)
-        if text.value == label then
-            text:attr('value', '', text.value, false)
+        if text.value == default then
+            text:attr('value', '', false)
         end
-        local bg = (text.value and #text.value > 0) and text.value or label or ''
+        local bg = (text.value and #text.value > 0) and text.value or default or ''
+        undo:attr('disabled', bg == default or bg == '')
         button:attr('color', bg)
         -- Only execute callback after first
         if onset then
             onset(text, button, bg)
         end
     end
+    text:attr('value', initial)
     return text
 end
 
 function screen.init()
-    screen.vbox = rtk.VBox{rpadding=10}
-    screen.widget = rtk.Viewport{child=screen.vbox}
+    screen.icon_undo = rtk.Image.make_icon('med-undo')
+
+    screen.vbox = rtk.VBox{rpadding=20}
+    screen.widget = rtk.Viewport{screen.vbox}
     screen.toolbar = rtk.HBox{spacing=0}
 
     -- Back button: return to bank list
-    local back_button = app:make_button('18-arrow_back', 'Back')
+    local back_button = rtk.Button{'Back', icon='med-arrow_back', flat=true}
     back_button.onclick = function()
+        if screen.chase_ccs_dirty then
+            reabank.clear_chase_cc_list_cache()
+            -- Technically we should call rfx.all_tracks_sync_banks_if_hash_changed(), but
+            -- it's quite slow on large projects.  We compromise by syncing the current
+            -- track only, and rely on the fact that banks will automatically resync when
+            -- a track is selected.
+            rfx.current:sync_banks_if_hash_changed()
+            screen.chase_ccs_dirty = false
+        end
         app:pop_screen()
     end
     screen.toolbar:add(back_button)
@@ -143,19 +157,17 @@ function screen.init()
     -- Show a warning if the js_ReaScriptAPI isn't installed.
     if not rtk.has_js_reascript_api then
         local hbox = screen.vbox:add(rtk.HBox{spacing=10}, {tpadding=20, bpadding=20, lpadding=20, rpadding=20})
-        hbox:add(rtk.ImageBox{image='24-warning_amber'}, {valign=rtk.Widget.TOP})
+        hbox:add(rtk.ImageBox{image='lg-warning_amber'}, {valign=rtk.Widget.TOP})
         local vbox = hbox:add(rtk.VBox())
-        local label = vbox:add(rtk.Label{wrap=true}, {valign=rtk.Widget.CENTER})
-        label:attr(
-            'label',
-            "Reaticulate runs best when the js_ReaScriptAPI extension is installed."
+        local text = vbox:add(rtk.Text{wrap=true}, {valign=rtk.Widget.CENTER})
+        text:attr(
+            'text',
+            "Reaticulate runs best when the js_ReaScriptAPI extension is installed. " ..
+            "Several features and user experience enhancements are disabled without it."
         )
-        local button = vbox:add(
-            rtk.Button{label="Download", tpadding=5, bpadding=5, lpadding=5, rpadding=5},
-            {tpadding=10}
-        )
+        local button = vbox:add(rtk.Button{label="Download", tmargin=10})
         button.onclick = function()
-            open_url('https://forum.cockos.com/showthread.php?t=212174')
+            rtk.open_url('https://forum.cockos.com/showthread.php?t=212174')
         end
     end
 
@@ -163,63 +175,128 @@ function screen.init()
     -- Section: Behavior
     --
     local section = make_section(screen.vbox, "Behavior")
-    screen.cb_track_follows_midi_editor = make_cb('Track selection follows MIDI editor target item')
-    screen.cb_track_follows_midi_editor.onchange = function(cb)
-        app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)
-    end
-    section:add(screen.cb_track_follows_midi_editor)
 
-    screen.cb_track_follows_fx_focus = make_cb('Track selection follows FX focus')
-    screen.cb_track_follows_fx_focus.onchange = function(cb)
-        app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)
+    -- Resize window doesn't flow properly.  vbox width is too big
+    local cb = rtk.CheckBox{'Autostart Reaticulate when Reaper starts'}
+    cb.onchange = function(cb)
+        app.config.autostart = cb.value
+        update_startup_action(app.config.autostart)
+        app:save_config()
     end
-    if rtk.has_js_reascript_api then
-        section:add(screen.cb_track_follows_fx_focus)
-    end
+    section:add(cb)
+    cb:attr('value', app.config.autostart == true or app.config.autostart == 1)
 
-    screen.cb_insert_at_note_selection = make_cb('Insert articulations based on selected notes when MIDI editor is open')
+    screen.cb_insert_at_note_selection = rtk.CheckBox{'Insert articulations based on selected notes when MIDI editor is open'}
     screen.cb_insert_at_note_selection.onchange = function(cb)
-        app.config.art_insert_at_selected_notes = cb.value == 1 and true or false
+        app.config.art_insert_at_selected_notes = cb.value
         app:save_config()
     end
     section:add(screen.cb_insert_at_note_selection)
 
 
-    --
-    -- Section: Appearance
-    --
-    local section = make_section(screen.vbox, "Appearance")
-    screen.cb_undocked_borderless = make_cb('Use borderless window when undocked')
-    screen.cb_undocked_borderless.onchange = function(cb)
-        app.config.borderless = cb.value ~= 0
-        app:handle_ondock()
+    screen.cb_track_follows_midi_editor = rtk.CheckBox{'Track selection follows MIDI editor target item'}
+    screen.cb_track_follows_midi_editor.onchange = function(cb)
+        app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)
     end
-    if reaper.JS_Window_SetStyle then
+    section:add(screen.cb_track_follows_midi_editor)
+
+    screen.cb_track_follows_fx_focus = rtk.CheckBox{'Track selection follows FX focus'}
+    screen.cb_track_follows_fx_focus.onchange = function(cb)
+        app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)
+    end
+
+    screen.cb_sloppy_focus = rtk.CheckBox{'Keyboard focus follows mouse within REAPER (EXPERIMENTAL)'}
+    screen.cb_sloppy_focus.onchange = function(cb)
+        app:set_toggle_option('keyboard_focus_follows_mouse', cb.value, true)
+    end
+    -- Disabled: not baked enough yet (even for experimental)
+    screen.cb_sloppy_focus:hide()
+
+    screen.cb_single_fx_instrument = rtk.CheckBox{'Single floating instrument FX window follows selected track (EXPERIMENTAL)'}
+    screen.cb_single_fx_instrument.onchange = function(cb)
+        app:set_toggle_option('single_floating_instrument_fx_window', cb.value, true)
+        app:do_single_floating_fx()
+    end
+
+    -- These options depend on availability of js_ReaScriptAPI.
+    if rtk.has_js_reascript_api then
+        section:add(screen.cb_track_follows_fx_focus)
+        section:add(screen.cb_sloppy_focus)
+        section:add(screen.cb_single_fx_instrument)
+    end
+
+    local row = add_row(section, "Recall MIDI Channel:", 140)
+    row:attr('tooltip', 'How Reaticulate should remember the default MIDI channel and sync with the MIDI editor')
+    local menu = row:add(rtk.OptionMenu{
+        menu={'Globally', 'Per Track', 'Per Item'},
+        selected=app.config.default_channel_behavior,
+    })
+    menu.onchange = function(menu)
+        app.config.default_channel_behavior = menu.selected_index
+        app:save_config()
+    end
+    screen.default_channel_menu = menu
+
+    local row = add_row(section, "Default Chase CCs:", 140)
+    row:attr('tooltip', 'When not explicitly specified in banks, chase these CCs. Comma delimited with optional ranges.')
+    local entry = row:add(rtk.Entry{value=app.config.chase_ccs, placeholder=reabank.DEFAULT_CHASE_CCS})
+    entry.onchange = function()
+        app.config.chase_ccs = entry.value
+        app:save_config()
+        screen.chase_ccs_dirty = true
+    end
+
+    --
+    -- Section: User Interface
+    --
+    local section = make_section(screen.vbox, "User Interface")
+    screen.cb_undocked_borderless = rtk.CheckBox{'Use borderless window when undocked'}
+    screen.cb_undocked_borderless.onchange = function(cb)
+        app.config.borderless = cb.value
+        app.window:attr('borderless', app.config.borderless)
+        app:save_config()
+    end
+    if rtk.has_js_reascript_api then
         section:add(screen.cb_undocked_borderless)
     end
 
-    local row = add_row(section, "Background:", 75)
-    local text = add_color_input(row, rtk.get_reaper_theme_bg(), '18-edit', true,
+    screen.cb_touchscroll = rtk.CheckBox{'Enable touch-scrolling for touchscreen displays'}
+    screen.cb_touchscroll.onchange = function(cb)
+        app.config.touchscroll = cb.value
+        rtk.touchscroll = cb.value
+        app:save_config()
+    end
+    section:add(screen.cb_touchscroll)
+
+    screen.cb_smoothscroll = rtk.CheckBox{'Enable smoooth scrolling (in Reaticulate only)'}
+    screen.cb_smoothscroll.onchange = function(cb)
+        app.config.smoothscroll = cb.value
+        rtk.smoothscroll = cb.value
+        app:save_config()
+    end
+    section:add(screen.cb_smoothscroll)
+
+    local row = add_row(section, "Background:", 85)
+    local text = add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'med-edit', true,
         function(text, button)
+            local cfgval = text.value
             if text.value ~= app.config.bg then
                 app.config.bg = text.value
                 app:save_config()
             end
-        end)
-    text.original = rtk.get_reaper_theme_bg()
-    text:attr('value', app.config.bg)
-    add_tip(section, 85, 'Leave blank to detect from theme. Restart required.')
+        end
+    )
+    add_tip(section, 95, 'Leave blank to detect from theme. Restart required.')
 
 
     --
     -- Section: Feedback to Control Surface
     --
     local section = make_section(screen.vbox, "Feedback to Control Surface")
-    local row = add_row(section, "MIDI Device:", 75, 2)
-    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
+    local row = add_row(section, "MIDI Device:", 85, 2)
+    local menu = row:add(rtk.OptionMenu())
     menu.onchange = function(menu)
         log.info("settings: changed MIDI CC feedback device: %s", menu.selected_id)
-        last_device = app.config.cc_feedback_device
         app.config.cc_feedback_device = tonumber(menu.selected_id)
         app:save_config()
         -- Remove output device if we disabled feedback and the current output device is set
@@ -235,40 +312,41 @@ function screen.init()
     end
     screen.midi_device_menu = menu
 
-    local info = add_tip(section, 85, 'Device must be enabled for output')
-    info.cursor = rtk.mouse.cursors.hand
-    info.onmouseenter = function() return true end
-    info.onclick = function()
-        -- If the label is clicked open the Prefs dialog.
-        reaper.Main_OnCommandEx(40016, 0, 0)
+    local box = section:add(rtk.HBox{tpadding=5, bpadding=0})
+    local s = box:add(rtk.Spacer{w=85, h=10}, {spacing=0})
+    local prefs = box:add(rtk.Button{icon='med-settings', flat=true}, {valign='center', lpadding=5})
+    local info = add_tip(box, 0, 'Device must be enabled for output')
+    prefs.onclick = function()
+        -- Opens Preferences to MIDI Devices page
+        reaper.ViewPrefs(153, '')
     end
 
-    local row = add_row(section, "MIDI Bus:", 75)
-    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
-    menu:setmenu({'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})
+    local row = add_row(section, "MIDI Bus:", 85)
+    local menu = row:add(rtk.OptionMenu())
+    menu:attr('menu', {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})
     menu:select(app.config.cc_feedback_bus or 1)
     menu.onchange = function(menu)
-        log.info("settings: changed MIDI CC feedback bus: %s", menu.selected)
-        app.config.cc_feedback_bus = menu.selected
+        log.info("settings: changed MIDI CC feedback bus: %s", menu.selected_index)
+        app.config.cc_feedback_bus = menu.selected_index
         app:save_config()
         feedback.update_feedback_track_settings(true)
     end
 
-    local row = add_row(section, "Articulations:", 75)
-    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
-    menu:setmenu({"Program Changes", "CC values"})
+    local row = add_row(section, "Articulations:", 85)
+    local menu = row:add(rtk.OptionMenu())
+    menu:attr('menu', {"Program Changes", "CC values"})
 
-    local row = add_row(section, "CC #:", 75)
-    local text = row:add(rtk.Entry{label="CC number", w=75})
+    local row = add_row(section, "CC #:", 85)
+    local text = row:add(rtk.Entry{placeholder="CC number"})
     text.onchange = function(text)
-        -- TODO: validate value is a number
+        -- TODO: provide feedback if value isn't a number.  This will just quietly convert to nil.
         app.config.cc_feedback_articulations_cc = tonumber(text.value)
         app:save_config()
         feedback.update_feedback_track_settings(true)
     end
     menu.onchange = function(menu)
-        app.config.cc_feedback_articulations = menu.selected
-        if menu.selected == 1 then
+        app.config.cc_feedback_articulations = menu.selected_index
+        if menu.selected_index == 1 then
             row:hide()
         else
             if app.config.cc_feedback_articulations_cc > 0 then
@@ -279,33 +357,52 @@ function screen.init()
         feedback.update_feedback_track_settings(true)
         app:save_config()
     end
-    menu:select(app.config.cc_feedback_articulations or 2)
+    screen.cc_feedback_articulations_menu = menu
 
+
+    --
+    -- Section: Articulation Colors
+    --
+    local section = make_section(screen.vbox, "Default Articulation Colors")
+    local box = section:add(rtk.FlowBox{vspacing=5, hspacing=20})
+    for _, record in ipairs(screen.art_colors) do
+        local name, color, iconname = table.unpack(record)
+        local row = add_row(box, name .. ":", 80)
+        local default = reabank.default_colors[color]
+        local initial = app.config.art_colors[color]
+        local icon = articons.get_for_bg(iconname, initial or default)
+        local text = add_color_input(row, initial, default, icon, false, function(text, button)
+            local cfgval = text.value
+            if cfgval == default or cfgval == '' then
+                -- Store nil to config if the configured color is the default
+                cfgval = nil
+            end
+            if cfgval ~= app.config.art_colors[color] then
+                app.config.art_colors[color] = cfgval
+                app:save_config()
+                app.screens.banklist.clear_cache()
+            end
+            -- Refresh icon based on luma of newly selected color.
+            local icon = articons.get_for_bg(iconname, cfgval or default)
+            button:attr('icon', icon)
+        end)
+        screen.art_color_entries[color] = text
+    end
 
     --
     -- Section: Misc Settings
     --
     local section = make_section(screen.vbox, "Misc Settings")
-    local row = add_row(section, "Autostart:", 75)
-    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
-    menu:setmenu({'Never', 'When REAPER starts'})
-    menu:select((app.config.autostart or 0) + 1)
-    menu.onchange = function(menu)
-        update_startup_action(menu.selected == 2)
-        app.config.autostart = menu.selected - 1
-        app:save_config()
-    end
-
-    local row = add_row(section, "Log Level:", 75)
-    local menu = row:add(rtk.OptionMenu{tpadding=3, bpadding=3})
+    local row = add_row(section, "Log Level:", 85)
+    local menu = row:add(rtk.OptionMenu())
     -- Populate optionmenu with title-cased log levels
     local options = {}
     for level, name in pairs(log.levels) do
         name = name:sub(1, 1):upper() .. name:sub(2):lower()
-        options[#options+1] = {name, level}
+        options[#options+1] = {name, id=level}
     end
-    table.sort(options, function(a, b) return a[2] > b[2] end)
-    menu:setmenu(options)
+    table.sort(options, function(a, b) return a.id > b.id end)
+    menu:attr('menu', options)
     menu:select(app.config.debug_level or log.ERROR)
     menu.onchange = function(menu)
         app:set_debug(tonumber(menu.selected_id))
@@ -313,61 +410,59 @@ function screen.init()
 
 
     --
-    -- Section: Articulation Colors
+    -- Footer
     --
-    local section = make_section(screen.vbox, "Default Articulation Colors")
-    local box = section:add(rtk.VBox{vspacing=10, hspacing=20})
-    for _, record in ipairs(screen.art_colors) do
-        local name, color, icon = table.unpack(record)
-        local row = add_row(box, name .. ":", 80)
-        local default = reabank.default_colors[color]
-        local text = add_color_input(row, default, articons.get(icon), false, function(text, button)
-            local cfgval = (text.value == default or text.value == '') and nil or text.value
-            text.value = cfgval and text.value or ''
-            if cfgval ~= app.config.art_colors[color] then
-                app.config.art_colors[color] = cfgval
-                app:save_config()
-                -- FIXME: do something lighter weight to refresh colors
-                app:refresh_banks(true)
-            end
-        end)
-        text.original = default
-        screen.art_color_entries[color] = text
-    end
-
+    screen.vbox:add(
+        rtk.Text{string.format("Reaticulate %s", metadata._VERSION), alpha=0.6},
+        {halign='center', tpadding=20}
+    )
     local button = screen.vbox:add(
         rtk.Button{
-            icon='18-link', label="Reaticulate Website",
+            icon='med-link', label="Visit Website",
+            truncate=false,
             color=rtk.theme.accent_subtle, alpha=0.6,
-            cursor=rtk.mouse.cursors.hand,
-            flags=rtk.Button.FLAT,
-            tpadding=7, bpadding=7, lpadding=10, rpadding=10,
+            cursor=rtk.mouse.cursors.HAND,
+            flat=true,
+            padding={7, 10},
         },
-        {tpadding=40, halign='center', stretch=true}
+        {tpadding=2, halign='center', stretch=true}
     )
     button.onclick = function()
-        open_url('https://reaticulate.com')
+        rtk.open_url('https://reaticulate.com')
     end
 end
 
 function screen.update()
-    local menu = {{"Disabled", '-1'}}
+    -- There's no API to determine which MIDI devices are enabled for output, so
+    -- read the config file directly.  The 'midiouts' parameter is a bitmap by
+    -- output number.
+    local ini = rtk.file.read(reaper.get_ini_file())
+    local bitmap = tonumber(ini and ini:match("midiouts=([^\n]*)")) or 0
+    -- Build feedback device menu based on enabled output devices.
+    local menu = {{"Disabled", id='-1'}}
     for output = 0, reaper.GetNumMIDIOutputs() - 1 do
-        retval, name = reaper.GetMIDIOutputName(output, "")
-        if retval then
-            menu[#menu+1] = {name, tostring(output)}
+        local retval, name = reaper.GetMIDIOutputName(output, "")
+        if retval and bitmap & (1 << output) ~= 0 then
+            menu[#menu+1] = {name, id=tostring(output)}
         end
     end
-    screen.midi_device_menu:setmenu(menu)
+    screen.midi_device_menu:attr('menu', menu)
     screen.midi_device_menu:select(tostring(app.config.cc_feedback_device) or 1)
-    screen.cb_track_follows_fx_focus:attr('value', app:get_toggle_option('track_selection_follows_fx_focus'), false)
-    screen.cb_track_follows_midi_editor:attr('value', app:get_toggle_option('track_selection_follows_midi_editor'), false)
     screen.cb_insert_at_note_selection:attr('value', app.config.art_insert_at_selected_notes, false)
+    screen.cb_track_follows_midi_editor:attr('value', app:get_toggle_option('track_selection_follows_midi_editor'), false)
+    screen.cb_track_follows_fx_focus:attr('value', app:get_toggle_option('track_selection_follows_fx_focus'), false)
+    screen.cb_sloppy_focus:attr('value', app:get_toggle_option('keyboard_focus_follows_mouse'), false)
+    screen.cb_single_fx_instrument:attr('value', app:get_toggle_option('single_floating_instrument_fx_window'), false)
     screen.cb_undocked_borderless:attr('value', app.config.borderless, false)
+    screen.cb_touchscroll:attr('value', app.config.touchscroll, false)
+    screen.cb_smoothscroll:attr('value', app.config.smoothscroll, false)
+    screen.default_channel_menu:select(app.config.default_channel_behavior)
+
     for color, text in pairs(screen.art_color_entries) do
         text:attr('value', app:get_articulation_color(color), true)
     end
-
+    -- This is a bit costly due to indirectly calling update_feedback_track_settings()
+    screen.cc_feedback_articulations_menu:select(app.config.cc_feedback_articulations or 2)
 end
 
 return screen

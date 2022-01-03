@@ -1,6 +1,0 @@
-// Default colors can be overridden in the user Reaticulate.reabank file.
-//
-//! colors=default=#666666,short=#6c30c6,short-light=#9630c6,short-dark=#533bca
-//! colors=legato=#218561,legato-dark=#1c5e46,legato-light=#49ba91
-//! colors=long=#305fc6,long-light=#4474e1,long-dark=#2c4b94
-//! colors=textured=#9909bd,fx=#883333

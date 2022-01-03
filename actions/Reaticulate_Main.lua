@@ -1,4 +1,4 @@
--- Copyright 2017-2019 Jason Tackaberry
+-- Copyright 2017-2021 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -30,22 +30,17 @@ local basedir = script:match(pattern)
 _, _, _, cmd, _, _, _ = reaper.get_action_context()
 reaper.SetExtState("reaticulate", "main_command_id", tostring(cmd), true)
 
--- Source code will be in this subdirectory.
-local appdir = basedir .. sep .. 'app' .. sep
-if reaper.file_exists(appdir .. 'main.lua') then
-    -- Source based installation
-    package.path = package.path .. ";" .. appdir .. '?.lua'
-    local main = require 'main'
+if reaper.file_exists(basedir .. 'reaticulate.lua') then
+    -- Monolith build used for distribution.
+    dofile(basedir .. 'reaticulate.lua')
     main(basedir)
 else
-    -- Binary installation.  NB: this isn't actually used currently.  At least at this stage
-    -- there are no detectable performance benefits to precompiling.  As a result, Reaticulate
-    -- is distributed in source form.
-    local os = reaper.GetOS()
-    local arch = 'x32'
-    if os == 'Win32' or os == 'OSX32' then
-        arch = 'x32'
-    end
-    dofile(basedir .. 'reaticulate-' .. arch .. '.luac')
+    -- Source code will be in this subdirectory.
+    local appdir = basedir .. sep .. 'app' .. sep
+    -- Replace package.path rather than appending to it as this improves module
+    -- loading times (fewer paths to search) and we have no outside dependencies.
+    package.path = string.format("%s?.lua;%s?/init.lua", appdir, appdir)
+    -- Source based installation
+    local main = require 'main'
     main(basedir)
 end

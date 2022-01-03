@@ -1,6 +1,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Basic Articulations"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-0d38-4208-b0c4-3c337a17d206
 Bank 64 30 SSS - Basic Articulations
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -25,6 +26,7 @@ Bank 64 30 SSS - Basic Articulations
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Ensembles Core"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-54c8-4e20-a21b-f902afb705d7
 Bank 64 31 SSS - Ensembles Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -34,7 +36,7 @@ Bank 64 31 SSS - Ensembles Core
 8 flautando
 //! c=long-light i=harmonics o=cc:32,10
 10 harmonics
-//! c=long i=marcato o=cc:32,9
+//! c=long i=marcato-half o=cc:32,9
 9 marcato
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
@@ -60,6 +62,7 @@ Bank 64 31 SSS - Ensembles Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Ensembles Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-659a-4784-a722-45173b4def20
 Bank 64 32 SSS - Ensembles Decorative
 //! c=long-light i=con-sord-blend o=cc:32,5
 5 cs blend
@@ -84,6 +87,7 @@ Bank 64 32 SSS - Ensembles Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Core"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-a422-407e-b46b-82baf232dc2f
 Bank 64 33 SSS - V1 Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -99,7 +103,7 @@ Bank 64 33 SSS - V1 Core
 17 sul tasto
 //! c=long i=sul-g o=cc:32,112
 112 sul g
-//! c=long i=marcato o=cc:32,9
+//! c=long i=marcato-half o=cc:32,9
 9 marcato
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
@@ -127,12 +131,13 @@ Bank 64 33 SSS - V1 Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-ec54-4f55-9dea-5930bce80db3
 Bank 64 34 SSS - V1 Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
 //! c=long-light i=sul-tasto-super o=cc:32,114
 114 super sul tasto
-//! c=long i=vibrato-rachmaninoff o=cc:32,16
+//! c=long i=vibrato-molto o=cc:32,16
 16 rach
 //! c=long-light i=con-sord-blend o=cc:32,5
 5 cs blend
@@ -140,9 +145,9 @@ Bank 64 34 SSS - V1 Decorative
 11 tremolo
 //! c=long-dark i=tremolo-sul-pont o=cc:32,13
 13 trem sul pont
-//! c=long i=tremolo-150-con-sord o=cc:32,84
+//! c=long i=tremolo-measured-sixteenth-con-sord o=cc:32,84
 84 trem 150 cs
-//! c=long-dark i=tremolo-150 o=cc:32,81
+//! c=long-dark i=tremolo-measured-sixteenth o=cc:32,81
 81 trem 150
 
 //! c=long-dark i=tremolo-180 o=cc:32,82
@@ -162,6 +167,7 @@ Bank 64 34 SSS - V1 Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V1 Legato Performance"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-e49b-4676-a234-78d77ce38c29
 Bank 64 35 SSS - V1 Legato Performance
 //! c=legato i=legato n=fingered o=cc:32,20
 20 legato (fingered)
@@ -176,6 +182,7 @@ Bank 64 35 SSS - V1 Legato Performance
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Core"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-8728-4530-810f-1dac794bc418
 Bank 64 36 SSS - V2 Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -189,7 +196,7 @@ Bank 64 36 SSS - V2 Core
 18 sul pont
 //! c=long i=sul-g o=cc:32,112
 112 sul g
-//! c=long i=marcato o=cc:32,9
+//! c=long i=marcato-half o=cc:32,9
 9 marcato
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
@@ -217,12 +224,13 @@ Bank 64 36 SSS - V2 Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-7c1b-4574-8c83-4f114ed70f5a
 Bank 64 37 SSS - V2 Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
 //! c=long-light i=sul-tasto-super o=cc:32,114
 114 super sul tasto
-//! c=long i=vibrato-rachmaninoff o=cc:32,16
+//! c=long i=vibrato-molto o=cc:32,16
 16 rach
 //! c=long-light i=con-sord-blend o=cc:32,5
 5 cs blend
@@ -232,7 +240,7 @@ Bank 64 37 SSS - V2 Decorative
 13 trem sul pont
 //! c=long-light i=tremolo-con-sord o=cc:32,12
 12 trem cs
-//! c=long-dark i=tremolo-150 o=cc:32,81
+//! c=long-dark i=tremolo-measured-sixteenth o=cc:32,81
 81 trem 150
 
 //! c=long-dark i=tremolo-180 o=cc:32,82
@@ -250,12 +258,14 @@ Bank 64 37 SSS - V2 Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="V2 Legato Performance"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
+//! id=00000000-22cb-4a96-90ba-8b077253cac5
 Bank 64 38 SSS - V2 Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Core"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-25c9-4966-824d-aaae59b677fb
 Bank 64 39 SSS - Va Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -267,7 +277,7 @@ Bank 64 39 SSS - Va Core
 8 flautando
 //! c=long-dark i=sul-pont o=cc:32,18
 18 sul pont
-//! c=long i=marcato o=cc:32,9
+//! c=long i=marcato-half o=cc:32,9
 9 marcato
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
@@ -295,12 +305,13 @@ Bank 64 39 SSS - Va Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-8576-451f-bcc6-a88e5209ccc6
 Bank 64 40 SSS - Va Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
 //! c=long-light i=sul-tasto-super o=cc:32,114
 114 super sul tasto
-//! c=long i=vibrato-rachmaninoff o=cc:32,16
+//! c=long i=vibrato-molto o=cc:32,16
 16 rach
 //! c=long-light i=con-sord-blend o=cc:32,5
 5 cs blend
@@ -310,7 +321,7 @@ Bank 64 40 SSS - Va Decorative
 13 trem sul pont
 //! c=long-light i=tremolo-con-sord o=cc:32,12
 12 trem cs
-//! c=long-dark i=tremolo-150 o=cc:32,81
+//! c=long-dark i=tremolo-measured-sixteenth o=cc:32,81
 81 trem 150
 
 //! c=long-dark i=tremolo-180 o=cc:32,82
@@ -328,24 +339,27 @@ Bank 64 40 SSS - Va Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Va Legato Performance"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
+//! id=00000000-35a2-4b2f-aa1d-ecb0bd8c34d3
 Bank 64 41 SSS - Va Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Core"
 //! clone="Spitfire/Symphonic Strings/Va Core"
+//! id=00000000-bae3-4f7f-81a9-725b16c4ce04
 Bank 64 42 SSS - Vc Core
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f9cd-4bb1-ba63-5ddcf3860136
 Bank 64 43 SSS - Vc Decorative
 //! c=long-dark i=con-sord-sul-pont o=cc:32,19
 19 cs sul pont
 //! c=long-light i=sul-tasto-super o=cc:32,114
 114 super sul tasto
-//! c=long i=vibrato-rachmaninoff o=cc:32,16
+//! c=long i=vibrato-molto o=cc:32,16
 16 rach
 //! c=long-light i=con-sord-blend o=cc:32,5
 5 cs blend
@@ -355,9 +369,9 @@ Bank 64 43 SSS - Vc Decorative
 13 trem sul pont
 //! c=long-light i=tremolo-con-sord o=cc:32,12
 12 trem con sord
-//! c=long i=tremolo-150-con-sord o=cc:32,84
+//! c=long i=tremolo-measured-sixteenth-con-sord o=cc:32,84
 84 trem 150 cs
-//! c=long-dark i=tremolo-150 o=cc:32,81
+//! c=long-dark i=tremolo-measured-sixteenth o=cc:32,81
 81 trem 150
 
 //! c=long-dark i=tremolo-180 o=cc:32,82
@@ -379,12 +393,14 @@ Bank 64 43 SSS - Vc Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Vc Legato Performance"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
+//! id=00000000-24f0-409a-9cce-5942ae3113dc
 Bank 64 44 SSS - Vc Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Core"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-b640-43f8-99cd-3aae5f835746
 Bank 64 45 SSS - Cb Core
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -394,7 +410,7 @@ Bank 64 45 SSS - Cb Core
 8 flautando
 //! c=long-dark i=sul-pont o=cc:32,18
 18 sul pont
-//! c=long i=marcato o=cc:32,9
+//! c=long i=marcato-half o=cc:32,9
 9 marcato
 //! c=short i=spiccato o=cc:32,42
 42 spiccato
@@ -420,6 +436,7 @@ Bank 64 45 SSS - Cb Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Decorative"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-8ec7-4d68-a39c-430d59bfd9f7
 Bank 64 46 SSS - Cb Decorative
 //! c=long-light i=sul-tasto-super o=cc:32,114
 114 super sul tasto
@@ -427,7 +444,7 @@ Bank 64 46 SSS - Cb Decorative
 11 tremolo
 //! c=long-dark i=tremolo-sul-pont o=cc:32,13
 13 trem sul pont
-//! c=long-dark i=tremolo-150 o=cc:32,81
+//! c=long-dark i=tremolo-measured-sixteenth o=cc:32,81
 81 trem 150
 
 //! c=long-dark i=tremolo-180 o=cc:32,82
@@ -445,12 +462,14 @@ Bank 64 46 SSS - Cb Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Cb Legato Performance"
 //! clone="Spitfire/Symphonic Strings/V1 Legato Performance"
+//! id=00000000-7697-473a-8405-01b05e8449eb
 Bank 64 47 SSS - Cb Legato Performance
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Strings" n="Performance Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-84fa-4fb2-9895-d436066368e1
 Bank 64 48 SSS - Performance Legato
 //! c=legato i=phrase o=cc:32,20
 20 legato

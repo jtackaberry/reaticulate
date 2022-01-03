@@ -2,7 +2,8 @@
 // Source: G-Sun - https://forum.cockos.com/showpost.php?p=2026002&postcount=261
 //
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Sustains Vowels"
-Bank 26 5 VoR - Soprano - Sustains - Wovels
+//! id=2c2de647-e36e-42d2-a9bd-9180f1411f1e
+Bank * * VoR - Soprano - Sustains - Wovels
 //! c=long i=note-quarter o=cc:20,0
 20  Aa P
 //! c=long i=note-quarter o=cc:20,6
@@ -33,7 +34,8 @@ Bank 26 5 VoR - Soprano - Sustains - Wovels
 
 //--------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Sustains Phrases"
-Bank 26 6 VoR - Soprano - Sustains - Phrases
+//! id=463aa5d6-8316-42c9-a082-e94302a1aa2e
+Bank * * VoR - Soprano - Sustains - Phrases
 //! c=long i=note-quarter o=cc:20,66
 31  Ab inito
 //! c=long i=note-quarter o=cc:20,72
@@ -67,7 +69,8 @@ Bank 26 6 VoR - Soprano - Sustains - Phrases
 
 //-------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano True legato"
-Bank 26 7 VoR - Soprano - True legato
+//! id=ca400058-2878-4806-8297-261717ae3edc
+Bank * * VoR - Soprano - True legato
 //! c=short-light i=note-quarter o=cc:20,1
 50 Aa
 //! c=short-light i=note-quarter o=cc:20,124
@@ -80,7 +83,8 @@ Bank 26 7 VoR - Soprano - True legato
 
 //-------------------------------------------------------------------
 //! g="Soundiron/Voices of Rapture/Soprano" n="VoR Soprano Staccato"
-Bank 26 8 VoR - Soprano - Staccato
+//! id=49d1adca-4f6c-42af-99e3-fac30767ac6d
+Bank * * VoR - Soprano - Staccato
 //! c=short-light i=note-quarter o=cc:20,10
 60 Aa
 //! c=short i=note-quarter o=cc:20,32

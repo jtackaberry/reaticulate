@@ -1,6 +1,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Masse" n="Tutti"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-c50d-415c-ae8f-6dd697d2a7e8
 Bank 66 50 Masse - Tutti
 //! c=long i=note-whole o=cc:32,5
 1 long
@@ -34,6 +35,7 @@ Bank 66 50 Masse - Tutti
 //----------------------------------------------------------------------------
 //! g="Spitfire/Masse" n="Strings"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-b6c9-4aa6-aa14-038aae87adb7
 Bank 66 51 Masse - Strings
 //! c=long-light i=note-whole o=cc:32,1
 1 cool strings 1
@@ -73,6 +75,7 @@ Bank 66 51 Masse - Strings
 //----------------------------------------------------------------------------
 //! g="Spitfire/Masse" n="Brass"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-53b1-4687-b4e6-1bfd38b1c781
 Bank 66 52 Masse - Brass
 //! c=long-dark i=note-whole o=cc:32,1
 1 beast long
@@ -97,6 +100,7 @@ Bank 66 52 Masse - Brass
 //----------------------------------------------------------------------------
 //! g="Spitfire/Masse" n="Woodwinds"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-3202-461e-85d9-b93babb35463
 Bank 66 53 Masse - Woodwinds
 //! c=long-dark i=note-whole o=cc:32,1
 1 beast long

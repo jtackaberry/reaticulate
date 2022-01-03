@@ -8,7 +8,8 @@
 
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 1 French Horn Solo"
-Bank 25 81 OBC French Horn Solo
+//! id=1d79ec20-7e2c-4e11-a27b-6b1974156713
+Bank * * OBC French Horn Solo
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato o=note:25
@@ -25,7 +26,8 @@ Bank 25 81 OBC French Horn Solo
 103 diminuendo
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 2 French Horn Section"
-Bank 25 82 OBC French Horn Section
+//! id=4be02aae-229e-49c1-9c70-dd1abf10e799
+Bank * * OBC French Horn Section
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato o=note:25
@@ -46,7 +48,8 @@ Bank 25 82 OBC French Horn Section
 100 rip
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 3a Bb Trumpet Solo"
-Bank 25 83 OBC Bb Trumpet Solo
+//! id=60285884-1ee8-49a5-90b7-5b6c0503f4a1
+Bank * * OBC Bb Trumpet Solo
 //! c=long i=vibrato o=note:24
 16 sustain vibrato
 //! c=long i=note-whole o=note:25
@@ -69,7 +72,8 @@ Bank 25 83 OBC Bb Trumpet Solo
 106 crescendo fast
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 3b Piccolo Trumpet Solo"
-Bank 25 84 OBC Piccolo Trumpet Solo
+//! id=c68c7f5b-acf5-44b9-a852-30dbfb851561
+Bank * * OBC Piccolo Trumpet Solo
 //! c=long i=note-whole o=note:24
 9 sustain hard
 //! c=long i=note-whole o=note:25
@@ -90,7 +94,8 @@ Bank 25 84 OBC Piccolo Trumpet Solo
 106 crescendo fast
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 4 Trumpet Section"
-Bank 25 85 OBC Trumpet Section
+//! id=219d555c-5e78-4390-9f75-7a5351ae9b0d
+Bank * * OBC Trumpet Section
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato o=note:25
@@ -117,7 +122,8 @@ Bank 25 85 OBC Trumpet Section
 62 stab
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 5a Bass Trombone Solo"
-Bank 25 86 OBC Bass Trombone Solo
+//! id=25b4c377-386b-4087-bd0f-516b6385d99c
+Bank * * OBC Bass Trombone Solo
 //! c=long i=note-whole o=note:60
 1 sustain
 //! c=short i=marcato o=note:61
@@ -130,7 +136,8 @@ Bank 25 86 OBC Bass Trombone Solo
 54 accented marcato
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 5b Tenor Trombone Solo"
-Bank 25 87 OBC Tenor Trombone Solo
+//! id=0a6ac2b1-2f7d-4089-88fe-d2b5aa245943
+Bank * * OBC Tenor Trombone Solo
 //! c=long i=note-whole o=note:76
 1 sustain
 //! c=long i=note-whole o=note:77
@@ -157,7 +164,8 @@ Bank 25 87 OBC Tenor Trombone Solo
 90 effects
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 6 Trombone Section"
-Bank 25 88 OBC Trombone Section
+//! id=9e0e547a-4f3a-49ea-bc0a-76b35b8d9a5b
+Bank * * OBC Trombone Section
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato o=note:25
@@ -182,7 +190,8 @@ Bank 25 88 OBC Trombone Section
 107 crescendo flutter
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 7 Tuba"
-Bank 25 89 OBC Tuba
+//! id=eee53397-d7cb-43da-b7dd-691957d113e9
+Bank * * OBC Tuba
 //! c=long i=note-whole o=note:65
 1 sustain
 //! c=long i=note-whole o=note:66
@@ -212,7 +221,8 @@ Bank 25 89 OBC Tuba
 
 
 //! g="ProjectSam/Orchestral Brass Classic" n="OBC 8 Cimbasso"
-Bank 25 90 OBC Cimbasso
+//! id=95d7e725-1792-49f4-a974-a59d9d2c71d1
+Bank * * OBC Cimbasso
 //! c=long i=note-whole o=note:77
 1 sustain
 //! c=long i=note-whole o=note:78

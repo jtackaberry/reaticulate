@@ -4,7 +4,8 @@
 
 //----------------------------------------------------------------------------
 //! g="Orchestral Tools/Metropolis Ark 1" n="Kommandanten Trumpets a4 Multi"
-Bank 25 26 OTMA1 Kommandanten Trumpets a4
+//! id=2062c655-96d6-4a14-987f-21b802c2e5b1
+Bank * * OTMA1 Kommandanten Trumpets a4
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato-half o=note:25
@@ -29,7 +30,8 @@ Bank 25 26 OTMA1 Kommandanten Trumpets a4
 109 cresc fluttertongue
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Schwarzdorn Horns a9 Multi"
-Bank 25 27 OTMA1 Schwarzdorn Horns a9
+//! id=d052d1e2-b8ae-493a-be68-77fc050758ef
+Bank * * OTMA1 Schwarzdorn Horns a9
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=marcato-half o=note:97
@@ -56,12 +58,14 @@ Bank 25 27 OTMA1 Schwarzdorn Horns a9
 91 cluster crescendo short
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Schwarzdorn Horns a9 Legato"
-Bank 25 28 OTMA1 Schwarzdorn Horns a9 Legato
+//! id=b493221a-49ee-4a84-b3ad-8dbf52b2ee13
+Bank * * OTMA1 Schwarzdorn Horns a9 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Rotdorn Horns a3 Multi"
-Bank 25 29 OTMA1 Rotdorn Horns a3
+//! id=148f9e87-173b-4b43-a1a9-426411fac382
+Bank * * OTMA1 Rotdorn Horns a3
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=marcato-half o=note:97
@@ -82,7 +86,8 @@ Bank 25 29 OTMA1 Rotdorn Horns a3
 109 cresc fluttertongue
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Friedrich Bass Trombones a3 Multi"
-Bank 25 30 OTMA1 Friedrich Bass Trombones a3
+//! id=50e9f1d3-1626-45a1-9d89-64036d33cefb
+Bank * * OTMA1 Friedrich Bass Trombones a3
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=marcato-half o=note:97
@@ -103,7 +108,8 @@ Bank 25 30 OTMA1 Friedrich Bass Trombones a3
 109 cresc fluttertongue
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Koenigsberger Cimbassi a3 Multi"
-Bank 25 31 OTMA1 Koenigsberger Cimbassi a3
+//! id=40cbcfda-399e-4a86-839a-c88f2766ffcf
+Bank * * OTMA1 Koenigsberger Cimbassi a3
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=marcato-half o=note:97
@@ -122,7 +128,8 @@ Bank 25 31 OTMA1 Koenigsberger Cimbassi a3
 107 swell long
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Hindenburg Tubas a3 Multi"
-Bank 25 32 OTMA1 Hindenburg Tubas a3
+//! id=69d32160-d3f8-4fce-babe-f5520279f49d
+Bank * * OTMA1 Hindenburg Tubas a3
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=marcato-half o=note:97
@@ -141,7 +148,8 @@ Bank 25 32 OTMA1 Hindenburg Tubas a3
 107 swell long
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Aarauer Choir (Low) Multi"
-Bank 25 33 OTMA1 Aarauer Choir Multi
+//! id=69e7324a-d8c1-48a7-8eb0-b859238ca174
+Bank * * OTMA1 Aarauer Choir Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato-half o=note:25
@@ -152,7 +160,8 @@ Bank 25 33 OTMA1 Aarauer Choir Multi
 40 staccato
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Choir Men Legato"
-Bank 25 34 OTMA1 Choir Men Legato
+//! id=3f7135a7-b035-45f7-b511-c138a2f9a771
+Bank * * OTMA1 Choir Men Legato
 //! c=legato i=legato o=@2
 20 legato
 //! c=long i=note-whole o=note:0
@@ -161,7 +170,8 @@ Bank 25 34 OTMA1 Choir Men Legato
 40 rr reset
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Choir Men Gliss/FX"
-Bank 25 35 OTMA1 Choir Men Gliss/FX
+//! id=244c226a-4477-4fe3-9e19-948ea1adce62
+Bank * * OTMA1 Choir Men Gliss/FX
 //! c=fx i=fx o=@3
 31 gliss
 //! c=long i=note-whole o=note:0
@@ -170,7 +180,8 @@ Bank 25 35 OTMA1 Choir Men Gliss/FX
 40 rr reset
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Viktoria Choir (High) Multi"
-Bank 25 36 OTMA1 Viktoria Choir Multi
+//! id=884fe650-a26c-4ffc-87cd-3efb39820d80
+Bank * * OTMA1 Viktoria Choir Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato-half o=note:25
@@ -181,7 +192,8 @@ Bank 25 36 OTMA1 Viktoria Choir Multi
 40 staccato
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Choir Women Legato"
-Bank 25 37 OTMA1 Choir Women Legato
+//! id=a2c99b72-9d99-48ce-8801-7090c6d27a29
+Bank * * OTMA1 Choir Women Legato
 //! c=legato i=legato o=@2
 20 legato
 //! c=long i=note-whole o=note:0
@@ -190,7 +202,8 @@ Bank 25 37 OTMA1 Choir Women Legato
 40 rr reset
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Choir Women Gliss/FX"
-Bank 25 38 OTMA1 Choir Women Gliss/FX
+//! id=65cfc19b-d05e-4170-8ff4-012691ff8457
+Bank * * OTMA1 Choir Women Gliss/FX
 //! c=fx i=fx o=@3
 31 gliss
 //! c=long i=note-whole o=note:0
@@ -199,7 +212,8 @@ Bank 25 38 OTMA1 Choir Women Gliss/FX
 40 rr reset
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Finckenstein Strings (High) Multi"
-Bank 25 39 OTMA1 Finckenstein Strings
+//! id=01e36191-7ff4-4145-b014-7c6ffbcc6750
+Bank * * OTMA1 Finckenstein Strings
 //! c=long i=harmonics-natural o=note:24
 3 octaves
 //! c=long i=note-whole o=note:25
@@ -226,7 +240,8 @@ Bank 25 39 OTMA1 Finckenstein Strings
 107 swell
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Strings High Legato 8va"
-Bank 25 40 OTMA1 Strings High Legato 8va
+//! id=f89c183c-114b-4c54-92be-fb09b932141e
+Bank * * OTMA1 Strings High Legato 8va
 //! c=legato i=legato o=@2
 20 legato
 //! c=long i=note-whole o=note:0
@@ -235,7 +250,8 @@ Bank 25 40 OTMA1 Strings High Legato 8va
 40 rr reset
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Wolfenstein Strings (Low) Multi"
-Bank 25 41 OTMA1 Wolfenstein Strings
+//! id=f13e6bd3-30f0-4eb8-9ae7-4a3248ae6129
+Bank * * OTMA1 Wolfenstein Strings
 //! c=long i=harmonics-natural o=note:24
 3 octaves
 //! c=long i=tremolo o=note:25
@@ -258,7 +274,8 @@ Bank 25 41 OTMA1 Wolfenstein Strings
 103 tremolo decrescendo
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Strings Low Legato 8va"
-Bank 25 42 OTMA1 Strings Low Legato 8va
+//! id=0bb4a6a9-c251-49ab-9c87-b36047e7262e
+Bank * * OTMA1 Strings Low Legato 8va
 //! c=legato i=legato o=@2
 20 legato
 //! c=long i=note-whole o=note:0
@@ -267,7 +284,8 @@ Bank 25 42 OTMA1 Strings Low Legato 8va
 40 rr reset
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Holbein Bassoons a4 Multi"
-Bank 25 43 OTMA1 Holbein Bassoons a4
+//! id=88814965-b671-4530-9485-639cba42e3a6
+Bank * * OTMA1 Holbein Bassoons a4
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=marcato-half o=note:97
@@ -288,7 +306,8 @@ Bank 25 43 OTMA1 Holbein Bassoons a4
 109 cresc fluttertongue
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Carnack Contrabassoons a4 Multi"
-Bank 25 44 OTMA1 Carnack Contrabassoons a4
+//! id=ab5e2fd6-370f-4f54-b4d6-c4319c51fe5a
+Bank * * OTMA1 Carnack Contrabassoons a4
 //! c=long i=note-whole o=note:84
 1 sustain
 //! c=short i=marcato-half o=note:85
@@ -309,7 +328,8 @@ Bank 25 44 OTMA1 Carnack Contrabassoons a4
 109 cresc fluttertongue
 
 //! g="Orchestral Tools/Metropolis Ark 1" n="Drake Piano"
-Bank 25 45 OTMA1 Drake Piano
+//! id=fed6c112-91c1-4f5d-884c-f457244c2e74
+Bank * * OTMA1 Drake Piano
 //! c=long i=note-whole o=note:0
 1 sustain pedal
 //! c=short i=rest-quarter o=note:117

@@ -4,7 +4,8 @@
 //===========================================================================
 
 //! g="8Dio/Majestica/Strings" n="Long"
-Bank 29 37 8Dio Majestica Strings Long
+//! id=fe311ccf-d9fd-4a50-bf12-df08f521e7ac
+Bank * * 8Dio Majestica Strings Long
 //! c=long i=note-whole o=cc:12,1
 1 Sustains
 //! c=long-dark i=note-whole o=cc:12,6
@@ -19,7 +20,8 @@ Bank 29 37 8Dio Majestica Strings Long
 108 Arc MP-MF
 
 //! g="8Dio/Majestica/Strings" n="Short"
-Bank 29 38 8Dio Majestica Strings Short
+//! id=3d1aeff0-b059-4747-b73b-6fea5528c85e
+Bank * * 8Dio Majestica Strings Short
 //! c=short-light i=spiccato o=cc:12,1
 42 Spiccato
 //! c=short-light i=spiccato o=cc:12,6
@@ -32,7 +34,8 @@ Bank 29 38 8Dio Majestica Strings Short
 57 Bartok
 
 //! g="8Dio/Majestica/Strings" n="FX"
-Bank 29 39 8Dio Majestica Strings FX
+//! id=9d279be0-de48-4f9c-8559-68f91c223bbc
+Bank * * 8Dio Majestica Strings FX
 //! c=fx i=pizz-bartok o=cc:12,1
 57 Group Bartok
 //! c=fx i=spiccato o=cc:12,41
@@ -41,7 +44,8 @@ Bank 29 39 8Dio Majestica Strings FX
 91 Savage Phrases
 
 //! g="8Dio/Majestica/Brass" n="Long"
-Bank 29 40 8Dio Majestica Brass Long
+//! id=494bf42d-677c-47b1-9d2e-195667a1afc3
+Bank * * 8Dio Majestica Brass Long
 //! c=long i=note-whole o=cc:12,1
 1 Sustains
 //! c=long-dark i=note-whole o=cc:12,6
@@ -56,7 +60,8 @@ Bank 29 40 8Dio Majestica Brass Long
 108 Arc Short
 
 //! g="8Dio/Majestica/Brass" n="Short"
-Bank 29 41 8Dio Majestica Brass Short
+//! id=aab35e44-45aa-41e4-9956-ffaa1a2c137e
+Bank * * 8Dio Majestica Brass Short
 //! c=short-light i=staccato o=cc:12,1
 40 Staccato
 //! c=short-light i=spiccato o=cc:12,6
@@ -67,7 +72,8 @@ Bank 29 41 8Dio Majestica Brass Short
 53 Muted Marcato
 
 //! g="8Dio/Majestica/Brass" n="FX"
-Bank 29 42 8Dio Majestica Brass FX
+//! id=01d5b60b-6452-4750-9907-bb4726b9b21f
+Bank * * 8Dio Majestica Brass FX
 //! c=fx i=rip o=cc:12,1
 101 Swoops/Rips
 //! c=fx i=rip o=cc:12,6
@@ -82,7 +88,8 @@ Bank 29 42 8Dio Majestica Brass FX
 108 Breathes
 
 //! g="8Dio/Majestica/Woodwinds" n="High Long"
-Bank 29 43 8Dio Majestica Woodwinds High Long
+//! id=3af464af-ca26-477d-a158-a9691563e29b
+Bank * * 8Dio Majestica Woodwinds High Long
 //! c=long i=note-whole o=cc:12,1
 1 Sustains
 //! c=long-dark i=note-whole o=cc:12,6
@@ -99,7 +106,8 @@ Bank 29 43 8Dio Majestica Woodwinds High Long
 71 Major Trills
 
 //! g="8Dio/Majestica/Woodwinds" n="High Short"
-Bank 29 44 8Dio Majestica Woodwinds High Short
+//! id=f8c0daa3-b539-4356-80d4-e5ecf69a2cdb
+Bank * * 8Dio Majestica Woodwinds High Short
 //! c=short-light i=spiccato o=cc:12,1
 40 Staccatissimo
 //! c=short i=tremolo-measured o=cc:12,6
@@ -108,7 +116,8 @@ Bank 29 44 8Dio Majestica Woodwinds High Short
 52 Marcato
 
 //! g="8Dio/Majestica/Woodwinds" n="Low Long"
-Bank 29 45 8Dio Majestica Woodwinds Low Long
+//! id=4ca00664-1576-45f5-899b-dbf440d7533e
+Bank * * 8Dio Majestica Woodwinds Low Long
 //! c=long i=note-whole o=cc:12,1
 1 Sustains
 //! c=long-dark i=note-whole o=cc:12,6
@@ -119,7 +128,8 @@ Bank 29 45 8Dio Majestica Woodwinds Low Long
 106 Arc MF-F-MF
 
 //! g="8Dio/Majestica/Woodwinds" n="Low Short"
-Bank 29 46 8Dio Majestica Woodwinds Low Short
+//! id=d6fa4813-31be-4611-a946-335de5f8bcb8
+Bank * * 8Dio Majestica Woodwinds Low Short
 //! c=short-light i=spiccato o=cc:12,1
 40 Staccatissimo
 //! c=short i=tremolo-measured o=cc:12,6
@@ -130,14 +140,16 @@ Bank 29 46 8Dio Majestica Woodwinds Low Short
 52 Marcato
 
 //! g="8Dio/Majestica/Woodwinds" n="Low FX"
-Bank 29 47 8Dio Majestica Woodwinds Low FX
+//! id=a1d319d2-8ddc-437c-a89c-167acaa88820
+Bank * * 8Dio Majestica Woodwinds Low FX
 //! c=fx i=phrase o=cc:12,21
 107 Savage Phrases Up
 //! c=fx i=phrase o=cc:12,81
 108 Savage Phrases Down
 
 //! g="8Dio/Majestica/Percussion" n="Low"
-Bank 29 48 8Dio Majestica Percussion Low
+//! id=fe766f14-348f-4f6f-be8f-ae122b836301
+Bank * * 8Dio Majestica Percussion Low
 //! c=short i=note-whole o=cc:12,1
 1 Tom Toms
 //! c=short i=note-whole o=cc:12,6
@@ -150,7 +162,8 @@ Bank 29 48 8Dio Majestica Percussion Low
 5 Timpani Cresc
 
 //! g="8Dio/Majestica/Percussion" n="High"
-Bank 29 49 8Dio Majestica Percussion High
+//! id=4503d6ff-2ed4-4270-a6e6-46093d924e42
+Bank * * 8Dio Majestica Percussion High
 //! c=short i=note-whole o=cc:12,1
 1 Small Snares
 //! c=short i=note-whole o=cc:12,6
@@ -163,7 +176,8 @@ Bank 29 49 8Dio Majestica Percussion High
 5 Sticks/Claps
 
 //! g="8Dio/Majestica/Percussion" n="Cymbals"
-Bank 29 50 8Dio Majestica Percussion Cymbals
+//! id=c7a34b47-7029-415a-9dd9-82aa8ff5fae9
+Bank * * 8Dio Majestica Percussion Cymbals
 //! c=short i=note-whole o=cc:12,1
 1 Cymbals
 //! c=short i=note-whole o=cc:12,6

@@ -6,7 +6,8 @@
 // VIENNA CHOIR
 // ************
 //! g="VSL - VOICES" n="Vienna Choir"
-Bank 30 61 Vienna Choir
+//! id=536e90e3-8fad-4f55-b2c8-682cae6ad0cb
+Bank * * Vienna Choir
 
 //! c=legato-dark i=list g=2
 100 AA
@@ -72,7 +73,8 @@ Bank 30 61 Vienna Choir
 // ************
 
 //! g="VSL - VOICES" n="Vienna Choir"
-Bank 30 62 Vienna Choir
+//! id=75c88b64-44c5-42ca-a32b-450566858b70
+Bank * * Vienna Choir
 
 //! c=legato-dark i=list g=2
 100 AA

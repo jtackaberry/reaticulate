@@ -4,7 +4,8 @@
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Piccolo"
 //! m=""
-Bank 24 125 OT-BW - Piccolo
+//! id=7abb6233-1321-4349-bc48-b131df28a602
+Bank * * OT-BW - Piccolo
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=legato i=note-whole  o=note:25
@@ -30,7 +31,8 @@ Bank 24 125 OT-BW - Piccolo
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Flute1"
 //! m=""
-Bank 24 126 OT-BW - Flute1
+//! id=df76d68e-d637-44d4-954a-c7077d006019
+Bank * * OT-BW - Flute1
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=legato i=note-whole  o=note:25
@@ -54,7 +56,8 @@ Bank 24 126 OT-BW - Flute1
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Flute2"
 //! m=""
-Bank 24 127 OT-BW - Flute2
+//! id=998dd4a6-e8ef-485d-98b0-178251571b75
+Bank * * OT-BW - Flute2
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=legato i=note-whole  o=note:25
@@ -78,7 +81,8 @@ Bank 24 127 OT-BW - Flute2
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Oboe1"
 //! m=""
-Bank 25 1 OT-BW - Oboe1
+//! id=5593a338-5b23-42d9-8cb1-2eaf735420cf
+Bank * * OT-BW - Oboe1
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=legato i=note-whole  o=note:25
@@ -96,7 +100,8 @@ Bank 25 1 OT-BW - Oboe1
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Oboe2"
 //! m=""
-Bank 25 2 OT-BW - Oboe2
+//! id=02adfdf6-3786-4c1e-8fcf-e6d6d96db107
+Bank * * OT-BW - Oboe2
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=legato i=note-whole  o=note:25
@@ -114,7 +119,8 @@ Bank 25 2 OT-BW - Oboe2
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="English Horn"
 //! m=""
-Bank 25 3 OT-BW - English Horn
+//! id=b2657469-ab7a-4fe9-be8a-ea8aaeef0d97
+Bank * * OT-BW - English Horn
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=legato i=note-whole  o=note:25
@@ -130,7 +136,8 @@ Bank 25 3 OT-BW - English Horn
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Clarinet1"
 //! m=""
-Bank 25 4 OT-BW - Clarinet1
+//! id=db6f700d-a5b1-40b4-85b9-899806a2f051
+Bank * * OT-BW - Clarinet1
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=short-dark i=staccato o=note:26
@@ -150,7 +157,8 @@ Bank 25 4 OT-BW - Clarinet1
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Clarinet2"
 //! m=""
-Bank 25 5 OT-BW - Clarinet2
+//! id=6f535a95-4ddb-46de-9a3a-8ba6194f269e
+Bank * * OT-BW - Clarinet2
 //! c=legato i=note-whole o=note:24
 1 Sustain romantic vib - C1
 //! c=short-dark i=staccato o=note:26
@@ -170,7 +178,8 @@ Bank 25 5 OT-BW - Clarinet2
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Bassoon"
 //! m=""
-Bank 25 6 OT-BW - Bassoon
+//! id=d34f2747-fa6d-460e-84b7-b7a19e11b280
+Bank * * OT-BW - Bassoon
 //! c=legato i=note-whole o=note:96
 1 Sustain romantic vib - C7
 //! c=legato i=note-whole  o=note:97
@@ -191,7 +200,8 @@ Bank 25 6 OT-BW - Bassoon
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Extras"
 //! m="Berlin Woodwinds common CC messages"
-Bank 25 7 OT-BW - Extras
+//! id=a316acfa-d0c8-47e4-a2c4-f8c4dd437d2d
+Bank * * OT-BW - Extras
 //! c=default i=legato g=1 o=cc:30,127
 1 Legato On
 //! c=default i=legato g=1 o=cc:30,0
@@ -207,7 +217,8 @@ Bank 25 7 OT-BW - Extras
 
 //! g="Orchestral Tools/Berlin Woodwinds" n="Extras 2"
 //! m="Berlin Woodwinds common CC messages"
-Bank 25 8 OT-BW - Extras 2
+//! id=3b9684ec-080b-41a0-94d6-384adf6b2933
+Bank * * OT-BW - Extras 2
 //! c=default i=fx o=cc:54,127
 9 Cutoff Filter On
 //! c=default i=fx o=cc:54,0

@@ -1,4 +1,4 @@
--- Copyright 2017-2019 Jason Tackaberry
+-- Copyright 2017-2022 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -12,13 +12,15 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-local log = require 'lib.log'
 local rfx = require 'rfx'
+local rtk = require 'rtk'
+local log = rtk.log
 
 local feedback = {
     SYNC_CC = 1,
     SYNC_ARTICULATIONS = 2,
-    SYNC_ALL = 1 | 2,
+    SYNC_CHANNEL = 4,
+    SYNC_ALL = 1 | 2 | 4,
 
     track = nil,
     track_guid = nil
@@ -38,10 +40,10 @@ function feedback.ontrackchange(last, cur)
     if not feedback.is_enabled() then
         return
     end
-    if last and reaper.ValidatePtr2(0, last, "MediaTrack*") then
+    if last then
         feedback._set_track_enabled(last, 0)
     end
-    if cur and rfx.fx then
+    if cur and rfx.current.fx then
         -- Track must be monitored for MIDI input for CC feedback to be triggered.
         local input = reaper.GetMediaTrackInfo_Value(cur, "I_RECINPUT")
         if input and input & 4096 ~= 0 then
@@ -55,18 +57,18 @@ function feedback.ontrackchange(last, cur)
                 -- otherwise they go into a blackhole -- ostensibly Reaper needs some time to
                 -- realize there is a new send.
                 feedback.scroll_mixer(cur)
-                cycles = 5
-                function sync()
+                local cycles = 5
+                local function sync()
                     if cycles == 0 then
                         -- This is done asynchronously, so use the public version of sync() which
                         -- pushes/pops automation settings.
                         feedback.sync(cur)
                     else
                         cycles = cycles - 1
-                        reaper.defer(sync)
+                        rtk.defer(sync)
                     end
                 end
-                reaper.defer(sync)
+                rtk.defer(sync)
             else
                 -- We can sync to control surface immediately as send already exists.
                 feedback._sync(feedback.SYNC_ALL)
@@ -76,13 +78,15 @@ function feedback.ontrackchange(last, cur)
 end
 
 function feedback.scroll_mixer(track)
+    -- Mixer: Toggle scroll view when tracks activated
     local scroll_mixer = reaper.GetToggleCommandStateEx(0, 40221)
     if scroll_mixer and track then
-        function scroll()
+        local function scroll()
             reaper.SetMixerScroll(track)
         end
         scroll()
-        reaper.defer(scroll)
+        -- Insurance
+        rtk.defer(scroll)
     end
 end
 
@@ -92,7 +96,7 @@ function feedback.get_feedback_send(track)
     if feedback_track then
         for idx = 0, reaper.GetTrackNumSends(track, 0) -1 do
             local target = reaper.BR_GetMediaTrackSendInfo_Track(track, 0, idx, 1)
-            local flags = reaper.GetTrackSendInfo_Value(track, 0, idx, 'I_MIDIFLAGS')
+            -- local flags = reaper.GetTrackSendInfo_Value(track, 0, idx, 'I_MIDIFLAGS')
             if target == feedback_track then
                 return idx
             end
@@ -126,10 +130,7 @@ function feedback._set_track_enabled(track, enabled)
     if app.config.cc_feedback_device < 0 then
         enabled = 0
     end
-    local fx, _, _, _, _, _ = rfx.validate(track, rfx.get(track))
-    if fx ~= nil then
-        rfx.opcode(rfx.OPCODE_SET_CC_FEEDBACK_ENABLED, {enabled, bus}, track, fx)
-    end
+    rfx.opcode_on_track(track, rfx.OPCODE_SET_CC_FEEDBACK_ENABLED, {enabled, bus})
 end
 
 
@@ -236,11 +237,11 @@ function feedback.ensure_feedback_track()
 end
 
 function feedback._sync(what)
-    rfx.opcode(rfx.OPCODE_SYNC_TO_FEEDBACK_CONTROLLER, {what})
+    rfx.current:opcode(rfx.OPCODE_SYNC_TO_FEEDBACK_CONTROLLER, {what})
 end
 
 function feedback.sync(track, what)
-    if not feedback.is_enabled() or not track or not rfx.fx then
+    if not feedback.is_enabled() or not track or not rfx.current.fx then
         return
     end
     feedback._sync(what or feedback.SYNC_ALL)

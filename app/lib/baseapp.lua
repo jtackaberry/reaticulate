@@ -1,4 +1,4 @@
--- Copyright 2017-2019 Jason Tackaberry
+-- Copyright 2017-2022 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -12,22 +12,27 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-local log = require 'lib.log'
-local rtk = require 'lib.rtk'
+local rtk = require 'rtk'
+local log = rtk.log
+local json = require 'lib.json'
 require 'lib.utils'
 
-BaseApp = class('BaseApp')
+local BaseApp = rtk.class('BaseApp', rtk.Application)
+-- Global variable to BaseApp instance.
 app = nil
 
 function BaseApp:initialize(appid, title, basedir)
-    if reaper.NamedCommandLookup('_SWS_TOGSELMASTER') == 0 then
+    if not rtk.has_sws_extension then
         -- Sunk before we started.
         reaper.ShowMessageBox("Reaticulate requires the SWS extensions (www.sws-extension.org).\n\nAborting!",
                               "SWS extension missing", 0)
         return false
     end
-    if not reaper.gmem_read then
-        reaper.ShowMessageBox("Reaticulate requires Reaper v5.97 or later", "Reaper version too old", 0)
+    -- Latest supported version is 5.975 due to support for P_EXT with GetSetTrackSendInfo_String().
+    --
+    -- See https://www.landoleet.org/old/whatsnew5.txt
+    if not rtk.check_reaper_version(5, 975) then
+        reaper.ShowMessageBox('Sorry, Reaticulate requires REAPER v5.975 or later.', 'REAPER version too old', 0)
         return false
     end
     app = self
@@ -42,14 +47,9 @@ function BaseApp:initialize(appid, title, basedir)
     self.cmdpending = 0
 
     self.appid = appid
-    self.title = title
-    self.screens = {
-        stack = {}
-    }
-    self.toolbar = {}
 
     if not self.config then
-        -- Superclass didn't initialize config table, so do that now.
+        -- Subclass didn't initialize config table, so do that now.
         self.config = {}
     end
     table.merge(self.config, {
@@ -58,22 +58,19 @@ function BaseApp:initialize(appid, title, basedir)
         y = 0,
         w = 640,
         h = 480,
-        dockstate = 0,
+        -- deprecated
+        dockstate = nil,
+        -- nil values of dock/docked will parse from dockstate for transition purposes
+        dock = nil,
+        docked = nil,
         scale = 1.0,
         bg = nil,
-        borderless = false
-    });
-    self.viewport = nil
-
-    rtk.ondock = function() self:handle_ondock() end
-    rtk.onmove = function() self:handle_onmove() end
-    rtk.onresize = function() self:handle_onresize() end
-    rtk.onupdate = function() self:handle_onupdate() end
-    rtk.onmousewheel = function(event) self:handle_onmousewheel(event) end
-    rtk.onclose = function() self:handle_onclose() end
-    rtk.onkeypresspost = function(event) self:handle_onkeypresspost(event) end
-
-    self:get_config()
+        borderless = false,
+        touchscroll = false,
+        smoothscroll = true,
+    })
+    self.config = self:get_config()
+    rtk.scale.user = self.config.scale
 
     -- Migration from boolean debug to logging level
     if self.config.debug_level == true or self.config.debug_level == 1 then
@@ -84,97 +81,48 @@ function BaseApp:initialize(appid, title, basedir)
         self:save_config()
     end
 
-    self:set_debug(self.config.debug_level or log.ERROR)
+    rtk.touchscroll = app.config.touchscroll
+    rtk.smoothscroll = app.config.smoothscroll
     self:set_theme()
-    rtk.init(self.title, self.config.w, self.config.h, self.config.dockstate, self.config.x, self.config.y)
+
+    -- Ensure we set theme before calling to superclass.
+    rtk.Application.initialize(self)
+
+    self.window = rtk.Window{
+        title=title,
+        x=self.config.x,
+        y=self.config.y,
+        w=rtk.clamp(self.config.w, 0, 4096),
+        h=rtk.clamp(self.config.h, 0, 4096),
+        -- Default to a right docker, if one exists.
+        dock=self.config.dock or 'right',
+        docked=self.config.docked,
+        borderless=self.config.borderless,
+        pinned=self.config.pinned,
+
+        ondock = function() self:handle_ondock() end,
+        onattr = function(_, attr, value) self:handle_onattr(attr, value) end,
+        onmove = function() self:handle_onmove() end,
+        onresize = function() self:handle_onresize() end,
+        onupdate = function() self:handle_onupdate() end,
+        onmousewheel = function(_, event) self:handle_onmousewheel(event) end,
+        onclose = function() self:handle_onclose() end,
+        onkeypresspost = function(_, event) self:handle_onkeypresspost(event) end,
+        ondropfile = function(_, event) self:handle_ondropfiles(event) end,
+    }
+
     self:build_frame()
 end
 
 function BaseApp:run()
     self:handle_onupdate()
-    rtk.run()
+    rtk.window:open()
 end
 
 function BaseApp:add_screen(name, package)
     local screen = require(package)
-    self.screens[name] = screen
-    if type(screen) == 'table' and screen.init then
-        screen.init()
-        screen.name = name
-        if not screen.toolbar then
-            -- Create a dummy toolbar for this screen to ensure app-wide toolbar
-            -- remains pushed to the right.
-            screen.toolbar = rtk.Spacer{h=0}
-        end
-        screen.toolbar:hide()
-        -- Set min width for toolbar to at least make sure Back button is
-        -- reachable.
-        self.toolbar:insert(1, screen.toolbar, {expand=1, fillw=true, minw=50})
-        screen.widget:hide()
-    end
+    rtk.Application.add_screen(self, screen, name)
 end
-
-function BaseApp:show_screen(screen)
-    screen = type(screen) == 'table' and screen or self.screens[screen]
-    for _, s in ipairs(self.screens.stack) do
-        s.widget:hide()
-        if s.toolbar then
-            s.toolbar:hide()
-        end
-    end
-    if screen then
-        log.info("baseapp: showing screen %s", screen.name)
-        screen.update()
-        screen.widget:show()
-        if self.viewport then
-            self.viewport:attr('child', screen.widget)
-        else
-            self.frame:replace(self.frame.content_position, screen.widget, {
-                expand=1,
-                fillw=true,
-                fillh=true,
-                minw=screen.minw
-            })
-        end
-        if screen.toolbar then
-            screen.toolbar:show()
-        end
-    end
-    self:set_statusbar(nil)
-end
-
-function BaseApp:push_screen(screen)
-    screen = type(screen) == 'table' and screen or self.screens[screen]
-    if screen and #self.screens.stack > 0 and self:current_screen() ~= screen then
-        self:show_screen(screen)
-        self.screens.stack[#self.screens.stack+1] = screen
-    end
-end
-
-function BaseApp:pop_screen()
-    if #self.screens.stack > 1 then
-        self:show_screen(self.screens.stack[#self.screens.stack-1])
-        table.remove(self.screens.stack)
-        return true
-    else
-        return false
-    end
-end
-
-function BaseApp:replace_screen(screen)
-    screen = type(screen) == 'table' and screen or self.screens[screen]
-    self:show_screen(screen)
-    local idx = #self.screens.stack
-    if idx == 0 then
-        idx = 1
-    end
-    self.screens.stack[idx] = screen
-end
-
-function BaseApp:current_screen()
-    return self.screens.stack[#self.screens.stack]
-end
-
 
 -- App-wide utility functions
 local function _swallow_event(self, event)
@@ -183,20 +131,18 @@ local function _swallow_event(self, event)
 end
 
 function BaseApp:make_button(icon, label, textured, attrs)
-    local button = nil
-    if label then
-        flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.FLAT_LABEL | rtk.Button.NO_SEPARATOR)
-        button = rtk.Button{icon=icon, label=label, flags=flags,
-                            tpadding=5, bpadding=5, lpadding=5, rpadding=10}
-    else
-        flags = textured and 0 or (rtk.Button.FLAT_ICON | rtk.Button.NO_SEPARATOR)
-        button = rtk.Button{icon=icon, flags=flags,
-                            tpadding=5, bpadding=5, lpadding=5, rpadding=5}
-    end
-    button:setattrs(attrs)
-    -- Default drag handler prevents lower-zindex widgets from handling drags.
-    -- So if the user drags the button, it prevents drag handlers for widgets
-    -- underneath from triggering.
+    local defaults = {
+        icon=icon,
+        label=label,
+        flat=true,
+        touch_activate_delay=0
+    }
+    attrs = table.merge(defaults, attrs or {})
+    local button = rtk.Button(attrs)
+    -- Set a custom drag handler that prevents lower-zindex widgets from
+    -- handling drags. So if the user drags the button, it prevents drag
+    -- handlers for widgets underneath from triggering (e.g. for drag-moving
+    -- borderless windows).
     button.ondragstart = _swallow_event
     return button
 end
@@ -206,26 +152,44 @@ function BaseApp:get_icon_path(name)
 end
 
 function BaseApp:fatal_error(msg)
-    msg = msg .. "\n\nReaticulate must now exit."
+    msg = msg ..
+          '\n\nThis is a fatal error and Reaticulate must now exit. ' ..
+          '\n\nPlease visit https://reaticulate.com/ for support contact details.'
     reaper.ShowMessageBox(msg, "Reaticulate: fatal error", 0)
+    reaper.atexit()
     rtk.quit()
 end
 
 
 
-function BaseApp:get_config()
-    if reaper.HasExtState(self.appid, "config") then
-        local state = reaper.GetExtState(self.appid, "config")
-        local config = table.fromstring(state)
-        -- Merge stored config into runtime config
-        for k, v in pairs(config) do
-            self.config[k] = v
+function BaseApp:get_config(appid, target)
+    appid = appid or self.appid
+    target = target or self.config
+    if reaper.HasExtState(appid, "config") then
+        local state = reaper.GetExtState(appid, "config")
+        local ok, config = pcall(json.decode, state)
+        if not ok then
+            -- Pre 0.5.0 which used table.tostring/fromstring for config.  We fall back to the
+            -- unsafe table.fromstring() in order to migrate.
+            config = table.fromstring(state)
+            -- Force resave using the new format
+            self:save_config(self.appid, config)
         end
+        -- Merge stored config into runtime config
+        table.merge(target, config)
     end
-end
+    self:set_debug(target.debug_level or log.ERROR)
+    if not target.dock and target.dockstate then
+        -- Convert deprecated dockstate field to dock/docker values
+        target.dock = (target.dockstate >> 8) & 0xff
+        target.docked = (target.dockstate & 0x01) ~= 0
+    end
+    return target
 
-function BaseApp:save_config()
-    reaper.SetExtState(self.appid, "config", table.tostring(self.config), true)
+end
+function BaseApp:save_config(appid, config)
+    local serialized = json.encode(config or self.config)
+    reaper.SetExtState(appid or self.appid, "config", serialized, true)
 end
 
 function BaseApp:set_debug(level)
@@ -235,187 +199,131 @@ function BaseApp:set_debug(level)
     log.info("baseapp: Reaticulate log level is %s", log.level_name())
 end
 
-function BaseApp:handle_ondock()
-    self.config.dockstate = rtk.dockstate
-    if (rtk.dockstate or 0) & 0x01 ~= 0 then
-        self.config.last_dockstate = rtk.dockstate
+function BaseApp:zoom(increment)
+    rtk.scale.user = rtk.clamp(rtk.scale.user + increment, 0.5, 4.0)
+    log.info('zoom %.02f', rtk.scale.user)
+    self:set_statusbar(string.format('Zoom UI to %.02fx', rtk.scale.user))
+    self.config.scale = rtk.scale.user
+    self:save_config()
+end
+
+function BaseApp:handle_onattr(attr, value)
+    if attr == 'pinned' or attr == 'docked' or attr == 'dock' then
+        self:handle_ondock()
     end
-    if self.toolbar.pin then
+end
+
+function BaseApp:handle_ondock()
+    self.config.pinned = self.window.pinned
+    self.config.docked = self.window.docked
+    self.config.dock = self.window.dock
+    if self.window.docked then
         self.toolbar.pin:hide()
         self.toolbar.unpin:hide()
-        self.resize_grip:hide()
-    end
-    if rtk.hwnd and rtk.has_js_reascript_api then
-        log.info('baseapp: js_ReaScriptAPI extension is available')
-        if rtk.dockstate == 0 then
-            if reaper.JS_Window_SetStyle then
-                if self.config.borderless then
-                    reaper.JS_Window_SetStyle(rtk.hwnd, 'POPUP')
-                    -- Resize to original dimensions to account for the lack of window border.
-                    reaper.JS_Window_Resize(rtk.hwnd, rtk.w, rtk.h)
-                    self:_set_window_pinned(self.config.pinned)
-                    self.resize_grip:show()
-                else
-                    reaper.JS_Window_SetStyle(rtk.hwnd, 'CAPTION,SIZEBOX,SYSMENU')
-                    reaper.JS_Window_SetZOrder(rtk.hwnd, 'NOTOPMOST')
-                    -- XXX: there's a bug on Windows: https://forum.cockos.com/showthread.php?p=2195902#post2195902
-                    -- reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
-                    -- So we reuse our internal implementation that was originally
-                    -- implemented for for borderless windows.
-                    self:_set_window_pinned(self.config.pinned)
-                end
-            else
-                reaper.JS_Window_AttachTopmostPin(rtk.hwnd)
-            end
-        end
+    else
+        self:_set_window_pinned(self.config.pinned)
     end
     self:save_config()
 end
 
 function BaseApp:handle_onresize()
     -- Only save dimensions when not docked.
-    if (rtk.dockstate or 0) & 0x01 == 0 then
-        self.config.x, self.config.y = rtk.x, rtk.y
-        self.config.w, self.config.h = rtk.w, rtk.h
+    if not self.window.docked then
+        self.config.x, self.config.y = self.window.x, self.window.y
+        self.config.w, self.config.h = self.window.w, self.window.h
         self:save_config()
     end
 end
 
-function BaseApp:handle_onmove(last_x, last_y)
+function BaseApp:handle_onmove()
     self:handle_onresize()
 end
 
 function BaseApp:handle_onmousewheel(event)
-    if event.ctrl then
+    if event.ctrl and not rtk.is_modal() then
         -- ctrl-wheel scaling
-        if event.wheel < 0 then
-            rtk.scale = rtk.scale + 0.05
-        else
-            rtk.scale = rtk.scale - 0.05
-        end
-        self:set_statusbar(string.format('Zoom UI to %.02fx', rtk.scale))
-        self.config.scale = rtk.scale
-        self:save_config()
-        rtk.queue_reflow()
-        event.wheel = 0
+        self:zoom(event.wheel < 0 and 0.10 or -0.10)
+        event:set_handled()
     end
 end
 
 function BaseApp:set_theme()
     local bg = self.config.bg
     if not bg or type(bg) ~= 'string' or #bg <= 1 then
-        bg = rtk.get_reaper_theme_bg()
+        bg = rtk.color.get_reaper_theme_bg()
     end
-    -- Determine from theme background color if we should use the light or dark theme.
-    local luma = color2luma(bg)
-    log.debug("baseapp: theme bg is %s", bg)
-    -- bg = '#252525'
-    if luma > 0.7 then
-        rtk.set_theme('light', Path.join(Path.imagedir, 'icons-dark'), {window_bg=bg})
-    else
-        rtk.set_theme('dark', Path.join(Path.imagedir, 'icons-light'), {window_bg=bg})
-    end
+    rtk.set_theme_by_bgcolor(bg)
+    rtk.add_image_search_path(Path.imagedir)
 
+    local icons = {
+        medium={
+            'med-add_circle_outline',
+            'med-arrow_back',
+            'med-auto_fix',
+            'med-delete',
+            'med-dock_window',
+            'med-drag_vertical',
+            'med-edit',
+            'med-eraser',
+            'med-info_outline',
+            'med-link',
+            'med-pin_off',
+            'med-pin_on',
+            'med-search',
+            'med-settings',
+            'med-sync',
+            'med-undo',
+            'med-undock_window',
+            'med-view_list',
+        },
+        large={
+            'lg-alert_circle_outline',
+            'lg-drag_vertical',
+            'lg-info_outline',
+            'lg-plus',
+            'lg-warning_amber',
+        },
+        huge={
+            'huge-alert_circle_outline',
+        },
+    }
+    local img = rtk.ImagePack{
+        src='icons.png',
+        register=true,
+        {w=18, h=18, names=icons.medium, density=1, style='light'},
+        {w=24, h=24, names=icons.large, density=1, style='light'},
+        {w=96, h=96, names=icons.huge, density=1, style='light'},
+        {w=28, h=28, names=icons.medium, density=1.5, style='light'},
+        {w=36, h=36, names=icons.large, density=1.5, style='light'},
+        {w=144, h=144, names=icons.huge, density=1.5, style='light'},
+        {w=36, h=36, names=icons.medium, density=2, style='light'},
+        {w=48, h=48, names=icons.large, density=2, style='light'},
+        {w=192, h=192, names=icons.huge, density=2, style='light'},
+    }
 end
 
 function BaseApp:set_statusbar(label)
-    if label then
-        self.statusbar.label:attr('label', label)
-    else
-        self.statusbar.label:attr('label', " ")
-    end
+    self:attr('status', label)
 end
 
 function BaseApp:build_frame()
-    local toolbar = rtk.HBox{spacing=0, bg=rtk.theme.window_bg}
-    self.toolbar = toolbar
-
-    self.frame = rtk.VBox{position=rtk.Widget.FIXED, z=100}
-    self.frame:add(toolbar, {minw=150})
-
-    -- Add a placeholder widget that screens will replace.
-    self.frame:add(rtk.VBox.FLEXSPACE)
-    self.frame.content_position = #self.frame.children
-
-    self.statusbar = rtk.HBox{
-        bg=rtk.theme.window_bg,
-        lpadding=10,
-        tpadding=5,
-        bpadding=5,
-        rpadding=10,
-        z=110
-    }
-    self.statusbar.label = self.statusbar:add(rtk.Label{color=rtk.theme.text_faded}, {expand=1})
-    self.frame:add(self.statusbar, {fillw=true})
-
-    rtk.widget:add(self.frame)
-    self:set_statusbar('')
-    if reaper.JS_Window_SetStyle then
-        self:_setup_borderless_handlers()
+    self.window:add(self)
+    if rtk.has_js_reascript_api then
+        local pin = rtk.Button{icon='med-pin_off', flat=true, tooltip='Pin window to top'}
+        local unpin = rtk.Button{icon='med-pin_on', flat=true, tooltip='Unpin window from top'}
+        self.toolbar.pin = self.toolbar:add(pin, {rpadding=15})
+        self.toolbar.unpin = self.toolbar:add(unpin, {rpadding=15})
+        self.toolbar.pin.onclick = function() self:_set_window_pinned(true) end
+        self.toolbar.unpin.onclick = function() self:_set_window_pinned(false) end
     end
 end
 
 function BaseApp:_set_window_pinned(pinned)
-    reaper.JS_Window_SetZOrder(rtk.hwnd, pinned and 'TOPMOST' or 'NOTOPMOST')
-    self.toolbar.pin:attr('visible', not pinned)
-    self.toolbar.unpin:attr('visible', pinned)
-    self.config.pinned = pinned
-    self:save_config()
-end
-
-function BaseApp:_setup_borderless_handlers()
-    self.toolbar.pin = self.toolbar:add(self:make_button('18-pin_off'), {rpadding=15})
-    self.toolbar.unpin = self.toolbar:add(self:make_button('18-pin_on'), {rpadding=15})
-    self.toolbar.pin.onclick = function() self:_set_window_pinned(true) end
-    self.toolbar.unpin.onclick = function() self:_set_window_pinned(false) end
-    self:_set_window_pinned(false)
-
-    self.toolbar.ondragstart = function(self, event)
-        if reaper.JS_Window_Move and rtk.dockstate == 0 and app.config.borderless then
-            local _, wx, wy, _, _ = reaper.JS_Window_GetClientRect(rtk.hwnd)
-            self._drag_start_ex, self._drag_start_ey = event.x, event.y
-            self._drag_start_wx, self._drag_start_wy = wx, wy
-            self._drag_start_ww, self._drag_start_wh = rtk.w, rtk.h
-            return true
-        else
-            -- Prevent ondragmove from firing.
-            return false
-        end
+    if rtk.has_js_reascript_api then
+        self.window:attr('pinned', pinned)
+        self.toolbar.pin:attr('visible', not pinned)
+        self.toolbar.unpin:attr('visible', pinned)
     end
-    self.toolbar.ondragmousemove = function(self, event)
-        local _, wx, wy, _, _ = reaper.JS_Window_GetClientRect(rtk.hwnd)
-        local x, y = wx + (event.x - self._drag_start_ex)
-        if rtk.os.mac then
-            y = (wy - self._drag_start_wh) - (event.y - self._drag_start_ey)
-        else
-            y = wy + (event.y - self._drag_start_ey)
-        end
-        reaper.JS_Window_Move(rtk.hwnd, x, y)
-    end
-
-    local imgbox = rtk.ImageBox{image='24-resize_bottom_right', z=200, cursor=rtk.mouse.cursors.size_nw_se, alpha=0.4}
-    imgbox.onmouseenter = function(self)
-        if app.config.borderless then
-            self:animate('alpha', 1, 0.1)
-            return true
-        end
-    end
-    imgbox.onmouseleave = function(self, event)
-        if app.config.borderless then
-            self:animate('alpha', 0.4, 0.25)
-        end
-    end
-    imgbox.ondragstart = self.toolbar.ondragstart
-    imgbox.ondragmousemove = function(self, event)
-        local x = event.x - self._drag_start_ex
-        local y = event.y - self._drag_start_ey
-        reaper.JS_Window_Resize(rtk.hwnd, self._drag_start_ww + x, self._drag_start_wh + y)
-        if rtk.os.mac then
-            reaper.JS_Window_Move(rtk.hwnd, self._drag_start_wx, self._drag_start_wy - self._drag_start_wh - y)
-        end
-    end
-    self.resize_grip = imgbox
-    rtk.widget:add(imgbox, {valign='bottom', halign='right'})
 end
 
 function BaseApp:handle_onupdate()
@@ -423,7 +331,7 @@ function BaseApp:handle_onupdate()
 end
 
 function BaseApp:timeout_command_callbacks()
-    now = os.clock()
+    local now = reaper.time_precise()
     for serial in pairs(self.cmdcallbacks) do
         local expires, cb = table.unpack(self.cmdcallbacks[serial])
         if now > expires then
@@ -451,7 +359,7 @@ function BaseApp:send_command(appid, cmd, ...)
         if cmdlist:len() > 200 then
             -- Too many queued commands.  Target appid not responding.  Truncate the existing
             -- list.
-            log.warn("baseapp: %s not responding", appid)
+            log.warning("baseapp: %s not responding", appid)
             cmdlist = ''
         else
             cmdlist = cmdlist .. ' '
@@ -476,7 +384,7 @@ function BaseApp:send_command(appid, cmd, ...)
     if callback then
         self.cmdserial = self.cmdserial + 1
         local serial = tostring(self.cmdserial)
-        self.cmdcallbacks[serial] = {os.clock() + timeout, callback}
+        self.cmdcallbacks[serial] = {reaper.time_precise() + timeout, callback}
         self.cmdpending = self.cmdpending + 1
         cmd = string.format('?%s:%s,%s', cmd, self.appid, serial)
     end
@@ -484,14 +392,12 @@ function BaseApp:send_command(appid, cmd, ...)
     reaper.SetExtState(appid, "command", cmdlist .. cmd .. '=' .. joined, false)
 end
 
-
-
 function BaseApp:handle_command(cmd, arg)
     if cmd == 'ping' then
         reaper.SetExtState(self.appid, "pong", arg, false)
         return arg
     elseif cmd == 'quit' then
-        rtk.quit()
+        self.window:close()
     end
 end
 
@@ -505,13 +411,13 @@ function BaseApp:check_commands()
         local val = reaper.GetExtState(self.appid, "command")
         reaper.DeleteExtState(self.appid, "command", false)
         for cmd, arg in val:gmatch('(%S+)=([^"]%S*)') do
-            if cmd:starts('?') then
+            if cmd:startswith('?') then
                 -- This request expects an async reply.  Command will be in the form:
                 -- ?cmd:appid,serial
                 local cmd, return_appid, serial = cmd:match("%?([^:]+):([^,]+),(.*)")
                 local response = self:handle_command(cmd, arg)
                 self:send_command(return_appid, '!' .. serial, tostring(response))
-            elseif cmd:starts('!') then
+            elseif cmd:startswith('!') then
                 -- This is an async reply.  Command is in the form: !serial
                 local serial = cmd:match("!(.*)")
                 local cbinfo = self.cmdcallbacks[serial]
@@ -531,10 +437,25 @@ function BaseApp:check_commands()
 end
 
 function BaseApp:handle_onclose()
-    rtk.quit()
 end
 
 function BaseApp:handle_onkeypresspost(event)
+    if event.handled then
+        return
+    end
+    if event.char == '=' and event.ctrl then
+        self:zoom(0.10)
+        event:set_handled()
+    elseif event.char == '-' and event.ctrl then
+        self:zoom(-0.10)
+        event:set_handled()
+    elseif event.char == '0' and event.ctrl then
+        self:zoom(1.0 - rtk.scale.user)
+        event:set_handled()
+    end
+end
+
+function BaseApp:handle_ondropfiles(event)
 end
 
 return BaseApp

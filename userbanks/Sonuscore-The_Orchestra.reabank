@@ -8,7 +8,8 @@
 
 //! g="Sonuscore/The Orchestra"
 //! n="First Violins"
-Bank 25 114 First Violins
+//! id=ad6036da-2e48-4bdd-adf1-dc5327d25cb2
+Bank * * First Violins
 //! c=legato i=legato o=note:27
 20  legato
 //! c=short i=staccato o=note:24
@@ -29,26 +30,31 @@ Bank 25 114 First Violins
 //! g="Sonuscore/The Orchestra"
 //! n="Second Violins"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 25 115 Second Violins
+//! id=72aad1b3-3b8a-4667-8a5d-3150e5add593
+Bank * * Second Violins
 
 //! g="Sonuscore/The Orchestra"
 //! n="Violas"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 25 116 Violas
+//! id=59aa4993-f941-4b9f-9170-c57f4486ed38
+Bank * * Violas
 
 //! g="Sonuscore/The Orchestra"
 //! n="Cellos"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 25 117 Cellos
+//! id=31075955-07ff-454a-9d3b-c81b7da3d05b
+Bank * * Cellos
 
 //! g="Sonuscore/The Orchestra"
 //! n="Basses"
 //! clone="Sonuscore/The Orchestra/First Violins"
-Bank 25 118 Basses
+//! id=aa328f50-44ef-4f17-9d3d-63cd1195bc97
+Bank * * Basses
 
 //! g="Sonuscore/The Orchestra"
 //! n="French Horns"
-Bank 25 119 French Horns
+//! id=f1d34127-b67a-4ca8-9e14-d3046c8c7b7f
+Bank * * French Horns
 //! c=legato i=legato o=note:27
 20  legato
 //! c=short i=staccato o=note:24
@@ -65,16 +71,19 @@ Bank 25 119 French Horns
 //! g="Sonuscore/The Orchestra"
 //! n="Trumpets"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 25 120 Trumpets
+//! id=8ddc370a-b43d-4edf-aab4-5b565f040f25
+Bank * * Trumpets
 
 //! g="Sonuscore/The Orchestra"
 //! n="Trombones"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 25 121 Trombones
+//! id=fdfbd2dd-8b23-4594-b2df-0638ff520eb7
+Bank * * Trombones
 
 //! g="Sonuscore/The Orchestra"
 //! n="Low Brass"
-Bank 25 122 Low Brass
+//! id=7ed16e54-9954-4793-9a6a-88a550c62d00
+Bank * * Low Brass
 //! c=short i=staccato o=note:24
 40 staccato
 //! c=long i=note-whole o=note:25
@@ -89,31 +98,37 @@ Bank 25 122 Low Brass
 //! g="Sonuscore/The Orchestra"
 //! n="Flutes"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 25 123 Flutes
+//! id=2a5bb04e-3156-400c-ae8e-f88aa340f2e0
+Bank * * Flutes
 
 //! g="Sonuscore/The Orchestra"
 //! n="Clarinets"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 25 124 Clarinets
+//! id=31f53460-6179-4e19-9582-af46b8f02aed
+Bank * * Clarinets
 
 //! g="Sonuscore/The Orchestra"
 //! n="Oboes"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 25 125 Oboes
+//! id=f4388c76-7b81-45d0-aab3-bbc5a2209f63
+Bank * * Oboes
 
 //! g="Sonuscore/The Orchestra"
 //! n="Bassoons"
 //! clone="Sonuscore/The Orchestra/French Horns"
-Bank 25 126 Bassoons
+//! id=550d065a-9c91-4cdd-903b-1ac50b0ddba4
+Bank * * Bassoons
 
 //! g="Sonuscore/The Orchestra"
 //! n="Contrabassoon"
 //! clone="Sonuscore/The Orchestra/Low Brass"
-Bank 25 127 Contrabassoons
+//! id=dbe14ff5-8faf-4a11-872d-d4b5aa049799
+Bank * * Contrabassoons
 
 //! g="Sonuscore/The Orchestra"
 //! n="FemChoir Staccatos"
-Bank 26 1 FemChoir Staccatos
+//! id=57a6d4ea-7d3f-43d2-8d93-9c38380faacf
+Bank * * FemChoir Staccatos
 //! c=short i=staccato o=note:24
 83  La
 //! c=short i=staccato o=note:25
@@ -139,7 +154,8 @@ Bank 26 1 FemChoir Staccatos
 
 //! g="Sonuscore/The Orchestra"
 //! n="FemChoir Sustains"
-Bank 26 2 FemChoir Sustains
+//! id=ee258f5e-82b9-4963-ae74-294f592942df
+Bank * * FemChoir Sustains
 //! c=long i=note-whole o=note:24
 83  Ah
 //! c=long i=note-whole o=note:25
@@ -148,10 +164,12 @@ Bank 26 2 FemChoir Sustains
 //! g="Sonuscore/The Orchestra"
 //! n="MenChoir Staccatos"
 //! clone="Sonuscore/The Orchestra/FemChoir Staccatos"
-Bank 26 3 MenChoir Staccatos
+//! id=7df8e04b-5915-4085-8a53-89b52325a5ca
+Bank * * MenChoir Staccatos
 
 //! g="Sonuscore/The Orchestra"
 //! n="MenChoir Sustains"
 //! clone="Sonuscore/The Orchestra/FemChoir Sustains"
-Bank 26 4 MenChoir Sustains
+//! id=066cf700-24ba-4640-999b-f91d3d204bfb
+Bank * * MenChoir Sustains
 

@@ -2,7 +2,8 @@
 // Source: sveinpetter - https://forum.cockos.com/showpost.php?p=1987704&postcount=180
 //
 //! g="Spectrasonics/Trilian" n="Ac1 Bass" off=0
-Bank 26 9 Tr - Ac1 Bass
+//! id=b8d4fa6a-e306-4d3b-83ad-cffb4f3ce742
+Bank * * Tr - Ac1 Bass
 //! c=long-light i=phrase o=note-hold:0
 0 Vanleg-Normal
 //! c=long i=note-half o=note-hold:28

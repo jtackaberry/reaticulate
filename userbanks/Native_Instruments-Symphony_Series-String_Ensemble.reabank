@@ -4,7 +4,8 @@
 
 //----------------------------------------------------------------------------
 //! g="Native Instruments/Symphony Series/String Ensemble" n="String Ensemble"
-Bank 24 14 SSSE String Ensemble
+//! id=6a524abc-fd40-4a74-aed5-d9d02d724a02
+Bank * * SSSE String Ensemble
 //! c=long i=note-whole o=note:101
 1 sustain
 //! c=long i=con-sord o=note:102
@@ -19,7 +20,8 @@ Bank 24 14 SSSE String Ensemble
 56 pizzicato
 
 //! g="Native Instruments/Symphony Series/String Ensemble" n="Violins"
-Bank 24 15 SSSE Violins
+//! id=f2b222e0-8ec1-4fbd-9528-c40da21e9fc0
+Bank * * SSSE Violins
 //! c=legato i=legato o=note:24
 20 legato
 //! c=long i=con-sord o=note:25
@@ -38,7 +40,8 @@ Bank 24 15 SSSE Violins
 56 pizzicato
 
 //! g="Native Instruments/Symphony Series/String Ensemble" n="Violas"
-Bank 24 16 SSSE Violas
+//! id=a9c294ee-0b99-4c33-8f77-34628852c031
+Bank * * SSSE Violas
 //! c=legato i=legato o=note:24
 20 legato
 //! c=long i=con-sord o=note:25
@@ -57,7 +60,8 @@ Bank 24 16 SSSE Violas
 56 pizzacato
 
 //! g="Native Instruments/Symphony Series/String Ensemble" n="Cellos"
-Bank 24 17 SSSE Cellos
+//! id=04e96ca2-30d4-4f2c-9abc-608e1734b189
+Bank * * SSSE Cellos
 //! c=legato i=legato o=note:24
 20 legato
 //! c=long i=con-sord o=note:25
@@ -76,7 +80,8 @@ Bank 24 17 SSSE Cellos
 56 pizzacato
 
 //! g="Native Instruments/Symphony Series/String Ensemble" n="Basses"
-Bank 24 18 SSSE Basses
+//! id=3b79fb70-2141-481a-9913-405a59fb9978
+Bank * * SSSE Basses
 //! c=legato i=legato o=note:72
 20 legato
 //! c=long i=con-sord o=note:73

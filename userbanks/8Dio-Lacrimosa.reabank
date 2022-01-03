@@ -5,7 +5,8 @@
 
 
 //! g="8Dio/Lacrimosa" n="Arcs"
-Bank 29 29 8Dio Lacrimosa Arcs
+//! id=0ba055c0-e278-4f01-8f66-67f2db3a759d
+Bank * * 8Dio Lacrimosa Arcs
 //! c=long-light i=cresc-mf-half o=note:12
 24 Ah
 //! c=long-light i=cresc-mf-half o=note:13
@@ -29,7 +30,8 @@ Bank 29 29 8Dio Lacrimosa Arcs
 
 //! g="8Dio/Lacrimosa" n="Marcato"
 //! m="Sequencer for easy use"
-Bank 29 30 8Dio Lacrimosa Marcato
+//! id=2c7152fa-11dc-42db-876c-a75e9ba53823
+Bank * * 8Dio Lacrimosa Marcato
 //! c=long-light i=marcato o=note:12
 24 Ah
 //! c=long-light i=marcato o=note:13
@@ -55,7 +57,8 @@ Bank 29 30 8Dio Lacrimosa Marcato
 
 //! g="8Dio/Lacrimosa" n="Sustain"
 //! m="Sequencer for easy use"
-Bank 29 31 8Dio Lacrimosa Sustain
+//! id=40c94a55-0127-4ac1-a8d2-e704b066c910
+Bank * * 8Dio Lacrimosa Sustain
 //! c=long-light i=note-whole o=note:12
 24 Ah
 //! c=long-light i=note-whole o=note:13
@@ -87,7 +90,8 @@ Bank 29 31 8Dio Lacrimosa Sustain
 
 //! g="8Dio/Lacrimosa" n="Multi Vowels"
 //! m="Sequencer for easy use"
-Bank 29 32 8Dio Lacrimosa Multi Vowels
+//! id=09b27347-0bcf-428b-a566-102afbe437f9
+Bank * * 8Dio Lacrimosa Multi Vowels
 //! c=long-light i=legato o=note:12
 24 Er-So-Noh
 //! c=long-light i=legato o=note:13
@@ -131,7 +135,8 @@ Bank 29 32 8Dio Lacrimosa Multi Vowels
 
 //! g="8Dio/Lacrimosa" n="Staccato"
 //! m="Sequencer for easy use"
-Bank 29 33 8Dio Lacrimosa Staccato
+//! id=af6a76d9-615e-4906-bd8f-9de99994bb66
+Bank * * 8Dio Lacrimosa Staccato
 //! c=short-light i=staccato o=note:12
 24 Ah
 //! c=short-light i=staccato o=note:13
@@ -180,7 +185,8 @@ Bank 29 33 8Dio Lacrimosa Staccato
 46 Ztoh
 
 //! g="8Dio/Lacrimosa" n="Legato"
-Bank 29 34 8Dio Lacrimosa Legato
+//! id=84bcc459-7feb-41ec-8662-644fe49e5a7f
+Bank * * 8Dio Lacrimosa Legato
 //! c=legato i=legato o=note:24
 24 Ah
 //! c=legato i=legato o=note:25
@@ -191,7 +197,8 @@ Bank 29 34 8Dio Lacrimosa Legato
 27 Uh
 
 //! g="8Dio/Lacrimosa" n="Effects"
-Bank 29 35 8Dio Lacrimosa Effects
+//! id=3437cd4b-49c5-4d06-bd19-fdaafded6fc9
+Bank * * 8Dio Lacrimosa Effects
 //! c=fx i=harmonics o=note:24
 24 Whistle
 //! c=fx i=alt-x o=note:25
@@ -200,7 +207,8 @@ Bank 29 35 8Dio Lacrimosa Effects
 26 Fx
 
 //! g="8Dio/Lacrimosa" n="Non Tonal"
-Bank 29 36 8Dio Lacrimosa Non Tonal
+//! id=bc5d53be-7516-4ef4-8123-798edd32dea9
+Bank * * 8Dio Lacrimosa Non Tonal
 //! c=fx i=fx o=note:24
 24 Slow
 //! c=fx i=fx o=note:25

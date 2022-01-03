@@ -4,7 +4,8 @@
 
 //! g="Orchestral Tools/Berlin Strings" n="Violins 1"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 24 111 OT-BS - V1
+//! id=ca14f0d5-c767-4f9b-ab9d-42274041c803
+Bank * * OT-BS - V1
 //! c=legato i=note-whole  o=note:24
 1 Sustain Imm Romantic vibrato - C1
 //! c=legato i=note-whole  o=note:25
@@ -30,7 +31,8 @@ Bank 24 111 OT-BS - V1
 
 //! g="Orchestral Tools/Berlin Strings" n="Violins 2"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 24 112 OT-BS - V2
+//! id=df58d9f0-faa1-444a-9c74-8a212013dd9f
+Bank * * OT-BS - V2
 //! c=legato i=note-whole o=note:24
 1 Sustain Imm Romantic vibrato  - C1
 //! c=legato i=note-whole  o=note:25
@@ -52,7 +54,8 @@ Bank 24 112 OT-BS - V2
 
 //! g="Orchestral Tools/Berlin Strings" n="Violas"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 24 113 OT-BS - Va
+//! id=447e0461-0326-4fc2-ba12-25d90050d038
+Bank * * OT-BS - Va
 //! c=legato i=note-whole o=note:24
 1 Sustain Imm Romantic vibrato - C1
 //! c=legato i=note-whole  o=note:25
@@ -76,7 +79,8 @@ Bank 24 113 OT-BS - Va
 
 //! g="Orchestral Tools/Berlin Strings" n="Celli"
 //! m="Using custom keyswitch (24 to 35)"
-Bank 24 114 OT-BS - Cello
+//! id=b69a92fe-50a2-4029-80be-f5ff3e701a46
+Bank * * OT-BS - Cello
 //! c=legato i=note-whole o=note:24
 1 Sustain Imm Romantic vibrato - C1
 //! c=legato i=note-whole  o=note:25
@@ -98,7 +102,8 @@ Bank 24 114 OT-BS - Cello
 
 //! g="Orchestral Tools/Berlin Strings" n="Basses"
 //! m="Using custom keyswitch (96 to 107)"
-Bank 24 115 OT-BS - Basses
+//! id=838616fa-5ef5-4bb0-af8d-93b5fd3732a1
+Bank * * OT-BS - Basses
 //! c=legato i=note-whole o=note:96
 1 Sustain Imm Romantic vibrato - C7
 //! c=legato i=note-whole  o=note:97
@@ -122,7 +127,8 @@ Bank 24 115 OT-BS - Basses
 
 //! g="Orchestral Tools/Berlin Strings" n="Basses Dynamics"
 //! m="Using custom keyswitch (84 to 95)"
-Bank 24 116 OT-BS - Basses Dynamics
+//! id=55246569-4241-49f1-a6de-5cbbfba55de7
+Bank * * OT-BS - Basses Dynamics
 //! c=legato i=note-whole o=note:84
 1 << >> - C6
 //! c=legato i=note-whole  o=note:85
@@ -152,7 +158,8 @@ Bank 24 116 OT-BS - Basses Dynamics
 
 //! g="Orchestral Tools/Berlin Strings" n="Extras"
 //! m="CC messages like con sordino, legato..."
-Bank 24 117 OT-BS - Extras
+//! id=765d28a1-225b-4d97-81d2-b1edd33e119b
+Bank * * OT-BS - Extras
 //! c=default i=legato g=1 o=cc:30,127
 101 Legato On
 //! c=default i=legato g=1 o=cc:30,0
@@ -172,7 +179,8 @@ Bank 24 117 OT-BS - Extras
 
 //! g="Orchestral Tools/Berlin Strings" n="Extras 2"
 //! m="CC messages like con sordino, legato..."
-Bank 24 118 OT-BS - Extras 2
+//! id=f766d200-012c-47a5-b57f-f1398feb04fc
+Bank * * OT-BS - Extras 2
 //! c=default i=fx o=cc:54,127
 109 Cutoff Filter On
 //! c=default i=fx o=cc:54,0

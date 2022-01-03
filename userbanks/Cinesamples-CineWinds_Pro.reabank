@@ -5,7 +5,8 @@
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Alto Flute"
-Bank 21 122 CWP - Alto Flute
+//! id=0d80cac5-1892-46a9-9a95-f58553faf32f
+Bank * * CWP - Alto Flute
 
 //! c=legato i=legato o=note:36
 20 legato
@@ -26,7 +27,8 @@ Bank 21 122 CWP - Alto Flute
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Bass Flute"
-Bank 21 123 CWP - Bass Flute
+//! id=49f7399c-2c51-4eb1-a161-5b6733021438
+Bank * * CWP - Bass Flute
 
 //! c=legato i=legato o=note:36
 20 legato
@@ -44,16 +46,19 @@ Bank 21 123 CWP - Bass Flute
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - English Horn"
 //! clone="Cinesamples/CineWinds Pro/CWP - Alto Flute"
-Bank 21 124 CWP - English Horn
+//! id=a1eaf529-781c-4555-846e-1c052e1259e1
+Bank * * CWP - English Horn
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Eb Clarinet"
 //! clone="Cinesamples/CineWinds Pro/CWP - Alto Flute"
-Bank 21 125 CWP - Eb Clarinet
+//! id=6f52dbca-1383-4bf5-abac-953118438b43
+Bank * * CWP - Eb Clarinet
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Bass Clarinet"
-Bank 21 126 CWP - Bass Clarinet
+//! id=5972bf72-3329-4040-bd36-9518687983a1
+Bank * * CWP - Bass Clarinet
 
 //! c=legato i=legato o=note:24
 20 legato
@@ -74,7 +79,8 @@ Bank 21 126 CWP - Bass Clarinet
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Contrabasson"
-Bank 21 127 CWP - Contrabasson
+//! id=3c613104-5743-47b1-9f71-6a45f00374ea
+Bank * * CWP - Contrabasson
 
 //! c=legato i=legato o=note:24
 20 legato
@@ -91,7 +97,8 @@ Bank 21 127 CWP - Contrabasson
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Contrabass Clarinet"
-Bank 22 1 CWP - Contrabass Clarinet
+//! id=69f50579-4ffa-40ef-8cbd-e779658d31eb
+Bank * * CWP - Contrabass Clarinet
 
 //! c=legato i=legato o=note:24
 20 legato
@@ -106,7 +113,8 @@ Bank 22 1 CWP - Contrabass Clarinet
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Full Ensemble PRO"
-Bank 22 2 CWP - Full Ensemble PRO
+//! id=dd3ad975-0752-4d06-ad46-b586002e664e
+Bank * * CWP - Full Ensemble PRO
 
 //! c=long i=note-whole o=note:12
 1 sustain
@@ -123,7 +131,8 @@ Bank 22 2 CWP - Full Ensemble PRO
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Irish Flute"
-Bank 22 3 CWP - Irish Flute
+//! id=8a2741da-ff87-43f1-960f-12e8ddae9e38
+Bank * * CWP - Irish Flute
 
 //! c=legato i=legato o=note:29
 20 legato
@@ -145,11 +154,13 @@ Bank 22 3 CWP - Irish Flute
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Penny Whistle"
 //! clone="Cinesamples/CineWinds Pro/CWP - Irish Flute"
-Bank 22 4 CWP - Penny Whistle
+//! id=4856f931-64b4-49d1-8211-58d92bfd22f6
+Bank * * CWP - Penny Whistle
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Soprano Recorder"
-Bank 22 5 CWP - Soprano Recorder
+//! id=2aec44ff-f81c-4fd4-bfc5-065b86a4580e
+Bank * * CWP - Soprano Recorder
 
 //! c=legato i=legato o=note:29
 20 legato
@@ -171,11 +182,13 @@ Bank 22 5 CWP - Soprano Recorder
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Tenor Recorder"
 //! clone="Cinesamples/CineWinds Pro/CWP - Soprano Recorder"
-Bank 22 6 CWP - Tenor Recorder
+//! id=e0d1f9cb-b95c-4df0-b102-a26cf9c74563
+Bank * * CWP - Tenor Recorder
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Renaissance Flute"
-Bank 22 7 CWP - Renaissance Flute
+//! id=67cf0dba-be48-4d28-a512-a6d781626a67
+Bank * * CWP - Renaissance Flute
 
 //! c=legato i=legato o=note:29
 20 legato
@@ -192,7 +205,8 @@ Bank 22 7 CWP - Renaissance Flute
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Baroque Flute"
-Bank 22 8 CWP - Baroque Flute
+//! id=3821ff2b-b692-4e3c-ab01-e31b85bb664d
+Bank * * CWP - Baroque Flute
 
 //! c=legato i=legato o=note:29
 20 legato
@@ -212,11 +226,13 @@ Bank 22 8 CWP - Baroque Flute
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Soprano Shawm"
 //! clone="Cinesamples/CineWinds Pro/CWP - Renaissance Flute"
-Bank 22 9 CWP - Soprano Shawm
+//! id=caf1693d-8e4c-4560-82da-240ef5c214e3
+Bank * * CWP - Soprano Shawm
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Border Pipes"
-Bank 22 10 CWP - Border Pipes
+//! id=2d8b5968-c394-45ff-b1e1-eb9f46be0036
+Bank * * CWP - Border Pipes
 
 //! c=legato i=legato
 20 legato
@@ -231,7 +247,8 @@ Bank 22 10 CWP - Border Pipes
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Renaissance Pipes"
-Bank 22 11 CWP - Renaissance Pipes
+//! id=b6bae75e-6f85-4df7-8b77-48b95ad82715
+Bank * * CWP - Renaissance Pipes
 
 //! c=legato i=legato
 20 legato
@@ -249,11 +266,13 @@ Bank 22 11 CWP - Renaissance Pipes
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Uilleann Pipes"
 //! clone="Cinesamples/CineWinds Pro/CWP - Renaissance Pipes"
-Bank 22 12 CWP - Uilleann Pipes
+//! id=5e8ac31d-7a79-4866-9e84-6a0f9660a8da
+Bank * * CWP - Uilleann Pipes
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Pro" n="CWP - Duduk"
-Bank 22 13 CWP - Duduk
+//! id=a850da7f-597a-4fbd-95b2-57649b79a2f4
+Bank * * CWP - Duduk
 
 //! c=legato i=legato o=note:29
 20 legato

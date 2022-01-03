@@ -1,5 +1,6 @@
 //----------------------------------------------------------------------------
 //! g="VirHarmonic/Bohemian Violin" n="Expansion 1" off=20
+//! id=00000000-7c36-4e01-8f6e-eb036878d48c
 Bank 70 10 Bohemian Violin Exp1
 
 //! c=long-dark i=note-whole g=2 f=toggle o=note:35
@@ -17,7 +18,7 @@ Bank 70 10 Bohemian Violin Exp1
 
 //! c=long i=decrescendo o=note-hold:27
 103 diminuendo
-//! c=long i=marcato o=note-hold:28
+//! c=long i=marcato-half o=note-hold:28
 9 marcato
 
 //! c=legato i=legato-fast o=note-hold:30

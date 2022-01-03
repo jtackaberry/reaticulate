@@ -85,7 +85,8 @@
 // *******
 
 //! g="VSL - WOODWINDS/Flutes" n="Flute I"
-Bank 28 107 Flute I
+//! id=638df856-9f35-4af7-91ec-66b357373e15
+Bank * * Flute I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -287,7 +288,8 @@ Bank 28 107 Flute I
 // ********
 
 //! g="VSL - WOODWINDS/Flutes" n="Flute II"
-Bank 28 108 Flute II
+//! id=7e9bc1df-da25-436b-9096-a2d5227fc615
+Bank * * Flute II
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -449,7 +451,8 @@ Bank 28 108 Flute II
 // **********
 
 //! g="VSL - WOODWINDS/Flutes" n="Alto Flute"
-Bank 28 109 Alto Flute
+//! id=6cc98e09-bce4-4022-a927-2efcb9f29de4
+Bank * * Alto Flute
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -573,7 +576,8 @@ Bank 28 109 Alto Flute
 // *************
 
 //! g="VSL - WOODWINDS/Flutes" n="Piccolo Flute"
-Bank 28 110 Piccolo Flute
+//! id=c10fe239-fb2c-4efb-adc2-0c30e3d09e2a
+Bank * * Piccolo Flute
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -725,7 +729,8 @@ Bank 28 110 Piccolo Flute
 // **********
 
 //! g="VSL - WOODWINDS/Flutes" n="Bass Flute"
-Bank 28 111 Bass Flute
+//! id=c5bb1455-658e-4d5b-882f-3bfb56e6f9b9
+Bank * * Bass Flute
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -871,7 +876,8 @@ Bank 28 111 Bass Flute
 // ************
 
 //! g="VSL - WOODWINDS/Oboes" n="Oboe, French"
-Bank 28 112 Oboe, French
+//! id=e84d5a16-7117-40bf-a8da-360422dc40e3
+Bank * * Oboe, French
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1029,7 +1035,8 @@ Bank 28 112 Oboe, French
 // **************
 
 //! g="VSL - WOODWINDS/Oboes" n="Oboe, Viennese"
-Bank 28 113 Oboe, Viennese
+//! id=fc898222-df06-453e-b9fc-b6b8b0fbbc3f
+Bank * * Oboe, Viennese
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1209,7 +1216,8 @@ Bank 28 113 Oboe, Viennese
 // *************
 
 //! g="VSL - WOODWINDS/Oboes" n="Oboe, d'Amore"
-Bank 28 114 Oboe, d'Amore
+//! id=dbd50706-f242-4520-b88a-c4adc57200a4
+Bank * * Oboe, d'Amore
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1355,7 +1363,8 @@ Bank 28 114 Oboe, d'Amore
 // ********************
 
 //! g="VSL - WOODWINDS/Oboes" n="English Horn, French"
-Bank 28 115 English Horn, French
+//! id=d289406b-fd5f-4c57-ab16-4084ae760faf
+Bank * * English Horn, French
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1499,7 +1508,8 @@ Bank 28 115 English Horn, French
 // **********************
 
 //! g="VSL - WOODWINDS/Oboes" n="English Horn, Viennese"
-Bank 28 116 English Horn, Viennese
+//! id=1681c716-f3b9-4025-8a69-eabc951d8c5e
+Bank * * English Horn, Viennese
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1665,7 +1675,8 @@ Bank 28 116 English Horn, Viennese
 // ***********
 
 //! g="VSL - WOODWINDS/Oboes" n="Heckelphone"
-Bank 28 117 Heckelphone
+//! id=0bd073b7-b1a3-42cd-b0d2-8494f10657b4
+Bank * * Heckelphone
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -1766,7 +1777,8 @@ Bank 28 117 Heckelphone
 // *************
 
 //! g="VSL - WOODWINDS/Clarinets" n="Clarinet Bb I"
-Bank 28 118 Clarinet Bb I
+//! id=ee73163a-841c-4847-aa95-97c566e6a2a9
+Bank * * Clarinet Bb I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2018,7 +2030,8 @@ Bank 28 118 Clarinet Bb I
 // **************
 
 //! g="VSL - WOODWINDS/Clarinets" n="Clarinet Bb II"
-Bank 28 119 Clarinet Bb II
+//! id=61ecc326-3dea-4a42-b23d-d891b756bfdc
+Bank * * Clarinet Bb II
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (NoVib)
@@ -2176,7 +2189,8 @@ Bank 28 119 Clarinet Bb II
 // ***********
 
 //! g="VSL - WOODWINDS/Clarinets" n="Clarinet Eb"
-Bank 28 120 Clarinet Eb
+//! id=6983b6e3-4865-4b84-aa65-5e460d6a0788
+Bank * * Clarinet Eb
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2350,7 +2364,8 @@ Bank 28 120 Clarinet Eb
 // *************
 
 //! g="VSL - WOODWINDS/Clarinets" n="Bass Clarinet"
-Bank 28 121 Bass Clarinet
+//! id=2bef5ced-bcbf-41d4-8f78-b64690feead6
+Bank * * Bass Clarinet
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2450,7 +2465,8 @@ Bank 28 121 Bass Clarinet
 // ***********
 
 //! g="VSL - WOODWINDS/Clarinets" n="Basset Horn"
-Bank 28 122 Basset Horn
+//! id=8d658ee8-c663-4789-a415-32fb5adf2851
+Bank * * Basset Horn
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2576,7 +2592,8 @@ Bank 28 122 Basset Horn
 // *******************
 
 //! g="VSL - WOODWINDS/Clarinets" n="Contrabass Clarinet"
-Bank 28 123 Contrabass Clarinet
+//! id=b012bc1e-b6d1-4174-ad9e-2421bf1d9195
+Bank * * Contrabass Clarinet
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2668,7 +2685,8 @@ Bank 28 123 Contrabass Clarinet
 // *********
 
 //! g="VSL - WOODWINDS/Bassoons" n="Bassoon I"
-Bank 28 124 Bassoon I
+//! id=d2c8fb26-4bde-409d-9737-a1db6d374964
+Bank * * Bassoon I
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2866,7 +2884,8 @@ Bank 28 124 Bassoon I
 // **********
 
 //! g="VSL - WOODWINDS/Bassoons" n="Bassoon II"
-Bank 28 125 Bassoon II
+//! id=202eee47-d258-4b81-b132-6676405c3683
+Bank * * Bassoon II
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -2972,7 +2991,8 @@ Bank 28 125 Bassoon II
 //*************
 
 //! g="VSL - WOODWINDS/Bassoons" n="Contrabassoon"
-Bank 28 126 Contrabassoon
+//! id=9eb5cfde-08f5-4f08-b434-340dc252af69
+Bank * * Contrabassoon
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -3126,7 +3146,8 @@ Bank 28 126 Contrabassoon
 // ***********
 
 //! g="VSL - WOODWINDS/Saxophones" n="Soprano Sax"
-Bank 28 127 Soprano Sax
+//! id=dbd7c03e-c151-49ca-bf79-1d4f35f46308
+Bank * * Soprano Sax
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -3301,7 +3322,8 @@ Bank 28 127 Soprano Sax
 // ********
 
 //! g="VSL - WOODWINDS/Saxophones" n="Alto Sax"
-Bank 29 1 Alto Sax
+//! id=22dfbc7b-4b6d-4627-bf82-1ebc5d9a581e
+Bank * * Alto Sax
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -3509,7 +3531,8 @@ Bank 29 1 Alto Sax
 // *********
 
 //! g="VSL - WOODWINDS/Saxophones" n="Tenor Sax"
-Bank 29 2 Tenor Sax
+//! id=8ef95d9f-2a1a-4ba3-824a-475653a6bd18
+Bank * * Tenor Sax
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -3685,7 +3708,8 @@ Bank 29 2 Tenor Sax
 // ************
 
 //! g="VSL - WOODWINDS/Saxophones" n="Baritone Sax"
-Bank 29 3 Baritone Sax
+//! id=63ebcfee-bcc4-4a86-a3e6-dfdcd5a2fcb1
+Bank * * Baritone Sax
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -3861,7 +3885,8 @@ Bank 29 3 Baritone Sax
 // ********
 
 //! g="VSL - WOODWINDS/Saxophones" n="Bass Sax"
-Bank 29 4 Bass Sax
+//! id=3554ffa1-1a80-4648-bbc8-e731c9292f0f
+Bank * * Bass Sax
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4011,7 +4036,8 @@ Bank 29 4 Bass Sax
 // ****************
 
 //! g="VSL - WOODWINDS/Recorders" n="Soprano Recorder"
-Bank 29 5 Soprano Recorder
+//! id=1ad057e9-f1c3-4f45-bce9-de2225527a7f
+Bank * * Soprano Recorder
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -4075,7 +4101,8 @@ Bank 29 5 Soprano Recorder
 // *************
 
 //! g="VSL - WOODWINDS/Recorders" n="Alto Recorder"
-Bank 29 6 Alto Recorder
+//! id=bf4ad173-06f5-45f5-83c3-bfe8eb5d5e0b
+Bank * * Alto Recorder
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -4139,7 +4166,8 @@ Bank 29 6 Alto Recorder
 // **************
 
 //! g="VSL - WOODWINDS/Recorders" n="Tenor Recorder"
-Bank 29 7 Tenor Recorder
+//! id=1bae0c3b-64c8-4aa5-9b6a-c82962efcf28
+Bank * * Tenor Recorder
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -4203,7 +4231,8 @@ Bank 29 7 Tenor Recorder
 // *************
 
 //! g="VSL - WOODWINDS/Recorders" n="Bass Recorder"
-Bank 29 8 Bass Recorder
+//! id=91e4eeaf-669a-4fa1-aa2b-e47ba5852537
+Bank * * Bass Recorder
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato (Vib X-Fade)
@@ -4269,7 +4298,8 @@ Bank 29 8 Bass Recorder
 //************
 
 //! g="VSL - WOODWINDS/Ensemble" n="Flutes - a3"
-Bank 29 9 Flutes a3
+//! id=28aba427-a044-4990-af16-76dd8fe13e43
+Bank * * Flutes a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4355,7 +4385,8 @@ Bank 29 9 Flutes a3
 //**********
 
 //! g="VSL - WOODWINDS/Ensemble" n="Oboes - a3"
-Bank 29 10 Oboes a3
+//! id=18fafd4e-64b9-413c-8de8-f44f95f61629
+Bank * * Oboes a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4435,7 +4466,8 @@ Bank 29 10 Oboes a3
 //**************
 
 //! g="VSL - WOODWINDS/Ensemble" n="Clarinets - a3"
-Bank 29 11 Clarinets a3
+//! id=998f03d6-b2b4-432c-b118-393d5d5e9f7d
+Bank * * Clarinets a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
@@ -4515,7 +4547,8 @@ Bank 29 11 Clarinets a3
 //*************
 
 //! g="VSL - WOODWINDS/Ensemble" n="Bassoons - a3"
-Bank 29 12 Bassoons a3
+//! id=87b57e24-cabd-4f4e-a67f-8b252e4e4f8a
+Bank * * Bassoons a3
 
 //! c=legato-dark i=phrase o=note:0/note:12/note:113
 1 SPEED - Legato
