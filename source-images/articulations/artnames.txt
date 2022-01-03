@@ -1,5 +1,5 @@
 #
-# Specification for process.py.
+# Specification for generate.py.
 #
 # Input images are prefixed with '#<'.  New rows in the source image are denoted by
 # a line starting with '#|'.  All other lines starting with '#' are ignored.

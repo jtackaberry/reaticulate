@@ -83,8 +83,8 @@ function crc64(s)
     local crc =  0xfffffffffffffff
     for i = 1, #s do
         local byte = string.byte(s, i)
-		local t = ((crc >> 56) ~ byte) & 0xff
-		crc = (lut[t + 1] ~ (crc << 8))
+        local t = ((crc >> 56) ~ byte) & 0xff
+        crc = (lut[t + 1] ~ (crc << 8))
     end
     return crc
 end
