@@ -276,8 +276,40 @@ function screen.init()
     end
     section:add(screen.cb_smoothscroll)
 
+    local row = add_row(section, "UI Scale:", 85, 2)
+    row:attr('tooltip', "Adjusts the scale of Reaticulate's UI. You can also use ctrl-mousewheel.")
+    local menu = row:add(rtk.OptionMenu{
+        menu={
+            {'50%', id=0.5},
+            {'70%', id=0.7},
+            {'80%', id=0.8},
+            {'90%', id=0.9},
+            {'100%', id=1.0},
+            {'110%', id=1.1},
+            {'120%', id=1.2},
+            {'130%', id=1.3},
+            {'150%', id=1.5},
+            {'170%', id=1.7},
+            {'200%', id=2.0},
+            {'250%', id=2.5},
+            {'300%', id=2.7},
+        },
+        selected=rtk.scale.user,
+    })
+    menu.onchange = function(menu, item)
+        if item and item.id ~= rtk.scale.user then
+            rtk.scale.user = tonumber(item.id)
+            app.config.scale = rtk.scale.user
+            app:save_config()
+            rtk.defer(function()
+                menu:scrolltoview(50, nil, nil, false)
+            end)
+        end
+    end
+    screen.ui_scale_menu = menu
+
     local row = add_row(section, "Background:", 85)
-    local text = add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'med-edit', true,
+    add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'med-edit', true,
         function(text, button)
             local cfgval = text.value
             if text.value ~= app.config.bg then
@@ -432,6 +464,15 @@ function screen.init()
     end
 end
 
+-- Apart from being called by screen.update(), this is also called by App:zoom() in case
+-- the user adjusts the scale through external means.
+function screen.update_ui_scale_menu()
+    screen.ui_scale_menu:select(rtk.scale.user)
+    if not screen.ui_scale_menu.selected_id then
+        screen.ui_scale_menu:attr('label', 'Custom')
+    end
+end
+
 function screen.update()
     -- There's no API to determine which MIDI devices are enabled for output, so
     -- read the config file directly.  The 'midiouts' parameter is a bitmap by
@@ -446,6 +487,8 @@ function screen.update()
             menu[#menu+1] = {name, id=tostring(output)}
         end
     end
+
+    screen.update_ui_scale_menu()
     screen.midi_device_menu:attr('menu', menu)
     screen.midi_device_menu:select(tostring(app.config.cc_feedback_device) or 1)
     screen.cb_insert_at_note_selection:attr('value', app.config.art_insert_at_selected_notes, false)

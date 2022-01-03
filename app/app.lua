@@ -1774,6 +1774,13 @@ function App:build_frame()
     end
 end
 
+function App:zoom(increment)
+    BaseApp.zoom(self, increment)
+    if self:current_screen() == self.screens.settings then
+        self.screens.settings.update_ui_scale_menu()
+    end
+end
+
 -- Generates a random UUID4 for the current project, which is used to detect
 -- project changes (which includes reopening the same project).  The new project
 -- cookie is stored int he project via SetProjExtState(), but this *doesn't* dirty
