@@ -32,9 +32,10 @@ local screen = {
     -- rtk.Font instance for channel overlays
     button_font = nil,
 
-    -- If true, when enter is pressed in the filter box to activate an
-    -- articulation, the last non-Reaticulate window is refocused.  This is set
-    -- to true when the "Focus articulation filter" action is activated.
+    -- If not nil, is the hwnd of the window to be refocused after the user hits either
+    -- enter or escape on the filter entry.  This is set to the current non-Reaticulate
+    -- window (if applicable) by screen.focus_filter() for the "Focus articulation filter"
+    -- action. articulation, the last non-Reaticulate window is refocused.
     filter_refocus_on_activation = false,
     selected_articulation = nil,
 
@@ -113,23 +114,26 @@ local function handle_filter_keypress(self, event)
         return false
     elseif event.keycode == rtk.keycodes.ESCAPE then
         if screen.filter_refocus_on_activation then
-            app:refocus()
+            app:refocus(screen.filter_refocus_on_activation)
         end
         screen.clear_filter()
         return true
-    elseif event.keycode == rtk.keycodes.ENTER then
+    elseif event.keycode == rtk.keycodes.ENTER or event.keycode == rtk.keycodes.INSERT then
+        local force_insert = event.shift or event.alt or event.ctrl or event.keycode == rtk.keycodes.INSERT
         if self.value ~= '' then
             if screen.selected_articulation then
-                app:activate_selected_articulation(nil, screen.filter_refocus_on_activation)
+                app:activate_selected_articulation(nil, nil, force_insert)
             else
                 local art = screen.get_firstlast_articulation()
                 if art then
-                    app:activate_articulation(art, screen.filter_refocus_on_activation)
+                    app:activate_articulation(art, nil, force_insert)
                 end
             end
-        elseif screen.filter_refocus_on_activation then
+        end
+        if screen.filter_refocus_on_activation then
             -- No articulation activation needed but we do need to refocus still.
-            app:refocus()
+            app:refocus(screen.filter_refocus_on_activation)
+            screen.filter_refocus_on_activation = nil
         end
         rtk.defer(function()
             screen.clear_selected_articulation()
@@ -185,7 +189,8 @@ end
 
 function screen.onartclick(art, event)
     if event.button == rtk.mouse.BUTTON_LEFT then
-        app:activate_articulation(art, true, false)
+        -- Force insert when alt modifier is pressed
+        app:activate_articulation(art, true, event.alt)
     elseif event.button == rtk.mouse.BUTTON_MIDDLE then
         -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
         -- rfx.push_state(rfx.current.track)
@@ -410,7 +415,7 @@ end
 
 function screen.focus_filter()
     screen.filter_entry:focus()
-    screen.filter_refocus_on_activation = not app.window.in_window
+    screen.filter_refocus_on_activation = not app.window.in_window and rtk.focused_hwnd
     return app.window:focus()
 end
 

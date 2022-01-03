@@ -1041,14 +1041,14 @@ end
 
 -- Activates whatever articulation is currently selected in the banklist screen (by means
 -- of the banklist's select_relative_articulation() function).
-function App:activate_selected_articulation(channel, refocus)
+function App:activate_selected_articulation(channel, refocus, force_insert)
     local banklist = self.screens.banklist
     local current = banklist.get_selected_articulation()
     if not current then
         current = self.last_activated_articulation
     end
     if current then
-        self:activate_articulation(current, refocus, false, channel)
+        self:activate_articulation(current, refocus, force_insert, channel)
         rtk.defer(banklist.clear_filter)
     end
 end
