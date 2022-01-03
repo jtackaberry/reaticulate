@@ -39,11 +39,41 @@ function screen.init()
         reaper.Undo_BeginBlock()
         -- First clear any existing track data that might exist from a previous instance
         reaper.GetSetMediaTrackInfo_String(app.track, 'P_EXT:reaticulate', '', true)
-        local fx = reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, 1)
-        -- Hide window if floating
-        reaper.TrackFX_Show(app.track, fx, 2)
-        -- Move FX to first slot
-        reaper.TrackFX_CopyToTrack(app.track, fx, app.track, 0, true)
+        -- -1000 requests the first FX slot.  This was added some time in REAPER 6.x
+        -- (unclear specifically when), but on older versions it will simply create a new
+        -- instance at the end, which we'll move to the top in the code below.
+        local fx = reaper.TrackFX_AddByName(app.track, 'JS:Reaticulate', 0, -1000)
+        if fx ~= -1 and not rfx.validate(app.track, fx) then
+            -- Whatever was added, this isn't an active RFX.  REAPER will add unknown FX
+            -- as bypassed rather than failing.  Let's try again, except adding the FX by
+            -- filename, in case it wasn't properly registered by FX name.
+            reaper.TrackFX_Delete(app.track, fx)
+            fx = reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, -1000)
+            if fx ~= -1 and not rfx.validate(app.track, fx) then
+                -- That didn't work either.  Reaticulate wasn't installed properly, or the
+                -- JSFX has an error.
+                reaper.TrackFX_Delete(app.track, fx)
+                fx = -1
+            end
+        end
+        if fx == -1 then
+            reaper.MB(
+                "The Reaticulate JSFX could not be found in REAPER's Effects folder, " ..
+                ' which means Reaticulate was not properly installed.  Please try ' ..
+                ' reinstalling from ReaPack.\n\nVisit https://reaticulate.com/ for more info.',
+                'Reaticulate installation error',
+                0
+            )
+        else
+            -- Hide window if floating
+            reaper.TrackFX_Show(app.track, fx, 2)
+            if fx > 0 then
+                -- FX position isn't the first slot, so we need to explicitly move it.
+                -- This can happen on older versions of REAPER that don't support
+                -- specifying the FX position in TrackFX_AddByName()
+                reaper.TrackFX_CopyToTrack(app.track, fx, app.track, 0, true)
+            end
+        end
         reaper.Undo_EndBlock("Add Reaticulate FX", UNDO_STATE_FX)
         reaper.PreventUIRefresh(-1)
         rfx.current:sync(app.track, true)

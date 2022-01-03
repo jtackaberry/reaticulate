@@ -338,7 +338,7 @@ function rfx.validate(track, fx)
     if reaper.GetMediaTrackInfo_Value(track, "I_FXEN") ~= 1 then
         return nil, nil, nil, nil, nil, rfx.ERROR_TRACK_FX_BYPASSED
     end
-    if not reaper.TrackFX_GetEnabled(track, fx) then
+    if not reaper.TrackFX_GetEnabled(track, fx) or reaper.TrackFX_GetOffline(track, fx) then
         return nil, nil, nil, nil, nil, rfx.ERROR_RFX_BYPASSED
     end
 
