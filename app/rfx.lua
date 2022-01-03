@@ -559,10 +559,12 @@ function rfx._queue_commit(track, fx, appdata, gmem_index)
     if rfx.rfx_awaiting_commit == nil then
         rfx.rfx_awaiting_commit = {[gmem_index] = {track, fx, appdata}}
     else
-        if rfx.rfx_awaiting_commit[gmem_index] == nil then
+        local t = rfx.rfx_awaiting_commit[gmem_index]
+        if t == nil then
             rfx.rfx_awaiting_commit[gmem_index] = {track, fx, appdata}
-        elseif appdata then
-            rfx.rfx_awaiting_commit[gmem_index][3] = appdata
+        else
+            t[2] = fx or t[2]
+            t[3] = appdata or t[3]
         end
     end
 end
@@ -583,17 +585,22 @@ function rfx._opcode_commit(track, fx, gmem_index)
     rfx.rfx_awaiting_commit[gmem_index] = nil
 end
 
--- Commit all enqueued opcodes across all tracks.
+-- Commit all enqueued opcodes across all tracks, as well as any appdata that's pending
+-- for write.
 function rfx.opcode_commit_all()
     if rfx.rfx_awaiting_commit ~= nil then
         for gmem_index, trackfx in pairs(rfx.rfx_awaiting_commit) do
             local track, fx, appdata = table.unpack(trackfx)
             if reaper.ValidatePtr2(0, track, "MediaTrack*") then
-                if appdata and appdata ~= 0 then
-                    rfx._write_appdata(track, fx, appdata, gmem_index)
-                    reaper.MarkProjectDirty(0)
+                if appdata then
+                    rfx._write_appdata(track, appdata)
                 end
-                rfx._opcode_commit(track, fx, gmem_index)
+                if fx then
+                    -- There are actual RFX opcodes for this track, so commit.  It's
+                    -- possible for this to be nil if only track appdata was queued for
+                    -- write.
+                    rfx._opcode_commit(track, fx, gmem_index)
+                end
             end
         end
         rfx.rfx_awaiting_commit = nil
@@ -614,10 +621,12 @@ function rfx.opcode_flush(track, fx, gmem_index, opcode_param)
 end
 
 -- Serialize and store the given appdata table in the RFX.
-function rfx._write_appdata(track, fx, appdata, gmem_index, opcode_param)
+function rfx._write_appdata(track, appdata)
     -- '2' is the appdata serialization version, which allows us to rev the format.
     local data = '2' .. (appdata and json.encode(appdata) or '')
     reaper.GetSetMediaTrackInfo_String(track, 'P_EXT:reaticulate', data, true)
+    reaper.MarkProjectDirty(0)
+    log.info('rfx: wrote %s bytes of track appdata', #data)
 end
 
 -- Stores automation state of the given track as well as last touched FX to
@@ -1690,12 +1699,13 @@ end
 
 
 function rfx.Track:queue_write_appdata()
-    rfx._queue_commit(self.track, self.fx, self.appdata, self.gmem_index)
+    -- Pass nil for fx as we don't need to communicate with the RFX for appdata.
+    rfx._queue_commit(self.track, nil, self.appdata, self.gmem_index)
 end
 
 -- Immediately writes appdata
 function rfx.Track:_write_appdata(appdata)
-    rfx._write_appdata(self.track, self.fx, appdata or self.appdata, self.gmem_index, self.params.opcode)
+    rfx._write_appdata(self.track, appdata or self.appdata)
 end
 
 -- Reads the appdata table previously stored with rfx._write_appdata()
