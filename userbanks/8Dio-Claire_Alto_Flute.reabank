@@ -5,6 +5,7 @@
 //! g="8Dio/Claire Alto Flute" n="Legato"
 //! chase=1,11
 
+//! id=151ad0c8-17b8-47d4-95b1-f32fcedb550d
 Bank 20 14 Legato
 
 //! c=legato i=legato o=note:24
@@ -33,6 +34,7 @@ Bank 20 14 Legato
 //! g="8Dio/Claire Alto Flute" n="Trills"
 //! chase=1,11
 
+//! id=e61491d8-1468-4717-99b3-51e08d5c545f
 Bank 20 15 Trills
 
 //! c=long i=trill-min3 o=note:28
@@ -46,6 +48,7 @@ Bank 20 15 Trills
 //! g="8Dio/Claire Alto Flute" n="Bonus"
 //! chase=1,11
 
+//! id=596bc2f6-3e1a-453d-bc93-15a38aaf496e
 Bank 20 16 Bonus
 
 //! c=legato i=legato-runs o=note:24

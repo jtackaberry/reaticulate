@@ -3,6 +3,7 @@
 //
 //! g="Spitfire/Keyboards/Organ" n="Swell Division Presets"
 //! m="Set patch to unlocked artic. at C0-F0."
+//! id=fc3dd506-9657-49dd-9f40-0c4b8c574284
 Bank 27 12 SUCO - Swell Division
 //! c=default i=note-whole o=note:26/note:27
 1 Celeste (p)
@@ -31,6 +32,7 @@ Bank 27 12 SUCO - Swell Division
 
 //! g="Spitfire/Keyboards/Organ" n="Great Division Presets"
 //! m="Set patch to unlocked artic. at C0-G#0"
+//! id=b120e40c-55cd-4b98-8aca-f222fdfccb43
 Bank 27 13 SUCO - Great Division
 //! c=default i=note-whole o=note:25/note:27
 1 Soft (mp)
@@ -83,6 +85,7 @@ Bank 27 13 SUCO - Great Division
 
 //! g="Spitfire/Keyboards/Organ" n="Choir Division Presets"
 //! m="Set patch to unlocked artic. at C0-E0."
+//! id=0b75c4e8-80f8-4240-b092-1444653c63a8
 Bank 27 14 SUCO - Choir Division
 //! c=default i=note-whole o=note:25/note:26
 1 Strings and Principal (pp)
@@ -109,6 +112,7 @@ Bank 27 14 SUCO - Choir Division
 
 //! g="Spitfire/Keyboards/Organ" n="Pedal Division Presets"
 //! m="Set patch to unlocked artic. at C0-D0."
+//! id=46f0a23b-7adb-4a6e-ac46-d7c1b7eb5aa9
 Bank 27 15 SUCO - Pedal Division
 //! c=default i=note-whole o=note:26/note:25
 1 Mezzo Forte

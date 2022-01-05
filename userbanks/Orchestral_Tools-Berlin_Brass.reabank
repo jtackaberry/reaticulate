@@ -5,25 +5,30 @@
 //! g="Orchestral Tools/Berlin Brass" n="Horn1"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=8e30ef0f-92a4-4f92-99a8-1e75ac3cf69a
 Bank 24 99 OT-BB - Horn1
 
 //! g="Orchestral Tools/Berlin Brass" n="Horn2"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=c6b7f10a-63c7-4d60-84e4-5df4d5ec37e4
 Bank 24 100 OT-BB - Horn2
 
 //! g="Orchestral Tools/Berlin Brass" n="Horn3"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=d876a44a-3a69-4411-a80c-44895e56efde
 Bank 24 101 OT-BB - Horn3
 
 //! g="Orchestral Tools/Berlin Brass" n="Horn4"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=485f18bf-6009-4e06-b12d-bef8e5f9655b
 Bank 24 102 OT-BB - Horn4
 
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet1"
 //! m=""
+//! id=66f469e2-66b3-41ce-9252-0ec282be1cd0
 Bank 24 103 OT-BB - Trumpet1
 //! c=legato i=note-whole o=note:24
 1 Sustain - C1
@@ -53,37 +58,44 @@ Bank 24 103 OT-BB - Trumpet1
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet2"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=51ee3c55-c6ea-4def-9a5c-a562fb0eee4f
 Bank 24 104 OT-BB - Trumpet2
 
 //! g="Orchestral Tools/Berlin Brass" n="Trumpet3"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=28c56796-7ce2-4514-8ca8-d2eccfde3970
 Bank 24 105 OT-BB - Trumpet3
 
 
 //! g="Orchestral Tools/Berlin Brass" n="Trombone1"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=1a96b389-c5c6-4cba-8c1f-5f32f6b3511c
 Bank 24 106 OT-BB - Trombone1
 
 //! g="Orchestral Tools/Berlin Brass" n="Trombone2"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=d2984746-12d8-4b58-9867-0d40fcd7c34a
 Bank 24 107 OT-BB - Trombone2
 
 //! g="Orchestral Tools/Berlin Brass" n="Bass Trombone"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=0966977b-94ec-46fa-82fc-39d29dd34383
 Bank 24 108 OT-BB - Bass Trombone
 
 //! g="Orchestral Tools/Berlin Brass" n="Tuba"
 //! m=""
 //! clone="Orchestral Tools/Berlin Brass/Trumpet1"
+//! id=ae184495-51c5-42f7-9c5a-341196cb2ed6
 Bank 24 109 OT-BB - Tuba
 
 
 //! g="Orchestral Tools/Berlin Brass" n="Extras"
 //! m="CC messages legato..."
+//! id=84889d54-806a-49fb-97cb-607995dad348
 Bank 24 110 OT-BB - Extras
 //! c=legato i=legato g=1 o=cc:30,127
 101 Legato On

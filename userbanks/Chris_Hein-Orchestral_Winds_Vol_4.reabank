@@ -3,6 +3,7 @@
 //
 
 //! g="Chris Hein/Orchestral Winds/Vol. 4 Bassoons" n="Basson 1"
+//! id=88731717-3afa-44e4-8086-1286b8073d5c
 Bank 21 95 Chris Hein Orchestral Winds Bassoon1
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
@@ -34,6 +35,7 @@ Bank 21 95 Chris Hein Orchestral Winds Bassoon1
 34 Short 6 (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 4 Bassoons" n="Basson Barock"
+//! id=23c8076c-5fb3-41cd-839f-fd9aaf681b65
 Bank 21 96 Chris Hein Orchestral Winds Bassoon Barock
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
@@ -65,6 +67,7 @@ Bank 21 96 Chris Hein Orchestral Winds Bassoon Barock
 34 Short 6 (Vel)
 
 //! g="Chris Hein/Orchestral Winds/Vol. 4 Bassoons" n="Contra Basson"
+//! id=2f44381b-9161-47ac-b2aa-c40286c44ed4
 Bank 21 97 Chris Hein Orchestral Winds Contra Bassoon
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)

@@ -2,6 +2,7 @@
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Strings" n="Strings Play"
+//! id=6681ec4e-b34b-40d3-b850-de28d4355c39
 Bank 29 13 Strings play
 
 //! c=legato i=legato o=cc:68,127
@@ -50,6 +51,7 @@ Bank 29 13 Strings play
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Strings" n="Strings Score"
+//! id=2c25f1b6-4e90-4774-86e9-ce42e6a5e1fd
 Bank 29 14 Strings Score
 
 //! c=legato i=legato o=cc:68,127

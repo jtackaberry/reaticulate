@@ -1,4 +1,4 @@
--- Copyright 2017-2019 Jason Tackaberry
+-- Copyright 2017-2022 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-local rtk = require 'lib.rtk'
+local rtk = require 'rtk'
 local rfx = require 'rfx'
 local reabank = require 'reabank'
 local articons = require 'articons'
+local log = rtk.log
+
 
 local screen = {
     minw = 250,
@@ -23,9 +25,17 @@ local screen = {
     midi_channel_buttons = {},
     visible_banks = {},
     toolbar = nil,
-    -- If true, when enter is pressed in the filter box to activate an
-    -- articulation, the last non-Reaticulate window is refocused.  This is set
-    -- to true when the "Focus articulation filter" action is activated.
+    -- VBox that holds current track errors
+    errorbox = nil,
+    -- VBox that holds current track warnings
+    warningbox = nil,
+    -- rtk.Font instance for channel overlays
+    button_font = nil,
+
+    -- If not nil, is the hwnd of the window to be refocused after the user hits either
+    -- enter or escape on the filter entry.  This is set to the current non-Reaticulate
+    -- window (if applicable) by screen.focus_filter() for the "Focus articulation filter"
+    -- action. articulation, the last non-Reaticulate window is refocused.
     filter_refocus_on_activation = false,
     selected_articulation = nil,
 
@@ -96,37 +106,46 @@ function screen.filter_articulations(filter)
             end
         end
     end
-    -- app.viewport:scrollto(0, 0)
 end
 
 local function handle_filter_keypress(self, event)
-    if event.keycode == rtk.keycodes.UP or event.keycode == rtk.keycodes.DOWN or 
-       event.keycode == rtk.keycodes.ESCAPE then
+    if event.keycode == rtk.keycodes.UP or event.keycode == rtk.keycodes.DOWN then
         -- These are handled at the app layer
         return false
-    elseif event.keycode == rtk.keycodes.ENTER then
+    elseif event.keycode == rtk.keycodes.ESCAPE then
+        if screen.filter_refocus_on_activation then
+            app:refocus(screen.filter_refocus_on_activation)
+        end
+        screen.clear_filter()
+        return true
+    elseif event.keycode == rtk.keycodes.ENTER or event.keycode == rtk.keycodes.INSERT then
+        local force_insert = event.shift or event.ctrl or event.keycode == rtk.keycodes.INSERT
+        local insert_at_cursor = event.alt
         if self.value ~= '' then
             if screen.selected_articulation then
-                app:activate_selected_articulation(nil, screen.filter_refocus_on_activation)
+                app:activate_selected_articulation(nil, nil, force_insert, nil, insert_at_cursor)
             else
                 local art = screen.get_firstlast_articulation()
                 if art then
-                    app:activate_articulation(art, screen.filter_refocus_on_activation)
+                    app:activate_articulation(art, nil, force_insert, nil, insert_at_cursor)
                 end
             end
-        elseif screen.filter_refocus_on_activation then
-            -- No articulation activation needed but we do need to refocus still.
-            app:refocus()
         end
-        reaper.defer(function()
+        if screen.filter_refocus_on_activation then
+            -- No articulation activation needed but we do need to refocus still.
+            app:refocus(screen.filter_refocus_on_activation)
+            screen.filter_refocus_on_activation = nil
+        end
+        rtk.defer(function()
             screen.clear_selected_articulation()
             screen.clear_filter()
         end)
+        return self.value ~= ''
     end
 end
 
 function screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
-    local hovering = event:is_widget_hovering(button) or button.hover
+    local hovering = button.hovering or button.hover
     if not hovering and not art:is_active() then
         -- No channel boxes to draw.
         return
@@ -149,90 +168,145 @@ function screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
         bitmap = bitmap >> 1
         channel = channel + 1
     end
-
     if channels then
-        local x = offx + button.cx + button.cw
-        gfx.setfont(1, button.font, (button.fontsize - 2) * rtk.scale, rtk.fonts.BOLD)
+        local scale = rtk.scale.value
+        local calc = button.calc
+        local x = offx + calc.x + calc.w
         for idx, channel in ipairs(channels) do
-            local lw, lh = gfx.measurestr(channel + 1)
-            x = x - (lw + 15)
-            local y = offy + button.cy + (button.ch - lh) / 2
-            button:setcolor('#ffffff')
+            local text = tostring(channel + 1)
+            local lw, lh = screen.button_font:measure(text)
+            x = x - lw - 12 *scale
+            local y = offy + calc.y + (calc.h - lh) / 2
             local fill = (channel == hover_channel) or (rfx.active_notes & (1 << channel) > 0)
-            gfx.rect(x - 5, y - 1, lw + 10, lh + 2, fill)
+            button:setcolor('#ffffff', alpha)
+            gfx.rect(x - 5*scale, y - 1*scale, lw + 10*scale, lh + 2*scale, fill)
             if fill then
-                button:setcolor('#000000')
+                button:setcolor('#000000', alpha)
             end
-            gfx.x = x
-            gfx.y = y + (rtk.os.mac and 1 or 0)
-            gfx.drawstr(channel + 1)
+            screen.button_font:draw(text, x, y + (rtk.os.mac and 1 or 0))
         end
     end
 end
 
+function screen.onartclick(art, event)
+    if event.button == rtk.mouse.BUTTON_LEFT then
+        -- insert at cursor if alt is pressed.
+        app:activate_articulation(art, true, false, nil, event.alt)
+    elseif event.button == rtk.mouse.BUTTON_MIDDLE then
+        -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
+        -- rfx.push_state(rfx.current.track)
+        if screen.clear_articulation(art) > 0 then
+            rfx.current:sync(rfx.current.track, true)
+        end
+        -- rfx.pop_state()
+    elseif event.button == rtk.mouse.BUTTON_RIGHT then
+        app:activate_articulation(art, true, true, nil, event.alt)
+    end
+end
 
+function screen.clear_all_active_articulations()
+    local cleared = 0
+    for _, bank, _, _, hash, userdata, guid in rfx.current:get_banks() do
+        if bank then
+            for n, art in ipairs(bank.articulations) do
+                cleared = cleared + screen.clear_articulation(art)
+            end
+        end
+    end
+    if cleared > 0 then
+        rfx.current:sync(rfx.current.track, true)
+    end
+    return cleared
+end
+
+-- Clears the given articulation on all channels.
+--
+-- Returns the number of channels that were cleared, where 0 means the articulation was
+-- never active.
+function screen.clear_articulation(art)
+    local cleared = 0
+    for channel = 0, 15 do
+        if art.channels & (1 << channel) ~= 0 then
+            rfx.current:clear_channel_program(channel + 1, art.group)
+            cleared = cleared + 1
+        end
+    end
+    return cleared
+end
 
 function screen.create_banklist_ui(bank)
     bank.vbox = rtk.VBox{spacing=10}
-
     -- Box for Bank name and info button
     local hbox = rtk.HBox()
-    bank.vbox:add(hbox, {lpadding=10, tpadding=#reabank.banks > 0 and 40 or 20, bpadding=10})
+    bank.vbox:add(hbox, {lpadding=10, tpadding=10, bpadding=10})
     -- Bank name
-    bank.heading = rtk.Heading{label=bank.shortname or bank.name}
+    bank.heading = rtk.Heading{bank.shortname or bank.name}
     hbox:add(bank.heading, {valign='center'})
-    hbox:add(rtk.HBox.FLEXSPACE)
+    hbox:add(rtk.Box.FLEXSPACE)
     -- Bank message button, which is only added if message exists
     if bank.message then
-        local button = app:make_button('18-info_outline')
-        button.alpha = bank.message and 1.0 or 0.7
+        local button = rtk.Button{
+            icon='med-info_outline',
+            flat=true,
+            alpha=bank.message and 1.0 or 0.7,
+            tooltip='Toggle bank message',
+        }
         hbox:add(button, {valign='center', rpadding=10})
 
         -- Box for bank message and info icon
-        local msgbox = rtk.HBox{spacing=10, focusable=true}
+        local msgbox = rtk.HBox{spacing=10, autofocus=true}
         bank.vbox:add(msgbox, {lpadding=10, rpadding=10, bpadding=10})
         -- Info icon
-        msgbox:add(rtk.ImageBox{image='24-info_outline'}, {valign='top'})
+        msgbox:add(rtk.ImageBox{image='lg-info_outline'}, {valign='top'})
         -- Bank message text
-        local label = msgbox:add(rtk.Label{label=bank.message, wrap=true}, {valign='center'})
+        local label = msgbox:add(rtk.Text{bank.message, wrap=true}, {valign='center'})
         -- Info button toggles visibility of message box and remembers that
         -- setting as part of the RFX bank userdata
         button.onclick = function()
             msgbox:toggle()
             button.alpha = msgbox.visible and 1.0 or 0.5
-            rfx.set_bank_userdata(bank, 'showinfo', msgbox.visible)
+            rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)
         end
         -- For convenience, clicking on the message box itself also hides.
         msgbox.onclick = button.onclick
         -- Initialize visibility of box (and button opacity) based on RFX bank
         -- userdata setting, defaulting to hidden.
-        msgbox:attr('visible', rfx.get_bank_userdata(bank, 'showinfo') or false)
+        msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)
         button.alpha = msgbox.visible and 1.0 or 0.5
     end
 
+    local artbox = bank.vbox:add(rtk.FlowBox{vspacing=7, hspacing=0, lpadding=30})
+    -- local artbox = bank.vbox:add(rtk.VBox{spacing=10, lpadding=30})
     for n, art in ipairs(bank.articulations) do
         local color = art.color or reabank.colors.default
-        local textcolor = '#ffffff'
-        if not color:starts('#') then
+        local darkicon = false
+        if not color:startswith('#') then
             color = app:get_articulation_color(color)
         end
-        local textcolor = color2luma(color) > 0.7 and '#000000' or '#ffffff'
-        art.icon = articons.get(art.iconname) or articons.get('note-eighth')
-        local flags = art.channels > 0 and 0 or rtk.Button.FLAT_LABEL
+        if rtk.color.luma(color) > rtk.light_luma_threshold then
+            darkicon = true
+        end
+        art.icon = articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)
         art.button = rtk.Button{
-            -- Prefix a bit of whitespace to distance from icon
-            label='  ' .. (art.shortname or art.name),
+            label=art.shortname or art.name,
             icon=art.icon,
+            tooltip=art.message,
             color=color,
-            textcolor=textcolor,
-            tpadding=1, rpadding=1, bpadding=1, lpadding=1,
-            flags=flags,
-            rspace=40
+            padding=2,
+            -- Enough space for 2 channel icons, which means we'll cramp over the
+            -- art name with more than 2 channels mapped to this articulation (unless
+            -- the window is wider and we have fill room).
+            rpadding=60,
+            tagged=true,
+            flat=art.channels == 0 and 'label' or false,
         }
-        -- Make button width fill container (with 10px margin at right)
-        art.button:resize(-10, nil)
         art.button.onclick = function(button, event)
-            app:onartclick(art, event)
+            screen.onartclick(art, event)
+        end
+        art.button.onlongpress = function(button, event)
+            app:activate_articulation(art, true, true, nil, event.alt)
+            -- Return true to prevent onclick()
+            return true
         end
         art.button.ondraw = function(button, offx, offy, alpha, event)
             screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
@@ -247,8 +321,21 @@ function screen.create_banklist_ui(bank)
             app:set_statusbar(art.outputstr)
             return true
         end
+        art.button.start_insert_animation = function()
+            if art.button:get_animation('color') then
+                -- We're already in the middle of activating this articulation.
+                return
+            end
+            local color = art.button.color
+            art.button:animate{attr='color', dst='red', duration=0.3, easing='in-out-sine'}
+                :after(function()
+                    art.button:animate{attr='color', dst=color, duration=0.2, easing='linear'}
+                end)
+        end
         local tpadding = art.spacer and (art.spacer & 0xff) * 20 or 0
-        bank.vbox:add(art.button, {lpadding=30, tpadding=tpadding})
+        -- XXX: should minw be based on longest art name in bank?  (Or, rather, across
+        -- *all* banks on track otherwise columns across multiple banks will be uneven)
+        artbox:add(art.button, {lpadding=0, tpadding=tpadding, fillw=true, rpadding=20, minw=250})
     end
     bank.vbox:hide()
     return bank.vbox
@@ -257,19 +344,19 @@ end
 -- Shows the articulation banks for the current track in the order
 -- defined by the track's RFX.
 function screen.show_track_banks()
-    if not rfx.fx then
+    if not rfx.current.fx then
         -- No FX on current track, nothing to do.
         return
     end
 
     -- Clear the banks list
-    screen.banks:clear()
+    screen.banks:remove_all()
 
     -- Now (re)add all the banks to the list in the order stored in the RFX.
     local visible = {}
-    local visible_by_msblsb = {}
-    function showbank(bank)
-        if visible_by_msblsb[bank.msblsb] then
+    local visible_by_guid = {}
+    local function showbank(bank)
+        if visible_by_guid[bank.guid] then
             return
         end
         if not bank.vbox then
@@ -277,9 +364,9 @@ function screen.show_track_banks()
         end
         screen.banks:add(bank.vbox:show())
         visible[#visible+1] = bank
-        visible_by_msblsb[bank.msblsb] = 1
+        visible_by_guid[bank.guid] = 1
     end
-    for _, bank, _, _, hash, userdata, msblsb in rfx.get_banks() do
+    for _, bank, _, _, hash, userdata, guid in rfx.current:get_banks() do
         if bank then
             showbank(bank)
         end
@@ -292,14 +379,36 @@ function screen.show_track_banks()
         screen.viewport:hide()
         screen.no_banks_box:show()
     end
+    if rfx.current.appdata then
+        local y = rfx.current.appdata.y
+        if y then
+            -- Restore saved scroll position for this track
+            screen.viewport:scrollto(nil, y, false)
+        end
+    end
 end
 
+function screen.set_warning(msg)
+    if msg then
+        screen.warningmsg:attr('text', msg)
+        screen.warningbox:show()
+        -- dst=nil means we animate toward the box's intrinsic height.  The widgets
+        -- inside the box (image and text) are able to clip to the container bounding
+        -- box.
+        screen.warningbox:animate{attr='h', src=0, dst=nil, duration=0.3}
+        screen.warningbox:animate{attr='alpha', src=0, dst=1, duration=0.3}
+    else
+        screen.warningbox:hide()
+    end
+end
+
+
 function screen.update_error_box()
-    if not rfx.fx or not rfx.appdata.err then
+    if not rfx.current.fx or not rfx.current.appdata.err then
         screen.errorbox:hide()
     else
-        local msg = screen.error_msgs[rfx.appdata.err] or screen.error_msgs.default
-        screen.errormsg:attr('label', msg)
+        local msg = screen.error_msgs[rfx.current.appdata.err] or screen.error_msgs.default
+        screen.errormsg:attr('text', msg)
         screen.errorbox:show()
     end
 end
@@ -307,8 +416,8 @@ end
 
 function screen.focus_filter()
     screen.filter_entry:focus()
-    screen.filter_refocus_on_activation = not rtk.in_window
-    return rtk.focus()
+    screen.filter_refocus_on_activation = not app.window.in_window and rtk.focused_hwnd
+    return app.window:focus()
 end
 
 
@@ -316,32 +425,67 @@ function screen.clear_filter()
     screen.filter_entry:attr('value', '')
 end
 
-
 function screen.init()
+    screen.button_font = rtk.Font('Calibri', 16, nil, rtk.font.BOLD)
     screen.widget = rtk.VBox()
     screen.toolbar = rtk.HBox{spacing=0}
 
     local topbar = rtk.VBox{
         spacing=0,
-        bg=rtk.theme.window_bg,
+        bg=rtk.theme.bg,
         y=0,
-        focusable=true,
         tpadding=0,
         bpadding=15,
-        z=50
     }
-    screen.widget:add(topbar, {lpadding=0})
+    screen.widget:add(topbar, {lpadding=0, halign='center'})
 
-    local track_button = app:make_button('18-view_list')
+    local track_button = rtk.Button{
+        icon='med-view_list',
+        flat=true,
+        tooltip='Configure track for Reaticulate',
+    }
     track_button.onclick = function()
         app:push_screen('trackcfg')
     end
     screen.toolbar:add(track_button, {rpadding=0})
-    screen.toolbar:add(rtk.HBox.FLEXSPACE)
+    screen.toolbar:add(rtk.Box.FLEXSPACE)
+
+    -- MIDI channel button rows
+    local row = rtk.HBox{spacing=2}
+    topbar:add(row, {tpadding=20, halign='center'})
+    for channel = 1, 16 do
+        local label = string.format("%02d", channel)
+        local button = rtk.Button{
+            label,
+            w=25,
+            h=20,
+            color=rtk.theme.entry_border_focused,
+            textcolor='#ffffff',
+            fontscale=0.9,
+            halign='center',
+            padding=0,
+            flat=true,
+            tooltip='Set inserted articulations and MIDI editor to channel ' .. tostring(channel),
+        }
+        local button = row:add(button)
+        button.onclick = function(button, event)
+            if event.button == 1 then
+                app:set_default_channel(channel)
+            elseif event.button == 2 then
+                log.warning('TODO: reassign selected MIDI Events to channel %s', channel)
+            end
+            app:refocus()
+        end
+        screen.midi_channel_buttons[channel] = button
+        if channel == 8 then
+            row = rtk.HBox{spacing=2}
+            topbar:add(row, {tpadding=0, halign='center'})
+        end
+    end
 
     -- Filter text entry
     local row = topbar:add(rtk.HBox{spacing=10}, {tpadding=10})
-    local entry = rtk.Entry{icon='18-search', label="Filter articulations", bg2='#0000007f'}
+    local entry = rtk.Entry{icon='med-search', placeholder='Filter articulations'}
     entry.onkeypress = handle_filter_keypress
     entry.onchange = function(self)
         screen.filter_articulations(self.value:lower())
@@ -349,71 +493,54 @@ function screen.init()
     row:add(entry, {expand=1, fillw=true, lpadding=20, rpadding=20})
     screen.filter_entry = entry
 
-    -- MIDI channel button rows
-    row = rtk.HBox{spacing=2}
-    topbar:add(row, {tpadding=20, halign=rtk.Widget.CENTER})
-    for channel = 1, 16 do
-        local label = string.format("%02d", channel)
-        local button = rtk.Button{
-            label=label, color=rtk.theme.entry_border_focused, w=25, h=20,
-            textcolor='#ffffff',
-            fontscale=0.9, halign=rtk.Widget.CENTER,
-            flags=rtk.Button.FLAT_LABEL
-        }
-        local button = row:add(button)
-        button.onclick = function()
-            app:set_default_channel(channel)
-            app:refocus()
-        end
-        screen.midi_channel_buttons[channel] = button
-        if channel == 8 then
-            row = rtk.HBox{spacing=2}
-            topbar:add(row, {tpadding=0, halign=rtk.Widget.CENTER})
-        end
-    end
+    screen.warningbox = rtk.VBox{
+        bg=rtk.theme.dark and '#696f16' or '#ebfb74',
+        tborder='#ccd733',
+        bborder='#ccd733',
+        padding=10,
+        -- Default to hidden
+        visible=false,
+    }
+    local hbox = screen.warningbox:add(rtk.HBox())
+    -- Force scale for animation
+    hbox:add(rtk.ImageBox{image='lg-alert_circle_outline', scale=1})
+    screen.warningmsg = hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})
+    screen.widget:add(screen.warningbox, {fillw=true})
 
     screen.errorbox = rtk.VBox{
         bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',
         tborder='#ff0000',
         bborder='#ff0000',
-        tpadding=20, bpadding=20,
-        lpadding=10, rpadding=10
+        padding={20, 10},
     }
     local hbox = screen.errorbox:add(rtk.HBox())
-    hbox:add(rtk.ImageBox{image='24-alert_circle_outline'})
-    screen.errormsg = hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})
-    local button = app:make_button('18-edit', 'Open Track Settings')
+    hbox:add(rtk.ImageBox{image='lg-alert_circle_outline'})
+    screen.errormsg = hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})
+    local button = rtk.Button{'Open Track Settings', icon='med-view_list', flat=true, color='#aa000099'}
     button.onclick = function()
         app:push_screen('trackcfg')
     end
     screen.errorbox:add(button, {halign='center', tpadding=20})
     screen.widget:add(screen.errorbox, {fillw=true})
 
-    -- screen.cc1 = screen.widget:add(rtk.HBox{w=0.99, h=20, bg='#ff0000'})
-    -- screen.cc1:add(rtk.Label{label="Mod"})
-    -- screen.cc64 = screen.widget:add(rtk.HBox{w=0.99, h=20, bg='#ff00ff'})
-    -- screen.cc64:add(rtk.Label{label="Sustain"})
-    screen.banks = rtk.VBox{bpadding=20}
-    screen.viewport = rtk.Viewport{child=screen.banks}
+    screen.banks = rtk.VBox{bpadding=20, spacing=20}
+    screen.viewport = rtk.Viewport{child=screen.banks, h=1.0}
     screen.widget:add(screen.viewport, {fillw=true})
 
     -- Info / button when no banks are configured on track (hidden when there are banks)
     screen.no_banks_box = rtk.VBox()
     screen.widget:add(screen.no_banks_box, {
-        halign=rtk.Widget.CENTER, valign=rtk.Widget.CENTER, expand=1, bpadding=100
+        halign='center', valign='center', expand=1, bpadding=100
     })
-    local label = rtk.Label{
-        label="No banks on this track", fontsize=24,
-        color={1, 1, 1, 0.5}
-    }
-    screen.no_banks_box:add(label, {halign=rtk.Widget.CENTER})
+    local label = rtk.Text{'No articulations on this track', fontsize=24, alpha=0.5}
+    screen.no_banks_box:add(label, {halign='center'})
 
     local button = rtk.Button{
-        icon=track_button.icon, label="Edit Track Banks",
-        space=10, color={0.3, 0.3, 0.3, 1},
-        tpadding=5, bpadding=5, lpadding=5, rpadding=10
+        'Open Track Settings',
+        icon=track_button.icon,
+        color={0.3, 0.3, 0.3, 1},
     }
-    screen.no_banks_box:add(button, {halign=rtk.Widget.CENTER, tpadding=20})
+    screen.no_banks_box:add(button, {halign='center', tpadding=20})
     button.onclick = track_button.onclick
 end
 
@@ -421,11 +548,7 @@ end
 -- channel is changed.
 function screen.highlight_channel_button(new_channel)
     for channel, button in ipairs(screen.midi_channel_buttons) do
-        if channel == new_channel then
-            button:attr('flags', 0)
-        else
-            button:attr('flags', rtk.Button.FLAT_LABEL)
-        end
+        button:attr('flat', channel ~= new_channel and 'flat' or false)
     end
 end
 
@@ -499,7 +622,7 @@ function screen.get_relative_articulation(art, distance, group)
     local target = art
     -- TODO: infinite loop potential here.  Give this a closer look for bugs.
     while absdistance > 0 do
-        candidate = _get_adjacent_art(target)
+        local candidate = _get_adjacent_art(target)
         if not candidate then
             -- We have hit the edge of the current.  Check to see if we have other banks to move to.
             if distance < 0 then
@@ -566,6 +689,7 @@ function screen.select_relative_articulation(distance)
         local group = last and last.group or nil
         current = app:get_active_articulation(nil, group)
     end
+    local target
     if current then
         target = screen.get_relative_articulation(current, distance, nil)
     else
@@ -581,8 +705,27 @@ end
 
 function screen.scroll_articulation_into_view(art)
     if art.button then
-        art.button:scrolltoview(50, 10)
+        -- Include a bit more padding on the top to account for the bank title.
+        art.button:scrolltoview{50, 0, 10, 0}
     end
+end
+
+-- Stores the current scroll position to rfx track metadata.  It is restored
+-- in show_track_banks().
+function screen.save_scroll_position()
+    -- Avoid queue_write_appdata() if the position didn't actually change, because
+    -- this dirties the project.
+    if rfx.current.track and rfx.current.appdata.y ~= screen.viewport.scroll_top then
+        rfx.current.appdata.y = screen.viewport.scroll_top
+        rfx.current:queue_write_appdata()
+    end
+end
+
+function screen.clear_cache()
+    for _, bank in pairs(reabank.banks_by_guid) do
+        bank.vbox = nil
+    end
+    screen.update()
 end
 
 function screen.update()

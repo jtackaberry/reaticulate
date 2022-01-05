@@ -435,7 +435,9 @@ local function newbinser()
             local nextindex = dataindex + length
             if not (length >= 0) then error("Bad string length") end
             if #str < nextindex - 1 then error("Expected more bytes of string") end
-            local ret = loadstring(sub(str, dataindex, nextindex - 1))
+            -- XXX: tack: removed non-safe deserialization of functions.
+            -- local ret = loadstring(sub(str, dataindex, nextindex - 1))
+            local ret = function() error("deserializing functions not supported") end
             visited[#visited + 1] = ret
             return ret, nextindex
         elseif t == 211 then

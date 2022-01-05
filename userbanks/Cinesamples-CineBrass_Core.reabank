@@ -7,6 +7,7 @@
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Trumpets Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
+//! id=795c2059-b05b-40b9-ac88-c0545671e3c5
 Bank 21 99 01 Trumpets Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
@@ -19,6 +20,7 @@ Bank 21 99 01 Trumpets Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Two Horns Ensemble Art."
 //! m="Set Patch to Custom: Legato Latch F0, Short 1/8 Latch C0"
+//! id=aa47eb41-e802-49c4-b50a-544a01703721
 Bank 21 100 04 Two Horns Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
@@ -27,6 +29,7 @@ Bank 21 100 04 Two Horns Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Trombone Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
+//! id=9ba04b8d-2cac-49eb-bca7-caaf346de310
 Bank 21 101 09 Trombone Ensemble Articulations
 //! c=long i=note-whole o=note:29
 1 sustain
@@ -39,6 +42,7 @@ Bank 21 101 09 Trombone Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Six Horns Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
+//! id=0397fc30-4c4a-4988-a179-d4f44cd64e38
 Bank 21 102 06 Six Horns Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
@@ -51,6 +55,7 @@ Bank 21 102 06 Six Horns Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Tuba + Bass Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map, then set Sus=F4, 1/8=C4, 1/4=D4, 1/2=E4"
+//! id=dcd19ba0-86be-4175-a47b-4e1a5158bfb1
 Bank 21 103 10 Bass + Tuba Ensemble Articulations
 //! c=long i=note-whole o=note:77
 1 sustain
@@ -63,6 +68,7 @@ Bank 21 103 10 Bass + Tuba Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Cimbasso + Bass Trombone Art."
 //! m="Set Patch to Custom: Sustain Latch F4, Short 1/8 Latch C4"
+//! id=6f96f592-bbd6-4dc8-abc9-9ad836a39bad
 Bank 21 104 11 Cimbasso + Bass Trombone Articulations
 //! c=long i=note-whole o=note:77
 1 sustain

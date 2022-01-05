@@ -4,6 +4,7 @@
 
 //! g="Cinematic Series/Studio Brass" n="Section"
 //! chase=1,2,5,11,20,64-69
+//! id=b2f74d6f-67dd-42f1-858d-07f1e19c09b6
 Bank 21 98 Cinematic Studio Brass Section
 
 //! c=legato i=legato o=note:24,1/note:34,65

@@ -3,6 +3,7 @@
 //
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Full Brass"
+//! id=fb542166-e54c-4cf9-98ac-c93bc26ceccb
 Bank 23 47 Ensemble Full Brass
 //! c=long i=note-whole o=note:24
 1 sustain
@@ -14,6 +15,7 @@ Bank 23 47 Ensemble Full Brass
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Trumpets"
+//! id=e702eebe-5bb3-4b1a-8dfd-92130569c35e
 Bank 23 48 Ensemble Trumpets
 //! c=legato i=legato o=note:24
 20 legato
@@ -37,6 +39,7 @@ Bank 23 48 Ensemble Trumpets
 75 multitongue
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Horns"
+//! id=e07bcaa3-90d7-45b4-962e-2e55f79981c2
 Bank 23 49 Ensemble Horns
 //! c=legato i=legato o=note:24
 20 legato
@@ -62,6 +65,7 @@ Bank 23 49 Ensemble Horns
 11 flutter
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Trombones"
+//! id=bf976f82-e4af-4179-a5d3-8a89009b3a4b
 Bank 23 50 Ensemble Trombones
 //! c=legato i=legato o=note:24
 20 legato
@@ -77,6 +81,7 @@ Bank 23 50 Ensemble Trombones
 11 flutter
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Low Brass"
+//! id=28be3172-06a1-4ac5-89eb-6950d8e063e3
 Bank 23 51 Ensemble Low Brass
 //! c=legato i=legato o=note:72
 20 legato
@@ -94,6 +99,7 @@ Bank 23 51 Ensemble Low Brass
 101 fall
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Orchestrator"
+//! id=8e813671-52ea-479d-9442-9d7d1cc15a55
 Bank 23 52 Ensemble Orchestrator
 //! c=long i=note-whole o=note:24
 1 sustain
@@ -105,6 +111,7 @@ Bank 23 52 Ensemble Orchestrator
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Ensemble Chordmaker"
+//! id=9deb47e9-b1f3-4300-9e70-168f0eca2db1
 Bank 23 53 Ensemble Chordmaker
 //! c=long i=note-whole o=note:24
 1 sustain
@@ -116,6 +123,7 @@ Bank 23 53 Ensemble Chordmaker
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Piccolo Trumpet"
+//! id=1cf780de-39bb-470c-b788-973013b9869b
 Bank 23 54 Solo Piccolo Trumpet
 //! c=legato i=legato o=note:24
 20 legato
@@ -133,6 +141,7 @@ Bank 23 54 Solo Piccolo Trumpet
 70 trill m2
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Trumpet"
+//! id=53df05fc-ebb4-418e-8951-80a6e7cc5df0
 Bank 23 55 Solo Trumpet
 //! c=legato i=legato o=note:24
 20 legato
@@ -150,6 +159,7 @@ Bank 23 55 Solo Trumpet
 70 trill m2
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Flugelhorn"
+//! id=2df9cb85-578c-418e-a8ee-3f5bb7ff9ae0
 Bank 23 56 Solo Flugelhorn
 //! c=legato i=legato o=note:24
 20 legato
@@ -167,6 +177,7 @@ Bank 23 56 Solo Flugelhorn
 70 trill m2
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Horn"
+//! id=bc23b622-adb6-4eb1-8aad-5995bd881b59
 Bank 23 57 Solo Horn
 //! c=legato i=legato o=note:24
 20 legato
@@ -184,6 +195,7 @@ Bank 23 57 Solo Horn
 70 trill m2
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Trombone"
+//! id=51713a9c-1f63-41cd-b221-554f459fc345
 Bank 23 58 Solo Trombone
 //! c=legato i=legato o=note:24
 20 legato
@@ -197,6 +209,7 @@ Bank 23 58 Solo Trombone
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Tuba"
+//! id=d6589338-863e-483d-b61a-f7805a0e6e88
 Bank 23 59 Solo Tuba
 //! c=legato i=legato o=note:72
 20 legato
@@ -210,6 +223,7 @@ Bank 23 59 Solo Tuba
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Orchestrator"
+//! id=a98debda-6981-42df-8477-f57841eab5f4
 Bank 23 60 Solo Orchestrator
 //! c=long i=note-whole o=note:24
 1 sustain
@@ -221,6 +235,7 @@ Bank 23 60 Solo Orchestrator
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Solo Chordmaker"
+//! id=5a79b40b-2ffd-404b-82bb-0b759c074efb
 Bank 23 61 Solo Chordmaker
 //! c=long i=note-whole o=note:24
 1 sustain
@@ -232,6 +247,7 @@ Bank 23 61 Solo Chordmaker
 52 marcato
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Full Brass FX"
+//! id=8cfc3811-ab86-4f34-a200-667afe38b86b
 Bank 23 62 Full Brass FX
 //! c=long i=rip o=note:24
 90 atonal rips and falls
@@ -243,6 +259,7 @@ Bank 23 62 Full Brass FX
 93 lydecker cinematic
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Horns FX"
+//! id=d7dd1f57-b5d6-4bb4-9ccb-d5a3d803eb4d
 Bank 23 63 Horns FX
 //! c=long i=rip o=note:24
 90 rips pulses and flurries
@@ -250,6 +267,7 @@ Bank 23 63 Horns FX
 93 lydecker cinematic
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Trumpets FX"
+//! id=5915116b-b910-49e0-8c6a-13132b92f494
 Bank 23 64 Trumpets FX
 //! c=long i=rip o=note:24
 90 atonal rips and falls
@@ -259,6 +277,7 @@ Bank 23 64 Trumpets FX
 93 lydecker cinematic
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Trombones FX"
+//! id=20963bee-3947-4b77-bb1a-91c50075905f
 Bank 23 65 Trombones FX
 //! c=long i=rip o=note:24
 90 step slides and risers
@@ -268,6 +287,7 @@ Bank 23 65 Trombones FX
 93 lydecker cinematic
 
 //! g="Impact Soundworks/Bravura Scoring Brass" n="Low Brass FX"
+//! id=0de13ab7-d330-422c-8171-9fec00793ff5
 Bank 23 66 Low Brass FX
 //! c=long i=rip o=note:24
 90 stabs and scoops

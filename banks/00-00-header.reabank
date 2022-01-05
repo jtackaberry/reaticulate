@@ -1,9 +1,14 @@
-// Reabank file for Reaticulate - http://reaticulate.com/
+// Reabank file for Reaticulate - https://reaticulate.com/
 //
 // This file is a specially formatted Reabank file that is notated for use by Reaticulate.
 // Specification can be found here:
 //
-//      http://reaticulate.com/reabank.html
+//      https://reaticulate.com/reabank.html
+//
+// You can also import user-contributed bank files for additional libraries not included
+// in the factory set:
+//
+//      https://reaticulate.com/banks
 //
 //!
 //

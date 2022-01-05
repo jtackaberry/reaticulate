@@ -1,6 +1,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="Recorder"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-9869-4699-8d70-39238da18d7b
 Bank 66 60 Albion 2 - Recorder
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -12,6 +13,7 @@ Bank 66 60 Albion 2 - Recorder
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="HornEuph"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-80d0-4530-a98f-78a2ad923f7e
 Bank 66 61 Albion 2 - HornEuph
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -25,6 +27,7 @@ Bank 66 61 Albion 2 - HornEuph
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="Sackbutt Hi"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-ca90-4c39-b646-85064c996cb2
 Bank 66 62 Albion 2 - Sackbutt Hi
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -32,7 +35,7 @@ Bank 66 62 Albion 2 - Sackbutt Hi
 42 very short
 //! c=short i=marcato-quarter o=cc:32,50
 52 marcato(short)
-//! c=long i=marcato-half o=cc:32,52
+//! c=long i=marcato-half  o=cc:32,52
 55 marcato(long)
 //! c=long i=note-whole o=cc:32,1
 1 long
@@ -42,6 +45,7 @@ Bank 66 62 Albion 2 - Sackbutt Hi
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="Sackbutt Lo"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-b3f5-44bc-8c92-318e510b8886
 Bank 66 63 Albion 2 - Sackbutt Lo
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -55,6 +59,7 @@ Bank 66 63 Albion 2 - Sackbutt Lo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="String Hi"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-98b1-47a4-8f92-77cfcd23e09a
 Bank 66 64 Albion 2 - String Hi
 //! c=short i=staccato o=cc:32,40
 40 short
@@ -89,6 +94,7 @@ Bank 66 64 Albion 2 - String Hi
 //----------------------------------------------------------------------------
 //! g="Spitfire/Albion 2" n="String Lo"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-0627-483a-a7c9-a19431571cb0
 Bank 66 65 Albion 2 - String Lo
 //! c=short i=staccato o=cc:32,40
 40 short

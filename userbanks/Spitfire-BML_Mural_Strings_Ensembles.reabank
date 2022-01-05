@@ -4,6 +4,7 @@
 
 //! g="Spitfire/BML Mural Strings Ensembles" n="Ensemble Palette"
 //! m="Set patch to UACC"
+//! id=9a68bc55-02a9-4581-bdc3-b324e123c0fa
 Bank 26 70 Ensemble Palette
 //! c=long i=note-whole o=cc:32,1
 1 long

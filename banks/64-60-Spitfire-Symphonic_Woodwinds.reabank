@@ -2,6 +2,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Piccolo Flute"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-cda5-4cbc-9f74-d88ab099f27b
 Bank 64 60 SSW - Piccolo Flute
 
 //! c=legato i=legato o=cc:32,20
@@ -27,6 +28,7 @@ Bank 64 60 SSW - Piccolo Flute
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Piccolo Flute - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-1956-46dd-bcf2-571a300b6142
 Bank 64 61 SSW - Piccolo Flute - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -53,6 +55,7 @@ Bank 64 61 SSW - Piccolo Flute - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Piccolo Flute - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f325-4972-8820-d23f0a4481cd
 Bank 64 62 SSW - Piccolo Flute - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -62,12 +65,14 @@ Bank 64 62 SSW - Piccolo Flute - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flute Solo"
 //! clone="Spitfire/Symphonic Woodwinds/Piccolo Flute"
+//! id=00000000-ad92-4867-975a-4e00f731ca14
 Bank 64 63 SSW - Flute Solo
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flute Solo - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-0174-4f59-9b12-e80246eabcb0
 Bank 64 64 SSW - Flute Solo - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -99,6 +104,7 @@ Bank 64 64 SSW - Flute Solo - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flute Solo - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-cacb-4ee4-b14f-f810a11d8e0a
 Bank 64 65 SSW - Flute Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -107,12 +113,14 @@ Bank 64 65 SSW - Flute Solo - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flutes a2"
 //! clone="Spitfire/Symphonic Woodwinds/Piccolo Flute"
+//! id=00000000-e8af-4ff3-8c90-0e393d687474
 Bank 64 66 SSW - Flutes a2
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flutes a2 - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-88d9-4684-ba14-d8ce80d058c7
 Bank 64 67 SSW - Flutes a2 - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -131,7 +139,7 @@ Bank 64 67 SSW - Flutes a2 - Full
 50 tenuto
 //! c=short i=staccato o=cc:32,40
 40 staccato
-//! c=short-dark i=staccato-overblown o=cc:32,49
+//! c=short-dark i=staccato-stopped o=cc:32,49
 49 short overblown
 
 //! c=short i=staccato-sfz o=cc:32,54
@@ -147,6 +155,7 @@ Bank 64 67 SSW - Flutes a2 - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Flutes a2 - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-124d-4f6a-b923-be069939b344
 Bank 64 68 SSW - Flutes a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -157,12 +166,14 @@ Bank 64 68 SSW - Flutes a2 - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Alto Flute"
 //! clone="Spitfire/Symphonic Woodwinds/Piccolo Flute"
+//! id=00000000-7f3c-474b-8dbb-5bd289fbaacd
 Bank 64 69 SSW - Alto Flute
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Alto Flute - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-2da6-4153-a89a-c09e7d16596c
 Bank 64 70 SSW - Alto Flute - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -180,7 +191,7 @@ Bank 64 70 SSW - Alto Flute - Full
 //! c=short i=staccato o=cc:32,40
 40 staccato
 
-//! c=short-dark i=staccato-overblown o=cc:32,49
+//! c=short-dark i=staccato-stopped o=cc:32,49
 49 short overblown
 //! c=long i=trill-min2 o=cc:32,70
 70 trill m2
@@ -191,6 +202,7 @@ Bank 64 70 SSW - Alto Flute - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Alto Flute - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-2520-48d4-9d85-6573de4e6f39
 Bank 64 71 SSW - Alto Flute - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -199,6 +211,7 @@ Bank 64 71 SSW - Alto Flute - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Flute"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-b443-4c13-b44e-b23b3e439fef
 Bank 64 72 SSW - Bass Flute
 
 //! c=legato i=legato o=cc:32,20
@@ -220,6 +233,7 @@ Bank 64 72 SSW - Bass Flute
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Flute - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-c320-4113-98d0-96af30ff45be
 Bank 64 73 SSW - Bass Flute - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -239,6 +253,7 @@ Bank 64 73 SSW - Bass Flute - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Flute - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-cc50-4d7a-8d64-7acbe433d919
 Bank 64 74 SSW - Bass Flute - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -247,6 +262,7 @@ Bank 64 74 SSW - Bass Flute - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboe Solo"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-b183-4343-ae74-60ee772b7958
 Bank 64 75 SSW - Oboe Solo
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -269,6 +285,7 @@ Bank 64 75 SSW - Oboe Solo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboe Solo - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-6fa4-4259-83e5-80d8bb73d263
 Bank 64 76 SSW - Oboe Solo - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -293,6 +310,7 @@ Bank 64 76 SSW - Oboe Solo - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboe Solo - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-59ba-4865-943c-2a5575e7cb1e
 Bank 64 77 SSW - Oboe Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -301,6 +319,7 @@ Bank 64 77 SSW - Oboe Solo - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboes a2"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-488f-448c-ace2-bb1877877353
 Bank 64 78 SSW - Oboes a2
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -321,6 +340,7 @@ Bank 64 78 SSW - Oboes a2
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboes a2 - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-03d4-47d9-b83e-37da7baf8d33
 Bank 64 79 SSW - Oboes a2 - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -341,6 +361,7 @@ Bank 64 79 SSW - Oboes a2 - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Oboes a2 - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-1094-482e-89ee-ddef6cbffec1
 Bank 64 80 SSW - Oboes a2 - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -349,6 +370,7 @@ Bank 64 80 SSW - Oboes a2 - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Cor Anglais"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-99e8-42eb-92b9-9c42ffc04f81
 Bank 64 81 SSW - Cor Anglais
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -365,6 +387,7 @@ Bank 64 81 SSW - Cor Anglais
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Cor Anglais - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-8f5f-42e4-aba1-f4c68ecee2ed
 Bank 64 82 SSW - Cor Anglais - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -380,6 +403,7 @@ Bank 64 82 SSW - Cor Anglais - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Cor Anglais - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-ab96-499f-8072-4c0a3b66d1df
 Bank 64 83 SSW - Cor Anglais - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -388,6 +412,7 @@ Bank 64 83 SSW - Cor Anglais - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinet Solo"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-22c4-49ae-8af1-293984773c98
 Bank 64 84 SSW - Clarinet Solo
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -406,6 +431,7 @@ Bank 64 84 SSW - Clarinet Solo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinet Solo - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-8d7f-426b-accd-fe957cde73c7
 Bank 64 85 SSW - Clarinet Solo - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -426,6 +452,7 @@ Bank 64 85 SSW - Clarinet Solo - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinet Solo - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-ce6c-4ad5-9c3a-58f3f5a0f37f
 Bank 64 86 SSW - Clarinet Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -434,6 +461,7 @@ Bank 64 86 SSW - Clarinet Solo - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinets a2"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-a53f-4714-8289-db1ae602a87e
 Bank 64 87 SSW - Clarinets a2
 
 //! c=legato i=legato o=cc:32,20
@@ -455,6 +483,7 @@ Bank 64 87 SSW - Clarinets a2
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinets a2 - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-9a98-4e34-a1c7-63eef74bc464
 Bank 64 88 SSW - Clarinets a2 - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -477,6 +506,7 @@ Bank 64 88 SSW - Clarinets a2 - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Clarinets a2 - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f7ac-4eeb-8757-f6dc1c9f377f
 Bank 64 89 SSW - Clarinets a2 - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -486,6 +516,7 @@ Bank 64 89 SSW - Clarinets a2 - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Clarinet"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-b7c4-4829-afbd-7d42ba397b30
 Bank 64 90 SSW - Bass Clarinet
 
 //! c=legato i=legato o=cc:32,20
@@ -505,6 +536,7 @@ Bank 64 90 SSW - Bass Clarinet
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Clarinet - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-3d52-4ff0-ae09-deff989b292d
 Bank 64 91 SSW - Bass Clarinet - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -523,6 +555,7 @@ Bank 64 91 SSW - Bass Clarinet - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bass Clarinet - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f027-4823-b9d8-ae2be376caf0
 Bank 64 92 SSW - Bass Clarinet - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -532,6 +565,7 @@ Bank 64 92 SSW - Bass Clarinet - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabass Clarinet"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-c585-4d53-944c-828527c10516
 Bank 64 93 SSW - Contrabass Clarinet
 
 //! c=legato i=legato o=cc:32,20
@@ -549,6 +583,7 @@ Bank 64 93 SSW - Contrabass Clarinet
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabass Clarinet - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-2e43-477b-86cd-6bfc3bd80d3f
 Bank 64 94 SSW - Contrabass Clarinet - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -564,6 +599,7 @@ Bank 64 94 SSW - Contrabass Clarinet - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabass Clarinet - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-4590-4245-9f08-c764da6555b1
 Bank 64 95 SSW - Contrabass Clarinet - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -573,12 +609,14 @@ Bank 64 95 SSW - Contrabass Clarinet - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon Solo"
 //! clone="Spitfire/Symphonic Woodwinds/Piccolo Flute"
+//! id=00000000-0b9f-4871-8796-44df87c54acc
 Bank 64 96 SSW - Bassoon Solo
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon Solo - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-dc9c-4b0d-a541-a9e38776e762
 Bank 64 97 SSW - Bassoon Solo - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -606,6 +644,7 @@ Bank 64 97 SSW - Bassoon Solo - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon Solo - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-fc78-4424-a98b-11374735de00
 Bank 64 98 SSW - Bassoon Solo - Legato
 //! c=legato i=legato o=cc:32,20
 20 legato
@@ -614,6 +653,7 @@ Bank 64 98 SSW - Bassoon Solo - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon a2"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-c789-4e02-b0f4-e5be9a38d1ef
 Bank 64 99 SSW - Bassoon a2
 
 //! c=legato i=legato o=cc:32,20
@@ -637,6 +677,7 @@ Bank 64 99 SSW - Bassoon a2
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon a2 - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-ca70-4d61-8526-f48f29bf941f
 Bank 64 100 SSW - Bassoon a2 - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -661,6 +702,7 @@ Bank 64 100 SSW - Bassoon a2 - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Bassoon a2 - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-f56a-4b9c-bfee-b30acfd396cb
 Bank 64 101 SSW - Bassoon a2 - Legato
 
 //! c=legato i=legato o=cc:32,20
@@ -670,6 +712,7 @@ Bank 64 101 SSW - Bassoon a2 - Legato
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabassoon"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-dde8-4497-b361-ab5025e59460
 Bank 64 102 SSW - Contrabassoon
 
 //! c=legato i=legato o=cc:32,20
@@ -687,6 +730,7 @@ Bank 64 102 SSW - Contrabassoon
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabassoon - Full"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-2ff8-43f1-bba9-1a259b1d4387
 Bank 64 103 SSW - Contrabassoon - Full
 
 //! c=long i=note-whole o=cc:32,1
@@ -702,6 +746,7 @@ Bank 64 103 SSW - Contrabassoon - Full
 //----------------------------------------------------------------------------
 //! g="Spitfire/Symphonic Woodwinds" n="Contrabassoon - Legato"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=00000000-4c72-480c-8218-cfef582cc482
 Bank 64 104 SSW - Contrabassoon - Legato
 
 //! c=legato i=legato o=cc:32,20

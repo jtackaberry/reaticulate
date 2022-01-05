@@ -4,7 +4,7 @@ import os
 from glob import glob
 
 def usage():
-    print 'Usage: {} [outfile]'.format(sys.argv[0])
+    print(f'Usage: {sys.argv[0]} [outfile]')
 
 def assemble(outfname):
     """
@@ -12,33 +12,34 @@ def assemble(outfname):
     """
     seen = {}
     programs = {}
-    banks = glob('*.reabank') + glob('*/*.reabank')
+    banks = glob('*.reabank')
     banks.sort(key=lambda f: os.path.basename(f))
-    with open(outfname, 'w') as outfile:
+    with open(outfname, 'wb') as outfile:
         for infname in banks:
-            bank = open(infname).read()
+            bank = open(infname, 'rb').read()
             foundbank = False
             for line in bank.splitlines():
-                m = re.search('^Bank +(\d+) +(\d+) +(.*)$', line)
+                m = re.search(b'^Bank +(\d+) +(\d+) +(.*)$', line)
                 if m:
                     foundbank = True
                     msb, lsb, bankname = m.groups()
                     programs = {}
-                    conflict = seen.get((int(msb), int(lsb)))
-                    if conflict:
-                        print 'ERROR: duplicate bank in {}: {}/{} {}'.format(infname, msb, lsb, bankname)
-                    else:
-                        seen[(int(msb), int(lsb))] = bankname
-                elif line and line[0].isdigit():
-                    program, name = line.strip().split(' ', 1)
+                    if msb != b'*' and lsb != b'*':
+                        conflict = seen.get((int(msb), int(lsb)))
+                        if conflict:
+                            print(f'ERROR: duplicate bank in {infname}: {msb}/{lsb} {bankname}')
+                        else:
+                            seen[(int(msb), int(lsb))] = bankname
+                elif line and chr(line[0]).isdigit():
+                    program, name = line.strip().split(b' ', 1)
                     if program in programs:
-                        print 'ERROR: duplicate program in {}:{} -- program {} "{}" vs "{}"'.format(
+                        print('ERROR: duplicate program in {}:{} -- program {} "{}" vs "{}"'.format(
                             infname, bankname, program, name, programs[program]
-                        )
+                        ))
                     else:
                         programs[program] = name
             if foundbank:
-                outfile.write('\r\n\r\n')
+                outfile.write(b'\r\n\r\n')
             outfile.write(bank)
 
 def main(args):

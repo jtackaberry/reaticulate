@@ -1,4 +1,4 @@
--- Copyright 2017-2019 Jason Tackaberry
+-- Copyright 2017-2022 Jason Tackaberry
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -12,10 +12,13 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+local t0 = reaper.time_precise()
+local rtk = require 'rtk'
+local t1 = reaper.time_precise()
 local App = require 'app'
 
 function main(basedir)
-    reaper.defer(function() App(basedir) end)
+    rtk.call(App, basedir, t0, t1)
 end
 
 return main

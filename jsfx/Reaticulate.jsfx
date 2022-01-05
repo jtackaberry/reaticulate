@@ -1,4 +1,4 @@
-// Copyright 2017-2019 Jason Tackaberry
+// Copyright 2017-2022 Jason Tackaberry
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -193,7 +193,7 @@ GMEM_GIDX_SERIAL = 2;
 // A bitmap that tracks available RFX instance ids, used to calculate our
 // gmem_index.  See gmem_allocate().
 GMEM_GIDX_ID_BITMAP_OFFSET = 3;
-// The default channel used by the main app.  Cached in default_channel.
+// The default channel used by the main app.
 GMEM_GIDX_DEFAULT_CHANNEL = 4;
 GMEM_GIDX_RFX_OFFSET = 5;
 GMEM_GIDX_RFX_STRIDE = 6;
@@ -224,8 +224,9 @@ GMEM_GIDX_APP_DATA_OFFSET = 21;
 //     bit 1: active notes
 //     bit 2: programs
 //     bit 3: CCs for default channel
+//     bit 4-31: not yet allocated
 //
-//    slots 1-32: each of these slots contains an offset within the instance
+//    slots 1-31: each of these slots contains an offset within the instance
 //                data buffer for the type of data described by bits 1-31 of
 //                slot 0.  Offset is encoded in bits 0-15 and length in bits
 //                16-31.
@@ -249,8 +250,10 @@ GMEM_GIDX_APP_DATA_OFFSET = 21;
 //   slot[slot[3] & 0xffff] (CC):
 //    - 128 slots, where each slot[n] represents the value for CC n on
 //      the default channel.
-
+//
+//   slot[slot[4..31] & 0xffff]: not yet allocated
 GMEM_GIDX_INSTANCE_DATA_OFFSET = 22;
+
 // Helper constant that points within the instance data to the slot of the
 // first change data, which is equivalent to slot[1] & 0xffff;
 GMEM_INSTANCE_DATA_FIRST_IDX = 33;
@@ -319,6 +322,7 @@ OPCODE_ADD_OUTPUT_EVENT_EXTENSION = 6;
 // The first argument is a bitmap indicating what should be synced.
 //    bit 0: sync CCs
 //    bit 1: sync articulations
+//    bit 2: sync default channel
 //
 // (what)
 OPCODE_SYNC_TO_FEEDBACK_CONTROLLER = 7;
@@ -347,6 +351,9 @@ OPCODE_FINALIZE_ARTICULATIONS = 11;
 
 // Sets the opaque app data.  No arguments are needed: all details are
 // stored in the gmem offset for appdata.
+//
+// Note: deprecated and replaced by P_EXT track data in 0.5. Preserved for backward
+// compatibility and only used to clear out app data after migration.
 // ()
 OPCODE_SET_APPDATA = 12;
 
@@ -367,14 +374,12 @@ OPCODE_ADVANCE_HISTORY = 14;
 // ()
 OPCODE_UPDATE_CURRENT_CCS = 15;
 
-
 // Sets the things we need to update the gmem instance data for (active
 // notes, CCs, etc.).  See SUBSCRIPTION_* constants below.  Enabling a
 // subscription will cause an immediate sync to the instance data.
 //
 // (subscription_bitmap)
 OPCODE_SUBSCRIBE = 16;
-
 
 // Constants that apply to the flags parameter for OPCODE_NEW_ARTICULATION
 ARTICULATION_FLAG_CHASE = 1 << 0;
@@ -698,7 +703,7 @@ program_change_mpos_delta = getptr(MAX_CHANNELS);
 
 // Current programs on each source channel indexed by group.  Arranged in sets
 // of 4 consecutive slots, with each set of 4 representing a different
-// articuulation group.  The 4 slots hold the program number for 16 source MIDI
+// articulation group.  The 4 slots hold the program number for 16 source MIDI
 // channels.  A value of 128 indicates that the program is not set.  See
 // GMEM_GIDX_INSTANCE_DATA_OFFSET above as the arrangement is the same.
 //
@@ -780,15 +785,21 @@ last_new_output_event = 0;
 //
 //     v0: each FIXED sized record is 2 + n slots, where n is the # of output events. (DEPRECATED)
 //     v1: each FIXED sized record is 3 + 2n slots, where n is the # of output events. (DEPRECATED)
-//     v2: each VARIABLE sized record is 3+x + 2(n+y), where
-//             x is the variable size of articulation extensions
+//     v2: each VARIABLE sized record is 3+x + 2n+y, where
+//             3 is the fixed number of slots for common articulation fields
+//             x is the variable size of all articulation extensions combined
+//             2 is the fixed number of slots for common output event fields
 //             n is the # of output events
-//             y is the variable size of output event extensions which can vary by output event
+//             y is the variable size of all output event extensions which can vary by output event
 //
 //         Being variable sized, v2 is more cumbersome to work with and requires a large
 //         intermediate lookup table, but it is also more future-proof.
 //
-// This array is indexed via articulations_lut.
+// This array is indexed via articulations_lut, created in generate_articulation_luts().
+//
+// Note: the program number for the articulation is not actually stored in this record.
+// It's implied by the articulation's position in the articulation_offsets record, and
+// the program number is included in the dynamically created LUT.
 //
 // Slot 0: v0+ - articulation information
 //      bits 0-3: number of output events (see below)
@@ -802,7 +813,7 @@ last_new_output_event = 0;
 //     bytes 1-2: indicates the offset (from 0) into the banks array this
 //                articulation belongs to.
 //
-// Slot 2: v1 - UNUSED
+// Slot 2: v0/v1 - UNUSED
 // Slot 2: v2
 //    bits 0-15: a 16-bit bitmap of extensions for this articulations. Extension
 //               records begin at slot 3 and precede output events.
@@ -1454,6 +1465,7 @@ local(offset, poffset, i, len)
     gmem[offset + 3] = i | (len << 16);
     i += len;
 
+    gmem_write_active_notes();
     gmem_write_current_programs();
     gmem_write_current_ccs();
 );
@@ -1678,6 +1690,9 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
     );
 
     // Arguments: none
+    //
+    // Note: deprecated and replaced by P_EXT track data in 0.5. Preserved for backward
+    // compatibility and only used to clear out app data after migration.
     (opcode == OPCODE_SET_APPDATA) ? (
         offset = gmem_index + gmem[GMEM_GIDX_APP_DATA_OFFSET];
         version = gmem[offset + 0];
@@ -2019,9 +2034,6 @@ slider64 = 0;
 process_pending_opcodes();
 
 
-
-
-
 @block
 (instantiating == 1) ? (
     instantiating += 1;
@@ -2050,6 +2062,9 @@ local(notes, bitmap, i, offset)
     );
 
     (subscription & SUBSCRIPTION_NOTES != 0) ? (
+        // There is a subscription for active notes, so call gmem_write_active_notes()
+        // which will write the active_notes_by_channel array we just updated to
+        // gmem.
         gmem_write_active_notes() ? (
             queue_increment_serial = 1;
         );
@@ -2059,12 +2074,23 @@ local(notes, bitmap, i, offset)
 function update_current_ccs_for_gui(channel, cc, value)
 local(offset, poffset)
 (
-    (gmem_index > 0 && channel == gmem[GMEM_GIDX_DEFAULT_CHANNEL]) ? (
-        last_ccs_by_channel[channel * MAX_CHANNELS + cc] = value;
-        // Does main app care about this data?
-        (subscription & SUBSCRIPTION_CC != 0) ? (
+    // Save current CC value for chasing.
+    last_ccs_by_channel[channel * MAX_CHANNELS + cc] = value;
+    // Is the main app subscribed to CCs?
+    (subscription & SUBSCRIPTION_CC != 0) ? (
+        // Whereas with notes we indicate all channels that currently have active
+        // notes (fits in 1 slot), for CCs, we reserve 128 slots, one for each CC
+        // (which is a bit excessive considering we're storing a 7-bit value in a
+        // 32-bit slot, so there is some optimization opportunity here if we end up
+        // needing more).  And we only notify about CCs on the default channel, hence
+        // this test.
+        (gmem_index > 0 && channel == gmem[GMEM_GIDX_DEFAULT_CHANNEL]) ? (
+            // Rather than calling gmem_write_current_ccs(), which loops over all CCs on
+            // all channels, we just update this single CC value in gmem.
             offset = gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET];
             poffset = offset + (gmem[offset + 3] & 0xffff);
+            // Ensure the CC value has actually changed so we don't notify the
+            // UI for nothing.
             (value != gmem[poffset + cc]) ? (
                 gmem[poffset + cc] = value;
                 gmem[offset] |= (1 << 3);
@@ -2382,7 +2408,6 @@ local(bank, msb, lsb, program)
     );
 );
 
-
 function _enqueue_articulation(channel, bus, program, overrides)
 (
     // Do not enqueue articulation if it was already triggered since
@@ -2430,9 +2455,11 @@ local(flags, output_type, dstbuschan, dstchannel, dstchannel_bit, dstbus, has_ds
         // Here we send the note-offs with a large enough offset to ensure they follow all
         // note-ons from the list of output events for this articulation.  This causes
         // multiple note output events to simulate pressing the keys simultaneously.
+        // Don't save return value as mpos otherwise we will fail to group all
+        // note-ons before note-offs (which was a regression fixed in 0.4.6).
         //
         // Fixes #20.
-        midisend_multibus(mpos + 50, dstbuschan, 0, MIDI_EVENT_NOTE_OFF, param1, 0);
+        midisend_multibus(mpos + 100, dstbuschan, 0, MIDI_EVENT_NOTE_OFF, param1, 0);
     );
     (output_type == OUTPUT_TYPE_NOTE_HOLD) ? (
         off_program = get_articulation_off_program(articulation);
@@ -2928,7 +2955,11 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
 
 (midi_feedback_sync_pending != 0) ? (
     mpos = 0;
-
+    (midi_feedback_sync_pending & 4) ? (
+        // Send default channel to control surface
+        defchan = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
+        mpos = feedback_controller_midisend(mpos, MIDI_EVENT_NOTE_OFF + defchan, 1, 0);
+    );
     channel = 0; loop(MAX_CHANNELS,
         (midi_feedback_sync_pending & 2) ? (
             // Send current program # for each group.  Incrementing mpos ensures proper

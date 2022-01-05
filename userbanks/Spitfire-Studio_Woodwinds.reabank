@@ -5,6 +5,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute"
 //! m="Set patch to UACC"
+//! id=c2e0dd07-b17f-4eaa-9814-06084bc31c6a
 Bank 26 107 SStW - Piccolo Flute
 
 //! c=legato i=legato o=cc:32,20
@@ -30,6 +31,7 @@ Bank 26 107 SStW - Piccolo Flute
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="b-Flute Solo"
 //! m="Set patch to UACC"
+//! id=913d7355-8a33-4e03-a5e4-045af9dfc916
 Bank 26 108 SStW - Flute Solo
 
 //! c=legato i=legato o=cc:32,20
@@ -54,6 +56,7 @@ Bank 26 108 SStW - Flute Solo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="c-Flutes a3"
 //! m="Set patch to UACC"
+//! id=e373c14d-f13f-41da-8e89-ccf1900f0b26
 Bank 26 109 SStW - Flutes A3
 
 //! c=legato i=legato o=cc:32,20
@@ -79,6 +82,7 @@ Bank 26 109 SStW - Flutes A3
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="d-Alto Flute"
 //! m="Set patch to UACC"
+//! id=c2e27b09-2740-4f9b-a482-660cc74525c4
 Bank 26 110 SStW - Alto Flute
 
 //! c=legato i=legato o=cc:32,20
@@ -104,6 +108,7 @@ Bank 26 110 SStW - Alto Flute
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo"
 //! m="Set patch to UACC"
+//! id=0b4fa24f-92b9-4c74-862b-e34af6c36fe3
 Bank 26 111 SStW - Clarinet Solo
 
 //! c=legato i=legato o=cc:32,20
@@ -129,6 +134,7 @@ Bank 26 111 SStW - Clarinet Solo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="f-Clarinets a3"
 //! m="Set patch to UACC"
+//! id=fd782331-472c-48bb-a6bf-48325eab5049
 Bank 26 112 SStW - Clarinets a3
 
 //! c=legato i=legato o=cc:32,20
@@ -154,6 +160,7 @@ Bank 26 112 SStW - Clarinets a3
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet"
 //! m="Set patch to UACC"
+//! id=364d18a9-2806-40f5-838f-b8ba6856b299
 Bank 26 113 SStW - Bass Clarinet
 
 //! c=legato i=legato o=cc:32,20
@@ -175,6 +182,7 @@ Bank 26 113 SStW - Bass Clarinet
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="h-Oboe Solo"
 //! m="Set patch to UACC"
+//! id=d4bb3233-cc8b-43fc-97b1-8b322fe3937b
 Bank 26 114 SStW - Oboe Solo
 
 //! c=legato i=legato o=cc:32,20
@@ -200,6 +208,7 @@ Bank 26 114 SStW - Oboe Solo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="i-Oboes a3"
 //! m="Set patch to UACC"
+//! id=5fe8eb94-ddee-4bff-9adb-dcf53d03a22f
 Bank 26 115 SStW - Oboes A3
 
 //! c=legato i=legato o=cc:32,20
@@ -225,6 +234,7 @@ Bank 26 115 SStW - Oboes A3
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo"
 //! m="Set patch to UACC"
+//! id=2181b619-5e5d-48a0-83c7-c661bd6485dc
 Bank 26 116 SStW - Bassoon Solo
 
 //! c=legato i=legato o=cc:32,20
@@ -249,6 +259,7 @@ Bank 26 116 SStW - Bassoon Solo
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="k-Bassoons a3"
 //! m="Set patch to UACC"
+//! id=5e224159-9e17-4441-8516-306f9fe17afa
 Bank 26 117 SStW - Bassoons A3
 
 //! c=legato i=legato o=cc:32,20
@@ -274,6 +285,7 @@ Bank 26 117 SStW - Bassoons A3
 //------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute Core"
 //! m="Set patch to UACC"
+//! id=68ec1c92-18a8-4b24-b730-c343c602831a
 Bank 26 118 SStW - Piccolo Flute Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -308,6 +320,7 @@ Bank 26 118 SStW - Piccolo Flute Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="b-Flute Solo Core"
 //! m="Set patch to UACC"
+//! id=176bc315-b07a-49ec-983e-fa781ca54f5f
 Bank 26 119 SStW - Flute Solo Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -343,6 +356,7 @@ Bank 26 119 SStW - Flute Solo Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="c-Flutes a3 Core"
 //! m="Set patch to UACC"
+//! id=e259a264-4c66-462f-a0f5-74b698ab4c73
 Bank 26 120 SStW - Flutes a3 Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -377,6 +391,7 @@ Bank 26 120 SStW - Flutes a3 Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="d-Alto Flute Core"
 //! m="Set patch to UACC"
+//! id=e7b9bcc9-274c-4f78-af3a-163423a09e53
 Bank 26 121 SStW - Alto Flute Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -412,6 +427,7 @@ Bank 26 121 SStW - Alto Flute Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo Core"
 //! m="Set patch to UACC"
+//! id=2121ac24-7914-4c92-aae8-398f41f34214
 Bank 26 122 SStW - Clarinet Solo Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -438,6 +454,7 @@ Bank 26 122 SStW - Clarinet Solo Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="f-Clarinets a3 Core"
 //! m="Set patch to UACC"
+//! id=97049ae3-4750-4490-9ff2-636aaeddb867
 Bank 26 123 SStW - Clarinets a3 Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -464,6 +481,7 @@ Bank 26 123 SStW - Clarinets a3 Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet Core"
 //! m="Set patch to UACC"
+//! id=916c334e-fd3b-4f35-8faf-21700ae41c3b
 Bank 26 124 SStW - Bass Clarinet Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -487,6 +505,7 @@ Bank 26 124 SStW - Bass Clarinet Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="h-Oboe Solo Core"
 //! m="Set patch to UACC"
+//! id=5b31473e-e981-46b8-85be-b3060a2fcb3f
 Bank 26 125 SStW - Oboe Solo Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -518,6 +537,7 @@ Bank 26 125 SStW - Oboe Solo Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="i-Oboes a3 Core"
 //! m="Set patch to UACC"
+//! id=a5025cc3-7164-43d3-9e7e-a97c9ed3f812
 Bank 26 126 SStW - Oboes a3 Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -545,6 +565,7 @@ Bank 26 126 SStW - Oboes a3 Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo Core"
 //! m="Set patch to UACC"
+//! id=70748c04-67aa-41ce-95b0-5a5d19efda3c
 Bank 26 127 SStW - Bassoon Solo Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -572,6 +593,7 @@ Bank 26 127 SStW - Bassoon Solo Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="k-Bassoons a3 Core"
 //! m="Set patch to UACC"
+//! id=ba15180b-1fef-422f-8631-ef81d0aae882
 Bank 27 1 SStW - Bassoons a3 Core
 
 //! c=long i=note-whole o=cc:32,1
@@ -594,6 +616,7 @@ Bank 27 1 SStW - Bassoons a3 Core
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute Decorative"
 //! m="Set patch to UACC"
+//! id=bb1ec68a-cad2-441f-8e69-b1bfee0818b5
 Bank 27 2 SStW - Piccolo Flute Decorative
 
 //! c=long i=note-whole o=cc:32,8
@@ -617,6 +640,7 @@ Bank 27 2 SStW - Piccolo Flute Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="b-Flute Solo Decorative"
 //! m="Set patch to UACC"
+//! id=b5ac44a3-93a5-4cff-bab6-4d3f15dd4f72
 Bank 27 3 SStW - Flute Solo Decorative
 
 //! c=long i=note-whole o=cc:32,8
@@ -640,6 +664,7 @@ Bank 27 3 SStW - Flute Solo Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="c-Flutes a3 Decorative"
 //! m="Set patch to UACC"
+//! id=470b92e9-d1eb-4509-8906-3c8fff58478a
 Bank 27 4 SStW - Flutes a3 Decorative
 
 //! c=long i=note-whole o=cc:32,8
@@ -663,6 +688,7 @@ Bank 27 4 SStW - Flutes a3 Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="d-Alto Flute Decorative"
 //! m="Set patch to UACC"
+//! id=418a5e37-793d-4826-a408-8502085acaae
 Bank 27 5 SStW - Alto Flute Decorative
 
 //! c=long i=note-whole o=cc:32,8
@@ -686,6 +712,7 @@ Bank 27 5 SStW - Alto Flute Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo Decorative"
 //! m="Set patch to UACC"
+//! id=4a6c1462-bb5d-4010-8818-92c1af12e4d8
 Bank 27 6 SStW - Clarinet Solo Decorative
 
 //! c=long-light i=sfz o=cc:32,18
@@ -699,6 +726,7 @@ Bank 27 6 SStW - Clarinet Solo Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="f-Clarinets a3 Decorative"
 //! m="Set patch to UACC"
+//! id=9973ede7-57ef-469d-a48d-97c90e12dc73
 Bank 27 7 SStW - Clarinets a3 Decorative
 
 //! c=long-light i=sfz o=cc:32,18
@@ -711,6 +739,7 @@ Bank 27 7 SStW - Clarinets a3 Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet Decorative"
 //! m="Set patch to UACC"
+//! id=037d3991-b55a-4252-bd95-042580bb38fc
 Bank 27 8 SStW - Bass Clarinet Decorative
 
 //! c=long-light i=sfz o=cc:32,18
@@ -724,6 +753,7 @@ Bank 27 8 SStW - Bass Clarinet Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="h-Oboe Solo Decorative"
 //! m="Set patch to UACC"
+//! id=7e9df405-6ceb-44a0-830e-4332e437bf92
 Bank 27 9 SStW - Oboe Solo Decorative
 
 //! c=long-light i=sfz o=cc:32,18
@@ -741,6 +771,7 @@ Bank 27 9 SStW - Oboe Solo Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="i-Oboes a3 Decorative"
 //! m="Set patch to UACC"
+//! id=08b891e5-561f-4dae-a9a9-e04a26802372
 Bank 27 10 SStW - Oboes a3 Decorative
 
 //! c=long-light i=sfz o=cc:32,18
@@ -754,6 +785,7 @@ Bank 27 10 SStW - Oboes a3 Decorative
 //----------------------------------------------------------------------------
 //! g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo Decorative"
 //! m="Set patch to UACC"
+//! id=3b83f29d-2bae-4751-96d8-9c8505a1e6ab
 Bank 27 11 SStW - Bassoon Solo Decorative
 
 //! c=long-light i=sfz o=cc:32,18

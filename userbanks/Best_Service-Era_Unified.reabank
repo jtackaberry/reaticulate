@@ -3,6 +3,7 @@
 //
 
 //! g="Best Service/Dark Era/Strings" n="Tagelharpa"
+//! id=8a978d09-d808-4074-b260-b09a7ce709a2
 Bank 20 122 Tagelharpa
 
 //! c=#1FCCC9 i=note-whole o=note:36 g=1
@@ -49,6 +50,7 @@ Bank 20 122 Tagelharpa
 
 
 //! g="Best Service/Dark Era/Strings" n="Crwth"
+//! id=3f82e312-a357-43b5-ba3d-ad1b60c50bb9
 Bank 20 123 Crwth
 //! c=legato i=phrase o=note:93
 93 Rhythm A
@@ -92,6 +94,7 @@ Bank 20 123 Crwth
 44 Staccato
 
 //! g="Best Service/Dark Era/Strings" n="Cologne / Trossingen Lyre"
+//! id=fbb7d00a-0864-4a92-b503-7ac2c38b16a4
 Bank 20 124 Cologne / Trossingen Lyre
 //! c=default o=note:36
 36 Finger
@@ -101,6 +104,7 @@ Bank 20 124 Cologne / Trossingen Lyre
 40 Harmonics
 
 //! g="Best Service/Dark Era/Strings" n="Col. / Tros. Lyre Strummed"
+//! id=1d29c69e-c30a-4b1d-bcf9-d3a6e6726f05
 Bank 20 125 Col. / Tros. Lyre Strummed
 //! c=default o=note:36
 36 C Tuning
@@ -128,6 +132,7 @@ Bank 20 125 Col. / Tros. Lyre Strummed
 47 B Tuning
 
 //! g="Best Service/Dark Era/Wind" n="Deer Bone Flute" off=0
+//! id=3bc7fda6-ad5c-4298-b11d-224de5d33c07
 Bank 20 126 Deer Bone Flute
 //! i=legato c=long
 0 Legato
@@ -155,6 +160,7 @@ Bank 20 126 Deer Bone Flute
 47 FX
 
 //! g="Best Service/Dark Era/Wind" n="Vulture Bone Flute" off=0
+//! id=67a16a63-926b-4f8b-b714-318c4bb33792
 Bank 20 127 Vulture Bone Flute
 //! i=legato c=long
 0 Legato
@@ -174,6 +180,7 @@ Bank 20 127 Vulture Bone Flute
 43 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Double Flute" off=0
+//! id=64e7f2f6-7c38-4386-8f50-3cce9a284b11
 Bank 21 1 Double Flute
 //! i=legato c=long
 0 Legato
@@ -192,6 +199,7 @@ Bank 21 1 Double Flute
 
 
 //! g="Best Service/Dark Era/Wind" n="Elderwood Flute" off=0
+//! id=4cdde79d-42de-45ce-be1e-e785220f92d8
 Bank 21 2 Elderwood Flute
 //! i=legato c=long
 0 Legato Natural
@@ -217,6 +225,7 @@ Bank 21 2 Elderwood Flute
 47 Gliss Long
 
 //! g="Best Service/Dark Era/Wind" n="Fujara" off=0
+//! id=f301479a-16bb-4937-b644-ea3afab0e8d4
 Bank 21 3 Fujara
 //! i=legato c=long
 0 Legato Hard Attack
@@ -228,6 +237,7 @@ Bank 21 3 Fujara
 39 Triplet 2
 
 //! g="Best Service/Dark Era/Wind" n="White Horn" off=0
+//! id=16e409dd-b266-41c2-abd4-580a303219eb
 Bank 21 4 White Horn
 //! i=legato c=long
 0 Legato
@@ -269,6 +279,7 @@ Bank 21 4 White Horn
 54 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
+//! id=cf3f3618-9551-4f68-9d27-506867c21a6b
 Bank 21 5 Overtone Flute
 //! i=legato c=long
 0 Legato
@@ -286,6 +297,7 @@ Bank 21 5 Overtone Flute
 43 Staccato
 
 //! g="Best Service/Dark Era/Vocal" n="Shouts 1"
+//! id=76a54b35-31c7-4a73-b4a6-ba6c581247d3
 Bank 21 6 Shouts 1
 //! i=note-quarter o=note:36
 36 Ha
@@ -307,6 +319,7 @@ Bank 21 6 Shouts 1
 44 Sho
 
 //! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
+//! id=d40fd9af-023f-4039-aa09-804a57c98f21
 Bank 21 7 Kargyraa Legato
 //! i=note-quarter o=note:36
 36 Vowel 1
@@ -324,6 +337,7 @@ Bank 21 7 Kargyraa Legato
 42 Vowel 7
 
 //! g="Best Service/Dark Era/Vocal" n="Khomeii"
+//! id=90a58b09-d4cc-4bf2-82c4-a040ffac4f6b
 Bank 21 8 Khoomei
 //! c=default o=note:43
 43 G Tuning
@@ -351,6 +365,7 @@ Bank 21 8 Khoomei
 54 F# Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Sygyt"
+//! id=f7d0fd22-e7f4-4dd6-8989-5621069f3dce
 Bank 21 9 Sygyt
 //! c=default o=note:41
 41 F Tuning
@@ -378,6 +393,7 @@ Bank 21 9 Sygyt
 52 E Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Whispers"
+//! id=f0a9ee2b-ed71-4e61-afb4-0ea0725769ed
 Bank 21 10 Whispers
 //! c=default o=note:36
 36 F Tuning
@@ -385,6 +401,7 @@ Bank 21 10 Whispers
 37 F# Tuning
 
 //! g="Best Service/Ancient Era/Strings" n="Baglama High / Low" off=0
+//! id=4f4d5b69-7e5a-459d-bf54-095970a00361
 Bank 21 11 Baglama High / Low
 //! i=legato c=long
 0 Sustain Poly
@@ -418,6 +435,7 @@ Bank 21 11 Baglama High / Low
 50 Rhythm 3
 
 //! g="Best Service/Ancient Era/Strings" n="Dutar" off=0
+//! id=672beb78-e3af-4803-8d82-73f8c76796dc
 Bank 21 12 Dutar
 //! i=legato c=long
 0 Sustain Poly
@@ -433,6 +451,7 @@ Bank 21 12 Dutar
 41 Tremolo
 
 //! g="Best Service/Ancient Era/Strings" n="Kopuz" off=0
+//! id=7ff4c990-b6e6-4859-a13b-bde254402f3c
 Bank 21 13 Kopuz
 //! i=legato c=long
 0 Sustain Poly
@@ -450,6 +469,7 @@ Bank 21 13 Kopuz
 42 Short Chord 1 Finger
 
 //! g="Best Service/Ancient Era/Strings" n="Rabab" off=0
+//! id=bb59ffde-5f9c-4d73-a7cb-eab1c0201837
 Bank 21 14 Rabab
 //! i=legato c=long
 0 Sustain Poly
@@ -469,6 +489,7 @@ Bank 21 14 Rabab
 43 Chikari
 
 //! g="Best Service/Ancient Era/Strings" n="Santoor" off=0
+//! id=dbc66698-302c-406f-b6ce-60512b5a6774
 Bank 21 15 Santoor
 //! i=legato c=long
 0 Sustain Poly
@@ -476,6 +497,7 @@ Bank 21 15 Santoor
 37 Tremolo
 
 //! g="Best Service/Ancient Era/Strings" n="Tambur" off=0
+//! id=07f060e5-0625-4fc9-8d0d-6d399c737d48
 Bank 21 16 Tambur
 //! i=legato c=long
 0 Sustain Poly
@@ -497,6 +519,7 @@ Bank 21 16 Tambur
 44 Finger Vibrato
 
 //! g="Best Service/Ancient Era/Strings" n="Tar" off=0
+//! id=1c8982b7-9e7d-42db-93b2-087c1ca4ceb5
 Bank 21 17 Tar
 //! i=legato c=long
 0 Sustain Poly
@@ -518,6 +541,7 @@ Bank 21 17 Tar
 44 Vibrato
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Oud" off=0
+//! id=793d6105-811d-4e25-9c97-654cf40f027d
 Bank 21 18 Turkish Oud
 //! i=legato c=long
 0 Sustain Poly
@@ -541,6 +565,7 @@ Bank 21 18 Turkish Oud
 45 Chords
 
 //! g="Best Service/Ancient Era/Strings" n="Lyra I / II" off=0
+//! id=1bbabfb5-a57d-4bbf-848c-3a1fe6e32a16
 Bank 21 19 Lyra I / II
 //! i=legato c=long
 0 Finger Legato
@@ -574,6 +599,7 @@ Bank 21 19 Lyra I / II
 50 Staccato
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Violin" off=0
+//! id=4577855c-5e97-4570-987a-1c8029b9a400
 Bank 21 20 Turkish Violin
 //! i=legato c=long
 0 Legato
@@ -615,6 +641,7 @@ Bank 21 20 Turkish Violin
 54 Ciftetelli Non Vibrato
 
 //! g="Best Service/Ancient Era/Winds" n="Armenian Duduk" off=0
+//! id=dcac6ae1-2326-43a5-bb20-1e7ab808a951
 Bank 21 21 Armenian Duduk
 //! i=legato c=long
 0 Legato
@@ -634,6 +661,7 @@ Bank 21 21 Armenian Duduk
 43 Long Trill
 
 //! g="Best Service/Ancient Era/Winds" n="Kaval" off=0
+//! id=5a87a3eb-0a56-408e-a7f0-39231940f001
 Bank 21 22 Kaval
 //! i=legato c=long
 0 Legato
@@ -659,6 +687,7 @@ Bank 21 22 Kaval
 46 Trill Clarinet
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Clarinet" off=0
+//! id=faa17b4d-254f-4737-93d6-65293ba4804c
 Bank 21 23 Turkish Clarinet
 //! i=legato c=long
 0 Legato
@@ -678,6 +707,7 @@ Bank 21 23 Turkish Clarinet
 43 Staccato
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Mey" off=0
+//! id=2364143a-aa95-4d87-a71d-c2ae155615e4
 Bank 21 24 Turkish Mey
 //! i=legato c=long
 0 Legato
@@ -703,6 +733,7 @@ Bank 21 24 Turkish Mey
 48 Phrases
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Ney" off=0
+//! id=9cb0a067-43c8-4c9f-810f-80349ae9e384
 Bank 21 25 Turkish Ney
 //! i=legato c=long
 0 Legato
@@ -728,6 +759,7 @@ Bank 21 25 Turkish Ney
 58 Short Bending
 
 //! g="Best Service/Ancient Era/Winds" n="Persian Ney" off=0
+//! id=15cf03be-8aed-4dc6-b93d-1ad585cefb54
 Bank 21 26 Persian Ney
 //! i=legato c=long
 0 Legato
@@ -747,6 +779,7 @@ Bank 21 26 Persian Ney
 43 Long Ornament 2
 
 //! g="Best Service/Ancient Era/Winds" n="Zourna" off=0
+//! id=8ba97adc-c835-4bd8-832e-1ed3a7045c9d
 Bank 21 27 Zourna
 //! i=legato c=long
 0 Legato
@@ -762,6 +795,7 @@ Bank 21 27 Zourna
 53 Long Ornament 2
 
 //! g="Best Service/Celtic Era/Winds" n="Irish Flute" off=0
+//! id=c4da5065-3028-41ae-8a08-c12615ecc46e
 Bank 21 28 Irish Flute
 //! i=legato c=long
 0 Legato
@@ -797,6 +831,7 @@ Bank 21 28 Irish Flute
 51 Overblown
 
 //! g="Best Service/Celtic Era/Winds" n="Whistles" off=0
+//! id=b734e41d-5db3-44f7-831a-7e20443003f7
 Bank 21 29 Irish Whistle / Low Whistle
 //! i=legato c=long
 0 Legato
@@ -830,6 +865,7 @@ Bank 21 29 Irish Whistle / Low Whistle
 50 Long Staccato
 
 //! g="Best Service/Celtic Era/Winds" n="Highland Pipes" off=0
+//! id=de477f00-078b-4329-be70-e4251c366924
 Bank 21 30 Highland Pipes
 //! i=legato c=long
 0 Legato
@@ -855,6 +891,7 @@ Bank 21 30 Highland Pipes
 46 Lamluath
 
 //! g="Best Service/Celtic Era/Winds" n="Uilleann Pipes" off=0
+//! id=bb60a006-7299-47e1-b275-c10634280020
 Bank 21 31 Uilleann Pipes
 //! i=legato c=long
 0 Legato
@@ -888,6 +925,7 @@ Bank 21 31 Uilleann Pipes
 50 Popping
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Fiddle" off=0
+//! id=92898ef3-847d-4dac-ab11-7e58e29eeae8
 Bank 21 32 Irish Fiddle
 //! i=legato c=long
 0 Finger Legato
@@ -915,6 +953,7 @@ Bank 21 32 Irish Fiddle
 47 Marcato
 
 //! g="Best Service/Celtic Era/Strings" n="Acoustic Guitar" off=0
+//! id=a3859354-63cb-4336-a4a9-e252d0ffed9c
 Bank 21 33 Acoustic Guitar
 //! i=legato c=long
 0 Sustain
@@ -934,6 +973,7 @@ Bank 21 33 Acoustic Guitar
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Bouzouki" off=0
+//! id=87ca17e0-c4d6-42a6-81bf-c492da8ed054
 Bank 21 34 Irish Bouzouki
 //! i=legato c=long
 0 Sustain
@@ -953,6 +993,7 @@ Bank 21 34 Irish Bouzouki
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Tenor Banjo" off=0
+//! id=20d1019a-2146-4e0e-84b4-64b29a4a2374
 Bank 21 35 Tenor Banjo
 //! i=legato c=long
 0 Sustain Poly
@@ -966,6 +1007,7 @@ Bank 21 35 Tenor Banjo
 40 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Strummed" off=0
+//! id=3b5dce2b-a84e-4904-9593-37fd5be480fe
 Bank 21 36 Strummed Guitar / Bouzouki
 //! i=note-quarter o=note:36
 36 C Root
@@ -1004,6 +1046,7 @@ Bank 21 36 Strummed Guitar / Bouzouki
 53 7th Chords
 
 //! g="Best Service/Celtic Era/Ancient" n="Carnyx" off=0
+//! id=32488db5-0c9b-45c2-84fd-c193dde3a976
 Bank 21 37 Carnyx
 //! i=legato c=long
 0 Sustain Poly
@@ -1035,6 +1078,7 @@ Bank 21 37 Carnyx
 49 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="Cornu" off=0
+//! id=cff0ab3c-070c-4a79-a147-0f9542251fee
 Bank 21 38 Cornu
 //! i=legato c=long
 0 Sustain Poly
@@ -1060,6 +1104,7 @@ Bank 21 38 Cornu
 46 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="War Horn" off=0
+//! id=b682630e-067a-4185-badf-342d7bfc96c4
 Bank 21 39 War Horn
 //! i=legato c=long
 0 Sustain Poly
@@ -1116,6 +1161,7 @@ Bank 21 39 War Horn
 
 
 //! g="Best Service/Era II/Brass" n="Cornetto" off=0
+//! id=5c2a1dfd-59d3-45cf-8ffa-82df43943a15
 Bank 21 40 Cornetto
 //! i=legato c=long
 0 Legato
@@ -1125,6 +1171,7 @@ Bank 21 40 Cornetto
 38 Marcato
 
 //! g="Best Service/Era II/Brass" n="Natural Trumpet" off=0
+//! id=a1a3600d-10e3-457c-9ee8-b0915a8414a7
 Bank 21 41 Natural Trumpet
 //! i=legato c=long
 0 Legato Marcato
@@ -1146,6 +1193,7 @@ Bank 21 41 Natural Trumpet
 44 Long Marc. Cresc.
 
 //! g="Best Service/Era II/Brass" n="Sackbut" off=0
+//! id=d733bb9d-8bcd-4531-afa0-2992890105da
 Bank 21 42 Sackbut
 //! i=legato c=long
 0 Legato Marcato
@@ -1167,6 +1215,7 @@ Bank 21 42 Sackbut
 44 Long Marc. Cresc.
 
 //! g="Best Service/Era II/Winds/Flute" n="Gemshorn" off=0
+//! id=2eb24062-b36e-42bd-a518-b59ae383fe0c
 Bank 21 43 Gemshorn
 //! i=legato c=long
 0 Legato
@@ -1174,6 +1223,7 @@ Bank 21 43 Gemshorn
 49 Staccato
 
 //! g="Best Service/Era II/Winds/Flute" n="Two Holed Flute" off=0
+//! id=1e051be1-7244-4e93-a069-c86c72ce1d36
 Bank 21 44 Two Holed Flute
 //! i=legato c=long
 0 Legato
@@ -1193,6 +1243,7 @@ Bank 21 44 Two Holed Flute
 43 Staccato
 
 //! g="Best Service/Era II/Winds/Flute" n="Rein. Recorders" off=48
+//! id=32adcdff-df35-4318-922c-998ad1ae1d0b
 Bank 21 45 Reinnesance Recorders
 //! i=legato c=long
 48 Legato
@@ -1206,6 +1257,7 @@ Bank 21 45 Reinnesance Recorders
 52 Short Trill
 
 //! g="Best Service/Era II/Winds/Flute" n="Trad. Sopr. Recorder" off=48
+//! id=3b8b8d2f-5e0c-4164-8e98-7387f190728e
 Bank 21 46 Trad. Sopr. Recorder
 //! i=legato c=long
 48 Legato
@@ -1221,6 +1273,7 @@ Bank 21 46 Trad. Sopr. Recorder
 53 Mordent
 
 //! g="Best Service/Era II/Winds/Flute" n="Trad. Wood Flute" off=48
+//! id=5972dbda-7996-4cd0-8548-de73ad2e78c9
 Bank 21 47 Trad. Wood Flute
 //! i=legato c=long
 48 Legato
@@ -1240,6 +1293,7 @@ Bank 21 47 Trad. Wood Flute
 55 Ornament
 
 //! g="Best Service/Era II/Winds/Flute" n="Whistle" off=0
+//! id=60cd2ef7-de7b-42fc-9b1a-3fe39b2e7f33
 Bank 21 48 Whistle
 //! i=legato c=long
 0 Legato
@@ -1259,6 +1313,7 @@ Bank 21 48 Whistle
 43 Stac. 2
 
 //! g="Best Service/Era II/Winds/Flute" n="Wooden Transverse Flute" off=0
+//! id=e553a05c-b410-49ae-ae60-0558ca0045ef
 Bank 21 49 Wooden Transverse Flute
 //! i=legato c=long
 0 Legato
@@ -1278,6 +1333,7 @@ Bank 21 49 Wooden Transverse Flute
 43 Staccato 2
 
 //! g="Best Service/Era II/Winds/Reeds" n="Bagpipes" off=0
+//! id=eec43b29-7c52-424b-aa3a-95c6f0ebe9f3
 Bank 21 50 Bagpipes
 //! i=legato c=long
 0 Sustain Poly
@@ -1299,6 +1355,7 @@ Bank 21 50 Bagpipes
 56 Ornament 8
 
 //! g="Best Service/Era II/Winds/Reeds" n="Crumhorns" off=0
+//! id=252c318d-bf90-4276-8a79-df973e671e6b
 Bank 21 51 Crumhorns
 //! i=legato c=long
 0 Sustain Poly
@@ -1314,6 +1371,7 @@ Bank 21 51 Crumhorns
 53 Mordent
 
 //! g="Best Service/Era II/Winds/Reeds" n="Crumhorn Bass" off=0
+//! id=837d555c-6ceb-4478-9e94-a85f30ebb66c
 Bank 21 52 Crumhorn Bass
 //! i=legato c=long
 0 Sustain Poly
@@ -1329,6 +1387,7 @@ Bank 21 52 Crumhorn Bass
 29 Mordent
 
 //! g="Best Service/Era II/Winds/Shawms" n="Bombarde" off=0
+//! id=6c39d1bc-aa05-4b8b-bfd0-f88a41ecaa28
 Bank 21 53 Bombarde
 //! i=legato c=long
 0 Sustain Poly
@@ -1344,6 +1403,7 @@ Bank 21 53 Bombarde
 41 Mordent
 
 //! g="Best Service/Era II/Winds/Shawms" n="Chirmia" off=0
+//! id=b21724e5-6844-40d5-a41d-afb22c60ef76
 Bank 21 54 Chirmia
 //! i=legato c=long
 0 Sustain Poly
@@ -1359,6 +1419,7 @@ Bank 21 54 Chirmia
 53 Mordent
 
 //! g="Best Service/Era II/Winds/War Horns" n="Anyafil Calls" off=0
+//! id=145cb4da-0ee7-444e-97ab-3f78a365205e
 Bank 21 55 Anyafil Calls
 //! i=note-quarter o=note:36
 36 Ornament 1
@@ -1414,6 +1475,7 @@ Bank 21 55 Anyafil Calls
 61 Ornament 26
 
 //! g="Best Service/Era II/Winds/War Horns" n="Anyafil / Shofar" off=0
+//! id=a01c4eb9-d1ef-4a6c-9851-3a7e95cfae40
 Bank 21 56 Anyafil / Shofar
 //! i=legato c=long
 0 Sustain Poly
@@ -1421,6 +1483,7 @@ Bank 21 56 Anyafil / Shofar
 37 Staccato
 
 //! g="Best Service/Era II/Winds/War Horns" n="Shofar Calls" off=0
+//! id=5f1f345c-d6e1-4f00-a24a-6f3d7a99d69e
 Bank 21 57 Shofar Calls
 //! i=note-quarter o=note:36
 36 Ornament 1
@@ -1490,6 +1553,7 @@ Bank 21 57 Shofar Calls
 68 Ornament 33
 
 //! g="Best Service/Era II/Winds/War Horns" n="Celtibertic Warhorn" off=0
+//! id=27d0360c-a840-4405-996c-a090a58c2efe
 Bank 21 58 Celtibertic Warhorn
 //! i=note-quarter o=note:36
 36 Ornament 1
@@ -1517,6 +1581,7 @@ Bank 21 58 Celtibertic Warhorn
 47 Ornament 12
 
 //! g="Best Service/Era II/Winds/War Horns" n="War Horn" off=0
+//! id=0668db89-51db-4a8f-bfaa-4b6fe09c9016
 Bank 21 59 War Horn
 //! i=note-quarter o=note:36
 36 Ornament 1
@@ -1544,6 +1609,7 @@ Bank 21 59 War Horn
 47 Ornament 12
 
 //! g="Best Service/Era II/Strings/Bowed" n="Bass Viola de Gamba" off=0
+//! id=b94c2797-494d-4bf0-af45-5305602edbb9
 Bank 21 60 Bass Viola de Gamba
 //! i=legato c=long
 0 Sustain Poly
@@ -1553,6 +1619,7 @@ Bank 21 60 Bass Viola de Gamba
 26 Pizzicato
 
 //! g="Best Service/Era II/Strings/Bowed" n="Tenor Viola de Gamba" off=0
+//! id=2dfbf877-eaa7-4654-8bcc-1f6211b2a373
 Bank 21 61 Tenor Viola de Gamba
 //! i=legato c=long
 0 Legato
@@ -1568,6 +1635,7 @@ Bank 21 61 Tenor Viola de Gamba
 41 Staccato
 
 //! g="Best Service/Era II/Strings/Bowed" n="Bowed Psaltery" off=0
+//! id=9efb3f5e-a91b-4956-9eac-9a87c8e3b96d
 Bank 21 62 Bowed Psaltery
 //! i=legato c=long
 0 Sustain
@@ -1579,6 +1647,7 @@ Bank 21 62 Bowed Psaltery
 39 Staccato 2
 
 //! g="Best Service/Era II/Strings/Bowed" n="Fiddle Grooves" off=0
+//! id=8f6ccaa2-1cdd-49c2-aec4-da5f14c539a2
 Bank 21 63 Fiddle Grooves
 //! i=note-quarter o=note-hold:38
 38 D Root
@@ -1588,6 +1657,7 @@ Bank 21 63 Fiddle Grooves
 45 D Root
 
 //! g="Best Service/Era II/Strings/Bowed" n="Fidule" off=0
+//! id=7e728e7b-818a-4314-a276-13cf53079c88
 Bank 21 64 Fidule
 //! i=legato c=long
 0 Legato
@@ -1600,6 +1670,7 @@ Bank 21 64 Fidule
 127 Drone Off
 
 //! g="Best Service/Era II/Strings/Bowed" n="Nyckelharpa" off=0
+//! id=67700ac1-393c-47f4-a9fd-41a960779613
 Bank 21 65 Nyckelharpa
 //! i=legato c=long
 0 Legato
@@ -1611,6 +1682,7 @@ Bank 21 65 Nyckelharpa
 39 Triplet
 
 //! g="Best Service/Era II/Strings/Bowed" n="Viola de Roda" off=0
+//! id=91fe53b6-0abb-4099-a9e9-e216000aa283
 Bank 21 66 Viola de Roda
 //! i=legato c=long
 0 Legato
@@ -1620,6 +1692,7 @@ Bank 21 66 Viola de Roda
 38 Vibrato 2
 
 //! g="Best Service/Era II/Strings/Plucked" n="Baroque Guitar" off=0
+//! id=65b67f38-b58e-44e2-8f56-5179dc99fec4
 Bank 21 67 Baroque Guitar
 //! i=legato c=long
 0 Sustain
@@ -1631,6 +1704,7 @@ Bank 21 67 Baroque Guitar
 39 Looped Chords
 
 //! g="Best Service/Era II/Strings/Plucked" n="Bass Citole" off=0
+//! id=a3fab237-3aea-40e9-b6a5-a565f84e8abc
 Bank 21 68 Bass Citole
 //! i=legato c=long
 0 Polyphonic
@@ -1644,6 +1718,7 @@ Bank 21 68 Bass Citole
 40 Fast Chords Muted
 
 //! g="Best Service/Era II/Strings/Plucked" n="Gittern"
+//! id=3c6910c3-6828-41de-9edf-611815f1e7c0
 Bank 21 69 Gittern
 //! i=note-quarter o=note:36
 36 Polyphonic
@@ -1657,6 +1732,7 @@ Bank 21 69 Gittern
 40 Trill
 
 //! g="Best Service/Era II/Strings/Plucked" n="Langeleik"
+//! id=5b69cd48-c792-463b-aee0-4b7cd0b5a31b
 Bank 21 70 Langeleik
 //! i=note-quarter o=note:36
 36 Pluck Style 1
@@ -1670,6 +1746,7 @@ Bank 21 70 Langeleik
 40 Pluck Style 5
 
 //! g="Best Service/Era II/Strings/Plucked" n="Renaissance Lute"
+//! id=7c238cd5-eb48-491d-93fc-823b2e446dc7
 Bank 21 71 Renaissance Lute
 //! i=legato o=note:36
 36 Sustain
@@ -1677,6 +1754,7 @@ Bank 21 71 Renaissance Lute
 37 Legato
 
 //! g="Best Service/Era II/Strings/Plucked" n="Medieval Lute"
+//! id=6aadeca5-94e4-44f6-a326-b0d6de3a8350
 Bank 21 72 Medieval Lute
 //! i=legato o=note:36
 36 Polyphonic

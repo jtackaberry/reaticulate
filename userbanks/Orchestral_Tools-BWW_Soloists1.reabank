@@ -4,6 +4,7 @@
 //===========================================================================
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="01 Solo Flute"
+//! id=6b3d1893-b730-4cf3-8270-e23fde621bc3
 Bank 30 10 BWW Solo Flute
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg
@@ -25,6 +26,7 @@ Bank 30 10 BWW Solo Flute
 90 Breath Noises
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="02 Solo Alto Flute"
+//! id=f2120464-8984-4e85-9443-40fb1abfe47a
 Bank 30 11 BWW Solo Alto Flute
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg
@@ -46,6 +48,7 @@ Bank 30 11 BWW Solo Alto Flute
 90 Breath Noises
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="03 Solo Oboe"
+//! id=dce31d28-ae99-4ad9-aded-d150ef1511ba
 Bank 30 12 BWW Solo Oboe
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg
@@ -67,6 +70,7 @@ Bank 30 12 BWW Solo Oboe
 70 Trills
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="04 Solo English Horn"
+//! id=ffeadfc7-f727-42c9-a728-592f54082b40
 Bank 30 13 BWW Solo English Horn
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg
@@ -88,6 +92,7 @@ Bank 30 13 BWW Solo English Horn
 70 Trills
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 1" n="05 Solo Clarinet"
+//! id=d7abe2bb-6530-45d2-bd55-ff9c24407c61
 Bank 30 14 BWW Solo Clarinet
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg

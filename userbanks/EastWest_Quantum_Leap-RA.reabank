@@ -3,6 +3,7 @@
 //
 //! g="EastWest Quantum Leap/RA/Americas/Plucked" n="Dobro Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=be80c6d8-b7b9-4376-a812-b7823f83828c
 Bank 22 52 EWQLRA - Dobro
 //! c=long i=note-whole o=note:24
 24 sustain
@@ -39,6 +40,7 @@ Bank 22 52 EWQLRA - Dobro
 
 //! g="EastWest Quantum Leap/RA/Americas/Plucked" n="Mandolin Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=a94395bc-7d2b-4cb6-98c1-870076d9ed45
 Bank 22 53 EWQLRA - Mandolin
 //! c=long i=note-whole o=note:24
 24 sustain round-robin
@@ -53,6 +55,7 @@ Bank 22 53 EWQLRA - Mandolin
 
 //! g="EastWest Quantum Leap/RA/Americas/Wind" n="Cedar Flute Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=1b40ff86-2a72-4b2a-8860-729628a050bf
 Bank 22 54 EWQLRA - Cedar Flute
 //! c=legato-dark i=legato-vibrato o=note:24
 24 legato vibrato expressive
@@ -75,6 +78,7 @@ Bank 22 54 EWQLRA - Cedar Flute
 
 //! g="EastWest Quantum Leap/RA/Americas/Wind" n="Pan Flute Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=48599fd5-1c7b-456c-97e5-3245d88d4bcc
 Bank 22 55 EWQLRA - Pan Flute
 //! c=long-dark i=vibrato o=note:24
 24 sustain vibrato
@@ -87,6 +91,7 @@ Bank 22 55 EWQLRA - Pan Flute
 
 //! g="EastWest Quantum Leap/RA/Europe/Bowed" n="Gadulka Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=05c7bd92-dde4-48c9-8e06-2c059b0a99ef
 Bank 22 56 EWQLRA - Galduka
 //! c=long-dark i=vibrato o=note:24
 24 sustain vibrato
@@ -103,6 +108,7 @@ Bank 22 56 EWQLRA - Galduka
 
 //! g="EastWest Quantum Leap/RA/Europe/Bowed" n="Hardanger Fiddle Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=8b5f63e8-5ec0-4b17-be0d-7d0f3735aa3c
 Bank 22 57 EWQLRA - Hardanger Fiddle
 //! c=long-dark i=vibrato o=note:24
 24 sustain vibrato
@@ -125,6 +131,7 @@ Bank 22 57 EWQLRA - Hardanger Fiddle
 
 //! g="EastWest Quantum Leap/RA/Europe/Bowed" n="Hurdy Gurdy Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=30e4cffb-04d8-4dc9-9322-edb385fff8fa
 Bank 22 58 EWQLRA - Hurdy Gurdy
 //! c=long i=note-whole o=note:24
 24 sustain non-vibrato
@@ -141,6 +148,7 @@ Bank 22 58 EWQLRA - Hurdy Gurdy
 
 //! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Alphorn Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=0f991cd9-544b-4b03-99a2-dc9090ac7fac
 Bank 22 59 EWQLRA - Alphorn
 //! c=long-dark i=vibrato o=note:84
 84 sustain vibrato
@@ -161,6 +169,7 @@ Bank 22 59 EWQLRA - Alphorn
 
 //! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Bass Recorder"
 //! m="Make Sure KS is on default range from C0"
+//! id=3f07e8aa-0d0b-4729-94a6-6ec619d3f02e
 Bank 22 60 EWQLRA - Bass Recorder
 //! c=long i=vibrato o=note:24
 24 sustain vibrato
@@ -171,6 +180,7 @@ Bank 22 60 EWQLRA - Bass Recorder
 
 //! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Irish Whistle Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=10e250ea-1242-47b5-b6eb-c5144fe7a19e
 Bank 22 61 EWQLRA - Irish Whistle
 //! c=long-light i=vibrato o=note:24
 24 irish vibrato
@@ -199,6 +209,7 @@ Bank 22 61 EWQLRA - Irish Whistle
 
 //! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Launeddas"
 //! m="Make Sure KS is on default range from C0"
+//! id=29e25d4b-05a9-4df1-a26c-48c98938badb
 Bank 22 62 EWQLRA - Launeddas
 //! c=long i=note-whole o=note:24
 24 non-vibrato
@@ -209,6 +220,7 @@ Bank 22 62 EWQLRA - Launeddas
 
 //! g="EastWest Quantum Leap/RA/Europe/Winds n Reeds" n="Uilleann Pipes Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=bebd273d-21af-400f-9ad2-48693993acfb
 Bank 22 63 EWQLRA - Uilleann Pipes
 //! c=long i=note-whole o=note:24
 24 basic velocity sensitive
@@ -221,6 +233,7 @@ Bank 22 63 EWQLRA - Uilleann Pipes
 
 //! g="EastWest Quantum Leap/RA/Far East/Bowed" n="Erhu Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=5d45cca2-0974-41a1-b94f-efb98ffa1bea
 Bank 22 64 EWQLRA - Erhu
 //! c=long i=vibrato o=note:24
 24 sustain vibrato
@@ -245,6 +258,7 @@ Bank 22 64 EWQLRA - Erhu
 
 //! g="EastWest Quantum Leap/RA/Far East/Plucked" n="Koto Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=4b760b77-6a5e-41dd-a222-47e9b72819ca
 Bank 22 65 EWQLRA - Koto
 //! c=long-dark i=vibrato o=note:24
 24 sustain vibrato
@@ -263,6 +277,7 @@ Bank 22 65 EWQLRA - Koto
 
 //! g="EastWest Quantum Leap/RA/Far East/Plucked" n="Shamisen Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=7be6e424-062b-4651-8cca-92a6c604b5b3
 Bank 22 66 EWQLRA - Shamisen
 //! c=long-light i=note-whole o=note:24
 24 pick soft
@@ -277,6 +292,7 @@ Bank 22 66 EWQLRA - Shamisen
 
 //! g="EastWest Quantum Leap/RA/Far East/Winds" n="Dizi Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=1a69bf53-06eb-438c-957a-b0ddef79b9a9
 Bank 22 67 EWQLRA - Dizi
 //! c=long-dark i=vibrato o=note:24
 24 sustain vibrato
@@ -303,6 +319,7 @@ Bank 22 67 EWQLRA - Dizi
 
 //! g="EastWest Quantum Leap/RA/Far East/Winds" n="Rag Dung Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=a2f3e1a2-be98-4479-bebb-9c470f4e82e6
 Bank 22 68 EWQLRA - Rag Dung
 //! c=long i=note-whole o=note:24
 24 non-vibrato
@@ -313,6 +330,7 @@ Bank 22 68 EWQLRA - Rag Dung
 
 //! g="EastWest Quantum Leap/RA/Far East/Winds" n="Shakuhachi Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=ebd50621-0b24-4a37-be3c-4c8d3b089f54
 Bank 22 69 EWQLRA - Shakuhachi
 //! c=long-dark i=vibrato o=note:24
 24 sustain vibrato
@@ -345,6 +363,7 @@ Bank 22 69 EWQLRA - Shakuhachi
 
 //! g="EastWest Quantum Leap/RA/India/Bowed" n="Baritone Violin Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=d6778972-8f36-4ddf-9aef-a72cb7dcd787
 Bank 22 70 EWQLRA - Baritone Violin
 //! c=legato i=legato-vibrato o=note:24
 24 legato vibrato
@@ -369,6 +388,7 @@ Bank 22 70 EWQLRA - Baritone Violin
 
 //! g="EastWest Quantum Leap/RA/India/Bowed" n="Esraj Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=43efe801-a7a6-4290-a708-dfe5ce0347ba
 Bank 22 71 EWQLRA - Esraj
 //! c=long i=note-whole o=note:24
 24 sustain
@@ -407,6 +427,7 @@ Bank 22 71 EWQLRA - Esraj
 
 //! g="EastWest Quantum Leap/RA/India/Bowed" n="Sarangi Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=d65dc43b-4101-4c6c-a1d1-45bb70367843
 Bank 22 72 EWQLRA - Sarangi
 //! c=short i=vibrato o=note:24
 24 short vibrato
@@ -439,6 +460,7 @@ Bank 22 72 EWQLRA - Sarangi
 
 //! g="EastWest Quantum Leap/RA/India/Plucked" n="Sitar Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=51afe319-4177-40ac-a064-ae0dfe87e089
 Bank 22 73 EWQLRA - Sitar
 //! c=long i=note-whole o=note:24
 24 sustain down
@@ -461,6 +483,7 @@ Bank 22 73 EWQLRA - Sitar
 
 //! g="EastWest Quantum Leap/RA/India/Wind" n="Bansuri Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=8ce82789-9899-42f4-a6a6-9275ab8895a0
 Bank 22 74 EWQLRA - Bansuri
 //! c=long i=vibrato o=note:24
 24 sustain vibrato
@@ -489,6 +512,7 @@ Bank 22 74 EWQLRA - Bansuri
 
 //! g="EastWest Quantum Leap/RA/Middle East/Bowed" n="Mid East Fiddle Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=220ba46e-7f0d-4a17-85fd-8a7ac904fb4c
 Bank 22 75 EWQLRA - Mid East Fiddle
 //! c=long i=vibrato o=note:24
 24 sustain vibrato
@@ -513,6 +537,7 @@ Bank 22 75 EWQLRA - Mid East Fiddle
 
 //! g="EastWest Quantum Leap/RA/Middle East/Bowed" n="Mid East String Section Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=8ed3019c-02af-4571-98f8-5a0e0760d0c6
 Bank 22 76 EWQLRA - Mid East String Section
 //! c=long i=vibrato o=note:24
 24 long sustain vibrato
@@ -529,6 +554,7 @@ Bank 22 76 EWQLRA - Mid East String Section
 
 //! g="EastWest Quantum Leap/RA/Middle East/Bowed" n="Yali Tambur Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=444d0a21-3bb1-48bb-afc7-dcca4f73a7ad
 Bank 22 77 EWQLRA - Yali Tambur
 //! c=long i=legato o=note:24
 24 legato long
@@ -553,6 +579,7 @@ Bank 22 77 EWQLRA - Yali Tambur
 
 //! g="EastWest Quantum Leap/RA/Middle East/Plucked" n="Oud Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=c2b930f9-5543-4125-8563-d0eb21a0e56a
 Bank 22 78 EWQLRA - Oud
 //! c=long i=note-whole o=note:24
 24 long non-vibrato
@@ -571,6 +598,7 @@ Bank 22 78 EWQLRA - Oud
 
 //! g="EastWest Quantum Leap/RA/Middle East/Plucked" n="Santoor Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=efffce8b-5c80-444f-b60b-5a2d298d9be4
 Bank 22 79 EWQLRA - Santoor
 //! c=long i=note-whole o=note:24
 24 sustain
@@ -593,6 +621,7 @@ Bank 22 79 EWQLRA - Santoor
 
 //! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Armenian Duduk Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=c10e71e3-1c2f-4c25-b813-bd72437f1048
 Bank 22 80 EWQLRA - Armenian Duduk
 //! c=long i=vibrato o=note:24
 24 sustain vibrato
@@ -625,6 +654,7 @@ Bank 22 80 EWQLRA - Armenian Duduk
 
 //! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Bulgarian Duduk Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=cb3f6950-d7a3-4313-949e-9c3aa180be89
 Bank 22 81 EWQLRA - Bulgarian Duduk
 //! c=long i=vibrato o=note:24
 24 long vibrato slow
@@ -657,6 +687,7 @@ Bank 22 81 EWQLRA - Bulgarian Duduk
 
 //! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Turkish Duduk Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=2e06ecba-9fca-4761-9ebe-c2770d1a20b9
 Bank 22 82 EWQLRA - Turkish Duduk
 //! c=long i=vibrato o=note:24
 24 long vibrato swell
@@ -691,6 +722,7 @@ Bank 22 82 EWQLRA - Turkish Duduk
 
 //! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Ney Flute Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=99621f8a-7d25-461a-9366-f39bbbc64234
 Bank 22 83 EWQLRA - Ney Flute
 //! c=long i=vibrato o=note:24
 24 long vibrato
@@ -715,6 +747,7 @@ Bank 22 83 EWQLRA - Ney Flute
 
 //! g="EastWest Quantum Leap/RA/Middle East/Wind" n="Zurna Techniques"
 //! m="Make Sure KS is on default range from C0"
+//! id=b71643d3-30b2-467f-bc7a-522dd7e0ccb5
 Bank 22 84 EWQLRA - Zurna
 //! c=long i=vibrato o=note:24
 24 long vibrato

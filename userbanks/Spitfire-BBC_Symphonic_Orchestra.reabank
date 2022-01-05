@@ -5,6 +5,7 @@
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Violins 1 Leader"
+//! id=1d63d7d1-0707-4202-8ab3-feb8342aed6b
 Bank 26 27 BBC Violins 1 Leader
 
 //! c=legato i=legato o=note:0
@@ -44,6 +45,7 @@ Bank 26 27 BBC Violins 1 Leader
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Violins 1"
+//! id=006c2fff-ebcc-4ed8-a824-891a065ceebf
 Bank 26 28 BBC Violins 1
 
 //! c=legato i=legato o=note:0
@@ -92,46 +94,55 @@ Bank 26 28 BBC Violins 1
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Violins 2 Leader"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1 Leader"
+//! id=3d676ccd-db8e-4fb4-a8f8-8877398a27b1
 Bank 26 29 BBC Violins 2 Leader
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Violins 2"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1"
+//! id=34a515bd-4a05-4069-9dc8-98f5619aa095
 Bank 26 30 BBC Violins 2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Violas Leader"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1 Leader"
+//! id=02662135-90dd-49a8-93b5-ef6d00a01ed2
 Bank 26 31 BBC Violas Leader
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Violas"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1"
+//! id=03ce0e77-f3c9-4ea0-9be7-df679c78d4e7
 Bank 26 32 BBC Violas
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Celli Leader"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1 Leader"
+//! id=24c66f9c-1ccd-41e2-a47d-a247988568be
 Bank 26 33 BBC Celli Leader
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Celli"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1"
+//! id=d87fb237-1ce9-48f0-928a-51f2e69adf3b
 Bank 26 34 BBC Celli
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Basses Leader"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1 Leader"
+//! id=4e9722d3-df91-4803-9af9-3f5dcea0d20b
 Bank 26 35 BBC Basses Leader
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Strings" n="BBC Basses"
 //! clone="Spitfire/BBC Symphonic Orchestra/Strings/BBC Violins 1"
+//! id=0c356eae-b9ac-455b-9635-9f73fb7dad44
 Bank 26 36 BBC Basses
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Horn"
+//! id=7a31cd79-73f6-487a-9e1f-8c859ede6e8a
 Bank 26 37 BBC - Horn
 
 //! c=legato i=legato o=note:0
@@ -163,6 +174,7 @@ Bank 26 37 BBC - Horn
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Horns a4"
+//! id=a4c87f4e-bdc6-45ec-8d11-833d542a776a
 Bank 26 38 BBC - Horns a4
 
 //! c=legato i=legato o=note:0
@@ -196,15 +208,18 @@ Bank 26 38 BBC - Horns a4
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Trumpet"
 //! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Horn"
+//! id=ed050c9f-1c53-485d-a76e-ca9352215245
 Bank 26 39 BBC - Trumpet
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Trumpets a3"
 //! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Horns a4"
+//! id=d3ea9af1-34b7-48ef-9ae8-b8e2b437b6e7
 Bank 26 40 BBC - Trumpets a3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Tenor Trombone"
+//! id=8b18b435-d017-4c02-b767-6d1ae2a758a8
 Bank 26 41 BBC - Tenor Trombone
 
 //! c=legato i=legato o=note:0
@@ -233,15 +248,18 @@ Bank 26 41 BBC - Tenor Trombone
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Tenor Trombones a3"
 //! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Tenor Trombone"
+//! id=708d1f7e-a433-4606-90e7-aa93b0e5d744
 Bank 26 42 BBC - Tenor Trombones a3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Bass Trombones a2"
 //! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Tenor Trombone"
+//! id=485c895c-b244-46f9-83a3-89a63be7504d
 Bank 26 43 BBC - Bass Trombones a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Tuba"
+//! id=433cf2ee-7463-4f4a-a87c-eb1430d1978e
 Bank 26 44 BBC - Tuba
 
 //! c=legato i=legato o=note:0
@@ -263,6 +281,7 @@ Bank 26 44 BBC - Tuba
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Contrabass Tuba"
+//! id=865d2c70-77fc-49ca-be2b-0d07ffa1c17d
 Bank 26 45 BBC - Contrabass Tuba
 
 //! c=legato i=legato o=note:0
@@ -281,11 +300,13 @@ Bank 26 45 BBC - Contrabass Tuba
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Contrabass Trombone"
 //! clone="Spitfire/BBC Symphonic Orchestra/Brass/BBC Contrabass Tuba"
+//! id=cf75e634-a93d-471a-9d17-8b50397463d6
 Bank 26 46 BBC - Contrabass Trombone
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Flute"
+//! id=c0b3b1d1-bca2-48c0-ae02-0b6ad53d78d9
 Bank 26 47 BBC - Flute
 
 //! c=legato i=legato o=note:0
@@ -311,11 +332,13 @@ Bank 26 47 BBC - Flute
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Flutes a3"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Flute"
+//! id=8775b162-89f0-49c4-a8da-bb3d42b2eb2e
 Bank 26 48 BBC - Flutes a3
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Piccolo Flute"
+//! id=09b54ed9-1235-4d6c-af99-d0178df22896
 Bank 26 49 BBC - Flute
 
 //! c=legato i=legato o=note:0
@@ -344,6 +367,7 @@ Bank 26 49 BBC - Flute
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Oboe"
+//! id=fceed6e0-417e-4a4c-90a1-90fc88bd27d3
 Bank 26 50 BBC - Oboe
 
 //! c=legato i=legato o=note:0
@@ -368,17 +392,20 @@ Bank 26 50 BBC - Oboe
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Oboes a3"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Oboe"
+//! id=f24329cc-d197-4f6f-9287-cca027b8a4be
 Bank 26 51 BBC - Oboes a3
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Clarinet"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Flute"
+//! id=c8851746-c2d9-4dcc-8fb3-4f6a0e32042c
 Bank 26 52 BBC - Clarinet
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Bassoon"
+//! id=5261bbe4-ae35-4a75-8b23-4f09479df1a0
 Bank 26 53 BBC - Bassoon
 
 //! c=legato i=legato o=note:0
@@ -402,11 +429,13 @@ Bank 26 53 BBC - Bassoon
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Bassoon a3"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Bassoon"
+//! id=4c9048f5-8568-4ab6-b4bb-db4d2a0fe624
 Bank 26 54 BBC - Bassoon a3
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Contrabass Clarinet"
+//! id=2c627355-2b44-4f61-988f-d50048259c78
 Bank 26 55 BBC - Contrabass Clarinet
 
 //! c=legato i=legato o=note:0
@@ -427,22 +456,26 @@ Bank 26 55 BBC - Contrabass Clarinet
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Contrabassoon"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Contrabass Clarinet"
+//! id=8a89615b-aefb-43a9-aeee-e2b25b18bc95
 Bank 26 56 BBC - Contrabassoon
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Bass Clarinet"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Contrabass Clarinet"
+//! id=76999483-de38-498a-852d-99f6fef81473
 Bank 26 57 BBC - Bass Clarinet
 
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Cor Anglais"
 //! clone="Spitfire/BBC Symphonic Orchestra/Woodwinds/BBC Contrabass Clarinet"
+//! id=64eda366-6b38-4e1d-acbe-c0e43682f847
 Bank 26 58 BBC - Cor Anglais
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Bass Flute"
+//! id=b4fbd871-e802-40e8-99e0-6f66bbc0e0fb
 Bank 26 59 BBC - Bass Flute
 
 
@@ -464,6 +497,7 @@ Bank 26 59 BBC - Bass Flute
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Untuned Percussion"
+//! id=21c5ad89-76e4-4435-90f0-21b05bb62d96
 Bank 26 60 BBC - Untuned Percussion
 
 
@@ -497,6 +531,7 @@ Bank 26 60 BBC - Untuned Percussion
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Timpani"
+//! id=291e1eb1-c5b8-41fe-903b-f8d2fb200bca
 Bank 26 61 BBC - Timpani
 
 //! c=short i=staccato o=note:0
@@ -523,6 +558,7 @@ Bank 26 61 BBC - Timpani
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Harp"
+//! id=3f5723a0-75d1-436b-9681-330389dfb94e
 Bank 26 62 BBC - Harp
 
 //! c=long i=note-whole o=note:0
@@ -538,6 +574,7 @@ Bank 26 62 BBC - Harp
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Marimba"
+//! id=4a6b84ef-c3bf-4d3d-8aea-669e295edb8d
 Bank 26 63 BBC - Marimba
 
 //! c=short i=staccato o=note:0
@@ -547,6 +584,7 @@ Bank 26 63 BBC - Marimba
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Celesta"
+//! id=4005b383-b16c-4382-9085-67258b2012dc
 Bank 26 64 BBC - Celesta
 
 //! c=long i=note-whole o=note:0
@@ -559,6 +597,7 @@ Bank 26 64 BBC - Celesta
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Xylophone"
+//! id=18c6962e-f4f5-4074-98e9-de4d01530d03
 Bank 26 65 BBC - Xylophone
 
 //! c=short i=staccato o=note:0
@@ -569,10 +608,12 @@ Bank 26 65 BBC - Xylophone
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Glockenspiel"
 //! clone="Spitfire/BBC Symphonic Orchestra/Percussion/BBC Xylophone"
+//! id=3b253c13-90e4-4754-8875-9dd7ea93897d
 Bank 26 66 BBC - Glockenspiel
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Tubular Bells"
+//! id=fafedddb-a8af-4a3e-b2eb-1ef571b1296f
 Bank 26 67 BBC - Tubular Bells
 
 //! c=short i=staccato o=note:0
@@ -584,6 +625,7 @@ Bank 26 67 BBC - Tubular Bells
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Vibraphone"
+//! id=4afc7f4d-2e21-45e8-9a87-8864ca8b8586
 Bank 26 68 BBC - Vibraphone
 
 //! c=short i=staccato o=note:0
@@ -591,6 +633,7 @@ Bank 26 68 BBC - Vibraphone
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Crotales"
+//! id=59f637ed-57d1-4d4a-9e10-27d20085fc8e
 Bank 26 69 BBC - Crotales
 
 //! c=short i=staccato o=note:0

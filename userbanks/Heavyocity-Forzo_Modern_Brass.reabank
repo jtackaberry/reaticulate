@@ -3,6 +3,7 @@
 //
 
 //! g="Heavyocity/Forzo Modern Brass" n="12 Horns"
+//! id=52533f97-c74a-493e-8c6f-a8f1cc90db83
 Bank 30 91 12 Horns
 
 //! c=long i=note-whole o=note@1:12
@@ -63,6 +64,7 @@ Bank 30 91 12 Horns
 
 //----------------------------------------------------------------------------
 //! g="Heavyocity/Forzo Modern Brass" n="4 Trumpets"
+//! id=777e52a2-6ac5-44b4-8e5d-1bd3dcd3f785
 Bank 30 92 4 Trumpets
 
 //! c=long i=note-whole o=note@5:12
@@ -103,6 +105,7 @@ Bank 30 92 4 Trumpets
 
 //----------------------------------------------------------------------------
 //! g="Heavyocity/Forzo Modern Brass" n="4 Tenor Trombones"
+//! id=eed0aacb-2744-4d02-b54a-79f139be4be7
 Bank 30 93 4 Tenor Trombones
 
 //! c=long i=note-whole o=note@8:12
@@ -142,6 +145,7 @@ Bank 30 93 4 Tenor Trombones
 
 //----------------------------------------------------------------------------
 //! g="Heavyocity/Forzo Modern Brass" n="4 Contra Trombones"
+//! id=536cd0cd-d216-43b6-b21a-1d62dcdbf9b6
 Bank 30 94 4 Contra Trombones
 
 //! c=long i=note-whole o=note@10:12
@@ -184,6 +188,7 @@ Bank 30 94 4 Contra Trombones
 
 //----------------------------------------------------------------------------
 //! g="Heavyocity/Forzo Modern Brass" n="2 Tubas"
+//! id=651bde68-9abf-4753-8dba-07c2aaeb0e0b
 Bank 30 95 2 Tubas
 
 //! c=long i=note-whole o=note@13:12

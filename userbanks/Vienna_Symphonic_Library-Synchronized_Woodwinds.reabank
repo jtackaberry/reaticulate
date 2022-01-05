@@ -4,6 +4,7 @@
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Piccolo Flute"
+//! id=65104d44-6ca9-4c25-a339-94effd239c29
 Bank 28 79 VSL SYNC - Piccolo Flute
 
 //--------------------- legato ----------------------------------------------
@@ -99,6 +100,7 @@ Bank 28 79 VSL SYNC - Piccolo Flute
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Flute 1"
+//! id=076903be-4ef5-4fc6-b7e1-3a181ce4084d
 Bank 28 80 VSL SYNC - Flute 1
 
 //--------------------- legato ----------------------------------------------
@@ -202,6 +204,7 @@ Bank 28 80 VSL SYNC - Flute 1
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Flute 2"
+//! id=655947c5-7e83-47b6-98d1-8a008db84908
 Bank 28 81 VSL SYNC - Flute 2
 
 //--------------------- legato ----------------------------------------------
@@ -307,6 +310,7 @@ Bank 28 81 VSL SYNC - Flute 2
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Oboe (French)"
+//! id=f4e5e303-e0f8-435d-a713-b811a32e4ef1
 Bank 28 82 VSL SYNC - Oboe (French)
 
 //--------------------- legato ----------------------------------------------
@@ -396,15 +400,18 @@ Bank 28 82 VSL SYNC - Oboe (French)
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Oboe (Vienna)"
 //! clone="VSL/SYNCHRON-ized Woodwinds/VSL SYNC - Oboe (French)"
+//! id=c7cca866-4ede-494c-9495-51e85071fb03
 Bank 28 83 VSL SYNC - Oboe (Vienna)
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - English Horn"
 //! clone="VSL/SYNCHRON-ized Woodwinds/VSL SYNC - Oboe (French)"
+//! id=402ef548-6005-4123-8366-b245cd2e8aed
 Bank 28 84 VSL SYNC - English Horn
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Clarinet Bb 1"
+//! id=cf3ea13f-2f4a-4c17-868a-71b42a5db5be
 Bank 28 85 VSL SYNC - Clarinet Bb 1
 
 //--------------------- legato ----------------------------------------------
@@ -486,6 +493,7 @@ Bank 28 85 VSL SYNC - Clarinet Bb 1
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Clarinet Bb 2"
+//! id=0d0a2fd6-a6dd-4755-9981-d72a990e328b
 Bank 28 86 VSL SYNC - Clarinet Bb 2
 
 //--------------------- legato ----------------------------------------------
@@ -582,6 +590,7 @@ Bank 28 86 VSL SYNC - Clarinet Bb 2
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bass Clarinet"
+//! id=7d2f9d97-d8f2-41d4-95cf-ef98b828a467
 Bank 28 87 VSL SYNC - Bass Clarinet
 
 //--------------------- legato ----------------------------------------------
@@ -650,6 +659,7 @@ Bank 28 87 VSL SYNC - Bass Clarinet
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bassoon 1"
+//! id=c696dace-155a-48cb-bf09-3fd5874c448f
 Bank 28 88 VSL SYNC - Bassoon 1
 
 //--------------------- legato ----------------------------------------------
@@ -753,6 +763,7 @@ Bank 28 88 VSL SYNC - Bassoon 1
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bassoon 2"
+//! id=d890e643-424a-4413-91d3-879cafd9d14c
 Bank 28 89 VSL SYNC - Bassoon 2
 
 //--------------------- legato ----------------------------------------------
@@ -847,6 +858,7 @@ Bank 28 89 VSL SYNC - Bassoon 2
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Contrabassoon"
+//! id=cb6050c0-040c-45c8-8438-c5883116ff0c
 Bank 28 90 VSL SYNC - Contrabassoon
 
 //--------------------- legato ----------------------------------------------
