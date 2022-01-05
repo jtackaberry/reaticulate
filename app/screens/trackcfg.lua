@@ -153,7 +153,7 @@ function screen.init()
         onclick=function()
             local n = app.screens.banklist.clear_all_active_articulations()
             local msg = string.format('Cleared %d articulation assignments on this track', n)
-            rtk.defer(reaper.MB, msg, 'Clear Articulation', 0)
+            rtk.defer(reaper.MB, msg, 'Clear Articulations', 0)
         end
     })
 

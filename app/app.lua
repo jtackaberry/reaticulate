@@ -238,7 +238,7 @@ end
 -- changing project tabs or reloading the current project.
 function App:onprojectchange()
     local r, data = reaper.GetProjExtState(0, 'reaticulate', 'state')
-    log.info('CHANGE PROJECT: %s %s', self.project_change_cookie, data)
+    log.info('app: project changed: %s %s', self.project_change_cookie, data)
     self.project_state = {}
     if r ~= 0 then
         local ok, decoded = pcall(json.decode, data)
@@ -256,7 +256,7 @@ function App:onprojectchange()
         -- There was no prior project state, so we assume it's a pre-0.5 project that ust
         -- be migrated. (This can also happen on new projects but then migration will just
         -- be a no-op.)
-        log.info('beginning project migration to GUID')
+        log.info('app: beginning project migration to GUID')
         self:migrate_project_to_guid()
     else
         -- No migration needed.  XXX: probably shouldn't do this on *every* project
@@ -286,7 +286,7 @@ function App:ontrackchange(last, cur)
     if cur then
         curn = reaper.GetMediaTrackInfo_Value(cur, 'IP_TRACKNUMBER')
     end
-    log.info('track change: %s (%s) -> %s (%s)', lastn, last, curn, cur)
+    log.info('app: track change: %s (%s) -> %s (%s)', lastn, last, curn, cur)
 
     self:log_msblsb_mapping()
 
@@ -463,13 +463,11 @@ function App:do_single_floating_fx()
         end
         if cur_hwnd and last_hwnd and cur_hwnd ~= last_hwnd then
             local _, target_x, target_y, _, _ = reaper.JS_Window_GetRect(last_hwnd)
-            -- local r = reaper.JS_WindowMessage_Send(cur_hwnd, "WM_NCPAINT", 0, 0, 0, 0)
-            -- log.debug("send result: %s\n", r)
             reaper.JS_Window_Move(cur_hwnd, target_x, target_y)
             reaper.JS_Window_Show(cur_hwnd, "SHOW")
             reaper.JS_Window_SetZOrder(cur_hwnd, "INSERT_AFTER", last_hwnd)
-            -- TODO: would be good to move hidden window to last_hwnd's prior position
-            -- and pinned status!
+            -- TODO: would be good to move hidden window to last_hwnd's prior position and
+            -- pinned status
             rtk.defer(reaper.JS_Window_Show, last_hwnd, "HIDE")
         end
         self:refocus()
@@ -984,8 +982,7 @@ function App:activate_articulation(art, refocus, force_insert, channel)
     if banklist.selected_articulation then
         rtk.defer(banklist.clear_selected_articulation)
     end
-    log.info('done activation/insert')
-    log.time_end()
+    log.time_end('app: done activation/insert')
 end
 
 -- A slightly more robust variant of activate_articulation() that tolerates the
@@ -1788,7 +1785,7 @@ end
 function App:gen_new_change_cookie()
     self.project_change_cookie = rtk.uuid4()
     reaper.SetProjExtState(0, 'reaticulate', 'change_cookie', self.project_change_cookie)
-    log.debug('generated new project cookie: %s', self.project_change_cookie)
+    log.debug('app: generated new project cookie: %s', self.project_change_cookie)
 end
 
 -- Programmatically selects the given track, making it the only selected track.

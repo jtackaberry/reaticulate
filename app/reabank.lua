@@ -1071,7 +1071,7 @@ local function set_reabank_file(reabank)
             ini = ini:sub(1, pos + 8) .. "mididefbankprog=" .. reabank .. "\n" .. ini:sub(pos + 9)
         end
     end
-    log.info("updating ini file %s", inifile)
+    log.info("reabank: updating ini file %s", inifile)
     err = rtk.file.write(inifile, ini)
     if err then
         return app:fatal_error("Failed to write ini file: " .. tostring(err))

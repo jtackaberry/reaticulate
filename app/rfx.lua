@@ -1722,7 +1722,7 @@ function rfx.Track:_read_appdata()
     if r then
         local version = data:sub(1, 1)
         if version == '2' then
-            log.debug("rfx: deserialize NEW APPDATA ver=%s: %s", version, data)
+            log.debug('rfx: deserialize new appdata ver=%s: %s', version, data)
             local ok, decoded = pcall(json.decode, data:sub(2))
             if ok then
                 return decoded
