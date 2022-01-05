@@ -7,12 +7,12 @@ Note: Reaper 5.975 (released on April 30, 2019) or later is now required.
 Here are the changes since the last stable release (0.4.7):
 # New Features
 
-* MSB/LSB bank values are entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put `*` as placeholders for both MSB and LSB values in bank definitions. ([#63](https://github.com/jtackaberry/reaticulate/issues/63))
+* MSB/LSB bank values are now entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put `*` as placeholders for both MSB and LSB values in bank definitions. ([#63](https://github.com/jtackaberry/reaticulate/issues/63))
 * Pre-created banks (such as those [contributed by other users](https://github.com/jtackaberry/reaticulate/tree/master/userbanks)) can now be much more conveniently imported into Reaticulate, either from clipboard (`[Pencil Icon] | Import Banks from Clipboard`) or by dragging-and-dropping one or more files onto Reaticulate's window. Users no longer need to edit the Reabank file in a text editor just to import existing banks. Nor, thanks to dynamic and automatic MSB/LSB assignment, do users need to worry about adjusting MSB/LSB of third party banks to avoid conflicts.
 * Reaticulate now fully supports Retina/Hi-DPI displays with UI scaling and high-DPI graphics. The UI scale automatically respects the system-wide DPI but can be adjusted in Reaticulate's settings.
 * Default MIDI channel can be remembered globally, per track, or per item, and is more robustly synced with the MIDI editor ([#83](https://github.com/jtackaberry/reaticulate/issues/83))
 * Changes to the default MIDI channel are now fed back to the control surface, if configured. See Reaticulate's Usage documentation for more information.
-* Holding alt will clicking an articulation button in any manner that insertions the articulation (i.e. double clicking, long-pressing, or right-clicking) will always insert at the edit cursor, even when notes are selected in the MIDI editor. ([#79](https://github.com/jtackaberry/reaticulate/issues/79))
+* Holding alt while clicking an articulation button in any manner that inserts the articulation (i.e. double clicking, long-pressing, or right-clicking) will always insert at the edit cursor, even when notes are selected in the MIDI editor. ([#79](https://github.com/jtackaberry/reaticulate/issues/79))
 * Articulation definitions in banks now respect the `m` (message) attribute, which displays the message as a tooltip when hovering over the articulation ([#67](https://github.com/jtackaberry/reaticulate/issues/67))
 * Touch scrolling can now be enabled, in addition to smooth scrolling, which significantly improves the experience on touch-capable devices ([#56](https://github.com/jtackaberry/reaticulate/issues/56))
 * Default articulation colors are now configurable in Reaticulate's settings page
@@ -21,7 +21,7 @@ Here are the changes since the last stable release (0.4.7):
 * Articulations will now be inserted on all selected Reaticulate-enabled tracks. If the banks are different between tracks, then the first bank on the track that defines an articulation with the same program number is used.
 * Inserting articulations will create a new MIDI item under the edit cursor if there isn't currently one
 * Two new "tweak" functions have been added to Reaticulate's track configuration page:
-  1. Repair tracks where the manually user assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
+  1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
   2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
 
 # Minor Enhancements
@@ -35,7 +35,7 @@ Here are the changes since the last stable release (0.4.7):
 * All buttons in the GUI got a minor facelift
 # Bug Fixes
 
-* Fix bug where CCs were not always properly chased when activating articulations between different channels
+* Fixed a bug where CCs were not always properly chased when activating articulations between different channels
 * Properly refocus the previous window when using the "Focus articulation filter" action after activating an articulation (enter) or clearing the filter (escape).  (Requires js_ReaScriptAPI to be present.)
 
 # 0.4.7 - March 12, 2021
