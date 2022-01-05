@@ -199,13 +199,17 @@ bus 16 (or use banks with output events that explicitly address bus 16).
 
 ### Articulations
 
-Whenever an articulation is triggered on the selected track, first a Bank Select message is sent
-to the control surface, and then the articulation.  By default, the articulation is a Program
-Change message, but this can be translated to a CC of your choice (see below).
+Whenever an articulation is triggered on the selected track, first a Bank Select message
+is sent to the control surface, the articulation's group (see below), and then the
+articulation.  By default, the articulation is a Program Change message, but this can be
+translated to a CC of your choice (see below).
 
 The Bank Select is a 14-bit event indicating the MSB and LSB of the Reaticulate bank the selected
 articulation belongs to.  (In practice, this means two events: CC0 with the MSB value, and CC32 with
 the LSB value.)
+
+The group number is communicated using a custom event: a MIDI note off (0x80) for note 0, where the
+note-off velocity represents the group number offset from 0 (i.e. value 0 means group 1).
 
 The MIDI channel of these events is the source channel of the selected articulation.
 
@@ -231,6 +235,16 @@ MCP, software such as [Bome MIDI Translator Pro](https://www.bome.com/products/m
 be used to translate between CCs on the DAW side and pitch bend messages (used by MCP) on the
 control surface side.
 
+
+### Default Channel
+
+When the default channel is changed through the interface, or a new track is selected, the track's
+default channel is fed back to the control surface using a custom event.
+
+Similar with articulation groups above, the custom event is defined as a MIDI note-off (0x80) for note 1.
+The event's channel indicates the new default Reaticulate channel. The note-off velocity is not significant.
+
+(Available in Reaticulate 0.5)
 
 ## Configuration
 
