@@ -119,14 +119,15 @@ local function handle_filter_keypress(self, event)
         screen.clear_filter()
         return true
     elseif event.keycode == rtk.keycodes.ENTER or event.keycode == rtk.keycodes.INSERT then
-        local force_insert = event.shift or event.alt or event.ctrl or event.keycode == rtk.keycodes.INSERT
+        local force_insert = event.shift or event.ctrl or event.keycode == rtk.keycodes.INSERT
+        local insert_at_cursor = event.alt
         if self.value ~= '' then
             if screen.selected_articulation then
-                app:activate_selected_articulation(nil, nil, force_insert)
+                app:activate_selected_articulation(nil, nil, force_insert, nil, insert_at_cursor)
             else
                 local art = screen.get_firstlast_articulation()
                 if art then
-                    app:activate_articulation(art, nil, force_insert)
+                    app:activate_articulation(art, nil, force_insert, nil, insert_at_cursor)
                 end
             end
         end
@@ -189,8 +190,8 @@ end
 
 function screen.onartclick(art, event)
     if event.button == rtk.mouse.BUTTON_LEFT then
-        -- Force insert when alt modifier is pressed
-        app:activate_articulation(art, true, event.alt)
+        -- insert at cursor if alt is pressed.
+        app:activate_articulation(art, true, false, nil, event.alt)
     elseif event.button == rtk.mouse.BUTTON_MIDDLE then
         -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
         -- rfx.push_state(rfx.current.track)
@@ -199,7 +200,7 @@ function screen.onartclick(art, event)
         end
         -- rfx.pop_state()
     elseif event.button == rtk.mouse.BUTTON_RIGHT then
-        app:activate_articulation(art, true, true)
+        app:activate_articulation(art, true, true, nil, event.alt)
     end
 end
 
@@ -303,7 +304,7 @@ function screen.create_banklist_ui(bank)
             screen.onartclick(art, event)
         end
         art.button.onlongpress = function(button, event)
-            app:activate_articulation(art, true, true)
+            app:activate_articulation(art, true, true, nil, event.alt)
             -- Return true to prevent onclick()
             return true
         end

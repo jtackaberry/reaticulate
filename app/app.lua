@@ -766,6 +766,30 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
         -- We have a take in the MIDI editor.  Check it for selected notes.
         insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take, program)
     end
+
+    local msb, lsb
+    if bank then
+        -- Bank was supplied, so use it.
+        msb, lsb = bank:get_current_msb_lsb()
+    else
+        -- Bank not supplied, so find the (first) bank MSB/LSB on the track that contains
+        -- this program, and use that for insertion.
+        for _, bank, srcchannel in rfxtrack:get_banks() do
+            -- If the bank has the program number and it's mapped on the requested
+            -- channel, then use its MSB/LSB. Note that srcchannel is offset 1, while
+            -- given channel is offset 0.
+            if (srcchannel == 17 or srcchannel == channel+1) and bank:get_articulation_by_program(program) then
+                msb, lsb = bank:get_current_msb_lsb()
+                break
+            end
+        end
+    end
+    if not msb or not lsb then
+        local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+        log.warning('app: program %d could not be found on track %d for insertion', program, n)
+        return false
+    end
+
     -- If we haven't managed to find selected notes (assuming the feature is
     -- even enabled), then fall back to the take at the edit cursor and use
     -- the cursor position for the articulation insertion point.  This may not
@@ -779,9 +803,9 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
             insert_ppqs = {{take, ppq, nil, program}}
         else
             local item = reaper.CreateNewMIDIItemInProj(track, cursor, cursor + 1, false)
-            -- CreateNewMIDIItemInProj() does not honor project defaults.
-            -- There's no easy way to determine what they are, so we just
-            -- default to the more sane behavior of not looping MIDI items.
+            -- CreateNewMIDIItemInProj() does not honor project defaults. There's no easy
+            -- way to determine what they are, so we just default to the more sane
+            -- behavior of not looping MIDI items.
             reaper.SetMediaItemInfo_Value(item, 'B_LOOPSRC', 0)
             take = reaper.GetActiveTake(item)
             local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
@@ -792,31 +816,8 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
     if delete_ppqs then
         for _, range in ipairs(delete_ppqs) do
             local take, startppq, endppq, delchan = table.unpack(range)
-            local msb, lsb, program = _delete_program_changes(take, delchan, startppq, endppq)
+            _delete_program_changes(take, delchan, startppq, endppq)
         end
-    end
-
-    local msb, lsb
-    if bank then
-        -- Bank was supplied, so use it.
-        msb, lsb = bank:get_current_msb_lsb()
-    else
-    -- Bank not supplied, so find the (first) bank MSB/LSB on the track that contains this
-    -- program, and use that for insertion.
-        for _, bank, srcchannel in rfxtrack:get_banks() do
-            -- If the bank has the program number and it's mapped on the requested
-            -- channel, then use its MSB/LSB. Note that srcchannel is offset 1, while
-            -- given channel is offset 0.
-            if srcchannel == 17 or srcchannel == channel+1 and bank:get_articulation_by_program(program) then
-                msb, lsb = bank:get_current_msb_lsb()
-                break
-            end
-        end
-    end
-    if not msb or not lsb then
-        local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
-        log.warning('app: program %d could not be found on track %d for insertion', program, n)
-        return
     end
 
     local takes = {}
@@ -839,6 +840,7 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
     -- we restore this articulation instead of temporary changes the user
     -- may have done in the interim.
     rfxtrack:activate_articulation(channel, program, 1)
+    return true
 end
 
 -- Activates and possibly inserts an articulation on the given channel.
@@ -855,7 +857,7 @@ end
 -- If refocus is true, then the last window that had focus will be refocused after
 -- the articulation is activated (500ms after, specifically, to allow for double-
 -- click insertions).
-function App:activate_articulation(art, refocus, force_insert, channel)
+function App:activate_articulation(art, refocus, force_insert, channel, insert_at_cursor)
     if not art or art.program < 0 then
         return false
     end
@@ -902,7 +904,7 @@ function App:activate_articulation(art, refocus, force_insert, channel)
     local insert_ppqs, delete_ppqs
     if force_insert and force_insert ~= 0 then
         local midi_take, midi_track
-        if self.config.art_insert_at_selected_notes then
+        if self.config.art_insert_at_selected_notes and not insert_at_cursor then
             -- We want to insert the articulation based on selected notes.
             -- So look for the best take to find selected notes.
 
@@ -996,9 +998,9 @@ end
 -- This handles articulation change requests coming from control surfaces that may have
 -- opportunistically updated, and as the requested articulation didn't actually exist, the
 -- control surface needs to be updated to reflect the old articulation is still active.
-function App:activate_articulation_if_exists(art, refocus, force_insert)
+function App:activate_articulation_if_exists(art, refocus, force_insert, insert_at_cursor)
     if art then
-        self:activate_articulation(art, refocus, force_insert)
+        self:activate_articulation(art, refocus, force_insert, nil, insert_at_cursor)
     else
         -- Requested articulation doesn't exist.  We re-sync current articulations to the
         -- control surface (if feedback is enabled) to handle the case where the articulation
@@ -1038,14 +1040,14 @@ end
 
 -- Activates whatever articulation is currently selected in the banklist screen (by means
 -- of the banklist's select_relative_articulation() function).
-function App:activate_selected_articulation(channel, refocus, force_insert)
+function App:activate_selected_articulation(channel, refocus, force_insert, insert_at_cursor)
     local banklist = self.screens.banklist
     local current = banklist.get_selected_articulation()
     if not current then
         current = self.last_activated_articulation
     end
     if current then
-        self:activate_articulation(current, refocus, force_insert, channel)
+        self:activate_articulation(current, refocus, force_insert, channel, insert_at_cursor)
         rtk.defer(banklist.clear_filter)
     end
 end
