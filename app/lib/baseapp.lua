@@ -79,9 +79,9 @@ function BaseApp:initialize(appid, title, basedir)
             local response = reaper.MB(
                 'WARNING! You are using a pre-release version of Reaticulate.\n\n' ..
                 'Projects saved with this version of Reaticulate WILL NOT WORK if you downgrade to the stable ' ..
-                'release, and you will only be able to move forward to later versions. Please only use pre-releases ' ..
-                'if you can tolerate and are willing to report bugs. Be sure to backup your projects ' ..
-                'before re-saving.\n\n' ..
+                'release, and you will only be able to move forward to later versions of Reaticulate. Please only ' ..
+                'use pre-releases if you can tolerate and are willing to report bugs. Be sure to backup your ' ..
+                'projects before re-saving.\n\n' ..
                 'Continue using this pre-release version?\n\n' ..
                 'If you answer OK, Reaticulate will continue on and this warning will not be displayed again.\n\n' ..
                 'If you Cancel, Reaticulate will abort and you can downgrade to a stable version via ReaPack.',
