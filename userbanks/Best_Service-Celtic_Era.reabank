@@ -3,8 +3,8 @@
 //
 
 //! g="Best Service/Celtic Era/Winds" n="Irish Flute" off=0
-//! id=0d7a82b3-11fe-42e1-aeec-720d4fece4d0
-Bank * * Irish Flute
+//! id=3680a8b6-341d-4168-a98e-3d1b943c0beb
+Bank 20 61 Irish Flute
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -39,8 +39,8 @@ Bank * * Irish Flute
 51 Overblown
 
 //! g="Best Service/Celtic Era/Winds" n="Whistles" off=0
-//! id=ae5efb67-896d-49f6-ba17-c380007e431b
-Bank * * Irish Whistle / Low Whistle
+//! id=2093e3e6-7a93-4c7d-8d7e-3ae31193c844
+Bank 20 62 Irish Whistle / Low Whistle
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -73,8 +73,8 @@ Bank * * Irish Whistle / Low Whistle
 50 Long Staccato
 
 //! g="Best Service/Celtic Era/Winds" n="Highland Pipes" off=0
-//! id=5d7e9104-53ef-4499-a8bf-b5fea18801bb
-Bank * * Highland Pipes
+//! id=311762b8-e7c0-4c33-a788-0cf7337738e6
+Bank 20 63 Highland Pipes
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -99,8 +99,8 @@ Bank * * Highland Pipes
 46 Lamluath
 
 //! g="Best Service/Celtic Era/Winds" n="Uilleann Pipes" off=0
-//! id=44a50a21-aed6-4cff-92e8-aa7ebad2fcf6
-Bank * * Uilleann Pipes
+//! id=d6122455-7713-4ae9-8777-677f28e5f44e
+Bank 20 64 Uilleann Pipes
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -133,8 +133,8 @@ Bank * * Uilleann Pipes
 50 Popping
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Fiddle" off=0
-//! id=fa3637c9-f181-4390-a289-3de51e5896ef
-Bank * * Irish Fiddle
+//! id=92080b98-2309-4833-89b7-191c1429b3d8
+Bank 20 65 Irish Fiddle
 //! i=legato c=long
 0 Finger Legato
 //! i=note-quarter o=note-hold:37
@@ -161,8 +161,8 @@ Bank * * Irish Fiddle
 47 Marcato
 
 //! g="Best Service/Celtic Era/Strings" n="Acoustic Guitar" off=0
-//! id=d12aaee5-a576-424a-a63c-2b4e18ebefb4
-Bank * * Acoustic Guitar
+//! id=2c907975-635e-4400-97a1-f2e013b59cf2
+Bank 20 66 Acoustic Guitar
 //! i=legato c=long
 0 Sustain
 //! i=note-quarter o=note-hold:37
@@ -181,8 +181,8 @@ Bank * * Acoustic Guitar
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Irish Bouzouki" off=0
-//! id=f0762ff5-072f-4a30-8f17-e3347f05c79a
-Bank * * Irish Bouzouki
+//! id=55961cc2-61d4-4b47-8e21-41a7d3976185
+Bank 20 67 Irish Bouzouki
 //! i=legato c=long
 0 Sustain
 //! i=note-quarter o=note-hold:37
@@ -201,8 +201,8 @@ Bank * * Irish Bouzouki
 43 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Tenor Banjo" off=0
-//! id=99308f2e-365d-4b16-b6ab-5f4a866201b2
-Bank * * Tenor Banjo
+//! id=38a1019f-0838-477d-a318-0f1b107f95fc
+Bank 20 68 Tenor Banjo
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -215,8 +215,8 @@ Bank * * Tenor Banjo
 40 Triplet
 
 //! g="Best Service/Celtic Era/Strings" n="Strummed" off=0
-//! id=89cfafad-9157-4c20-afd3-29b9796f5849
-Bank * * Strummed Guitar / Bouzouki
+//! id=9be05139-5c9c-42be-a3d2-903460d54cf2
+Bank 20 69 Strummed Guitar / Bouzouki
 //! i=note-quarter o=note:36
 36 C Root
 //! i=note-quarter o=note:37
@@ -254,8 +254,8 @@ Bank * * Strummed Guitar / Bouzouki
 53 7th Chords
 
 //! g="Best Service/Celtic Era/Ancient" n="Carnyx" off=0
-//! id=fcc7ea9c-64e6-484d-8c1c-eae305c7e366
-Bank * * Carnyx
+//! id=1677d7a4-ad27-4a86-89aa-eb18b58c6556
+Bank 20 70 Carnyx
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -286,8 +286,8 @@ Bank * * Carnyx
 49 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="Cornu" off=0
-//! id=dc3e1de5-3a16-4b39-957a-c84efac450ee
-Bank * * Cornu
+//! id=828a4553-697d-4ed9-8e81-60c6d262dc38
+Bank 20 71 Cornu
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -312,8 +312,8 @@ Bank * * Cornu
 46 Repetition
 
 //! g="Best Service/Celtic Era/Ancient" n="War Horn" off=0
-//! id=784d1994-715b-4748-8dd8-9da171c258d1
-Bank * * War Horn
+//! id=7ccf4c96-cef5-4cda-b418-6b3b5dfe2c57
+Bank 20 72 War Horn
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37

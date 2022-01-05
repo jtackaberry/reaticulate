@@ -3,8 +3,8 @@
 //
 
 //! g="8Dio" n="8diOboe"
-//! id=31bab300-1e63-46b1-9e3e-e1a851378539
-Bank * * 8Dio 8diOboe
+//! id=7030616f-e8b0-4085-ad65-5cce0d04aed9
+Bank 20 1 8Dio 8diOboe
 //! c=long i=note-whole o=note:24
 24 Sustain
 //! c=short i=marcato o=note:25

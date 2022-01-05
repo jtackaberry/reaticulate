@@ -4,8 +4,8 @@
 //
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Fr Horn"
-//! id=8f3c9875-e415-4f31-8d99-73a95185643f
-Bank * * KH - FrHn
+//! id=a2a76e0a-a503-4f9a-86b1-7366442c4db7
+Bank 23 67 KH - FrHn
 
 //! c=long i=legato o=note:85
 1 sustain
@@ -35,8 +35,8 @@ Bank * * KH - FrHn
 //----------------------------------------------------------------------------
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Tpt"
-//! id=0386e67d-4e6e-409c-b42b-aad1aef0bc7c
-Bank * * KH - Tpt
+//! id=63044a81-ca1c-4279-b9e9-43ba8b7f9174
+Bank 23 68 KH - Tpt
 
 //! c=long i=legato o=note:25
 1 sustain
@@ -64,8 +64,8 @@ Bank * * KH - Tpt
 //----------------------------------------------------------------------------
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Tbn"
-//! id=9218acc7-2db3-41b9-82f9-8ef7302eacb6
-Bank * * KH - Tbn
+//! id=e93a6f8c-8ee7-4ede-8449-ebff8a90909b
+Bank 23 69 KH - Tbn
 
 //! c=long i=legato o=note:85
 1 sustain
@@ -95,8 +95,8 @@ Bank * * KH - Tbn
 //----------------------------------------------------------------------------
 
 //! g="Kirk Hunter/Concert Brass 2" n="KH Tuba"
-//! id=ebd7faef-a33d-4b99-a4af-c0183520b3c3
-Bank * * KH - Tuba
+//! id=a6adbe3e-6e37-4e18-94d4-50fe8d399244
+Bank 23 70 KH - Tuba
 
 //! c=long i=legato o=note:85
 1 sustain
@@ -118,8 +118,8 @@ Bank * * KH - Tuba
 //
 
 //! g="Kirk Hunter/Concert Brass Legacy" n="KH Brass Ens"
-//! id=d3183985-27fa-4b49-bcf4-5afb4d30338a
-Bank * * KH - Brass Ens
+//! id=705c06ee-f428-46c3-a9e1-890404b680d9
+Bank 23 71 KH - Brass Ens
 
 //! c=long i=legato o=note:97
 1 sustain

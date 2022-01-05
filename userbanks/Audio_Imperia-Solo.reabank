@@ -4,8 +4,8 @@
 // https://forum.cockos.com/showpost.php?p=2443412&postcount=1383
 //
 //!g="Audio Imperia/Solo" n="01 Strings Unified"
-//! id=048a3005-0832-47fa-9d17-93bd9d9a971e
-Bank * * Solo Violin/Viola/Cello
+//! id=0ce4025b-08ee-479e-ad34-3a40f1923727
+Bank 20 40 Solo Violin/Viola/Cello
 //! c=#4A4A4A i=legato-bowed o=note:12 g=1
 12 Legato Rebowed
 //! c=#4A4A4A i=legato-portamento o=note:13 g=1
@@ -24,8 +24,8 @@ Bank * * Solo Violin/Viola/Cello
 19 Trill Whole Tone
 
 //!g="Audio Imperia/Solo" n="02 Brass Unified"
-//! id=642e881f-c120-4bc0-b1f3-4e5c29e60915
-Bank * * Solo Trumpet/French/Descant Horn
+//! id=2e7747c0-b19c-4aa5-bfca-69775441a45f
+Bank 20 41 Solo Trumpet/French/Descant Horn
 //! c=#4A4A4A i=legato-bowed o=note:12 g=1
 12 Legato Fingered
 //! c=#4A4A4A i=legato-portamento o=note:13 g=1
@@ -36,8 +36,8 @@ Bank * * Solo Trumpet/French/Descant Horn
 15 Staccatissimo
 
 //!g="Audio Imperia/Solo" n="03 Woodwinds Unified"
-//! id=0ff22321-1386-4ef0-8290-3bbdc68e77a9
-Bank * * Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
+//! id=c6f33af9-9c55-4069-a36f-fd6efd9c5ae0
+Bank 20 42 Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
 //! c=#4A4A4A i=legato-bowed o=note:12 g=1
 12 Legato Fingered
 //! c=#4A4A4A i=legato-portamento o=note:13 g=1
@@ -52,8 +52,8 @@ Bank * * Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
 17 Trill Whole Tone
 
 //!g="Audio Imperia/Solo" n="04 Sopranos Unified"
-//! id=41f6e915-807f-41f0-be9c-72ddba39c1ee
-Bank * * Solo Soprano Angelic/Operatic
+//! id=d0ef84c1-295f-42c0-a9c1-9dceae54238c
+Bank 20 43 Solo Soprano Angelic/Operatic
 //! c=#4A4A4A i=phrase o=note:12 g=1
 12 Legato Aah
 //! c=#4A4A4A i=phrase o=note:13 g=1

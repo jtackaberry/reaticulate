@@ -2,8 +2,8 @@
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Strings" n="Strings Play"
-//! id=70ca4312-2940-464d-beee-3971dea36866
-Bank * * Strings play
+//! id=6681ec4e-b34b-40d3-b850-de28d4355c39
+Bank 29 13 Strings play
 
 //! c=legato i=legato o=cc:68,127
 126 legato on
@@ -51,8 +51,8 @@ Bank * * Strings play
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Strings" n="Strings Score"
-//! id=38b72a70-3a27-407a-ac29-8458ab98fc6a
-Bank * * Strings Score
+//! id=2c25f1b6-4e90-4774-86e9-ce42e6a5e1fd
+Bank 29 14 Strings Score
 
 //! c=legato i=legato o=cc:68,127
 126 legato on

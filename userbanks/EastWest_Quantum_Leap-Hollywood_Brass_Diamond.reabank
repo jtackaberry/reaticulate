@@ -10,8 +10,8 @@
 // There are NUMEROUS additional non-KS patches for every instrument family in the library that are not mapped below.
 //----------------------------------------------------------------------------
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="2 Horns KS"
-//! id=8c861f0e-cac4-4748-9f09-82b1b80728d6
-Bank * * EW 2 Horns Sus_Short KS
+//! id=9f72851b-c501-4bf2-9c5e-f44eb60f3d65
+Bank 22 14 EW 2 Horns Sus_Short KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=accented-quarter o=note:37
@@ -30,8 +30,8 @@ Bank * * EW 2 Horns Sus_Short KS
 42 staccatissimo
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="2 Horns FX KS"
-//! id=150293cc-8604-41d7-aa19-a6b87bd9fec6
-Bank * * EW 2 Horns FX KS
+//! id=9cf26e46-5013-43ac-86fd-17b048d8bdfd
+Bank 22 15 EW 2 Horns FX KS
 //! c=long i=trill-min2 o=note:36
 70 trill m2
 //! c=long i=trill-maj2 o=note:37
@@ -48,8 +48,8 @@ Bank * * EW 2 Horns FX KS
 108 rips 2
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="2 Trumpets KS"
-//! id=d257141f-d547-44fd-9d44-1e33b438e7e0
-Bank * * EW 2 Trumpets Sus_Short KS
+//! id=2667ae8e-6b08-4523-8af7-8bf69cf1ca59
+Bank 22 16 EW 2 Trumpets Sus_Short KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=accented-quarter o=note:37
@@ -70,8 +70,8 @@ Bank * * EW 2 Trumpets Sus_Short KS
 102 sfz cresc
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="2 Trumpets FX KS"
-//! id=63e35478-55b3-49b3-8e0f-9aaf956185b5
-Bank * * EW 2 Trumpets FX KS
+//! id=c5b80bc5-4dd5-47c0-bd49-78bf0d2de866
+Bank 22 17 EW 2 Trumpets FX KS
 //! c=long i=trill-min2 o=note:36
 70 trill m2
 //! c=long i=trill-maj2 o=note:37
@@ -94,8 +94,8 @@ Bank * * EW 2 Trumpets FX KS
 100 rips
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="3 Trombones KS"
-//! id=962774da-9c7c-4d4d-809c-f37fe96d6e2b
-Bank * * EW 3 Trombones Sus_Short KS
+//! id=b4786236-d2eb-4a8e-a635-0c8087fdc17b
+Bank 22 18 EW 3 Trombones Sus_Short KS
 //! c=long i=note-whole o=note:85
 1 sustain
 //! c=long i=accented-quarter o=note:86
@@ -114,8 +114,8 @@ Bank * * EW 3 Trombones Sus_Short KS
 42 staccatissimo
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="3 Trombones FX KS"
-//! id=b9656452-1694-4a0c-9b92-2bbefff7d230
-Bank * * EW 3 Trombones FX KS
+//! id=38732735-0356-47d0-869c-1a41ebbcad3b
+Bank 22 19 EW 3 Trombones FX KS
 //! c=long i=crescendo o=note:85
 102 cresc slow
 //! c=long i=crescendo o=note:86
@@ -128,8 +128,8 @@ Bank * * EW 3 Trombones FX KS
 106 cluster
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="3 Trumpets KS"
-//! id=42377dd0-08fd-43c9-a2d9-7a822f2d3af9
-Bank * * EW 3 Trumpets Sus_Short KS
+//! id=26963cab-ed4f-47da-8854-6f39879e6d6d
+Bank 22 20 EW 3 Trumpets Sus_Short KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=accented-quarter o=note:37
@@ -154,8 +154,8 @@ Bank * * EW 3 Trumpets Sus_Short KS
 75 triple tng
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="3 Trumpets FX KS"
-//! id=6b6af779-57f4-4096-88b6-ac81a7b71d09
-Bank * * EW 3 Trumpets FX KS
+//! id=6a1f6b7b-4607-4340-b8b1-c58262264bcb
+Bank 22 21 EW 3 Trumpets FX KS
 //! c=long i=trill-min2 o=note:36
 70 trill m2
 //! c=long i=trill-maj2 o=note:37
@@ -178,8 +178,8 @@ Bank * * EW 3 Trumpets FX KS
 108 rises and oddities
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="6 Horns KS"
-//! id=24c16870-47f9-4748-bee9-0025a2a73518
-Bank * * EW 6 Horns Sus_Short KS
+//! id=6d988b0f-a61a-48df-8670-ad5399a9d7eb
+Bank 22 22 EW 6 Horns Sus_Short KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=accented-quarter o=note:37
@@ -200,8 +200,8 @@ Bank * * EW 6 Horns Sus_Short KS
 49 sfz
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="6 Horns FX KS"
-//! id=2463452d-2a42-4028-97d3-fb362e9a0f7f
-Bank * * EW 6 Horns FX KS
+//! id=813ca002-058a-4172-856d-fed972f8fdb5
+Bank 22 23 EW 6 Horns FX KS
 //! c=long i=trill-min2 o=note:36
 70 trill m2
 //! c=long i=trill-maj2 o=note:37
@@ -224,8 +224,8 @@ Bank * * EW 6 Horns FX KS
 109 sus fx
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="Low Brass KS"
-//! id=6272312f-47cf-4e63-8979-78dd5d953104
-Bank * * EW Low Brass Sus_Short KS
+//! id=88b03049-6587-4a06-91da-daef17860e26
+Bank 22 24 EW Low Brass Sus_Short KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=accented-quarter o=note:37
@@ -234,8 +234,8 @@ Bank * * EW Low Brass Sus_Short KS
 42 staccatissimo
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="Low Brass FX KS"
-//! id=615c00e3-2bda-4656-a635-82674fe33b28
-Bank * * EW Low Brass FX KS
+//! id=1e0ef6e8-6bcb-49c9-871a-4f9b7c210fbb
+Bank 22 25 EW Low Brass FX KS
 //! c=fx i=fx o=note:72
 90 cluster bend
 //! c=fx i=fx o=note:73
@@ -263,8 +263,8 @@ Bank * * EW Low Brass FX KS
 
 //----------------------------------------------------------------------------
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Cimbasso KS"
-//! id=3c0a36c1-eb7f-465b-bf22-974d2d966cf3
-Bank * * EW Cimbasso KS
+//! id=ba4f8784-f064-4315-bd06-3a62886b9e72
+Bank 22 26 EW Cimbasso KS
 //! c=long i=note-whole o=note:73
 1 sustain
 //! c=long i=accented-half o=note:74
@@ -281,8 +281,8 @@ Bank * * EW Cimbasso KS
 11 fluttertongue
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Horn KS"
-//! id=35c80619-4d1c-4333-ae86-a0d6f67b15d9
-Bank * * EW Horn KS
+//! id=075128e7-dc9f-4436-8c01-af356868560a
+Bank 22 27 EW Horn KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -307,8 +307,8 @@ Bank * * EW Horn KS
 102 sfz cresc
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Horn FX KS"
-//! id=08713688-0e73-481c-a6db-a9063d2e5704
-Bank * * EW Horn FX KS
+//! id=77bb4b36-7395-4b31-b260-0c456c1c9f2a
+Bank 22 28 EW Horn FX KS
 //! c=long i=trill-maj2 o=note:36
 71 trill M2
 //! c=long i=crescendo o=note:37
@@ -329,8 +329,8 @@ Bank * * EW Horn FX KS
 92 shake fast
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trombone KS"
-//! id=01d22b91-64b6-4a5d-ba49-2b7ceac728b7
-Bank * * EW Trombone KS
+//! id=cd4d4785-8c2f-4211-a251-86692800ff7a
+Bank 22 29 EW Trombone KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=accented-quarter o=note:37
@@ -351,8 +351,8 @@ Bank * * EW Trombone KS
 102 sfz cresc
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trombone FX KS"
-//! id=0669d691-9ebd-460c-8ffd-defeca6918e7
-Bank * * EW Trombone FX KS
+//! id=6a30c36b-8d4d-4551-8168-01809e3e43b4
+Bank 22 30 EW Trombone FX KS
 //! c=long i=crescendo o=note:36
 102 cresc slow
 //! c=long i=crescendo o=note:37
@@ -365,8 +365,8 @@ Bank * * EW Trombone FX KS
 100 rip
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trumpet KS"
-//! id=aeaf08fb-a357-4726-a706-541a1c3d9319
-Bank * * EW Trumpet KS
+//! id=a96ef47e-1133-4bd1-bfec-6d22bc419768
+Bank 22 31 EW Trumpet KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -389,8 +389,8 @@ Bank * * EW Trumpet KS
 42 staccatissimo
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Trumpet FX KS"
-//! id=f785a233-594c-4b70-8c39-ba299458d517
-Bank * * EW Trumpet FX KS
+//! id=d08d0646-697c-4713-859b-fd1512bcc405
+Bank 22 32 EW Trumpet FX KS
 //! c=long i=trill-min2 o=note:36
 70 trill m2
 //! c=long i=trill-maj2 o=note:37
@@ -403,8 +403,8 @@ Bank * * EW Trumpet FX KS
 107 cresc fast
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Tuba KS"
-//! id=25da99e0-92ee-4fa1-b0c0-704b6a837b77
-Bank * * EW Tuba KS
+//! id=8bf38e77-58b8-499b-8a27-3bf94647d59a
+Bank 22 33 EW Tuba KS
 //! c=long i=note-whole o=note:72
 1 sustain
 //! c=long i=accented-quarter o=note:73
@@ -423,8 +423,8 @@ Bank * * EW Tuba KS
 42 staccatissimo
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Solo" n="Tuba FX KS"
-//! id=f0c58e12-836a-4e41-9a96-8eec2ab96a39
-Bank * * EW Tuba FX KS
+//! id=9e5a5f20-cd70-438c-9a27-23c4aaaf883a
+Bank 22 34 EW Tuba FX KS
 //! c=long i=crescendo o=note:72
 102 cresc slow
 //! c=long i=crescendo o=note:73

@@ -4,8 +4,8 @@
 //===========================================================================
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 2" n="01 Solo Bass Flute"
-//! id=b1a8a0f6-a72c-46ee-8a8d-0bfe23ef4344
-Bank * * BWW Solo Bass Flute
+//! id=3654fe21-4dac-4e99-ac66-e854aad4760b
+Bank 30 15 BWW Solo Bass Flute
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg
 //! c=long i=note-whole o=note:25
@@ -24,8 +24,8 @@ Bank * * BWW Solo Bass Flute
 90 Breath Noises
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 2" n="02 Solo Bass Oboe"
-//! id=c283499a-d0f5-4d01-a9bf-0a5b543bdce3
-Bank * * BWW Solo Bass Oboe
+//! id=a1365b4a-d377-4629-b43c-9b38a2ac83b0
+Bank 30 16 BWW Solo Bass Oboe
 //! c=legato i=legato o=note:24
 20 Sustains Swell + Leg
 //! c=long i=note-whole o=note:25
@@ -42,8 +42,8 @@ Bank * * BWW Solo Bass Oboe
 40 Staccato
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 2" n="03 Solo Bass Clarinet"
-//! id=c516fd2a-2dd2-4fd6-8f49-0480f684ff56
-Bank * * BWW Solo Bass Flute
+//! id=52a44173-794c-4d46-93ea-0cb4df257939
+Bank 30 17 BWW Solo Bass Flute
 //! c=legato i=legato o=note:96
 20 Sustains Swell + Leg
 //! c=long i=note-whole o=note:97
@@ -62,8 +62,8 @@ Bank * * BWW Solo Bass Flute
 77 Ornaments
 
 //! g="Orchestral Tools/Berlin Woodwinds Soloists 2" n="04 Solo Bassoon"
-//! id=7dc808e2-56b9-4d89-81ca-f14fbba54c93
-Bank * * BWW Solo Bassoon
+//! id=b5b0a12d-d3be-4cd2-a3ca-e34042aa148c
+Bank 30 18 BWW Solo Bassoon
 //! c=legato i=legato o=note:96
 20 Sustains Swell + Leg
 //! c=long i=note-whole o=note:97

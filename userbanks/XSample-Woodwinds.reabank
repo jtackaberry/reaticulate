@@ -2,8 +2,8 @@
 // Source: sfiks - https://forum.cockos.com/showpost.php?p=1921442&postcount=87
 //
 //! g="XSample/Woodwinds" n="Woodwinds Play"
-//! id=4c552922-4ae8-44e0-8834-e32ed7ced07e
-Bank * * Woodwinds Play
+//! id=4f3363d1-6421-4628-8db5-e675fd052f21
+Bank 29 15 Woodwinds Play
 
 //! c=legato i=legato o=cc:68,127
 126 legato on
@@ -43,8 +43,8 @@ Bank * * Woodwinds Play
 
 
 //! g="XSample/Woodwinds" n="Woodwinds Score"
-//! id=9bc11299-9500-47a4-b80c-425c10277276
-Bank * * Woodwinds Score
+//! id=f3b849fa-5a42-4df5-99ba-2b577c568caa
+Bank 29 16 Woodwinds Score
 //! c=legato i=legato o=cc:68,127
 126 legato on
 //! c=legato i=legato o=cc:68,1

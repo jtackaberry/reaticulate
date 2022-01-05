@@ -3,8 +3,8 @@
 //
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Violin"
-//! id=acc7526c-007d-4b74-8a7c-715b4111a184
-Bank * * VSLse1 - Solo Violin
+//! id=00c2273d-ca8a-42ac-ab2a-a6c5e2d5d21d
+Bank 28 2 VSLse1 - Solo Violin
 //! g=1 c=short i=staccato o=note:24/cc:1,0
 40 staccato
 //! g=1 c=long i=marcato o=note:24/cc:1,65
@@ -36,18 +36,18 @@ Bank * * VSLse1 - Solo Violin
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Viola"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=fc526abb-0e42-4a3b-bc7a-fc92bb9c094f
-Bank * * VSLse1 - Solo Viola
+//! id=34d19cca-a61a-4297-b464-85324621cc4a
+Bank 28 3 VSLse1 - Solo Viola
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Cello"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=bb2f929b-4467-4033-8fe6-9fbe19609117
-Bank * * VSLse1 - Solo Cello
+//! id=7e1956d2-eb19-49e3-a682-af1c9c57d1e9
+Bank 28 4 VSLse1 - Solo Cello
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Bass"
 //! m=""
-//! id=429ab5fd-b58a-4aab-819f-e481fe641a9a
-Bank * * VSLse1 - Solo Bass
+//! id=4a82227b-3ec8-44f3-bf29-a09080ea2943
+Bank 28 5 VSLse1 - Solo Bass
 //! g=1 c=short i=staccato o=note:84/cc:1,0
 40 staccato
 //! g=1 c=long i=marcato o=note:84/cc:1,65
@@ -79,67 +79,67 @@ Bank * * VSLse1 - Solo Bass
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Violin + Violin 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=a1d15b60-c8ec-437d-971d-4751a8f17a02
-Bank * * VSLse1 - Solo Violin + Violin 8va
+//! id=46d48aa4-de9c-4bc3-bc72-28445528fa0e
+Bank 28 6 VSLse1 - Solo Violin + Violin 8va
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Violin + Viola 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=666982a4-2324-4aad-b3af-ee4508294d46
-Bank * * VSLse1 - Solo Violin + Viola 8va
+//! id=76fb427d-b571-4fa0-8916-076f2f921c99
+Bank 28 7 VSLse1 - Solo Violin + Viola 8va
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Viola + Cello 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=f35d43a2-a1e1-4ab1-b383-0f705e465b3b
-Bank * * VSLse1 - Solo Viola + Cello 8va
+//! id=d076937d-b44e-43cc-af33-d287b7a593bd
+Bank 28 8 VSLse1 - Solo Viola + Cello 8va
 
 //! g="VSL/SE1/Strings/Solo Strings" n="Solo Cello + Bass 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=fb32203a-c84a-4767-9a21-e586509079a1
-Bank * * VSLse1 - Solo Cello + Bass 8va
+//! id=0dffe85f-c0ee-4f18-8b80-a85bfa805dde
+Bank 28 9 VSLse1 - Solo Cello + Bass 8va
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Strings Violins"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=9eae8991-94ff-4ead-9aad-977409904bc9
-Bank * * VSLse1 - Strings Violins
+//! id=13a0404c-bdec-422b-b389-8c0ce5a05355
+Bank 28 10 VSLse1 - Strings Violins
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Strings Violas"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=4ccfc5d9-67ee-4ed2-b81f-edbaab111822
-Bank * * VSLse1 - Strings Violas
+//! id=613108e7-4263-4cc6-bd2e-dddd4e03e4e7
+Bank 28 11 VSLse1 - Strings Violas
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Strings Cellos"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=0a062ca4-544a-47ae-93bf-5641f818191d
-Bank * * VSLse1 - Strings Cellos
+//! id=04710332-9cf3-4d1b-acf3-3747e50c98a6
+Bank 28 12 VSLse1 - Strings Cellos
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Strings Violins"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Bass"
-//! id=84533d4c-9faf-48f1-bedf-8f3c8b3ffe93
-Bank * * VSLse1 - Strings Basses
+//! id=078bb54c-567b-4da9-852f-116c0a8171a7
+Bank 28 13 VSLse1 - Strings Basses
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Str Violins + Violins 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=e8c8932c-3118-4821-8291-7017d9a63897
-Bank * * VSLse1 - Strings Violins + Violins 8va
+//! id=744754aa-6568-4e6d-947e-beef7ed67740
+Bank 28 14 VSLse1 - Strings Violins + Violins 8va
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Str Violins + Violas 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=29f248fd-087a-4ebb-a813-5d83d76832d5
-Bank * * VSLse1 - Strings Violins + Violas 8va
+//! id=8411e888-71b1-4ee0-aa62-fd23c61ff768
+Bank 28 15 VSLse1 - Strings Violins + Violas 8va
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Str Violas + Cellos 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=503a7b8d-c88c-4bbb-8471-e2bd29e43fbf
-Bank * * VSLse1 - Strings Violas + Cellos 8va
+//! id=50d00469-2152-4ff3-8662-30bc8194deda
+Bank 28 16 VSLse1 - Strings Violas + Cellos 8va
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Str Cellos + Basses 8va"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Violin"
-//! id=d08ce7b4-7739-4919-b39b-53b76d95770e
-Bank * * VSLse1 - Strings Cellos + Basses 8va
+//! id=e63535ab-90df-4f19-bb38-0a5368c596fc
+Bank 28 17 VSLse1 - Strings Cellos + Basses 8va
 
 //! g="VSL/SE1/Strings/Orchestral Strings" n="Strings All"
-//! id=af068194-488a-4540-89ab-9656b73832a5
-Bank * * VSLse1 - Strings All
+//! id=aafcba8e-d354-4649-8e7a-36a4e0a899ec
+Bank 28 18 VSLse1 - Strings All
 //! g=1 c=short i=staccato o=note:21/cc:1,0
 40 staccato
 //! g=1 c=long i=marcato o=note:21/cc:1,65
@@ -166,8 +166,8 @@ Bank * * VSLse1 - Strings All
 62 pizzicato
 
 //! g="VSL/SE1/Harp & Perc" n="Harp"
-//! id=781f7500-26b8-4e50-b9a2-4fb021cb0032
-Bank * * VSLse1 - Harp
+//! id=8029e4fb-7b5f-4fff-8d94-07623ef30b38
+Bank 28 19 VSLse1 - Harp
 //! g=1 c=short i=note-quarter o=cc:1,0
 40 Normal
 //! g=1 c=short i=con-sord o=cc:1,127
@@ -175,32 +175,32 @@ Bank * * VSLse1 - Harp
 
 //! g="VSL/SE1/Harp & Perc" n="Bosendorfer"
 //! m="Probably no need to use this, as sustain pedal will switch"
-//! id=b7b8445c-f7de-43ef-8612-abc05571bdb7
-Bank * * VSLse1 - Bosendorfer
+//! id=8ea4b361-3767-48e9-894f-7d3bb63484e3
+Bank 28 20 VSLse1 - Bosendorfer
 //! g=1 c=short i=note-quarter o=cc:64,0
 40 pedal up
 //! g=1 c=long i=note-whole o=cc:64,127
 1 sustain ped
 
 //! g="VSL/SE1/Harp & Perc" n="Celesta"
-//! id=940d2df1-adbb-4daf-8c09-f4242e9001c1
-Bank * * VSLse1 - Celesta
+//! id=3a38c523-e15d-43f7-a397-d74097542f0e
+Bank 28 21 VSLse1 - Celesta
 //! g=1 c=short i=note-quarter o=note:24
 40 Normal
 //! g=1 c=short-light i=con-sord o=note:25
 48 Soft
 
 //! g="VSL/SE1/Harp & Perc" n="Vibraphone"
-//! id=d059d0da-8692-4a29-9cf8-c6cb31cd5264
-Bank * * VSLse1 - Vibraphone
+//! id=ef41aa68-9617-4b3b-a774-8f82bbad46e6
+Bank 28 22 VSLse1 - Vibraphone
 //! g=1 c=long i=note-quarter o=note:24
 1 motor off
 //! g=1 c=long-light i=vibrato o=note:25
 16 motor on
 
 //! g="VSL/SE1/Harp & Perc" n="Timpani"
-//! id=d547fefe-4a6b-4845-8563-f76ee89bd305
-Bank * * VSLse1 - Timpani
+//! id=37a82e51-ef31-4a7a-9722-742456b181a6
+Bank 28 23 VSLse1 - Timpani
 //! g=1 c=short i=note-quarter o=note:24
 40 hit
 //! g=1 c=short-light i=staccato o=note:25
@@ -209,8 +209,8 @@ Bank * * VSLse1 - Timpani
 11 roll
 
 //! g="VSL/SE1/Woodwinds/Flutes" n="Piccolo"
-//! id=fa583818-e7e7-4878-8f23-f2e15d34b305
-Bank * * VSLse1 - Piccolo
+//! id=4a992860-a9b1-4c48-b7f5-5dbaea7095c2
+Bank 28 24 VSLse1 - Piccolo
 //! g=1 c=short i=staccato o=note:24/cc:1,0
 40 staccato
 //! g=1 c=long-light i=marcato o=note:24/cc:1,65
@@ -230,12 +230,12 @@ Bank * * VSLse1 - Piccolo
 
 //! g="VSL/SE1/Woodwinds/Flutes" n="Flute 1"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=674052f6-666b-4509-bbbc-1d019ad446b5
-Bank * * VSLse1 - Flute 1
+//! id=2dbb7457-0a63-44c2-a4c4-53f407a0908b
+Bank 28 25 VSLse1 - Flute 1
 
 //! g="VSL/SE1/Woodwinds/Flutes" n="Piccolo + Flute 8va"
-//! id=09d49895-3e0b-4345-a791-7eb9e349bb96
-Bank * * VSLse1 - Piccolo + Flute 8va
+//! id=79eda25b-77d1-4809-b040-6ff40650fcb5
+Bank 28 26 VSLse1 - Piccolo + Flute 8va
 //! g=1 c=short i=staccato o=note:24
 40 staccato
 //! g=1 c=long i=note-whole o=note:25
@@ -247,42 +247,42 @@ Bank * * VSLse1 - Piccolo + Flute 8va
 
 //! g="VSL/SE1/Woodwinds/Oboes" n="Oboe french"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=a72ca441-d71d-4a34-bad2-589f00ba020b
-Bank * * VSLse1 - Oboe French
+//! id=00603dcb-a424-446f-93ac-498e9c7eb6a5
+Bank 28 27 VSLse1 - Oboe French
 
 //! g="VSL/SE1/Woodwinds/Oboes" n="English Horn"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=b9a25a14-dbea-4f17-9be4-f24fa637c46a
-Bank * * VSLse1 - English Horn
+//! id=c5d1d3bf-f6b0-4b58-9520-361476363813
+Bank 28 28 VSLse1 - English Horn
 
 //! g="VSL/SE1/Woodwinds/Oboes" n="Oboe + English Horn 8va"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo + Flute 8va"
-//! id=b5ecfbf7-8115-4f57-a682-9948637c15d7
-Bank * * VSLse1 - Oboe + Flute 8va
+//! id=2a6285e3-0f28-42a7-8190-2a6d564d2a06
+Bank 28 29 VSLse1 - Oboe + Flute 8va
 
 //! g="VSL/SE1/Woodwinds/Clarinets" n="Clarinet Bb"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=31200e08-08fe-4968-b25f-66dddff6d3c7
-Bank * * VSLse1 - Clarinet Bb
+//! id=1492802e-7d6e-4762-a8d3-92f38740f17c
+Bank 28 30 VSLse1 - Clarinet Bb
 
 //! g="VSL/SE1/Woodwinds/Clarinets" n="Bass Clarinet"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=3a0fe9de-fc9b-4dfb-8060-6cc52672d71e
-Bank * * VSLse1 - Bass Clarinet
+//! id=da4bbe63-7491-4c7e-a087-f815146402c0
+Bank 28 31 VSLse1 - Bass Clarinet
 
 //! g="VSL/SE1/Woodwinds/Clarinets" n="Clarinet Bb + Bass 8va"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo + Flute 8va"
-//! id=de27d6dc-5b5b-4c4e-a578-cd689a412600
-Bank * * VSLse1 - Clarinet Bb + Bass 8va
+//! id=8c1c7059-f80d-4567-a28d-a8475e9e47e6
+Bank 28 32 VSLse1 - Clarinet Bb + Bass 8va
 
 //! g="VSL/SE1/Woodwinds/Bassoons" n="Bassoon"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=529ce21a-9da8-4877-a3dd-931ee006bac0
-Bank * * VSLse1 - Bassoon
+//! id=ece7ac2a-48c3-42d9-9aa2-fbc33029d0a8
+Bank 28 33 VSLse1 - Bassoon
 
 //! g="VSL/SE1/Woodwinds/Bassoons" n="Contra Bassoon"
-//! id=ffb04e06-c123-4af0-972d-0cbca283c9bd
-Bank * * VSLse1 - Contra Bassoon
+//! id=ab1aaff2-3ba2-4047-be72-b687616b4d68
+Bank 28 34 VSLse1 - Contra Bassoon
 //! g=1 c=short i=staccato o=note:84/cc:1,0
 40 staccato
 //! g=1 c=long-light i=marcato o=note:84/cc:1,65
@@ -301,8 +301,8 @@ Bank * * VSLse1 - Contra Bassoon
 31 leg-sus XF
 
 //! g="VSL/SE1/Woodwinds/Bassoons" n="Bassoon + Contra 8va"
-//! id=966cc6c3-a402-43df-bb10-e64118853cd9
-Bank * * VSLse1 - Bassoon + Contra 8va
+//! id=add70657-bcd0-423f-98fc-7fe8a6f416d7
+Bank 28 35 VSLse1 - Bassoon + Contra 8va
 //! g=1 c=short i=staccato o=note:84
 40 staccato
 //! g=1 c=long i=note-whole o=note:85
@@ -314,45 +314,45 @@ Bank * * VSLse1 - Bassoon + Contra 8va
 
 //! g="VSL/SE1/Brass/Horns" n="Horn triple"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=128aedd7-c5c2-4efb-9170-1c6d5cf1d855
-Bank * * VSLse1 - Horn triple
+//! id=2aae569a-f9be-4488-90e9-f4b5661641b2
+Bank 28 36 VSLse1 - Horn triple
 
 //! g="VSL/SE1/Brass/Horns" n="Horn ensemble -a4"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=06dbd344-c196-43b3-98bc-afede90e6930
-Bank * * VSLse1 - Horn ensemble -a4
+//! id=5fed7a05-49cc-4850-83c0-be0373521c0c
+Bank 28 37 VSLse1 - Horn ensemble -a4
 
 //! g="VSL/SE1/Brass/Trumpets" n="Trumpet C"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=6dd4a343-f1e9-4d42-9813-b1b3a43b0cd1
-Bank * * VSLse1 - Trumpet C
+//! id=6f254c70-7d67-4ebb-b1f6-2d83363f807e
+Bank 28 38 VSLse1 - Trumpet C
 
 //! g="VSL/SE1/Brass/Trumpets" n="Trumpet Ensemble"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=a9df4095-8450-4153-b9d2-ea69e17dc6c6
-Bank * * VSLse1 - Trumpet Ensemble
+//! id=b04c5af7-11f7-4b43-bbff-8eede61a471d
+Bank 28 39 VSLse1 - Trumpet Ensemble
 
 //! g="VSL/SE1/Brass/Trombones" n="Tenor Trombone"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=ed074dda-8f52-4fab-9a6f-994e6d0a17d7
-Bank * * VSLse1 - Tenor Trombone
+//! id=11214406-eb7a-4783-9fe0-542ad90f42fa
+Bank 28 40 VSLse1 - Tenor Trombone
 
 //! g="VSL/SE1/Brass/Trombones" n="Bass Trombone"
 //! clone="VSL/SE1/Woodwinds/Bassoons/Contra Bassoon"
-//! id=f2352d49-16c2-4120-b1d8-c3b9c677b017
-Bank * * VSLse1 - Bass Trombone
+//! id=6759b301-b7fc-49b1-9e8b-e3d402822ae1
+Bank 28 41 VSLse1 - Bass Trombone
 
 //! g="VSL/SE1/Brass/Trombones" n="Trombone Ensemble"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=a3ad4052-e68a-46ce-8dea-142207e87879
-Bank * * VSLse1 - Trombone Ensemble
+//! id=232576c8-9a71-42a5-983b-022485c03b4a
+Bank 28 42 VSLse1 - Trombone Ensemble
 
 //! g="VSL/SE1/Brass/Trombones" n="Tenor tromb + Bass 8va"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo + Flute 8va"
-//! id=4d67edeb-55fa-44c8-b2f8-0994b7e06bab
-Bank * * VSLse1 - Tenor tromb + Bass 8va
+//! id=af7b0411-3dc2-4f80-b7c7-b6ad0fed1b52
+Bank 28 43 VSLse1 - Tenor tromb + Bass 8va
 
 //! g="VSL/SE1/Brass/Tubas" n="Tuba"
 //! clone="VSL/SE1/Woodwinds/Flutes/Piccolo"
-//! id=0ba45aab-dd8c-4c95-b5ee-a70e7462ca3a
-Bank * * VSLse1 - Tuba
+//! id=d80af33f-b337-4495-b16e-18f9ed7a5c59
+Bank 28 44 VSLse1 - Tuba

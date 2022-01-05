@@ -10,8 +10,8 @@
 // There are NUMEROUS additional non-KS patches for every instrument family in the library that are not mapped below.
 //----------------------------------------------------------------------------
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Alto Flute KS"
-//! id=73b896ab-cc26-4fda-a2b3-7594ee0c36ec
-Bank * * EW Alto Flute KS
+//! id=9ffed07f-85b1-4a86-a6a1-556302126c9f
+Bank 22 35 EW Alto Flute KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -28,8 +28,8 @@ Bank * * EW Alto Flute KS
 40 staccato
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bass Clarinet KS"
-//! id=ed487e4e-ce51-478d-a744-d796af945948
-Bank * * EW Bass Clarinet KS
+//! id=87cbdf42-5af5-4e77-8f74-a97b0e4c4e87
+Bank 22 36 EW Bass Clarinet KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -52,8 +52,8 @@ Bank * * EW Bass Clarinet KS
 91 fx long
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bass Flute KS"
-//! id=b4fc726e-b7c7-4c6b-b16f-0da4e6a69393
-Bank * * EW Bass Flute KS
+//! id=f0263798-8f57-4fea-ba20-35451b6ad57e
+Bank 22 37 EW Bass Flute KS
 //! c=long i=vibrato o=note:36
 16 vibrato
 //! c=long i=vibrato-molto o=note:37
@@ -66,8 +66,8 @@ Bank * * EW Bass Flute KS
 40 staccato
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bassoon KS"
-//! id=86d781ec-0392-4f3c-b1b0-7373c42603a4
-Bank * * EW Bassoon KS
+//! id=9805a8d2-572d-46ef-b02a-f3414da465d3
+Bank 22 38 EW Bassoon KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -88,8 +88,8 @@ Bank * * EW Bassoon KS
 71 trill M2
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Bassoon Runs FX KS"
-//! id=657d9e33-a878-4c90-a60e-ba4dda42643d
-Bank * * EW Bassoon Runs FX KS
+//! id=57da78e3-9d97-41ce-ab16-529b7ed8dc35
+Bank 22 39 EW Bassoon Runs FX KS
 //! c=legato i=legato-runs o=note:36
 111 8va run down
 //! c=legato i=legato-runs o=note:37
@@ -108,8 +108,8 @@ Bank * * EW Bassoon Runs FX KS
 116 wt run up
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Contrabassoon KS"
-//! id=b9082461-8519-4ca5-a019-b3447a515256
-Bank * * EW Contrabassoon KS
+//! id=f27a0f18-f2af-48d9-aaf7-f90031766bce
+Bank 22 40 EW Contrabassoon KS
 //! c=long i=note-whole o=note:72
 1 sustain
 //! c=long i=vibrato o=note:73
@@ -130,8 +130,8 @@ Bank * * EW Contrabassoon KS
 52 marcato short
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Clarinet KS"
-//! id=3e4ed262-c00b-4124-869a-3c2da4d537b1
-Bank * * EW Clarinet KS
+//! id=e9e94493-cdc1-4b59-b81e-d4acfd60071a
+Bank 22 41 EW Clarinet KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -156,8 +156,8 @@ Bank * * EW Clarinet KS
 92 fx short
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Clarinet Runs FX KS"
-//! id=102e0fe4-fa1d-47bf-becf-af73519361e6
-Bank * * EW Clarinet Runs FX KS
+//! id=b08be695-6e16-4178-abb8-2696c51ddafa
+Bank 22 42 EW Clarinet Runs FX KS
 //! c=legato i=legato-runs o=note:36
 111 8va run down
 //! c=legato i=legato-runs o=note:37
@@ -176,8 +176,8 @@ Bank * * EW Clarinet Runs FX KS
 116 wt run up
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="English Horn KS"
-//! id=72981811-2d2e-4a26-a10f-8ec3bf0c1f3b
-Bank * * EW English Horn KS
+//! id=a23e0403-d450-4f42-a8a8-c8303d920b94
+Bank 22 43 EW English Horn KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -202,8 +202,8 @@ Bank * * EW English Horn KS
 71 trill M2
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 1 KS"
-//! id=5445acdf-69ec-404e-b21b-99b2f321107c
-Bank * * EW Flute 1 KS
+//! id=fc7e4bc2-fb45-4e01-be67-168caa3b69ae
+Bank 22 44 EW Flute 1 KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -234,8 +234,8 @@ Bank * * EW Flute 1 KS
 78 rep slow
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 1 Runs FX KS"
-//! id=5a6dae5c-f520-4937-b94a-48cb8ad8cafe
-Bank * * EW Flute 1 Runs FX KS
+//! id=00b12248-dfda-494c-abd6-668589c9f05c
+Bank 22 45 EW Flute 1 Runs FX KS
 //! c=legato i=legato-runs o=note:36
 111 8va run down
 //! c=legato i=legato-runs o=note:37
@@ -254,8 +254,8 @@ Bank * * EW Flute 1 Runs FX KS
 116 wt run up
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 2 KS"
-//! id=0612f976-b0aa-4225-87ea-b2aa014a7f9e
-Bank * * EW Flute 2 KS
+//! id=4ea6d859-cd7b-44cc-85f7-57fae9770f44
+Bank 22 46 EW Flute 2 KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -284,8 +284,8 @@ Bank * * EW Flute 2 KS
 78 rep slow
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Flute 2 Runs FX KS"
-//! id=22c02f97-9b9e-43f7-8c53-cdb104dd39ef
-Bank * * EW Flute 2 Runs FX KS
+//! id=b41f5e98-45dc-429e-9d8d-9922637977b5
+Bank 22 47 EW Flute 2 Runs FX KS
 //! c=legato i=legato-runs o=note:36
 111 8va run down
 //! c=legato i=legato-runs o=note:37
@@ -304,8 +304,8 @@ Bank * * EW Flute 2 Runs FX KS
 116 wt run up
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Oboe KS"
-//! id=fd00997e-aad4-4319-ae7e-f7bde8cf73f7
-Bank * * EW Oboe KS
+//! id=a9a3e1c9-92c3-4181-91bc-1b0df86a2184
+Bank 22 48 EW Oboe KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -330,8 +330,8 @@ Bank * * EW Oboe KS
 78 rep slow
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Oboe Runs FX KS"
-//! id=efe1ddb2-75dc-4be1-80bd-43a489594c41
-Bank * * EW Oboe Runs FX KS
+//! id=eb537380-a43f-49ac-b287-97e7bdd948ee
+Bank 22 49 EW Oboe Runs FX KS
 //! c=legato i=legato-runs o=note:36
 111 8va run down
 //! c=legato i=legato-runs o=note:37
@@ -350,8 +350,8 @@ Bank * * EW Oboe Runs FX KS
 116 wt run up
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Piccolo KS"
-//! id=d4489e5b-2375-4c18-b5dc-22a1b7b91207
-Bank * * EW Piccolo KS
+//! id=67b1bde4-8ebd-4e6f-800d-f4bca0103dcf
+Bank 22 50 EW Piccolo KS
 //! c=long i=note-whole o=note:36
 1 sustain
 //! c=long i=vibrato o=note:37
@@ -380,8 +380,8 @@ Bank * * EW Piccolo KS
 91 fx long
 
 //! g="EastWest Quantum Leap/Hollywood Woodwinds Diamond" n="Piccolo Runs FX KS"
-//! id=9118853d-7bfe-4674-9c63-7678e79f42d3
-Bank * * EW Piccolo Runs FX KS
+//! id=37731e41-0de1-489d-b201-64d7b30a1af3
+Bank 22 51 EW Piccolo Runs FX KS
 //! c=legato i=legato-runs o=note:36
 111 8va run down
 //! c=legato i=legato-runs o=note:37

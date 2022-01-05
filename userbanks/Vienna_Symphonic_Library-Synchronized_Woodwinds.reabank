@@ -4,8 +4,8 @@
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Piccolo Flute"
-//! id=eacbcda2-285f-412e-8991-1ba421403802
-Bank * * VSL SYNC - Piccolo Flute
+//! id=65104d44-6ca9-4c25-a339-94effd239c29
+Bank 28 79 VSL SYNC - Piccolo Flute
 
 //--------------------- legato ----------------------------------------------
 
@@ -100,8 +100,8 @@ Bank * * VSL SYNC - Piccolo Flute
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Flute 1"
-//! id=9dd64961-715c-4768-9e87-163ef1d50085
-Bank * * VSL SYNC - Flute 1
+//! id=076903be-4ef5-4fc6-b7e1-3a181ce4084d
+Bank 28 80 VSL SYNC - Flute 1
 
 //--------------------- legato ----------------------------------------------
 
@@ -204,8 +204,8 @@ Bank * * VSL SYNC - Flute 1
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Flute 2"
-//! id=5681b9e3-a8e5-469b-90b5-a2a4b6c3c6ed
-Bank * * VSL SYNC - Flute 2
+//! id=655947c5-7e83-47b6-98d1-8a008db84908
+Bank 28 81 VSL SYNC - Flute 2
 
 //--------------------- legato ----------------------------------------------
 
@@ -310,8 +310,8 @@ Bank * * VSL SYNC - Flute 2
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Oboe (French)"
-//! id=6215c8a5-1553-47d4-a5f2-689e0318ffd9
-Bank * * VSL SYNC - Oboe (French)
+//! id=f4e5e303-e0f8-435d-a713-b811a32e4ef1
+Bank 28 82 VSL SYNC - Oboe (French)
 
 //--------------------- legato ----------------------------------------------
 
@@ -400,19 +400,19 @@ Bank * * VSL SYNC - Oboe (French)
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Oboe (Vienna)"
 //! clone="VSL/SYNCHRON-ized Woodwinds/VSL SYNC - Oboe (French)"
-//! id=67e3bc45-81a8-4cbb-8d44-1ea7991e4041
-Bank * * VSL SYNC - Oboe (Vienna)
+//! id=c7cca866-4ede-494c-9495-51e85071fb03
+Bank 28 83 VSL SYNC - Oboe (Vienna)
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - English Horn"
 //! clone="VSL/SYNCHRON-ized Woodwinds/VSL SYNC - Oboe (French)"
-//! id=7e351602-f7c5-401b-8b7e-e8a81d764a62
-Bank * * VSL SYNC - English Horn
+//! id=402ef548-6005-4123-8366-b245cd2e8aed
+Bank 28 84 VSL SYNC - English Horn
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Clarinet Bb 1"
-//! id=3092b7d2-e7b7-48ed-8629-aa9924313970
-Bank * * VSL SYNC - Clarinet Bb 1
+//! id=cf3ea13f-2f4a-4c17-868a-71b42a5db5be
+Bank 28 85 VSL SYNC - Clarinet Bb 1
 
 //--------------------- legato ----------------------------------------------
 
@@ -493,8 +493,8 @@ Bank * * VSL SYNC - Clarinet Bb 1
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Clarinet Bb 2"
-//! id=ed7ec549-dffb-4b82-abb2-f1d542d58abf
-Bank * * VSL SYNC - Clarinet Bb 2
+//! id=0d0a2fd6-a6dd-4755-9981-d72a990e328b
+Bank 28 86 VSL SYNC - Clarinet Bb 2
 
 //--------------------- legato ----------------------------------------------
 
@@ -590,8 +590,8 @@ Bank * * VSL SYNC - Clarinet Bb 2
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bass Clarinet"
-//! id=37c5f45c-36e2-4bab-a621-024eba8c4d44
-Bank * * VSL SYNC - Bass Clarinet
+//! id=7d2f9d97-d8f2-41d4-95cf-ef98b828a467
+Bank 28 87 VSL SYNC - Bass Clarinet
 
 //--------------------- legato ----------------------------------------------
 
@@ -659,8 +659,8 @@ Bank * * VSL SYNC - Bass Clarinet
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bassoon 1"
-//! id=a40eb3db-528e-4557-8a45-87fd24e4048c
-Bank * * VSL SYNC - Bassoon 1
+//! id=c696dace-155a-48cb-bf09-3fd5874c448f
+Bank 28 88 VSL SYNC - Bassoon 1
 
 //--------------------- legato ----------------------------------------------
 
@@ -763,8 +763,8 @@ Bank * * VSL SYNC - Bassoon 1
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Bassoon 2"
-//! id=8e79ad7d-11ea-4a6f-8295-26aead029332
-Bank * * VSL SYNC - Bassoon 2
+//! id=d890e643-424a-4413-91d3-879cafd9d14c
+Bank 28 89 VSL SYNC - Bassoon 2
 
 //--------------------- legato ----------------------------------------------
 
@@ -858,8 +858,8 @@ Bank * * VSL SYNC - Bassoon 2
 
 //---------------------------------------------------------------------------
 //! g="VSL/SYNCHRON-ized Woodwinds" n="VSL SYNC - Contrabassoon"
-//! id=d3c116bd-6b52-409f-bcfb-734a835305b8
-Bank * * VSL SYNC - Contrabassoon
+//! id=cb6050c0-040c-45c8-8438-c5883116ff0c
+Bank 28 90 VSL SYNC - Contrabassoon
 
 //--------------------- legato ----------------------------------------------
 

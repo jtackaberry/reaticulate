@@ -4,8 +4,8 @@
 //
 
 //! g="Cinesamples/CineWinds Core" n="CWC - Piccolo Flute"
-//! id=1987ea5b-6d2e-4ef9-9d12-35b487c896d7
-Bank * * CWC - Piccolo Flute
+//! id=d3c8cbc5-889d-414d-bca9-542c7d5c8642
+Bank 21 115 CWC - Piccolo Flute
 
 //! c=legato i=legato o=note:36
 20 legato
@@ -27,18 +27,18 @@ Bank * * CWC - Piccolo Flute
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Flute"
 //! clone="Cinesamples/CineWinds Core/CWC - Piccolo Flute"
-//! id=d45d3b13-e7d5-4684-a114-2f3cf7f10f65
-Bank * * CWC - Flute
+//! id=2a573a5a-2d58-4451-82f5-f7527866e608
+Bank 21 116 CWC - Flute
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Oboe 1"
 //! clone="Cinesamples/CineWinds Core/CWC - Piccolo"
-//! id=fd9f29e6-1dab-413a-b0cf-b4c04eb04ebf
-Bank * * CWC - Oboe 1
+//! id=602979fa-b194-4a12-aded-59db2a3cffeb
+Bank 21 117 CWC - Oboe 1
 
 //! g="Cinesamples/CineWinds Core" n="CWC - Oboe 2"
-//! id=6e2ace30-f5e7-449f-8b48-8c32ed5edb28
-Bank * * CWC - Oboe 2
+//! id=9cee4938-8d4e-49ac-9d22-46bf02feaccb
+Bank 21 118 CWC - Oboe 2
 
 //! c=legato i=legato o=note:36
 20 legato
@@ -53,8 +53,8 @@ Bank * * CWC - Oboe 2
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Clarinet"
-//! id=bbe80a36-83f3-4527-902a-90feca1fbaa7
-Bank * * CWC - Clarinet
+//! id=9a365fa8-0f28-494c-a4b8-b4a968ccb1ae
+Bank 21 119 CWC - Clarinet
 
 //! c=legato i=legato o=note:24
 20 legato
@@ -75,8 +75,8 @@ Bank * * CWC - Clarinet
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Bassoon"
-//! id=d0a87dee-3709-4fe5-8f04-194da9c68562
-Bank * * CWC - Bassoon
+//! id=cf9bd480-962e-416a-9c3a-42f57cadaefa
+Bank 21 120 CWC - Bassoon
 
 //! c=legato i=legato o=note:12
 20 legato
@@ -97,8 +97,8 @@ Bank * * CWC - Bassoon
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Full Ensemble"
-//! id=644e98a9-8b78-46a0-8bca-2c7f3a01ab53
-Bank * * CWC - Full Ensemble
+//! id=4c9614a6-757e-4a79-a98d-df8d384e48e1
+Bank 21 121 CWC - Full Ensemble
 
 //! c=long i=note-whole o=note:12
 1 sustain

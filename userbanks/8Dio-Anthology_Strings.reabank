@@ -4,8 +4,8 @@
 
 //! g="8Dio/Strings Anthology/Strings Ensemble" n="01 Violins"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=d15b4c7e-4a3b-4e9b-a624-5562f8f05f4a
-Bank * * 01 Violins
+//! id=a2ef8787-116a-4e81-9002-f13bcaaede0a
+Bank 20 2 01 Violins
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -39,8 +39,8 @@ Bank * * 01 Violins
 
 //! g="8Dio/Strings Anthology/Strings Ensemble" n="02 Violas"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=9a7fd909-3965-4b1b-ba81-6e15ff0fd999
-Bank * * 02 Violas
+//! id=022b19f7-a40e-4e76-9940-7330eb1d1a1d
+Bank 20 3 02 Violas
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -74,8 +74,8 @@ Bank * * 02 Violas
 
 //! g="8Dio/Strings Anthology/Strings Ensemble" n="03 Cellos"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=702a6582-5600-414b-b988-b98f10f7e333
-Bank * * 03 Cellos
+//! id=311f3b1d-d622-4be1-bc76-1c13cb06387e
+Bank 20 4 03 Cellos
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -109,8 +109,8 @@ Bank * * 03 Cellos
 
 //! g="8Dio/Strings Anthology/Strings Ensemble" n="04 Basses"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=a72b605d-e0da-42c0-b601-e0974ec07b24
-Bank * * 04 Basses
+//! id=84a35cc2-b73b-4005-8c66-8b1032d9ecad
+Bank 20 5 04 Basses
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -144,8 +144,8 @@ Bank * * 04 Basses
 
 //! g="8Dio/Strings Anthology/Strings Chamber" n="01 Violins"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=1a807777-14a3-4e5a-b595-c7a37f8f862f
-Bank * * 01 Violins
+//! id=0a2c493f-a92a-4de5-a6c6-84806ab837f4
+Bank 20 6 01 Violins
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -159,8 +159,8 @@ Bank * * 01 Violins
 
 //! g="8Dio/Strings Anthology/Strings Chamber" n="02 Violas"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=8bbfdeb2-4450-45ab-9357-4d4997a300cf
-Bank * * 02 Violas
+//! id=084527c2-355e-4362-bf6a-5949e5ad0436
+Bank 20 7 02 Violas
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -174,8 +174,8 @@ Bank * * 02 Violas
 
 //! g="8Dio/Strings Anthology/Strings Chamber" n="03 Cellos"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=0e997b51-6d69-48dd-8930-2a7d21917e4a
-Bank * * 03 Cellos
+//! id=60117b0b-ae83-4fe1-acf6-833e984657be
+Bank 20 8 03 Cellos
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -189,8 +189,8 @@ Bank * * 03 Cellos
 
 //! g="8Dio/Strings Anthology/Strings Chamber" n="04 Basses"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=0a4a5546-1126-4bfa-9099-c9aca435a390
-Bank * * 04 Basses
+//! id=b4b925b9-146c-43e1-8bc2-166d3a8f4c6a
+Bank 20 9 04 Basses
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato-gliss o=note@1:13
@@ -204,8 +204,8 @@ Bank * * 04 Basses
 
 //! g="8Dio/Strings Anthology/Strings Solo" n="01 Violins"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=350b4539-fe1d-4b2a-9a96-78432bc5c2aa
-Bank * * 01 Violins
+//! id=b40478fd-e789-4bbc-870a-c38e0809499f
+Bank 20 10 01 Violins
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato o=note@1:13
@@ -219,8 +219,8 @@ Bank * * 01 Violins
 
 //! g="8Dio/Strings Anthology/Strings Solo" n="02 Violas"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=a51a7e05-d828-4a31-bacc-68ffd0903887
-Bank * * 02 Violas
+//! id=efbb465a-726b-43ba-b0c9-a5312e723a43
+Bank 20 11 02 Violas
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato o=note@1:13
@@ -234,8 +234,8 @@ Bank * * 02 Violas
 
 //! g="8Dio/Strings Anthology/Strings Solo" n="03 Cellos"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=c002a080-f71a-44a0-a97c-81fcee22948b
-Bank * * 03 Cellos
+//! id=e7a80dc7-53f9-4c6e-abe5-c85c4a07fff9
+Bank 20 12 03 Cellos
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato o=note@1:13
@@ -249,8 +249,8 @@ Bank * * 03 Cellos
 
 //! g="8Dio/Strings Anthology/Strings Solo" n="04 Basses"
 //! m="Dynamic control w CC01, Expression w CC11, Legato Response with CC02, Vibrato with CC73"
-//! id=d18d971a-ea59-4d70-807c-b5528126f99c
-Bank * * 04 Basses
+//! id=b578ffa1-260a-4db8-b58a-c113672439df
+Bank 20 13 04 Basses
 //! c=long i=note-whole o=note@1:12
 01 Sustains
 //! c=legato-dark i=legato o=note@1:13

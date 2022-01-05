@@ -16,8 +16,8 @@
 // **********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Timpani" n="Synchron Timpani - All"
-//! id=9a737ab0-810b-4db9-a4a7-13a6cb086d60
-Bank * * Synchron Timpani - All
+//! id=d9d6c2d5-3ef6-43d0-bb39-507b9512effe
+Bank 30 19 Synchron Timpani - All
 
 //! c=textured i=list o=note:24 g=2
 0 MALLET - Medium
@@ -39,8 +39,8 @@ Bank * * Synchron Timpani - All
 // *************************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Timpani" n="Synchron Timpani - Medium"
-//! id=a01d492a-dbc4-4f41-ba0f-f1b506001a85
-Bank * * Synchron Timpani - Medium
+//! id=a24676f6-dc5a-48b1-a283-15a47e3a5abf
+Bank 30 20 Synchron Timpani - Medium
 
 //! c=textured i=list o=note:84 g=2
 0 MERGED
@@ -114,8 +114,8 @@ Bank * * Synchron Timpani - Medium
 // ***********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Timpani" n="Synchron Timpani - Soft"
-//! id=3b553fdf-c57b-495a-8bb7-854f8f5a42ee
-Bank * * Synchron Timpani - Soft
+//! id=1b5ebb05-e370-47af-b788-0f5127b08b22
+Bank 30 21 Synchron Timpani - Soft
 
 //! c=short i=staccato o=note:29
 0 Single Strokes
@@ -133,8 +133,8 @@ Bank * * Synchron Timpani - Soft
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Drums and Toms" n="Synchron Snare Drum"
-//! id=4aba664d-0ec9-4a9a-bf90-10e50dd0c290
-Bank * * Synchron Snare Drum
+//! id=25f7d118-542a-43d2-888b-4c8cf56ecb3d
+Bank 30 22 Synchron Snare Drum
 
 //! c=short i=list o=note:24
 0 Sticks
@@ -152,8 +152,8 @@ Bank * * Synchron Snare Drum
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Drums and Toms" n="Synchron Bass Drums"
-//! id=88cbf140-67f0-4da2-958f-cb9c50691c4c
-Bank * * Synchron Bass Drums
+//! id=1c5c3176-c7a2-47cf-9a41-8ec4f728d312
+Bank 30 23 Synchron Bass Drums
 
 //! c=short i=list o=note:24
 0 Soft Beater
@@ -175,8 +175,8 @@ Bank * * Synchron Bass Drums
 // ********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Drums and Toms" n="Synchron Tambourines"
-//! id=b3cfcda4-1738-4aa3-8e6e-298e93a8a9bb
-Bank * * Synchron Tambourines
+//! id=94033029-8bc0-46e0-ba7d-397dd48a5ae0
+Bank 30 24 Synchron Tambourines
 
 //! c=short i=list o=note:24
 0 Lefima
@@ -190,8 +190,8 @@ Bank * * Synchron Tambourines
 // *********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Drums and Toms" n="Synchron Concert Toms"
-//! id=68fba986-d98f-4e98-a2df-767c8975479a
-Bank * * Synchron Concert Toms
+//! id=78535723-cc57-4c58-9485-db8b02c9d82f
+Bank 30 25 Synchron Concert Toms
 
 //! c=short i=list o=note:24
 0 Sticks
@@ -211,8 +211,8 @@ Bank * * Synchron Concert Toms
 // ******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Drums and Toms" n="Synchron Roto Toms"
-//! id=9b70ef9b-61f4-4334-90a9-47c6dd013834
-Bank * * Synchron Roto Toms
+//! id=00941c57-14bd-430a-8d4f-455c26cd2c64
+Bank 30 26 Synchron Roto Toms
 
 //! c=fx i=list o=note:24 g=2
 0 Sticks
@@ -242,8 +242,8 @@ Bank * * Synchron Roto Toms
 // ***************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Drums and Toms" n="Synchron Taikos"
-//! id=5fee418f-b7b9-4bb2-8759-71a53148c594
-Bank * * Synchron Taikos
+//! id=74a1d66b-a4bf-47b7-b794-d35021e0e75c
+Bank 30 27 Synchron Taikos
 
 //! c=fx i=list o=note:24 g=2
 0 Cudgel
@@ -283,8 +283,8 @@ Bank * * Synchron Taikos
 // ***************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron Piatti"
-//! id=f9b84056-0b56-4d5e-ad82-5c30a6dbe1a7
-Bank * * Synchron Piatti
+//! id=f453486b-d4a4-4c8f-8f91-f86885bcaf90
+Bank 30 28 Synchron Piatti
 
 //! c=fx i=list o=note:36
 0 Zildjian 20"
@@ -298,8 +298,8 @@ Bank * * Synchron Piatti
 // ***************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron Cymbals"
-//! id=e185f268-d478-416e-abfd-e69987c2e74b
-Bank * * Synchron Cymbals
+//! id=b48294cf-71c2-49ec-bbfb-f38f5b58b450
+Bank 30 29 Synchron Cymbals
 
 //! c=fx i=list o=note:36 g=2
 0 Zildjian K 16"
@@ -327,8 +327,8 @@ Bank * * Synchron Cymbals
 // **************************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron Tam-Tam (Flat 70cm)"
-//! id=8df1a3e0-857d-4a22-857a-b939c557a20d
-Bank * * Synchron Tam-Tam (Flat 70cm)
+//! id=12c790eb-c117-41e2-89a6-8b894d263c89
+Bank 30 30 Synchron Tam-Tam (Flat 70cm)
 
 //! c=fx i=list o=note:24
 0 Soft Beater
@@ -344,8 +344,8 @@ Bank * * Synchron Tam-Tam (Flat 70cm)
 // *****************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron Tam-Tams"
-//! id=0ebb8a72-249b-4191-8eaf-65fa2112de33
-Bank * * Synchron Tam-Tams
+//! id=291614ad-adb9-452a-85ca-3c43157e6635
+Bank 30 31 Synchron Tam-Tams
 
 //! c=fx i=list o=note:33 g=2
 0 Large (100cm)
@@ -367,8 +367,8 @@ Bank * * Synchron Tam-Tams
 // ***********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron Tam-Tams (All)"
-//! id=e9f0a714-38e7-4844-80b3-1c934e9ef65a
-Bank * * Synchron Tam-Tams (All)
+//! id=83f41c2a-f557-4b7c-a25a-7b1686bc8360
+Bank 30 32 Synchron Tam-Tams (All)
 
 //! c=fx i=list o=note:33 g=2
 0 Large (100cm)
@@ -392,8 +392,8 @@ Bank * * Synchron Tam-Tams (All)
 // ********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron Burma Gongs"
-//! id=0dd62f4f-3b03-40a1-9f3c-655d24c8189d
-Bank * * Synchron Burma Gongs
+//! id=403b61e1-eb0a-4155-8e4c-b73d9407958c
+Bank 30 33 Synchron Burma Gongs
 
 //! c=fx i=list o=note:24/note:29
 0 Regular, Single
@@ -433,8 +433,8 @@ Bank * * Synchron Burma Gongs
 // ********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Cymbals and Gongs" n="Synchron China Gongs"
-//! id=00df2433-a136-4e36-a7f5-43f6bc4e5d5f
-Bank * * Synchron China Gongs
+//! id=cacf517f-95b3-4748-b4ed-c5f0e819435f
+Bank 30 34 Synchron China Gongs
 
 //! c=fx i=staccato o=note:29
 0 Single Strokes
@@ -450,8 +450,8 @@ Bank * * Synchron China Gongs
 // ****************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Mallets" n="Synchron Celesta"
-//! id=a32e3692-d0bb-42cf-8df7-5c3a2a162586
-Bank * * Synchron Celesta
+//! id=1021c668-7643-438e-aae4-4e78d3aef087
+Bank 30 35 Synchron Celesta
 
 //! c=long i=list o=note:29
 0 Full
@@ -467,8 +467,8 @@ Bank * * Synchron Celesta
 // *********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Mallets" n="Synchron Glockenspiel"
-//! id=8485d2af-b223-43c6-8b44-717c00f667c1
-Bank * * Synchron Glockenspiel
+//! id=3f6e92f6-88b6-4837-8630-0c349fd7bdc6
+Bank 30 36 Synchron Glockenspiel
 
 //! c=short i=list o=note:24 g=2
 0 Metal Beater
@@ -494,8 +494,8 @@ Bank * * Synchron Glockenspiel
 // ******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Mallets" n="Synchron Xylophone"
-//! id=73ddc40d-1ae8-4b4b-aff9-2f0727447f8d
-Bank * * Synchron Xylophone
+//! id=99790c79-6903-4e21-98b7-041610f325ca
+Bank 30 37 Synchron Xylophone
 
 //! c=short i=list o=note:24 g=2
 0 Wood Beater
@@ -521,8 +521,8 @@ Bank * * Synchron Xylophone
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Mallets" n="Synchron Vibraphone"
-//! id=07311f41-0ee9-423d-a0a4-61613e68f993
-Bank * * Synchron Vibraphone
+//! id=29996333-0fb3-41c2-8524-179a365ddd1a
+Bank 30 38 Synchron Vibraphone
 
 //! c=long i=list o=note:24 g=2
 0 Hard Mallets
@@ -562,8 +562,8 @@ Bank * * Synchron Vibraphone
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Mallets" n="Synchron Crotales"
-//! id=40fe497d-39ad-4515-ace9-cb36f6eeb60d
-Bank * * Synchron Crotales
+//! id=e6c2fed5-4525-4452-916d-8de2bc26a66e
+Bank 30 39 Synchron Crotales
 
 //! c=fx i=list o=note:24 g=2
 0 Metal Beater
@@ -589,8 +589,8 @@ Bank * * Synchron Crotales
 // **********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Bells" n="Synchron Tubular Bells"
-//! id=4c90af28-6b80-4fce-97cf-6118a44b9728
-Bank * * Synchron Tubular Bells
+//! id=00453d84-d8b0-4bb5-ba32-72f4e4760242
+Bank 30 40 Synchron Tubular Bells
 
 //! c=short i=list o=note:24 g=2
 0 Med. Hammer
@@ -612,8 +612,8 @@ Bank * * Synchron Tubular Bells
 // ********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Bells" n="Synchron Plate Bells"
-//! id=54852127-61b9-40c7-bcf2-71254ff14fb2
-Bank * * Synchron Plate Bells
+//! id=743179e6-a3f4-4e03-ac19-900b5a23de9f
+Bank 30 41 Synchron Plate Bells
 
 //! c=fx i=list o=note:24 g=2
 0 Hammer
@@ -639,8 +639,8 @@ Bank * * Synchron Plate Bells
 // *********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Bells" n="Synchron Temple Bells"
-//! id=60471832-6575-4029-88e4-faf6a7ba5aa3
-Bank * * Synchron Temple Bells
+//! id=843fc2df-e593-42d7-8ec0-f2523a108baa
+Bank 30 42 Synchron Temple Bells
 
 //! c=fx i=list o=note:24
 0 Soft Beater
@@ -660,8 +660,8 @@ Bank * * Synchron Temple Bells
 // ******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Triangles"
-//! id=cacab07c-7ff9-49f2-8e18-0ead4dc8aa94
-Bank * * Synchron Temple Bells
+//! id=2ca7b096-26ae-44a7-82b0-60835f042da4
+Bank 30 43 Synchron Temple Bells
 
 //! c=short-dark i=list o=note:24 g=2
 0 Heavy Beater
@@ -691,8 +691,8 @@ Bank * * Synchron Temple Bells
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Woodblocks"
-//! id=ef94f380-a4a1-4340-91d5-a2dba84847f8
-Bank * * Synchron Woodblocks
+//! id=aeb47c7f-d100-4445-b0cd-e61139b7811d
+Bank 30 44 Synchron Woodblocks
 
 //! c=short-dark i=list o=note:24
 0 Yarn Mallet
@@ -708,8 +708,8 @@ Bank * * Synchron Woodblocks
 // ******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Castanets"
-//! id=18643a13-1eeb-4a5e-bad6-07c4caa63dc2
-Bank * * Synchron Castanets
+//! id=15b83fd1-e4e2-4ac1-b358-49ac4f0f94d1
+Bank 30 45 Synchron Castanets
 
 //! c=textured i=list o=note:36
 0 Large
@@ -723,8 +723,8 @@ Bank * * Synchron Castanets
 // **********************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Thundersheets"
-//! id=e76da5ab-2fc3-4892-8308-c7ef4cf9d88c
-Bank * * Synchron Thundersheets
+//! id=03c06b8b-46c3-43bf-84b5-6ae6f1a9cf45
+Bank 30 46 Synchron Thundersheets
 
 //! c=short-dark i=list o=note:36
 0 Medium
@@ -738,8 +738,8 @@ Bank * * Synchron Thundersheets
 // *****************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Ratchets"
-//! id=0ee67f4a-8c64-4db6-ba47-926ab2abbce6
-Bank * * Synchron Ratchets
+//! id=6920dc89-1b0e-4102-a824-6fc54460acc1
+Bank 30 47 Synchron Ratchets
 
 //! c=fx i=list o=note:36
 0 All Ratchets
@@ -757,8 +757,8 @@ Bank * * Synchron Ratchets
 // *****************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Vibraslaps"
-//! id=eb5f1522-9a64-4edd-9eb8-81ebda6dbfa3
-Bank * * Synchron Vibraslaps
+//! id=bfb87c58-dd47-49fc-acc4-d3c93189090b
+Bank 30 48 Synchron Vibraslaps
 
 //! c=fx i=list o=note:36
 0 Both Vibraslaps
@@ -774,8 +774,8 @@ Bank * * Synchron Vibraslaps
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Slapsticks"
-//! id=d1377d65-dd69-4a2c-a6d5-deeefbf9cb1b
-Bank * * Synchron Slapsticks
+//! id=092695e8-8f9e-4631-a50b-55716bb92aca
+Bank 30 49 Synchron Slapsticks
 
 //! c=fx i=list o=note:36
 0 All Slapsticks
@@ -793,8 +793,8 @@ Bank * * Synchron Slapsticks
 // *******************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Waldteufel"
-//! id=e2cd7f85-2c00-4182-9b8b-e8c7c57a8dbb
-Bank * * Synchron Waldteufel
+//! id=c2d82938-d03e-4408-a316-322fc15c8f2f
+Bank 30 50 Synchron Waldteufel
 
 //! c=textured i=list o=note:36
 0 Large
@@ -808,8 +808,8 @@ Bank * * Synchron Waldteufel
 // *****************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Log Drum"
-//! id=53ba1227-5ba2-448e-8984-d3c4463b2824
-Bank * * Synchron Log Drum
+//! id=083ec5da-d6c3-49b8-b3d1-58663ccc7f4e
+Bank 30 51 Synchron Log Drum
 
 //! c=textured i=list o=note:24
 0 Soft Mallets
@@ -823,8 +823,8 @@ Bank * * Synchron Log Drum
 // ***************
 
 //! g="VSL - SYNCHRON/Synchron Percussion I-II/Orchestral Percussion" n="Synchron Anvils"
-//! id=918fdea2-4c08-4d77-9379-6ae2f0cba923
-Bank * * Synchron Anvils
+//! id=bb30b8fc-8488-4ed8-b4c7-3579d9d54d3c
+Bank 30 52 Synchron Anvils
 
 //! c=long-light i=list o=note:29
 0 Unpitched Multi

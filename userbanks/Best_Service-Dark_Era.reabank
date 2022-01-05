@@ -3,8 +3,8 @@
 //
 
 //! g="Best Service/Dark Era/Strings" n="Tagelharpa"
-//! id=8cefa12a-a984-4098-80d7-a049a96ce768
-Bank * * Tagelharpa
+//! id=0a7bafc4-c079-4ee3-bf5b-c3e349f2edd5
+Bank 20 73 Tagelharpa
 
 //! c=#1FCCC9 i=note-whole o=note:36 g=1
 36 4 Beats
@@ -50,8 +50,8 @@ Bank * * Tagelharpa
 
 
 //! g="Best Service/Dark Era/Strings" n="Crwth"
-//! id=db6a1d7e-0ad7-40b7-a7bc-77ea3a692d11
-Bank * * Crwth
+//! id=df0f85d6-5c5d-41fa-bab7-c067a6001e5a
+Bank 20 74 Crwth
 //! c=legato i=phrase o=note:93
 93 Rhythm A
 //! c=legato i=phrase o=note:94
@@ -94,8 +94,8 @@ Bank * * Crwth
 44 Staccato
 
 //! g="Best Service/Dark Era/Strings" n="Cologne / Trossingen Lyre"
-//! id=d2e3a5dc-8e53-4221-9407-3834b19fd262
-Bank * * Cologne / Trossingen Lyre
+//! id=3d2c274f-dd0f-418a-8a5a-a67d4623a6e1
+Bank 20 75 Cologne / Trossingen Lyre
 //! c=default o=note:36
 36 Finger
 //! c=default o=note:38
@@ -104,8 +104,8 @@ Bank * * Cologne / Trossingen Lyre
 40 Harmonics
 
 //! g="Best Service/Dark Era/Strings" n="Col. / Tros. Lyre Strummed"
-//! id=4eaf4e77-9c31-436e-8441-db3423155829
-Bank * * Col. / Tros. Lyre Strummed
+//! id=210134fa-7cff-4ea6-ab48-a59d2a66a828
+Bank 20 76 Col. / Tros. Lyre Strummed
 //! c=default o=note:36
 36 C Tuning
 //! c=default o=note:37
@@ -132,8 +132,8 @@ Bank * * Col. / Tros. Lyre Strummed
 47 B Tuning
 
 //! g="Best Service/Dark Era/Wind" n="Deer Bone Flute" off=0
-//! id=6091055d-b445-408e-91f1-bc9479c907a9
-Bank * * Deer Bone Flute
+//! id=41404743-1c63-4491-82e4-164622a37c00
+Bank 20 77 Deer Bone Flute
 //! i=legato c=long
 0 Legato
 //! i=trill-maj2 c=short-light o=note-hold:37
@@ -160,8 +160,8 @@ Bank * * Deer Bone Flute
 47 FX
 
 //! g="Best Service/Dark Era/Wind" n="Vulture Bone Flute" off=0
-//! id=0ed9ff90-323d-4837-909f-14322a7518b7
-Bank * * Vulture Bone Flute
+//! id=6ea2bfd2-1a27-439a-9afd-bc50d647b28e
+Bank 20 78 Vulture Bone Flute
 //! i=legato c=long
 0 Legato
 //! i=trill-maj2 c=short-light o=note-hold:37
@@ -180,8 +180,8 @@ Bank * * Vulture Bone Flute
 43 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Double Flute" off=0
-//! id=c331a618-ed04-421b-8896-e2f1f015a3cc
-Bank * * Double Flute
+//! id=5aec03cf-6625-49f2-93ea-2d6ca45c82ca
+Bank 20 79 Double Flute
 //! i=legato c=long
 0 Legato
 //! i=acciaccatura-quarter c=short-light o=note-hold:37
@@ -199,8 +199,8 @@ Bank * * Double Flute
 
 
 //! g="Best Service/Dark Era/Wind" n="Elderwood Flute" off=0
-//! id=58bd0b16-b96f-4732-9d4e-200429adc189
-Bank * * Elderwood Flute
+//! id=92f54070-7a29-4b09-bf2d-f5909b23b9ce
+Bank 20 80 Elderwood Flute
 //! i=legato c=long
 0 Legato Natural
 //! i=note-quarter o=note-hold:37
@@ -225,8 +225,8 @@ Bank * * Elderwood Flute
 47 Gliss Long
 
 //! g="Best Service/Dark Era/Wind" n="Fujara" off=0
-//! id=4227e502-bddc-4114-a78d-4b1916418e07
-Bank * * Fujara
+//! id=14a8b10c-b9b1-487c-9142-4bfc5d5b70bd
+Bank 20 81 Fujara
 //! i=legato c=long
 0 Legato Hard Attack
 //! i=note-quarter o=note-hold:37
@@ -237,8 +237,8 @@ Bank * * Fujara
 39 Triplet 2
 
 //! g="Best Service/Dark Era/Wind" n="White Horn" off=0
-//! id=69724b57-b5e3-4626-b1bd-d6081eb7b668
-Bank * * White Horn
+//! id=22442076-6a8e-433b-a2cf-abc96a9fc10e
+Bank 20 82 White Horn
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -279,8 +279,8 @@ Bank * * White Horn
 54 Staccato
 
 //! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
-//! id=e69aef0e-ca59-4bff-9b29-1c24ef43790f
-Bank * * Overtone Flute
+//! id=a9e1a595-d921-47a6-82ed-fa789b6c779a
+Bank 20 83 Overtone Flute
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -297,8 +297,8 @@ Bank * * Overtone Flute
 43 Staccato
 
 //! g="Best Service/Dark Era/Vocal" n="Shouts 1"
-//! id=a52e5e8a-50b2-4be3-8b0d-df9b64e49f56
-Bank * * Shouts 1
+//! id=47438c2f-93bc-4840-a987-24003a9403ed
+Bank 20 84 Shouts 1
 //! i=note-quarter o=note:36
 36 Ha
 //! i=note-quarter o=note:37
@@ -319,8 +319,8 @@ Bank * * Shouts 1
 44 Sho
 
 //! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
-//! id=09cde91e-84d9-46f3-af86-7ba62f8cecc2
-Bank * * Kargyraa Legato
+//! id=41f604a9-9fe4-4ebc-8e13-b46adb1c6fe4
+Bank 20 85 Kargyraa Legato
 //! i=note-quarter o=note:36
 36 Vowel 1
 //! i=note-quarter o=note:37
@@ -337,8 +337,8 @@ Bank * * Kargyraa Legato
 42 Vowel 7
 
 //! g="Best Service/Dark Era/Vocal" n="Khomeii"
-//! id=7a7be6ae-8fe4-4805-b1c4-2dc92f386c01
-Bank * * Khoomei
+//! id=60440835-aae8-41f9-89f0-1349f9edae35
+Bank 20 86 Khoomei
 //! c=default o=note:43
 43 G Tuning
 //! c=default o=note:44
@@ -365,8 +365,8 @@ Bank * * Khoomei
 54 F# Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Sygyt"
-//! id=ee15928f-b54e-4354-95f6-239a10ed6d89
-Bank * * Sygyt
+//! id=0984b23a-6b95-4431-8a68-0089c795ad67
+Bank 20 87 Sygyt
 //! c=default o=note:41
 41 F Tuning
 //! c=default o=note:42
@@ -393,8 +393,8 @@ Bank * * Sygyt
 52 E Tuning
 
 //! g="Best Service/Dark Era/Vocal" n="Whispers"
-//! id=beabd5c2-d7d3-4fd3-b7ca-db7a7197b7c0
-Bank * * Whispers
+//! id=10c58ff1-4db3-4e28-9530-eca31ae3fac3
+Bank 20 88 Whispers
 //! c=default o=note:36
 36 F Tuning
 //! c=default o=note:37

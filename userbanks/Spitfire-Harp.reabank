@@ -3,8 +3,8 @@
 //
 //! g="Spitfire/Harp" n="Harp Main Techniques"
 //! m="Set patch to UACC"
-//! id=b7d6fa2e-1716-4e2d-b9e5-0c99797d6644
-Bank * * SH - main techniques
+//! id=ea541c38-042b-45c3-b59f-ab95697939e0
+Bank 26 71 SH - main techniques
 //! c=long i=note-whole o=cc:32,1
 1 normale
 //! c=long-dark i=harp-pdlt o=cc:32,18
@@ -20,8 +20,8 @@ Bank * * SH - main techniques
 
 //! g="Spitfire/Harp" n="Harp Glissandi Manual"
 //! m="Set patch to UACC"
-//! id=5a54217e-b051-48b3-84cf-87948db70a62
-Bank * * SH - glissandi manual
+//! id=ef281936-2050-49d8-a57a-21f0fc756902
+Bank 26 72 SH - glissandi manual
 //! c=legato i=legato-portamento o=cc:32,121
 121 whole tone
 //! c=legato i=legato-portamento o=cc:32,122
@@ -37,8 +37,8 @@ Bank * * SH - glissandi manual
 
 //! g="Spitfire/Harp" n="Harp Glissandi Legato"
 //! m="Set patch to UACC"
-//! id=32e19c98-13e3-4202-8d37-bcb63a79d326
-Bank * * SH - glissandi legato
+//! id=2f6868b4-c014-4b1e-aaa6-2aff60b2ec8c
+Bank 26 73 SH - glissandi legato
 //! c=legato i=legato-portamento o=cc:32,118
 118 scale gliss
 //! c=legato i=legato-portamento o=cc:32,119

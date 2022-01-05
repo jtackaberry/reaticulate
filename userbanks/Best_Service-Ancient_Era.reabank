@@ -3,8 +3,8 @@
 //
 
 //! g="Best Service/Ancient Era/Strings" n="Baglama High / Low" off=0
-//! id=547d0903-6e4b-4662-8b68-2cdcd0b49bb8
-Bank * * Baglama High / Low
+//! id=0a999240-4b9c-4aa2-80fd-ba0f77819cd5
+Bank 20 44 Baglama High / Low
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -37,8 +37,8 @@ Bank * * Baglama High / Low
 50 Rhythm 3
 
 //! g="Best Service/Ancient Era/Strings" n="Dutar" off=0
-//! id=2180ba68-cbd2-443d-91e1-7b7a97a534c7
-Bank * * Dutar
+//! id=500263be-64a8-443f-8c11-4b639b895b12
+Bank 20 45 Dutar
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -53,8 +53,8 @@ Bank * * Dutar
 41 Tremolo
 
 //! g="Best Service/Ancient Era/Strings" n="Kopuz" off=0
-//! id=435fe92c-2e0a-4d1f-bf4c-91ae03c398a0
-Bank * * Kopuz
+//! id=9cd8978f-96e8-4963-9253-9df2144f7a32
+Bank 20 46 Kopuz
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -71,8 +71,8 @@ Bank * * Kopuz
 42 Short Chord 1 Finger
 
 //! g="Best Service/Ancient Era/Strings" n="Rabab" off=0
-//! id=0d18f9ff-c0fc-456e-b206-b91eda52afb5
-Bank * * Rabab
+//! id=d823fada-07d0-4162-b506-52b2d1f80edc
+Bank 20 47 Rabab
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -91,16 +91,16 @@ Bank * * Rabab
 43 Chikari
 
 //! g="Best Service/Ancient Era/Strings" n="Santoor" off=0
-//! id=56faf7b5-029a-4dcc-8408-b12cbb2d8a98
-Bank * * Santoor
+//! id=d6572b32-09e8-481d-a34b-c1dd3bd69b78
+Bank 20 48 Santoor
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
 37 Tremolo
 
 //! g="Best Service/Ancient Era/Strings" n="Tambur" off=0
-//! id=80f8df51-2b67-409b-bdf5-a875b3719cb7
-Bank * * Tambur
+//! id=a3134f7b-4237-43d9-bebe-1de4469a5333
+Bank 20 49 Tambur
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -121,8 +121,8 @@ Bank * * Tambur
 44 Finger Vibrato
 
 //! g="Best Service/Ancient Era/Strings" n="Tar" off=0
-//! id=a0dfc1ff-72fe-460e-8748-735665c8da62
-Bank * * Tar
+//! id=1d2a3706-e6a9-47f6-8050-ae082a89f850
+Bank 20 50 Tar
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -143,8 +143,8 @@ Bank * * Tar
 44 Vibrato
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Oud" off=0
-//! id=4b15563d-52e5-4b91-9636-7a7390bb3733
-Bank * * Turkish Oud
+//! id=d40b29d8-e578-47dc-bddc-6b903ea329bd
+Bank 20 51 Turkish Oud
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -167,8 +167,8 @@ Bank * * Turkish Oud
 45 Chords
 
 //! g="Best Service/Ancient Era/Strings" n="Lyra I / II" off=0
-//! id=b02c9df9-a587-46b4-ad54-57854c0f572a
-Bank * * Lyra I / II
+//! id=61c53ef0-780f-4c65-8ab6-a31324a8444f
+Bank 20 52 Lyra I / II
 //! i=legato c=long
 0 Finger Legato
 //! i=note-quarter o=note-hold:37
@@ -201,8 +201,8 @@ Bank * * Lyra I / II
 50 Staccato
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Violin" off=0
-//! id=73c0fb69-32eb-445b-a142-b380d65b05a0
-Bank * * Turkish Violin
+//! id=6f7ab938-acde-4598-8f6f-21e3be9557a6
+Bank 20 53 Turkish Violin
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -243,8 +243,8 @@ Bank * * Turkish Violin
 54 Ciftetelli Non Vibrato
 
 //! g="Best Service/Ancient Era/Winds" n="Armenian Duduk" off=0
-//! id=973973e3-7889-4e5b-afb6-0ffb38d64ec9
-Bank * * Armenian Duduk
+//! id=8726d269-b744-40ba-9311-ad97452f5ef8
+Bank 20 54 Armenian Duduk
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -263,8 +263,8 @@ Bank * * Armenian Duduk
 43 Long Trill
 
 //! g="Best Service/Ancient Era/Winds" n="Kaval" off=0
-//! id=798c3fa4-2701-4b93-b466-2eb359736738
-Bank * * Kaval
+//! id=86aa1802-04f9-42b3-9051-0e31fc6181f7
+Bank 20 55 Kaval
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -289,8 +289,8 @@ Bank * * Kaval
 46 Trill Clarinet
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Clarinet" off=0
-//! id=89ddcd86-d303-4168-af0c-62257a919cab
-Bank * * Turkish Clarinet
+//! id=9b3984a3-8364-47c6-a556-b0ef27a5d2b2
+Bank 20 56 Turkish Clarinet
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -309,8 +309,8 @@ Bank * * Turkish Clarinet
 43 Staccato
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Mey" off=0
-//! id=7261c787-4b35-42e5-9a8c-30296b1bce53
-Bank * * Turkish Mey
+//! id=9644949f-4f57-4ee3-8351-fa8f70645eb5
+Bank 20 57 Turkish Mey
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -335,8 +335,8 @@ Bank * * Turkish Mey
 48 Phrases
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Ney" off=0
-//! id=b350159f-4aaf-41ea-aed3-16dea8b91d6c
-Bank * * Turkish Ney
+//! id=357cf0b4-8bbd-4996-81dd-881fa439afdf
+Bank 20 58 Turkish Ney
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:49
@@ -361,8 +361,8 @@ Bank * * Turkish Ney
 58 Short Bending
 
 //! g="Best Service/Ancient Era/Winds" n="Persian Ney" off=0
-//! id=7458212f-b287-479c-a7bd-4eba59e9990f
-Bank * * Persian Ney
+//! id=99b23947-d138-44be-bfb7-7529250be989
+Bank 20 59 Persian Ney
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -381,8 +381,8 @@ Bank * * Persian Ney
 43 Long Ornament 2
 
 //! g="Best Service/Ancient Era/Winds" n="Zourna" off=0
-//! id=008fe729-686c-4edf-a4d4-75fd2f6124be
-Bank * * Zourna
+//! id=bf6502ca-0972-43d1-99b2-46b51fe66300
+Bank 20 60 Zourna
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:49

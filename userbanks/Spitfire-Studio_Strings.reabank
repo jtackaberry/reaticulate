@@ -4,8 +4,8 @@
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-Core Techniques"
-//! id=69330057-581f-4f4e-96ac-6a4ef9e9bac4
-Bank * * a - Vln1 Core Techniques
+//! id=dedf6649-5838-4ea7-8508-719e01846dee
+Bank 26 89 a - Vln1 Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -44,8 +44,8 @@ Bank * * a - Vln1 Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-Legato performance"
-//! id=ee05be05-2d24-4c8c-9d16-a65037224902
-Bank * * Vln 1-Legato performance
+//! id=bee5d853-f82a-48fc-b1c9-5da253bf644b
+Bank 26 90 Vln 1-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -54,8 +54,8 @@ Bank * * Vln 1-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-Decorative Techniques"
-//! id=df27f535-a557-4583-b8ab-704a79fb7f12
-Bank * * Vln1 Decorative Techniques
+//! id=675d53f3-1163-4d2a-8cd3-608c6eda5022
+Bank 26 91 Vln1 Decorative Techniques
 //! c=long i=con-sord-sul-pont o=cc:32,19
 19 con sordino sul ponte
 //! c=long i=con-sord-blend o=cc:32,5
@@ -92,8 +92,8 @@ Bank * * Vln1 Decorative Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln1-FX"
-//! id=97bb588a-4f17-4e81-bd2c-85403b93df9f
-Bank * * Vln 1-FX
+//! id=854c75bf-0ecb-4158-ba54-dee09eb954dd
+Bank 26 92 Vln 1-FX
 //! c=short-light i=fx o=cc:32,90
 90 grace note semitone
 //! c=short-light i=fx o=cc:32,91
@@ -120,8 +120,8 @@ Bank * * Vln 1-FX
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-Legato performance"
-//! id=5c266678-9cca-4ed0-bda0-0ded4d20f457
-Bank * * Vln 2-Legato performance
+//! id=c42844d8-6e36-4810-bdfa-b1d52ac0e5ec
+Bank 26 93 Vln 2-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -130,8 +130,8 @@ Bank * * Vln 2-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-Core Techniques"
-//! id=df882adf-fdb0-4d04-a0af-8e988e432197
-Bank * * Vln2 Core Techniques
+//! id=4c3a2f82-65d0-4a4f-9995-9539727a6f5f
+Bank 26 94 Vln2 Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -169,8 +169,8 @@ Bank * * Vln2 Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-Decorative Techniques"
-//! id=2e3218fb-6dd8-4384-af87-06ff8eac4546
-Bank * * Vln2 Decorative Techniques
+//! id=7c9d9e5a-dd17-46b8-9d0e-34a4485af3a6
+Bank 26 95 Vln2 Decorative Techniques
 //! c=long i=con-sord-sul-pont o=cc:32,19
 19 con sordino sul ponte
 //! c=long i=con-sord-blend o=cc:32,5
@@ -203,8 +203,8 @@ Bank * * Vln2 Decorative Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vln2-FX"
-//! id=b0345c14-ee85-4b2e-bea9-1fef0e39101c
-Bank * * Vln2-FX
+//! id=473b5d30-00c0-4e93-868c-82b06b373e7c
+Bank 26 96 Vln2-FX
 //! c=short-light i=fx o=cc:32,90
 90 grace note semitone
 //! c=short-light i=fx o=cc:32,91
@@ -231,8 +231,8 @@ Bank * * Vln2-FX
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vlas-Legato performance"
-//! id=0f7c5244-51e2-4c39-bd29-3e762b64576d
-Bank * * Vlas-Legato performance
+//! id=37ad9182-bd9a-422f-abc7-8d5119d0fd27
+Bank 26 97 Vlas-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -241,8 +241,8 @@ Bank * * Vlas-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vlas-Core Techniques"
-//! id=a448352e-065b-499c-a06f-305c64c631ad
-Bank * * Vlas Core Techniques
+//! id=c9733218-8f86-47e9-b98e-c79678090513
+Bank 26 98 Vlas Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -281,8 +281,8 @@ Bank * * Vlas Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Vlas-Decorative Techniques"
-//! id=1da2e458-d26d-4aad-8bb9-bffeb24cb9bd
-Bank * * Vlas Decorative Techniques
+//! id=05293587-4047-462d-8f3c-3cbb6c7bb45c
+Bank 26 99 Vlas Decorative Techniques
 //! c=long i=con-sord-blend o=cc:32,5
 5 con sordino blend
 //! c=long i=tremolo o=cc:32,11
@@ -302,8 +302,8 @@ Bank * * Vlas Decorative Techniques
 
 
 //! g="Spitfire/Studio Strings" n="Celli-Core Techniques"
-//! id=b5053680-8734-40b9-893c-debe44290df0
-Bank * * Celli Core Techniques
+//! id=82cb1d65-fe59-4f6d-ab5e-5a256d491d84
+Bank 26 100 Celli Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 //! c=long i=con-sord o=cc:32,7
@@ -342,8 +342,8 @@ Bank * * Celli Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Celli-Legato performance"
-//! id=a8227587-933b-499a-ac07-42a6b02a55b6
-Bank * * Celli-Legato performance
+//! id=336bb6c9-72f9-4c28-8433-da6671229209
+Bank 26 101 Celli-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -352,8 +352,8 @@ Bank * * Celli-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Celli-Decorative Techniques"
-//! id=a79d4b43-87af-48c1-ba8c-59819cfa1b69
-Bank * * Celli Decorative Techniques
+//! id=24d9df68-64d2-4458-ab1b-645289aec6e0
+Bank 26 102 Celli Decorative Techniques
 //! c=long i=con-sord-sul-pont o=cc:32,19
 19 con sordino sul ponte
 //! c=long i=con-sord-blend o=cc:32,5
@@ -390,8 +390,8 @@ Bank * * Celli Decorative Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Celli-FX"
-//! id=f8ae7f29-d6e6-45a0-bf7a-1c4a27a2a546
-Bank * * Celli 1-FX
+//! id=46ce79d6-a67d-46b5-ac88-dfd150b6abec
+Bank 26 103 Celli 1-FX
 //! c=short-light i=fx o=cc:32,90
 90 grace note semitone
 //! c=short-light i=fx o=cc:32,91
@@ -406,8 +406,8 @@ Bank * * Celli 1-FX
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Basses-Legato performance"
-//! id=2efd9bb0-4ed3-4952-9f38-1648e984abd3
-Bank * * Basses-Legato performance
+//! id=933f684f-4c20-4b3a-886b-405e8c41936c
+Bank 26 104 Basses-Legato performance
 //! c=long i=legato o=cc:32,20
 20 Legato
 //! c=long i=legato-portamento o=cc:32,31
@@ -416,8 +416,8 @@ Bank * * Basses-Legato performance
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Basses-Core Techniques"
-//! id=90893319-5d25-40cc-8cfa-e0a4c7bf1079
-Bank * * Basses Core Techniques
+//! id=9365261f-d0c3-4b04-99a4-d8e065000bb2
+Bank 26 105 Basses Core Techniques
 //! c=long i=note-whole o=cc:32,1
 1 long
 
@@ -447,8 +447,8 @@ Bank * * Basses Core Techniques
 //----------------------------------------------------------------------------
 
 //! g="Spitfire/Studio Strings" n="Basses-Decorative Techniques"
-//! id=c2f13f1b-8d0b-4cad-b628-2b2fa64d9102
-Bank * * Basses Decorative Techniques
+//! id=3b33b992-03e2-47a6-8d32-2b800fe6521f
+Bank 26 106 Basses Decorative Techniques
 //! c=long i=tremolo o=cc:32,11
 11 tremolo
 //! c=long i=tremolo-150 o=cc:32,81

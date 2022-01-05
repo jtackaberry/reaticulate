@@ -7,8 +7,8 @@
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Trumpets Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-//! id=115cd7b8-6859-4440-b658-91f37eeae7b8
-Bank * * 01 Trumpets Ensemble Articulations
+//! id=795c2059-b05b-40b9-ac88-c0545671e3c5
+Bank 21 99 01 Trumpets Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -20,8 +20,8 @@ Bank * * 01 Trumpets Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Two Horns Ensemble Art."
 //! m="Set Patch to Custom: Legato Latch F0, Short 1/8 Latch C0"
-//! id=7b26aad8-3f3d-4694-b0b0-0fa6f03cd7f0
-Bank * * 04 Two Horns Ensemble Articulations
+//! id=aa47eb41-e802-49c4-b50a-544a01703721
+Bank 21 100 04 Two Horns Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -29,8 +29,8 @@ Bank * * 04 Two Horns Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Trombone Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-//! id=75427971-2170-482b-859e-7bc856a87665
-Bank * * 09 Trombone Ensemble Articulations
+//! id=9ba04b8d-2cac-49eb-bca7-caaf346de310
+Bank 21 101 09 Trombone Ensemble Articulations
 //! c=long i=note-whole o=note:29
 1 sustain
 //! c=short i=note-eighth o=note:24
@@ -42,8 +42,8 @@ Bank * * 09 Trombone Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Six Horns Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map"
-//! id=aa73faa5-4c15-47a4-9e90-d00e4363c486
-Bank * * 06 Six Horns Ensemble Articulations
+//! id=0397fc30-4c4a-4988-a179-d4f44cd64e38
+Bank 21 102 06 Six Horns Ensemble Articulations
 //! c=legato i=legato o=note:29
 20 legato
 //! c=short i=note-eighth o=note:24
@@ -55,8 +55,8 @@ Bank * * 06 Six Horns Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Tuba + Bass Ensemble Art."
 //! m="Set Patch to Keyswitch Velocity Dynamics Map, then set Sus=F4, 1/8=C4, 1/4=D4, 1/2=E4"
-//! id=60ab18aa-0e9e-4328-876d-f21ea64f993f
-Bank * * 10 Bass + Tuba Ensemble Articulations
+//! id=dcd19ba0-86be-4175-a47b-4e1a5158bfb1
+Bank 21 103 10 Bass + Tuba Ensemble Articulations
 //! c=long i=note-whole o=note:77
 1 sustain
 //! c=short i=note-eighth o=note:72
@@ -68,8 +68,8 @@ Bank * * 10 Bass + Tuba Ensemble Articulations
 
 //! g="Cinesamples/Cinebrass Core" n="CBC Cimbasso + Bass Trombone Art."
 //! m="Set Patch to Custom: Sustain Latch F4, Short 1/8 Latch C4"
-//! id=6df7f37c-ae47-46fd-8981-95d28191a219
-Bank * * 11 Cimbasso + Bass Trombone Articulations
+//! id=6f96f592-bbd6-4dc8-abc9-9ad836a39bad
+Bank 21 104 11 Cimbasso + Bass Trombone Articulations
 //! c=long i=note-whole o=note:77
 1 sustain
 //! c=short i=note-eighth o=note:72

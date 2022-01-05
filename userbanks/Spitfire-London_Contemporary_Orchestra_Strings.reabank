@@ -5,8 +5,8 @@
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Main" n="a-Violins and b-Violas"
 //! m="Set patch to UACC. Use this for both Violins and Violas in main subfolder."
-//! id=af7db665-dd73-4118-8afa-2b9d312d4f3b
-Bank * * SSB - a-Violins and b-Violas
+//! id=01f8b41e-a4a0-4b16-8112-6b29d2d0ea22
+Bank 30 72 SSB - a-Violins and b-Violas
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,42
@@ -47,8 +47,8 @@ Bank * * SSB - a-Violins and b-Violas
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Main" n="c-Celli and d-Basses + Celli"
 //! m="Set patch to UACC. Use for both Celli and Basses in main subfolder. Slackened range C2-C3"
-//! id=f52df7cc-db41-4f0f-95e9-c4aa14295f87
-Bank * * SSB - c-Celli and d-Basses + Celli
+//! id=aeb5fc95-f08f-4dd0-a54c-8076fe5b624e
+Bank 30 73 SSB - c-Celli and d-Basses + Celli
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,42
@@ -81,8 +81,8 @@ Bank * * SSB - c-Celli and d-Basses + Celli
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="a-Violins and b-Violas-Long Tech"
 //! m="Set patch to UACC. Use this for both Violins and Violas in Extended subfolder."
-//! id=751b216d-5d6f-479b-93b9-05873fc40a9a
-Bank * * SSB - a-Violins and b-Violas-Long Techniques
+//! id=4605ff3c-0ca0-41cb-9d49-bcc161f5167a
+Bank 30 74 SSB - a-Violins and b-Violas-Long Techniques
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,18
@@ -123,8 +123,8 @@ Bank * * SSB - a-Violins and b-Violas-Long Techniques
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="a-Violins and b-Violas-Short Tech"
 //! m="Set patch to UACC. Use this for both Violins and Violas in Extended subfolder."
-//! id=5e149a6d-5a33-427a-9c06-683b0d5cb6ec
-Bank * * SSB - a-Violins and b-Violas-Short Techniques
+//! id=80831ce4-26b7-4ca8-8ae1-6d443183205b
+Bank 30 75 SSB - a-Violins and b-Violas-Short Techniques
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,49
@@ -141,8 +141,8 @@ Bank * * SSB - a-Violins and b-Violas-Short Techniques
 //------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="c-Celli/d-Basses + Celli-Long Tech"
 //! m="Set patch to UACC. Use this for both Celli and Basses in Extended subfolder."
-//! id=231d4ed9-83bb-4280-8c67-d29cd2e072c6
-Bank * * SSB - c-Celli and d-Basses+Celli-Long Techniques
+//! id=56c920b4-2f5f-4235-8383-795996730fb9
+Bank 30 76 SSB - c-Celli and d-Basses+Celli-Long Techniques
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,10
@@ -173,8 +173,8 @@ Bank * * SSB - c-Celli and d-Basses+Celli-Long Techniques
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="c-Celli-Short Techniques"
 //! m="Set patch to UACC. This patch included Bridge Scrapes."
-//! id=d5c1ed83-aa8b-497d-a33f-66d5b1ba3afa
-Bank * * SSB - c-Celli-Short Techniques
+//! id=983a66d2-7da9-44af-99f4-9b034fd3406d
+Bank 30 77 SSB - c-Celli-Short Techniques
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,103
@@ -188,8 +188,8 @@ Bank * * SSB - c-Celli-Short Techniques
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Extended Techniques" n="d-Basses + Celli-Short Techniques"
 //! m="Set patch to UACC"
-//! id=0ce3b0d7-ae99-4a9b-b802-9d8eebf348a4
-Bank * * SSB - d-Basses+Celli-Short Techniques
+//! id=da6cca2b-d865-4734-b01e-41ce86e84321
+Bank 30 78 SSB - d-Basses+Celli-Short Techniques
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,103
@@ -200,8 +200,8 @@ Bank * * SSB - d-Basses+Celli-Short Techniques
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="a-Violins"
 //! m="Set patch to UACC"
-//! id=6a8886e3-e548-433e-bc9b-707185e4bc75
-Bank * * SSB - Advanced/Individual Articulations
+//! id=02a314a5-6c33-4e41-a5fc-3e99434a0984
+Bank 30 79 SSB - Advanced/Individual Articulations
 //! c=default i=note-quarter o=cc:32,105
 105 Granular Trem
 //! c=default i=note-quarter o=cc:32,92
@@ -254,8 +254,8 @@ Bank * * SSB - Advanced/Individual Articulations
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="b-Violas"
 //! m="Set patch to UACC"
-//! id=f7991988-80f6-453e-8770-403cfd8dbcb3
-Bank * * SSB - Advanced/Individual Articulations
+//! id=49344bd0-11bb-4306-b850-5d6e31435b44
+Bank 30 80 SSB - Advanced/Individual Articulations
 //! c=default i=note-quarter o=cc:32,105
 105 Granular Trem
 //! c=default i=note-quarter o=cc:32,92
@@ -310,8 +310,8 @@ Bank * * SSB - Advanced/Individual Articulations
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="c-Celli"
 //! m="Set patch to UACC"
-//! id=8bd32970-419a-44f4-8f10-97d53aac09ac
-Bank * * SSB - Advanced/Individual Articulations
+//! id=bfd6c6a1-1e41-4750-91a0-fb821e32c9fd
+Bank 30 81 SSB - Advanced/Individual Articulations
 //! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
 //! c=default i=note-quarter o=cc:32,91
@@ -352,8 +352,8 @@ Bank * * SSB - Advanced/Individual Articulations
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Advanced/Individual Articulations" n="d-Basses + Celli"
 //! m="Set patch to UACC"
-//! id=5a693643-5849-41b8-bd64-e23e7182005f
-Bank * * SSB - Advanced/Individual Articulations
+//! id=d506212c-2ecc-46ec-b8fd-5bd430fae547
+Bank 30 82 SSB - Advanced/Individual Articulations
 //! c=default i=note-quarter o=cc:32,92
 92 Open-Granular to Norm
 //! c=default i=note-quarter o=cc:32,91
@@ -391,8 +391,8 @@ Bank * * SSB - Advanced/Individual Articulations
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="a-Violins-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
-//! id=6f518d19-2013-45c3-92f8-990aed4aae5d
-Bank * * SSB - a-Violins-Light resources
+//! id=24a6d00e-8b27-4919-a7b2-45bc2ca80ad9
+Bank 30 83 SSB - a-Violins-Light resources
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,42
@@ -405,8 +405,8 @@ Bank * * SSB - a-Violins-Light resources
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="a-Violins-Time Machine"
 //! m="Set patch to UACC"
-//! id=ac98b52d-8bfe-439e-a432-b91ac112514f
-Bank * * SSB - a-Violins-Time Machine
+//! id=67650647-9068-4c94-beff-ba15c3f5dee3
+Bank 30 84 SSB - a-Violins-Time Machine
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,49
@@ -423,8 +423,8 @@ Bank * * SSB - a-Violins-Time Machine
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="b-Violas-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
-//! id=39260159-7a5f-4ad0-8184-19d1b75e14f0
-Bank * * SSB - b-Violas-Light resources
+//! id=be1e8e82-2dda-4726-8dc7-1484945fabd0
+Bank 30 85 SSB - b-Violas-Light resources
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,42
@@ -437,8 +437,8 @@ Bank * * SSB - b-Violas-Light resources
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="b-Violas-Time Machine"
 //! m="Set patch to UACC"
-//! id=385ddaf1-afef-42a3-88fa-a8cac67f0eb4
-Bank * * SSB - b-Violas-Time Machine
+//! id=4e24c3f3-2cca-4513-b1b0-8653191ed191
+Bank 30 86 SSB - b-Violas-Time Machine
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,49
@@ -455,8 +455,8 @@ Bank * * SSB - b-Violas-Time Machine
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="c-Celli-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
-//! id=31823268-44c9-48e9-8137-ac37919ffc07
-Bank * * SSB - c-Celli-Light resources
+//! id=82d6e3f4-3d4c-4cea-90b0-4384d570c24d
+Bank 30 87 SSB - c-Celli-Light resources
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,42
@@ -467,8 +467,8 @@ Bank * * SSB - c-Celli-Light resources
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="c-Celli-Time Machine"
 //! m="Set patch to UACC"
-//! id=0b6225ee-c248-4dcd-8d70-0a893aa5722c
-Bank * * SSB - c-Celli-Time M
+//! id=bfc3bdfc-e047-4290-b214-cf81663a6277
+Bank 30 88 SSB - c-Celli-Time M
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,103
@@ -481,8 +481,8 @@ Bank * * SSB - c-Celli-Time M
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="d-B+C-Light Resources"
 //! m="Set patch to UACC. For Economic patches use Main Articulations subfolder."
-//! id=94339ff0-1d1b-438f-b141-e9692f40914c
-Bank * * SSB - d-B+C-Light resources
+//! id=610b71b1-7972-4cce-99cc-caa266acc833
+Bank 30 89 SSB - d-B+C-Light resources
 //! c=default i=note-quarter o=cc:32,1
 1 Vivid Long
 //! c=default i=note-quarter o=cc:32,42
@@ -493,8 +493,8 @@ Bank * * SSB - d-B+C-Light resources
 //--------------------------------------------------------------------------------------
 //! g="Spitfire/London Contemporary Orchestra Strings/Other Patches" n="d-B+C-Time Machine"
 //! m="Set patch to UACC"
-//! id=08b005fe-85e3-4814-a7df-a528695b255d
-Bank * * SSB - d-B+C-Time Machine
+//! id=4a879290-b435-4e46-a08e-c5497a5c48c1
+Bank 30 90 SSB - d-B+C-Time Machine
 //! c=default i=note-quarter o=cc:32,42
 42 Vivid Spiccato
 //! c=default i=note-quarter o=cc:32,103

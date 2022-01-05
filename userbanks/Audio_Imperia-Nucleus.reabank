@@ -4,8 +4,8 @@
 //===========================================================================
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="01 Solo Violin"
-//! id=0ffc52d6-1c69-4f5e-9c99-6cf78dab3798
-Bank * * AI NCL Solo Violin
+//! id=5e179c85-8590-41fd-a9a1-00478907d462
+Bank 29 82 AI NCL Solo Violin
 //! c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -13,32 +13,32 @@ Bank * * AI NCL Solo Violin
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="02 Solo Cello"
 //! clone="Audio Imperia/Nucleus/01 Soloists/01 Solo Violin"
-//! id=1cf44263-5b0a-405a-8ee2-cfd6cbff6401
-Bank * * AI NCL Solo Cello
+//! id=237964e8-8da1-40d0-948e-7c4ff106759f
+Bank 29 83 AI NCL Solo Cello
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="03 Solo Flute"
 //! clone="Audio Imperia/Nucleus/01 Soloists/01 Solo Violin"
-//! id=ae53bcc5-4f9c-4bee-ba9a-f3a467f1af9b
-Bank * * AI NCL Solo Flute
+//! id=c3bc0132-32fe-4eec-89dc-81252061512e
+Bank 29 84 AI NCL Solo Flute
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="04 Solo Oboe"
 //! clone="Audio Imperia/Nucleus/01 Soloists/01 Solo Violin"
-//! id=6e5af7e7-6e80-4728-88f6-e44de63e1c2f
-Bank * * AI NCL Solo Oboe
+//! id=0ed40491-9d33-4e0a-8bfd-c42e51723449
+Bank 29 85 AI NCL Solo Oboe
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="05 Solo Trumpet"
 //! clone="Audio Imperia/Nucleus/01 Soloists/01 Solo Violin"
-//! id=76e3ba1e-109f-4e11-a0ce-53f5576cade6
-Bank * * AI NCL Solo Trumpet
+//! id=ed270513-6cb8-411b-b485-79ac0b0209dd
+Bank 29 86 AI NCL Solo Trumpet
 
 //! g="Audio Imperia/Nucleus/01 Soloists" n="06 Solo French Horn"
 //! clone="Audio Imperia/Nucleus/01 Soloists/01 Solo Violin"
-//! id=006b69f0-112d-4477-ba96-e80f1cf2949d
-Bank * * AI NCL Solo Horn
+//! id=83bf348f-008b-411f-b4d4-cbcbe198483e
+Bank 29 87 AI NCL Solo Horn
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="01 16 Violins"
-//! id=3557d6f2-676d-4ee4-a07a-bda28e5dfa04
-Bank * * AI NCL 16 Violins
+//! id=befc57c5-8e10-4067-8d1c-b0bbca3c4264
+Bank 29 88 AI NCL 16 Violins
 //!c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -51,8 +51,8 @@ Bank * * AI NCL 16 Violins
 11 Tremolo
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="02 10 Violas"
-//! id=92f3502b-82ae-4fa3-8e05-6ceaa38c32d8
-Bank * * AI NCL 16 Violas
+//! id=e6b89b01-270d-4fb4-9258-920930ab1f07
+Bank 29 89 AI NCL 16 Violas
 //! c=long i=note-whole o=note:12
 1 Sustained
 //!c=short i=spiccato o=note:13
@@ -64,32 +64,32 @@ Bank * * AI NCL 16 Violas
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="03 6 Celli"
 //! clone="Audio Imperia/Nucleus/02 Strings/01 16 Violins"
-//! id=53c2eda5-21ed-41b5-a00f-ed36cba12a4a
-Bank * * AI NCL 6 Celli
+//! id=7dc754a9-25d5-45b1-bd67-4f14d6aaddad
+Bank 29 90 AI NCL 6 Celli
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="04 4 Basses"
 //! clone="Audio Imperia/Nucleus/02 Strings/02 10 Violas"
-//! id=048fb23d-5b2a-493a-a6c0-786d4cffe8c4
-Bank * * AI NCL 4 Basses
+//! id=f66d6f8f-4c6a-4539-aa04-08eee0709aed
+Bank 29 91 AI NCL 4 Basses
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="05 16Vlns + 10Vlas 8va"
 //! clone="Audio Imperia/Nucleus/02 Strings/02 10 Violas"
-//! id=b49679a1-30ac-4f6d-97ff-c0551bd151f2
-Bank * * AI NCL 16Vlns + 10Vlas 8va
+//! id=af107ae8-4aa4-469e-ab0b-dac93abed608
+Bank 29 92 AI NCL 16Vlns + 10Vlas 8va
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="06 6Cll + 4DblBss 8va"
 //! clone="Audio Imperia/Nucleus/02 Strings/02 10 Violas"
-//! id=a3e9cf37-1784-4cb6-a3b8-6be9aa22a41b
-Bank * * AI NCL 6Cll + 4DblBss 8va
+//! id=ce76ccd3-5dac-4d58-82ab-73adc388f7c9
+Bank 29 93 AI NCL 6Cll + 4DblBss 8va
 
 //! g="Audio Imperia/Nucleus/02 Strings" n="07 Strings - Full Ens"
 //! clone="Audio Imperia/Nucleus/02 Strings/02 10 Violas"
-//! id=9352b023-d08a-4b65-a037-e8ecb4c61bdd
-Bank * * AI NCL Full Ens
+//! id=4462f10e-f231-4a39-acf6-23f06493cb07
+Bank 29 94 AI NCL Full Ens
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="01 3 Trumpets"
-//! id=e8c8f209-85a6-451d-84bb-df60657ffada
-Bank * * AI NCL 3 Trumpets
+//! id=8f555e48-c82c-48a5-bfcd-93918171f4e0
+Bank 29 95 AI NCL 3 Trumpets
 //!c=legato i=legato o=note:12
 20 Legato
 //! c=long i=note-whole o=note:13
@@ -99,12 +99,12 @@ Bank * * AI NCL 3 Trumpets
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="02 6 French Horns"
 //! clone="Audio Imperia/Nucleus/03 Brass/01 3 Trumpets"
-//! id=cf0456cf-0fe8-437e-86fb-2780dc36e807
-Bank * * AI NCL 6 French Horns
+//! id=8b2ae46b-14e9-49aa-872b-90a999e14c2e
+Bank 29 96 AI NCL 6 French Horns
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="03 4 Trombones"
-//! id=3cbe28a9-edda-4cfa-afad-785e7f6edc7a
-Bank * * AI NCL 4 Trombones
+//! id=84051980-43cb-45e4-845d-edd2f0a66e70
+Bank 29 97 AI NCL 4 Trombones
 //! c=long i=note-whole o=note:12
 1 Sustained
 //!c=short i=staccato o=note:13
@@ -112,32 +112,32 @@ Bank * * AI NCL 4 Trombones
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="04 2 Tubas"
 //! clone="Audio Imperia/Nucleus/03 Brass/03 4 Trombones"
-//! id=28eb0394-10e5-4774-8100-1e00c155dd47
-Bank * * AI NCL 2 Tubas
+//! id=8782e227-ec2a-4fa9-b38a-82f77331ecb6
+Bank 29 98 AI NCL 2 Tubas
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="05 Low Brass"
 //! clone="Audio Imperia/Nucleus/03 Brass/03 4 Trombones"
-//! id=010bfe96-f2fe-4fdd-becf-aa706da4eed9
-Bank * * AI NCL Low Brass
+//! id=adb4cd6b-4b1a-4cc3-8187-81f56597875a
+Bank 29 99 AI NCL Low Brass
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="06 3Trmpts + 6FrnchHrns 8va"
 //! clone="Audio Imperia/Nucleus/03 Brass/01 3 Trumpets"
-//! id=a098d604-3d08-4e1f-925d-5a846f67a881
-Bank * * AI NCL 3Trmpts + 6FrnchHrns 8va
+//! id=22c78d1d-8551-41e0-aade-20712368d62d
+Bank 29 100 AI NCL 3Trmpts + 6FrnchHrns 8va
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="07 4Trmbns + 2Tbs 8va"
 //! clone="Audio Imperia/Nucleus/03 Brass/03 4 Trombones"
-//! id=787445b5-5e20-43fc-9652-ae045ee5a5de
-Bank * * AI NCL 4Trmbns + 2Tbs 8va
+//! id=f3e12955-5fac-4738-9831-d773f69f41e5
+Bank 29 101 AI NCL 4Trmbns + 2Tbs 8va
 
 //! g="Audio Imperia/Nucleus/03 Brass" n="08 Brass Full Ens"
 //! clone="Audio Imperia/Nucleus/03 Brass/03 4 Trombones"
-//! id=1e59c231-874b-4c46-8730-0d29d08e8d16
-Bank * * AI NCL Full Brass
+//! id=9e617743-fc62-4f8c-9343-59f72bfce10f
+Bank 29 102 AI NCL Full Brass
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="01 2 Flutes"
-//! id=44a99350-c14b-4a85-91da-8114004b7c9c
-Bank * * AI NCL 2 Flutes
+//! id=248da85b-dc6e-444b-a9b5-69ad30cea803
+Bank 29 103 AI NCL 2 Flutes
 //! c=long i=note-whole o=note:12
 1 Sustained
 //! c=short i=staccato o=note:13
@@ -149,37 +149,37 @@ Bank * * AI NCL 2 Flutes
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="02 2 Oboes"
 //! clone="Audio Imperia/Nucleus/04 Woodwinds/01 2 Flutes"
-//! id=c9b3313e-b334-4e3e-8f32-130fe08e0c23
-Bank * * AI NCL 2 Oboes
+//! id=daac36de-0741-4c5e-a8db-724a3ecb01c2
+Bank 29 104 AI NCL 2 Oboes
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="03 2 Clarinets"
 //! clone="Audio Imperia/Nucleus/04 Woodwinds/01 2 Flutes"
-//! id=dea85b22-5aa0-420e-90a8-77478b9be52b
-Bank * * AI NCL 2 Clarinets
+//! id=8b2ea8d5-ce6f-4748-ade5-7ded97db7c6c
+Bank 29 105 AI NCL 2 Clarinets
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="04 2 Bassoons"
 //! clone="Audio Imperia/Nucleus/04 Woodwinds/01 2 Flutes"
-//! id=cd22a2cd-266c-4b77-beb3-79af4f1edd89
-Bank * * AI NCL 2 Bassoons
+//! id=9638227c-1526-44b3-baf2-681c4ff733a4
+Bank 29 106 AI NCL 2 Bassoons
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="05 2Flts + 2Clrnts 8va"
 //! clone="Audio Imperia/Nucleus/04 Woodwinds/01 2 Flutes"
-//! id=b81bf8cc-c9d5-453e-b260-1ad3500496a5
-Bank * * AI NCL 2Flts + 2Clrnts 8va
+//! id=efa184d5-ed40-4ee8-9e47-b39ebec641e1
+Bank 29 107 AI NCL 2Flts + 2Clrnts 8va
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="06 2Clrnts + 2Bssns 8va"
 //! clone="Audio Imperia/Nucleus/04 Woodwinds/01 2 Flutes"
-//! id=1cef73aa-fccf-4da1-89f5-71fa954b549f
-Bank * * AI NCL 2Clrnts + 2Bssns 8va
+//! id=5fe321f3-89e8-46b5-bd39-e922b9a3585b
+Bank 29 108 AI NCL 2Clrnts + 2Bssns 8va
 
 //! g="Audio Imperia/Nucleus/04 Woodwinds" n="07 Woodwinds - Full Ensemble"
 //! clone="Audio Imperia/Nucleus/04 Woodwinds/01 2 Flutes"
-//! id=34f336f6-1400-4a06-b24d-3320277fc3cd
-Bank * * AI NCL Full Woodwinds
+//! id=4168510e-a3f2-41cc-8d7e-57854d9d0f16
+Bank 29 109 AI NCL Full Woodwinds
 
 //! g="Audio Imperia/Nucleus/05 Percussion" n="01 Timpani"
-//! id=073549f9-b446-4c9e-adc0-d484266812b0
-Bank * * AI NCL Timpani
+//! id=9d301af4-3935-4319-a598-30fe76846a4c
+Bank 29 110 AI NCL Timpani
 //! c=short i=staccato o=note:12
 1 Hits
 //! c=long i=tremolo o=note:13
@@ -192,8 +192,8 @@ Bank * * AI NCL Timpani
 5 Crescendo Roll 3s
 
 //! g="Audio Imperia/Nucleus/06 Choir" n="01 5 Sopranos"
-//! id=d3608e60-c843-4729-b6ed-cc57fa7d2ffe
-Bank * * AI NCL 5 Sopranos
+//! id=8b18fcd9-0777-4e28-add8-084ed358e5b4
+Bank 29 111 AI NCL 5 Sopranos
 //! c=long i=note-whole o=note:12
 1 Sustained Aah
 //! c=long i=note-whole o=note:13
@@ -203,20 +203,20 @@ Bank * * AI NCL 5 Sopranos
 
 //! g="Audio Imperia/Nucleus/06 Choir" n="02 5 Altos"
 //! clone="Audio Imperia/Nucleus/06 Choir/01 5 Sopranos"
-//! id=663ac0a7-4525-4fb1-89ff-b5ca9b67140d
-Bank * * AI NCL 5 Altos
+//! id=38ed34cb-533a-422b-82dc-097c190d472e
+Bank 29 112 AI NCL 5 Altos
 
 //! g="Audio Imperia/Nucleus/06 Choir" n="03 5 Tenors"
 //! clone="Audio Imperia/Nucleus/06 Choir/01 5 Sopranos"
-//! id=a72b5d20-3dbe-4728-a9d1-d91578cb2c06
-Bank * * AI NCL 5 Tenors
+//! id=5f0c4640-08ec-45e1-88b3-e910acc1373c
+Bank 29 113 AI NCL 5 Tenors
 
 //! g="Audio Imperia/Nucleus/06 Choir" n="04 5 Basses"
 //! clone="Audio Imperia/Nucleus/06 Choir/01 5 Sopranos"
-//! id=c6ed141b-d267-4117-aa73-602affe14677
-Bank * * AI NCL 5 Basses
+//! id=41dce8b0-1f88-4049-89ab-4a89aac914b8
+Bank 29 114 AI NCL 5 Basses
 
 //! g="Audio Imperia/Nucleus/06 Choir" n="05 Choir - Full Ens"
 //! clone="Audio Imperia/Nucleus/06 Choir/01 5 Sopranos"
-//! id=19ece037-1ccc-44bb-b957-5fb265fec3bd
-Bank * * AI NCL Full Choir
+//! id=65855357-99b4-4527-a9cd-e359d0d00231
+Bank 29 115 AI NCL Full Choir
