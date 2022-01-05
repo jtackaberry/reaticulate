@@ -73,7 +73,7 @@
         <source file="../jsfx/Reaticulate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre1/prerelease/jsfx/Reaticulate.jsfx</source>
         <source file="../reaticulate.lua" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre1/prerelease/reaticulate.lua</source>
         <changelog><![CDATA[
-**PRERELEASE WARNING**: Reaticulate is not and has never been forward compatible with future versions. There is a strong *backward* compatibility goal, but not forward compatibility.  So if you're using Reaticulate 0.4.x now and upgrade to 0.5.0-pre1, any projects saved out by this new version will not be able to be reopened using previous Reaticulate versions.
+**PRERELEASE WARNING**: Reaticulate is not and has never been forward compatible with future versions. There is a strong *backward* compatibility goal, but not forward compatibility.  So if you're using Reaticulate 0.4.7 now and upgrade to 0.5.0-pre1 (branded as 0.4.9x in the prerelease ReaPack), any projects saved out by this new version will not be able to be reopened using previous Reaticulate versions.
 
 Note: Reaper 5.975 (released on April 30, 2019) or later is now required.
 
@@ -121,7 +121,7 @@ Bug Fixes
         <source file="../actions/Reaticulate_Activate articulation by CC on channel 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2002.lua</source>
         <source file="../actions/Reaticulate_Activate articulation by CC on channel 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2003.lua</source>
         <source file="../actions/Reaticulate_Activate articulation by CC on channel 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2004.lua</source>
-      <source file="../actions/Reaticulate_Activate articulation by CC on channel 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
         <source file="../actions/Reaticulate_Activate articulation by CC on channel 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2006.lua</source>
         <source file="../actions/Reaticulate_Activate articulation by CC on channel 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2007.lua</source>
         <source file="../actions/Reaticulate_Activate articulation by CC on channel 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.7/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2008.lua</source>
