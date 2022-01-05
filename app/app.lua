@@ -1428,7 +1428,13 @@ function App:sync_default_channel_from_rfx()
         local channel = rfxtrack.appdata.defchan
         if self.config.default_channel_behavior == 3 and self.midi_editor_item then
             local itemdata = rfxtrack:get_item_userdata(self.midi_editor_item)
-            channel = itemdata.default_channel or channel
+            if not itemdata.default_channel then
+                -- This is a new MIDI item without a channel stored.  There's nothing for
+                -- us to restore, so save the current channel to the item's userdata instead.
+                self:set_default_channel(channel or self.default_channel)
+                return
+            end
+            channel = itemdata.default_channel
         end
             -- Per item configuration.  Check P_EXT on the active item, if there is one.
         if channel ~= self.default_channel then
