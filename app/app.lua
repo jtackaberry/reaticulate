@@ -504,12 +504,11 @@ function App:get_take_at_position(track, pos)
     end
 end
 
--- Deletes all bank select or program change events at the given ppq.
--- The caller passes an index of a CC event which must exist at the ppq,
--- but in case there are multiple events at that ppq, it's not required that
--- it's the first.
+-- Deletes all bank select or program change events at the given ppq. The caller passes an
+-- index of a CC event which must exist at the ppq, but in case there are multiple events
+-- at that ppq, it's not required that it's the first.
 --
--- Returns
+-- Returns {msb, lsb, program} of the last PC event deleted within the range.
 local function _delete_program_events_at_ppq(take, channel, idx, max, startppq, endppq)
     -- The supplied index is at the ppq, but there may be others ahead of it.  So
     -- rewind to the first.
@@ -748,14 +747,18 @@ end
 
 -- Inserts an PC event on the given rfx.Track. The take object, if defined, is the take
 -- within which the articulation is to be inserted, but if nil then a suitable take is
--- found at the edit cursor position.
+-- found at the edit cursor position.  A new item is created if necessary.
 --
 -- If bank is provided, then it's a reabank.Bank object that, otherwise it's nil and a
 -- bank will be discovered on the track that contains the given program number.  The
 -- latter is used for inserting articulations on multiple tracks at the same time,
--- in which case we can't pass a single bank and must discover it.
+-- in which case we can't pass a single bank and must discover it.  In this situation,
+-- if no bank can be found that defines the given program, false is returned.
 --
 -- Channel is offset 0.
+--
+-- Return value is true if the articulation was inserted, or false otherwise which
+-- can happen if bank is nil and no valid program can be found on the track.
 function App:_insert_articulation(rfxtrack, bank, program, channel, take)
     local track = rfxtrack.track
     local insert_ppqs, delete_ppqs
