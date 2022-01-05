@@ -1976,7 +1976,14 @@ function App:handle_onupdate()
     BaseApp.handle_onupdate(self)
     self:check_sloppy_focus()
 
-    local track = reaper.GetSelectedTrack(0, 0)
+    -- Prefer the last touched track as the active track for Reaticulate.
+    local track = reaper.GetLastTouchedTrack()
+    if track and not reaper.IsTrackSelected(track) then
+        -- The last touched track isn't currently selected, so fallback to the first
+        -- selected track.  (Unsure if this scenario can actually happen, but just to be
+        -- on the safe side.)
+        track = reaper.GetSelectedTrack(0, 0)
+    end
     local last_track = self.track
     local track_changed = self.track ~= track
     local current_screen = self:current_screen()
