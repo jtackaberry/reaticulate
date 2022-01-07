@@ -197,12 +197,26 @@ function BaseApp:get_config(appid, target)
         if not ok then
             -- Pre 0.5.0 which used table.tostring/fromstring for config.  We fall back to the
             -- unsafe table.fromstring() in order to migrate.
-            config = table.fromstring(state)
-            -- Force resave using the new format
-            self:save_config(self.appid, config)
+            log.info('baseapp: config failed to parse as JSON: %s', state)
+            ok, config = pcall(table.fromstring, state)
+            if not ok then
+                reaper.MB(
+                    "Reaticulate wasn't able to parse its saved configuration. This may be because " ..
+                    "you downgraded Reaticulate and it doesn't understand the format used by a future " ..
+                    "version.\n\nAll Reaticulate settings will need to be reset to defaults.",
+                    'Unrecognized Reaticulate configuration',
+                    0
+                )
+                config = nil
+            else
+                -- Config was migrated to JSON. Force resave using the new format
+                self:save_config(self.appid, config)
+            end
         end
-        -- Merge stored config into runtime config
-        table.merge(target, config)
+        if config then
+            -- Merge stored config into runtime config
+            table.merge(target, config)
+        end
     end
     self:set_debug(target.debug_level or log.ERROR)
     if not target.dock and target.dockstate then
