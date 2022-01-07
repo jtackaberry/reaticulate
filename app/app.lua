@@ -351,46 +351,39 @@ function App:migrate_project_to_guid()
             -- to the project, we will be unable to garbage collect.
             self.project_state.gc_ok = false
         else
-            local migrator = rfx.GUIDMigrator(rfxtrack)
-            for _, bankinfo in ipairs(rfxtrack.appdata.banks) do
-                local bank, msb, lsb
-                if bankinfo.t == 'g' then
-                    -- Already GUID-based bankinfo, nothing to migrate.
-                    bank = reabank.get_bank_by_guid(bankinfo.v)
-                    if bank then
-                        -- Add bank to project based on the previously assigned MSB/LSB for
-                        -- this bank.  If this MSB/LSB conflicts with another bank in the
-                        -- project, then the migrator will take care of updating all PC
-                        -- events in the project when we call remap_bank_select_msblsb()
-                        -- below.
-                        local last = old[bankinfo.v]
-                        if last then
-                            msb, lsb = last and last >> 8, last and last & 0xff
-                        end
-                        migrator:add_bank_to_project(bank, msb, lsb)
+            for b, migrator in rfxtrack:get_banks(true) do
+                if b.type == 'g' and b.bank then
+                    -- Already GUID-based bankinfo, nothing to migrate. Add bank to
+                    -- project based on the previously assigned MSB/LSB for this bank.  If
+                    -- this MSB/LSB conflicts with another bank in the project, then the
+                    -- migrator will take care of updating all PC events in the project
+                    -- when we call remap_bank_select_msblsb() below.
+                    --
+                    -- Initialize to nil: if there is no previously assigned MSB/LSB then we
+                    -- pass nil for these values to add_bank_to_project() which will assign
+                    -- arbitrary values, rather than trying to reuse the previous mapping.
+                    local msb, lsb
+                    local last = old[b.guid]
+                    if last then
+                        msb, lsb = last and last >> 8, last and last & 0xff
                     end
-                else
-                    -- bankinfo.t is 'b' (MSB/LSB packed in bankinfo.v) or it's the older
-                    -- prerelease 4-element table format.
-                    bank = migrator:migrate_bankinfo(bankinfo)
+                    migrator:add_bank_to_project(b.bank, msb, lsb)
                 end
-                if not bank then
+                if not b.bank then
                     -- Referenced bank was not found.
-                    if bankinfo.t == 'g' and bankinfo.v then
-                        -- This is a GUID bank that we couldn't find on the system.  If the
-                        -- old project state had an MSB/LSB mapping for this GUID, then let's preserve
-                        -- that mapping in case the bank gets imported later.  (If it's missing,
-                        -- then old[bankinfo.v] will be nil, making the assignment a no-op.)
-                        self.project_state.msblsb_by_guid[bankinfo.v] = old[bankinfo.v]
-                        log.warning('app: bank GUID not found: %s', bankinfo.v)
+                    if b.type == 'g' and b.guid then
+                        -- This is a GUID bank that we couldn't find on the system.  If
+                        -- the old project state had an MSB/LSB mapping for this GUID,
+                        -- then let's preserve that mapping in case the bank gets imported
+                        -- later.  (If it's missing, then old[bankinfo.v] will be nil,
+                        -- making the assignment a no-op.)
+                        self.project_state.msblsb_by_guid[b.guid] = old[b.guid]
+                        log.warning('app: bank GUID not found: %s', b.guid)
                     else
-                        log.warning('app: legacy bank MSB/LSB not found: %s', bankinfo.v)
+                        log.warning('app: legacy bank MSB/LSB not found: %s', b.v)
                     end
                 end
             end
-            -- If we weren't able to add a bank to the project with the previously assigned
-            -- MSB/LSB, then this will update the events.
-            migrator:remap_bank_select()
         end
     end
     log.info('app: done full track scrub')

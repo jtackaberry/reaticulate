@@ -1293,13 +1293,16 @@ end
 -- Banks with invalid bankinfo will be skipped over with a warning logged.  This
 -- should never happen except through bugs, but we should be robust in this case
 -- rather than fail.
-function rfx.Track:get_banks()
+--
+-- If migrate is true, then rfx.GUIDMigrator is always instantiated and yielded
+-- as the second element.  Used by App for project migration purposes.
+function rfx.Track:get_banks(migrate)
     if not self.fx then
         -- RFX not loaded, so nothing to iterate over.
         return function() end
     end
     local idx = 1
-    local migrator = nil
+    local migrator = migrate and rfx.GUIDMigrator(self)
     return function()
         if self:valid() and self.appdata.banks and idx <= #self.appdata.banks then
             local bankinfo = self.appdata.banks[idx]
