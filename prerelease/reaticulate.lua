@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.0-pre1'}end)()
+return {_VERSION='0.5.0-pre2'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -184,7 +184,7 @@ end
 function rtk.popdest(expect)gfx.dest=table.remove(rtk._dest_stack,#rtk._dest_stack)end
 local function _handle_error(err)rtk._last_error=err
 rtk._last_traceback=debug.traceback()end
-function rtk.onerror(err,traceback)log.error("rtk: %s\n%s", err, traceback)log.flush()error(err)end
+function rtk.onerror(err,traceback)log.error("fatal: %s\n%s", err, traceback)log.flush()error(err)end
 function rtk.call(func,...)if rtk._quit then
 return
 end
@@ -5393,7 +5393,7 @@ end
 end
 return new
 end
-function remap_bank_select_multiple(track,msblsbmap)log.info('REMAP: %s', table.tostring(msblsbmap))local lastmsb={}local n_remapped=0
+function remap_bank_select_multiple(track,msblsbmap)log.info('utils: remap bank selects: %s', table.tostring(msblsbmap))local lastmsb={}local n_remapped=0
 for itemidx=0,reaper.CountTrackMediaItems(track)-1 do
 local item=reaper.GetTrackMediaItem(track,itemidx)for takeidx=0,reaper.CountTakes(item)-1 do
 local dosort=false
@@ -5404,9 +5404,12 @@ local lsbmap=msblsbmap[msg3] or msblsbmap[-1]
 if lsbmap then
 lastmsb[evtchan]={msg3,ccidx,lsbmap}end
 elseif msg2==32 and lastmsb[evtchan] then
-local srcmsb,srcidx,lsbmap=table.unpack(lastmsb[evtchan])local dstmsb,dstlsb,bank=table.unpack(lsbmap[msg3] or lsbmap[-1])if dstmsb and(srcmsb~=dstmsb or msg3~=dstlsb)then
+local srcmsb,srcidx,lsbmap=table.unpack(lastmsb[evtchan])local targetmap=lsbmap[msg3] or lsbmap[-1]
+if targetmap then
+local dstmsb,dstlsb,bank=table.unpack(targetmap)if dstmsb and(srcmsb~=dstmsb or msg3~=dstlsb)then
 reaper.MIDI_SetCC(take,srcidx,nil,nil,nil,nil,nil,nil,dstmsb,true)reaper.MIDI_SetCC(take,ccidx,nil,nil,nil,nil,nil,nil,dstlsb,true)n_remapped=n_remapped+1
 dosort=true
+end
 end
 lastmsb[evtchan]=nil
 end
@@ -5492,8 +5495,15 @@ function BaseApp:get_config(appid,target)appid=appid or self.appid
 target=target or self.config
 if reaper.HasExtState(appid, "config") then
 local state=reaper.GetExtState(appid, "config")local ok,config=pcall(json.decode,state)if not ok then
-config=table.fromstring(state)self:save_config(self.appid,config)end
+log.info('baseapp: config failed to parse as JSON: %s', state)ok,config=pcall(table.fromstring,state)if not ok then
+reaper.MB("Reaticulate wasn't able to parse its saved configuration. This may be because " .."you downgraded Reaticulate and it doesn't understand the format used by a future " .."version.\n\nAll Reaticulate settings will need to be reset to defaults.",'Unrecognized Reaticulate configuration',0
+)config=nil
+else
+self:save_config(self.appid,config)end
+end
+if config then
 table.merge(target,config)end
+end
 self:set_debug(target.debug_level or log.ERROR)if not target.dock and target.dockstate then
 target.dock=(target.dockstate>>8)&0xff
 target.docked=(target.dockstate&0x01)~=0
@@ -6958,13 +6968,13 @@ end
 function rfx.Track:set_banks(banks)self.appdata.banks={}for _,bankinfo in ipairs(banks)do
 local guid,srcchannel,dstchannel,dstbus,bankname=table.unpack(bankinfo)assert(guid, 'bug: attempting to set invalid bank')self.appdata.banks[#self.appdata.banks+1]={t=tonumber(guid) and 'b' or 'g',v=guid,src=srcchannel,dst=dstchannel,dstbus=dstbus,name=bankname,}end
 return self:index_banks_by_channel_and_check_hash()end
-function rfx.Track:get_banks()if not self.fx then
+function rfx.Track:get_banks(migrate)if not self.fx then
 return function()end
 end
 local idx=1
-local migrator=nil
-return function()if self:valid()and self.appdata.banks and idx<=#self.appdata.banks then
+local migrator=migrate and rfx.GUIDMigrator(self)return function()if self:valid()and self.appdata.banks and idx<=#self.appdata.banks then
 local bankinfo=self.appdata.banks[idx]
+idx=idx+1
 if bankinfo and bankinfo.v then
 local bank
 if bankinfo.t=='g' then
@@ -6972,8 +6982,7 @@ bank=reabank.get_bank_by_guid(bankinfo.v)else
 if not migrator then
 migrator=rfx.GUIDMigrator(self)end
 bank=migrator:migrate_bankinfo(bankinfo)end
-idx=idx+1
-return idx-1,bank,bankinfo.src,bankinfo.dst,bankinfo.dstbus,bankinfo.h,bankinfo.ud,bank and bank.guid or bankinfo.v,bankinfo.name
+return {idx=idx-1,bank=bank,guid=bank and bank.guid,type=bankinfo.t,srcchannel=bankinfo.src,dstchannel=bankinfo.dst,dstbus=bankinfo.dstbus,hash=bankinfo.h,userdata=bankinfo.ud,name=bankinfo.name,v=bankinfo.v,},migrator
 else
 log.warning('rfx: invalid bank found during get_banks(): %s', bankinfo and table.tostring(bankinfo))end
 else
@@ -7038,31 +7047,32 @@ return
 end
 self.banks_by_channel={}self.unknown_banks=nil
 local resync=false
-for _,bank,srcchannel,dstchannel,dstbus,hash,_,guid in self:get_banks()do
+for b in self:get_banks()do
+local bank=b.bank
 if not bank then
 if not self.unknown_banks then
 self.unknown_banks={}end
-self.unknown_banks[#self.unknown_banks+1]=guid
-log.warning("rfx: instance refers to undefined bank %s", guid)else
-log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, hash, bank:hash())bank.srcchannel=srcchannel
-bank.dstchannel=dstchannel
-bank.dstbus=dstbus
-if srcchannel==17 then
-for srcchannel=1,16 do
-local banks_list=self.banks_by_channel[srcchannel]
+self.unknown_banks[#self.unknown_banks+1]=b.guid
+log.warning("rfx: instance refers to undefined bank %s", b.guid)else
+log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, b.hash, bank:hash())bank.srcchannel=b.srcchannel
+bank.dstchannel=b.dstchannel
+bank.dstbus=b.dstbus
+if b.srcchannel==17 then
+for src=1,16 do
+local banks_list=self.banks_by_channel[src]
 if not banks_list then
-banks_list={}self.banks_by_channel[srcchannel]=banks_list
+banks_list={}self.banks_by_channel[src]=banks_list
 end
 banks_list[#banks_list+1]=bank
 end
 else
-local banks_list=self.banks_by_channel[srcchannel]
+local banks_list=self.banks_by_channel[b.srcchannel]
 if not banks_list then
-banks_list={}self.banks_by_channel[srcchannel]=banks_list
+banks_list={}self.banks_by_channel[b.srcchannel]=banks_list
 end
 banks_list[#banks_list+1]=bank
 end
-if hash~=bank:hash()then
+if b.hash~=bank:hash()then
 resync=true
 end
 if not app.project_state.msblsb_by_guid[bank.guid] then
@@ -7115,16 +7125,16 @@ end
 end
 end
 end
-self:opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)for i,bank,_,_,_,userdata in self:get_banks()do
-self.appdata.banks[i].h=bank and bank:hash()or nil
+self:opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)for b in self:get_banks()do
+self.appdata.banks[b.idx].h=b.bank and b.bank:hash()or nil
 end
 self:_write_appdata()rfx.pop_state()reaper.Undo_EndBlock2(0, "Reaticulate: update track banks (cannot be undone)", UNDO_STATE_FX)log.info("rfx: sync articulations done")log.time_end()end
 function rfx.Track:sync_banks_if_hash_changed()if not self.track then
 return false
 end
 local changed=false
-for _,bank,srcchannel,dstchannel,dstbus,hash,_,guid in self:get_banks()do
-if bank and hash~=bank:hash()then
+for b in self:get_banks()do
+if b.bank and b.hash~=b.bank:hash()then
 changed=true
 break
 end
@@ -7413,25 +7423,22 @@ self.project_state.msblsb_by_guid={}for idx,rfxtrack in rfx.get_tracks(0,true)do
 if rfxtrack.appdata==nil then
 self.project_state.gc_ok=false
 else
-local migrator=rfx.GUIDMigrator(rfxtrack)for _,bankinfo in ipairs(rfxtrack.appdata.banks)do
-local bank,msb,lsb
-if bankinfo.t=='g' then
-bank=reabank.get_bank_by_guid(bankinfo.v)if bank then
-local last=old[bankinfo.v]
+for b,migrator in rfxtrack:get_banks(true)do
+if b.type=='g' and b.bank then
+local msb,lsb
+local last=old[b.guid]
 if last then
 msb,lsb=last and last>>8,last and last&0xff
 end
-migrator:add_bank_to_project(bank,msb,lsb)end
-else
-bank=migrator:migrate_bankinfo(bankinfo)end
-if not bank then
-if bankinfo.t=='g' and bankinfo.v then
-self.project_state.msblsb_by_guid[bankinfo.v]=old[bankinfo.v]
-log.warning('app: bank GUID not found: %s', bankinfo.v)else
-log.warning('app: legacy bank MSB/LSB not found: %s', bankinfo.v)end
+migrator:add_bank_to_project(b.bank,msb,lsb)end
+if not b.bank then
+if b.type=='g' and b.guid then
+self.project_state.msblsb_by_guid[b.guid]=old[b.guid]
+log.warning('app: bank GUID not found: %s', b.guid)else
+log.warning('app: legacy bank MSB/LSB not found: %s', b.v)end
 end
 end
-migrator:remap_bank_select()end
+end
 end
 log.info('app: done full track scrub')log.time_end()return true
 end
@@ -7578,8 +7585,8 @@ insert_ppqs,delete_ppqs=_get_insertion_points_by_selected_notes(take,program)end
 local msb,lsb
 if bank then
 msb,lsb=bank:get_current_msb_lsb()else
-for _,bank,srcchannel in rfxtrack:get_banks()do
-if(srcchannel==17 or srcchannel==channel+1)and bank:get_articulation_by_program(program)then
+for b in rfxtrack:get_banks()do
+if(b.srcchannel==17 or b.srcchannel==channel+1)and bank:get_articulation_by_program(program)then
 msb,lsb=bank:get_current_msb_lsb()break
 end
 end
@@ -8218,9 +8225,9 @@ elseif event.button==rtk.mouse.BUTTON_RIGHT then
 app:activate_articulation(art,true,true,nil,event.alt)end
 end
 function screen.clear_all_active_articulations()local cleared=0
-for _,bank,_,_,hash,userdata,guid in rfx.current:get_banks()do
-if bank then
-for n,art in ipairs(bank.articulations)do
+for b in rfx.current:get_banks()do
+if b.bank then
+for n,art in ipairs(b.bank.articulations)do
 cleared=cleared+screen.clear_articulation(art)end
 end
 end
@@ -8279,9 +8286,9 @@ screen.create_banklist_ui(bank)end
 screen.banks:add(bank.vbox:show())visible[#visible+1]=bank
 visible_by_guid[bank.guid]=1
 end
-for _,bank,_,_,hash,userdata,guid in rfx.current:get_banks()do
-if bank then
-showbank(bank)end
+for b in rfx.current:get_banks()do
+if b.bank then
+showbank(b.bank)end
 end
 screen.visible_banks=visible
 if #visible>0 then
@@ -8700,9 +8707,12 @@ screen.set_banks_from_banklist()if bank.off~=nil then
 local art=bank:get_articulation_by_program(bank.off)if art then
 app:activate_articulation(art)end
 end
-local remap_from
-if last and last.id then
-remap_from=reabank.get_bank_by_guid(last.id)elseif bankbox.fallback_guid then
+local remap_from=false
+if #screen.banklist.children==1 then
+remap_from=nil
+elseif last and last.id then
+remap_from=reabank.get_bank_by_guid(last.id)or false
+elseif bankbox.fallback_guid then
 local frommsb,fromlsb
 local msblsb=tonumber(bankbox.fallback_guid)if msblsb then
 frommsb=(msblsb>>8)&0xff
@@ -8712,7 +8722,7 @@ frommsb,fromlsb=reabank.get_project_msblsb_for_guid(bankbox.fallback_guid)end
 if frommsb then
 remap_from={frommsb,fromlsb}end
 end
-if remap_from then
+if remap_from~=false then
 remap_bank_select(rfx.current.track,remap_from,bank)end
 bankbox.fallback_guid=nil
 bankbox.fallback_name=nil
@@ -8723,12 +8733,16 @@ local row=bankbox:add(rtk.HBox{spacing=10})bankbox.info=row
 row:add(rtk.ImageBox{'lg-info_outline'}, {valign='top'})row.label=row:add(rtk.Text{wrap=true}, {valign='center'})local row=bankbox:add(rtk.HBox{spacing=10})bankbox.warning=row
 row:add(rtk.ImageBox{'lg-warning_amber'}, {valign='top'})row.label=row:add(rtk.Text{wrap=true}, {valign='center'})return bankbox
 end
-function screen.get_errors()local conflicts=rfx.current:get_banks_conflicts()local get_next_bank=rfx.current:get_banks()local feedback_enabled=feedback.is_enabled()local banks={}return function()local n,bank,srcchannel,dstchannel,dstbus,hash,userdata,guid,name=get_next_bank()local error=rfx.ERROR_NONE
+function screen.get_errors()local conflicts=rfx.current:get_banks_conflicts()local get_next_bank=rfx.current:get_banks()local feedback_enabled=feedback.is_enabled()local banks={}return function()local b=get_next_bank()if not b then
+return
+end
+log.info('GOT BANK: %s', table.tostring(b))local bank=b.bank
+local error=rfx.ERROR_NONE
 local conflict=nil
 if not bank then
 error=rfx.ERROR_UNKNOWN_BANK
 else
-if(bank.buses&(1<<15)>0 or dstbus==16)and feedback_enabled then
+if(bank.buses&(1<<15)>0 or b.dstbus==16)and feedback_enabled then
 error=rfx.ERROR_BUS_CONFLICT
 end
 if banks[bank] then
@@ -8736,16 +8750,16 @@ if not error then
 error=rfx.ERROR_DUPLICATE_BANK
 end
 else
-banks[bank]={idx=n,channel=srcchannel}conflict=conflicts[bank]
+banks[bank]={idx=b.idx,channel=b.srcchannel}conflict=conflicts[bank]
 if conflict and conflict.source~=bank then
 local previous=banks[conflict.source]
-if srcchannel==17 or(previous and(previous.channel==17 or srcchannel==previous.channel))then
+if b.srcchannel==17 or(previous and(previous.channel==17 or b.srcchannel==previous.channel))then
 error=rfx.ERROR_PROGRAM_CONFLICT
 end
 end
 end
 end
-return n,bank,guid,name,error,conflict
+return b.idx,bank,b.guid or b.v,b.name,error,conflict
 end
 end
 local function _max_error(a,b)return(a and b)and math.max(a,b)or a or b
@@ -8780,8 +8794,8 @@ end
 if screen.track~=rfx.current.track then
 screen.widget:scrollto(0,0)screen.track=rfx.current.track
 end
-screen.banklist:remove_all()for _,bank,srcchannel,dstchannel,dstbus,hash,userdata,guid,name in rfx.current:get_banks()do
-local bankbox=screen.create_bank_ui(guid,srcchannel,dstchannel,dstbus,name)screen.banklist:add(bankbox,{xmaxw=screen.max_bankui_width})end
+screen.banklist:remove_all()for b in rfx.current:get_banks()do
+local bankbox=screen.create_bank_ui(b.guid or b.v,b.srcchannel,b.dstchannel,b.dstbus,b.name)screen.banklist:add(bankbox)end
 screen.check_errors_and_update_ui()end
 return screen
 end)()
