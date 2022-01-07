@@ -1272,10 +1272,24 @@ function rfx.Track:set_banks(banks)
     return self:index_banks_by_channel_and_check_hash()
 end
 
--- An iterator that yields (idx, bank, srcchannel, dstchannel, hash, userdata, guid)
--- for each bank assigned to this track.  Channel starts at 1, bank is a Bank
--- object.
+-- An iterator that yields a table containing bank information for each bank assigned to
+-- this track.  Channel starts at 1, bank is a Bank object.
 --
+-- The returned table includes the following fields:
+--   * idx: index within the rfx.Track.appdata.banks table the bank represents
+--   * bank: reabank.Bank object if it exists for this bank (may be nil)
+--   * guid: a shorthand for bank.guid -- will be nil if bank is nil
+--   * type: 't' field from bankinfo indicating the internal type ('g' or 'b')
+--   * srcchannel: source channel in track assignment, 17 = omni
+--   * dstchannel: dst channel in track assignment, 17 = source
+--   * dstbus: destination bus, offset from 1
+--   * hash: last stored hash of the bank; may be different than bank:hash()
+--   * userdata: caller-managed data -- though use get/set_bank_userdata() instead
+--   * name: stored name of this bank (mainly for logging/UI purposes when not
+--     installed on local system)
+--   * v: the 'v' field from bankinfo indicating the internal bank value, which
+--     may either be a guid or a packed MSB/LSB for legacy banks that couldn't
+--     be migrated.
 -- Banks with invalid bankinfo will be skipped over with a warning logged.  This
 -- should never happen except through bugs, but we should be robust in this case
 -- rather than fail.
@@ -1289,6 +1303,7 @@ function rfx.Track:get_banks()
     return function()
         if self:valid() and self.appdata.banks and idx <= #self.appdata.banks then
             local bankinfo = self.appdata.banks[idx]
+            idx = idx + 1
             if bankinfo and bankinfo.v then
                 local bank
                 if bankinfo.t == 'g' then
@@ -1298,20 +1313,34 @@ function rfx.Track:get_banks()
                     -- be migrated.
                     bank = reabank.get_bank_by_guid(bankinfo.v)
                 else
-                    -- Non-GUID bankinfo that needs migration.  In most cases, non-GUID bankinfos
-                    -- will already have been migrated via the main app when the project changes,
-                    -- but this scenario can still happen for disabled tracks.
+                    -- Non-GUID bankinfo that needs migration.  bankinfo.t is 'b' (MSB/LSB
+                    -- packed in bankinfo.v) or it's the older prerelease 4-element table
+                    -- format.
+                    --
+                    -- In most cases, non-GUID bankinfos will already have been migrated
+                    -- via App:migrate_project_to_guid() when the project changes, but
+                    -- this scenario can still happen for disabled tracks.
                     if not migrator then
                         migrator = rfx.GUIDMigrator(self)
                     end
+                    -- May implicitly call migrator:add_bank_to_project()
                     bank = migrator:migrate_bankinfo(bankinfo)
                 end
-                idx = idx + 1
-                -- The main point of also including idx is to ensure that we don't yield
-                -- nil as the first value if bank could not be found, which would terminate
-                -- the iterator.
-                return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus,
-                    bankinfo.h, bankinfo.ud, bank and bank.guid or bankinfo.v, bankinfo.name
+                return {
+                    idx=idx-1,
+                    bank=bank,
+                    guid=bank and bank.guid,
+                    type=bankinfo.t,
+                    srcchannel=bankinfo.src,
+                    dstchannel=bankinfo.dst,
+                    dstbus=bankinfo.dstbus,
+                    hash=bankinfo.h,
+                    userdata=bankinfo.ud,
+                    name=bankinfo.name,
+                    v=bankinfo.v,
+                }, migrator
+                -- return idx-1, bank, bankinfo.src, bankinfo.dst, bankinfo.dstbus,
+                --     bankinfo.h, bankinfo.ud, bank and bank.guid or bankinfo.v, bankinfo.name
             else
                 log.warning('rfx: invalid bank found during get_banks(): %s', bankinfo and table.tostring(bankinfo))
             end
@@ -1423,37 +1452,38 @@ function rfx.Track:index_banks_by_channel_and_check_hash()
     self.unknown_banks = nil
     -- Will be set to true if there are any bank hash mismatches
     local resync = false
-    for _, bank, srcchannel, dstchannel, dstbus, hash, _, guid in self:get_banks() do
+    for b in self:get_banks() do
+        local bank = b.bank
         if not bank then
             if not self.unknown_banks then
                 self.unknown_banks = {}
             end
-            self.unknown_banks[#self.unknown_banks+1] = guid
-            log.warning("rfx: instance refers to undefined bank %s", guid)
+            self.unknown_banks[#self.unknown_banks+1] = b.guid
+            log.warning("rfx: instance refers to undefined bank %s", b.guid)
         else
-            log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, hash, bank:hash())
-            bank.srcchannel = srcchannel
-            bank.dstchannel = dstchannel
-            bank.dstbus = dstbus
-            if srcchannel == 17 then
+            log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, b.hash, bank:hash())
+            bank.srcchannel = b.srcchannel
+            bank.dstchannel = b.dstchannel
+            bank.dstbus = b.dstbus
+            if b.srcchannel == 17 then
                 -- Omni: bank is available on all channels
-                for srcchannel = 1, 16 do
-                    local banks_list = self.banks_by_channel[srcchannel]
+                for src = 1, 16 do
+                    local banks_list = self.banks_by_channel[src]
                     if not banks_list then
                         banks_list = {}
-                        self.banks_by_channel[srcchannel] = banks_list
+                        self.banks_by_channel[src] = banks_list
                     end
                     banks_list[#banks_list + 1] = bank
                 end
             else
-                local banks_list = self.banks_by_channel[srcchannel]
+                local banks_list = self.banks_by_channel[b.srcchannel]
                 if not banks_list then
                     banks_list = {}
-                    self.banks_by_channel[srcchannel] = banks_list
+                    self.banks_by_channel[b.srcchannel] = banks_list
                 end
                 banks_list[#banks_list + 1] = bank
             end
-            if hash ~= bank:hash() then
+            if b.hash ~= bank:hash() then
                 resync = true
             end
             if not app.project_state.msblsb_by_guid[bank.guid] then
@@ -1571,8 +1601,8 @@ function rfx.Track:sync_banks_to_rfx()
 
     self:opcode(rfx.OPCODE_FINALIZE_ARTICULATIONS)
     -- Update the hash of all banks
-    for i, bank, _, _, _, userdata in self:get_banks() do
-        self.appdata.banks[i].h = bank and bank:hash() or nil
+    for b in self:get_banks() do
+        self.appdata.banks[b.idx].h = b.bank and b.bank:hash() or nil
     end
     self:_write_appdata()
 
@@ -1594,9 +1624,9 @@ function rfx.Track:sync_banks_if_hash_changed()
     -- because for those that do, we loop over banks here, and then again via the
     -- call to index_banks_by_channel_and_check_hash() if the hash changed.
     local changed = false
-    for _, bank, srcchannel, dstchannel, dstbus, hash, _, guid in self:get_banks() do
+    for b in self:get_banks() do
         -- bank may be nil for bank references not found on current system
-        if bank and hash ~= bank:hash() then
+        if b.bank and b.hash ~= b.bank:hash() then
             changed = true
             break
         end
