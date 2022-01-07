@@ -369,10 +369,16 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
         end
         -- We want to migrate Bank Selects on this track from the old bank's MSB/LSB to
         -- the new bank's MSB/LSB.
-        local remap_from
-        if last and last.id then
+
+        -- false acts as a sentinel, because nil has meaning
+        local remap_from = false
+        if #screen.banklist.children == 1 then
+            -- There's just a single bank assigned to this track, so we can remap all Bank
+            -- Selects to the new bank.
+            remap_from = nil
+        elseif last and last.id then
             -- The last menu item has been provided so we know the bank's GUID
-            remap_from = reabank.get_bank_by_guid(last.id)
+            remap_from = reabank.get_bank_by_guid(last.id) or false
         elseif bankbox.fallback_guid then
             -- We have a fallback GUID, which is actually either a proper GUID or a
             -- stringified packed MSB/LSB number.
@@ -390,7 +396,7 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
                 remap_from = {frommsb, fromlsb}
             end
         end
-        if remap_from then
+        if remap_from ~= false then
             remap_bank_select(rfx.current.track, remap_from, bank)
         end
         -- If the selection changed, it can only be to a valid id.  So we can clear the
