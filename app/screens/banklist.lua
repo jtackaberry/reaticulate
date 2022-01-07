@@ -206,9 +206,9 @@ end
 
 function screen.clear_all_active_articulations()
     local cleared = 0
-    for _, bank, _, _, hash, userdata, guid in rfx.current:get_banks() do
-        if bank then
-            for n, art in ipairs(bank.articulations) do
+    for b in rfx.current:get_banks() do
+        if b.bank then
+            for n, art in ipairs(b.bank.articulations) do
                 cleared = cleared + screen.clear_articulation(art)
             end
         end
@@ -366,9 +366,9 @@ function screen.show_track_banks()
         visible[#visible+1] = bank
         visible_by_guid[bank.guid] = 1
     end
-    for _, bank, _, _, hash, userdata, guid in rfx.current:get_banks() do
-        if bank then
-            showbank(bank)
+    for b in rfx.current:get_banks() do
+        if b.bank then
+            showbank(b.bank)
         end
     end
     screen.visible_banks = visible

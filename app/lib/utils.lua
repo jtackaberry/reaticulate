@@ -72,7 +72,7 @@ end
 -- If there is a src MSB/LSB of -1/-1 then this is used as a fallback when the actual
 -- source MSB/LSB isn't found in the map.
 function remap_bank_select_multiple(track, msblsbmap)
-    log.info('REMAP: %s', table.tostring(msblsbmap))
+    log.info('utils: remap bank selects: %s', table.tostring(msblsbmap))
     -- channel -> {srcmsb, cc0-ccidx, lsbmap}
     local lastmsb = {}
     local n_remapped = 0
@@ -94,12 +94,15 @@ function remap_bank_select_multiple(track, msblsbmap)
                         end
                     elseif msg2 == 32 and lastmsb[evtchan] then
                         local srcmsb, srcidx, lsbmap = table.unpack(lastmsb[evtchan])
-                        local dstmsb, dstlsb, bank = table.unpack(lsbmap[msg3] or lsbmap[-1])
-                        if dstmsb and (srcmsb ~= dstmsb or msg3 ~= dstlsb) then
-                            reaper.MIDI_SetCC(take, srcidx, nil, nil, nil, nil, nil, nil, dstmsb, true)
-                            reaper.MIDI_SetCC(take, ccidx, nil, nil, nil, nil, nil, nil, dstlsb, true)
-                            n_remapped = n_remapped + 1
-                            dosort = true
+                        local targetmap = lsbmap[msg3] or lsbmap[-1]
+                        if targetmap then
+                            local dstmsb, dstlsb, bank = table.unpack(targetmap)
+                            if dstmsb and (srcmsb ~= dstmsb or msg3 ~= dstlsb) then
+                                reaper.MIDI_SetCC(take, srcidx, nil, nil, nil, nil, nil, nil, dstmsb, true)
+                                reaper.MIDI_SetCC(take, ccidx, nil, nil, nil, nil, nil, nil, dstlsb, true)
+                                n_remapped = n_remapped + 1
+                                dosort = true
+                            end
                         end
                         lastmsb[evtchan] = nil
                     end

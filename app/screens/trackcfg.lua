@@ -369,10 +369,16 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
         end
         -- We want to migrate Bank Selects on this track from the old bank's MSB/LSB to
         -- the new bank's MSB/LSB.
-        local remap_from
-        if last and last.id then
+
+        -- false acts as a sentinel, because nil has meaning
+        local remap_from = false
+        if #screen.banklist.children == 1 then
+            -- There's just a single bank assigned to this track, so we can remap all Bank
+            -- Selects to the new bank.
+            remap_from = nil
+        elseif last and last.id then
             -- The last menu item has been provided so we know the bank's GUID
-            remap_from = reabank.get_bank_by_guid(last.id)
+            remap_from = reabank.get_bank_by_guid(last.id) or false
         elseif bankbox.fallback_guid then
             -- We have a fallback GUID, which is actually either a proper GUID or a
             -- stringified packed MSB/LSB number.
@@ -390,7 +396,7 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
                 remap_from = {frommsb, fromlsb}
             end
         end
-        if remap_from then
+        if remap_from ~= false then
             remap_bank_select(rfx.current.track, remap_from, bank)
         end
         -- If the selection changed, it can only be to a valid id.  So we can clear the
@@ -423,14 +429,20 @@ function screen.get_errors()
     local banks = {}
 
     return function()
-        local n, bank, srcchannel, dstchannel, dstbus, hash, userdata, guid, name = get_next_bank()
+        local b = get_next_bank()
+        if not b then
+            -- get_banks() iterator is exhausted
+            return
+        end
+        log.info('GOT BANK: %s', table.tostring(b))
+        local bank = b.bank
         local error = rfx.ERROR_NONE
         local conflict = nil
 
         if not bank then
             error = rfx.ERROR_UNKNOWN_BANK
         else
-            if (bank.buses & (1 << 15) > 0 or dstbus == 16) and feedback_enabled then
+            if (bank.buses & (1 << 15) > 0 or b.dstbus == 16) and feedback_enabled then
                 error = rfx.ERROR_BUS_CONFLICT
             end
             if banks[bank] then
@@ -439,20 +451,20 @@ function screen.get_errors()
                     error = rfx.ERROR_DUPLICATE_BANK
                 end
             else
-                banks[bank] = {idx=n, channel=srcchannel}
+                banks[bank] = {idx=b.idx, channel=b.srcchannel}
                 conflict = conflicts[bank]
                 if conflict and conflict.source ~= bank then
                     -- There is a channel behaviour conflict.  Verify the channel conflict with the previously
                     -- listed bank, to rule out the possiblity of a later duplicate bank causing the conflict
                     -- (in which case the error will appear with the later bank)
                     local previous = banks[conflict.source]
-                    if srcchannel == 17 or (previous and (previous.channel == 17 or srcchannel == previous.channel)) then
+                    if b.srcchannel == 17 or (previous and (previous.channel == 17 or b.srcchannel == previous.channel)) then
                         error = rfx.ERROR_PROGRAM_CONFLICT
                     end
                 end
             end
         end
-        return n, bank, guid, name, error, conflict
+        return b.idx, bank, b.guid or b.v, b.name, error, conflict
     end
 end
 
@@ -528,12 +540,12 @@ function screen.update()
         screen.track = rfx.current.track
     end
     screen.banklist:remove_all()
-    for _, bank, srcchannel, dstchannel, dstbus, hash, userdata, guid, name in rfx.current:get_banks() do
-        -- rfx.Track:get_banks() ensures guid will not be nil.  It *could* however be a
-        -- stringified numeric packed MSB/LSB in the case of legacy style banks that were
-        -- not able to be migrated due to not being available on the system.
-        local bankbox = screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
-        screen.banklist:add(bankbox, {xmaxw=screen.max_bankui_width})
+    for b in rfx.current:get_banks() do
+        -- If the guid is nil then this must be a legacy style bank that wasn't able to be
+        -- migrated (due to not being available on the system), so we fallback to the packed
+        -- MSB/LSB value instead.
+        local bankbox = screen.create_bank_ui(b.guid or b.v, b.srcchannel, b.dstchannel, b.dstbus, b.name)
+        screen.banklist:add(bankbox)
     end
     screen.check_errors_and_update_ui()
 end
