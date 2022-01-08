@@ -434,7 +434,6 @@ function screen.get_errors()
             -- get_banks() iterator is exhausted
             return
         end
-        log.info('GOT BANK: %s', table.tostring(b))
         local bank = b.bank
         local error = rfx.ERROR_NONE
         local conflict = nil

@@ -562,6 +562,13 @@ local function _get_cc_idx_at_ppq(take, ppq)
     local nextidx, nextppq = nil, nil
     while idx > 0 and idx < n_events and skip > 0.5 do
         local rv, _, _, evtppq, _, evtchan, _, _ = reaper.MIDI_GetCC(take, idx)
+        -- ppq calculated from cursor positions can be fractional, although inserted
+        -- events seem to always be rounded to integer values.  Here we accept any
+        -- ppq that's within 1 ppq of the target.
+        local delta = math.abs(evtppq - ppq)
+        if delta < 1 then
+            return true, previdx, prevppq, idx, evtppq, n_events
+        end
         skip = skip / 2
         if evtppq > ppq then
             nextidx, nextppq = idx, evtppq
@@ -571,8 +578,6 @@ local function _get_cc_idx_at_ppq(take, ppq)
             previdx, prevppq = idx, evtppq
             -- Event is behind target ppq, skip ahead.
             idx = idx + math.ceil(skip)
-        else
-            return true, previdx, prevppq, idx, evtppq, n_events
         end
     end
     return false, previdx, prevppq, nextidx, nextppq, n_events
@@ -582,7 +587,7 @@ end
 -- Returns the MSB, LSB, and program number of the last PC that was deleted.
 local function _delete_program_changes(take, channel, startppq, endppq)
     local found, _, _, idx, ppq, n_events = _get_cc_idx_at_ppq(take, startppq)
-    if not ppq or ppq < startppq or ppq > endppq then
+    if not found then
         return
     end
     local msb, lsb, program = _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, endppq)
@@ -594,9 +599,11 @@ end
 -- If there's an existing PC at the given ppq then it's replaced, provided that
 -- overwrite is true.
 local function _insert_program_change(take, ppq, channel, msb, lsb, program, overwrite)
-    -- If the events at the ppq are program changes, we delete them (as we're
-    -- about to replace them).
-    local found, _, _, idx, _, n_events = _get_cc_idx_at_ppq(take, ppq)
+    -- If the events at the ppq are program changes, we delete them (as we're about to
+    -- replace them).  foundppq may differ from ppq even if found is true, because the
+    -- incoming ppq could be fractional, but event ppqs appear to be rounded.  So we need
+    -- to use the event's actual ppq later when we delete existing PCs.
+    local found, _, _, idx, foundppq, n_events = _get_cc_idx_at_ppq(take, ppq)
     if found then
         if not overwrite then
             -- FIXME: this doesn't actually work.  found indicates that *some* event
@@ -605,7 +612,7 @@ local function _insert_program_change(take, ppq, channel, msb, lsb, program, ove
             log.exception('TODO: fix this bug')
             return
         end
-        _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, ppq)
+        _delete_program_events_at_ppq(take, channel, idx, n_events, foundppq, foundppq)
     end
     -- Insert program change at ppq.  MIDI_Sort() isn't needed with MIDI_InsertCC().
     reaper.MIDI_InsertCC(take, false, false, ppq, 0xb0, channel, 0, msb)
@@ -783,17 +790,18 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
         return false
     end
 
-    -- If we haven't managed to find selected notes (assuming the feature is
-    -- even enabled), then fall back to the take at the edit cursor and use
-    -- the cursor position for the articulation insertion point.  This may not
-    -- be the take active in the MIDI editor either, if the edit cursor is
-    -- somewhere else.
+    -- If we haven't managed to find selected notes (assuming the feature is even
+    -- enabled), then fall back to the take at the edit cursor and use the cursor position
+    -- for the articulation insertion point.  This may not be the take active in the MIDI
+    -- editor either, if the edit cursor is somewhere else.
     if not insert_ppqs or #insert_ppqs == 0 then
         local cursor = reaper.GetCursorPositionEx(0)
         _, take = self:get_take_at_position(track, cursor)
         if take then
             local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
             insert_ppqs = {{take, ppq, nil, program}}
+            -- Note: deletion of any existing PCs at this ppq is taken care of by
+            -- _insert_program_change() later.
         else
             local item = reaper.CreateNewMIDIItemInProj(track, cursor, cursor + 1, false)
             -- CreateNewMIDIItemInProj() does not honor project defaults. There's no easy
