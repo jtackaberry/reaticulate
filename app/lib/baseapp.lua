@@ -179,10 +179,9 @@ end
 
 function BaseApp:fatal_error(msg)
     msg = msg ..
-          '\n\nThis is a fatal error and Reaticulate must now exit. ' ..
+          '\n\nThis is an unrecoverable error and Reaticulate must now exit. ' ..
           '\n\nPlease visit https://reaticulate.com/ for support contact details.'
-    reaper.ShowMessageBox(msg, "Reaticulate: fatal error", 0)
-    reaper.atexit()
+    reaper.ShowMessageBox(msg, "Reaticulate fatal error", 0)
     rtk.quit()
 end
 
