@@ -336,8 +336,14 @@ function screen.init()
     local row = add_row(section, "MIDI Device:", 85, 2)
     local menu = row:add(rtk.OptionMenu())
     menu.onchange = function(menu)
-        log.info("settings: changed MIDI CC feedback device: %s", menu.selected_id)
-        app.config.cc_feedback_device = tonumber(menu.selected_id)
+        local device = tonumber(menu.selected_id)
+        if app.config.cc_feedback_device == device then
+            -- Nothing changed
+            return
+        end
+        log.info('settings: new MIDI feedback device: %s', device)
+        log.time_start()
+        app.config.cc_feedback_device = device
         app:save_config()
         -- Remove output device if we disabled feedback and the current output device is set
         -- to the previously configured feedback device.
@@ -349,6 +355,7 @@ function screen.init()
         end
         -- If we enabled/disabled feedback, re-check for bus 16 conflicts.
         app:check_banks_for_errors()
+        log.time_end('settings: finished changing MIDI feedback device')
     end
     screen.midi_device_menu = menu
 
@@ -357,6 +364,8 @@ function screen.init()
     local prefs = box:add(rtk.Button{icon='med-settings', flat=true}, {valign='center', lpadding=5})
     local info = add_tip(box, 0, 'Device must be enabled for output')
     prefs.onclick = function()
+        -- FIXME: need some way to detect changes after the user enables (or disables)
+        -- a device for output and update the menu.
         -- Opens Preferences to MIDI Devices page
         reaper.ViewPrefs(153, '')
     end
@@ -366,6 +375,10 @@ function screen.init()
     menu:attr('menu', {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})
     menu:select(app.config.cc_feedback_bus or 1)
     menu.onchange = function(menu)
+        if app.config.cc_feedback_bus == menu.selected_index then
+            -- Nothing changed.
+            return
+        end
         log.info("settings: changed MIDI CC feedback bus: %s", menu.selected_index)
         app.config.cc_feedback_bus = menu.selected_index
         app:save_config()
@@ -379,12 +392,18 @@ function screen.init()
     local row = add_row(section, "CC #:", 85)
     local text = row:add(rtk.Entry{placeholder="CC number"})
     text.onchange = function(text)
+        local cc = tonumber(text.value)
+        if app.config.cc_feedback_articulations_cc == cc then
+            -- Nothing changed
+            return
+        end
         -- TODO: provide feedback if value isn't a number.  This will just quietly convert to nil.
         app.config.cc_feedback_articulations_cc = tonumber(text.value)
         app:save_config()
         feedback.update_feedback_track_settings(true)
     end
     menu.onchange = function(menu)
+        local changed = app.config.cc_feedback_articulations ~= menu.selected_index
         app.config.cc_feedback_articulations = menu.selected_index
         if menu.selected_index == 1 then
             row:hide()
@@ -394,8 +413,10 @@ function screen.init()
             end
             row:show()
         end
-        feedback.update_feedback_track_settings(true)
-        app:save_config()
+        if changed then
+            feedback.update_feedback_track_settings(true)
+            app:save_config()
+        end
     end
     screen.cc_feedback_articulations_menu = menu
 
@@ -512,7 +533,6 @@ function screen.update()
     for color, text in pairs(screen.art_color_entries) do
         text:attr('value', app:get_articulation_color(color), true)
     end
-    -- This is a bit costly due to indirectly calling update_feedback_track_settings()
     screen.cc_feedback_articulations_menu:select(app.config.cc_feedback_articulations or 2)
 end
 
