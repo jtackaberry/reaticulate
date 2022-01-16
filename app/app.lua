@@ -2300,14 +2300,16 @@ function App:handle_onupdate()
                 self:set_default_channel(channel)
             end
         end
-        if track_changed then
-            -- Call this here instead of in ontrackchange() to ensure that we feedback
-            -- *after* setting the default channel.  Note there is a slight delay in
-            -- the control surface receiving the update when selecting a track with
-            -- automatic record arm -- there doesn't seem to be anything we can do
-            -- about this.
-            feedback.ontrackchange(last_track, track)
-        end
+    end
+    -- Update feedback send, which we need to do even on non-RFX tracks to ensure we
+    -- remove the send from the previous RFX-managed track, which is why this isn't
+    -- in the previous conditional block, which is only for track with RFX.
+    if track_changed and not track_change_pending then
+        -- Call this here instead of in ontrackchange() to ensure that we feedback *after*
+        -- setting the default channel.  Note there is a slight delay in the control
+        -- surface receiving the update when selecting a track with automatic record arm
+        -- there doesn't seem to be anything we can do about this.
+        feedback.ontrackchange(last_track, track)
     end
     rfx.opcode_commit_all()
 end
