@@ -46,6 +46,11 @@ local reabank = {
     -- If true, it means we currently have a deferred call awaiting for
     -- reabank._sync_project()
     project_sync_queued = false,
+    -- Maps all MSB/LSB (stringified packed MSB/LSB to allow persistence) written to the
+    -- last project reabank to the corresponding bank hashes. This is used by
+    -- write_reabank_for_project() to determine if there were any changes to the existing
+    -- tmp reabank.
+    last_written_msblsb = nil,
 
     -- Cache for reabank.to_menu(), which
     menu = nil,
@@ -402,7 +407,7 @@ function Bank:_hash(dynamic)
         self.message,
         arts
     )
-    log.time_end('bank hash finished')
+    log.time_end('reabank: computed hash for %s', self.name)
     return crc64(table.tostring(bankinfo))
 end
 
@@ -614,11 +619,12 @@ local function get_reabank_file()
 end
 
 function reabank.init()
+    log.time_start()
+    -- This is allowed to be nil, and will be if the key doesn't exist.
+    reabank.last_written_msblsb = app:get_ext_state('last_written_msblsb')
     reabank.reabank_filename_factory = Path.join(Path.basedir, "Reaticulate-factory.reabank")
     reabank.reabank_filename_user = Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")
     log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)
-    log.time_start()
-
     local cur_factory_bank_size, err = rtk.file.size(reabank.reabank_filename_factory)
     local file = get_reabank_file() or ''
     local tmpnum = file:lower():match("-tmp(%d+).")
@@ -736,7 +742,7 @@ function reabank.add_bank_to_project(bank, msb, lsb, required)
             end
         end
     end
-    app:queue_save_project_state_and_bank_refresh()
+    app:queue(App.SAVE_PROJECT_STATE | App.REFRESH_BANKS | App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)
     msb, lsb = candidate >> 8, candidate & 0xff
     log.info('reabank: generated msblsb=%s,%s for bank %s', msb, lsb, bank.guid)
     return msb, lsb
@@ -1008,7 +1014,7 @@ function reabank.import_banks_from_string_with_feedback(data, srcname)
         end
     end
     if #banks > 0 then
-        app:refresh_banks(false)
+        app:queue(App.REFRESH_BANKS)
     end
     -- Defer message box to give GUI a chance to update to reflect (potential)
     -- changes.
@@ -1080,30 +1086,77 @@ end
 
 -- Generates a non-annotated ReaBank file for all banks in the current project,
 -- and returns the result as a string.
-function reabank.project_banks_to_reabank_string()
+--
+-- If 'compare' is provided, it is a map of packed MSB/LSB to Bank hash and is used to
+-- track whether there were additions or bank definition changes relative to this table.
+-- Added or modified banks are inserted in the 'changes' table that's returned.  Note that
+-- DELETIONS are not detected: as long as all existing project banks are in the compare
+-- table with the same definition, true is returned.  If the compare table is nil, then
+-- all banks in the project are included in the changes table.
+--
+-- 3 values are returned:
+--   1. A table mapping packed MSB/LSB to bank hash of all banks in the project
+--   2. A table of changes, mapping bank GUID to the current project's MSB/LSB (packed number)
+--   3. A string holding the rendered reabank contents
+function reabank.project_banks_to_reabank_string(compare)
+    local changes = {updates=0, additions=0}
+    local msblsbmap = {}
     local s = ''
-    for guid, msblsb in pairs(app.project_state.msblsb_by_guid) do
+    -- Ensure the order we enumerate the current project banks is deterministic so that
+    -- the caller is able to compare contents of successive calls to detect changes.
+    local guids = table.keys(app.project_state.msblsb_by_guid)
+    table.sort(guids)
+    for _, guid in ipairs(guids) do
+        local msblsb = app.project_state.msblsb_by_guid[guid]
         local bank = reabank.get_bank_by_guid(guid)
         if bank then
-            local msb = msblsb >> 8
-            local lsb = msblsb & 0xff
-            if msb and lsb then
-                s = s .. string.format('\n\nBank %d %d %s\n', msb, lsb, bank.name)
-                for _, art in ipairs(bank.articulations) do
-                    s = s .. string.format('%d %s\n', art.program, art.name)
+            local msblsbstr = tostring(msblsb)
+            local hash = bank:hash()
+            -- Technically we should be checking the GUID as well, as hash doesn't include
+            -- GUID. But this seems safe: even if this ends up referencing a different
+            -- bank GUID, if the actual bank contents are identical it doesn't make any
+            -- difference to REAPER.  The PC numbers and names must be the same.
+            if compare and compare[msblsbstr] then
+                if compare[msblsbstr] ~= hash then
+                    changes[bank.guid] = msblsb
+                    changes.updates = changes.updates + 1
                 end
             else
-                log.info('reabank: skipping output of %s due to missing msb/lsb', bank.name)
+                changes.additions = changes.additions + 1
+            end
+            msblsbmap[msblsbstr] = hash
+            local msb = msblsb >> 8
+            local lsb = msblsb & 0xff
+            s = s .. string.format('\n\nBank %d %d %s\n', msb, lsb, bank.name)
+            for _, art in ipairs(bank.articulations) do
+                s = s .. string.format('%d %s\n', art.program, art.name)
             end
         end
     end
-    return s
+    -- If there aren't any project banks and we have an empty reabank, consider it not
+    -- changed.
+    return msblsbmap, changes, s
 end
 
 -- Writes a ReaBank file for all banks in the project and their ephemeral MSB/LSB mappings,
 -- and sets this new file as Reaper's global default.
+--
+-- If the newly generated project reabank file has banks that saw material changes, then
+-- the changes table (as received from project_banks_to_reabank_string()) is returned.  If
+-- there were no modifications then nil is returned. This is the case even if there were
+-- additions to the project reabank -- only modifications are returned.
 function reabank.write_reabank_for_project()
-    log.time_start()
+    local msblsbmap = reabank.last_written_msblsb
+    local new_msblsbmap, changes, contents = reabank.project_banks_to_reabank_string(msblsbmap)
+    if changes.updates == 0 and changes.additions == 0 then
+        -- No additions or alterations relative to the current tmp reabank.  We skip
+        -- replacing it, and return nil to indicate to the caller no relevant changes
+        -- were made.  "Relevant" because the current tmp reabank may contain banks not
+        -- referenced by the current project, but that's ok for our purposes.
+        log.info('reabank: project reabank has no changes/additions, skipping write')
+        return
+    end
+
     local tmpnum = 1
     if reabank.filename_tmp then
         tmpnum = tonumber(reabank.filename_tmp:match("-tmp(%d+).")) + 1
@@ -1111,16 +1164,25 @@ function reabank.write_reabank_for_project()
 
     -- FIXME: assumes case
     local newfile = reabank.reabank_filename_user:gsub("(.*).reabank", "%1-tmp" .. tmpnum .. ".reabank")
-    -- Copy contents to tmp reabank
-    local header = "// Generated file.  DO NOT EDIT!  CONTENTS WILL BE LOST!\n"
-    header = header .. "// Edit this instead: " .. reabank.reabank_filename_user .. "\n\n\n\n"
-
-    local s = reabank.project_banks_to_reabank_string()
-    log.debug('reabank: stringified banks nbytes=%s', #s)
-    local err = rtk.file.write(newfile, header .. s)
+    -- Insert a comment block at the top of our new contents
+    contents = "// Generated file.  DO NOT EDIT!  CONTENTS WILL BE LOST!\n" ..
+               "// Edit this instead: " .. reabank.reabank_filename_user .. "\n\n\n\n" ..
+               contents
+    if not msblsbmap and reabank.filename_tmp then
+        -- If we don't know the MSB/LSB map for the last written tmp reabank (in which case
+        -- msblsbmap is nil), then we fall back to a more brute force approach by comparing
+        -- the actual file contents between current and planned reabank.
+        local existing = rtk.file.read(reabank.filename_tmp)
+        if existing == contents then
+            log.debug('reabank: project reabank contents is not changing, skipping write')
+            return
+        end
+    end
+    -- Write contents to tmp reabank
+    log.debug('reabank: stringified banks nbytes=%s', #contents)
+    local err = rtk.file.write(newfile, contents)
     if err then
-        log.time_end()
-        return app:fatal_error("Failed to write Reabank file: " .. tostring(err))
+        return app:fatal_error("Failed to write project Reabank file: " .. tostring(err))
     end
     log.debug('reabank: wrote %s', newfile)
     set_reabank_file(newfile)
@@ -1132,8 +1194,13 @@ function reabank.write_reabank_for_project()
     end
     reabank.filename_tmp = newfile
     log.info("reabank: finished switching to new reabank file: %s", newfile)
-    log.time_end()
     reabank.version = tmpnum
+    -- Store this as REAPER state so optimizations which depend on an accurate change list
+    -- survive restarts (either of Reaticulate or of REAPER).
+    app:set_ext_state('last_written_msblsb', new_msblsbmap, true)
+    reabank.last_written_msblsb = new_msblsbmap
+    -- Return the changes table only if there were actually changes
+    return changes.updates > 0 and changes or nil, changes.additions > 0
 end
 
 -- Returns the Bank object known by the given GUID, or nil if not found.

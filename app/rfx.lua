@@ -916,7 +916,6 @@ end
 --
 -- Returns the MSB, LSB pair that was actually assigned in the project.
 function rfx.GUIDMigrator:add_bank_to_project(bank, msb, lsb)
-    log.debug('rfx: migrate: guid bank request %s %s', msb, lsb)
     local gotmsb, gotlsb = reabank.add_bank_to_project(bank, msb, lsb)
     if (msb or lsb) and (gotmsb ~= msb or gotlsb ~= lsb) then
         -- We had a previous MSB/LSB assigned to this bank but that assignment
@@ -1464,7 +1463,7 @@ function rfx.Track:index_banks_by_channel_and_check_hash()
             self.unknown_banks[#self.unknown_banks+1] = b.guid
             log.warning("rfx: instance refers to undefined bank %s", b.guid)
         else
-            log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, b.hash, bank:hash())
+            log.debug("rfx: index bank=%s  hash=%s -> %s", bank.name, b.hash, bank:hash())
             bank.srcchannel = b.srcchannel
             bank.dstchannel = b.dstchannel
             bank.dstbus = b.dstbus

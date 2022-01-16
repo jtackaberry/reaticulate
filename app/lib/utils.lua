@@ -154,3 +154,21 @@ function remap_bank_select(track, frombank, tobank)
     reaper.Undo_EndBlock2(0, 'Reaticulate: update Bank Select events', UNDO_STATE_ITEMS)
     return n
 end
+
+function call_and_preserve_selected_tracks(func, ...)
+    local selected = {}
+    for i = 0, reaper.CountSelectedTracks(0) - 1 do
+        local track = reaper.GetSelectedTrack(0, i)
+        local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+        selected[n] = true
+    end
+    reaper.PreventUIRefresh(1)
+    local r = func(...)
+    for i = 0, reaper.CountTracks(0) - 1 do
+        local track = reaper.GetTrack(0, i)
+        local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+        reaper.SetTrackSelected(track, selected[n] or false)
+    end
+    reaper.PreventUIRefresh(-1)
+    return r
+end

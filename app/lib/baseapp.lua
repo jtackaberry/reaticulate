@@ -197,6 +197,7 @@ end
 function BaseApp:set_ext_state(key, obj, persist)
     local serialized = json.encode(obj)
     reaper.SetExtState(self.appid, key, serialized, persist or false)
+    log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)
 end
 
 function BaseApp:get_config(appid, target)
