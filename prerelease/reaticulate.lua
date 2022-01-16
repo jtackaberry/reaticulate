@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.0-pre2'}end)()
+return {_VERSION='0.5.0-pre3'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -39,9 +39,9 @@ end
 local r,err=pcall(string.format,fmt,...)if not r then
 log.exception("exception formatting log string '%s': %s", fmt, err)return
 end
-local now=reaper.time_precise()local time=log.lua_time_start+(now-log.reaper_time_start)local ftime=math.floor(time)local msecs=string.sub(time-ftime,3,5)local label=log.level_name(level)local prefix=string.format('%s.%s [%s]  ', os.date('%H:%M:%S', ftime), msecs, label)if level<=log.timer_threshold and #log.timers>0 then
+local now=reaper.time_precise()local time=log.lua_time_start+(now-log.reaper_time_start)local ftime=math.floor(time)local msecs=string.sub(time-ftime,3,5)local label='[' .. log.level_name(level) .. ']'local prefix=string.format('%s.%s %-9s ', os.date('%H:%M:%S', ftime), msecs, label)if level<=log.timer_threshold and #log.timers>0 then
 local timer=log.timers[#log.timers]
-local total=_get_precise_duration_string((now-timer[1])*1000)local last=_get_precise_duration_string((now-timer[2])*1000)prefix=prefix .. string.format('(%s / %s ms)  ', last, total)timer[2]=now
+local total=_get_precise_duration_string((now-timer[1])*1000)local last=_get_precise_duration_string((now-timer[2])*1000)local name=timer[3] and string.format(' [%s]', timer[3]) or ''prefix=prefix .. string.format('(%s / %s ms%s) ', last, total, name)timer[2]=now
 end
 local msg=prefix .. err .. '\n'if tail then
 msg=msg .. tail .. '\n'end
@@ -388,7 +388,7 @@ UNDO_STATE_FX_ARA=256
 function rtk.check_reaper_version(major,minor,exact)local curmaj=rtk._reaper_version_major
 local curmin=rtk._reaper_version_minor
 minor=minor<100 and minor or minor/10
-rtk.log.info('compare: %s %s with %s %s', curmaj, curmin, major, minor)if exact then
+if exact then
 return curmaj==major and curmin==minor
 else
 return(curmaj>major)or(curmaj==major and curmin>=minor)end
@@ -724,18 +724,14 @@ local result={}for i=1,#src do
 result[i]=_resolve(x,src[i],dst[i])end
 return result
 end
-}function rtk._do_animations(now)if not rtk._frame_time then
-rtk._frame_time=now
-rtk._frame_count=0
-else
-local duration=now-rtk._frame_time
-if duration>2 then
-rtk.fps=rtk._frame_count/duration
-rtk._frame_time=now
-rtk._frame_count=0
-end
-end
-rtk._frame_count=rtk._frame_count+1
+}function rtk._do_animations(now)if not rtk._frame_times then
+rtk._frame_times={now}else
+local times=rtk._frame_times
+local c=#times
+times[c+1]=now
+if c>30 then
+table.remove(times,1)end
+rtk.fps=c/(times[c]-times[1])end
 if rtk._animations_len>0 then
 local donefuncs=nil
 local done=nil
@@ -751,7 +747,7 @@ newval=anim.stepfunc(target,anim)else
 newval=anim.resolve(anim.easingfunc(anim.pct))end
 anim.frames=anim.frames+1
 if not finished and elapsed>anim.duration*1.5 then
-log.warning('animation: %s %s - failed to complete within 1.5x of duration', target, attr)finished=true
+log.warning('animation: %s %s - failed to complete within 1.5x of duration (fps: current=%s expected=%s)',target,attr,rtk.fps,anim.startfps)finished=true
 end
 if anim.update then
 anim.update(finished and anim.doneval or newval,target,attr)end
@@ -783,7 +779,7 @@ if done then
 for _,anim in ipairs(done)do
 anim.future:resolve(anim.widget or anim.target)local took=reaper.time_precise()-anim._start_time
 local missed=took-anim.duration
-log.log(math.abs(missed)>0.05 and log.DEBUG or log.DEBUG2,'animation: done %s: %s -> %s on %s frames=%s fps=%s took=%.1f (missed by %.3f)',anim.attr,anim.src,anim.dst,anim.target or anim.widget,anim.frames,rtk.fps,took,missed
+log.log(math.abs(missed)>0.05 and log.DEBUG or log.DEBUG2,'animation: done %s: %s -> %s on %s frames=%s current-fps=%s expected-fps=%s took=%.1f (missed by %.3f)',anim.attr,anim.src,anim.dst,anim.target or anim.widget,anim.frames,rtk.fps,anim.startfps,took,missed
 )end
 end
 return true
@@ -834,7 +830,7 @@ end
 if not rtk._animations[kwargs.key] then
 rtk._animations_len=rtk._animations_len+1
 end
-local step=1.0/(rtk.fps*duration)anim=table.shallow_copy(kwargs,{easingfunc=easingfunc,src=kwargs.src or(not kwargs.stepfunc and 0 or nil),dst=kwargs.dst or 0,doneval=kwargs.doneval or kwargs.dst,pct=step,pctstep=step,duration=duration,future=future,frames=0,_start_time=reaper.time_precise()})anim.resolve=function(x)return _resolve(x,anim.src,anim.dst)end
+local step=1.0/(rtk.fps*duration)anim=table.shallow_copy(kwargs,{easingfunc=easingfunc,src=kwargs.src or(not kwargs.stepfunc and 0 or nil),dst=kwargs.dst or 0,doneval=kwargs.doneval or kwargs.dst,pct=step,pctstep=step,duration=duration,future=future,frames=0,startfps=rtk.fps,_start_time=reaper.time_precise()})anim.resolve=function(x)return _resolve(x,anim.src,anim.dst)end
 rtk._animations[kwargs.key]=anim
 log.debug2('animation: scheduled %s', kwargs.key)return future
 end
@@ -5028,7 +5024,7 @@ function rtk.OptionMenu:_reflow_get_max_label_size(boxw,boxh)local segments,lw,l
 for item in self._menu:items()do
 local item_w,item_h=gfx.measurestr(item.altlabel or item.label)w=math.max(w,item_w)h=math.max(h,item_h)end
 return segments,rtk.clamp(w,lw,boxw),rtk.clamp(h,lh,boxh)end
-function rtk.OptionMenu:select(value,trigger)return self:attr('selected', value, trigger == nil or trigger)end
+function rtk.OptionMenu:select(value,trigger)return self:attr('selected', value, trigger)end
 function rtk.OptionMenu:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
 return ok
 end
@@ -5049,13 +5045,14 @@ self.selected_id=nil
 if not self.calc.icononly then
 self:attr('label', '')end
 end
-if trigger then
-local last=self._menu:item(oldval)self:onchange(item,last)end
+local last=self._menu:item(oldval)if value~=oldval then
+self:onchange(item,last)self:onselect(item,last)elseif trigger then
+self:onselect(item,last)end
 end
 return true
 end
 function rtk.OptionMenu:open()assert(self.menu, 'menu attribute was not set on OptionMenu')self._menu:open_at_widget(self):done(function(item)if item then
-self:select(item.id or item.index)end
+self:select(item.id or item.index,true)end
 end)end
 function rtk.OptionMenu:_handle_mousedown(event)local ok=rtk.Button._handle_mousedown(self,event)if ok==false then
 return ok
@@ -5063,6 +5060,7 @@ end
 self:open()return true
 end
 function rtk.OptionMenu:onchange(item,lastitem)end
+function rtk.OptionMenu:onselect(item,lastitem)end
 end)()
 
 __mod_rtk_checkbox=(function()
@@ -5201,9 +5199,10 @@ rtk.log=__mod_rtk_log
 local function init()rtk.script_path=({reaper.get_action_context()})[2]:match('^.+[\\//]')rtk.reaper_hwnd=reaper.GetMainHwnd()local ver=reaper.GetAppVersion():lower()if ver:find('x64') or ver:find('arm64') or ver:find('_64') or ver:find('aarch64') then
 rtk.os.bits=64
 end
-local parts=ver:gsub('/.*', ''):split('.')rtk._reaper_version_major=tonumber(parts[1])local minor_parts=(parts[2] or ''):split('+')local minor=tonumber(minor_parts[1])or 0
+local parts=ver:gsub('/.*', ''):split('.')rtk._reaper_version_major=tonumber(parts[1])local minor=parts[2] or ''local sepidx=minor:find('%D')if sepidx then
+rtk._reaper_version_prerelease=minor:sub(sepidx):gsub('^%+', '')minor=minor:sub(1,sepidx-1)end
+minor=tonumber(minor)or 0
 rtk._reaper_version_minor=minor<100 and minor or minor/10
-rtk._reaper_version_prerelease=minor_parts[2]
 if rtk.os.mac then
 rtk.font.multiplier=0.8
 elseif rtk.os.linux then
@@ -5447,6 +5446,13 @@ fromlsb=-1
 end
 reaper.Undo_BeginBlock2(0)local n=remap_bank_select_multiple(track,{[frommsb]={[fromlsb]={tomsb,tolsb,tobank}}})reaper.Undo_EndBlock2(0, 'Reaticulate: update Bank Select events', UNDO_STATE_ITEMS)return n
 end
+function call_and_preserve_selected_tracks(func,...)local selected={}for i=0,reaper.CountSelectedTracks(0)-1 do
+local track=reaper.GetSelectedTrack(0,i)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')selected[n]=true
+end
+reaper.PreventUIRefresh(1)local r=func(...)for i=0,reaper.CountTracks(0)-1 do
+local track=reaper.GetTrack(0,i)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')reaper.SetTrackSelected(track,selected[n] or false)end
+reaper.PreventUIRefresh(-1)return r
+end
 end)()
 
 local BaseApp=rtk.class('BaseApp', rtk.Application)app=nil
@@ -5490,27 +5496,30 @@ function BaseApp:make_button(icon,label,textured,attrs)local defaults={icon=icon
 return button
 end
 function BaseApp:get_icon_path(name)end
-function BaseApp:fatal_error(msg)msg=msg..'\n\nThis is a fatal error and Reaticulate must now exit. ' ..'\n\nPlease visit https://reaticulate.com/ for support contact details.'reaper.ShowMessageBox(msg, "Reaticulate: fatal error", 0)reaper.atexit()rtk.quit()end
-function BaseApp:get_config(appid,target)appid=appid or self.appid
-target=target or self.config
-if reaper.HasExtState(appid, "config") then
-local state=reaper.GetExtState(appid, "config")local ok,config=pcall(json.decode,state)if not ok then
+function BaseApp:fatal_error(msg)msg=msg..'\n\nThis is an unrecoverable error and Reaticulate must now exit. ' ..'\n\nPlease visit https://reaticulate.com/ for support contact details.'reaper.ShowMessageBox(msg, "Reaticulate fatal error", 0)rtk.quit()end
+function BaseApp:get_ext_state(key)if not reaper.HasExtState(self.appid,key)then
+return
+end
+local encoded=reaper.GetExtState(self.appid,key)local ok,decoded=pcall(json.decode,encoded)return ok and decoded,encoded
+end
+function BaseApp:set_ext_state(key,obj,persist)local serialized=json.encode(obj)reaper.SetExtState(self.appid,key,serialized,persist or false)log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)end
+function BaseApp:get_config(appid,target)local config, encoded=self:get_ext_state('config')if not config and encoded then
+local ok
 log.info('baseapp: config failed to parse as JSON: %s', state)ok,config=pcall(table.fromstring,state)if not ok then
 reaper.MB("Reaticulate wasn't able to parse its saved configuration. This may be because " .."you downgraded Reaticulate and it doesn't understand the format used by a future " .."version.\n\nAll Reaticulate settings will need to be reset to defaults.",'Unrecognized Reaticulate configuration',0
 )config=nil
 else
-self:save_config(self.appid,config)end
+self:save_config(config)end
 end
 if config then
-table.merge(target,config)end
+table.merge(self.config,config)end
+self:set_debug(self.config.debug_level or log.ERROR)if not self.config.dock and self.config.dockstate then
+self.config.dock=(self.config.dockstate>>8)&0xff
+self.config.docked=(self.config.dockstate&0x01)~=0
 end
-self:set_debug(target.debug_level or log.ERROR)if not target.dock and target.dockstate then
-target.dock=(target.dockstate>>8)&0xff
-target.docked=(target.dockstate&0x01)~=0
+return self.config
 end
-return target
-end
-function BaseApp:save_config(appid,config)local serialized=json.encode(config or self.config)reaper.SetExtState(appid or self.appid, "config", serialized, true)end
+function BaseApp:save_config(config)self:set_ext_state('config', config or self.config, true)end
 function BaseApp:set_debug(level)self.config.debug_level=level
 self:save_config()log.level=level or log.ERROR
 log.info("baseapp: Reaticulate log level is %s", log.level_name())end
@@ -6044,7 +6053,7 @@ end)()
 
 local rtk=rtk
 local log=rtk.log
-local reabank={DEFAULT_CHASE_CCS='1,2,11,64-69',reabank_filename_factory=nil,reabank_filename_user=nil,filename_tmp=nil,version=nil,banks_factory=nil,banks_by_guid={},legacy_banks_by_msblsb={},banks_by_path={},project_sync_queued=false,menu=nil,default_colors={['default'] = '#666666',['short'] = '#6c30c6',['short-light'] = '#9630c6',['short-dark'] = '#533bca',['legato'] = '#218561',['legato-dark'] = '#1c5e46',['legato-light'] = '#49ba91',['long'] = '#305fc6',['long-light'] = '#4474e1',['long-dark'] = '#2c4b94',['textured'] = '#9909bd',['fx'] = '#883333'},colors={},textcolors={['default'] = '#ffffff'}}Articulation=rtk.class('Articulation')Articulation.static.FLAG_CHASE=1<<0
+local reabank={DEFAULT_CHASE_CCS='1,2,11,64-69',reabank_filename_factory=nil,reabank_filename_user=nil,filename_tmp=nil,version=nil,banks_factory=nil,banks_by_guid={},legacy_banks_by_msblsb={},banks_by_path={},project_sync_queued=false,last_written_msblsb=nil,menu=nil,default_colors={['default'] = '#666666',['short'] = '#6c30c6',['short-light'] = '#9630c6',['short-dark'] = '#533bca',['legato'] = '#218561',['legato-dark'] = '#1c5e46',['legato-light'] = '#49ba91',['long'] = '#305fc6',['long-light'] = '#4474e1',['long-dark'] = '#2c4b94',['textured'] = '#9909bd',['fx'] = '#883333'},colors={},textcolors={['default'] = '#ffffff'}}Articulation=rtk.class('Articulation')Articulation.static.FLAG_CHASE=1<<0
 Articulation.static.FLAG_ANTIHANG=1<<1
 Articulation.static.FLAG_ANTIHANG_CC=1<<2
 Articulation.static.FLAG_BLOCK_BANK_CHANGE=1<<3
@@ -6206,7 +6215,7 @@ function Bank:_hash(dynamic)local arts={}log.time_start()for _,art in pairs(self
 arts[#arts+1]=as_filtered_table(art.program,art.name,art.group,art.flags,art.iconname,art.spacer,art.message,art.color,art.outputs,art.velrange,art.pitchrange,art.transpose,art.velocity
 )end
 local bankinfo=as_filtered_table(self.name,self.shortname,self.group,self.flags,dynamic and (self.chase or '') or self:get_chase_cc_string(),self.clone,self.off,self.message,arts
-)log.time_end('bank hash finished')return crc64(table.tostring(bankinfo))end
+)log.time_end('reabank: computed hash for %s', self.name)return crc64(table.tostring(bankinfo))end
 function Bank:hash()if not self._cached_hash then
 self._cached_hash=self:_hash(true)end
 return self._cached_hash
@@ -6320,7 +6329,7 @@ end
 self.realized=true
 end
 local function get_reabank_file()local ini=rtk.file.read(reaper.get_ini_file())return ini and ini:match("mididefbankprog=([^\n]*)")end
-function reabank.init()reabank.reabank_filename_factory=Path.join(Path.basedir, "Reaticulate-factory.reabank")reabank.reabank_filename_user=Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)log.time_start()local cur_factory_bank_size,err=rtk.file.size(reabank.reabank_filename_factory)local file=get_reabank_file() or ''local tmpnum=file:lower():match("-tmp(%d+).")if tmpnum and rtk.file.exists(file)then
+function reabank.init()log.time_start()reabank.last_written_msblsb=app:get_ext_state('last_written_msblsb')reabank.reabank_filename_factory=Path.join(Path.basedir, "Reaticulate-factory.reabank")reabank.reabank_filename_user=Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)local cur_factory_bank_size,err=rtk.file.size(reabank.reabank_filename_factory)local file=get_reabank_file() or ''local tmpnum=file:lower():match("-tmp(%d+).")if tmpnum and rtk.file.exists(file)then
 log.debug("reabank: tmp file exists: %s", file)reabank.version=tonumber(tmpnum)reabank.filename_tmp=file
 local last_factory_bank_size=reaper.GetExtState("reaticulate", "factory_bank_size")if cur_factory_bank_size==tonumber(last_factory_bank_size)then
 reabank.menu=nil
@@ -6378,7 +6387,7 @@ candidate=candidate+1
 end
 end
 end
-app:queue_save_project_state_and_bank_refresh()msb,lsb=candidate>>8,candidate&0xff
+app:queue(App.SAVE_PROJECT_STATE|App.REFRESH_BANKS|App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)msb,lsb=candidate>>8,candidate&0xff
 log.info('reabank: generated msblsb=%s,%s for bank %s', msb, lsb, bank.guid)return msb,lsb
 end
 function reabank.clear_chase_cc_list_cache()for guid,bank in pairs(reabank.banks_by_guid)do
@@ -6491,7 +6500,7 @@ msg=msg .. string.format('\n\n%d banks were ignored because they were already in
 msg=msg .. string.format('\n   - %s', bank.name)end
 end
 if #banks>0 then
-app:refresh_banks(false)end
+app:queue(App.REFRESH_BANKS)end
 rtk.defer(reaper.ShowMessageBox, msg, 'Import Reaticulate Banks', 0)end
 function reabank.register_bank(bank)reabank.banks_by_guid[bank.guid]=bank
 reabank.banks_by_path[bank:get_path()]=bank
@@ -6521,29 +6530,48 @@ end
 log.info("reabank: updating ini file %s", inifile)err=rtk.file.write(inifile,ini)if err then
 return app:fatal_error("Failed to write ini file: " .. tostring(err))end
 end
-function reabank.project_banks_to_reabank_string()local s=''for guid,msblsb in pairs(app.project_state.msblsb_by_guid)do
+function reabank.project_banks_to_reabank_string(compare)local changes={updates=0,additions=0}local msblsbmap={}local s=''local guids=table.keys(app.project_state.msblsb_by_guid)table.sort(guids)for _,guid in ipairs(guids)do
+local msblsb=app.project_state.msblsb_by_guid[guid]
 local bank=reabank.get_bank_by_guid(guid)if bank then
+local msblsbstr=tostring(msblsb)local hash=bank:hash()if compare and compare[msblsbstr] then
+if compare[msblsbstr]~=hash then
+changes[bank.guid]=msblsb
+changes.updates=changes.updates+1
+end
+else
+changes.additions=changes.additions+1
+end
+msblsbmap[msblsbstr]=hash
 local msb=msblsb>>8
 local lsb=msblsb&0xff
-if msb and lsb then
 s=s .. string.format('\n\nBank %d %d %s\n', msb, lsb, bank.name)for _,art in ipairs(bank.articulations)do
 s=s .. string.format('%d %s\n', art.program, art.name)end
-else
-log.info('reabank: skipping output of %s due to missing msb/lsb', bank.name)end
 end
 end
-return s
+return msblsbmap,changes,s
 end
-function reabank.write_reabank_for_project()log.time_start()local tmpnum=1
+function reabank.write_reabank_for_project()local msblsbmap=reabank.last_written_msblsb
+local new_msblsbmap,changes,contents=reabank.project_banks_to_reabank_string(msblsbmap)if changes.updates==0 and changes.additions==0 then
+log.info('reabank: project reabank has no changes/additions, skipping write')return
+end
+local tmpnum=1
 if reabank.filename_tmp then
 tmpnum=tonumber(reabank.filename_tmp:match("-tmp(%d+).")) + 1
 end
-local newfile=reabank.reabank_filename_user:gsub("(.*).reabank", "%1-tmp" .. tmpnum .. ".reabank")local header="// Generated file.  DO NOT EDIT!  CONTENTS WILL BE LOST!\n"header=header .. "// Edit this instead: " .. reabank.reabank_filename_user .. "\n\n\n\n"local s=reabank.project_banks_to_reabank_string()log.debug('reabank: stringified banks nbytes=%s', #s)local err=rtk.file.write(newfile,header..s)if err then
-log.time_end()return app:fatal_error("Failed to write Reabank file: " .. tostring(err))end
+local newfile=reabank.reabank_filename_user:gsub("(.*).reabank", "%1-tmp" .. tmpnum .. ".reabank")contents="// Generated file.  DO NOT EDIT!  CONTENTS WILL BE LOST!\n" .."// Edit this instead: " .. reabank.reabank_filename_user .. "\n\n\n\n" ..contents
+if not msblsbmap and reabank.filename_tmp then
+local existing=rtk.file.read(reabank.filename_tmp)if existing==contents then
+log.debug('reabank: project reabank contents is not changing, skipping write')return
+end
+end
+log.debug('reabank: stringified banks nbytes=%s', #contents)local err=rtk.file.write(newfile,contents)if err then
+return app:fatal_error("Failed to write project Reabank file: " .. tostring(err))end
 log.debug('reabank: wrote %s', newfile)set_reabank_file(newfile)log.debug('reabank: installed new Reaper global reabank')if reabank.filename_tmp and rtk.file.exists(reabank.filename_tmp)then
 log.debug("reabank: deleting old reabank file: %s", reabank.filename_tmp)os.remove(reabank.filename_tmp)end
 reabank.filename_tmp=newfile
-log.info("reabank: finished switching to new reabank file: %s", newfile)log.time_end()reabank.version=tmpnum
+log.info("reabank: finished switching to new reabank file: %s", newfile)reabank.version=tmpnum
+app:set_ext_state('last_written_msblsb', new_msblsbmap, true)reabank.last_written_msblsb=new_msblsbmap
+return changes.updates>0 and changes or nil,changes.additions>0
 end
 function reabank.get_bank_by_guid(guid)return reabank.banks_by_guid[guid]
 end
@@ -6830,7 +6858,7 @@ self.track:queue_write_appdata()self:add_bank_to_project(bank,msb,lsb)else
 log.error('rfx: migration failed: bank %s is missing GUID', bank.name)end
 return bank
 end
-function rfx.GUIDMigrator:add_bank_to_project(bank,msb,lsb)log.debug('rfx: migrate: guid bank request %s %s', msb, lsb)local gotmsb,gotlsb=reabank.add_bank_to_project(bank,msb,lsb)if(msb or lsb)and(gotmsb~=msb or gotlsb~=lsb)then
+function rfx.GUIDMigrator:add_bank_to_project(bank,msb,lsb)local gotmsb,gotlsb=reabank.add_bank_to_project(bank,msb,lsb)if(msb or lsb)and(gotmsb~=msb or gotlsb~=lsb)then
 if self.msblsbmap[msb] then
 self.msblsbmap[msb][lsb]={gotmsb,gotlsb,bank}else
 self.msblsbmap[msb]={[lsb]={gotmsb,gotlsb,bank}}end
@@ -7054,7 +7082,7 @@ if not self.unknown_banks then
 self.unknown_banks={}end
 self.unknown_banks[#self.unknown_banks+1]=b.guid
 log.warning("rfx: instance refers to undefined bank %s", b.guid)else
-log.debug("rfx: bank=%s  hash: %s vs. %s", bank.name, b.hash, bank:hash())bank.srcchannel=b.srcchannel
+log.debug("rfx: index bank=%s  hash=%s -> %s", bank.name, b.hash, bank:hash())bank.srcchannel=b.srcchannel
 bank.dstchannel=b.dstchannel
 bank.dstbus=b.dstbus
 if b.srcchannel==17 then
@@ -7337,14 +7365,22 @@ end)()
 local feedback=__mod_feedback
 local json=__mod_lib_json
 local log=rtk.log
-App=rtk.class('App', BaseApp)function App:initialize(basedir,t0,t1)self.config={cc_feedback_device=-1,cc_feedback_bus=1,cc_feedback_articulations=1,cc_feedback_articulations_cc=0,cc_feedback_active=true,autostart=0,art_colors=nil,track_selection_follows_midi_editor=true,track_selection_follows_fx_focus=false,art_insert_at_selected_notes=true,single_floating_instrument_fx_window=false,keyboard_focus_follows_mouse=false,default_channel_behavior=nil,chase_ccs=nil,}self.config_map_to_script={track_selection_follows_midi_editor={0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},track_selection_follows_fx_focus={0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},single_floating_instrument_fx_window={0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},keyboard_focus_follows_mouse={0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},}self.known_focus_classes={REAPERmidieditorwnd='midi_editor',REAPERTCPDisplay='tcp',REAPERTrackListWindow='arrange',REAPERMCPDisplay='hwnd',Lua_LICE_gfx_standalone='hwnd',eelscript_gfx='hwnd',['#32770'] = 'hwnd',}if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
+App=rtk.class('App', BaseApp)App.static.SAVE_PROJECT_STATE=1
+App.static.REFRESH_BANKS=2
+App.static.CLEAN_UNUSED_BANKS=4
+App.static.REPARSE_REABANK_FILE=8
+App.static.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK=16
+App.static.FORCE_RECOGNIZE_BANKS_PROJECT=32
+App.static.REFRESH_BANKS_ACTIONS=2|4|8|32
+function App:initialize(basedir,t0,t1)self.config={cc_feedback_device=-1,cc_feedback_bus=1,cc_feedback_articulations=1,cc_feedback_articulations_cc=0,cc_feedback_active=true,autostart=0,art_colors=nil,track_selection_follows_midi_editor=true,track_selection_follows_fx_focus=false,art_insert_at_selected_notes=true,single_floating_instrument_fx_window=false,keyboard_focus_follows_mouse=false,default_channel_behavior=nil,chase_ccs=nil,}self.config_map_to_script={track_selection_follows_midi_editor={0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},track_selection_follows_fx_focus={0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},single_floating_instrument_fx_window={0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},keyboard_focus_follows_mouse={0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},}self.known_focus_classes={REAPERmidieditorwnd='midi_editor',REAPERTCPDisplay='tcp',REAPERTrackListWindow='arrange',REAPERMCPDisplay='hwnd',Lua_LICE_gfx_standalone='hwnd',eelscript_gfx='hwnd',['#32770'] = 'hwnd',}if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
 return
 end
 self.track=nil
 self.project_change_cookie=nil
 self.project_dirty=nil
 self.project_state=nil
-self.project_state_save_queued=false
+self.queued_actions=0
+self.active_projects_by_cookie=nil
 self.last_track=nil
 self.default_channel=1
 self.midi_hwnd=nil
@@ -7357,7 +7393,7 @@ self.last_focused_hwnd=nil
 self.last_focus_time=nil
 self.saved_focus_window=nil
 self.refocus_target_time=nil
-articons.init()rfx.init()reabank.init()if not self.config.art_colors then
+self.reaper_supports_track_data_reload=rtk.check_reaper_version(6,46)articons.init()rfx.init()reabank.init()if not self.config.art_colors then
 self.config.art_colors={}for color,value in pairs(reabank.default_colors)do
 if reabank.colors[color] and reabank.colors[color]~=value then
 self.config.art_colors[color]=value
@@ -7375,27 +7411,38 @@ end
 end
 return cfg
 end
-function App:_save_project_state()local state=json.encode(self.project_state)reaper.SetProjExtState(0, 'reaticulate', 'state', state)log.info('app: saved project state: %s %s', #state, state)if self.project_state_save_queued==2 then
-self:refresh_banks(false)end
-self.project_state_save_queued=false
+function App:_run_queued_actions()local flags=self.queued_actions
+if flags&App.SAVE_PROJECT_STATE~=0 then
+local state=json.encode(self.project_state)reaper.SetProjExtState(0, 'reaticulate', 'state', state)log.info('app: saved project state (%s bytes)', #state)log.debug('app: current project state: %s', state)end
+if flags&App.REFRESH_BANKS_ACTIONS~=0 then
+self:refresh_banks(flags)elseif flags&App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK~=0 then
+if self:has_arrange_view_pc_names()or self.midi_hwnd then
+self:force_recognize_bank_change_one_track(rfx.current.track,true)end
 end
-function App:queue_save_project_state(refresh_banks)if not self.project_state_save_queued then
-rtk.defer(self._save_project_state,self)end
-self.project_state_save_queued=math.max(self.project_state_save_queued or 1,refresh_banks and 2 or 1)end
-function App:queue_save_project_state_and_bank_refresh()self:queue_save_project_state(true)end
+self.queued_actions=0
+end
+function App:queue(flags)if self.queued_actions==0 then
+rtk.defer(self._run_queued_actions,self)end
+flags=flags or 0
+self.queued_actions=self.queued_actions|flags
+end
 function App:log_msblsb_mapping()local text={}for guid,msblsb in pairs(self.project_state.msblsb_by_guid)do
 local bank=reabank.get_bank_by_guid(guid)text[#text+1]=string.format('       %s -> %s/%s (%s)',guid,(msblsb>>8)&0xff,msblsb&0xff,bank and bank.name or 'UNKNOWN!')end
 log.debug('MSB/LSB assignment:\n%s', table.concat(text, '\n'))end
-function App:onprojectchange()local r, data=reaper.GetProjExtState(0, 'reaticulate', 'state')log.info('app: project changed: %s %s', self.project_change_cookie, data)self.project_state={}if r~=0 then
+function App:onprojectchange(opened)local r, data=reaper.GetProjExtState(0, 'reaticulate', 'state')log.info('app: project changed (opened=%s cookie=%s)', opened, self.project_change_cookie)log.debug('app: loaded project state: %s', data)self.project_state={}if r~=0 then
 local ok,decoded=pcall(json.decode,data)if ok then
 self.project_state=decoded
 else
 log.error('failed to restore Reaticulate project state: %s', decoded)end
 end
+local flags=App.REFRESH_BANKS
 reabank.onprojectchange()if r==0 then
-log.info('app: beginning project migration to GUID')self:migrate_project_to_guid()else
-self:clean_unused_project_banks()end
-self:queue_save_project_state_and_bank_refresh()end
+log.info('app: beginning project migration to GUID')self:migrate_project_to_guid()flags=flags|App.SAVE_PROJECT_STATE
+end
+if opened then
+flags=flags|App.FORCE_RECOGNIZE_BANKS_PROJECT|App.CLEAN_UNUSED_BANKS
+end
+self:queue(flags)end
 function App:ontrackchange(last,cur)last=reaper.ValidatePtr2(0, last, 'MediaTrack*') and last or nil
 cur=reaper.ValidatePtr2(0, cur, 'MediaTrack*') and cur or nil
 local lastn,curn
@@ -7403,7 +7450,7 @@ if last then
 lastn=reaper.GetMediaTrackInfo_Value(last, 'IP_TRACKNUMBER')end
 if cur then
 curn=reaper.GetMediaTrackInfo_Value(cur, 'IP_TRACKNUMBER')end
-log.info('app: track change: %s (%s) -> %s (%s)', lastn, last, curn, cur)self:log_msblsb_mapping()reaper.PreventUIRefresh(1)self.screens.banklist.filter_entry:onchange()if cur then
+log.info('app: track change: %s -> %s', lastn, curn)self:log_msblsb_mapping()reaper.PreventUIRefresh(1)self.screens.banklist.filter_entry:onchange()if cur then
 reaper.CSurf_OnTrackSelection(cur)if self.config.single_floating_instrument_fx_window then
 self:do_single_floating_fx()end
 end
@@ -7521,27 +7568,28 @@ local function _get_cc_idx_at_ppq(take,ppq)local _,_,n_events,_=reaper.MIDI_Coun
 local previdx,prevppq=nil,nil
 local nextidx,nextppq=nil,nil
 while idx>0 and idx<n_events and skip>0.5 do
-local rv,_,_,evtppq,_,evtchan,_,_=reaper.MIDI_GetCC(take,idx)skip=skip/2
+local rv,_,_,evtppq,_,evtchan,_,_=reaper.MIDI_GetCC(take,idx)local delta=math.abs(evtppq-ppq)if delta<1 then
+return true,previdx,prevppq,idx,evtppq,n_events
+end
+skip=skip/2
 if evtppq>ppq then
 nextidx,nextppq=idx,evtppq
 idx=idx-math.ceil(skip)elseif evtppq<ppq then
 previdx,prevppq=idx,evtppq
-idx=idx+math.ceil(skip)else
-return true,previdx,prevppq,idx,evtppq,n_events
-end
+idx=idx+math.ceil(skip)end
 end
 return false,previdx,prevppq,nextidx,nextppq,n_events
 end
-local function _delete_program_changes(take,channel,startppq,endppq)local found,_,_,idx,ppq,n_events=_get_cc_idx_at_ppq(take,startppq)if not ppq or ppq<startppq or ppq>endppq then
+local function _delete_program_changes(take,channel,startppq,endppq)local found,_,_,idx,ppq,n_events=_get_cc_idx_at_ppq(take,startppq)if not found then
 return
 end
 local msb,lsb,program=_delete_program_events_at_ppq(take,channel,idx,n_events,ppq,endppq)return msb,lsb,program
 end
-local function _insert_program_change(take,ppq,channel,msb,lsb,program,overwrite)local found,_,_,idx,_,n_events=_get_cc_idx_at_ppq(take,ppq)if found then
+local function _insert_program_change(take,ppq,channel,msb,lsb,program,overwrite)local found,_,_,idx,foundppq,n_events=_get_cc_idx_at_ppq(take,ppq)if found then
 if not overwrite then
 log.exception('TODO: fix this bug')return
 end
-_delete_program_events_at_ppq(take,channel,idx,n_events,ppq,ppq)end
+_delete_program_events_at_ppq(take,channel,idx,n_events,foundppq,foundppq)end
 reaper.MIDI_InsertCC(take,false,false,ppq,0xb0,channel,0,msb)reaper.MIDI_InsertCC(take,false,false,ppq,0xb0,channel,32,lsb)reaper.MIDI_InsertCC(take,false,false,ppq,0xc0,channel,program,0)end
 local function _get_insertion_points_by_selected_notes(take,program)local insert_ppqs={}local delete_ppqs={}local offset=0
 local idx=-1
@@ -7721,7 +7769,7 @@ reaper.Main_OnCommandEx(reaper.NamedCommandLookup('_BR_FOCUS_ARRANGE_WND'), 0, 0
 end
 end
 function rfx.onunsubscribe()app.screens.banklist.save_scroll_position()end
-function rfx.onartchange(channel,group,last_program,new_program,track_changed)log.info("app: articulation change: %s -> %d  ch=%d  group=%d  track_changed=%s", last_program, new_program, channel, group, track_changed)local artidx=channel+(group<<8)local last_art=app.active_articulations[artidx]
+function rfx.onartchange(channel,group,last_program,new_program,track_changed)log.debug("app: articulation change: %s -> %d  (ch=%d group=%d)", last_program, new_program, channel, group)local artidx=channel+(group<<8)local last_art=app.active_articulations[artidx]
 local channel_bit=2^(channel-1)if last_art then
 last_art.channels=last_art.channels&~channel_bit
 if last_art.channels==0 then
@@ -7912,18 +7960,22 @@ self.toolbar.undock:hide()self.toolbar.dock:show()else
 self.toolbar.dock:hide()self.toolbar.undock:show()end
 end
 end
-function App:refresh_banks(parse)local function kick_item(item)local fast=reaper.SNM_CreateFastString("")if reaper.SNM_GetSetObjectState(item,fast,false,false)then
-reaper.SNM_GetSetObjectState(item,fast,true,false)end
-reaper.SNM_DeleteFastString(fast)end
-log.time_start()if parse then
+function App:has_arrange_view_pc_names()local ok, midipeaks=reaper.get_config_var_string('midipeaks')return(tonumber(ok and midipeaks)or 1)&1==0 and
+self.reaper_supports_track_data_reload
+end
+function App:refresh_banks(flags)log.time_start()flags=flags or 0
+if flags&App.REPARSE_REABANK_FILE~=0 then
 reabank.parseall()log.debug("app: refresh: reabank.parseall() done")rfx.all_tracks_sync_banks_if_hash_changed()end
-reabank.write_reabank_for_project()local hwnd=reaper.MIDIEditor_GetActive()if hwnd  then
-local take=reaper.MIDIEditor_GetTake(hwnd)if take and reaper.ValidatePtr(take, 'MediaItem_Take*') then
-local item=reaper.GetMediaItemTake_Item(take)if item then
-kick_item(item)log.info("app: refresh: kicked MIDI editor")end
-end
-end
-rfx.current:sync(rfx.current.track,true)log.debug("app: refresh: synced RFX")self:ontrackchange(nil,self.track)log.debug("app: refresh: ontrackchange() done")self.screens.banklist.update()log.debug("app: refresh: updated screens")log.info("app: refresh: all done")log.time_end()end
+if flags&App.CLEAN_UNUSED_BANKS~=0 then
+log.info('app: refresh: performing GC on project banks')self:clean_unused_project_banks()end
+local changes,additions=reabank.write_reabank_for_project()if self:has_arrange_view_pc_names()then
+if(changes or additions)and flags&App.FORCE_RECOGNIZE_BANKS_PROJECT~=0 then
+self:force_recognize_bank_change_many_tracks()elseif changes then
+self:force_recognize_bank_change_many_tracks(nil,changes)elseif flags&App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK~=0 and rfx.current.track then
+self:force_recognize_bank_change_one_track(rfx.current.track)end
+else
+self:force_recognize_bank_change_one_track(nil,true)end
+rfx.current:sync(rfx.current.track,true)log.debug("app: refresh: synced RFX")self:ontrackchange(nil,self.track)log.debug("app: refresh: ontrackchange() done")self.screens.banklist.update()log.debug("app: refresh: updated screens")log.info("app: refresh: all done (flags=%s changes=%s additions=%s)", flags, changes, additions)log.time_end()end
 function App:check_banks_for_errors()if self:current_screen()==self.screens.trackcfg then
 self.screens.trackcfg.update()else
 self.screens.trackcfg.check_errors()end
@@ -7937,22 +7989,46 @@ return false
 end
 chunk=chunk:gsub('MIDIBANKPROGFN "[^"]*"', 'MIDIBANKPROGFN ""')local fast=reaper.SNM_CreateFastString(chunk)reaper.SNM_GetSetObjectState(track,fast,true,false)reaper.SNM_DeleteFastString(fast)return true
 end
-function App:beat_reaper_into_submission()local fixed=0
-log.time_start()for i=0,reaper.CountTracks(0)-1 do
-local track=reaper.GetTrack(0,i)if self:clear_track_reabank_mapping(track)then
-fixed=fixed+1
+function App:force_recognize_bank_change_one_track(track,midi_editor)log.time_start()local function kick_item(item)local fast=reaper.SNM_CreateFastString("")if reaper.SNM_GetSetObjectState(item,fast,false,false)then
+reaper.SNM_GetSetObjectState(item,fast,true,false)end
+reaper.SNM_DeleteFastString(fast)end
+if track and reaper.ValidatePtr2(0, track, 'MediaTrack*') then
+if self.reaper_supports_track_data_reload then
+local tracks=track and {track}self:force_recognize_bank_change_many_tracks(tracks)else
+for itemidx=0,reaper.CountTrackMediaItems(track)-1 do
+local item=reaper.GetTrackMediaItem(track,itemidx)kick_item(item)end
+end
+elseif midi_editor then
+local hwnd=reaper.MIDIEditor_GetActive()if hwnd then
+local take=reaper.MIDIEditor_GetTake(hwnd)if take and reaper.ValidatePtr2(0, take, 'MediaItem_Take*') then
+local item=reaper.GetMediaItemTake_Item(take)kick_item(item)end
 end
 end
-if fixed==0 then
-reaper.MB('No tracks needing repair were discovered', 'Bank assignment scrub', 0)else
-reaper.MB(string.format('%d track(s) were repaired', fixed), 'Bank assignment scrub', 0)end
-log.debug('app: finished track chunk sweep')log.time_end()end
+log.time_end('app: force recognize bank change: track=%s midi=%s', track, midi_editor)end
+function App:force_recognize_bank_change_many_tracks(tracks,guids)call_and_preserve_selected_tracks(function()if not tracks and not guids then
+log.info('app: force recognize bank change on entire project')reaper.Main_OnCommandEx(40296,0,0)else
+reaper.Main_OnCommandEx(40297,0,0)if tracks then
+log.info('app: force recognize bank change on %s tracks', #tracks)for _,track in ipairs(tracks)do
+reaper.SetTrackSelected(track,true)end
+elseif guids then
+log.info('app: force recognize bank change by MSB/LSB')for idx,rfxtrack in rfx.get_tracks(0,true)do
+for b in rfxtrack:get_banks()do
+if guids[b.guid] then
+reaper.SetTrackSelected(rfxtrack.track,true)end
+end
+end
+end
+end
+log.time_start()reaper.Main_OnCommandEx(42465,0,0)log.time_end('app: invoked REAPER action to reload reabank on selected tracks')end)end
+function App:beat_reaper_into_submission()log.time_start()for i=0,reaper.CountTracks(0)-1 do
+local track=reaper.GetTrack(0,i)self:clear_track_reabank_mapping(track)end
+self:force_recognize_bank_change_many_tracks()reaper.MB('Force-refreshed all tracks in project.', 'Refresh Project', 0)log.debug('app: finished track chunk sweep')log.time_end()end
 function App:build_frame()BaseApp.build_frame(self)local menubutton=rtk.OptionMenu{icon='med-edit',flat=true,icononly=true,tooltip='Manage banks',}if rtk.os.windows then
 menubutton:attr('menu', {'Import Banks from Clipboard','Edit in Notepad','Open in Default App','Show in Explorer'})elseif rtk.os.mac then
 menubutton:attr('menu', {'Import Banks from Clipboard','Edit in TextEdit','Open in Default App','Show in Finder'})else
 menubutton:attr('menu', {'Import Banks from Clipboard','Edit in Editor','Show in File Browser',})end
 local toolbar=self.toolbar
-toolbar:add(menubutton)menubutton.onchange=function(self)reabank.create_user_reabank_if_missing()if self.selected_index==1 then
+toolbar:add(menubutton)menubutton.onselect=function(self)reabank.create_user_reabank_if_missing()if self.selected_index==1 then
 local clipboard=rtk.clipboard.get()reabank.import_banks_from_string_with_feedback(clipboard, 'the clipboard')elseif rtk.os.windows then
 if self.selected_index==2 then
 reaper.ExecProcess('cmd.exe /C start /B notepad ' .. reabank.reabank_filename_user, -2)elseif self.selected_index==3 then
@@ -7969,7 +8045,7 @@ os.execute('xdg-open "' .. reabank.reabank_filename_user .. '"')elseif self.sele
 local path=Path.join(Path.resourcedir, "Data")os.execute('xdg-open "' .. path .. '"')end
 end
 end
-local button = toolbar:add(rtk.Button{icon='med-sync', flat=true})button:attr('tooltip', 'Reload ReaBank files from disk')button.onclick=function(b,event)rtk.defer(function()app:refresh_banks(true)if event.shift then
+local button = toolbar:add(rtk.Button{icon='med-sync', flat=true})button:attr('tooltip', 'Reload ReaBank files from disk')button.onclick=function(b,event)rtk.defer(function()app:refresh_banks(App.REPARSE_REABANK_FILE|App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)if event.shift then
 self:beat_reaper_into_submission()end
 end)end
 self.toolbar.dock = toolbar:add(rtk.Button{icon='med-dock_window', flat=true, tooltip='Dock window'})self.toolbar.undock = toolbar:add(rtk.Button{icon='med-undock_window', flat=true, tooltip='Undock window'})self.toolbar.dock.onclick=function()self.window:attr('docked', true)end
@@ -7979,7 +8055,9 @@ end
 function App:zoom(increment)BaseApp.zoom(self,increment)if self:current_screen()==self.screens.settings then
 self.screens.settings.update_ui_scale_menu()end
 end
-function App:gen_new_change_cookie()self.project_change_cookie=rtk.uuid4()reaper.SetProjExtState(0, 'reaticulate', 'change_cookie', self.project_change_cookie)log.debug('app: generated new project cookie: %s', self.project_change_cookie)end
+function App:gen_new_change_cookie()local cookie=rtk.uuid4()self.project_change_cookie=cookie
+self.active_projects_by_cookie[cookie]=true
+reaper.SetProjExtState(0, 'reaticulate', 'change_cookie', cookie)log.debug('app: generated new project cookie: %s', cookie)end
 function App:select_track(track,scroll_arrange)reaper.PreventUIRefresh(1)reaper.SetOnlyTrackSelected(track)feedback.scroll_mixer(track)if scroll_arrange then
 reaper.Main_OnCommandEx(40913,0,0)end
 reaper.CSurf_OnTrackSelection(track)reaper.PreventUIRefresh(-1)end
@@ -8067,7 +8145,17 @@ track=reaper.GetSelectedTrack(0,0)end
 local last_track=self.track
 local track_changed=self.track~=track
 local current_screen=self:current_screen()local _, change_cookie=reaper.GetProjExtState(0, 'reaticulate', 'change_cookie')local dirty=reaper.IsProjectDirty(0)if change_cookie~=self.project_change_cookie then
-self:gen_new_change_cookie()rfx.current:reset()self:onprojectchange()elseif dirty~=self.project_dirty then
+local active=self.active_projects_by_cookie
+local opened=active and not active[change_cookie] or false
+self.active_projects_by_cookie={}for pidx=0,100 do
+local proj, _=reaper.EnumProjects(pidx, '')if not proj then
+break
+end
+local ok, cookie=reaper.GetProjExtState(proj, 'reaticulate', 'change_cookie')if ok and cookie ~='' then
+self.active_projects_by_cookie[cookie]=true
+end
+end
+self:gen_new_change_cookie()rfx.current:reset()self:onprojectchange(opened)elseif dirty~=self.project_dirty then
 self:gen_new_change_cookie()end
 self.project_dirty=dirty
 local valid_before=rfx.current:valid()if rfx.current:sync(track)then
@@ -8120,9 +8208,9 @@ local channel=reaper.MIDIEditor_GetSetting_int(hwnd, 'default_note_chan') + 1
 if channel~=self.default_channel then
 self:set_default_channel(channel)end
 end
-if track_changed then
-feedback.ontrackchange(last_track,track)end
 end
+if track_changed and not track_change_pending then
+feedback.ontrackchange(last_track,track)end
 rfx.opcode_commit_all()end
 return App
 end)()
@@ -8440,6 +8528,7 @@ end)()
 __mod_screens_installer=(function()
 local rtk=rtk
 local rfx=__mod_rfx
+local feedback=__mod_feedback
 local screen={widget=nil,last_fx_enabled=nil,last_track=nil,}function screen.init()screen.widget=rtk.Container()local box = screen.widget:add(rtk.VBox(), {halign='center', valign='center', expand=1})screen.icon = rtk.ImageBox{image='huge-alert_circle_outline', alpha=0.5, scale=1}box:add(screen.icon, {halign='center'})screen.message=rtk.Text{fontsize=24, alpha=0.5, wrap=true, padding=5, textalign='center'}box:add(screen.message, {halign='center', tpadding=10})screen.button = rtk.Button{'Add Reaticulate FX', icon='med-add_circle_outline', alpha=0.8}screen.button.onclick=function()reaper.PreventUIRefresh(1)reaper.Undo_BeginBlock()reaper.GetSetMediaTrackInfo_String(app.track, 'P_EXT:reaticulate', '', true)local fx=reaper.TrackFX_AddByName(app.track, 'JS:Reaticulate', 0, -1000)if fx~=-1 and not rfx.validate(app.track,fx)then
 reaper.TrackFX_Delete(app.track,fx)fx=reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, -1000)if fx~=-1 and not rfx.validate(app.track,fx)then
 reaper.TrackFX_Delete(app.track,fx)fx=-1
@@ -8451,7 +8540,7 @@ reaper.MB("The Reaticulate JSFX could not be found in REAPER's Effects folder, "
 reaper.TrackFX_Show(app.track,fx,2)if fx>0 then
 reaper.TrackFX_CopyToTrack(app.track,fx,app.track,0,true)end
 end
-reaper.Undo_EndBlock("Add Reaticulate FX", UNDO_STATE_FX)reaper.PreventUIRefresh(-1)rfx.current:sync(app.track,true)app:ontrackchange(nil,app.track)screen.update()end
+reaper.Undo_EndBlock("Add Reaticulate FX", UNDO_STATE_FX)reaper.PreventUIRefresh(-1)rfx.current:sync(app.track,true)app:ontrackchange(nil,app.track)feedback.ontrackchange(nil,app.track)screen.update()end
 box:add(screen.button, {halign='center', tpadding=20})end
 function screen.update()local text='No track selected'if app.track then
 local enabled=reaper.GetMediaTrackInfo_Value(app.track, "I_FXEN")if app.track==screen.last_track and enabled==screen.last_fx_enabled then
@@ -8561,22 +8650,35 @@ if text.value~=app.config.bg then
 app.config.bg=text.value
 app:save_config()end
 end
-)add_tip(section, 95, 'Leave blank to detect from theme. Restart required.')local section=make_section(screen.vbox, "Feedback to Control Surface")local row=add_row(section, "MIDI Device:", 85, 2)local menu=row:add(rtk.OptionMenu())menu.onchange=function(menu)log.info("settings: changed MIDI CC feedback device: %s", menu.selected_id)app.config.cc_feedback_device=tonumber(menu.selected_id)app:save_config()if app.config.cc_feedback_device==-1 then
+)add_tip(section, 95, 'Leave blank to detect from theme. Restart required.')local section=make_section(screen.vbox, "Feedback to Control Surface")local row=section:add(rtk.HBox{spacing=5,alpha=0.6,bpadding=10})row:add(rtk.ImageBox{'med-info_outline'})row:add(rtk.Text{wrap=true,'Transmit articulation changes and all CC values on the default ' ..'channel to the selected device. Control surfaces with motorized ' ..'faders will move in realtime during playback.'})local row=add_row(section, "MIDI Device:", 85, 2)local menu=row:add(rtk.OptionMenu())menu.onchange=function(menu)local device=tonumber(menu.selected_id)if app.config.cc_feedback_device==device then
+return
+end
+log.info('settings: new MIDI feedback device: %s', device)log.time_start()app.config.cc_feedback_device=device
+app:save_config()if app.config.cc_feedback_device==-1 then
 feedback.destroy_feedback_track()else
 feedback.ensure_feedback_track()feedback.update_feedback_track_settings(true)end
-app:check_banks_for_errors()end
+app:check_banks_for_errors()log.time_end('settings: finished changing MIDI feedback device')end
 screen.midi_device_menu=menu
 local box=section:add(rtk.HBox{tpadding=5,bpadding=0})local s=box:add(rtk.Spacer{w=85,h=10},{spacing=0})local prefs = box:add(rtk.Button{icon='med-settings', flat=true}, {valign='center', lpadding=5})local info=add_tip(box, 0, 'Device must be enabled for output')prefs.onclick=function()reaper.ViewPrefs(153, '')end
-local row=add_row(section, "MIDI Bus:", 85)local menu=row:add(rtk.OptionMenu())menu:attr('menu', {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})menu:select(app.config.cc_feedback_bus or 1)menu.onchange=function(menu)log.info("settings: changed MIDI CC feedback bus: %s", menu.selected_index)app.config.cc_feedback_bus=menu.selected_index
+local row=add_row(section, "MIDI Bus:", 85)local menu=row:add(rtk.OptionMenu())menu:attr('menu', {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})menu:select(app.config.cc_feedback_bus or 1)menu.onchange=function(menu)if app.config.cc_feedback_bus==menu.selected_index then
+return
+end
+log.info("settings: changed MIDI CC feedback bus: %s", menu.selected_index)app.config.cc_feedback_bus=menu.selected_index
 app:save_config()feedback.update_feedback_track_settings(true)end
-local row=add_row(section, "Articulations:", 85)local menu=row:add(rtk.OptionMenu())menu:attr('menu', {"Program Changes", "CC values"})local row=add_row(section, "CC #:", 85)local text=row:add(rtk.Entry{placeholder="CC number"})text.onchange=function(text)app.config.cc_feedback_articulations_cc=tonumber(text.value)app:save_config()feedback.update_feedback_track_settings(true)end
-menu.onchange=function(menu)app.config.cc_feedback_articulations=menu.selected_index
+local row=add_row(section, "Articulations:", 85)local menu=row:add(rtk.OptionMenu())menu:attr('menu', {"Program Changes", "CC values"})local row=add_row(section, "CC #:", 85)local text=row:add(rtk.Entry{placeholder="CC number"})text.onchange=function(text)local cc=tonumber(text.value)if app.config.cc_feedback_articulations_cc==cc then
+return
+end
+app.config.cc_feedback_articulations_cc=tonumber(text.value)app:save_config()feedback.update_feedback_track_settings(true)end
+menu.onchange=function(menu)local changed=app.config.cc_feedback_articulations~=menu.selected_index
+app.config.cc_feedback_articulations=menu.selected_index
 if menu.selected_index==1 then
 row:hide()else
 if app.config.cc_feedback_articulations_cc>0 then
 text:attr('value', tostring(app.config.cc_feedback_articulations_cc))end
 row:show()end
+if changed then
 feedback.update_feedback_track_settings(true)app:save_config()end
+end
 screen.cc_feedback_articulations_menu=menu
 local section=make_section(screen.vbox, "Default Articulation Colors")local box=section:add(rtk.FlowBox{vspacing=5,hspacing=20})for _,record in ipairs(screen.art_colors)do
 local name,color,iconname=table.unpack(record)local row=add_row(box, name .. ":", 80)local default=reabank.default_colors[color]
@@ -8629,25 +8731,16 @@ reaper.ShowMessageBox("You have reached the limit of banks for this track.","Too
 local bankbox=screen.create_bank_ui(nil,17,17,1)screen.banklist:add(bankbox,{xmaxw=screen.max_bankui_width})bankbox.bank_menu.onchange()end
 end
 vbox:add(add_bank_button,{lpadding=20,tpadding=20})local section=vbox:add(rtk.VBox{spacing=10,margin={0,10,0,20}})section:add(rtk.Heading{'Track Tweaks', tmargin=50})section:add(rtk.Button{'Fix numeric articulation names',icon='med-auto_fix',tooltip='Removes any non-Reaticulate ReaBank assignment from this track to ' ..'fix numeric Program Change event names (e.g. 43-1-22)',flat=true,onclick=function()if screen.error==rfx.ERROR_UNKNOWN_BANK then
-return reaper.MB("This track has banks assigned that aren't currently installed on this system, " .."which is the likely cause of numeric program numbers.\n\nPlease first select an " .."available bank.",'User action required',0
+return reaper.MB("This track has banks assigned that aren't currently installed on this system, " .."which is the likely cause of numeric articulation names.\n\nPlease first select " .."an available bank.",'User action required',0
 )end
-local msg
-if app:clear_track_reabank_mapping(rfx.current.track)then
-msg='A non-Reaticulate ReaBank was found and removed from this track. 'end
-local n_remapped
+local cleared=app:clear_track_reabank_mapping(rfx.current.track)if cleared then
+log.info('trackcfg: cleared non-Reaticulate bank on current track')end
+app:force_recognize_bank_change_one_track(rfx.current.track)local n_remapped=0
 if #screen.banklist.children==1 then
 local bankbox=screen.banklist:get_child(1)local guid=bankbox.bank_menu.selected_id
-local bank=reabank.get_bank_by_guid(guid)n_remapped=remap_bank_select(rfx.current.track,nil,bank)if n_remapped>0 then
-msg=string.format('%s%d Bank/Program Select events on this track were updated.', msg or '', n_remapped)end
-end
-if msg then
-rtk.defer(reaper.MB, msg, 'Fixed!', 0)else
-msg="There wasn't any non-Reaticulate ReaBank found on this track to fix."local title='No Problem Found'if #screen.banklist.children==0 then
-msg=msg .. '\n\nAlso, there are no banks assigned to this track, so no ' ..' Bank/Program Select events could be updated.'elseif #screen.banklist.children>1 then
-msg=msg .. '\n\nAlso, there are multiple banks assigned to this track, ' ..'so no Bank/Program Select events could be unambiguously updated.'title='Problem could not be fixed'elseif n_remapped==0 then
-msg=msg .. '\n\nAlso, no Bank/Program Select events were found needing to be updated.'end
-rtk.defer(reaper.MB,msg,title,0)end
-end
+local bank=reabank.get_bank_by_guid(guid)n_remapped=remap_bank_select(rfx.current.track,nil,bank)log.info('trackfg: remapped %s bank select events on track', n_remapped)end
+rtk.defer(reaper.MB,"Reaticulate tried to correct common issues causing numeric articulation names" ..((cleared or n_remapped > 0) and ' (and did find some things to fix)' or '') ..".\n\nIf you still see numeric articulation names, the likely reason is that " .."the articulations don't actually exist in the current banks assigned to this track. " .."This is usually caused by inserting articulations with some other bank and then " .."later removing that bank from the track.\n\nIf that's the case, you'll need " .."to replace the articulations in the MIDI editor manually.",'Fix Numeric Articulation Names',0
+)end
 })section:add(rtk.Button{'Clear active articulations in UI',icon='med-eraser',tooltip='Clears all articulation selections on all channels in the GUI. This can also be done per ' ..'articulation by middle-clicking the articulation.',flat=true,onclick=function()local n=app.screens.banklist.clear_all_active_articulations()local msg=string.format('Cleared %d articulation assignments on this track', n)rtk.defer(reaper.MB, msg, 'Clear Articulations', 0)end
 })screen.src_channel_menu = {{'Omni', id=17}}for i=1,16 do
 screen.src_channel_menu[#screen.src_channel_menu+1]={string.format('Ch %d', i),id=i
@@ -8666,7 +8759,7 @@ local bankbox=screen.banklist:get_child(n)local srcchannel,_=channel_menu_to_cha
 assert(guid, string.format('missing guid: bankbox.guid is %s (%s)', bankbox.guid, type(bankbox.guid)))local bank=reabank.get_bank_by_guid(guid)banks[#banks+1]={guid,srcchannel,dstchannel,dstbus,bank and bank.name or bankbox.fallback_name}if bank then
 reabank.add_bank_to_project(bank)end
 end
-rfx.current:set_banks(banks)screen.check_errors_and_update_ui()rfx.current:sync_banks_to_rfx()app.screens.banklist.update()end
+rfx.current:set_banks(banks)screen.check_errors_and_update_ui()rfx.current:sync_banks_to_rfx()app.screens.banklist.update()app:queue(App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)end
 function screen.move_bankbox(bankbox,target,position)if not rtk.isa(bankbox,rtk.Box)or bankbox==target then
 return false
 end
@@ -8723,7 +8816,7 @@ if frommsb then
 remap_from={frommsb,fromlsb}end
 end
 if remap_from~=false then
-remap_bank_select(rfx.current.track,remap_from,bank)end
+rtk.defer(remap_bank_select,rfx.current.track,remap_from,bank)end
 bankbox.fallback_guid=nil
 bankbox.fallback_name=nil
 end
@@ -8736,7 +8829,7 @@ end
 function screen.get_errors()local conflicts=rfx.current:get_banks_conflicts()local get_next_bank=rfx.current:get_banks()local feedback_enabled=feedback.is_enabled()local banks={}return function()local b=get_next_bank()if not b then
 return
 end
-log.info('GOT BANK: %s', table.tostring(b))local bank=b.bank
+local bank=b.bank
 local error=rfx.ERROR_NONE
 local conflict=nil
 if not bank then
