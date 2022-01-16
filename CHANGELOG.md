@@ -30,6 +30,7 @@ Here are the changes since the last stable release (0.4.7):
 * Display a warning when the selected track doesn't match focused item in MIDI editor (a common gotcha)
 * Articulations can be inserted into a MIDI item when using the articulation filter either by pressing shift-enter or the insert key.
 * Articulation buttons will now layout in multiple columns when space permits
+* When an articulation is inserted by clicking on the articulation's button, it will flash red to indicate the insertion
 * All articulation icons have been redone with vector graphics in order to support high-DPI displays
 * The articulation list's scroll position is now retained per track and restored when the track is selected
 * All buttons in the GUI got a minor facelift
@@ -37,6 +38,9 @@ Here are the changes since the last stable release (0.4.7):
 
 * Fixed a bug where CCs were not always properly chased when activating articulations between different channels
 * Properly refocus the previous window when using the "Focus articulation filter" action after activating an articulation (enter) or clearing the filter (escape).  (Requires js_ReaScriptAPI to be present.)
+* Fixed a bug where control surface feedback send would not be setup when the Reaticulate JSFX was initially installed on a track
+* Fixed an issue where existing Program Change events would sometimes not be deleted when replacing articulations
+* Improved robustness when starting with invalid or malformed saved configuration
 
 # 0.4.7 - March 12, 2021
 

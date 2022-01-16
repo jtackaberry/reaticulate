@@ -179,57 +179,65 @@ end
 
 function BaseApp:fatal_error(msg)
     msg = msg ..
-          '\n\nThis is a fatal error and Reaticulate must now exit. ' ..
+          '\n\nThis is an unrecoverable error and Reaticulate must now exit. ' ..
           '\n\nPlease visit https://reaticulate.com/ for support contact details.'
-    reaper.ShowMessageBox(msg, "Reaticulate: fatal error", 0)
-    reaper.atexit()
+    reaper.ShowMessageBox(msg, "Reaticulate fatal error", 0)
     rtk.quit()
 end
 
+function BaseApp:get_ext_state(key)
+    if not reaper.HasExtState(self.appid, key) then
+        return
+    end
+    local encoded = reaper.GetExtState(self.appid, key)
+    local ok, decoded = pcall(json.decode, encoded)
+    return ok and decoded, encoded
+end
 
+function BaseApp:set_ext_state(key, obj, persist)
+    local serialized = json.encode(obj)
+    reaper.SetExtState(self.appid, key, serialized, persist or false)
+    log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)
+end
 
 function BaseApp:get_config(appid, target)
-    appid = appid or self.appid
-    target = target or self.config
-    if reaper.HasExtState(appid, "config") then
-        local state = reaper.GetExtState(appid, "config")
-        local ok, config = pcall(json.decode, state)
+    local config, encoded = self:get_ext_state('config')
+    if not config and encoded then
+        -- There was data but failed to decode as JSON.  Assume this is pre 0.5.0 which
+        -- used table.tostring/fromstring for config.  We fall back to the
+        -- unsafe table.fromstring() in order to migrate.
+        local ok
+        log.info('baseapp: config failed to parse as JSON: %s', state)
+        ok, config = pcall(table.fromstring, state)
         if not ok then
-            -- Pre 0.5.0 which used table.tostring/fromstring for config.  We fall back to the
-            -- unsafe table.fromstring() in order to migrate.
-            log.info('baseapp: config failed to parse as JSON: %s', state)
-            ok, config = pcall(table.fromstring, state)
-            if not ok then
-                reaper.MB(
-                    "Reaticulate wasn't able to parse its saved configuration. This may be because " ..
-                    "you downgraded Reaticulate and it doesn't understand the format used by a future " ..
-                    "version.\n\nAll Reaticulate settings will need to be reset to defaults.",
-                    'Unrecognized Reaticulate configuration',
-                    0
-                )
-                config = nil
-            else
-                -- Config was migrated to JSON. Force resave using the new format
-                self:save_config(self.appid, config)
-            end
-        end
-        if config then
-            -- Merge stored config into runtime config
-            table.merge(target, config)
+            reaper.MB(
+                "Reaticulate wasn't able to parse its saved configuration. This may be because " ..
+                "you downgraded Reaticulate and it doesn't understand the format used by a future " ..
+                "version.\n\nAll Reaticulate settings will need to be reset to defaults.",
+                'Unrecognized Reaticulate configuration',
+                0
+            )
+            config = nil
+        else
+            -- Config was migrated to JSON. Force resave using the new format
+            self:save_config(config)
         end
     end
-    self:set_debug(target.debug_level or log.ERROR)
-    if not target.dock and target.dockstate then
+    if config then
+        -- Merge stored config into runtime config
+        table.merge(self.config, config)
+    end
+    self:set_debug(self.config.debug_level or log.ERROR)
+    if not self.config.dock and self.config.dockstate then
         -- Convert deprecated dockstate field to dock/docker values
-        target.dock = (target.dockstate >> 8) & 0xff
-        target.docked = (target.dockstate & 0x01) ~= 0
+        self.config.dock = (self.config.dockstate >> 8) & 0xff
+        self.config.docked = (self.config.dockstate & 0x01) ~= 0
     end
-    return target
+    return self.config
 
 end
-function BaseApp:save_config(appid, config)
-    local serialized = json.encode(config or self.config)
-    reaper.SetExtState(appid or self.appid, "config", serialized, true)
+function BaseApp:save_config(config)
+    self:set_ext_state('config', config or self.config, true)
 end
 
 function BaseApp:set_debug(level)

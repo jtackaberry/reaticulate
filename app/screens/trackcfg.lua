@@ -103,17 +103,18 @@ function screen.init()
             if screen.error == rfx.ERROR_UNKNOWN_BANK then
                 return reaper.MB(
                     "This track has banks assigned that aren't currently installed on this system, " ..
-                    "which is the likely cause of numeric program numbers.\n\nPlease first select an " ..
-                    "available bank.",
+                    "which is the likely cause of numeric articulation names.\n\nPlease first select " ..
+                    "an available bank.",
                     'User action required',
                     0
                 )
             end
-            local msg
-            if app:clear_track_reabank_mapping(rfx.current.track) then
-                msg = 'A non-Reaticulate ReaBank was found and removed from this track. '
+            local cleared = app:clear_track_reabank_mapping(rfx.current.track)
+            if cleared then
+                log.info('trackcfg: cleared non-Reaticulate bank on current track')
             end
-            local n_remapped
+            app:force_recognize_bank_change_one_track(rfx.current.track)
+            local n_remapped = 0
             if #screen.banklist.children == 1 then
                 -- With just one bank mapped on this track, there's no ambiguity: we can update
                 -- all bank selects to this bank's current MSB/LSB.
@@ -121,27 +122,20 @@ function screen.init()
                 local guid = bankbox.bank_menu.selected_id
                 local bank = reabank.get_bank_by_guid(guid)
                 n_remapped = remap_bank_select(rfx.current.track, nil, bank)
-                if n_remapped > 0 then
-                    msg = string.format('%s%d Bank/Program Select events on this track were updated.', msg or '', n_remapped)
-                end
+                log.info('trackfg: remapped %s bank select events on track', n_remapped)
             end
-            if msg then
-                rtk.defer(reaper.MB, msg, 'Fixed!', 0)
-            else
-                msg = "There wasn't any non-Reaticulate ReaBank found on this track to fix."
-                local title = 'No Problem Found'
-                if #screen.banklist.children == 0 then
-                    msg = msg .. '\n\nAlso, there are no banks assigned to this track, so no ' ..
-                                 ' Bank/Program Select events could be updated.'
-                elseif #screen.banklist.children > 1 then
-                    msg = msg .. '\n\nAlso, there are multiple banks assigned to this track, ' ..
-                                 'so no Bank/Program Select events could be unambiguously updated.'
-                    title = 'Problem could not be fixed'
-                elseif n_remapped == 0 then
-                    msg = msg .. '\n\nAlso, no Bank/Program Select events were found needing to be updated.'
-                end
-                rtk.defer(reaper.MB, msg, title, 0)
-            end
+            rtk.defer(
+                reaper.MB,
+                "Reaticulate tried to correct common issues causing numeric articulation names" ..
+                ((cleared or n_remapped > 0) and ' (and did find some things to fix)' or '') ..
+                ".\n\nIf you still see numeric articulation names, the likely reason is that " ..
+                "the articulations don't actually exist in the current banks assigned to this track. " ..
+                "This is usually caused by inserting articulations with some other bank and then " ..
+                "later removing that bank from the track.\n\nIf that's the case, you'll need " ..
+                "to replace the articulations in the MIDI editor manually.",
+                'Fix Numeric Articulation Names',
+                0
+            )
         end
     })
     section:add(rtk.Button{
@@ -217,6 +211,7 @@ function screen.set_banks_from_banklist()
     -- code) to the rfx.
     rfx.current:sync_banks_to_rfx()
     app.screens.banklist.update()
+    app:queue(App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)
 end
 
 -- Position: -1 = before, 1 = after.  If target is nil, then always move to
@@ -397,7 +392,14 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
             end
         end
         if remap_from ~= false then
-            remap_bank_select(rfx.current.track, remap_from, bank)
+            -- Remap existing Bank Selects via defer so that we do it *after*
+            -- App:refresh_banks() has a chance to run.  This avoids a flicker in the
+            -- arrange view when selecting a new bank not yet in the project where, if we
+            -- had called remap_bank_select() immediately, the program names would show as
+            -- "PC" in the arrange view until refresh_banks() lays down the new tmp
+            -- reabank and kicks the track.  Deferring ensures we do the remapping after
+            -- REAPER already knows about the new bank.
+            rtk.defer(remap_bank_select, rfx.current.track, remap_from, bank)
         end
         -- If the selection changed, it can only be to a valid id.  So we can clear the
         -- fallback guid and name for this bankbox.
@@ -434,7 +436,6 @@ function screen.get_errors()
             -- get_banks() iterator is exhausted
             return
         end
-        log.info('GOT BANK: %s', table.tostring(b))
         local bank = b.bank
         local error = rfx.ERROR_NONE
         local conflict = nil

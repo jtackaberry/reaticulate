@@ -25,6 +25,30 @@ require 'lib.utils'
 
 App = rtk.class('App', BaseApp)
 
+-- Constants for App:queue() and App:refresh_banks()
+--
+-- Queues a save of the current project state.  This will dirty the project.
+App.static.SAVE_PROJECT_STATE = 1
+-- Queues a refresh_banks()
+App.static.REFRESH_BANKS = 2
+-- Whether we should remove unreferenced banks from the project state.  Also implies
+-- REFRESH_BANKS.
+App.static.CLEAN_UNUSED_BANKS = 4
+-- Whether refresh_banks() should re-parse Reaticulate.reabank. Implies REFRESH_BANKS.
+App.static.REPARSE_REABANK_FILE = 8
+-- Whether we should kick REAPER to force-reload track support data on the current track.
+-- Note this explicitly does *not* imply a bank refresh, because we might be assigning
+-- a bank to a track that already exists in the project and just need to kick the track.
+App.static.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK = 16
+-- Whether we should kick REAPER to force reload track support data on the *entire
+-- project*. This implies REFRESH_BANKS. Unfortunately it's extremely slow on modest
+-- projects.
+App.static.FORCE_RECOGNIZE_BANKS_PROJECT = 32
+
+-- Bitmap of actions that imply refresh_banks()
+App.static.REFRESH_BANKS_ACTIONS = 2|4|8|32
+
+
 function App:initialize(basedir, t0, t1)
     -- Configuration that's persisted across restarts.
     self.config = {
@@ -105,8 +129,17 @@ function App:initialize(basedir, t0, t1)
     self.project_dirty = nil
     -- Map of project state and refreshed in onprojectchange()
     self.project_state = nil
-    -- True if call to _save_project_state() is pending (deferred)
-    self.project_state_save_queued = false
+    -- A bitmap of constants defining actions that have been queued via App:queue().  0 means
+    -- nothing is queued.
+    self.queued_actions = 0
+    -- The set of cookies for all currently opened project tabs, simply mapping the cookie
+    -- guid to true for fast inclusion tests.  This table is maintained in
+    -- handle_onupdate() and is used to distinguish between a project being opened versus
+    -- just a project tab change.  This determination is passed to onprojectchange() so we
+    -- can take certain actions on project load that are otherwise too expensive to do on
+    -- every tab change (such a project bank GC).
+    self.active_projects_by_cookie = nil
+
     -- The previously selected track.  This is never cleared to nil.
     self.last_track = nil
     -- Default MIDI Channel for banks not pinned to channels.  Offset from 1.
@@ -144,6 +177,11 @@ function App:initialize(basedir, t0, t1)
     self.saved_focus_window = nil
     -- If not nil, is the time a deferred refocus should trigger.
     self.refocus_target_time = nil
+    -- True if we're running a version of REAPER that supports new actions to force reload
+    -- track support data (reabank, notably) on selected tracks.  We use this to ensure REAPER
+    -- notices when we swap out the global reabank.  The primary (only, really) use case is
+    -- to force it to update the "PC" names in the arrange view.
+    self.reaper_supports_track_data_reload = rtk.check_reaper_version(6, 46)
 
     articons.init()
     rfx.init()
@@ -191,33 +229,38 @@ end
 
 -- Encodes the project_state field as JSON and saves it to the current project.
 --
--- Don't call this function directly: use queue_save_project_state() instead.
-function App:_save_project_state()
-    local state = json.encode(self.project_state)
-    reaper.SetProjExtState(0, 'reaticulate', 'state', state)
-    log.info('app: saved project state: %s %s', #state, state)
-    if self.project_state_save_queued == 2 then
-        self:refresh_banks(false)
+-- Don't call this function directly: use queue() instead.
+function App:_run_queued_actions()
+    local flags = self.queued_actions
+    if flags & App.SAVE_PROJECT_STATE ~= 0 then
+        local state = json.encode(self.project_state)
+        reaper.SetProjExtState(0, 'reaticulate', 'state', state)
+        log.info('app: saved project state (%s bytes)', #state)
+        log.debug('app: current project state: %s', state)
     end
-    self.project_state_save_queued = false
+    if flags & App.REFRESH_BANKS_ACTIONS ~= 0 then
+        self:refresh_banks(flags)
+    elseif flags & App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK ~= 0 then
+        -- We only need to do this if refresh_banks() wasn't called. If it was, this
+        -- will happen automatically.
+        if self:has_arrange_view_pc_names() or self.midi_hwnd then
+            self:force_recognize_bank_change_one_track(rfx.current.track, true)
+        end
+    end
+    self.queued_actions = 0
 end
 
 -- Queues a save of the current project state on the next defer cycle.
 --
--- If refresh_banks is true, then refresh_banks() is also called.  However
--- use queue_save_project_state_and_bank_refresh() instead, as it's clearer.
-function App:queue_save_project_state(refresh_banks)
-    if not self.project_state_save_queued then
-        rtk.defer(self._save_project_state, self)
+-- flags is a bitmap of constants that controls how the project state is
+-- saved.
+function App:queue(flags)
+    if self.queued_actions == 0 then
+        rtk.defer(self._run_queued_actions, self)
     end
-    self.project_state_save_queued = math.max(self.project_state_save_queued or 1, refresh_banks and 2 or 1)
+    flags = flags or 0
+    self.queued_actions = self.queued_actions | flags
 end
-
--- Wrapper for queue_save_project_state() to improve code readability.
-function App:queue_save_project_state_and_bank_refresh()
-    self:queue_save_project_state(true)
-end
-
 
 -- Dumps the project's MSB/LSB mappings.
 function App:log_msblsb_mapping()
@@ -236,9 +279,10 @@ end
 
 -- Invoked by handle_onupdate() when the current project changes, which includes
 -- changing project tabs or reloading the current project.
-function App:onprojectchange()
+function App:onprojectchange(opened)
     local r, data = reaper.GetProjExtState(0, 'reaticulate', 'state')
-    log.info('app: project changed: %s %s', self.project_change_cookie, data)
+    log.info('app: project changed (opened=%s cookie=%s)', opened, self.project_change_cookie)
+    log.debug('app: loaded project state: %s', data)
     self.project_state = {}
     if r ~= 0 then
         local ok, decoded = pcall(json.decode, data)
@@ -249,6 +293,9 @@ function App:onprojectchange()
         end
     end
 
+    -- Determine which actions we need to execute.  Minimally we know we'll need to
+    -- refresh banks to generate the new project reabank.
+    local flags = App.REFRESH_BANKS
     -- Inform the reabank module of the project change.  It will initialize and
     -- maintain any fields it needs within project state.
     reabank.onprojectchange()
@@ -258,16 +305,18 @@ function App:onprojectchange()
         -- be a no-op.)
         log.info('app: beginning project migration to GUID')
         self:migrate_project_to_guid()
-    else
-        -- No migration needed.  XXX: probably shouldn't do this on *every* project
-        -- change as for large projects this could be costly.
-        self:clean_unused_project_banks()
+        -- Queue save project state now that we've migrated.
+        flags = flags | App.SAVE_PROJECT_STATE
     end
-    -- Bank refresh isn't needed if the old and new projects have the same banks with the
-    -- same MSB/LSB assignments.  But this would only avoid a few milliseconds on an
-    -- action that isn't done that much (project change) and where other aspects of
-    -- project change like loading FX dwarf this overhead.
-    self:queue_save_project_state_and_bank_refresh()
+    if opened then
+        -- If we're loading a new project from scratch, ensure REAPER notices the new
+        -- global reabank on all tracks in the project.  (This is slow, but will only do
+        -- it if the project reabank has changes or additions relative to the current
+        -- one). Also run a GC on project banks to remove any unreferenced banks.
+        flags = flags | App.FORCE_RECOGNIZE_BANKS_PROJECT | App.CLEAN_UNUSED_BANKS
+    end
+    -- Queue actions determined by the above flags.
+    self:queue(flags)
 end
 
 -- Invoked by handle_onupdate() when the current track changes.  cur represents
@@ -286,7 +335,7 @@ function App:ontrackchange(last, cur)
     if cur then
         curn = reaper.GetMediaTrackInfo_Value(cur, 'IP_TRACKNUMBER')
     end
-    log.info('app: track change: %s (%s) -> %s (%s)', lastn, last, curn, cur)
+    log.info('app: track change: %s -> %s', lastn, curn)
 
     self:log_msblsb_mapping()
 
@@ -303,10 +352,7 @@ function App:ontrackchange(last, cur)
             self:do_single_floating_fx()
         end
     end
-    -- TODO: ought to call self:check_banks_for_errors() here but we don't want to
-    -- do this blindly on every track change, rather only when the the track has
-    -- not been visited since project load.  Unfortunately it's not clear how to
-    -- detect project reload.
+    -- Ensure we have detected any errors on this track and update the UI.
     self:check_banks_for_errors()
     reaper.PreventUIRefresh(-1)
 end
@@ -562,6 +608,13 @@ local function _get_cc_idx_at_ppq(take, ppq)
     local nextidx, nextppq = nil, nil
     while idx > 0 and idx < n_events and skip > 0.5 do
         local rv, _, _, evtppq, _, evtchan, _, _ = reaper.MIDI_GetCC(take, idx)
+        -- ppq calculated from cursor positions can be fractional, although inserted
+        -- events seem to always be rounded to integer values.  Here we accept any
+        -- ppq that's within 1 ppq of the target.
+        local delta = math.abs(evtppq - ppq)
+        if delta < 1 then
+            return true, previdx, prevppq, idx, evtppq, n_events
+        end
         skip = skip / 2
         if evtppq > ppq then
             nextidx, nextppq = idx, evtppq
@@ -571,8 +624,6 @@ local function _get_cc_idx_at_ppq(take, ppq)
             previdx, prevppq = idx, evtppq
             -- Event is behind target ppq, skip ahead.
             idx = idx + math.ceil(skip)
-        else
-            return true, previdx, prevppq, idx, evtppq, n_events
         end
     end
     return false, previdx, prevppq, nextidx, nextppq, n_events
@@ -582,7 +633,7 @@ end
 -- Returns the MSB, LSB, and program number of the last PC that was deleted.
 local function _delete_program_changes(take, channel, startppq, endppq)
     local found, _, _, idx, ppq, n_events = _get_cc_idx_at_ppq(take, startppq)
-    if not ppq or ppq < startppq or ppq > endppq then
+    if not found then
         return
     end
     local msb, lsb, program = _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, endppq)
@@ -594,9 +645,11 @@ end
 -- If there's an existing PC at the given ppq then it's replaced, provided that
 -- overwrite is true.
 local function _insert_program_change(take, ppq, channel, msb, lsb, program, overwrite)
-    -- If the events at the ppq are program changes, we delete them (as we're
-    -- about to replace them).
-    local found, _, _, idx, _, n_events = _get_cc_idx_at_ppq(take, ppq)
+    -- If the events at the ppq are program changes, we delete them (as we're about to
+    -- replace them).  foundppq may differ from ppq even if found is true, because the
+    -- incoming ppq could be fractional, but event ppqs appear to be rounded.  So we need
+    -- to use the event's actual ppq later when we delete existing PCs.
+    local found, _, _, idx, foundppq, n_events = _get_cc_idx_at_ppq(take, ppq)
     if found then
         if not overwrite then
             -- FIXME: this doesn't actually work.  found indicates that *some* event
@@ -605,7 +658,7 @@ local function _insert_program_change(take, ppq, channel, msb, lsb, program, ove
             log.exception('TODO: fix this bug')
             return
         end
-        _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, ppq)
+        _delete_program_events_at_ppq(take, channel, idx, n_events, foundppq, foundppq)
     end
     -- Insert program change at ppq.  MIDI_Sort() isn't needed with MIDI_InsertCC().
     reaper.MIDI_InsertCC(take, false, false, ppq, 0xb0, channel, 0, msb)
@@ -783,17 +836,18 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
         return false
     end
 
-    -- If we haven't managed to find selected notes (assuming the feature is
-    -- even enabled), then fall back to the take at the edit cursor and use
-    -- the cursor position for the articulation insertion point.  This may not
-    -- be the take active in the MIDI editor either, if the edit cursor is
-    -- somewhere else.
+    -- If we haven't managed to find selected notes (assuming the feature is even
+    -- enabled), then fall back to the take at the edit cursor and use the cursor position
+    -- for the articulation insertion point.  This may not be the take active in the MIDI
+    -- editor either, if the edit cursor is somewhere else.
     if not insert_ppqs or #insert_ppqs == 0 then
         local cursor = reaper.GetCursorPositionEx(0)
         _, take = self:get_take_at_position(track, cursor)
         if take then
             local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
             insert_ppqs = {{take, ppq, nil, program}}
+            -- Note: deletion of any existing PCs at this ppq is taken care of by
+            -- _insert_program_change() later.
         else
             local item = reaper.CreateNewMIDIItemInProj(track, cursor, cursor + 1, false)
             -- CreateNewMIDIItemInProj() does not honor project defaults. There's no easy
@@ -1111,7 +1165,7 @@ end
 -- articulation change induced by the UI, but also occurs during playback, or when an
 -- articulation has been manually activated via note-based keyswitch.
 function rfx.onartchange(channel, group, last_program, new_program, track_changed)
-    log.info("app: articulation change: %s -> %d  ch=%d  group=%d  track_changed=%s", last_program, new_program, channel, group, track_changed)
+    log.debug("app: articulation change: %s -> %d  (ch=%d group=%d)", last_program, new_program, channel, group)
     local artidx = channel + (group << 8)
     local last_art = app.active_articulations[artidx]
     local channel_bit = 2^(channel - 1)
@@ -1552,6 +1606,17 @@ function App:update_dock_buttons()
     end
 end
 
+
+-- Returns true when the user has configured Appearance | Peaks/Waveforms | Display
+-- Program Names, and we have a versio of REAPER that has the action to refresh the PC
+-- names based on the current global reabank.
+function App:has_arrange_view_pc_names()
+--  This is stored in the midipeaks param and, rather oddly, is enabled when bit 0 is OFF.
+    local ok, midipeaks = reaper.get_config_var_string('midipeaks')
+    return (tonumber(ok and midipeaks) or 1) & 1 == 0 and
+           self.reaper_supports_track_data_reload
+end
+
 -- Updates the tmp Reabank file given the current project state, and syncs the
 -- current track (and UI) to reflect any changes to banks on the track.
 --
@@ -1559,42 +1624,61 @@ end
 -- tracks are synced to any changes affecting the banks mapped on those tracks.
 --
 -- Called when any banks may have changed
-function App:refresh_banks(parse)
-    -- This rewrites the state chunk which causes REAPER to notice when a new
-    -- reabank file has been mapped.
-    local function kick_item(item)
-        local fast = reaper.SNM_CreateFastString("")
-        if reaper.SNM_GetSetObjectState(item, fast, false, false) then
-            reaper.SNM_GetSetObjectState(item, fast, true, false)
-        end
-        reaper.SNM_DeleteFastString(fast)
-    end
-
+function App:refresh_banks(flags)
     log.time_start()
-    if parse then
+    flags = flags or 0
+    if flags & App.REPARSE_REABANK_FILE ~= 0 then
         reabank.parseall()
         log.debug("app: refresh: reabank.parseall() done")
-        -- Sweep all tracks with active RFX and resync banks if the hash
-        -- changed as a result of this reparsing.
+        -- Sweep all tracks with active RFX and resync banks if the hash changed as a
+        -- result of this reparsing.
         rfx.all_tracks_sync_banks_if_hash_changed()
     end
-
-    reabank.write_reabank_for_project()
-
-    -- The active item in the MIDI editor doesn't notice the new reabank
-    -- we just created unless we rewrite the state chunk.
-    local hwnd = reaper.MIDIEditor_GetActive()
-    if hwnd  then
-        local take = reaper.MIDIEditor_GetTake(hwnd)
-        if take and reaper.ValidatePtr(take, 'MediaItem_Take*') then
-            local item = reaper.GetMediaItemTake_Item(take)
-            if item then
-                kick_item(item)
-                log.info("app: refresh: kicked MIDI editor")
-            end
-        end
+    if flags & App.CLEAN_UNUSED_BANKS ~= 0 then
+        log.info('app: refresh: performing GC on project banks')
+        self:clean_unused_project_banks()
     end
 
+    -- changes is a table of GUIDs for banks that have been modified (but not added)
+    -- relative to last write.  If no changes, then nil is returned.
+    local changes, additions = reabank.write_reabank_for_project()
+    -- Force REAPER to notice changes made to the global Reabank.  As of REAPER 6.46, we
+    -- have a new action available for this.
+    --
+    -- Unfortunately, it's quite slow, particularly when updating the entire project (can
+    -- be multiple seconds).  At the moment, the only scenario where we really need the
+    -- action is to update "PC" names in the arrange view.  Given the poor performance,
+    -- it's in our interests to only run the action when we need to: specifically, when
+    -- the user has REAPER configured to display PC names in the arrange view.
+    if self:has_arrange_view_pc_names() then
+        -- Arrange view shows PC names, and we have a version of REAPER that supports
+        -- kicking tracks in the head.
+        if (changes or additions) and flags & App.FORCE_RECOGNIZE_BANKS_PROJECT ~= 0 then
+            -- Done on project load (not tab changes). SLLLLLOOOOOWWWWWW but necessary
+            -- when loading a project with banks not in the current tmp reabank in order
+            -- to force arrange view to refresh PC names.  We only need to do this when
+            -- the newly written project reabank has additions or changes, at least.
+            self:force_recognize_bank_change_many_tracks()
+        elseif changes then
+            -- One or more banks changed their definitions.  We need to kick all the
+            -- affected tracks.
+            --
+            -- We're not refreshing the entire project so we can be a bit more surgical.
+            -- This only updates tracks that reference the bank GUIDs that have been
+            -- added/changed since last tmp reabank generation.
+            self:force_recognize_bank_change_many_tracks(nil, changes)
+        elseif flags & App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK ~= 0 and rfx.current.track then
+            -- The likely scenario here is that we changed a bank on the current track in
+            -- the track configuration screen.  A new bank may have been added to the
+            -- project (which would not be reflected in the changes table above as
+            -- additions are excluded) but that's ok, because we know an addition to the
+            -- project can only affect the current track.
+            self:force_recognize_bank_change_one_track(rfx.current.track)
+        end
+    else
+        -- No PC display in arrange view, we just update the MIDI editor (if any).
+        self:force_recognize_bank_change_one_track(nil, true)
+    end
     -- Force a resync of the RFX
     rfx.current:sync(rfx.current.track, true)
     log.debug("app: refresh: synced RFX")
@@ -1605,7 +1689,7 @@ function App:refresh_banks(parse)
     -- rfx.current:sync() above.
     self.screens.banklist.update()
     log.debug("app: refresh: updated screens")
-    log.info("app: refresh: all done")
+    log.info("app: refresh: all done (flags=%s changes=%s additions=%s)", flags, changes, additions)
     log.time_end()
 end
 
@@ -1652,25 +1736,102 @@ function App:clear_track_reabank_mapping(track)
     return true
 end
 
--- Scans all tracks in the project and clears the track-level Reabank mapping.
+-- This induces REAPER to notice the global ReaBank has changed.  If item is specified,
+-- then it's refreshed.  If track is specified, all items on the track will be refreshed.
+-- If both are specified, both the given track *and* the item's track will be refreshed.
+-- (They can safely be the same.)
 --
--- Because this fetches the track state chunk on every track, it is very slow.
+-- Meanwhile if both are nil, then the entire project will be kicked in the head (which
+-- can be extremely slow, but sometimes necessary). However this does not work before
+-- REAPER 6.46.
+function App:force_recognize_bank_change_one_track(track, midi_editor)
+    log.time_start()
+    -- This rewrites the state chunk which causes REAPER to notice when a new
+    -- reabank file has been mapped.
+    local function kick_item(item)
+        local fast = reaper.SNM_CreateFastString("")
+        -- Can't use reaper.Get/SetTrackStateChunk() which horks with large (>~5MB) chunks.
+        if reaper.SNM_GetSetObjectState(item, fast, false, false) then
+            reaper.SNM_GetSetObjectState(item, fast, true, false)
+        end
+        reaper.SNM_DeleteFastString(fast)
+    end
+    if track and reaper.ValidatePtr2(0, track, 'MediaTrack*') then
+        if self.reaper_supports_track_data_reload then
+            -- Kick using new action
+            local tracks = track and {track}
+            self:force_recognize_bank_change_many_tracks(tracks)
+        else
+            -- Old method where we kick each item on the track.
+            for itemidx = 0, reaper.CountTrackMediaItems(track) - 1 do
+                local item = reaper.GetTrackMediaItem(track, itemidx)
+                kick_item(item)
+            end
+        end
+    elseif midi_editor then
+        local hwnd = reaper.MIDIEditor_GetActive()
+        if hwnd then
+            local take = reaper.MIDIEditor_GetTake(hwnd)
+            if take and reaper.ValidatePtr2(0, take, 'MediaItem_Take*') then
+                local item = reaper.GetMediaItemTake_Item(take)
+                kick_item(item)
+            end
+        end
+    end
+    log.time_end('app: force recognize bank change: track=%s midi=%s', track, midi_editor)
+end
+
+function App:force_recognize_bank_change_many_tracks(tracks, guids)
+    -- In REAPER 6.46, schwa added actions to more robustly reload reabank data,
+    -- so we use that.
+    call_and_preserve_selected_tracks(function()
+        if not tracks and not guids then
+            -- Full project.  This is ssssssllllllooooowwww but it's the only way to
+            -- ensure PC names in arrange view get refreshed.
+            log.info('app: force recognize bank change on entire project')
+            -- Track: Select all tracks
+            reaper.Main_OnCommandEx(40296, 0, 0)
+        else
+            -- Track: Unselect (clear selection of) all tracks
+            reaper.Main_OnCommandEx(40297, 0, 0)
+            if tracks then
+                log.info('app: force recognize bank change on %s tracks', #tracks)
+                for _, track in ipairs(tracks) do
+                    reaper.SetTrackSelected(track, true)
+                end
+            elseif guids then
+                log.info('app: force recognize bank change by MSB/LSB')
+                for idx, rfxtrack in rfx.get_tracks(0, true) do
+                    for b in rfxtrack:get_banks() do
+                        if guids[b.guid] then
+                            reaper.SetTrackSelected(rfxtrack.track, true)
+                        end
+                    end
+                end
+            end
+        end
+        log.time_start()
+        -- MIDI: Reload track support data (bank/program files, notation, etc) for all MIDI items on selected tracks
+        reaper.Main_OnCommandEx(42465, 0, 0)
+        log.time_end('app: invoked REAPER action to reload reabank on selected tracks')
+    end)
+
+end
+
+-- Scans all tracks in the project and clears the track-level Reabank mapping, and
+-- kicks REAPER in the head on all tracks to reload track support data (on supported
+-- REAPER versions).
+--
+-- This action is horrendously slow -- as in multiple seconds -- and is only usable
+-- as a last-resort sledgehammer.
 function App:beat_reaper_into_submission()
-    -- This is necessary if an existing Reaticulate-managed track references a non-Reaticulate
-    -- bank.  Unfortunately it's *SLOW*.  And most of the time it shouldn't be necessary.
-    local fixed = 0
     log.time_start()
     for i = 0, reaper.CountTracks(0) - 1 do
         local track = reaper.GetTrack(0, i)
-        if self:clear_track_reabank_mapping(track) then
-            fixed = fixed + 1
-        end
+        self:clear_track_reabank_mapping(track)
     end
-    if fixed == 0 then
-        reaper.MB('No tracks needing repair were discovered', 'Bank assignment scrub', 0)
-    else
-        reaper.MB(string.format('%d track(s) were repaired', fixed), 'Bank assignment scrub', 0)
-    end
+    self:force_recognize_bank_change_many_tracks()
+    reaper.MB('Force-refreshed all tracks in project.', 'Refresh Project', 0)
     log.debug('app: finished track chunk sweep')
     log.time_end()
 end
@@ -1711,7 +1872,7 @@ function App:build_frame()
 
     local toolbar = self.toolbar
     toolbar:add(menubutton)
-    menubutton.onchange = function(self)
+    menubutton.onselect = function(self)
         reabank.create_user_reabank_if_missing()
         if self.selected_index == 1 then
             local clipboard = rtk.clipboard.get()
@@ -1747,7 +1908,7 @@ function App:build_frame()
     button:attr('tooltip', 'Reload ReaBank files from disk')
     button.onclick = function(b, event)
         rtk.defer(function()
-            app:refresh_banks(true)
+            app:refresh_banks(App.REPARSE_REABANK_FILE | App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)
             if event.shift then
                 self:beat_reaper_into_submission()
             end
@@ -1787,9 +1948,11 @@ end
 --
 -- See handle_onupdate() for more.
 function App:gen_new_change_cookie()
-    self.project_change_cookie = rtk.uuid4()
-    reaper.SetProjExtState(0, 'reaticulate', 'change_cookie', self.project_change_cookie)
-    log.debug('app: generated new project cookie: %s', self.project_change_cookie)
+    local cookie = rtk.uuid4()
+    self.project_change_cookie = cookie
+    self.active_projects_by_cookie[cookie] = true
+    reaper.SetProjExtState(0, 'reaticulate', 'change_cookie', cookie)
+    log.debug('app: generated new project cookie: %s', cookie)
 end
 
 -- Programmatically selects the given track, making it the only selected track.
@@ -1992,12 +2155,34 @@ function App:handle_onupdate()
     local _, change_cookie = reaper.GetProjExtState(0, 'reaticulate', 'change_cookie')
     local dirty = reaper.IsProjectDirty(0)
     if change_cookie ~= self.project_change_cookie then
+        local active = self.active_projects_by_cookie
+        -- If false, this is a tab change. If true, a project has been opened (or reopened)
+        local opened = active and not active[change_cookie] or false
+        -- Refresh the list of active project cookies which we use to detect tab changes
+        -- versus projects being opened.
+        self.active_projects_by_cookie = {}
+        -- There is no CountProjects().  Capping avoids infinite loop potential as the
+        -- return value of EnumProjects() is not documented so can't be trusted to
+        -- return nil at end of project list.
+        for pidx = 0, 100 do
+            local proj, _ = reaper.EnumProjects(pidx, '')
+            if not proj then
+                break
+            end
+            local ok, cookie = reaper.GetProjExtState(proj, 'reaticulate', 'change_cookie')
+            -- If the cookie isn't in project state, it will be the empty string, not nil.
+            -- Avoid adding this to the active projects, otherwise we will fail to detect
+            -- loading projects without the cookie.
+            if ok and cookie ~= '' then
+                self.active_projects_by_cookie[cookie] = true
+            end
+        end
         -- Always generate a new cookie on project change so that we can detect re-opening
         -- the same project.  This is considered a project change because the current
         -- state of the project and state being reverted may be different.
         self:gen_new_change_cookie()
         rfx.current:reset()
-        self:onprojectchange()
+        self:onprojectchange(opened)
     elseif dirty ~= self.project_dirty then
         -- Project was just saved or has become dirty.  The project hasn't
         -- changed, but we generate a new cookie in case it gets saved or the
@@ -2115,14 +2300,16 @@ function App:handle_onupdate()
                 self:set_default_channel(channel)
             end
         end
-        if track_changed then
-            -- Call this here instead of in ontrackchange() to ensure that we feedback
-            -- *after* setting the default channel.  Note there is a slight delay in
-            -- the control surface receiving the update when selecting a track with
-            -- automatic record arm -- there doesn't seem to be anything we can do
-            -- about this.
-            feedback.ontrackchange(last_track, track)
-        end
+    end
+    -- Update feedback send, which we need to do even on non-RFX tracks to ensure we
+    -- remove the send from the previous RFX-managed track, which is why this isn't
+    -- in the previous conditional block, which is only for track with RFX.
+    if track_changed and not track_change_pending then
+        -- Call this here instead of in ontrackchange() to ensure that we feedback *after*
+        -- setting the default channel.  Note there is a slight delay in the control
+        -- surface receiving the update when selecting a track with automatic record arm
+        -- there doesn't seem to be anything we can do about this.
+        feedback.ontrackchange(last_track, track)
     end
     rfx.opcode_commit_all()
 end
