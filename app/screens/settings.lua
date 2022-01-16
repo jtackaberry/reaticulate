@@ -325,6 +325,14 @@ function screen.init()
     -- Section: Feedback to Control Surface
     --
     local section = make_section(screen.vbox, "Feedback to Control Surface")
+    local row = section:add(rtk.HBox{spacing=5, alpha=0.6, bpadding=10})
+    row:add(rtk.ImageBox{'med-info_outline'})
+    row:add(rtk.Text{
+        wrap=true,
+        'Transmit articulation changes and all CC values on the default ' ..
+        'channel to the selected device. Control surfaces with motorized ' ..
+        'faders will move in realtime during playback.'
+    })
     local row = add_row(section, "MIDI Device:", 85, 2)
     local menu = row:add(rtk.OptionMenu())
     menu.onchange = function(menu)
