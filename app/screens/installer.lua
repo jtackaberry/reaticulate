@@ -15,6 +15,7 @@
 
 local rtk = require 'rtk'
 local rfx = require 'rfx'
+local feedback = require 'feedback'
 
 local screen = {
     widget = nil,
@@ -80,6 +81,9 @@ function screen.init()
         -- Trigger the track changed callback to ensure any actions dependend on the RFX are
         -- triggered now that we've instantiated it.
         app:ontrackchange(nil, app.track)
+        -- One thing ontrackchange() doesn't do is setup the feedback send, so do that
+        -- explicitly here (if applicable).
+        feedback.ontrackchange(nil, app.track)
         screen.update()
     end
 
