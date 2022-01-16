@@ -1872,7 +1872,7 @@ function App:build_frame()
 
     local toolbar = self.toolbar
     toolbar:add(menubutton)
-    menubutton.onchange = function(self)
+    menubutton.onselect = function(self)
         reabank.create_user_reabank_if_missing()
         if self.selected_index == 1 then
             local clipboard = rtk.clipboard.get()
