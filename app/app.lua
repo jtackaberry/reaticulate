@@ -824,8 +824,8 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
             -- If the bank has the program number and it's mapped on the requested
             -- channel, then use its MSB/LSB. Note that srcchannel is offset 1, while
             -- given channel is offset 0.
-            if (b.srcchannel == 17 or b.srcchannel == channel+1) and bank:get_articulation_by_program(program) then
-                msb, lsb = bank:get_current_msb_lsb()
+            if (b.srcchannel == 17 or b.srcchannel == channel+1) and b.bank:get_articulation_by_program(program) then
+                msb, lsb = b.bank:get_current_msb_lsb()
                 break
             end
         end
