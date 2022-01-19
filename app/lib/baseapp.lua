@@ -236,8 +236,21 @@ function BaseApp:get_config(appid, target)
     return self.config
 
 end
+
 function BaseApp:save_config(config)
+    self:_do_save_config(config)
+end
+
+function BaseApp:queue_save_config(config)
+    if not self._save_config_queued then
+        rtk.callafter(2, self._do_save_config, self, config)
+        self._save_config_queued = true
+    end
+end
+
+function BaseApp:_do_save_config(config)
     self:set_ext_state('config', config or self.config, true)
+    self._save_config_queued = false
 end
 
 function BaseApp:set_debug(level)
@@ -279,7 +292,7 @@ function BaseApp:handle_onresize()
     if not self.window.docked then
         self.config.x, self.config.y = self.window.x, self.window.y
         self.config.w, self.config.h = self.window.w, self.window.h
-        self:save_config()
+        self:queue_save_config()
     end
 end
 
