@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.0-pre3'}end)()
+return {_VERSION='0.5.0-pre4'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -4135,7 +4135,7 @@ widget.box[2]=widget.box[2]+offset.y+tp
 self:_set_cell_box(attrs,lp+offset.x,tp+offset.y,child_maxw,wh+ctp+cbp)if wcalc.position&rtk.Widget.POSITION_INFLOW~=0 then
 local cvspacing=(col.h+wh<col_height)and vspacing or 0
 offset.y=offset.y+wy+wh+cvspacing
-col.w=math.max(col.w,child_maxw+chspacing)col.h=col.h+wh+cvspacing
+col.w=math.max(col.w,child_maxw+chspacing)col.h=col.h+wh+cvspacing+ctp+cbp
 inner.h=math.max(inner.h,col.h)end
 widget:_realize_geometry()self:_add_reflowed_child(widgetattrs,attrs.z or widget.z or 0)else
 widget.realized=false
@@ -5519,7 +5519,13 @@ self.config.docked=(self.config.dockstate&0x01)~=0
 end
 return self.config
 end
-function BaseApp:save_config(config)self:set_ext_state('config', config or self.config, true)end
+function BaseApp:save_config(config)self:_do_save_config(config)end
+function BaseApp:queue_save_config(config)if not self._save_config_queued then
+rtk.callafter(2,self._do_save_config,self,config)self._save_config_queued=true
+end
+end
+function BaseApp:_do_save_config(config)self:set_ext_state('config', config or self.config, true)self._save_config_queued=false
+end
 function BaseApp:set_debug(level)self.config.debug_level=level
 self:save_config()log.level=level or log.ERROR
 log.info("baseapp: Reaticulate log level is %s", log.level_name())end
@@ -5538,7 +5544,7 @@ self:save_config()end
 function BaseApp:handle_onresize()if not self.window.docked then
 self.config.x,self.config.y=self.window.x,self.window.y
 self.config.w,self.config.h=self.window.w,self.window.h
-self:save_config()end
+self:queue_save_config()end
 end
 function BaseApp:handle_onmove()self:handle_onresize()end
 function BaseApp:handle_onmousewheel(event)if event.ctrl and not rtk.is_modal()then
@@ -7423,9 +7429,7 @@ self.queued_actions=0
 end
 function App:queue(flags)if self.queued_actions==0 then
 rtk.defer(self._run_queued_actions,self)end
-flags=flags or 0
-self.queued_actions=self.queued_actions|flags
-end
+self.queued_actions=self.queued_actions|(flags or 0)end
 function App:log_msblsb_mapping()local text={}for guid,msblsb in pairs(self.project_state.msblsb_by_guid)do
 local bank=reabank.get_bank_by_guid(guid)text[#text+1]=string.format('       %s -> %s/%s (%s)',guid,(msblsb>>8)&0xff,msblsb&0xff,bank and bank.name or 'UNKNOWN!')end
 log.debug('MSB/LSB assignment:\n%s', table.concat(text, '\n'))end
@@ -7450,7 +7454,7 @@ if last then
 lastn=reaper.GetMediaTrackInfo_Value(last, 'IP_TRACKNUMBER')end
 if cur then
 curn=reaper.GetMediaTrackInfo_Value(cur, 'IP_TRACKNUMBER')end
-log.info('app: track change: %s -> %s', lastn, curn)self:log_msblsb_mapping()reaper.PreventUIRefresh(1)self.screens.banklist.filter_entry:onchange()if cur then
+log.info('app: track change: %s -> %s', lastn, curn)reaper.PreventUIRefresh(1)self.screens.banklist.filter_entry:onchange()if cur then
 reaper.CSurf_OnTrackSelection(cur)if self.config.single_floating_instrument_fx_window then
 self:do_single_floating_fx()end
 end
@@ -7634,8 +7638,8 @@ local msb,lsb
 if bank then
 msb,lsb=bank:get_current_msb_lsb()else
 for b in rfxtrack:get_banks()do
-if(b.srcchannel==17 or b.srcchannel==channel+1)and bank:get_articulation_by_program(program)then
-msb,lsb=bank:get_current_msb_lsb()break
+if(b.srcchannel==17 or b.srcchannel==channel+1)and b.bank:get_articulation_by_program(program)then
+msb,lsb=b.bank:get_current_msb_lsb()break
 end
 end
 end
@@ -7975,7 +7979,7 @@ self:force_recognize_bank_change_many_tracks(nil,changes)elseif flags&App.FORCE_
 self:force_recognize_bank_change_one_track(rfx.current.track)end
 else
 self:force_recognize_bank_change_one_track(nil,true)end
-rfx.current:sync(rfx.current.track,true)log.debug("app: refresh: synced RFX")self:ontrackchange(nil,self.track)log.debug("app: refresh: ontrackchange() done")self.screens.banklist.update()log.debug("app: refresh: updated screens")log.info("app: refresh: all done (flags=%s changes=%s additions=%s)", flags, changes, additions)log.time_end()end
+rfx.current:sync(rfx.current.track,true)log.debug("app: refresh: synced RFX")self:ontrackchange(nil,self.track)log.debug("app: refresh: ontrackchange() done")self.screens.banklist.update()log.debug("app: refresh: updated screens")log.info("app: refresh: all done (flags=%s changes=%s additions=%s)", flags, changes, additions)log.time_end()self:log_msblsb_mapping()end
 function App:check_banks_for_errors()if self:current_screen()==self.screens.trackcfg then
 self.screens.trackcfg.update()else
 self.screens.trackcfg.check_errors()end
