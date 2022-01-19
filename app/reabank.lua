@@ -1087,15 +1087,17 @@ end
 -- Generates a non-annotated ReaBank file for all banks in the current project,
 -- and returns the result as a string.
 --
--- If 'compare' is provided, it is a map of packed MSB/LSB to Bank hash and is used to
--- track whether there were additions or bank definition changes relative to this table.
--- Added or modified banks are inserted in the 'changes' table that's returned.  Note that
--- DELETIONS are not detected: as long as all existing project banks are in the compare
--- table with the same definition, true is returned.  If the compare table is nil, then
--- all banks in the project are included in the changes table.
+-- If 'compare' is provided, it is a map of stringified packed MSB/LSB to Bank hash and is
+-- used to track whether there were additions or bank definition changes relative to this
+-- table. Added or modified banks are inserted in the 'changes' table that's returned.
+-- Note that DELETIONS are not detected: as long as all existing project banks are in the
+-- compare table with the same definition, true is returned.  If the compare table is nil,
+-- then all banks in the project are included in the changes table.
 --
 -- 3 values are returned:
---   1. A table mapping packed MSB/LSB to bank hash of all banks in the project
+--   1. A table mapping packed MSB/LSB to bank hash of all banks in the project. The keys are
+--      stringified to enable serialization to JSON. (This is why the keys in the compare
+--      table are also expected to be strings.)
 --   2. A table of changes, mapping bank GUID to the current project's MSB/LSB (packed number)
 --   3. A string holding the rendered reabank contents
 function reabank.project_banks_to_reabank_string(compare)
