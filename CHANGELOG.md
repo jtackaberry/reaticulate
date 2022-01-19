@@ -5,7 +5,7 @@
 Note: Reaper 5.975 (released on April 30, 2019) or later is now required.
 
 Here are the changes since the last stable release (0.4.7):
-# New Features
+## New Features
 
 * MSB/LSB bank values are now entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put `*` as placeholders for both MSB and LSB values in bank definitions. ([#63](https://github.com/jtackaberry/reaticulate/issues/63))
 * Pre-created banks (such as those [contributed by other users](https://github.com/jtackaberry/reaticulate/tree/master/userbanks)) can now be much more conveniently imported into Reaticulate, either from clipboard (`[Pencil Icon] | Import Banks from Clipboard`) or by dragging-and-dropping one or more files onto Reaticulate's window. Users no longer need to edit the Reabank file in a text editor just to import existing banks. Nor, thanks to dynamic and automatic MSB/LSB assignment, do users need to worry about adjusting MSB/LSB of third party banks to avoid conflicts.
@@ -24,7 +24,7 @@ Here are the changes since the last stable release (0.4.7):
   1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
   2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
 
-# Minor Enhancements
+## Minor Enhancements
 
 * "Track selection follows MIDI editor" is now enabled by default for new installations
 * Display a warning when the selected track doesn't match focused item in MIDI editor (a common gotcha)
@@ -34,7 +34,7 @@ Here are the changes since the last stable release (0.4.7):
 * All articulation icons have been redone with vector graphics in order to support high-DPI displays
 * The articulation list's scroll position is now retained per track and restored when the track is selected
 * All buttons in the GUI got a minor facelift
-# Bug Fixes
+## Bug Fixes
 
 * Fixed a bug where CCs were not always properly chased when activating articulations between different channels
 * Properly refocus the previous window when using the "Focus articulation filter" action after activating an articulation (enter) or clearing the filter (escape).  (Requires js_ReaScriptAPI to be present.)

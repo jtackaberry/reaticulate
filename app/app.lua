@@ -258,8 +258,7 @@ function App:queue(flags)
     if self.queued_actions == 0 then
         rtk.defer(self._run_queued_actions, self)
     end
-    flags = flags or 0
-    self.queued_actions = self.queued_actions | flags
+    self.queued_actions = self.queued_actions | (flags or 0)
 end
 
 -- Dumps the project's MSB/LSB mappings.
@@ -336,8 +335,6 @@ function App:ontrackchange(last, cur)
         curn = reaper.GetMediaTrackInfo_Value(cur, 'IP_TRACKNUMBER')
     end
     log.info('app: track change: %s -> %s', lastn, curn)
-
-    self:log_msblsb_mapping()
 
     reaper.PreventUIRefresh(1)
     self.screens.banklist.filter_entry:onchange()
@@ -824,8 +821,8 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
             -- If the bank has the program number and it's mapped on the requested
             -- channel, then use its MSB/LSB. Note that srcchannel is offset 1, while
             -- given channel is offset 0.
-            if (b.srcchannel == 17 or b.srcchannel == channel+1) and bank:get_articulation_by_program(program) then
-                msb, lsb = bank:get_current_msb_lsb()
+            if (b.srcchannel == 17 or b.srcchannel == channel+1) and b.bank:get_articulation_by_program(program) then
+                msb, lsb = b.bank:get_current_msb_lsb()
                 break
             end
         end
@@ -1691,6 +1688,7 @@ function App:refresh_banks(flags)
     log.debug("app: refresh: updated screens")
     log.info("app: refresh: all done (flags=%s changes=%s additions=%s)", flags, changes, additions)
     log.time_end()
+    self:log_msblsb_mapping()
 end
 
 
@@ -1736,14 +1734,9 @@ function App:clear_track_reabank_mapping(track)
     return true
 end
 
--- This induces REAPER to notice the global ReaBank has changed.  If item is specified,
--- then it's refreshed.  If track is specified, all items on the track will be refreshed.
--- If both are specified, both the given track *and* the item's track will be refreshed.
--- (They can safely be the same.)
---
--- Meanwhile if both are nil, then the entire project will be kicked in the head (which
--- can be extremely slow, but sometimes necessary). However this does not work before
--- REAPER 6.46.
+-- This induces REAPER to notice the global ReaBank has changed.  If track is specified,
+-- then all items on the track will be kicked.  Otherwise if midi_editor is true, then the
+-- active item in the MIDI editor (if there is one) will only be kicked.
 function App:force_recognize_bank_change_one_track(track, midi_editor)
     log.time_start()
     -- This rewrites the state chunk which causes REAPER to notice when a new
