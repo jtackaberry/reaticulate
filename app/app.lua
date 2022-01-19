@@ -336,8 +336,6 @@ function App:ontrackchange(last, cur)
     end
     log.info('app: track change: %s -> %s', lastn, curn)
 
-    self:log_msblsb_mapping()
-
     reaper.PreventUIRefresh(1)
     self.screens.banklist.filter_entry:onchange()
     if cur then
@@ -1690,6 +1688,7 @@ function App:refresh_banks(flags)
     log.debug("app: refresh: updated screens")
     log.info("app: refresh: all done (flags=%s changes=%s additions=%s)", flags, changes, additions)
     log.time_end()
+    self:log_msblsb_mapping()
 end
 
 
