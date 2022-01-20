@@ -635,6 +635,23 @@ Bug Fixes
 
 * Fixed bug where window pinned state was not preserved between restarts]]></changelog>
       </version>
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\sub\f0\fs72\lang9 Reaticulate (Pre-Release Version)\b\fs48\par
+
+\pard\sl240\slmult1\b0 Reaticulate provides a system for managing virtual instrument articulations in REAPER.\par
+\par
+More information at {{\field{\*\fldinst{HYPERLINK https://reaticulate.com/ }}{\fldrslt{https://reaticulate.com/\ul0\cf0}}}}\f0\fs48\par
+\par
+\b Warning! \b0 This is the pre-release package and may be buggier than the release version.  Projects saved with this version will unlikely be able to be opened by the previous stable version.\par
+\par
+\b Note: \b0 This ReaPack also includes the most recent stable release as well (whether newer or older than the last pre-release). In other words, with this ReaPack track you will always get the latest version, stable or otherwise.\b\par
+}
+]]></description>
+        <link rel="website">https://reaticulate.com/</link>
+      </metadata>
     </reapack>
   </category>
   <metadata>
