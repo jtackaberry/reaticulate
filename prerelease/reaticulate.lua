@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.0-pre4'}end)()
+return {_VERSION='0.5.0-pre5'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -5486,7 +5486,7 @@ self.config.debug_level=log.ERROR
 self:save_config()end
 rtk.touchscroll=app.config.touchscroll
 rtk.smoothscroll=app.config.smoothscroll
-self:set_theme()rtk.Application.initialize(self)self.window=rtk.Window{title=title,x=self.config.x,y=self.config.y,w=rtk.clamp(self.config.w,0,4096),h=rtk.clamp(self.config.h,0,4096),dock=self.config.dock or 'right',docked=self.config.docked,borderless=self.config.borderless,pinned=self.config.pinned,ondock=function()self:handle_ondock()end,onattr=function(_,attr,value)self:handle_onattr(attr,value)end,onmove=function()self:handle_onmove()end,onresize=function()self:handle_onresize()end,onupdate=function()self:handle_onupdate()end,onmousewheel=function(_,event)self:handle_onmousewheel(event)end,onclose=function()self:handle_onclose()end,onkeypresspost=function(_,event)self:handle_onkeypresspost(event)end,ondropfile=function(_,event)self:handle_ondropfiles(event)end,}self:build_frame()end
+self:set_theme()rtk.Application.initialize(self)self.window=rtk.Window{title=title,x=self.config.x,y=self.config.y,w=rtk.clamp(self.config.w,0,4096),h=rtk.clamp(self.config.h,0,4096),dock=self.config.dock or 'right',docked=self.config.docked,borderless=self.config.borderless,pinned=self.config.pinned,ondock=function()self:handle_ondock()end,onattr=function(_,attr,value)self:handle_onattr(attr,value)end,onmove=function()self:handle_onmove()end,onresize=function()self:handle_onresize()end,onupdate=function()self:handle_onupdate()end,onmousewheel=function(_,event)self:handle_onmousewheel(event)end,onclose=function()self:handle_onclose()end,onkeypresspost=function(_,event)self:handle_onkeypresspost(event)end,ondropfile=function(_,event)self:handle_ondropfiles(event)end,onclick=function(_,event)self:handle_onclick(event)end,}self:build_frame()end
 function BaseApp:run()self:handle_onupdate()rtk.window:open()end
 function BaseApp:add_screen(name,package)local screen=load("return __mod_" .. package:gsub("%.", "_"))()rtk.Application.add_screen(self,screen,name)end
 local function _swallow_event(self,event)event:set_handled(self)return false
@@ -5529,7 +5529,11 @@ end
 function BaseApp:set_debug(level)self.config.debug_level=level
 self:save_config()log.level=level or log.ERROR
 log.info("baseapp: Reaticulate log level is %s", log.level_name())end
-function BaseApp:zoom(increment)rtk.scale.user=rtk.clamp(rtk.scale.user+increment,0.5,4.0)log.info('zoom %.02f', rtk.scale.user)self:set_statusbar(string.format('Zoom UI to %.02fx', rtk.scale.user))self.config.scale=rtk.scale.user
+function BaseApp:zoom(increment)if increment==0 then
+rtk.scale.user=1.0
+else
+rtk.scale.user=rtk.clamp(rtk.scale.user+increment,0.5,4.0)end
+log.info('zoom %.02f', rtk.scale.user)self:set_statusbar(string.format('Zoom UI to %.02fx', rtk.scale.user))self.config.scale=rtk.scale.user
 self:save_config()end
 function BaseApp:handle_onattr(attr,value)if attr == 'pinned' or attr == 'docked' or attr == 'dock' then
 self:handle_ondock()end
@@ -5618,9 +5622,12 @@ end
 if event.char == '=' and event.ctrl then
 self:zoom(0.10)event:set_handled()elseif event.char=='-' and event.ctrl then
 self:zoom(-0.10)event:set_handled()elseif event.char=='0' and event.ctrl then
-self:zoom(1.0-rtk.scale.user)event:set_handled()end
+self:zoom(0)event:set_handled()end
 end
 function BaseApp:handle_ondropfiles(event)end
+function BaseApp:handle_onclick(event)if event.ctrl and event.button==rtk.mouse.BUTTON_MIDDLE then
+self:zoom(0)event:set_handled()end
+end
 return BaseApp
 end)()
 
@@ -6230,7 +6237,8 @@ function Bank:ensure_guid()if self.guid then
 return
 end
 if self.msblsb then
-local hash=string.format('%016x', self:_hash(false))local hash2=string.format('%016x', crc64(hash))self.guid=string.format('11111111-%s-%s-%s-%s',hash2:sub(1,4),hash2:sub(5,8),hash:sub(1,4),hash:sub(5))else
+local hash=string.format('%016x', self:_hash(false))local hash2=string.format('%016x', crc64(hash))local msb=self.msblsb>>8
+self.guid=string.format('%s-%s-%s-%s-%s',msb >=92 and '22222222' or '11111111',hash2:sub(1,4),hash2:sub(5,8),hash:sub(1,4),hash:sub(5))else
 self.guid=rtk.uuid4()end
 for _,art in ipairs(self.articulations)do
 art.bank_guid=self.guid
@@ -7630,7 +7638,7 @@ delete_ppqs[#delete_ppqs+1]={take,selinfo[2],selinfo[4],ch}end
 end
 return insert_ppqs,delete_ppqs
 end
-function App:_insert_articulation(rfxtrack,bank,program,channel,take)local track=rfxtrack.track
+function App:_insert_articulation(rfxtrack,bank,program,channel,take,skip_create_item)local track=rfxtrack.track
 local insert_ppqs,delete_ppqs
 if take and reaper.ValidatePtr(take, 'MediaItem_Take*') then
 insert_ppqs,delete_ppqs=_get_insertion_points_by_selected_notes(take,program)end
@@ -7638,7 +7646,8 @@ local msb,lsb
 if bank then
 msb,lsb=bank:get_current_msb_lsb()else
 for b in rfxtrack:get_banks()do
-if(b.srcchannel==17 or b.srcchannel==channel+1)and b.bank:get_articulation_by_program(program)then
+if(b.srcchannel==17 or b.srcchannel==channel+1)and
+b.bank and b.bank:get_articulation_by_program(program)then
 msb,lsb=b.bank:get_current_msb_lsb()break
 end
 end
@@ -7648,8 +7657,10 @@ local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')log.warning('app:
 end
 if not insert_ppqs or #insert_ppqs==0 then
 local cursor=reaper.GetCursorPositionEx(0)_,take=self:get_take_at_position(track,cursor)if take then
-local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}else
-local item=reaper.CreateNewMIDIItemInProj(track,cursor,cursor+1,false)reaper.SetMediaItemInfo_Value(item, 'B_LOOPSRC', 0)take=reaper.GetActiveTake(item)local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}end
+local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}elseif not skip_create_item then
+local item=reaper.CreateNewMIDIItemInProj(track,cursor,cursor+1,false)reaper.SetMediaItemInfo_Value(item, 'B_LOOPSRC', 0)take=reaper.GetActiveTake(item)local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}else
+return
+end
 end
 if delete_ppqs then
 for _,range in ipairs(delete_ppqs)do
@@ -7698,13 +7709,19 @@ end
 if midi_take and reaper.ValidatePtr(midi_take, 'MediaItem_Take*') then
 midi_track=reaper.GetMediaItemTake_Track(midi_take)end
 end
-reaper.PreventUIRefresh(1)reaper.Undo_BeginBlock2(0)for i=0,reaper.CountSelectedTracks(0)-1 do
-local track=reaper.GetSelectedTrack(0,i)local take=midi_track==track and midi_take
+reaper.PreventUIRefresh(1)reaper.Undo_BeginBlock2(0)local inserted_tracks={}local rfxtrack=rfx.Track()for i=0,reaper.CountSelectedTracks(0)-1 do
+local track=reaper.GetSelectedTrack(0,i)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')local take=midi_track==track and midi_take
 if track==rfx.current.track then
-self:_insert_articulation(rfx.current,bank,art.program,srcchannel,take)else
-local rfxtrack=rfx.Track()if rfxtrack:presync(track)then
-self:_insert_articulation(rfxtrack,nil,art.program,srcchannel,take)end
+self:_insert_articulation(rfx.current,bank,art.program,srcchannel,take)inserted_tracks[n]=true
+else
+if rfxtrack:presync(track)then
+self:_insert_articulation(rfxtrack,nil,art.program,srcchannel,take)inserted_tracks[n]=true
 end
+end
+end
+for i=0,reaper.CountSelectedMediaItems(0)-1 do
+local item=reaper.GetSelectedMediaItem(0,i)local track=reaper.GetMediaItem_Track(item)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')if not inserted_tracks[n] and rfxtrack:presync(track)then
+local take=reaper.GetActiveTake(item)self:_insert_articulation(rfxtrack,nil,art.program,srcchannel,take,true)end
 end
 rfx.current:opcode(rfx.OPCODE_ADVANCE_HISTORY)rfx.current:opcode_flush()reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. art.name .. ")", UNDO_STATE_ITEMS | UNDO_STATE_FX)reaper.PreventUIRefresh(-1)art.button.start_insert_animation()else
 rfx.current:activate_articulation(srcchannel,art.program)local ntracks=reaper.CountSelectedTracks(0)if ntracks>1 then
@@ -8310,7 +8327,7 @@ screen.button_font:draw(text,x,y+(rtk.os.mac and 1 or 0))end
 end
 end
 function screen.onartclick(art,event)if event.button==rtk.mouse.BUTTON_LEFT then
-app:activate_articulation(art,true,false,nil,event.alt)elseif event.button==rtk.mouse.BUTTON_MIDDLE then
+app:activate_articulation(art,true,false,nil,event.alt)elseif event.button==rtk.mouse.BUTTON_MIDDLE and event.modifiers==0 then
 if screen.clear_articulation(art)>0 then
 rfx.current:sync(rfx.current.track,true)end
 elseif event.button==rtk.mouse.BUTTON_RIGHT then
@@ -8361,8 +8378,12 @@ end
 art.button.start_insert_animation=function()if art.button:get_animation('color') then
 return
 end
-local color=art.button.color
-art.button:animate{attr='color', dst='red', duration=0.3, easing='in-out-sine'}:after(function()art.button:animate{attr='color', dst=color, duration=0.2, easing='linear'}end)end
+local target
+local orig=art.button.color
+local h,s,l=rtk.color.hsl(orig)if rtk.color.luma(orig)>0.8 then
+target=table.pack(rtk.color.hsl2rgb(h,s*1.2,l*0.8))else
+target=table.pack(rtk.color.hsl2rgb(h,s*1.2,l*1.8))end
+art.button:animate{attr='color', dst=target, duration=0.15, easing='out-circ'}:after(function()art.button:animate{attr='color', dst=orig, duration=0.1, easing='out-circ'}end)end
 local tpadding=art.spacer and(art.spacer&0xff)*20 or 0
 artbox:add(art.button,{lpadding=0,tpadding=tpadding,fillw=true,rpadding=20,minw=250})end
 bank.vbox:hide()return bank.vbox
@@ -8521,6 +8542,890 @@ end
 function screen.save_scroll_position()if rfx.current.track and rfx.current.appdata.y~=screen.viewport.scroll_top then
 rfx.current.appdata.y=screen.viewport.scroll_top
 rfx.current:queue_write_appdata()end
+end
+function screen.clear_cache()for _,bank in pairs(reabank.banks_by_guid)do
+bank.vbox=nil
+end
+screen.update()end
+function screen.update()screen.clear_selected_articulation()screen.update_error_box()screen.show_track_banks()end
+return screen
+end)()
+__mod_screens_banklist_ancient=(function()
+local rtk=rtk
+local rfx=__mod_rfx
+local reabank=__mod_reabank
+local feedback=__mod_feedback
+local articons=__mod_articons
+local log=rtk.log
+local screen={minw=250,widget=nil,midi_channel_buttons={},visible_banks={},toolbar=nil,errorbox=nil,warningbox=nil,filter_refocus_on_activation=false,selected_articulation=nil,error_msgs={[rfx.ERROR_PROGRAM_CONFLICT]='Some banks on this track have conflicting program numbers. ' ..'Some articulations may not work as expected.',[rfx.ERROR_BUS_CONFLICT]='A bank on this track uses bus 16 which conflicts with the MIDI ' ..'controller feedback feature. Avoid the use of bus 16 in your banks ' .."or disable MIDI feedback in Reaticulate's global settings.",[rfx.ERROR_DUPLICATE_BANK]='The same bank is mapped to this track multiple times which is not ' ..'allowed.  Only one instance will appear below.',[rfx.ERROR_UNKNOWN_BANK]='A bank assigned to this track could not be found on the local system ' ..'and will not be shown below.',default='There is some issue with the banks on this track. ' ..'Open the Track Settings page to learn more.'}}local function get_filter_score(name,filter)local last_match_pos=0
+local score=0
+local match=false
+local filter_pos=1
+local filter_char=filter:sub(filter_pos,filter_pos)for name_pos=1,#name do
+local name_char=name:sub(name_pos,name_pos)if name_char==filter_char then
+local distance=name_pos-last_match_pos
+score=score+(100-distance)if filter_pos==#filter then
+return score
+else
+last_match_pos=name_pos
+filter_pos=filter_pos+1
+filter_char=filter:sub(filter_pos,filter_pos)end
+end
+end
+return 0
+end
+function screen.filter_articulations(filter)for _,bank in ipairs(screen.visible_banks)do
+for _,art in ipairs(bank.articulations)do
+local score=-1
+if filter:len()>0 then
+score=get_filter_score((art.shortname or art.name):lower(),filter)end
+if score~=0 then
+if not art.button.visible then
+art.button:show()end
+elseif art.button.visible then
+art.button:hide()end
+end
+end
+end
+local function handle_filter_keypress(self,event)if event.keycode==rtk.keycodes.UP or event.keycode==rtk.keycodes.DOWN then
+return false
+elseif event.keycode==rtk.keycodes.ESCAPE then
+if screen.filter_refocus_on_activation then
+app:refocus()end
+return false
+elseif event.keycode==rtk.keycodes.ENTER then
+if self.value ~='' then
+if screen.selected_articulation then
+app:activate_selected_articulation(nil,screen.filter_refocus_on_activation)else
+local art=screen.get_firstlast_articulation()if art then
+app:activate_articulation(art,screen.filter_refocus_on_activation)end
+end
+elseif screen.filter_refocus_on_activation then
+app:refocus()end
+rtk.defer(function()screen.clear_selected_articulation()screen.clear_filter()end)return self.value ~=''end
+end
+function screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local hovering=button.hovering or button.hover
+if not hovering and not art:is_active()then
+return
+end
+local channels={}local bitmap=art.channels
+local hover_channel=nil
+if hovering then
+local bank=art:get_bank()hover_channel=bank:get_src_channel(app.default_channel)-1
+bitmap=bitmap|(1<<hover_channel)end
+local channel=0
+while bitmap>0 do
+if bitmap&1>0 then
+channels[#channels+1]=channel
+end
+bitmap=bitmap>>1
+channel=channel+1
+end
+if channels then
+local x=offx+button.cx+button.cw
+gfx.setfont(1,button.font,(button.fontsize-2)*rtk.fonts.multiplier*rtk.scale,rtk.fonts.BOLD)for idx,channel in ipairs(channels)do
+local lw,lh=gfx.measurestr(channel+1)x=x-(lw+15)local y=offy+button.cy+(button.ch-lh)/2
+button:setcolor('#ffffff', alpha)local fill=(channel==hover_channel)or(rfx.active_notes&(1<<channel)>0)gfx.rect(x-5,y-1,lw+10,lh+2,fill)if fill then
+button:setcolor('#000000', alpha)end
+gfx.x=x
+gfx.y=y+(rtk.os.mac and 1 or 0)gfx.drawstr(channel+1)end
+end
+end
+function screen.onartclick(art,event)if event.button==rtk.mouse.BUTTON_LEFT then
+app:activate_articulation(art,true,false)elseif event.button==rtk.mouse.BUTTON_MIDDLE then
+rfx.push_state(rfx.current.track)for channel=0,15 do
+if art.channels&(1<<channel)~=0 then
+rfx.current:clear_channel_program(channel+1,art.group)end
+end
+rfx.current:sync(rfx.current.track,true)rfx.pop_state()elseif event.button==rtk.mouse.BUTTON_RIGHT then
+app:activate_articulation(art,true,true)end
+end
+function screen.create_banklist_ui(bank)bank.vbox=rtk.VBox{spacing=10}local hbox=rtk.HBox()bank.vbox:add(hbox,{lpadding=10,tpadding=10,bpadding=10})bank.heading=rtk.Heading{label=bank.shortname or bank.name}hbox:add(bank.heading, {valign='center'})hbox:add(rtk.Box.FLEXSPACE)if bank.message then
+local button = rtk.Button{icon='18-info_outline', flat=true}button.alpha=bank.message and 1.0 or 0.7
+hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='24-info_outline'}, {valign='top'})local label=msgbox:add(rtk.Label{label=bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
+rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)end
+msgbox.onclick=button.onclick
+msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)button.alpha=msgbox.visible and 1.0 or 0.5
+end
+local artbox=bank.vbox:add(rtk.FlowBox{vspacing=7,hspacing=0,lpadding=30})for n,art in ipairs(bank.articulations)do
+local color=art.color or reabank.colors.default
+local darkicon=false
+if not color:starts('#') then
+color=app:get_articulation_color(color)end
+if rtk.color2luma(color)>rtk.light_luma_threshold then
+darkicon=true
+end
+art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,color=color,tpadding=2,bpadding=2,lpadding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
+art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true)return true
+end
+art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local anim_pos=button.animation_position
+if anim_pos then
+local x=offx+button.cx+(button.cw*anim_pos)local y=offy+button.cy+button.ch-3
+local mul=-(2*anim_pos-1)^2+1
+local peak_w=button.cw*0.4
+local w=peak_w*mul
+button:setcolor{1.0,1.0,1.0,0.6*mul^1.5*alpha}gfx.rect(x-peak_w/2*mul,y,w,3)end
+end
+art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
+art.button.onmouseenter=function(button,event)if not art.outputstr then
+art.outputstr=art:describe_outputs()end
+app:set_statusbar(art.outputstr)return true
+end
+art.button.start_insert_animation=function()art.button.animation_position=0
+art.button:animate{attr='animation_position', dst=1, duration=0.3,done=function(button)button.animation_position=nil
+end
+}end
+local tpadding=art.spacer and(art.spacer&0xff)*20 or 0
+artbox:add(art.button,{lpadding=0,tpadding=tpadding,fillw=true,rpadding=20,minw=250})end
+bank.vbox:hide()return bank.vbox
+end
+function screen.show_track_banks()if not rfx.current.fx then
+return
+end
+screen.banks:remove_all()local visible={}local visible_by_guid={}function showbank(bank)if visible_by_guid[bank.guid] then
+return
+end
+if not bank.vbox then
+screen.create_banklist_ui(bank)end
+screen.banks:add(bank.vbox:show())visible[#visible+1]=bank
+visible_by_guid[bank.guid]=1
+end
+for _,bank,_,_,hash,userdata,guid in rfx.current:get_banks()do
+if bank then
+showbank(bank)end
+end
+screen.visible_banks=visible
+if #visible>0 then
+screen.viewport:show()screen.no_banks_box:hide()else
+screen.viewport:hide()screen.no_banks_box:show()end
+end
+function screen.set_warning(msg)if msg then
+screen.warningmsg:attr('label', msg)screen.warningbox:show()screen.warningbox:animate{attr='alpha', src=0, dst=1, duration=0.3}screen.warningbox:animate{attr='h', src=0, dst=nil, duration=0.3}else
+screen.warningbox:hide()end
+end
+function screen.update_error_box()if not rfx.current.fx or not rfx.current.appdata.err then
+screen.errorbox:hide()else
+local msg=screen.error_msgs[rfx.current.appdata.err] or screen.error_msgs.default
+screen.errormsg:attr('label', msg)screen.errorbox:show()end
+end
+function screen.focus_filter()screen.filter_entry:focus()screen.filter_refocus_on_activation=not app.window.in_window
+return app.window:focus()end
+function screen.clear_filter()screen.filter_entry:attr('value', '')end
+function screen.init()screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,autofocus=true,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=app:make_button('18-view_list')track_button.onclick=function()app:push_screen('trackcfg')end
+screen.toolbar:add(track_button,{rpadding=0})screen.toolbar:add(rtk.Box.FLEXSPACE)row=rtk.HBox{spacing=2}topbar:add(row,{tpadding=20,halign=rtk.Widget.CENTER})for channel=1,16 do
+local label=string.format("%02d", channel)local button=rtk.Button{label=label,color=rtk.theme.entry_border_focused,w=25,h=20,textcolor='#ffffff',fontscale=0.9,halign=rtk.Widget.CENTER,tpadding=0,rpadding=0,bpadding=0,lpadding=0,lspacing=0,scalability='dimensions',flat=true
+}local button=row:add(button)button.onclick=function(button,event)if event.button==1 then
+app:set_default_channel(channel)feedback.sync(app.track)elseif event.button==2 then
+log.warn('TODO: reassign selected MIDI Events to channel %s', channel)end
+app:refocus()end
+screen.midi_channel_buttons[channel]=button
+if channel==8 then
+row=rtk.HBox{spacing=2}topbar:add(row,{tpadding=0,halign=rtk.Widget.CENTER})end
+end
+local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='18-search', label="Filter articulations", bg2='#0000007f'}entry.onkeypress=handle_filter_keypress
+entry.onchange=function(self)screen.filter_articulations(self.value:lower())end
+row:add(entry,{expand=1,fillw=true,lpadding=20,rpadding=20})screen.filter_entry=entry
+screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',tpadding=10,bpadding=10,lpadding=10,rpadding=10
+}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='24-alert_circle_outline', scale=1})screen.warningmsg=hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',tpadding=20,bpadding=20,lpadding=10,rpadding=10
+}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='24-alert_circle_outline'})screen.errormsg=hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{label='Open Track Settings', icon='18-view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
+screen.errorbox:add(button, {halign='center', tpadding=20})screen.widget:add(screen.errorbox,{fillw=true})screen.banks=rtk.VBox{bpadding=20,spacing=20}screen.viewport=rtk.Viewport{child=screen.banks,h=1.0}screen.widget:add(screen.viewport,{fillw=true})screen.no_banks_box=rtk.VBox()screen.widget:add(screen.no_banks_box,{halign=rtk.Widget.CENTER,valign=rtk.Widget.CENTER,expand=1,bpadding=100
+})local label=rtk.Label{label="No banks on this track", fontsize=24,color={1,1,1,0.5}}screen.no_banks_box:add(label,{halign=rtk.Widget.CENTER})local button=rtk.Button{icon=track_button.icon, label="Edit Track Banks",space=10,color={0.3,0.3,0.3,1},tpadding=5,bpadding=5,lpadding=5,rpadding=10
+}screen.no_banks_box:add(button,{halign=rtk.Widget.CENTER,tpadding=20})button.onclick=track_button.onclick
+end
+function screen.highlight_channel_button(new_channel)for channel,button in ipairs(screen.midi_channel_buttons)do
+if channel==new_channel then
+button:attr('flat', false)else
+button:attr('flat', 'label')end
+end
+end
+local function _get_bank_idx(bank)for idx,candidate in ipairs(screen.visible_banks)do
+if bank==candidate then
+return idx
+end
+end
+end
+function screen.get_bank_before(bank)local idx=_get_bank_idx(bank)-1
+if idx>=1 then
+return screen.visible_banks[idx]
+end
+end
+function screen.get_bank_after(bank)local idx=_get_bank_idx(bank)+1
+if idx<=#screen.visible_banks then
+return screen.visible_banks[idx]
+end
+end
+function screen.get_first_bank()return screen.visible_banks[1]
+end
+function screen.get_last_bank()return screen.visible_banks[#screen.visible_banks]
+end
+function screen.get_firstlast_articulation(last)if not last then
+local bank=screen.get_first_bank()if bank then
+for _,art in ipairs(bank.articulations)do
+if art.button.visible then
+return art
+end
+end
+end
+else
+local bank=screen.get_last_bank()if bank then
+for i=#bank.articulations,1,-1 do
+local art=bank.articulations[i]
+if art.button.visible then
+return art
+end
+end
+end
+end
+end
+function screen.get_relative_articulation(art,distance,group)local bank=art:get_bank()local function _get_adjacent_art(art)if distance<0 then
+return bank:get_articulation_before(art)else
+return bank:get_articulation_after(art)end
+end
+local absdistance=math.abs(distance)local target=art
+while absdistance>0 do
+candidate=_get_adjacent_art(target)if not candidate then
+if distance<0 then
+bank=screen.get_bank_before(bank)if bank then
+candidate=bank:get_last_articulation()end
+else
+bank=screen.get_bank_after(bank)if bank then
+candidate=bank:get_first_articulation()end
+end
+end
+if not candidate then
+if distance<0 then
+bank=screen.get_last_bank()candidate=bank:get_last_articulation()else
+bank=screen.get_first_bank()candidate=bank:get_first_articulation()end
+end
+if candidate then
+target=candidate
+if(candidate.group==group or not group)and candidate.button.visible then
+absdistance=absdistance-1
+end
+end
+end
+if(target.group==group or not group)and target.button.visible then
+return target
+end
+end
+function screen.get_selected_articulation()local sel=screen.selected_articulation
+if sel and sel.button.visible then
+return sel
+end
+end
+function screen.clear_selected_articulation()if screen.selected_articulation then
+screen.selected_articulation.button:attr('hover', false)screen.selected_articulation=nil
+end
+end
+function screen.select_relative_articulation(distance)local current=screen.get_selected_articulation()screen.clear_selected_articulation()if not current then
+local last=app.last_activated_articulation
+local group=last and last.group or nil
+current=app:get_active_articulation(nil,group)end
+if current then
+target=screen.get_relative_articulation(current,distance,nil)else
+target=screen.get_firstlast_articulation(distance<0)end
+if target then
+target.button:attr('hover', true)screen.scroll_articulation_into_view(target)screen.selected_articulation=target
+end
+end
+function screen.scroll_articulation_into_view(art)if art.button then
+art.button:scrolltoview(50,10)end
+end
+function screen.clear_cache()for _,bank in pairs(reabank.banks_by_guid)do
+bank.vbox=nil
+end
+screen.update()end
+function screen.update()screen.clear_selected_articulation()screen.update_error_box()screen.show_track_banks()end
+return screen
+end)()
+__mod_screens_banklist_bak=(function()
+local rtk=rtk
+local rfx=__mod_rfx
+local reabank=__mod_reabank
+local articons=__mod_articons
+local log=rtk.log
+local screen={minw=250,widget=nil,midi_channel_buttons={},visible_banks={},toolbar=nil,errorbox=nil,warningbox=nil,button_font=nil,filter_refocus_on_activation=false,selected_articulation=nil,error_msgs={[rfx.ERROR_PROGRAM_CONFLICT]='Some banks on this track have conflicting program numbers. ' ..'Some articulations may not work as expected.',[rfx.ERROR_BUS_CONFLICT]='A bank on this track uses bus 16 which conflicts with the MIDI ' ..'controller feedback feature. Avoid the use of bus 16 in your banks ' .."or disable MIDI feedback in Reaticulate's global settings.",[rfx.ERROR_DUPLICATE_BANK]='The same bank is mapped to this track multiple times which is not ' ..'allowed.  Only one instance will appear below.',[rfx.ERROR_UNKNOWN_BANK]='A bank assigned to this track could not be found on the local system ' ..'and will not be shown below.',default='There is some issue with the banks on this track. ' ..'Open the Track Settings page to learn more.'}}local function get_filter_score(name,filter)local last_match_pos=0
+local score=0
+local match=false
+local filter_pos=1
+local filter_char=filter:sub(filter_pos,filter_pos)for name_pos=1,#name do
+local name_char=name:sub(name_pos,name_pos)if name_char==filter_char then
+local distance=name_pos-last_match_pos
+score=score+(100-distance)if filter_pos==#filter then
+return score
+else
+last_match_pos=name_pos
+filter_pos=filter_pos+1
+filter_char=filter:sub(filter_pos,filter_pos)end
+end
+end
+return 0
+end
+function screen.filter_articulations(filter)for _,bank in ipairs(screen.visible_banks)do
+for _,art in ipairs(bank.articulations)do
+local score=-1
+if filter:len()>0 then
+score=get_filter_score((art.shortname or art.name):lower(),filter)end
+if score~=0 then
+if not art.button.visible then
+art.button:show()end
+elseif art.button.visible then
+art.button:hide()end
+end
+end
+end
+local function handle_filter_keypress(self,event)if event.keycode==rtk.keycodes.UP or event.keycode==rtk.keycodes.DOWN then
+return false
+elseif event.keycode==rtk.keycodes.ESCAPE then
+if screen.filter_refocus_on_activation then
+app:refocus(screen.filter_refocus_on_activation)end
+screen.clear_filter()return true
+elseif event.keycode==rtk.keycodes.ENTER or event.keycode==rtk.keycodes.INSERT then
+local force_insert=event.shift or event.ctrl or event.keycode==rtk.keycodes.INSERT
+local insert_at_cursor=event.alt
+if self.value ~='' then
+if screen.selected_articulation then
+app:activate_selected_articulation(nil,nil,force_insert,nil,insert_at_cursor)else
+local art=screen.get_firstlast_articulation()if art then
+app:activate_articulation(art,nil,force_insert,nil,insert_at_cursor)end
+end
+end
+if screen.filter_refocus_on_activation then
+app:refocus(screen.filter_refocus_on_activation)screen.filter_refocus_on_activation=nil
+end
+rtk.defer(function()screen.clear_selected_articulation()screen.clear_filter()end)return self.value ~=''end
+end
+function screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local hovering=button.hovering or button.hover
+if not hovering and not art:is_active()then
+return
+end
+local channels={}local bitmap=art.channels
+local hover_channel=nil
+if hovering then
+local bank=art:get_bank()hover_channel=bank:get_src_channel(app.default_channel)-1
+bitmap=bitmap|(1<<hover_channel)end
+local channel=0
+while bitmap>0 do
+if bitmap&1>0 then
+channels[#channels+1]=channel
+end
+bitmap=bitmap>>1
+channel=channel+1
+end
+if channels then
+local scale=rtk.scale.value
+local calc=button.calc
+local x=offx+calc.x+calc.w
+for idx,channel in ipairs(channels)do
+local text=tostring(channel+1)local lw,lh=screen.button_font:measure(text)x=x-lw-12*scale
+local y=offy+calc.y+(calc.h-lh)/2
+local fill=(channel==hover_channel)or(rfx.active_notes&(1<<channel)>0)button:setcolor('#ffffff', alpha)gfx.rect(x-5*scale,y-1*scale,lw+10*scale,lh+2*scale,fill)if fill then
+button:setcolor('#000000', alpha)end
+screen.button_font:draw(text,x,y+(rtk.os.mac and 1 or 0))end
+end
+end
+function screen.onartclick(art,event)if event.button==rtk.mouse.BUTTON_LEFT then
+app:activate_articulation(art,true,false,nil,event.alt)elseif event.button==rtk.mouse.BUTTON_MIDDLE then
+if screen.clear_articulation(art)>0 then
+rfx.current:sync(rfx.current.track,true)end
+elseif event.button==rtk.mouse.BUTTON_RIGHT then
+app:activate_articulation(art,true,true,nil,event.alt)end
+end
+function screen.clear_all_active_articulations()local cleared=0
+for b in rfx.current:get_banks()do
+if b.bank then
+for n,art in ipairs(b.bank.articulations)do
+cleared=cleared+screen.clear_articulation(art)end
+end
+end
+if cleared>0 then
+rfx.current:sync(rfx.current.track,true)end
+return cleared
+end
+function screen.clear_articulation(art)local cleared=0
+for channel=0,15 do
+if art.channels&(1<<channel)~=0 then
+rfx.current:clear_channel_program(channel+1,art.group)cleared=cleared+1
+end
+end
+return cleared
+end
+function screen.create_banklist_ui(bank)bank.vbox=rtk.VBox{spacing=10}local hbox=rtk.HBox()bank.vbox:add(hbox,{lpadding=10,tpadding=10,bpadding=10})bank.heading=rtk.Heading{bank.shortname or bank.name}hbox:add(bank.heading, {valign='center'})hbox:add(rtk.Box.FLEXSPACE)if bank.message then
+local button=rtk.Button{icon='med-info_outline',flat=true,alpha=bank.message and 1.0 or 0.7,tooltip='Toggle bank message',}hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='lg-info_outline'}, {valign='top'})local label=msgbox:add(rtk.Text{bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
+rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)end
+msgbox.onclick=button.onclick
+msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)button.alpha=msgbox.visible and 1.0 or 0.5
+end
+local artbox=bank.vbox:add(rtk.FlowBox{vspacing=7,hspacing=0,lpadding=30})for n,art in ipairs(bank.articulations)do
+local color=art.color or reabank.colors.default
+local darkicon=false
+if not color:startswith('#') then
+color=app:get_articulation_color(color)end
+if rtk.color.luma(color)>rtk.light_luma_threshold then
+darkicon=true
+end
+art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
+art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true,nil,event.alt)return true
+end
+art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
+art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
+art.button.onmouseenter=function(button,event)if not art.outputstr then
+art.outputstr=art:describe_outputs()end
+app:set_statusbar(art.outputstr)return true
+end
+art.button.start_insert_animation=function()if art.button:get_animation('color') then
+return
+end
+local orig=art.button.color
+local target='white'if rtk.color.luma(orig)>0.8 then
+local h,s,l=rtk.color.hsl(orig)target=table.pack(rtk.color.hsl2rgb(h,s,l*0.5))end
+log.info('----> %s', type(target) == 'table' and table.tostring(target) or target)art.button:animate{attr='color', dst=target, duration=0.1, easing='out-circ'}:after(function()art.button:animate{attr='color', dst=orig, duration=0.1, easing='out-circ'}end)end
+local tpadding=art.spacer and(art.spacer&0xff)*20 or 0
+artbox:add(art.button,{lpadding=0,tpadding=tpadding,fillw=true,rpadding=20,minw=250})end
+bank.vbox:hide()return bank.vbox
+end
+function screen.show_track_banks()if not rfx.current.fx then
+return
+end
+screen.banks:remove_all()local visible={}local visible_by_guid={}local function showbank(bank)if visible_by_guid[bank.guid] then
+return
+end
+if not bank.vbox then
+screen.create_banklist_ui(bank)end
+screen.banks:add(bank.vbox:show())visible[#visible+1]=bank
+visible_by_guid[bank.guid]=1
+end
+for b in rfx.current:get_banks()do
+if b.bank then
+showbank(b.bank)end
+end
+screen.visible_banks=visible
+if #visible>0 then
+screen.viewport:show()screen.no_banks_box:hide()else
+screen.viewport:hide()screen.no_banks_box:show()end
+if rfx.current.appdata then
+local y=rfx.current.appdata.y
+if y then
+screen.viewport:scrollto(nil,y,false)end
+end
+end
+function screen.set_warning(msg)if msg then
+screen.warningmsg:attr('text', msg)screen.warningbox:show()screen.warningbox:animate{attr='h', src=0, dst=nil, duration=0.3}screen.warningbox:animate{attr='alpha', src=0, dst=1, duration=0.3}else
+screen.warningbox:hide()end
+end
+function screen.update_error_box()if not rfx.current.fx or not rfx.current.appdata.err then
+screen.errorbox:hide()else
+local msg=screen.error_msgs[rfx.current.appdata.err] or screen.error_msgs.default
+screen.errormsg:attr('text', msg)screen.errorbox:show()end
+end
+function screen.focus_filter()screen.filter_entry:focus()screen.filter_refocus_on_activation=not app.window.in_window and rtk.focused_hwnd
+return app.window:focus()end
+function screen.clear_filter()screen.filter_entry:attr('value', '')end
+function screen.init()screen.button_font=rtk.Font('Calibri', 16, nil, rtk.font.BOLD)screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=rtk.Button{icon='med-view_list',flat=true,tooltip='Configure track for Reaticulate',}track_button.onclick=function()app:push_screen('trackcfg')end
+screen.toolbar:add(track_button,{rpadding=0})screen.toolbar:add(rtk.Box.FLEXSPACE)local row=rtk.HBox{spacing=2}topbar:add(row, {tpadding=20, halign='center'})for channel=1,16 do
+local label=string.format("%02d", channel)local button=rtk.Button{label,w=25,h=20,color=rtk.theme.entry_border_focused,textcolor='#ffffff',fontscale=0.9,halign='center',padding=0,flat=true,tooltip='Set inserted articulations and MIDI editor to channel ' .. tostring(channel),}local button=row:add(button)button.onclick=function(button,event)if event.button==1 then
+app:set_default_channel(channel)elseif event.button==2 then
+log.warning('TODO: reassign selected MIDI Events to channel %s', channel)end
+app:refocus()end
+screen.midi_channel_buttons[channel]=button
+if channel==8 then
+row=rtk.HBox{spacing=2}topbar:add(row, {tpadding=0, halign='center'})end
+end
+local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='med-search', placeholder='Filter articulations'}entry.onkeypress=handle_filter_keypress
+entry.onchange=function(self)screen.filter_articulations(self.value:lower())end
+row:add(entry,{expand=1,fillw=true,lpadding=20,rpadding=20})screen.filter_entry=entry
+screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',padding=10,visible=false,}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='lg-alert_circle_outline', scale=1})screen.warningmsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',padding={20,10},}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='lg-alert_circle_outline'})screen.errormsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{'Open Track Settings', icon='med-view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
+screen.errorbox:add(button, {halign='center', tpadding=20})screen.widget:add(screen.errorbox,{fillw=true})screen.banks=rtk.VBox{bpadding=20,spacing=20}screen.viewport=rtk.Viewport{child=screen.banks,h=1.0}screen.widget:add(screen.viewport,{fillw=true})screen.no_banks_box=rtk.VBox()screen.widget:add(screen.no_banks_box,{halign='center', valign='center', expand=1, bpadding=100
+})local label = rtk.Text{'No articulations on this track', fontsize=24, alpha=0.5}screen.no_banks_box:add(label, {halign='center'})local button=rtk.Button{'Open Track Settings',icon=track_button.icon,color={0.3,0.3,0.3,1},}screen.no_banks_box:add(button, {halign='center', tpadding=20})button.onclick=track_button.onclick
+end
+function screen.highlight_channel_button(new_channel)for channel,button in ipairs(screen.midi_channel_buttons)do
+button:attr('flat', channel ~= new_channel and 'flat' or false)end
+end
+local function _get_bank_idx(bank)for idx,candidate in ipairs(screen.visible_banks)do
+if bank==candidate then
+return idx
+end
+end
+end
+function screen.get_bank_before(bank)local idx=_get_bank_idx(bank)-1
+if idx>=1 then
+return screen.visible_banks[idx]
+end
+end
+function screen.get_bank_after(bank)local idx=_get_bank_idx(bank)+1
+if idx<=#screen.visible_banks then
+return screen.visible_banks[idx]
+end
+end
+function screen.get_first_bank()return screen.visible_banks[1]
+end
+function screen.get_last_bank()return screen.visible_banks[#screen.visible_banks]
+end
+function screen.get_firstlast_articulation(last)if not last then
+local bank=screen.get_first_bank()if bank then
+for _,art in ipairs(bank.articulations)do
+if art.button.visible then
+return art
+end
+end
+end
+else
+local bank=screen.get_last_bank()if bank then
+for i=#bank.articulations,1,-1 do
+local art=bank.articulations[i]
+if art.button.visible then
+return art
+end
+end
+end
+end
+end
+function screen.get_relative_articulation(art,distance,group)local bank=art:get_bank()local function _get_adjacent_art(art)if distance<0 then
+return bank:get_articulation_before(art)else
+return bank:get_articulation_after(art)end
+end
+local absdistance=math.abs(distance)local target=art
+while absdistance>0 do
+local candidate=_get_adjacent_art(target)if not candidate then
+if distance<0 then
+bank=screen.get_bank_before(bank)if bank then
+candidate=bank:get_last_articulation()end
+else
+bank=screen.get_bank_after(bank)if bank then
+candidate=bank:get_first_articulation()end
+end
+end
+if not candidate then
+if distance<0 then
+bank=screen.get_last_bank()candidate=bank:get_last_articulation()else
+bank=screen.get_first_bank()candidate=bank:get_first_articulation()end
+end
+if candidate then
+target=candidate
+if(candidate.group==group or not group)and candidate.button.visible then
+absdistance=absdistance-1
+end
+end
+end
+if(target.group==group or not group)and target.button.visible then
+return target
+end
+end
+function screen.get_selected_articulation()local sel=screen.selected_articulation
+if sel and sel.button.visible then
+return sel
+end
+end
+function screen.clear_selected_articulation()if screen.selected_articulation then
+screen.selected_articulation.button:attr('hover', false)screen.selected_articulation=nil
+end
+end
+function screen.select_relative_articulation(distance)local current=screen.get_selected_articulation()screen.clear_selected_articulation()if not current then
+local last=app.last_activated_articulation
+local group=last and last.group or nil
+current=app:get_active_articulation(nil,group)end
+local target
+if current then
+target=screen.get_relative_articulation(current,distance,nil)else
+target=screen.get_firstlast_articulation(distance<0)end
+if target then
+target.button:attr('hover', true)screen.scroll_articulation_into_view(target)screen.selected_articulation=target
+end
+end
+function screen.scroll_articulation_into_view(art)if art.button then
+art.button:scrolltoview{50,0,10,0}end
+end
+function screen.save_scroll_position()if rfx.current.track and rfx.current.appdata.y~=screen.viewport.scroll_top then
+rfx.current.appdata.y=screen.viewport.scroll_top
+rfx.current:queue_write_appdata()end
+end
+function screen.clear_cache()for _,bank in pairs(reabank.banks_by_guid)do
+bank.vbox=nil
+end
+screen.update()end
+function screen.update()screen.clear_selected_articulation()screen.update_error_box()screen.show_track_banks()end
+return screen
+end)()
+__mod_screens_banklist_sync_conflict_20220118_203048_FDNNBRS=(function()
+local rtk=rtk
+local rfx=__mod_rfx
+local reabank=__mod_reabank
+local feedback=__mod_feedback
+local articons=__mod_articons
+local log=rtk.log
+local screen={minw=250,widget=nil,midi_channel_buttons={},visible_banks={},toolbar=nil,errorbox=nil,warningbox=nil,filter_refocus_on_activation=false,selected_articulation=nil,error_msgs={[rfx.ERROR_PROGRAM_CONFLICT]='Some banks on this track have conflicting program numbers. ' ..'Some articulations may not work as expected.',[rfx.ERROR_BUS_CONFLICT]='A bank on this track uses bus 16 which conflicts with the MIDI ' ..'controller feedback feature. Avoid the use of bus 16 in your banks ' .."or disable MIDI feedback in Reaticulate's global settings.",[rfx.ERROR_DUPLICATE_BANK]='The same bank is mapped to this track multiple times which is not ' ..'allowed.  Only one instance will appear below.',[rfx.ERROR_UNKNOWN_BANK]='A bank assigned to this track could not be found on the local system ' ..'and will not be shown below.',default='There is some issue with the banks on this track. ' ..'Open the Track Settings page to learn more.'}}local function get_filter_score(name,filter)local last_match_pos=0
+local score=0
+local match=false
+local filter_pos=1
+local filter_char=filter:sub(filter_pos,filter_pos)for name_pos=1,#name do
+local name_char=name:sub(name_pos,name_pos)if name_char==filter_char then
+local distance=name_pos-last_match_pos
+score=score+(100-distance)if filter_pos==#filter then
+return score
+else
+last_match_pos=name_pos
+filter_pos=filter_pos+1
+filter_char=filter:sub(filter_pos,filter_pos)end
+end
+end
+return 0
+end
+function screen.filter_articulations(filter)for _,bank in ipairs(screen.visible_banks)do
+for _,art in ipairs(bank.articulations)do
+local score=-1
+if filter:len()>0 then
+score=get_filter_score((art.shortname or art.name):lower(),filter)end
+if score~=0 then
+if not art.button.visible then
+art.button:show()end
+elseif art.button.visible then
+art.button:hide()end
+end
+end
+end
+local function handle_filter_keypress(self,event)if event.keycode==rtk.keycodes.UP or event.keycode==rtk.keycodes.DOWN then
+return false
+elseif event.keycode==rtk.keycodes.ESCAPE then
+if screen.filter_refocus_on_activation then
+app:refocus()end
+return false
+elseif event.keycode==rtk.keycodes.ENTER then
+if self.value ~='' then
+if screen.selected_articulation then
+app:activate_selected_articulation(nil,screen.filter_refocus_on_activation)else
+local art=screen.get_firstlast_articulation()if art then
+app:activate_articulation(art,screen.filter_refocus_on_activation)end
+end
+elseif screen.filter_refocus_on_activation then
+app:refocus()end
+rtk.defer(function()screen.clear_selected_articulation()screen.clear_filter()end)return self.value ~=''end
+end
+function screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local hovering=button.hovering or button.hover
+if not hovering and not art:is_active()then
+return
+end
+local channels={}local bitmap=art.channels
+local hover_channel=nil
+if hovering then
+local bank=art:get_bank()hover_channel=bank:get_src_channel(app.default_channel)-1
+bitmap=bitmap|(1<<hover_channel)end
+local channel=0
+while bitmap>0 do
+if bitmap&1>0 then
+channels[#channels+1]=channel
+end
+bitmap=bitmap>>1
+channel=channel+1
+end
+if channels then
+local x=offx+button.cx+button.cw
+gfx.setfont(1,button.font,(button.fontsize-2)*rtk.fonts.multiplier*rtk.scale,rtk.fonts.BOLD)for idx,channel in ipairs(channels)do
+local lw,lh=gfx.measurestr(channel+1)x=x-(lw+15)local y=offy+button.cy+(button.ch-lh)/2
+button:setcolor('#ffffff', alpha)local fill=(channel==hover_channel)or(rfx.active_notes&(1<<channel)>0)gfx.rect(x-5,y-1,lw+10,lh+2,fill)if fill then
+button:setcolor('#000000', alpha)end
+gfx.x=x
+gfx.y=y+(rtk.os.mac and 1 or 0)gfx.drawstr(channel+1)end
+end
+end
+function screen.onartclick(art,event)if event.button==rtk.mouse.BUTTON_LEFT then
+app:activate_articulation(art,true,false)elseif event.button==rtk.mouse.BUTTON_MIDDLE then
+rfx.push_state(rfx.current.track)for channel=0,15 do
+if art.channels&(1<<channel)~=0 then
+rfx.current:clear_channel_program(channel+1,art.group)end
+end
+rfx.current:sync(rfx.current.track,true)rfx.pop_state()elseif event.button==rtk.mouse.BUTTON_RIGHT then
+app:activate_articulation(art,true,true)end
+end
+function screen.create_banklist_ui(bank)bank.vbox=rtk.VBox{spacing=10}local hbox=rtk.HBox()bank.vbox:add(hbox,{lpadding=10,tpadding=10,bpadding=10})bank.heading=rtk.Heading{label=bank.shortname or bank.name}hbox:add(bank.heading, {valign='center'})hbox:add(rtk.Box.FLEXSPACE)if bank.message then
+local button = rtk.Button{icon='18-info_outline', flat=true}button.alpha=bank.message and 1.0 or 0.7
+hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='24-info_outline'}, {valign='top'})local label=msgbox:add(rtk.Label{label=bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
+rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)end
+msgbox.onclick=button.onclick
+msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)button.alpha=msgbox.visible and 1.0 or 0.5
+end
+local artbox=bank.vbox:add(rtk.FlowBox{vspacing=7,hspacing=0,lpadding=30})for n,art in ipairs(bank.articulations)do
+local color=art.color or reabank.colors.default
+local darkicon=false
+if not color:starts('#') then
+color=app:get_articulation_color(color)end
+if rtk.color2luma(color)>rtk.light_luma_threshold then
+darkicon=true
+end
+art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,color=color,tpadding=2,bpadding=2,lpadding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
+art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true)return true
+end
+art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local anim_pos=button.animation_position
+if anim_pos then
+local x=offx+button.cx+(button.cw*anim_pos)local y=offy+button.cy+button.ch-3
+local mul=-(2*anim_pos-1)^2+1
+local peak_w=button.cw*0.4
+local w=peak_w*mul
+button:setcolor{1.0,1.0,1.0,0.6*mul^1.5*alpha}gfx.rect(x-peak_w/2*mul,y,w,3)end
+end
+art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
+art.button.onmouseenter=function(button,event)if not art.outputstr then
+art.outputstr=art:describe_outputs()end
+app:set_statusbar(art.outputstr)return true
+end
+art.button.start_insert_animation=function()art.button.animation_position=0
+art.button:animate{attr='animation_position', dst=1, duration=0.3,done=function(button)button.animation_position=nil
+end
+}end
+local tpadding=art.spacer and(art.spacer&0xff)*20 or 0
+artbox:add(art.button,{lpadding=0,tpadding=tpadding,fillw=true,rpadding=20,minw=250})end
+bank.vbox:hide()return bank.vbox
+end
+function screen.show_track_banks()if not rfx.current.fx then
+return
+end
+screen.banks:remove_all()local visible={}local visible_by_guid={}function showbank(bank)if visible_by_guid[bank.guid] then
+return
+end
+if not bank.vbox then
+screen.create_banklist_ui(bank)end
+screen.banks:add(bank.vbox:show())visible[#visible+1]=bank
+visible_by_guid[bank.guid]=1
+end
+for _,bank,_,_,hash,userdata,guid in rfx.current:get_banks()do
+if bank then
+showbank(bank)end
+end
+screen.visible_banks=visible
+if #visible>0 then
+screen.viewport:show()screen.no_banks_box:hide()else
+screen.viewport:hide()screen.no_banks_box:show()end
+end
+function screen.set_warning(msg)if msg then
+screen.warningmsg:attr('label', msg)screen.warningbox:show()screen.warningbox:animate{attr='alpha', src=0, dst=1, duration=0.3}screen.warningbox:animate{attr='h', src=0, dst=nil, duration=0.3}else
+screen.warningbox:hide()end
+end
+function screen.update_error_box()if not rfx.current.fx or not rfx.current.appdata.err then
+screen.errorbox:hide()else
+local msg=screen.error_msgs[rfx.current.appdata.err] or screen.error_msgs.default
+screen.errormsg:attr('label', msg)screen.errorbox:show()end
+end
+function screen.focus_filter()screen.filter_entry:focus()screen.filter_refocus_on_activation=not app.window.in_window
+return app.window:focus()end
+function screen.clear_filter()screen.filter_entry:attr('value', '')end
+function screen.init()screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,autofocus=true,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=app:make_button('18-view_list')track_button.onclick=function()app:push_screen('trackcfg')end
+screen.toolbar:add(track_button,{rpadding=0})screen.toolbar:add(rtk.Box.FLEXSPACE)row=rtk.HBox{spacing=2}topbar:add(row,{tpadding=20,halign=rtk.Widget.CENTER})for channel=1,16 do
+local label=string.format("%02d", channel)local button=rtk.Button{label=label,color=rtk.theme.entry_border_focused,w=25,h=20,textcolor='#ffffff',fontscale=0.9,halign=rtk.Widget.CENTER,tpadding=0,rpadding=0,bpadding=0,lpadding=0,lspacing=0,scalability='dimensions',flat=true
+}local button=row:add(button)button.onclick=function(button,event)if event.button==1 then
+app:set_default_channel(channel)feedback.sync(app.track)elseif event.button==2 then
+log.warn('TODO: reassign selected MIDI Events to channel %s', channel)end
+app:refocus()end
+screen.midi_channel_buttons[channel]=button
+if channel==8 then
+row=rtk.HBox{spacing=2}topbar:add(row,{tpadding=0,halign=rtk.Widget.CENTER})end
+end
+local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='18-search', label="Filter articulations", bg2='#0000007f'}entry.onkeypress=handle_filter_keypress
+entry.onchange=function(self)screen.filter_articulations(self.value:lower())end
+row:add(entry,{expand=1,fillw=true,lpadding=20,rpadding=20})screen.filter_entry=entry
+screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',tpadding=10,bpadding=10,lpadding=10,rpadding=10
+}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='24-alert_circle_outline', scale=1})screen.warningmsg=hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',tpadding=20,bpadding=20,lpadding=10,rpadding=10
+}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='24-alert_circle_outline'})screen.errormsg=hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{label='Open Track Settings', icon='18-view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
+screen.errorbox:add(button, {halign='center', tpadding=20})screen.widget:add(screen.errorbox,{fillw=true})screen.banks=rtk.VBox{bpadding=20,spacing=20}screen.viewport=rtk.Viewport{child=screen.banks,h=1.0}screen.widget:add(screen.viewport,{fillw=true})screen.no_banks_box=rtk.VBox()screen.widget:add(screen.no_banks_box,{halign=rtk.Widget.CENTER,valign=rtk.Widget.CENTER,expand=1,bpadding=100
+})local label=rtk.Label{label="No banks on this track", fontsize=24,color={1,1,1,0.5}}screen.no_banks_box:add(label,{halign=rtk.Widget.CENTER})local button=rtk.Button{icon=track_button.icon, label="Edit Track Banks",space=10,color={0.3,0.3,0.3,1},tpadding=5,bpadding=5,lpadding=5,rpadding=10
+}screen.no_banks_box:add(button,{halign=rtk.Widget.CENTER,tpadding=20})button.onclick=track_button.onclick
+end
+function screen.highlight_channel_button(new_channel)for channel,button in ipairs(screen.midi_channel_buttons)do
+if channel==new_channel then
+button:attr('flat', false)else
+button:attr('flat', 'label')end
+end
+end
+local function _get_bank_idx(bank)for idx,candidate in ipairs(screen.visible_banks)do
+if bank==candidate then
+return idx
+end
+end
+end
+function screen.get_bank_before(bank)local idx=_get_bank_idx(bank)-1
+if idx>=1 then
+return screen.visible_banks[idx]
+end
+end
+function screen.get_bank_after(bank)local idx=_get_bank_idx(bank)+1
+if idx<=#screen.visible_banks then
+return screen.visible_banks[idx]
+end
+end
+function screen.get_first_bank()return screen.visible_banks[1]
+end
+function screen.get_last_bank()return screen.visible_banks[#screen.visible_banks]
+end
+function screen.get_firstlast_articulation(last)if not last then
+local bank=screen.get_first_bank()if bank then
+for _,art in ipairs(bank.articulations)do
+if art.button.visible then
+return art
+end
+end
+end
+else
+local bank=screen.get_last_bank()if bank then
+for i=#bank.articulations,1,-1 do
+local art=bank.articulations[i]
+if art.button.visible then
+return art
+end
+end
+end
+end
+end
+function screen.get_relative_articulation(art,distance,group)local bank=art:get_bank()local function _get_adjacent_art(art)if distance<0 then
+return bank:get_articulation_before(art)else
+return bank:get_articulation_after(art)end
+end
+local absdistance=math.abs(distance)local target=art
+while absdistance>0 do
+candidate=_get_adjacent_art(target)if not candidate then
+if distance<0 then
+bank=screen.get_bank_before(bank)if bank then
+candidate=bank:get_last_articulation()end
+else
+bank=screen.get_bank_after(bank)if bank then
+candidate=bank:get_first_articulation()end
+end
+end
+if not candidate then
+if distance<0 then
+bank=screen.get_last_bank()candidate=bank:get_last_articulation()else
+bank=screen.get_first_bank()candidate=bank:get_first_articulation()end
+end
+if candidate then
+target=candidate
+if(candidate.group==group or not group)and candidate.button.visible then
+absdistance=absdistance-1
+end
+end
+end
+if(target.group==group or not group)and target.button.visible then
+return target
+end
+end
+function screen.get_selected_articulation()local sel=screen.selected_articulation
+if sel and sel.button.visible then
+return sel
+end
+end
+function screen.clear_selected_articulation()if screen.selected_articulation then
+screen.selected_articulation.button:attr('hover', false)screen.selected_articulation=nil
+end
+end
+function screen.select_relative_articulation(distance)local current=screen.get_selected_articulation()screen.clear_selected_articulation()if not current then
+local last=app.last_activated_articulation
+local group=last and last.group or nil
+current=app:get_active_articulation(nil,group)end
+if current then
+target=screen.get_relative_articulation(current,distance,nil)else
+target=screen.get_firstlast_articulation(distance<0)end
+if target then
+target.button:attr('hover', true)screen.scroll_articulation_into_view(target)screen.selected_articulation=target
+end
+end
+function screen.scroll_articulation_into_view(art)if art.button then
+art.button:scrolltoview(50,10)end
 end
 function screen.clear_cache()for _,bank in pairs(reabank.banks_by_guid)do
 bank.vbox=nil
