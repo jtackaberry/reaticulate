@@ -192,7 +192,7 @@ function screen.onartclick(art, event)
     if event.button == rtk.mouse.BUTTON_LEFT then
         -- insert at cursor if alt is pressed.
         app:activate_articulation(art, true, false, nil, event.alt)
-    elseif event.button == rtk.mouse.BUTTON_MIDDLE then
+    elseif event.button == rtk.mouse.BUTTON_MIDDLE and event.modifiers == 0 then
         -- Middle click on articulation.  Clear all channels currently assigned to that articulation.
         -- rfx.push_state(rfx.current.track)
         if screen.clear_articulation(art) > 0 then
