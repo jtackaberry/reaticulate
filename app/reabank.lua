@@ -436,9 +436,14 @@ function Bank:ensure_guid()
         -- third segment of the UUID4.  Just take a CRC64 of the first hash as a lame way
         -- to fake a larger hash.
         local hash2 = string.format('%016x', crc64(hash))
-        -- The first segment of UUIDs for converted legacy non-factory banks is all 1s.
+        -- The first segment of UUIDs for converted legacy non-factory banks is all 1s,
+        -- unless the MSB is >= 92 which indicates it is an OTR bank, in which case we use
+        -- all 2s. (I assigned MSB >= 92 to OTR v2 knowing that it would be transitional
+        -- until GUIDs arrived.)
+        local msb = self.msblsb >> 8
         self.guid = string.format(
-            '11111111-%s-%s-%s-%s',
+            '%s-%s-%s-%s-%s',
+            msb >= 92 and '22222222' or '11111111',
             hash2:sub(1, 4),
             hash2:sub(5, 8),
             hash:sub(1, 4),
