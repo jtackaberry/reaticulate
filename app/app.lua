@@ -1012,6 +1012,9 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         end
         -- Now insert the articulation on all selected media items when the items are on
         -- Reaticulate-managed tracks and they intersect with the editor cursor.
+        --
+        -- XXX: disabled for now. Needs further consideration as this breaks key workflows
+        --[[
         for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
             local item = reaper.GetSelectedMediaItem(0, i)
             local track = reaper.GetMediaItem_Track(item)
@@ -1023,7 +1026,7 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
                 self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take, true)
             end
         end
-
+        ]]--
 
         -- Advances the undo history serial slider in the JSFX.  This causes the
         -- old value to be retained in Reaper's undo history.  We actually store
