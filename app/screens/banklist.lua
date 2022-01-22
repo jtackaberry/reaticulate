@@ -326,10 +326,17 @@ function screen.create_banklist_ui(bank)
                 -- We're already in the middle of activating this articulation.
                 return
             end
-            local color = art.button.color
-            art.button:animate{attr='color', dst='red', duration=0.3, easing='in-out-sine'}
+            local target
+            local orig = art.button.color
+            local h, s, l = rtk.color.hsl(orig)
+            if rtk.color.luma(orig) > 0.8 then
+                target = table.pack(rtk.color.hsl2rgb(h, s * 1.2, l * 0.8))
+            else
+                target = table.pack(rtk.color.hsl2rgb(h, s * 1.2, l * 1.8))
+            end
+            art.button:animate{attr='color', dst=target, duration=0.15, easing='out-circ'}
                 :after(function()
-                    art.button:animate{attr='color', dst=color, duration=0.2, easing='linear'}
+                    art.button:animate{attr='color', dst=orig, duration=0.1, easing='out-circ'}
                 end)
         end
         local tpadding = art.spacer and (art.spacer & 0xff) * 20 or 0
