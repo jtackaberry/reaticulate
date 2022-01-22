@@ -802,7 +802,7 @@ end
 --
 -- Return value is true if the articulation was inserted, or false otherwise which
 -- can happen if bank is nil and no valid program can be found on the track.
-function App:_insert_articulation(rfxtrack, bank, program, channel, take)
+function App:_insert_articulation(rfxtrack, bank, program, channel, take, skip_create_item)
     local track = rfxtrack.track
     local insert_ppqs, delete_ppqs
     if take and reaper.ValidatePtr(take, 'MediaItem_Take*') then
@@ -821,7 +821,8 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
             -- If the bank has the program number and it's mapped on the requested
             -- channel, then use its MSB/LSB. Note that srcchannel is offset 1, while
             -- given channel is offset 0.
-            if (b.srcchannel == 17 or b.srcchannel == channel+1) and b.bank:get_articulation_by_program(program) then
+            if (b.srcchannel == 17 or b.srcchannel == channel+1) and
+               b.bank and b.bank:get_articulation_by_program(program) then
                 msb, lsb = b.bank:get_current_msb_lsb()
                 break
             end
@@ -845,7 +846,7 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
             insert_ppqs = {{take, ppq, nil, program}}
             -- Note: deletion of any existing PCs at this ppq is taken care of by
             -- _insert_program_change() later.
-        else
+        elseif not skip_create_item then
             local item = reaper.CreateNewMIDIItemInProj(track, cursor, cursor + 1, false)
             -- CreateNewMIDIItemInProj() does not honor project defaults. There's no easy
             -- way to determine what they are, so we just default to the more sane
@@ -854,6 +855,10 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take)
             take = reaper.GetActiveTake(item)
             local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
             insert_ppqs = {{take, ppq, nil, program}}
+        else
+            -- We've been told to skip creation of a new item, and there's no take under
+            -- the edit cursor, so we're done.
+            return
         end
     end
 
@@ -985,18 +990,40 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         -- we use the bank for the given Articulation object.  For all other tracks, we
         -- pass nil to _insert_articulation() and let it discover the appropriate bank for
         -- the program and channel.
+        --
+        -- Remember which track numbers we inserted on, so we don't duplicate insertions
+        -- when we look at selected MIDI items later.
+        local inserted_tracks = {}
+        -- We'll reuse this rfx.Track instance as we iterate over selected tracks and items
+        local rfxtrack = rfx.Track()
         for i = 0, reaper.CountSelectedTracks(0) - 1 do
             local track = reaper.GetSelectedTrack(0, i)
+            local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
             local take = midi_track == track and midi_take
             if track == rfx.current.track then
                 self:_insert_articulation(rfx.current, bank, art.program, srcchannel, take)
+                inserted_tracks[n] = true
             else
-                local rfxtrack = rfx.Track()
                 if rfxtrack:presync(track) then
                     self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take)
+                    inserted_tracks[n] = true
                 end
             end
         end
+        -- Now insert the articulation on all selected media items when the items are on
+        -- Reaticulate-managed tracks and they intersect with the editor cursor.
+        for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
+            local item = reaper.GetSelectedMediaItem(0, i)
+            local track = reaper.GetMediaItem_Track(item)
+            local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+            if not inserted_tracks[n] and rfxtrack:presync(track) then
+                local take = reaper.GetActiveTake(item)
+                -- Pass true here to skip creation of new items if there isn't already one
+                -- under the edit cursor.
+                self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take, true)
+            end
+        end
+
 
         -- Advances the undo history serial slider in the JSFX.  This causes the
         -- old value to be retained in Reaper's undo history.  We actually store

@@ -19,7 +19,8 @@ Here are the changes since the last stable release (0.4.7):
 * A new experimental option has been added to maintain a single floating FX window for instrument FX (such as VSTi) as different tracks are selected
 * A default list of CCs for chasing (when not explicitly defined in the bank itself) is now configurable in Reaticulate's settings page ([#146](https://github.com/jtackaberry/reaticulate/issues/146))
 * Articulations will now be inserted on all selected Reaticulate-enabled tracks. If the banks are different between tracks, then the first bank on the track that defines an articulation with the same program number is used.
-* Inserting articulations will create a new MIDI item under the edit cursor if there isn't currently one
+* Inserting articulations on selected tracks will create a new MIDI item under the edit cursor if there isn't currently one
+* Similar to selected tracks, articulations will also be inserted in any selected media items on Reaticulate-managed tracks, however only when they intersect with the edit cursor
 * Two new "tweak" functions have been added to Reaticulate's track configuration page:
   1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
   2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
@@ -30,7 +31,7 @@ Here are the changes since the last stable release (0.4.7):
 * Display a warning when the selected track doesn't match focused item in MIDI editor (a common gotcha)
 * Articulations can be inserted into a MIDI item when using the articulation filter either by pressing shift-enter or the insert key.
 * Articulation buttons will now layout in multiple columns when space permits
-* When an articulation is inserted by clicking on the articulation's button, it will flash red to indicate the insertion
+* When an articulation is inserted by clicking on the articulation's button, it will flash to indicate the insertion
 * All articulation icons have been redone with vector graphics in order to support high-DPI displays
 * The articulation list's scroll position is now retained per track and restored when the track is selected
 * All buttons in the GUI got a minor facelift

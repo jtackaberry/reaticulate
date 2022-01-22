@@ -135,6 +135,7 @@ function BaseApp:initialize(appid, title, basedir)
         onclose = function() self:handle_onclose() end,
         onkeypresspost = function(_, event) self:handle_onkeypresspost(event) end,
         ondropfile = function(_, event) self:handle_ondropfiles(event) end,
+        onclick = function(_, event) self:handle_onclick(event) end,
     }
 
     self:build_frame()
@@ -261,7 +262,11 @@ function BaseApp:set_debug(level)
 end
 
 function BaseApp:zoom(increment)
-    rtk.scale.user = rtk.clamp(rtk.scale.user + increment, 0.5, 4.0)
+    if increment == 0 then
+        rtk.scale.user = 1.0
+    else
+        rtk.scale.user = rtk.clamp(rtk.scale.user + increment, 0.5, 4.0)
+    end
     log.info('zoom %.02f', rtk.scale.user)
     self:set_statusbar(string.format('Zoom UI to %.02fx', rtk.scale.user))
     self.config.scale = rtk.scale.user
@@ -511,12 +516,19 @@ function BaseApp:handle_onkeypresspost(event)
         self:zoom(-0.10)
         event:set_handled()
     elseif event.char == '0' and event.ctrl then
-        self:zoom(1.0 - rtk.scale.user)
+        self:zoom(0)
         event:set_handled()
     end
 end
 
 function BaseApp:handle_ondropfiles(event)
+end
+
+function BaseApp:handle_onclick(event)
+    if event.ctrl and event.button == rtk.mouse.BUTTON_MIDDLE then
+        self:zoom(0)
+        event:set_handled()
+    end
 end
 
 return BaseApp
