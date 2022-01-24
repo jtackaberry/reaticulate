@@ -1,3 +1,229 @@
+# Reaticulate 0.5.0 Released
+*January 23, 2022*
+
+The next major release of Reaticulate is now available.  Users of both the pre-release and
+stable ReaPacks will automatically receive this update.
+
+Reaticulate 0.5.0 is backward compatible with previous projects saved with all past
+versions of Reaticulate, but old versions are not _forward compatible_ with this new
+version.  This means projects saved with Reaticulate 0.5.0 will not function properly with
+older versions.  It's a good idea to have backups of your projects until you're confident
+that downgrading won't be necessary.
+
+**Note: REAPER 5.975 (released on April 30, 2019) or later is now required. However REAPER
+6.46 or later is recommended for the best experience.**
+
+Let's explore the highlights of this release ...
+
+## Easy Importing of Banks
+
+Third party (user contributed) banks can now easily be imported into Reaticulate, either
+via clipboard, or by dragging-and-dropping one or more bank files onto Reaticulate's window.
+
+![inline](img/050-import-banks.gif)
+
+No need to open a text editor anymore for this basic operation.
+
+You can find a collection [user contributed banks over on
+GitHub](https://reaticulate.com/banks/).  Scroll down to the bottom of that page for
+installation instructions, which have been adapted for Reaticulate 0.5.0.
+
+## Managed Bank MSB/LSB Assignments
+
+In previous versions of Reaticulate, you, as the user, needed to assign and juggle the
+MSB/LSB numbers assigned to all banks (i.e. articulation maps) in your
+`Reaticulate.reabank` file.  For example:
+
+```go
+//! g="Reaticulate Examples" n="Bohemian Violin Exp1" off=0
+Bank 42 4 Bohemian Violin Exp1
+//! c=long-dark i=note-whole g=2 f=toggle o=note:35
+35 chords
+...
+```
+
+Above, the MSB/LSB is 42 and 4.  The onus was on you to keep track of all these numbers
+and make sure nothing in your `Reaticulate.reabank` file had any duplicates.  This was
+increasingly complicated by pulling in user-contributed banks, where their choice of
+MSB/LSB may well have clashed with yours, requiring you to reassign them to avoid
+conflicts.
+
+Even worse, sharing REAPER projects with other users was problematic: what if your project
+used an MSB/LSB that was assigned to a different bank in the other user's system?
+Some form of manual intervention would be needed.
+
+It's all very tedious and error-prone, and as of Reaticulate 0.5 it's a thing of the past!
+
+Instead of using MSB/LSB numbers as the way to know what banks are assigned to which
+tracks, Reaticulate now uses a custom globally unique identifier (GUID).  It automatically
+generates new GUIDs when you add new banks for the first time.  And, more importantly,
+Reaticulate automatically assigns MSB/LSB on a project-by-project basis.
+
+Consequently, users no longer need to give MSB/LSB another thought.  Reaticulate handles
+all of it behind the scenes.  Projects can be shared with other users, and once those
+users import the banks used by the project, it all Just Works.
+
+In Reaticulate 0.5.0, the bank definition can now look like this:
+
+```go
+//! g="Reaticulate Examples" n="Bohemian Violin Exp1" off=0
+Bank * * Bohemian Violin Exp1
+//! c=long-dark i=note-whole g=2 f=toggle o=note:35
+35 chords
+...
+```
+Using `*` for the MSB and LSB values leaves it up to Reaticulate to assign them.  In fact,
+even if you put numbers in those fields, Reaticulate just considers it a mere suggestion:
+it will use those values if it can, but if there are any conflicts, it will assign new
+values.
+
+With a bank definition like above, once you click the Reload button in Reaticulate's UI,
+Reaticulate will automatically assign this bank a new randomly generated GUID and rewrite
+the `Reaticulate.rebank` file with the update:
+
+
+```go
+//! g="Reaticulate Examples" n="Bohemian Violin Exp1" off=0
+//! id=5b6799b1-eb75-4043-8180-4b1283b84e31
+Bank * * Bohemian Violin Exp1
+//! c=long-dark i=note-whole g=2 f=toggle o=note:35
+35 chords
+...
+```
+This new `id` attribute is how Reaticulate identifies this bank, and it ensures uniqueness
+across any REAPER installation.
+
+While this isn't a particularly glamorous change, this is the biggest feature of
+Reaticulate 0.5.0, and this architecutral change paves the way for many new enhancements,
+including the bank importing feature mentioned earlier.
+
+
+## Workflow Improvements
+
+This release contains a number of small changes that will hopefully improve your workflow
+and general user experience:
+
+ 1. If multiple Reaticulate-enabled tracks are selected, when an articulation is inserted
+    (e.g. by right-clicking or double-clicking the articulation button, or using one of the
+    REAPER actions to insert articulations) then the new articulation will be inserted on all
+    selected tracks at once.
+
+    This works best when all tracks use banks from the same family of libraries, but it's
+    not strictly required as long as the program numbers across all the selected tracks'
+    banks align.  This is one scenario where bank creators having followed the [documented
+    guidance for program numbering](reabank#program-numbers) will pay off.
+ 2. Inserting an articulation on selected tracks will create a new MIDI item under the edit
+    cursor if there isn't already one there.
+
+    The capture below demonstrates the above two features.  What's noteworthy here is that the
+    selected articulation (sul g) comes from the 1st Violins patch but because of the program
+    number consistency with the other tracks, it translates appropriately to either sul g or sul c,
+    depending on the instrument.  Contrabasses meanwhile are skipped altogether because, at least
+    in the library used for this demonstration (Spitfire Chamber Strings), there is no equivalent
+    articulation.
+
+    ![inline](img/050-multi-track-insert.gif)
+
+ 3. When Reaticulate's "Insert articulations based on selected notes when MIDI editor is open"
+    option is enabled (and it is by default), then if you have notes selected in the MIDI editor
+    (which includes the inline editor), articulations will be inserted at the note position.
+    You can override this behavior and force Reaticulate to insert at the edit cursor instead
+    by holding down the *alt* key while performing any interaction that inserts an articulation (such
+    as right-clicking or double-clicking).
+
+ 4. A new experimental feature has been introduced to maintain a single floating
+    instrument FX window. That is, as you change tracks, the first instrument plugin on
+    the selected track (Kontakt, for example) will be shown in the single window.  This
+    feature will see some refinement in future releases, but even in its current form may
+    be useful to some users.
+
+
+## User Interface Enhancements
+
+Quite a lot of polish has gone into the GUI this release, particularly around improving
+the experience on touch-screen and high resolution displays.
+
+### Multi-Column Articulations
+
+If Reaticulate's window is wide enough, articulations will automatically now flow into
+multiple columns, making better use of available space and reducing the need for
+scrolling.
+
+![inline](img/050-multi-column.gif)
+
+### Retina/Hi-DPI Displays
+
+Reaticulate now fully supports Retina/Hi-DPI displays, where its GUI respects the system-wide DPI setting and automatically adjusts its scale accordingly.
+
+All of Reaticulate's icons now have high-resolution variants ensuring a crisp look even at
+2x scale for Retina displays. In the process, articulation icons have been redone from
+scratch, so you may notice some subtle (hopefully positive) changes over previous versions
+of Reaticulate.
+
+![inline](img/050-scale.gif)
+
+This can of course be further adjusted or overridden in Reaticulate's settings.
+
+
+### Touch Screen Support
+
+Touch screens are much better supported in Reaticulate 0.5.0, including kinetic scrolling.
+For users who have a separate touch display, or are using a tablet with an app such as
+[Spacedesk](https://www.spacedesk.net/), Reaticulate will now behave more seamlessly when
+running on these displays.
+
+![inline](img/050-touch-scroll.gif)
+
+Articulations can now also be inserted by long-pressing on articulation buttons in the
+GUI, which may be more convenient for some types of displays.  Double-tapping articulation
+buttons to insert also continues to work, which was a capability introduced in an earlier
+release.
+
+
+## Full Change Log
+
+### New Features
+
+* MSB/LSB bank values are now entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put `*` as placeholders for both MSB and LSB values in bank definitions. ([#63](https://github.com/jtackaberry/reaticulate/issues/63))
+* Pre-created banks (such as those [contributed by other users](https://github.com/jtackaberry/reaticulate/tree/master/userbanks)) can now be much more conveniently imported into Reaticulate, either from clipboard (`[Pencil Icon] | Import Banks from Clipboard`) or by dragging-and-dropping one or more files onto Reaticulate's window. Users no longer need to edit the Reabank file in a text editor just to import existing banks. Nor, thanks to dynamic and automatic MSB/LSB assignment, do users need to worry about adjusting MSB/LSB of third party banks to avoid conflicts.
+* Reaticulate now fully supports Retina/Hi-DPI displays with UI scaling and high-DPI graphics. The UI scale automatically respects the system-wide DPI but can be adjusted in Reaticulate's settings.
+* Default MIDI channel can be remembered globally, per track, or per item, and is more robustly synced with the MIDI editor ([#83](https://github.com/jtackaberry/reaticulate/issues/83))
+* Changes to the default MIDI channel are now fed back to the control surface, if configured. See Reaticulate's Usage documentation for more information.
+* Holding alt while clicking an articulation button in any manner that inserts the articulation (i.e. double clicking, long-pressing, or right-clicking) will always insert at the edit cursor, even when notes are selected in the MIDI editor. ([#79](https://github.com/jtackaberry/reaticulate/issues/79))
+* Articulation definitions in banks now respect the `m` (message) attribute, which displays the message as a tooltip when hovering over the articulation ([#67](https://github.com/jtackaberry/reaticulate/issues/67))
+* Touch scrolling can now be enabled, in addition to smooth scrolling, which significantly improves the experience on touch-capable devices ([#56](https://github.com/jtackaberry/reaticulate/issues/56))
+* Default articulation colors are now configurable in Reaticulate's settings page
+* A new experimental option has been added to maintain a single floating FX window for instrument FX (such as VSTi) as different tracks are selected
+* A default list of CCs for chasing (when not explicitly defined in the bank itself) is now configurable in Reaticulate's settings page ([#146](https://github.com/jtackaberry/reaticulate/issues/146))
+* Articulations will now be inserted on all selected Reaticulate-enabled tracks. If the banks are different between tracks, then the first bank on the track that defines an articulation with the same program number is used.
+* Inserting articulations on selected tracks will create a new MIDI item under the edit cursor if there isn't currently one
+* Two new "tweak" functions have been added to Reaticulate's track configuration page:
+  1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
+  2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
+
+### Minor Enhancements
+
+* "Track selection follows MIDI editor" is now enabled by default for new installations
+* Display a warning when the selected track doesn't match focused item in MIDI editor (a common gotcha)
+* Articulations can be inserted into a MIDI item when using the articulation filter either by pressing shift-enter or the insert key.
+* Articulation buttons will now layout in multiple columns when space permits
+* When an articulation is inserted by clicking on the articulation's button, it will flash to indicate the insertion
+* All articulation icons have been redone with vector graphics in order to support high-DPI displays
+* The articulation list's scroll position is now retained per track and restored when the track is selected
+* All buttons in the GUI got a minor facelift
+### Bug Fixes
+
+* Fixed a bug where CCs were not always properly chased when activating articulations between different channels
+* Properly refocus the previous window when using the "Focus articulation filter" action after activating an articulation (enter) or clearing the filter (escape).  (Requires js_ReaScriptAPI to be present.)
+* Fixed a bug where control surface feedback send would not be setup when the Reaticulate JSFX was initially installed on a track
+* Fixed an issue where existing Program Change events would sometimes not be deleted when replacing articulations
+* Improved robustness when starting with invalid or malformed saved configuration
+
+
+
+
+
+
 # Reaticulate 0.4.7 Released
 *March 27, 2021*
 

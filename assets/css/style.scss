@@ -92,7 +92,7 @@ img[alt="scaled"] {
         padding-left: 2em;
         padding-bottom: 1em;
     }
-    img[alt="inline"] {
+    img[alt="inline-2col"] {
         max-width: calc(100% - 400px);
     }
 }
@@ -173,8 +173,8 @@ summary {
 }
 
 .articon {
-    width: 32px;
-    height: 28px;
+    width: 64px;
+    height: 56px;
     background-image: url(../../img/articulations.png);
     //transform: scale(1.3);
 }

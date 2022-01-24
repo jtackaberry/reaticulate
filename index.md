@@ -45,7 +45,7 @@ Reaticulate provides a system for managing virtual instrument articulations in R
 
 Reaticulate is [free and open source](https://github.com/jtackaberry/reaticulate).
 
-![inline](img/pianoroll.png)
+![inline-2col](img/pianoroll.png)
 
 
 ## How do I install it?

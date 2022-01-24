@@ -1,8 +1,9 @@
 ## Reaticulate notations for Reabank files
 
 <p class='warning'>
-    In the alpha preview of Reaticulate, there is no GUI for creating custom banks.
-    It'll come, but for now, you'll need to understand the nitty gritty on this page.
+    Unfortunately there isn't yet a GUI for creating custom banks.  This will come in the next major
+    release of Reaticulate sometime in 2022, but for now, you'll need to understand the nitty
+    gritty on this page and use a text editor to create banks.
     <br/><br/>
     You can also <a href="{% link download.md %}#download-bank-files">download user-contributed banks</a> for various libraries.
 </p>
@@ -14,7 +15,9 @@ REAPER's resource directory (which you can find by invoking the REAPER action "S
 Resource path"), these files are:
 
 1. Factory banks: `Scripts/Reaticulate/Reaticulate-factory.reabank`
+   * A selection of banks are bundled with Reaticulate for you to use, but you can't edit these
 2. User banks: `Data/Reaticulate.reabank`
+   * This file is where you store all your personal or imported banks
 
 (Reaticulate combines these files into a file it manages called `Data/Reaticulate-tmp*.reabank`.
 You'll never edit this file directly, but it's what Reaticulate feeds back to REAPER to use as
@@ -22,6 +25,7 @@ the default reabank file.)
 
 
 ![floating](img/reabank-edit.png)
+
 You can take a look at the factory banks for inspiration, but if you want to start slinging
 your own custom articulation banks, the easiest way is to click the pencil button at the
 top of the UI and open the file in your editor.  Clicking this will create the file if
@@ -35,7 +39,8 @@ you've associated with `.reabank` files.
 
 ## Anatomy of a standard Reabank file
 
-Let's take a look at the normal REAPER reabank file.  The standard format is:
+Let's start by taking a look at the normal REAPER reabank file, which is defined by REAPER
+and works out-of-the-box even without Reaticulate.  The standard format is:
 
 ```
 Bank <MSB> <LSB> <Bank name>
@@ -57,32 +62,37 @@ Bank 65 1 Spitfire Symphonic Brass - Horn Solo
 71 trill M2
 ```
 
-The two numbers on the Bank line indicate the MSB and LSB of the MIDI bank.  These values are
-between 0 and 127 and are somewhat arbitrary, as long as the pair is unique to the REAPER
-instance. Following that is an arbitrary name for the bank.
+The two numbers on the Bank line (65 and 1 in the above example) indicate the MSB and LSB
+of the MIDI bank.  This stands for Most Significant Byte and Least Significant Byte
+respectively, and are defined as part of the MIDI specification.  These values are between
+0 and 127 and are somewhat arbitrary, as long as the pair is unique to the REAPER
+instance.
 
-<p class='warning'>
-    User banks must use MSBs from 0 to 63.  MSB of 64 and above are reserved for factory banks.
-</p>
+👉 REAPER itself needs the MSB and LSB values, but you don't need to worry about that.
+Reaticulate (as of version 0.5.0) automatically takes care of assigning these values. As
+you'll see below, all you need to put for these numbers is an asterisk (`*`).
 
-Each subsequent line (until the next Bank line) specifies the programs for the bank.  The number is
-the MIDI Program Change event number (which is technically arbitrary but see the
-[Program Numbers](#program-numbers) section below for some advice), and the description is, in our
-case, the name of the articulation.
+Following the MSB/LSB is an arbitrary name for the bank.
+
+Each subsequent line (until the next Bank line) specifies the programs for the bank.  The
+number is the MIDI Program Change event number (which is technically arbitrary but see the
+[Program Numbers](#program-numbers) section below for some advice), and the description
+is, in our case for Reaticulate, the name of the articulation.
 
 
 ## Reaticulate notations
 
 Reaticulate extends Reabank files by adding special notations on lines starting with `//!`
 
-Let's revisit the above example bank, now notated for Reaticulate, and how this bank looks
-in the GUI:
+Let's revisit the above example bank, now fully notated for Reaticulate, and how this bank
+looks in the GUI:
 
 ![floating](img/bank-horn-solo.png)
 ```go
 //! g="Spitfire/Symphonic Brass" n="Horn Solo"
 //! m="Set patch to UACC"
-Bank 65 1 SSB - Horn Solo
+//! id=cbbdac4f-34a1-4a1d-86ea-3e9e00365d1f
+Bank * * SSB - Horn Solo
 //! c=legato i=legato o=cc:32,20
 20 legato
 //! c=long i=note-whole o=cc:32,1
@@ -107,6 +117,10 @@ Notated attributes take the form `name=value` (or `name="value"` if the value co
 and are separated by whitespace.  The line(s) prefixed with `//!` immediately preceding the
 uncommented line will annotate it with the supplied attributes.
 
+Notice also that in the Reaticulate version of the bank, the MSB/LSB numbers in the "Bank"
+line have been replaced with asterisks (`*`).  This is because Reaticulate automatically
+picks appropriate values when you first load the bank on some track in a project.
+
 When an articulation is triggered, Reaticulate will emit the MIDI output events defined by
 the ``o`` attribute (see below).  In the above example, each articulation sends a single MIDI
 event: CC 32 with a value defined by the second argument.  The expectation for this factory bank
@@ -120,6 +134,21 @@ marked as required.
 
 <table>
 <tr><th style='text-align: center'>Name</th><th style='text-align: left'>Description</th></tr>
+<tr>
+    <td valign="top" style='text-align: center'>id<br/><code>generated</code></td>
+    <td>
+        A globally unique id (GUID, though technically speaking it's a UUID4) for this bank.<br/><br/>
+        Don't define this yourself -- let Reaticulate generate this for you.  When you create a new
+        bank in <code>Reaticulate.reabank</code> and click the Reload toolbar button in the GUI, Reaticulate
+        notices that the bank is missing the <code>id</code> attribute and new random one is automatically
+        generated. The bank file is then rewritten to include this new value.
+        <br/><br/>
+        Just be aware that if you're editing <code>Reaticulate.reabank</code> in a text editor at the
+        same time as Reaticulate generates the GUID and overwrites the file, you'll need to reload it
+        in the editor otherwise you risk reverting the GUID.  Best to use an editor that detects
+        on-disk changes and reloads for you, such as Visual Studio Code or Notepad++.
+    </td>
+</tr>
 <tr>
     <td valign="top" style='text-align: center'>g<br/><code>required</code></td>
     <td>
@@ -300,6 +329,12 @@ Programs can be decorated with these attributes:
         force all notes with velocities below 32 to be 32, and velocities above 64 to be 64.
     </td>
 </tr>
+<tr>
+    <td valign="top" style='text-align: center'>m</td>
+    <td>
+        A custom message displayed when the user hovers the mouse over the articulation button.
+    </td>
+</tr>
 </table>
 
 ## Program Numbers
@@ -315,6 +350,12 @@ articulations configured on your MIDI controller for sketching purposes, which, 
 common program numbers, can work regardless of the virtual instrument.  An idea can be
 expressed with basic articulations, and then you can go back over the MIDI item and
 finesse the articulations using Reaticulate's GUI.
+
+Another reason for program number consistency is that articulations can be inserted on
+multiple selected tracks at the same time.  Suppose you have 1st Violins from one library
+vendor and 2nd Violins from another, and want them both to play staccato at same spot. If
+both banks use the same program number for staccato, you can select both tracks and insert
+staccato in one shot.
 
 To that end, in consideration of the sketching use case, we recommend using the following
 program numbers for these articulations, or the **closest approximation** of these
@@ -582,13 +623,12 @@ The factory banks use the *light* variants for articulations played more softly 
 normale, for example con sordino, sul tasto, or harmonics.  The *dark* variants are used for
 grittier, distorted, or louder articulations, such as sul ponticello or Bartok pizzicato.
 
-These color names can be overridden by specifying a `color` attribute anywhere in your user
-Reabank file (path #2 listed at the top of this page), whose value is a comma-delimited list
-of `name=#hexcode` items.  For example, this line overrides the default and fx colors:
-
-```go
-//! colors=fx=#00ff00,default=#ff00ff
-```
+While you *can* define explicit custom color values, it's recommended you use the named
+colors (e.g. `short-dark`) in your banks, because users are able to customize these colors
+in Reaticulate's settings page.  If you use an explicit color, then this color is forced
+upon other users of your bank.  That may be ok in certain situations, and it's certainly not an
+issue if you're the only consumer of the banks you create, but it's something to consider
+when sharing your banks with other users.
 
 <div style='clear: both'></div>
 
@@ -597,154 +637,153 @@ of `name=#hexcode` items.  For example, this line overrides the default and fx c
 
 Here are the current icon names that may be assigned to the `i` attribute:
 
-| Icon      | Name
-|:---------:|---------------
+|Icon      | Name
+|:--------:|--------------
 | <div class="articon" style="background-position: 0px 0px"></div> | accented-half
-| <div class="articon" style="background-position: -32px 0px"></div> | accented-quarter
-| <div class="articon" style="background-position: -64px 0px"></div> | acciaccatura-quarter
-| <div class="articon" style="background-position: -96px 0px"></div> | alt-circle
-| <div class="articon" style="background-position: -128px 0px"></div> | alt-gypsy
-| <div class="articon" style="background-position: -160px 0px"></div> | alt-gypsy-eighth
-| <div class="articon" style="background-position: -192px 0px"></div> | alt-gypsy-harmonics
-| <div class="articon" style="background-position: -224px 0px"></div> | alt-tremolo-gypsy-harmonics
-| <div class="articon" style="background-position: -256px 0px"></div> | alt-wave
-| <div class="articon" style="background-position: -288px 0px"></div> | alt-wave-double
-| <div class="articon" style="background-position: -320px 0px"></div> | alt-wave-double-stopped
-| <div class="articon" style="background-position: -352px 0px"></div> | alt-wave-double-tr
-| <div class="articon" style="background-position: -384px 0px"></div> | alt-x
-| <div class="articon" style="background-position: -416px 0px"></div> | blend
-| <div class="articon" style="background-position: -448px 0px"></div> | bow-down
-| <div class="articon" style="background-position: -480px 0px"></div> | bow-up
-| <div class="articon" style="background-position: -512px 0px"></div> | col-legno
-| <div class="articon" style="background-position: -544px 0px"></div> | col-legno-loose
-| <div class="articon" style="background-position: -576px 0px"></div> | col-legno-whole
-| <div class="articon" style="background-position: -608px 0px"></div> | con-sord
+| <div class="articon" style="background-position: -64px 0px"></div> | accented-quarter
+| <div class="articon" style="background-position: -128px 0px"></div> | acciaccatura-quarter
+| <div class="articon" style="background-position: -192px 0px"></div> | alt-circle
+| <div class="articon" style="background-position: 0px -560px"></div> | alt-gypsy
+| <div class="articon" style="background-position: -64px -560px"></div> | alt-gypsy-eighth
+| <div class="articon" style="background-position: -128px -560px"></div> | alt-gypsy-harmonics
+| <div class="articon" style="background-position: -192px -560px"></div> | alt-tremolo-gypsy-harmonics
+| <div class="articon" style="background-position: -256px -560px"></div> | alt-wave
+| <div class="articon" style="background-position: -320px -560px"></div> | alt-wave-double
+| <div class="articon" style="background-position: -384px -560px"></div> | alt-wave-double-stopped
+| <div class="articon" style="background-position: -448px -560px"></div> | alt-wave-double-tr
+| <div class="articon" style="background-position: -512px -560px"></div> | alt-x
+| <div class="articon" style="background-position: -640px -504px"></div> | bend-down
+| <div class="articon" style="background-position: -576px -504px"></div> | bend-up
+| <div class="articon" style="background-position: -256px 0px"></div> | blend
+| <div class="articon" style="background-position: -320px 0px"></div> | bow-down
+| <div class="articon" style="background-position: -384px 0px"></div> | bow-up
+| <div class="articon" style="background-position: -448px 0px"></div> | col-legno
+| <div class="articon" style="background-position: -512px 0px"></div> | col-legno-whole
+| <div class="articon" style="background-position: -576px 0px"></div> | con-sord
 | <div class="articon" style="background-position: -640px 0px"></div> | con-sord-blend
-| <div class="articon" style="background-position: -672px 0px"></div> | con-sord-bow-down
-| <div class="articon" style="background-position: -704px 0px"></div> | con-sord-bow-up
-| <div class="articon" style="background-position: -736px 0px"></div> | con-sord-sul-pont
-| <div class="articon" style="background-position: -768px 0px"></div> | con-sord-sul-pont-bow-up
-| <div class="articon" style="background-position: -800px 0px"></div> | cresc-f-half
-| <div class="articon" style="background-position: -832px 0px"></div> | cresc-half
-| <div class="articon" style="background-position: -864px 0px"></div> | cresc-m-half
-| <div class="articon" style="background-position: -896px 0px"></div> | cresc-mf-half
-| <div class="articon" style="background-position: -928px 0px"></div> | cresc-mp-half
-| <div class="articon" style="background-position: -960px 0px"></div> | cresc-p-half
-| <div class="articon" style="background-position: -992px 0px"></div> | cresc-quarter
-| <div class="articon" style="background-position: -1024px 0px"></div> | crescendo
-| <div class="articon" style="background-position: -1056px 0px"></div> | cuivre
-| <div class="articon" style="background-position: -1088px 0px"></div> | dblstop-5th
-| <div class="articon" style="background-position: -1120px 0px"></div> | dblstop-5th-eighth
-| <div class="articon" style="background-position: -1152px 0px"></div> | decrescendo
-| <div class="articon" style="background-position: -1184px 0px"></div> | esp-half
-| <div class="articon" style="background-position: -1216px 0px"></div> | fall
-| <div class="articon" style="background-position: -1248px 0px"></div> | fanfare
-| <div class="articon" style="background-position: -1280px 0px"></div> | flautando
-| <div class="articon" style="background-position: -1312px 0px"></div> | flautando-con-sord
-| <div class="articon" style="background-position: -1344px 0px"></div> | flautando-con-sord-eighth
-| <div class="articon" style="background-position: -1376px 0px"></div> | frozen
-| <div class="articon" style="background-position: -1408px 0px"></div> | frozen-eighth
-| <div class="articon" style="background-position: -1440px 0px"></div> | fx
-| <div class="articon" style="background-position: -1472px 0px"></div> | ghost-eighth
-| <div class="articon" style="background-position: -1504px 0px"></div> | harmonics
-| <div class="articon" style="background-position: -1536px 0px"></div> | harmonics-natural
-| <div class="articon" style="background-position: -1568px 0px"></div> | harmonics-natural-eighth
-| <div class="articon" style="background-position: -1600px 0px"></div> | harp-pdlt
-| <div class="articon" style="background-position: -1632px 0px"></div> | harp-pdlt2
-| <div class="articon" style="background-position: -1664px 0px"></div> | legato
-| <div class="articon" style="background-position: -1696px 0px"></div> | legato-blend-generic
-| <div class="articon" style="background-position: -1728px 0px"></div> | legato-bowed
-| <div class="articon" style="background-position: -1760px 0px"></div> | legato-bowed2
-| <div class="articon" style="background-position: -1792px 0px"></div> | legato-con-sord
-| <div class="articon" style="background-position: -1824px 0px"></div> | legato-fast
-| <div class="articon" style="background-position: -1856px 0px"></div> | legato-flautando
-| <div class="articon" style="background-position: -1888px 0px"></div> | legato-gliss
-| <div class="articon" style="background-position: -1920px 0px"></div> | legato-portamento
-| <div class="articon" style="background-position: -1952px 0px"></div> | legato-portamento-con-sord
-| <div class="articon" style="background-position: -1984px 0px"></div> | legato-portamento-flautando
-| <div class="articon" style="background-position: -2016px 0px"></div> | legato-runs
-| <div class="articon" style="background-position: -2048px 0px"></div> | legato-slow
-| <div class="articon" style="background-position: -2080px 0px"></div> | legato-slow-blend
-| <div class="articon" style="background-position: -2112px 0px"></div> | legato-slurred
-| <div class="articon" style="background-position: -2144px 0px"></div> | legato-sul-c
-| <div class="articon" style="background-position: -2176px 0px"></div> | legato-sul-g
-| <div class="articon" style="background-position: -2208px 0px"></div> | legato-sul-pont
-| <div class="articon" style="background-position: -2240px 0px"></div> | legato-tremolo
-| <div class="articon" style="background-position: -2272px 0px"></div> | legato-vibrato
-| <div class="articon" style="background-position: -2304px 0px"></div> | list
-| <div class="articon" style="background-position: -2336px 0px"></div> | marcato
-| <div class="articon" style="background-position: -2368px 0px"></div> | marcato-half
-| <div class="articon" style="background-position: -2400px 0px"></div> | marcato-quarter
-| <div class="articon" style="background-position: -2432px 0px"></div> | multitongued
-| <div class="articon" style="background-position: -2464px 0px"></div> | no-rosin
-| <div class="articon" style="background-position: -2496px 0px"></div> | note-eighth
-| <div class="articon" style="background-position: -2528px 0px"></div> | note-half
-| <div class="articon" style="background-position: -2560px 0px"></div> | note-quarter
-| <div class="articon" style="background-position: -2592px 0px"></div> | note-sixteenth
-| <div class="articon" style="background-position: -2624px 0px"></div> | note-whole
-| <div class="articon" style="background-position: -2656px 0px"></div> | phrase
-| <div class="articon" style="background-position: -2688px 0px"></div> | phrase-tremolo
-| <div class="articon" style="background-position: -2720px 0px"></div> | phrase-tremolo-cresc
-| <div class="articon" style="background-position: -2752px 0px"></div> | pizz
-| <div class="articon" style="background-position: -2784px 0px"></div> | pizz-b
-| <div class="articon" style="background-position: -2816px 0px"></div> | pizz-bartok
-| <div class="articon" style="background-position: -2848px 0px"></div> | pizz-c
-| <div class="articon" style="background-position: -2880px 0px"></div> | pizz-con-sord
-| <div class="articon" style="background-position: -2912px 0px"></div> | pizz-mix
-| <div class="articon" style="background-position: -2944px 0px"></div> | pizz-sul-pont
-| <div class="articon" style="background-position: -2976px 0px"></div> | rest-quarter
-| <div class="articon" style="background-position: -3008px 0px"></div> | riccochet
-| <div class="articon" style="background-position: -3040px 0px"></div> | rip
-| <div class="articon" style="background-position: -3072px 0px"></div> | rip-downward
-| <div class="articon" style="background-position: -3104px 0px"></div> | run-major
-| <div class="articon" style="background-position: -3136px 0px"></div> | run-minor
-| <div class="articon" style="background-position: -3168px 0px"></div> | sfz
-| <div class="articon" style="background-position: -3200px 0px"></div> | spiccato
-| <div class="articon" style="background-position: -3232px 0px"></div> | spiccato-breath
-| <div class="articon" style="background-position: -3264px 0px"></div> | spiccato-brushed
-| <div class="articon" style="background-position: -3296px 0px"></div> | spiccato-brushed-con-sord
-| <div class="articon" style="background-position: -3328px 0px"></div> | spiccato-brushed-con-sord-sul-pont
-| <div class="articon" style="background-position: -3360px 0px"></div> | spiccato-feathered
-| <div class="articon" style="background-position: -3392px 0px"></div> | staccatissimo-stopped
-| <div class="articon" style="background-position: -3424px 0px"></div> | staccato
-| <div class="articon" style="background-position: -3456px 0px"></div> | staccato-breath
-| <div class="articon" style="background-position: -3488px 0px"></div> | staccato-con-sord
-| <div class="articon" style="background-position: -3520px 0px"></div> | staccato-dig
-| <div class="articon" style="background-position: -3552px 0px"></div> | staccato-harmonics
-| <div class="articon" style="background-position: -3584px 0px"></div> | staccato-harmonics-half
-| <div class="articon" style="background-position: -3616px 0px"></div> | staccato-overblown
-| <div class="articon" style="background-position: -3648px 0px"></div> | staccato-sfz
-| <div class="articon" style="background-position: -3680px 0px"></div> | stopped
-| <div class="articon" style="background-position: -3712px 0px"></div> | sul-c
-| <div class="articon" style="background-position: -3744px 0px"></div> | sul-g
-| <div class="articon" style="background-position: -3776px 0px"></div> | sul-pont
-| <div class="articon" style="background-position: -3808px 0px"></div> | sul-tasto
-| <div class="articon" style="background-position: -3840px 0px"></div> | sul-tasto-super
-| <div class="articon" style="background-position: -3872px 0px"></div> | sul-tasto-super-eighth
-| <div class="articon" style="background-position: -3904px 0px"></div> | tenuto-eighth
-| <div class="articon" style="background-position: -3936px 0px"></div> | tenuto-half
-| <div class="articon" style="background-position: -3968px 0px"></div> | tenuto-quarter
-| <div class="articon" style="background-position: -4000px 0px"></div> | tremolo
-| <div class="articon" style="background-position: -4032px 0px"></div> | tremolo-150
-| <div class="articon" style="background-position: -4064px 0px"></div> | tremolo-150-con-sord
-| <div class="articon" style="background-position: -4096px 0px"></div> | tremolo-180
-| <div class="articon" style="background-position: -4128px 0px"></div> | tremolo-180-con-sord
-| <div class="articon" style="background-position: -4160px 0px"></div> | tremolo-con-sord
-| <div class="articon" style="background-position: -4192px 0px"></div> | tremolo-con-sord-sul-pont
-| <div class="articon" style="background-position: -4224px 0px"></div> | tremolo-ghost
-| <div class="articon" style="background-position: -4256px 0px"></div> | tremolo-harmonics
-| <div class="articon" style="background-position: -4288px 0px"></div> | tremolo-harmonics-a
-| <div class="articon" style="background-position: -4320px 0px"></div> | tremolo-harmonics-b
-| <div class="articon" style="background-position: -4352px 0px"></div> | tremolo-measured
-| <div class="articon" style="background-position: -4384px 0px"></div> | tremolo-slurred
-| <div class="articon" style="background-position: -4416px 0px"></div> | tremolo-sul-pont
-| <div class="articon" style="background-position: -4448px 0px"></div> | trill
-| <div class="articon" style="background-position: -4480px 0px"></div> | trill-maj2
-| <div class="articon" style="background-position: -4512px 0px"></div> | trill-maj3
-| <div class="articon" style="background-position: -4544px 0px"></div> | trill-min2
-| <div class="articon" style="background-position: -4576px 0px"></div> | trill-min3
-| <div class="articon" style="background-position: -4608px 0px"></div> | trill-perf4
-| <div class="articon" style="background-position: -4640px 0px"></div> | vibrato
-| <div class="articon" style="background-position: -4672px 0px"></div> | vibrato-con-sord
-| <div class="articon" style="background-position: -4704px 0px"></div> | vibrato-molto
-| <div class="articon" style="background-position: -4736px 0px"></div> | vibrato-rachmaninoff
+| <div class="articon" style="background-position: -704px 0px"></div> | con-sord-bow-down
+| <div class="articon" style="background-position: -768px 0px"></div> | con-sord-bow-up
+| <div class="articon" style="background-position: 0px -56px"></div> | con-sord-sul-pont
+| <div class="articon" style="background-position: -64px -56px"></div> | con-sord-sul-pont-bow-up
+| <div class="articon" style="background-position: -128px -56px"></div> | cresc-f-half
+| <div class="articon" style="background-position: -192px -56px"></div> | cresc-half
+| <div class="articon" style="background-position: -256px -56px"></div> | cresc-m-half
+| <div class="articon" style="background-position: -320px -56px"></div> | cresc-mf-half
+| <div class="articon" style="background-position: -384px -56px"></div> | cresc-mp-half
+| <div class="articon" style="background-position: -448px -56px"></div> | cresc-p-half
+| <div class="articon" style="background-position: -512px -56px"></div> | cresc-quarter
+| <div class="articon" style="background-position: -576px -56px"></div> | crescendo
+| <div class="articon" style="background-position: -640px -56px"></div> | cuivre
+| <div class="articon" style="background-position: -704px -56px"></div> | dblstop-5th
+| <div class="articon" style="background-position: -768px -56px"></div> | dblstop-5th-eighth
+| <div class="articon" style="background-position: 0px -112px"></div> | decrescendo
+| <div class="articon" style="background-position: -64px -112px"></div> | fall
+| <div class="articon" style="background-position: -128px -112px"></div> | fanfare
+| <div class="articon" style="background-position: -192px -112px"></div> | flautando
+| <div class="articon" style="background-position: -256px -112px"></div> | flautando-con-sord
+| <div class="articon" style="background-position: -320px -112px"></div> | flautando-con-sord-eighth
+| <div class="articon" style="background-position: -704px -504px"></div> | fortepiano
+| <div class="articon" style="background-position: -384px -112px"></div> | fx
+| <div class="articon" style="background-position: -448px -112px"></div> | ghost-eighth
+| <div class="articon" style="background-position: -512px -112px"></div> | harmonics
+| <div class="articon" style="background-position: -576px -112px"></div> | harmonics-natural
+| <div class="articon" style="background-position: -640px -112px"></div> | harmonics-natural-eighth
+| <div class="articon" style="background-position: -576px -560px"></div> | harp-pdlt
+| <div class="articon" style="background-position: -704px -112px"></div> | harp-pdlt2
+| <div class="articon" style="background-position: -768px -112px"></div> | legato
+| <div class="articon" style="background-position: 0px -168px"></div> | legato-blend-generic
+| <div class="articon" style="background-position: -64px -168px"></div> | legato-bowed
+| <div class="articon" style="background-position: -128px -168px"></div> | legato-bowed2
+| <div class="articon" style="background-position: -192px -168px"></div> | legato-con-sord
+| <div class="articon" style="background-position: -256px -168px"></div> | legato-fast
+| <div class="articon" style="background-position: -320px -168px"></div> | legato-flautando
+| <div class="articon" style="background-position: -384px -168px"></div> | legato-gliss
+| <div class="articon" style="background-position: -448px -168px"></div> | legato-portamento
+| <div class="articon" style="background-position: -512px -168px"></div> | legato-portamento-con-sord
+| <div class="articon" style="background-position: -576px -168px"></div> | legato-portamento-flautando
+| <div class="articon" style="background-position: -640px -168px"></div> | legato-runs
+| <div class="articon" style="background-position: -704px -168px"></div> | legato-slow
+| <div class="articon" style="background-position: -768px -168px"></div> | legato-slow-blend
+| <div class="articon" style="background-position: -64px -224px"></div> | legato-sul-c
+| <div class="articon" style="background-position: -128px -224px"></div> | legato-sul-g
+| <div class="articon" style="background-position: -192px -224px"></div> | legato-sul-pont
+| <div class="articon" style="background-position: -256px -224px"></div> | legato-tremolo
+| <div class="articon" style="background-position: -320px -224px"></div> | legato-vibrato
+| <div class="articon" style="background-position: -640px -224px"></div> | light
+| <div class="articon" style="background-position: -384px -224px"></div> | list
+| <div class="articon" style="background-position: -448px -224px"></div> | marcato-half
+| <div class="articon" style="background-position: -512px -224px"></div> | marcato-quarter
+| <div class="articon" style="background-position: -768px -504px"></div> | multitongued
+| <div class="articon" style="background-position: -576px -224px"></div> | note-acciaccatura
+| <div class="articon" style="background-position: -704px -224px"></div> | note-eighth
+| <div class="articon" style="background-position: -768px -224px"></div> | note-half
+| <div class="articon" style="background-position: 0px -280px"></div> | note-quarter
+| <div class="articon" style="background-position: -64px -280px"></div> | note-sixteenth
+| <div class="articon" style="background-position: 0px -224px"></div> | note-tied
+| <div class="articon" style="background-position: -128px -280px"></div> | note-whole
+| <div class="articon" style="background-position: -640px -560px"></div> | phrase
+| <div class="articon" style="background-position: -704px -560px"></div> | phrase-multitongued
+| <div class="articon" style="background-position: -768px -560px"></div> | phrase-multitongued-cresc
+| <div class="articon" style="background-position: -192px -280px"></div> | phrase2
+| <div class="articon" style="background-position: -256px -280px"></div> | pizz
+| <div class="articon" style="background-position: -320px -280px"></div> | pizz-bartok
+| <div class="articon" style="background-position: -384px -280px"></div> | pizz-con-sord
+| <div class="articon" style="background-position: -448px -280px"></div> | pizz-mix
+| <div class="articon" style="background-position: -512px -280px"></div> | pizz-sul-pont
+| <div class="articon" style="background-position: -768px -280px"></div> | plop
+| <div class="articon" style="background-position: -448px -504px"></div> | portato
+| <div class="articon" style="background-position: -576px -280px"></div> | rest-quarter
+| <div class="articon" style="background-position: -640px -280px"></div> | ricochet
+| <div class="articon" style="background-position: -704px -280px"></div> | rip
+| <div class="articon" style="background-position: 0px -336px"></div> | run-major
+| <div class="articon" style="background-position: -64px -336px"></div> | run-minor
+| <div class="articon" style="background-position: -512px -504px"></div> | scoop
+| <div class="articon" style="background-position: -128px -336px"></div> | sfz
+| <div class="articon" style="background-position: -192px -336px"></div> | spiccato
+| <div class="articon" style="background-position: -256px -336px"></div> | spiccato-breath
+| <div class="articon" style="background-position: -320px -336px"></div> | spiccato-brushed
+| <div class="articon" style="background-position: -384px -336px"></div> | spiccato-brushed-con-sord
+| <div class="articon" style="background-position: -448px -336px"></div> | spiccato-brushed-con-sord-sul-pont
+| <div class="articon" style="background-position: -512px -336px"></div> | spiccato-feathered
+| <div class="articon" style="background-position: -576px -336px"></div> | staccatissimo-stopped
+| <div class="articon" style="background-position: -640px -336px"></div> | staccato
+| <div class="articon" style="background-position: -704px -336px"></div> | staccato-breath
+| <div class="articon" style="background-position: -768px -336px"></div> | staccato-con-sord
+| <div class="articon" style="background-position: 0px -392px"></div> | staccato-dig
+| <div class="articon" style="background-position: -64px -392px"></div> | staccato-harmonics
+| <div class="articon" style="background-position: -128px -392px"></div> | staccato-harmonics-half
+| <div class="articon" style="background-position: -256px -392px"></div> | staccato-sfz
+| <div class="articon" style="background-position: -192px -392px"></div> | staccato-stopped
+| <div class="articon" style="background-position: -320px -392px"></div> | stopped
+| <div class="articon" style="background-position: -384px -392px"></div> | sul-c
+| <div class="articon" style="background-position: -448px -392px"></div> | sul-g
+| <div class="articon" style="background-position: -512px -392px"></div> | sul-pont
+| <div class="articon" style="background-position: -576px -392px"></div> | sul-tasto
+| <div class="articon" style="background-position: 0px -616px"></div> | sul-tasto-super
+| <div class="articon" style="background-position: -64px -616px"></div> | sul-tasto-super-eighth
+| <div class="articon" style="background-position: -640px -392px"></div> | tenuto-eighth
+| <div class="articon" style="background-position: -704px -392px"></div> | tenuto-half
+| <div class="articon" style="background-position: -768px -392px"></div> | tenuto-quarter
+| <div class="articon" style="background-position: 0px -448px"></div> | tremolo
+| <div class="articon" style="background-position: -64px -448px"></div> | tremolo-con-sord
+| <div class="articon" style="background-position: -128px -448px"></div> | tremolo-con-sord-sul-pont
+| <div class="articon" style="background-position: -384px -448px"></div> | tremolo-fingered
+| <div class="articon" style="background-position: -256px -448px"></div> | tremolo-ghost
+| <div class="articon" style="background-position: -320px -448px"></div> | tremolo-harmonics
+| <div class="articon" style="background-position: -128px -616px"></div> | tremolo-harmonics-a
+| <div class="articon" style="background-position: -192px -616px"></div> | tremolo-harmonics-b
+| <div class="articon" style="background-position: -448px -448px"></div> | tremolo-measured-eighth
+| <div class="articon" style="background-position: -576px -448px"></div> | tremolo-measured-eighth-con-sord
+| <div class="articon" style="background-position: -512px -448px"></div> | tremolo-measured-sixteenth
+| <div class="articon" style="background-position: -640px -448px"></div> | tremolo-measured-sixteenth-con-sord
+| <div class="articon" style="background-position: -256px -616px"></div> | tremolo-slurred
+| <div class="articon" style="background-position: -192px -448px"></div> | tremolo-sul-pont
+| <div class="articon" style="background-position: -704px -448px"></div> | trill
+| <div class="articon" style="background-position: -768px -448px"></div> | trill-maj2
+| <div class="articon" style="background-position: 0px -504px"></div> | trill-maj3
+| <div class="articon" style="background-position: -64px -504px"></div> | trill-min2
+| <div class="articon" style="background-position: -128px -504px"></div> | trill-min3
+| <div class="articon" style="background-position: -192px -504px"></div> | trill-perf4
+| <div class="articon" style="background-position: -256px -504px"></div> | vibrato
+| <div class="articon" style="background-position: -320px -504px"></div> | vibrato-con-sord
+| <div class="articon" style="background-position: -384px -504px"></div> | vibrato-molto
