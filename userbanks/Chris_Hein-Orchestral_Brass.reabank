@@ -3,7 +3,7 @@
 //
 //! g="Chris Hein/Orchestral Brass" n="French Horn 1"
 //! id=15b1b5df-98b4-4ba8-83df-be41d4c26ef1
-Bank 21 73 Chris Hein Orchestral Brass French Horn 1
+Bank * * Chris Hein Orchestral Brass French Horn 1
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -35,7 +35,7 @@ Bank 21 73 Chris Hein Orchestral Brass French Horn 1
 
 //! g="Chris Hein/Orchestral Brass" n="French Horn 2"
 //! id=122fbb97-9142-4702-b737-ba500113461b
-Bank 21 74 Chris Hein Orchestral Brass French Horn 2
+Bank * * Chris Hein Orchestral Brass French Horn 2
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -67,7 +67,7 @@ Bank 21 74 Chris Hein Orchestral Brass French Horn 2
 
 //! g="Chris Hein/Orchestral Brass" n="French Horn 3"
 //! id=cb9d2e3f-b313-43bd-a6ee-c946fc0a67b7
-Bank 21 75 Chris Hein Orchestral Brass French Horn 3
+Bank * * Chris Hein Orchestral Brass French Horn 3
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -99,7 +99,7 @@ Bank 21 75 Chris Hein Orchestral Brass French Horn 3
 
 //! g="Chris Hein/Orchestral Brass" n="French Horns Ensemble"
 //! id=84e96c90-7ebf-401c-9876-64badb34b1a5
-Bank 21 76 Chris Hein Orchestral Brass French Horn Ensemble
+Bank * * Chris Hein Orchestral Brass French Horn Ensemble
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (Vel)
 //! c=long-light i=vibrato o=note:22
@@ -131,7 +131,7 @@ Bank 21 76 Chris Hein Orchestral Brass French Horn Ensemble
 
 //! g="Chris Hein/Orchestral Brass" n="Trombone 1"
 //! id=0b84c212-7183-4942-a4f2-3c612dc266e7
-Bank 21 77 Chris Hein Orchestral Brass Trombone 1
+Bank * * Chris Hein Orchestral Brass Trombone 1
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22
@@ -163,7 +163,7 @@ Bank 21 77 Chris Hein Orchestral Brass Trombone 1
 
 //! g="Chris Hein/Orchestral Brass" n="Trombone 2"
 //! id=0fbc6c75-e7ee-41fd-b618-e0956d1d38cd
-Bank 21 78 Chris Hein Orchestral Brass Trombone 2
+Bank * * Chris Hein Orchestral Brass Trombone 2
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22
@@ -195,7 +195,7 @@ Bank 21 78 Chris Hein Orchestral Brass Trombone 2
 
 //! g="Chris Hein/Orchestral Brass" n="Trombone 3"
 //! id=1f38aadf-bcdd-4ad2-990a-82a75925a1c2
-Bank 21 79 Chris Hein Orchestral Brass Trombone 3
+Bank * * Chris Hein Orchestral Brass Trombone 3
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22
@@ -227,7 +227,7 @@ Bank 21 79 Chris Hein Orchestral Brass Trombone 3
 
 //! g="Chris Hein/Orchestral Brass" n="Trombones Ensemble"
 //! id=4d824219-7b1c-43a7-9531-76a18268ef9e
-Bank 21 80 Chris Hein Orchestral Brass Trombone Ensemble
+Bank * * Chris Hein Orchestral Brass Trombone Ensemble
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (Vel)
 //! c=long-light i=vibrato o=note:22
@@ -259,7 +259,7 @@ Bank 21 80 Chris Hein Orchestral Brass Trombone Ensemble
 
 //! g="Chris Hein/Orchestral Brass" n="Trumpet 1"
 //! id=25531ca6-5ac9-4755-8736-8c9a032753ae
-Bank 21 81 Chris Hein Orchestral Brass Trumpet 1
+Bank * * Chris Hein Orchestral Brass Trumpet 1
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22
@@ -291,7 +291,7 @@ Bank 21 81 Chris Hein Orchestral Brass Trumpet 1
 
 //! g="Chris Hein/Orchestral Brass" n="Trumpet 2"
 //! id=0e9918f4-b4ec-40bc-8758-53c99f9641b6
-Bank 21 82 Chris Hein Orchestral Brass Trumpet 2
+Bank * * Chris Hein Orchestral Brass Trumpet 2
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22
@@ -323,7 +323,7 @@ Bank 21 82 Chris Hein Orchestral Brass Trumpet 2
 
 //! g="Chris Hein/Orchestral Brass" n="Trumpet 3"
 //! id=a34ebcb6-3e1e-46bf-8541-6d5985c18128
-Bank 21 83 Chris Hein Orchestral Brass Trumpet 3
+Bank * * Chris Hein Orchestral Brass Trumpet 3
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22
@@ -355,7 +355,7 @@ Bank 21 83 Chris Hein Orchestral Brass Trumpet 3
 
 //! g="Chris Hein/Orchestral Brass" n="Trumpets Ensemble"
 //! id=73b10e1c-c3f8-4c6f-9c93-77c071c9da6e
-Bank 21 84 Chris Hein Orchestral Brass Trumpet Ensemble
+Bank * * Chris Hein Orchestral Brass Trumpet Ensemble
 //! c=long-dark i=vibrato o=note:21
 21 Sustain (AutoXfade)
 //! c=long-light i=vibrato o=note:22

@@ -3,7 +3,7 @@
 //
 //! g="Orchestral Tools/Inspire" n="01-1 Full Orchestra Multi"
 //! id=e4986fcb-ce54-4834-ab70-d89c8655e36d
-Bank 25 9 BOI Full Orchestra Multi
+Bank * * BOI Full Orchestra Multi
 //! c=long i=note-whole o=note:5
 1 sustain
 //! c=short i=staccato o=note:6
@@ -13,7 +13,7 @@ Bank 25 9 BOI Full Orchestra Multi
 
 //! g="Orchestral Tools/Inspire" n="02-1 Strings Whole Ensemble Multi"
 //! id=54e0eeed-ad5f-42de-bef0-ab1f54b4cb72
-Bank 25 10 BOI Strings Whole Ensemble Multi
+Bank * * BOI Strings Whole Ensemble Multi
 //! c=long i=note-whole o=note:5
 1 sustain immediate
 //! c=long i=note-whole o=note:6
@@ -31,7 +31,7 @@ Bank 25 10 BOI Strings Whole Ensemble Multi
 
 //! g="Orchestral Tools/Inspire" n="02-2 First Chairs Whole Ensemble Multi"
 //! id=947bdf13-edfc-4022-9c04-acf81d6df0a3
-Bank 25 11 BOI First Chairs Whole Ensemble Multi
+Bank * * BOI First Chairs Whole Ensemble Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=spiccato o=note:25
@@ -43,7 +43,7 @@ Bank 25 11 BOI First Chairs Whole Ensemble Multi
 
 //! g="Orchestral Tools/Inspire" n="02-3 High Strings 8va Multi"
 //! id=ad25ea09-1724-4455-8115-1a368d332be6
-Bank 25 12 BOI High Strings 8va Multi
+Bank * * BOI High Strings 8va Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=short i=spiccato o=note:25
@@ -55,7 +55,7 @@ Bank 25 12 BOI High Strings 8va Multi
 
 //! g="Orchestral Tools/Inspire" n="02-4 Low Strings 8va Multi"
 //! id=4bed6bdc-8af7-4bcc-8348-a250940cdab2
-Bank 25 13 BOI Low Strings 8va Multi
+Bank * * BOI Low Strings 8va Multi
 //! c=legato i=legato o=note:96
 20 legato
 //! c=short i=spiccato o=note:97
@@ -69,7 +69,7 @@ Bank 25 13 BOI Low Strings 8va Multi
 
 //! g="Orchestral Tools/Inspire" n="02-5 Violins I & II Multi"
 //! id=1e65cec8-acbd-4783-bb3f-f9f389fd232c
-Bank 25 14 BOI Violins I & II Multi
+Bank * * BOI Violins I & II Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=short i=spiccato o=note:25
@@ -81,7 +81,7 @@ Bank 25 14 BOI Violins I & II Multi
 
 //! g="Orchestral Tools/Inspire" n="03-1 Brass Whole Ensemble Multi"
 //! id=56d2a6c0-fd6a-469b-861a-529aa4552dbb
-Bank 25 15 BOI Brass Whole Ensemble Multi
+Bank * * BOI Brass Whole Ensemble Multi
 //! c=long i=note-whole o=note:96
 1 sustain immediate
 //! c=long i=note-whole o=note:97
@@ -93,7 +93,7 @@ Bank 25 15 BOI Brass Whole Ensemble Multi
 
 //! g="Orchestral Tools/Inspire" n="03-2 Brass Muted Ensemble Multi"
 //! id=46c21784-05fc-4e48-8310-c6e8458948c3
-Bank 25 16 BOI Brass Muted Ensemble Multi
+Bank * * BOI Brass Muted Ensemble Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=staccato o=note:97
@@ -101,7 +101,7 @@ Bank 25 16 BOI Brass Muted Ensemble Multi
 
 //! g="Orchestral Tools/Inspire" n="03-3 Trumpet & Horns 8va Multi"
 //! id=457908f3-f261-46ed-9ad8-9b6be1e0578e
-Bank 25 17 BOI Trumpet & Horns 8va Multi
+Bank * * BOI Trumpet & Horns 8va Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=short i=staccato o=note:25
@@ -111,7 +111,7 @@ Bank 25 17 BOI Trumpet & Horns 8va Multi
 
 //! g="Orchestral Tools/Inspire" n="03-4 Trombones & Tuba 8va Multi"
 //! id=2ce1d09d-dcdd-41d6-a675-bb6aa17a125e
-Bank 25 18 BOI Trombones & Tuba 8va Multi
+Bank * * BOI Trombones & Tuba 8va Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=staccato o=note:97
@@ -121,7 +121,7 @@ Bank 25 18 BOI Trombones & Tuba 8va Multi
 
 //! g="Orchestral Tools/Inspire" n="03-5 Solo Horn Multi"
 //! id=7e22d783-5977-486e-b726-488ab5d58bc4
-Bank 25 19 BOI Solo Horn Multi
+Bank * * BOI Solo Horn Multi
 //! c=legato i=legato o=note:96
 20 legato
 //! c=short i=staccato o=note:97
@@ -129,7 +129,7 @@ Bank 25 19 BOI Solo Horn Multi
 
 //! g="Orchestral Tools/Inspire" n="03-6 Solo Trumpet Multi"
 //! id=5c2d09de-6803-4b75-a021-d8d63b588bf0
-Bank 25 20 BOI Solo Trumpet Multi
+Bank * * BOI Solo Trumpet Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=long i=note-whole o=note:25
@@ -139,7 +139,7 @@ Bank 25 20 BOI Solo Trumpet Multi
 
 //! g="Orchestral Tools/Inspire" n="04-1 Woodwinds Whole Ensemble Multi"
 //! id=6cfa2493-7805-430a-99a0-25a2fe1070d0
-Bank 25 21 BOI Woodwinds Whole Ensemble Multi
+Bank * * BOI Woodwinds Whole Ensemble Multi
 //! c=long i=note-whole o=note:5
 1 sustain
 //! c=short i=staccato o=note:6
@@ -151,7 +151,7 @@ Bank 25 21 BOI Woodwinds Whole Ensemble Multi
 
 //! g="Orchestral Tools/Inspire" n="04-2 Flutes & Clarinets 8va Multi"
 //! id=e213edfd-22bc-4526-96e0-096f50ddff80
-Bank 25 22 BOI Flutes & Clarinets 8va Multi
+Bank * * BOI Flutes & Clarinets 8va Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=long i=note-whole o=note:25
@@ -165,7 +165,7 @@ Bank 25 22 BOI Flutes & Clarinets 8va Multi
 
 //! g="Orchestral Tools/Inspire" n="04-3 Bassoons & Clarinets 8va Multi"
 //! id=8e5e03c1-fc6c-4738-b864-26e07e85892d
-Bank 25 23 BOI Bassoons & Clarinets 8va Multi
+Bank * * BOI Bassoons & Clarinets 8va Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=short i=staccato o=note:25
@@ -173,7 +173,7 @@ Bank 25 23 BOI Bassoons & Clarinets 8va Multi
 
 //! g="Orchestral Tools/Inspire" n="04-4 Solo Flute Multi"
 //! id=87d52305-7439-4bbb-ad27-19b4b396bbf0
-Bank 25 24 BOI Solo Flute Multi
+Bank * * BOI Solo Flute Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=short i=staccato o=note:25
@@ -181,7 +181,7 @@ Bank 25 24 BOI Solo Flute Multi
 
 //! g="Orchestral Tools/Inspire" n="04-5 Solo Clarinet Multi"
 //! id=a2d73cfe-ea4e-4510-9396-dc25ce4f61bb
-Bank 25 25 BOI Solo Clarinet Multi
+Bank * * BOI Solo Clarinet Multi
 //! c=legato i=legato o=note:24
 20 legato
 //! c=short i=staccato o=note:25

@@ -7,7 +7,7 @@
 
 //! g="VSL - SYNCHRON/Big Bang Orchestra" n="Ganymede (Choir)"
 //! id=9aac078e-4945-40bf-b201-2798c2a1ea3f
-Bank 30 56 Ganymede (Choir)
+Bank * * Ganymede (Choir)
 
 //! c=short i=staccato o=note:96
 1 Short
@@ -34,7 +34,7 @@ Bank 30 56 Ganymede (Choir)
 
 //! g="VSL - SYNCHRON/Big Bang Orchestra" n="Hercules (Low Brass)"
 //! id=92f96858-7d23-407b-9261-184f72636703
-Bank 30 57 Hercules (Low Brass)
+Bank * * Hercules (Low Brass)
 
 //! c=textured i=list g=2 o=note:24
 100 w/o CB Tuba
@@ -113,7 +113,7 @@ Bank 30 57 Hercules (Low Brass)
 
 //! g="VSL - SYNCHRON/Big Bang Orchestra" n="Izar (Low Brass Clusters)"
 //! id=642261ba-9bc1-4f5a-946b-5c849359aa74
-Bank 30 58 Izar (Low Brass Clusters)
+Bank * * Izar (Low Brass Clusters)
 
 //!spacer=1
 //! c=short i=staccato o=note:72/note:84
@@ -179,7 +179,7 @@ Bank 30 58 Izar (Low Brass Clusters)
 
 //! g="VSL - SYNCHRON/Big Bang Orchestra" n="Jupiter (Horns)"
 //! id=7939673a-2e5b-48c8-8011-a2413be689f1
-Bank 30 59 Jupiter (Horns)
+Bank * * Jupiter (Horns)
 
 //! c=short i=staccato o=note:24/note:84
 1 Short, Bold
@@ -248,7 +248,7 @@ Bank 30 59 Jupiter (Horns)
 
 //! g="VSL - SYNCHRON/Big Bang Orchestra" n="Kopernikus (Trumpets)"
 //! id=626e694a-162b-48b0-b974-9cefb44613a1
-Bank 30 60 Kopernikus (Trumpets)
+Bank * * Kopernikus (Trumpets)
 
 //! c=short i=staccato o=note:24/note:36
 1 Short, Bold

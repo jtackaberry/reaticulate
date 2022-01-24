@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------
 //! g="Orchestral Tools/Metropolis Ark 2" n="Weissdorn Wagner Tubas a3 Multi"
 //! id=2340df20-7144-467a-a7ab-13cd2b32c0e3
-Bank 25 46 OTMA2 Weissdorn Wagner Tubas a3 Multi
+Bank * * OTMA2 Weissdorn Wagner Tubas a3 Multi
 //! c=long i=note-whole o=note:24
 1 sustain immediate
 //! c=long i=note-whole o=note:25
@@ -23,13 +23,13 @@ Bank 25 46 OTMA2 Weissdorn Wagner Tubas a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Weissdorn Wagner Tubas a3 Legato"
 //! id=f463139d-d51e-407e-a22c-7e115380c095
-Bank 25 47 OTMA2 Weissdorn Wagner Tubas a3 Legato
+Bank * * OTMA2 Weissdorn Wagner Tubas a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Koenig Fluegelhorns a3 Multi"
 //! id=dcc08d48-0eb5-4af4-9e08-2b86627d6caf
-Bank 25 48 OTMA2 Koenig Fluegelhorns a3 Multi
+Bank * * OTMA2 Koenig Fluegelhorns a3 Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=staccato o=note:25
@@ -41,13 +41,13 @@ Bank 25 48 OTMA2 Koenig Fluegelhorns a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Koenig Fluegelhorns a3 Legato"
 //! id=267467aa-45fd-4eb1-b250-9e9d0a2ff7f5
-Bank 25 49 OTMA2 Koenig Fluegelhorns a3 Legato
+Bank * * OTMA2 Koenig Fluegelhorns a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Kadetten Bass Trumpets a3 Multi"
 //! id=c7139247-fbce-4303-84e9-7921c6d1c67d
-Bank 25 50 OTMA2 Kadetten Bass Trumpets a3 Multi
+Bank * * OTMA2 Kadetten Bass Trumpets a3 Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=staccato o=note:25
@@ -59,13 +59,13 @@ Bank 25 50 OTMA2 Kadetten Bass Trumpets a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Kadetten Bass Trumpets a3 Legato"
 //! id=624d46f0-e85d-469c-9dd3-30a622e2e2e3
-Bank 25 51 OTMA2 Kadetten Bass Trumpets a3 Legato
+Bank * * OTMA2 Kadetten Bass Trumpets a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Waltroper Euphoniums a3 Multi"
 //! id=0b97e2cc-7354-49ab-8207-29df7a6dbc7b
-Bank 25 52 OTMA2 Waltroper Euphoniums a3 Multi
+Bank * * OTMA2 Waltroper Euphoniums a3 Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=staccato o=note:25
@@ -77,13 +77,13 @@ Bank 25 52 OTMA2 Waltroper Euphoniums a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Waltroper Euphoniums a3 Legato"
 //! id=8a9f02d9-984e-4fa5-92f9-eb6e283f9a55
-Bank 25 53 OTMA2 Waltroper Euphoniums a3 Legato
+Bank * * OTMA2 Waltroper Euphoniums a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Ring Tubas a3 Multi"
 //! id=340267ad-1298-48e6-8c0a-5aff407f5095
-Bank 25 54 OTMA2 Ring Tubas a3 Multi
+Bank * * OTMA2 Ring Tubas a3 Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=staccato o=note:97
@@ -95,13 +95,13 @@ Bank 25 54 OTMA2 Ring Tubas a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Ring Tubas a3 Legato"
 //! id=3aaac4c9-8e8e-4d0c-b033-efd1684045c6
-Bank 25 55 OTMA2 Ring Tubas a3 Legato
+Bank * * OTMA2 Ring Tubas a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Calandrelli Women Choir Multi"
 //! id=4cbf9c17-25d1-4358-96b9-27b3e2327f93
-Bank 25 56 OTMA2 Calandrelli Women Choir Multi
+Bank * * OTMA2 Calandrelli Women Choir Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=marcato o=note:25
@@ -111,13 +111,13 @@ Bank 25 56 OTMA2 Calandrelli Women Choir Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Women Choir Legato"
 //! id=1c8392cf-10e0-4d15-891e-57a7ebb0d091
-Bank 25 57 OTMA2 Women Choir Legato
+Bank * * OTMA2 Women Choir Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Breitenstein Basso Profondo Choir Multi"
 //! id=ea0509ed-5325-4707-b55c-c59286322228
-Bank 25 58 OTMA2 Breitenstein Basso Profondo Choir Multi
+Bank * * OTMA2 Breitenstein Basso Profondo Choir Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=staccato o=note:97
@@ -129,25 +129,25 @@ Bank 25 58 OTMA2 Breitenstein Basso Profondo Choir Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Men Choir Legato"
 //! id=9109cb6a-760f-4865-ab07-f62a1ad52a58
-Bank 25 59 OTMA2 Men Choir Legato
+Bank * * OTMA2 Men Choir Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Lichterfelder Children Choir Legato"
 //! id=e56a0407-c30f-427c-8d9e-c6dc8206b9ea
-Bank 25 60 OTMA2 Children Choir Legato
+Bank * * OTMA2 Children Choir Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Lichterfelder Children Choir Sustain"
 //! id=83986d4f-51ff-41cb-9e91-56cde1f56c1d
-Bank 25 61 OTMA2 Children Choir Sustain
+Bank * * OTMA2 Children Choir Sustain
 //! c=long i=note-whole o=@1
 1 sustain
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Weddigen Strings (High) Multi"
 //! id=e7cb8181-1d8e-412a-8407-a8d40d242ff0
-Bank 25 62 OTMA2 Weddigen Strings (High) Multi
+Bank * * OTMA2 Weddigen Strings (High) Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=vibrato o=note:25
@@ -175,13 +175,13 @@ Bank 25 62 OTMA2 Weddigen Strings (High) Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Strings High Legato"
 //! id=bb9663dd-a5b3-47de-8552-85171c5fcf45
-Bank 25 63 OTMA2 Strings High Legato
+Bank * * OTMA2 Strings High Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Curtius Strings (Mid) Multi"
 //! id=a9cd7344-7e46-461b-9388-801f5da2da59
-Bank 25 64 OTMA2 Curtius Strings (Mid) Multi
+Bank * * OTMA2 Curtius Strings (Mid) Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=vibrato o=note:25
@@ -209,13 +209,13 @@ Bank 25 64 OTMA2 Curtius Strings (Mid) Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Strings Mid Legato"
 //! id=ec235546-da6b-4715-8241-e5b8ab16ba1e
-Bank 25 65 OTMA2 Strings Mid Legato
+Bank * * OTMA2 Strings Mid Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Pfarracker Strings (Low) Multi"
 //! id=7932f8f8-f412-43dc-86fa-dcef999fd9d6
-Bank 25 66 OTMA2 Pfarracker Strings (Low) Multi
+Bank * * OTMA2 Pfarracker Strings (Low) Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=long i=vibrato o=note:97
@@ -243,13 +243,13 @@ Bank 25 66 OTMA2 Pfarracker Strings (Low) Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Strings Low Legato"
 //! id=ab3eba69-24ff-4c61-abbc-15de4b395880
-Bank 25 67 OTMA2 Strings Low Legato
+Bank * * OTMA2 Strings Low Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Thuner Alto Flutes a3 Multi"
 //! id=5168d8ac-bfe1-4f91-84ee-38a9e15f3e65
-Bank 25 68 OTMA2 Thuner Alto Flutes a3 Multi
+Bank * * OTMA2 Thuner Alto Flutes a3 Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=vibrato o=note:25
@@ -275,13 +275,13 @@ Bank 25 68 OTMA2 Thuner Alto Flutes a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Thuner Alto Flutes a3 Legato"
 //! id=c0d0260f-5086-44d7-ba4e-b8293af7604e
-Bank 25 69 OTMA2 Thuner Alto Flutes a3 Legato
+Bank * * OTMA2 Thuner Alto Flutes a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Balbrunner Bass Flutes a3 Multi"
 //! id=94230faf-fad5-4349-bf14-b803edb5dcc3
-Bank 25 70 OTMA2 Balbrunner Bass Flutes a3 Multi
+Bank * * OTMA2 Balbrunner Bass Flutes a3 Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=vibrato o=note:25
@@ -307,13 +307,13 @@ Bank 25 70 OTMA2 Balbrunner Bass Flutes a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Balbrunner Bass Flutes a3 Legato"
 //! id=73386530-07ea-4c5e-85b1-3c8815ebcac7
-Bank 25 71 OTMA2 Balbrunner Bass Flutes a3 Legato
+Bank * * OTMA2 Balbrunner Bass Flutes a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Leichardt Bass Clarinets a3 Multi"
 //! id=082c6416-355e-4cce-b09b-e86b834f432c
-Bank 25 72 OTMA2 Leichardt Bass Clarinets a3 Multi
+Bank * * OTMA2 Leichardt Bass Clarinets a3 Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=staccato o=note:97
@@ -341,13 +341,13 @@ Bank 25 72 OTMA2 Leichardt Bass Clarinets a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Leichardt Bass Clarinets a3 Legato"
 //! id=d903583c-4197-455e-88af-f7e338ee8c9d
-Bank 25 73 OTMA2 Leichardt Bass Clarinets a3 Legato
+Bank * * OTMA2 Leichardt Bass Clarinets a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Graefenberger Contrabass Clarinets a3 Multi"
 //! id=f8e43ae2-3712-422b-bfa7-6380e488f305
-Bank 25 74 OTMA2 Graefenberger Contrabass Clarinets a3 Multi
+Bank * * OTMA2 Graefenberger Contrabass Clarinets a3 Multi
 //! c=long i=note-whole o=note:96
 1 sustain
 //! c=short i=staccato o=note:97
@@ -365,13 +365,13 @@ Bank 25 74 OTMA2 Graefenberger Contrabass Clarinets a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Graefenberger Contrabass Clarinets a3 Legato"
 //! id=33749a20-f2f4-420f-b7bc-307e54c4b8df
-Bank 25 75 OTMA2 Graefenberger Contrabass Clarinets a3 Legato
+Bank * * OTMA2 Graefenberger Contrabass Clarinets a3 Legato
 //! c=legato i=legato o=@2
 20 legato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Correns Harps a6 Multi"
 //! id=046d20bb-723c-4316-a037-2fbeecfdd340
-Bank 25 76 OTMA2 Correns Harps a6 Multi
+Bank * * OTMA2 Correns Harps a6 Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=tremolo o=note:25
@@ -399,7 +399,7 @@ Bank 25 76 OTMA2 Correns Harps a6 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Room Piano Multi"
 //! id=7ca38810-5fa9-44cd-a197-b3b791862149
-Bank 25 77 OTMA2 Room Piano Multi
+Bank * * OTMA2 Room Piano Multi
 //! c=long i=note-whole o=note:0
 1 sustain
 //! c=short i=staccato o=note:1
@@ -409,7 +409,7 @@ Bank 25 77 OTMA2 Room Piano Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Glamer Pianos a3 Multi"
 //! id=09a1b3e5-ffb7-4317-87ea-d524c1aa7ff6
-Bank 25 78 OTMA2 Glamer Pianos a3 Multi
+Bank * * OTMA2 Glamer Pianos a3 Multi
 //! c=long i=note-whole o=note:0
 1 sustain
 //! c=short i=staccato o=note:1
@@ -423,7 +423,7 @@ Bank 25 78 OTMA2 Glamer Pianos a3 Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Thekla Harmonium Multi"
 //! id=cf031619-9d33-42f6-86c6-a05f09aa98c0
-Bank 25 79 OTMA2 Thekla Harmonium Multi
+Bank * * OTMA2 Thekla Harmonium Multi
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=staccato o=note:25
@@ -431,7 +431,7 @@ Bank 25 79 OTMA2 Thekla Harmonium Multi
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Hochbaum Organ Multi"
 //! id=538432cd-e891-406c-b570-45e54461561d
-Bank 25 80 OTMA2 Hochbaum Organ Multi
+Bank * * OTMA2 Hochbaum Organ Multi
 //! c=long i=note-whole o=note:24
 1 sustain 8
 //! c=short i=staccato o=note:25

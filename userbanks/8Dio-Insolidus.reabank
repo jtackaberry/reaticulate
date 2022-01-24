@@ -5,7 +5,7 @@
 
 //! g="8Dio/Insolidus" n="Legato"
 //! id=bb65bdd7-6c7e-42ef-9877-66c5f7c901d9
-Bank 29 17 8Dio Insolidus Legato
+Bank * * 8Dio Insolidus Legato
 //! c=legato i=legato o=cc:12,1
 1 Ah
 //! c=legato i=legato o=cc:12,6
@@ -17,7 +17,7 @@ Bank 29 17 8Dio Insolidus Legato
 
 //! g="8Dio/Insolidus" n="Sustain"
 //! id=b6981483-249d-41cd-9d57-ceb98c8204d6
-Bank 29 18 8Dio Insolidus Sustain
+Bank * * 8Dio Insolidus Sustain
 //! c=long i=note-whole o=cc:12,1
 1 Uh
 //! c=long i=note-whole o=cc:12,6
@@ -33,7 +33,7 @@ Bank 29 18 8Dio Insolidus Sustain
 
 //! g="8Dio/Insolidus" n="Arc 2 Syllables"
 //! id=39af1e6d-e0a8-4729-8170-ce9ec8e4b932
-Bank 29 19 8Dio Insolidus Arc 2 Syllables
+Bank * * 8Dio Insolidus Arc 2 Syllables
 //! c=long i=cresc-half o=cc:12,1
 1 Ah-Noh
 //! c=long i=cresc-half o=cc:12,6
@@ -55,7 +55,7 @@ Bank 29 19 8Dio Insolidus Arc 2 Syllables
 
 //! g="8Dio/Insolidus" n="Arc 3 Syllables"
 //! id=152f8d5d-32f7-4f5f-8dc6-679856328212
-Bank 29 20 8Dio Insolidus Arc 3 Syllables
+Bank * * 8Dio Insolidus Arc 3 Syllables
 //! c=long i=cresc-half o=cc:12,1
 1 Ah-Noh-Soh
 //! c=long i=cresc-half o=cc:12,6
@@ -77,7 +77,7 @@ Bank 29 20 8Dio Insolidus Arc 3 Syllables
 
 //! g="8Dio/Insolidus" n="Arc 4 Syllables"
 //! id=6f1bd700-5256-4211-9060-772ee85115d2
-Bank 29 21 8Dio Insolidus Arc 4 Syllables
+Bank * * 8Dio Insolidus Arc 4 Syllables
 //! c=long i=cresc-half o=cc:12,1
 1 Car-Pe-Noc-Tem
 //! c=long i=cresc-half o=cc:12,6
@@ -97,7 +97,7 @@ Bank 29 21 8Dio Insolidus Arc 4 Syllables
 
 //! g="8Dio/Insolidus" n="Multi Vowels 3-4"
 //! id=967e5160-f30a-447a-b6c8-ca8e3381a23d
-Bank 29 22 8Dio Insolidus Multi Vowels 3-4
+Bank * * 8Dio Insolidus Multi Vowels 3-4
 //! c=long i=phrase o=cc:12,1
 1 Totus-Tuus
 //! c=long i=phrase o=cc:12,6
@@ -121,7 +121,7 @@ Bank 29 22 8Dio Insolidus Multi Vowels 3-4
 
 //! g="8Dio/Insolidus" n="Multi Vowels 3-4 Swells"
 //! id=8639dbc3-ab5f-4bf4-bd60-24c184b9d391
-Bank 29 23 8Dio Insolidus Multi Vowels 3-4 Swells
+Bank * * 8Dio Insolidus Multi Vowels 3-4 Swells
 //! c=long i=cresc-half o=cc:12,1
 1 Totus-Tuus
 //! c=long i=cresc-half o=cc:12,6
@@ -139,7 +139,7 @@ Bank 29 23 8Dio Insolidus Multi Vowels 3-4 Swells
 
 //! g="8Dio/Insolidus" n="Multi Vowels 4-4 MW"
 //! id=0fd18862-d3ed-4bcf-bf05-123090e57de6
-Bank 29 24 8Dio Insolidus Multi Vowels 4-4 MW
+Bank * * 8Dio Insolidus Multi Vowels 4-4 MW
 //! c=long i=phrase o=cc:12,1
 1 Car-Pe-Noc-Tem
 //! c=long i=phrase o=cc:12,6
@@ -159,7 +159,7 @@ Bank 29 24 8Dio Insolidus Multi Vowels 4-4 MW
 
 //! g="8Dio/Insolidus" n="Multi Vowels 4-4 Cresc"
 //! id=2876eeb5-15e1-4615-b5b9-faa92a2391ba
-Bank 29 25 8Dio Insolidus Multi Vowels 4-4 Cresc
+Bank * * 8Dio Insolidus Multi Vowels 4-4 Cresc
 //! c=long i=cresc-half o=cc:12,1
 1 Car-Pe-Noc-Tem
 //! c=long i=cresc-half o=cc:12,6
@@ -179,7 +179,7 @@ Bank 29 25 8Dio Insolidus Multi Vowels 4-4 Cresc
 
 //! g="8Dio/Insolidus" n="Multi Vowels 4-4 Swells 1"
 //! id=2a42f0b2-d25c-45af-bf3c-1508d1a560ee
-Bank 29 26 8Dio Insolidus Multi Vowels 4-4 Swells 1
+Bank * * 8Dio Insolidus Multi Vowels 4-4 Swells 1
 //! c=long i=cresc-half o=cc:12,1
 1 Car-Pe-Noc-Tem
 //! c=long i=cresc-half o=cc:12,6
@@ -199,7 +199,7 @@ Bank 29 26 8Dio Insolidus Multi Vowels 4-4 Swells 1
 
 //! g="8Dio/Insolidus" n="Multi Vowels 4-4 Swells 2"
 //! id=4cc639cd-c66a-4739-a83d-5a3a3d12eaa6
-Bank 29 27 8Dio Insolidus Multi Vowels 4-4 Swells 2
+Bank * * 8Dio Insolidus Multi Vowels 4-4 Swells 2
 //! c=long i=cresc-half o=cc:12,1
 1 Car-Pe-Noc-Tem
 //! c=long i=cresc-half o=cc:12,6
@@ -219,7 +219,7 @@ Bank 29 27 8Dio Insolidus Multi Vowels 4-4 Swells 2
 
 //! g="8Dio/Insolidus" n="Shorts"
 //! id=5ffc3f85-558e-458d-9fd3-efc1099887b3
-Bank 29 28 8Dio Insolidus Shorts
+Bank * * 8Dio Insolidus Shorts
 //! c=short i=tenuto-quarter o=cc:12,1
 1 Tem (CC1 Dynamics)
 //! c=short i=tenuto-quarter o=cc:12,6

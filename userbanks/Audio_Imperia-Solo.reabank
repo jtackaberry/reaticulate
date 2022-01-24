@@ -5,7 +5,7 @@
 //
 //!g="Audio Imperia/Solo" n="01 Strings Unified"
 //! id=0ce4025b-08ee-479e-ad34-3a40f1923727
-Bank 20 40 Solo Violin/Viola/Cello
+Bank * * Solo Violin/Viola/Cello
 //! c=#4A4A4A i=legato-bowed o=note:12 g=1
 12 Legato Rebowed
 //! c=#4A4A4A i=legato-portamento o=note:13 g=1
@@ -25,7 +25,7 @@ Bank 20 40 Solo Violin/Viola/Cello
 
 //!g="Audio Imperia/Solo" n="02 Brass Unified"
 //! id=2e7747c0-b19c-4aa5-bfca-69775441a45f
-Bank 20 41 Solo Trumpet/French/Descant Horn
+Bank * * Solo Trumpet/French/Descant Horn
 //! c=#4A4A4A i=legato-bowed o=note:12 g=1
 12 Legato Fingered
 //! c=#4A4A4A i=legato-portamento o=note:13 g=1
@@ -37,7 +37,7 @@ Bank 20 41 Solo Trumpet/French/Descant Horn
 
 //!g="Audio Imperia/Solo" n="03 Woodwinds Unified"
 //! id=c6f33af9-9c55-4069-a36f-fd6efd9c5ae0
-Bank 20 42 Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
+Bank * * Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
 //! c=#4A4A4A i=legato-bowed o=note:12 g=1
 12 Legato Fingered
 //! c=#4A4A4A i=legato-portamento o=note:13 g=1
@@ -53,7 +53,7 @@ Bank 20 42 Solo Flute/Clarinet/Oboe/Eng. Horn/Bassoon
 
 //!g="Audio Imperia/Solo" n="04 Sopranos Unified"
 //! id=d0ef84c1-295f-42c0-a9c1-9dceae54238c
-Bank 20 43 Solo Soprano Angelic/Operatic
+Bank * * Solo Soprano Angelic/Operatic
 //! c=#4A4A4A i=phrase o=note:12 g=1
 12 Legato Aah
 //! c=#4A4A4A i=phrase o=note:13 g=1

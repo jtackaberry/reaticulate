@@ -5,7 +5,7 @@
 
 //! g="Cinesamples/CineWinds Core" n="CWC - Piccolo Flute"
 //! id=d3c8cbc5-889d-414d-bca9-542c7d5c8642
-Bank 21 115 CWC - Piccolo Flute
+Bank * * CWC - Piccolo Flute
 
 //! c=legato i=legato o=note:36
 20 legato
@@ -28,17 +28,17 @@ Bank 21 115 CWC - Piccolo Flute
 //! g="Cinesamples/CineWinds Core" n="CWC - Flute"
 //! clone="Cinesamples/CineWinds Core/CWC - Piccolo Flute"
 //! id=2a573a5a-2d58-4451-82f5-f7527866e608
-Bank 21 116 CWC - Flute
+Bank * * CWC - Flute
 
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Oboe 1"
 //! clone="Cinesamples/CineWinds Core/CWC - Piccolo"
 //! id=602979fa-b194-4a12-aded-59db2a3cffeb
-Bank 21 117 CWC - Oboe 1
+Bank * * CWC - Oboe 1
 
 //! g="Cinesamples/CineWinds Core" n="CWC - Oboe 2"
 //! id=9cee4938-8d4e-49ac-9d22-46bf02feaccb
-Bank 21 118 CWC - Oboe 2
+Bank * * CWC - Oboe 2
 
 //! c=legato i=legato o=note:36
 20 legato
@@ -54,7 +54,7 @@ Bank 21 118 CWC - Oboe 2
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Clarinet"
 //! id=9a365fa8-0f28-494c-a4b8-b4a968ccb1ae
-Bank 21 119 CWC - Clarinet
+Bank * * CWC - Clarinet
 
 //! c=legato i=legato o=note:24
 20 legato
@@ -76,7 +76,7 @@ Bank 21 119 CWC - Clarinet
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Bassoon"
 //! id=cf9bd480-962e-416a-9c3a-42f57cadaefa
-Bank 21 120 CWC - Bassoon
+Bank * * CWC - Bassoon
 
 //! c=legato i=legato o=note:12
 20 legato
@@ -98,7 +98,7 @@ Bank 21 120 CWC - Bassoon
 //----------------------------------------------------------------------------
 //! g="Cinesamples/CineWinds Core" n="CWC - Full Ensemble"
 //! id=4c9614a6-757e-4a79-a98d-df8d384e48e1
-Bank 21 121 CWC - Full Ensemble
+Bank * * CWC - Full Ensemble
 
 //! c=long i=note-whole o=note:12
 1 sustain

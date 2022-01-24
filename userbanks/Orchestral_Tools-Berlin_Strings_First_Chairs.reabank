@@ -5,7 +5,7 @@
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Violin 1"
 //! m="Using custom keyswitch (24 to 35)"
 //! id=d8f10725-277a-426d-8f84-91379af9934a
-Bank 24 119 OT-1st chairs - V1
+Bank * * OT-1st chairs - V1
 //! c=legato i=note-whole  o=note:24
 1 Sustain Imm - C1
 //! c=legato i=note-whole  o=note:25
@@ -33,25 +33,25 @@ Bank 24 119 OT-1st chairs - V1
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
 //! id=13ec0d1c-04ea-474e-bdcc-a369eb3063ea
-Bank 24 120 OT-1st chairs - V2
+Bank * * OT-1st chairs - V2
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Viola"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
 //! id=57b57a2e-68e4-4950-902c-3dc124ff3b11
-Bank 24 121 OT-1st chairs - Va
+Bank * * OT-1st chairs - Va
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Cello"
 //! m="Using custom keyswitch (24 to 35)"
 //! clone="Orchestral Tools/Berlin Strings First Chairs/Violin 1"
 //! id=11703cad-15f8-4c30-815b-1e7b81ad0837
-Bank 24 122 OT-1st chairs - Vc
+Bank * * OT-1st chairs - Vc
 
 
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Extras"
 //! m="CC messages like con sordino, legato..."
 //! id=4ffa3a26-6061-4a95-bc98-dfc3a2092d9f
-Bank 24 123 OT-BS - Extras
+Bank * * OT-BS - Extras
 //! c=default i=legato g=1 o=cc:30,127
 101 Legato On
 //! c=default i=legato g=1 o=cc:30,0
@@ -72,7 +72,7 @@ Bank 24 123 OT-BS - Extras
 //! g="Orchestral Tools/Berlin Strings First Chairs" n="Extras 2"
 //! m="CC messages like con sordino, legato..."
 //! id=066db4b3-983f-43c8-9331-460c5a922063
-Bank 24 124 OT-BS - Extras 2
+Bank * * OT-BS - Extras 2
 //! c=default i=fx o=cc:54,127
 109 Cutoff Filter On
 //! c=default i=fx o=cc:54,0

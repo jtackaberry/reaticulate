@@ -3,7 +3,7 @@
 //
 //! g="Spectrasonics/Trilian" n="Ac1 Bass" off=0
 //! id=d1db10e7-8d41-4f30-868f-cf1209605832
-Bank 26 9 Tr - Ac1 Bass
+Bank * * Tr - Ac1 Bass
 //! c=long-light i=phrase o=note-hold:0
 0 Vanleg-Normal
 //! c=long i=note-half o=note-hold:28

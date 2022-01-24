@@ -4,7 +4,7 @@
 
 //! g="Kirk Hunter/Diamond Symphony" n="Chamber Violins" off=20
 //! id=463e7217-7a31-4ab1-b43d-2672a254655f
-Bank 23 72 Kirk Hunter Diamond Symphony Chamber Violins
+Bank * * Kirk Hunter Diamond Symphony Chamber Violins
 //! c=long i=note-half o=note-hold:24
 104 Legato
 //! c=long i=note-quarter o=note-hold:25

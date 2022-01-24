@@ -4,7 +4,7 @@
 //===========================================================================
 //! g="Spitfire/Solo Strings" n="Violin (Virtuoso)"
 //! id=1eed1408-0824-4f6d-9ab0-62e8dbe09c96
-Bank 30 63 Spitfire Solo Strings - Violin (Virtuoso)
+Bank * * Spitfire Solo Strings - Violin (Virtuoso)
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -42,7 +42,7 @@ Bank 30 63 Spitfire Solo Strings - Violin (Virtuoso)
 //----------------------------------------------------------------------------
 //! g="Spitfire/Solo Strings" n="Violin (1st Desk)"
 //! id=82600224-b092-43ac-a82b-238d18b88a5c
-Bank 30 64 Spitfire Solo Strings - Violin (1st Desk)
+Bank * * Spitfire Solo Strings - Violin (1st Desk)
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -80,7 +80,7 @@ Bank 30 64 Spitfire Solo Strings - Violin (1st Desk)
 //----------------------------------------------------------------------------
 //! g="Spitfire/Solo Strings" n="Violin (Progressive)"
 //! id=d054a7f9-9975-4500-a071-5d4c73b4d57c
-Bank 30 65 Spitfire Solo Strings - Violin (Progressive)
+Bank * * Spitfire Solo Strings - Violin (Progressive)
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -120,7 +120,7 @@ Bank 30 65 Spitfire Solo Strings - Violin (Progressive)
 //----------------------------------------------------------------------------
 //! g="Spitfire/Solo Strings" n="Viola"
 //! id=c6a7a9ff-8130-4056-a6cd-67ee495a223e
-Bank 30 66 Spitfire Solo Strings - Viola
+Bank * * Spitfire Solo Strings - Viola
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -158,7 +158,7 @@ Bank 30 66 Spitfire Solo Strings - Viola
 //----------------------------------------------------------------------------
 //! g="Spitfire/Solo Strings" n="Cello"
 //! id=9894641c-815b-4dbf-9b49-1d5f9427be2d
-Bank 30 67 Spitfire Solo Strings - Cello
+Bank * * Spitfire Solo Strings - Cello
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -196,7 +196,7 @@ Bank 30 67 Spitfire Solo Strings - Cello
 //----------------------------------------------------------------------------
 //! g="Spitfire/Solo Strings" n="Bass"
 //! id=7768cad4-f998-4bf8-a35a-42843db314d9
-Bank 30 68 Spitfire Solo Strings - Bass
+Bank * * Spitfire Solo Strings - Bass
 
 //! c=long i=note-whole o=note:0
 1 long

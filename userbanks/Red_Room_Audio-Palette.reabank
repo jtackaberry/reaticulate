@@ -12,7 +12,7 @@
 
 //! g="Red Room Audio/Palette" n="Strings"
 //! id=445a8c41-e675-461a-b9ac-88328079d599
-Bank 25 91 Strings
+Bank * * Strings
 //! c=long i=note-whole o=note:96
 1  sustain
 //! c=long i=bow-down o=note:96/note:99
@@ -39,7 +39,7 @@ Bank 25 91 Strings
 
 //! g="Red Room Audio/Palette" n="Woodwins"
 //! id=429ef778-78e3-4311-8b25-3c31a7a70bc6
-Bank 25 92 Woodwins
+Bank * * Woodwins
 //! c=long i=note-whole o=note:96
 1   sustain
 //! c=long i=bow-down o=note:96/note:99
@@ -64,12 +64,12 @@ Bank 25 92 Woodwins
 //! g="Red Room Audio/Palette" n="Brass"
 //! clone="Red Room Audio/Palette/ Woodwins"
 //! id=3b7ce2b7-698d-4aae-8c7c-aed1d2579b6b
-Bank 25 93 Brass
+Bank * * Brass
 
 
 //! g="Red Room Audio/Palette" n="Choir"
 //! id=b96d4504-5a0e-487c-84b4-50e705b50693
-Bank 25 94 Choir
+Bank * * Choir
 //! c=long i=note-whole o=note:24
 90 AH sustain
 //! c=short i=staccato o=note:25
@@ -90,7 +90,7 @@ Bank 25 94 Choir
 
 //! g="Red Room Audio/Palette" n="BP1 Violin Octaves"
 //! id=177c3a0f-a736-4935-858f-1d8d97115f2e
-Bank 25 95 BP1 Violin Octaves
+Bank * * BP1 Violin Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -114,7 +114,7 @@ Bank 25 95 BP1 Violin Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Violin Octaves Con Sord."
 //! id=35326dbd-f3af-4be9-bbde-9a841f8828a0
-Bank 25 96 BP1 Violin Octaves Con Sord.
+Bank * * BP1 Violin Octaves Con Sord.
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -132,7 +132,7 @@ Bank 25 96 BP1 Violin Octaves Con Sord.
 
 //! g="Red Room Audio/Palette" n="BP1 Celli+Basses Octaves"
 //! id=870967c3-9812-4f87-a71d-245aa8cb1bff
-Bank 25 97 BP1 Celli+Basses Octaves
+Bank * * BP1 Celli+Basses Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -152,7 +152,7 @@ Bank 25 97 BP1 Celli+Basses Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Flutes+Piccolo Octaves"
 //! id=a232e466-5806-4dfd-b494-dca7987f3f3b
-Bank 25 98 BP1 Flutes+Piccolo Octaves
+Bank * * BP1 Flutes+Piccolo Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -174,7 +174,7 @@ Bank 25 98 BP1 Flutes+Piccolo Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Oboe+Bassoon Octaves"
 //! id=62585f1f-a25a-44ee-b3ab-8ad3a117f556
-Bank 25 99 BP1 Oboe+Bassoon Octaves
+Bank * * BP1 Oboe+Bassoon Octaves
 //! c=legato i=legato o=note:95
 20 legato
 //! c=long i=note-whole o=note:96
@@ -196,7 +196,7 @@ Bank 25 99 BP1 Oboe+Bassoon Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Bass Clar+Contrabassoon Octaves"
 //! id=dc3825ff-f59f-4afc-bd83-f34895b165aa
-Bank 25 100 BP1 Bass Clar+Contrabassoon Octaves
+Bank * * BP1 Bass Clar+Contrabassoon Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -216,7 +216,7 @@ Bank 25 100 BP1 Bass Clar+Contrabassoon Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Trumpets+Horns Octaves"
 //! id=b07c3816-da82-483e-b868-a503dff89975
-Bank 25 101 BP1 Trumpets+Horns Octaves
+Bank * * BP1 Trumpets+Horns Octaves
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -236,7 +236,7 @@ Bank 25 101 BP1 Trumpets+Horns Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Tuba+Trombone Octaves"
 //! id=5e1291d8-dd9c-4165-a6b4-bfac68951511
-Bank 25 102 BP1 Tuba+Trombone Octaves
+Bank * * BP1 Tuba+Trombone Octaves
 //! c=long i=note-whole o=note:96
 1   sustain
 //! c=legato-dark i=note-half o=note:97
@@ -253,26 +253,26 @@ Bank 25 102 BP1 Tuba+Trombone Octaves
 //! g="Red Room Audio/Palette" n="BP1 Horns"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
 //! id=188b439a-3c31-4143-8d18-f959acc5c3c4
-Bank 25 103 BP1 Horns
+Bank * * BP1 Horns
 
 //! g="Red Room Audio/Palette" n="BP1 Trumpet Octaves"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
 //! id=0c0991f1-74ef-4a10-9c46-e63c1d52b227
-Bank 25 104 BP1 Trumpet Octaves
+Bank * * BP1 Trumpet Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Low Brass + Low Strings"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
 //! id=58849d12-8673-44b1-b01d-ea9d1dbd82ee
-Bank 25 105 BP1 Low Brass + Low Strings
+Bank * * BP1 Low Brass + Low Strings
 
 //! g="Red Room Audio/Palette" n="BP1 Horns + Violins Octaves"
 //! clone="Red Room Audio/Palette/BP1 Trumpets+Horns Octaves"
 //! id=a515428e-b996-41fc-8722-b6721658b85c
-Bank 25 106 BP1 Horns + Violins Octaves
+Bank * * BP1 Horns + Violins Octaves
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Violin"
 //! id=cb6e36aa-199b-44b1-b1fc-e128cb163e6c
-Bank 25 107 BP1 Solo Violin
+Bank * * BP1 Solo Violin
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -301,11 +301,11 @@ Bank 25 107 BP1 Solo Violin
 //! g="Red Room Audio/Palette" n="BP1 Solo Cello"
 //! clone="Red Room Audio/Palette/BP1 Solo Violin"
 //! id=ca25a088-b249-4427-be4d-e961087ffb5b
-Bank 25 108 BP1 Solo Cello
+Bank * * BP1 Solo Cello
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Flute"
 //! id=3324dea5-be11-4d5b-9241-aa578c53788f
-Bank 25 109 BP1 Solo Flute
+Bank * * BP1 Solo Flute
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -336,7 +336,7 @@ Bank 25 109 BP1 Solo Flute
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Oboe"
 //! id=cf69e12f-7fd2-499d-8a9e-275816da85d9
-Bank 25 110 BP1 Solo Oboe
+Bank * * BP1 Solo Oboe
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -364,7 +364,7 @@ Bank 25 110 BP1 Solo Oboe
 
 //! g="Red Room Audio/Palette" n="BP1 Solo Trumpet"
 //! id=bfbc5d27-60d1-4865-bb90-f51802c99edd
-Bank 25 111 BP1 Solo Trumpet
+Bank * * BP1 Solo Trumpet
 //! c=legato i=legato o=note:95
 20  legato
 //! c=long i=note-whole o=note:96
@@ -397,7 +397,7 @@ Bank 25 111 BP1 Solo Trumpet
 //! g="Red Room Audio/Palette" n="BP1 Solo Horn"
 //! clone="Red Room Audio/Palette/BP1 Solo Trumpet"
 //! id=ff4783ad-d0f0-40a2-97a1-a9146168a135
-Bank 25 112 BP1 Solo Horn
+Bank * * BP1 Solo Horn
 
 
 

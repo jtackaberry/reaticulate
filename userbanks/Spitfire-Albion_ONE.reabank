@@ -4,7 +4,7 @@
 //! g="Spitfire/Albion ONE Orchestra" n="Strings"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
 //! id=98beb910-8365-4ce5-9f43-c9a1f460dcdf
-Bank 26 10 Albion ONE - Strings
+Bank * * Albion ONE - Strings
 //! c=short i=spiccato o=cc:32,3
 3 spiccato
 //! c=short i=staccato o=cc:32,20
@@ -28,7 +28,7 @@ Bank 26 10 Albion ONE - Strings
 //! g="Spitfire/Albion ONE/Legacy" n="String High"
 //! chase=1,11,16-21,64-69  m="Set patch to UACC"
 //! id=7f39e013-007e-4d85-a8be-d4c705f6dac2
-Bank 26 11 Albion ONE - Legacy - String High
+Bank * * Albion ONE - Legacy - String High
 //! c=short i=staccato o=cc:32,1
 1 short ostinatum
 //! c=short i=spiccato o=cc:32,20

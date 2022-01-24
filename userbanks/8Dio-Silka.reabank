@@ -5,7 +5,7 @@
 
 //! g="8Dio/Silka/" n="2 Syllable Arcs Fast MW"
 //! id=8c51106d-07a5-4ecd-8ade-19910f5e70ce
-Bank 29 51 8Dio Silka 2 Syllable Arc Fast
+Bank * * 8Dio Silka 2 Syllable Arc Fast
 //! c=long i=cresc-half o=cc:12,1
 1 Oh-Soh
 //! c=long i=cresc-half o=cc:12,6
@@ -21,7 +21,7 @@ Bank 29 51 8Dio Silka 2 Syllable Arc Fast
 
 //! g="8Dio/Silka/" n="2 Syllable Arcs Slow MW"
 //! id=6b5386bd-6109-4d70-8d9e-cf969eddb8d9
-Bank 29 52 8Dio Silka 2 Syllable Arc Slow
+Bank * * 8Dio Silka 2 Syllable Arc Slow
 //! c=long i=cresc-half o=cc:12,1
 1 Oh-Soh
 //! c=long i=cresc-half o=cc:12,6
@@ -41,7 +41,7 @@ Bank 29 52 8Dio Silka 2 Syllable Arc Slow
 
 //! g="8Dio/Silka/" n="4 Syllable Soft Arcs"
 //! id=d8862b4b-ef59-4b8e-8153-4fb30a6ca03c
-Bank 29 53 8Dio Silka 4 Syllable Soft Arcs
+Bank * * 8Dio Silka 4 Syllable Soft Arcs
 //! c=long i=cresc-half o=cc:12,1
 1 I-Ne-Ver-Saw
 //! c=long i=cresc-half o=cc:12,6
@@ -57,7 +57,7 @@ Bank 29 53 8Dio Silka 4 Syllable Soft Arcs
 
 //! g="8Dio/Silka/" n="5 Syllable Soft Arcs"
 //! id=0c0d09a8-1f51-4114-908c-31173fe6b729
-Bank 29 54 8Dio Silka 5 Syllable Soft Arcs
+Bank * * 8Dio Silka 5 Syllable Soft Arcs
 //! c=long i=cresc-half o=cc:12,1
 1 Oh-Soh-Cru-Eh-Snoh
 //! c=long i=cresc-half o=cc:12,6
@@ -85,7 +85,7 @@ Bank 29 54 8Dio Silka 5 Syllable Soft Arcs
 
 //! g="8Dio/Silka/" n="Fast Repeated Staccato"
 //! id=27364e5a-1f64-4a5f-b3ba-b730c47fd7b2
-Bank 29 55 8Dio Silka Fast Repeated Staccato
+Bank * * 8Dio Silka Fast Repeated Staccato
 //! c=short i=staccato o=cc:12,1
 1 No-no-oh
 //! c=short i=staccato o=cc:12,6
@@ -115,7 +115,7 @@ Bank 29 55 8Dio Silka Fast Repeated Staccato
 
 //! g="8Dio/Silka/" n="Legato Intimate"
 //! id=d695642f-b76f-40a8-a2de-7b9248f3af8a
-Bank 29 56 8Dio Silka Legato Intimate
+Bank * * 8Dio Silka Legato Intimate
 //! c=legato i=legato o=cc:12,1
 1 Ah
 //! c=legato i=legato o=cc:12,6
@@ -129,7 +129,7 @@ Bank 29 56 8Dio Silka Legato Intimate
 
 //! g="8Dio/Silka/" n="Legato Staccato"
 //! id=d75f2020-9606-4391-9f9c-355cd6c71705
-Bank 29 57 8Dio Silka Legato Staccato
+Bank * * 8Dio Silka Legato Staccato
 //! c=short i=staccato o=cc:12,1
 1 Ah-Ah-Ah > Ah-Ah-Ah
 //! c=short i=staccato o=cc:12,6
@@ -157,7 +157,7 @@ Bank 29 57 8Dio Silka Legato Staccato
 
 //! g="8Dio/Silka/" n="Legato Sustain"
 //! id=3f6ab90c-2734-4abd-8219-553ba2849d10
-Bank 29 58 8Dio Silka Legato Sustain
+Bank * * 8Dio Silka Legato Sustain
 //! c=short i=staccato o=cc:12,1
 1 Uh > Ah
 //! c=short i=staccato o=cc:12,6
@@ -176,7 +176,7 @@ Bank 29 58 8Dio Silka Legato Sustain
 
 //! g="8Dio/Silka/" n="Sustains"
 //! id=15d20fe2-ca31-444e-aa1b-929cd8c72998
-Bank 29 59 8Dio Silka Sustains
+Bank * * 8Dio Silka Sustains
 //! c=long i=cresc-half o=cc:12,1
 1 Oh (Arc MW)
 //! c=fx i=fx o=cc:12,6
@@ -196,7 +196,7 @@ Bank 29 59 8Dio Silka Sustains
 
 //! g="8Dio/Silka/" n="Trills and Shorts"
 //! id=3e1b6315-a60e-4a5d-b949-c86dd825f6b9
-Bank 29 60 8Dio Silka Trills and Shorts
+Bank * * 8Dio Silka Trills and Shorts
 //! c=short i=trill-min2 o=cc:12,1
 1 Slow Trill - HT
 //! c=short i=trill-maj2 o=cc:12,6
@@ -220,7 +220,7 @@ Bank 29 60 8Dio Silka Trills and Shorts
 
 //! g="8Dio/Silka/" n="Triplets Loops"
 //! id=94fa328f-8764-4a1e-a975-083aaadc09a0
-Bank 29 61 8Dio Silka Triplets Loops
+Bank * * 8Dio Silka Triplets Loops
 //! c=short i=note-eighth o=cc:12,1
 1 Do-Do-Bi-Do
 //! c=short i=note-eighth o=cc:12,6
@@ -236,7 +236,7 @@ Bank 29 61 8Dio Silka Triplets Loops
 
 //! g="8Dio/Silka/" n="Triplets"
 //! id=f7390b9e-ab83-484f-a8b1-d08035ec1d7b
-Bank 29 62 8Dio Silka Triplets
+Bank * * 8Dio Silka Triplets
 //! c=short i=note-eighth o=cc:12,1
 1 Do-Do-Bi-Do, Dooh
 //! c=short i=note-eighth o=cc:12,6

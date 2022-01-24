@@ -7,7 +7,7 @@
 //! m="Velocity less than 13 is portamento. Velocity at 127 is ornament"
 
 //! id=4b42e6e5-510b-4874-9d90-31e1a665453e
-Bank 23 4 Embertone Herring Clarinet
+Bank * * Embertone Herring Clarinet
 
 //! c=legato i=legato o=note:36/note:41
 20 Legato

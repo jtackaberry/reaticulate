@@ -6,7 +6,7 @@
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="3 Flutes"
 //! m="Use original KS Master preset"
 //! id=79220e84-6d33-4c63-95e2-4270a09ea07b
-Bank 22 118 EWQLSO - Woodwinds 3 Flutes
+Bank * * EWQLSO - Woodwinds 3 Flutes
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -35,7 +35,7 @@ Bank 22 118 EWQLSO - Woodwinds 3 Flutes
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="3 Oboes"
 //! m="Use original KS Master preset"
 //! id=bdb614a0-78e8-4e19-acea-d1bca96f627b
-Bank 22 119 EWQLSO - Woodwinds 3 Oboes
+Bank * * EWQLSO - Woodwinds 3 Oboes
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -62,7 +62,7 @@ Bank 22 119 EWQLSO - Woodwinds 3 Oboes
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="Solo Bassoon"
 //! m="Use original KS Master preset"
 //! id=c98783e8-97ef-4ca3-8289-c62062100074
-Bank 22 120 EWQLSO - Woodwinds Solo Bassoon
+Bank * * EWQLSO - Woodwinds Solo Bassoon
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -89,7 +89,7 @@ Bank 22 120 EWQLSO - Woodwinds Solo Bassoon
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Woodwinds" n="Solo Flute"
 //! m="Use original KS Master preset"
 //! id=5bd09e8f-cb41-4c00-a8d2-2006bbc772ce
-Bank 22 121 EWQLSO - Woodwinds Solo Flute
+Bank * * EWQLSO - Woodwinds Solo Flute
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -136,7 +136,7 @@ Bank 22 121 EWQLSO - Woodwinds Solo Flute
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="4 Trumpets"
 //! m="Use original KS Master preset"
 //! id=38a3461a-adf5-41f0-bc96-32f5fec6926e
-Bank 22 122 EWQLSO - Brass 4 Trumpets
+Bank * * EWQLSO - Brass 4 Trumpets
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -155,7 +155,7 @@ Bank 22 122 EWQLSO - Brass 4 Trumpets
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="6 French Horns"
 //! m="Use original KS Master preset"
 //! id=a448ce13-570d-4e5d-a34c-3b2e4c83552e
-Bank 22 123 EWQLSO - Brass 6 French Horns
+Bank * * EWQLSO - Brass 6 French Horns
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -216,7 +216,7 @@ Bank 22 123 EWQLSO - Brass 6 French Horns
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="Solo Trumpet 1"
 //! m="Use original KS Master preset"
 //! id=4d0ee58b-004b-44df-b797-998a678fa97f
-Bank 22 124 EWQLSO - Brass Solo Trumpet 1
+Bank * * EWQLSO - Brass Solo Trumpet 1
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -243,7 +243,7 @@ Bank 22 124 EWQLSO - Brass Solo Trumpet 1
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Brass" n="Solo Tuba"
 //! m="Use original KS Master preset"
 //! id=03502ce0-7b3e-4d89-95b3-0a34da784eea
-Bank 22 125 EWQLSO - Brass Solo Tuba
+Bank * * EWQLSO - Brass Solo Tuba
 
 //! c=long i=note-whole o=note:72
 1 long
@@ -266,7 +266,7 @@ Bank 22 125 EWQLSO - Brass Solo Tuba
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="9 Double Basses"
 //! m="Use original KS Master preset"
 //! id=c9966f61-a4a6-4565-abc0-12bcf85db622
-Bank 22 126 EWQLSO - 9 Double Basses
+Bank * * EWQLSO - 9 Double Basses
 
 //! c=long i=note-whole o=note:72
 1 long
@@ -305,7 +305,7 @@ Bank 22 126 EWQLSO - 9 Double Basses
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="10 Cellos"
 //! m="Use original KS Master preset"
 //! id=ddcdc8af-df1e-405d-b987-6c2eb40733f4
-Bank 22 127 EWQLSO - 10 Cellos
+Bank * * EWQLSO - 10 Cellos
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -352,7 +352,7 @@ Bank 22 127 EWQLSO - 10 Cellos
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="11 Violins"
 //! m="Use original KS Master preset"
 //! id=774adb2b-2f6f-43d4-a1ac-63f535d4e3f5
-Bank 23 1 EWQLSO - 11 Violins
+Bank * * EWQLSO - 11 Violins
 
 //! c=long i=note-whole o=note:24
 1 long
@@ -411,7 +411,7 @@ Bank 23 1 EWQLSO - 11 Violins
 //! g="EastWest Quantum Leap/Symphonic Orchestra/Strings" n="18 Violins"
 //! m="Use original KS Master preset"
 //! id=adc415f6-0066-48b7-8742-d23b934264d5
-Bank 23 2 EWQLSO - 18 Violins
+Bank * * EWQLSO - 18 Violins
 
 //! c=long i=note-whole o=note:24
 1 long

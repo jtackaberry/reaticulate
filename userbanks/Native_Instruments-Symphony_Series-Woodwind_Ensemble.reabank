@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Woodwind Ensemble"
 //! id=00fb5c8e-c258-4f98-8162-998b238d3b23
-Bank 24 19 SSWE Woodwind Ensemble
+Bank * * SSWE Woodwind Ensemble
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=staccato o=note:25
@@ -17,7 +17,7 @@ Bank 24 19 SSWE Woodwind Ensemble
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes"
 //! id=5b8aa3c4-1e28-4c06-8ab6-58f488acf8a7
-Bank 24 20 SSWE Flutes
+Bank * * SSWE Flutes
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -33,7 +33,7 @@ Bank 24 20 SSWE Flutes
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Sustain"
 //! id=749360b1-6b52-4557-9faf-13cfa0add5b6
-Bank 24 21 SSWE Flutes Sustain
+Bank * * SSWE Flutes Sustain
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -53,7 +53,7 @@ Bank 24 21 SSWE Flutes Sustain
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Staccato"
 //! id=eadda557-a242-4fa7-801e-4907875fab3a
-Bank 24 22 SSWE Flutes Staccato
+Bank * * SSWE Flutes Staccato
 //! c=short i=staccato o=note:12
 40 staccato
 //! c=short-light i=staccato o=note:13
@@ -71,7 +71,7 @@ Bank 24 22 SSWE Flutes Staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Legato"
 //! id=7303a18e-24bf-40a4-b9cc-c72edb0c707e
-Bank 24 23 SSWE Flutes Legato
+Bank * * SSWE Flutes Legato
 //! c=legato i=legato o=note:12
 20 legato
 //! c=legato-light i=legato o=note:13
@@ -83,7 +83,7 @@ Bank 24 23 SSWE Flutes Legato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Expression"
 //! id=68c9a1cd-5eca-4916-b1d7-9eae45779679
-Bank 24 24 SSWE Flutes Expression
+Bank * * SSWE Flutes Expression
 //! c=long i=crescendo o=note:12
 102 crescendo
 //! c=long i=decrescendo o=note:13
@@ -99,7 +99,7 @@ Bank 24 24 SSWE Flutes Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Effects"
 //! id=738d24e5-b4ea-4e49-899b-6925044f986d
-Bank 24 25 SSWE Flutes Effects
+Bank * * SSWE Flutes Effects
 //! c=short-light i=riccochet o=note:12
 12 cluster stacc piano
 //! c=short-dark i=riccochet o=note:13
@@ -119,7 +119,7 @@ Bank 24 25 SSWE Flutes Effects
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Arpeggio"
 //! id=6b757753-a50e-42f1-a758-46b7bb6c2d22
-Bank 24 26 SSWE Flutes Arpeggio
+Bank * * SSWE Flutes Arpeggio
 //! c=legato i=legato-runs o=note:12
 12 maj up
 //! c=legato i=legato-runs o=note:13
@@ -139,7 +139,7 @@ Bank 24 26 SSWE Flutes Arpeggio
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes"
 //! id=b24fc3db-cd9e-42be-8951-df1612863b74
-Bank 24 27 SSWE Oboes
+Bank * * SSWE Oboes
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -155,7 +155,7 @@ Bank 24 27 SSWE Oboes
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Sustain"
 //! id=6903617b-2ae2-4319-b967-4b07bafbe661
-Bank 24 28 SSWE Oboes Sustain
+Bank * * SSWE Oboes Sustain
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -175,7 +175,7 @@ Bank 24 28 SSWE Oboes Sustain
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Staccato"
 //! id=192ed37f-f1c9-44d9-9d3b-34bcf074e1de
-Bank 24 29 SSWE Oboes Staccato
+Bank * * SSWE Oboes Staccato
 //! c=short i=staccato o=note:12
 40 staccato
 //! c=short-light i=staccato o=note:13
@@ -193,7 +193,7 @@ Bank 24 29 SSWE Oboes Staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Legato"
 //! id=5108a2a7-635a-4491-910f-b9326aff876e
-Bank 24 30 SSWE Oboes Legato
+Bank * * SSWE Oboes Legato
 //! c=legato i=legato o=note:12
 20 legato
 //! c=legato-light i=legato o=note:13
@@ -205,7 +205,7 @@ Bank 24 30 SSWE Oboes Legato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Expression"
 //! id=c05e254b-8d00-4275-90cb-e9a72bd1d3aa
-Bank 24 31 SSWE Oboes Expression
+Bank * * SSWE Oboes Expression
 //! c=long i=crescendo o=note:12
 102 crescendo
 //! c=long i=decrescendo o=note:13
@@ -221,7 +221,7 @@ Bank 24 31 SSWE Oboes Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Effects"
 //! id=f9deaaef-8fa8-4dda-9b4d-dff2af69b411
-Bank 24 32 SSWE Oboes Effects
+Bank * * SSWE Oboes Effects
 //! c=short-light i=riccochet o=note:12
 12 3note stab
 //! c=short-dark i=riccochet o=note:13
@@ -241,7 +241,7 @@ Bank 24 32 SSWE Oboes Effects
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Arpeggio"
 //! id=ae27627d-b2e1-441d-b17d-49c117da6331
-Bank 24 33 SSWE Oboes Arpeggio
+Bank * * SSWE Oboes Arpeggio
 //! c=legato i=legato-runs o=note:12
 12 maj up
 //! c=legato i=legato-runs o=note:13
@@ -261,7 +261,7 @@ Bank 24 33 SSWE Oboes Arpeggio
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets"
 //! id=30d384fb-0153-4778-b2bf-e18f974a8390
-Bank 24 34 SSWE Clarinets
+Bank * * SSWE Clarinets
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -277,7 +277,7 @@ Bank 24 34 SSWE Clarinets
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets Sustain"
 //! id=6749b5ae-dd4f-418f-805f-6b47ed4fd3f4
-Bank 24 35 SSWE Clarinets Sustain
+Bank * * SSWE Clarinets Sustain
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -297,7 +297,7 @@ Bank 24 35 SSWE Clarinets Sustain
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets Staccato"
 //! id=1c250fae-2f96-461b-b127-18f2f9ea6c88
-Bank 24 36 SSWE Clarinets Staccato
+Bank * * SSWE Clarinets Staccato
 //! c=short i=staccato o=note:12
 40 staccato
 //! c=short-light i=staccato o=note:13
@@ -309,7 +309,7 @@ Bank 24 36 SSWE Clarinets Staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets Legato"
 //! id=2fd9d235-bc9a-486a-90ca-4bc5659e947c
-Bank 24 37 SSWE Clarinets Legato
+Bank * * SSWE Clarinets Legato
 //! c=legato i=legato o=note:12
 20 legato
 //! c=legato-light i=legato o=note:13
@@ -321,7 +321,7 @@ Bank 24 37 SSWE Clarinets Legato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets Expression"
 //! id=3afa3801-1058-430d-ae8c-8bf307912271
-Bank 24 38 SSWE Clarinets Expression
+Bank * * SSWE Clarinets Expression
 //! c=long i=crescendo o=note:12
 102 crescendo
 //! c=long i=decrescendo o=note:13
@@ -337,7 +337,7 @@ Bank 24 38 SSWE Clarinets Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets Effects"
 //! id=b0865a3f-578c-4f3e-a2f8-45ebe2c08686
-Bank 24 39 SSWE Clarinets Effects
+Bank * * SSWE Clarinets Effects
 //! c=long i=alt-wave o=note:12
 12 bend dn-up
 //! c=short i=staccato o=note:13
@@ -357,7 +357,7 @@ Bank 24 39 SSWE Clarinets Effects
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Clarinets Arpeggio"
 //! id=fab1bb35-9c02-4625-9556-9b5e8937f557
-Bank 24 40 SSWE Clarinets Arpeggio
+Bank * * SSWE Clarinets Arpeggio
 //! c=legato i=legato-runs o=note:12
 12 maj up
 //! c=legato i=legato-runs o=note:13
@@ -377,7 +377,7 @@ Bank 24 40 SSWE Clarinets Arpeggio
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones"
 //! id=f09e54b2-9643-4e01-a1a0-2afcd2cd8a97
-Bank 24 41 SSWE Saxophones
+Bank * * SSWE Saxophones
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -393,7 +393,7 @@ Bank 24 41 SSWE Saxophones
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones Sustain"
 //! id=066072d2-630e-4815-ac76-5883bc9ea1e8
-Bank 24 42 SSWE Saxophones Sustain
+Bank * * SSWE Saxophones Sustain
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -413,7 +413,7 @@ Bank 24 42 SSWE Saxophones Sustain
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones Staccato"
 //! id=773b9fb5-44f1-42d5-a275-bea4bea04ccd
-Bank 24 43 SSWE Saxophones Staccato
+Bank * * SSWE Saxophones Staccato
 //! c=short i=staccato o=note:12
 40 staccato
 //! c=short-light i=staccato o=note:13
@@ -425,7 +425,7 @@ Bank 24 43 SSWE Saxophones Staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones Legato"
 //! id=9033e27b-742f-44a9-b3be-5e7c188bfa7b
-Bank 24 44 SSWE Saxophones Legato
+Bank * * SSWE Saxophones Legato
 //! c=legato i=legato o=note:12
 20 legato
 //! c=legato-light i=legato o=note:13
@@ -437,7 +437,7 @@ Bank 24 44 SSWE Saxophones Legato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones Expression"
 //! id=c802ea46-2b02-4f84-9190-1ba7ce28389e
-Bank 24 45 SSWE Saxophones Expression
+Bank * * SSWE Saxophones Expression
 //! c=long i=crescendo o=note:12
 102 crescendo
 //! c=long i=decrescendo o=note:13
@@ -453,7 +453,7 @@ Bank 24 45 SSWE Saxophones Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones Effects"
 //! id=f3134323-032f-4097-a931-c8646de632da
-Bank 24 46 SSWE Saxophones Effects
+Bank * * SSWE Saxophones Effects
 //! c=long i=alt-wave o=note:12
 12 bend dn-up
 //! c=long i=alt-wave o=note:13
@@ -473,7 +473,7 @@ Bank 24 46 SSWE Saxophones Effects
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Saxophones Arpeggio"
 //! id=2bd68b7a-a4bc-4c19-af0e-b0cdcd433e05
-Bank 24 47 SSWE Saxophones Arpeggio
+Bank * * SSWE Saxophones Arpeggio
 //! c=legato i=legato-runs o=note:12
 12 maj up
 //! c=legato i=legato-runs o=note:13
@@ -493,7 +493,7 @@ Bank 24 47 SSWE Saxophones Arpeggio
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons"
 //! id=99f49978-aad5-4a13-b014-3edcd2584fc2
-Bank 24 48 SSWE Bassoons
+Bank * * SSWE Bassoons
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -509,7 +509,7 @@ Bank 24 48 SSWE Bassoons
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Sustain"
 //! id=604f15ee-7c7d-4c38-92e3-5666e0fc393a
-Bank 24 49 SSWE Bassoons Sustain
+Bank * * SSWE Bassoons Sustain
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=vibrato o=note:13
@@ -529,7 +529,7 @@ Bank 24 49 SSWE Bassoons Sustain
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Staccato"
 //! id=5b203ccf-2e3b-4a33-8683-fa31c57012d8
-Bank 24 50 SSWE Bassoons Staccato
+Bank * * SSWE Bassoons Staccato
 //! c=short i=staccato o=note:12
 40 staccato
 //! c=short-light i=staccato o=note:13
@@ -545,7 +545,7 @@ Bank 24 50 SSWE Bassoons Staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Legato"
 //! id=fcd1c222-9468-4e01-a7d2-d34a324d80b0
-Bank 24 51 SSWE Bassoons Legato
+Bank * * SSWE Bassoons Legato
 //! c=legato i=legato o=note:12
 20 legato
 //! c=legato-light i=legato o=note:13
@@ -557,7 +557,7 @@ Bank 24 51 SSWE Bassoons Legato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Expression"
 //! id=50ed9240-2558-4346-8a21-52eba428392e
-Bank 24 52 SSWE Bassoons Expression
+Bank * * SSWE Bassoons Expression
 //! c=long i=crescendo o=note:12
 102 crescendo
 //! c=long i=decrescendo o=note:13
@@ -573,7 +573,7 @@ Bank 24 52 SSWE Bassoons Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Effects"
 //! id=4d62d408-05ba-476e-a810-4616b9d9341c
-Bank 24 53 SSWE Bassoons Effects
+Bank * * SSWE Bassoons Effects
 //! c=long i=crescendo o=note:12
 12 cluster crescendo
 //! c=short i=staccato o=note:13
@@ -593,7 +593,7 @@ Bank 24 53 SSWE Bassoons Effects
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Arpeggio"
 //! id=75061879-3bb7-4c8c-9390-ac1d4d525a0d
-Bank 24 54 SSWE Bassoons Arpeggio
+Bank * * SSWE Bassoons Arpeggio
 //! c=legato i=legato-runs o=note:12
 12 maj up
 //! c=legato i=legato-runs o=note:13
@@ -613,7 +613,7 @@ Bank 24 54 SSWE Bassoons Arpeggio
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds"
 //! id=49dd8cb0-bcd1-4f04-94a7-91e6bf780282
-Bank 24 55 SSWE Bass Winds
+Bank * * SSWE Bass Winds
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=tremolo-measured o=note:13
@@ -629,7 +629,7 @@ Bank 24 55 SSWE Bass Winds
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds Sustain"
 //! id=37c230fb-92f6-448c-8f8f-933292b978aa
-Bank 24 56 SSWE Bass Winds Sustain
+Bank * * SSWE Bass Winds Sustain
 //! c=long i=note-whole o=note:12
 1 sustain
 //! c=long i=tremolo-measured o=note:13
@@ -647,7 +647,7 @@ Bank 24 56 SSWE Bass Winds Sustain
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds Staccato"
 //! id=2affde30-ef5e-4f69-9f47-0ceaefd19dd8
-Bank 24 57 SSWE Bass Winds Staccato
+Bank * * SSWE Bass Winds Staccato
 //! c=short i=staccato o=note:12
 40 staccato
 //! c=short-light i=staccato o=note:13
@@ -659,7 +659,7 @@ Bank 24 57 SSWE Bass Winds Staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds Legato"
 //! id=fc06aa1b-c601-4096-a634-460f7816bc30
-Bank 24 58 SSWE Bass Winds Legato
+Bank * * SSWE Bass Winds Legato
 //! c=legato i=legato o=note:12
 20 legato
 //! c=legato-light i=legato o=note:13
@@ -671,7 +671,7 @@ Bank 24 58 SSWE Bass Winds Legato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds Expression"
 //! id=efdc30a5-64ef-48c2-9743-200689d74347
-Bank 24 59 SSWE Bass Winds Expression
+Bank * * SSWE Bass Winds Expression
 //! c=long i=crescendo o=note:12
 102 crescendo
 //! c=long i=decrescendo o=note:13
@@ -687,7 +687,7 @@ Bank 24 59 SSWE Bass Winds Expression
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds Effects"
 //! id=a96b5278-c642-4e00-9b7e-870beca11fce
-Bank 24 60 SSWE Bass Winds Effects
+Bank * * SSWE Bass Winds Effects
 //! c=short-dark i=sfz o=note:12
 12 cluster dissonance sfz
 //! c=short-dark i=sfz o=note:13
@@ -707,7 +707,7 @@ Bank 24 60 SSWE Bass Winds Effects
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bass Winds Arpeggio"
 //! id=44193b33-0b0e-4e96-9298-80290510ffdb
-Bank 24 61 SSWE Bass Winds Arpeggio
+Bank * * SSWE Bass Winds Arpeggio
 //! c=legato i=legato-runs o=note:12
 12 maj up
 //! c=legato i=legato-runs o=note:13

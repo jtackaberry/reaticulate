@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Violins 1"
 //! id=7ec2adb3-a466-4894-891c-2c8143ce018d
-Bank 26 12 Discover Violins 1
+Bank * * Discover Violins 1
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -20,30 +20,30 @@ Bank 26 12 Discover Violins 1
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Violins 2"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
 //! id=55f2a427-240f-442b-933e-21900bcda944
-Bank 26 13 Discover Violins 2
+Bank * * Discover Violins 2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Violas"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
 //! id=c63edb74-68ad-4f41-a068-b03556bacf47
-Bank 26 14 Discover Violas
+Bank * * Discover Violas
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Celli"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
 //! id=249a030a-1984-4155-bf04-5303dd19d2ef
-Bank 26 15 Discover Celli
+Bank * * Discover Celli
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Strings" n="Discover Basses"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Strings/Discover Violins 1"
 //! id=06b83ed7-f331-44fd-b18d-08815b914a7a
-Bank 26 16 Discover Basses
+Bank * * Discover Basses
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Horns a4"
 //! id=8a3e53f5-ad5f-45a0-be18-6b6e69917853
-Bank 26 17 Discover Horns a4
+Bank * * Discover Horns a4
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -54,30 +54,30 @@ Bank 26 17 Discover Horns a4
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Trumpets a3"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
 //! id=aec06083-6af7-4c5b-91cf-2712314acadc
-Bank 26 18 Discover Trumpets a3
+Bank * * Discover Trumpets a3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Tenor Trombones a3"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
 //! id=99001710-ba52-4c85-b0b3-608c897d5cf4
-Bank 26 19 Discover Tenor Trombones a3
+Bank * * Discover Tenor Trombones a3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Bass Trombones a2"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
 //! id=10abf960-8764-47ba-8053-92931e311a2c
-Bank 26 20 Discover Bass Trombones a2
+Bank * * Discover Bass Trombones a2
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Brass" n="Discover Tuba"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Brass/Discover Horns a4"
 //! id=c9e59d4d-70ba-4c42-8b4f-09dcd556ffb7
-Bank 26 21 Discover Tuba
+Bank * * Discover Tuba
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Flutes a3"
 //! id=ed0ecb27-63f0-4b89-8611-0e74ee338485
-Bank 26 22 Discover Flutes a3
+Bank * * Discover Flutes a3
 
 //! c=long i=note-whole o=note:0
 1 long
@@ -88,22 +88,22 @@ Bank 26 22 Discover Flutes a3
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Piccolo"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
 //! id=15de36e5-ee8e-4cbd-b548-3da7acf8d1cf
-Bank 26 23 Discover Piccolo
+Bank * * Discover Piccolo
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Oboes a3"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
 //! id=8f7e9416-9291-41ff-856e-570e76bbd208
-Bank 26 24 Discover Oboes a3
+Bank * * Discover Oboes a3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Clarinets a3"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
 //! id=31df2212-17bb-42ab-8d2f-bfa3b245e74a
-Bank 26 25 Discover Clarinets a3
+Bank * * Discover Clarinets a3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds" n="Discover Bassoons a3"
 //! clone="Spitfire/BBC Symphonic Orchestra Discover/Woodwinds/Discover Flutes a3"
 //! id=6a73e141-93bc-4c8a-bdc5-7745252bf258
-Bank 26 26 Discover Bassoons a3
+Bank * * Discover Bassoons a3

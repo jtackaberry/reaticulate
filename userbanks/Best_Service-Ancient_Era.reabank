@@ -4,7 +4,7 @@
 
 //! g="Best Service/Ancient Era/Strings" n="Baglama High / Low" off=0
 //! id=0a999240-4b9c-4aa2-80fd-ba0f77819cd5
-Bank 20 44 Baglama High / Low
+Bank * * Baglama High / Low
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -38,7 +38,7 @@ Bank 20 44 Baglama High / Low
 
 //! g="Best Service/Ancient Era/Strings" n="Dutar" off=0
 //! id=500263be-64a8-443f-8c11-4b639b895b12
-Bank 20 45 Dutar
+Bank * * Dutar
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -54,7 +54,7 @@ Bank 20 45 Dutar
 
 //! g="Best Service/Ancient Era/Strings" n="Kopuz" off=0
 //! id=9cd8978f-96e8-4963-9253-9df2144f7a32
-Bank 20 46 Kopuz
+Bank * * Kopuz
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -72,7 +72,7 @@ Bank 20 46 Kopuz
 
 //! g="Best Service/Ancient Era/Strings" n="Rabab" off=0
 //! id=d823fada-07d0-4162-b506-52b2d1f80edc
-Bank 20 47 Rabab
+Bank * * Rabab
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -92,7 +92,7 @@ Bank 20 47 Rabab
 
 //! g="Best Service/Ancient Era/Strings" n="Santoor" off=0
 //! id=d6572b32-09e8-481d-a34b-c1dd3bd69b78
-Bank 20 48 Santoor
+Bank * * Santoor
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -100,7 +100,7 @@ Bank 20 48 Santoor
 
 //! g="Best Service/Ancient Era/Strings" n="Tambur" off=0
 //! id=a3134f7b-4237-43d9-bebe-1de4469a5333
-Bank 20 49 Tambur
+Bank * * Tambur
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -122,7 +122,7 @@ Bank 20 49 Tambur
 
 //! g="Best Service/Ancient Era/Strings" n="Tar" off=0
 //! id=1d2a3706-e6a9-47f6-8050-ae082a89f850
-Bank 20 50 Tar
+Bank * * Tar
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -144,7 +144,7 @@ Bank 20 50 Tar
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Oud" off=0
 //! id=d40b29d8-e578-47dc-bddc-6b903ea329bd
-Bank 20 51 Turkish Oud
+Bank * * Turkish Oud
 //! i=legato c=long
 0 Sustain Poly
 //! i=note-quarter o=note-hold:37
@@ -168,7 +168,7 @@ Bank 20 51 Turkish Oud
 
 //! g="Best Service/Ancient Era/Strings" n="Lyra I / II" off=0
 //! id=61c53ef0-780f-4c65-8ab6-a31324a8444f
-Bank 20 52 Lyra I / II
+Bank * * Lyra I / II
 //! i=legato c=long
 0 Finger Legato
 //! i=note-quarter o=note-hold:37
@@ -202,7 +202,7 @@ Bank 20 52 Lyra I / II
 
 //! g="Best Service/Ancient Era/Strings" n="Turkish Violin" off=0
 //! id=6f7ab938-acde-4598-8f6f-21e3be9557a6
-Bank 20 53 Turkish Violin
+Bank * * Turkish Violin
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -244,7 +244,7 @@ Bank 20 53 Turkish Violin
 
 //! g="Best Service/Ancient Era/Winds" n="Armenian Duduk" off=0
 //! id=8726d269-b744-40ba-9311-ad97452f5ef8
-Bank 20 54 Armenian Duduk
+Bank * * Armenian Duduk
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -264,7 +264,7 @@ Bank 20 54 Armenian Duduk
 
 //! g="Best Service/Ancient Era/Winds" n="Kaval" off=0
 //! id=86aa1802-04f9-42b3-9051-0e31fc6181f7
-Bank 20 55 Kaval
+Bank * * Kaval
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -290,7 +290,7 @@ Bank 20 55 Kaval
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Clarinet" off=0
 //! id=9b3984a3-8364-47c6-a556-b0ef27a5d2b2
-Bank 20 56 Turkish Clarinet
+Bank * * Turkish Clarinet
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -310,7 +310,7 @@ Bank 20 56 Turkish Clarinet
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Mey" off=0
 //! id=9644949f-4f57-4ee3-8351-fa8f70645eb5
-Bank 20 57 Turkish Mey
+Bank * * Turkish Mey
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -336,7 +336,7 @@ Bank 20 57 Turkish Mey
 
 //! g="Best Service/Ancient Era/Winds" n="Turkish Ney" off=0
 //! id=357cf0b4-8bbd-4996-81dd-881fa439afdf
-Bank 20 58 Turkish Ney
+Bank * * Turkish Ney
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:49
@@ -362,7 +362,7 @@ Bank 20 58 Turkish Ney
 
 //! g="Best Service/Ancient Era/Winds" n="Persian Ney" off=0
 //! id=99b23947-d138-44be-bfb7-7529250be989
-Bank 20 59 Persian Ney
+Bank * * Persian Ney
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -382,7 +382,7 @@ Bank 20 59 Persian Ney
 
 //! g="Best Service/Ancient Era/Winds" n="Zourna" off=0
 //! id=bf6502ca-0972-43d1-99b2-46b51fe66300
-Bank 20 60 Zourna
+Bank * * Zourna
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:49

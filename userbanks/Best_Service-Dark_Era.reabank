@@ -4,7 +4,7 @@
 
 //! g="Best Service/Dark Era/Strings" n="Tagelharpa"
 //! id=0a7bafc4-c079-4ee3-bf5b-c3e349f2edd5
-Bank 20 73 Tagelharpa
+Bank * * Tagelharpa
 
 //! c=#1FCCC9 i=note-whole o=note:36 g=1
 36 4 Beats
@@ -51,7 +51,7 @@ Bank 20 73 Tagelharpa
 
 //! g="Best Service/Dark Era/Strings" n="Crwth"
 //! id=df0f85d6-5c5d-41fa-bab7-c067a6001e5a
-Bank 20 74 Crwth
+Bank * * Crwth
 //! c=legato i=phrase o=note:93
 93 Rhythm A
 //! c=legato i=phrase o=note:94
@@ -95,7 +95,7 @@ Bank 20 74 Crwth
 
 //! g="Best Service/Dark Era/Strings" n="Cologne / Trossingen Lyre"
 //! id=3d2c274f-dd0f-418a-8a5a-a67d4623a6e1
-Bank 20 75 Cologne / Trossingen Lyre
+Bank * * Cologne / Trossingen Lyre
 //! c=default o=note:36
 36 Finger
 //! c=default o=note:38
@@ -105,7 +105,7 @@ Bank 20 75 Cologne / Trossingen Lyre
 
 //! g="Best Service/Dark Era/Strings" n="Col. / Tros. Lyre Strummed"
 //! id=210134fa-7cff-4ea6-ab48-a59d2a66a828
-Bank 20 76 Col. / Tros. Lyre Strummed
+Bank * * Col. / Tros. Lyre Strummed
 //! c=default o=note:36
 36 C Tuning
 //! c=default o=note:37
@@ -133,7 +133,7 @@ Bank 20 76 Col. / Tros. Lyre Strummed
 
 //! g="Best Service/Dark Era/Wind" n="Deer Bone Flute" off=0
 //! id=41404743-1c63-4491-82e4-164622a37c00
-Bank 20 77 Deer Bone Flute
+Bank * * Deer Bone Flute
 //! i=legato c=long
 0 Legato
 //! i=trill-maj2 c=short-light o=note-hold:37
@@ -161,7 +161,7 @@ Bank 20 77 Deer Bone Flute
 
 //! g="Best Service/Dark Era/Wind" n="Vulture Bone Flute" off=0
 //! id=6ea2bfd2-1a27-439a-9afd-bc50d647b28e
-Bank 20 78 Vulture Bone Flute
+Bank * * Vulture Bone Flute
 //! i=legato c=long
 0 Legato
 //! i=trill-maj2 c=short-light o=note-hold:37
@@ -181,7 +181,7 @@ Bank 20 78 Vulture Bone Flute
 
 //! g="Best Service/Dark Era/Wind" n="Double Flute" off=0
 //! id=5aec03cf-6625-49f2-93ea-2d6ca45c82ca
-Bank 20 79 Double Flute
+Bank * * Double Flute
 //! i=legato c=long
 0 Legato
 //! i=acciaccatura-quarter c=short-light o=note-hold:37
@@ -200,7 +200,7 @@ Bank 20 79 Double Flute
 
 //! g="Best Service/Dark Era/Wind" n="Elderwood Flute" off=0
 //! id=92f54070-7a29-4b09-bf2d-f5909b23b9ce
-Bank 20 80 Elderwood Flute
+Bank * * Elderwood Flute
 //! i=legato c=long
 0 Legato Natural
 //! i=note-quarter o=note-hold:37
@@ -226,7 +226,7 @@ Bank 20 80 Elderwood Flute
 
 //! g="Best Service/Dark Era/Wind" n="Fujara" off=0
 //! id=14a8b10c-b9b1-487c-9142-4bfc5d5b70bd
-Bank 20 81 Fujara
+Bank * * Fujara
 //! i=legato c=long
 0 Legato Hard Attack
 //! i=note-quarter o=note-hold:37
@@ -238,7 +238,7 @@ Bank 20 81 Fujara
 
 //! g="Best Service/Dark Era/Wind" n="White Horn" off=0
 //! id=22442076-6a8e-433b-a2cf-abc96a9fc10e
-Bank 20 82 White Horn
+Bank * * White Horn
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -280,7 +280,7 @@ Bank 20 82 White Horn
 
 //! g="Best Service/Dark Era/Wind" n="Overtone Flute" off=0
 //! id=a9e1a595-d921-47a6-82ed-fa789b6c779a
-Bank 20 83 Overtone Flute
+Bank * * Overtone Flute
 //! i=legato c=long
 0 Legato
 //! i=note-quarter o=note-hold:37
@@ -298,7 +298,7 @@ Bank 20 83 Overtone Flute
 
 //! g="Best Service/Dark Era/Vocal" n="Shouts 1"
 //! id=47438c2f-93bc-4840-a987-24003a9403ed
-Bank 20 84 Shouts 1
+Bank * * Shouts 1
 //! i=note-quarter o=note:36
 36 Ha
 //! i=note-quarter o=note:37
@@ -320,7 +320,7 @@ Bank 20 84 Shouts 1
 
 //! g="Best Service/Dark Era/Vocal" n="Kargyraa Legato"
 //! id=41f604a9-9fe4-4ebc-8e13-b46adb1c6fe4
-Bank 20 85 Kargyraa Legato
+Bank * * Kargyraa Legato
 //! i=note-quarter o=note:36
 36 Vowel 1
 //! i=note-quarter o=note:37
@@ -338,7 +338,7 @@ Bank 20 85 Kargyraa Legato
 
 //! g="Best Service/Dark Era/Vocal" n="Khomeii"
 //! id=60440835-aae8-41f9-89f0-1349f9edae35
-Bank 20 86 Khoomei
+Bank * * Khoomei
 //! c=default o=note:43
 43 G Tuning
 //! c=default o=note:44
@@ -366,7 +366,7 @@ Bank 20 86 Khoomei
 
 //! g="Best Service/Dark Era/Vocal" n="Sygyt"
 //! id=0984b23a-6b95-4431-8a68-0089c795ad67
-Bank 20 87 Sygyt
+Bank * * Sygyt
 //! c=default o=note:41
 41 F Tuning
 //! c=default o=note:42
@@ -394,7 +394,7 @@ Bank 20 87 Sygyt
 
 //! g="Best Service/Dark Era/Vocal" n="Whispers"
 //! id=10c58ff1-4db3-4e28-9530-eca31ae3fac3
-Bank 20 88 Whispers
+Bank * * Whispers
 //! c=default o=note:36
 36 F Tuning
 //! c=default o=note:37

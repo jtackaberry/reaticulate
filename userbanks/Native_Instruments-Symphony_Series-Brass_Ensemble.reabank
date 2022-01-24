@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Brass Ensemble"
 //! id=bbb10cad-4c7d-4494-bce5-84a91a52a25f
-Bank 23 86 SSBE Brass Ensemble
+Bank * * SSBE Brass Ensemble
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=short i=staccato o=note:25
@@ -21,7 +21,7 @@ Bank 23 86 SSBE Brass Ensemble
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trumpets"
 //! id=cca996b3-24ca-4935-9004-06a3fe7cdaa4
-Bank 23 87 SSBE Trumpets
+Bank * * SSBE Trumpets
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=multitongued o=note:25
@@ -37,7 +37,7 @@ Bank 23 87 SSBE Trumpets
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trumpets Sustain"
 //! id=ca6becb0-2337-4e5e-9201-6d9a61a516ed
-Bank 23 88 SSBE Trumpets Sustain
+Bank * * SSBE Trumpets Sustain
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=multitongued o=note:25
@@ -53,7 +53,7 @@ Bank 23 88 SSBE Trumpets Sustain
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trumpets Staccato"
 //! id=b8dccbe9-6a6f-4fa7-90ed-c55a14b699e4
-Bank 23 89 SSBE Trumpets Staccato
+Bank * * SSBE Trumpets Staccato
 //! c=short i=staccato o=note:24
 40 staccato
 //! c=short-light i=staccato o=note:25
@@ -69,7 +69,7 @@ Bank 23 89 SSBE Trumpets Staccato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trumpets Legato"
 //! id=6e65c395-8984-4bad-b3ee-b35c070f3622
-Bank 23 90 SSBE Trumpets Legato
+Bank * * SSBE Trumpets Legato
 //! c=legato i=legato o=note:24
 20 legato
 //! c=legato-light i=legato o=note:25
@@ -81,7 +81,7 @@ Bank 23 90 SSBE Trumpets Legato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trumpets Expression"
 //! id=8e1bda0f-c73e-4f97-b413-c60d91f8692c
-Bank 23 91 SSBE Trumpets Expression
+Bank * * SSBE Trumpets Expression
 //! c=long i=decrescendo o=note:24
 103 decrescendo
 //! c=short i=sfz o=note:25
@@ -97,7 +97,7 @@ Bank 23 91 SSBE Trumpets Expression
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trumpets Effects"
 //! id=b631bb69-b3ea-465e-9934-faf6f3929889
-Bank 23 92 SSBE Trumpets Effects
+Bank * * SSBE Trumpets Effects
 //! c=fx i=fx o=note:24
 24 cluster
 //! c=fx i=fx o=note:25
@@ -111,7 +111,7 @@ Bank 23 92 SSBE Trumpets Effects
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Horns"
 //! id=739dc7b4-b975-41ac-95de-b6937b508611
-Bank 23 93 SSBE Horns
+Bank * * SSBE Horns
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=note-quarter o=note:25
@@ -127,7 +127,7 @@ Bank 23 93 SSBE Horns
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Horns Sustain"
 //! id=7aaa86e3-4776-4de1-ad92-5389cecaf516
-Bank 23 94 SSBE Horns Sustain
+Bank * * SSBE Horns Sustain
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=note-quarter o=note:25
@@ -143,7 +143,7 @@ Bank 23 94 SSBE Horns Sustain
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Horns Staccato"
 //! id=48aad02d-65a9-495a-9db6-c6d2c59e721f
-Bank 23 95 SSBE Horns Staccato
+Bank * * SSBE Horns Staccato
 //! c=short i=staccato o=note:24
 40 staccato
 //! c=short-light i=staccato o=note:25
@@ -155,7 +155,7 @@ Bank 23 95 SSBE Horns Staccato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Horns Legato"
 //! id=3743ae2c-b6cc-4758-844c-c05e842ed832
-Bank 23 96 SSBE Horns Legato
+Bank * * SSBE Horns Legato
 //! c=legato i=legato o=note:24
 20 legato
 //! c=legato-light i=legato o=note:25
@@ -167,7 +167,7 @@ Bank 23 96 SSBE Horns Legato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Horns Expression"
 //! id=a5d474e2-1d93-4aeb-ad69-32c88a94fb2d
-Bank 23 97 SSBE Horns Expression
+Bank * * SSBE Horns Expression
 //! c=fx i=fx o=note:24
 24 bend down
 //! c=short-dark i=rip o=note:25
@@ -181,7 +181,7 @@ Bank 23 97 SSBE Horns Expression
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Horns Effects"
 //! id=9edeceb2-186c-4bcf-bf70-3bacd95ed05f
-Bank 23 98 SSBE Horns Effects
+Bank * * SSBE Horns Effects
 //! c=fx i=fx o=note:24
 24 bend down
 //! c=long i=fx o=note:25
@@ -197,7 +197,7 @@ Bank 23 98 SSBE Horns Effects
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trombones"
 //! id=92fe1941-3fc6-4ee0-b84f-6a429bcf5b95
-Bank 23 99 SSBE Trombones
+Bank * * SSBE Trombones
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=con-sord o=note:25
@@ -213,7 +213,7 @@ Bank 23 99 SSBE Trombones
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trombones Sustain"
 //! id=56058148-fa29-4ec6-ab38-2826c185319d
-Bank 23 100 SSBE Trombones Sustain
+Bank * * SSBE Trombones Sustain
 //! c=long i=note-whole o=note:24
 1 sustain
 //! c=long i=note-whole o=note:25
@@ -229,7 +229,7 @@ Bank 23 100 SSBE Trombones Sustain
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trombones Staccato"
 //! id=8383c727-085d-4546-8733-cc863960bd12
-Bank 23 101 SSBE Trombones Staccato
+Bank * * SSBE Trombones Staccato
 //! c=short i=staccato o=note:24
 40 staccato
 //! c=short-light i=staccato o=note:25
@@ -245,7 +245,7 @@ Bank 23 101 SSBE Trombones Staccato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trombones Legato"
 //! id=1adfe168-31d2-4333-a6f9-69bc652046d1
-Bank 23 102 SSBE Trombones Legato
+Bank * * SSBE Trombones Legato
 //! c=legato i=legato o=note:24
 20 legato
 //! c=legato-light i=legato o=note:25
@@ -257,7 +257,7 @@ Bank 23 102 SSBE Trombones Legato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trombones Expression"
 //! id=c82cf7e0-ff3b-4c94-b150-165dc7cc7b33
-Bank 23 103 SSBE Trombones Expression
+Bank * * SSBE Trombones Expression
 //! c=fx i=fx o=note:24
 24 bend Up
 //! c=long i=decrescendo o=note:25
@@ -273,7 +273,7 @@ Bank 23 103 SSBE Trombones Expression
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Trombones Effects"
 //! id=a3da2053-d616-4c75-a88f-c7693dce7645
-Bank 23 104 SSBE Trombones Effects
+Bank * * SSBE Trombones Effects
 //! c=fx i=rest-quarter o=note:24
 91 breath
 //! c=long i=fx o=note:25
@@ -289,7 +289,7 @@ Bank 23 104 SSBE Trombones Effects
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Tubas"
 //! id=053f940a-9adb-4f74-9a08-9aba9f7c6f2d
-Bank 23 105 SSBE Tubas
+Bank * * SSBE Tubas
 //! c=long i=note-whole o=note:24
 1 sustain 
 //! c=long i=trill o=note:25
@@ -305,7 +305,7 @@ Bank 23 105 SSBE Tubas
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Tubas Sustain"
 //! id=cebc58ac-c960-435c-b67e-fccbafc0b4c0
-Bank 23 106 SSBE Tubas Sustain
+Bank * * SSBE Tubas Sustain
 //! c=long i=note-whole o=note:24
 1 sustain 
 //! c=long i=trill o=note:25
@@ -321,7 +321,7 @@ Bank 23 106 SSBE Tubas Sustain
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Tubas Staccato"
 //! id=fcb85cc0-ef4d-4f2a-ab94-63d821ebbd6c
-Bank 23 107 SSBE Tubas Staccato
+Bank * * SSBE Tubas Staccato
 //! c=short i=staccato o=note:24
 40 staccato
 //! c=short-light i=staccato o=note:25
@@ -331,7 +331,7 @@ Bank 23 107 SSBE Tubas Staccato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Tubas Legato"
 //! id=cdfe88df-4030-4ded-a945-6666460f2870
-Bank 23 108 SSBE Tubas Legato
+Bank * * SSBE Tubas Legato
 //! c=legato i=legato o=note:24
 20 legato
 //! c=legato-light i=legato o=note:25
@@ -343,7 +343,7 @@ Bank 23 108 SSBE Tubas Legato
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Tubas Expression"
 //! id=a6b7d845-1be8-4aa1-998f-e2ddef8de695
-Bank 23 109 SSBE Tubas Expression
+Bank * * SSBE Tubas Expression
 //! c=long i=decrescendo o=note:24
 106 decrescendo slow
 //! c=long i=decrescendo o=note:25
@@ -359,7 +359,7 @@ Bank 23 109 SSBE Tubas Expression
 
 //! g="Native Instruments/Symphony Series/Brass Ensemble" n="Tubas Effects"
 //! id=977e795f-d7b5-4e17-968e-a7aa87aa5da6
-Bank 23 110 SSBE Tubas Effects
+Bank * * SSBE Tubas Effects
 //! c=fx i=rest-quarter o=note:24
 91 breath 1
 //! c=fx i=rest-quarter o=note:25

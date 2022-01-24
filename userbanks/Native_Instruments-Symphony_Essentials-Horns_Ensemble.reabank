@@ -4,7 +4,7 @@
 //! g="Native Instruments/Symphony Essentials/Brass Ensemble" n="Horns Ensemble (Multi)"
 //! m="All articulations are loaded across 3 instances of the patch on channels 1-3."
 //! id=ece7ce79-7fa8-4b89-a5f7-0eaa2448dea6
-Bank 23 85 Horns Ensemble
+Bank * * Horns Ensemble
 //! c=#FF0000 i=note-whole o=note@1:24
 24 Sustain All
 //! c=#FF0000 i=note-whole o=note@1:25

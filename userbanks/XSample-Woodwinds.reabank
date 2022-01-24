@@ -3,7 +3,7 @@
 //
 //! g="XSample/Woodwinds" n="Woodwinds Play"
 //! id=4f3363d1-6421-4628-8db5-e675fd052f21
-Bank 29 15 Woodwinds Play
+Bank * * Woodwinds Play
 
 //! c=legato i=legato o=cc:68,127
 126 legato on
@@ -44,7 +44,7 @@ Bank 29 15 Woodwinds Play
 
 //! g="XSample/Woodwinds" n="Woodwinds Score"
 //! id=f3b849fa-5a42-4df5-99ba-2b577c568caa
-Bank 29 16 Woodwinds Score
+Bank * * Woodwinds Score
 //! c=legato i=legato o=cc:68,127
 126 legato on
 //! c=legato i=legato o=cc:68,1

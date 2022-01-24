@@ -4,7 +4,7 @@
 //! g="Embertone" n="Fischer Viola"
 //! m="Embertone Fischer Viola 1.0"
 //! id=33276b65-643c-41f3-956d-bb7a76015083
-Bank 23 3 Embertone - Viola
+Bank * * Embertone - Viola
 //! c=textured i=vibrato g=2 n="default vibrato" o=note:27
 27 vib default
 //! c=textured i=vibrato g=2 n="progressive vibrato" o=note:28

@@ -4,7 +4,7 @@
 
 //! g="Chris Hein/Orchestral Winds/Vol. 2 Clarinets" n="Eb Clarinet"
 //! id=794fc378-3b17-4a94-8c00-449ed06e7a52
-Bank 21 89 Chris Hein Orchestral Winds Eb Clarinet
+Bank * * Chris Hein Orchestral Winds Eb Clarinet
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -48,7 +48,7 @@ Bank 21 89 Chris Hein Orchestral Winds Eb Clarinet
 
 //! g="Chris Hein/Orchestral Winds/Vol. 2 Clarinets" n="Bb Clarinet"
 //! id=b3a35554-0e1b-4d2b-a4d7-1884bd697d8a
-Bank 21 90 Chris Hein Orchestral Winds Bb Clarinet
+Bank * * Chris Hein Orchestral Winds Bb Clarinet
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
@@ -92,7 +92,7 @@ Bank 21 90 Chris Hein Orchestral Winds Bb Clarinet
 
 //! g="Chris Hein/Orchestral Winds/Vol. 2 Clarinets" n="Bass Clarinet"
 //! id=d2270c34-39e7-4c66-998e-385237795ebd
-Bank 21 91 Chris Hein Orchestral Winds Bass Clarinet
+Bank * * Chris Hein Orchestral Winds Bass Clarinet
 //! c=long-dark i=vibrato o=note:21
 21 Sus Vib (Auto Xfade)
 //! c=long-light i=vibrato o=note:22
