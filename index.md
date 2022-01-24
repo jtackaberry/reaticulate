@@ -22,7 +22,8 @@ For more details on installation, [check the download page](download).
 
 
 
-If you'd prefer to watch a video of ceaseless blathering than reading this website:
+You can also check out this video introduction. It's a bit old by now, showing the very
+first release of Reaticulate several years ago, but the concepts are still very much applicable today:
 
 <div data-s9e-mediaembed="youtube" style="display:block;width:100%;max-width:90%"><div
 style="overflow:hidden;position:relative;padding-bottom:56.25%"><div class='iframe' allowfullscreen=""
@@ -31,8 +32,7 @@ cover;border:0;height:100%;left:0;position:absolute;width:100%"
 src="https://www.youtube.com/embed/1gDJUIrecE8"></div></div></div>
 
 
-This is an alpha preview.  Please [report the bugs you inevitably find via GitHub](https://github.com/jtackaberry/reaticulate/issues).
-
+This project is relatively stable but it's still being actively developed. Please [report any bugs via GitHub](https://github.com/jtackaberry/reaticulate/issues).
 
 ## What is Reaticulate?
 
