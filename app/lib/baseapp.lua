@@ -208,8 +208,8 @@ function BaseApp:get_config(appid, target)
         -- used table.tostring/fromstring for config.  We fall back to the
         -- unsafe table.fromstring() in order to migrate.
         local ok
-        log.info('baseapp: config failed to parse as JSON: %s', state)
-        ok, config = pcall(table.fromstring, state)
+        log.info('baseapp: config failed to parse as JSON: %s', encoded)
+        ok, config = pcall(table.fromstring, encoded)
         if not ok then
             reaper.MB(
                 "Reaticulate wasn't able to parse its saved configuration. This may be because " ..
