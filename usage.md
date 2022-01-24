@@ -101,8 +101,9 @@ You can use these to get started, but of course you're almost certainly going to
 ## User Banks
 
 <p class='warning'>
-    In the alpha preview of Reaticulate, there is no GUI for creating custom banks.
-    This means some manual text editing is necessary to configure banks.
+    Currently there is no GUI for creating custom banks.  This will be coming
+    in 2022, but for now unfortunately it means some manual text editing will
+    be necessary to configure banks.
     <a href='{% link reabank.md %}'><b>Click here to learn how to create your own custom banks for Reaticulate</b></a>.
 </p>
 
