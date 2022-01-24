@@ -5505,7 +5505,7 @@ end
 function BaseApp:set_ext_state(key,obj,persist)local serialized=json.encode(obj)reaper.SetExtState(self.appid,key,serialized,persist or false)log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)end
 function BaseApp:get_config(appid,target)local config, encoded=self:get_ext_state('config')if not config and encoded then
 local ok
-log.info('baseapp: config failed to parse as JSON: %s', state)ok,config=pcall(table.fromstring,state)if not ok then
+log.info('baseapp: config failed to parse as JSON: %s', encoded)ok,config=pcall(table.fromstring,encoded)if not ok then
 reaper.MB("Reaticulate wasn't able to parse its saved configuration. This may be because " .."you downgraded Reaticulate and it doesn't understand the format used by a future " .."version.\n\nAll Reaticulate settings will need to be reset to defaults.",'Unrecognized Reaticulate configuration',0
 )config=nil
 else
