@@ -20,7 +20,6 @@ Here are the changes since the last stable release (0.4.7):
 * A default list of CCs for chasing (when not explicitly defined in the bank itself) is now configurable in Reaticulate's settings page ([#146](https://github.com/jtackaberry/reaticulate/issues/146))
 * Articulations will now be inserted on all selected Reaticulate-enabled tracks. If the banks are different between tracks, then the first bank on the track that defines an articulation with the same program number is used.
 * Inserting articulations on selected tracks will create a new MIDI item under the edit cursor if there isn't currently one
-* Similar to selected tracks, articulations will also be inserted in any selected media items on Reaticulate-managed tracks, however only when they intersect with the edit cursor
 * Two new "tweak" functions have been added to Reaticulate's track configuration page:
   1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
   2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
