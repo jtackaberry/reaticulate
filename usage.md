@@ -1,7 +1,7 @@
 ---
-title: Usage
+title: Usage | reaticulate
+layout: default
 ---
-
 # First Run
 
 * Open Reaper's Actions list (the `?` key by default) and run `Script: Reaticulate_Main.lua`

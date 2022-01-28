@@ -1,3 +1,8 @@
+---
+title: Reabank files | reaticulate
+layout: default
+---
+
 ## Reaticulate notations for Reabank files
 
 <p class='warning'>

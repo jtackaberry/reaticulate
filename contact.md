@@ -1,5 +1,6 @@
 ---
-title: Contact
+title: Contact | reaticulate
+layout: default
 ---
 
 ## Bugs and Features

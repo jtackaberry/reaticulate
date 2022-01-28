@@ -1,3 +1,8 @@
+---
+title: News | reaticulate
+layout: default
+---
+
 # Reaticulate 0.5.0 Released
 *January 23, 2022*
 
