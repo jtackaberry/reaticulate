@@ -78,7 +78,7 @@ Once added, each bank has a few UI elements:
     * When set to *Source* it means that output events will be sent to the same MIDI channel the
       program change message came in on
     * (Prerelease) The destination MIDI bus can be specified for more advanced setups.  When
-      *Source* is used, the destination bus is overriden but the destination channel will be the
+      *Source* is used, the destination bus is overridden but the destination channel will be the
       same as the source channel.
 * A delete button ![Delete
   icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-delete.png)
