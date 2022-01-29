@@ -138,7 +138,7 @@ function App:initialize(basedir, t0, t1)
     -- just a project tab change.  This determination is passed to onprojectchange() so we
     -- can take certain actions on project load that are otherwise too expensive to do on
     -- every tab change (such a project bank GC).
-    self.active_projects_by_cookie = nil
+    self.active_projects_by_cookie = {}
 
     -- The previously selected track.  This is never cleared to nil.
     self.last_track = nil
@@ -2180,7 +2180,7 @@ function App:handle_onupdate()
     if change_cookie ~= self.project_change_cookie then
         local active = self.active_projects_by_cookie
         -- If false, this is a tab change. If true, a project has been opened (or reopened)
-        local opened = active and not active[change_cookie] or false
+        local opened = not active[change_cookie]
         -- Refresh the list of active project cookies which we use to detect tab changes
         -- versus projects being opened.
         self.active_projects_by_cookie = {}
