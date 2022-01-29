@@ -1,3 +1,3 @@
 return {
-    _VERSION='0.5.0-pre'
+    _VERSION='0.5.0'
 }
