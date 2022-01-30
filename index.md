@@ -1,5 +1,5 @@
 ---
-title: reaticulate | a free articulation management system for REAPER
+title: Reaticulate | a free articulation management system for REAPER
 layout: default
 permalink: /
 ---
