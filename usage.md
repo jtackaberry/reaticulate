@@ -6,9 +6,9 @@ permalink: /usage/
 # First Run
 
 * Open Reaper's Actions list (the `?` key by default) and run `Script: Reaticulate_Main.lua`
-* The UI window can be docked by clicking the Dock icon in the toolbar ![Dock icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-dock_window.png)
+* The UI window can be docked by clicking the Dock icon in the toolbar ![Dock icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-dock_window.png)
   * After that you can control it like any other docked window in Reaper
-* If you want Reaticulate to automatically start each time Reaper is launched (recommended), click the settings icon ![Settings icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-settings.png) and enable the autostart option
+* If you want Reaticulate to automatically start each time Reaper is launched (recommended), click the settings icon ![Settings icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-settings.png) and enable the autostart option
 
 # Basics
 
@@ -38,13 +38,13 @@ to switch articulations.
 
 * Select the track
 * Click ![Add
-  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-add_circle_outline.png)
+  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-add_circle_outline.png)
   __Add Reaticulate FX__ which will be shown in Reaticulate's UI
 * Once the FX is installed, the track configuration icon ![track configuration
-  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-view_list.png)
+  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-view_list.png)
   will appear in Reaticulate's toolbar.  Click it to configure the track.
 * Click ![Add
-  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-add_circle_outline.png)
+  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-add_circle_outline.png)
   __Add Bank__
 
 <p class='warning'>
@@ -82,12 +82,12 @@ Once added, each bank has a few UI elements:
       *Source* is used, the destination bus is overridden but the destination channel will be the
       same as the source channel.
 * A delete button ![Delete
-  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-delete.png)
+  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-delete.png)
   which removes the bank from the track
 * A drag handle ![Drag
-  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/24-drag_vertical.png)
+  icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/24-drag_vertical.png)
   which lets you rearrange the order of banks on the track by dragging and dropping
-* Optional info text ![Info icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/24-info_outline.png)
+* Optional info text ![Info icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/24-info_outline.png)
   that may give some additional information on how to configure the patch to work with the bank
 
 ## Factory Banks
@@ -251,7 +251,7 @@ The event's channel indicates the new default Reaticulate channel. The note-off 
 ## Configuration
 
 To configure this:
-* Click the settings icon ![Settings icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/master/img/icons-light/18-settings.png) in the toolbar
+* Click the settings icon ![Settings icon](https://raw.githubusercontent.com/jtackaberry/reaticulate/0.4.x/img/icons-light/18-settings.png) in the toolbar
 * In the *Feedback to Control Surface* section select your control surface's MIDI device
     * __Important!__ This device must be enabled for MIDI output within Reaper first, before selecting
       the MIDI device.  (Clicking the `Device must be enabled for output` text will open Reaper's
