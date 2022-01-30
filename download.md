@@ -1,6 +1,7 @@
 ---
 title: Download | reaticulate
 layout: default
+permalink: /download/
 ---
 # Prerequisites
 

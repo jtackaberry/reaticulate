@@ -1,6 +1,7 @@
 ---
 title: Reabank files | reaticulate
 layout: default
+permalink: /reabank/
 ---
 
 ## Reaticulate notations for Reabank files

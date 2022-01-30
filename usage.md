@@ -1,6 +1,7 @@
 ---
 title: Usage | reaticulate
 layout: default
+permalink: /usage/
 ---
 # First Run
 

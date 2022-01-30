@@ -1,6 +1,7 @@
 ---
 title: News | reaticulate
 layout: default
+permalink: /news/
 ---
 
 # Reaticulate 0.5.0 Released

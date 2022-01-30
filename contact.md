@@ -1,6 +1,7 @@
 ---
 title: Contact | reaticulate
 layout: default
+permalink: /contact/
 ---
 
 ## Bugs and Features
