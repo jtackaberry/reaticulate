@@ -26,7 +26,7 @@ Let's explore the highlights of this release ...
 Third party (user contributed) banks can now easily be imported into Reaticulate, either
 via clipboard, or by dragging-and-dropping one or more bank files onto Reaticulate's window.
 
-![inline](img/050-import-banks.gif)
+![inline](../img/050-import-banks.gif)
 
 No need to open a text editor anymore for this basic operation.
 
@@ -128,7 +128,7 @@ and general user experience:
     in the library used for this demonstration (Spitfire Chamber Strings), there is no equivalent
     articulation.
 
-    ![inline](img/050-multi-track-insert.gif)
+    ![inline](../img/050-multi-track-insert.gif)
 
  3. When Reaticulate's "Insert articulations based on selected notes when MIDI editor is open"
     option is enabled (and it is by default), then if you have notes selected in the MIDI editor
@@ -155,7 +155,7 @@ If Reaticulate's window is wide enough, articulations will automatically now flo
 multiple columns, making better use of available space and reducing the need for
 scrolling.
 
-![inline](img/050-multi-column.gif)
+![inline](../img/050-multi-column.gif)
 
 ### Retina/Hi-DPI Displays
 
@@ -166,7 +166,7 @@ All of Reaticulate's icons now have high-resolution variants ensuring a crisp lo
 scratch, so you may notice some subtle (hopefully positive) changes over previous versions
 of Reaticulate.
 
-![inline](img/050-scale.gif)
+![inline](../img/050-scale.gif)
 
 This can of course be further adjusted or overridden in Reaticulate's settings.
 
@@ -178,7 +178,7 @@ For users who have a separate touch display, or are using a tablet with an app s
 [Spacedesk](https://www.spacedesk.net/), Reaticulate will now behave more seamlessly when
 running on these displays.
 
-![inline](img/050-touch-scroll.gif)
+![inline](../img/050-touch-scroll.gif)
 
 Articulations can now also be inserted by long-pressing on articulation buttons in the
 GUI, which may be more convenient for some types of displays.  Double-tapping articulation
@@ -358,7 +358,7 @@ This new behavior is currently optional while we get a better sense of how it
 should mature over time, and can be enabled or disabled from Reaticulate's
 Settings page.  It's enabled by default.
 
-![inline](img/030-selection-insert.gif)
+![inline](../img/030-selection-insert.gif)
 
 
 ### Multiple MIDI Buses
@@ -402,7 +402,7 @@ Here are some examples:
 
 ### User Experience Enhancements
 
-![floating](img/030-settings.png)
+![floating](../img/030-settings.png)
 Reaticulate now handles light Reaper themes much better, ensuring text and icons
 are higher contrast.  Theme background color detection has been fixed on Mac,
 and there is also now a setting to configure a *custom* background color.
@@ -491,7 +491,7 @@ performance will continue to be routed to those channels.
 
 A new `spacer` articulation attribute allows visually separating groups of articulations.  Articulations with this attribute will be shown in Reaticulate's UI with spacing above.  The value indicates the degree of spacing, but `1` is generally a good default.
 
-![floating](img/030-spacer.png)
+![floating](../img/030-spacer.png)
 ```go
 //! c=legato i=legato g=2 o=cc:58,76
 20 legato on
@@ -694,7 +694,7 @@ do a one-time dump of current CCs to the control surface.
 See the [Usage page](usage#cc-feedback-to-control-surface) for more details.
 
 
-![floating](img/trackcfg-dragndrop.png)
+![floating](../img/trackcfg-dragndrop.png)
 ### Usability Enhancements
 
 One of the most requested features was the ability to insert program change events in MIDI items

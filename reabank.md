@@ -30,7 +30,7 @@ You'll never edit this file directly, but it's what Reaticulate feeds back to RE
 the default reabank file.)
 
 
-![floating](img/reabank-edit.png)
+![floating](../img/reabank-edit.png)
 
 You can take a look at the factory banks for inspiration, but if you want to start slinging
 your own custom articulation banks, the easiest way is to click the pencil button at the
@@ -93,7 +93,7 @@ Reaticulate extends Reabank files by adding special notations on lines starting 
 Let's revisit the above example bank, now fully notated for Reaticulate, and how this bank
 looks in the GUI:
 
-![floating](img/bank-horn-solo.png)
+![floating](../img/bank-horn-solo.png)
 ```go
 //! g="Spitfire/Symphonic Brass" n="Horn Solo"
 //! m="Set patch to UACC"
@@ -614,7 +614,7 @@ cause the appropriate output event to be emitted for the new mute type.
 
 ## Articulation Colors
 
-![floating](img/artcolors.png)
+![floating](../img/artcolors.png)
 
 The `c` program attribute defines the color of the button for the articulation, which is either
 a [HTML color code](https://htmlcolorcodes.com/) or one of the predefined names.  When `c` isn't

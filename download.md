@@ -28,7 +28,7 @@ Once you have ReaPack installed:
 
 Here's a screen capture that depicts the above steps:
 
-![inline](img/install.gif)
+![inline](../img/install.gif)
 
 Now's a good time to read more about [how to launch and use Reaticulate](usage.md).
 

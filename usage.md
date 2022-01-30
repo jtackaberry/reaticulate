@@ -60,7 +60,7 @@ track.
 
 Once added, each bank has a few UI elements:
 * A selection of one of the existing factory or user banks (see below)
-![floating](img/bank-config.png)
+![floating](../img/bank-config.png)
 * The __source channel__, which defaults to *Omni*
     * Program change MIDI messages observed on this channel will be processed according to this
       bank
@@ -115,7 +115,7 @@ You can also [download user-contributed banks](download.md#download-bank-files) 
 ## GUI
 Hopefully the GUI will be fairly intuitive.  Here are some tips that may not be obvious:
 
-![floating](img/banklist-small.png)
+![floating](../img/banklist-small.png)
 * The group of 16 numbers at the top of the UI indicate the __default channel__
     * The default channel is the channel on which articulations will be activated when you click an
       articulation button with the mouse (provided the articulation's output events don't explicitly
@@ -221,7 +221,7 @@ MIDI controllers that send CCs can sometimes also *receive* those same CCs and u
 controller's current state.  There are many devices with this capability, but some examples are:
 * [Komplete Kontrol](https://www.native-instruments.com/en/products/komplete/keyboards/) keyboards
   where the encoders are configurable
-![floating](img/controlsurface.jpg)
+![floating](../img/controlsurface.jpg)
 * [MIDI Fighter Twister](https://store.djtechtools.com/products/midi-fighter-twister)
 * [iCON Platform-M](https://iconproaudio.com/product/platform-m-plus/) (when configured in custom
   mode)
