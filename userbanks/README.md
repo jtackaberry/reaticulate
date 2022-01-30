@@ -12,3 +12,4 @@ And if you have a bank to contribute to this list, please also [open an issue](h
 2. Copy the contents of the file to your clipboard
    * You may find this easier if, after opening the file, you click the Raw button on the top right in the GitHub file view.  Then you can press ctrl-A to Select All and ctrl-C to copy to clipboard.
 3. In Reaper, click the pencil icon in the Reaticulate's toolbar and select `Import Banks from Clipboard`
+   * This will append the imported banks to the end of your `Reaticulate.reabank` file.  Don't worry, all of your existing banks will remain intact.
