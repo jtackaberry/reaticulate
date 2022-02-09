@@ -283,11 +283,13 @@ function BaseApp:handle_ondock()
     self.config.pinned = self.window.pinned
     self.config.docked = self.window.docked
     self.config.dock = self.window.dock
-    if self.window.docked then
-        self.toolbar.pin:hide()
-        self.toolbar.unpin:hide()
-    else
-        self:_set_window_pinned(self.config.pinned)
+    if rtk.has_js_reascript_api then
+        if self.window.docked then
+            self.toolbar.pin:hide()
+            self.toolbar.unpin:hide()
+        else
+            self:_set_window_pinned(self.config.pinned)
+        end
     end
     self:save_config()
 end
