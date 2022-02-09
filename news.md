@@ -7,7 +7,7 @@ permalink: /news/
 # Reaticulate 0.5.1 Released
 *February 8, 2022*
 
-0.5.1 is a minor  release to pick up a couple bug fixes.
+0.5.1 is a minor release to pick up a couple bug fixes.
 
 ## Full Change Log
 
@@ -24,7 +24,7 @@ permalink: /news/
 *January 23, 2022*
 
 The next major release of Reaticulate is now available.  Users of both the pre-release and
-stable ReaPacks will automatically receive this update.
+stable ReaPacks will receive this version [when updating](/download/#updating).
 
 Reaticulate 0.5.0 is backward compatible with previous projects saved with all past
 versions of Reaticulate, but old versions are not _forward compatible_ with this new
@@ -133,7 +133,7 @@ and general user experience:
     This works best when all tracks use banks from the same family of libraries, but it's
     not strictly required as long as the program numbers across all the selected tracks'
     banks align.  This is one scenario where bank creators having followed the [documented
-    guidance for program numbering](reabank#program-numbers) will pay off.
+    guidance for program numbering](/reabank#program-numbers) will pay off.
  2. Inserting an articulation on selected tracks will create a new MIDI item under the edit
     cursor if there isn't already one there.
 
@@ -438,7 +438,7 @@ reverted with Reaper's normal undo facility.
 
 ### New Articulation Capabilities
 
-All the new features described below are fully documented on the [Bank Files page](reabank).
+All the new features described below are fully documented on the [Bank Files page](/reabank).
 
 #### Note Transformations
 
@@ -681,7 +681,7 @@ Follow these steps to uninstall the old version:
 1. Restart Reaper (necessary to stop existing Reaticulate instance)
 
 
-And now follow the [installation instructions](download).
+And now follow the [installation instructions](/download).
 
 Reaticulate itself is fully backward compatible with the previous version, so all your existing
 projects will work with the new version.  However, the old version is not _forward compatible_ with
@@ -707,7 +707,7 @@ select or during playback.
 There are some new actions to control this behaviour, including to enable or disable it, or to
 do a one-time dump of current CCs to the control surface.
 
-See the [Usage page](usage#cc-feedback-to-control-surface) for more details.
+See the [Usage page](/usage#cc-feedback-to-control-surface) for more details.
 
 
 ![floating](../img/trackcfg-dragndrop.png)
@@ -732,7 +732,7 @@ workflow killer for me, so hopefully you find it helpful too.
 
 ### New Articulation Capabilities
 
-All these new features described below are fully documented on the [Bank Files page](reabank).
+All these new features described below are fully documented on the [Bank Files page](/reabank).
 
 #### Articulation Chaining
 There's a new output event type `art` which allows articulations to be chained.  Consider the
@@ -840,7 +840,7 @@ groups provides a lot of interesting capabilities.
 
 ### Additional Documentation
 
-There is now the beginnings of a user manual on the [Usage page](usage).  It's a bit
+There is now the beginnings of a user manual on the [Usage page](/usage).  It's a bit
 information-dense right now but I intend to polish it up over time.
 
 

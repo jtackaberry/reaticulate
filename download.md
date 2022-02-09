@@ -7,7 +7,7 @@ permalink: /download/
 
 * The [SWS extension](https://www.sws-extension.org/) is required to run Reaticulate
 * It is *highly* recommended that you install the [js_ReaScriptAPI extension](https://forum.cockos.com/showthread.php?t=212174), which enables much improved focusing behavior and unlocks several of Reaticulate's features
-  * If you have ReaPack installed, this extension can be installed via `Extensions | ReaPack | Browse Packages` and searching for `reascriptapi`.
+  * If you have ReaPack installed, this extension can be installed via `Extensions | ReaPack | Browse Packages` and searching for `reascriptapi`
 
 Be sure to restart Reaper after installing any extensions.
 
@@ -30,7 +30,7 @@ Here's a screen capture that depicts the above steps:
 
 ![inline](../img/install.gif)
 
-Now's a good time to read more about [how to launch and use Reaticulate](usage.md).
+Now's a good time to read more about [how to launch and use Reaticulate](/usage).
 
 
 ### Living on the edge?
@@ -87,9 +87,9 @@ Reaticulate scripts are running.
 
 We're currently lacking a good way of sharing bank files, but for now, various user-contributed banks [have been curated on this GitHub page](https://github.com/jtackaberry/reaticulate/tree/master/userbanks).
 
-Scroll down [that page](https://github.com/jtackaberry/reaticulate/tree/master/userbanks) for installation instructions.
+Scroll down [that page](https://github.com/jtackaberry/reaticulate/tree/master/userbanks#user-submitted-reaticulate-banks) for installation instructions.
 
-If you've made banks of your own that you'd like to contribute, please either [create an account on GitHub](https://github.com/join) and then [open a new issue](https://github.com/jtackaberry/reaticulate/issues) and attach (or paste) the bank, or, if you prefer, you can [email it to me](contact.md).
+If you've made banks of your own that you'd like to contribute, please either [create an account on GitHub](https://github.com/join) and then [open a new issue](https://github.com/jtackaberry/reaticulate/issues) and attach (or paste) the bank, or, if you prefer, you can [email it to me](/contact).
 
 # Uninstalling
 
