@@ -2,7 +2,7 @@
 
 **PRERELEASE WARNING**: Reaticulate is not and has never been forward compatible with future versions. There is a strong *backward* compatibility goal, but not forward compatibility.  So if you're using Reaticulate 0.4.x now and upgrade to 0.5.0-pre1, any projects saved out by this new version will not be able to be reopened using previous Reaticulate versions.
 
-Note: Reaper 5.975 (released on April 30, 2019) or later is now required.
+Note: Reaper 5.975 (released on April 30, 2019) or later is now required. However REAPER 6.46 or later is recommended for the best experience.
 
 Here are the changes since the last stable release (0.4.7):
 ## New Features
