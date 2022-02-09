@@ -57,7 +57,7 @@ function screen.init()
     screen.toolbar = rtk.HBox{spacing=0}
 
     -- Back button: return to bank list
-    local back_button = rtk.Button{'Back', icon='med-arrow_back', flat=true}
+    local back_button = rtk.Button{'Back', icon='arrow_back', flat=true}
     back_button.onclick = function()
         app:pop_screen()
     end
@@ -75,7 +75,7 @@ function screen.init()
     end
     vbox:add(spacer)
 
-    local add_bank_button = rtk.Button{label='Add Bank to Track', icon='med-add_circle_outline', color='#2d5f99'}
+    local add_bank_button = rtk.Button{label='Add Bank to Track', icon='add_circle_outline', color='#2d5f99'}
     add_bank_button.onclick = function()
         if #screen.banklist.children >= rfx.MAX_BANKS then
             reaper.ShowMessageBox("You have reached the limit of banks for this track.",
@@ -92,7 +92,7 @@ function screen.init()
     section:add(rtk.Heading{'Track Tweaks', tmargin=50})
     section:add(rtk.Button{
         'Fix numeric articulation names',
-        icon='med-auto_fix',
+        icon='auto_fix',
         tooltip='Removes any non-Reaticulate ReaBank assignment from this track to ' ..
                 'fix numeric Program Change event names (e.g. 43-1-22)',
         flat=true,
@@ -140,7 +140,7 @@ function screen.init()
     })
     section:add(rtk.Button{
         'Clear active articulations in UI',
-        icon='med-eraser',
+        icon='eraser',
         tooltip='Clears all articulation selections on all channels in the GUI. This can also be done per ' ..
                 'articulation by middle-clicking the articulation.',
         flat=true,
@@ -275,7 +275,7 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
 
     -- Bank row
     local drag_handle = rtk.ImageBox{
-        image=rtk.Image.make_icon('lg-drag_vertical'),
+        image=rtk.Image.make_icon('drag_vertical:large'),
         cursor=rtk.mouse.cursors.REAPER_HAND_SCROLL,
         halign='center',
         show_scrollbar_on_drag=true,
@@ -334,7 +334,7 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
 
 
     local delete_button = rtk.Button{
-        icon='med-delete',
+        icon='delete',
         color='#9f2222',
         tooltip='Remove bank from track',
     }
@@ -412,13 +412,13 @@ function screen.create_bank_ui(guid, srcchannel, dstchannel, dstbus, name)
     -- Info row
     local row = bankbox:add(rtk.HBox{spacing=10})
     bankbox.info = row
-    row:add(rtk.ImageBox{'lg-info_outline'}, {valign='top'})
+    row:add(rtk.ImageBox{'info_outline:large'}, {valign='top'})
     row.label = row:add(rtk.Text{wrap=true}, {valign='center'})
 
     -- Warning row
     local row = bankbox:add(rtk.HBox{spacing=10})
     bankbox.warning = row
-    row:add(rtk.ImageBox{'lg-warning_amber'}, {valign='top'})
+    row:add(rtk.ImageBox{'warning_amber:large'}, {valign='top'})
     row.label = row:add(rtk.Text{wrap=true}, {valign='center'})
     return bankbox
 end

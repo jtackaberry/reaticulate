@@ -1865,7 +1865,7 @@ function App:build_frame()
     BaseApp.build_frame(self)
 
     local menubutton = rtk.OptionMenu{
-        icon='med-edit',
+        icon='edit',
         flat=true,
         icononly=true,
         tooltip='Manage banks',
@@ -1927,7 +1927,7 @@ function App:build_frame()
         end
     end
 
-    local button = toolbar:add(rtk.Button{icon='med-sync', flat=true})
+    local button = toolbar:add(rtk.Button{icon='sync', flat=true})
     button:attr('tooltip', 'Reload ReaBank files from disk')
     button.onclick = function(b, event)
         rtk.defer(function()
@@ -1938,8 +1938,8 @@ function App:build_frame()
         end)
     end
 
-    self.toolbar.dock = toolbar:add(rtk.Button{icon='med-dock_window', flat=true, tooltip='Dock window'})
-    self.toolbar.undock = toolbar:add(rtk.Button{icon='med-undock_window', flat=true, tooltip='Undock window'})
+    self.toolbar.dock = toolbar:add(rtk.Button{icon='dock_window', flat=true, tooltip='Dock window'})
+    self.toolbar.undock = toolbar:add(rtk.Button{icon='undock_window', flat=true, tooltip='Undock window'})
     self.toolbar.dock.onclick = function()
         self.window:attr('docked', true)
     end
@@ -1950,7 +1950,7 @@ function App:build_frame()
 
     self:update_dock_buttons()
 
-    local button = toolbar:add(rtk.Button{icon='med-settings', flat=true, tooltip='Manage Reaticulate Settings'})
+    local button = toolbar:add(rtk.Button{icon='settings', flat=true, tooltip='Manage Reaticulate Settings'})
     button.onclick = function()
         self:push_screen('settings')
     end

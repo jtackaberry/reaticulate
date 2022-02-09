@@ -27,14 +27,14 @@ function screen.init()
     screen.widget = rtk.Container()
     local box = screen.widget:add(rtk.VBox(), {halign='center', valign='center', expand=1})
 
-    screen.icon = rtk.ImageBox{image='huge-alert_circle_outline', alpha=0.5, scale=1}
+    screen.icon = rtk.ImageBox{image='alert_circle_outline:huge', alpha=0.5, scale=1}
     box:add(screen.icon, {halign='center'})
 
     screen.message = rtk.Text{fontsize=24, alpha=0.5, wrap=true, padding=5, textalign='center'}
     box:add(screen.message, {halign='center', tpadding=10})
     -- box.debug=true
 
-    screen.button = rtk.Button{'Add Reaticulate FX', icon='med-add_circle_outline', alpha=0.8}
+    screen.button = rtk.Button{'Add Reaticulate FX', icon='add_circle_outline', alpha=0.8}
     screen.button.onclick = function()
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock()
@@ -60,8 +60,8 @@ function screen.init()
         if fx == -1 then
             reaper.MB(
                 "The Reaticulate JSFX could not be found in REAPER's Effects folder, " ..
-                ' which means Reaticulate was not properly installed.  Please try ' ..
-                ' reinstalling from ReaPack.\n\nVisit https://reaticulate.com/ for more info.',
+                'which means Reaticulate was not properly installed.  Please try ' ..
+                'reinstalling from ReaPack.\n\nVisit https://reaticulate.com/ for more info.',
                 'Reaticulate installation error',
                 0
             )

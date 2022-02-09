@@ -99,7 +99,7 @@ local function add_color_input(row, initial, default, icon, pad, onset)
     end
     local button = row:add(rtk.Button(attrs), {valign='center', spacing=5})
     -- Spacing for the row hbox is 10, so compensate slightly with negative padding.
-    local undo = row:add(rtk.Button{icon=screen.icon_undo, flat=true, lpadding=5, rpadding=5})
+    local undo = row:add(rtk.Button{icon='undo', flat=true, lpadding=5, rpadding=5})
     undo:attr('disabled', initial == nil or initial == default or initial == '')
     undo.onclick = function()
         text:attr('value', default)
@@ -131,14 +131,12 @@ local function add_color_input(row, initial, default, icon, pad, onset)
 end
 
 function screen.init()
-    screen.icon_undo = rtk.Image.make_icon('med-undo')
-
     screen.vbox = rtk.VBox{rpadding=20}
     screen.widget = rtk.Viewport{screen.vbox}
     screen.toolbar = rtk.HBox{spacing=0}
 
     -- Back button: return to bank list
-    local back_button = rtk.Button{'Back', icon='med-arrow_back', flat=true}
+    local back_button = rtk.Button{'Back', icon='arrow_back', flat=true}
     back_button.onclick = function()
         if screen.chase_ccs_dirty then
             reabank.clear_chase_cc_list_cache()
@@ -157,7 +155,7 @@ function screen.init()
     -- Show a warning if the js_ReaScriptAPI isn't installed.
     if not rtk.has_js_reascript_api then
         local hbox = screen.vbox:add(rtk.HBox{spacing=10}, {tpadding=20, bpadding=20, lpadding=20, rpadding=20})
-        hbox:add(rtk.ImageBox{image='lg-warning_amber'}, {valign=rtk.Widget.TOP})
+        hbox:add(rtk.ImageBox{image='warning_amber:large'}, {valign=rtk.Widget.TOP})
         local vbox = hbox:add(rtk.VBox())
         local text = vbox:add(rtk.Text{wrap=true}, {valign=rtk.Widget.CENTER})
         text:attr(
@@ -309,7 +307,7 @@ function screen.init()
     screen.ui_scale_menu = menu
 
     local row = add_row(section, "Background:", 85)
-    add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'med-edit', true,
+    add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'edit', true,
         function(text, button)
             local cfgval = text.value
             if text.value ~= app.config.bg then
@@ -326,7 +324,7 @@ function screen.init()
     --
     local section = make_section(screen.vbox, "Feedback to Control Surface")
     local row = section:add(rtk.HBox{spacing=5, alpha=0.6, bpadding=10})
-    row:add(rtk.ImageBox{'med-info_outline'})
+    row:add(rtk.ImageBox{'info_outline'})
     row:add(rtk.Text{
         wrap=true,
         'Transmit articulation changes and all CC values on the default ' ..
@@ -361,7 +359,7 @@ function screen.init()
 
     local box = section:add(rtk.HBox{tpadding=5, bpadding=0})
     local s = box:add(rtk.Spacer{w=85, h=10}, {spacing=0})
-    local prefs = box:add(rtk.Button{icon='med-settings', flat=true}, {valign='center', lpadding=5})
+    local prefs = box:add(rtk.Button{icon='settings', flat=true}, {valign='center', lpadding=5})
     local info = add_tip(box, 0, 'Device must be enabled for output')
     prefs.onclick = function()
         -- FIXME: need some way to detect changes after the user enables (or disables)
@@ -479,7 +477,7 @@ function screen.init()
     )
     local button = screen.vbox:add(
         rtk.Button{
-            icon='med-link', label="Visit Website",
+            icon='link', label="Visit Website",
             truncate=false,
             color=rtk.theme.accent_subtle, alpha=0.6,
             cursor=rtk.mouse.cursors.HAND,

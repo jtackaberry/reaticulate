@@ -52,18 +52,18 @@ local remap = {
 
 function articons.init()
     local img = rtk.ImagePack()
+    local strips = {}
     for _, density in ipairs{1, 1.5, 2} do
         for _, row in ipairs(articons.rows) do
-            img:add_row{
+            strips[#strips+1] = {
                 w=32*density,
                 h=28*density,
                 names=row,
                 density=density,
-                style='light',
             }
         end
     end
-    img:load('articulations.png')
+    img:add{src='articulations.png', style='light', strips=strips}
     articons.img = img
 end
 
@@ -255,4 +255,3 @@ articons.rows = {
 }
 
 return articons
-

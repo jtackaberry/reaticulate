@@ -325,49 +325,50 @@ function BaseApp:set_theme()
 
     local icons = {
         medium={
-            'med-add_circle_outline',
-            'med-arrow_back',
-            'med-auto_fix',
-            'med-delete',
-            'med-dock_window',
-            'med-drag_vertical',
-            'med-edit',
-            'med-eraser',
-            'med-info_outline',
-            'med-link',
-            'med-pin_off',
-            'med-pin_on',
-            'med-search',
-            'med-settings',
-            'med-sync',
-            'med-undo',
-            'med-undock_window',
-            'med-view_list',
+            'add_circle_outline',
+            'arrow_back',
+            'auto_fix',
+            'delete',
+            'dock_window',
+            'drag_vertical',
+            'edit',
+            'eraser',
+            'info_outline',
+            'link',
+            'pin_off',
+            'pin_on',
+            'search',
+            'settings',
+            'sync',
+            'undo',
+            'undock_window',
+            'view_list',
         },
         large={
-            'lg-alert_circle_outline',
-            'lg-drag_vertical',
-            'lg-info_outline',
-            'lg-plus',
-            'lg-warning_amber',
+            'alert_circle_outline',
+            'drag_vertical',
+            'info_outline',
+            'plus',
+            'warning_amber',
         },
         huge={
-            'huge-alert_circle_outline',
+            'alert_circle_outline',
         },
     }
-    local img = rtk.ImagePack{
-        src='icons.png',
-        register=true,
-        {w=18, h=18, names=icons.medium, density=1, style='light'},
-        {w=24, h=24, names=icons.large, density=1, style='light'},
-        {w=96, h=96, names=icons.huge, density=1, style='light'},
-        {w=28, h=28, names=icons.medium, density=1.5, style='light'},
-        {w=36, h=36, names=icons.large, density=1.5, style='light'},
-        {w=144, h=144, names=icons.huge, density=1.5, style='light'},
-        {w=36, h=36, names=icons.medium, density=2, style='light'},
-        {w=48, h=48, names=icons.large, density=2, style='light'},
-        {w=192, h=192, names=icons.huge, density=2, style='light'},
+
+    local img = rtk.ImagePack():add{
+        src='icons.png', style='light', names=icons.medium,
+        {w=18, size='medium', xnames=icons.medium, density=1},
+        {w=24, size='large', names=icons.large, density=1},
+        {w=96, size='huge', names=icons.huge, density=1},
+        {w=28, size='medium', names=icons.medium, density=1.5},
+        {w=36, size='large', names=icons.large, density=1.5},
+        {w=144, size='huge', names=icons.huge, density=1.5},
+        {w=36, size='medium', names=icons.medium, density=2},
+        {w=48, size='large', names=icons.large, density=2},
+        {w=192, size='huge', names=icons.huge, density=2},
     }
+    img:register_as_icons()
 end
 
 function BaseApp:set_statusbar(label)
@@ -377,8 +378,8 @@ end
 function BaseApp:build_frame()
     self.window:add(self)
     if rtk.has_js_reascript_api then
-        local pin = rtk.Button{icon='med-pin_off', flat=true, tooltip='Pin window to top'}
-        local unpin = rtk.Button{icon='med-pin_on', flat=true, tooltip='Unpin window from top'}
+        local pin = rtk.Button{icon='pin_off', flat=true, tooltip='Pin window to top'}
+        local unpin = rtk.Button{icon='pin_on', flat=true, tooltip='Unpin window from top'}
         self.toolbar.pin = self.toolbar:add(pin, {rpadding=15})
         self.toolbar.unpin = self.toolbar:add(unpin, {rpadding=15})
         self.toolbar.pin.onclick = function() self:_set_window_pinned(true) end

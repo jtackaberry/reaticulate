@@ -246,7 +246,7 @@ function screen.create_banklist_ui(bank)
     -- Bank message button, which is only added if message exists
     if bank.message then
         local button = rtk.Button{
-            icon='med-info_outline',
+            icon='info_outline',
             flat=true,
             alpha=bank.message and 1.0 or 0.7,
             tooltip='Toggle bank message',
@@ -257,7 +257,7 @@ function screen.create_banklist_ui(bank)
         local msgbox = rtk.HBox{spacing=10, autofocus=true}
         bank.vbox:add(msgbox, {lpadding=10, rpadding=10, bpadding=10})
         -- Info icon
-        msgbox:add(rtk.ImageBox{image='lg-info_outline'}, {valign='top'})
+        msgbox:add(rtk.ImageBox{image='info_outline:large'}, {valign='top'})
         -- Bank message text
         local label = msgbox:add(rtk.Text{bank.message, wrap=true}, {valign='center'})
         -- Info button toggles visibility of message box and remembers that
@@ -447,7 +447,7 @@ function screen.init()
     screen.widget:add(topbar, {lpadding=0, halign='center'})
 
     local track_button = rtk.Button{
-        icon='med-view_list',
+        icon='view_list',
         flat=true,
         tooltip='Configure track for Reaticulate',
     }
@@ -492,7 +492,7 @@ function screen.init()
 
     -- Filter text entry
     local row = topbar:add(rtk.HBox{spacing=10}, {tpadding=10})
-    local entry = rtk.Entry{icon='med-search', placeholder='Filter articulations'}
+    local entry = rtk.Entry{icon='search', placeholder='Filter articulations'}
     entry.onkeypress = handle_filter_keypress
     entry.onchange = function(self)
         screen.filter_articulations(self.value:lower())
@@ -510,7 +510,7 @@ function screen.init()
     }
     local hbox = screen.warningbox:add(rtk.HBox())
     -- Force scale for animation
-    hbox:add(rtk.ImageBox{image='lg-alert_circle_outline', scale=1})
+    hbox:add(rtk.ImageBox{image='alert_circle_outline:large', scale=1})
     screen.warningmsg = hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})
     screen.widget:add(screen.warningbox, {fillw=true})
 
@@ -521,9 +521,9 @@ function screen.init()
         padding={20, 10},
     }
     local hbox = screen.errorbox:add(rtk.HBox())
-    hbox:add(rtk.ImageBox{image='lg-alert_circle_outline'})
+    hbox:add(rtk.ImageBox{image='alert_circle_outline:large'})
     screen.errormsg = hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})
-    local button = rtk.Button{'Open Track Settings', icon='med-view_list', flat=true, color='#aa000099'}
+    local button = rtk.Button{'Open Track Settings', icon='view_list', flat=true, color='#aa000099'}
     button.onclick = function()
         app:push_screen('trackcfg')
     end
