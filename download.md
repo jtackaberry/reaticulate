@@ -64,12 +64,12 @@ See the *Uninstalling* section below for instructions on how to first remove an 
 If your DAW doesn't have Internet connectivity, you can follow these manual installation
 instructions:
 
-1. Download the zip file of the latest version [on the releases page](https://github.com/jtackaberry/reaticulate/releases) and copy it to your DAW (via USB thumbdrive or whatever)
-1. Extract the `reaticulate-<version>` folder contained within the zip to your REAPER Scripts/ directory
-  - On Windows this is `%AppData%\REAPER\Scripts`
-1. Rename the `reaticulate-<version>` folder to `Reaticulate`
-1. Move all files in the `jsfx` folder up to the `Effects/` directory (which exists on the same level as Scripts/)
-  - On Windows this is `%AppData%\REAPER\Effects`
+1. Download the `Reaticulate-<version>.zip` file from [the latest release of Reaticulate](https://github.com/jtackaberry/reaticulate/releases/latest) and copy it to your DAW (via USB thumbdrive or whatever)
+1. Open your REAPER resources directory by executing the REAPER action "Show REAPER resource path in Explorer/Finder"
+   - On Windows, the default path is `%AppData%\REAPER\`
+1. Extract the `Reaticulate` folder contained within the zip file to the `Scripts/` directory, so that `Scripts/Reaticulate/` is a folder.
+   - If `Scripts/Reaticulate/` exists from a previous installation you can delete it (or move it out of the way)
+1. Move the folder `Scripts/Reaticulate/jsfx` into the `Effects/` directory (which exists on the same level as `Scripts/`) and rename `jsfx` to `Reaticulate`.  Now you should have a `Effects/Reaticulate` folder that contains the `*.jsfx` files.
 1. In Reaper, open the Actions dialog and click the `Load ...` button in the bottom right
 1. Navigate to `Scripts/Reaticulate/actions/` and select all files in that directory, and then click the Open button
 1. Invoke the action `Script: Reaticulate_Main.lua` from the actions list
