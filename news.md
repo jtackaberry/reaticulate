@@ -4,6 +4,22 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.1 Released
+*February 8, 2022*
+
+0.5.1 is a minor  release to pick up a couple bug fixes.
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fix runtime error when js_ReaScriptAPI is not installed
+* Fix bug where docking/undocking failed to work without js_ReaScriptAPI
+
+
+
+
+
 # Reaticulate 0.5.0 Released
 *January 23, 2022*
 
