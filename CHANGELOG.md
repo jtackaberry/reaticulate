@@ -1,6 +1,11 @@
-# 0.5.0-pre1
+# 0.5.1
 
-**PRERELEASE WARNING**: Reaticulate is not and has never been forward compatible with future versions. There is a strong *backward* compatibility goal, but not forward compatibility.  So if you're using Reaticulate 0.4.x now and upgrade to 0.5.0-pre1, any projects saved out by this new version will not be able to be reopened using previous Reaticulate versions.
+## Bug Fixes
+
+* Fix runtime error when js_ReaScriptAPI is not installed
+* Fix bug where docking/undocking failed to work without js_ReaScriptAPI
+
+# 0.5.0
 
 Note: Reaper 5.975 (released on April 30, 2019) or later is now required. However REAPER 6.46 or later is recommended for the best experience.
 
