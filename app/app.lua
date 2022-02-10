@@ -1553,16 +1553,17 @@ function App:get_active_articulation(channel, group)
 end
 
 -- Returns the rtk-compatible color to be used for the given articulation color name.
-function App:get_articulation_color(color)
-    local cfg = self.config.art_colors[color]
-    -- If the color is configured in settings, use that.
-    if cfg and cfg:len() > 0 then
-        return cfg
-    else
-        -- Not in settings, so return from reabank if defined (legacy approach), or use the
-        -- hardcoded default if all else fails.
-        return reabank.colors[color] or reabank.default_colors[color] or reabank.default_colors.default
+function App:get_articulation_color(name)
+    local color = self.config.art_colors[name] or reabank.colors[name] or reabank.default_colors[name]
+    if color and color:len() > 0 then
+        return color
     end
+    -- This must be a custom color name.  Check for it in the reabank.
+    color = reabank.colors[color]
+    -- Return it if it's valid, otherwise fallback to the 'default' color.  We don't need
+    -- to test color:len() as above because this isn't coming from settings where the
+    -- empty string implies to use the built-in color.
+    return color or self.config.art_colors.default or reabank.colors.default or reabank.default_colors.default
 end
 
 -- Event handler when dock state has changed.
