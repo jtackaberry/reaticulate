@@ -67,9 +67,15 @@ function articons.init()
     articons.img = img
 end
 
-function articons.get(name, dark)
+function articons.get(name, dark, default)
     local style = dark and 'dark' or 'light'
-    return articons.img:get(remap[name] or name, style)
+    -- Use default if supplied name is nil
+    local icon = articons.img:get(remap[name] or name or default, style)
+    if not icon and default then
+        -- The name was given but wasn't found. Explicitly return default.
+        icon = articons.img:get(default, style)
+    end
+    return icon
 end
 
 

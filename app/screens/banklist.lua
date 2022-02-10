@@ -286,7 +286,7 @@ function screen.create_banklist_ui(bank)
         if rtk.color.luma(color) > rtk.light_luma_threshold then
             darkicon = true
         end
-        art.icon = articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)
+        art.icon = articons.get(art.iconname, darkicon, 'note-eighth')
         art.button = rtk.Button{
             label=art.shortname or art.name,
             icon=art.icon,
