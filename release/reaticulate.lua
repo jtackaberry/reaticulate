@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.1'}end)()
+return {_VERSION='0.5.2'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -1551,11 +1551,14 @@ key=string.format('%s:%s:%s', style, name, self.default_size)else
 key=string.format('%s:%s', style, name)end
 return key,self._regions[key]
 end
-function rtk.ImagePack:get(name,style)local key,densities=self:_get_densities(name,style)local multi=self._cache[key]
+function rtk.ImagePack:get(name,style)if not name then
+return
+end
+local key,densities=self:_get_densities(name,style)local multi=self._cache[key]
 if multi then
 return multi
 end
-log.time_start()local recolor=false
+local recolor=false
 if not densities and not style then
 style=rtk.theme.iconstyle
 densities=self:_get_densities(name,style)end
@@ -1572,18 +1575,18 @@ local multi=rtk.MultiImage()for density,region in pairs(densities)do
 local src=self._sources[region.src_idx]
 local img=src.img
 if not img then
-log.info('LOAD IMAGE: %s', src.src)img=rtk.Image():load(src.src)src.img=img
+img=rtk.Image():load(src.src)src.img=img
 end
 if recolor then
 img=src.recolors[style]
 if not img then
-log.info('MUST RECOLOR -> %s', style)img=src.img:clone():recolor(style=='light' and '#ffffff' or '#000000')src.recolors[style]=img
+img=src.img:clone():recolor(style=='light' and '#ffffff' or '#000000')src.recolors[style]=img
 end
 end
 assert(img, string.format('could not read "%s"', src.src))multi:add(img:viewport(region.x,region.y,region.w,region.h,density))end
 multi.style=style
 self._cache[key]=multi
-log.time_end('!!!!! NEW GET KEY %s -> %s', key, densities)return multi
+return multi
 end
 function rtk.ImagePack:register_as_icons()local default_size=self.default_size
 for key,_ in pairs(self._regions)do
@@ -7294,7 +7297,10 @@ strips[#strips+1]={w=32*density,h=28*density,names=row,density=density,}end
 end
 img:add{src='articulations.png', style='light', strips=strips}articons.img=img
 end
-function articons.get(name,dark)local style=dark and 'dark' or 'light'return articons.img:get(remap[name] or name,style)end
+function articons.get(name,dark,default)local style=dark and 'dark' or 'light'local icon=articons.img:get(remap[name] or name or default,style)if not icon and default then
+icon=articons.img:get(default,style)end
+return icon
+end
 function articons.get_for_bg(name,color)local luma=rtk.color.luma(color)return articons.get(name,luma>0.6)end
 articons.rows={{'accented-half','accented-quarter','acciaccatura-quarter','alt-circle','blend','bow-down','bow-up','col-legno','col-legno-whole','con-sord','con-sord-blend','con-sord-bow-down','con-sord-bow-up',},{'con-sord-sul-pont','con-sord-sul-pont-bow-up','cresc-f-half','cresc-half','cresc-m-half','cresc-mf-half','cresc-mp-half','cresc-p-half','cresc-quarter','crescendo','cuivre','dblstop-5th','dblstop-5th-eighth',},{'decrescendo','fall','fanfare','flautando','flautando-con-sord','flautando-con-sord-eighth','fx','ghost-eighth','harmonics','harmonics-natural','harmonics-natural-eighth','harp-pdlt2','legato',},{'legato-blend-generic','legato-bowed','legato-bowed2','legato-con-sord','legato-fast','legato-flautando','legato-gliss','legato-portamento','legato-portamento-con-sord','legato-portamento-flautando','legato-runs','legato-slow','legato-slow-blend',},{'note-tied','legato-sul-c','legato-sul-g','legato-sul-pont','legato-tremolo','legato-vibrato','list','marcato-half','marcato-quarter','note-acciaccatura','light','note-eighth','note-half',},{'note-quarter','note-sixteenth','note-whole','phrase2','pizz','pizz-bartok','pizz-con-sord','pizz-mix','pizz-sul-pont','rest-quarter','ricochet','rip','plop',},{'run-major','run-minor','sfz','spiccato','spiccato-breath','spiccato-brushed','spiccato-brushed-con-sord','spiccato-brushed-con-sord-sul-pont','spiccato-feathered','staccatissimo-stopped','staccato','staccato-breath','staccato-con-sord',},{'staccato-dig','staccato-harmonics','staccato-harmonics-half','staccato-stopped','staccato-sfz','stopped','sul-c','sul-g','sul-pont','sul-tasto','tenuto-eighth','tenuto-half','tenuto-quarter',},{'tremolo','tremolo-con-sord','tremolo-con-sord-sul-pont','tremolo-sul-pont','tremolo-ghost','tremolo-harmonics','tremolo-fingered','tremolo-measured-eighth','tremolo-measured-sixteenth','tremolo-measured-eighth-con-sord','tremolo-measured-sixteenth-con-sord','trill','trill-maj2',},{'trill-maj3','trill-min2','trill-min3','trill-perf4','vibrato','vibrato-con-sord','vibrato-molto','portato','scoop','bend-up','bend-down','fortepiano','multitongued',},{'alt-gypsy','alt-gypsy-eighth','alt-gypsy-harmonics','alt-tremolo-gypsy-harmonics','alt-wave','alt-wave-double','alt-wave-double-stopped','alt-wave-double-tr','alt-x','harp-pdlt','phrase','phrase-multitongued','phrase-multitongued-cresc',},{'sul-tasto-super','sul-tasto-super-eighth','tremolo-harmonics-a','tremolo-harmonics-b','tremolo-slurred',},}return articons
 end)()
@@ -7972,12 +7978,12 @@ return art
 end
 end
 end
-function App:get_articulation_color(color)local cfg=self.config.art_colors[color]
-if cfg and cfg:len()>0 then
-return cfg
-else
-return reabank.colors[color] or reabank.default_colors[color] or reabank.default_colors.default
+function App:get_articulation_color(name)local color=self.config.art_colors[name] or reabank.colors[name] or reabank.default_colors[name]
+if color and color:len()>0 then
+return color
 end
+color=reabank.colors[color]
+return color or self.config.art_colors.default or reabank.colors.default or reabank.default_colors.default
 end
 function App:handle_ondock()BaseApp.handle_ondock(self)self:update_dock_buttons()end
 function App:handle_onkeypresspost(event)BaseApp.handle_onkeypresspost(self,event)if not event.handled then
@@ -8390,7 +8396,7 @@ color=app:get_articulation_color(color)end
 if rtk.color.luma(color)>rtk.light_luma_threshold then
 darkicon=true
 end
-art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
+art.icon=articons.get(art.iconname, darkicon, 'note-eighth')art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
 art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true,nil,event.alt)return true
 end
 art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
