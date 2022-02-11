@@ -4,6 +4,19 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.2 Released
+*February 10, 2022*
+
+0.5.2 is a minor release to address another pair of small issues:
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed a regression from 0.5.1 where Reaticulate would crash when a bank on the current track had an articulation without an icon name
+* Fixed a bug where the user's default articulation color (as configured in the settings screen) was not respected
+
+
 # Reaticulate 0.5.1 Released
 *February 8, 2022*
 
