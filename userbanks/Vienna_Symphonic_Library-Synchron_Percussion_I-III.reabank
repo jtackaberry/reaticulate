@@ -1,0 +1,1370 @@
+
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/142
+//
+
+// NOTE:  These are set up to work with the DEFAULT presets out-of-the-box for both
+// Synchron Percussion I, II, and III.
+//
+// Drum maps are also available in the zip file located at
+// https://github.com/jtackaberry/reaticulate/issues/142
+
+
+// **********************
+// SYNCHRON TIMPANI - ALL
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Timpani" n="SYN Timpani - All"
+//! id=45827daf-6c05-4af7-889c-c81564db8b28
+Bank * * SYN Timpani - All
+
+//! c=textured i=list o=note:24 g=2
+0 MALLET - Medium
+//! c=textured i=list o=note:25 g=2
+1 MALLET - Soft
+//! c=textured i=list o=note:26 g=2
+2 MALLET - Hard
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Single Strokes
+//! c=short i=tremolo o=note:30
+11 Static Rolls
+//! c=short i=tremolo o=note:31
+12 Dynamic Rolls
+//! c=short i=dblstop-5th-eighth o=note:32
+13 Octaves
+
+// *************************
+// SYNCHRON TIMPANI - MEDIUM
+// *************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Timpani" n="SYN Timpani - Medium"
+//! id=d18d8bba-d009-4669-93cf-1527a4fefd78
+Bank * * SYN Timpani - Medium
+
+//! c=textured i=list o=note:84 g=2
+0 MERGED
+//! c=textured i=list o=note:85 g=2
+1 20"
+//! c=textured i=list o=note:86 g=2
+2 23"
+//! c=textured i=list o=note:87 g=2
+3 26"
+//! c=textured i=list o=note:88 g=2
+4 29"
+//! c=textured i=list o=note:89 g=2
+5 32"
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Single Strokes
+//! c=short i=tremolo o=note:30
+11 Static Rolls
+//! c=short i=tremolo o=note:31
+12 Dyn. Rolls, Light
+//! c=short i=tremolo o=note:32
+13 Dyn. Rolls, Strong
+//! c=short i=legato-gliss o=note:33
+14 Gliss. Rolls
+
+//! spacer=1
+//! c=fx i=legato-gliss o=note:34/note:96
+20 Gliss, Fast - m2
+//! c=fx i=legato-gliss o=note:34/note:97
+21 Gliss, Fast - M2
+//! c=fx i=legato-gliss o=note:34/note:98
+22 Gliss, Fast - m3
+//! c=fx i=legato-gliss o=note:34/note:99
+23 Gliss, Fast - M3
+//! c=fx i=legato-gliss o=note:34/note:100
+24 Gliss, Fast - P4
+//! c=fx i=legato-gliss o=note:34/note:101
+25 Gliss, Fast - TT
+//! c=fx i=legato-gliss o=note:34/note:102
+26 Gliss, Fast - P5
+//! c=fx i=legato-gliss o=note:34/note:103
+27 Gliss, Fast - m6
+//! c=fx i=legato-gliss o=note:34/note:104
+28 Gliss, Fast - M6
+
+//! spacer=1
+//! c=fx i=legato-gliss o=note:35/note:96
+30 Gliss, Slow - m2
+//! c=fx i=legato-gliss o=note:35/note:97
+31 Gliss, Slow - M2
+//! c=fx i=legato-gliss o=note:35/note:98
+32 Gliss, Slow - m3
+//! c=fx i=legato-gliss o=note:35/note:99
+33 Gliss, Slow - M3
+//! c=fx i=legato-gliss o=note:35/note:100
+34 Gliss, Slow - P4
+//! c=fx i=legato-gliss o=note:35/note:101
+35 Gliss, Slow - TT
+//! c=fx i=legato-gliss o=note:35/note:102
+36 Gliss, Slow - P5
+//! c=fx i=legato-gliss o=note:35/note:103
+37 Gliss, Slow - m6
+//! c=fx i=legato-gliss o=note:35/note:104
+38 Gliss, Slow - M6
+
+// ***********************
+// SYNCHRON TIMPANI - SOFT
+// ***********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Timpani" n="SYN Timpani - Soft"
+//! id=c44629da-b306-4a32-92ff-1cbe65917214
+Bank * * SYN Timpani - Soft
+
+//! c=short i=staccato o=note:29
+0 Single Strokes
+//! c=short i=tremolo o=note:30
+1 Static Rolls
+//! c=short i=tremolo o=note:31
+2 Dynamic Rolls
+//! c=short i=dblstop-5th-eighth o=note:32
+3 Octaves
+
+// ***********************
+// SYNCHRON TIMPANI - HARD
+// ***********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Timpani" n="SYN Timpani - Hard"
+//! id=33acf28f-a7c4-4b50-8d03-3cc4c1db1388
+Bank * * SYN Timpani - Hard
+
+//! c=short i=staccato o=note:29
+0 Single Strokes
+//! c=short i=tremolo o=note:30
+1 Static Rolls
+//! c=short i=tremolo o=note:31
+2 Dynamic Rolls
+//! c=short i=dblstop-5th-eighth o=note:32
+3 Octaves
+
+// ********************
+// SYNCHRON BIG TIMPANI
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Timpani" n="ENS Big Timpani"
+//! id=7f109344-ecf3-42ef-b6e1-05b3a89209a9
+Bank * * ENS Big Timpani
+
+//! c=textured i=list o=note:21 g=2
+0 MALLET - Hard
+//! c=textured i=list o=note:23 g=2
+1 MALLET - Soft
+
+//! spacer=1
+//! c=short i=staccato o=note:24
+10 Ringing
+//! c=short i=ghost-eighth o=note:25
+11 Secco
+//! c=short i=tremolo o=note:26
+12 Rolls Ringing
+//! c=short i=tremolo o=note:27
+13 Rolls Secco
+//! c=short i=crescendo o=note:28
+14 Rolls Cresc. 1s
+//! c=short i=crescendo o=note:29
+15 Rolls Cresc. 2s
+//! c=short i=crescendo o=note:30
+16 Rolls Cresc. 4s
+
+// *******************
+// SYNCHRON FIELD DRUM
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Field Drum"
+//! id=c5c6f932-97b9-49aa-8d8c-253ea08ef8e7
+Bank * * SYN Field Drum
+
+//! c=textured i=list o=note:24 g=2
+0 Sticks
+//! c=textured i=list o=note:25 g=2
+1 Rods
+//! c=textured i=list o=note:26 g=2
+2 Mallets
+
+// ***********************
+// SYNCHRON MARCHING SNARE
+// ***********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Marching Snare"
+//! id=6c0044e4-ea03-4e88-920f-524918681fe9
+Bank * * SYN Marching Snare
+
+//! c=textured i=list o=note:24 g=2
+0 Sticks
+//! c=textured i=list o=note:25 g=2
+1 Rods
+//! c=textured i=list o=note:26 g=2
+2 Mallets
+
+// **********************
+// SYNCHRON PICCOLO SNARE
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Piccolo Snare"
+//! id=f0dff1c9-2dbc-4cce-b44b-ef002e1c0895
+Bank * * SYN Piccolo Snare
+
+//! c=textured i=list o=note:24 g=2
+0 Sticks
+//! c=textured i=list o=note:25 g=2
+1 Rods
+//! c=textured i=list o=note:26 g=2
+2 Brushes
+//! c=textured i=list o=note:27 g=2
+3 Mallets
+
+// ********************
+// SYNCHRON SNARE DRUMS
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Snare Drums"
+//! id=43c164fe-8bdd-4c0e-8ea7-fb3518acf253
+Bank * * SYN Snare Drums
+
+//! c=textured i=list o=note:24 g=2
+0 Sticks
+//! c=textured i=list o=note:25 g=2
+1 Rods
+//! c=textured i=list o=note:26 g=2
+2 Brushes
+//! c=textured i=list o=note:27 g=2
+3 Mallets
+
+// *******************
+// SYNCHRON BASS DRUMS
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Bass Drums"
+//! id=9115b842-945a-4429-a5f3-96beeb9a7161
+Bank * * SYN Bass Drums
+
+//! c=short i=list o=note:24
+0 Soft Beater
+//! c=short i=list o=note:25
+1 Medium Beater
+//! c=short i=list o=note:26
+2 Hard Beater
+//! c=short i=list o=note:27
+3 Soft Brush
+//! c=short i=list o=note:28
+4 Hard Brush
+//! c=short i=list o=note:29
+5 Effects
+
+// ********************
+// SYNCHRON TAMBOURINES
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Tambourines"
+//! id=82b6c7a5-e364-4f3d-aa54-fc0ebb21ad30
+Bank * * SYN Tambourines
+
+//! c=short i=list o=note:24
+0 Lefima
+//! c=short i=list o=note:25
+1 Kolberg
+
+// *********************
+// SYNCHRON CONCERT TOMS
+// *********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Concert Toms"
+//! id=2974333b-8ee0-4dc0-bb65-e54295ee2f3f
+Bank * * SYN Concert Toms
+
+//! c=short i=list o=note:24
+0 Sticks
+//! c=short i=list o=note:25
+1 Rods
+//! c=short i=list o=note:26
+2 Brushes
+//! c=short i=list o=note:27
+3 Mallets
+//! c=short i=list o=note:28
+4 Effects
+
+// ******************
+// SYNCHRON ROTO TOMS
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Roto Toms"
+//! id=5a1b7765-6b84-4d31-8c0b-eacab9478788
+Bank * * SYN Roto Toms
+
+//! c=fx i=list o=note:24 g=2
+0 Sticks
+//! c=fx i=list o=note:25 g=2
+1 Rods
+//! c=fx i=list o=note:26 g=2
+2 Mallets
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Single Hits
+//! c=short i=staccato o=note:30
+11 Single Hits, Rim
+//! c=short i=tremolo o=note:31
+12 Rolls
+//! c=short i=staccato o=note:32
+13 Rimshots
+//! c=short i=legato-gliss o=note:33
+14 Gliss - Up
+//! c=short i=legato-gliss o=note:34
+15 Gliss - Down
+
+// ***************
+// SYNCHRON TAIKOS
+// ***************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Taikos"
+//! id=f61a800f-0dfe-412a-b7db-5a704eca58ba
+Bank * * SYN Taikos
+
+//! c=fx i=list o=note:24 g=2
+0 Cudgel
+//! c=fx i=list o=note:25 g=2
+1 Tam Beater
+//! c=fx i=list o=note:26 g=2
+2 Effects
+
+//! spacer=1
+//! c=short i=staccato o=note:36
+10 53"
+//! c=short i=staccato o=note:37
+11 36"
+//! c=short i=staccato o=note:38
+12 26"
+//! c=short i=staccato o=note:39
+13 20"
+//! c=short i=staccato o=note:40
+14 18"
+//! c=short i=staccato o=note:41
+15 16"
+//! c=short i=staccato o=note:42
+16 15"
+//! c=short i=staccato o=note:43
+17 13"
+//! c=short i=staccato o=note:44
+18 12"
+//! c=short i=staccato o=note:45
+19 8"
+//! c=short i=staccato o=note:46
+20 All Taikos
+
+// ****************
+// SYNCHRON BOOBAMS
+// ****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="SYN Boobams"
+//! id=5d27c462-af60-4d10-a7ea-cae53823efb9
+Bank * * SYN Boobams
+
+//! c=fx i=list o=note:24 g=2
+0 Sticks
+//! c=fx i=list o=note:26 g=2
+1 Mallets
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Regular
+//! c=short i=ghost-eighth o=note:30
+11 Rim/Coperto
+//! c=short i=tremolo o=note:31
+12 Regular
+//! c=short i=tremolo o=note:32
+13 Regular
+
+// **********************
+// SYNCHRON MONSTER DRUMS
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="ENS Monster Drums"
+//! id=bd9db6aa-e6ba-49df-8321-7740bc91cdbf
+Bank * * ENS Monster Drums
+
+//! c=fx i=list o=note:48 g=2
+0 Hard
+//! c=fx i=list o=note:50 g=2
+1 Soft
+
+// ****************************
+// SYNCHRON BASS DRUMS ENSEMBLE
+// ****************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="ENS Bass Drums"
+//! id=a6a5f0ce-9cd3-4e87-991c-45ae829ee7d8
+Bank * * ENS Bass Drums
+
+//! c=fx i=list o=note:48 g=2
+0 Hard
+//! c=fx i=list o=note:50 g=2
+1 Soft
+
+// *********************
+// SYNCHRON THUNDER TOMS
+// *********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="ENS Thunder Toms"
+//! id=83b8a92b-a914-4825-981c-d4fc27b93bbb
+Bank * * ENS Thunder Toms
+
+//! c=fx i=list o=note:48 g=2
+0 Hard
+//! c=fx i=list o=note:50 g=2
+1 Soft
+
+// **********************
+// SYNCHRON SPECIAL DRUMS
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="ENS Special Drums"
+//! id=7443e524-52a7-4cd7-b14f-de444798f8ca
+Bank * * ENS Special Drums
+
+//! c=fx i=list o=note:48 g=2
+0 Hard
+//! c=fx i=list o=note:50 g=2
+1 Soft
+
+// ***********************
+// SYNCHRON SNARE ENSEMBLE
+// ***********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="ENS Snare Ensemble"
+//! id=5576b5d9-fa6e-4f9a-99e5-a1c9f98da933
+Bank * * ENS Snare Ensemble
+
+//! c=fx i=list o=note:48 g=2
+0 Sticks
+//! c=fx i=list o=note:50 g=2
+1 Hot Rods
+
+// *************************
+// SYNCHRON DRUMS AND PIANOS
+// *************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Drums and Toms" n="ENS Drums and Pianos"
+//! id=172c46d5-73cc-4695-a3b0-5fc46314c393
+Bank * * ENS Drums and Pianos
+
+//! c=short i=staccato o=note:24
+0 Ringing
+//! c=short i=ghost-eighth o=note:25
+1 Secco
+//! c=short i=tremolo o=note:26
+2 Rolls ringing
+//! c=short i=tremolo o=note:27
+3 Rolls secco
+//! c=short i=tremolo o=note:28
+4 Rolls cresc. 1s
+//! c=short i=tremolo o=note:29
+5 Rolls cresc. 2s
+//! c=short i=tremolo o=note:30
+6 Rolls cresc. 4s
+//! c=short i=alt-x o=note:31
+7 Clusters
+
+// ***************
+// SYNCHRON PIATTI
+// ***************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="SYN Piatti"
+//! id=2afe5d2d-9c39-4def-8c1a-e449b196f582
+Bank * * SYN Piatti
+
+//! c=fx i=list o=note:36
+0 Zildjian 20"
+//! c=fx i=list o=note:37
+1 Meinl Heavy 22"
+//! c=fx i=list o=note:38
+2 Sabian 20"
+
+// **************************
+// SYNCHRON SUSPENDED CYMBALS
+// **************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="SYN Suspended Cymbals"
+//! id=cbf25ddb-b4fe-4668-a242-55246fb1440a
+Bank * * SYN Suspended Cymbals
+
+//! c=fx i=list o=note:36 g=2
+0 Zildjian K 16"
+//! c=fx i=list o=note:37 g=2
+1 Zildjian K 18"
+//! c=fx i=list o=note:38 g=2
+2 Sizzle Zildjian K 18"
+//! c=fx i=list o=note:39 g=2
+3 Splash Zildjian 12"
+//! c=fx i=list o=note:40 g=2
+4 Splash Zildjian 8"
+
+//! spacer=1
+//! c=short i=list o=note:24
+10 Sticks
+//! c=short i=list o=note:25
+11 Hard Mallets
+//! c=short i=list o=note:26
+12 Soft Mallets
+//! c=short i=list o=note:27
+13 Rods
+//! c=short i=list o=note:28
+14 Brushes
+//! c=short i=list o=note:29
+15 Bow
+
+// *****************
+// SYNCHRON TAM-TAMS
+// *****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="SYN Tam-Tams"
+//! id=02bca8ee-70b3-4236-9aa4-d225f9e62736
+Bank * * SYN Tam-Tams
+
+//! c=fx i=list o=note:33 g=2
+0 Large (100cm)
+//! c=fx i=list o=note:34 g=2
+1 X-Large (120cm)
+//! c=fx i=list o=note:35 g=2
+2 Flat (70m)
+
+//! spacer=1
+//! c=short i=list o=note:24
+10 Soft Beater
+//! c=short i=list o=note:25
+11 Hard Beater
+//! c=short i=list o=note:26
+12 Effects
+
+// ********************
+// SYNCHRON BURMA GONGS
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="SYN Burma Gongs"
+//! id=6990bf4d-869e-4b73-ba37-0cacb58d3fd3
+Bank * * SYN Burma Gongs
+
+//! c=fx i=list o=note:24/note:29
+0 Regular - Single
+//! c=fx i=list o=note:24/note:30
+1 Regular - Static Roll
+//! c=fx i=list o=note:24/note:31
+2 Regular - Dyn. Roll (Light)
+//! c=fx i=list o=note:24/note:32
+3 Regular - Dyn. Roll (Str)
+
+//! spacer=1
+//! c=short i=list o=note:25
+10 Leather
+
+//! spacer=1
+//! c=long i=list o=note:26/note:29
+20 Metal - Strokes
+//! c=long i=list o=note:26/note:30
+21 Metal - Scratches
+
+//! spacer=1
+//! c=textured i=list o=note:27/note:29
+30 FX - Rod
+//! c=textured i=list o=note:27/note:30
+31 FX - Brush
+//! c=textured i=list o=note:27/note:31
+32 FX - Rasping Stick
+//! c=textured i=list o=note:27/note:32
+33 FX - Bow
+//! c=textured i=list o=note:27/note:33
+34 FX - Superball
+
+// ********************
+// SYNCHRON CHINA GONGS
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="SYN China Gongs"
+//! id=f765bbb7-a1a8-4b08-af58-bba348f7da4d
+Bank * * SYN China Gongs
+
+//! c=fx i=staccato o=note:29
+0 Single Strokes
+//! c=fx i=tremolo o=note:30
+1 Static Rolls
+//! c=fx i=tremolo o=note:31
+2 Dyn. Rolls
+
+// ************************
+// SYNCHRON ANCIENT CYMBALS
+// ************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="SYN Ancient Cymbals"
+//! id=58335fb7-5eee-4f03-a5b0-c4e2f902b188
+Bank * * SYN Ancient Cymbals
+
+//! c=textured i=list o=note:36
+0 Combined
+//! c=textured i=list o=note:37
+1 High
+//! c=textured i=list o=note:38
+2 Low
+
+// ***********************************
+// SYNCHRON SUSPENDED CYMBALS ENSEMBLE
+// ***********************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="ENS Suspended Cymbals"
+//! id=9a90d7ad-7800-4f05-a75a-529547479bce
+Bank * * ENS Suspended Cymbals
+
+//! c=textured i=list o=note:48
+0 Hard
+//! c=textured i=list o=note:50
+1 Soft
+
+// ****************************
+// SYNCHRON HIGH GONGS ENSEMBLE
+// ****************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Cymbals and Gongs" n="ENS High Gongs"
+//! id=a0c09816-9348-4eb1-9d2a-1262dcbabc5d
+Bank * * ENS High Gongs
+
+//! c=short i=staccato o=note:24
+0 Ringing
+//! c=short i=ghost-eighth o=note:25
+1 Secco
+
+// ****************
+// SYNCHRON CELESTA
+// ****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Celesta"
+//! id=600ce032-78ad-4000-b76d-9b07752c0235
+Bank * * SYN Celesta
+
+//! c=long i=list o=note:29
+0 Full
+//! c=long i=list o=note:30
+1 Light (No RS)
+//! c=long i=list o=note:31
+2 Glissandi
+
+// *********************
+// SYNCHRON GLOCKENSPIEL
+// *********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Glockenspiel"
+//! id=60152409-41f0-40f1-ba88-0df499da7c76
+Bank * * SYN Glockenspiel
+
+//! c=short i=list o=note:24 g=2
+0 Metal Beater
+//! c=short i=list o=note:25 g=2
+1 Plastic Beater
+//! c=short i=list o=note:26 g=2
+2 Bow
+
+//! spacer=1
+//! c=long-light i=staccato o=note:29
+10 Single Strokes
+//! c=long-light i=tremolo o=note:30
+11 Static Rolls
+//! c=long-light i=tremolo o=note:31
+12 Dynamic Rolls
+//! c=long-light i=legato-gliss o=note:32
+13 Glissandi
+
+// ******************
+// SYNCHRON XYLOPHONE
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Xylophone"
+//! id=e5de788e-d616-41d3-be52-b7debf819965
+Bank * * SYN Xylophone
+
+//! c=short i=list o=note:24 g=2
+0 Wood Beater
+//! c=short i=list o=note:25 g=2
+1 Leather Beater
+//! c=short i=list o=note:26 g=2
+2 Bow
+
+//! spacer=1
+//! c=long-light i=staccato o=note:29
+10 Single Strokes
+//! c=long-light i=tremolo o=note:30
+11 Static Rolls
+//! c=long-light i=tremolo o=note:31
+12 Dynamic Rolls
+//! c=long-light i=legato-gliss o=note:32
+13 Glissandi
+
+// *******************
+// SYNCHRON VIBRAPHONE
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Vibraphone"
+//! id=70677fd7-a92c-40b4-a686-d260dbc28f5c
+Bank * * SYN Vibraphone
+
+//! c=short i=list o=note:24 g=2
+0 Hard Mallets
+//! c=short i=list o=note:25 g=2
+1 Soft Mallets
+//! c=short i=list o=note:26 g=2
+2 Bow
+//! c=short i=list o=note:27 g=2
+3 Superball
+
+//! spacer=1
+//! c=long-light i=staccato o=note:29
+10 Open
+//! c=long-light i=staccato o=note:30
+11 Open, mute RS
+//! c=long-light i=staccato o=note:31
+12 Secco
+//! c=long-light i=harmonics o=note:32
+13 Harmonics
+//! c=long-light i=tremolo o=note:33
+14 Rolls, Ringing
+//! c=long-light i=tremolo o=note:34
+15 Rolls, Muted
+//! c=long-light i=tremolo o=note:35
+16 Rolls, Dynamic
+//! c=long-light i=legato-gliss o=note:36
+17 Glissandos
+//! c=long-light i=staccato o=note:37
+18 Handle
+//! c=long-light i=staccato o=note:38
+19 Pitch Bend
+
+// *******************
+// SYNCHRON CROTALES
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Crotales"
+//! id=95cbe4a7-7f06-44b6-9bab-bba093da28b8
+Bank * * SYN Crotales
+
+//! c=fx i=list o=note:24 g=2
+0 Metal Beater
+//! c=fx i=list o=note:25 g=2
+1 Plastic Beater
+//! c=fx i=list o=note:26 g=2
+2 Bow
+
+//! spacer=1
+//! c=long-light i=staccato o=note:29
+10 Single Strokes
+//! c=long-light i=tremolo o=note:30
+11 Rolls
+//! c=long-light i=tremolo o=note:31
+12 Dynamic Rolls
+//! c=long-light i=legato-gliss o=note:32
+13 Glissandi
+
+// ****************
+// SYNCHRON MARIMBA
+// ****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Marimba"
+//! id=f275ab2f-f434-4205-9ded-d8936f7fda8f
+Bank * * SYN Marimba
+
+//! c=short i=list o=note:24 g=2
+0 Hard Mallets
+//! c=short i=list o=note:25 g=2
+1 Soft Mallets
+//! c=short i=list o=note:26 g=2
+2 Bow
+//! c=short i=list o=note:27 g=2
+3 Superball
+//! c=short i=list o=note:28 g=2
+4 Rasping Stick
+
+//! spacer=1
+//! c=long-light i=staccato o=note:29
+10 Open
+//! c=long-light i=ghost-eighth o=note:30
+11 Muted
+//! c=long-light i=staccato o=note:31
+12 Handle
+//! c=long-light i=harmonics o=note:32
+13 Harmonics
+//! c=long-light i=tremolo o=note:33
+14 Rolls
+//! c=long-light i=crescendo o=note:34
+15 Dynamic Rolls
+//! c=long-light i=legato-gliss o=note:35
+16 Glissandos
+
+//! spacer=1
+//! c=long-dark i=staccato o=note:29
+20 Regular [BOW ONLY]
+//! c=long-dark i=harmonics o=note:31
+21 Harmonics [BOW ONLY]
+
+//! spacer=1
+//! c=long i=staccato o=note:29
+30 Hit [BALL ONLY]
+//! c=long i=alt-wave o=note:30
+31 Rubbed [BALL ONLY]
+
+// **********************
+// SYNCHRON TEMPLE BLOCKS
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Mallets" n="SYN Temple Blocks"
+//! id=b28574f2-87b8-414d-bece-a914de0ced66
+Bank * * SYN Temple Blocks
+
+//! c=short i=list o=note:24 g=2
+0 Hard Beater
+//! c=short i=list o=note:25 g=2
+1 Soft Beater
+
+//! spacer=1
+//! c=long-light i=staccato o=note:29
+10 Single Strokes
+//! c=long-light i=tremolo o=note:30
+11 Rolls
+//! c=long-light i=crescendo o=note:31/note:36
+12 Dynamic Rolls 1s
+//! c=long-light i=crescendo o=note:31/note:37
+13 Dynamic Rolls 2s
+//! c=long-light i=crescendo o=note:31/note:38
+14 Dynamic Rolls 4s
+//! c=long-light i=acciaccatura-quarter o=note:32
+15 Upbeat x1
+//! c=long-light i=acciaccatura-quarter o=note:33
+16 Upbeat x2
+//! c=long-light i=acciaccatura-quarter o=note:34
+17 Upbeat x3
+//! c=long-light i=acciaccatura-quarter o=note:35
+18 Upbeat x4
+
+// **********************
+// SYNCHRON TUBULAR BELLS
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Tubular Bells"
+//! id=5936f669-0db8-4af7-9d1e-2ddfc5681889
+Bank * * SYN Tubular Bells
+
+//! c=short i=list o=note:24 g=2
+0 Med. Hammer
+//! c=short i=list o=note:25 g=2
+1 Hard Hammer
+//! c=short i=list o=note:26 g=2
+2 Triangle Beater
+//! c=short i=list o=note:27 g=2
+3 Sticks (Gliss)
+//! c=short i=list o=note:28 g=2
+4 Rods (Gliss)
+//! c=short i=list o=note:29 g=2
+5 Brushes (Gliss)
+
+// ********************
+// SYNCHRON PLATE BELLS
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Plate Bells"
+//! id=f18cbe84-ca5a-439a-afd7-fb3cc1257ecb
+Bank * * SYN Plate Bells
+
+//! c=fx i=list o=note:24 g=2
+0 Hammer
+//! c=fx i=list o=note:25 g=2
+1 Metal Beater
+//! c=fx i=list o=note:26 g=2
+2 Bow
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Ringing
+//! c=short i=ghost-eighth o=note:30
+11 Stopped
+//! c=short i=tremolo o=note:31
+12 Rolls
+//! c=short i=tremolo o=note:32
+13 Rolls (Short RS)
+
+// *********************
+// SYNCHRON TEMPLE BELLS
+// *********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Temple Bells"
+//! id=456dda95-6f2b-4ab4-bf83-49649021e363
+Bank * * SYN Temple Bells
+
+//! c=fx i=list o=note:24
+0 Soft Beater
+//! c=fx i=list o=note:25
+1 Hard Beater
+//! c=fx i=list o=note:26
+2 Triangle Beater
+//! c=fx i=list o=note:27
+3 Soft Beater (Motion)
+//! c=fx i=list o=note:28
+4 Bow
+
+// ******************
+// SYNCHRON CENCERROS
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Cencerros"
+//! id=f4c1c2c1-6c40-4921-8b3b-2d3abf7126da
+Bank * * SYN Cencerros
+
+//! c=fx i=list o=note:24 g=2
+0 Hard Mallet
+//! c=fx i=list o=note:25 g=2
+1 Soft Mallet
+//! c=fx i=list o=note:26 g=2
+2 Plastic Beater
+//! c=fx i=list o=note:27 g=2
+3 Rasping Stick
+//! c=fx i=list o=note:28 g=2
+4 Bow
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Ringing
+//! c=short i=ghost-eighth o=note:30
+11 Stopped
+//! c=short i=tremolo o=note:31
+12 Rolls
+//! c=short i=tremolo o=note:32
+13 Rolls, Short RS
+
+//! spacer=1
+//! c=short-light i=tremolo-measured o=note:29
+20 Fast [STICK ONLY]
+//! c=short-light i=tremolo o=note:30
+21 Slow [STICK ONLY]
+
+// *******************
+// SYNCHRON HAND BELLS
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Hand Bells"
+//! id=9ed138a5-305f-484d-9093-120dd5f23cf2
+Bank * * SYN Hand Bells
+
+//! c=fx i=list o=note:29 g=2
+0 Open/Long RS
+//! c=fx i=list o=note:30 g=2
+1 Muted/Slow RS
+
+//! spacer=1
+//! c=short i=staccato o=note:24
+10 Single Hits
+//! c=short i=tremolo o=note:25
+11 Tremolo
+//! c=short i=legato-tremolo o=note:26
+12 Shaken Short
+//! c=short i=legato-tremolo o=note:27
+13 Shaken Long
+//! c=short i=bow-down o=note:28
+14 Bow
+
+// ******************
+// SYNCHRON RIN BELLS
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Rin Bells"
+//! id=87a187d3-c349-4523-b48b-5401c085f652
+Bank * * SYN Rin Bells
+
+//! spacer=1
+//! c=short i=staccato o=note:24/note:29
+10 Single Hits, Open
+//! c=short i=ghost-eighth o=note:24/note:30
+11 Single Hits, Muted
+
+//! spacer=1
+//! c=short-light i=tremolo o=note:25/note:29
+12 Static Rolls, Long RS
+//! c=short-light i=tremolo o=note:25/note:30
+13 Static Rolls, Short RS
+
+//! spacer=1
+//! c=short-dark i=crescendo o=note:26/note:29/note:21
+14 Cresc. 1s
+//! c=short-dark i=crescendo o=note:26/note:30/note:21
+15 Cresc. 2s
+//! c=short-dark i=crescendo o=note:26/note:31/note:21
+16 Cresc. 4s
+//! c=short-dark i=decrescendo o=note:26/note:29/note:23
+17 Dim. 1s
+//! c=short-dark i=decrescendo o=note:26/note:30/note:23
+18 Dim. 2s
+//! c=short-dark i=decrescendo o=note:26/note:31/note:23
+19 Dim. 4s
+
+//! spacer=1
+//! c=textured i=bow-down o=note:27/note:29
+20 Bow, Long RS
+//! c=textured i=bow-down o=note:27/note:30
+21 Bow, Short RS
+
+// ******************
+// SYNCHRON BELL TREE
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="SYN Bell Tree"
+//! id=cc558adb-e498-4f9f-b75a-c59b8348fe2e
+Bank * * SYN Bell Tree
+
+//! c=fx i=list o=note:24
+0 Hard Beater
+//! c=fx i=list o=note:25
+1 Soft Beater
+
+// *****************************
+// SYNCHRON LOW BELLS AND PIANOS
+// *****************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="ENS Low Bells + Pianos"
+//! id=90ecda57-155f-40be-8dca-20e83383d716
+Bank * * ENS Low Bells + Pianos
+
+//! c=fx i=staccato o=note:24
+0 Ringing
+//! c=fx i=ghost-eighth o=note:25
+1 Secco
+//! c=fx i=tremolo o=note:26
+2 Rolls, Ringing
+//! c=fx i=tremolo o=note:27
+3 Rolls, Secco
+
+// ****************************
+// SYNCHRON HIGH BELLS ENSEMBLE
+// ****************************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Bells" n="ENS High Bells"
+//! id=722f523d-0cd1-4d8e-acd0-79cd6048d8d7
+Bank * * ENS High Bells
+
+//! c=fx i=staccato o=note:24
+0 Ringing
+//! c=fx i=ghost-eighth o=note:25
+1 Secco
+
+// **********************
+// SYNCHRON CONGAS/BONGOS
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Congas/Bongos"
+//! id=03ef3cca-8d0e-428c-b32d-67198adec12e
+Bank * * SYN Congas/Bongos
+
+//! c=fx i=list o=note:24
+0 Hands
+//! c=fx i=list o=note:25
+1 Sticks
+
+// *****************
+// SYNCHRON TIMBALES
+// *****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Timbales"
+//! id=a1d86fd5-4dc8-4b09-9fbe-976a2704b3b0
+Bank * * SYN Timbales
+
+//! c=textured i=list o=note:36 g=2
+0 Combined
+//! c=textured i=list o=note:37 g=2
+1 Low (15")
+//! c=textured i=list o=note:38 g=2
+2 High (15")
+
+//! spacer=1
+//! c=fx i=list o=note:24
+10 Sticks
+//! c=fx i=list o=note:25
+11 Mallets
+
+// *****************
+// SYNCHRON COWBELLS
+// *****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Cowbells"
+//! id=c56139cf-a98e-42c9-af69-68b83bb927f2
+Bank * * SYN Cowbells
+
+//! c=fx i=list o=note:24
+0 Sticks
+//! c=fx i=list o=note:25
+1 Timbales Sticks
+//! c=fx i=list o=note:26
+2 Mallets
+//! c=fx i=list o=note:27
+3 Rasping Sticks
+//! c=fx i=list o=note:28
+4 Bow
+
+// ********************
+// SYNCHRON AGOGO BELLS
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Agogo Bells"
+//! id=ea6629b1-59de-4e97-8386-18ed2e9ad90e
+Bank * * SYN Agogo Bells
+
+//! c=fx i=list o=note:24
+0 Sticks
+//! c=fx i=list o=note:26
+2 Mallets
+//! c=fx i=list o=note:27
+3 Rasping Sticks
+//! c=fx i=list o=note:28
+4 Bow
+
+// ***************
+// SYNCHRON GUIROS
+// ***************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Guiros"
+//! id=a9277fe9-d8a1-40ed-867d-c900a958b7d6
+Bank * * SYN Guiros
+
+//! c=fx i=list o=note:36
+0 Small
+//! c=fx i=list o=note:37
+1 Large
+
+// ***************
+// SYNCHRON CLAVES
+// ***************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Claves"
+//! id=2da07e19-e2bc-45b0-9b1b-499b12b3c883
+Bank * * SYN Claves
+
+//! c=fx i=list o=note:36
+0 All Claves
+//! c=fx i=list o=note:37
+1 Low
+//! c=fx i=list o=note:38
+2 Medium
+//! c=fx i=list o=note:39
+3 High
+
+// ***************
+// SYNCHRON CLAVES
+// ***************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Cabasas"
+//! id=0d3c17b7-febd-43a4-a47b-e484c0654283
+Bank * * SYN Cabasas
+
+//! c=fx i=list o=note:36
+0 All Cabasas
+//! c=fx i=list o=note:37
+1 Large
+//! c=fx i=list o=note:38
+2 Small
+
+// *******************
+// SYNCHRON WINDCHIMES
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Latin Percussion" n="SYN Windchimes"
+//! id=52d3ba7d-9935-4bad-aeea-180e295c6e92
+Bank * * SYN Windchimes
+
+//! c=fx i=list o=note:36
+0 Meinl
+//! c=fx i=list o=note:37
+1 LP
+//! c=fx i=list o=note:38
+2 LP Pentatonic
+
+// ******************
+// SYNCHRON TRIANGLES
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Triangles"
+//! id=a97443aa-e8f3-4a3b-932f-6165101a1270
+Bank * * SYN Triangles
+
+//! c=short-dark i=list o=note:24 g=2
+0 Heavy Beater
+//! c=short-dark i=list o=note:25 g=2
+1 Light Beater
+
+//! spacer=1
+//! c=textured i=list o=note:36
+10 Steel 14cm
+//! c=textured i=list o=note:37
+11 Steel 21cm
+//! c=textured i=list o=note:38
+12 Steel 30cm
+//! c=textured i=list o=note:39
+13 Bronze 30cm
+//! c=textured i=list o=note:40
+14 Baroque 17cm
+//! c=textured i=list o=note:41
+15 Baroque 21cm
+//! c=textured i=list o=note:42
+16 Serrated 21cm
+
+// *******************
+// SYNCHRON WOODBLOCKS
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Woodblocks"
+//! id=c67ae1b0-a155-4cad-93e9-6391b70a871c
+Bank * * SYN Woodblocks
+
+//! c=short-dark i=list o=note:24
+0 Yarn Mallet
+//! c=short-dark i=list o=note:25
+1 Plastic Mallet
+//! c=short-dark i=list o=note:26
+2 Rasping Stick
+
+// ******************
+// SYNCHRON CASTANETS
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Castanets"
+//! id=17c4ecb2-905d-486b-8221-a2e9c07a9436
+Bank * * SYN Castanets
+
+//! c=textured i=list o=note:36
+0 Large
+//! c=textured i=list o=note:37
+1 Small
+
+// **********************
+// SYNCHRON THUNDERSHEETS
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Thundersheets"
+//! id=22ad3676-a07d-4f54-ab60-bbd7b1b59fdf
+Bank * * SYN Thundersheets
+
+//! c=short-dark i=list o=note:36
+0 Medium
+//! c=short-dark i=list o=note:38
+1 Large
+
+// *****************
+// SYNCHRON RATCHETS
+// *****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Ratchets"
+//! id=8e3dd88c-c640-40db-9603-8b6d47021932
+Bank * * SYN Ratchets
+
+//! c=fx i=list o=note:36
+0 All Ratchets
+//! c=fx i=list o=note:37
+1 Large
+//! c=fx i=list o=note:38
+2 Medium
+//! c=fx i=list o=note:39
+3 Small
+
+// *******************
+// SYNCHRON VIBRASLAPS
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Vibraslaps"
+//! id=6cf60426-e0f4-4564-9c02-0e5c71d2cc2e
+Bank * * SYN Vibraslaps
+
+//! c=fx i=list o=note:36
+0 Both Vibraslaps
+//! c=fx i=list o=note:37
+1 Large
+//! c=fx i=list o=note:38
+2 Small
+
+// *******************
+// SYNCHRON SLAPSTICKS
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Slapsticks"
+//! id=012ad42c-4d6f-4317-8850-6640698f4314
+Bank * * SYN Slapsticks
+
+//! c=fx i=list o=note:36
+0 All Slapsticks
+//! c=fx i=list o=note:37
+1 Large
+//! c=fx i=list o=note:38
+2 Medium
+//! c=fx i=list o=note:39
+3 Small
+
+// *******************
+// SYNCHRON WALDTEUFEL
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Waldteufel"
+//! id=cc2daaef-fde3-456d-a2ae-624283c5ea01
+Bank * * SYN Waldteufel
+
+//! c=textured i=list o=note:36
+0 Large
+//! c=textured i=list o=note:38
+1 Small
+
+// *****************
+// SYNCHRON LOG DRUM
+// *****************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Log Drum"
+//! id=5140fb47-2c95-4dfc-8a56-f87b09a1697e
+Bank * * SYN Log Drum
+
+//! c=textured i=list o=note:24
+0 Soft Mallets
+//! c=textured i=list o=note:26
+1 Hard Mallets
+
+// ***************
+// SYNCHRON ANVILS
+// ***************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Anvils"
+//! id=475d873b-7817-43b5-b6e4-576c99d09a85
+Bank * * SYN Anvils
+
+//! c=long-light i=list o=note:29
+0 Unpitched Multi
+//! c=long-light i=list o=note:30
+1 Chromatic Strokes
+//! c=long-light i=list o=note:31
+2 Chromatic Rolls
+
+// ******************
+// SYNCHRON FLEXATONE
+// ******************
+
+//! g="VSL - SYNCHRON/Synchron Percussion I-III/Orchestral Percussion" n="SYN Flexatone"
+//! id=a93daed1-3b23-417a-96c5-890f5351eca5
+Bank * * SYN Flexatone
+
+//! c=fx i=list o=note:24 g=2
+0 Merged
+//! c=fx i=list o=note:25 g=2
+1 Large
+//! c=fx i=list o=note:26 g=2
+2 Small
+
+//! spacer=1
+//! c=short i=staccato o=note:29
+10 Single Hit
+//! c=short i=note-whole o=note:30
+11 Steady
+//! c=short i=legato-gliss o=note:31
+12 Fifth Glissandi
+//! c=short i=legato-gliss o=note:32
+13 8ve Glissandi
+//! c=short i=phrase o=note:33
+14 Performances
