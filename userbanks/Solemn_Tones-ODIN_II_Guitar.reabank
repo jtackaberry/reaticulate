@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------------
+// Source: AnshulJ999 - https://github.com/jtackaberry/reaticulate/issues/135
+
+//! g="Solemn Tones" n="ODIN II Guitar"
+//! m="Set patch to latching mode"
+//! id=ff3329eb-863c-4e1b-b1f1-1ff2e33c016c
+Bank * * ODIN II Guitar
+
+//! i=fx o=note-hold:7
+1 Tremolo Mode
+//! i=fx o=note:8
+2 Percussive Chug
+//! i=fx o=note:9
+3 Harmonics
+//! i=fx o=note:10
+4 Tapping
+//! i=fx o=note:11
+5 Scrapes
+//! i=fx o=note:12
+6 Alt Pick
+//! i=fx o=note:13
+7 Down Pick
+//! i=fx o=note:14
+8 Up Pick
+//! i=fx o=note:15
+9 Alt Mute
+//! i=fx o=note:16
+10 Down Mute
+//! i=fx o=note:17
+11 Up Mute
+//! i=fx o=note:18
+12 Bend Up Fast
+//! i=fx o=note:19
+13 Bend Up Slow
+//! i=fx o=note:20
+14 Bend Down Fast
+//! i=fx o=note:21
+15 Bend Down Slow
+//! i=fx o=note:22
+16 Slide Fast
+//! i=fx o=note:23
+17 Slide Slow
