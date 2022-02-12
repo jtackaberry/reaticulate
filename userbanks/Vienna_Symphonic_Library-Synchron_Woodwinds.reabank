@@ -1,0 +1,324 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/148
+//
+// IMPORTANT! READ!
+//
+// - These are designed to work with CUSTOM presets for the SYN player.  These presets are
+//   included in the zip file at https://github.com/jtackaberry/reaticulate/issues/148
+//   and are indicated with a (RT) next to the filename.  The only thing that's changed in
+//   these presets are the keyswitch assignments; they've been moved off of the playable
+//   range so that one bank can be used for all solo instruments, all ensembles, etc.
+// - The first three articulations for the solo instruments - Senza Vib, Con Vib, and Vib-XF
+//   can be activated alongside the rest of the articulations.  This allows you to control
+//   vibrato with one keyswitch, rather than needing a "vibrato version" of each articulation
+//   available.  This is one of the many great features Reaticulate has!
+//
+// For information on how to set up Reaticulate as well as make your own banks, check out
+// my blogs at www.seventhsam.com/blog
+
+
+// **********************
+// SYNCHRON WOODWIND SOLO
+// **********************
+
+//! g="VSL - SYNCHRON/Synchron Woodwinds" n="SY Woodwind Solo"
+//! id=b9ca39cf-ca4d-4e2f-b48a-e6f1db0e0b94
+Bank * * SY Woodwind Solo
+
+//! c=fx i=note-whole o=note:113 g=2
+100 Senza Vib
+//! c=fx i=vibrato o=note:114 g=2
+101 Con Vib
+//! c=fx i=alt-wave o=note:115 g=2
+102 Vib-XF
+
+//! spacer=1
+//! c=short i=spiccato o=note:0/note:12/note:20
+0 Staccatissimo (Bold)
+//! c=short i=spiccato o=note:0/note:12/note:21
+1 Staccatissimo (Agile)
+//! c=short i=staccato o=note:0/note:13/note:20
+2 Staccato (Bold)
+//! c=short i=staccato o=note:0/note:13/note:21
+3 Staccato (Agile)
+//! c=short i=tenuto-eighth o=note:0/note:14/note:20
+4 Portato (Bold)
+//! c=short i=tenuto-eighth o=note:0/note:14/note:21
+5 Portato (Agile)
+//! c=short i=tenuto-eighth o=note:0/note:15
+6 Portato, Long
+
+//! spacer=1
+//! c=long i=note-whole o=note:1/note:12
+10 Sustain (Reg)
+//! c=long i=note-whole o=note:1/note:13
+11 Sustain (Marc)
+//! c=long i=note-whole o=note:1/note:14
+12 Sustain (Espress)
+
+//! spacer=1
+//! c=legato i=legato o=note:2/note:12
+20 Legato
+//! c=legato i=legato-fast o=note:2/note:13
+21 Legato, Fast
+//! c=legato i=legato-fast o=note:2/note:14
+22 Legato (Auto-Spd)
+//! c=legato i=legato-slurred o=note:2/note:15
+23 Legato, Espress.
+//! c=legato-dark i=accented-quarter o=note:2/note:16
+24 Legato (Marc)
+//! c=legato-dark i=accented-quarter o=note:2/note:17
+25 Legato, Fast (Marc)
+//! c=legato-dark i=accented-quarter o=note:2/note:18
+26 Legato, Auto (Marc)
+
+//! spacer=1
+//! c=long-dark i=sfz o=note:3/note:12
+30 Sforzato
+//! c=long-dark i=sfz o=note:3/note:14
+31 Sforzatissimo
+//! c=long-dark i=crescendo o=note:3/note:16/note:18
+32 Cresc, 2s
+//! c=long-dark i=crescendo o=note:3/note:16/note:19
+33 Cresc, 3s
+//! c=long-dark i=crescendo o=note:3/note:16/note:20
+34 Cresc, 4s
+//! c=long-dark i=decrescendo o=note:3/note:17/note:18
+35 Dim, 2s
+//! c=long-dark i=decrescendo o=note:3/note:17/note:19
+36 Dim, 3s
+//! c=long-dark i=decrescendo o=note:3/note:17/note:20
+37 Dim, 4s
+//! c=long-light i=decrescendo o=note:9 g=3
+38 [LIGHT] (Clar. Only)
+//! c=long-light i=decrescendo o=note:11 g=3
+39 [STRONG] (Clar. Only)
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:4/note:12
+40 Flutter
+//! c=legato-light i=tremolo o=note:4/note:13
+41 Flutter (Marc)
+//! c=legato-light i=trill o=note:4/note:14/note:20
+42 Trill, HT
+//! c=legato-light i=trill o=note:4/note:14/note:21
+43 Trill, HT (Leg)
+//! c=legato-light i=trill o=note:4/note:15/note:20
+44 Trill, WT
+//! c=legato-light i=trill o=note:4/note:15/note:21
+45 Trill, WT (Leg)
+
+//! spacer=1
+//! c=textured i=riccochet o=note:5/note:12/note:20
+50 Fast Rep 120bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:13/note:20
+51 Fast Rep 130bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:14/note:20
+52 Fast Rep 140bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:15/note:20
+53 Fast Rep 160bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:12/note:21
+54 Fast Rep 120bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:13/note:21
+55 Fast Rep 130bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:14/note:21
+56 Fast Rep 140bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:15/note:21
+57 Fast Rep 160bpm (Cut)
+
+//! spacer=1
+//! c=long-light i=list o=note:6/note:12
+60 Custom 1
+//! c=long-light i=list o=note:6/note:13
+61 Custom 2
+//! c=long-light i=list o=note:6/note:14
+62 Custom 3
+//! c=long-light i=list o=note:6/note:15
+63 Custom 4
+//! c=long-light i=list o=note:6/note:16
+64 Custom 5
+//! c=long-light i=list o=note:6/note:17
+65 Custom 6
+
+// **************************
+// SYNCHRON WOODWIND ENSEMBLE
+// **************************
+
+//! g="VSL - SYNCHRON/Synchron Woodwinds" n="SY Woodwind Ensemble"
+//! id=3a925b1a-f5a7-4c28-9925-729ff0497816
+Bank * * SY Woodwind Solo
+
+//! c=short i=spiccato o=note:0/note:21
+0 Staccato (Bold)
+//! c=short i=spiccato o=note:0/note:23
+1 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:1/note:12
+10 Sustain (Reg)
+//! c=long i=note-whole o=note:1/note:13
+11 Sustain (Marc)
+//! c=long i=note-whole o=note:1/note:14
+12 Sustain (Espress)
+
+//! spacer=1
+//! c=legato i=legato o=note:2/note:12
+20 Legato
+//! c=legato i=accented-quarter o=note:2/note:13
+21 Legato, Marc. Start
+//! c=legato i=legato-slurred o=note:2/note:14
+22 Legato, Espress.
+
+//! spacer=1
+//! c=long-dark i=sfz o=note:3/note:12
+30 Sforzato
+//! c=long-dark i=sfz o=note:3/note:17
+31 Sforzatissimo (Clar. Only)
+//! c=long-dark i=sfz o=note:3/note:14
+32 Sfz + Swell
+//! c=long-dark i=crescendo o=note:3/note:16/note:18
+33 Cresc, 1.5s
+//! c=long-dark i=crescendo o=note:3/note:16/note:19
+34 Cresc, 3s
+//! c=long-dark i=crescendo o=note:3/note:16/note:20
+35 Cresc, 4s (Looped)
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:4/note:12
+40 Flutter
+//! c=legato-light i=tremolo o=note:4/note:13
+41 Flutter (Marc)
+
+//! spacer=1
+//! c=textured i=riccochet o=note:5/note:12/note:21
+50 Fast Rep 120bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:13/note:21
+51 Fast Rep 140bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:14/note:21
+52 Fast Rep 160bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:12/note:23
+53 Fast Rep 120bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:13/note:23
+54 Fast Rep 140bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:14/note:23
+55 Fast Rep 160bpm (Cut)
+
+//! spacer=1
+//! c=long-light i=list o=note:6/note:12
+60 Custom 1
+//! c=long-light i=list o=note:6/note:13
+61 Custom 2
+//! c=long-light i=list o=note:6/note:14
+62 Custom 3
+//! c=long-light i=list o=note:6/note:15
+63 Custom 4
+//! c=long-light i=list o=note:6/note:16
+64 Custom 5
+//! c=long-light i=list o=note:6/note:17
+65 Custom 6
+
+// ***********************
+// SYNCHRON WOODWIND TUTTI
+// ***********************
+
+//! g="VSL - SYNCHRON/Synchron Woodwinds" n="SY Woodwind Tutti"
+//! id=fac0b77a-dbcb-43cd-b2c7-c43994b7b8db
+Bank * * SY Woodwind Tutti
+
+//! c=fx i=note-whole o=note:21 g=2
+100 Senza Piccolo
+//! c=fx i=vibrato o=note:23 g=2
+101 Con Piccolo
+
+//! spacer=1
+//! c=short i=spiccato o=note:0/note:93
+0 Staccato (Bold)
+//! c=short i=spiccato o=note:0/note:95
+1 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:1/note:12
+10 Sustain (Reg)
+//! c=long i=note-whole o=note:1/note:13
+11 Sustain (Marc)
+//! c=long i=note-whole o=note:1/note:14
+12 Sustain (Espress)
+
+//! spacer=1
+//! c=long-dark i=sfz o=note:3/note:12
+30 Sforzato
+//! c=long-dark i=sfz o=note:3/note:14
+31 Sforzatissimo
+//! c=long-dark i=crescendo o=note:3/note:16/note:18
+32 Cresc, 2s
+//! c=long-dark i=crescendo o=note:3/note:16/note:19
+33 Cresc, 3s
+//! c=long-dark i=crescendo o=note:3/note:16/note:20
+34 Cresc, 4s (Looped)
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:4/note:12
+40 Flutter
+//! c=legato-light i=tremolo o=note:4/note:13
+41 Flutter (Marc)
+//! c=legato-light i=trill o=note:4/note:14/note:20
+42 Trill, HT
+//! c=legato-light i=trill o=note:4/note:15/note:20
+43 Trill, WT
+
+//! spacer=1
+//! c=textured i=riccochet o=note:5/note:12/note:93
+50 Fast Rep 120bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:13/note:93
+51 Fast Rep 140bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:14/note:93
+52 Fast Rep 160bpm (Ring)
+//! c=textured i=riccochet o=note:5/note:12/note:95
+53 Fast Rep 120bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:13/note:95
+54 Fast Rep 140bpm (Cut)
+//! c=textured i=riccochet o=note:5/note:14/note:95
+55 Fast Rep 160bpm (Cut)
+
+// ************************
+// SYNCHRON WOODWIND LOW FX
+// ************************
+
+//! g="VSL - SYNCHRON/Synchron Woodwinds" n="SY Woodwind Low FX"
+//! id=1b408c90-bfbe-4b38-8dd8-2f388c1dfda9
+Bank * * SY Woodwind Low FX
+
+//! c=fx i=note-whole o=note:21 g=2
+100 Regular
+//! c=fx i=vibrato o=note:22 g=2
+101 Clusters
+//! c=fx i=vibrato o=note:23 g=2
+102 Reg-XF-Clust
+
+//! spacer=1
+//! c=short i=spiccato o=note:0/note:12
+0 Staccato (Bold)
+//! c=short i=spiccato o=note:0/note:13
+1 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:1/note:12
+10 Sustain (Reg)
+//! c=long i=note-whole o=note:1/note:13
+12 Sustain (Espress)
+
+//! spacer=1
+//! c=long-dark i=sfz o=note:3/note:12
+30 Sforzato
+//! c=long-dark i=sfz o=note:3/note:13
+31 Sforzatissimo
+//! c=long-dark i=crescendo o=note:3/note:14/note:18
+32 Cresc, 2s
+//! c=long-dark i=crescendo o=note:3/note:14/note:19
+33 Cresc, 3s
+//! c=long-dark i=crescendo o=note:3/note:14/note:20
+34 Cresc, 4s (Looped)
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:4
+40 Flutter
