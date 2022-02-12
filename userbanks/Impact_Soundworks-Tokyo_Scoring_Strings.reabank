@@ -1,0 +1,86 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/129
+//
+// IMPORTANT! READ!
+//
+// This bank works with Snapshots that are *slightly* altered from the default presets.
+// Find these snapshots in the zip file contained at https://github.com/jtackaberry/reaticulate/issues/149
+//
+// Specifically:
+// - Spiccato Overlay on the Arco articulation is disabled by default.
+// - All four legato transition modes are triggered now by keyswitches.
+//
+// Bank Usage:
+// - The top articulations control the Legato Speed by outputting different values for CC
+//   3.  CC3 can also be used normally if you prefer and these articulations can be
+//   ignored.
+// - The light green articulations under Arco trigger the various legato modes.  These
+//   operate independently of the main articulation selection.  Therefore, activating the
+//   light green articulations will trigger bowed, slurred, etc. regardless of whether you
+//   have Arco or something different like Tremolo, Trills, etc. activated (since these
+//   can also use legato transitions)
+
+
+// ***************************
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~ TOKYO SCORING STRINGS ~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ***************************
+
+//! g="Impact Soundworks" n="Tokyo Scoring Strings"
+//! m="Rebow controlled by CC64 (Sustain Pedal). Banks require loading of (RT) snapshots."
+//! id=c3c998c4-f643-411a-be69-cc32875004ff
+Bank * * Tokyo Scoring Strings
+
+//! c=fx i=list o=cc:3,0 g=3
+100 SLOW
+//! c=fx i=list o=cc:3,40 g=3
+101 MEDIUM
+//! c=fx i=list o=cc:3,80 g=3
+102 FAST
+//! c=fx i=list o=cc:3,120 g=3
+103 VERY FAST
+
+//! spacer=1
+//! c=long i=note-whole o=note:0
+0 Arco
+//! c=legato-light i=legato-bowed o=note:17 g=2
+1 Leg Bow
+//! c=legato-light i=legato-slurred o=note:18 g=2
+2 Leg Slur
+//! c=legato-light i=legato-portamento o=note:19 g=2
+3 Porta Bow
+//! c=legato-light i=legato-portamento o=note:20 g=2
+4 Porta Slur
+
+//! spacer=1
+//! c=long i=tremolo o=note:11
+10 Tremolo
+//! c=long i=trill o=note:12
+11 Trills HT
+//! c=long i=trill o=note:13
+12 Trills WT
+//! c=long i=harmonics o=note:10
+13 Harmonics
+
+//! spacer=1
+//! c=short i=staccato o=note:5
+30 Staccato
+//! c=short i=staccatissimo-stopped o=note:6
+31 Staccatissimo
+//! c=short i=spiccato o=note:7
+32 Spiccato
+//! c=short i=spiccato-feathered o=note:8
+33 Spiccato Secco
+//! c=short-light i=pizz o=note:9
+34 Pizzicato
+
+//! spacer=1
+//! c=long-dark i=sfz o=note:1
+20 Sfz Long
+//! c=long-dark i=sfz o=note:2
+21 Sfz Short
+//! c=long-dark i=decrescendo o=note:3
+22 Decresc. Long
+//! c=long-dark i=decrescendo o=note:4
+23 Decresc. Short
