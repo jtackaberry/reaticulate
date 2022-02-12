@@ -1,0 +1,25 @@
+//----------------------------------------------------------------------------
+// Source: AnshulJ999 - https://github.com/jtackaberry/reaticulate/issues/135
+
+//! g="Submission Audio" n="Djinnbass"
+//! id=5db643ab-614d-4361-bc76-e9ed1fdd410f
+Bank * * Djinnbass
+
+//! i=fx o=note:0
+19 Pick
+//! i=fx o=note:1
+20 Hammer On
+//! i=fx o=note:2
+21 Pull Off
+//! i=fx o=note:3
+22 Slide Down Slow
+//! i=fx o=note:4
+23 Slide Down Fast
+//! i=fx o=note:5
+24 Slide Up Slow
+//! i=fx o=note:6
+25 Slide Up Fast
+//! i=fx o=note:7
+26 Dead Mute
+//! i=fx o=note:8
+27 Harmonic Mute
