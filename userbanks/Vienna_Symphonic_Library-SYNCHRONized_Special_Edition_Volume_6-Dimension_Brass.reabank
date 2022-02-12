@@ -1,0 +1,192 @@
+//----------------------------------------------------------------------------
+// Source: Flog426369 - https://github.com/jtackaberry/reaticulate/issues/150
+
+//---------------------------------------------------------------------------
+//                      DIMENSION BRASS
+//---------------------------------------------------------------------------
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="01 Horn Player"
+//! id=e9ebff11-4369-4e7f-85c1-3157b50eec29
+Bank * * 25 Dimension brass/01 Horn player
+
+//--------------------- normal ------------------------------------------
+
+//! c=short i=staccato o=note:21/note:84
+40 staccato
+//! c=long i=note-whole o=note:21/note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:21/note:85/note:97/cc:1,127
+55 marcato
+//! c=legato i=legato o=note:21/note:86
+20 legato
+//! c=#938C0B i=sfz o=note:21/note:87
+65 sforzato
+
+//! spacer=1
+
+//--------------------- muted ------------------------------------------
+
+//! c=short i=staccato o=note:22/note:84
+47 staccato (muted)
+//! c=long i=note-whole o=note:22/note:85/note:96
+7 sustain (muted)
+//! c=long i=marcato o=note:22/note:85/note:97/cc:1,127
+62 marcato (muted)
+//! c=legato i=legato o=note:22/note:86
+26 legato (muted)
+//! c=#938C0B i=sfz o=note:22/note:87
+66 sforzato (muted)
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="01 Horn All Players"
+//! clone="VSL SYN-ized SE/25 Dimension brass/01 Horn Player"
+//! id=c23d9ffe-e4f3-4f58-9941-fca9a2ef28d8
+Bank * * 25 Dimension brass/01 Horn All Players
+
+
+//! c=#34bd2a i=note-quarter o=note:12
+120 All players
+
+//! c=#34bd2a i=note-quarter o=note:13
+121 Players 1 + 2
+
+//! c=#34bd2a i=note-quarter o=note:14
+122 Players 3 + 4
+
+//! c=#34bd2a i=note-quarter o=note:15
+123 Player 1
+
+//! c=#34bd2a i=note-quarter o=note:16
+124 Player 2
+
+//! c=#34bd2a i=note-quarter o=note:17
+125 Player 3
+
+//! c=#34bd2a i=note-quarter o=note:18
+126 Player 4
+
+
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="02 Trumpet player"
+//! id=ba40db27-248f-42e6-807b-f92a869d2542
+Bank * * 25 Dimension brass/02 Trumpet player
+
+//--------------------- normal ------------------------------------------
+
+//! c=short i=staccato o=note:21/note:24
+40 staccato
+//! c=long i=note-whole o=note:21/note:25/note:96
+1 sustain
+//! c=long i=marcato o=note:21/note:25/note:97/cc:1,127
+55 marcato
+//! c=legato i=legato o=note:21/note:26
+20 legato
+//! c=#938C0B i=sfz o=note:21/note:27
+65 sforzato
+
+//! spacer=1
+
+//--------------------- muted ------------------------------------------
+
+//! c=short i=staccato o=note:22/note:24
+47 staccato (muted)
+//! c=long i=note-whole o=note:22/note:25/note:96
+7 sustain (muted)
+//! c=long i=marcato o=note:22/note:25/note:97/cc:1,127
+62 marcato (muted)
+//! c=legato i=legato o=note:22/note:26
+26 legato (muted)
+//! c=#938C0B i=sfz o=note:22/note:27
+66 sforzato (muted)
+
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="02 Trumpet All Players"
+//! clone="VSL SYN-ized SE/25 Dimension brass/02 Trumpet player"
+//! id=f6d5e81d-0177-4169-81ac-0c049900edde
+Bank * * 25 Dimension brass/02 Trumpet All Players
+
+//! c=#34bd2a i=note-quarter o=note:12
+120 All players
+
+//! c=#34bd2a i=note-quarter o=note:13
+121 Players 1 + 2
+
+//! c=#34bd2a i=note-quarter o=note:14
+122 Players 3 + 4
+
+//! c=#34bd2a i=note-quarter o=note:15
+123 Player 1
+
+//! c=#34bd2a i=note-quarter o=note:16
+124 Player 2
+
+//! c=#34bd2a i=note-quarter o=note:17
+125 Player 3
+
+//! c=#34bd2a i=note-quarter o=note:18
+126 Player 4
+
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="03 Trombone player"
+//! clone="VSL SYN-ized SE/25 Dimension brass/01 Horn Player"
+//! id=a64021e7-b36c-40b2-b90f-290f984ad677
+Bank * * 25 Dimension brass/03 Trombone player
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="03 Trombone All Players"
+//! clone="VSL SYN-ized SE/25 Dimension brass/01 Horn All Players"
+//! id=7607991c-4a14-4175-89c4-dfb93ca3c275
+Bank * * 25 Dimension brass/03 Trombone player
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="04 Wagner tuba player"
+//! id=56cca383-59a0-4682-9591-868722c62820
+Bank * * 25 Dimension brass/04 Wagner tuba player
+
+//! c=short i=staccato o=note:84
+40 staccato
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+55 marcato
+//! c=legato i=legato o=note:86
+20 legato
+//! c=#938C0B i=sfz o=note:87
+65 sforzato
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="04 Wagner tuba All Players"
+//! clone="VSL SYN-ized SE/25 Dimension brass/04 Wagner tuba player"
+//! id=f907595d-a8f2-41f5-9345-69da5545d0e0
+Bank * * 25 Dimension brass/04 Wagner tuba player
+
+//! c=#34bd2a i=note-quarter o=note:12
+120 All players
+
+//! c=#34bd2a i=note-quarter o=note:13
+121 Players 1 + 2
+
+//! c=#34bd2a i=note-quarter o=note:14
+122 Players 3 + 4
+
+//! c=#34bd2a i=note-quarter o=note:15
+123 Player 1
+
+//! c=#34bd2a i=note-quarter o=note:16
+124 Player 2
+
+//! c=#34bd2a i=note-quarter o=note:17
+125 Player 3
+
+//! c=#34bd2a i=note-quarter o=note:18
+126 Player 4
+
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="05 Low Brass Player"
+//! clone="VSL SYN-ized SE/25 Dimension brass/04 Wagner tuba player"
+//! id=2f88ffd5-c44e-4f08-a56f-4ece0d14b7d8
+Bank * * 25 Dimension brass/05 Low Brass Player
+
+//! g="VSL SYN-ized SE/25 Dimension brass" n="05 Low Brass All Players"
+//! clone="VSL SYN-ized SE/25 Dimension brass/04 Wagner tuba All Players"
+//! id=da18350b-e071-4ce3-80b0-91d0d0682fd6
+Bank * * 25 Dimension brass/04 Wagner tuba player

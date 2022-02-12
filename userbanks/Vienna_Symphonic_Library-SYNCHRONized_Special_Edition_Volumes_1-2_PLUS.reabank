@@ -1,0 +1,1763 @@
+//----------------------------------------------------------------------------
+// Source: Flog426369 - https://github.com/jtackaberry/reaticulate/issues/150
+
+//---------------------------------------------------------------------------
+//                      CHAMBER STRINGS
+//---------------------------------------------------------------------------
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="01 1st Violins 6 PLUS"
+//! id=446b841a-6fa9-44d0-b263-fad01a14aaeb
+Bank * * 02 Chamber strings/01 1st Violins 6 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+37 detache short
+//! c=short i=staccato o=note:24/note:38
+34 detache
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+43 legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+44 spiccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato stacato
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+31 portamento
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+65 sforzato
+//! c=#938C0B i=sfz o=note:27/note:38/cc:20,127
+66 sforzato tremolo
+//! c=#938C0B i=sfz o=note:27/note:38
+67 fortepiano
+//! c=#938C0B i=sfz o=note:27/note:39/cc:20,127
+68 fortepiano tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:28/note:36
+11 tremolo
+//! c=#A12E0C i=tremolo-fingered o=note:28/note:37
+14 trem. marcato
+//! c=#A12E0C i=trill o=note:28/note:38
+70 half tone trill
+//! c=#A12E0C i=trill o=note:28/note:39
+71 whole tone trill
+//! c=#A12E0C i=tremolo o=note:28/note:40
+80 fast rep 150
+//! c=#A12E0C i=tremolo o=note:28/note:41
+81 fast rep 170
+//! c=#A12E0C i=tremolo o=note:28/note:42
+82 fast rep 190
+
+
+//! spacer=1
+
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:29/note:36
+56 pizzicato
+//! c=short-light i=pizz o=note:29/note:37
+57 snap pizzicato
+
+//! spacer=1
+
+//--------------------- Harmonics---------------------------------------------
+
+//! c=long-light i=harmonics o=note:30/note:36
+61 harmonics stac.
+//! c=long-light i=harmonics o=note:30/note:37
+10 harmonics
+//! c=long-light i=harmonics o=note:30/note:38
+62 harm. marcato
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="02 2nd Violins 6 PLUS"
+//! clone="VSL SYN-ized SE/02 Chamber strings/01 1st Violins 6 PLUS"
+//! id=c67f44f7-9842-44c8-aefa-5450dd40db2a
+Bank * * SYN-zed 02 Chamber strings/02 2nd Violins 6 PLUS
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="03 Violas 4 PLUS"
+//! clone="VSL SYN-ized SE/02 Chamber strings/01 1st Violins 6 PLUS"
+//! id=8625c76a-cd51-419c-a185-ae4ec0c277c8
+Bank * * SYN-zed 02 Chamber strings/03 Violas 4 PLUS
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="04 Cellos 3 PLUS"
+//! id=7101e543-fd4a-48f3-941c-a41693a9e1be
+Bank * * 02 Chamber strings/04 Cellos 3 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:96
+40 staccato
+//! c=short i=staccato o=note:24/note:97
+37 detache short
+//! c=short i=staccato o=note:24/note:98
+34 detache
+//! c=#A12E0C i=note-sixteenth o=note:24/note:99
+43 legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:100
+44 spiccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:96
+1 sustain
+//! c=long i=marcato o=note:25/note:97/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:25/note:98/cc:1,127
+52 marcato stacato
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:96
+20 legato
+//! c=legato i=legato o=note:26/note:97
+31 portamento
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:96
+65 sforzato
+//! c=#938C0B i=sfz o=note:27/note:97/cc:20,127
+66 sforzato tremolo
+//! c=#938C0B i=sfz o=note:27/note:98
+67 fortepiano
+//! c=#938C0B i=sfz o=note:27/note:99/cc:20,127
+68 fortepiano tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:28/note:96
+11 tremolo
+//! c=#A12E0C i=tremolo-fingered o=note:28/note:97
+14 trem. marcato
+//! c=#A12E0C i=trill o=note:28/note:98
+70 half tone trill
+//! c=#A12E0C i=trill o=note:28/note:99
+71 whole tone trill
+//! c=#A12E0C i=tremolo o=note:28/note:100
+80 fast rep 150
+//! c=#A12E0C i=tremolo o=note:28/note:101
+81 fast rep 170
+//! c=#A12E0C i=tremolo o=note:28/note:102
+82 fast rep 190
+
+
+//! spacer=1
+
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:29/note:96
+56 pizzicato
+//! c=short-light i=pizz o=note:29/note:97
+57 snap pizzicato
+
+//! spacer=1
+
+//--------------------- Harmonics---------------------------------------------
+
+//! c=long-light i=harmonics o=note:30/note:96
+61 harmonics stac.
+//! c=long-light i=harmonics o=note:30/note:97
+10 harmonics
+//! c=long-light i=harmonics o=note:30/note:98
+62 harm. marcato
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="05 Double basses 2 PLUS"
+//! id=0d54db24-e1cf-47c5-873b-fbfe37512f5e
+Bank * * 02 Chamber strings/05 Double basses 2 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+37 detache short
+//! c=short i=staccato o=note:84/note:98
+34 detache
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+43 legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:100
+44 spiccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:85/note:98/cc:1,127
+52 marcato stacato
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+31 portamento
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+65 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97/cc:20,127
+66 sforzato tremolo
+//! c=#938C0B i=sfz o=note:87/note:98
+67 fortepiano
+//! c=#938C0B i=sfz o=note:87/note:99/cc:20,127
+68 fortepiano tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:88/note:96
+11 tremolo
+//! c=#A12E0C i=tremolo-fingered o=note:88/note:97
+14 trem. marcato
+//! c=#A12E0C i=trill o=note:88/note:98
+70 half tone trill
+//! c=#A12E0C i=trill o=note:88/note:99
+71 whole tone trill
+
+//! spacer=1
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:89/note:96
+56 pizzicato
+//! c=short-light i=pizz o=note:89/note:97
+57 snap pizzicato
+
+//! spacer=1
+
+//--------------------- Harmonics---------------------------------------------
+
+//! c=long-light i=harmonics o=note:90/note:96
+61 harmonics stac.
+//! c=long-light i=harmonics o=note:90/note:97
+10 harmonics
+//! c=long-light i=harmonics o=note:90/note:98
+62 harm. marcato
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="11a Chamber Str multi convolution"
+//! id=8f5b1400-b76c-41c8-95da-29b5105d3b66
+Bank * * 02 Chamber strings/11a Chamber Str multi convolution
+
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:12/note:21
+40 staccato
+//! c=short i=staccato o=note:12/note:22
+34 detache
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:13/note:21
+1 sustain
+//! c=long i=marcato o=note:13/note:22/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:13/note:22/cc:1,127
+52 marcato stacato
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:15/note:21
+65 sforzato
+//! c=#938C0B i=sfz o=note:15/note:22/cc:20,127
+66 sforzato tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:16
+11 tremolo
+//! spacer=1
+
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:17
+56 pizzicato
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/02 Chamber strings" n="11b Chamber Str flat stereo"
+//! clone="VSL SYN-ized SE/02 Chamber strings/11a Chamber Str multi convolution"
+//! id=b024cbb0-5d3f-476f-b607-8b925cb3864c
+Bank * * 02 Chamber strings/11b Chamber Str flat stereo
+
+
+
+
+//---------------------------------------------------------------------------
+//                      ORCHESTRAL STRINGS
+//---------------------------------------------------------------------------
+
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="01 1st Violins 14 PLUS"
+//! id=873d7f0e-93db-421c-ae1b-abce8a192b8d
+Bank * * 03 Orchestral string/01 1st Violins 14 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+37 detache short
+//! c=short i=staccato o=note:24/note:38
+34 detache
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+43 legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:40
+44 spiccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato stacato
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+31 portamento
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+65 sforzato
+//! c=#938C0B i=sfz o=note:27/note:37/cc:20,127
+66 sforzato tremolo
+//! c=#938C0B i=sfz o=note:27/note:38
+67 fortepiano
+//! c=#938C0B i=sfz o=note:27/note:39/cc:20,127
+68 fortepiano tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:28/note:36
+11 tremolo
+//! c=#A12E0C i=tremolo-fingered o=note:28/note:37
+14 trem. marcato
+//! c=#A12E0C i=trill o=note:28/note:38
+70 half tone trill
+//! c=#A12E0C i=trill o=note:28/note:39
+71 whole tone trill
+//! c=#A12E0C i=tremolo o=note:28/note:40
+80 fast rep 150
+//! c=#A12E0C i=tremolo o=note:28/note:41
+81 fast rep 170
+//! c=#A12E0C i=tremolo o=note:28/note:42
+82 fast rep 190
+
+
+//! spacer=1
+
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:29/note:36
+56 pizzicato
+//! c=short-light i=pizz o=note:29/note:37
+57 snap pizzicato
+//! c=short-light i=pizz o=note:29/note:38
+58 col legno
+
+//! spacer=1
+
+//--------------------- Harmonics---------------------------------------------
+
+//! c=long-light i=harmonics o=note:30/note:36
+61 harmonics stac.
+//! c=long-light i=harmonics o=note:30/note:37
+10 harmonics
+//! c=long-light i=harmonics o=note:30/note:38/cc:1,127
+62 harm. marcato
+
+//! spacer=1
+
+//--------------------- Sul ponticello----------------------------------------
+
+//! c=long-dark i=sul-pont o=note:31/note:36
+60 sul pont. staccato
+//! c=long-dark i=sul-pont o=note:31/note:37
+18 sul pont. sustain
+//! c=long-dark i=sul-pont o=note:31/note:38
+53 sul pont. marcato
+//! c=long-dark i=sul-pont o=note:31/note:39
+13 sul pont. tremolo
+
+//! spacer=1
+
+//--------------------- Con sordino-------------------------------------------
+
+//! c=legato-light i=con-sord o=note:32/note:36
+47 con sord. staccato
+//! c=legato-light i=con-sord o=note:32/note:37
+7 con sord. sustain
+//! c=legato-light i=con-sord o=note:32/note:38
+85 con sord. marcato
+//! c=legato-light i=con-sord o=note:32/note:38/cc:1,127
+12 con sord. tremolo
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="02 2nd Violins 14 PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/01 1st Violins 14 PLUS"
+//! id=abd82323-3c18-42a8-aba5-bc1bc16d912a
+Bank * * SYN-zed 03 Orchestral strings/02 2nd Violins 14 PLUS
+
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="03 Violas 10 PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/01 1st Violins 14 PLUS"
+//! id=fa66cfb0-1c67-4388-9325-1c06046fee78
+Bank * * SYN-zed 03 Orchestral strings/03 Violas 10 PLUS
+
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="04 Cellos 8 PLUS"
+//! id=52230ae0-72f6-411e-af01-67e7d84d05c1
+Bank * * 03 Orchestral strings/04 Cellos 8 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:96
+40 staccato
+//! c=short i=staccato o=note:24/note:97
+37 detache short
+//! c=short i=staccato o=note:24/note:98
+34 detache
+//! c=#A12E0C i=note-sixteenth o=note:24/note:99
+43 legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:100
+44 spiccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:96
+1 sustain
+//! c=long i=marcato o=note:25/note:97/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:25/note:97/cc:1,127
+52 marcato stacato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:96
+20 legato
+//! c=legato i=legato o=note:26/note:97
+31 portamento
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:96
+65 sforzato
+//! c=#938C0B i=sfz o=note:27/note:97/cc:20,127
+66 sforzato tremolo
+//! c=#938C0B i=sfz o=note:27/note:98
+67 fortepiano
+//! c=#938C0B i=sfz o=note:27/note:99/cc:20,127
+68 fortepiano tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:28/note:96
+11 tremolo
+//! c=#A12E0C i=tremolo-fingered o=note:28/note:97
+14 trem. marcato
+//! c=#A12E0C i=trill o=note:28/note:98
+70 half tone trill
+//! c=#A12E0C i=trill o=note:28/note:99
+71 whole tone trill
+//! c=#A12E0C i=tremolo o=note:28/note:100
+80 fast rep 150
+//! c=#A12E0C i=tremolo o=note:28/note:101
+81 fast rep 170
+//! c=#A12E0C i=tremolo o=note:28/note:102
+82 fast rep 190
+
+
+//! spacer=1
+
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:29/note:96
+56 pizzicato
+//! c=short-light i=pizz o=note:29/note:97
+57 snap pizzicato
+//! c=short-light i=pizz o=note:29/note:98
+58 col legno
+
+//! spacer=1
+
+//--------------------- Harmonics---------------------------------------------
+
+//! c=long-light i=harmonics o=note:30/note:96
+61 harmonics stac.
+//! c=long-light i=harmonics o=note:30/note:97
+10 harmonics
+//! c=long-light i=harmonics o=note:30/note:98
+62 harm. marcato
+
+//! spacer=1
+
+//--------------------- Sul ponticello----------------------------------------
+
+//! c=long-dark i=sul-pont o=note:31/note:96
+16 sul pont. sustain
+//! c=long-dark i=sul-pont o=note:31/note:97
+18 sul pont. sustain
+//! c=long-dark i=sul-pont o=note:31/note:98
+53 sul pont. marcato
+//! c=long-dark i=sul-pont o=note:31/note:99
+13 sul pont. tremolo
+
+//! spacer=1
+
+//--------------------- Con sordino-------------------------------------------
+
+//! c=legato-light i=con-sord o=note:32/note:96
+47 con sord. staccato
+//! c=legato-light i=con-sord o=note:32/note:97
+7 con sord. sustain
+//! c=legato-light i=con-sord o=note:32/note:98
+85 con sord. marcato
+//! c=legato-light i=con-sord o=note:32/note:98
+12 con sord. tremolo
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="05 Double basses 6 PLUS"
+//! id=e14b3e31-1968-4719-bbdf-dddbfc96398b
+Bank * * 03 Orchestral strings/05 Double basses 6 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+37 detache short
+//! c=short i=staccato o=note:84/note:98
+34 detache
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+43 legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:100
+44 spiccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,0
+55 marcato
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato stacato
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+31 portamento
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+65 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97/cc:20,127
+66 sforzato tremolo
+//! c=#938C0B i=sfz o=note:87/note:98
+67 fortepiano
+//! c=#938C0B i=sfz o=note:87/note:99/cc:20,127
+68 fortepiano tremolo
+
+//! spacer=1
+
+
+//--------------------- Tremolo and trills ----------------------------------
+
+//! c=#A12E0C i=tremolo o=note:88/note:96
+11 tremolo
+//! c=#A12E0C i=tremolo-fingered o=note:88/note:97
+14 trem. marcato
+//! c=#A12E0C i=trill o=note:88/note:98
+70 half tone trill
+//! c=#A12E0C i=trill o=note:88/note:99
+71 whole tone trill
+
+//! spacer=1
+
+//--------------------- Pizzicato + Legno ------------------------------------
+
+//! c=short-light i=pizz o=note:89/note:96
+56 pizzicato
+//! c=short-light i=pizz o=note:89/note:97
+57 snap pizzicato
+//! c=short-light i=pizz o=note:89/note:98
+58 col legno
+
+//! spacer=1
+
+//--------------------- Harmonics---------------------------------------------
+
+//! c=long-light i=harmonics o=note:90/note:96
+61 harmonics stac.
+//! c=long-light i=harmonics o=note:90/note:97
+10 harmonics
+//! c=long-light i=harmonics o=note:90/note:98
+62 harm. marcato
+
+//! spacer=1
+
+//--------------------- Sul ponticello----------------------------------------
+
+//! c=long-dark i=sul-pont o=note:91/note:96
+16 sul pont. sustain
+//! c=long-dark i=sul-pont o=note:91/note:97
+18 sul pont. sustain
+//! c=long-dark i=sul-pont o=note:91/note:98
+53 sul pont. marcato
+//! c=long-dark i=sul-pont o=note:91/note:99
+13 sul pont. tremolo
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="11a Orchestral Str multi convolution"
+//! clone="VSL SYN-ized SE/02 Chamber strings/11a Chamber Str multi convolution"
+//! id=70d43276-bee6-452c-8ed2-fca5b0ccbfbe
+Bank * * 03 Orchestral strings/11a Orchestral Str multi convolution
+
+//! g="VSL SYN-ized SE/03 Orchestral strings" n="11b Orchestral Str flat stereo"
+//! clone="VSL SYN-ized SE/02 Chamber strings/11a Chamber Str multi convolution"
+//! id=ce3ef6e2-ca64-4b07-a870-5a9d858de640
+Bank * * 03 Orchestral strings/11b Orchestral Str flat stereo
+
+
+//---------------------------------------------------------------------------
+//                      SOLO STRINGS
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/01 Solo Strings" n="01 Violin 1 PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/01 1st Violins 14 PLUS"
+//! id=4731cee0-383d-45da-90bf-97076c98bba1
+Bank * * 01 Solo Strings/01 Violin 1 PLUS
+
+//! g="VSL SYN-ized SE/01 Solo Strings" n="02 Violin 2 PLUS"
+//! clone="VSL SYN-ized SE/02 Chamber strings/01 1st Violins 14 PLUS"
+//! id=71772d58-5cfa-4da7-af14-774f9b722cbc
+Bank * * 01 Solo Strings/02 Violin 2 PLUS
+
+//! g="VSL SYN-ized SE/01 Solo Strings" n="03 Viola PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/03 Violas 10 PLUS"
+//! id=c714cc28-65d4-4d09-ba79-9fbaa06ed40e
+Bank * * 01 Solo Strings/03 Viola PLUS
+
+//! g="VSL SYN-ized SE/01 Solo Strings" n="04 Cello 1 PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/04 Cellos 8 PLUS"
+//! id=d2473027-aa8f-4d7a-a1d3-ed29d9fe8ad5
+Bank * * 01 Solo Strings/04 Cello 1 PLUS
+
+//! g="VSL SYN-ized SE/01 Solo Strings" n="05 Cello 2 PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/04 Cellos 8 PLUS"
+//! id=735b8ff6-b83d-481a-80b5-edac6bf5d49f
+Bank * * 01 Solo Strings/05 Cello 2 PLUS
+
+//! g="VSL SYN-ized SE/01 Solo Strings" n="06 Double Bass PLUS"
+//! clone="VSL SYN-ized SE/03 Orchestral strings/05 Double basses 6 PLUS"
+//! id=bd258e55-ef83-4a7a-a952-1946985bc40e
+Bank * * 01 Solo Strings/06 Double bass PLUS
+
+
+//---------------------------------------------------------------------------
+//                      PLUCKED
+//---------------------------------------------------------------------------
+
+//! g="VSL SYN-ized SE/06 Plucked instruments" n="01 Harp"
+//! id=0b1311fb-3374-4816-8bed-741536945048
+Bank * * 06 Plucked instruments/01 Harp PLUS
+//! g=1 c=short i=note-quarter o=note:21
+40 Normal
+//! g=1 c=short i=con-sord o=note:22
+61 Harmonic
+
+//! g="VSL SYN-ized SE/06 Plucked instruments" n="03 Concert guitar"
+//! id=e56b0745-f278-4122-8ef9-0ae34a147c67
+Bank * * 06 Plucked instruments/03 Concert guitar
+//! g=1 c=short i=staccato o=note:24
+40 staccato
+//! c=long i=note-whole o=note:25/cc:1,0
+1 sustain senza vibrato
+//! c=long i=note-whole o=note:25/cc:1,127
+16 sustain con vibrato
+//! c=legato i=legato o=note:26/note:36
+20 legato
+
+//! g="VSL SYN-ized SE/06 Plucked instruments" n="04 Overdrive"
+//! id=07dff6c3-947f-422d-be8a-09723b709214
+Bank * * 06 Plucked instruments/04 Overdrive
+//! g=1 c=short i=staccato o=note:24
+40 staccato
+//! c=long i=note-whole o=note:25/cc:1,0
+1 sustain senza vibrato
+//! c=long i=note-whole o=note:25/cc:1,64
+16 sustain con vibrato
+//! c=long i=note-whole o=note:25/cc:1,127
+17 sustain Whammy bar
+//! c=legato i=legato o=note:26/cc:1,0
+20 legato senza vibrato
+//! c=legato i=legato o=note:26/cc:1,64
+27 legato con vibrato
+//! c=legato i=legato o=note:26/cc:1,127
+28 legato Whammy bar
+//! c=legato i=legato o=note:27/cc:1,0
+105 Slide senza vibrato
+//! c=legato i=legato o=note:28/cc:1,64
+106 Slide con vibrato
+//! c=legato i=legato o=note:29/cc:1,127
+107 Slide Whammy bar
+
+//! g="VSL SYN-ized SE/06 Plucked instruments" n="05 Upright bass"
+//! id=1125d029-baef-4a1b-9e60-8944dcce62e4
+Bank * * 06 Plucked instruments/05 Upright bass
+//! g=1 c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+41 portato
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain normal
+//! c=long i=note-whole o=note:85/note:97
+9 sustain snap
+
+//! c=legato i=legato o=note:86/note:96
+20 legato normal
+//! c=legato i=legato o=note:86/note:97
+28 legato snap
+
+//! c=legato i=legato-gliss o=note:86/note:96
+31 slide normal
+//! c=legato i=legato-gliss o=note:86/note:97
+37 slide snap
+
+
+//---------------------------------------------------------------------------
+//                      WOODWINDS
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/11 Flutes" n="01 Piccolo PLUS"
+//! id=ece8ee8a-522d-41ec-bcb0-714c0c56e372
+Bank * * 11 Flutes/01 Piccolo PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato
+//! c=short i=staccato o=note:24/note:38
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:38
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+//! c=#E1491C i=multitongued o=note:28/note:40
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:28/note:41
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:28/note:42
+82 fast repetition 190
+
+//! g="VSL SYN-ized SE/11 Flutes" n="02 Flute 1 PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=b2277d68-872e-450c-99b0-c569bd645160
+Bank * * 11 Flutes/02 Flute 1 PLUS
+
+//! g="VSL SYN-ized SE/11 Flutes" n="03 Flute 2 PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=16ead985-5dc1-4fad-822c-da8d89381dde
+Bank * * VSL 11 Flutes/03 Flute 2 PLUS
+
+//! g="VSL SYN-ized SE/11 Flutes" n="04 Alto Flute PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=55d41501-7363-485e-b4cd-d39455eef219
+Bank * * VSL 11 Flutes/04 Alto Flute PLUS
+
+//! g="VSL SYN-ized SE/11 Flutes" n="11 Flute-ens 3 PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=d49527c5-a6dc-4221-85e8-c7b0fea99083
+Bank * * VSL 11 Flutes/11 Flute-ens 3 PLUS
+
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/12 Oboes" n="01 Oboe (French) PLUS"
+//! id=3cbab98c-3f99-4621-add9-97b7fe0fe562
+Bank * * 12 Oboes/01 Oboe (French) PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato
+//! c=short i=staccato o=note:24/note:38
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:38
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=long i=trill-min2 o=note:28/note:38
+70 halftone trill
+//! c=long i=trill-maj2 o=note:28/note:39
+71 wholetone trill
+
+
+//! g="VSL SYN-ized SE/12 Oboes" n="02 Oboe (Vienna) PLUS"
+//! clone="VSL SYN-ized SE/12 Oboes/01 Oboe (French) PLUS"
+//! id=89ecb503-d27d-41fd-b7d1-82fa51d2df92
+Bank * * 12 Oboes/02 Oboe (Vienna) PLUS
+
+//! g="VSL SYN-ized SE/12 Oboes" n="03 Oboe d amore PLUS"
+//! id=815f5784-d5c1-4a68-8964-ef863a91ba6a
+Bank * * 12 Oboes/03 Oboe d amore PLUS PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato
+//! c=short i=staccato o=note:24/note:38
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:38
+107 fortepiano
+
+//! spacer=1
+
+//! g="VSL SYN-ized SE/12 Oboes" n="04 English Horn I (French) PLUS"
+//! clone="VSL SYN-ized SE/12 Oboes/01 Oboe (French) PLUS"
+//! id=923cc06d-ac7a-4482-b53d-cb8e66ca1cc6
+Bank * * 12 Oboes/04 English Horn I (French) PLUS
+
+//! g="VSL SYN-ized SE/12 Oboes" n="11 Oboe-ens 3 PLUS"
+//! clone="VSL SYN-ized SE/12 Oboes/01 Oboe (French) PLUS"
+//! id=19698a7e-de2c-4098-9869-8ef2a4183a3b
+Bank * * 12 Oboes/11 Oboe-ens 3 PLUS
+
+
+//---------------------------------------------------------------------------
+
+//! g="VSL SYN-ized SE/13 Clarinets" n="02 Clarinet Bb 1 PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=10c40667-6947-4798-960b-408bb9c9518f
+Bank * * 13 Clarinets/02 Clarinet Bb 1 PLUS
+
+
+//! g="VSL SYN-ized SE/13 Clarinets" n="03 Clarinet Bb 2 PLUS"
+//! id=1180cc99-0536-4a15-9ae5-056d20db10b3
+Bank * * 13 Clarinets/03 Clarinet Bb 2 PLUS
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato
+//! c=short i=staccato o=note:24/note:38
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:38
+107 fortepiano
+
+//! spacer=1
+
+//! g="VSL SYN-ized SE/13 Clarinets" n="01 Clarinet Eb PLUS"
+//! clone="VSL SYN-ized SE/13 Clarinets/03 Clarinet Bb 2 PLUS"
+//! id=97660550-562e-4c66-9035-87479e9606ec
+Bank * * 13 Clarinets/01 Clarinet Eb PLUS
+
+
+//! g="VSL SYN-ized SE/13 Clarinets" n="04 Bass Clarinet PLUS"
+//! id=8090e5b2-0d82-4cd3-a9c1-9fea96a52497
+Bank * * 13 Clarinets/Bass Clarinet PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=long i=trill-min2 o=note:88/note:98
+70 halftone trill
+//! c=long i=trill-maj2 o=note:88/note:99
+71 wholetone trill
+
+
+//! g="VSL SYN-ized SE/13 Clarinets" n="06 Basset horn PLUS"
+//! clone="VSL SYN-ized SE/13 Clarinets/03 Clarinet Bb 2 PLUS"
+//! id=13d664d7-8f7e-4787-a4d2-b5978f0d590c
+Bank * * 13 Clarinets/06 Basset horn PLUS
+
+//! g="VSL SYN-ized SE/13 Clarinets" n="11 Clarinet-ens-3 PLUS"
+//! clone="VSL SYN-ized SE/13 Clarinets/02 Clarinet Bb 1 PLUS"
+//! id=5c829970-c0c3-4e27-a46f-91249d3dbacf
+Bank * * 13 Clarinets/11 Clarinet-ens-3 PLUS
+
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/14 Bassoons" n="01 Bassoon 1 PLUS"
+//! id=67a5aa71-a333-48be-b615-7f2ca215b857
+Bank * * 14 Bassoons/Bassoon 1 PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=long i=trill-min2 o=note:88/note:98
+70 halftone trill
+//! c=long i=trill-maj2 o=note:88/note:99
+71 wholetone trill
+//! c=#E1491C i=multitongued o=note:88/note:100
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:88/note:101
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:88/note:102
+82 fast repetition 190
+
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/14 Bassoons" n="03 Contrabassoon PLUS"
+//! id=86e005ef-0d9c-4922-9003-78057d764f83
+Bank * * 14 Bassoons/03 Contrabassoon PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:97
+107 fortepiano
+
+//! spacer=1
+
+//-----------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/14 Bassoons" n="14 Bassoons-ens-3 PLUS"
+//! clone="VSL SYN-ized SE/114 Bassoons/01 Bassoon 1 PLUS"
+//! id=77166b6d-0f53-4de7-8394-c98d759ae256
+Bank * * 14 Bassoons/14 Bassoons-ens-3 PLUS
+
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/15 Saxophones" n="02 Alto saxophone PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=e56442bc-2fb5-49dc-a2a0-5634015be7fe
+Bank * * 15 Saxophones/02 Alto saxophone PLUS
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/15 Saxophones" n="03 Tenor saxophone PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=7ed76087-23a4-4069-9124-6e032f934ea4
+Bank * * 15 Saxophones/03 Tenor saxophone PLUS
+
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/15 Saxophones" n="04 Baritone saxophone PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=bd2c0f18-c0e6-49cb-85ca-5982ff65df0b
+Bank * * 15 Saxophones/04 Baritone saxophone PLUS
+
+
+//---------------------------------------------------------------------------
+//                      BRASS
+//---------------------------------------------------------------------------
+
+
+//! g="VSL SYN-ized SE/21 Horns" n="01 Horn 1 (triple) PLUS"
+//! id=180e6224-85ab-4d6f-9c48-ce0b9eaff8e2
+Bank * * 21 Horns/01 Horn 1 (triple) PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:24/note:36
+40 staccato
+//! c=short i=staccato o=note:24/note:37
+62 portato
+//! c=short i=staccato o=note:24/note:38
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:24/note:39
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:25/note:36
+1 sustain
+//! c=long i=marcato o=note:25/note:37/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:26/note:36
+20 legato
+//! c=legato i=legato o=note:26/note:37
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:27/note:36
+106 sforzato
+//! c=#938C0B i=sfz o=note:27/note:38
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=#E1491C i=multitongued o=note:28/note:40
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:28/note:41
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:28/note:42
+82 fast repetition 190
+
+
+//! g="VSL SYN-ized SE/21 Horns" n="02 Horn 2 (Vienna) PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=a005aae4-fbb1-41d9-ba79-5c8369bb5501
+Bank * * 21 Horns/02 Horn 2 (Vienna) PLUS
+
+
+//! g="VSL SYN-ized SE/21 Horns" n="11 Horn-ens 4 PLUS"
+//! clone="VSL SYN-ized SE/21 Horns/01 Horn 1 (triple) PLUS"
+//! id=4a2b7041-3356-4264-afb3-cdffca04b578
+Bank * * 21 Horns/11 Horn-ens 4 PLUS
+
+
+//! g="VSL SYN-ized SE/21 Horns" n="12 Horn-ens 8 PLUS"
+//! clone="VSL SYN-ized SE/21 Horns/02 Horn 2 (Vienna) PLUS"
+//! id=6af8da24-7348-4711-8ac0-f11ba6e7071d
+Bank * * 21 Horns/12 Horn-ens 8 PLUS
+
+
+//! g="VSL SYN-ized SE/22 Trumpets" n="01 Piccolo trumpet PLUS"
+//! clone="VSL SYN-ized SE/11 Flutes/01 Piccolo PLUS"
+//! id=febec816-053e-4568-a150-0f8142ac86f1
+Bank * * 22 Trumpets/01 Piccolo trumpet PLUS
+
+//! g="VSL SYN-ized SE/22 Trumpets" n="02 trumpet 1 (C) PLUS"
+//! clone="VSL SYN-ized SE/22 Trumpets/01 Piccolo trumpet PLUS"
+//! id=2a869284-a02a-4acc-8166-9d519b368109
+Bank * * 22 Trumpets/02 trumpet 1 (C) PLUS
+
+//! g="VSL SYN-ized SE/22 Trumpets" n="03 trumpet 1 (C) muted PLUS"
+//! clone="VSL SYN-ized SE/22 Trumpets/01 Piccolo trumpet PLUS"
+//! id=ef13d195-f744-4ddc-83fb-dc690a1b93d6
+Bank * * 22 Trumpets/03 trumpet 1 (C) muted PLUS
+
+//! g="VSL SYN-ized SE/22 Trumpets" n="11 trumpet-ens 3 PLUS"
+//! clone="VSL SYN-ized SE/22 Trumpets/01 Piccolo trumpet PLUS"
+//! id=45f4367e-0f7c-4c3c-9dff-6ed54111a2b0
+Bank * * 22 Trumpets/11 trumpet-ens 3 PLUS
+
+//! g="VSL SYN-ized SE/22 Trumpets" n="12 trumpet-ens 3 muted PLUS"
+//! clone="VSL SYN-ized SE/22 Trumpets/01 Piccolo trumpet PLUS"
+//! id=559428e9-9f4e-44a7-b6e9-8d51f0ecde2e
+Bank * * 22 Trumpets/12 trumpet-ens 3 muted PLUS
+
+
+
+//! g="VSL SYN-ized SE/23 Trombones" n="02 Tenor trombone PLUS"
+//! id=3095d6d8-7318-42aa-b3f4-a8300704329f
+Bank * * 23 Trombones/02 Tenor trombone PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+//--------------------- fast reps-----------------------------
+
+//! c=#E1491C i=multitongued o=note:88/note:100
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:88/note:101
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:88/note:102
+82 fast repetition 190
+
+
+//! g="VSL SYN-ized SE/23 Trombones" n="03 Tenor trombone muted PLUS"
+//! clone="VSL SYN-ized SE/23 Trombones/02 Tenor trombone PLUS"
+//! id=900656d1-4e90-4361-8e9f-07c0a8cabe16
+Bank * * 23 Trombones/03 Tenor trombone muted PLUS
+
+//! g="VSL SYN-ized SE/23 Trombones" n="04 Bass trombone PLUS"
+//! clone="VSL SYN-ized SE/23 Trombones/02 Tenor trombone PLUS"
+//! id=b71087ab-f545-4be0-8375-44704247d1a1
+Bank * * 23 Trombones/03 Bass trombone PLUS
+
+//! g="VSL SYN-ized SE/23 Trombones" n="05 ContraBass trombone PLUS"
+//! id=c3803486-b8e8-485e-a4d4-27d3f4df3c04
+Bank * * 23 Trombones/03 ContraBass trombone PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+
+//! g="VSL SYN-ized SE/23 Trombones" n="11 Trombone-ens 3 PLUS"
+//! clone="VSL SYN-ized SE/23 Trombones/02 Tenor trombone PLUS"
+//! id=b4833b42-6f1e-4619-82d1-a6fee474bc67
+Bank * * 23 Trombones/11 Trombone-ens 3 PLUS
+
+//! g="VSL SYN-ized SE/23 Trombones" n="12 Trombone-ens 3 muted PLUS"
+//! clone="VSL SYN-ized SE/23 Trombones/02 Tenor trombone PLUS"
+//! id=3e2ffe83-3049-4fc7-b9b1-79dc421c2867
+Bank * * 23 Trombones/12 Trombone-ens 3 PLUS
+
+//! g="VSL SYN-ized SE/24 low brass" n="02 Bass tuba PLUS"
+//! id=2f064e03-01b1-45fd-b6f3-b3109da788e5
+Bank * * 24 Trombones/02 Bass tuba PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=long i=trill-min2 o=note:88/note:98
+70 halftone trill
+//! c=long i=trill-maj2 o=note:88/note:99
+71 wholetone trill
+//! c=#E1491C i=multitongued o=note:88/note:100
+81 fast repetition 150
+//! c=#E1491C i=multitongued o=note:88/note:101
+84 fast repetition 170
+//! c=#E1491C i=multitongued o=note:88/note:102
+82 fast repetition 190
+
+//! g="VSL SYN-ized SE/24 low brass" n="03 ContraBass tuba PLUS"
+//! id=6a8e0644-6b87-452f-bb3a-d35995b38dd7
+Bank * * 24 Trombones/02 ContraBass tuba PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+
+//--------------------- trills + fast reps-----------------------------
+
+//! c=long i=trill-min2 o=note:88/note:98
+70 halftone trill
+//! c=long i=trill-maj2 o=note:88/note:99
+71 wholetone trill
+
+
+//! g="VSL SYN-ized SE/24 low brass" n="04 Wagner tuba PLUS"
+//! id=0ce265f5-b550-449c-906b-b962cf471a1f
+Bank * * 24 Trombones/02 Wagner tuba PLUS
+
+//--------------------- short notes ------------------------------------------
+
+//! c=short i=staccato o=note:84/note:96
+40 staccato
+//! c=short i=staccato o=note:84/note:97
+62 portato
+//! c=short i=staccato o=note:84/note:98
+43 Legato rep.
+//! c=#A12E0C i=note-sixteenth o=note:84/note:99
+44 staccato rep.
+
+//! spacer=1
+
+//--------------------- long notes ------------------------------------------
+
+//! c=long i=note-whole o=note:85/note:96
+1 sustain
+//! c=long i=marcato o=note:85/note:97/cc:1,127
+52 marcato
+
+
+//! spacer=1
+
+//--------------------- legato ----------------------------------------------
+
+//! c=legato i=legato o=note:86/note:96
+20 legato
+//! c=legato i=legato o=note:86/note:97
+21 legato sus
+
+//! spacer=1
+
+//--------------------- dynamics --------------------------------------------
+
+//! c=#938C0B i=sfz o=note:87/note:96
+106 sforzato
+//! c=#938C0B i=sfz o=note:87/note:98
+107 fortepiano
+
+//! spacer=1
+
+//---------------------------------------------------------------------------
+//                      PERCUSSIONS
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/31 Percussion" n="01 Timpani"
+//! id=ee204f8c-0f93-4935-b0ee-3561ada5f277
+Bank * * 31 Percussion/01 Timpani
+//! g=1 c=short i=note-half o=note:24
+40 Single hits
+//! g=1 c=short i=note-half o=note:25
+42 secco
+//! g=1 c=long i=tremolo o=note:26
+11 Rolls
+
+//! g="VSL SYN-ized SE/31 Percussion" n="0 Bells"
+//! id=2fb862c6-c4a5-4464-a79f-9b655e962420
+Bank * * 31 Percussion/05 Bells
+//! g=1 c=short i=note-half o=note:24
+88 Tubular bells
+//! g=1 c=short i=note-half o=note:25
+89 Plate bells
+
+//---------------------------------------------------------------------------
+//                      KEYBOARDS AND MALLETS
+//---------------------------------------------------------------------------
+//! g="VSL SYN-ized SE/32 Keyboards and mallets" n="01 Bosendorfer"
+//! id=32d510bf-e0c8-4ac2-ae9e-a4335bd8c22b
+Bank * * Keyboards and mallets/01 Bosendorfer
+//! g=1 c=short i=note-quarter o=cc:64,0
+40 pedal up
+//! g=1 c=long i=note-whole o=cc:64,127
+1 sustain ped
+
+//! g="VSL SYN-ized SE/32 Keyboards and mallets" n="03 Konzerthaus organ"
+//! id=55b64782-5522-4db8-99c2-dd689934c4e2
+Bank * * Keyboards and mallets/03 Konzerthaus organ
+//! g=1 c=long i=note-quarter o=note:96
+83 planum manual
+//! g=1 c=long i=note-quarter o=note:98
+84 planum pedal
+//! g=1 c=long i=note-quarter o=note:101
+85 flutes manual
+//! g=1 c=long i=note-quarter o=note:103
+86 flutes pedal
+
+//! g="VSL SYN-ized SE/32 Keyboards and mallets" n="04 Harmonium"
+//! id=84ca1b46-aad9-4bfc-8fca-3f8487536a5e
+Bank * * Keyboards and mallets/04 Harmonium
+//! g=1 c=long i=note-quarter o=note:96
+83 aeroline
+//! g=1 c=long i=note-quarter o=note:98
+84 clairon-fifre
+//! g=1 c=long i=note-quarter o=note:100
+85 clarinet bourdon
+//! g=1 c=long i=note-quarter o=note:101
+86 grand jeu
+
+//! g="VSL SYN-ized SE/32 Keyboards and mallets" n="05 prepared piano"
+//! id=20d90a21-0b51-4a20-a122-a77be11643ce
+Bank * * Keyboards and mallets/05 prepared piano
+//! g=1 c=long i=note-quarter o=note:12
+83 chain
+//! g=1 c=long i=note-quarter o=note:14
+84 harmonic
+//! g=1 c=long i=note-quarter o=note:16
+85 glass
+//! g=1 c=long i=note-quarter o=note:17
+86 glissandi
+
+//! g="VSL SYN-ized SE/32 Keyboards and mallets" n="06 Celesta"
+//! id=2bc28374-1e0d-4adf-b1de-a0a690647900
+Bank * * 32 Keyboards and mallets/Celesta
+//! g=1 c=short i=note-quarter o=note:24
+40 Normal
+//! g=1 c=short-light i=con-sord o=note:25
+48 Soft
+
+//! g="VSL SYN-ized SE/32 Keyboards and mallets" n="14 Vibraphone"
+//! id=e39d7a27-b0e2-4d07-8e75-b9f70dadbcb2
+Bank * * VSL SYN-ized SE/14 Vibraphone
+//! g=1 c=long i=note-quarter o=note:24
+1 motor off
+//! g=1 c=long-light i=vibrato o=note:25
+16 motor on
