@@ -1,0 +1,107 @@
+//! g="Orchestral Tools/Metropolis Ark 4" n="1. Full Orchestra"
+//! id=a9cd7344-7e46-461b-9388-801f5da2da60
+Bank * * OTMA4 Full Orchestra
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=short i=spiccato o=note:13
+58 staccatissimo
+//! c=long i=tenuto-half o=note:14
+42 marcato martele
+//! c=short i=ricochet o=note:15
+107 ricochet
+//! c=short i=rip o=note:16
+108 rip
+//! c=short i=crescendo o=note:17
+11 crescendo short
+//! c=short i=multitongued o=note:18
+14 2x
+//! c=short i=multitongued o=note:19
+10 3x
+//! c=short i=multitongued o=note:20
+37 4x
+
+//! g="Orchestral Tools/Metropolis Ark 4" n="2. String Ensemble"
+//! id=a9cd7344-7e46-461b-9388-801f5da2da61
+Bank * * OTMA4 String Ensemble
+//! c=long i=note-whole o=note:24
+1 sustain
+//! c=long i=marcato-half o=note:25
+16 power sustain
+//! c=long i=tenuto-half o=note:26
+42 sustain martele
+//! c=short i=marcato o=note:27
+58 marcato martele
+//! c=short i=staccato-stopped o=note:28
+107 staccato
+//! c=short i=staccato o=note:29
+108 staccato martele
+//! c=short i=staccato o=note:30
+11 staccato blurred
+//! c=short i=marcato o=note:31
+14 marcato overpress
+//! c=short i=marcato o=note:32
+10 staccato overpress
+//! c=short i=ricochet o=note:33
+37 ricochet
+
+//! g="Orchestral Tools/Metropolis Ark 4" n="3. Woodwind Ensemble"
+//! id=a9cd7344-7e46-461b-9388-801f5da2da62
+Bank * * OTMA4 Woodwind Ensemble
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=marcato-half o=note:13
+16 power sustain
+//! c=short i=staccato-stopped o=note:14
+107 staccato
+//! c=short i=rip o=note:15
+108 rips
+//! c=short i=multitongued o=note:16
+11 flutter
+//! c=short i=multitongued o=note:17
+14 2x tongue
+//! c=short i=multitongued o=note:18
+10 3x tongue
+//! c=short i=multitongued o=note:19
+37 4x tongue
+//! c=short i=multitongued o=note:20
+
+//! g="Orchestral Tools/Metropolis Ark 4" n="4. Brass Ensemble"
+//! id=a9cd7344-7e46-461b-9388-801f5da2da63
+Bank * * OTMA4 Brass Ensemble
+//! c=long i=note-whole o=note:21
+1 sustain
+//! c=long i=marcato-half o=note:22
+16 sustain martele
+//! c=long i=tenuto-half o=note:23
+42 marcato martele
+//! c=short i=spiccato o=note:24
+58 staccatissimo
+//! c=short i=staccatissimo-stopped o=note:25
+107 staccato martele
+//! c=short i=multitongued o=note:26
+108 flutter crescendo
+//! c=short i=crescendo o=note:27
+11 crescendo short
+//! c=short i=multitongued o=note:28
+14 2x tongue
+//! c=short i=multitongued o=note:29
+10 3x tongue
+//! c=short i=multitongued o=note:30
+37 4x tongue
+//! c=short i=multitongued o=note:31
+
+//! g="Orchestral Tools/Metropolis Ark 4" n="5. Mixed Choir"
+//! id=a9cd7344-7e46-461b-9388-801f5da2da64
+Bank * * OTMA4 Mixed Choir
+//! c=long i=note-whole o=note:12
+1 sustain
+//! c=long i=marcato-half o=note:13
+16 power sustain
+//! c=short i=marcato o=note:14
+11 marcato
+//! c=short i=staccato-stopped o=note:15
+107 staccato
+//! c=short i=rip o=note:16
+108 rips
+//! c=short i=crescendo o=note:17
+14 crescendo short
