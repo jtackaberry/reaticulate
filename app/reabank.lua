@@ -1241,24 +1241,26 @@ function reabank.to_menu()
     if reabank.menu then
         return reabank.menu
     end
-
     local bankmenu = {}
     for _, bank in pairs(reabank.banks_by_guid) do
         local submenu = bankmenu
         if bank.group then
             local group = (bank.factory and 'Factory/' or 'User/') .. bank.group
             for part in group:gmatch("[^/]+") do
+                local lowerpart = part:lower()
                 -- Find the index of this part in the current submenu.
                 local found = false
                 for n, tmpmenu in ipairs(submenu) do
-                    if tmpmenu[1] == part then
+                    if tmpmenu.lowername == lowerpart then
                         submenu = tmpmenu.submenu
                         found = true
                         break
                     end
                 end
                 if not found then
-                    local tmpmenu = {part, submenu={}}
+                    -- No existing submenu was found, so create a new one given the name
+                    -- (and case) for this bank.
+                    local tmpmenu = {part, submenu={}, lowername=lowerpart}
                     submenu[#submenu+1] = tmpmenu
                     submenu = tmpmenu.submenu
                 end
