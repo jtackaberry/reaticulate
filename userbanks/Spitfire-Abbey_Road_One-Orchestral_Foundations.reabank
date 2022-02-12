@@ -1,0 +1,221 @@
+//----------------------------------------------------------------------------
+// Source: rgruet - https://github.com/jtackaberry/reaticulate/issues/161
+
+
+//////////////////////////////////////////////////////////////////////////////
+//            Spitfire's ABBEY ROAD ONE  ORCHESTRAL FOUNDATIONS             //
+//////////////////////////////////////////////////////////////////////////////
+
+// v1.0 - Created by Richard Gruet (rig) on Jan 31, 2022
+// v1.1 - Merged low and high strings. Feb 2, 2022
+// v1.2 - Renamed correctly the library. Feb 2, 2022
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Orchestra"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+
+//! id=8f7c7b44-51f8-45f8-b101-b18d5a371181
+Bank * * AR1 - Orchestra
+
+//! c=long i=note-whole o=note:0
+1 Sustain
+
+//! c=short i=staccato o=note:1
+40 staccato
+
+//! c=fx i=crescendo o=note:2
+106 swells short
+
+//! c=fx i=crescendo o=note:3
+107 swells medium
+
+//! c=fx i=crescendo o=note:4
+108 swells long
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Strings"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=f7bfaacd-d1e2-4826-9848-e40caee0578a
+Bank * * AR1 - Strings
+
+//! c=long i=note-whole o=note:0
+1 long
+
+//! c=long i=con-sord o=note:1
+7 long CS
+
+//! c=long-dark i=tremolo o=note:2
+11 tremolo
+
+//! c=short i=spiccato o=note:3
+42 spiccato
+
+//! c=short-light i=pizz o=note:4
+56 pizzicato
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Trumpets"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=d96cb6f2-cc53-456c-b5ab-de57a72e5fff
+Bank * * AR1 - Trumpets
+
+//! c=long i=note-whole o=note:0
+1 long
+
+//! c=short i=staccato o=note:1
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=note:2
+50 tenuto
+
+//! c=short i=marcato o=note:3
+52 marcato
+
+//! c=fx i=crescendo o=note:4
+106 swells short
+
+//! c=fx i=crescendo o=note:5
+107 swells medium
+
+//! c=fx i=crescendo o=note:6
+108 swells long
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Horns"
+//! clone="Spitfire/Abbey Road One/Orchestral Foundations/Trumpets"
+//! id=85f31ba8-0424-413f-8d9b-c5bcc47eb02e
+Bank * * AR1 - Horns
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Low Brass"
+//! clone="Spitfire/Abbey Road One/Orchestral Foundations/Trumpets"
+//! id=c3cfeffb-db1d-43c5-83d6-0e51db6f70ee
+Bank * * AR1 - Low Brass
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="High Woods"
+//! clone="Spitfire/Abbey Road One/Orchestral Foundations/Trumpets"
+//! id=dc291cf0-162e-4ce7-990b-98832ed93a76
+Bank * * AR1 - High Woods
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Low Woods"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=75f1aa9f-3ba6-4851-ad80-5976c6b5ef2a
+Bank * * AR1 - Low Woods
+
+//! c=long i=note-whole o=note:0
+1 long
+
+//! c=short i=staccato o=note:1
+42 staccatissimo
+
+//! c=short i=marcato o=note:2
+52 marcato
+
+//! c=fx i=crescendo o=note:3
+106 swells short
+
+//! c=fx i=crescendo o=note:4
+107 swells medium
+
+//! c=fx i=crescendo o=note:5
+108 swells long
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Percussion: Percussion"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=68f2724a-3d8d-4277-86dc-9dce13b75316
+Bank * * AR1 - Percussion: Percussion
+
+//! c=short i=staccato o=note:0
+112 Soft Boom
+
+//! c=short i=staccato o=note:1
+113 Bass Drums
+
+//! c=short i=staccato o=note:2
+114 Verdi Drums
+
+//! c=short i=staccato o=note:3
+115 Toms
+
+//! c=short i=staccato o=note:4
+116 Bass & Snare
+
+//! c=short i=staccato o=note:5
+117 Toms & Octobans
+
+//! c=short i=staccato o=note:6
+118 Snares
+
+//! c=short i=staccato o=note:7
+119 Octobans
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Percussion: Drums"
+//! clone="Spitfire/Abbey Road One/Orchestral Foundations/Percussion: Percussion"
+//! id=07927775-2751-4107-a256-d55360d175de
+Bank * * AR1 - Percussion: Drums
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Percussion: Metal"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=ade4a7bf-6abc-4728-a00c-500731d12d29
+Bank * * AR1 - Percussion: Metal
+
+//! c=short i=staccato o=note:0
+120 Piatti
+
+//! c=short i=staccato o=note:1
+121 Sus. Cymbals
+
+//! c=short i=staccato o=note:2
+122 Tam Tam
+
+//! c=short i=staccato o=note:3
+123 Ribbon Crashers
+
+//! c=short i=staccato o=note:4
+124 Anvil
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Percussion: Tuned"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=c5da0b52-eb43-4faa-b923-958ecd80f879
+Bank * * AR1 - Percussion: Tuned
+
+//! c=short i=staccato o=note:0
+125 Glockenspiel
+
+//! c=short i=staccato o=note:1
+126 Xylophone
+
+//! c=short i=staccato o=note:2
+127 Timpani Hits
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Abbey Road One/Orchestral Foundations" n="Percussion: Ensembles"
+//! m="Assumes artic TRIGGER = KEYSWITCH!"
+//! id=7b09b031-b01c-4aad-814d-2576266f0e1d
+Bank * * AR1 - Percussion: Ensembles
+
+//! c=short i=staccato o=note:0
+125 Full Ensemble
+
+//! c=short i=staccato o=note:1
+126 Drum Ensemble
+
+//! c=short i=staccato o=note:2
+127 Metals Ensemble
