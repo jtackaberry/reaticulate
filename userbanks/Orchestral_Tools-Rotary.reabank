@@ -1,0 +1,86 @@
+//----------------------------------------------------------------------------
+// Orchestral Tools: Rotary
+// Source: https://github.com/crenshawda/reaticulate-user-banks
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools/Rotary" n="01 Solo Trumpet"
+//! id=115c11fe-d2c5-40c0-93b0-a70391f0d9f2
+Bank * * OTR Solo Trumpet
+//! c=short i=staccato o=note:24
+40 staccatissimo
+//! c=long i=marcato-half o=note:25
+9 marcato long
+//! c=fx i=fall o=note:26
+111 short falls
+//! c=fx i=rip o=note:27
+110 scoops
+//! c=fx i=trill-maj3 o=note:28
+73 shakes
+//! c=long i=note-whole o=note:29
+1 sustains accented i
+//! c=long i=note-whole o=note:30
+2 sustains accented ii
+
+//! g="Orchestral Tools/Rotary" n="02 Trumpet Mute Solo"
+//! id=12190724-ee3f-4733-9033-c1f5889b6510
+Bank * * OTR Trumpet Mute Solo
+//! c=short i=staccato o=note:24
+40 staccatissimo
+//! c=long i=marcato-half o=note:25
+9 marcato long
+//! c=fx i=fall o=note:26
+111 short falls
+//! c=fx i=rip o=note:27
+110 scoops
+//! c=fx i=trill-maj3 o=note:28
+73 shakes
+//! c=long i=note-whole o=note:29
+1 sustains accented
+
+//! g="Orchestral Tools/Rotary" n="03 Trombone Solo"
+//! id=d5e5fa64-4346-44f0-81e5-413bd2846de8
+Bank * * OTR Trombone Solo
+//! c=short i=staccato o=note:24
+40 staccatissimo
+//! c=long i=note-whole o=note:25
+1 sustains accented
+//! c=long i=marcato-half o=note:26
+9 marcato long
+
+//! g="Orchestral Tools/Rotary" n="04 Baritone Sax Solo"
+//! id=da6407d5-8173-4891-999b-891e4a092769
+Bank * * OTR Baritone Sax Solo
+//! c=short i=staccato o=note:24
+40 staccatissimo
+//! c=long i=marcato-half o=note:25
+9 marcato long
+
+//! g="Orchestral Tools/Rotary" n="05 Sax Section"
+//! id=ac614913-6a99-4a9e-be73-d10f50140b83
+Bank * * OTR Sax Section
+//! c=short i=staccato o=note:24
+40 staccatissimo
+//! c=long i=marcato-half o=note:25
+9 marcato long
+//! c=fx i=fall o=note:26
+111 short falls
+//! c=fx i=rip o=note:27
+110 scoops
+//! c=fx i=trill-maj3 o=note:28
+73 trills
+
+//! g="Orchestral Tools/Rotary" n="06 Brass Section"
+//! id=21baeb1c-0836-4987-a2ac-17530a05911e
+Bank * * OTR Brass Section
+//! c=short i=staccato o=note:24
+40 staccatissimo
+//! c=long i=marcato-half o=note:25
+9 marcato long
+//! c=fx i=fall o=note:26
+111 short falls
+//! c=fx i=rip o=note:27
+110 scoops
+//! c=long i=note-whole o=note:28
+1 sustains accented
+//! c=fx i=trill-maj3 o=note:29
+73 shakes

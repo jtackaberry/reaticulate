@@ -1,0 +1,39 @@
+//----------------------------------------------------------------------------
+// Orchestral Tools: Layers
+// Source: https://github.com/crenshawda/reaticulate-user-banks
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools/Layers" n="Orchestra"
+//! id=8c3cb43d-c6c6-4d2a-9534-8f6372181d88
+Bank * * OTL Full Orchestra
+//! c=long i=note-whole o=note:24
+1 chords maj sustain
+//! c=long i=note-whole o=note:25
+2 chords min sustain
+//! c=long i=note-whole o=note:26
+3 chords sus4 sustain
+//! c=short i=staccato o=note:27
+40 chords maj staccato
+//! c=short i=staccato o=note:28
+41 chords min staccato
+//! c=short i=staccato o=note:29
+42 chords sus4 staccato
+//! c=long i=note-whole o=note:30
+4 sustains low unison
+//! c=short i=staccato o=note:31
+43 staccato low unison
+
+//! g="Orchestral Tools/Layers" n="Woodwinds"
+//! clone="Orchestral Tools/Layers/Orchestra"
+//! id=3bb08b58-5ce5-408e-b294-61ab7a5a1974
+Bank * * OTL Woodwinds
+
+//! g="Orchestral Tools/Layers" n="Brass"
+//! clone="Orchestral Tools/Layers/Orchestra"
+//! id=a6bcc9b6-5f78-4edc-bbe3-99e0386afbbf
+Bank * * OTL Brass
+
+//! g="Orchestral Tools/Layers" n="Strings"
+//! clone="Orchestral Tools/Layers/Orchestra"
+//! id=e17de660-9152-478d-9d5b-797f6dbd23e8
+Bank * * OTL Strings

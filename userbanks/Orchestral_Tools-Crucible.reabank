@@ -1,0 +1,24 @@
+//----------------------------------------------------------------------------
+// Orchestral Tools: Crucible
+// Source: https://github.com/crenshawda/reaticulate-user-banks
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools/Crucible" n="Church Organ"
+//! id=83ca4a35-c2c5-418f-a91b-5391ac550dfb
+Bank * * OTR Organ
+//! c=long i=note-whole o=note:24
+1 full sustains
+//! c=short i=staccato o=note:25
+2 full staccato
+//! c=long-light i=note-whole o=note:26
+3 light sustains
+//! c=short-light i=staccato o=note:27
+40 light staccato
+//! c=long i=note-whole o=note:28
+41 pedals (8va) sustains
+//! c=short i=staccato o=note:29
+42 pedals (8va) staccato
+//! c=short i=staccato o=note:30
+4 pedals staccato
+//! c=long i=note-whole o=note:31
+43 pedals soft sustains

@@ -1,0 +1,12 @@
+//----------------------------------------------------------------------------
+// Orchestral Tools: Helix
+// Source: https://github.com/crenshawda/reaticulate-user-banks
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools/Helix" n="String Ensemble"
+//! id=233a9341-9229-486a-b2f1-e9890c4abb33
+Bank * * OTH String Ensemble
+//! c=short i=staccato o=note:100
+1 spicattos
+//! c=long i=note-whole o=note:101
+40 sustains
