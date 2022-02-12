@@ -1,0 +1,1076 @@
+//----------------------------------------------------------------------------
+// Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/137
+
+
+// *******************
+// TRUMPET - SOLO (SB)
+// *******************
+
+//! g="VSL - SYNCHRON/Synchron Brasss" n="Trumpet - Solo"
+//! id=2cd8e100-b581-4c86-9c08-2aba4ab13339
+Bank * * Trumpet - Solo
+
+//! c=short i=staccato o=note:24/note:36/note:21
+1 Staccato, Short (Bold)
+//! c=short i=staccato o=note:24/note:36/note:23
+2 Staccato, Short (Agile)
+//! c=short i=staccato o=note:24/note:37/note:21
+3 Staccato, Long (Bold)
+//! c=short i=staccato o=note:24/note:37/note:23
+4 Staccato, Long (Agile)
+//! c=short i=staccato o=note:24/note:38/note:21
+5 Portato (Bold)
+//! c=short i=staccato o=note:24/note:38/note:23
+6 Portato (Agile)
+//! c=short i=staccato o=note:24/note:39
+7 Portato, Long
+
+//! spacer=1
+//! c=textured i=list g=2 o=note:45
+100 Senza Vibrato
+//! c=textured i=list g=2 o=note:46
+101 Con Vibrato
+//! c=textured i=list g=2 o=note:47
+102 Vib. X-Fade
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:36
+8 Long
+//! c=long i=note-whole o=note:25/note:37
+9 Long w/ FF
+//! c=long i=note-whole o=note:25/note:39
+10 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:36/note:41
+11 Legato
+//! c=legato i=legato-fast o=note:26/note:36/note:42
+12 Legato Fast
+//! c=legato i=phrase o=note:26/note:36/note:43
+13 Legato Auto
+//! c=legato-dark i=legato o=note:26/note:37/note:41
+14 Legato w/ FF
+//! c=legato-dark i=legato-fast o=note:26/note:37/note:42
+15 Legato Fast w/ FF
+//! c=legato-dark i=phrase o=note:26/note:37/note:43
+16 Legato Auto w/ FF
+//! c=legato i=legato o=note:26/note:39
+17 Espr. Legato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:36
+18 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+19 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:38/note:42
+20 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:38/note:43
+21 Cresc. Strong 3s
+//! c=#938C0B i=crescendo o=note:27/note:38/note:44
+22 Cresc. Strong 4s
+//! c=#938C0B i=crescendo o=note:27/note:39/note:42
+23 Cresc. Soft 2s
+//! c=#938C0B i=crescendo o=note:27/note:39/note:43
+24 Cresc. Soft 3s
+//! c=#938C0B i=crescendo o=note:27/note:39/note:44
+25 Cresc. Soft 4s
+//! c=#938C0B i=decrescendo o=note:27/note:40/note:42
+26 Dim. Strong 2s
+//! c=#938C0B i=decrescendo o=note:27/note:40/note:43
+27 Dim. Strong 3s
+//! c=#938C0B i=decrescendo o=note:27/note:40/note:44
+28 Dim. Strong 4s
+//! c=#938C0B i=decrescendo o=note:27/note:41/note:42
+29 Dim Soft 2s
+//! c=#938C0B i=decrescendo o=note:27/note:41/note:43
+30 Dim Soft 3s
+//! c=#938C0B i=decrescendo o=note:27/note:41/note:44
+31 Dim Soft 4s
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:36
+32 Fluttertongue
+//! c=legato-light i=trill o=note:28/note:38
+33 Trill, HT
+//! c=legato-light i=trill o=note:28/note:39
+34 Trill, WT
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:36/note:21
+35 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:37/note:21
+36 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:38/note:21
+37 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:39/note:21
+38 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:36/note:23
+39 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:37/note:23
+40 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:38/note:23
+41 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:39/note:23
+42 Fast Reps 160bpm (Cut)
+
+//! spacer=1
+//! c=fx i=fanfare o=note:30/note:36
+43 Upbeat x1
+//! c=fx i=fanfare o=note:30/note:37
+44 Upbeat x2
+//! c=fx i=fanfare o=note:30/note:38
+45 Upbeat x3
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *************************
+// TRUMPETS - 4 PLAYERS (SB)
+// *************************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Trumpets - 4 Players"
+//! id=3518773c-ff6b-4a7c-a0a0-671fe5db114d
+Bank * * Trumpets - 4 Players
+
+//! c=short i=staccato o=note:24/note:21
+1 Staccato (Bold)
+//! c=short i=staccato o=note:24/note:23
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:36
+3 Long
+//! c=long i=note-whole o=note:25/note:37
+4 Long w/ FF
+//! c=long i=note-whole o=note:25/note:39
+5 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:36
+6 Legato
+//! c=legato i=legato o=note:26/note:37
+7 Legato w/ FF
+//! c=legato i=legato o=note:26/note:38
+27 Legato Marcato
+//! c=legato i=legato o=note:26/note:39
+8 Legato Espr.
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:36
+9 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+10 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:38/note:42
+11 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:38/note:43
+12 Cresc. Strong 3.5s
+//! c=#938C0B i=crescendo o=note:27/note:39
+13 Cresc. Soft
+//! c=#938C0B i=decrescendo o=note:27/note:40
+14 Cresc. Very Soft
+//! c=#938C0B i=decrescendo o=note:27/note:41
+15 Dim Soft
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:36
+16 Fluttertongue
+//! c=legato-light i=trill o=note:28/note:38
+17 Trill, HT
+//! c=legato-light i=trill o=note:28/note:39
+18 Trill, WT
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:36/note:21
+19 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:37/note:21
+20 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:38/note:21
+21 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:39/note:21
+22 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:36/note:23
+23 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:37/note:23
+24 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:38/note:23
+25 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:39/note:23
+26 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *************************
+// TRUMPETS - 6 PLAYERS (SB)
+// *************************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Trumpets - 6 Players"
+//! id=7c7dee37-28c1-4f0c-8504-bdec3922508f
+Bank * * Trumpets - 6 Players
+
+//! c=short i=staccato o=note:24/note:21
+1 Staccato (Bold)
+//! c=short i=staccato o=note:24/note:23
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:36
+3 Long
+//! c=long i=note-whole o=note:25/note:37
+4 Long w/ FF
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:36
+5 Legato
+//! c=legato i=legato o=note:26/note:37
+6 Legato w/ FF
+//! c=legato i=legato o=note:26/note:38
+7 Legato Marcato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:36
+8 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:37
+9 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:38/note:42
+10 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:38/note:43
+11 Cresc. Strong 3.5s
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:36
+12 Fluttertongue
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:36/note:21
+13 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:37/note:21
+14 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:38/note:21
+15 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:39/note:21
+16 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:36/note:23
+17 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:37/note:23
+18 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:38/note:23
+19 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:39/note:23
+20 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ****************
+// HORN - SOLO (SB)
+// ****************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Horn - Solo"
+//! id=ae84338d-a3cd-49b5-99ed-2b885c8553d6
+Bank * * Horn - Solo
+
+//! c=short i=staccato o=note:24/note:84/note:21
+1 Staccato, Short (Bold)
+//! c=short i=staccato o=note:24/note:84/note:23
+2 Staccato, Short (Agile)
+//! c=short i=staccato o=note:24/note:85/note:21
+3 Staccato, Long (Bold)
+//! c=short i=staccato o=note:24/note:85/note:23
+4 Staccato, Long (Agile)
+//! c=short i=staccato o=note:24/note:86/note:21
+5 Portato (Bold)
+//! c=short i=staccato o=note:24/note:86/note:23
+6 Portato (Agile)
+//! c=short i=staccato o=note:24/note:87
+7 Portato, Long
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:84
+8 Long
+//! c=long i=note-whole o=note:25/note:85
+9 Long w/ FF
+//! c=long i=note-whole o=note:25/note:87
+10 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:84/note:89
+11 Legato
+//! c=legato i=legato-fast o=note:26/note:84/note:90
+12 Legato Fast
+//! c=legato i=phrase o=note:26/note:84/note:91
+13 Legato Auto
+//! c=legato-dark i=legato o=note:26/note:85/note:89
+14 Legato w/ FF
+//! c=legato-dark i=legato-fast o=note:26/note:85/note:90
+15 Legato Fast w/ FF
+//! c=legato-dark i=phrase o=note:26/note:85/note:91
+16 Legato Auto w/ FF
+//! c=legato i=legato o=note:26/note:86
+17 Legato Marcato
+//! c=legato i=legato o=note:26/note:87
+18 Espr. Legato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:84
+19 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:85
+20 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:86/note:91
+21 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:92
+22 Cresc. Strong 3s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:93
+23 Cresc. Strong 4s
+//! c=#938C0B i=crescendo o=note:27/note:87/note:91
+24 Cresc. Soft 2s
+//! c=#938C0B i=crescendo o=note:27/note:87/note:92
+25 Cresc. Soft 3s
+//! c=#938C0B i=crescendo o=note:27/note:87/note:93
+26 Cresc. Soft 4s
+//! c=#938C0B i=decrescendo o=note:27/note:88/note:91
+27 Dim. Strong 2s
+//! c=#938C0B i=decrescendo o=note:27/note:88/note:92
+28 Dim. Strong 3s
+//! c=#938C0B i=decrescendo o=note:27/note:88/note:93
+29 Dim. Strong 4s
+//! c=#938C0B i=decrescendo o=note:27/note:89/note:91
+30 Dim Soft 2s
+//! c=#938C0B i=decrescendo o=note:27/note:89/note:92
+31 Dim Soft 3s
+//! c=#938C0B i=decrescendo o=note:27/note:89/note:93
+32 Dim Soft 4s
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:84
+33 Fluttertongue
+//! c=legato-light i=trill o=note:28/note:86
+34 Trill, HT
+//! c=legato-light i=trill o=note:28/note:87
+35 Trill, WT
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:84/note:21
+36 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:21
+37 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:21
+38 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:21
+39 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:84/note:23
+40 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:23
+41 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:23
+42 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:23
+43 Fast Reps 160bpm (Cut)
+
+//! spacer=1
+//! c=textured i=rip o=note:30
+44 Rips
+
+//! spacer=1
+//! c=fx i=fanfare o=note:31/note:84
+45 Upbeat x1
+//! c=fx i=fanfare o=note:31/note:85
+46 Upbeat x2
+//! c=fx i=fanfare o=note:31/note:86
+47 Upbeat x3
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ****************
+// HORN - 6 PLAYERS
+// ****************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Horns - 6 Players"
+//! id=f47da8ff-f149-4428-9f7d-09a482112a6e
+Bank * * Horns - 6 Players
+
+//! c=short i=staccato o=note:24/note:21
+1 Staccato (Bold)
+//! c=short i=staccato o=note:24/note:23
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:84
+3 Long
+//! c=long i=note-whole o=note:25/note:85
+4 Long w/ FF
+//! c=long i=note-whole o=note:25/note:87
+5 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:84
+6 Legato
+//! c=legato i=legato o=note:26/note:85
+7 Legato w/ FF
+//! c=legato i=legato o=note:26/note:86
+8 Legato Marcato
+//! c=legato i=legato o=note:26/note:87
+9 Legato Espr.
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:84
+10 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:85
+11 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:86/note:91
+12 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:93
+13 Cresc. Strong 4s
+//! c=#938C0B i=crescendo o=note:27/note:87
+14 Cresc. Soft
+//! c=#938C0B i=decrescendo o=note:27/note:88
+15 Cresc. Very Soft
+//! c=#938C0B i=decrescendo o=note:27/note:89
+16 Dim Soft
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:84
+17 Fluttertongue
+//! c=legato-light i=trill o=note:28/note:86
+18 Trill, HT
+//! c=legato-light i=trill o=note:28/note:87
+19 Trill, WT
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:84/note:21
+20 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:21
+21 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:21
+22 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:21
+23 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:84/note:23
+24 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:23
+25 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:23
+26 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:23
+27 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *****************
+// HORN - 12 PLAYERS
+// *****************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Horns - 12 Players"
+//! id=f3c63fcd-fd54-41ad-a682-50d2058898cb
+Bank * * Horns - 12 Players
+
+//! c=short i=staccato o=note:24/note:21
+1 Staccato (Bold)
+//! c=short i=staccato o=note:24/note:23
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:84
+3 Long
+//! c=long i=note-whole o=note:25/note:85
+4 Long w/ FF
+//! c=long i=note-whole o=note:25/note:87
+5 Long Soft
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:84
+6 Legato
+//! c=legato i=legato o=note:26/note:85
+7 Legato w/ FF
+//! c=legato i=legato o=note:26/note:87
+8 Legato Espr.
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:84
+9 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:85
+10 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:86/note:91
+11 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:93
+12 Cresc. Strong 4s
+
+//! spacer=1
+//! c=textured i=rip o=note:28/note:84
+13 Rips, Slow
+//! c=textured i=rip o=note:28/note:85
+14 Rips, Fast
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// **************************
+// TENOR TROMBONE - SOLO (SB)
+// **************************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Tenor Trombone - Solo"
+//! id=cf2d9697-fc33-42f7-8281-c7934fed1354
+Bank * * Tenor Trombone - Solo
+
+//! c=short i=staccato o=note:24/note:84/note:21
+1 Staccato (Bold)
+//! c=short i=staccato o=note:24/note:84/note:23
+2 Staccato (Agile)
+//! c=short i=staccato o=note:24/note:86/note:21
+3 Portato (Bold)
+//! c=short i=staccato o=note:24/note:86/note:23
+4 Portato (Agile)
+//! c=short i=staccato o=note:24/note:87
+5 Portato, Long
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:84
+6 Long
+//! c=long i=note-whole o=note:25/note:85
+7 Long w/ FF
+//! c=long i=note-whole o=note:25/note:87
+8 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:84/note:89
+9 Legato
+//! c=legato i=legato-fast o=note:26/note:84/note:90
+10 Legato Fast
+//! c=legato i=phrase o=note:26/note:84/note:91
+11 Legato Auto
+//! c=legato-dark i=legato o=note:26/note:85/note:89
+12 Legato w/ FF
+//! c=legato-dark i=legato-fast o=note:26/note:85/note:90
+13 Legato Fast w/ FF
+//! c=legato-dark i=phrase o=note:26/note:85/note:91
+14 Legato Auto w/ FF
+//! c=legato i=legato o=note:26/note:86
+15 Legato Marcato
+//! c=legato i=legato o=note:26/note:87
+16 Espr. Legato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:84
+17 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:85
+18 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:86/note:91
+19 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:92
+20 Cresc. Strong 3s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:93
+21 Cresc. Strong 4s
+//! c=#938C0B i=crescendo o=note:27/note:87/note:91
+22 Cresc. Soft 2s
+//! c=#938C0B i=crescendo o=note:27/note:87/note:92
+23 Cresc. Soft 3s
+//! c=#938C0B i=crescendo o=note:27/note:87/note:93
+24 Cresc. Soft 4s
+//! c=#938C0B i=decrescendo o=note:27/note:88/note:91
+25 Dim. Strong 2s
+//! c=#938C0B i=decrescendo o=note:27/note:88/note:92
+26 Dim. Strong 3s
+//! c=#938C0B i=decrescendo o=note:27/note:88/note:93
+27 Dim. Strong 4s
+//! c=#938C0B i=decrescendo o=note:27/note:89/note:91
+28 Dim Soft 2s
+//! c=#938C0B i=decrescendo o=note:27/note:89/note:92
+29 Dim Soft 3s
+//! c=#938C0B i=decrescendo o=note:27/note:89/note:93
+30 Dim Soft 4s
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:84
+31 Fluttertongue
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:84/note:21
+32 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:21
+33 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:21
+34 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:21
+35 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:84/note:23
+36 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:23
+37 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:23
+38 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:23
+39 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *************************
+// BASS TROMBONE - SOLO (SB)
+// *************************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Bass Trombone - Solo"
+//! id=6238dbe9-44c5-4ce1-8f47-b74a3e6d8148
+Bank * * Bass Trombone - Solo
+
+//! c=short i=staccato o=note:72/note:84/note:69
+1 Staccato (Bold)
+//! c=short i=staccato o=note:72/note:84/note:71
+2 Staccato (Agile)
+//! c=short i=staccato o=note:72/note:86/note:69
+3 Portato (Bold)
+//! c=short i=staccato o=note:72/note:86/note:71
+4 Portato (Agile)
+//! c=short i=staccato o=note:72/note:87
+5 Portato, Long
+
+//! spacer=1
+//! c=long i=note-whole o=note:73/note:84
+6 Long
+//! c=long i=note-whole o=note:73/note:85
+7 Long w/ FF
+//! c=long i=note-whole o=note:73/note:87
+8 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:74/note:84/note:89
+9 Legato
+//! c=legato i=legato-fast o=note:74/note:84/note:90
+10 Legato Fast
+//! c=legato i=phrase o=note:74/note:84/note:91
+11 Legato Auto
+//! c=legato-dark i=legato o=note:74/note:85/note:89
+12 Legato w/ FF
+//! c=legato-dark i=legato-fast o=note:74/note:85/note:90
+13 Legato Fast w/ FF
+//! c=legato-dark i=phrase o=note:74/note:85/note:91
+14 Legato Auto w/ FF
+//! c=legato i=legato o=note:74/note:86
+15 Legato Marcato
+//! c=legato i=legato o=note:74/note:87
+16 Espr. Legato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+17 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+18 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86/note:91
+19 Cresc. 2s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:92
+20 Cresc. 3s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:93
+21 Cresc. 4s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:91
+22 Dim. 2s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:92
+23 Dim. 3s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:93
+24 Dim. 4s
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:76/note:84
+25 Fluttertongue
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:77/note:84/note:69
+26 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:85/note:69
+27 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:86/note:69
+28 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:87/note:69
+29 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:84/note:71
+30 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:85/note:71
+31 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:86/note:71
+32 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:87/note:71
+33 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ********************
+// CIMBASSO - SOLO (SB)
+// ********************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Cimbasso - Solo"
+//! id=b26488ae-01da-4816-8d77-972b5308141d
+Bank * * Bass Trombone - Solo
+
+//! c=short i=staccato o=note:72/note:84/note:69
+1 Staccato (Bold)
+//! c=short i=staccato o=note:72/note:84/note:71
+2 Staccato (Agile)
+//! c=short i=staccato o=note:72/note:86/note:69
+3 Portato (Bold)
+//! c=short i=staccato o=note:72/note:86/note:71
+4 Portato (Agile)
+//! c=short i=staccato o=note:72/note:87
+5 Portato, Long
+
+//! spacer=1
+//! c=long i=note-whole o=note:73/note:84
+6 Long
+//! c=long i=note-whole o=note:73/note:85
+7 Long w/ FF
+//! c=long i=note-whole o=note:73/note:87
+8 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:74/note:84/note:89
+9 Legato
+//! c=legato i=legato-fast o=note:74/note:84/note:90
+10 Legato Fast
+//! c=legato i=phrase o=note:74/note:84/note:91
+11 Legato Auto
+//! c=legato-dark i=legato o=note:74/note:85/note:89
+12 Legato w/ FF
+//! c=legato-dark i=legato-fast o=note:74/note:85/note:90
+13 Legato Fast w/ FF
+//! c=legato-dark i=phrase o=note:74/note:85/note:91
+14 Legato Auto w/ FF
+//! c=legato i=legato o=note:74/note:86
+15 Legato Marcato
+//! c=legato i=legato o=note:74/note:87
+16 Espr. Legato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+17 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+18 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86/note:91
+19 Cresc. 2s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:92
+20 Cresc. 3s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:93
+21 Cresc. 4s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:91
+22 Dim. 2s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:92
+23 Dim. 3s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:93
+24 Dim. 4s
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:76/note:84/note:69
+26 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:76/note:85/note:69
+27 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:76/note:86/note:69
+28 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:76/note:87/note:69
+29 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:76/note:84/note:71
+30 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:76/note:85/note:71
+31 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:76/note:86/note:71
+32 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:76/note:87/note:71
+33 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// *********************
+// BASS TUBA - SOLO (SB)
+// *********************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Bass Tuba - Solo"
+//! id=a2f7054d-ffe2-4f12-a152-44e86f7d5f6e
+Bank * * Bass Tuba - Solo
+
+//! c=short i=staccato o=note:72/note:84/note:69
+1 Staccato (Bold)
+//! c=short i=staccato o=note:72/note:84/note:71
+2 Staccato (Agile)
+//! c=short i=staccato o=note:72/note:86/note:69
+3 Portato (Bold)
+//! c=short i=staccato o=note:72/note:86/note:71
+4 Portato (Agile)
+//! c=short i=staccato o=note:72/note:87
+5 Portato, Long
+
+//! spacer=1
+//! c=long i=note-whole o=note:73/note:84
+6 Long
+//! c=long i=note-whole o=note:73/note:85
+7 Long w/ FF
+//! c=long i=note-whole o=note:73/note:87
+8 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:74/note:84/note:91
+9 Legato
+//! c=legato i=legato-fast o=note:74/note:84/note:92
+10 Legato Fast
+//! c=legato i=phrase o=note:74/note:84/note:93
+11 Legato Auto
+//! c=legato-dark i=legato o=note:74/note:85/note:91
+12 Legato w/ FF
+//! c=legato-dark i=legato-fast o=note:74/note:85/note:92
+13 Legato Fast w/ FF
+//! c=legato-dark i=phrase o=note:74/note:85/note:93
+14 Legato Auto w/ FF
+//! c=legato i=legato o=note:74/note:86
+15 Legato Marcato
+//! c=legato i=legato o=note:74/note:87
+16 Espr. Legato
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+17 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+18 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86/note:91
+19 Cresc. 2s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:92
+20 Cresc. 3s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:93
+21 Cresc. 4s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:91
+22 Dim. 2s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:92
+23 Dim. 3s
+//! c=#938C0B i=decrescendo o=note:75/note:87/note:93
+24 Dim. 4s
+
+//! spacer=1
+//! c=legato-light i=trill o=note:76/note:86
+25 Trill, HT
+//! c=legato-light i=trill o=note:76/note:87
+26 Trill WT
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:77/note:84/note:69
+27 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:85/note:69
+28 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:86/note:69
+29 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:87/note:69
+30 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:84/note:71
+31 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:85/note:71
+32 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:86/note:71
+33 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:87/note:71
+34 Fast Reps 160bpm (Cut)
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// ********************************
+// TENOR TROMBONES - 4 PLAYERS (SB)
+// ********************************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Tenor Trombones - 4 Players"
+//! id=e604f528-39fd-4d3e-8c5e-e18e196df307
+Bank * * Tenor Trombones - 4 Players
+
+//! c=short i=staccato o=note:24/note:21
+1 Staccato (Bold)
+//! c=short i=staccato o=note:24/note:23
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:25/note:84
+3 Long
+//! c=long i=note-whole o=note:25/note:85
+4 Long w/ FF
+//! c=long i=note-whole o=note:25/note:87
+5 Long Soft
+
+//! spacer=1
+//! c=legato i=legato o=note:26/note:84
+6 Legato
+//! c=legato i=legato o=note:26/note:85
+7 Legato w/ FF
+//! c=legato i=legato o=note:26/note:86
+50 Legato Marcato
+//! c=legato i=legato o=note:26/note:87
+8 Legato Espr.
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:27/note:84
+9 Sforzato
+//! c=#938C0B i=sfz o=note:27/note:85
+10 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:27/note:86/note:91
+11 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:27/note:86/note:93
+12 Cresc. Strong 4s
+//! c=#938C0B i=crescendo o=note:27/note:87
+13 Cresc. Soft
+//! c=#938C0B i=crescendo o=note:27/note:88
+14 Cresc. Very Soft
+//! c=#938C0B i=decrescendo o=note:27/note:89
+15 Dim. Soft
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:28/note:84
+16 Fluttertongue
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:29/note:84/note:21
+20 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:21
+21 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:21
+22 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:21
+23 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:29/note:84/note:23
+24 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:85/note:23
+25 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:86/note:23
+26 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:29/note:87/note:23
+27 Fast Reps 160bpm (Cut)
+
+//! spacer=1
+//! c=textured i=legato-gliss o=note:30/note:84
+28 Gliss - Up, m2
+//! c=textured i=legato-gliss o=note:30/note:85
+29 Gliss - Down, m2
+//! c=textured i=legato-gliss o=note:30/note:86
+30 Gliss - Up, M2
+//! c=textured i=legato-gliss o=note:30/note:87
+31 Gliss - Down, M2
+//! c=textured i=legato-gliss o=note:30/note:88
+32 Gliss - Up, P4
+//! c=textured i=legato-gliss o=note:30/note:89
+33 Gliss - Down, P4
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// **************************
+// TROMBONES - 9 PLAYERS (SB)
+// **************************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Trombones - 9 Players"
+//! id=332e45e2-e997-43d6-a597-97ae4bfbe20e
+Bank * * Trombones - 9 Players
+
+//! c=short i=staccato o=note:72/note:69
+1 Staccato (Bold)
+//! c=short i=staccato o=note:72/note:71
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:73/note:84/note:69
+3 Long
+//! c=long i=note-whole o=note:73/note:84/note:71
+4 Long (FA)
+//! c=long i=note-whole o=note:73/note:85/note:69
+5 Long w/ FF
+//! c=long i=note-whole o=note:73/note:85/note:71
+6 Long w/ FF (FA)
+//! c=long i=note-whole o=note:73/note:87/note:69
+7 Long, Soft
+//! c=long i=note-whole o=note:73/note:87/note:71
+8 Long, Soft (FA)
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+9 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+10 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86/note:91
+11 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:93
+12 Cresc. Strong 4s
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// **************
+// LOW BRASS (SB)
+// **************
+
+//! g="VSL - SYNCHRON/Synchron Brass" n="Low Brass"
+//! id=07cc53f5-78ca-446d-9c6a-122f09353294
+Bank * * Low Brass
+
+//! c=fx i=list g=2 o=note:24
+100 Regular
+//! c=fx i=list g=2 o=note:25
+101 Regular w/ CBT
+//! c=fx i=list g=2 o=note:26
+102 Clusters
+//! c=fx i=list g=2 o=note:27
+103 Reg/Cluster XF
+
+//! spacer=1
+//! c=short i=staccato o=note:72/note:69
+1 Staccato (Bold)
+//! c=short i=staccato o=note:72/note:71
+2 Staccato (Agile)
+
+//! spacer=1
+//! c=long i=note-whole o=note:73/note:84
+3 Long
+//! c=long i=note-whole o=note:73/note:85
+4 Long w/ FF
+//! c=long i=note-whole o=note:73/note:87
+5 Long Soft
+//! c=long i=note-whole o=note:73/note:88
+6 Long Espr.
+
+//! spacer=1
+//! c=legato i=legato o=note:74/note:84
+7 Legato
+//! c=legato i=legato o=note:74/note:85
+8 Legato w/ FF
+//! c=legato i=legato o=note:74/note:87
+9 Legato Soft
+//! c=legato i=legato o=note:74/note:88
+10 Legato Espr.
+
+//! spacer=1
+//! c=#938C0B i=sfz o=note:75/note:84
+11 Sforzato
+//! c=#938C0B i=sfz o=note:75/note:85
+12 Sforzatissimo
+//! c=#938C0B i=crescendo o=note:75/note:86/note:91
+13 Cresc. Strong 2s
+//! c=#938C0B i=crescendo o=note:75/note:86/note:93
+14 Cresc. Strong 4s
+
+//! spacer=1
+//! c=legato-light i=tremolo o=note:76/note:84
+15 Fluttertongue
+//! c=legato-light i=trill o=note:76/note:86
+16 Trill, HT
+//! c=legato-light i=trill o=note:76/note:87
+17 Trill, WT
+
+//! spacer=1
+//! c=#E1491C i=riccochet o=note:77/note:84/note:69
+18 Fast Reps 120bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:85/note:69
+19 Fast Reps 130bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:86/note:69
+20 Fast Reps 140bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:87/note:69
+21 Fast Reps 160bpm (Ring)
+//! c=#E1491C i=riccochet o=note:77/note:84/note:71
+22 Fast Reps 120bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:85/note:71
+23 Fast Reps 130bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:86/note:71
+24 Fast Reps 140bpm (Cut)
+//! c=#E1491C i=riccochet o=note:77/note:87/note:71
+25 Fast Reps 160bpm (Cut)
+
+//! spacer=1
+//! c=textured i=legato-gliss o=note:78/note:84
+26 Gliss - Up, m2
+//! c=textured i=legato-gliss o=note:78/note:85
+27 Gliss - Down, m2
+//! c=textured i=legato-gliss o=note:78/note:86
+28 Gliss - Up, M2
+//! c=textured i=legato-gliss o=note:78/note:87
+29 Gliss - Down, M2
+//! c=textured i=legato-gliss o=note:78/note:88
+30 Gliss - Up, P4
+//! c=textured i=legato-gliss o=note:78/note:89
+31 Gliss - Down, P4
