@@ -1,9 +1,16 @@
+# 0.5.2
+
+## Bug Fixes
+
+* Fixed a regression from 0.5.1 where Reaticulate would crash when a bank on the current track had an articulation without an icon name
+* Fixed a bug where the user's default articulation color (as configured in the settings screen) was not respected
+
 # 0.5.1
 
 ## Bug Fixes
 
-* Fix runtime error when js_ReaScriptAPI is not installed
-* Fix bug where docking/undocking failed to work without js_ReaScriptAPI
+* Fixed runtime error when js_ReaScriptAPI is not installed
+* Fixed a bug where docking/undocking failed to work without js_ReaScriptAPI
 
 # 0.5.0
 
