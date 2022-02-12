@@ -151,6 +151,22 @@ function screen.init()
         end
     })
 
+    section:add(rtk.Text{'Middle C Mappping (from C4):'}, {valign='left'})
+    local middle_c_map = section:add(rtk.OptionMenu{
+        menu={
+            {'C3', id='C3', offset=-1},
+            {'C4', id='C4', offset=0},
+            {'C5', id='C5', offset=1},
+        },
+    })
+    middle_c_map.onchange = function(self, item)
+        if rtk.current ~= nil then
+            rtk.current.middle_c_offset = item.offset
+            rfx.current:sync_banks_to_rfx()
+        end
+    end
+    middle_c_map:select('C4')
+
     -- Build menus for src and dst channels
     screen.src_channel_menu = {{'Omni', id=17}}
     for i = 1, 16 do

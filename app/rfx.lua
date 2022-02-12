@@ -975,6 +975,8 @@ function rfx.Track:initialize()
     -- are regenerated (e.g. because reabank.parseall() is called) then this table must be
     -- regenerated via rfx.Track:index_banks_by_channel_and_check_hash()
     self.banks_by_channel = nil
+    -- Track specific options
+    self.middle_c_offset = 0
     self:reset()
 end
 
@@ -1556,6 +1558,12 @@ function rfx.Track:sync_banks_to_rfx()
                         local outbus = output.bus or bank.dstbus or 1
                         local param1 = tonumber(output.args[1] or 0)
                         local param2 = tonumber(output.args[2] or 0)
+                        if output.type == 'note' then
+                            -- offset the note based on middle C octave offset.
+                            if self.current ~= nil then
+                                param1 = param1 + self.current.middle_c_offset * 12
+                            end
+                        end
                         if not output.route then
                             -- Set bit 7 of param1 if this output event should not setup routing
                             param1 = param1 | 0x80
