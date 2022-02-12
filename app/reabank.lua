@@ -328,6 +328,8 @@ end
 
 local Bank = rtk.class('Bank')
 function Bank:initialize(msb, lsb, name, attrs, factory)
+    -- reabank.parse_from_string() which calls us will catch this and log an error.
+    assert(name, 'bank name must be specified')
     self.factory = factory
     self._msb = tonumber(msb)
     self._lsb = tonumber(lsb)
