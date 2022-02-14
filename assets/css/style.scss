@@ -176,5 +176,16 @@ summary {
     width: 64px;
     height: 56px;
     background-image: url(../../img/articulations.png);
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
     //transform: scale(1.3);
+}
+
+@media print {
+    * {
+        color: black;
+    }
+    .articon {
+        filter: invert(1);
+    }
 }
