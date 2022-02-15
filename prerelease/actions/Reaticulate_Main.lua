@@ -41,6 +41,9 @@ else
     -- times (fewer paths to search) and we have no outside dependencies.  rtk is added as
     -- a submodule so is explicitly included in the path.
     package.path = string.format("%s?.lua;%s/rtk/?.lua;%s/rtk/?/init.lua", appdir, basedir, basedir)
+    -- Also search up a level for rtk, in case it is not available as a submodule.  This is
+    -- the case during rtk development.
+    package.path = string.format('%s;%s/../rtk/?.lua;%s/../rtk/?/init.lua', package.path, basedir, basedir)
     -- Source based installation
     local main = require 'main'
     main(basedir)

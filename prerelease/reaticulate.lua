@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.0-rc1'}end)()
+return {_VERSION='0.5.3-pre1'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -116,7 +116,7 @@ end
 else
 rawset(t,key,value)end
 end
-})rtk.dnd={dragging=nil,droppable=nil,dropping=nil,arg=nil,buttons=nil,}local _os=reaper.GetOS():lower():sub(1,3)rtk.os={mac=(_os=='osx'),windows=(_os=='win'),linux = (_os == 'lin' or _os == 'oth'),bits=32,}rtk.mouse={BUTTON_LEFT=1,BUTTON_MIDDLE=64,BUTTON_RIGHT=2,BUTTON_MASK=(1|2|64),x=0,y=0,down=0,state={order={}}}local _load_cursor
+})rtk.dnd={dragging=nil,droppable=nil,dropping=nil,arg=nil,buttons=nil,}local _os=reaper.GetOS():lower():sub(1,3)rtk.os={mac = (_os == 'osx' or _os == 'mac'),windows=(_os=='win'),linux = (_os == 'lin' or _os == 'oth'),bits=32,}rtk.mouse={BUTTON_LEFT=1,BUTTON_MIDDLE=64,BUTTON_RIGHT=2,BUTTON_MASK=(1|2|64),x=0,y=0,down=0,state={order={}}}local _load_cursor
 if rtk.has_js_reascript_api then
 function _load_cursor(cursor)return reaper.JS_Mouse_LoadCursor(cursor)end
 else
@@ -1032,8 +1032,7 @@ end
 function rtk.Font:measure(s)self:set()return gfx.measurestr(s)end
 local _wrap_characters={[' '] = true,['-'] = true,[','] = true,['.'] = true,['!'] = true,['?'] = true,['\n'] = true,['/'] = true,['\\'] = true,[';'] = true,[':'] = true,}function rtk.Font:layout(s,boxw,boxh,wrap,align,relative,spacing,breakword)self:set()local segments={text=s,boxw=boxw,boxh=boxh,wrap=wrap,align=align,relative=relative,spacing=spacing,scale=rtk.scale.value
 }align=align or rtk.Widget.LEFT
-spacing=spacing or 0
-if not s:find('\n') then
+spacing=(spacing or 0)+math.ceil((rtk.os.mac and 3 or 0)*rtk.scale.value)if not s:find('\n') then
 local w,h=gfx.measurestr(s)if w<=boxw or not wrap then
 segments[1]={s,0,0,w,h}return segments,w,h
 end
@@ -1495,77 +1494,107 @@ end)()
 __mod_rtk_imagepack=(function()
 local rtk=__mod_rtk_core
 local log=__mod_rtk_log
-rtk.ImagePack=rtk.class('rtk.ImagePack')function rtk.ImagePack:initialize(attrs)self._img=nil
-self._img_recolored={}self._images={}self._cache={}self._height=0
-if attrs then
-for _,row in ipairs(attrs)do
-self:add_row(row)end
+rtk.ImagePack=rtk.class('rtk.ImagePack')rtk.ImagePack.register{default_size='medium',}function rtk.ImagePack:initialize(attrs)table.merge(self,self.class.attributes.defaults)self._last_id=0
+self._sources={}self._regions={}self._cache={}if attrs then
+self.default_size=attrs.default_size or self.default_size
 if attrs.src then
-self:load(attrs.src)end
-if attrs.register then
-self:register()end
+self:add(attrs)if attrs.register then
+self:register_as_icons()end
 end
 end
-function rtk.ImagePack:add_row(attrs)assert(type(attrs)=='table', 'ImagePack row attributes must be a table')assert(type(attrs.w)=='number', 'ImagePack row missing "w" attribute or is not number')assert(type(attrs.h)=='number', 'ImagePack row missing "h" attribute or is not number')assert(type(attrs.names)=='table', 'ImagePack row missing "names" attribute or is not table')local x=0
-for _,name in ipairs(attrs.names)do
-local names=self._images[attrs.style or rtk.Attribute.NIL]
-if not names then
-names={}self._images[attrs.style]=names
 end
-local densities=names[name]
+function rtk.ImagePack:add(attrs)assert(type(attrs)=='table', 'ImagePack:add() expects a table')assert(type(attrs.src)=='string' or rtk.isa(attrs.src, rtk.Image), '"src" field is missing or is not string or rtk.Image')assert(not attrs.strips or type(attrs.strips)=='table', '"strips" field must be a table')local strips=attrs.strips or attrs
+assert(#strips > 0, 'no strips provided (either as a "strips" field or as positional elements elements)')local src_idx=#self._sources+1
+self._sources[src_idx]={src=attrs.src,recolors={}}local y=0
+for _,strip in ipairs(strips)do
+assert(type(strip)=='table', 'ImagePack strip definition must be a table')assert(type(strip.w) == 'number' or type(strip.h) == 'number', 'ImagePack strip requires either "w" or "h" fields')local names=strip.names or attrs.names
+assert(type(names)=='table', 'ImagePack strip missing "names" field or is not table')local sizes=strip.sizes
+if not sizes then
+local density=strip.density or attrs.density or 1
+if strip.size then
+sizes={{strip.size,density}}elseif attrs.sizes then
+sizes=attrs.sizes
+elseif attrs.size then
+sizes={{attrs.size,density}}else
+sizes={{self.default_size,density}}end
+end
+strip.w=strip.w or strip.h
+strip.h=strip.h or strip.w
+local columns=strip.columns or attrs.columns
+local rowwidth=columns and(columns*strip.w)local style=strip.style or attrs.style
+local x=0
+for _,name in ipairs(names)do
+local subregion={id=self._last_id,src_idx=src_idx,x=x,y=y,w=strip.w,h=strip.h,}self._last_id=self._last_id+1
+for _,sizedensity in ipairs(sizes)do
+local size,density=table.unpack(sizedensity)local key=string.format('%s:%s:%s', style, name, size)local densities=self._regions[key]
 if not densities then
-densities={img=nil,}names[name]=densities
+densities={}self._regions[key]=densities
+elseif densities[density] then
+error(string.format('duplicate image name "%s" for style=%s size=%s density=%s',name,style,size,density
+))end
+densities[density]=subregion
 end
-local density=attrs.density or 1
-assert(not densities[density],string.format('duplicate image name "%s" for style "%s" and density "%s"',name,attrs.style,density
-))densities[density]={x=x,y=self._height,w=attrs.w,h=attrs.h,}x=x+attrs.w
+x=x+strip.w
+if rowwidth and x>=rowwidth then
+x=0
+y=y+strip.h
 end
-self._height=self._height+attrs.h
 end
-function rtk.ImagePack:load(img_or_path)if rtk.isa(img_or_path,rtk.Image)then
-self._img=img_or_path
-else
-self._img=rtk.Image():load(img_or_path)end
-return self._img
+y=y+strip.h
 end
-function rtk.ImagePack:_get_densities(name,style)local names=self._images[style or rtk.Attribute.NIL]
-if not names then
+return self
+end
+function rtk.ImagePack:_get_densities(name,style)local key
+if not name:find(':') then
+key=string.format('%s:%s:%s', style, name, self.default_size)else
+key=string.format('%s:%s', style, name)end
+return key,self._regions[key]
+end
+function rtk.ImagePack:get(name,style)if not name then
 return
 end
-return names[name]
-end
-function rtk.ImagePack:get(name,style)local cachekey=string.format('%s.%s', style, name)local multi=self._cache[cachekey]
+local key,densities=self:_get_densities(name,style)local multi=self._cache[key]
 if multi then
 return multi
 end
-local imgpack=self._img
-assert(imgpack, 'rtk.ImagePack:load() has not yet been called with a valid image')assert(self._height > 0, 'rtk.ImagePack:add_row() has not yet been called')local densities=self:_get_densities(name,style)if not densities and not style then
+local recolor=false
+if not densities and not style then
 style=rtk.theme.iconstyle
 densities=self:_get_densities(name,style)end
 if not densities and style then
-local otherstyle=style=='light' and 'dark' or 'light'densities=self:_get_densities(name,otherstyle)if not densities then
-densities=self:_get_densities(name,nil)end
-if densities then
-imgpack=self._img_recolored[style]
-if not imgpack then
-imgpack=self._img:clone():recolor(style=='light' and '#ffffff' or '#000000')self._img_recolored[style]=imgpack
-end
+local otherstyle=style=='light' and 'dark' or 'light'recolor=true
+_,densities=self:_get_densities(name,otherstyle)if not densities then
+_,densities=self:_get_densities(name,nil)recolor=true
 end
 end
 if not densities then
 return
 end
-multi=rtk.MultiImage()for density,info in pairs(densities)do
-multi:add(imgpack:viewport(info.x,info.y,info.w,info.h,density))end
+local multi=rtk.MultiImage()for density,region in pairs(densities)do
+local src=self._sources[region.src_idx]
+local img=src.img
+if not img then
+img=rtk.Image():load(src.src)src.img=img
+end
+if recolor then
+img=src.recolors[style]
+if not img then
+img=src.img:clone():recolor(style=='light' and '#ffffff' or '#000000')src.recolors[style]=img
+end
+end
+assert(img, string.format('could not read "%s"', src.src))multi:add(img:viewport(region.x,region.y,region.w,region.h,density))end
 multi.style=style
-self._cache[cachekey]=multi
+self._cache[key]=multi
 return multi
 end
-function rtk.ImagePack:register()for style,names in pairs(self._images)do
-for name,densities in pairs(names)do
-rtk.Image._icons[name]=self
+function rtk.ImagePack:register_as_icons()local default_size=self.default_size
+for key,_ in pairs(self._regions)do
+local idx=key:find(':')local name=key:sub(idx+1)rtk.Image._icons[name]=self
+idx=name:find(':')local size=name:sub(idx+1)if size==default_size then
+name=name:sub(1,idx-1)rtk.Image._icons[name]=self
 end
 end
+return self
 end
 end)()
 
@@ -1933,15 +1962,15 @@ x=0
 end
 if y-bh>=0 then
 y=math.max(0,y-bh)else
-y=math.min(y+calc.h,self.window.h-bh)end
+y=math.min(y+calc.h,self.window.calc.h-bh)end
 rtk.color.set('#ffffff')gfx.rect(x,y,bw,bh,1)rtk.color.set('#777777')gfx.rect(x,y,bw,bh,0)gfx.x=x+10
 for n,part in ipairs(parts)do
 local sz,color,str=table.unpack(part)rtk.color.set(color)gfx.y=y+(bh-sizes[n][2])/2
 gfx.setfont(1,rtk.theme.default_font,sz)gfx.drawstr(str)end
 end
-function rtk.Widget:attr(attr,value,trigger,reflow)return self:_attr(attr,value,trigger,reflow,false)end
-function rtk.Widget:sync(attr,value,trigger,reflow)return self:_attr(attr,value,trigger,reflow,true)end
-function rtk.Widget:_attr(attr,value,trigger,reflow,reactive)local meta=self.class.attributes.get(attr)if value==rtk.Attribute.DEFAULT then
+function rtk.Widget:attr(attr,value,trigger,reflow)return self:_attr(attr,value,trigger,reflow,nil,false)end
+function rtk.Widget:sync(attr,value,trigger,reflow,calculated)return self:_attr(attr,value,trigger,reflow,calculated,true)end
+function rtk.Widget:_attr(attr,value,trigger,reflow,calculated,sync)local meta=self.class.attributes.get(attr)if value==rtk.Attribute.DEFAULT then
 if meta.default==rtk.Attribute.FUNCTION then
 value=meta.default_func(self,attr)else
 value=meta.default
@@ -1955,9 +1984,11 @@ for i=1,#replaces do
 self[replaces[i]]=nil
 end
 end
-local calculated=self:_calc_attr(attr,value,nil,meta)if not rawequal(value,oldval)or calculated~=oldcalc or replaces or trigger then
+if calculated==nil then
+calculated=self:_calc_attr(attr,value,nil,meta)end
+if not rawequal(value,oldval)or calculated~=oldcalc or replaces or trigger then
 self[attr]=value
-self:_set_calc_attr(attr,value,calculated,self.calc,meta)self:_handle_attr(attr,calculated,oldcalc,trigger==nil or trigger,reflow)end
+self:_set_calc_attr(attr,value,calculated,self.calc,meta)self:_handle_attr(attr,calculated,oldcalc,trigger==nil or trigger,reflow,sync)end
 return self
 end
 function rtk.Widget:_calc_attr(attr,value,target,meta,namespace,widget)target=target or self.calc
@@ -2392,8 +2423,8 @@ self:queue_draw()end
 function rtk.Widget:_unrealize()self.realized=false
 end
 function rtk.Widget:_release_modal(event)end
-function rtk.Widget:onattr(attr,value,oldval,trigger)return true end
-function rtk.Widget:_handle_attr(attr,value,oldval,trigger,reflow)local ok=self:onattr(attr,value,oldval,trigger)if ok~=false then
+function rtk.Widget:onattr(attr,value,oldval,trigger,sync)return true end
+function rtk.Widget:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=self:onattr(attr,value,oldval,trigger,sync)if ok~=false then
 local redraw
 if reflow==rtk.Widget.REFLOW_DEFAULT then
 local meta=self.class.attributes.get(attr)reflow=meta.reflow or rtk.Widget.REFLOW_PARTIAL
@@ -2502,7 +2533,7 @@ self._vscrollh=0
 self._vscrolla={current=self.calc.vscrollbar==rtk.Viewport.SCROLLBAR_ALWAYS and 0.1 or 0,target=0,delta=0.05
 }self._vscroll_in_gutter=false
 end
-function rtk.Viewport:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Viewport:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='child' then
@@ -2852,7 +2883,7 @@ local anchor=calc.anchor
 local st,sb=calc.elevation,calc.elevation
 if anchor and anchor.realized then
 calc.x=anchor.clientx
-if anchor.clienty+anchor.calc.h+calc.h<self.window.h then
+if anchor.clienty+anchor.calc.h+calc.h<self.window.calc.h then
 calc.y=anchor.clienty+anchor.calc.h
 if calc.width_from_anchor then
 calc.tborder=nil
@@ -2872,7 +2903,7 @@ end
 end
 rtk.Viewport._realize_geometry(self)self._shadow:set_rectangle(calc.w,calc.h,nil,st,calc.elevation,sb,calc.elevation)end
 function rtk.Popup:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)if self.calc.overlay then
-self:setcolor(self.calc.overlay,alpha)gfx.rect(0,0,self.window.w,self.window.h,1)end
+self:setcolor(self.calc.overlay,alpha)gfx.rect(0,0,self.window.calc.w,self.window.calc.h,1)end
 if self._realize_on_draw then
 self:_realize_geometry()self._realize_on_draw=false
 end
@@ -3043,7 +3074,7 @@ function rtk.Container:_handle_event(clparentx,clparenty,event,clipped,listen)lo
 local x=calc.x+clparentx
 local y=calc.y+clparenty
 self.clientx,self.clienty=x,y
-listen=self:_should_handle_event(listen)if y+calc.h<0 or y>self.window.h or calc.ghost then
+listen=self:_should_handle_event(listen)if y+calc.h<0 or y>self.window.calc.h or calc.ghost then
 return false
 end
 local zs=self._z_indexes
@@ -3157,9 +3188,12 @@ end
 end
 icon:popdest()rtk.Window.static._icon_resize_grip=icon
 end
-rtk.Window.register{x=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},y=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},w=rtk.Attribute{default=800,type='number',window_sync=true,calculate=function(self,attr,value,target)return math.max(self.minw or 100,value or 0)end,},h=rtk.Attribute{window_sync=true,default=600,calculate=function(self,attr,value,target)return math.max(self.minh or 30,value or 0)end,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
+rtk.Window.register{x=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},y=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},w=rtk.Attribute{default=800,type='number',window_sync=true,calculate=function(self,attr,value,target)return math.max(self.minw or 100,value or 0)*self._gfx_win_ratio
+end,},h=rtk.Attribute{window_sync=true,default=600,calculate=function(self,attr,value,target)return math.max(self.minh or 30,value or 0)*self._gfx_win_ratio
+end,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
 },window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},pinned=rtk.Attribute{default=false,window_sync=true,calculate=function(self,attr,value,target)return rtk.has_js_reascript_api and value
-end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},[1]=rtk.Attribute{alias='title'},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,minw=100,minh=30,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
+end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},[1]=rtk.Attribute{alias='title'},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,minw=100,minh=30,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)self._gfx_win_ratio=1
+rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
 self.window=self
 if self.id==0 and self.calc.bg and rtk.theme.default then
 rtk.set_theme_by_bgcolor(self.calc.bg)end
@@ -3182,8 +3216,8 @@ self._undocked_geometry=nil
 self._unmaximized_geometry=nil
 self._last_mousemove_time=nil
 self._last_mouseup_time=0
-self._touch_scrolling={count=0}end
-function rtk.Window:_handle_attr(attr,value,oldval,trigger)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger)if ok==false then
+self._touch_scrolling={count=0}self._last_synced_attrs={}end
+function rtk.Window:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='bg' then
@@ -3194,7 +3228,7 @@ reaper.JS_GDI_DeleteObject(self._gdi_brush)reaper.JS_GDI_DeleteObject(self._gdi_
 reaper.atexit(function()reaper.JS_GDI_DeleteObject(self._gdi_brush)reaper.JS_GDI_DeleteObject(self._gdi_pen)end)end
 color=rtk.color.flip_byte_order(color)self._gdi_brush=reaper.JS_GDI_CreateFillBrush(color)self._gdi_pen=reaper.JS_GDI_CreatePen(1,color)end
 end
-if self.class.attributes.get(attr).window_sync then
+if self.class.attributes.get(attr).window_sync and not sync then
 self._sync_window_attrs_on_update=true
 end
 return true
@@ -3239,63 +3273,56 @@ end
 function rtk.Window:_run()self:_update()if self.running then
 rtk.defer(self._run,self)end
 end
-function rtk.Window:_get_display_resolution()local x2=self.x+(self.w or 0)local y2=self.y+(self.h or 0)if rtk.has_sws_extension then
-local l,t,r,b=reaper.BR_Win32_GetMonitorRectFromRect(0,self.x,self.y,x2,y2)return l,t,r-l,math.abs(b-t)elseif rtk.has_js_reascript_api then
-local l,t,r,b=reaper.JS_Window_GetViewportFromRect(self.x,self.y,x2,y2,0)return l,t,r-l,math.abs(b-t)else
+function rtk.Window:_get_display_resolution(working)local x2=self.x+(self.calc.w or 0)local y2=self.y+(self.calc.h or 0)local l,t,r,b
+if rtk.has_js_reascript_api then
+l,t,r,b=reaper.JS_Window_GetViewportFromRect(self.x,self.y,x2,y2,working or false)elseif rtk.has_sws_extension then
+l,t,r,b=reaper.BR_Win32_GetMonitorRectFromRect(working or false,self.x,self.y,x2,y2)else
 return nil,nil
 end
-end
-function rtk.Window:_get_geometry_from_attrs(overrides)local x,y=self.x,self.y
-local w,h=self.w,self.h
+local w=r-l
+return l,t,r-l,math.abs(b-t)end
+function rtk.Window:_get_geometry_from_attrs(overrides)local x=self.x
+local y=self.y
+local w=self.w*self._gfx_win_ratio
+local h=self.h*self._gfx_win_ratio
 if overrides then
 local _,_,sw,sh=self:_get_display_resolution()if sw and sh then
-if overrides.halign==rtk.Widget.CENTER then
-x=(overrides.x or x)+(sw-w)/2
+local _,cw,ch=reaper.JS_Window_GetClientSize(self.hwnd)if overrides.halign==rtk.Widget.CENTER then
+x=(overrides.x or x)+(sw-cw)/2
 elseif overrides.halign==rtk.Widget.RIGHT then
-x=(overrides.x or x)+sw-w
+x=(overrides.x or x)+sw-cw
 end
 if overrides.valign==rtk.Widget.CENTER then
-y=(overrides.y or y)+(sh-h)/2
+y=(overrides.y or y)+(sh-ch)/2
 elseif overrides.valign==rtk.Widget.BOTTOM then
-y=(overrides.y or y)+sh-h
+y=(overrides.y or y)+sh-ch
 end
 end
 end
 return math.round(x),math.round(y),math.round(w),math.round(h)end
-if not rtk.os.mac or not(rtk.has_sws_extension or rtk.has_js_reascript_api)then
-function rtk.Window:_get_os_native_y(y,offset)return y
-end
-else
-function rtk.Window:_get_os_native_y(y,offset)if not rtk.os.mac then
-return y
-end
-if not self._screenh then
-_,_,_,self._screenh=self:_get_display_resolution()end
-return self._screenh-y-(offset or 0)end
-end
 function rtk.Window:_sync_window_attrs(overrides)local calc=self.calc
 local resized
 local dockstate=self:_get_dockstate_from_attrs()if not rtk.has_js_reascript_api or not self.hwnd then
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)self:_handle_dock_change(dockstate)end
-return
+return 0
 end
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)local r,w,h=reaper.JS_Window_GetClientSize(self.hwnd)self:_handle_dock_change(dockstate)if calc.docked then
 gfx.w,gfx.h=w,h
-self:sync('w', w)self:sync('h', h)resized=1
+self:sync('w', w / self._gfx_win_ratio, nil, nil, w)self:sync('h', h / self._gfx_win_ratio, nil, nil, h)resized=1
 end
-return
+return resized
 end
 if self._resize_grip then
 self._resize_grip:hide()end
 if not calc.docked then
 if not calc.visible then
-reaper.JS_Window_Show(self.hwnd, 'HIDE')return
+reaper.JS_Window_Show(self.hwnd, 'HIDE')return 0
 end
 local style='SYSMENU,DLGSTYLE,BORDER,THICKFRAME,CAPTION'if calc.borderless then
 style='POPUP'self:_setup_borderless()if not self.realized then
-reaper.JS_Window_Resize(self.hwnd,self.w,self.h)end
+local sw=math.ceil(self.calc.w/self._gfx_win_ratio)local sh=math.ceil(self.calc.h/self._gfx_win_ratio)reaper.JS_Window_Resize(self.hwnd,sw,sh)end
 self._resize_grip:show()end
 local function restyle()reaper.JS_Window_SetStyle(self.hwnd,style)if rtk.os.bits~=32 then
 local n=reaper.JS_Window_GetLong(self.hwnd, 'STYLE')reaper.JS_Window_SetLong(self.hwnd, 'STYLE', n | 0x80000000)end
@@ -3312,24 +3339,23 @@ elseif w>gfx.w or h>gfx.h then
 resized=1
 end
 end
-local r,lastx,top,_,_=reaper.JS_Window_GetRect(self.hwnd)local lasty=self:_get_os_native_y(top)local moved=r and(self.x~=lastx or self.y~=lasty)if moved or resized~=0 then
+local r,lastx,lasty,x2,y2=reaper.JS_Window_GetClientRect(self.hwnd)local moved=r and(self.x~=lastx or self.y~=lasty)if moved or resized~=0 then
 local sw,sh=w,h
-if not calc.borderless then
+if not calc.borderless and(calc.borderless==self._last_synced_attrs.borderless or not rtk.os.windows)then
 sw=w+self._os_window_frame_width
 sh=h+self._os_window_frame_height
 end
-local sx=x
-local sy=self:_get_os_native_y(y,h+self._os_window_frame_height)reaper.JS_Window_SetPosition(self.hwnd,sx,sy,sw,sh)end
+sw=math.ceil(sw/self._gfx_win_ratio)sh=math.ceil(sh/self._gfx_win_ratio)reaper.JS_Window_SetPosition(self.hwnd,x,y,sw,sh)end
 if resized~=0 then
-self:onresize(gfx.w,gfx.h)gfx.w=w
+self:onresize(gfx.w/self._gfx_win_ratio,gfx.h/self._gfx_win_ratio)gfx.w=w
 gfx.h=h
 self:queue_blit()end
 if moved then
-self.x,self.y=x,y
-self:onmove(lastx,lasty)end
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:onmove(lastx,lasty)end
 reaper.JS_Window_SetOpacity(self.hwnd, 'ALPHA', calc.opacity)reaper.JS_Window_SetTitle(self.hwnd,calc.title)else
 local flags=reaper.JS_Window_GetLong(self.hwnd, 'EXSTYLE')flags=flags&~0x00080000
 reaper.JS_Window_SetLong(self.hwnd, 'EXSTYLE', flags)end
+self._last_synced_attrs.borderless=calc.borderless
 return resized or 0
 end
 function rtk.Window:open(attrs)if self.running or rtk._quit then
@@ -3342,10 +3368,10 @@ end
 local calc=self.calc
 self.running=true
 gfx.ext_retina=1
-self:_handle_attr('bg', calc.bg or rtk.theme.bg)attrs=self:_calc_cell_attrs(self,attrs)local x,y,w,h=self:_get_geometry_from_attrs(attrs)self:sync('x', x)self:sync('y', y)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()if rtk.os.mac then
-local _,_,_,screenh=self:_get_display_resolution()y=screenh-y-h
+self:_handle_attr('bg', calc.bg or rtk.theme.bg)attrs=self:_calc_cell_attrs(self,attrs)local x,y,w,h=self:_get_geometry_from_attrs(attrs)self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w / self._gfx_win_ratio, nil, nil, w)self:sync('h', h / self._gfx_win_ratio, nil, nil, h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,self.w,self.h,dockstate,x,y)gfx.update()if gfx.ext_retina==2 and rtk.os.mac then
+self._gfx_win_ratio=2
 end
-gfx.init(calc.title,w,h,dockstate,x,y)dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
+dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
 self:_clear_gdi()else
 rtk.color.set(rtk.theme.bg)gfx.rect(0,0,w,h,1)end
 self._draw_queued=true
@@ -3358,32 +3384,50 @@ function rtk.Window:_setup_borderless()if self._move_grip then
 return
 end
 local calc=self.calc
-local move=rtk.Spacer{z=-10000,w=1.0,h=30,touch_activate_delay=0}move.onmousedown=function()return true
+local move=rtk.Spacer{z=-10000,w=1.0,h=30,touch_activate_delay=0}move.onmousedown=function(this,event)if not calc.docked and calc.borderless then
+local _,wx,wy,_,_=reaper.JS_Window_GetClientRect(self.hwnd)local mx,my=reaper.GetMousePosition()this._drag_start_mx=mx
+this._drag_start_my=my
+this._drag_start_wx=wx
+this._drag_start_wy=wy
+this._drag_start_ww=gfx.w/self._gfx_win_ratio
+this._drag_start_wh=gfx.h/self._gfx_win_ratio
+this._drag_start_dx=mx-wx
+this._drag_start_dy=my-wy
 end
-move.ondragstart=function(this,event)if not calc.docked and calc.borderless then
-local _,wx,wy,_,_=reaper.JS_Window_GetClientRect(self.hwnd)this._drag_start_ex,this._drag_start_ey=event.x,event.y
-this._drag_start_wx,this._drag_start_wy=wx,wy
-this._drag_start_ww,this._drag_start_wh=calc.w,calc.h
+return true
+end
+move.ondragstart=function(this,event)if not calc.docked and calc.borderless and this._drag_start_mx then
 return true
 else
 return false
 end
 end
-move.ondragmousemove=function(this,event)local _,wx,wy,_,_=reaper.JS_Window_GetClientRect(self.hwnd)local x=wx+(event.x-this._drag_start_ex)local y
+move.ondragend=function(this,event)this._drag_start_mx=nil
+end
+move.ondragmousemove=function(this,event)local _,wx,wy,_,wy2=reaper.JS_Window_GetClientRect(self.hwnd)local mx,my=reaper.GetMousePosition()local x=mx-this._drag_start_dx
+local y
 if rtk.os.mac then
-y=(wy-this._drag_start_wh)-(event.y-this._drag_start_ey)else
-y=wy+(event.y-this._drag_start_ey)end
+local h=wy-wy2
+y=my-this._drag_start_dy-h
+else
+y=my-this._drag_start_dy
+end
 if self._unmaximized_geometry then
-local _,_,w,h=table.unpack(self._unmaximized_geometry)local sx,_,sw,sh=self:_get_display_resolution()local dx=math.ceil((w/this._drag_start_ww)*event.x)x=rtk.clamp(sx+dx,sx,sx+sw-w)self._unmaximized_geometry=nil
-this._drag_start_ex=dx
-this._drag_start_ww,this._drag_start_wh=w,h
-this._drag_start_wx=x
+local _,_,w,h=table.unpack(self._unmaximized_geometry)local sx,_,sw,sh=self:_get_display_resolution()local xoffset=event.x/self._gfx_win_ratio
+local dx=math.ceil(w*xoffset/this._drag_start_ww)x=rtk.clamp(sx+xoffset-dx,sx,sx+sw-w)self._unmaximized_geometry=nil
+this._drag_start_ww=w
+this._drag_start_wh=h
+this._drag_start_dx=dx
+if rtk.os.mac then
+y=(wy-h)+(my-this._drag_start_my)end
 reaper.JS_Window_SetPosition(self.hwnd,x,y,w,h)else
 reaper.JS_Window_Move(self.hwnd,x,y)end
 end
-move.ondoubleclick=function(this,event)local x,y,w,h=self:_get_display_resolution()local calc=self.calc
-if self._unmaximized_geometry then
-if x==self.x and y==self.y and w==calc.w and h==calc.h then
+move.ondoubleclick=function(this,event)if calc.docked or not calc.borderless then
+return
+end
+local x,y,w,h=self:_get_display_resolution(true)if self._unmaximized_geometry then
+if math.abs(w-self.w)<w*0.05 and math.abs(h-self.h)<h*0.05 then
 x,y,w,h=table.unpack(self._unmaximized_geometry)end
 self._unmaximized_geometry=nil
 else
@@ -3397,10 +3441,10 @@ end
 resize.onmouseleave=function(this,event)if calc.borderless then
 this:animate{attr='alpha', dst=0.4, duration=0.25}end
 end
+resize.onmousedown=move.onmousedown
 resize.ondragstart=move.ondragstart
-resize.ondragmousemove=function(this,event)local x=event.x-this._drag_start_ex
-local y=event.y-this._drag_start_ey
-local w=math.max(self.minw,this._drag_start_ww+x)local h=math.max(self.minh,this._drag_start_wh+y)reaper.JS_Window_Resize(self.hwnd,w,h)self:_clear_gdi(calc.w,calc.h)if rtk.os.mac then
+resize.ondragmousemove=function(this,event)local _,ww,wh=reaper.JS_Window_GetClientSize(self.hwnd)local mx,my=reaper.GetMousePosition()local dx=mx-this._drag_start_mx
+local dy=(my-this._drag_start_my)*(rtk.os.mac and-1 or 1)local w=math.max(self.minw*self._gfx_win_ratio,this._drag_start_ww+dx)local h=math.max(self.minh*self._gfx_win_ratio,this._drag_start_wh+dy)reaper.JS_Window_Resize(self.hwnd,w,h)self:_clear_gdi(calc.w,calc.h)if rtk.os.mac then
 reaper.JS_Window_Move(self.hwnd,this._drag_start_wx,this._drag_start_wy-h)end
 end
 self:add(move)self:add(resize, {valign='bottom', halign='right'})self._move_grip=move
@@ -3430,6 +3474,8 @@ end
 if hwnd then
 local _,w,h=reaper.JS_Window_GetClientSize(hwnd)local _,l,t,r,b=reaper.JS_Window_GetRect(hwnd)self._os_window_frame_width=(r-l)-w
 self._os_window_frame_height=math.abs(b-t)-h
+self._os_window_frame_width=self._os_window_frame_width*self._gfx_win_ratio
+self._os_window_frame_height=self._os_window_frame_height*self._gfx_win_ratio
 end
 return hwnd
 end
@@ -3441,8 +3487,10 @@ self:sync('dock', calc.dock)self:sync('docked', calc.docked)self._dockstate=dock
 self.hwnd=self:_get_hwnd()self:queue_reflow(rtk.Widget.REFLOW_FULL)if was_docked~=calc.docked then
 self:_clear_gdi()if calc.docked then
 self._undocked_geometry={self.x,self.y,self.w,self.h}elseif self._undocked_geometry then
-local x,y,w,h=table.unpack(self._undocked_geometry)self:sync('x', x)self:sync('y', y)self:sync('w', w)self:sync('h', h)gfx.w=w
-gfx.h=h
+local x,y,w,h=table.unpack(self._undocked_geometry)local gw=w*self._gfx_win_ratio
+local gh=h*self._gfx_win_ratio
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w, nil, nil, gw)self:sync('h', h, nil, nil, gh)gfx.w=gw
+gfx.h=gh
 end
 end
 self:_sync_window_attrs()self:queue_blit()self:ondock()end
@@ -3459,6 +3507,9 @@ end
 function rtk.Window:queue_draw()self._draw_queued=true
 end
 function rtk.Window:queue_blit()self._blits_queued=self._blits_queued+2
+end
+function rtk.Window:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,scale)local calc=self.calc
+local tp,rp,bp,lp=self:_get_padding_and_border()return calc.w-lp-rp,calc.h-tp-bp,tp,rp,bp,lp
 end
 function rtk.Window:queue_mouse_refresh()self._mouse_refresh_queued=true
 end
@@ -3501,8 +3552,8 @@ function rtk.Window:_get_mousemove_event(simulated)local event=self._event:reset
 event:set_modifiers(gfx.mouse_cap,rtk.mouse.state.latest or 0)return event
 end
 local function _get_wheel_distance(v)if rtk.os.mac then
-local direction=v<0 and 1 or-1
-return direction*math.sqrt(math.abs(v)/6)else
+return-v/90
+else
 return-v/120
 end
 end
@@ -3539,20 +3590,19 @@ return
 end
 need_draw=rtk._do_animations(now)or need_draw
 local resized=gfx.w~=calc.w or gfx.h~=calc.h
-if self._sync_window_attrs_on_update and self.hwnd and rtk.has_js_reascript_api then
+if self._sync_window_attrs_on_update then
 resized=(self:_sync_window_attrs()~=0)or resized
 self._sync_window_attrs_on_update=false
 end
 local dockstate,x,y=gfx.dock(-1,true,true)local dock_changed=dockstate~=self._dockstate
 if dock_changed then
 self:_handle_dock_change(dockstate)end
-y=self:_get_os_native_y(y,gfx.h+self._os_window_frame_height)if x~=self.x or y~=self.y then
+if x~=self.x or y~=self.y then
 local lastx,lasty=self.x,self.y
-self.x,self.y=x,y
-self:onmove(lastx,lasty)end
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:onmove(lastx,lasty)end
 if resized and self.visible then
-local last_w,last_h=calc.w,calc.h
-self:sync('w', gfx.w)self:sync('h', gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
+local last_w,last_h=self.w,self.h
+self:sync('w', gfx.w / self._gfx_win_ratio, nil, nil, gfx.w)self:sync('h', gfx.h / self._gfx_win_ratio, nil, nil, gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
 elseif self._reflow_queued then
 self:reflow()need_draw=true
 end
@@ -3791,6 +3841,16 @@ return false
 end
 end
 function rtk.Window:clear()self._backingstore:clear(self.calc.bg or rtk.theme.bg)end
+function rtk.Window:get_normalized_y()if not rtk.has_sws_extension and not rtk.has_js_reascript_api then
+return
+end
+if not rtk.os.mac then
+return self.y
+else
+local _,_,_,sh=self:_get_display_resolution()local offset=gfx.h+self._os_window_frame_height
+return sh-self.y-offset/self._gfx_win_ratio
+end
+end
 function rtk.Window:_set_touch_scrolling(viewport,state)local ts=self._touch_scrolling
 local exists=ts[viewport.id]~=nil
 if state and not exists then
@@ -4199,7 +4259,7 @@ end
 self._theme_font=self._theme_font or rtk.theme.button_font or rtk.theme.default_font
 rtk.Widget.initialize(self,attrs,self.class.attributes.defaults,...)self._font=rtk.Font()end
 function rtk.Button:__tostring_info()return self.label or(self.icon and self.icon.path)end
-function rtk.Button:_handle_attr(attr,value,oldval,trigger,reflow)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ret==false then
+function rtk.Button:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret==false then
 return ret
 end
 if self._segments and (attr == 'wrap' or attr == 'label') then
@@ -4486,8 +4546,8 @@ self._history=nil
 self._last_doubleclick_time=0
 self._num_doubleclicks=0
 end
-function rtk.Entry:_handle_attr(attr,value,oldval,trigger,reflow)local calc=self.calc
-local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Entry:_handle_attr(attr,value,oldval,trigger,reflow,sync)local calc=self.calc
+local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='value' then
@@ -4820,7 +4880,7 @@ function rtk.Entry:_rendertext(x,y)self._font:set()self._backingstore:blit{src=g
 }self._backingstore:pushdest()if self._selstart and self:focused()then
 local a,b=self:get_selection_range()self:setcolor(rtk.theme.entry_selection_bg)gfx.rect(self._positions[a]-self._loffset,0,self._positions[b]-self._positions[a],self._backingstore.h,1
 )end
-self:setcolor(self.calc.textcolor)self._font:draw(self.calc.value,-self._loffset,0)self._backingstore:popdest()self._dirty_text=false
+self:setcolor(self.calc.textcolor)self._font:draw(self.calc.value,-self._loffset,rtk.os.mac and 1 or 0)self._backingstore:popdest()self._dirty_text=false
 end
 function rtk.Entry:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)local calc=self.calc
 if offy~=self.offy or offx~=self.offx then
@@ -4849,7 +4909,8 @@ local a=math.min(1,calc.icon_alpha*alpha+(focused and 0.2 or 0))icon:draw(x+lp,y
 end
 self._backingstore:blit{sx=0,sy=0,sw=calc.w-lp-rp,sh=calc.h-tp-bp,dx=x+lp,dy=y+tp,alpha=amul,mode=rtk.Image.FAST_BLIT
 }if calc.placeholder and #calc.value==0 then
-self._font:set()self:setcolor(rtk.theme.entry_placeholder,alpha)self._font:draw(calc.placeholder,x+lp,y+tp,calc.w-lp,calc.h-tp)end
+self._font:set()self:setcolor(rtk.theme.entry_placeholder,alpha)self._font:draw(calc.placeholder,x+lp,y+tp+(rtk.os.mac and 1 or 0),calc.w-lp,calc.h-tp
+)end
 if focused then
 local showcursor=not self._selstart or(self._selend-self._selstart)==0
 if not self._blinking and showcursor then
@@ -4883,7 +4944,7 @@ end
 rtk.Widget.initialize(self,attrs,rtk.Text.attributes.defaults,...)self._font=rtk.Font()end
 function rtk.Text:__tostring_info()return self.text
 end
-function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if self._segments and (attr == 'text' or attr == 'wrap' or attr == 'textalign' or attr == 'spacing') then
@@ -4938,7 +4999,7 @@ __mod_rtk_imagebox=(function()
 local rtk=__mod_rtk_core
 local log=__mod_rtk_log
 rtk.ImageBox=rtk.class('rtk.ImageBox', rtk.Widget)rtk.ImageBox.register{[1]=rtk.Attribute{alias='image'},image=rtk.Attribute{calculate=rtk.Entry.attributes.icon.calculate,reflow=rtk.Widget.REFLOW_FULL,},scale=rtk.Attribute{reflow=rtk.Widget.REFLOW_FULL,},aspect=rtk.Attribute{reflow=rtk.Widget.REFLOW_FULL,},}function rtk.ImageBox:initialize(attrs,...)rtk.Widget.initialize(self,attrs,self.class.attributes.defaults,...)end
-function rtk.ImageBox:_handle_attr(attr,value,oldval,trigger,reflow)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ret==false then
+function rtk.ImageBox:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret==false then
 return ret
 end
 if attr=='image' and value then
@@ -5025,7 +5086,7 @@ for item in self._menu:items()do
 local item_w,item_h=gfx.measurestr(item.altlabel or item.label)w=math.max(w,item_w)h=math.max(h,item_h)end
 return segments,rtk.clamp(w,lw,boxw),rtk.clamp(h,lh,boxh)end
 function rtk.OptionMenu:select(value,trigger)return self:attr('selected', value, trigger)end
-function rtk.OptionMenu:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.OptionMenu:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='menu' then
@@ -5096,7 +5157,7 @@ return ret
 end
 self:toggle()return ret
 end
-function rtk.CheckBox:_handle_attr(attr,value,oldval,trigger,reflow)local ret=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow)if ret~=false then
+function rtk.CheckBox:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret~=false then
 if attr=='value' then
 self.calc.icon=self._value_map[value] or self._value_map[rtk.CheckBox.UNCHECKED]
 if trigger then
@@ -5134,7 +5195,7 @@ local rtk=__mod_rtk_core
 rtk.Application=rtk.class('rtk.Application', rtk.VBox)rtk.Application.register{status=rtk.Attribute{reflow=rtk.Widget.REFLOW_NONE
 },statusbar=nil,toolbar=nil,screens=nil,}function rtk.Application:initialize(attrs,...)self.screens={stack={},}self.toolbar=rtk.HBox{bg=rtk.theme.bg,spacing=0,z=110,}self.toolbar:add(rtk.HBox.FLEXSPACE)self.statusbar=rtk.HBox{bg=rtk.theme.bg,lpadding=10,tpadding=5,bpadding=5,rpadding=10,z=110,}self.statusbar.text = self.statusbar:add(rtk.Text{color=rtk.theme.text_faded, text=""}, {expand=1})rtk.VBox.initialize(self,attrs,self.class.attributes.defaults,...)self:add(self.toolbar,{minw=150,bpadding=2})self:add(rtk.VBox.FLEXSPACE)self._content_position=#self.children
 self:add(self.statusbar,{fillw=true})self:_handle_attr('status', self.calc.status)end
-function rtk.Application:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Application:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='status' then
@@ -5204,7 +5265,7 @@ rtk._reaper_version_prerelease=minor:sub(sepidx):gsub('^%+', '')minor=minor:sub(
 minor=tonumber(minor)or 0
 rtk._reaper_version_minor=minor<100 and minor or minor/10
 if rtk.os.mac then
-rtk.font.multiplier=0.8
+rtk.font.multiplier=0.75
 elseif rtk.os.linux then
 rtk.font.multiplier=0.7
 end
@@ -5449,9 +5510,9 @@ end
 function call_and_preserve_selected_tracks(func,...)local selected={}for i=0,reaper.CountSelectedTracks(0)-1 do
 local track=reaper.GetSelectedTrack(0,i)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')selected[n]=true
 end
-reaper.PreventUIRefresh(1)local r=func(...)for i=0,reaper.CountTracks(0)-1 do
+reaper.PreventUIRefresh(1)reaper.Undo_BeginBlock2(0)local r=func(...)for i=0,reaper.CountTracks(0)-1 do
 local track=reaper.GetTrack(0,i)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')reaper.SetTrackSelected(track,selected[n] or false)end
-reaper.PreventUIRefresh(-1)return r
+reaper.Undo_EndBlock2(0, 'Reaticulate: update track selection', UNDO_STATE_FREEZE)reaper.PreventUIRefresh(-1)return r
 end
 end)()
 
@@ -5502,10 +5563,11 @@ return
 end
 local encoded=reaper.GetExtState(self.appid,key)local ok,decoded=pcall(json.decode,encoded)return ok and decoded,encoded
 end
-function BaseApp:set_ext_state(key,obj,persist)local serialized=json.encode(obj)reaper.SetExtState(self.appid,key,serialized,persist or false)log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)end
+function BaseApp:set_ext_state(key,obj,persist)local serialized=json.encode(obj)reaper.SetExtState(self.appid,key,serialized,persist or false)log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)return serialized
+end
 function BaseApp:get_config(appid,target)local config, encoded=self:get_ext_state('config')if not config and encoded then
 local ok
-log.info('baseapp: config failed to parse as JSON: %s', state)ok,config=pcall(table.fromstring,state)if not ok then
+log.info('baseapp: config failed to parse as JSON: %s', encoded)ok,config=pcall(table.fromstring,encoded)if not ok then
 reaper.MB("Reaticulate wasn't able to parse its saved configuration. This may be because " .."you downgraded Reaticulate and it doesn't understand the format used by a future " .."version.\n\nAll Reaticulate settings will need to be reset to defaults.",'Unrecognized Reaticulate configuration',0
 )config=nil
 else
@@ -5521,7 +5583,7 @@ return self.config
 end
 function BaseApp:save_config(config)self:_do_save_config(config)end
 function BaseApp:queue_save_config(config)if not self._save_config_queued then
-rtk.callafter(2,self._do_save_config,self,config)self._save_config_queued=true
+rtk.callafter(0.25,self._do_save_config,self,config)self._save_config_queued=true
 end
 end
 function BaseApp:_do_save_config(config)self:set_ext_state('config', config or self.config, true)self._save_config_queued=false
@@ -5541,26 +5603,32 @@ end
 function BaseApp:handle_ondock()self.config.pinned=self.window.pinned
 self.config.docked=self.window.docked
 self.config.dock=self.window.dock
+if rtk.has_js_reascript_api then
 if self.window.docked then
 self.toolbar.pin:hide()self.toolbar.unpin:hide()else
 self:_set_window_pinned(self.config.pinned)end
+end
 self:save_config()end
 function BaseApp:handle_onresize()if not self.window.docked then
-self.config.x,self.config.y=self.window.x,self.window.y
-self.config.w,self.config.h=self.window.w,self.window.h
+self.config.w=self.window.w
+self.config.h=self.window.h
 self:queue_save_config()end
 end
-function BaseApp:handle_onmove()self:handle_onresize()end
+function BaseApp:handle_onmove()if not self.window.docked then
+self.config.x=self.window.x
+self.config.y=self.window.y
+self:queue_save_config()end
+end
 function BaseApp:handle_onmousewheel(event)if event.ctrl and not rtk.is_modal()then
 self:zoom(event.wheel<0 and 0.10 or-0.10)event:set_handled()end
 end
 function BaseApp:set_theme()local bg=self.config.bg
 if not bg or type(bg) ~= 'string' or #bg <= 1 then
 bg=rtk.color.get_reaper_theme_bg()end
-rtk.set_theme_by_bgcolor(bg)rtk.add_image_search_path(Path.imagedir)local icons={medium={'med-add_circle_outline','med-arrow_back','med-auto_fix','med-delete','med-dock_window','med-drag_vertical','med-edit','med-eraser','med-info_outline','med-link','med-pin_off','med-pin_on','med-search','med-settings','med-sync','med-undo','med-undock_window','med-view_list',},large={'lg-alert_circle_outline','lg-drag_vertical','lg-info_outline','lg-plus','lg-warning_amber',},huge={'huge-alert_circle_outline',},}local img=rtk.ImagePack{src='icons.png',register=true,{w=18, h=18, names=icons.medium, density=1, style='light'},{w=24, h=24, names=icons.large, density=1, style='light'},{w=96, h=96, names=icons.huge, density=1, style='light'},{w=28, h=28, names=icons.medium, density=1.5, style='light'},{w=36, h=36, names=icons.large, density=1.5, style='light'},{w=144, h=144, names=icons.huge, density=1.5, style='light'},{w=36, h=36, names=icons.medium, density=2, style='light'},{w=48, h=48, names=icons.large, density=2, style='light'},{w=192, h=192, names=icons.huge, density=2, style='light'},}end
+rtk.set_theme_by_bgcolor(bg)rtk.add_image_search_path(Path.imagedir)local icons={medium={'add_circle_outline','arrow_back','auto_fix','delete','dock_window','drag_vertical','edit','eraser','info_outline','link','pin_off','pin_on','search','settings','sync','undo','undock_window','view_list',},large={'alert_circle_outline','drag_vertical','info_outline','plus','warning_amber',},huge={'alert_circle_outline',},}local img=rtk.ImagePack():add{src='icons.png', style='light', names=icons.medium,{w=18, size='medium', xnames=icons.medium, density=1},{w=24, size='large', names=icons.large, density=1},{w=96, size='huge', names=icons.huge, density=1},{w=28, size='medium', names=icons.medium, density=1.5},{w=36, size='large', names=icons.large, density=1.5},{w=144, size='huge', names=icons.huge, density=1.5},{w=36, size='medium', names=icons.medium, density=2},{w=48, size='large', names=icons.large, density=2},{w=192, size='huge', names=icons.huge, density=2},}img:register_as_icons()end
 function BaseApp:set_statusbar(label)self:attr('status', label)end
 function BaseApp:build_frame()self.window:add(self)if rtk.has_js_reascript_api then
-local pin = rtk.Button{icon='med-pin_off', flat=true, tooltip='Pin window to top'}local unpin = rtk.Button{icon='med-pin_on', flat=true, tooltip='Unpin window from top'}self.toolbar.pin=self.toolbar:add(pin,{rpadding=15})self.toolbar.unpin=self.toolbar:add(unpin,{rpadding=15})self.toolbar.pin.onclick=function()self:_set_window_pinned(true)end
+local pin = rtk.Button{icon='pin_off', flat=true, tooltip='Pin window to top'}local unpin = rtk.Button{icon='pin_on', flat=true, tooltip='Unpin window from top'}self.toolbar.pin=self.toolbar:add(pin,{rpadding=15})self.toolbar.unpin=self.toolbar:add(unpin,{rpadding=15})self.toolbar.pin.onclick=function()self:_set_window_pinned(true)end
 self.toolbar.unpin.onclick=function()self:_set_window_pinned(false)end
 end
 end
@@ -6211,7 +6279,7 @@ function Articulation:copy_to_bank(bank)local clone=Articulation(bank,self.progr
 function Articulation:get_bank()return reabank.get_bank_by_guid(self.bank_guid)end
 function Articulation:is_active()return self.channels~=0
 end
-local Bank=rtk.class('Bank')function Bank:initialize(msb,lsb,name,attrs,factory)self.factory=factory
+local Bank=rtk.class('Bank')function Bank:initialize(msb,lsb,name,attrs,factory)assert(name, 'bank name must be specified')self.factory=factory
 self._msb=tonumber(msb)self._lsb=tonumber(lsb)if self._msb and self._lsb then
 self.msblsb=(self._msb<<8)+self._lsb
 end
@@ -6604,16 +6672,16 @@ local submenu=bankmenu
 if bank.group then
 local group=(bank.factory and 'Factory/' or 'User/') .. bank.group
 for part in group:gmatch("[^/]+") do
-local found=false
+local lowerpart=part:lower()local found=false
 for n,tmpmenu in ipairs(submenu)do
-if tmpmenu[1]==part then
+if tmpmenu.lowername==lowerpart then
 submenu=tmpmenu.submenu
 found=true
 break
 end
 end
 if not found then
-local tmpmenu={part,submenu={}}submenu[#submenu+1]=tmpmenu
+local tmpmenu={part,submenu={},lowername=lowerpart}submenu[#submenu+1]=tmpmenu
 submenu=tmpmenu.submenu
 end
 end
@@ -7259,13 +7327,16 @@ local rfx=__mod_rfx
 local reabank=__mod_reabank
 __mod_articons=(function()
 local rtk=rtk
-local articons={}local remap={['tremolo-measured'] = 'tremolo-measured-sixteenth',['tremolo-150'] = 'tremolo-measured-sixteenth',['tremolo-180'] = 'tremolo-measured-sixteenth',['tremolo-150-con-sord'] = 'tremolo-measured-sixteenth-con-sord',['tremolo-180-con-sord'] = 'tremolo-measured-sixteenth-con-sord',['marcato'] = 'marcato-half',['riccochet'] = 'ricochet',['rip-downward'] = 'plop',['staccato-overblown'] = 'staccato-stopped',['vibrato-rachmaninoff'] = 'vibrato-molto',['legato-slurred'] = 'note-tied',['phrase-tremolo'] = 'phrase-multitongued',['phrase-tremolo-cresc'] = 'phrase-multitongued-cresc',['esp-half'] = 'note-half',['cresc-m-half'] = 'cresc-mf-half',['pizz-a'] = 'pizz',['pizz-b'] = 'pizz',['frozen'] = 'note-whole',['frozen-eighth'] = 'note-eighth',['frozen-half'] = 'note-half',['col-legno-loose'] = 'col-legno',['no-rosin'] = 'note-whole-feathered',}function articons.init()local img=rtk.ImagePack()for _,density in ipairs{1,1.5,2} do
+local articons={}local remap={['tremolo-measured'] = 'tremolo-measured-sixteenth',['tremolo-150'] = 'tremolo-measured-sixteenth',['tremolo-180'] = 'tremolo-measured-sixteenth',['tremolo-150-con-sord'] = 'tremolo-measured-sixteenth-con-sord',['tremolo-180-con-sord'] = 'tremolo-measured-sixteenth-con-sord',['marcato'] = 'marcato-half',['riccochet'] = 'ricochet',['rip-downward'] = 'plop',['staccato-overblown'] = 'staccato-stopped',['vibrato-rachmaninoff'] = 'vibrato-molto',['legato-slurred'] = 'note-tied',['phrase-tremolo'] = 'phrase-multitongued',['phrase-tremolo-cresc'] = 'phrase-multitongued-cresc',['esp-half'] = 'note-half',['cresc-m-half'] = 'cresc-mf-half',['pizz-a'] = 'pizz',['pizz-b'] = 'pizz',['frozen'] = 'note-whole',['frozen-eighth'] = 'note-eighth',['frozen-half'] = 'note-half',['col-legno-loose'] = 'col-legno',['no-rosin'] = 'note-whole-feathered',}function articons.init()local img=rtk.ImagePack()local strips={}for _,density in ipairs{1,1.5,2} do
 for _,row in ipairs(articons.rows)do
-img:add_row{w=32*density,h=28*density,names=row,density=density,style='light',}end
+strips[#strips+1]={w=32*density,h=28*density,names=row,density=density,}end
 end
-img:load('articulations.png')articons.img=img
+img:add{src='articulations.png', style='light', strips=strips}articons.img=img
 end
-function articons.get(name,dark)local style=dark and 'dark' or 'light'return articons.img:get(remap[name] or name,style)end
+function articons.get(name,dark,default)local style=dark and 'dark' or 'light'local icon=articons.img:get(remap[name] or name or default,style)if not icon and default then
+icon=articons.img:get(default,style)end
+return icon
+end
 function articons.get_for_bg(name,color)local luma=rtk.color.luma(color)return articons.get(name,luma>0.6)end
 articons.rows={{'accented-half','accented-quarter','acciaccatura-quarter','alt-circle','blend','bow-down','bow-up','col-legno','col-legno-whole','con-sord','con-sord-blend','con-sord-bow-down','con-sord-bow-up',},{'con-sord-sul-pont','con-sord-sul-pont-bow-up','cresc-f-half','cresc-half','cresc-m-half','cresc-mf-half','cresc-mp-half','cresc-p-half','cresc-quarter','crescendo','cuivre','dblstop-5th','dblstop-5th-eighth',},{'decrescendo','fall','fanfare','flautando','flautando-con-sord','flautando-con-sord-eighth','fx','ghost-eighth','harmonics','harmonics-natural','harmonics-natural-eighth','harp-pdlt2','legato',},{'legato-blend-generic','legato-bowed','legato-bowed2','legato-con-sord','legato-fast','legato-flautando','legato-gliss','legato-portamento','legato-portamento-con-sord','legato-portamento-flautando','legato-runs','legato-slow','legato-slow-blend',},{'note-tied','legato-sul-c','legato-sul-g','legato-sul-pont','legato-tremolo','legato-vibrato','list','marcato-half','marcato-quarter','note-acciaccatura','light','note-eighth','note-half',},{'note-quarter','note-sixteenth','note-whole','phrase2','pizz','pizz-bartok','pizz-con-sord','pizz-mix','pizz-sul-pont','rest-quarter','ricochet','rip','plop',},{'run-major','run-minor','sfz','spiccato','spiccato-breath','spiccato-brushed','spiccato-brushed-con-sord','spiccato-brushed-con-sord-sul-pont','spiccato-feathered','staccatissimo-stopped','staccato','staccato-breath','staccato-con-sord',},{'staccato-dig','staccato-harmonics','staccato-harmonics-half','staccato-stopped','staccato-sfz','stopped','sul-c','sul-g','sul-pont','sul-tasto','tenuto-eighth','tenuto-half','tenuto-quarter',},{'tremolo','tremolo-con-sord','tremolo-con-sord-sul-pont','tremolo-sul-pont','tremolo-ghost','tremolo-harmonics','tremolo-fingered','tremolo-measured-eighth','tremolo-measured-sixteenth','tremolo-measured-eighth-con-sord','tremolo-measured-sixteenth-con-sord','trill','trill-maj2',},{'trill-maj3','trill-min2','trill-min3','trill-perf4','vibrato','vibrato-con-sord','vibrato-molto','portato','scoop','bend-up','bend-down','fortepiano','multitongued',},{'alt-gypsy','alt-gypsy-eighth','alt-gypsy-harmonics','alt-tremolo-gypsy-harmonics','alt-wave','alt-wave-double','alt-wave-double-stopped','alt-wave-double-tr','alt-x','harp-pdlt','phrase','phrase-multitongued','phrase-multitongued-cresc',},{'sul-tasto-super','sul-tasto-super-eighth','tremolo-harmonics-a','tremolo-harmonics-b','tremolo-slurred',},}return articons
 end)()
@@ -7394,8 +7465,7 @@ self.project_change_cookie=nil
 self.project_dirty=nil
 self.project_state=nil
 self.queued_actions=0
-self.active_projects_by_cookie=nil
-self.last_track=nil
+self.active_projects_by_cookie={}self.last_track=nil
 self.default_channel=1
 self.midi_hwnd=nil
 self.midi_editor_take=nil
@@ -7944,12 +8014,12 @@ return art
 end
 end
 end
-function App:get_articulation_color(color)local cfg=self.config.art_colors[color]
-if cfg and cfg:len()>0 then
-return cfg
-else
-return reabank.colors[color] or reabank.default_colors[color] or reabank.default_colors.default
+function App:get_articulation_color(name)local color=self.config.art_colors[name] or reabank.colors[name] or reabank.default_colors[name]
+if color and color:len()>0 then
+return color
 end
+color=reabank.colors[color]
+return color or self.config.art_colors.default or reabank.colors.default or reabank.default_colors.default
 end
 function App:handle_ondock()BaseApp.handle_ondock(self)self:update_dock_buttons()end
 function App:handle_onkeypresspost(event)BaseApp.handle_onkeypresspost(self,event)if not event.handled then
@@ -8040,7 +8110,7 @@ log.time_start()reaper.Main_OnCommandEx(42465,0,0)log.time_end('app: invoked REA
 function App:beat_reaper_into_submission()log.time_start()for i=0,reaper.CountTracks(0)-1 do
 local track=reaper.GetTrack(0,i)self:clear_track_reabank_mapping(track)end
 self:force_recognize_bank_change_many_tracks()reaper.MB('Force-refreshed all tracks in project.', 'Refresh Project', 0)log.debug('app: finished track chunk sweep')log.time_end()end
-function App:build_frame()BaseApp.build_frame(self)local menubutton=rtk.OptionMenu{icon='med-edit',flat=true,icononly=true,tooltip='Manage banks',}if rtk.os.windows then
+function App:build_frame()BaseApp.build_frame(self)local menubutton=rtk.OptionMenu{icon='edit',flat=true,icononly=true,tooltip='Manage banks',}if rtk.os.windows then
 menubutton:attr('menu', {'Import Banks from Clipboard','Edit in Notepad','Open in Default App','Show in Explorer'})elseif rtk.os.mac then
 menubutton:attr('menu', {'Import Banks from Clipboard','Edit in TextEdit','Open in Default App','Show in Finder'})else
 menubutton:attr('menu', {'Import Banks from Clipboard','Edit in Editor','Show in File Browser',})end
@@ -8062,12 +8132,12 @@ os.execute('xdg-open "' .. reabank.reabank_filename_user .. '"')elseif self.sele
 local path=Path.join(Path.resourcedir, "Data")os.execute('xdg-open "' .. path .. '"')end
 end
 end
-local button = toolbar:add(rtk.Button{icon='med-sync', flat=true})button:attr('tooltip', 'Reload ReaBank files from disk')button.onclick=function(b,event)rtk.defer(function()app:refresh_banks(App.REPARSE_REABANK_FILE|App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)if event.shift then
+local button = toolbar:add(rtk.Button{icon='sync', flat=true})button:attr('tooltip', 'Reload ReaBank files from disk')button.onclick=function(b,event)rtk.defer(function()app:refresh_banks(App.REPARSE_REABANK_FILE|App.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK)if event.shift then
 self:beat_reaper_into_submission()end
 end)end
-self.toolbar.dock = toolbar:add(rtk.Button{icon='med-dock_window', flat=true, tooltip='Dock window'})self.toolbar.undock = toolbar:add(rtk.Button{icon='med-undock_window', flat=true, tooltip='Undock window'})self.toolbar.dock.onclick=function()self.window:attr('docked', true)end
+self.toolbar.dock = toolbar:add(rtk.Button{icon='dock_window', flat=true, tooltip='Dock window'})self.toolbar.undock = toolbar:add(rtk.Button{icon='undock_window', flat=true, tooltip='Undock window'})self.toolbar.dock.onclick=function()self.window:attr('docked', true)end
 self.toolbar.undock.onclick=function()self.window:attr('docked', false)end
-self:update_dock_buttons()local button = toolbar:add(rtk.Button{icon='med-settings', flat=true, tooltip='Manage Reaticulate Settings'})button.onclick=function()self:push_screen('settings')end
+self:update_dock_buttons()local button = toolbar:add(rtk.Button{icon='settings', flat=true, tooltip='Manage Reaticulate Settings'})button.onclick=function()self:push_screen('settings')end
 end
 function App:zoom(increment)BaseApp.zoom(self,increment)if self:current_screen()==self.screens.settings then
 self.screens.settings.update_ui_scale_menu()end
@@ -8163,7 +8233,7 @@ local last_track=self.track
 local track_changed=self.track~=track
 local current_screen=self:current_screen()local _, change_cookie=reaper.GetProjExtState(0, 'reaticulate', 'change_cookie')local dirty=reaper.IsProjectDirty(0)if change_cookie~=self.project_change_cookie then
 local active=self.active_projects_by_cookie
-local opened=active and not active[change_cookie] or false
+local opened=not active[change_cookie]
 self.active_projects_by_cookie={}for pidx=0,100 do
 local proj, _=reaper.EnumProjects(pidx, '')if not proj then
 break
@@ -8349,7 +8419,7 @@ end
 return cleared
 end
 function screen.create_banklist_ui(bank)bank.vbox=rtk.VBox{spacing=10}local hbox=rtk.HBox()bank.vbox:add(hbox,{lpadding=10,tpadding=10,bpadding=10})bank.heading=rtk.Heading{bank.shortname or bank.name}hbox:add(bank.heading, {valign='center'})hbox:add(rtk.Box.FLEXSPACE)if bank.message then
-local button=rtk.Button{icon='med-info_outline',flat=true,alpha=bank.message and 1.0 or 0.7,tooltip='Toggle bank message',}hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='lg-info_outline'}, {valign='top'})local label=msgbox:add(rtk.Text{bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
+local button=rtk.Button{icon='info_outline',flat=true,alpha=bank.message and 1.0 or 0.7,tooltip='Toggle bank message',}hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='info_outline:large'}, {valign='top'})local label=msgbox:add(rtk.Text{bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
 rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)end
 msgbox.onclick=button.onclick
 msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)button.alpha=msgbox.visible and 1.0 or 0.5
@@ -8362,7 +8432,7 @@ color=app:get_articulation_color(color)end
 if rtk.color.luma(color)>rtk.light_luma_threshold then
 darkicon=true
 end
-art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
+art.icon=articons.get(art.iconname, darkicon, 'note-eighth')art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
 art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true,nil,event.alt)return true
 end
 art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
@@ -8421,7 +8491,7 @@ end
 function screen.focus_filter()screen.filter_entry:focus()screen.filter_refocus_on_activation=not app.window.in_window and rtk.focused_hwnd
 return app.window:focus()end
 function screen.clear_filter()screen.filter_entry:attr('value', '')end
-function screen.init()screen.button_font=rtk.Font('Calibri', 16, nil, rtk.font.BOLD)screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=rtk.Button{icon='med-view_list',flat=true,tooltip='Configure track for Reaticulate',}track_button.onclick=function()app:push_screen('trackcfg')end
+function screen.init()screen.button_font=rtk.Font('Calibri', 16, nil, rtk.font.BOLD)screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=rtk.Button{icon='view_list',flat=true,tooltip='Configure track for Reaticulate',}track_button.onclick=function()app:push_screen('trackcfg')end
 screen.toolbar:add(track_button,{rpadding=0})screen.toolbar:add(rtk.Box.FLEXSPACE)local row=rtk.HBox{spacing=2}topbar:add(row, {tpadding=20, halign='center'})for channel=1,16 do
 local label=string.format("%02d", channel)local button=rtk.Button{label,w=25,h=20,color=rtk.theme.entry_border_focused,textcolor='#ffffff',fontscale=0.9,halign='center',padding=0,flat=true,tooltip='Set inserted articulations and MIDI editor to channel ' .. tostring(channel),}local button=row:add(button)button.onclick=function(button,event)if event.button==1 then
 app:set_default_channel(channel)elseif event.button==2 then
@@ -8431,606 +8501,10 @@ screen.midi_channel_buttons[channel]=button
 if channel==8 then
 row=rtk.HBox{spacing=2}topbar:add(row, {tpadding=0, halign='center'})end
 end
-local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='med-search', placeholder='Filter articulations'}entry.onkeypress=handle_filter_keypress
+local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='search', placeholder='Filter articulations'}entry.onkeypress=handle_filter_keypress
 entry.onchange=function(self)screen.filter_articulations(self.value:lower())end
 row:add(entry,{expand=1,fillw=true,lpadding=20,rpadding=20})screen.filter_entry=entry
-screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',padding=10,visible=false,}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='lg-alert_circle_outline', scale=1})screen.warningmsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',padding={20,10},}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='lg-alert_circle_outline'})screen.errormsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{'Open Track Settings', icon='med-view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
-screen.errorbox:add(button, {halign='center', tpadding=20})screen.widget:add(screen.errorbox,{fillw=true})screen.banks=rtk.VBox{bpadding=20,spacing=20}screen.viewport=rtk.Viewport{child=screen.banks,h=1.0}screen.widget:add(screen.viewport,{fillw=true})screen.no_banks_box=rtk.VBox()screen.widget:add(screen.no_banks_box,{halign='center', valign='center', expand=1, bpadding=100
-})local label = rtk.Text{'No articulations on this track', fontsize=24, alpha=0.5}screen.no_banks_box:add(label, {halign='center'})local button=rtk.Button{'Open Track Settings',icon=track_button.icon,color={0.3,0.3,0.3,1},}screen.no_banks_box:add(button, {halign='center', tpadding=20})button.onclick=track_button.onclick
-end
-function screen.highlight_channel_button(new_channel)for channel,button in ipairs(screen.midi_channel_buttons)do
-button:attr('flat', channel ~= new_channel and 'flat' or false)end
-end
-local function _get_bank_idx(bank)for idx,candidate in ipairs(screen.visible_banks)do
-if bank==candidate then
-return idx
-end
-end
-end
-function screen.get_bank_before(bank)local idx=_get_bank_idx(bank)-1
-if idx>=1 then
-return screen.visible_banks[idx]
-end
-end
-function screen.get_bank_after(bank)local idx=_get_bank_idx(bank)+1
-if idx<=#screen.visible_banks then
-return screen.visible_banks[idx]
-end
-end
-function screen.get_first_bank()return screen.visible_banks[1]
-end
-function screen.get_last_bank()return screen.visible_banks[#screen.visible_banks]
-end
-function screen.get_firstlast_articulation(last)if not last then
-local bank=screen.get_first_bank()if bank then
-for _,art in ipairs(bank.articulations)do
-if art.button.visible then
-return art
-end
-end
-end
-else
-local bank=screen.get_last_bank()if bank then
-for i=#bank.articulations,1,-1 do
-local art=bank.articulations[i]
-if art.button.visible then
-return art
-end
-end
-end
-end
-end
-function screen.get_relative_articulation(art,distance,group)local bank=art:get_bank()local function _get_adjacent_art(art)if distance<0 then
-return bank:get_articulation_before(art)else
-return bank:get_articulation_after(art)end
-end
-local absdistance=math.abs(distance)local target=art
-while absdistance>0 do
-local candidate=_get_adjacent_art(target)if not candidate then
-if distance<0 then
-bank=screen.get_bank_before(bank)if bank then
-candidate=bank:get_last_articulation()end
-else
-bank=screen.get_bank_after(bank)if bank then
-candidate=bank:get_first_articulation()end
-end
-end
-if not candidate then
-if distance<0 then
-bank=screen.get_last_bank()candidate=bank:get_last_articulation()else
-bank=screen.get_first_bank()candidate=bank:get_first_articulation()end
-end
-if candidate then
-target=candidate
-if(candidate.group==group or not group)and candidate.button.visible then
-absdistance=absdistance-1
-end
-end
-end
-if(target.group==group or not group)and target.button.visible then
-return target
-end
-end
-function screen.get_selected_articulation()local sel=screen.selected_articulation
-if sel and sel.button.visible then
-return sel
-end
-end
-function screen.clear_selected_articulation()if screen.selected_articulation then
-screen.selected_articulation.button:attr('hover', false)screen.selected_articulation=nil
-end
-end
-function screen.select_relative_articulation(distance)local current=screen.get_selected_articulation()screen.clear_selected_articulation()if not current then
-local last=app.last_activated_articulation
-local group=last and last.group or nil
-current=app:get_active_articulation(nil,group)end
-local target
-if current then
-target=screen.get_relative_articulation(current,distance,nil)else
-target=screen.get_firstlast_articulation(distance<0)end
-if target then
-target.button:attr('hover', true)screen.scroll_articulation_into_view(target)screen.selected_articulation=target
-end
-end
-function screen.scroll_articulation_into_view(art)if art.button then
-art.button:scrolltoview{50,0,10,0}end
-end
-function screen.save_scroll_position()if rfx.current.track and rfx.current.appdata.y~=screen.viewport.scroll_top then
-rfx.current.appdata.y=screen.viewport.scroll_top
-rfx.current:queue_write_appdata()end
-end
-function screen.clear_cache()for _,bank in pairs(reabank.banks_by_guid)do
-bank.vbox=nil
-end
-screen.update()end
-function screen.update()screen.clear_selected_articulation()screen.update_error_box()screen.show_track_banks()end
-return screen
-end)()
-__mod_screens_banklist_ancient=(function()
-local rtk=rtk
-local rfx=__mod_rfx
-local reabank=__mod_reabank
-local feedback=__mod_feedback
-local articons=__mod_articons
-local log=rtk.log
-local screen={minw=250,widget=nil,midi_channel_buttons={},visible_banks={},toolbar=nil,errorbox=nil,warningbox=nil,filter_refocus_on_activation=false,selected_articulation=nil,error_msgs={[rfx.ERROR_PROGRAM_CONFLICT]='Some banks on this track have conflicting program numbers. ' ..'Some articulations may not work as expected.',[rfx.ERROR_BUS_CONFLICT]='A bank on this track uses bus 16 which conflicts with the MIDI ' ..'controller feedback feature. Avoid the use of bus 16 in your banks ' .."or disable MIDI feedback in Reaticulate's global settings.",[rfx.ERROR_DUPLICATE_BANK]='The same bank is mapped to this track multiple times which is not ' ..'allowed.  Only one instance will appear below.',[rfx.ERROR_UNKNOWN_BANK]='A bank assigned to this track could not be found on the local system ' ..'and will not be shown below.',default='There is some issue with the banks on this track. ' ..'Open the Track Settings page to learn more.'}}local function get_filter_score(name,filter)local last_match_pos=0
-local score=0
-local match=false
-local filter_pos=1
-local filter_char=filter:sub(filter_pos,filter_pos)for name_pos=1,#name do
-local name_char=name:sub(name_pos,name_pos)if name_char==filter_char then
-local distance=name_pos-last_match_pos
-score=score+(100-distance)if filter_pos==#filter then
-return score
-else
-last_match_pos=name_pos
-filter_pos=filter_pos+1
-filter_char=filter:sub(filter_pos,filter_pos)end
-end
-end
-return 0
-end
-function screen.filter_articulations(filter)for _,bank in ipairs(screen.visible_banks)do
-for _,art in ipairs(bank.articulations)do
-local score=-1
-if filter:len()>0 then
-score=get_filter_score((art.shortname or art.name):lower(),filter)end
-if score~=0 then
-if not art.button.visible then
-art.button:show()end
-elseif art.button.visible then
-art.button:hide()end
-end
-end
-end
-local function handle_filter_keypress(self,event)if event.keycode==rtk.keycodes.UP or event.keycode==rtk.keycodes.DOWN then
-return false
-elseif event.keycode==rtk.keycodes.ESCAPE then
-if screen.filter_refocus_on_activation then
-app:refocus()end
-return false
-elseif event.keycode==rtk.keycodes.ENTER then
-if self.value ~='' then
-if screen.selected_articulation then
-app:activate_selected_articulation(nil,screen.filter_refocus_on_activation)else
-local art=screen.get_firstlast_articulation()if art then
-app:activate_articulation(art,screen.filter_refocus_on_activation)end
-end
-elseif screen.filter_refocus_on_activation then
-app:refocus()end
-rtk.defer(function()screen.clear_selected_articulation()screen.clear_filter()end)return self.value ~=''end
-end
-function screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local hovering=button.hovering or button.hover
-if not hovering and not art:is_active()then
-return
-end
-local channels={}local bitmap=art.channels
-local hover_channel=nil
-if hovering then
-local bank=art:get_bank()hover_channel=bank:get_src_channel(app.default_channel)-1
-bitmap=bitmap|(1<<hover_channel)end
-local channel=0
-while bitmap>0 do
-if bitmap&1>0 then
-channels[#channels+1]=channel
-end
-bitmap=bitmap>>1
-channel=channel+1
-end
-if channels then
-local x=offx+button.cx+button.cw
-gfx.setfont(1,button.font,(button.fontsize-2)*rtk.fonts.multiplier*rtk.scale,rtk.fonts.BOLD)for idx,channel in ipairs(channels)do
-local lw,lh=gfx.measurestr(channel+1)x=x-(lw+15)local y=offy+button.cy+(button.ch-lh)/2
-button:setcolor('#ffffff', alpha)local fill=(channel==hover_channel)or(rfx.active_notes&(1<<channel)>0)gfx.rect(x-5,y-1,lw+10,lh+2,fill)if fill then
-button:setcolor('#000000', alpha)end
-gfx.x=x
-gfx.y=y+(rtk.os.mac and 1 or 0)gfx.drawstr(channel+1)end
-end
-end
-function screen.onartclick(art,event)if event.button==rtk.mouse.BUTTON_LEFT then
-app:activate_articulation(art,true,false)elseif event.button==rtk.mouse.BUTTON_MIDDLE then
-rfx.push_state(rfx.current.track)for channel=0,15 do
-if art.channels&(1<<channel)~=0 then
-rfx.current:clear_channel_program(channel+1,art.group)end
-end
-rfx.current:sync(rfx.current.track,true)rfx.pop_state()elseif event.button==rtk.mouse.BUTTON_RIGHT then
-app:activate_articulation(art,true,true)end
-end
-function screen.create_banklist_ui(bank)bank.vbox=rtk.VBox{spacing=10}local hbox=rtk.HBox()bank.vbox:add(hbox,{lpadding=10,tpadding=10,bpadding=10})bank.heading=rtk.Heading{label=bank.shortname or bank.name}hbox:add(bank.heading, {valign='center'})hbox:add(rtk.Box.FLEXSPACE)if bank.message then
-local button = rtk.Button{icon='18-info_outline', flat=true}button.alpha=bank.message and 1.0 or 0.7
-hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='24-info_outline'}, {valign='top'})local label=msgbox:add(rtk.Label{label=bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
-rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)end
-msgbox.onclick=button.onclick
-msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)button.alpha=msgbox.visible and 1.0 or 0.5
-end
-local artbox=bank.vbox:add(rtk.FlowBox{vspacing=7,hspacing=0,lpadding=30})for n,art in ipairs(bank.articulations)do
-local color=art.color or reabank.colors.default
-local darkicon=false
-if not color:starts('#') then
-color=app:get_articulation_color(color)end
-if rtk.color2luma(color)>rtk.light_luma_threshold then
-darkicon=true
-end
-art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,color=color,tpadding=2,bpadding=2,lpadding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
-art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true)return true
-end
-art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local anim_pos=button.animation_position
-if anim_pos then
-local x=offx+button.cx+(button.cw*anim_pos)local y=offy+button.cy+button.ch-3
-local mul=-(2*anim_pos-1)^2+1
-local peak_w=button.cw*0.4
-local w=peak_w*mul
-button:setcolor{1.0,1.0,1.0,0.6*mul^1.5*alpha}gfx.rect(x-peak_w/2*mul,y,w,3)end
-end
-art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
-art.button.onmouseenter=function(button,event)if not art.outputstr then
-art.outputstr=art:describe_outputs()end
-app:set_statusbar(art.outputstr)return true
-end
-art.button.start_insert_animation=function()art.button.animation_position=0
-art.button:animate{attr='animation_position', dst=1, duration=0.3,done=function(button)button.animation_position=nil
-end
-}end
-local tpadding=art.spacer and(art.spacer&0xff)*20 or 0
-artbox:add(art.button,{lpadding=0,tpadding=tpadding,fillw=true,rpadding=20,minw=250})end
-bank.vbox:hide()return bank.vbox
-end
-function screen.show_track_banks()if not rfx.current.fx then
-return
-end
-screen.banks:remove_all()local visible={}local visible_by_guid={}function showbank(bank)if visible_by_guid[bank.guid] then
-return
-end
-if not bank.vbox then
-screen.create_banklist_ui(bank)end
-screen.banks:add(bank.vbox:show())visible[#visible+1]=bank
-visible_by_guid[bank.guid]=1
-end
-for _,bank,_,_,hash,userdata,guid in rfx.current:get_banks()do
-if bank then
-showbank(bank)end
-end
-screen.visible_banks=visible
-if #visible>0 then
-screen.viewport:show()screen.no_banks_box:hide()else
-screen.viewport:hide()screen.no_banks_box:show()end
-end
-function screen.set_warning(msg)if msg then
-screen.warningmsg:attr('label', msg)screen.warningbox:show()screen.warningbox:animate{attr='alpha', src=0, dst=1, duration=0.3}screen.warningbox:animate{attr='h', src=0, dst=nil, duration=0.3}else
-screen.warningbox:hide()end
-end
-function screen.update_error_box()if not rfx.current.fx or not rfx.current.appdata.err then
-screen.errorbox:hide()else
-local msg=screen.error_msgs[rfx.current.appdata.err] or screen.error_msgs.default
-screen.errormsg:attr('label', msg)screen.errorbox:show()end
-end
-function screen.focus_filter()screen.filter_entry:focus()screen.filter_refocus_on_activation=not app.window.in_window
-return app.window:focus()end
-function screen.clear_filter()screen.filter_entry:attr('value', '')end
-function screen.init()screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,autofocus=true,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=app:make_button('18-view_list')track_button.onclick=function()app:push_screen('trackcfg')end
-screen.toolbar:add(track_button,{rpadding=0})screen.toolbar:add(rtk.Box.FLEXSPACE)row=rtk.HBox{spacing=2}topbar:add(row,{tpadding=20,halign=rtk.Widget.CENTER})for channel=1,16 do
-local label=string.format("%02d", channel)local button=rtk.Button{label=label,color=rtk.theme.entry_border_focused,w=25,h=20,textcolor='#ffffff',fontscale=0.9,halign=rtk.Widget.CENTER,tpadding=0,rpadding=0,bpadding=0,lpadding=0,lspacing=0,scalability='dimensions',flat=true
-}local button=row:add(button)button.onclick=function(button,event)if event.button==1 then
-app:set_default_channel(channel)feedback.sync(app.track)elseif event.button==2 then
-log.warn('TODO: reassign selected MIDI Events to channel %s', channel)end
-app:refocus()end
-screen.midi_channel_buttons[channel]=button
-if channel==8 then
-row=rtk.HBox{spacing=2}topbar:add(row,{tpadding=0,halign=rtk.Widget.CENTER})end
-end
-local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='18-search', label="Filter articulations", bg2='#0000007f'}entry.onkeypress=handle_filter_keypress
-entry.onchange=function(self)screen.filter_articulations(self.value:lower())end
-row:add(entry,{expand=1,fillw=true,lpadding=20,rpadding=20})screen.filter_entry=entry
-screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',tpadding=10,bpadding=10,lpadding=10,rpadding=10
-}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='24-alert_circle_outline', scale=1})screen.warningmsg=hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',tpadding=20,bpadding=20,lpadding=10,rpadding=10
-}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='24-alert_circle_outline'})screen.errormsg=hbox:add(rtk.Label{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{label='Open Track Settings', icon='18-view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
-screen.errorbox:add(button, {halign='center', tpadding=20})screen.widget:add(screen.errorbox,{fillw=true})screen.banks=rtk.VBox{bpadding=20,spacing=20}screen.viewport=rtk.Viewport{child=screen.banks,h=1.0}screen.widget:add(screen.viewport,{fillw=true})screen.no_banks_box=rtk.VBox()screen.widget:add(screen.no_banks_box,{halign=rtk.Widget.CENTER,valign=rtk.Widget.CENTER,expand=1,bpadding=100
-})local label=rtk.Label{label="No banks on this track", fontsize=24,color={1,1,1,0.5}}screen.no_banks_box:add(label,{halign=rtk.Widget.CENTER})local button=rtk.Button{icon=track_button.icon, label="Edit Track Banks",space=10,color={0.3,0.3,0.3,1},tpadding=5,bpadding=5,lpadding=5,rpadding=10
-}screen.no_banks_box:add(button,{halign=rtk.Widget.CENTER,tpadding=20})button.onclick=track_button.onclick
-end
-function screen.highlight_channel_button(new_channel)for channel,button in ipairs(screen.midi_channel_buttons)do
-if channel==new_channel then
-button:attr('flat', false)else
-button:attr('flat', 'label')end
-end
-end
-local function _get_bank_idx(bank)for idx,candidate in ipairs(screen.visible_banks)do
-if bank==candidate then
-return idx
-end
-end
-end
-function screen.get_bank_before(bank)local idx=_get_bank_idx(bank)-1
-if idx>=1 then
-return screen.visible_banks[idx]
-end
-end
-function screen.get_bank_after(bank)local idx=_get_bank_idx(bank)+1
-if idx<=#screen.visible_banks then
-return screen.visible_banks[idx]
-end
-end
-function screen.get_first_bank()return screen.visible_banks[1]
-end
-function screen.get_last_bank()return screen.visible_banks[#screen.visible_banks]
-end
-function screen.get_firstlast_articulation(last)if not last then
-local bank=screen.get_first_bank()if bank then
-for _,art in ipairs(bank.articulations)do
-if art.button.visible then
-return art
-end
-end
-end
-else
-local bank=screen.get_last_bank()if bank then
-for i=#bank.articulations,1,-1 do
-local art=bank.articulations[i]
-if art.button.visible then
-return art
-end
-end
-end
-end
-end
-function screen.get_relative_articulation(art,distance,group)local bank=art:get_bank()local function _get_adjacent_art(art)if distance<0 then
-return bank:get_articulation_before(art)else
-return bank:get_articulation_after(art)end
-end
-local absdistance=math.abs(distance)local target=art
-while absdistance>0 do
-candidate=_get_adjacent_art(target)if not candidate then
-if distance<0 then
-bank=screen.get_bank_before(bank)if bank then
-candidate=bank:get_last_articulation()end
-else
-bank=screen.get_bank_after(bank)if bank then
-candidate=bank:get_first_articulation()end
-end
-end
-if not candidate then
-if distance<0 then
-bank=screen.get_last_bank()candidate=bank:get_last_articulation()else
-bank=screen.get_first_bank()candidate=bank:get_first_articulation()end
-end
-if candidate then
-target=candidate
-if(candidate.group==group or not group)and candidate.button.visible then
-absdistance=absdistance-1
-end
-end
-end
-if(target.group==group or not group)and target.button.visible then
-return target
-end
-end
-function screen.get_selected_articulation()local sel=screen.selected_articulation
-if sel and sel.button.visible then
-return sel
-end
-end
-function screen.clear_selected_articulation()if screen.selected_articulation then
-screen.selected_articulation.button:attr('hover', false)screen.selected_articulation=nil
-end
-end
-function screen.select_relative_articulation(distance)local current=screen.get_selected_articulation()screen.clear_selected_articulation()if not current then
-local last=app.last_activated_articulation
-local group=last and last.group or nil
-current=app:get_active_articulation(nil,group)end
-if current then
-target=screen.get_relative_articulation(current,distance,nil)else
-target=screen.get_firstlast_articulation(distance<0)end
-if target then
-target.button:attr('hover', true)screen.scroll_articulation_into_view(target)screen.selected_articulation=target
-end
-end
-function screen.scroll_articulation_into_view(art)if art.button then
-art.button:scrolltoview(50,10)end
-end
-function screen.clear_cache()for _,bank in pairs(reabank.banks_by_guid)do
-bank.vbox=nil
-end
-screen.update()end
-function screen.update()screen.clear_selected_articulation()screen.update_error_box()screen.show_track_banks()end
-return screen
-end)()
-__mod_screens_banklist_bak=(function()
-local rtk=rtk
-local rfx=__mod_rfx
-local reabank=__mod_reabank
-local articons=__mod_articons
-local log=rtk.log
-local screen={minw=250,widget=nil,midi_channel_buttons={},visible_banks={},toolbar=nil,errorbox=nil,warningbox=nil,button_font=nil,filter_refocus_on_activation=false,selected_articulation=nil,error_msgs={[rfx.ERROR_PROGRAM_CONFLICT]='Some banks on this track have conflicting program numbers. ' ..'Some articulations may not work as expected.',[rfx.ERROR_BUS_CONFLICT]='A bank on this track uses bus 16 which conflicts with the MIDI ' ..'controller feedback feature. Avoid the use of bus 16 in your banks ' .."or disable MIDI feedback in Reaticulate's global settings.",[rfx.ERROR_DUPLICATE_BANK]='The same bank is mapped to this track multiple times which is not ' ..'allowed.  Only one instance will appear below.',[rfx.ERROR_UNKNOWN_BANK]='A bank assigned to this track could not be found on the local system ' ..'and will not be shown below.',default='There is some issue with the banks on this track. ' ..'Open the Track Settings page to learn more.'}}local function get_filter_score(name,filter)local last_match_pos=0
-local score=0
-local match=false
-local filter_pos=1
-local filter_char=filter:sub(filter_pos,filter_pos)for name_pos=1,#name do
-local name_char=name:sub(name_pos,name_pos)if name_char==filter_char then
-local distance=name_pos-last_match_pos
-score=score+(100-distance)if filter_pos==#filter then
-return score
-else
-last_match_pos=name_pos
-filter_pos=filter_pos+1
-filter_char=filter:sub(filter_pos,filter_pos)end
-end
-end
-return 0
-end
-function screen.filter_articulations(filter)for _,bank in ipairs(screen.visible_banks)do
-for _,art in ipairs(bank.articulations)do
-local score=-1
-if filter:len()>0 then
-score=get_filter_score((art.shortname or art.name):lower(),filter)end
-if score~=0 then
-if not art.button.visible then
-art.button:show()end
-elseif art.button.visible then
-art.button:hide()end
-end
-end
-end
-local function handle_filter_keypress(self,event)if event.keycode==rtk.keycodes.UP or event.keycode==rtk.keycodes.DOWN then
-return false
-elseif event.keycode==rtk.keycodes.ESCAPE then
-if screen.filter_refocus_on_activation then
-app:refocus(screen.filter_refocus_on_activation)end
-screen.clear_filter()return true
-elseif event.keycode==rtk.keycodes.ENTER or event.keycode==rtk.keycodes.INSERT then
-local force_insert=event.shift or event.ctrl or event.keycode==rtk.keycodes.INSERT
-local insert_at_cursor=event.alt
-if self.value ~='' then
-if screen.selected_articulation then
-app:activate_selected_articulation(nil,nil,force_insert,nil,insert_at_cursor)else
-local art=screen.get_firstlast_articulation()if art then
-app:activate_articulation(art,nil,force_insert,nil,insert_at_cursor)end
-end
-end
-if screen.filter_refocus_on_activation then
-app:refocus(screen.filter_refocus_on_activation)screen.filter_refocus_on_activation=nil
-end
-rtk.defer(function()screen.clear_selected_articulation()screen.clear_filter()end)return self.value ~=''end
-end
-function screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)local hovering=button.hovering or button.hover
-if not hovering and not art:is_active()then
-return
-end
-local channels={}local bitmap=art.channels
-local hover_channel=nil
-if hovering then
-local bank=art:get_bank()hover_channel=bank:get_src_channel(app.default_channel)-1
-bitmap=bitmap|(1<<hover_channel)end
-local channel=0
-while bitmap>0 do
-if bitmap&1>0 then
-channels[#channels+1]=channel
-end
-bitmap=bitmap>>1
-channel=channel+1
-end
-if channels then
-local scale=rtk.scale.value
-local calc=button.calc
-local x=offx+calc.x+calc.w
-for idx,channel in ipairs(channels)do
-local text=tostring(channel+1)local lw,lh=screen.button_font:measure(text)x=x-lw-12*scale
-local y=offy+calc.y+(calc.h-lh)/2
-local fill=(channel==hover_channel)or(rfx.active_notes&(1<<channel)>0)button:setcolor('#ffffff', alpha)gfx.rect(x-5*scale,y-1*scale,lw+10*scale,lh+2*scale,fill)if fill then
-button:setcolor('#000000', alpha)end
-screen.button_font:draw(text,x,y+(rtk.os.mac and 1 or 0))end
-end
-end
-function screen.onartclick(art,event)if event.button==rtk.mouse.BUTTON_LEFT then
-app:activate_articulation(art,true,false,nil,event.alt)elseif event.button==rtk.mouse.BUTTON_MIDDLE then
-if screen.clear_articulation(art)>0 then
-rfx.current:sync(rfx.current.track,true)end
-elseif event.button==rtk.mouse.BUTTON_RIGHT then
-app:activate_articulation(art,true,true,nil,event.alt)end
-end
-function screen.clear_all_active_articulations()local cleared=0
-for b in rfx.current:get_banks()do
-if b.bank then
-for n,art in ipairs(b.bank.articulations)do
-cleared=cleared+screen.clear_articulation(art)end
-end
-end
-if cleared>0 then
-rfx.current:sync(rfx.current.track,true)end
-return cleared
-end
-function screen.clear_articulation(art)local cleared=0
-for channel=0,15 do
-if art.channels&(1<<channel)~=0 then
-rfx.current:clear_channel_program(channel+1,art.group)cleared=cleared+1
-end
-end
-return cleared
-end
-function screen.create_banklist_ui(bank)bank.vbox=rtk.VBox{spacing=10}local hbox=rtk.HBox()bank.vbox:add(hbox,{lpadding=10,tpadding=10,bpadding=10})bank.heading=rtk.Heading{bank.shortname or bank.name}hbox:add(bank.heading, {valign='center'})hbox:add(rtk.Box.FLEXSPACE)if bank.message then
-local button=rtk.Button{icon='med-info_outline',flat=true,alpha=bank.message and 1.0 or 0.7,tooltip='Toggle bank message',}hbox:add(button, {valign='center', rpadding=10})local msgbox=rtk.HBox{spacing=10,autofocus=true}bank.vbox:add(msgbox,{lpadding=10,rpadding=10,bpadding=10})msgbox:add(rtk.ImageBox{image='lg-info_outline'}, {valign='top'})local label=msgbox:add(rtk.Text{bank.message, wrap=true}, {valign='center'})button.onclick=function()msgbox:toggle()button.alpha=msgbox.visible and 1.0 or 0.5
-rfx.current:set_bank_userdata(bank, 'showinfo', msgbox.visible)end
-msgbox.onclick=button.onclick
-msgbox:attr('visible', rfx.current:get_bank_userdata(bank, 'showinfo') or false)button.alpha=msgbox.visible and 1.0 or 0.5
-end
-local artbox=bank.vbox:add(rtk.FlowBox{vspacing=7,hspacing=0,lpadding=30})for n,art in ipairs(bank.articulations)do
-local color=art.color or reabank.colors.default
-local darkicon=false
-if not color:startswith('#') then
-color=app:get_articulation_color(color)end
-if rtk.color.luma(color)>rtk.light_luma_threshold then
-darkicon=true
-end
-art.icon=articons.get(art.iconname, darkicon) or articons.get('note-eighth', darkicon)art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
-art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true,nil,event.alt)return true
-end
-art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
-art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
-art.button.onmouseenter=function(button,event)if not art.outputstr then
-art.outputstr=art:describe_outputs()end
-app:set_statusbar(art.outputstr)return true
-end
-art.button.start_insert_animation=function()if art.button:get_animation('color') then
-return
-end
-local orig=art.button.color
-local target='white'if rtk.color.luma(orig)>0.8 then
-local h,s,l=rtk.color.hsl(orig)target=table.pack(rtk.color.hsl2rgb(h,s,l*0.5))end
-log.info('----> %s', type(target) == 'table' and table.tostring(target) or target)art.button:animate{attr='color', dst=target, duration=0.1, easing='out-circ'}:after(function()art.button:animate{attr='color', dst=orig, duration=0.1, easing='out-circ'}end)end
-local tpadding=art.spacer and(art.spacer&0xff)*20 or 0
-artbox:add(art.button,{lpadding=0,tpadding=tpadding,fillw=true,rpadding=20,minw=250})end
-bank.vbox:hide()return bank.vbox
-end
-function screen.show_track_banks()if not rfx.current.fx then
-return
-end
-screen.banks:remove_all()local visible={}local visible_by_guid={}local function showbank(bank)if visible_by_guid[bank.guid] then
-return
-end
-if not bank.vbox then
-screen.create_banklist_ui(bank)end
-screen.banks:add(bank.vbox:show())visible[#visible+1]=bank
-visible_by_guid[bank.guid]=1
-end
-for b in rfx.current:get_banks()do
-if b.bank then
-showbank(b.bank)end
-end
-screen.visible_banks=visible
-if #visible>0 then
-screen.viewport:show()screen.no_banks_box:hide()else
-screen.viewport:hide()screen.no_banks_box:show()end
-if rfx.current.appdata then
-local y=rfx.current.appdata.y
-if y then
-screen.viewport:scrollto(nil,y,false)end
-end
-end
-function screen.set_warning(msg)if msg then
-screen.warningmsg:attr('text', msg)screen.warningbox:show()screen.warningbox:animate{attr='h', src=0, dst=nil, duration=0.3}screen.warningbox:animate{attr='alpha', src=0, dst=1, duration=0.3}else
-screen.warningbox:hide()end
-end
-function screen.update_error_box()if not rfx.current.fx or not rfx.current.appdata.err then
-screen.errorbox:hide()else
-local msg=screen.error_msgs[rfx.current.appdata.err] or screen.error_msgs.default
-screen.errormsg:attr('text', msg)screen.errorbox:show()end
-end
-function screen.focus_filter()screen.filter_entry:focus()screen.filter_refocus_on_activation=not app.window.in_window and rtk.focused_hwnd
-return app.window:focus()end
-function screen.clear_filter()screen.filter_entry:attr('value', '')end
-function screen.init()screen.button_font=rtk.Font('Calibri', 16, nil, rtk.font.BOLD)screen.widget=rtk.VBox()screen.toolbar=rtk.HBox{spacing=0}local topbar=rtk.VBox{spacing=0,bg=rtk.theme.bg,y=0,tpadding=0,bpadding=15,}screen.widget:add(topbar, {lpadding=0, halign='center'})local track_button=rtk.Button{icon='med-view_list',flat=true,tooltip='Configure track for Reaticulate',}track_button.onclick=function()app:push_screen('trackcfg')end
-screen.toolbar:add(track_button,{rpadding=0})screen.toolbar:add(rtk.Box.FLEXSPACE)local row=rtk.HBox{spacing=2}topbar:add(row, {tpadding=20, halign='center'})for channel=1,16 do
-local label=string.format("%02d", channel)local button=rtk.Button{label,w=25,h=20,color=rtk.theme.entry_border_focused,textcolor='#ffffff',fontscale=0.9,halign='center',padding=0,flat=true,tooltip='Set inserted articulations and MIDI editor to channel ' .. tostring(channel),}local button=row:add(button)button.onclick=function(button,event)if event.button==1 then
-app:set_default_channel(channel)elseif event.button==2 then
-log.warning('TODO: reassign selected MIDI Events to channel %s', channel)end
-app:refocus()end
-screen.midi_channel_buttons[channel]=button
-if channel==8 then
-row=rtk.HBox{spacing=2}topbar:add(row, {tpadding=0, halign='center'})end
-end
-local row=topbar:add(rtk.HBox{spacing=10},{tpadding=10})local entry = rtk.Entry{icon='med-search', placeholder='Filter articulations'}entry.onkeypress=handle_filter_keypress
-entry.onchange=function(self)screen.filter_articulations(self.value:lower())end
-row:add(entry,{expand=1,fillw=true,lpadding=20,rpadding=20})screen.filter_entry=entry
-screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',padding=10,visible=false,}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='lg-alert_circle_outline', scale=1})screen.warningmsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',padding={20,10},}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='lg-alert_circle_outline'})screen.errormsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{'Open Track Settings', icon='med-view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
+screen.warningbox=rtk.VBox{bg=rtk.theme.dark and '#696f16' or '#ebfb74',tborder='#ccd733',bborder='#ccd733',padding=10,visible=false,}local hbox=screen.warningbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='alert_circle_outline:large', scale=1})screen.warningmsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})screen.widget:add(screen.warningbox,{fillw=true})screen.errorbox=rtk.VBox{bg=rtk.theme.dark and '#3f0000' or '#ff9fa6',tborder='#ff0000',bborder='#ff0000',padding={20,10},}local hbox=screen.errorbox:add(rtk.HBox())hbox:add(rtk.ImageBox{image='alert_circle_outline:large'})screen.errormsg=hbox:add(rtk.Text{wrap=true}, {lpadding=10, valign='center'})local button = rtk.Button{'Open Track Settings', icon='view_list', flat=true, color='#aa000099'}button.onclick=function()app:push_screen('trackcfg')end
 screen.errorbox:add(button, {halign='center', tpadding=20})screen.widget:add(screen.errorbox,{fillw=true})screen.banks=rtk.VBox{bpadding=20,spacing=20}screen.viewport=rtk.Viewport{child=screen.banks,h=1.0}screen.widget:add(screen.viewport,{fillw=true})screen.no_banks_box=rtk.VBox()screen.widget:add(screen.no_banks_box,{halign='center', valign='center', expand=1, bpadding=100
 })local label = rtk.Text{'No articulations on this track', fontsize=24, alpha=0.5}screen.no_banks_box:add(label, {halign='center'})local button=rtk.Button{'Open Track Settings',icon=track_button.icon,color={0.3,0.3,0.3,1},}screen.no_banks_box:add(button, {halign='center', tpadding=20})button.onclick=track_button.onclick
 end
@@ -9434,13 +8908,13 @@ __mod_screens_installer=(function()
 local rtk=rtk
 local rfx=__mod_rfx
 local feedback=__mod_feedback
-local screen={widget=nil,last_fx_enabled=nil,last_track=nil,}function screen.init()screen.widget=rtk.Container()local box = screen.widget:add(rtk.VBox(), {halign='center', valign='center', expand=1})screen.icon = rtk.ImageBox{image='huge-alert_circle_outline', alpha=0.5, scale=1}box:add(screen.icon, {halign='center'})screen.message=rtk.Text{fontsize=24, alpha=0.5, wrap=true, padding=5, textalign='center'}box:add(screen.message, {halign='center', tpadding=10})screen.button = rtk.Button{'Add Reaticulate FX', icon='med-add_circle_outline', alpha=0.8}screen.button.onclick=function()reaper.PreventUIRefresh(1)reaper.Undo_BeginBlock()reaper.GetSetMediaTrackInfo_String(app.track, 'P_EXT:reaticulate', '', true)local fx=reaper.TrackFX_AddByName(app.track, 'JS:Reaticulate', 0, -1000)if fx~=-1 and not rfx.validate(app.track,fx)then
+local screen={widget=nil,last_fx_enabled=nil,last_track=nil,}function screen.init()screen.widget=rtk.Container()local box = screen.widget:add(rtk.VBox(), {halign='center', valign='center', expand=1})screen.icon = rtk.ImageBox{image='alert_circle_outline:huge', alpha=0.5, scale=1}box:add(screen.icon, {halign='center'})screen.message=rtk.Text{fontsize=24, alpha=0.5, wrap=true, padding=5, textalign='center'}box:add(screen.message, {halign='center', tpadding=10})screen.button = rtk.Button{'Add Reaticulate FX', icon='add_circle_outline', alpha=0.8}screen.button.onclick=function()reaper.PreventUIRefresh(1)reaper.Undo_BeginBlock()reaper.GetSetMediaTrackInfo_String(app.track, 'P_EXT:reaticulate', '', true)local fx=reaper.TrackFX_AddByName(app.track, 'JS:Reaticulate', 0, -1000)if fx~=-1 and not rfx.validate(app.track,fx)then
 reaper.TrackFX_Delete(app.track,fx)fx=reaper.TrackFX_AddByName(app.track, 'Reaticulate.jsfx', 0, -1000)if fx~=-1 and not rfx.validate(app.track,fx)then
 reaper.TrackFX_Delete(app.track,fx)fx=-1
 end
 end
 if fx==-1 then
-reaper.MB("The Reaticulate JSFX could not be found in REAPER's Effects folder, " ..' which means Reaticulate was not properly installed.  Please try ' ..' reinstalling from ReaPack.\n\nVisit https://reaticulate.com/ for more info.','Reaticulate installation error',0
+reaper.MB("The Reaticulate JSFX could not be found in REAPER's Effects folder, " ..'which means Reaticulate was not properly installed.  Please try ' ..'reinstalling from ReaPack.\n\nVisit https://reaticulate.com/ for more info.','Reaticulate installation error',0
 )else
 reaper.TrackFX_Show(app.track,fx,2)if fx>0 then
 reaper.TrackFX_CopyToTrack(app.track,fx,app.track,0,true)end
@@ -9501,7 +8975,7 @@ attrs.padding=2
 else
 attrs.gradient=0
 end
-local button = row:add(rtk.Button(attrs), {valign='center', spacing=5})local undo=row:add(rtk.Button{icon=screen.icon_undo,flat=true,lpadding=5,rpadding=5})undo:attr('disabled', initial == nil or initial == default or initial == '')undo.onclick=function()text:attr('value', default)end
+local button = row:add(rtk.Button(attrs), {valign='center', spacing=5})local undo = row:add(rtk.Button{icon='undo', flat=true, lpadding=5, rpadding=5})undo:attr('disabled', initial == nil or initial == default or initial == '')undo.onclick=function()text:attr('value', default)end
 button.onclick=function()local bg=(text.value and #text.value > 0) and text.value or default or ''local hwnd=reaper.BR_Win32_HwndToString(app.window.hwnd)hwnd=reaper.BR_Win32_StringToHwnd(hwnd)local ok,color=reaper.GR_SelectColor(hwnd,rtk.color.int(bg,true))if ok~=0 then
 text:push_undo()text:attr('value', rtk.color.int2hex(color, true))end
 end
@@ -9512,12 +8986,12 @@ onset(text,button,bg)end
 end
 text:attr('value', initial)return text
 end
-function screen.init()screen.icon_undo=rtk.Image.make_icon('med-undo')screen.vbox=rtk.VBox{rpadding=20}screen.widget=rtk.Viewport{screen.vbox}screen.toolbar=rtk.HBox{spacing=0}local back_button = rtk.Button{'Back', icon='med-arrow_back', flat=true}back_button.onclick=function()if screen.chase_ccs_dirty then
+function screen.init()screen.vbox=rtk.VBox{rpadding=20}screen.widget=rtk.Viewport{screen.vbox}screen.toolbar=rtk.HBox{spacing=0}local back_button = rtk.Button{'Back', icon='arrow_back', flat=true}back_button.onclick=function()if screen.chase_ccs_dirty then
 reabank.clear_chase_cc_list_cache()rfx.current:sync_banks_if_hash_changed()screen.chase_ccs_dirty=false
 end
 app:pop_screen()end
 screen.toolbar:add(back_button)if not rtk.has_js_reascript_api then
-local hbox=screen.vbox:add(rtk.HBox{spacing=10},{tpadding=20,bpadding=20,lpadding=20,rpadding=20})hbox:add(rtk.ImageBox{image='lg-warning_amber'}, {valign=rtk.Widget.TOP})local vbox=hbox:add(rtk.VBox())local text=vbox:add(rtk.Text{wrap=true},{valign=rtk.Widget.CENTER})text:attr('text',"Reaticulate runs best when the js_ReaScriptAPI extension is installed. " .."Several features and user experience enhancements are disabled without it.")local button = vbox:add(rtk.Button{label="Download", tmargin=10})button.onclick=function()rtk.open_url('https://forum.cockos.com/showthread.php?t=212174')end
+local hbox=screen.vbox:add(rtk.HBox{spacing=10},{tpadding=20,bpadding=20,lpadding=20,rpadding=20})hbox:add(rtk.ImageBox{image='warning_amber:large'}, {valign=rtk.Widget.TOP})local vbox=hbox:add(rtk.VBox())local text=vbox:add(rtk.Text{wrap=true},{valign=rtk.Widget.CENTER})text:attr('text',"Reaticulate runs best when the js_ReaScriptAPI extension is installed. " .."Several features and user experience enhancements are disabled without it.")local button = vbox:add(rtk.Button{label="Download", tmargin=10})button.onclick=function()rtk.open_url('https://forum.cockos.com/showthread.php?t=212174')end
 end
 local section=make_section(screen.vbox, "Behavior")local cb=rtk.CheckBox{'Autostart Reaticulate when Reaper starts'}cb.onchange=function(cb)app.config.autostart=cb.value
 update_startup_action(app.config.autostart)app:save_config()end
@@ -9550,12 +9024,12 @@ rtk.scale.user=tonumber(item.id)app.config.scale=rtk.scale.user
 app:save_config()rtk.defer(function()menu:scrolltoview(50,nil,nil,false)end)end
 end
 screen.ui_scale_menu=menu
-local row=add_row(section, "Background:", 85)add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'med-edit', true,function(text,button)local cfgval=text.value
+local row=add_row(section, "Background:", 85)add_color_input(row, app.config.bg, rtk.color.get_reaper_theme_bg(), 'edit', true,function(text,button)local cfgval=text.value
 if text.value~=app.config.bg then
 app.config.bg=text.value
 app:save_config()end
 end
-)add_tip(section, 95, 'Leave blank to detect from theme. Restart required.')local section=make_section(screen.vbox, "Feedback to Control Surface")local row=section:add(rtk.HBox{spacing=5,alpha=0.6,bpadding=10})row:add(rtk.ImageBox{'med-info_outline'})row:add(rtk.Text{wrap=true,'Transmit articulation changes and all CC values on the default ' ..'channel to the selected device. Control surfaces with motorized ' ..'faders will move in realtime during playback.'})local row=add_row(section, "MIDI Device:", 85, 2)local menu=row:add(rtk.OptionMenu())menu.onchange=function(menu)local device=tonumber(menu.selected_id)if app.config.cc_feedback_device==device then
+)add_tip(section, 95, 'Leave blank to detect from theme. Restart required.')local section=make_section(screen.vbox, "Feedback to Control Surface")local row=section:add(rtk.HBox{spacing=5,alpha=0.6,bpadding=10})row:add(rtk.ImageBox{'info_outline'})row:add(rtk.Text{wrap=true,'Transmit articulation changes and all CC values on the default ' ..'channel to the selected device. Control surfaces with motorized ' ..'faders will move in realtime during playback.'})local row=add_row(section, "MIDI Device:", 85, 2)local menu=row:add(rtk.OptionMenu())menu.onchange=function(menu)local device=tonumber(menu.selected_id)if app.config.cc_feedback_device==device then
 return
 end
 log.info('settings: new MIDI feedback device: %s', device)log.time_start()app.config.cc_feedback_device=device
@@ -9564,7 +9038,7 @@ feedback.destroy_feedback_track()else
 feedback.ensure_feedback_track()feedback.update_feedback_track_settings(true)end
 app:check_banks_for_errors()log.time_end('settings: finished changing MIDI feedback device')end
 screen.midi_device_menu=menu
-local box=section:add(rtk.HBox{tpadding=5,bpadding=0})local s=box:add(rtk.Spacer{w=85,h=10},{spacing=0})local prefs = box:add(rtk.Button{icon='med-settings', flat=true}, {valign='center', lpadding=5})local info=add_tip(box, 0, 'Device must be enabled for output')prefs.onclick=function()reaper.ViewPrefs(153, '')end
+local box=section:add(rtk.HBox{tpadding=5,bpadding=0})local s=box:add(rtk.Spacer{w=85,h=10},{spacing=0})local prefs = box:add(rtk.Button{icon='settings', flat=true}, {valign='center', lpadding=5})local info=add_tip(box, 0, 'Device must be enabled for output')prefs.onclick=function()reaper.ViewPrefs(153, '')end
 local row=add_row(section, "MIDI Bus:", 85)local menu=row:add(rtk.OptionMenu())menu:attr('menu', {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'})menu:select(app.config.cc_feedback_bus or 1)menu.onchange=function(menu)if app.config.cc_feedback_bus==menu.selected_index then
 return
 end
@@ -9600,7 +9074,7 @@ end
 local section=make_section(screen.vbox, "Misc Settings")local row=add_row(section, "Log Level:", 85)local menu=row:add(rtk.OptionMenu())local options={}for level,name in pairs(log.levels)do
 name=name:sub(1,1):upper()..name:sub(2):lower()options[#options+1]={name,id=level}end
 table.sort(options,function(a,b)return a.id>b.id end)menu:attr('menu', options)menu:select(app.config.debug_level or log.ERROR)menu.onchange=function(menu)app:set_debug(tonumber(menu.selected_id))end
-screen.vbox:add(rtk.Text{string.format("Reaticulate %s", metadata._VERSION), alpha=0.6},{halign='center', tpadding=20})local button=screen.vbox:add(rtk.Button{icon='med-link', label="Visit Website",truncate=false,color=rtk.theme.accent_subtle,alpha=0.6,cursor=rtk.mouse.cursors.HAND,flat=true,padding={7,10},},{tpadding=2, halign='center', stretch=true})button.onclick=function()rtk.open_url('https://reaticulate.com')end
+screen.vbox:add(rtk.Text{string.format("Reaticulate %s", metadata._VERSION), alpha=0.6},{halign='center', tpadding=20})local button=screen.vbox:add(rtk.Button{icon='link', label="Visit Website",truncate=false,color=rtk.theme.accent_subtle,alpha=0.6,cursor=rtk.mouse.cursors.HAND,flat=true,padding={7,10},},{tpadding=2, halign='center', stretch=true})button.onclick=function()rtk.open_url('https://reaticulate.com')end
 end
 function screen.update_ui_scale_menu()screen.ui_scale_menu:select(rtk.scale.user)if not screen.ui_scale_menu.selected_id then
 screen.ui_scale_menu:attr('label', 'Custom')end
@@ -9628,14 +9102,14 @@ local function printable_guid(guid,name)local prefix=name and string.format('%s 
 guid=tonumber(guid)return string.format('%sMSB/LSB %d/%d', prefix, (guid >> 8) & 0xff, guid & 0xff)else
 return string.format('%sGUID %s', prefix, guid)end
 end
-function screen.init()local vbox=rtk.VBox()screen.widget=rtk.Viewport{child=vbox,rpadding=10}screen.toolbar=rtk.HBox{spacing=0}local back_button = rtk.Button{'Back', icon='med-arrow_back', flat=true}back_button.onclick=function()app:pop_screen()end
+function screen.init()local vbox=rtk.VBox()screen.widget=rtk.Viewport{child=vbox,rpadding=10}screen.toolbar=rtk.HBox{spacing=0}local back_button = rtk.Button{'Back', icon='arrow_back', flat=true}back_button.onclick=function()app:pop_screen()end
 screen.toolbar:add(back_button)vbox:add(rtk.Heading{'Track Articulations', margin={10, 0, 10, 10}})screen.banklist=vbox:add(rtk.VBox{spacing=10},{lpadding=10})local spacer=rtk.Spacer{h=1.0, w=1.0, y=0, z=10, position='absolute'}spacer.ondropfocus=function(self,event,src,srcbankbox)screen.move_bankbox(srcbankbox,nil)return true
 end
-vbox:add(spacer)local add_bank_button = rtk.Button{label='Add Bank to Track', icon='med-add_circle_outline', color='#2d5f99'}add_bank_button.onclick=function()if #screen.banklist.children>=rfx.MAX_BANKS then
+vbox:add(spacer)local add_bank_button = rtk.Button{label='Add Bank to Track', icon='add_circle_outline', color='#2d5f99'}add_bank_button.onclick=function()if #screen.banklist.children>=rfx.MAX_BANKS then
 reaper.ShowMessageBox("You have reached the limit of banks for this track.","Too many banks :(", 0)else
 local bankbox=screen.create_bank_ui(nil,17,17,1)screen.banklist:add(bankbox,{xmaxw=screen.max_bankui_width})bankbox.bank_menu.onchange()end
 end
-vbox:add(add_bank_button,{lpadding=20,tpadding=20})local section=vbox:add(rtk.VBox{spacing=10,margin={0,10,0,20}})section:add(rtk.Heading{'Track Tweaks', tmargin=50})section:add(rtk.Button{'Fix numeric articulation names',icon='med-auto_fix',tooltip='Removes any non-Reaticulate ReaBank assignment from this track to ' ..'fix numeric Program Change event names (e.g. 43-1-22)',flat=true,onclick=function()if screen.error==rfx.ERROR_UNKNOWN_BANK then
+vbox:add(add_bank_button,{lpadding=20,tpadding=20})local section=vbox:add(rtk.VBox{spacing=10,margin={0,10,0,20}})section:add(rtk.Heading{'Track Tweaks', tmargin=50})section:add(rtk.Button{'Fix numeric articulation names',icon='auto_fix',tooltip='Removes any non-Reaticulate ReaBank assignment from this track to ' ..'fix numeric Program Change event names (e.g. 43-1-22)',flat=true,onclick=function()if screen.error==rfx.ERROR_UNKNOWN_BANK then
 return reaper.MB("This track has banks assigned that aren't currently installed on this system, " .."which is the likely cause of numeric articulation names.\n\nPlease first select " .."an available bank.",'User action required',0
 )end
 local cleared=app:clear_track_reabank_mapping(rfx.current.track)if cleared then
@@ -9646,7 +9120,7 @@ local bankbox=screen.banklist:get_child(1)local guid=bankbox.bank_menu.selected_
 local bank=reabank.get_bank_by_guid(guid)n_remapped=remap_bank_select(rfx.current.track,nil,bank)log.info('trackfg: remapped %s bank select events on track', n_remapped)end
 rtk.defer(reaper.MB,"Reaticulate tried to correct common issues causing numeric articulation names" ..((cleared or n_remapped > 0) and ' (and did find some things to fix)' or '') ..".\n\nIf you still see numeric articulation names, the likely reason is that " .."the articulations don't actually exist in the current banks assigned to this track. " .."This is usually caused by inserting articulations with some other bank and then " .."later removing that bank from the track.\n\nIf that's the case, you'll need " .."to replace the articulations in the MIDI editor manually.",'Fix Numeric Articulation Names',0
 )end
-})section:add(rtk.Button{'Clear active articulations in UI',icon='med-eraser',tooltip='Clears all articulation selections on all channels in the GUI. This can also be done per ' ..'articulation by middle-clicking the articulation.',flat=true,onclick=function()local n=app.screens.banklist.clear_all_active_articulations()local msg=string.format('Cleared %d articulation assignments on this track', n)rtk.defer(reaper.MB, msg, 'Clear Articulations', 0)end
+})section:add(rtk.Button{'Clear active articulations in UI',icon='eraser',tooltip='Clears all articulation selections on all channels in the GUI. This can also be done per ' ..'articulation by middle-clicking the articulation.',flat=true,onclick=function()local n=app.screens.banklist.clear_all_active_articulations()local msg=string.format('Cleared %d articulation assignments on this track', n)rtk.defer(reaper.MB, msg, 'Clear Articulations', 0)end
 })screen.src_channel_menu = {{'Omni', id=17}}for i=1,16 do
 screen.src_channel_menu[#screen.src_channel_menu+1]={string.format('Ch %d', i),id=i
 }end
@@ -9688,7 +9162,7 @@ screen.move_bankbox(srcbankbox,bankbox,-1)else
 screen.move_bankbox(srcbankbox,bankbox,1)end
 end
 end
-local drag_handle=rtk.ImageBox{image=rtk.Image.make_icon('lg-drag_vertical'),cursor=rtk.mouse.cursors.REAPER_HAND_SCROLL,halign='center',show_scrollbar_on_drag=true,tooltip='Click-drag to reorder bank'}drag_handle.bankbox=true
+local drag_handle=rtk.ImageBox{image=rtk.Image.make_icon('drag_vertical:large'),cursor=rtk.mouse.cursors.REAPER_HAND_SCROLL,halign='center',show_scrollbar_on_drag=true,tooltip='Click-drag to reorder bank'}drag_handle.bankbox=true
 drag_handle.ondragstart=function(event)bankbox:attr('bg', '#5b7fac30')bankbox:attr('tborder', {'#497ab7', 2})bankbox:attr('bborder', bankbox.tborder)return bankbox
 end
 drag_handle.ondragend=function(event)bankbox:attr('bg', nil)bankbox:attr('tborder', {'#00000000', 2})bankbox:attr('bborder', bankbox.tborder)screen.move_bankbox_finish()end
@@ -9696,7 +9170,7 @@ drag_handle.onmouseenter=function()return true end
 row:add(drag_handle)local bank_menu=rtk.OptionMenu()row:add(bank_menu,{expand=1,fillw=true,rpadding=0})bankbox.bank_menu=bank_menu
 bank_menu:attr('menu', banklist_menu_spec)bank_menu:select(guid and tostring(guid)or 1,false)if not bank_menu.selected_id then
 local label=string.format('Unknown Bank (%s)', printable_guid(guid))bankbox.bank_menu:attr('label', label)end
-local row=bankbox:add(rtk.HBox{spacing=10})row:add(rtk.Spacer{w=24,h=24})bankbox.srcchannel_menu=rtk.OptionMenu{tooltip='Source MIDI channel for bank'}row:add(bankbox.srcchannel_menu,{lpadding=0,expand=1,fillw=true})bankbox.srcchannel_menu:attr('menu', screen.src_channel_menu)bankbox.srcchannel_menu:select(tostring(srcchannel),false)row:add(rtk.Text{'→'}, {valign='center'})bankbox.dstchannel_menu=rtk.OptionMenu{tooltip='Destination MIDI channel/bus when articulations do not specify an explicit destination channel'}row:add(bankbox.dstchannel_menu,{lpadding=0,expand=1,fillw=true})bankbox.dstchannel_menu:attr('menu', screen.dst_channel_menu)bankbox.dstchannel_menu:select(tostring(dstchannel|(dstbus<<8)),false)local delete_button=rtk.Button{icon='med-delete',color='#9f2222',tooltip='Remove bank from track',}delete_button.delete=true
+local row=bankbox:add(rtk.HBox{spacing=10})row:add(rtk.Spacer{w=24,h=24})bankbox.srcchannel_menu=rtk.OptionMenu{tooltip='Source MIDI channel for bank'}row:add(bankbox.srcchannel_menu,{lpadding=0,expand=1,fillw=true})bankbox.srcchannel_menu:attr('menu', screen.src_channel_menu)bankbox.srcchannel_menu:select(tostring(srcchannel),false)row:add(rtk.Text{'→'}, {valign='center'})bankbox.dstchannel_menu=rtk.OptionMenu{tooltip='Destination MIDI channel/bus when articulations do not specify an explicit destination channel'}row:add(bankbox.dstchannel_menu,{lpadding=0,expand=1,fillw=true})bankbox.dstchannel_menu:attr('menu', screen.dst_channel_menu)bankbox.dstchannel_menu:select(tostring(dstchannel|(dstbus<<8)),false)local delete_button=rtk.Button{icon='delete',color='#9f2222',tooltip='Remove bank from track',}delete_button.delete=true
 row:add(delete_button)delete_button.onclick=function()screen.banklist:remove(bankbox)screen.set_banks_from_banklist()end
 bankbox.bank_menu.onchange=function(self,item,last)local bank=reabank.get_bank_by_guid(bankbox.bank_menu.selected_id)local slot=screen.banklist:get_child_index(bankbox)if not slot then
 log.error("trackcfg: can't find bank in bank list")return
@@ -9728,8 +9202,8 @@ end
 bankbox.srcchannel_menu.onchange=bankbox.bank_menu.onchange
 bankbox.dstchannel_menu.onchange=bankbox.bank_menu.onchange
 local row=bankbox:add(rtk.HBox{spacing=10})bankbox.info=row
-row:add(rtk.ImageBox{'lg-info_outline'}, {valign='top'})row.label=row:add(rtk.Text{wrap=true}, {valign='center'})local row=bankbox:add(rtk.HBox{spacing=10})bankbox.warning=row
-row:add(rtk.ImageBox{'lg-warning_amber'}, {valign='top'})row.label=row:add(rtk.Text{wrap=true}, {valign='center'})return bankbox
+row:add(rtk.ImageBox{'info_outline:large'}, {valign='top'})row.label=row:add(rtk.Text{wrap=true}, {valign='center'})local row=bankbox:add(rtk.HBox{spacing=10})bankbox.warning=row
+row:add(rtk.ImageBox{'warning_amber:large'}, {valign='top'})row.label=row:add(rtk.Text{wrap=true}, {valign='center'})return bankbox
 end
 function screen.get_errors()local conflicts=rfx.current:get_banks_conflicts()local get_next_bank=rfx.current:get_banks()local feedback_enabled=feedback.is_enabled()local banks={}return function()local b=get_next_bank()if not b then
 return
