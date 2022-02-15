@@ -199,6 +199,7 @@ function BaseApp:set_ext_state(key, obj, persist)
     local serialized = json.encode(obj)
     reaper.SetExtState(self.appid, key, serialized, persist or false)
     log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)
+    return serialized
 end
 
 function BaseApp:get_config(appid, target)
@@ -297,14 +298,19 @@ end
 function BaseApp:handle_onresize()
     -- Only save dimensions when not docked.
     if not self.window.docked then
-        self.config.x, self.config.y = self.window.x, self.window.y
-        self.config.w, self.config.h = self.window.w, self.window.h
+        self.config.w = self.window.w
+        self.config.h = self.window.h
         self:queue_save_config()
     end
 end
 
 function BaseApp:handle_onmove()
-    self:handle_onresize()
+    -- Only save position when not docked.
+    if not self.window.docked then
+        self.config.x = self.window.x
+        self.config.y = self.window.y
+        self:queue_save_config()
+    end
 end
 
 function BaseApp:handle_onmousewheel(event)
