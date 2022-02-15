@@ -244,7 +244,7 @@ end
 
 function BaseApp:queue_save_config(config)
     if not self._save_config_queued then
-        rtk.callafter(2, self._do_save_config, self, config)
+        rtk.callafter(0.25, self._do_save_config, self, config)
         self._save_config_queued = true
     end
 end
