@@ -129,7 +129,7 @@ This new `id` attribute is how Reaticulate identifies this bank, and it ensures 
 across any REAPER installation.
 
 While this isn't a particularly glamorous change, this is the biggest feature of
-Reaticulate 0.5.0, and this architecutral change paves the way for many new enhancements,
+Reaticulate 0.5.0, and this architectural change paves the way for many new enhancements,
 including the bank importing feature mentioned earlier.
 
 
