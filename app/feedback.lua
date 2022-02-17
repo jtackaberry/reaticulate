@@ -249,7 +249,7 @@ end
 
 function feedback.set_active(active)
     app.config.cc_feedback_active = active
-    app:save_config()
+    app:queue_save_config()
     feedback.update_feedback_track_settings()
 end
 

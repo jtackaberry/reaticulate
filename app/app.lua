@@ -1416,7 +1416,7 @@ function App:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
     end
     if store then
         self.config[cfgitem] = value
-        self:save_config()
+        self:queue_save_config()
     end
     log.info("app: set toggle option: %s -> %s", cfgitem, value)
 

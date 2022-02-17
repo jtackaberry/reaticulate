@@ -137,7 +137,6 @@ function BaseApp:initialize(appid, title, basedir)
         ondropfile = function(_, event) self:handle_ondropfiles(event) end,
         onclick = function(_, event) self:handle_onclick(event) end,
     }
-
     self:build_frame()
 end
 
@@ -240,7 +239,7 @@ function BaseApp:get_config(appid, target)
 end
 
 function BaseApp:save_config(config)
-    self:_do_save_config(config)
+    self:_do_save_config(config, true)
 end
 
 function BaseApp:queue_save_config(config)
@@ -250,8 +249,11 @@ function BaseApp:queue_save_config(config)
     end
 end
 
-function BaseApp:_do_save_config(config)
-    self:set_ext_state('config', config or self.config, true)
+function BaseApp:_do_save_config(config, force)
+    if not self._save_config_queued and not force then
+        return
+    end
+    local cfg = self:set_ext_state('config', config or self.config, true)
     self._save_config_queued = false
 end
 
