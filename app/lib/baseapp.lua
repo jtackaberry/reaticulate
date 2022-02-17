@@ -142,7 +142,7 @@ end
 
 function BaseApp:run()
     self:handle_onupdate()
-    rtk.window:open()
+    rtk.window:open{constrain=true}
 end
 
 function BaseApp:add_screen(name, package)
