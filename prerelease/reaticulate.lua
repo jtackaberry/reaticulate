@@ -3273,30 +3273,37 @@ end
 function rtk.Window:_run()self:_update()if self.running then
 rtk.defer(self._run,self)end
 end
-function rtk.Window:_get_display_resolution(working)local x2=self.x+(self.calc.w or 0)local y2=self.y+(self.calc.h or 0)local l,t,r,b
-if rtk.has_js_reascript_api then
-l,t,r,b=reaper.JS_Window_GetViewportFromRect(self.x,self.y,x2,y2,working or false)elseif rtk.has_sws_extension then
-l,t,r,b=reaper.BR_Win32_GetMonitorRectFromRect(working or false,self.x,self.y,x2,y2)else
-return nil,nil
-end
-local w=r-l
-return l,t,r-l,math.abs(b-t)end
+function rtk.Window:_get_display_resolution(working)local x=self.x
+local y=self.y
+local l,t,r,b=reaper.my_getViewport(0,0,0,0,x,y,x+self.w,y+self.h,working and 1 or 0)return l,t,r-l,math.abs(b-t)end
 function rtk.Window:_get_geometry_from_attrs(overrides)local x=self.x
 local y=self.y
-local w=self.w*self._gfx_win_ratio
-local h=self.h*self._gfx_win_ratio
+local w=self.calc.w/self._gfx_win_ratio
+local h=self.calc.h/self._gfx_win_ratio
 if overrides then
-local _,_,sw,sh=self:_get_display_resolution()if sw and sh then
-local _,cw,ch=reaper.JS_Window_GetClientSize(self.hwnd)if overrides.halign==rtk.Widget.CENTER then
-x=(overrides.x or x)+(sw-cw)/2
+local sx,sy,sw,sh=self:_get_display_resolution(true)if sw and sh then
+if overrides.halign==rtk.Widget.CENTER then
+x=(overrides.x or x)+(sw-w)/2
 elseif overrides.halign==rtk.Widget.RIGHT then
-x=(overrides.x or x)+sw-cw
+x=(overrides.x or x)+sw-w
 end
-if overrides.valign==rtk.Widget.CENTER then
-y=(overrides.y or y)+(sh-ch)/2
+if rtk.os.mac then
+if overrides.valign==rtk.Widget.TOP then
+y=(overrides.y or y)+(sh-h)+sy
+elseif overrides.valign==rtk.Widget.CENTER then
+y=(overrides.y or y)+(sh-h)/2+sy
 elseif overrides.valign==rtk.Widget.BOTTOM then
-y=(overrides.y or y)+sh-ch
+y=(overrides.y or y)+sy
 end
+else
+if overrides.valign==rtk.Widget.CENTER then
+y=(overrides.y or y)+(sh-h)/2
+elseif overrides.valign==rtk.Widget.BOTTOM then
+y=(overrides.y or y)+sh-h
+end
+end
+if overrides.constrain then
+x=rtk.clamp(x,sx,sx+sw-w)y=rtk.clamp(y,sy,sy+sh-h)w=rtk.clamp(w,self.calc.minw,sw-x+sx)h=rtk.clamp(h,self.calc.minh,sh-(rtk.os.mac and y-sy-h or y+sy))end
 end
 end
 return math.round(x),math.round(y),math.round(w),math.round(h)end
@@ -3339,13 +3346,14 @@ elseif w>gfx.w or h>gfx.h then
 resized=1
 end
 end
-local r,lastx,lasty,x2,y2=reaper.JS_Window_GetClientRect(self.hwnd)local moved=r and(self.x~=lastx or self.y~=lasty)if moved or resized~=0 then
+local r,lastx,lasty,x2,y2=reaper.JS_Window_GetClientRect(self.hwnd)local moved=r and(self.x~=lastx or self.y~=lasty)local borderless_toggled=calc.borderless~=self._last_synced_attrs.borderless
+if moved or resized~=0 or borderless_toggled then
 local sw,sh=w,h
-if not calc.borderless and(calc.borderless==self._last_synced_attrs.borderless or not rtk.os.windows)then
-sw=w+self._os_window_frame_width
-sh=h+self._os_window_frame_height
+if not calc.borderless then
+sw=w+self._os_window_frame_width/self._gfx_win_ratio
+sh=h+self._os_window_frame_height/self._gfx_win_ratio
 end
-sw=math.ceil(sw/self._gfx_win_ratio)sh=math.ceil(sh/self._gfx_win_ratio)reaper.JS_Window_SetPosition(self.hwnd,x,y,sw,sh)end
+sw=math.ceil(sw)sh=math.ceil(sh)reaper.JS_Window_SetPosition(self.hwnd,x,y,sw,sh)end
 if resized~=0 then
 self:onresize(gfx.w/self._gfx_win_ratio,gfx.h/self._gfx_win_ratio)gfx.w=w
 gfx.h=h
@@ -3358,7 +3366,7 @@ reaper.JS_Window_SetLong(self.hwnd, 'EXSTYLE', flags)end
 self._last_synced_attrs.borderless=calc.borderless
 return resized or 0
 end
-function rtk.Window:open(attrs)if self.running or rtk._quit then
+function rtk.Window:open(options)if self.running or rtk._quit then
 return
 end
 rtk.window=self
@@ -3368,8 +3376,10 @@ end
 local calc=self.calc
 self.running=true
 gfx.ext_retina=1
-self:_handle_attr('bg', calc.bg or rtk.theme.bg)attrs=self:_calc_cell_attrs(self,attrs)local x,y,w,h=self:_get_geometry_from_attrs(attrs)self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w / self._gfx_win_ratio, nil, nil, w)self:sync('h', h / self._gfx_win_ratio, nil, nil, h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,self.w,self.h,dockstate,x,y)gfx.update()if gfx.ext_retina==2 and rtk.os.mac then
+self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w,calc.h,dockstate,x,y)gfx.update()if gfx.ext_retina==2 and rtk.os.mac then
 self._gfx_win_ratio=2
+self.calc.w=calc.w*2
+self.calc.h=calc.h*2
 end
 dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
 self:_clear_gdi()else
@@ -5548,7 +5558,7 @@ self:save_config()end
 rtk.touchscroll=app.config.touchscroll
 rtk.smoothscroll=app.config.smoothscroll
 self:set_theme()rtk.Application.initialize(self)self.window=rtk.Window{title=title,x=self.config.x,y=self.config.y,w=rtk.clamp(self.config.w,0,4096),h=rtk.clamp(self.config.h,0,4096),dock=self.config.dock or 'right',docked=self.config.docked,borderless=self.config.borderless,pinned=self.config.pinned,ondock=function()self:handle_ondock()end,onattr=function(_,attr,value)self:handle_onattr(attr,value)end,onmove=function()self:handle_onmove()end,onresize=function()self:handle_onresize()end,onupdate=function()self:handle_onupdate()end,onmousewheel=function(_,event)self:handle_onmousewheel(event)end,onclose=function()self:handle_onclose()end,onkeypresspost=function(_,event)self:handle_onkeypresspost(event)end,ondropfile=function(_,event)self:handle_ondropfiles(event)end,onclick=function(_,event)self:handle_onclick(event)end,}self:build_frame()end
-function BaseApp:run()self:handle_onupdate()rtk.window:open()end
+function BaseApp:run()self:handle_onupdate()rtk.window:open{constrain=true}end
 function BaseApp:add_screen(name,package)local screen=load("return __mod_" .. package:gsub("%.", "_"))()rtk.Application.add_screen(self,screen,name)end
 local function _swallow_event(self,event)event:set_handled(self)return false
 end
@@ -5581,12 +5591,15 @@ self.config.docked=(self.config.dockstate&0x01)~=0
 end
 return self.config
 end
-function BaseApp:save_config(config)self:_do_save_config(config)end
+function BaseApp:save_config(config)self:_do_save_config(config,true)end
 function BaseApp:queue_save_config(config)if not self._save_config_queued then
 rtk.callafter(0.25,self._do_save_config,self,config)self._save_config_queued=true
 end
 end
-function BaseApp:_do_save_config(config)self:set_ext_state('config', config or self.config, true)self._save_config_queued=false
+function BaseApp:_do_save_config(config,force)if not self._save_config_queued and not force then
+return
+end
+local cfg=self:set_ext_state('config', config or self.config, true)self._save_config_queued=false
 end
 function BaseApp:set_debug(level)self.config.debug_level=level
 self:save_config()log.level=level or log.ERROR
@@ -7443,7 +7456,7 @@ return
 end
 feedback._sync(what or feedback.SYNC_ALL)end
 function feedback.set_active(active)app.config.cc_feedback_active=active
-app:save_config()feedback.update_feedback_track_settings()end
+app:queue_save_config()feedback.update_feedback_track_settings()end
 return feedback
 end)()
 
@@ -7950,7 +7963,7 @@ else
 value=(enabled==1 and true or false)end
 if store then
 self.config[cfgitem]=value
-self:save_config()end
+self:queue_save_config()end
 log.info("app: set toggle option: %s -> %s", cfgitem, value)if not cmd_id and self.config_map_to_script[cfgitem] then
 local section,filename=table.unpack(self.config_map_to_script[cfgitem])local script=Path.join(Path.basedir, 'actions', filename)local cmd=reaper.AddRemoveReaScript(true,section,script,false)if cmd>0 then
 section_id=section
