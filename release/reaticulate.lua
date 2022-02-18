@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.2'}end)()
+return {_VERSION='0.5.3'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -116,7 +116,7 @@ end
 else
 rawset(t,key,value)end
 end
-})rtk.dnd={dragging=nil,droppable=nil,dropping=nil,arg=nil,buttons=nil,}local _os=reaper.GetOS():lower():sub(1,3)rtk.os={mac=(_os=='osx'),windows=(_os=='win'),linux = (_os == 'lin' or _os == 'oth'),bits=32,}rtk.mouse={BUTTON_LEFT=1,BUTTON_MIDDLE=64,BUTTON_RIGHT=2,BUTTON_MASK=(1|2|64),x=0,y=0,down=0,state={order={}}}local _load_cursor
+})rtk.dnd={dragging=nil,droppable=nil,dropping=nil,arg=nil,buttons=nil,}local _os=reaper.GetOS():lower():sub(1,3)rtk.os={mac = (_os == 'osx' or _os == 'mac'),windows=(_os=='win'),linux = (_os == 'lin' or _os == 'oth'),bits=32,}rtk.mouse={BUTTON_LEFT=1,BUTTON_MIDDLE=64,BUTTON_RIGHT=2,BUTTON_MASK=(1|2|64),x=0,y=0,down=0,state={order={}}}local _load_cursor
 if rtk.has_js_reascript_api then
 function _load_cursor(cursor)return reaper.JS_Mouse_LoadCursor(cursor)end
 else
@@ -1032,8 +1032,7 @@ end
 function rtk.Font:measure(s)self:set()return gfx.measurestr(s)end
 local _wrap_characters={[' '] = true,['-'] = true,[','] = true,['.'] = true,['!'] = true,['?'] = true,['\n'] = true,['/'] = true,['\\'] = true,[';'] = true,[':'] = true,}function rtk.Font:layout(s,boxw,boxh,wrap,align,relative,spacing,breakword)self:set()local segments={text=s,boxw=boxw,boxh=boxh,wrap=wrap,align=align,relative=relative,spacing=spacing,scale=rtk.scale.value
 }align=align or rtk.Widget.LEFT
-spacing=spacing or 0
-if not s:find('\n') then
+spacing=(spacing or 0)+math.ceil((rtk.os.mac and 3 or 0)*rtk.scale.value)if not s:find('\n') then
 local w,h=gfx.measurestr(s)if w<=boxw or not wrap then
 segments[1]={s,0,0,w,h}return segments,w,h
 end
@@ -1963,15 +1962,15 @@ x=0
 end
 if y-bh>=0 then
 y=math.max(0,y-bh)else
-y=math.min(y+calc.h,self.window.h-bh)end
+y=math.min(y+calc.h,self.window.calc.h-bh)end
 rtk.color.set('#ffffff')gfx.rect(x,y,bw,bh,1)rtk.color.set('#777777')gfx.rect(x,y,bw,bh,0)gfx.x=x+10
 for n,part in ipairs(parts)do
 local sz,color,str=table.unpack(part)rtk.color.set(color)gfx.y=y+(bh-sizes[n][2])/2
 gfx.setfont(1,rtk.theme.default_font,sz)gfx.drawstr(str)end
 end
-function rtk.Widget:attr(attr,value,trigger,reflow)return self:_attr(attr,value,trigger,reflow,false)end
-function rtk.Widget:sync(attr,value,trigger,reflow)return self:_attr(attr,value,trigger,reflow,true)end
-function rtk.Widget:_attr(attr,value,trigger,reflow,reactive)local meta=self.class.attributes.get(attr)if value==rtk.Attribute.DEFAULT then
+function rtk.Widget:attr(attr,value,trigger,reflow)return self:_attr(attr,value,trigger,reflow,nil,false)end
+function rtk.Widget:sync(attr,value,trigger,reflow,calculated)return self:_attr(attr,value,trigger,reflow,calculated,true)end
+function rtk.Widget:_attr(attr,value,trigger,reflow,calculated,sync)local meta=self.class.attributes.get(attr)if value==rtk.Attribute.DEFAULT then
 if meta.default==rtk.Attribute.FUNCTION then
 value=meta.default_func(self,attr)else
 value=meta.default
@@ -1985,9 +1984,11 @@ for i=1,#replaces do
 self[replaces[i]]=nil
 end
 end
-local calculated=self:_calc_attr(attr,value,nil,meta)if not rawequal(value,oldval)or calculated~=oldcalc or replaces or trigger then
+if calculated==nil then
+calculated=self:_calc_attr(attr,value,nil,meta)end
+if not rawequal(value,oldval)or calculated~=oldcalc or replaces or trigger then
 self[attr]=value
-self:_set_calc_attr(attr,value,calculated,self.calc,meta)self:_handle_attr(attr,calculated,oldcalc,trigger==nil or trigger,reflow)end
+self:_set_calc_attr(attr,value,calculated,self.calc,meta)self:_handle_attr(attr,calculated,oldcalc,trigger==nil or trigger,reflow,sync)end
 return self
 end
 function rtk.Widget:_calc_attr(attr,value,target,meta,namespace,widget)target=target or self.calc
@@ -2422,8 +2423,8 @@ self:queue_draw()end
 function rtk.Widget:_unrealize()self.realized=false
 end
 function rtk.Widget:_release_modal(event)end
-function rtk.Widget:onattr(attr,value,oldval,trigger)return true end
-function rtk.Widget:_handle_attr(attr,value,oldval,trigger,reflow)local ok=self:onattr(attr,value,oldval,trigger)if ok~=false then
+function rtk.Widget:onattr(attr,value,oldval,trigger,sync)return true end
+function rtk.Widget:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=self:onattr(attr,value,oldval,trigger,sync)if ok~=false then
 local redraw
 if reflow==rtk.Widget.REFLOW_DEFAULT then
 local meta=self.class.attributes.get(attr)reflow=meta.reflow or rtk.Widget.REFLOW_PARTIAL
@@ -2532,7 +2533,7 @@ self._vscrollh=0
 self._vscrolla={current=self.calc.vscrollbar==rtk.Viewport.SCROLLBAR_ALWAYS and 0.1 or 0,target=0,delta=0.05
 }self._vscroll_in_gutter=false
 end
-function rtk.Viewport:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Viewport:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='child' then
@@ -2882,7 +2883,7 @@ local anchor=calc.anchor
 local st,sb=calc.elevation,calc.elevation
 if anchor and anchor.realized then
 calc.x=anchor.clientx
-if anchor.clienty+anchor.calc.h+calc.h<self.window.h then
+if anchor.clienty+anchor.calc.h+calc.h<self.window.calc.h then
 calc.y=anchor.clienty+anchor.calc.h
 if calc.width_from_anchor then
 calc.tborder=nil
@@ -2902,7 +2903,7 @@ end
 end
 rtk.Viewport._realize_geometry(self)self._shadow:set_rectangle(calc.w,calc.h,nil,st,calc.elevation,sb,calc.elevation)end
 function rtk.Popup:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)if self.calc.overlay then
-self:setcolor(self.calc.overlay,alpha)gfx.rect(0,0,self.window.w,self.window.h,1)end
+self:setcolor(self.calc.overlay,alpha)gfx.rect(0,0,self.window.calc.w,self.window.calc.h,1)end
 if self._realize_on_draw then
 self:_realize_geometry()self._realize_on_draw=false
 end
@@ -3073,7 +3074,7 @@ function rtk.Container:_handle_event(clparentx,clparenty,event,clipped,listen)lo
 local x=calc.x+clparentx
 local y=calc.y+clparenty
 self.clientx,self.clienty=x,y
-listen=self:_should_handle_event(listen)if y+calc.h<0 or y>self.window.h or calc.ghost then
+listen=self:_should_handle_event(listen)if y+calc.h<0 or y>self.window.calc.h or calc.ghost then
 return false
 end
 local zs=self._z_indexes
@@ -3187,9 +3188,12 @@ end
 end
 icon:popdest()rtk.Window.static._icon_resize_grip=icon
 end
-rtk.Window.register{x=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},y=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},w=rtk.Attribute{default=800,type='number',window_sync=true,calculate=function(self,attr,value,target)return math.max(self.minw or 100,value or 0)end,},h=rtk.Attribute{window_sync=true,default=600,calculate=function(self,attr,value,target)return math.max(self.minh or 30,value or 0)end,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
+rtk.Window.register{x=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},y=rtk.Attribute{type='number',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},w=rtk.Attribute{default=800,type='number',window_sync=true,calculate=function(self,attr,value,target)return math.max(self.minw or 100,value or 0)*self._gfx_win_ratio
+end,},h=rtk.Attribute{window_sync=true,default=600,calculate=function(self,attr,value,target)return math.max(self.minh or 30,value or 0)*self._gfx_win_ratio
+end,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
 },window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},pinned=rtk.Attribute{default=false,window_sync=true,calculate=function(self,attr,value,target)return rtk.has_js_reascript_api and value
-end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},[1]=rtk.Attribute{alias='title'},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,minw=100,minh=30,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
+end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},[1]=rtk.Attribute{alias='title'},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,minw=100,minh=30,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)self._gfx_win_ratio=1
+rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
 self.window=self
 if self.id==0 and self.calc.bg and rtk.theme.default then
 rtk.set_theme_by_bgcolor(self.calc.bg)end
@@ -3212,8 +3216,8 @@ self._undocked_geometry=nil
 self._unmaximized_geometry=nil
 self._last_mousemove_time=nil
 self._last_mouseup_time=0
-self._touch_scrolling={count=0}end
-function rtk.Window:_handle_attr(attr,value,oldval,trigger)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger)if ok==false then
+self._touch_scrolling={count=0}self._last_synced_attrs={}end
+function rtk.Window:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='bg' then
@@ -3224,7 +3228,7 @@ reaper.JS_GDI_DeleteObject(self._gdi_brush)reaper.JS_GDI_DeleteObject(self._gdi_
 reaper.atexit(function()reaper.JS_GDI_DeleteObject(self._gdi_brush)reaper.JS_GDI_DeleteObject(self._gdi_pen)end)end
 color=rtk.color.flip_byte_order(color)self._gdi_brush=reaper.JS_GDI_CreateFillBrush(color)self._gdi_pen=reaper.JS_GDI_CreatePen(1,color)end
 end
-if self.class.attributes.get(attr).window_sync then
+if self.class.attributes.get(attr).window_sync and not sync then
 self._sync_window_attrs_on_update=true
 end
 return true
@@ -3269,63 +3273,63 @@ end
 function rtk.Window:_run()self:_update()if self.running then
 rtk.defer(self._run,self)end
 end
-function rtk.Window:_get_display_resolution()local x2=self.x+(self.w or 0)local y2=self.y+(self.h or 0)if rtk.has_sws_extension then
-local l,t,r,b=reaper.BR_Win32_GetMonitorRectFromRect(0,self.x,self.y,x2,y2)return l,t,r-l,math.abs(b-t)elseif rtk.has_js_reascript_api then
-local l,t,r,b=reaper.JS_Window_GetViewportFromRect(self.x,self.y,x2,y2,0)return l,t,r-l,math.abs(b-t)else
-return nil,nil
-end
-end
-function rtk.Window:_get_geometry_from_attrs(overrides)local x,y=self.x,self.y
-local w,h=self.w,self.h
+function rtk.Window:_get_display_resolution(working)local x=self.x
+local y=self.y
+local l,t,r,b=reaper.my_getViewport(0,0,0,0,x,y,x+self.w,y+self.h,working and 1 or 0)return l,t,r-l,math.abs(b-t)end
+function rtk.Window:_get_geometry_from_attrs(overrides)local x=self.x
+local y=self.y
+local w=self.calc.w/self._gfx_win_ratio
+local h=self.calc.h/self._gfx_win_ratio
 if overrides then
-local _,_,sw,sh=self:_get_display_resolution()if sw and sh then
+local sx,sy,sw,sh=self:_get_display_resolution(true)if sw and sh then
 if overrides.halign==rtk.Widget.CENTER then
 x=(overrides.x or x)+(sw-w)/2
 elseif overrides.halign==rtk.Widget.RIGHT then
 x=(overrides.x or x)+sw-w
 end
+if rtk.os.mac then
+if overrides.valign==rtk.Widget.TOP then
+y=(overrides.y or y)+(sh-h)+sy
+elseif overrides.valign==rtk.Widget.CENTER then
+y=(overrides.y or y)+(sh-h)/2+sy
+elseif overrides.valign==rtk.Widget.BOTTOM then
+y=(overrides.y or y)+sy
+end
+else
 if overrides.valign==rtk.Widget.CENTER then
 y=(overrides.y or y)+(sh-h)/2
 elseif overrides.valign==rtk.Widget.BOTTOM then
 y=(overrides.y or y)+sh-h
 end
 end
+if overrides.constrain then
+x=rtk.clamp(x,sx,sx+sw-w)y=rtk.clamp(y,sy,sy+sh-h)w=rtk.clamp(w,self.calc.minw,sw-x+sx)h=rtk.clamp(h,self.calc.minh,sh-(rtk.os.mac and y-sy-h or y+sy))end
+end
 end
 return math.round(x),math.round(y),math.round(w),math.round(h)end
-if not rtk.os.mac or not(rtk.has_sws_extension or rtk.has_js_reascript_api)then
-function rtk.Window:_get_os_native_y(y,offset)return y
-end
-else
-function rtk.Window:_get_os_native_y(y,offset)if not rtk.os.mac then
-return y
-end
-if not self._screenh then
-_,_,_,self._screenh=self:_get_display_resolution()end
-return self._screenh-y-(offset or 0)end
-end
 function rtk.Window:_sync_window_attrs(overrides)local calc=self.calc
 local resized
 local dockstate=self:_get_dockstate_from_attrs()if not rtk.has_js_reascript_api or not self.hwnd then
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)self:_handle_dock_change(dockstate)end
-return
+return 0
 end
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)local r,w,h=reaper.JS_Window_GetClientSize(self.hwnd)self:_handle_dock_change(dockstate)if calc.docked then
 gfx.w,gfx.h=w,h
-self:sync('w', w)self:sync('h', h)resized=1
+self:sync('w', w / self._gfx_win_ratio, nil, nil, w)self:sync('h', h / self._gfx_win_ratio, nil, nil, h)resized=1
 end
-return
+return resized
 end
 if self._resize_grip then
 self._resize_grip:hide()end
 if not calc.docked then
 if not calc.visible then
-reaper.JS_Window_Show(self.hwnd, 'HIDE')return
+reaper.JS_Window_Show(self.hwnd, 'HIDE')return 0
 end
 local style='SYSMENU,DLGSTYLE,BORDER,THICKFRAME,CAPTION'if calc.borderless then
 style='POPUP'self:_setup_borderless()if not self.realized then
-reaper.JS_Window_Resize(self.hwnd,self.w,self.h)end
+local sw=math.ceil(self.calc.w/self._gfx_win_ratio)local sh=math.ceil(self.calc.h/self._gfx_win_ratio)reaper.JS_Window_Resize(self.hwnd,sw,sh)end
 self._resize_grip:show()end
 local function restyle()reaper.JS_Window_SetStyle(self.hwnd,style)if rtk.os.bits~=32 then
 local n=reaper.JS_Window_GetLong(self.hwnd, 'STYLE')reaper.JS_Window_SetLong(self.hwnd, 'STYLE', n | 0x80000000)end
@@ -3342,27 +3346,27 @@ elseif w>gfx.w or h>gfx.h then
 resized=1
 end
 end
-local r,lastx,top,_,_=reaper.JS_Window_GetRect(self.hwnd)local lasty=self:_get_os_native_y(top)local moved=r and(self.x~=lastx or self.y~=lasty)if moved or resized~=0 then
+local r,lastx,lasty,x2,y2=reaper.JS_Window_GetClientRect(self.hwnd)local moved=r and(self.x~=lastx or self.y~=lasty)local borderless_toggled=calc.borderless~=self._last_synced_attrs.borderless
+if moved or resized~=0 or borderless_toggled then
 local sw,sh=w,h
 if not calc.borderless then
-sw=w+self._os_window_frame_width
-sh=h+self._os_window_frame_height
+sw=w+self._os_window_frame_width/self._gfx_win_ratio
+sh=h+self._os_window_frame_height/self._gfx_win_ratio
 end
-local sx=x
-local sy=self:_get_os_native_y(y,h+self._os_window_frame_height)reaper.JS_Window_SetPosition(self.hwnd,sx,sy,sw,sh)end
+sw=math.ceil(sw)sh=math.ceil(sh)reaper.JS_Window_SetPosition(self.hwnd,x,y,sw,sh)end
 if resized~=0 then
-self:onresize(gfx.w,gfx.h)gfx.w=w
+self:onresize(gfx.w/self._gfx_win_ratio,gfx.h/self._gfx_win_ratio)gfx.w=w
 gfx.h=h
 self:queue_blit()end
 if moved then
-self.x,self.y=x,y
-self:onmove(lastx,lasty)end
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:onmove(lastx,lasty)end
 reaper.JS_Window_SetOpacity(self.hwnd, 'ALPHA', calc.opacity)reaper.JS_Window_SetTitle(self.hwnd,calc.title)else
 local flags=reaper.JS_Window_GetLong(self.hwnd, 'EXSTYLE')flags=flags&~0x00080000
 reaper.JS_Window_SetLong(self.hwnd, 'EXSTYLE', flags)end
+self._last_synced_attrs.borderless=calc.borderless
 return resized or 0
 end
-function rtk.Window:open(attrs)if self.running or rtk._quit then
+function rtk.Window:open(options)if self.running or rtk._quit then
 return
 end
 rtk.window=self
@@ -3372,10 +3376,12 @@ end
 local calc=self.calc
 self.running=true
 gfx.ext_retina=1
-self:_handle_attr('bg', calc.bg or rtk.theme.bg)attrs=self:_calc_cell_attrs(self,attrs)local x,y,w,h=self:_get_geometry_from_attrs(attrs)self:sync('x', x)self:sync('y', y)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()if rtk.os.mac then
-local _,_,_,screenh=self:_get_display_resolution()y=screenh-y-h
+self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w,calc.h,dockstate,x,y)gfx.update()if gfx.ext_retina==2 and rtk.os.mac then
+self._gfx_win_ratio=2
+self.calc.w=calc.w*2
+self.calc.h=calc.h*2
 end
-gfx.init(calc.title,w,h,dockstate,x,y)dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
+dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
 self:_clear_gdi()else
 rtk.color.set(rtk.theme.bg)gfx.rect(0,0,w,h,1)end
 self._draw_queued=true
@@ -3388,32 +3394,50 @@ function rtk.Window:_setup_borderless()if self._move_grip then
 return
 end
 local calc=self.calc
-local move=rtk.Spacer{z=-10000,w=1.0,h=30,touch_activate_delay=0}move.onmousedown=function()return true
+local move=rtk.Spacer{z=-10000,w=1.0,h=30,touch_activate_delay=0}move.onmousedown=function(this,event)if not calc.docked and calc.borderless then
+local _,wx,wy,_,_=reaper.JS_Window_GetClientRect(self.hwnd)local mx,my=reaper.GetMousePosition()this._drag_start_mx=mx
+this._drag_start_my=my
+this._drag_start_wx=wx
+this._drag_start_wy=wy
+this._drag_start_ww=gfx.w/self._gfx_win_ratio
+this._drag_start_wh=gfx.h/self._gfx_win_ratio
+this._drag_start_dx=mx-wx
+this._drag_start_dy=my-wy
 end
-move.ondragstart=function(this,event)if not calc.docked and calc.borderless then
-local _,wx,wy,_,_=reaper.JS_Window_GetClientRect(self.hwnd)this._drag_start_ex,this._drag_start_ey=event.x,event.y
-this._drag_start_wx,this._drag_start_wy=wx,wy
-this._drag_start_ww,this._drag_start_wh=calc.w,calc.h
+return true
+end
+move.ondragstart=function(this,event)if not calc.docked and calc.borderless and this._drag_start_mx then
 return true
 else
 return false
 end
 end
-move.ondragmousemove=function(this,event)local _,wx,wy,_,_=reaper.JS_Window_GetClientRect(self.hwnd)local x=wx+(event.x-this._drag_start_ex)local y
+move.ondragend=function(this,event)this._drag_start_mx=nil
+end
+move.ondragmousemove=function(this,event)local _,wx,wy,_,wy2=reaper.JS_Window_GetClientRect(self.hwnd)local mx,my=reaper.GetMousePosition()local x=mx-this._drag_start_dx
+local y
 if rtk.os.mac then
-y=(wy-this._drag_start_wh)-(event.y-this._drag_start_ey)else
-y=wy+(event.y-this._drag_start_ey)end
+local h=wy-wy2
+y=my-this._drag_start_dy-h
+else
+y=my-this._drag_start_dy
+end
 if self._unmaximized_geometry then
-local _,_,w,h=table.unpack(self._unmaximized_geometry)local sx,_,sw,sh=self:_get_display_resolution()local dx=math.ceil((w/this._drag_start_ww)*event.x)x=rtk.clamp(sx+dx,sx,sx+sw-w)self._unmaximized_geometry=nil
-this._drag_start_ex=dx
-this._drag_start_ww,this._drag_start_wh=w,h
-this._drag_start_wx=x
+local _,_,w,h=table.unpack(self._unmaximized_geometry)local sx,_,sw,sh=self:_get_display_resolution()local xoffset=event.x/self._gfx_win_ratio
+local dx=math.ceil(w*xoffset/this._drag_start_ww)x=rtk.clamp(sx+xoffset-dx,sx,sx+sw-w)self._unmaximized_geometry=nil
+this._drag_start_ww=w
+this._drag_start_wh=h
+this._drag_start_dx=dx
+if rtk.os.mac then
+y=(wy-h)+(my-this._drag_start_my)end
 reaper.JS_Window_SetPosition(self.hwnd,x,y,w,h)else
 reaper.JS_Window_Move(self.hwnd,x,y)end
 end
-move.ondoubleclick=function(this,event)local x,y,w,h=self:_get_display_resolution()local calc=self.calc
-if self._unmaximized_geometry then
-if x==self.x and y==self.y and w==calc.w and h==calc.h then
+move.ondoubleclick=function(this,event)if calc.docked or not calc.borderless then
+return
+end
+local x,y,w,h=self:_get_display_resolution(true)if self._unmaximized_geometry then
+if math.abs(w-self.w)<w*0.05 and math.abs(h-self.h)<h*0.05 then
 x,y,w,h=table.unpack(self._unmaximized_geometry)end
 self._unmaximized_geometry=nil
 else
@@ -3427,10 +3451,10 @@ end
 resize.onmouseleave=function(this,event)if calc.borderless then
 this:animate{attr='alpha', dst=0.4, duration=0.25}end
 end
+resize.onmousedown=move.onmousedown
 resize.ondragstart=move.ondragstart
-resize.ondragmousemove=function(this,event)local x=event.x-this._drag_start_ex
-local y=event.y-this._drag_start_ey
-local w=math.max(self.minw,this._drag_start_ww+x)local h=math.max(self.minh,this._drag_start_wh+y)reaper.JS_Window_Resize(self.hwnd,w,h)self:_clear_gdi(calc.w,calc.h)if rtk.os.mac then
+resize.ondragmousemove=function(this,event)local _,ww,wh=reaper.JS_Window_GetClientSize(self.hwnd)local mx,my=reaper.GetMousePosition()local dx=mx-this._drag_start_mx
+local dy=(my-this._drag_start_my)*(rtk.os.mac and-1 or 1)local w=math.max(self.minw*self._gfx_win_ratio,this._drag_start_ww+dx)local h=math.max(self.minh*self._gfx_win_ratio,this._drag_start_wh+dy)reaper.JS_Window_Resize(self.hwnd,w,h)self:_clear_gdi(calc.w,calc.h)if rtk.os.mac then
 reaper.JS_Window_Move(self.hwnd,this._drag_start_wx,this._drag_start_wy-h)end
 end
 self:add(move)self:add(resize, {valign='bottom', halign='right'})self._move_grip=move
@@ -3460,6 +3484,8 @@ end
 if hwnd then
 local _,w,h=reaper.JS_Window_GetClientSize(hwnd)local _,l,t,r,b=reaper.JS_Window_GetRect(hwnd)self._os_window_frame_width=(r-l)-w
 self._os_window_frame_height=math.abs(b-t)-h
+self._os_window_frame_width=self._os_window_frame_width*self._gfx_win_ratio
+self._os_window_frame_height=self._os_window_frame_height*self._gfx_win_ratio
 end
 return hwnd
 end
@@ -3471,8 +3497,10 @@ self:sync('dock', calc.dock)self:sync('docked', calc.docked)self._dockstate=dock
 self.hwnd=self:_get_hwnd()self:queue_reflow(rtk.Widget.REFLOW_FULL)if was_docked~=calc.docked then
 self:_clear_gdi()if calc.docked then
 self._undocked_geometry={self.x,self.y,self.w,self.h}elseif self._undocked_geometry then
-local x,y,w,h=table.unpack(self._undocked_geometry)self:sync('x', x)self:sync('y', y)self:sync('w', w)self:sync('h', h)gfx.w=w
-gfx.h=h
+local x,y,w,h=table.unpack(self._undocked_geometry)local gw=w*self._gfx_win_ratio
+local gh=h*self._gfx_win_ratio
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w, nil, nil, gw)self:sync('h', h, nil, nil, gh)gfx.w=gw
+gfx.h=gh
 end
 end
 self:_sync_window_attrs()self:queue_blit()self:ondock()end
@@ -3489,6 +3517,9 @@ end
 function rtk.Window:queue_draw()self._draw_queued=true
 end
 function rtk.Window:queue_blit()self._blits_queued=self._blits_queued+2
+end
+function rtk.Window:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,scale)local calc=self.calc
+local tp,rp,bp,lp=self:_get_padding_and_border()return calc.w-lp-rp,calc.h-tp-bp,tp,rp,bp,lp
 end
 function rtk.Window:queue_mouse_refresh()self._mouse_refresh_queued=true
 end
@@ -3531,8 +3562,8 @@ function rtk.Window:_get_mousemove_event(simulated)local event=self._event:reset
 event:set_modifiers(gfx.mouse_cap,rtk.mouse.state.latest or 0)return event
 end
 local function _get_wheel_distance(v)if rtk.os.mac then
-local direction=v<0 and 1 or-1
-return direction*math.sqrt(math.abs(v)/6)else
+return-v/90
+else
 return-v/120
 end
 end
@@ -3576,13 +3607,12 @@ end
 local dockstate,x,y=gfx.dock(-1,true,true)local dock_changed=dockstate~=self._dockstate
 if dock_changed then
 self:_handle_dock_change(dockstate)end
-y=self:_get_os_native_y(y,gfx.h+self._os_window_frame_height)if x~=self.x or y~=self.y then
+if x~=self.x or y~=self.y then
 local lastx,lasty=self.x,self.y
-self.x,self.y=x,y
-self:onmove(lastx,lasty)end
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:onmove(lastx,lasty)end
 if resized and self.visible then
-local last_w,last_h=calc.w,calc.h
-self:sync('w', gfx.w)self:sync('h', gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
+local last_w,last_h=self.w,self.h
+self:sync('w', gfx.w / self._gfx_win_ratio, nil, nil, gfx.w)self:sync('h', gfx.h / self._gfx_win_ratio, nil, nil, gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
 elseif self._reflow_queued then
 self:reflow()need_draw=true
 end
@@ -3821,6 +3851,16 @@ return false
 end
 end
 function rtk.Window:clear()self._backingstore:clear(self.calc.bg or rtk.theme.bg)end
+function rtk.Window:get_normalized_y()if not rtk.has_sws_extension and not rtk.has_js_reascript_api then
+return
+end
+if not rtk.os.mac then
+return self.y
+else
+local _,_,_,sh=self:_get_display_resolution()local offset=gfx.h+self._os_window_frame_height
+return sh-self.y-offset/self._gfx_win_ratio
+end
+end
 function rtk.Window:_set_touch_scrolling(viewport,state)local ts=self._touch_scrolling
 local exists=ts[viewport.id]~=nil
 if state and not exists then
@@ -4229,7 +4269,7 @@ end
 self._theme_font=self._theme_font or rtk.theme.button_font or rtk.theme.default_font
 rtk.Widget.initialize(self,attrs,self.class.attributes.defaults,...)self._font=rtk.Font()end
 function rtk.Button:__tostring_info()return self.label or(self.icon and self.icon.path)end
-function rtk.Button:_handle_attr(attr,value,oldval,trigger,reflow)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ret==false then
+function rtk.Button:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret==false then
 return ret
 end
 if self._segments and (attr == 'wrap' or attr == 'label') then
@@ -4516,8 +4556,8 @@ self._history=nil
 self._last_doubleclick_time=0
 self._num_doubleclicks=0
 end
-function rtk.Entry:_handle_attr(attr,value,oldval,trigger,reflow)local calc=self.calc
-local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Entry:_handle_attr(attr,value,oldval,trigger,reflow,sync)local calc=self.calc
+local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='value' then
@@ -4850,7 +4890,7 @@ function rtk.Entry:_rendertext(x,y)self._font:set()self._backingstore:blit{src=g
 }self._backingstore:pushdest()if self._selstart and self:focused()then
 local a,b=self:get_selection_range()self:setcolor(rtk.theme.entry_selection_bg)gfx.rect(self._positions[a]-self._loffset,0,self._positions[b]-self._positions[a],self._backingstore.h,1
 )end
-self:setcolor(self.calc.textcolor)self._font:draw(self.calc.value,-self._loffset,0)self._backingstore:popdest()self._dirty_text=false
+self:setcolor(self.calc.textcolor)self._font:draw(self.calc.value,-self._loffset,rtk.os.mac and 1 or 0)self._backingstore:popdest()self._dirty_text=false
 end
 function rtk.Entry:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)local calc=self.calc
 if offy~=self.offy or offx~=self.offx then
@@ -4879,7 +4919,8 @@ local a=math.min(1,calc.icon_alpha*alpha+(focused and 0.2 or 0))icon:draw(x+lp,y
 end
 self._backingstore:blit{sx=0,sy=0,sw=calc.w-lp-rp,sh=calc.h-tp-bp,dx=x+lp,dy=y+tp,alpha=amul,mode=rtk.Image.FAST_BLIT
 }if calc.placeholder and #calc.value==0 then
-self._font:set()self:setcolor(rtk.theme.entry_placeholder,alpha)self._font:draw(calc.placeholder,x+lp,y+tp,calc.w-lp,calc.h-tp)end
+self._font:set()self:setcolor(rtk.theme.entry_placeholder,alpha)self._font:draw(calc.placeholder,x+lp,y+tp+(rtk.os.mac and 1 or 0),calc.w-lp,calc.h-tp
+)end
 if focused then
 local showcursor=not self._selstart or(self._selend-self._selstart)==0
 if not self._blinking and showcursor then
@@ -4913,7 +4954,7 @@ end
 rtk.Widget.initialize(self,attrs,rtk.Text.attributes.defaults,...)self._font=rtk.Font()end
 function rtk.Text:__tostring_info()return self.text
 end
-function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if self._segments and (attr == 'text' or attr == 'wrap' or attr == 'textalign' or attr == 'spacing') then
@@ -4968,7 +5009,7 @@ __mod_rtk_imagebox=(function()
 local rtk=__mod_rtk_core
 local log=__mod_rtk_log
 rtk.ImageBox=rtk.class('rtk.ImageBox', rtk.Widget)rtk.ImageBox.register{[1]=rtk.Attribute{alias='image'},image=rtk.Attribute{calculate=rtk.Entry.attributes.icon.calculate,reflow=rtk.Widget.REFLOW_FULL,},scale=rtk.Attribute{reflow=rtk.Widget.REFLOW_FULL,},aspect=rtk.Attribute{reflow=rtk.Widget.REFLOW_FULL,},}function rtk.ImageBox:initialize(attrs,...)rtk.Widget.initialize(self,attrs,self.class.attributes.defaults,...)end
-function rtk.ImageBox:_handle_attr(attr,value,oldval,trigger,reflow)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow)if ret==false then
+function rtk.ImageBox:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret==false then
 return ret
 end
 if attr=='image' and value then
@@ -5055,7 +5096,7 @@ for item in self._menu:items()do
 local item_w,item_h=gfx.measurestr(item.altlabel or item.label)w=math.max(w,item_w)h=math.max(h,item_h)end
 return segments,rtk.clamp(w,lw,boxw),rtk.clamp(h,lh,boxh)end
 function rtk.OptionMenu:select(value,trigger)return self:attr('selected', value, trigger)end
-function rtk.OptionMenu:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.OptionMenu:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='menu' then
@@ -5126,7 +5167,7 @@ return ret
 end
 self:toggle()return ret
 end
-function rtk.CheckBox:_handle_attr(attr,value,oldval,trigger,reflow)local ret=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow)if ret~=false then
+function rtk.CheckBox:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.Button._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret~=false then
 if attr=='value' then
 self.calc.icon=self._value_map[value] or self._value_map[rtk.CheckBox.UNCHECKED]
 if trigger then
@@ -5164,7 +5205,7 @@ local rtk=__mod_rtk_core
 rtk.Application=rtk.class('rtk.Application', rtk.VBox)rtk.Application.register{status=rtk.Attribute{reflow=rtk.Widget.REFLOW_NONE
 },statusbar=nil,toolbar=nil,screens=nil,}function rtk.Application:initialize(attrs,...)self.screens={stack={},}self.toolbar=rtk.HBox{bg=rtk.theme.bg,spacing=0,z=110,}self.toolbar:add(rtk.HBox.FLEXSPACE)self.statusbar=rtk.HBox{bg=rtk.theme.bg,lpadding=10,tpadding=5,bpadding=5,rpadding=10,z=110,}self.statusbar.text = self.statusbar:add(rtk.Text{color=rtk.theme.text_faded, text=""}, {expand=1})rtk.VBox.initialize(self,attrs,self.class.attributes.defaults,...)self:add(self.toolbar,{minw=150,bpadding=2})self:add(rtk.VBox.FLEXSPACE)self._content_position=#self.children
 self:add(self.statusbar,{fillw=true})self:_handle_attr('status', self.calc.status)end
-function rtk.Application:_handle_attr(attr,value,oldval,trigger,reflow)local ok=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow)if ok==false then
+function rtk.Application:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='status' then
@@ -5234,7 +5275,7 @@ rtk._reaper_version_prerelease=minor:sub(sepidx):gsub('^%+', '')minor=minor:sub(
 minor=tonumber(minor)or 0
 rtk._reaper_version_minor=minor<100 and minor or minor/10
 if rtk.os.mac then
-rtk.font.multiplier=0.8
+rtk.font.multiplier=0.75
 elseif rtk.os.linux then
 rtk.font.multiplier=0.7
 end
@@ -5517,7 +5558,7 @@ self:save_config()end
 rtk.touchscroll=app.config.touchscroll
 rtk.smoothscroll=app.config.smoothscroll
 self:set_theme()rtk.Application.initialize(self)self.window=rtk.Window{title=title,x=self.config.x,y=self.config.y,w=rtk.clamp(self.config.w,0,4096),h=rtk.clamp(self.config.h,0,4096),dock=self.config.dock or 'right',docked=self.config.docked,borderless=self.config.borderless,pinned=self.config.pinned,ondock=function()self:handle_ondock()end,onattr=function(_,attr,value)self:handle_onattr(attr,value)end,onmove=function()self:handle_onmove()end,onresize=function()self:handle_onresize()end,onupdate=function()self:handle_onupdate()end,onmousewheel=function(_,event)self:handle_onmousewheel(event)end,onclose=function()self:handle_onclose()end,onkeypresspost=function(_,event)self:handle_onkeypresspost(event)end,ondropfile=function(_,event)self:handle_ondropfiles(event)end,onclick=function(_,event)self:handle_onclick(event)end,}self:build_frame()end
-function BaseApp:run()self:handle_onupdate()rtk.window:open()end
+function BaseApp:run()self:handle_onupdate()rtk.window:open{constrain=true}end
 function BaseApp:add_screen(name,package)local screen=load("return __mod_" .. package:gsub("%.", "_"))()rtk.Application.add_screen(self,screen,name)end
 local function _swallow_event(self,event)event:set_handled(self)return false
 end
@@ -5532,7 +5573,8 @@ return
 end
 local encoded=reaper.GetExtState(self.appid,key)local ok,decoded=pcall(json.decode,encoded)return ok and decoded,encoded
 end
-function BaseApp:set_ext_state(key,obj,persist)local serialized=json.encode(obj)reaper.SetExtState(self.appid,key,serialized,persist or false)log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)end
+function BaseApp:set_ext_state(key,obj,persist)local serialized=json.encode(obj)reaper.SetExtState(self.appid,key,serialized,persist or false)log.debug('baseapp: wrote ext state "%s" (size=%s persist=%s)', key, #serialized, persist)return serialized
+end
 function BaseApp:get_config(appid,target)local config, encoded=self:get_ext_state('config')if not config and encoded then
 local ok
 log.info('baseapp: config failed to parse as JSON: %s', encoded)ok,config=pcall(table.fromstring,encoded)if not ok then
@@ -5549,12 +5591,15 @@ self.config.docked=(self.config.dockstate&0x01)~=0
 end
 return self.config
 end
-function BaseApp:save_config(config)self:_do_save_config(config)end
+function BaseApp:save_config(config)self:_do_save_config(config,true)end
 function BaseApp:queue_save_config(config)if not self._save_config_queued then
-rtk.callafter(2,self._do_save_config,self,config)self._save_config_queued=true
+rtk.callafter(0.25,self._do_save_config,self,config)self._save_config_queued=true
 end
 end
-function BaseApp:_do_save_config(config)self:set_ext_state('config', config or self.config, true)self._save_config_queued=false
+function BaseApp:_do_save_config(config,force)if not self._save_config_queued and not force then
+return
+end
+local cfg=self:set_ext_state('config', config or self.config, true)self._save_config_queued=false
 end
 function BaseApp:set_debug(level)self.config.debug_level=level
 self:save_config()log.level=level or log.ERROR
@@ -5578,11 +5623,15 @@ self:_set_window_pinned(self.config.pinned)end
 end
 self:save_config()end
 function BaseApp:handle_onresize()if not self.window.docked then
-self.config.x,self.config.y=self.window.x,self.window.y
-self.config.w,self.config.h=self.window.w,self.window.h
+self.config.w=self.window.w
+self.config.h=self.window.h
 self:queue_save_config()end
 end
-function BaseApp:handle_onmove()self:handle_onresize()end
+function BaseApp:handle_onmove()if not self.window.docked then
+self.config.x=self.window.x
+self.config.y=self.window.y
+self:queue_save_config()end
+end
 function BaseApp:handle_onmousewheel(event)if event.ctrl and not rtk.is_modal()then
 self:zoom(event.wheel<0 and 0.10 or-0.10)event:set_handled()end
 end
@@ -6243,7 +6292,7 @@ function Articulation:copy_to_bank(bank)local clone=Articulation(bank,self.progr
 function Articulation:get_bank()return reabank.get_bank_by_guid(self.bank_guid)end
 function Articulation:is_active()return self.channels~=0
 end
-local Bank=rtk.class('Bank')function Bank:initialize(msb,lsb,name,attrs,factory)self.factory=factory
+local Bank=rtk.class('Bank')function Bank:initialize(msb,lsb,name,attrs,factory)assert(name, 'bank name must be specified')self.factory=factory
 self._msb=tonumber(msb)self._lsb=tonumber(lsb)if self._msb and self._lsb then
 self.msblsb=(self._msb<<8)+self._lsb
 end
@@ -6636,16 +6685,16 @@ local submenu=bankmenu
 if bank.group then
 local group=(bank.factory and 'Factory/' or 'User/') .. bank.group
 for part in group:gmatch("[^/]+") do
-local found=false
+local lowerpart=part:lower()local found=false
 for n,tmpmenu in ipairs(submenu)do
-if tmpmenu[1]==part then
+if tmpmenu.lowername==lowerpart then
 submenu=tmpmenu.submenu
 found=true
 break
 end
 end
 if not found then
-local tmpmenu={part,submenu={}}submenu[#submenu+1]=tmpmenu
+local tmpmenu={part,submenu={},lowername=lowerpart}submenu[#submenu+1]=tmpmenu
 submenu=tmpmenu.submenu
 end
 end
@@ -7407,7 +7456,7 @@ return
 end
 feedback._sync(what or feedback.SYNC_ALL)end
 function feedback.set_active(active)app.config.cc_feedback_active=active
-app:save_config()feedback.update_feedback_track_settings()end
+app:queue_save_config()feedback.update_feedback_track_settings()end
 return feedback
 end)()
 
@@ -7914,7 +7963,7 @@ else
 value=(enabled==1 and true or false)end
 if store then
 self.config[cfgitem]=value
-self:save_config()end
+self:queue_save_config()end
 log.info("app: set toggle option: %s -> %s", cfgitem, value)if not cmd_id and self.config_map_to_script[cfgitem] then
 local section,filename=table.unpack(self.config_map_to_script[cfgitem])local script=Path.join(Path.basedir, 'actions', filename)local cmd=reaper.AddRemoveReaScript(true,section,script,false)if cmd>0 then
 section_id=section
