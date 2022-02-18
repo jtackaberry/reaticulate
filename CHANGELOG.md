@@ -1,3 +1,14 @@
+# 0.5.3
+
+## Minor Enhancements
+
+* On startup, Reaticulate now ensures its window, if undocked, fits within the display where it resides
+* Bank group names are now case insensitive, so that e.g. "Spitfire" and "SpitFire" will no longer create separate submenus, but will be placed within the same submenu
+## Bug Fixes
+
+* Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays
+* Avoid crashing when parsing a malformed Bank definition in the reabank file ([#98](https://github.com/jtackaberry/reaticulate/issues/98))
+
 # 0.5.2
 
 ## Bug Fixes
