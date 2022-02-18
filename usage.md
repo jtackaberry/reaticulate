@@ -19,7 +19,7 @@ Let's first get some terminology and basic operational stuff out of the way:
 * A __bank__ defines a set of articulations that typically describes some multi-articulation patch
     * __Factory banks__ are distributed with Reaticulate and you won't directly change these, but
       you can use them
-    * __User banks__ are custom banks made by you
+    * __User banks__ are custom banks made by you, or made by others that you have imported
 * Reaticulate works by translating incoming __program change__ MIDI messages to whatever different
   MIDI events your virtual instrument library needs to trigger articulation changes
     * Reaticulate calls these __output events__ and they're defined in the bank

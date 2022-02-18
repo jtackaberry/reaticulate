@@ -3,11 +3,27 @@ title: News | reaticulate
 layout: default
 permalink: /news/
 ---
+# Reaticulate 0.5.3 Released
+*February 17, 2022*
+
+0.5.3 fixes a critical bug on MacOS with Retina displays.
+
+## Full Change Log
+
+### Minor Enhancements
+
+* On startup, Reaticulate now ensures its window, if undocked, fits within the display where it resides
+* Bank group names are now case insensitive, so that e.g. "Spitfire" and "SpitFire" will no longer create separate submenus, but will be placed within the same submenu
+### Bug Fixes
+
+* Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays
+* Avoid crashing when parsing a malformed Bank definition in the reabank file ([#98](https://github.com/jtackaberry/reaticulate/issues/98))
+
 
 # Reaticulate 0.5.2 Released
 *February 10, 2022*
 
-0.5.2 is a minor release to address another pair of small issues:
+0.5.2 is a minor release to address another pair of small issues.
 
 ## Full Change Log
 

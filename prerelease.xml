@@ -2,6 +2,91 @@
 <index version="1" name="Reaticulate">
   <category name="MIDI Articulations">
     <reapack name="Reaticulate: an articulation management system for REAPER" type="script">
+      <version name="0.5.3" author="Jason Tackaberry" time="2022-02-18T01:45:05Z">
+        <source file="../Reaticulate-factory.reabank" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/Reaticulate-factory.reabank</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 1 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%201%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 2 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%202%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 3 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%203%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC in group 4 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%204%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 01.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2001.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2002.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2003.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2004.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2006.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2007.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2008.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 09.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2009.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 10.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2010.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 11.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2011.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 12.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2012.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 13.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2013.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 14.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2014.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 15.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2015.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on channel 16.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2016.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation by CC on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate articulation slot number by CC on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20articulation%20slot%20number%20by%20CC%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 1 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20next%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 2 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20next%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 3 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20next%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate next articulation in group 4 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20next%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 1 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 2 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 3 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate previous articulation in group 4 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Activate selected articulation on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Activate%20selected%20articulation%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Disable feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Disable%20feedback%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Enable feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Enable%20feedback%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Focus articulation filter.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Focus%20articulation%20filter.lua</source>
+        <source file="../actions/Reaticulate_Insert last activated articulation into MIDI item on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Insert%20last%20activated%20articulation%20into%20MIDI%20item%20on%20default%20channel.lua</source>
+        <source file="../actions/Reaticulate_Main.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Main.lua</source>
+        <source file="../actions/Reaticulate_Select articulation by CC (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Select%20articulation%20by%20CC%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
+        <source file="../actions/Reaticulate_Select last selected track.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Select%20last%20selected%20track.lua</source>
+        <source file="../actions/Reaticulate_Select next articulation.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Select%20next%20articulation.lua</source>
+        <source file="../actions/Reaticulate_Select previous articulation.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Select%20previous%20articulation.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel by CC.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20by%20CC.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 01.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2001.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2002.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2003.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2004.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2005.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2006.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2007.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2008.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 09.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2009.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 10.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2010.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 11.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2011.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 12.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2012.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 13.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2013.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 14.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2014.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 15.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2015.lua</source>
+        <source file="../actions/Reaticulate_Set default MIDI channel to 16.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2016.lua</source>
+        <source file="../actions/Reaticulate_Start.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Start.lua</source>
+        <source file="../actions/Reaticulate_Sync current state on selected track to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Sync%20current%20state%20on%20selected%20track%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Toggle feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Toggle%20feedback%20to%20MIDI%20feedback%20device.lua</source>
+        <source file="../actions/Reaticulate_Toggle single floating instrument FX window for selected track.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Toggle%20single%20floating%20instrument%20FX%20window%20for%20selected%20track.lua</source>
+        <source file="../actions/Reaticulate_Toggle track selection follows MIDI editor target item.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Toggle%20track%20selection%20follows%20MIDI%20editor%20target%20item.lua</source>
+        <source file="../actions/Reaticulate_Toggle track selection follows focused FX window.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/actions/Reaticulate_Toggle%20track%20selection%20follows%20focused%20FX%20window.lua</source>
+        <source file="../img/articulations.png" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/img/articulations.png</source>
+        <source file="../img/icons.png" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/img/icons.png</source>
+        <source file="../jsfx/Feedback Translate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/jsfx/Feedback%20Translate.jsfx</source>
+        <source file="../jsfx/Reaticulate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/jsfx/Reaticulate.jsfx</source>
+        <source file="../reaticulate.lua" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3/release/reaticulate.lua</source>
+        <changelog><![CDATA[
+This is a bug fix release for Reaticulate 0.5 which was a recent major release.  More details on 0.5.0 can be found at https://reaticulate.
+com/news/#reaticulate-050-released
+
+Minor Enhancements
+
+* On startup, Reaticulate now ensures its window, if undocked, fits within the display where it resides
+* Bank group names are now case insensitive, so that e.g. "Spitfire" and "SpitFire" will no longer create separate submenus, but will be placed within the same submenu
+
+
+Bug Fixes
+
+* Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays
+* Avoid crashing when parsing a malformed Bank definition in the reabank file (#98)]]></changelog>
+      </version>
       <version name="0.5.2.90" author="Jason Tackaberry" time="2022-02-17T01:29:04Z">
         <source file="../Reaticulate-factory.reabank" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3-pre1/prerelease/Reaticulate-factory.reabank</source>
         <source file="../actions/Reaticulate_Activate articulation by CC in group 1 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.3-pre1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%201%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
@@ -76,9 +161,16 @@
 This is a bug fix release for Reaticulate 0.5 which was a recent major release.  More details on 0.5.0 can be found at https://reaticulate.
 com/news/#reaticulate-050-released
 
+Minor Enhancements
+
+* On startup, Reaticulate now ensures its window, if undocked, fits within the display where it resides
+* Bank group names are now case insensitive, so that e.g. "Spitfire" and "SpitFire" will no longer create separate submenus, but will be placed within the same submenu
+
+
 Bug Fixes
 
-* Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays]]></changelog>
+* Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays
+* Avoid crashing when parsing a malformed Bank definition in the reabank file (#98)]]></changelog>
       </version>
       <version name="0.5.2" author="Jason Tackaberry" time="2022-02-11T01:33:17Z">
         <source file="../Reaticulate-factory.reabank" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.2/release/Reaticulate-factory.reabank</source>
@@ -347,298 +439,6 @@ Minor Enhancements
 * The articulation list's scroll position is now retained per track and restored when the track is selected
 * All buttons in the GUI got a minor facelift
 
-
-Bug Fixes
-
-* Fixed a bug where CCs were not always properly chased when activating articulations between different channels
-* Properly refocus the previous window when using the "Focus articulation filter" action after activating an articulation (enter) or clearing the filter (escape).  (Requires js_ReaScriptAPI to be present.)]]></changelog>
-      </version>
-      <version name="0.4.95" author="Jason Tackaberry" time="2022-01-22T14:56:54Z">
-        <source file="../Reaticulate-factory.reabank" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/Reaticulate-factory.reabank</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 1 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%201%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 2 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%202%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 3 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%203%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 4 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%204%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 01.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2001.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2002.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2003.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2004.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2006.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2007.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2008.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 09.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2009.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 10.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2010.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 11.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2011.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 12.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2012.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 13.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2013.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 14.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2014.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 15.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2015.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 16.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2016.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation slot number by CC on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20articulation%20slot%20number%20by%20CC%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 1 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 2 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 3 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 4 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 1 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 2 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 3 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 4 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate selected articulation on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Activate%20selected%20articulation%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Disable feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Disable%20feedback%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Enable feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Enable%20feedback%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Focus articulation filter.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Focus%20articulation%20filter.lua</source>
-        <source file="../actions/Reaticulate_Insert last activated articulation into MIDI item on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Insert%20last%20activated%20articulation%20into%20MIDI%20item%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Main.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Main.lua</source>
-        <source file="../actions/Reaticulate_Select articulation by CC (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Select%20articulation%20by%20CC%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Select last selected track.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Select%20last%20selected%20track.lua</source>
-        <source file="../actions/Reaticulate_Select next articulation.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Select%20next%20articulation.lua</source>
-        <source file="../actions/Reaticulate_Select previous articulation.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Select%20previous%20articulation.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel by CC.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20by%20CC.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 01.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2001.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2002.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2003.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2004.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2005.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2006.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2007.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2008.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 09.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2009.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 10.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2010.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 11.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2011.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 12.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2012.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 13.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2013.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 14.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2014.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 15.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2015.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 16.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2016.lua</source>
-        <source file="../actions/Reaticulate_Start.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Start.lua</source>
-        <source file="../actions/Reaticulate_Sync current state on selected track to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Sync%20current%20state%20on%20selected%20track%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Toggle feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Toggle%20feedback%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Toggle single floating instrument FX window for selected track.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Toggle%20single%20floating%20instrument%20FX%20window%20for%20selected%20track.lua</source>
-        <source file="../actions/Reaticulate_Toggle track selection follows MIDI editor target item.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Toggle%20track%20selection%20follows%20MIDI%20editor%20target%20item.lua</source>
-        <source file="../actions/Reaticulate_Toggle track selection follows focused FX window.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/actions/Reaticulate_Toggle%20track%20selection%20follows%20focused%20FX%20window.lua</source>
-        <source file="../img/articulations.png" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/img/articulations.png</source>
-        <source file="../img/icons.png" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/img/icons.png</source>
-        <source file="../jsfx/Feedback Translate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/jsfx/Feedback%20Translate.jsfx</source>
-        <source file="../jsfx/Reaticulate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/jsfx/Reaticulate.jsfx</source>
-        <source file="../reaticulate.lua" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-rc1/prerelease/reaticulate.lua</source>
-        <changelog><![CDATA[
-**PRERELEASE WARNING**: Reaticulate is not and has never been forward compatible with future versions. There is a strong *backward* compatibility goal, but not forward compatibility.  So if you're using Reaticulate 0.4.7 now and upgrade to 0.5.0-pre (branded as 0.4.9x in the prerelease ReaPack), any projects saved out by this new version will not be able to be reopened using previous Reaticulate versions.
-
-Note: Reaper 5.975 (released on April 30, 2019) or later is now required.
-
-0.4.95 (aka 0.5.0-rc1) Changes
-
-* Rolled back ill-conceived feature from 0.5.0-pre5 to insert articulations into selected media items
-
-
-0.4.94 (aka 0.5.0-pre5) Changes
-
-* Reset zoom level with ctrl-middleclick (which pairs nicely with the existing ctrl-mousewheel to modify UI scale)
-* Detect OTRv2 banks and generate bank GUIDs that begin with '22222222-' (by request)
-* Adjust articulation insertion animation to be faster and flash a lighter color rather than pure red
-* In addition to selected tracks, articulation insertion will now also occur at the edit cursor in selected media items, provided the item intersects with the edit cursor
-
-
-0.4.93 (aka 0.5.0-pre4) Changes
-
-* Fix runtime error when inserting articulations on multiple tracks (#156)
-* Fix articulation buttons being clipped in some cases when bank has spacers (#155)
-* Minor logging improvements when log level is set to DEBUG
-
-
-0.4.92 (aka 0.5.0-pre3) Changes
-
-* Ensure "PC" names in Arrange View are properly resolved to names
-  - NOTE: this requires REAPER 6.46 to work correctly
-* Fixed a regression where feedback sends would not be removed from the previous track when selecting a non-Reaticulate-managed track
-* Fixed a bug where control surface feedback send would not be setup when the Reaticulate JSFX was initially installed on a track
-* Add an info message to the Settings screen for the control surface feedback option
-* Fixed an issue where existing Program Change events would sometimes not be deleted when replacing articulations (caused by REAPER APIs unexpectedly returning fractional MIDI ticks)
-
-
-0.4.91 (aka 0.5.0-pre2) Changes
-
-* Fixed a runtime error that could occur when reassigning bank on track in some cases
-* Improved robustness when reading malformed configuration on startup
-
-
-0.4.90 (aka 0.5.0-pre1) Changes
-
-New Features
-
-* MSB/LSB bank values are now entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put "*" as placeholders for both MSB and LSB values in bank definitions. (#63)
-* Pre-created banks (such as those contributed by other users) can now be much more conveniently imported into Reaticulate, either from clipboard ("[Pencil Icon] | Import Banks from Clipboard") or by dragging-and-dropping one or more files onto Reaticulate's window. Users no longer need to edit the Reabank file in a text editor just to import existing banks. Nor, thanks to dynamic and automatic MSB/LSB assignment, do users need to worry about adjusting MSB/LSB of third party banks to avoid conflicts.
-* Reaticulate now fully supports Retina/Hi-DPI displays with UI scaling and high-DPI graphics. The UI scale automatically respects the system-wide DPI but can be adjusted in Reaticulate's settings.
-* Default MIDI channel can be remembered globally, per track, or per item, and is more robustly synced with the MIDI editor (#83)
-* Changes to the default MIDI channel are now fed back to the control surface, if configured. See Reaticulate's Usage documentation for more information.
-* Holding alt while clicking an articulation button in any manner that inserts the articulation (i.e. double clicking, long-pressing, or right-clicking) will always insert at the edit cursor, even when notes are selected in the MIDI editor. (#79)
-* Articulation definitions in banks now respect the "m" (message) attribute, which displays the message as a tooltip when hovering over the articulation (#67)
-* Touch scrolling can now be enabled, in addition to smooth scrolling, which significantly improves the experience on touch-capable devices (#56)
-* Default articulation colors are now configurable in Reaticulate's settings page
-* A new experimental option has been added to maintain a single floating FX window for instrument FX (such as VSTi) as different tracks are selected
-* A default list of CCs for chasing (when not explicitly defined in the bank itself) is now configurable in Reaticulate's settings page (#146)
-* Articulations will now be inserted on all selected Reaticulate-enabled tracks. If the banks are different between tracks, then the first bank on the track that defines an articulation with the same program number is used.
-* Inserting articulations will create a new MIDI item under the edit cursor if there isn't currently one
-* Two new "tweak" functions have been added to Reaticulate's track configuration page:
-  1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
-  2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
-
-Minor Enhancements
-
-* "Track selection follows MIDI editor" is now enabled by default for new installations
-* Display a warning when the selected track doesn't match focused item in MIDI editor (a common gotcha)
-* Articulations can be inserted into a MIDI item when using the articulation filter either by pressing shift-enter or the insert key.
-* Articulation buttons will now layout in multiple columns when space permits
-* When an articulation is inserted by clicking on the articulation's button, it will flash red to indicate the insertion
-* All articulation icons have been redone with vector graphics in order to support high-DPI displays
-* The articulation list's scroll position is now retained per track and restored when the track is selected
-* All buttons in the GUI got a minor facelift
-
-Bug Fixes
-
-* Fixed a bug where CCs were not always properly chased when activating articulations between different channels
-* Properly refocus the previous window when using the "Focus articulation filter" action after activating an articulation (enter) or clearing the filter (escape).  (Requires js_ReaScriptAPI to be present.)]]></changelog>
-      </version>
-      <version name="0.4.94" author="Jason Tackaberry" time="2022-01-22T00:42:15Z">
-        <source file="../Reaticulate-factory.reabank" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/Reaticulate-factory.reabank</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 1 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%201%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 2 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%202%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 3 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%203%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC in group 4 on default channel (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20in%20group%204%20on%20default%20channel%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 01.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2001.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2002.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2003.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2004.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2005.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2006.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2007.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2008.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 09.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2009.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 10.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2010.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 11.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2011.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 12.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2012.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 13.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2013.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 14.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2014.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 15.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2015.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on channel 16.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20channel%2016.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation by CC on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20by%20CC%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate articulation slot number by CC on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20articulation%20slot%20number%20by%20CC%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 1 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 2 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 3 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate next articulation in group 4 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20next%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 1 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%201%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 2 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%202%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 3 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%203%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate previous articulation in group 4 on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20previous%20articulation%20in%20group%204%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Activate selected articulation on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Activate%20selected%20articulation%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Disable feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Disable%20feedback%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Enable feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Enable%20feedback%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Focus articulation filter.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Focus%20articulation%20filter.lua</source>
-        <source file="../actions/Reaticulate_Insert last activated articulation into MIDI item on default channel.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Insert%20last%20activated%20articulation%20into%20MIDI%20item%20on%20default%20channel.lua</source>
-        <source file="../actions/Reaticulate_Main.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Main.lua</source>
-        <source file="../actions/Reaticulate_Select articulation by CC (MIDI CC relative or mousewheel).lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Select%20articulation%20by%20CC%20%28MIDI%20CC%20relative%20or%20mousewheel%29.lua</source>
-        <source file="../actions/Reaticulate_Select last selected track.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Select%20last%20selected%20track.lua</source>
-        <source file="../actions/Reaticulate_Select next articulation.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Select%20next%20articulation.lua</source>
-        <source file="../actions/Reaticulate_Select previous articulation.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Select%20previous%20articulation.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel by CC.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20by%20CC.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 01.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2001.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 02.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2002.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 03.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2003.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 04.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2004.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 05.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2005.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 06.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2006.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 07.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2007.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 08.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2008.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 09.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2009.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 10.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2010.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 11.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2011.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 12.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2012.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 13.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2013.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 14.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2014.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 15.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2015.lua</source>
-        <source file="../actions/Reaticulate_Set default MIDI channel to 16.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Set%20default%20MIDI%20channel%20to%2016.lua</source>
-        <source file="../actions/Reaticulate_Start.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Start.lua</source>
-        <source file="../actions/Reaticulate_Sync current state on selected track to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Sync%20current%20state%20on%20selected%20track%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Toggle feedback to MIDI feedback device.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Toggle%20feedback%20to%20MIDI%20feedback%20device.lua</source>
-        <source file="../actions/Reaticulate_Toggle single floating instrument FX window for selected track.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Toggle%20single%20floating%20instrument%20FX%20window%20for%20selected%20track.lua</source>
-        <source file="../actions/Reaticulate_Toggle track selection follows MIDI editor target item.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Toggle%20track%20selection%20follows%20MIDI%20editor%20target%20item.lua</source>
-        <source file="../actions/Reaticulate_Toggle track selection follows focused FX window.lua" type="script" main="main">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/actions/Reaticulate_Toggle%20track%20selection%20follows%20focused%20FX%20window.lua</source>
-        <source file="../img/articulations.png" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/img/articulations.png</source>
-        <source file="../img/icons.png" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/img/icons.png</source>
-        <source file="../jsfx/Feedback Translate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/jsfx/Feedback%20Translate.jsfx</source>
-        <source file="../jsfx/Reaticulate.jsfx" type="effect">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/jsfx/Reaticulate.jsfx</source>
-        <source file="../reaticulate.lua" type="script" main="nomain">https://raw.githubusercontent.com/jtackaberry/reaticulate/dist/0.5.0-pre5/prerelease/reaticulate.lua</source>
-        <changelog><![CDATA[
-**PRERELEASE WARNING**: Reaticulate is not and has never been forward compatible with future versions. There is a strong *backward* compatibility goal, but not forward compatibility.  So if you're using Reaticulate 0.4.7 now and upgrade to 0.5.0-pre1 (branded as 0.4.9x in the prerelease ReaPack), any projects saved out by this new version will not be able to be reopened using previous Reaticulate versions.
-
-Note: Reaper 5.975 (released on April 30, 2019) or later is now required.
-
-
-0.4.94 (aka 0.5.0-pre5) Changes
-
-* Reset zoom level with ctrl-middleclick (which pairs nicely with the existing ctrl-mousewheel to modify UI scale)
-* Detect OTRv2 banks and generate bank GUIDs that begin with '22222222-' (by request)
-* Adjust articulation insertion animation to be faster and flash a lighter color rather than pure red
-* In addition to selected tracks, articulation insertion will now also occur at the edit cursor in selected media items, provided the item intersects with the edit cursor
-
-
-0.4.93 (aka 0.5.0-pre4) Changes
-
-* Fix runtime error when inserting articulations on multiple tracks (#156)
-* Fix articulation buttons being clipped in some cases when bank has spacers (#155)
-* Minor logging improvements when log level is set to DEBUG
-
-
-0.4.92 (aka 0.5.0-pre3) Changes
-
-* Ensure "PC" names in Arrange View are properly resolved to names
-  - NOTE: this requires REAPER 6.46 to work correctly
-* Fixed a regression where feedback sends would not be removed from the previous track when selecting a non-Reaticulate-managed track
-* Fixed a bug where control surface feedback send would not be setup when the Reaticulate JSFX was initially installed on a track
-* Add an info message to the Settings screen for the control surface feedback option
-* Fixed an issue where existing Program Change events would sometimes not be deleted when replacing articulations (caused by REAPER APIs unexpectedly returning fractional MIDI ticks)
-
-
-0.4.91 (aka 0.5.0-pre2) Changes
-
-* Fixed a runtime error that could occur when reassigning bank on track in some cases
-* Improved robustness when reading malformed configuration on startup
-
-
-0.4.90 (aka 0.5.0-pre1) Changes
-
-New Features
-
-* MSB/LSB bank values are now entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put "*" as placeholders for both MSB and LSB values in bank definitions. (#63)
-* Pre-created banks (such as those contributed by other users) can now be much more conveniently imported into Reaticulate, either from clipboard ("[Pencil Icon] | Import Banks from Clipboard") or by dragging-and-dropping one or more files onto Reaticulate's window. Users no longer need to edit the Reabank file in a text editor just to import existing banks. Nor, thanks to dynamic and automatic MSB/LSB assignment, do users need to worry about adjusting MSB/LSB of third party banks to avoid conflicts.
-* Reaticulate now fully supports Retina/Hi-DPI displays with UI scaling and high-DPI graphics. The UI scale automatically respects the system-wide DPI but can be adjusted in Reaticulate's settings.
-* Default MIDI channel can be remembered globally, per track, or per item, and is more robustly synced with the MIDI editor (#83)
-* Changes to the default MIDI channel are now fed back to the control surface, if configured. See Reaticulate's Usage documentation for more information.
-* Holding alt while clicking an articulation button in any manner that inserts the articulation (i.e. double clicking, long-pressing, or right-clicking) will always insert at the edit cursor, even when notes are selected in the MIDI editor. (#79)
-* Articulation definitions in banks now respect the "m" (message) attribute, which displays the message as a tooltip when hovering over the articulation (#67)
-* Touch scrolling can now be enabled, in addition to smooth scrolling, which significantly improves the experience on touch-capable devices (#56)
-* Default articulation colors are now configurable in Reaticulate's settings page
-* A new experimental option has been added to maintain a single floating FX window for instrument FX (such as VSTi) as different tracks are selected
-* A default list of CCs for chasing (when not explicitly defined in the bank itself) is now configurable in Reaticulate's settings page (#146)
-* Articulations will now be inserted on all selected Reaticulate-enabled tracks. If the banks are different between tracks, then the first bank on the track that defines an articulation with the same program number is used.
-* Inserting articulations will create a new MIDI item under the edit cursor if there isn't currently one
-* Two new "tweak" functions have been added to Reaticulate's track configuration page:
-  1. Repair tracks where the user manually assigned a custom ReaBank resulting in articulations to appear as numeric values (e.g. 70-2-17).
-  2. Clear all articulation assignments for the track in the GUI, to provide a more discoverable solution to the problem of an inadvertently activated articulation on the wrong channel. (You were always able to middle-click articulation buttons in the main screen to reset the assignment, but this wasn't discoverable.)
-
-Minor Enhancements
-
-* "Track selection follows MIDI editor" is now enabled by default for new installations
-* Display a warning when the selected track doesn't match focused item in MIDI editor (a common gotcha)
-* Articulations can be inserted into a MIDI item when using the articulation filter either by pressing shift-enter or the insert key.
-* Articulation buttons will now layout in multiple columns when space permits
-* When an articulation is inserted by clicking on the articulation's button, it will flash red to indicate the insertion
-* All articulation icons have been redone with vector graphics in order to support high-DPI displays
-* The articulation list's scroll position is now retained per track and restored when the track is selected
-* All buttons in the GUI got a minor facelift
 
 Bug Fixes
 
