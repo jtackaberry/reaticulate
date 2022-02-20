@@ -246,7 +246,7 @@ Programs can be decorated with these attributes:
 <table>
 <tr><th style='text-align: center'>Name</th><th style='text-align: left'>Description</th></tr>
 <tr>
-    <td valign="top" style='text-align: center'>i<br/><code>required</code></td>
+    <td valign="top" style='text-align: center'>i</td>
     <td>
         Articulation icon name.  See <a href='#articulation-icons'>Articulation Icons</a> section
         below for possible names.
@@ -287,7 +287,7 @@ Programs can be decorated with these attributes:
     </td>
 </tr>
 <tr>
-    <td valign="top" style='text-align: center'>o</td>
+    <td valign="top" style='text-align: center'>o<br/><code>required</code></td>
     <td>
         One or more output events that describe the action taken when the articulation is triggered.<br/><br/>
         This is where things get fun. See the <a href='#output-events'>Output Events</a> section below
