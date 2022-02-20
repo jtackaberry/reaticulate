@@ -790,7 +790,13 @@ end
 
 -- Inserts an PC event on the given rfx.Track. The take object, if defined, is the take
 -- within which the articulation is to be inserted, but if nil then a suitable take is
--- found at the edit cursor position.  A new item is created if necessary.
+-- found at the edit cursor position.  A new item is created if necessary and if
+-- allow_create_item is not false (nil is allowed).
+--
+-- If insert_selected_notes is not false (nil is allowed), insertion will be allowed to
+-- occur based on note selection.  Similarly, if insert_edit_cursor is not false (again
+-- nil is allowed), insertion will occur at edit cursor provided one didn't already occur
+-- based on note selection.
 --
 -- If bank is provided, then it's a reabank.Bank object that, otherwise it's nil and a
 -- bank will be discovered on the track that contains the given program number.  The
@@ -802,10 +808,11 @@ end
 --
 -- Return value is true if the articulation was inserted, or false otherwise which
 -- can happen if bank is nil and no valid program can be found on the track.
-function App:_insert_articulation(rfxtrack, bank, program, channel, take, skip_create_item)
+function App:_insert_articulation(rfxtrack, bank, program, channel, take,
+                                  allow_create_item, insert_selected_notes, insert_edit_cursor)
     local track = rfxtrack.track
     local insert_ppqs, delete_ppqs
-    if take and reaper.ValidatePtr(take, 'MediaItem_Take*') then
+    if take and reaper.ValidatePtr(take, 'MediaItem_Take*') and insert_selected_notes ~= false then
         -- We have a take in the MIDI editor.  Check it for selected notes.
         insert_ppqs, delete_ppqs = _get_insertion_points_by_selected_notes(take, program)
     end
@@ -838,15 +845,16 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take, skip_c
     -- enabled), then fall back to the take at the edit cursor and use the cursor position
     -- for the articulation insertion point.  This may not be the take active in the MIDI
     -- editor either, if the edit cursor is somewhere else.
-    if not insert_ppqs or #insert_ppqs == 0 then
+    if (not insert_ppqs or #insert_ppqs == 0) and insert_edit_cursor ~= false then
         local cursor = reaper.GetCursorPositionEx(0)
-        _, take = self:get_take_at_position(track, cursor)
-        if take then
+        local _, candidate = self:get_take_at_position(track, cursor)
+        if candidate and (not take or candidate == take) then
+            take = candidate
             local ppq = reaper.MIDI_GetPPQPosFromProjTime(take, cursor)
             insert_ppqs = {{take, ppq, nil, program}}
             -- Note: deletion of any existing PCs at this ppq is taken care of by
             -- _insert_program_change() later.
-        elseif not skip_create_item then
+        elseif allow_create_item ~= false then
             local item = reaper.CreateNewMIDIItemInProj(track, cursor, cursor + 1, false)
             -- CreateNewMIDIItemInProj() does not honor project defaults. There's no easy
             -- way to determine what they are, so we just default to the more sane
@@ -952,12 +960,11 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
     -- Find active take for articulation insertion.
     if force_insert and force_insert ~= 0 then
         local midi_take, midi_track
+        -- If MIDI Editor is open, use the current take there.
+        local hwnd = reaper.MIDIEditor_GetActive()
         if self.config.art_insert_at_selected_notes and not insert_at_cursor then
-            -- We want to insert the articulation based on selected notes.
-            -- So look for the best take to find selected notes.
-
-            -- If MIDI Editor is open, use the current take there.
-            local hwnd = reaper.MIDIEditor_GetActive()
+            -- We want to insert the articulation based on selected notes. So look for the
+            -- best take to find selected notes.
             if hwnd then
                 midi_take = reaper.MIDIEditor_GetTake(hwnd)
             end
@@ -1004,7 +1011,7 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         -- the program and channel.
         --
         -- Remember which track numbers we inserted on, so we don't duplicate insertions
-        -- when we look at selected MIDI items later.
+        -- when we look at editable MIDI takes later.
         local inserted_tracks = {}
         -- We'll reuse this rfx.Track instance as we iterate over selected tracks and items
         local rfxtrack = rfx.Track()
@@ -1022,23 +1029,28 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
                 end
             end
         end
-        -- Now insert the articulation on all selected media items when the items are on
-        -- Reaticulate-managed tracks and they intersect with the editor cursor.
+        -- Now, if the MIDI editor is open, insert on all takes open in the editor that
+        -- are editable and which have selected notes. Hence we ignore this logic when
+        -- insert_at_cursor is forced. #167
         --
-        -- XXX: disabled for now. Needs further consideration as this breaks key workflows
-        --[[
-        for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
-            local item = reaper.GetSelectedMediaItem(0, i)
-            local track = reaper.GetMediaItem_Track(item)
-            local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
-            if not inserted_tracks[n] and rfxtrack:presync(track) then
-                local take = reaper.GetActiveTake(item)
-                -- Pass true here to skip creation of new items if there isn't already one
-                -- under the edit cursor.
-                self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take, true)
+        -- This depends on reaper.MIDIEditor_EnumTakes() which was added in REAPER v6.37.
+        if reaper.MIDIEditor_EnumTakes and hwnd and not insert_at_cursor then
+            -- CountMediaItems() just serves as a max upper limit safety net, but isn't
+            -- actually relevant.
+            for i = 0, reaper.CountMediaItems(0) do
+                local take = reaper.MIDIEditor_EnumTakes(hwnd, i, true)
+                if not take or not reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
+                    break
+                end
+                local track = reaper.GetMediaItemTake_Track(take)
+                local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+                if not inserted_tracks[n] and rfxtrack:presync(track) then
+                    -- Don't create new items under cursor (false), insert at note
+                    -- selection (true), but don't insert at edit cursor (false).
+                    self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take, false, true, false)
+                end
             end
         end
-        ]]--
 
         -- Advances the undo history serial slider in the JSFX.  This causes the
         -- old value to be retained in Reaper's undo history.  We actually store
