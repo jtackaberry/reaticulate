@@ -249,7 +249,7 @@ Programs can be decorated with these attributes:
     <td valign="top" style='text-align: center'>i</td>
     <td>
         Articulation icon name.  See <a href='#articulation-icons'>Articulation Icons</a> section
-        below for possible names.
+        below for possible names. If not specified, the note-eighth icon will be used.
     </td>
 </tr>
 <tr>
@@ -265,7 +265,8 @@ Programs can be decorated with these attributes:
     <td>
         Color for the articulation button.  Either the name of a color (see the
         <a href='#articulation-colors'>Articulation Colors</a> section below)
-        or an HTML hex-style color in the form <code>#rrggbb</code>
+        or an HTML hex-style color in the form <code>#rrggbb</code>. If not specified,
+        the default color is used.
     </td>
 </tr>
 <tr>
