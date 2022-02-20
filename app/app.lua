@@ -950,7 +950,6 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
     self.last_activation_timestamp = reaper.time_precise()
 
     -- Find active take for articulation insertion.
-    local insert_ppqs, delete_ppqs
     if force_insert and force_insert ~= 0 then
         local midi_take, midi_track
         if self.config.art_insert_at_selected_notes and not insert_at_cursor then
@@ -963,16 +962,29 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
                 midi_take = reaper.MIDIEditor_GetTake(hwnd)
             end
             if not hwnd and rfx.current.track then
-            -- MIDI editor isn't open.  If the inline MIDI editor open on any
-            -- selected take on the current track, look there for selected
-            -- notes.
-                for idx = 0, reaper.CountSelectedMediaItems(0) - 1 do
-                    local item = reaper.GetSelectedMediaItem(0, idx)
-                    if reaper.GetMediaItem_Track(item) == rfx.current.track then
-                        local itemtake = reaper.GetActiveTake(item)
-                        if reaper.BR_IsMidiOpenInInlineEditor(itemtake) then
-                            midi_take = itemtake
-                            break
+                -- MIDI editor isn't open.  If the inline MIDI editor is open on any take
+                -- on the current track, look there for selected notes.
+                for idx = 0, reaper.CountTrackMediaItems(rfx.current.track) - 1 do
+                    local item = reaper.GetTrackMediaItem(rfx.current.track, idx)
+                    local itemtake = reaper.GetActiveTake(item)
+                    if reaper.BR_IsMidiOpenInInlineEditor(itemtake) then
+                        -- Inline editor is open on this item.  Are there selected notes?
+                        local idx = reaper.MIDI_EnumSelNotes(itemtake, -1)
+                        if idx ~= -1 then
+                            -- It has selected notes.  What we do next depends on whether
+                            -- the item itself is selected.
+                            local selected = reaper.IsMediaItemSelected(item)
+                            if not selected then
+                                -- The item isn't selected so we consider this take as a candidate,
+                                -- but keep looking in case there is a subsequent item with selected
+                                -- notes where the item itself is selected.
+                                midi_take = midi_take or itemtake
+                            else
+                                -- The item is selected and has selected notes, so
+                                -- this is the best target.
+                                midi_take = itemtake
+                                break
+                            end
                         end
                     end
                 end
