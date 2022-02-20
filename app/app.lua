@@ -1287,10 +1287,9 @@ end
 -- a meaningful distance given the mode, resolution, and offset which come from
 -- reaper.get_action_context().
 local function _cmd_arg_to_distance(mode, resolution, offset)
-    local mode = tonumber(mode)
-    local resolution = tonumber(resolution)
-    local offset = tonumber(offset)
-
+    mode = tonumber(mode)
+    resolution = tonumber(resolution)
+    offset = tonumber(offset)
     -- Normalize offset into distance
     if mode == 2 and offset % 15 == 0 then
         -- Mode 2 is used by mousewheel as well.  Encoder left/wheel down is negative,
