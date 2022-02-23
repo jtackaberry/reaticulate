@@ -12,7 +12,8 @@ permalink: /news/
 ## Full Change Log
 ### New Features
 
-* Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes (#167)
+* Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes ([#167](https://github.com/jtackaberry/reaticulate/issues/167))
+
 
 ### Bug Fixes
 
