@@ -1,4 +1,4 @@
-# 0.5.3
+# 0.5.3 - February 17, 2022
 
 ## Minor Enhancements
 
@@ -9,21 +9,21 @@
 * Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays
 * Avoid crashing when parsing a malformed Bank definition in the reabank file ([#98](https://github.com/jtackaberry/reaticulate/issues/98))
 
-# 0.5.2
+# 0.5.2 - February 18, 2022
 
 ## Bug Fixes
 
 * Fixed a regression from 0.5.1 where Reaticulate would crash when a bank on the current track had an articulation without an icon name
 * Fixed a bug where the user's default articulation color (as configured in the settings screen) was not respected
 
-# 0.5.1
+# 0.5.1 - Feburary 8, 2022
 
 ## Bug Fixes
 
 * Fixed runtime error when js_ReaScriptAPI is not installed
 * Fixed a bug where docking/undocking failed to work without js_ReaScriptAPI
 
-# 0.5.0
+# 0.5.0 - January 23, 2022
 
 Note: Reaper 5.975 (released on April 30, 2019) or later is now required. However REAPER 6.46 or later is recommended for the best experience.
 
