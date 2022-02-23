@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.3'}end)()
+return {_VERSION='0.5.4'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -218,6 +218,13 @@ function rtk.quit()if rtk.window and rtk.window.running then
 rtk.window:close()end
 rtk._quit=true
 end
+rtk.version={_DEFAULT_API=1,string=nil,api=nil,major=nil,minor=nil,patch=nil,}function rtk.version.parse()local ver=__RTK_VERSION or string.format('%s.99.99', rtk.version._DEFAULT_API)local parts=ver:split('.')rtk.version.major=tonumber(parts[1])rtk.version.minor=tonumber(parts[2])rtk.version.patch=tonumber(parts[3])rtk.version.api=rtk.version.major
+rtk.version.string=ver
+end
+function rtk.version.check(major,minor,patch)local v=rtk.version
+return v.major>major or
+(v.major==major and(not minor or v.minor>minor))or
+(v.major==major and v.minor==minor and(not patch or v.patch>=patch))end
 return rtk
 end)()
 
@@ -1030,11 +1037,12 @@ end
 end
 end
 function rtk.Font:measure(s)self:set()return gfx.measurestr(s)end
-local _wrap_characters={[' '] = true,['-'] = true,[','] = true,['.'] = true,['!'] = true,['?'] = true,['\n'] = true,['/'] = true,['\\'] = true,[';'] = true,[':'] = true,}function rtk.Font:layout(s,boxw,boxh,wrap,align,relative,spacing,breakword)self:set()local segments={text=s,boxw=boxw,boxh=boxh,wrap=wrap,align=align,relative=relative,spacing=spacing,scale=rtk.scale.value
+local _wrap_characters={[' '] = true,['-'] = true,[','] = true,['.'] = true,['!'] = true,['?'] = true,['\n'] = true,['/'] = true,['\\'] = true,[';'] = true,[':'] = true,}function rtk.Font:layout(text,boxw,boxh,wrap,align,relative,spacing,breakword)self:set()local segments={text=text,boxw=boxw,boxh=boxh,wrap=wrap,align=align,relative=relative,spacing=spacing,multiplier=rtk.font.multiplier,scale=rtk.scale.value,dirty=false,isvalid=function()return not self.dirty and self.scale==rtk.scale.value and self.multiplier==rtk.font.multiplier
+end
 }align=align or rtk.Widget.LEFT
-spacing=(spacing or 0)+math.ceil((rtk.os.mac and 3 or 0)*rtk.scale.value)if not s:find('\n') then
-local w,h=gfx.measurestr(s)if w<=boxw or not wrap then
-segments[1]={s,0,0,w,h}return segments,w,h
+spacing=(spacing or 0)+math.ceil((rtk.os.mac and 3 or 0)*rtk.scale.value)if not text:find('\n') then
+local w,h=gfx.measurestr(text)if w<=boxw or not wrap then
+segments[1]={text,0,0,w,h}return segments,w,h
 end
 end
 local maxwidth=0
@@ -1042,7 +1050,7 @@ local y=0
 local function addsegment(segment)local w,h=gfx.measurestr(segment)segments[#segments+1]={segment,0,y,w,h}maxwidth=math.max(w,maxwidth)y=y+h+spacing
 end
 if not wrap then
-for n, line in ipairs(s:split('\n')) do
+for n, line in ipairs(text:split('\n')) do
 if #line>0 then
 addsegment(line)else
 y=y+self.texth+spacing
@@ -1051,17 +1059,17 @@ end
 else
 local startpos=1
 local wrappos=1
-local len=s:len()for endpos=1,len do
-local substr=s:sub(startpos,endpos)local ch=s:sub(endpos,endpos)local w,h=gfx.measurestr(substr)if _wrap_characters[ch] then
+local len=text:len()for endpos=1,len do
+local substr=text:sub(startpos,endpos)local ch=text:sub(endpos,endpos)local w,h=gfx.measurestr(substr)if _wrap_characters[ch] then
 wrappos=endpos
 end
 if w > boxw or ch=='\n' then
-local wrapchar=_wrap_characters[s:sub(wrappos,wrappos)]
+local wrapchar=_wrap_characters[text:sub(wrappos,wrappos)]
 if breakword and(wrappos==startpos or not wrapchar)then
 wrappos=endpos-1
 end
 if wrappos>startpos and(breakword or wrapchar)then
-addsegment(s:sub(startpos,wrappos):strip())startpos=wrappos+1
+addsegment(text:sub(startpos,wrappos):strip())startpos=wrappos+1
 wrappos=endpos
 elseif ch=='\n' then
 y=y+self.texth+spacing
@@ -1069,7 +1077,7 @@ end
 end
 end
 if startpos<=len then
-addsegment(string.strip(s:sub(startpos,len)))end
+addsegment(string.strip(text:sub(startpos,len)))end
 end
 if align==rtk.Widget.CENTER then
 maxwidth=relative and maxwidth or boxw
@@ -4273,7 +4281,7 @@ function rtk.Button:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret
 return ret
 end
 if self._segments and (attr == 'wrap' or attr == 'label') then
-self._segments.invalid=true
+self._segments.dirty=true
 end
 if type(self.icon) == 'string' and (attr == 'color' or attr == 'label') then
 self:attr('icon', self.icon, true)elseif attr=='icon' and value then
@@ -4283,7 +4291,7 @@ return ret
 end
 function rtk.Button:_reflow_get_max_label_size(boxw,boxh)local calc=self.calc
 local seg=self._segments
-if seg and seg.boxw==boxw and seg.wrap==calc.wrap and not seg.invalid and rtk.scale.value==seg.scale then
+if seg and seg.boxw==boxw and seg.wrap==calc.wrap and seg:isvalid()then
 return self._segments,self.lw,self.lh
 else
 return self._font:layout(calc.label,boxw,boxh,calc.wrap)end
@@ -4958,7 +4966,7 @@ function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rt
 return ok
 end
 if self._segments and (attr == 'text' or attr == 'wrap' or attr == 'textalign' or attr == 'spacing') then
-self._segments.invalid=true
+self._segments.dirty=true
 end
 return ok
 end
@@ -4968,7 +4976,7 @@ local vpadding=tp+bp
 local lmaxw=(clampw or fillw)and(boxw-hpadding)or w or math.inf
 local lmaxh=(clamph or fillh)and(boxh-vpadding)or h or math.inf
 local seg=self._segments
-if not seg or seg.boxw~=lmaxw or seg.invalid or rtk.scale.value~=seg.scale then
+if not seg or seg.boxw~=lmaxw or not seg.isvalid()then
 self._segments,self.lw,self.lh=self._font:layout(calc.text,lmaxw,lmaxh,calc.wrap~=rtk.Text.WRAP_NONE,self.textalign and calc.textalign or calc.halign,true,calc.spacing,calc.wrap==rtk.Text.WRAP_BREAK_WORD
 )end
 calc.w=(w and w+hpadding)or(fillw and boxw)or math.min(clampw and boxw or math.inf,self.lw+hpadding)calc.h=(h and h+vpadding)or(fillh and boxh)or math.min(clamph and boxh or math.inf,self.lh+vpadding)calc.w=math.round(rtk.clamp(calc.w,calc.minw,calc.maxw))calc.h=math.round(rtk.clamp(calc.h,calc.minh,calc.maxh))end
@@ -5274,7 +5282,7 @@ local parts=ver:gsub('/.*', ''):split('.')rtk._reaper_version_major=tonumber(par
 rtk._reaper_version_prerelease=minor:sub(sepidx):gsub('^%+', '')minor=minor:sub(1,sepidx-1)end
 minor=tonumber(minor)or 0
 rtk._reaper_version_minor=minor<100 and minor or minor/10
-if rtk.os.mac then
+rtk.version.parse()if rtk.os.mac then
 rtk.font.multiplier=0.75
 elseif rtk.os.linux then
 rtk.font.multiplier=0.7
@@ -7721,9 +7729,9 @@ delete_ppqs[#delete_ppqs+1]={take,selinfo[2],selinfo[4],ch}end
 end
 return insert_ppqs,delete_ppqs
 end
-function App:_insert_articulation(rfxtrack,bank,program,channel,take,skip_create_item)local track=rfxtrack.track
+function App:_insert_articulation(rfxtrack,bank,program,channel,take,allow_create_item,insert_selected_notes,insert_edit_cursor)local track=rfxtrack.track
 local insert_ppqs,delete_ppqs
-if take and reaper.ValidatePtr(take, 'MediaItem_Take*') then
+if take and reaper.ValidatePtr(take, 'MediaItem_Take*') and insert_selected_notes ~= false then
 insert_ppqs,delete_ppqs=_get_insertion_points_by_selected_notes(take,program)end
 local msb,lsb
 if bank then
@@ -7738,9 +7746,10 @@ end
 if not msb or not lsb then
 local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')log.warning('app: program %d could not be found on track %d for insertion', program, n)return false
 end
-if not insert_ppqs or #insert_ppqs==0 then
-local cursor=reaper.GetCursorPositionEx(0)_,take=self:get_take_at_position(track,cursor)if take then
-local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}elseif not skip_create_item then
+if(not insert_ppqs or #insert_ppqs==0)and insert_edit_cursor~=false then
+local cursor=reaper.GetCursorPositionEx(0)local _,candidate=self:get_take_at_position(track,cursor)if candidate and(not take or candidate==take)then
+take=candidate
+local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}elseif allow_create_item~=false then
 local item=reaper.CreateNewMIDIItemInProj(track,cursor,cursor+1,false)reaper.SetMediaItemInfo_Value(item, 'B_LOOPSRC', 0)take=reaper.GetActiveTake(item)local ppq=reaper.MIDI_GetPPQPosFromProjTime(take,cursor)insert_ppqs={{take,ppq,nil,program}}else
 return
 end
@@ -7773,18 +7782,21 @@ if refocus then
 self:refocus_delayed(0)end
 end
 end
-self.last_activation_timestamp=reaper.time_precise()local insert_ppqs,delete_ppqs
-if force_insert and force_insert~=0 then
+self.last_activation_timestamp=reaper.time_precise()if force_insert and force_insert~=0 then
 local midi_take,midi_track
-if self.config.art_insert_at_selected_notes and not insert_at_cursor then
-local hwnd=reaper.MIDIEditor_GetActive()if hwnd then
+local hwnd=reaper.MIDIEditor_GetActive()if self.config.art_insert_at_selected_notes and not insert_at_cursor then
+if hwnd then
 midi_take=reaper.MIDIEditor_GetTake(hwnd)end
 if not hwnd and rfx.current.track then
-for idx=0,reaper.CountSelectedMediaItems(0)-1 do
-local item=reaper.GetSelectedMediaItem(0,idx)if reaper.GetMediaItem_Track(item)==rfx.current.track then
-local itemtake=reaper.GetActiveTake(item)if reaper.BR_IsMidiOpenInInlineEditor(itemtake)then
+for idx=0,reaper.CountTrackMediaItems(rfx.current.track)-1 do
+local item=reaper.GetTrackMediaItem(rfx.current.track,idx)local itemtake=reaper.GetActiveTake(item)if reaper.BR_IsMidiOpenInInlineEditor(itemtake)then
+local idx=reaper.MIDI_EnumSelNotes(itemtake,-1)if idx~=-1 then
+local selected=reaper.IsMediaItemSelected(item)if not selected then
+midi_take=midi_take or itemtake
+else
 midi_take=itemtake
 break
+end
 end
 end
 end
@@ -7800,6 +7812,15 @@ else
 if rfxtrack:presync(track)then
 self:_insert_articulation(rfxtrack,nil,art.program,srcchannel,take)inserted_tracks[n]=true
 end
+end
+end
+if reaper.MIDIEditor_EnumTakes and hwnd and not insert_at_cursor then
+for i=0,reaper.CountMediaItems(0)do
+local take=reaper.MIDIEditor_EnumTakes(hwnd,i,true)if not take or not reaper.ValidatePtr2(0, take, "MediaItem_Take*") then
+break
+end
+local track=reaper.GetMediaItemTake_Track(take)local n=reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')if not inserted_tracks[n] and rfxtrack:presync(track)then
+self:_insert_articulation(rfxtrack,nil,art.program,srcchannel,take,false,true,false)end
 end
 end
 rfx.current:opcode(rfx.OPCODE_ADVANCE_HISTORY)rfx.current:opcode_flush()reaper.Undo_EndBlock2(0, "Reaticulate: insert articulation (" .. art.name .. ")", UNDO_STATE_ITEMS | UNDO_STATE_FX)reaper.PreventUIRefresh(-1)art.button.start_insert_animation()else
@@ -7905,7 +7926,7 @@ else
 return channel
 end
 end
-local function _cmd_arg_to_distance(mode,resolution,offset)local mode=tonumber(mode)local resolution=tonumber(resolution)local offset=tonumber(offset)if mode==2 and offset%15==0 then
+local function _cmd_arg_to_distance(mode,resolution,offset)mode=tonumber(mode)resolution=tonumber(resolution)offset=tonumber(offset)if mode==2 and offset%15==0 then
 return-offset/15
 else
 local sign=offset<0 and-1 or 1

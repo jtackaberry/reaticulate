@@ -2762,10 +2762,15 @@ tick += 1;
     );
 );
 
-
-memset(program_change_mpos_delta, 0, MAX_CHANNELS);
-
+first = 1;
 while (midirecv(mpos, msg1, msg2, msg3)) (
+    // As this is the first event, clear program_change_mpos_delta.  We do this here
+    // instead of outside the loop so that we don't needlessly call memset() on every
+    // @block execution.
+    first ? (
+        memset(program_change_mpos_delta, 0, MAX_CHANNELS);
+        first = 0;
+    );
     type = msg1 & 0xf0;
     channel = msg1 & 0x0f;
     mpos += program_change_mpos_delta[channel];
@@ -2951,7 +2956,6 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
         );
     );
 );
-
 
 (midi_feedback_sync_pending != 0) ? (
     mpos = 0;
