@@ -3,6 +3,21 @@ title: News | reaticulate
 layout: default
 permalink: /news/
 ---
+
+# Reaticulate 0.5.4 Released
+*February 17, 2022*
+
+0.5.4 is a minor release bringing a couple small functional improvements.
+
+## Full Change Log
+### New Features
+
+* Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes (#167)
+
+### Bug Fixes
+
+* Fix articulation insertion using the inline MIDI editor when multiple items are being edited in an inline editor at the same time
+
 # Reaticulate 0.5.3 Released
 *February 17, 2022*
 
