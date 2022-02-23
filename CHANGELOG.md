@@ -1,3 +1,14 @@
+# 0.5.4 - February 22, 2022
+
+## New Features
+
+* Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes
+
+## Bug Fixes
+
+* Fix articulation insertion using the inline MIDI editor when multiple items are open in the inline editor at the same time
+
+
 # 0.5.3 - February 17, 2022
 
 ## Minor Enhancements
