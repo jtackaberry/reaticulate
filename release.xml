@@ -77,12 +77,12 @@ This is a minor release for the Reaticulate 0.5 series.  More details on 0.5.0 c
 com/news/#reaticulate-050-released
 
 
-## New Features
+New Features
 
 * Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes (#167)
 
 
-## Bug Fixes
+Bug Fixes
 
 * Fix articulation insertion using the inline MIDI editor when multiple items are being edited in an inline editor at the same time
 ]]></changelog>
