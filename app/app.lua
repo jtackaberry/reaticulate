@@ -1004,33 +1004,14 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         reaper.PreventUIRefresh(1)
         reaper.Undo_BeginBlock2(0)
 
-        -- Insert the articulation on all selected tracks.  For the selected that that is
-        -- the current RFX track (which would be the first track in the selection), then
-        -- we use the bank for the given Articulation object.  For all other tracks, we
-        -- pass nil to _insert_articulation() and let it discover the appropriate bank for
-        -- the program and channel.
-        --
         -- Remember which track numbers we inserted on, so we don't duplicate insertions
-        -- when we look at editable MIDI takes later.
+        -- between selected+editable MIDI items vs selected tracks
         local inserted_tracks = {}
         -- We'll reuse this rfx.Track instance as we iterate over selected tracks and items
         local rfxtrack = rfx.Track()
-        for i = 0, reaper.CountSelectedTracks(0) - 1 do
-            local track = reaper.GetSelectedTrack(0, i)
-            local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
-            local take = midi_track == track and midi_take
-            if track == rfx.current.track then
-                self:_insert_articulation(rfx.current, bank, art.program, srcchannel, take)
-                inserted_tracks[n] = true
-            else
-                if rfxtrack:presync(track) then
-                    self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take)
-                    inserted_tracks[n] = true
-                end
-            end
-        end
-        -- Now, if the MIDI editor is open, insert on all takes open in the editor that
-        -- are editable and which have selected notes. Hence we ignore this logic when
+
+        -- If the MIDI editor is open, insert on all takes open in the editor that are
+        -- editable and which have selected notes. Hence we ignore this logic when
         -- insert_at_cursor is forced. #167
         --
         -- This depends on reaper.MIDIEditor_EnumTakes() which was added in REAPER v6.37.
@@ -1043,12 +1024,33 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
                     break
                 end
                 local track = reaper.GetMediaItemTake_Track(take)
-                local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
-                if not inserted_tracks[n] and rfxtrack:presync(track) then
+                if rfxtrack:presync(track) then
                     -- Don't create new items under cursor (false), insert at note
                     -- selection (true), but don't insert at edit cursor (false).
                     self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take, false, true, false)
+                    local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+                    inserted_tracks[n] = true
                 end
+            end
+        end
+
+        -- Next we insert the articulation on all selected tracks, excluding those that
+        -- may already have been covered just above (which is intentionally done first to
+        -- fix #171).  For the selected track that is also the current RFX track (which
+        -- would be the last touched track), then we use the bank for the given
+        -- Articulation object. For all other tracks, we pass nil to
+        -- _insert_articulation() and let it discover the appropriate bank for the program
+        -- and channel.
+        for i = 0, reaper.CountSelectedTracks(0) - 1 do
+            local track = reaper.GetSelectedTrack(0, i)
+            local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
+            local take = midi_track == track and midi_take
+            if track == rfx.current.track and not inserted_tracks[n] then
+                self:_insert_articulation(rfx.current, bank, art.program, srcchannel, take)
+                inserted_tracks[n] = true
+            elseif not inserted_tracks[n] and rfxtrack:presync(track) then
+                self:_insert_articulation(rfxtrack, nil, art.program, srcchannel, take)
+                inserted_tracks[n] = true
             end
         end
 
