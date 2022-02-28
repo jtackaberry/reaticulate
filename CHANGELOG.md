@@ -1,3 +1,14 @@
+# 0.5.5 - February 27, 2022
+
+## Minor Enhancements
+
+* Finessed the behavior of multi-item insertion logic introduced in 0.5.4, which should work more intuitively for typical workflows
+
+## Bug Fixes
+
+* Fixed undocked windows shrinking to very small heights on certain multi-monitor configurations
+
+
 # 0.5.4 - February 22, 2022
 
 ## New Features
