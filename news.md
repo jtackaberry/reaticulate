@@ -4,6 +4,19 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.5 Released
+*February 27, 2022*
+
+## Full Change Log
+### Minor Enhancements
+
+* Finessed the behavior of multi-item insertion logic introduced in 0.5.4, which should work more intuitively for typical workflows ([#171](https://github.com/jtackaberry/reaticulate/issues/171))
+
+### Bug Fixes
+
+* Fixed undocked windows shrinking to very small heights on certain multi-monitor configurations on Windows and Linux
+
+
 # Reaticulate 0.5.4 Released
 *February 17, 2022*
 
