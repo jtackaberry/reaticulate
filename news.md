@@ -4,6 +4,16 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.6 Released
+*March 8, 2022*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed a runtime error that could occur on startup when detecting display resolution
+
+
 # Reaticulate 0.5.5 Released
 *February 27, 2022*
 
