@@ -1,16 +1,24 @@
+# 0.5.6 - March 8, 2022
+
+## Bug Fixes
+
+* Fixed a runtime error that could occur on startup when detecting display resolution
+
+
 # 0.5.5 - February 27, 2022
 
 ## Minor Enhancements
 
-* Finessed the behavior of multi-item insertion logic introduced in 0.5.4, which should work more intuitively for typical workflows
+* Finessed the behavior of multi-item insertion logic introduced in 0.5.4, which should work more intuitively for typical workflows ([#171](https://github.com/jtackaberry/reaticulate/issues/171))
+
 
 ## Bug Fixes
 
-* Fixed undocked windows shrinking to very small heights on certain multi-monitor configurations
+* Fixed undocked windows shrinking to very small heights on certain multi-monitor configurations on Windows and Linux
 
 
 # 0.5.4 - February 22, 2022
-
+* Fixed a runtime error that could occur on startup when detecting display resolution
 ## New Features
 
 * Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes ([#167](https://github.com/jtackaberry/reaticulate/issues/167))
