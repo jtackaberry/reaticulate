@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.5'}end)()
+return {_VERSION='0.5.6'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -3278,9 +3278,7 @@ end
 function rtk.Window:_run()self:_update()if self.running then
 rtk.defer(self._run,self)end
 end
-function rtk.Window:_get_display_resolution(working)local x=self.x
-local y=self.y
-local l,t,r,b=reaper.my_getViewport(0,0,0,0,x,y,x+self.w,y+self.h,working and 1 or 0)return l,t,r-l,math.abs(b-t)end
+function rtk.Window:_get_display_resolution(working)local x=math.floor(self.x)local y=math.floor(self.y)local w=math.floor(x+self.w)local h=math.floor(y+self.h)local l,t,r,b=reaper.my_getViewport(0,0,0,0,x,y,w,h,working and 1 or 0)return l,t,r-l,math.abs(b-t)end
 function rtk.Window:_get_geometry_from_attrs(overrides)local scale=rtk.scale.framebuffer or 1
 local x=self.x
 local y=self.y
@@ -3289,23 +3287,23 @@ local h=self.calc.h/scale
 if overrides then
 local sx,sy,sw,sh=self:_get_display_resolution(true)if sw and sh then
 if overrides.halign==rtk.Widget.CENTER then
-x=(overrides.x or x)+(sw-w)/2
+x=(overrides.x or 0)+(sw-w)/2
 elseif overrides.halign==rtk.Widget.RIGHT then
-x=(overrides.x or x)+sw-w
+x=(overrides.x or 0)+sw-w
 end
 if rtk.os.mac then
 if overrides.valign==rtk.Widget.TOP then
-y=(overrides.y or y)+(sh-h)+sy
+y=(overrides.y or 0)+(sh-h)+sy
 elseif overrides.valign==rtk.Widget.CENTER then
-y=(overrides.y or y)+(sh-h)/2+sy
+y=(overrides.y or 0)+(sh-h)/2+sy
 elseif overrides.valign==rtk.Widget.BOTTOM then
-y=(overrides.y or y)+sy
+y=(overrides.y or 0)+sy
 end
 else
 if overrides.valign==rtk.Widget.CENTER then
-y=(overrides.y or y)+(sh-h)/2
+y=(overrides.y or 0)+(sh-h)/2
 elseif overrides.valign==rtk.Widget.BOTTOM then
-y=(overrides.y or y)+sh-h
+y=(overrides.y or 0)+sh-h
 end
 end
 if overrides.constrain then
@@ -3363,7 +3361,9 @@ sh=h+self._os_window_frame_height/rtk.scale.framebuffer
 end
 sw=math.ceil(sw)sh=math.ceil(sh)reaper.JS_Window_SetPosition(self.hwnd,x,y,sw,sh)end
 if resized~=0 then
-self:onresize(scaled_gfxw,scaled_gfxh)end
+gfx.w=w*rtk.scale.framebuffer
+gfx.h=h*rtk.scale.framebuffer
+self:queue_blit()self:onresize(scaled_gfxw,scaled_gfxh)end
 if moved then
 self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:onmove(lastx,lasty)end
 reaper.JS_Window_SetOpacity(self.hwnd, 'ALPHA', calc.opacity)reaper.JS_Window_SetTitle(self.hwnd,calc.title)else
@@ -3382,7 +3382,8 @@ end
 local calc=self.calc
 self.running=true
 gfx.ext_retina=1
-self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w,calc.h,dockstate,x,y)gfx.update()rtk.scale.framebuffer=gfx.w/calc.w
+self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)rtk.scale.framebuffer=1
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w,calc.h,dockstate,x,y)gfx.update()rtk.scale.framebuffer=gfx.w/calc.w
 calc.w=calc.w*rtk.scale.framebuffer
 calc.h=calc.h*rtk.scale.framebuffer
 dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
@@ -3393,6 +3394,7 @@ self:_run()end
 function rtk.Window:_close()self.running=false
 gfx.quit()end
 function rtk.Window:close()self.running=false
+self.hwnd=nil
 gfx.quit()self:onclose()end
 function rtk.Window:_setup_borderless()if self._move_grip then
 return
@@ -3588,14 +3590,7 @@ files[#files+1]=fname
 idx=idx+1
 end
 gfx.getdropfile(-1)end
-gfx.update()if false then
-local state=reaper.JS_VKeys_GetState(0)local keys={}for b=1,255 do
-if state:byte(b)~=0 then
-keys[#keys+1]=b
-end
-end
-log.info('%s', table.tostring(keys))end
-if rtk._soon_funcs then
+gfx.update()if rtk._soon_funcs then
 rtk._run_soon()end
 local focus_changed=false
 if rtk.has_js_reascript_api then
@@ -3610,9 +3605,10 @@ if self:onupdate()==false then
 return
 end
 need_draw=rtk._do_animations(now)or need_draw
-local resized=gfx.w~=calc.w or gfx.h~=calc.h
 if self._sync_window_attrs_on_update then
-resized=(self:_sync_window_attrs()~=0)or resized
+if self:_sync_window_attrs()~=0 then
+self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
+end
 self._sync_window_attrs_on_update=false
 end
 local dockstate,x,y=gfx.dock(-1,true,true)local dock_changed=dockstate~=self._dockstate
@@ -3621,6 +3617,7 @@ self:_handle_dock_change(dockstate)end
 if x~=self.x or y~=self.y then
 local lastx,lasty=self.x,self.y
 self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:onmove(lastx,lasty)end
+local resized=gfx.w~=calc.w or gfx.h~=calc.h
 if resized and self.visible then
 local last_w,last_h=self.w,self.h
 self:sync('w', gfx.w / rtk.scale.framebuffer, nil, nil, gfx.w)self:sync('h', gfx.h / rtk.scale.framebuffer, nil, nil, gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
