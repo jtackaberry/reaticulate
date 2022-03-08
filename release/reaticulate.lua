@@ -3286,25 +3286,25 @@ local w=self.calc.w/scale
 local h=self.calc.h/scale
 if overrides then
 local sx,sy,sw,sh=self:_get_display_resolution(true)if sw and sh then
-if overrides.halign==rtk.Widget.CENTER then
-x=(overrides.x or 0)+(sw-w)/2
+if overrides.halign==rtk.Widget.LEFT then
+x=sx
+elseif overrides.halign==rtk.Widget.CENTER then
+x=sx+(overrides.x or 0)+(sw-w)/2
 elseif overrides.halign==rtk.Widget.RIGHT then
-x=(overrides.x or 0)+sw-w
-end
+x=sx+(overrides.x or 0)+(sw-w)end
 if rtk.os.mac then
 if overrides.valign==rtk.Widget.TOP then
-y=(overrides.y or 0)+(sh-h)+sy
-elseif overrides.valign==rtk.Widget.CENTER then
-y=(overrides.y or 0)+(sh-h)/2+sy
+y=sy+(overrides.y or 0)+(sh-h)elseif overrides.valign==rtk.Widget.CENTER then
+y=sy+(overrides.y or 0)+(sh-h)/2
 elseif overrides.valign==rtk.Widget.BOTTOM then
-y=(overrides.y or 0)+sy
-end
+y=sy+(overrides.y or 0)end
 else
-if overrides.valign==rtk.Widget.CENTER then
-y=(overrides.y or 0)+(sh-h)/2
+if overrides.valign==rtk.Widget.TOP then
+y=sy
+elseif overrides.valign==rtk.Widget.CENTER then
+y=sy+(overrides.y or 0)+(sh-h)/2
 elseif overrides.valign==rtk.Widget.BOTTOM then
-y=(overrides.y or 0)+sh-h
-end
+y=sy+(overrides.y or 0)+(sh-h)end
 end
 if overrides.constrain then
 x=rtk.clamp(x,sx,sx+sw-w)y=rtk.clamp(y,sy,sy+sh-h)w=rtk.clamp(w,self.calc.minw,sw-(x-sx))h=rtk.clamp(h,self.calc.minh,sh-(rtk.os.mac and y-sy-h or y-sy))end
@@ -3312,18 +3312,20 @@ end
 end
 return math.round(x),math.round(y),math.round(w),math.round(h)end
 function rtk.Window:_sync_window_attrs(overrides)local calc=self.calc
+local lastw,lasth=self.w,self.h
 local resized
 local dockstate=self:_get_dockstate_from_attrs()if not rtk.has_js_reascript_api or not self.hwnd then
 if dockstate~=self._dockstate then
-gfx.dock(dockstate)self:_handle_dock_change(dockstate)end
+gfx.dock(dockstate)self:_handle_dock_change(dockstate)self:onresize(lastw,lasth)return 1
+else
 return 0
+end
 end
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)local r,w,h=reaper.JS_Window_GetClientSize(self.hwnd)self:_handle_dock_change(dockstate)if calc.docked then
 gfx.w,gfx.h=w,h
-self:sync('w', w / rtk.scale.framebuffer, nil, nil, w)self:sync('h', h / rtk.scale.framebuffer, nil, nil, h)resized=1
-end
-return resized
+self:sync('w', w / rtk.scale.framebuffer, nil, nil, w)self:sync('h', h / rtk.scale.framebuffer, nil, nil, h)end
+self:onresize(lastw,lasth)return 1
 end
 if self._resize_grip then
 self._resize_grip:hide()end
@@ -3383,9 +3385,11 @@ local calc=self.calc
 self.running=true
 gfx.ext_retina=1
 self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)rtk.scale.framebuffer=1
-self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w,calc.h,dockstate,x,y)gfx.update()rtk.scale.framebuffer=gfx.w/calc.w
+self:sync('x', x, nil, nil, 0)self:sync('y', y, nil, nil, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w,calc.h,dockstate,x,y)gfx.update()if gfx.ext_retina==2 and rtk.os.mac then
+rtk.scale.framebuffer=2
 calc.w=calc.w*rtk.scale.framebuffer
 calc.h=calc.h*rtk.scale.framebuffer
+end
 dockstate,_,_=gfx.dock(-1,true,true)self:_handle_dock_change(dockstate)if rtk.has_js_reascript_api then
 self:_clear_gdi()else
 rtk.color.set(rtk.theme.bg)gfx.rect(0,0,w,h,1)end
