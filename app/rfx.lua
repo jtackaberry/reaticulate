@@ -1525,7 +1525,8 @@ function rfx.Track:sync_banks_to_rfx()
             for _, bank in ipairs(banks) do
                 bank:realize()
                 local param1 = (channel - 1) | (0 << 4) -- 0 is bank version
-                self:opcode(rfx.OPCODE_NEW_BANK, {param1, bank.msb, bank.lsb})
+                local msb, lsb = bank:get_current_msb_lsb()
+                self:opcode(rfx.OPCODE_NEW_BANK, {param1, msb, lsb})
                 for _, cc in ipairs(bank:get_chase_cc_list()) do
                     self:opcode(rfx.OPCODE_SET_BANK_CHASE_CC, {cc})
                 end
