@@ -1,0 +1,132 @@
+//----------------------------------------------------------------------------
+// Source Kitarraman: https://forum.cockos.com/showpost.php?p=2542909&postcount=1764
+//
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="Brass ensemble"
+//! id=9d8d7860-70cd-457c-a3a9-807a669326bd
+Bank * * Factory VSL - Brass ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="French horn ensemble"
+//! id=2d6d0692-67aa-438a-8859-068b17d0731b
+Bank * * Factory VSL - French horn ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="French horn"
+//! id=5adc900d-3a8b-438c-b573-a25f76f87200
+Bank * * Factory VSL - French horn
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="Trombone ensemble"
+//! id=0ba53d75-b29a-41d9-852c-29663ac35149
+Bank * * Factory VSL - Trombone ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="Trombone"
+//! id=b951ed9f-c717-427d-8060-d8abc4bd610c
+Bank * * Factory VSL - Trombone
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="Trumpet ensemble"
+//! id=18472c9a-292d-4ff5-94ae-5f42d2414e99
+Bank * * Factory VSL - Trumpet ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="Trumpet"
+//! id=7189d1ad-f290-454c-b69f-4a843a7f9368
+Bank * * Factory VSL - Trumpet
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Brass" n="Tuba"
+//! id=437516c9-33a8-435e-bb61-fe3f34fb0a56
+Bank * * Factory VSL - Tuba
+//! c=long i=note-whole o=note:84
+84 Sustain
+//! c=fx i=decrescendo o=note:85
+85 Fortepiano
+//! c=fx i=sfz o=note:86
+86 Sforzando
+//! c=short i=staccato o=note:87
+87 Staccato
+//! c=long i=crescendo o=note:88
+88 Sustain 2
+//! c=long i=note-whole o=note:89
+89 Sustain 3

@@ -1,0 +1,180 @@
+//----------------------------------------------------------------------------
+// Source Kitarraman: https://forum.cockos.com/showpost.php?p=2542909&postcount=1764
+//
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Bass clarinet"
+//! id=e8630479-5589-4b05-9fb2-9bf747a7b695
+Bank * * Factory VSL - Bass clarinet
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Bassoon combi"
+//! id=a097473e-ab0e-40f8-8463-f321d676e070
+Bank * * Factory VSL - Bassoon combi
+//! c=long i=note-whole o=note:96
+96 Sustain
+//! c=fx i=decrescendo o=note:97
+97 Fortepiano
+//! c=fx i=sfz o=note:98
+98 Sforzando
+//! c=short i=staccato o=note:99
+99 Staccato
+//! c=long i=crescendo o=note:100
+100 Sustain 2
+//! c=long i=note-whole o=note:101
+101 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Bassoon"
+//! id=9839a213-3e52-487f-a5c3-543ab849d8a3
+Bank * * Factory VSL - Bassoon
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Clarinet combi"
+//! id=22287fc4-e488-459e-89b8-59423373c191
+Bank * * Factory VSL - Clarinet combi
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Clarinet"
+//! id=f46bde67-4227-446e-b9e0-fc0add694327
+Bank * * Factory VSL - Clarinet
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Contrabassoon"
+//! id=f7a310c6-66d3-46fa-83be-048f778e77cf
+Bank * * Factory VSL - Contrabassoon
+//! c=long i=note-whole o=note:84
+84 Sustain
+//! c=fx i=decrescendo o=note:85
+85 Fortepiano
+//! c=fx i=sfz o=note:86
+86 Sforzando
+//! c=short i=staccato o=note:87
+87 Staccato
+//! c=long i=crescendo o=note:88
+88 Sustain 2
+//! c=long i=note-whole o=note:89
+89 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="English horn"
+//! id=98c86ad9-8f91-4ba7-a143-a9ae8a7c1b84
+Bank * * Factory VSL - English horn
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Flute"
+//! id=28a7ef91-cb29-4be0-9b52-b9674e64800d
+Bank * * Factory VSL - Flute
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="French oboe"
+//! id=f77eb8ee-3580-4218-85fa-11a3cba490ac
+Bank * * Factory VSL - French oboe
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Oboe"
+//! id=fc9c7e2e-6db3-4ee9-9608-94a67409b381
+Bank * * Factory VSL - Oboe
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Woodwinds" n="Piccolo"
+//! id=2d7d95a6-7563-48e8-9317-78e313f5a2b3
+Bank * * Factory VSL - Piccolo
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=long i=crescendo o=note:28
+28 Sustain 2
+//! c=long i=note-whole o=note:29
+29 Sustain 3

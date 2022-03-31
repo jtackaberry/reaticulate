@@ -1,0 +1,180 @@
+//----------------------------------------------------------------------------
+// Source Kitarraman: https://forum.cockos.com/showpost.php?p=2542909&postcount=1764
+//
+
+//----------------------------------------------------------------------------
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Cello ensemble"
+//! id=ca63ba26-6cee-463c-b4d2-ff0d4044cc96
+Bank * * Factory VSL - Cello ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Cello solo"
+//! id=66082529-7b07-4d37-b065-7795369c17d6
+Bank * * Factory VSL - Cello solo
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Double bass ensemble"
+//! id=c0951624-dc9e-46a2-af24-61e78cfd3886
+Bank * * Factory VSL - Double bass ensemble
+//! c=long i=note-whole o=note:84
+84 Sustain
+//! c=fx i=decrescendo o=note:85
+85 Fortepiano
+//! c=fx i=sfz o=note:86
+86 Sforzando
+//! c=short i=staccato o=note:87
+87 Staccato
+//! c=fx i=tremolo o=note:88
+88 Tremolo
+//! c=fx i=pizz o=note:89
+89 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Double bass solo"
+//! id=bf1715c5-cf3c-431a-9323-1f09a9c89d6e
+Bank * * Factory VSL - Double bass solo
+//! c=long i=note-whole o=note:84
+84 Sustain
+//! c=fx i=decrescendo o=note:85
+85 Fortepiano
+//! c=fx i=sfz o=note:86
+86 Sforzando
+//! c=short i=staccato o=note:87
+87 Staccato
+//! c=fx i=tremolo o=note:88
+88 Tremolo
+//! c=fx i=pizz o=note:89
+89 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Harp"
+//! id=63f5b106-efeb-4555-93d9-758b5637d7f9
+Bank * * Factory VSL - Harp
+//! c=long i=note-whole o=note:12
+12 Normal
+//! c=fx i=fx o=note:13
+13 Flageolet
+//! c=fx i=fx o=note:14
+14 Pres d. tbl
+//! c=fx i=stopped o=note:15
+15 Damped
+//! c=legato i=legato-gliss o=note:16
+16 Glissando
+//! c=fx i=fx o=note:17
+17 Bisbigliando
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Solo strings"
+//! id=673697f0-a83e-4095-98a6-f085892165b9
+Bank * * Factory VSL - Solo strings
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="String ensemble"
+//! id=0bfbef6b-482e-494e-911a-3e7d79577f92
+Bank * * Factory VSL - String ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Viola ensemble"
+//! id=bd3460e3-5576-4b07-b0fc-c557977229bb
+Bank * * Factory VSL - Viola ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Viola solo"
+//! id=3921ef99-1efc-4cf6-b5ee-7306eb5a6800
+Bank * * Factory VSL - Viola solo
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Violin ensemble"
+//! id=83212eac-d6b5-4003-b79d-8cd4671034e0
+Bank * * Factory VSL - Violin ensemble
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
+
+//! g="Native Instruments/Factory Kontakt Library/VSL Strings" n="Violin solo"
+//! id=e560f9ce-6a02-4e37-8ee6-e32315541036
+Bank * * Factory VSL - Violin solo
+//! c=long i=note-whole o=note:24
+24 Sustain
+//! c=fx i=decrescendo o=note:25
+25 Fortepiano
+//! c=fx i=sfz o=note:26
+26 Sforzando
+//! c=short i=staccato o=note:27
+27 Staccato
+//! c=fx i=tremolo o=note:28
+28 Tremolo
+//! c=fx i=pizz o=note:29
+29 Pizzicato
