@@ -144,10 +144,14 @@ marked as required.
     <td valign="top" style='text-align: center'>id<br/><code>generated</code></td>
     <td>
         A globally unique id (GUID, though technically speaking it's a UUID4) for this bank.<br/><br/>
-        Don't define this yourself -- let Reaticulate generate this for you.  When you create a new
-        bank in <code>Reaticulate.reabank</code> and click the Reload toolbar button in the GUI, Reaticulate
-        notices that the bank is missing the <code>id</code> attribute and new random one is automatically
-        generated. The bank file is then rewritten to include this new value.
+        Don't define this yourself -- let Reaticulate generate this for you -- but if you share your
+        bank with other users, be sure to include the id attribute that Reaticulate generates so
+        that projects using this bank can be properly loaded between users.
+        <br/>br/>
+        When you create a new bank in <code>Reaticulate.reabank</code> and click the Reload toolbar
+        button in the GUI, Reaticulate notices that the bank is missing the <code>id</code>
+        attribute and new random one is automatically generated. The bank file is then rewritten to
+        include this new value.
         <br/><br/>
         Just be aware that if you're editing <code>Reaticulate.reabank</code> in a text editor at the
         same time as Reaticulate generates the GUID and overwrites the file, you'll need to reload it
