@@ -165,6 +165,12 @@ function feedback.create_feedback_track()
     local idx = reaper.CountTracks(0)
     reaper.InsertTrackAtIndex(idx, false)
     feedback.track = reaper.GetTrack(0, idx)
+    -- Hide the feedback track before adding the FX.  For some reason, if we hide it
+    -- afterward the track does not appear hidden within the PreventUIRefresh() block.
+    -- Even if reaper.TrackList_AdjustWindows() is explicitly called, the track
+    -- flickers.  Hiding it early provides the most robust results.
+    reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)
+    reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)
     feedback.track_guid = reaper.GetTrackGUID(feedback.track)
     reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)
     -- Install FX.
@@ -172,9 +178,6 @@ function feedback.create_feedback_track()
     -- Hide FX
     reaper.TrackFX_Show(feedback.track, fx, 2)
     feedback.update_feedback_track_settings()
-
-    reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)
-    reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)
     feedback.scroll_mixer(app.track)
     reaper.PreventUIRefresh(-1)
     return feedback.track
