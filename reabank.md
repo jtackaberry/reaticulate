@@ -80,9 +80,11 @@ you'll see below, all you need to put for these numbers is an asterisk (`*`).
 
 Following the MSB/LSB is an arbitrary name for the bank.
 
-Each subsequent line (until the next Bank line) specifies the programs for the bank.  The
-number is the MIDI Program Change event number (which is technically arbitrary but see the
-[Program Numbers](#program-numbers) section below for some advice), and the description
+Each subsequent line (until the next Bank line) specifies the programs for the
+bank.  The number is the MIDI Program Change event number (which, apart from
+the requirement that articuluations in the same bank have unique program
+numbers, is technically arbitrary but see the [Program
+Numbers](#program-numbers) section below for some advice), and the description
 is, in our case for Reaticulate, the name of the articulation.
 
 
@@ -351,11 +353,12 @@ Programs can be decorated with these attributes:
 
 ## Program Numbers
 
-Although the __program numbers are arbitary__ and don't influence any specific behavior, some
-form of standardization is recommended because this allows using the
-`Reaticulate_Activate articulation by CC` actions to trigger a given articulation (or
-at least its closest approximation) from a control surface, tablet, etc., no matter the
-underlying instrument.
+Within a given bank, each articulation must have its own unique program number.
+The specific program number is, strictly speaking, arbitary, however some form
+of standardization is recommended because this allows using the
+`Reaticulate_Activate articulation by CC` actions to trigger a given
+articulation (or at least its closest approximation) from a control surface,
+tablet, etc., no matter the underlying instrument.
 
 The primary use case for program number standardization is having a set of common
 articulations configured on your MIDI controller for sketching purposes, which, thanks to
