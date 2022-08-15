@@ -11,7 +11,8 @@ permalink: /reabank/
     release of Reaticulate sometime in 2022, but for now, you'll need to understand the nitty
     gritty on this page and use a text editor to create banks.
     <br/><br/>
-    You can also <a href="{% link download.md %}#download-bank-files">download user-contributed banks</a> for various libraries.
+    You can also <a href="https://github.com/jtackaberry/reaticulate/tree/master/userbanks">
+    download user-contributed banks</a> for various libraries.
 </p>
 
 
