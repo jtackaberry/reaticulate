@@ -4,6 +4,8 @@ breadcrumbs: true
 markdown: CommonMarkGhPages
 commonmark:
   extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+  # Allow raw html
+  options: ["UNSAFE"]
 kramdown:
   syntax_highlighter_opts:
     # Rouge Options › https://github.com/jneen/rouge#full-options
