@@ -162,19 +162,29 @@ function call_and_preserve_selected_tracks(func, ...)
         local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
         selected[n] = true
     end
+    -- Avoid creating an undo block if we don't actually need to restore track selection.
+    local modified = false
     reaper.PreventUIRefresh(1)
-    reaper.Undo_BeginBlock2(0)
     local r = func(...)
     for i = 0, reaper.CountTracks(0) - 1 do
         local track = reaper.GetTrack(0, i)
         local n = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
-        reaper.SetTrackSelected(track, selected[n] or false)
+        if reaper.IsTrackSelected(track) ~= (selected[n] or false) then
+            if not modified then
+                reaper.Undo_BeginBlock2(0)
+                modified = true
+            end
+            reaper.SetTrackSelected(track, selected[n] or false)
+        end
     end
     -- This is a bit cheeky: normally REAPER will generate undo due to changing track
     -- seections.  REAPER doesn't have an API to bypass undo history, so instead we
     -- declare an explicit undo block, but point to an area that wasn't changed. This
-    -- induces REAPER not to notice the thing that actually did change: track selection.
-    reaper.Undo_EndBlock2(0, 'Reaticulate: update track selection', UNDO_STATE_FREEZE)
+    -- somehow induces REAPER not to notice the thing that actually did change: track
+    -- selection.
+    if modified then
+        reaper.Undo_EndBlock2(0, 'Reaticulate: update track selection', UNDO_STATE_FREEZE)
+    end
     reaper.PreventUIRefresh(-1)
     return r
 end
