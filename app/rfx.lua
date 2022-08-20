@@ -655,7 +655,9 @@ function rfx.push_state(track)
     if track and reaper.ValidatePtr2(0, track, "MediaTrack*") then
         track_mode = reaper.GetMediaTrackInfo_Value(track, "I_AUTOMODE")
     end
-    if state.depth == 0 then
+    state.depth = state.depth + 1
+    if state.depth == 1 then
+        -- First push, do all the things.
         state.global_automation_override = reaper.GetGlobalAutomationOverride()
 
         -- Remember last touched FX and clear automation modes.
@@ -715,7 +717,6 @@ function rfx.push_state(track)
             reaper.SetGlobalAutomationOverride(-1)
         end
     end
-    state.depth = state.depth + 1
     if track_mode > 1 and state.tracks[track] == nil then
         -- Track is valid with a writable automation mode.
         state.tracks[track] = track_mode
