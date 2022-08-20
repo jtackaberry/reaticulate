@@ -2189,10 +2189,9 @@ function App:handle_onupdate()
 
     -- Prefer the last touched track as the active track for Reaticulate.
     local track = reaper.GetLastTouchedTrack()
-    if track and not reaper.IsTrackSelected(track) then
-        -- The last touched track isn't currently selected, so fallback to the first
-        -- selected track.  (Unsure if this scenario can actually happen, but just to be
-        -- on the safe side.)
+    if (track and not reaper.IsTrackSelected(track)) or not track then
+        -- There either is no last touched track, or it's not selected, so fallback to the
+        -- first actual selected track.
         track = reaper.GetSelectedTrack(0, 0)
     end
     local last_track = self.track

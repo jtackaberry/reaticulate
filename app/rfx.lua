@@ -614,6 +614,10 @@ end
 -- undo, so the caller is expected to wrap it in a begin/end undo block stanza
 -- if applicable.
 function rfx.opcode_flush(track, fx, gmem_index, opcode_param)
+    if not reaper.ValidatePtr2(0, track, "MediaTrack*") then
+        -- Track abruptly deleted
+        return
+    end
     if rfx.rfx_awaiting_commit then
         rfx._opcode_commit(track, fx, gmem_index)
     end
