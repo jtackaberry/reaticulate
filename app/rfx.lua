@@ -82,9 +82,12 @@ local rfx = {
     GMEM_GIDX_ID_BITMAP_OFFSET = 3,
     -- The current app default channel is stored at this index
     GMEM_GIDX_DEFAULT_CHANNEL = 4,
+    -- Contains the value of GMEM_RFX_OFFSET, which is the index from gmem[0] where
+    -- instance data begins.
     GMEM_GIDX_RFX_OFFSET = 5,
+    -- Contains the value of GMEM_RFX_STRIDE, which holdes the number of slots for
+    -- each RFX instance region.
     GMEM_GIDX_RFX_STRIDE = 6,
-
     -- Holds the value of GMEM_IIDX_OPCODES so the RFX knows where to read
     GMEM_GIDX_OPCODES_OFFSET = 20,
     -- Holds the value of GMEM_IIDX_APP_DATA so the RFX knows where to read/write
