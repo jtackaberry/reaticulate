@@ -396,7 +396,7 @@ function BaseApp:build_frame()
 end
 
 function BaseApp:_set_window_pinned(pinned)
-    if rtk.has_js_reascript_api then
+    if rtk.has_js_reascript_api and self.toolbar.pin then
         self.window:attr('pinned', pinned)
         self.toolbar.pin:attr('visible', not pinned)
         self.toolbar.unpin:attr('visible', pinned)

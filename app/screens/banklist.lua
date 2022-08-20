@@ -497,7 +497,7 @@ function screen.init()
     entry.onchange = function(self)
         screen.filter_articulations(self.value:lower())
     end
-    row:add(entry, {expand=1, fillw=true, lpadding=20, rpadding=20})
+    row:add(entry, {fillw=true, lpadding=20, rpadding=20})
     screen.filter_entry = entry
 
     screen.warningbox = rtk.VBox{
