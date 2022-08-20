@@ -943,8 +943,14 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         return
     end
 
-    -- Force insert if activated within 500ms
-    if not force_insert or force_insert == 0 then
+    -- If this setting is off, override insertion position to be at cursor regardless of
+    -- what the caller passed.
+    if not self.config.art_insert_at_selected_notes then
+        insert_at_cursor = true
+    end
+
+    -- Force insert not explicitly disabled, so insert if activated within 500ms
+    if force_insert == nil or force_insert == 0 then
         local delta = reaper.time_precise() - (self.last_activation_timestamp or 0)
         if delta < 0.5 and art == self.last_activated_articulation then
             force_insert = true
@@ -962,7 +968,7 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         local midi_take, midi_track
         -- If MIDI Editor is open, use the current take there.
         local hwnd = reaper.MIDIEditor_GetActive()
-        if self.config.art_insert_at_selected_notes and not insert_at_cursor then
+        if not insert_at_cursor then
             -- We want to insert the articulation based on selected notes. So look for the
             -- best take to find selected notes.
             if hwnd then
@@ -1324,7 +1330,7 @@ function App:handle_command(cmd, arg)
         local args = string.split(arg, ',')
         local channel = _cmd_arg_to_channel(args[1])
         local program = tonumber(args[2])
-        local force_insert = tonumber(args[3] or 0)
+        local force_insert = tonumber(args[3]) or nil
         local art = nil
         for _, bank in ipairs(self.screens.banklist.visible_banks) do
             if bank.srcchannel == 17 or bank.srcchannel == channel then
