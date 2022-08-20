@@ -365,8 +365,8 @@ function BaseApp:set_theme()
     }
 
     local img = rtk.ImagePack():add{
-        src='icons.png', style='light', names=icons.medium,
-        {w=18, size='medium', xnames=icons.medium, density=1},
+        src='icons.png', style='light',
+        {w=18, size='medium', names=icons.medium, density=1},
         {w=24, size='large', names=icons.large, density=1},
         {w=96, size='huge', names=icons.huge, density=1},
         {w=28, size='medium', names=icons.medium, density=1.5},
