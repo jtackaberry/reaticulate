@@ -438,7 +438,7 @@ Where elements enclosed in square brackets are optional, and where:
 
   When channel is not specified, the destination channel will be dictated by the
   destination channel the defined by the user when the bank was configured on the track.  (See the
-  [usage page](usage#track-setup) for more information on source and destination channels.)
+  [usage page](../usage#track-setup) for more information on source and destination channels.)
 
   Alternatively, a special channel value of `-` will direct the output event to
   the destination(s) setup by the previously activated articulation.
