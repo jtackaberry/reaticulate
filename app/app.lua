@@ -583,7 +583,14 @@ local function _delete_program_events_at_ppq(take, channel, idx, max, startppq, 
 end
 
 -- Finds the index of the CC event in the given take and at the given ppq position.
--- Note that *any* CC will do, this does not filter for program changes.
+--
+-- This function can also be used to find the closest CC after the given ppq.  In this
+-- case, assuming the CC doesn't land directly on the ppq, the 'found' return value will
+-- be false, but the nextidx value will be valid.
+--
+-- Note that *any* CC will be matched as this does not filter for program changes. It's
+-- intended to be used as input to _delete_program_events_at_ppq() which *does* filter on
+-- PCs.
 --
 -- Returns a table consisting of the following elements:
 --  * found: true/false if there was a CC at the given ppq
@@ -630,7 +637,11 @@ end
 -- Returns the MSB, LSB, and program number of the last PC that was deleted.
 local function _delete_program_changes(take, channel, startppq, endppq)
     local found, _, _, idx, ppq, n_events = _get_cc_idx_at_ppq(take, startppq)
-    if not found then
+    -- _get_cc_idx_at_ppq() returns found==true when the CC lands exactly at startppq. But
+    -- this isn't relevant for us as we want to delete within a range and it doesn't
+    -- matter if the CC is exactly at startppq.  Consequently we do not test found, only
+    -- if the returned ppq is within our range.  Fixes #194 (regression in 0.5.0).
+    if not ppq or ppq < startppq or ppq > endppq then
         return
     end
     local msb, lsb, program = _delete_program_events_at_ppq(take, channel, idx, n_events, ppq, endppq)
