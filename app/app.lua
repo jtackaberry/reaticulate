@@ -911,6 +911,15 @@ function App:_insert_articulation(rfxtrack, bank, program, channel, take,
     return insert_ppqs and #insert_ppqs > 0
 end
 
+-- Stuffs the Bank Select + PC event for the articulation on the given channel.
+function App:_stuff_articulation_pc(art, srcchannel)
+    local bank = art:get_bank()
+    local msb, lsb = bank:get_current_msb_lsb()
+    reaper.StuffMIDIMessage(0, 0xb0 + srcchannel, 0, msb)
+    reaper.StuffMIDIMessage(0, 0xb0 + srcchannel, 0x20, lsb)
+    reaper.StuffMIDIMessage(0, 0xc0 + srcchannel, art.program, 0)
+end
+
 -- Activates and possibly inserts an articulation on the given channel.
 --
 -- An articulation that's activated twice within 500ms is automatically inserted.
@@ -946,10 +955,7 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         -- record action, and an undo action will undo the entire record action.
         -- Otherwise, with insertion, you end up with articulations in the undo
         -- history independent of the recording, which would be unexpected.
-        local msb, lsb = bank:get_current_msb_lsb()
-        reaper.StuffMIDIMessage(0, 0xb0 + srcchannel, 0, msb)
-        reaper.StuffMIDIMessage(0, 0xb0 + srcchannel, 0x20, lsb)
-        reaper.StuffMIDIMessage(0, 0xc0 + srcchannel, art.program, 0)
+        self:_stuff_articulation_pc(art, srcchannel)
         art.button.start_insert_animation()
         return
     end
@@ -1080,6 +1086,8 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
         reaper.PreventUIRefresh(-1)
         art.button.start_insert_animation()
     else
+        -- Activate articulation on all selected tracks, starting with the current track
+        -- (i.e. last selected)
         rfx.current:activate_articulation(srcchannel, art.program)
         local ntracks = reaper.CountSelectedTracks(0)
         if ntracks > 1 then
@@ -1091,6 +1099,10 @@ function App:activate_articulation(art, refocus, force_insert, channel, insert_a
                 end
             end
         end
+        -- We've already changed the articulation via direct JSFX communication, but here
+        -- we also stuff the Program Change to the VKB in order to support retrospective
+        -- record.
+        self:_stuff_articulation_pc(art, srcchannel)
     end
 
     -- Set articulation as pending.
