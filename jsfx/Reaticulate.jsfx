@@ -588,21 +588,17 @@ all_articulation_flags_by_channel = getptr(MAX_CHANNELS);
 
 
 
-// Maps output events to articulations.  The first 24 bits of the value is a
-// pointer to the articulation, and the MSB holds the output event number of
-// the articulation.
+// Maps note-based output events to articulations, only for articulations with single
+// (note) output events.  The first 24 bits of the value is a pointer to the articulation,
+// and the MSB holds the output event number of the articulation.
 //
-// Index numbers are a bit clever to save space: the first 128 elements
-// represent program changes, the next 128 represent notes (velocity is
-// intentionally ignored for now), and the next 128*128 are for CCs
-// (CC # and value).  All those 16640 elements are repeated for all 16
-// source MIDI channels.
+// NB: normally the high byte is obliterated during serialization, but we'll use it here
+// because this array is not serialized.  It's regenerated on instantiation.
 //
-// NB: normally the high byte is obliterated during serialization, but we'll use it
-// here because this array is not serialized.  It's regenerated on instantiation.
+// Indexed by note number, with a contiguous set of 128 slots per source MIDI channel.
 //
 // Not serialized.
-articulations_by_output_event = getptr((128 + 128 + 128*128) * MAX_CHANNELS);
+articulations_by_output_event = getptr(128 * MAX_CHANNELS);
 
 
 // When activate() is called, keeps track of all articulation programs that were
@@ -1202,13 +1198,23 @@ local(version, filter, ext)
 
 // Updates the articulations_by_output_event to map the given output event
 // to an artlut ptr.
+//
+// Currently only note-based output events are supported, and only for
+// articulations with a *single* note output (fixes #184).
 function update_output_event_map(type, b1, b2, articulation, event_idx)
 local(idx, channel)
 (
     idx = -1;
     (type == OUTPUT_TYPE_NOTE || type == OUTPUT_TYPE_NOTE_HOLD) ? (
-        idx = 128 + b1;
-    ) : (
+        idx = b1;
+    );
+    // Indexes for non-note output event types are disabled as we intentionally only
+    // support articulations with single note-based outputs to fix #184.  We'll keep the
+    // index calculation for other types commented for now in case we need it in future
+    // (but be aware if PC/CC support is restored then the record size per channel needs
+    // to be increased back to 128+128+128*128, and the index calculations).
+    /*
+    : (
         (type == OUTPUT_TYPE_CC) ? (
             idx = 256 + (b1 * 128) + b2;
         ) : (
@@ -1217,10 +1223,13 @@ local(idx, channel)
             );
         );
     );
+    */
     (idx != -1) ? (
-        channel = get_articulation_channel(articulation);
-        idx += (256 + 128 * 128) * channel;
-        articulations_by_output_event[idx] = articulation | (event_idx << 24);
+        get_articulation_num_outputs(articulation) == 1 ? (
+            channel = get_articulation_channel(articulation);
+            idx += 128 * channel;
+            articulations_by_output_event[idx] = articulation | (event_idx << 24);
+        );
     );
 );
 
@@ -1279,7 +1288,7 @@ local(i, j, k, version, ext, ptr, idx, oidx, channel, group, program, articulati
 (
     memset(articulations_lut, 0, (MAX_CHANNELS*128) * ARTICULATION_LUT_RECORD_SIZE);
     // Regenerated via update_output_event_map() below.
-    memset(articulations_by_output_event, 0, (256 + 128 * 128) * MAX_CHANNELS);
+    memset(articulations_by_output_event, 0, 128 * MAX_CHANNELS);
 
     // Loop over (serialized) articulations offsets
     i = 0; loop(MAX_CHANNELS * 128,
@@ -2682,19 +2691,11 @@ local(articulation, event, idx, value, dstchan, dstbus)
 (
     idx = -1;
     (type == MIDI_EVENT_NOTE_ON || type == MIDI_EVENT_NOTE_OFF) ? (
-        idx = 128 + msg2;
-    ) : (
-        (type == MIDI_EVENT_CC) ? (
-            idx = 256 + (msg2 * 128) + msg3;
-        ) : (
-            (type == MIDI_EVENT_PROGRAM) ? (
-                idx = msg2;
-            );
-        );
+        idx = msg2;
     );
     this.articulation = 0;
     (idx != -1) ? (
-        idx += (256 + 128 * 128) * channel;
+        idx += 128 * channel;
         value = articulations_by_output_event[idx];
         value != 0 ? (
             articulation = value & 0x00ffffff;
