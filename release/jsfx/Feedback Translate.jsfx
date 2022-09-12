@@ -28,20 +28,41 @@ out_pin:none
 
 @init
 ext_midi_bus = 1;
+buf = 0;
+buflen = 1024;
+// Whether we should actually translate PCs even if slider5 is non-zero.  This
+// can be set to zero via a SysEx control message received from a Reaticulate
+// JSFX.
+pc_translate = 1;
 
-MIDI_EVENT_PROGRAM = 0xc0;
 MIDI_EVENT_CC = 0xb0;
+MIDI_EVENT_PROGRAM = 0xc0;
 
 @block
-while (midirecv(mpos, msg1, msg2, msg3)) (
+while ((len = midirecv_buf(mpos, buf, buflen)) > 0) (
     (midi_bus == slider2 && slider1) ? (
         midi_bus = slider3;
-        (msg1 & 0xf0 == MIDI_EVENT_PROGRAM && slider5 > 0) ? (
-            // Translate Program Change to CC
-            msg1 = MIDI_EVENT_CC | (msg1 & 0x0f);
-            msg3 = msg2;
-            msg2 = slider5;
+        (len <= 3) ? (
+            // 2- or 3-byte message
+            (buf[0] & 0xf0 == MIDI_EVENT_PROGRAM && slider5 > 0 && pc_translate == 1) ? (
+                // Translate Program Change to CC
+                buf[0] = MIDI_EVENT_CC | (buf[0] & 0x0f);
+                // Data byte for PC becomes second data byte for CC
+                buf[2] = buf[1];
+                buf[1] = slider5;
+            );
+            midisend(mpos, buf[0], buf[1], buf[2]);
+        ) : (
+            // System message.  Is it a control message from a Reaticulate JSFX instance (SysEx
+            // starting with 'rtcl8' data bytes).
+            (len > 7 && buf[0] == 0xf0 && buf[1] == 0x72 && buf[2] == 0x74 &&
+             buf[3] == 0x63 && buf[4] == 0x6c && buf[5] == 0x38) ? (
+                // First control message byte controls translation of PCs for articulations.
+                pc_translate = buf[6];
+            ) : (
+                // Not a Reaticulate SysEx, so pass it through.
+                midisend_buf(mpos, buf, len);
+            );
         );
-        midisend(mpos, msg1, msg2, msg3);
     );
 );
