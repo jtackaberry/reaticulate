@@ -55,16 +55,15 @@ local rfx = {
     OPCODE_ADVANCE_HISTORY = 14,
     OPCODE_UPDATE_CURRENT_CCS = 15,
     OPCODE_SUBSCRIBE = 16,
+    OPCODE_SET_CUSTOM_FEEDBACK_MIDI_BYTES = 17,
 
     -- Shared gmem buffer indices offsets.  The indexes come in two flavors:
     --    * global indices (GIDX): relative to gmem[0]
     --    * instance indices (IIDX): relative to the instance's gmem_index
 
-    --
     -- These are the global indices (relative to gmem[0]).  Most of them are
     -- written in rfx.init()
     --
-
     -- Magic value so that RFX instances know we have initialized the global
     -- gmem parameters.
     GMEM_GIDX_MAGIC = 0,
@@ -1216,6 +1215,18 @@ function rfx.Track:migrate_to_appdata()
     reaper.Undo_EndBlock2(0, "Reaticulate: migrate track to new version (cannot be undone)", UNDO_STATE_FX)
 end
 
+-- Sets the given attribute's value on track's appdata, and queues an update to the project.
+function rfx.Track:set_track_data(attr, value)
+    self.appdata[attr] = value
+    self:queue_write_appdata()
+end
+
+-- Gets the given track appdata attribute.
+function rfx.Track:get_track_data(attr)
+    if self.appdata then
+        return self.appdata[attr]
+    end
+end
 
 -- Sets the default channel and syncs the channel selection with appdata.  The RFX is also
 -- asked to sync CCs for the new channel to the gmem instance data region.
@@ -1506,6 +1517,99 @@ function rfx.Track:index_banks_by_channel_and_check_hash()
     return resync
 end
 
+-- Generates raw MIDI for the feedback-on-track-select messages and sends to the RFX.
+-- rtk.Track:set_track_data() should be called first on the 'track_select_feedback'
+-- attribute, which defines a table where each element is a table defining the message
+-- with named keys in the form {type, channel, data1, data2}, where:
+--   * `type` is one of 'bankselect', 'program', 'cc', 'note', 'note-on', 'note-off', 'raw'
+--   * `channel` is the MIDI channel (offset from 1) for the event, nil when 'raw'
+--   * `data1` is the numeric first data byte of the MIDI event, or a string of raw hex
+--      octets when type is 'raw'
+--   * `data2` is the numeric second data byte of the MIDI event, or nil when no second
+--     data byte applies (as in the case for type=program|raw)
+--
+-- Returns the table of resulting MIDI message bytes.  The second return value is an error
+-- message holding the last encountered parse/validation error, or nil if there were no
+-- errors.
+function rfx.Track:sync_custom_feedback_events()
+    local msgs = self.appdata.track_select_feedback
+    if not msgs then
+        -- No messages, reset the RFX
+        self:opcode(rfx.OPCODE_SET_CUSTOM_FEEDBACK_MIDI_BYTES, {})
+        return {}
+    end
+    -- Maps msg type to MIDI status byte
+    local typemap = {
+        ['bankselect'] = 0xb0,
+        ['cc'] = 0xb0,
+        ['program'] = 0xc0,
+        ['note'] = 0x90,
+        ['note-on'] = 0x90,
+        ['note-off'] = 0x80,
+    }
+
+    local errmsg
+    -- Chained sequence of bytes defining the MIDI messages
+    local bytes = {}
+    for _, msg in ipairs(msgs) do
+        local status = typemap[msg.type]
+        if msg.type == 'raw' and msg.data1 then
+            for _, group in ipairs(msg.data1:split(' ', true)) do
+                if #group % 2 ~= 0 then
+                    group = '0' .. group
+                end
+                for byte in group:gmatch('..') do
+                    local v = tonumber(byte, 16)
+                    if not v then
+                        errmsg = string.format("'%s' is not valid hex", byte)
+                        v = 0
+                    end
+                    bytes[#bytes+1] = v
+                end
+            end
+        elseif status then
+            -- Sequence of bytes for this one message
+            local msgbytes
+            -- This is a channel voice message.  Get zero-offset channel number.
+            local chan = msg.channel and msg.channel - 1 or 0
+            -- Incorporate channel in status byte
+            status = status + chan
+            local d1 = tonumber(msg.data1)
+            local d2 = tonumber(msg.data2)
+            if not d1 or (msg.data2 and msg.data2 ~= '' and not d2) then
+                errmsg = string.format('Value must be a number')
+            end
+            if d1 and (d1 < 0 or d1 > 127) then
+                errmsg = string.format('%d is out of range (0-127)', d1)
+            end
+            if d2 and (d2 < 0 or d2 > 127) then
+                return nil, string.format('%d is out of range (0-127)', d2)
+            end
+            if msg.type == 'bankselect' then
+                -- CC0 (MSB) + CC32 (LSB)
+                msgbytes = {status, 0, d1, status, 32, d2 or 0}
+            elseif msg.type == 'program' then
+                msgbytes = {status, d1}
+            elseif msg.type == 'note' then
+                -- Note-on plus note-off, with note-on velocity defaulting to 127 if not specified
+                msgbytes = {status, d1, d2 or 127, 0x80 + chan, d1, 0}
+            elseif msg.type == 'note-on' then
+                -- Note-on default velocity is 127 as with 'note'
+                msgbytes = {status, d1, d2 or 127}
+            else
+                -- Anything else is a 3 byte message
+                msgbytes = {status, d1, d2 or 0}
+            end
+            -- Append msgbytes to total sequence
+            for i = 1, #msgbytes do
+                bytes[#bytes+1] = msgbytes[i]
+            end
+        end
+    end
+    self:opcode(rfx.OPCODE_SET_CUSTOM_FEEDBACK_MIDI_BYTES, bytes)
+    return bytes, errmsg
+end
+
 -- Called when bank list is changed.  This sends the articulation details for all current
 -- banks in the bank list.
 --
@@ -1526,6 +1630,7 @@ function rfx.Track:sync_banks_to_rfx()
     reaper.Undo_BeginBlock2(0)
     rfx.push_state(self.track)
     self:opcode(rfx.OPCODE_CLEAR)
+    self:sync_custom_feedback_events()
 
     for channel = 1, 16 do
         local banks = self.banks_by_channel[channel]
