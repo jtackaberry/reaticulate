@@ -4306,26 +4306,32 @@ Bank 70 1 Cinematic Studio Strings
 //! c=long i=legato-runs o=cc:58,71
 33 marcato+spic
 
+// XXX: CSS 1.7 has changed the legato keyswitch on both section and ensemble patches.
+//    Section: CSS1.0=34 CSS1.7=32
+//    Ensembles: CSS1.0=22 CSS1.7=20
+//
+// Fortunately these keyswitches don't conflict between versions, so we send both
+// keyswitches to improve compatibility with both versions.
 
 //----------------------------------------------------------------------------
 //! g="Cinematic Series/Studio Strings" n="Section"
 //! chase=1,2,5,11,20,64-69
 //! id=00000000-a90e-4e94-a30f-0774d38cf112
 Bank 70 4 Cinematic Studio Strings - Section
-//! c=legato i=legato o=note:24,1/note:34,65
+//! c=legato i=legato o=note:24,1/note:34,65/note:32,65
 20 legato std
-//! c=legato i=legato o=note:24,127/note:34,65
+//! c=legato i=legato o=note:24,127/note:34,65/note:32,65
 21 legato adv
-//! c=legato-light i=legato o=note:28/note:34,65
+//! c=legato-light i=legato o=note:28/note:34,65/note:32,65
 29 legato harmonics
-//! c=legato-dark i=legato-tremolo o=note:25/note:34,65
+//! c=legato-dark i=legato-tremolo o=note:25/note:34,65/note:32,65
 30 legato tremolo
-//! c=legato i=legato-fast o=note:30,1/note:34,65
+//! c=legato i=legato-fast o=note:30,1/note:34,65/note:32,65
 28 legato marcato
-//! c=legato i=legato-runs o=note:30,127/note:34,65
+//! c=legato i=legato-runs o=note:30,127/note:34,65/note:32,65
 33 legato marcato+spic
 
-//! c=long i=note-whole o=note:24/note:34,1
+//! c=long i=note-whole o=note:24/note:34,1/note:32,1
 1 sustain
 //! c=short i=spiccato o=note:29,1
 42 spiccato
@@ -4341,17 +4347,17 @@ Bank 70 4 Cinematic Studio Strings - Section
 57 bartok pizz
 //! c=short-light i=col-legno o=note:31,93
 58 col legno
-//! c=long i=trill o=note:27/note:34,1
+//! c=long i=trill o=note:27/note:34,1/note:32,1
 70 trills
-//! c=long-light i=harmonics o=note:28/note:34,1
+//! c=long-light i=harmonics o=note:28/note:34,1/note:32,1
 10 harmonics
-//! c=long-dark i=tremolo o=note:25/note:34,1
+//! c=long-dark i=tremolo o=note:25/note:34,1/note:32,1
 11 tremolo
 //! c=long-dark i=tremolo o=note:26
 81 measured trem
-//! c=long i=marcato-half o=note:30,1/note:34,1
+//! c=long i=marcato-half o=note:30,1/note:34,1/note:32,1
 9 marcato
-//! c=long i=legato-runs o=note:30,127/note:34,1
+//! c=long i=legato-runs o=note:30,127/note:34,1/note:32,1
 19 marcato+spic
 
 //! c=long-light i=con-sord g=3 o=note:35,127
@@ -4365,20 +4371,20 @@ Bank 70 4 Cinematic Studio Strings - Section
 //! chase=1,2,5,11,20,64-69
 //! id=00000000-c568-425e-85f8-0bd457d99f7b
 Bank 70 5 Cinematic Studio Strings - Full Ensemble
-//! c=legato i=legato o=note:12,1/note:22,65
+//! c=legato i=legato o=note:12,1/note:22,65/note:20,95
 20 legato std
-//! c=legato i=legato o=note:12,127/note:22,65
+//! c=legato i=legato o=note:12,127/note:22,65/note:20,65
 21 legato adv
-//! c=legato-light i=legato o=note:16/note:22,65
+//! c=legato-light i=legato o=note:16/note:22,65/note:20,65
 29 legato harmonics
-//! c=legato-dark i=legato-tremolo o=note:13/note:22,65
+//! c=legato-dark i=legato-tremolo o=note:13/note:22,65/note:20,65
 30 legato tremolo
-//! c=legato i=legato-fast o=note:18,1/note:22,65
+//! c=legato i=legato-fast o=note:18,1/note:22,65/note:20,65
 28 legato marcato
-//! c=legato i=legato-runs o=note:18,127/note:22,65
+//! c=legato i=legato-runs o=note:18,127/note:22,65/note:20,65
 33 legato marcato+spic
 
-//! c=long i=note-whole o=note:12/note:22,1
+//! c=long i=note-whole o=note:12/note:22,1/note:20,1
 1 sustain
 //! c=short i=spiccato o=note:17,1
 42 spiccato
@@ -4394,17 +4400,17 @@ Bank 70 5 Cinematic Studio Strings - Full Ensemble
 57 bartok pizz
 //! c=short-light i=col-legno o=note:19,93
 58 col legno
-//! c=long i=trill o=note:15/note:22,1
+//! c=long i=trill o=note:15/note:22,1/note:20,1
 70 trills
-//! c=long-light i=harmonics o=note:16/note:22,1
+//! c=long-light i=harmonics o=note:16/note:22,1/note:20,1
 10 harmonics
-//! c=long-dark i=tremolo o=note:13/note:22,1
+//! c=long-dark i=tremolo o=note:13/note:22,1/note:20,1
 11 tremolo
 //! c=long-dark i=tremolo o=note:14
 81 measured trem
-//! c=long i=marcato-half o=note:18,1/note:22,1
+//! c=long i=marcato-half o=note:18,1/note:22,1/note:20,1
 9 marcato
-//! c=long i=legato-runs o=note:18,127/note:22,1
+//! c=long i=legato-runs o=note:18,127/note:22,1/note:20,1
 19 marcato+spic
 
 //! c=long-light i=con-sord g=3 o=note:23,127
