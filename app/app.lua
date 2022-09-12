@@ -349,8 +349,8 @@ function App:ontrackchange(last, cur)
             self:do_single_floating_fx()
         end
     end
-    -- Note that detecting/updating errors on the current bank is done in
-    -- handled_onupdate().
+    -- Ensure we have detected any errors on this track and update the UI.
+    self:check_banks_for_errors()
     reaper.PreventUIRefresh(-1)
 end
 
