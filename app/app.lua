@@ -349,8 +349,8 @@ function App:ontrackchange(last, cur)
             self:do_single_floating_fx()
         end
     end
-    -- Ensure we have detected any errors on this track and update the UI.
-    self:check_banks_for_errors()
+    -- Note that detecting/updating errors on the current bank is done in
+    -- handled_onupdate().
     reaper.PreventUIRefresh(-1)
 end
 
@@ -2280,16 +2280,19 @@ function App:handle_onupdate()
     -- check to see if the RFX is currently valid.
     local valid_before = rfx.current:valid()
     if rfx.current:sync(track) then
-        if not track_changed and not valid_before then
+        if self.screens.trackcfg.widget.visible then
+            self.screens.trackcfg.update()
+        elseif not track_changed and not valid_before then
             -- We didn't change tracks, but the current track flipped from no valid RFX to
             -- a valid RFX.  We can assume we had an offline RFX that was just onlined.
             -- Force an error check.
-            self:check_banks_for_errors()
+            --
+            -- This is only explicitly done when something other than the trackcfg is
+            -- active, because otherwise trackcfg.update() (above) will implicitly do
+            -- this.
+            self.screens.trackcfg.check_errors()
         end
         self.screens.banklist.update()
-        if self.screens.trackcfg.widget.visible then
-            self.screens.trackcfg.update()
-        end
     end
 
     local focus_changed = self.last_focused_hwnd ~= rtk.focused_hwnd
