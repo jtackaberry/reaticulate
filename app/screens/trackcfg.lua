@@ -214,7 +214,7 @@ function screen.create_track_feedback_option(section)
     local labelw = 45
     row:add(rtk.Text{'MIDI:', w=labelw, halign='right', tooltip=tooltip})
 
-    local menu = row:add(rtk.OptionMenu(), {fillw=true})
+    local menu = row:add(rtk.OptionMenu{tooltip=tooltip}, {fillw=true})
     menu:attr('menu', {
         {'Disabled', id='disabled', args={}},
         {'Bank Select', id='bankselect', args={'MSB #', 'LSB #'}},
