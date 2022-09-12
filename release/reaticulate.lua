@@ -8380,7 +8380,7 @@ log.info('app: track change: %s -> %s', lastn, curn)reaper.PreventUIRefresh(1)se
 reaper.CSurf_OnTrackSelection(cur)if self.config.single_floating_instrument_fx_window then
 self:do_single_floating_fx()end
 end
-reaper.PreventUIRefresh(-1)end
+self:check_banks_for_errors()reaper.PreventUIRefresh(-1)end
 local function _check_track_for_midi_events(track)for itemidx=0,reaper.CountTrackMediaItems(track)-1 do
 local item=reaper.GetTrackMediaItem(track,itemidx)for takeidx=0,reaper.CountTakes(item)-1 do
 local take=reaper.GetTake(item,takeidx)local r=reaper.MIDI_GetCC(take,0)if r then
