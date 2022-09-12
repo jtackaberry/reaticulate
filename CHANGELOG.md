@@ -1,3 +1,25 @@
+# 0.5.7 - September 12, 2022
+
+## New Features
+
+* Reaticulate can now be configured (via Reaticulate's track configuration screen) to send custom MIDI messages to the configured control surface when a track is selected ([#33](https://github.com/jtackaberry/reaticulate/issues/33))
+  * This feature addresses a regression introduced in 0.5.0 caused by the fact that bank MSB/LSBs are now dynamically generated, may vary between projects, and therefore are no longer useful for control surface integrations
+
+## Minor Enhancements
+
+* Retroactive record is improved because now Reaticulate will always send the necessary MIDI for articulation changes to the VKB, which is captured in the retroactive record buffer
+* The factory bank for Cinematic Studio Strings is now compatible with the newly released CSS v1.7 (which changed the keyswitch used for legato).  These same factory banks continue to be compatible with previous versions of CSS as well.
+
+
+## Bug Fixes
+
+* Support 14-bit CCs assigned to Reaticulate's various "insert/activate by CC" actions ([#189](https://github.com/jtackaberry/reaticulate/issues/189)) (thanks to Kabraxist)
+* Fixed a regression in 0.5.0 where selecting notes and inserting a new articulation would fail to remove any existing articulations under the selected notes ([#194](https://github.com/jtackaberry/reaticulate/issues/194))
+* Fixed a regression where Reaticulate's global option to "Insert articulations based on selected notes when MIDI editor is open" would not respect a disabled setting
+* Fixed a confusing bug where Reaticulate would reflect a manual articulation change in the GUI if it observed a MIDI message matching *any* of the output events for that articulation.  Now it will only reflect manual articulation changes for articulations with a single note-based output event ([#184](https://github.com/jtackaberry/reaticulate/issues/184))
+* Fixed a crash of Reaticulate's GUI involving a race during track deletion
+
+
 # 0.5.6 - March 8, 2022
 
 ## Bug Fixes
@@ -18,7 +40,9 @@
 
 
 # 0.5.4 - February 22, 2022
+
 * Fixed a runtime error that could occur on startup when detecting display resolution
+
 ## New Features
 
 * Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes ([#167](https://github.com/jtackaberry/reaticulate/issues/167))
@@ -34,6 +58,7 @@
 
 * On startup, Reaticulate now ensures its window, if undocked, fits within the display where it resides
 * Bank group names are now case insensitive, so that e.g. "Spitfire" and "SpitFire" will no longer create separate submenus, but will be placed within the same submenu
+
 ## Bug Fixes
 
 * Fixed bonkers infinitely-expanding undocked window and potential REAPER crash on Macs with Retina displays
@@ -58,6 +83,7 @@
 Note: Reaper 5.975 (released on April 30, 2019) or later is now required. However REAPER 6.46 or later is recommended for the best experience.
 
 Here are the changes since the last stable release (0.4.7):
+
 ## New Features
 
 * MSB/LSB bank values are now entirely assigned and managed by Reaticulate.  Users no longer need to worry about this annoying technical detail, and can simply put `*` as placeholders for both MSB and LSB values in bank definitions. ([#63](https://github.com/jtackaberry/reaticulate/issues/63))
@@ -87,6 +113,7 @@ Here are the changes since the last stable release (0.4.7):
 * All articulation icons have been redone with vector graphics in order to support high-DPI displays
 * The articulation list's scroll position is now retained per track and restored when the track is selected
 * All buttons in the GUI got a minor facelift
+
 ## Bug Fixes
 
 * Fixed a bug where CCs were not always properly chased when activating articulations between different channels
