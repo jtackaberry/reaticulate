@@ -4,6 +4,31 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.7 Released
+*September 12, 2022*
+
+## Full Change Log
+
+### New Features
+
+* Reaticulate can now be configured (via Reaticulate's track configuration screen) to send custom MIDI messages to the configured control surface when a track is selected ([#33](https://github.com/jtackaberry/reaticulate/issues/33))
+  * This feature addresses a regression introduced in 0.5.0 caused by the fact that bank MSB/LSBs are now dynamically generated, may vary between projects, and therefore are no longer useful for control surface integrations
+
+### Minor Enhancements
+
+* Retroactive record is improved because now Reaticulate will always send the necessary MIDI for articulation changes to the VKB, which is captured in the retroactive record buffer
+* The factory bank for Cinematic Studio Strings is now compatible with the newly released CSS v1.7 (which changed the keyswitch used for legato).  These same factory banks continue to be compatible with previous versions of CSS as well.
+
+
+### Bug Fixes
+
+* Support 14-bit CCs assigned to Reaticulate's various "insert/activate by CC" actions ([#189](https://github.com/jtackaberry/reaticulate/issues/189)) (thanks to Kabraxist)
+* Fixed a regression in 0.5.0 where selecting notes and inserting a new articulation would fail to remove any existing articulations under the selected notes ([#194](https://github.com/jtackaberry/reaticulate/issues/194))
+* Fixed a regression where Reaticulate's global option to "Insert articulations based on selected notes when MIDI editor is open" would not respect a disabled setting
+* Fixed a confusing bug where Reaticulate would reflect a manual articulation change in the GUI if it observed a MIDI message matching *any* of the output events for that articulation.  Now it will only reflect manual articulation changes for articulations with a single note-based output event ([#184](https://github.com/jtackaberry/reaticulate/issues/184))
+* Fixed a crash of Reaticulate's GUI involving a race during track deletion
+
+
 # Reaticulate 0.5.6 Released
 *March 8, 2022*
 
