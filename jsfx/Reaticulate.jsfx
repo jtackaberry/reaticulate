@@ -2215,7 +2215,6 @@ local(i, msg, type, n1, msglen)
                     // All other system messages have no data bytes.
                 );
                 midisend_buf(mpos, msg, msglen);
-                // midisyx(mpos, msg, msglen);
                 i += msglen;
             ) : (
                 // Everything else is a 3 byte message
