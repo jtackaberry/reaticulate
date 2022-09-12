@@ -26,6 +26,8 @@ local screen = {
     banklist = nil,
     -- The track whose configuration is currently visible.
     track = nil,
+    -- The rtk.OptionList for the track select feedback message menu
+    track_select_feedback_menu = nil,
     -- The max (i.e. worst) error affecting the current track, as determined by
     -- check_errors*()
     error = nil
@@ -88,8 +90,8 @@ function screen.init()
     end
     vbox:add(add_bank_button, {lpadding=20, tpadding=20})
 
+    vbox:add(rtk.Heading{'Track Tweaks', margin={40, 0, 10, 10}})
     local section = vbox:add(rtk.VBox{spacing=10, margin={0, 10, 0, 20}})
-    section:add(rtk.Heading{'Track Tweaks', tmargin=50})
     section:add(rtk.Button{
         'Fix numeric articulation names',
         icon='auto_fix',
@@ -151,7 +153,11 @@ function screen.init()
         end
     })
 
-    -- Build menus for src and dst channels
+    vbox:add(rtk.Heading{'Advanced Settings', margin={40, 0, 10, 10}})
+    local section = vbox:add(rtk.VBox{spacing=10, margin={0, 10, 0, 20}})
+    screen.create_track_feedback_option(section)
+
+    -- Build menus for src and dst channels which will be used in create_bank_ui().
     screen.src_channel_menu = {{'Omni', id=17}}
     for i = 1, 16 do
         screen.src_channel_menu[#screen.src_channel_menu+1] = {
@@ -187,6 +193,132 @@ function screen.init()
         }
     end
     screen.update()
+end
+
+function screen.create_track_feedback_option(section)
+    local tooltip =
+        "Sends the given MIDI message(s) to the control surface (configured in Reaticulate's " ..
+        "settings) whenever this track is selected.\n\nThis message is sent before the " ..
+        "messages for current articulation and current CC values."
+    local row = section:add(rtk.HBox{spacing=10, valign='center'})
+    row:add(rtk.Text{
+        'Feedback on Track Select',
+        xfontflags=rtk.font.BOLD,
+        tooltip=tooltip,
+    })
+    local subsection = section:add(rtk.VBox{spacing=10, maxw=350})
+    -- rtk.VBox for the input values of each of the different feedback types
+    local options = {}
+    local row = subsection:add(rtk.HBox{spacing=10, lpadding=10, valign='center'})
+    -- Width of the label (simulated) column
+    local labelw = 45
+    row:add(rtk.Text{'MIDI:', w=labelw, halign='right', tooltip=tooltip})
+
+    local menu = row:add(rtk.OptionMenu(), {fillw=true})
+    menu:attr('menu', {
+        {'Disabled', id='disabled', args={}},
+        {'Bank Select', id='bankselect', args={'MSB #', 'LSB #'}},
+        {'Program Change', id='program', args={'Program #'}},
+        {'CC', id='cc', args={'CC #', 'Val'}},
+        {'Note', id='note', args={'Note #', 'Vel'}},
+        {'Note On', id='note-on', args={'Note #', 'Vel'}},
+        {'Note Off', id='note-off', args={'Note #', 'Vel'}},
+        {'Raw MIDI', id='raw', args={'MIDI hex bytes'}},
+    })
+    -- Generate table used for creating channel OptionList
+    local channels = {}
+    for i = 1, 16 do
+        channels[#channels+1] = string.format('Ch %d', i)
+    end
+    -- Forward declaration of error rtk.Text widget, which we instantiate later but
+    -- reference in feedback_data_onchange()
+    local error
+    -- Shared event handler when any of the option values change
+    local feedback_data_onchange = function()
+        -- Construct messages table based on UI configuration. Internally, feedback
+        -- supports multiple MIDI messages but the UI only surfaces one for now.
+        local msgs = {}
+        local item = menu.selected_item
+        local selected = menu.selected_index
+        local row = options[selected]
+        if row then
+            -- Get current values
+            local data1 = row.data1.value
+            local data2 = row.data2 and row.data2.value
+            local channel = row.channel and row.channel.selected_index
+            if item.id == 'raw' then
+                -- Raw messages have no channel or second data byte
+                msgs[#msgs+1] = {type=item.id, data1=data1}
+            else
+                msgs[#msgs+1] = {type=item.id, channel=channel, data1=data1, data2=data2}
+            end
+        end
+        rfx.current:set_track_data('track_select_feedback', msgs)
+        local _, errmsg = rfx.current:sync_custom_feedback_events()
+        -- If there was some parse or validation error, display the message
+        error:attr('visible', errmsg and true or false)
+        if errmsg then
+            error:attr('text', errmsg)
+        end
+    end
+
+    for n, item in ipairs(menu.menu) do
+        if item.id ~= 'disabled' then
+            local row = subsection:add(rtk.HBox{spacing=10, lpadding=10+10+labelw, valign='center'})
+            options[n] = row
+            if item.id == 'raw' then
+                row.data1 = row:add(rtk.Entry{
+                    placeholder='MIDI hex bytes',
+                    textwidth=9,
+                    tooltip='Arbitrarily many MIDI events (including SysEx) expressed as hexadecimal octets.' ..
+                            '\n\nFor example, "90 09 42 f0 a0 08 ee f7 80 09 00"'
+                }, {fillw=true})
+            else
+                row.data1 = row:add(rtk.Entry{placeholder=item.args[1]})
+                if #item.args == 2 then
+                    row.data2 = row:add(rtk.Entry{placeholder=item.args[2]})
+                    row.data2.onchange = feedback_data_onchange
+                end
+                row.channel = row:add(rtk.OptionMenu{channels, selected=1}, {fillw=true})
+                row.channel.onchange = feedback_data_onchange
+            end
+            row.data1.onchange = feedback_data_onchange
+            row:hide()
+        end
+    end
+    -- FIXME: error won't be initialized until user interacts with text entries
+    error = subsection:add(rtk.Text{color='#ff5266', lpadding=10+10+labelw, tmargin=-8, visible=false})
+    menu.onchange = function(menu, item, last)
+        local lastrow = last and options[last.index]
+        if lastrow then
+            lastrow:hide()
+        end
+        local newrow = item and options[item.index]
+        if newrow then
+            local msgs = rfx.current:get_track_data('track_select_feedback')
+            -- RFX supports multiple messages but we only surface one in the UI for now.
+            local msg = msgs and msgs[1]
+            if newrow.channel then
+                newrow.channel:select(msg and msg.channel or 1, false)
+            end
+            -- If we toggled between non-raw types preserve data byte 1, otherwise clear it
+            local keepd1 = not last or (last.id ~= 'raw' and item.id ~= 'raw')
+            -- Only set data values if we've selected the same type as the persisted message
+            newrow.data1:attr('value', msg and keepd1 and msg.data1, false)
+            if newrow.data2 then
+                newrow.data2:attr('value', msg and msg.data2, false)
+            end
+            newrow:show()
+        end
+        if item and last then
+            -- If both new and last selection is set then we've changing the type, in
+            -- which case we invoke the Entry handler to force a sync to the RFX.
+            feedback_data_onchange()
+        end
+        error:hide()
+    end
+    -- Add a screen-level reference for use in update()
+    screen.track_select_feedback_menu = menu
 end
 
 function screen.set_banks_from_banklist()
@@ -549,6 +681,12 @@ function screen.update()
         screen.banklist:add(bankbox)
     end
     screen.check_errors_and_update_ui()
+    -- Revert current menu selection to nil.  This is a cheeky way to signal to the menu's
+    -- onchange handler not to sync to the RFX when select() is called next with the *real*
+    -- value.
+    screen.track_select_feedback_menu:select(nil)
+    local msgs = rfx.current:get_track_data('track_select_feedback')
+    screen.track_select_feedback_menu:select(msgs and msgs[1] and msgs[1].type or 1)
 end
 
 return screen

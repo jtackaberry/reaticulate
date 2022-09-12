@@ -17,10 +17,12 @@ local rtk = require 'rtk'
 local log = rtk.log
 
 local feedback = {
+    -- Bits assigned for OPCODE_SYNC_TO_FEEDBACK_CONTROLLER.  See JSFX for more.
     SYNC_CC = 1,
     SYNC_ARTICULATIONS = 2,
     SYNC_CHANNEL = 4,
-    SYNC_ALL = 1 | 2 | 4,
+    SYNC_TRACK = 8,
+    SYNC_ALL = 1 | 2 | 4 | 8,
 
     track = nil,
     track_guid = nil
