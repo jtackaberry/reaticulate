@@ -2514,10 +2514,13 @@ function feedback_controller_custom_feedback_midi_bytes(mpos)
 
 // Notifies the feedback controller of a new articulation if feedback is enabled.
 //
-// This first sends a bank select (CC0+32) indicating the MSB+LSB of the reabank the
-// articulation belongs to, then it signals the group for the articulation by a
-// magic event (note-off for note 0 where the velocity indicates the group).  Finally
-// the actual program change is sent.
+// This first sends the group for the articulation by a magic event (note-off for note 0
+// where the velocity indicates the group), and then the actual program change for the
+// articulation.
+//
+// The bank MSB/LSB is *not* sent (any longer, as of 0.5.7) because bank MSB/LSB is
+// generated per project, may vary between projects, and is therefore not particularly
+// useful for control surface integration.
 //
 // All these events occur on the source channel where the articulation change occurred.
 function feedback_controller_articulation(mpos, channel, articulation, group)
@@ -2525,18 +2528,11 @@ local(bank, msb, lsb, program)
 (
     program = get_articulation_program(articulation);
     (midi_feedback & 0x10 && program != -1) ? (
-        bank = get_articulation_bank(articulation);
-        msb = get_bank_msb(bank);
-        lsb = get_bank_lsb(bank);
-
         midi_bus = midi_feedback & 0x0f;
-        midisend(mpos, MIDI_EVENT_CC + channel, 0, msb);
-        midisend(mpos + 1, MIDI_EVENT_CC + channel, 32, lsb);
-        midisend(mpos + 2, MIDI_EVENT_NOTE_OFF + channel, 0, group);
-        midisend(mpos + 3, MIDI_EVENT_PROGRAM + channel, program, 0);
+        midisend(mpos + 0, MIDI_EVENT_NOTE_OFF + channel, 0, group);
+        midisend(mpos + 1, MIDI_EVENT_PROGRAM + channel, program, 0);
         midi_bus = 0;
-
-        mpos + 4;
+        mpos + 2;
     ) : (
         mpos;
     );
