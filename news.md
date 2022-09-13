@@ -4,6 +4,17 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.8 Released
+*September 13, 2022*
+
+## Full Change Log
+
+### Bug Fixes
+
+* Fixed double clicking articulation to insert which broke in 0.5.7
+* Fixed a crash that occurred when changing tracks in the TCP while the MIDI editor was open
+
+
 # Reaticulate 0.5.7 Released
 *September 12, 2022*
 
