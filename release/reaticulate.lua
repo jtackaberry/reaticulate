@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.7'}end)()
+return {_VERSION='0.5.8'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -2221,7 +2221,7 @@ if(not kwargs.src or kwargs.src==rtk.Attribute.NIL)or(kwargs.src<=1.0 and kwargs
 if kwargs.src==rtk.Attribute.NIL then
 kwargs.src=nil
 end
-kwargs.src=calc[attr]*(kwargs.src or 1)calcsrc=true
+kwargs.src=(calc[attr] or 0)*(kwargs.src or 1)calcsrc=true
 end
 if(not kwargs.dst or kwargs.dst==rtk.Attribute.NIL)or(kwargs.dst<=1.0 and kwargs.dst>0)then
 if kwargs.dst==rtk.Attribute.NIL then
@@ -2252,10 +2252,12 @@ if kwargs.doneval==nil then
 kwargs.doneval=doneval
 end
 if not kwargs.src then
-kwargs.src=self:calc(attr,true)calcsrc=kwargs.src~=nil
+kwargs.src=self:calc(attr,true)calc[attr]=kwargs.src
+calcsrc=kwargs.src~=nil
 end
 if not calcsrc and meta.calculate then
-kwargs.src=meta.calculate(self,attr,kwargs.src,{},true)end
+kwargs.src=meta.calculate(self,attr,kwargs.src,{},true)calc[attr]=kwargs.src
+end
 return rtk.queue_animation(kwargs)end
 function rtk.Widget:cancel_animation(attr)local anim=self:get_animation(attr)if anim then
 anim.future:cancel()end
@@ -9298,6 +9300,7 @@ end
 art.icon=articons.get(art.iconname, darkicon, 'note-eighth')art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
 art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true,nil,event.alt)return true
 end
+art.button.ondoubleclick=art.button.onlongpress
 art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
 art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
 art.button.onmouseenter=function(button,event)if not art.outputstr then
