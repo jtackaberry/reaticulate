@@ -1,3 +1,13 @@
+# 0.5.8 - September 13, 2022
+
+This is a hotfix release to address a couple embarrassing regressions slipped into 0.5.7 (mea cupla!).
+
+## Bug Fixes
+
+* Fixed double clicking articulation to insert which broke in 0.5.7
+* Fixed a crash that occurred when changing tracks in the TCP while the MIDI editor was open
+
+
 # 0.5.7 - September 12, 2022
 
 ## New Features
