@@ -303,11 +303,14 @@ function screen.create_banklist_ui(bank)
         art.button.onclick = function(button, event)
             screen.onartclick(art, event)
         end
+        -- Long press and double click behave the same, and always insert articulations.
+        -- Alt controls whether the insertion ignores note selection.
         art.button.onlongpress = function(button, event)
             app:activate_articulation(art, true, true, nil, event.alt)
             -- Return true to prevent onclick()
             return true
         end
+        art.button.ondoubleclick = art.button.onlongpress
         art.button.ondraw = function(button, offx, offy, alpha, event)
             screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
         end
