@@ -317,7 +317,9 @@ function screen.create_banklist_ui(bank)
             screen.draw_button_midi_channel(art, button, offx, offy, alpha, event)
         end
         art.button.onmouseleave = function(button, event)
-            app:set_statusbar(nil)
+            if app.status == art.outputstr then
+                app:set_statusbar(nil)
+            end
         end
         art.button.onmouseenter = function(button, event)
             if not art.outputstr then
