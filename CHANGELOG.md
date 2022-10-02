@@ -2,7 +2,6 @@
 
 This is another hotfix for the Reaticulate 0.5 series.
 
-
 ## Bug Fixes
 
 * Fixed double clicking not reliably working on touch screens (caused by overly tight mouse drift detection)
