@@ -1,3 +1,13 @@
+# 0.5.9 - October 2, 2022
+
+This is another hotfix for the Reaticulate 0.5 series.
+
+
+## Bug Fixes
+
+* Fixed double clicking not reliably working on touch screens (caused by overly tight mouse drift detection)
+* Fixed visual glitching (such as disappearing text) that could occur at particular zoom levels and window sizes
+
 # 0.5.8 - September 13, 2022
 
 This is a hotfix release to address a couple embarrassing regressions slipped into 0.5.7 (mea cupla!).
