@@ -2507,10 +2507,7 @@ if state&16==0 and not dnd.dragging then
 if self:_handle_click(event)then
 event:set_handled(self)self:queue_draw()end
 local last=rtk.mouse.last[event.button]
-local dx=last and math.abs(last.x-event.x)or 0
-local dy=last and math.abs(last.y-event.y)or 0
-local thresh=(rtk.touchscroll and 30 or 5)*rtk.scale.value
-if state&4~=0 and dx<thresh and dy<thresh then
+if state&4~=0 then
 if self:_handle_doubleclick(event)then
 event:set_handled(self)self:queue_draw()end
 self._last_mousedown_time=0
