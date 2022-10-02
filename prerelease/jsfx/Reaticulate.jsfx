@@ -152,11 +152,15 @@ RFX_VERSION = (1 << 16);
 // Legacy - for migration purposes
 SLIDER_OFFSET_CONTROL = 10;
 
-MIDI_EVENT_PITCH = 0xe0;
-MIDI_EVENT_PROGRAM = 0xc0;
-MIDI_EVENT_CC = 0xb0;
-MIDI_EVENT_NOTE_ON = 0x90;
+
 MIDI_EVENT_NOTE_OFF = 0x80;
+MIDI_EVENT_NOTE_ON = 0x90;
+MIDI_EVENT_AFTERTOUCH = 0xa0;
+MIDI_EVENT_CC = 0xb0;
+MIDI_EVENT_PROGRAM = 0xc0;
+MIDI_EVENT_CHANNEL_PRESSURE = 0xd0;
+MIDI_EVENT_PITCH = 0xe0;
+MIDI_EVENT_SYSTEM = 0xf0;
 
 MAX_GROUPS = 4;
 MAX_OUTPUT_EVENTS = 16;
@@ -166,6 +170,7 @@ MAX_CHANNELS = 16;
 MAX_BUSES = 16;
 MAX_UNDO_SLOTS = 100;
 MAX_APPDATA_SLOTS = 1000;
+MAX_CUSTOM_FEEDBACK_MIDI_BYTES = 120;
 
 
 // The number of slots in a DSTBUSCHAN record.  See below for definition.
@@ -323,6 +328,7 @@ OPCODE_ADD_OUTPUT_EVENT_EXTENSION = 6;
 //    bit 0: sync CCs
 //    bit 1: sync articulations
 //    bit 2: sync default channel
+//    bit 3: sync track change (send user-defined track change MIDI bytes)
 //
 // (what)
 OPCODE_SYNC_TO_FEEDBACK_CONTROLLER = 7;
@@ -380,6 +386,12 @@ OPCODE_UPDATE_CURRENT_CCS = 15;
 //
 // (subscription_bitmap)
 OPCODE_SUBSCRIBE = 16;
+
+// Sets the custom_feedback_midi_bytes array that holds user-defined MIDI data to be sent
+// to feedback controller upon track select.
+//
+// (...)
+OPCODE_SET_CUSTOM_FEEDBACK_MIDI_BYTES = 17;
 
 // Constants that apply to the flags parameter for OPCODE_NEW_ARTICULATION
 ARTICULATION_FLAG_CHASE = 1 << 0;
@@ -490,6 +502,18 @@ instantiating = 0;
 // Increments each @block iteration
 tick = 0;
 
+// Buffer for Feedback JSFX control message.  Initialized with magic header
+// and the data bytes are set in feedback_controller_jsfx_control_msg()
+feedback_control_msg_buf = getptr(8);
+feedback_control_msg_buf[0] = 0xf0;
+feedback_control_msg_buf[1] = 0x72;
+feedback_control_msg_buf[2] = 0x74;
+feedback_control_msg_buf[3] = 0x63;
+feedback_control_msg_buf[4] = 0x6c;
+feedback_control_msg_buf[5] = 0x38;
+// Gap for data bytes before SysEx terminator
+feedback_control_msg_buf[7] = 0xf7;
+
 // Array to map source channel to destination channels.  Indexed by source
 // channel, and the value has DSTBUSCHAN_LEN (17) slots, where the first slot is
 // a bitmap of which buses have mapped channels, and the next 16 slots each hold
@@ -588,21 +612,17 @@ all_articulation_flags_by_channel = getptr(MAX_CHANNELS);
 
 
 
-// Maps output events to articulations.  The first 24 bits of the value is a
-// pointer to the articulation, and the MSB holds the output event number of
-// the articulation.
+// Maps note-based output events to articulations, only for articulations with single
+// (note) output events.  The first 24 bits of the value is a pointer to the articulation,
+// and the MSB holds the output event number of the articulation.
 //
-// Index numbers are a bit clever to save space: the first 128 elements
-// represent program changes, the next 128 represent notes (velocity is
-// intentionally ignored for now), and the next 128*128 are for CCs
-// (CC # and value).  All those 16640 elements are repeated for all 16
-// source MIDI channels.
+// NB: normally the high byte is obliterated during serialization, but we'll use it here
+// because this array is not serialized.  It's regenerated on instantiation.
 //
-// NB: normally the high byte is obliterated during serialization, but we'll use it
-// here because this array is not serialized.  It's regenerated on instantiation.
+// Indexed by note number, with a contiguous set of 128 slots per source MIDI channel.
 //
 // Not serialized.
-articulations_by_output_event = getptr((128 + 128 + 128*128) * MAX_CHANNELS);
+articulations_by_output_event = getptr(128 * MAX_CHANNELS);
 
 
 // When activate() is called, keeps track of all articulation programs that were
@@ -689,7 +709,7 @@ held_keyswitches = getptr(MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
 // Slot 6: v0 - CC chase bitmap for CCs 120-127
 // Slots 7-9: unused
 //
-// Serialized.
+// Serialized (with banks_len).
 banks = getptr(MAX_CHANNELS * MAX_BANKS * 10);
 
 // The last articulation created by OPCODE_NEW_BANK.
@@ -713,9 +733,16 @@ current_programs = getptr(MAX_CHANNELS * MAX_GROUPS);
 // Opaque data pushed to us by the application.  We persist it on the track
 // on behalf of the main app.
 //
-// Serialized.
+// This is deprecated and has been replaced by P_EXT track data managed by
+// the Lua side.
+//
+// Serialized (with appdata_len).
 appdata = getptr(MAX_APPDATA_SLOTS);
 
+// Custom MIDI data to be sent during controller feedback.
+//
+// Serialized (with custom_feedback_midi_bytes_len)
+custom_feedback_midi_bytes = getptr(MAX_CUSTOM_FEEDBACK_MIDI_BYTES);
 
 // Each history record contains the state of all current programs across all
 // channels and groups.  This is equivalent to current_programs_len.
@@ -851,7 +878,6 @@ last_new_output_event = 0;
 
 
 // TODO: these need extensions:
-//  https://github.com/jtackaberry/reaticulate/issues/73
 //  https://github.com/jtackaberry/reaticulate/issues/74
 //  https://github.com/jtackaberry/reaticulate/issues/10
 
@@ -859,7 +885,7 @@ last_new_output_event = 0;
 // variable size and depends on how many output events each articulation has and
 // which extensions (if any) are used.
 //
-// Serialized.
+// Serialized (with articulations_len).
 articulations = getptr(0);
 
 
@@ -1202,13 +1228,23 @@ local(version, filter, ext)
 
 // Updates the articulations_by_output_event to map the given output event
 // to an artlut ptr.
+//
+// Currently only note-based output events are supported, and only for
+// articulations with a *single* note output (fixes #184).
 function update_output_event_map(type, b1, b2, articulation, event_idx)
 local(idx, channel)
 (
     idx = -1;
     (type == OUTPUT_TYPE_NOTE || type == OUTPUT_TYPE_NOTE_HOLD) ? (
-        idx = 128 + b1;
-    ) : (
+        idx = b1;
+    );
+    // Indexes for non-note output event types are disabled as we intentionally only
+    // support articulations with single note-based outputs to fix #184.  We'll keep the
+    // index calculation for other types commented for now in case we need it in future
+    // (but be aware if PC/CC support is restored then the record size per channel needs
+    // to be increased back to 128+128+128*128, and the index calculations).
+    /*
+    : (
         (type == OUTPUT_TYPE_CC) ? (
             idx = 256 + (b1 * 128) + b2;
         ) : (
@@ -1217,10 +1253,13 @@ local(idx, channel)
             );
         );
     );
+    */
     (idx != -1) ? (
-        channel = get_articulation_channel(articulation);
-        idx += (256 + 128 * 128) * channel;
-        articulations_by_output_event[idx] = articulation | (event_idx << 24);
+        get_articulation_num_outputs(articulation) == 1 ? (
+            channel = get_articulation_channel(articulation);
+            idx += 128 * channel;
+            articulations_by_output_event[idx] = articulation | (event_idx << 24);
+        );
     );
 );
 
@@ -1279,7 +1318,7 @@ local(i, j, k, version, ext, ptr, idx, oidx, channel, group, program, articulati
 (
     memset(articulations_lut, 0, (MAX_CHANNELS*128) * ARTICULATION_LUT_RECORD_SIZE);
     // Regenerated via update_output_event_map() below.
-    memset(articulations_by_output_event, 0, (256 + 128 * 128) * MAX_CHANNELS);
+    memset(articulations_by_output_event, 0, 128 * MAX_CHANNELS);
 
     // Loop over (serialized) articulations offsets
     i = 0; loop(MAX_CHANNELS * 128,
@@ -1563,12 +1602,14 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
         // Nuke it all from orbit.
         memset(all_articulation_flags_by_channel, 0, MAX_CHANNELS);
         memset(articulations_offsets, -1, MAX_CHANNELS * 128);
+        memset(custom_feedback_midi_bytes, 0, custom_feedback_midi_bytes_len);
         // articulations_lut and articulations_by_output_event aren't cleared
         // now.  It will be regenerated after all articulations have been pushed
         // and OPCODE_FINALIZE_ARTICULATIONS called.
 
         memset(banks, 0, MAX_CHANNELS * MAX_BANKS * 10);
         articulations_len = 0;
+        custom_feedback_midi_bytes_len = 0;
         last_new_articulation = 0;
         last_new_output_event = 0;
         banks_len = 0;
@@ -1737,6 +1778,14 @@ local(offset, bitmap, channel, num_outputs, event, ext, program_offset, offset, 
     (opcode == OPCODE_FINALIZE_ARTICULATIONS) ? (
         generate_articulation_luts();
     );
+
+    (opcode == OPCODE_SET_CUSTOM_FEEDBACK_MIDI_BYTES) ? (
+        custom_feedback_midi_bytes_len = min(argc, MAX_CUSTOM_FEEDBACK_MIDI_BYTES);
+        i = 0; loop(custom_feedback_midi_bytes_len,
+            custom_feedback_midi_bytes[i] = gmem[argi + i];
+            i += 1;
+        );
+    );
 );
 
 
@@ -1788,7 +1837,7 @@ local(idx, opidx, n_opcodes, queue_size, argc)
     gfx_printf("  version: %d\n", serialized_version);
     gfx_printf("  change serial: %d\n", change_serial);
     gfx_printf("  active notes bitmap: %d\n", gmem[gmem_index + gmem[GMEM_GIDX_INSTANCE_DATA_OFFSET] + GMEM_INSTANCE_DATA_FIRST_IDX]);
-    gfx_printf("  feedback bus: %d\n", midi_feedback);
+    gfx_printf("  feedback: bus=%d custom_bytes_len=%d\n", midi_feedback, custom_feedback_midi_bytes_len);
     gfx_printf("  lengths: banks=%d articulations=%d current_programs=%d\n", banks_len, articulations_len, current_programs_len);
 
     gfx_printf("\nChannel %d debug info (pending=%d)\n", channel + 1, have_pending_activations);
@@ -1845,6 +1894,7 @@ local(idx, opidx, n_opcodes, queue_size, argc)
     current_programs_len = MAX_CHANNELS * MAX_GROUPS;
     // Initialize current_programs to no program set.
     memset(current_programs, 128, current_programs_len);
+    custom_feedback_midi_bytes_len = 0;
 );
 
 // Only serialize if we are writing, or if we're reading but also in the
@@ -1869,6 +1919,7 @@ local(idx, opidx, n_opcodes, queue_size, argc)
     file_mem(0, held_keyswitches, MAX_CHANNELS * MAX_GROUPS * MAX_HELD_KEYSWITCHES * 2);
     file_var(0, banks_len);
     file_mem(0, banks, banks_len);
+    // appdata is now deprecated -- could create a new serialization version that excludes it.
     file_var(0, appdata_len);
     file_var(0, appdata_orig_len);
     file_mem(0, appdata, appdata_len);
@@ -1876,6 +1927,8 @@ local(idx, opidx, n_opcodes, queue_size, argc)
     file_mem(0, current_programs, current_programs_len);
     // New for multibus
     file_mem(0, channel_map, MAX_CHANNELS * DSTBUSCHAN_LEN);
+    file_var(0, custom_feedback_midi_bytes_len);
+    file_mem(0, custom_feedback_midi_bytes, custom_feedback_midi_bytes_len);
     nserr += 1;
 );
 
@@ -2123,6 +2176,58 @@ local(control, shift, current_program, offset, poffset, program_offset, mask)
 );
 
 
+// Sends a buffer of arbitrarily many chained MIDI messages.  This is distinct from the
+// REAPER-native midisend_buf() in that more than one MIDI message is supported
+function midisend_buffer(mpos, buf, len)
+local(i, msg, type, n1, msglen)
+(
+    i = 0;
+    while (i < len) (
+        msg = buf + i;
+        type = msg[0] & 0xf0;
+        // 2 byte message
+        (type == MIDI_EVENT_PROGRAM || type == MIDI_EVENT_CHANNEL_PRESSURE) ? (
+            midisend(mpos, msg[0], msg[1], 0);
+            i += 2;
+        ) : (
+            // System messages
+            (type == MIDI_EVENT_SYSTEM) ? (
+                // Second nybble of status byte
+                n1 = msg[0] & 0x0f;
+                // Initial message length includes status byte
+                msglen = 1;
+                (n1 == 0x00) ? (
+                    // SysEx message, scan forward looking for terminator, including it in
+                    // the overall message (hence checking msglen-1).
+                    while (i + msglen < len && msg[msglen - 1] != 0xf7) (
+                        msglen += 1;
+                    );
+                ) : (
+                    (n1 == 0x02) ? (
+                        // Song position takes 2 data bytes
+                        msglen += 2;
+                    ) : (
+                        (n1 == 0x03) ? (
+                            // Song select takes 1 data byte
+                            msglen += 1;
+                        );
+                    );
+                    // All other system messages have no data bytes.
+                );
+                midisend_buf(mpos, msg, msglen);
+                i += msglen;
+            ) : (
+                // Everything else is a 3 byte message
+                midisend(mpos, msg[0], msg[1], msg[2]);
+                i += 3;
+            );
+        );
+        mpos += 1;
+    );
+    mpos;
+);
+
+
 function midisend_multidst(mpos, dstchannels, basemsg1, msg2, msg3)
 local(channel, bit)
 (
@@ -2365,6 +2470,19 @@ local(ccs, i, bank, offset, bitmap, val, idx)
     mpos;
 );
 
+
+// Sends a control message to the Reaticulate Feedback JSFX.
+function feedback_controller_jsfx_control_msg(mpos, pc_translate)
+(
+    // If 0, disable all PC->CC translate, 1 respects user configuration.
+    feedback_control_msg_buf[6] = pc_translate;
+    midi_bus = midi_feedback & 0x0f;
+    mpos = midisend_buffer(mpos, feedback_control_msg_buf, 8);
+    midi_bus = 0;
+    mpos;
+);
+
+
 // Sends a MIDI event to the feedback controller if feedback is enabled.
 function feedback_controller_midisend(mpos, msg1, msg2, msg3)
 (
@@ -2378,12 +2496,30 @@ function feedback_controller_midisend(mpos, msg1, msg2, msg3)
 );
 
 
+function feedback_controller_custom_feedback_midi_bytes(mpos)
+(
+    (custom_feedback_midi_bytes_len > 0) ? (
+        // Disable PC->CC translation in the Feedback JSFX in case custom events contain a PC
+        mpos = feedback_controller_jsfx_control_msg(mpos, 0);
+        midi_bus = midi_feedback & 0x0f;
+        mpos = midisend_buffer(mpos, custom_feedback_midi_bytes, custom_feedback_midi_bytes_len);
+        midi_bus = 0;
+        // Re-enable PC->CC translation
+        mpos = feedback_controller_jsfx_control_msg(mpos, 1);
+    );
+    mpos;
+);
+
+
 // Notifies the feedback controller of a new articulation if feedback is enabled.
 //
-// This first sends a bank select (CC0+32) indicating the MSB+LSB of the reabank the
-// articulation belongs to, then it signals the group for the articulation by a
-// magic event (note-off for note 0 where the velocity indicates the group).  Finally
-// the actual program change is sent.
+// This first sends the group for the articulation by a magic event (note-off for note 0
+// where the velocity indicates the group), and then the actual program change for the
+// articulation.
+//
+// The bank MSB/LSB is *not* sent (any longer, as of 0.5.7) because bank MSB/LSB is
+// generated per project, may vary between projects, and is therefore not particularly
+// useful for control surface integration.
 //
 // All these events occur on the source channel where the articulation change occurred.
 function feedback_controller_articulation(mpos, channel, articulation, group)
@@ -2391,18 +2527,11 @@ local(bank, msb, lsb, program)
 (
     program = get_articulation_program(articulation);
     (midi_feedback & 0x10 && program != -1) ? (
-        bank = get_articulation_bank(articulation);
-        msb = get_bank_msb(bank);
-        lsb = get_bank_lsb(bank);
-
         midi_bus = midi_feedback & 0x0f;
-        midisend(mpos, MIDI_EVENT_CC + channel, 0, msb);
-        midisend(mpos + 1, MIDI_EVENT_CC + channel, 32, lsb);
-        midisend(mpos + 2, MIDI_EVENT_NOTE_OFF + channel, 0, group);
-        midisend(mpos + 3, MIDI_EVENT_PROGRAM + channel, program, 0);
+        midisend(mpos + 0, MIDI_EVENT_NOTE_OFF + channel, 0, group);
+        midisend(mpos + 1, MIDI_EVENT_PROGRAM + channel, program, 0);
         midi_bus = 0;
-
-        mpos + 4;
+        mpos + 2;
     ) : (
         mpos;
     );
@@ -2682,19 +2811,11 @@ local(articulation, event, idx, value, dstchan, dstbus)
 (
     idx = -1;
     (type == MIDI_EVENT_NOTE_ON || type == MIDI_EVENT_NOTE_OFF) ? (
-        idx = 128 + msg2;
-    ) : (
-        (type == MIDI_EVENT_CC) ? (
-            idx = 256 + (msg2 * 128) + msg3;
-        ) : (
-            (type == MIDI_EVENT_PROGRAM) ? (
-                idx = msg2;
-            );
-        );
+        idx = msg2;
     );
     this.articulation = 0;
     (idx != -1) ? (
-        idx += (256 + 128 * 128) * channel;
+        idx += 128 * channel;
         value = articulations_by_output_event[idx];
         value != 0 ? (
             articulation = value & 0x00ffffff;
@@ -2762,10 +2883,15 @@ tick += 1;
     );
 );
 
-
-memset(program_change_mpos_delta, 0, MAX_CHANNELS);
-
+first = 1;
 while (midirecv(mpos, msg1, msg2, msg3)) (
+    // As this is the first event, clear program_change_mpos_delta.  We do this here
+    // instead of outside the loop so that we don't needlessly call memset() on every
+    // @block execution.
+    first ? (
+        memset(program_change_mpos_delta, 0, MAX_CHANNELS);
+        first = 0;
+    );
     type = msg1 & 0xf0;
     channel = msg1 & 0x0f;
     mpos += program_change_mpos_delta[channel];
@@ -2952,41 +3078,45 @@ while (midirecv(mpos, msg1, msg2, msg3)) (
     );
 );
 
-
 (midi_feedback_sync_pending != 0) ? (
-    mpos = 0;
-    (midi_feedback_sync_pending & 4) ? (
-        // Send default channel to control surface
-        defchan = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
-        mpos = feedback_controller_midisend(mpos, MIDI_EVENT_NOTE_OFF + defchan, 1, 0);
-    );
-    channel = 0; loop(MAX_CHANNELS,
-        (midi_feedback_sync_pending & 2) ? (
-            // Send current program # for each group.  Incrementing mpos ensures proper
-            // ordering.
-            group = MAX_GROUPS - 1; loop(MAX_GROUPS,
-                articulation = get_active_articulation(channel, group);
-                (articulation) ? (
-                    mpos = feedback_controller_articulation(mpos, channel, articulation, group);
-                );
-                group -= 1;
-            );
+    // First check that MIDI feedback is enabled.
+    (midi_feedback & 0x10) ? (
+        mpos = 0;
+        (midi_feedback_sync_pending & 8) ? (
+            mpos = feedback_controller_custom_feedback_midi_bytes(mpos);
         );
+        (midi_feedback_sync_pending & 4) ? (
+            // Send default channel to control surface
+            defchan = gmem[GMEM_GIDX_DEFAULT_CHANNEL];
+            mpos = feedback_controller_midisend(mpos, MIDI_EVENT_NOTE_OFF + defchan, 1, 0);
+        );
+        channel = 0; loop(MAX_CHANNELS,
+            (midi_feedback_sync_pending & 2) ? (
+                // Send current program # for each group.
+                group = MAX_GROUPS - 1; loop(MAX_GROUPS,
+                    articulation = get_active_articulation(channel, group);
+                    (articulation) ? (
+                        mpos = feedback_controller_articulation(mpos, channel, articulation, group);
+                    );
+                    group -= 1;
+                );
+            );
 
-        (midi_feedback_sync_pending & 1) ? (
-            // Now send all observed CC values for this channel.
-            midi_bus = midi_feedback & 0x0f;
-            ccs = last_ccs_by_channel + (channel * MAX_CHANNELS);
-            i = 0; loop(128,
-                ccs[i] >= 0 ? (
-                    midisend(mpos, MIDI_EVENT_CC + channel, i, ccs[i]);
-                    mpos += 1;
+            (midi_feedback_sync_pending & 1) ? (
+                // Now send all observed CC values for this channel.
+                midi_bus = midi_feedback & 0x0f;
+                ccs = last_ccs_by_channel + (channel * MAX_CHANNELS);
+                i = 0; loop(128,
+                    ccs[i] >= 0 ? (
+                        midisend(mpos, MIDI_EVENT_CC + channel, i, ccs[i]);
+                        mpos += 1;
+                    );
+                    i += 1;
                 );
-                i += 1;
+                midi_bus = 0;
             );
-            midi_bus = 0;
+            channel += 1;
         );
-        channel += 1;
     );
     midi_feedback_sync_pending = 0;
 );
