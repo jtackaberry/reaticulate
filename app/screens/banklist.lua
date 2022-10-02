@@ -298,6 +298,8 @@ function screen.create_banklist_ui(bank)
             -- the window is wider and we have fill room).
             rpadding=60,
             tagged=true,
+            thotzone=4,
+            bhotzone=3,
             flat=art.channels == 0 and 'label' or false,
         }
         art.button.onclick = function(button, event)
