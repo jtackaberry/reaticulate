@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.8'}end)()
+return {_VERSION='0.5.9'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -2506,7 +2506,8 @@ event:set_handled(self)self:queue_draw()end
 local last=rtk.mouse.last[event.button]
 local dx=last and math.abs(last.x-event.x)or 0
 local dy=last and math.abs(last.y-event.y)or 0
-if state&4~=0 and dx<3 and dy<3 then
+local thresh=(rtk.touchscroll and 25 or 4)*rtk.scale.value
+if state&4~=0 and dx<thresh and dy<thresh then
 if self:_handle_doubleclick(event)then
 event:set_handled(self)self:queue_draw()end
 self._last_mousedown_time=0
@@ -4457,7 +4458,7 @@ wh=wh+ctp+cbp
 child_maxw=math.min(math.max(child_maxw,ww,attrs._minw or 0),inner_maxw)child_totalh=child_totalh+math.max(wh,attrs._minh or 0)child_geometry[#child_geometry+1]={x=wx,y=wy,w=ww,h=wh}end
 end
 child_totalh=child_totalh+(#self.children-1)*vspacing
-local col_width=math.ceil(child_maxw)local num_columns=math.floor((inner_maxw+hspacing)/(col_width+hspacing))local col_height=h
+local col_width=math.ceil(child_maxw)local num_columns=math.max(1,math.floor((inner_maxw+hspacing)/(col_width+hspacing)))local col_height=h
 if not col_height and #child_geometry>0 then
 col_height=child_geometry[1].h
 for i=2,#child_geometry do
