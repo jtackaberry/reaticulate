@@ -1,4 +1,4 @@
-# 0.5.9 - October 2, 2022
+# 0.5.9 - October 3, 2022
 
 This is another hotfix for the Reaticulate 0.5 series.
 
@@ -6,6 +6,8 @@ This is another hotfix for the Reaticulate 0.5 series.
 
 * Fixed double clicking not reliably working on touch screens (caused by overly tight mouse drift detection)
 * Fixed visual glitching (such as disappearing text) that could occur at particular zoom levels and window sizes
+* Fixed status bar message not always properly updating while mousing through the articulation list
+
 
 # 0.5.8 - September 13, 2022
 
@@ -29,7 +31,6 @@ This is a hotfix release to address a couple embarrassing regressions slipped in
 * Retroactive record is improved because now Reaticulate will always send the necessary MIDI for articulation changes to the VKB, which is captured in the retroactive record buffer
 * The factory bank for Cinematic Studio Strings is now compatible with the newly released CSS v1.7 (which changed the keyswitch used for legato).  These same factory banks continue to be compatible with previous versions of CSS as well.
 
-
 ## Bug Fixes
 
 * Support 14-bit CCs assigned to Reaticulate's various "insert/activate by CC" actions ([#189](https://github.com/jtackaberry/reaticulate/issues/189)) (thanks to Kabraxist)
@@ -51,7 +52,6 @@ This is a hotfix release to address a couple embarrassing regressions slipped in
 ## Minor Enhancements
 
 * Finessed the behavior of multi-item insertion logic introduced in 0.5.4, which should work more intuitively for typical workflows ([#171](https://github.com/jtackaberry/reaticulate/issues/171))
-
 
 ## Bug Fixes
 
