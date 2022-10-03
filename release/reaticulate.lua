@@ -2365,11 +2365,14 @@ function rtk.Widget:_is_mouse_over(clparentx,clparenty,event)local calc=self.cal
 local x,y=calc.x+clparentx,calc.y+clparenty
 local w,h=calc.w,calc.h
 if calc._hotzone_set then
-local l=calc.lhotzone or 0
-local t=calc.thotzone or 0
+local scale=rtk.scale.value
+local l=(calc.lhotzone or 0)*scale
+local t=(calc.thotzone or 0)*scale
 x=x-l
 y=y-t
-w=w+l+(calc.rhotzone or 0)h=h+t+(calc.bhotzone or 0)end
+w=w+l+(calc.rhotzone or 0)*scale
+h=h+t+(calc.bhotzone or 0)*scale
+end
 return self.window and self.window.in_window and
 rtk.point_in_box(event.x,event.y,x,y,w,h)end
 function rtk.Widget:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)self.offx=offx
@@ -2504,10 +2507,7 @@ if state&16==0 and not dnd.dragging then
 if self:_handle_click(event)then
 event:set_handled(self)self:queue_draw()end
 local last=rtk.mouse.last[event.button]
-local dx=last and math.abs(last.x-event.x)or 0
-local dy=last and math.abs(last.y-event.y)or 0
-local thresh=(rtk.touchscroll and 25 or 4)*rtk.scale.value
-if state&4~=0 and dx<thresh and dy<thresh then
+if state&4~=0 then
 if self:_handle_doubleclick(event)then
 event:set_handled(self)self:queue_draw()end
 self._last_mousedown_time=0
@@ -3940,7 +3940,7 @@ self._tooltip_widget=rtk._mouseover_widget
 need_draw=true
 end
 if mouse_button_changed and rtk.touchscroll and self._jsx then
-self._restore_mouse_pos={self._jsx,self._jsy}end
+self._restore_mouse_pos={self._jsx,self._jsy,nil}end
 if mouse_moved then
 if self.in_window then
 self._jsx=nil
@@ -3994,7 +3994,7 @@ rtk.mouse.state.order[#rtk.mouse.state.order+1]=event.button
 rtk.mouse.state.latest=event.button
 elseif event.type==rtk.Event.MOUSEUP then
 if rtk.touchscroll and event.buttons==0 and self._restore_mouse_pos then
-local x,y=table.unpack(self._restore_mouse_pos)rtk.callafter(0.2,reaper.JS_Mouse_SetPosition,x,y)self._restore_mouse_pos=nil
+self._restore_mouse_pos[3]=now+0.2
 end
 end
 self:_handle_window_event(event,now)else
@@ -4063,6 +4063,11 @@ reaper.JS_Mouse_SetCursor(calc.cursor)reaper.JS_WindowMessage_Intercept(self.hwn
 gfx.setcursor(calc.cursor,0)end
 elseif in_window_changed and self.hwnd and rtk.has_js_reascript_api then
 reaper.JS_WindowMessage_Release(self.hwnd, "WM_SETCURSOR")end
+end
+if self._restore_mouse_pos and not buttons_down then
+local x,y,when=table.unpack(self._restore_mouse_pos)if when and now>=when then
+reaper.JS_Mouse_SetPosition(x,y)self._restore_mouse_pos=nil
+end
 end
 if mouse_moved then
 self._last_mousemove_time=now
@@ -9298,12 +9303,14 @@ color=app:get_articulation_color(color)end
 if rtk.color.luma(color)>rtk.light_luma_threshold then
 darkicon=true
 end
-art.icon=articons.get(art.iconname, darkicon, 'note-eighth')art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
+art.icon=articons.get(art.iconname, darkicon, 'note-eighth')art.button=rtk.Button{label=art.shortname or art.name,icon=art.icon,tooltip=art.message,color=color,padding=2,rpadding=60,tagged=true,thotzone=4,bhotzone=3,flat=art.channels==0 and 'label' or false,}art.button.onclick=function(button,event)screen.onartclick(art,event)end
 art.button.onlongpress=function(button,event)app:activate_articulation(art,true,true,nil,event.alt)return true
 end
 art.button.ondoubleclick=art.button.onlongpress
 art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
-art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
+art.button.onmouseleave=function(button,event)if app.status==art.outputstr then
+app:set_statusbar(nil)end
+end
 art.button.onmouseenter=function(button,event)if not art.outputstr then
 art.outputstr=art:describe_outputs()end
 app:set_statusbar(art.outputstr)return true
