@@ -4,7 +4,7 @@ layout: default
 permalink: /
 ---
 <div style='border: 1px solid #4f596c; background-color: #2c3034; padding: 9px; text-align: center; margin-bottom: 1em'>
-Version 0.5.8 is now available!  Read about the <a href='{% link news.md %}#reaticulate-058-released'>new features and fixes</a>.
+Version 0.5.9 is now available!  Read about the <a href='{% link news.md %}#reaticulate-059-released'>new features and fixes</a>.
 </div>
 
 ![floating](img/banklist.png)

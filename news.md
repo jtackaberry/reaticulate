@@ -4,10 +4,18 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.9 Released
+*October 3, 2022*
+
+### Bug Fixes
+
+* Fixed double clicking not reliably working on touch screens (caused by overly tight mouse drift detection)
+* Fixed visual glitching (such as disappearing text) that could occur at particular zoom levels and window sizes
+* Fixed status bar message not always properly updating while mousing through the articulation list
+
+
 # Reaticulate 0.5.8 Released
 *September 13, 2022*
-
-## Full Change Log
 
 ### Bug Fixes
 
@@ -17,8 +25,6 @@ permalink: /news/
 
 # Reaticulate 0.5.7 Released
 *September 12, 2022*
-
-## Full Change Log
 
 ### New Features
 
@@ -43,8 +49,6 @@ permalink: /news/
 # Reaticulate 0.5.6 Released
 *March 8, 2022*
 
-## Full Change Log
-
 ### Bug Fixes
 
 * Fixed a runtime error that could occur on startup when detecting display resolution
@@ -53,7 +57,6 @@ permalink: /news/
 # Reaticulate 0.5.5 Released
 *February 27, 2022*
 
-## Full Change Log
 ### Minor Enhancements
 
 * Finessed the behavior of multi-item insertion logic introduced in 0.5.4, which should work more intuitively for typical workflows ([#171](https://github.com/jtackaberry/reaticulate/issues/171))
@@ -68,7 +71,6 @@ permalink: /news/
 
 0.5.4 is a minor release bringing a couple small functional improvements.
 
-## Full Change Log
 ### New Features
 
 * Allow inserting articulations across multiple MIDI items when they are all open in the MIDI editor, enabled for editing, and have selected notes ([#167](https://github.com/jtackaberry/reaticulate/issues/167))
@@ -82,8 +84,6 @@ permalink: /news/
 *February 17, 2022*
 
 0.5.3 fixes a critical bug on MacOS with Retina displays.
-
-## Full Change Log
 
 ### Minor Enhancements
 
@@ -100,8 +100,6 @@ permalink: /news/
 
 0.5.2 is a minor release to address another pair of small issues.
 
-## Full Change Log
-
 ### Bug Fixes
 
 * Fixed a regression from 0.5.1 where Reaticulate would crash when a bank on the current track had an articulation without an icon name
@@ -112,8 +110,6 @@ permalink: /news/
 *February 8, 2022*
 
 0.5.1 is a minor release to pick up a couple bug fixes.
-
-## Full Change Log
 
 ### Bug Fixes
 
