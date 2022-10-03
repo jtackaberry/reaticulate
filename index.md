@@ -13,15 +13,9 @@ Version 0.5.9 is now available!  Read about the <a href='{% link news.md %}#reat
 Install it with [ReaPack](https://reapack.com/):
 
 ```
-https://reaticulate.com/release.xml
+https://reaticulate.com/index.xml
 ```
 
-Or if you're feeling particularly adventurous and always want the latest version
-even if it's a pre-release:
-
-```
-https://reaticulate.com/prerelease.xml
-```
 
 For more details on installation, [check the download page](download).
 

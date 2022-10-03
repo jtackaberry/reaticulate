@@ -22,7 +22,7 @@ it](https://reapack.com/).
 
 Once you have ReaPack installed:
 1. Open the menu: `Extensions | ReaPack | Import a Repository`
-1. Paste in this URL: `https://reaticulate.com/release.xml`
+1. Paste in this URL: `https://reaticulate.com/index.xml`
 1. Double click the newly added Reaticulate item in the repository list
 1. Click the `Install/update Reaticulate` button and select `Install all packages`
 
@@ -36,27 +36,23 @@ Now's a good time to read more about [how to launch and use Reaticulate](/usage)
 ### Living on the edge?
 
 Pre-releases are made available from time to time and can give an earlier preview to new functionality
-or fixes.  For the pre-release version, instead of the above ReaPack URL, use this one:
+or fixes.  You can opt into the pre-release track by following these steps:
+ 1. From the menu, select `Extensions | ReaPack | Browse Packages`
+ 2. In the *Filter* box, search for `Reaticulate`
+ 3. Right-click on Reaticulate in the packages list and select `Enable pre-releases (bleeding edge)`
 
-```
-https://reaticulate.com/prerelease.xml
-```
+(This option requres ReaPack v1.2.4 or later.  ReaPack v1.2.4 was released on April 2, 2022.)
 
-This ReaPack will always contain the latest version, whether a release, or a subsequent pre-release.
+Your feedback with pre-releases is very much appreciated.  See the [contact page](/contact) for details on how to report issues.
 
 <p class='warning'>
     Pre-releases are kept as stable as possible, unfortunately by virtue of having less testing time they are
-    more likely to contain bugs.<br/><br/>Your feedback with pre-releases is very much appreciated.
-    See the <a href='{% link contact.md %}'> contact page</a> for details on how to report issues.
+    more likely to contain bugs.<br/><br/>
+    You can always opt out of the pre-release track by repeating the above steps.  However be
+    aware that downgrading major or minor versions is not supported, only patch-level versions
+    may be downgraded.  For example, downgrading from 0.<b>6</b>.0-pre1 to 0.<b>5</b>.9 is not a
+    supported downgrade path, while moving from 0.5.9-pre1 to 0.5.6, say, <i>is</i> supported.
 </p>
-
-
-
-It's possible to switch between the release and prerelease ReaPacks, but you first need to uninstall
-Reaticulate before following the above installation instructions again.  (Don't worry, your custom
-banks won't be affected.)
-
-See the *Uninstalling* section below for instructions on how to first remove an existing version of Reaticulate if you want to switch between release and prerelease.
 
 
 ## The Hard Way (Manual)
