@@ -13,14 +13,22 @@ Be sure to restart Reaper after installing any extensions.
 
 # Installation
 
-## The Easy Way (ReaPack)
+You have 3 installation options:
+
+1. The Easiest Way (Online ReaPack): for Internet-connected DAWs
+1. The Less Easy Way (Offline ReaPack): for non-Internet-connected DAWs
+1. The Hard Way (Manual): for non-Internet-connected DAWs without the ReaPack extension
+
+Once you install it, learn [how to launch and use Reaticulate](/usage).
+
+## Option 1. The Easiest Way (Online ReaPack) - Recommended
 
 If your DAW is connected to the Internet, you can install Reaticulate as a ReaPack repository.
 
-If you don't already have ReaPack, [head on over to reapack.com and install
-it](https://reapack.com/).
+If you don't already have ReaPack, [head on over to reapack.com to download](https://reapack.com/) and [install
+it](https://reapack.com/user-guide#installation).
 
-Once you have ReaPack installed:
+Once you have ReaPack installed, in REAPER:
 1. Open the menu: `Extensions | ReaPack | Import a Repository`
 1. Paste in this URL: `https://reaticulate.com/index.xml`
 1. Double click the newly added Reaticulate item in the repository list
@@ -55,9 +63,27 @@ Your feedback with pre-releases is very much appreciated.  See the [contact page
 </p>
 
 
-## The Hard Way (Manual)
+## Option 2. The Less Easy Way (Offline ReaPack)
 
-If your DAW doesn't have Internet connectivity, you can follow these manual installation
+If your DAW doesn't have any Internet connectivity, you can still install Reaticulate via
+ReaPack by using ReaPack's offline archive feature.
+
+As with Option 1, this method still requires ReaPack, so be sure to [download](https://reapack.com/) and [install
+it](https://reapack.com/user-guide#installation).
+
+1. Download the `Reaticulate-<version>.ReaPackArchive` file from [the latest release of Reaticulate](https://github.com/jtackaberry/reaticulate/releases/latest) and copy it to your DAW (via USB thumbdrive or whatever)
+2. In REAPER, from the menu select `Extensions | ReaPack | Manage Repositories`
+3. Click the `Import/Export` button at the bottom of the Manage Repositories dialog, and select `Import offline archive`
+4. Find and select the `ReaPackArchive` file that you downloaded from step 1.
+
+That's it. Next [learn how to launch and use Reaticulate](/usage).
+
+
+## Option 3. The Hard Way (Manual)
+
+👉 If you use this method, please [let us know](/contact).  Support for this installation method will be discontinued if no one uses it.
+
+If your DAW doesn't have Internet connectivity and you're unable to use ReaPack, you can follow these manual installation
 instructions:
 
 1. Download the `Reaticulate-<version>.zip` file from [the latest release of Reaticulate](https://github.com/jtackaberry/reaticulate/releases/latest) and copy it to your DAW (via USB thumbdrive or whatever)
@@ -70,13 +96,16 @@ instructions:
 1. Navigate to `Scripts/Reaticulate/actions/` and select all files in that directory, and then click the Open button
 1. Invoke the action `Script: Reaticulate_Main.lua` from the actions list
 
+That's it. Next [learn how to launch and use Reaticulate](/usage).
+
+
 # Updating
 
-Access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated
-to the latest version.
+For normal online installs (option 1 above), access `Extensions | ReaPack | Synchronize packages` via Reaper's menu to ensure Reaticulate is updated to the latest version.
 
-If Reaticulate does update, you should restart Reaper to ensure the latest version of all
-Reaticulate scripts are running.
+If Reaticulate does update, you should restart Reaper to ensure the latest version of all Reaticulate scripts are running.
+
+For offline installs (options 2 or 3 above), repeat the entire process download and install process again using the latest version of Reaticulate.
 
 
 # Download Bank Files
