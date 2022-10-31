@@ -15,6 +15,14 @@ permalink: /reabank/
     download user-contributed banks</a> for various libraries.
 </p>
 
+While this page tries to be relatively accessible and provides several examples, it's also
+a detailed technical specification for how to create articulation maps (banks) for
+Reaticulate, which might be daunting for new users.  Seventh Sam has [provided an excellent blog
+post](https://seventhsam.com/blog/blog/6779963/how-to-create-custom-reaticulate-banks-for-your-sample-libraries-120a9322-0e24-4db4-b5db-153a7eaf6334),
+which may serve as a friendlier introduction to this topic.  Your best bet would be to
+start there, and then reference this page for the complete details.
+
+And now onto the show ...
 
 Reaticulate directly manages REAPER's assigned global Reabank file, which it dynamically
 assembles from both the distributed factory banks and your own custom banks.  Relative to
