@@ -3,6 +3,19 @@ title: Usage | reaticulate
 layout: default
 permalink: /usage/
 ---
+
+<p class='warning'>
+    Before we get into it, Seventh Sam <a
+    href="https://seventhsam.com/blog/blog/6781138/how-to-use-reaticulate-to-manage-your-sample-library-articulations">
+    has provided an excellent blog post on how to use Reaticulate</a>, offering a more
+    accessible introduction to Reaticulate's usage than this page, which is more
+    comprehensive but also more technical.
+    <br/><br/>
+    So we recommend you read <a
+    href="https://seventhsam.com/blog/blog/6781138/how-to-use-reaticulate-to-manage-your-sample-library-articulations">Seventh
+    Sam's blog post</a> first, and then come back here to fill in the missing pieces.
+</p>
+
 # First Run
 
 * Open Reaper's Actions list (the `?` key by default) and run `Script: Reaticulate_Main.lua`
