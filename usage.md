@@ -4,7 +4,7 @@ layout: default
 permalink: /usage/
 ---
 
-<p class='warning'>
+<p class='info'>
     Before we get into it, Seventh Sam <a
     href="https://seventhsam.com/blog/blog/6781138/how-to-use-reaticulate-to-manage-your-sample-library-articulations">
     has provided an excellent blog post on how to use Reaticulate</a>, offering a more

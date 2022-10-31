@@ -150,6 +150,21 @@ p.warning {
 	font-style: normal !important;
 }
 
+p.info {
+	color: #b2d3ff;
+	border-left: 4px solid #00a0ff;
+	padding-left: 10px;
+	font-style: normal !important;
+}
+
+p.info a {
+    color: #d5eaff;
+}
+
+p.info a:hover {
+    color: #f0f0ff;
+}
+
 li ul, li ol {
     margin-bottom: 0 !important;
 }
