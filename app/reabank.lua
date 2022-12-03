@@ -633,12 +633,12 @@ function reabank.init()
     reabank.reabank_filename_user = Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")
     log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)
     local cur_factory_bank_size, err = rtk.file.size(reabank.reabank_filename_factory)
-    local file = get_reabank_file() or ''
-    local tmpnum = file:lower():match("-tmp(%d+).")
-    if tmpnum and rtk.file.exists(file) then
-        log.debug("reabank: tmp file exists: %s", file)
+    local tmpfile = get_reabank_file() or ''
+    local tmpnum = tmpfile:lower():match("-tmp(%d+).")
+    if tmpnum and rtk.file.exists(tmpfile) then
+        log.debug("reabank: tmp file exists: %s", tmpfile)
         reabank.version = tonumber(tmpnum)
-        reabank.filename_tmp = file
+        reabank.filename_tmp = tmpfile
         -- Determine if the factory bank has changed file size.  If it has (because e.g. the user
         -- upgraded), ensure the tmp bank is refreshed.  This isn't foolproof, but it's good enough.
         local last_factory_bank_size = reaper.GetExtState("reaticulate", "factory_bank_size")
@@ -651,6 +651,12 @@ function reabank.init()
         else
             log.info("reabank: factory bank has changed: cur=%s last=%s", cur_factory_bank_size, last_factory_bank_size)
         end
+    else
+        -- tmp file is missing, so reset the last written msblsb table to ensure that when
+        -- write_reabank_for_project() is next called, a replacement file will be
+        -- generated.
+        log.debug('reabank: previous tmp file is missing: %s', tmpfile)
+        reabank.last_written_msblsb = nil
     end
 
     -- Either tmp reabank doesn't exist or factory banks have changed, so regenerate.
