@@ -1,3 +1,13 @@
+# 0.5.10 - December 3, 2022
+
+This is a hotfix for the Reaticulate 0.5 series.
+
+## Bug Fixes
+
+* Fixed "CC feedback is enabled but BUS Translator FX not found" error that was logged to console as of REAPER 6.70 when Reaticulate feedback is enabled
+* Fixed numeric articulation names (e.g. "1-15-42") when the user deletes the Reaticulate-tmp<n>.reabank file in Reaper's Data directory
+
+
 # 0.5.9 - October 3, 2022
 
 This is another hotfix for the Reaticulate 0.5 series.
