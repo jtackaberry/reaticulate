@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.9'}end)()
+return {_VERSION='0.5.10'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -571,6 +571,13 @@ function string.hash(s)local hash=5381
 for i=1,#s do
 hash=((hash<<5)+hash)+s:byte(i)end
 return hash&0x7fffffffffffffff
+end
+function string.count(s,sub)local c=-1
+local idx=0
+while idx do
+_,idx=s:find(sub,idx+1)c=c+1
+end
+return c
 end
 local function val_to_str(v,seen)if "string" == type(v) then
 v=string.gsub(v, "\n", "\\n")if string.match(string.gsub(v,"[^'\"]",""), '^"+$') then
@@ -2753,14 +2760,18 @@ end
 end
 if pass2 then
 wx,wy,ww,wh=self:_reflow_child(inner_maxw,inner_maxh,uiscale,window,greedyw,greedyh)end
+if greedyw then
 if calc.halign==rtk.Widget.CENTER then
 wx=wx+math.max(0,inner_maxw-ccalc.w)/2
 elseif calc.halign==rtk.Widget.RIGHT then
 wx=wx+math.max(0,(inner_maxw-ccalc.w)-rp)end
+end
+if greedyh then
 if calc.valign==rtk.Widget.CENTER then
 wy=wy+math.max(0,inner_maxh-ccalc.h)/2
 elseif calc.valign==rtk.Widget.BOTTOM then
 wy=wy+math.max(0,(inner_maxh-ccalc.h)-bp)end
+end
 ccalc.x=wx
 ccalc.y=wy
 child:_realize_geometry()innerw=math.ceil(rtk.clamp(ww+wx,fillw and greedyw and inner_maxw,inner_maxw))innerh=math.ceil(rtk.clamp(wh+wy,fillh and greedyh and inner_maxh,inner_maxh))else
@@ -3259,19 +3270,22 @@ local k=keys[n]
 calculated[k]=self:_calc_attr(k, attrs[k], calculated, nil, 'cell', widget)end
 return calculated
 end
-function rtk.Container:reorder(widget,targetidx)local srcidx=self:get_child_index(widget)if srcidx~=nil and srcidx~=targetidx and(targetidx<=srcidx or targetidx-1~=srcidx)then
-local widgetattrs=table.remove(self.children,srcidx)local org=targetidx
-if targetidx>srcidx then
-targetidx=targetidx-1
-end
-table.insert(self.children,rtk.clamp(targetidx,1,#self.children+1),widgetattrs)self._child_index_by_id=nil
+function rtk.Container:_reorder(srcidx,targetidx)if srcidx~=nil and srcidx~=targetidx then
+local widgetattrs=table.remove(self.children,srcidx)table.insert(self.children,rtk.clamp(targetidx,1,#self.children+1),widgetattrs)self._child_index_by_id=nil
 self:queue_reflow(rtk.Widget.REFLOW_FULL)return true
 else
 return false
 end
 end
-function rtk.Container:reorder_before(widget,target)local targetidx=self:get_child_index(target)return self:reorder(widget,targetidx)end
-function rtk.Container:reorder_after(widget,target)local targetidx=self:get_child_index(target)return self:reorder(widget,targetidx+1)end
+function rtk.Container:reorder(widget,targetidx)local srcidx=self:get_child_index(widget)return self:_reorder(srcidx,targetidx)end
+function rtk.Container:reorder_before(widget,target)local srcidx=self:get_child_index(widget)local targetidx=self:get_child_index(target)if not srcidx or not targetidx then
+return false
+end
+return self:_reorder(srcidx,targetidx>srcidx and targetidx-1 or targetidx)end
+function rtk.Container:reorder_after(widget,target)local srcidx=self:get_child_index(widget)local targetidx=self:get_child_index(target)if not srcidx or not targetidx then
+return false
+end
+return self:_reorder(srcidx,srcidx>targetidx and targetidx+1 or targetidx)end
 function rtk.Container:get_child(idx)if idx<0 then
 idx=#self.children+idx+1
 end
@@ -4190,13 +4204,13 @@ function rtk.Box:_reflow(boxx,boxy,boxw,boxh,fillw,fillh,clampw,clamph,uiscale,v
 calc.x,calc.y=self:_get_box_pos(boxx,boxy)local w,h,tp,rp,bp,lp,minw,maxw,minh,maxh=self:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,nil,greedyw,greedyh
 )local inner_maxw=rtk.clamp(w or(boxw-lp-rp),minw,maxw)local inner_maxh=rtk.clamp(h or(boxh-tp-bp),minh,maxh)clampw=clampw or w~=nil or fillw
 clamph=clamph or h~=nil or fillh
-self._reflowed_children={}self._child_index_by_id={}local innerw,innerh,expw,exph,expand_units,remaining_size=self:_reflow_step1(inner_maxw,inner_maxh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
+self._reflowed_children={}self._child_index_by_id={}local innerw,innerh,expw,exph,expand_units,remaining_size,total_spacing=self:_reflow_step1(inner_maxw,inner_maxh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
 )if self.orientation==rtk.Box.HORIZONTAL then
 expw=(expand_units>0)or expw
 elseif self.orientation==rtk.Box.VERTICAL then
 exph=(expand_units>0)or exph
 end
-innerw,innerh=self:_reflow_step2(inner_maxw,inner_maxh,innerw,innerh,clampw,clamph,expand_units,remaining_size,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp
+innerw,innerh=self:_reflow_step2(inner_maxw,inner_maxh,innerw,innerh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp
 )fillw=fillw or(self.w and tonumber(self.w)<1.0)fillh=fillh or(self.h and tonumber(self.h)<1.0)innerw=w or math.max(innerw,fillw and greedyw and inner_maxw or 0)innerh=h or math.max(innerh,fillh and greedyh and inner_maxh or 0)calc.w=math.ceil(rtk.clamp(innerw+lp+rp,minw,maxw))calc.h=math.ceil(rtk.clamp(innerh+tp+bp,minh,maxh))return expw,exph
 end
 function rtk.Box:_reflow_step1(w,h,clampw,clamph,uiscale,viewport,window,greedyw,greedyh)local calc=self.calc
@@ -4212,6 +4226,7 @@ end
 local expand_units=0
 local maxw,maxh=0,0
 local spacing=0
+local total_spacing=0
 local expw,exph=false,false
 for n,widgetattrs in ipairs(self.children)do
 local widget,attrs=table.unpack(widgetattrs)local wcalc=widget.calc
@@ -4266,12 +4281,14 @@ maxw=w
 elseif orientation==rtk.Box.HORIZONTAL and attrs.stretch==rtk.Box.STRETCH_FULL and greedyh then
 maxh=h
 end
+attrs._running_spacing_total=spacing
 spacing=(attrs.spacing or self.spacing)*rtk.scale.value
+total_spacing=total_spacing+spacing
 self:_add_reflowed_child(widgetattrs,attrs.z or wcalc.z or 0)else
 widget.realized=false
 end
 end
-self:_determine_zorders()return maxw,maxh,expw,exph,expand_units,remaining_size
+self:_determine_zorders()return maxw,maxh,expw,exph,expand_units,remaining_size,total_spacing
 end
 end)()
 
@@ -4279,7 +4296,7 @@ __mod_rtk_vbox=(function()
 local rtk=__mod_rtk_core
 rtk.VBox=rtk.class('rtk.VBox', rtk.Box)rtk.VBox.register{orientation=rtk.Box.VERTICAL
 }function rtk.VBox:initialize(attrs,...)rtk.Box.initialize(self,attrs,self.class.attributes.defaults,...)end
-function rtk.VBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and(remaining_size/expand_units)or 0
+function rtk.VBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and((remaining_size-total_spacing)/expand_units)or 0
 local offset=0
 local spacing=0
 local second_pass={}for n,widgetattrs in ipairs(self.children)do
@@ -4301,7 +4318,8 @@ local cellh
 if expand and greedyh and expand>0 then
 local expanded_size=(expand_unit_size*expand)expand_units=expand_units-expand
 if attrs._minh and attrs._minh>expanded_size then
-expand_unit_size=(remaining_size-attrs._minh-ctp-cbp-spacing)/expand_units
+local remaining_spacing=total_spacing-attrs._running_spacing_total
+expand_unit_size=(remaining_size-attrs._minh-ctp-cbp-remaining_spacing)/expand_units
 end
 local child_maxw=rtk.clamp(w-clp-crp,attrs._minw,attrs._maxw)local child_maxh=rtk.clamp(expanded_size-ctp-cbp-spacing,attrs._minh,attrs._maxh)child_maxh=math.min(child_maxh,h-maxh-spacing)wx,wy,ww,wh=widget:reflow(0,0,child_maxw,child_maxh,attrs.fillw,attrs.fillh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
 )if attrs.stretch==rtk.Box.STRETCH_FULL and greedyw then
@@ -4363,7 +4381,7 @@ __mod_rtk_hbox=(function()
 local rtk=__mod_rtk_core
 rtk.HBox=rtk.class('rtk.HBox', rtk.Box)rtk.HBox.register{orientation=rtk.Box.HORIZONTAL
 }function rtk.HBox:initialize(attrs,...)rtk.Box.initialize(self,attrs,self.class.attributes.defaults,...)end
-function rtk.HBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and(remaining_size/expand_units)or 0
+function rtk.HBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and((remaining_size-total_spacing)/expand_units)or 0
 local offset=0
 local spacing=0
 local second_pass={}for n,widgetattrs in ipairs(self.children)do
@@ -4385,9 +4403,10 @@ local cellw
 if expand and greedyw and expand>0 then
 local expanded_size=(expand_unit_size*expand)expand_units=expand_units-expand
 if attrs._minw and attrs._minw>expanded_size then
-expand_unit_size=(remaining_size-attrs._minw-clp-crp-spacing)/expand_units
+local remaining_spacing=total_spacing-attrs._running_spacing_total
+expand_unit_size=(remaining_size-attrs._minw-clp-crp-remaining_spacing)/expand_units
 end
-local child_maxw=rtk.clamp(expanded_size-clp-crp-spacing,attrs._minw,attrs._maxh)child_maxw=math.min(child_maxw,w-maxw-spacing)local child_maxh=rtk.clamp(h-ctp-cbp,attrs._minh,attrs._maxh)wx,wy,ww,wh=widget:reflow(0,0,child_maxw,child_maxh,attrs.fillw,attrs.fillh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
+local child_maxw=rtk.clamp(expanded_size-clp-crp,attrs._minw,attrs._maxw)child_maxw=math.min(child_maxw,w-maxw-spacing)local child_maxh=rtk.clamp(h-ctp-cbp,attrs._minh,attrs._maxh)wx,wy,ww,wh=widget:reflow(0,0,child_maxw,child_maxh,attrs.fillw,attrs.fillh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
 )if attrs.stretch==rtk.Box.STRETCH_FULL and greedyh then
 wh=maxh
 end
@@ -5270,12 +5289,16 @@ end,reflow=rtk.Widget.REFLOW_FULL,},fontsize=rtk.Attribute{default=function(self
 end,reflow=rtk.Widget.REFLOW_FULL,},fontscale=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_FULL,},fontflags=rtk.Attribute{default=function(self,attr)return self._theme_font[3]
 end
 },}function rtk.Text:initialize(attrs,...)self._theme_font=self._theme_font or rtk.theme.text_font or rtk.theme.default_font
-rtk.Widget.initialize(self,attrs,rtk.Text.attributes.defaults,...)self._font=rtk.Font()end
+rtk.Widget.initialize(self,attrs,rtk.Text.attributes.defaults,...)self._font=rtk.Font()self._num_newlines=nil
+end
 function rtk.Text:__tostring_info()return self.text
 end
-function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)if attr == 'text' and reflow == rtk.Widget.REFLOW_DEFAULT and self.w and not self.calc.wrap then
-if not value:find('\n') and not oldval:find('\n') then
+function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)if attr == 'text' and reflow == rtk.Widget.REFLOW_DEFAULT and not self.calc.wrap then
+if self.w or(self.box and self.box[5])then
+local c=value:count('\n')if c==self._num_newlines then
 reflow=rtk.Widget.REFLOW_PARTIAL
+end
+self._num_newlines=c
 end
 end
 local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
@@ -5291,9 +5314,7 @@ function rtk.Text:_reflow(boxx,boxy,boxw,boxh,fillw,fillh,clampw,clamph,uiscale,
 calc.x,calc.y=self:_get_box_pos(boxx,boxy)self._font:set(calc.font,calc.fontsize,calc.fontscale,calc.fontflags)local w,h,tp,rp,bp,lp,minw,maxw,minh,maxh=self:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,nil,greedyw,greedyh
 )local hpadding=lp+rp
 local vpadding=tp+bp
-local lmaxw=(clampw or(fillw and greedyw))and(boxw-hpadding)or w or math.inf
-local lmaxh=(clamph or(fillh and greedyh))and(boxh-vpadding)or h or math.inf
-local seg=self._segments
+local lmaxw=w or((clampw or(fillw and greedyw))and(boxw-hpadding)or math.inf)local lmaxh=h or((clamph or(fillh and greedyh))and(boxh-vpadding)or math.inf)local seg=self._segments
 if not seg or seg.boxw~=lmaxw or not seg.isvalid()then
 self._segments,self.lw,self.lh=self._font:layout(calc.text,lmaxw,lmaxh,calc.wrap~=rtk.Text.WRAP_NONE,self.textalign and calc.textalign or calc.halign,true,calc.spacing,calc.wrap==rtk.Text.WRAP_BREAK_WORD
 )end
@@ -5530,13 +5551,13 @@ end)()
 __mod_rtk_application=(function()
 local rtk=__mod_rtk_core
 rtk.Application=rtk.class('rtk.Application', rtk.VBox)rtk.Application.register{status=rtk.Attribute{reflow=rtk.Widget.REFLOW_NONE
-},statusbar=nil,toolbar=nil,screens=nil,}function rtk.Application:initialize(attrs,...)self.screens={stack={},}self.toolbar=rtk.HBox{bg=rtk.theme.bg,spacing=0,z=110,}self.toolbar:add(rtk.HBox.FLEXSPACE)self.statusbar=rtk.HBox{bg=rtk.theme.bg,lpadding=10,tpadding=5,bpadding=5,rpadding=10,z=110,}self.statusbar.text = self.statusbar:add(rtk.Text{color=rtk.theme.text_faded, text=""}, {expand=1})rtk.VBox.initialize(self,attrs,self.class.attributes.defaults,...)self:add(self.toolbar,{minw=150,bpadding=2})self:add(rtk.VBox.FLEXSPACE)self._content_position=#self.children
+},statusbar=nil,toolbar=nil,screens=nil,}function rtk.Application:initialize(attrs,...)self.screens={stack={},}self.toolbar=rtk.HBox{bg=rtk.theme.bg,spacing=0,z=110,}self.toolbar:add(rtk.HBox.FLEXSPACE)self.statusbar=rtk.HBox{bg=rtk.theme.bg,lpadding=10,tpadding=5,bpadding=5,rpadding=10,z=110,}self.statusbar.text = self.statusbar:add(rtk.Text{color=rtk.theme.text_faded, text=""}, {fillw=true})rtk.VBox.initialize(self,attrs,self.class.attributes.defaults,...)self:add(self.toolbar,{minw=150,bpadding=2})self:add(rtk.VBox.FLEXSPACE)self._content_position=#self.children
 self:add(self.statusbar,{fillw=true})self:_handle_attr('status', self.calc.status)end
 function rtk.Application:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='status' then
-self.statusbar.text:attr('text', value or ' ', nil, rtk.Widget.REFLOW_PARTIAL)end
+self.statusbar.text:attr('text', value or ' ')end
 return ok
 end
 function rtk.Application:add_screen(screen,name)assert(type(screen)=='table' and screen.init, 'screen must be a table containing an init() function')name=name or screen.name
@@ -7213,13 +7234,15 @@ end
 self.realized=true
 end
 local function get_reabank_file()local ini=rtk.file.read(reaper.get_ini_file())return ini and ini:match("mididefbankprog=([^\n]*)")end
-function reabank.init()log.time_start()reabank.last_written_msblsb=app:get_ext_state('last_written_msblsb')reabank.reabank_filename_factory=Path.join(Path.basedir, "Reaticulate-factory.reabank")reabank.reabank_filename_user=Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)local cur_factory_bank_size,err=rtk.file.size(reabank.reabank_filename_factory)local file=get_reabank_file() or ''local tmpnum=file:lower():match("-tmp(%d+).")if tmpnum and rtk.file.exists(file)then
-log.debug("reabank: tmp file exists: %s", file)reabank.version=tonumber(tmpnum)reabank.filename_tmp=file
+function reabank.init()log.time_start()reabank.last_written_msblsb=app:get_ext_state('last_written_msblsb')reabank.reabank_filename_factory=Path.join(Path.basedir, "Reaticulate-factory.reabank")reabank.reabank_filename_user=Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)local cur_factory_bank_size,err=rtk.file.size(reabank.reabank_filename_factory)local tmpfile=get_reabank_file() or ''local tmpnum=tmpfile:lower():match("-tmp(%d+).")if tmpnum and rtk.file.exists(tmpfile)then
+log.debug("reabank: tmp file exists: %s", tmpfile)reabank.version=tonumber(tmpnum)reabank.filename_tmp=tmpfile
 local last_factory_bank_size=reaper.GetExtState("reaticulate", "factory_bank_size")if cur_factory_bank_size==tonumber(last_factory_bank_size)then
 reabank.menu=nil
 reabank.parseall()log.info("reabank: parsed bank files (factory banks unchanged since last start)")log.time_end()return
 else
 log.info("reabank: factory bank has changed: cur=%s last=%s", cur_factory_bank_size, last_factory_bank_size)end
+else
+log.debug('reabank: previous tmp file is missing: %s', tmpfile)reabank.last_written_msblsb=nil
 end
 log.info("reabank: generating new reabank")reabank.parseall()reaper.SetExtState("reaticulate", "factory_bank_size", tostring(cur_factory_bank_size), true)log.info("reabank: refreshed reabank %s", reabank.filename_tmp)log.time_end()end
 function reabank.onprojectchange()local state=app.project_state
@@ -8200,7 +8223,7 @@ local rtk=rtk
 local log=rtk.log
 local feedback={SYNC_CC=1,SYNC_ARTICULATIONS=2,SYNC_CHANNEL=4,SYNC_TRACK=8,SYNC_ALL=1|2|4|8,track=nil,track_guid=nil
 }local BUS_TRANSLATOR_MAGIC=0x42424242
-local BUS_TRANSLATOR_FX_NAME='Feedback Translate.jsfx'function feedback.is_enabled()return(app.config.cc_feedback_device or-1)>=0 and app.config.cc_feedback_active
+local BUS_TRANSLATOR_FX_SCRIPT='Feedback Translate.jsfx'local BUS_TRANSLATOR_FX_DESC='Bus Translator for MIDI Feedback (Reaticulate)'function feedback.is_enabled()return(app.config.cc_feedback_device or-1)>=0 and app.config.cc_feedback_active
 end
 function feedback.ontrackchange(last,cur)if not feedback.is_enabled()then
 return
@@ -8246,12 +8269,16 @@ if app.config.cc_feedback_device<0 then
 enabled=0
 end
 rfx.opcode_on_track(track,rfx.OPCODE_SET_CC_FEEDBACK_ENABLED,{enabled,bus})end
+function feedback.get_feedback_track_fx_idx(track)local fx=reaper.TrackFX_GetByName(track,BUS_TRANSLATOR_FX_DESC,false)if fx==-1 then
+fx=reaper.TrackFX_GetByName(track,BUS_TRANSLATOR_FX_SCRIPT,false)end
+return fx
+end
 function feedback.get_feedback_track()if feedback.track and reaper.ValidatePtr2(0, feedback.track, "MediaTrack*") and
 reaper.GetTrackGUID(feedback.track)==feedback.track_guid then
 return feedback.track
 end
 for i=0,reaper.CountTracks(0)-1 do
-local track=reaper.GetTrack(0,i)local fx=reaper.TrackFX_GetByName(track,BUS_TRANSLATOR_FX_NAME,false)if fx>=0 then
+local track=reaper.GetTrack(0,i)local fx=feedback.get_feedback_track_fx_idx(track)if fx>=0 then
 local val,_,_=reaper.TrackFX_GetParam(track,fx,3)if val==BUS_TRANSLATOR_MAGIC then
 feedback.track=track
 feedback.track_guid=reaper.GetTrackGUID(track)return track
@@ -8260,7 +8287,7 @@ end
 end
 return nil
 end
-function feedback.create_feedback_track()log.info('creating track for MIDI feedback')reaper.PreventUIRefresh(1)local idx=reaper.CountTracks(0)reaper.InsertTrackAtIndex(idx,false)feedback.track=reaper.GetTrack(0,idx)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)feedback.track_guid=reaper.GetTrackGUID(feedback.track)reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)local fx=reaper.TrackFX_AddByName(feedback.track,BUS_TRANSLATOR_FX_NAME,0,1)reaper.TrackFX_Show(feedback.track,fx,2)feedback.update_feedback_track_settings()feedback.scroll_mixer(app.track)reaper.PreventUIRefresh(-1)return feedback.track
+function feedback.create_feedback_track()log.info('creating track for MIDI feedback')reaper.PreventUIRefresh(1)local idx=reaper.CountTracks(0)reaper.InsertTrackAtIndex(idx,false)feedback.track=reaper.GetTrack(0,idx)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)feedback.track_guid=reaper.GetTrackGUID(feedback.track)reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)local fx=reaper.TrackFX_AddByName(feedback.track,BUS_TRANSLATOR_FX_SCRIPT,0,1)reaper.TrackFX_Show(feedback.track,fx,2)feedback.update_feedback_track_settings()feedback.scroll_mixer(app.track)reaper.PreventUIRefresh(-1)return feedback.track
 end
 function feedback.destroy_feedback_track()local feedback_track=feedback.get_feedback_track()if feedback_track then
 for idx=0,reaper.CountTracks(0)-1 do
@@ -8273,8 +8300,8 @@ reaper.DeleteTrack(feedback_track)feedback.track=nil
 end
 end
 function feedback.update_feedback_track_settings(dosync)local feedback_track=feedback.get_feedback_track()if feedback_track then
-reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)local fx=reaper.TrackFX_GetByName(feedback_track,BUS_TRANSLATOR_FX_NAME,false)if fx==-1 then
-log.error("feedback: CC feedback is enabled but BUS Translator FX not found")else
+reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)local fx=feedback.get_feedback_track_fx_idx(feedback_track)if fx==-1 then
+log.error("feedback: CC feedback is enabled but Bus Translator FX not found")else
 reaper.Undo_BeginBlock()rfx.push_state(feedback_track)reaper.TrackFX_SetParam(feedback_track,fx,0,app.config.cc_feedback_active and 1 or 0)reaper.TrackFX_SetParam(feedback_track,fx,1,15)reaper.TrackFX_SetParam(feedback_track,fx,2,app.config.cc_feedback_bus-1)reaper.TrackFX_SetParam(feedback_track,fx,3,BUS_TRANSLATOR_MAGIC)local articulation_cc=0
 if app.config.cc_feedback_articulations==2 then
 articulation_cc=app.config.cc_feedback_articulations_cc or 0
