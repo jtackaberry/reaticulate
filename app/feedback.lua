@@ -28,10 +28,11 @@ local feedback = {
     track_guid = nil
 }
 
--- A special value we set on the BUS Translator JSFX to identify whether the instance
+-- A special value we set on the Bus Translator JSFX to identify whether the instance
 -- was instantiated by Reaticulate.
 local BUS_TRANSLATOR_MAGIC = 0x42424242
-local BUS_TRANSLATOR_FX_NAME = 'Feedback Translate.jsfx'
+local BUS_TRANSLATOR_FX_SCRIPT = 'Feedback Translate.jsfx'
+local BUS_TRANSLATOR_FX_DESC = 'Bus Translator for MIDI Feedback (Reaticulate)'
 
 
 function feedback.is_enabled()
@@ -136,15 +137,26 @@ function feedback._set_track_enabled(track, enabled)
 end
 
 
+function feedback.get_feedback_track_fx_idx(track)
+    -- First try to find the JSFX based on the desc field.  As of REAPER 6.70 this seems
+    -- to be the only way to discover the translator JSFX.
+    local fx = reaper.TrackFX_GetByName(track, BUS_TRANSLATOR_FX_DESC, false)
+    if fx == -1 then
+        -- Fall back to the script name
+        fx = reaper.TrackFX_GetByName(track, BUS_TRANSLATOR_FX_SCRIPT, false)
+    end
+    return fx
+end
+
 function feedback.get_feedback_track()
     if feedback.track and reaper.ValidatePtr2(0, feedback.track, "MediaTrack*") and
        reaper.GetTrackGUID(feedback.track) == feedback.track_guid then
         return feedback.track
     end
-    -- Locate feedback track (whichever track has the BUS Translator FX)
+    -- Locate feedback track (whichever track has the Bus Translator FX)
     for i = 0, reaper.CountTracks(0) - 1 do
         local track = reaper.GetTrack(0, i)
-        local fx = reaper.TrackFX_GetByName(track, BUS_TRANSLATOR_FX_NAME, false)
+        local fx = feedback.get_feedback_track_fx_idx(track)
         if fx >= 0 then
             -- Test magic value to ensure this instance was one created by Reaticulate
             local val, _, _ = reaper.TrackFX_GetParam(track, fx, 3)
@@ -176,7 +188,7 @@ function feedback.create_feedback_track()
     feedback.track_guid = reaper.GetTrackGUID(feedback.track)
     reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)
     -- Install FX.
-    local fx = reaper.TrackFX_AddByName(feedback.track, BUS_TRANSLATOR_FX_NAME, 0, 1)
+    local fx = reaper.TrackFX_AddByName(feedback.track, BUS_TRANSLATOR_FX_SCRIPT, 0, 1)
     -- Hide FX
     reaper.TrackFX_Show(feedback.track, fx, 2)
     feedback.update_feedback_track_settings()
@@ -207,10 +219,10 @@ function feedback.update_feedback_track_settings(dosync)
     local feedback_track = feedback.get_feedback_track()
     if feedback_track then
         reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)
-        local fx = reaper.TrackFX_GetByName(feedback_track, BUS_TRANSLATOR_FX_NAME, false)
+        local fx = feedback.get_feedback_track_fx_idx(feedback_track)
         if fx == -1 then
             -- If this happens it's a bug.
-            log.error("feedback: CC feedback is enabled but BUS Translator FX not found")
+            log.error("feedback: CC feedback is enabled but Bus Translator FX not found")
         else
             reaper.Undo_BeginBlock()
             rfx.push_state(feedback_track)
