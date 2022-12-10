@@ -441,9 +441,9 @@ Where elements enclosed in square brackets are optional, and where:
 
 * Output events prefixed with `-` don't affect the routing of future MIDI events.  Otherwise, if channels
   are not prefixed this way then any future user-generated MIDI event will be routed to this channel when
-  the articulation is activated.
+  the articulation is activated (which in most cases is what you want).
 
-* `type` defines the type of output event (see below), e.g. note, cc, etc.
+* `type` defines the type of output event (see below), e.g. `note`, `cc`, etc.
 
 * `@channel` specifies the destination MIDI channel of the output event and, unless `type` is
   prefixed with `-`, it implies subsequent MIDI events will also be routed to that destination
@@ -482,11 +482,11 @@ Possible output event types are:
 
 | Type      | Definition
 |:---------:|---------------
-| program   | Program change message.  `arg1` indicates the program number and `arg2` can be omitted.
-| cc        | A CC event, with `arg1` indicating the CC number and `arg2` defining the CC value
-| note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity.  `arg2` is optional and if not specified the default velocity is 127.  (It's not possible to specify the note-off velocity, however.  This is a seldom used feature of MIDI.)
+| program   | Program change message.  `arg1` indicates the program number between 0-127 (inclusive) and `arg2` can be omitted.
+| cc        | A CC event, with `arg1` indicating the CC number and `arg2` defining the CC value, both between 0-127 inclusive
+| note      | A sequence of note-on and note-off events, where `arg1` defines the note number and `arg2` indicates note-on velocity, both between 0-127 inclusive.  `arg2` is optional and if not specified the default velocity is 127.  (It's not possible to specify the note-off velocity, however.  This is a seldom used feature of MIDI.)
 | note-hold | A note-on event, where `arg1` and `arg2` are according to the `note` type.  The corresponding note-off event is deferred until the next articulation is activated.  This is useful with patches that use non-latching keyswitches.
-| pitch     | A pitch bend event, where `arg1` is the 14-bit pitch bend value between -8192 and 8192 and `arg2` is not used.
+| pitch     | A pitch bend event, where `arg1` is the 14-bit pitch bend value between -8192 and 8192 inclusive, and `arg2` is not used.
 | art       | Activate another articulation in the same bank, with `arg1` being the articulation program number and `arg2` is omitted.  This can be used to create composite articulations.  For example if you have articulation groups for con sordino/senza sordino and legato/non-legato, you could have another composite articulation for non-legato sustain con sordino that references the articulations in the other groups.
 
 Be aware that if multiple `note` output events are specified for a given articulation, all note-on

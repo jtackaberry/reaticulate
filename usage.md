@@ -30,6 +30,8 @@ Let's first get some terminology and basic operational stuff out of the way:
 * A __patch__ refers to a set of articulations offered by some virtual instrument on a single channel
     * For example Spitfire's Chamber Strings Ensembles patch running in Kontakt
 * A __bank__ defines a set of articulations that typically describes some multi-articulation patch
+    * Reaticulate banks are analogous to __articulation maps__ that you might have seen in
+      other DAWs, and the terms can be used interchangeably
     * __Factory banks__ are distributed with Reaticulate and you won't directly change these, but
       you can use them
     * __User banks__ are custom banks made by you, or made by others that you have imported
@@ -64,12 +66,10 @@ to switch articulations.
     During live recordings, when articulations are activated Reaticulate will inject the Program Change event into Reaper's Virtual MIDI Keyboard queue, so in order to ensure articulation changes get recorded, be sure to configure the track to input from All MIDI Inputs while recording (right click on the Record Arm button on the track and select <code>Input: MIDI | All MIDI Inputs | All Channels</code> (or any specific channel of your choice) from the menu.
 </p>
 
-A **bank** is a collection of articulations that generally describes a multi-articulation
-patch of a virtual instrument.  Reaticulate banks are analogous to **articulation maps** that
-you might have seen in other DAWs, and the term can be used interchangeably. A track can
-contain a number of banks provided there are no conflicting articulations (program
-numbers) between banks assigned to the same MIDI source channel (see below) on a given
-track.
+A **bank** (i.e. articulation map) is a collection of articulations that generally
+describes a multi-articulation patch of a virtual instrument.  A track can contain a
+number of banks provided there are no conflicting articulations (program numbers) between
+banks assigned to the same MIDI source channel (see below) on a given track.
 
 Once added, each bank has a few UI elements:
 * A selection of one of the existing factory or user banks (see below)
