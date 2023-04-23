@@ -1,0 +1,1072 @@
+//----------------------------------------------------------------------------
+// Source: steamwings - adapted from Orchestral Template for Reaper v2.3.02 https://vi-control.net/community/threads/otr-2-3-02-update-released-april-20-2023-orchestral-template-for-reaper-release-thread.59314/post-5328370
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Violins I"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-b75c-a34c-8de1-416c794af71a
+Bank * * Peteris Vasks Strings - Violins I
+//! c=default i=legato o=@1/cc@1:3,1/note@1:24,127
+1 Sustains Legato Subtle Vibrato
+//! c=default i=legato-vibrato o=@1/cc@1:3,127/note@1:24,127
+2 Sustains Legato Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:25,127
+3 Sustains Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:25,127
+4 Sustains Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:26,127
+5 Sustains Soft Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:26,127
+6 Sustains Soft Expressive Vibrato
+//! c=default i=light o=@1/note@1:27,127
+7 Sustains Legato Whispered
+//! c=default i=light o=@1/note@1:28,127
+8 Sustains Whispered
+//! c=default i=light o=@1/note@1:29,127
+9 Sustains Whispered Soft
+//! c=default i=portato o=@1/note@1:30,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:31,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:32,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:33,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:34,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:35,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:36,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,1/note@1:37,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:37,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:37,127
+19 Trills min3
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:38,127
+20 Measured Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:38,127
+21 Measured Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:38,127
+22 Measured Trills min3
+//! c=default i=harmonics o=@1/note@1:39,127
+23 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:40,127
+24 Harmonics Tremolo
+//! c=default i=tremolo o=@2/cc@2:3,0/note@2:24,127
+25 Finger Tremolo min3
+//! c=default i=tremolo o=@2/cc@2:3,64/note@2:24,127
+26 Finger Tremolo maj3
+//! c=default i=tremolo o=@2/cc@2:3,127/note@2:24,127
+27 Finger Tremolo 4th
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
+28 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
+29 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
+30 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
+31 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:27,127
+32 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:27,127
+33 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
+34 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
+35 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
+36 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
+37 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:30,127
+38 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:30,127
+39 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:31,127
+40 Glissando FX
+//! c=default i=alt-wave o=@2/note@2:32,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:33,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:33,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:33,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:33,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:33,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:33,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:33,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:34,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:34,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:34,127
+55 Upbeats Down 5th
+//! c=default i=run-major o=@2/cc@2:3,1/note@2:35,127
+56 Runs Maj
+//! c=default i=run-minor o=@2/cc@2:3,35/note@2:35,127
+57 Runs Min
+//! c=default i=run-minor o=@2/cc@2:3,70/note@2:35,127
+58 Runs Melodic
+//! c=default i=run-minor o=@2/cc@2:3,127/note@2:35,127
+59 Runs Dorian
+//! c=default i=list o=@2/note@2:36,127
+60 Runs Aleatoric
+//! c=default i=crescendo o=@2/cc@2:3,1/note@2:37,127
+61 Accelerando Climax (Maj/Min Split Keyboard)
+
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Violins II"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-5e82-084b-8909-0724a354be79
+Bank * * Peteris Vasks Strings - Violins II
+//! c=default i=legato o=@1/cc@1:3,1/note@1:24,127
+1 Sustains Legato Subtle Vibrato
+//! c=default i=legato-vibrato o=@1/cc@1:3,127/note@1:24,127
+2 Sustains Legato Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:25,127
+3 Sustains Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:25,127
+4 Sustains Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:26,127
+5 Sustains Soft Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:26,127
+6 Sustains Soft Expressive Vibrato
+//! c=default i=light o=@1/note@1:27,127
+7 Sustains Legato Whispered
+//! c=default i=light o=@1/note@1:28,127
+8 Sustains Whispered
+//! c=default i=light o=@1/note@1:29,127
+9 Sustains Whispered Soft
+//! c=default i=portato o=@1/note@1:30,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:31,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:32,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:33,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:34,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:35,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:36,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,1/note@1:37,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:37,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:37,127
+19 Trills min3
+//! c=default i=harmonics o=@1/cc@1:3,0/note@1:38,127
+20 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:39,127
+21 Harmonics Tremolo
+//! c=default i=tremolo o=@2/cc@2:3,0/note@2:24,127
+22 Finger Tremolo min3
+//! c=default i=tremolo o=@2/cc@2:3,64/note@2:24,127
+23 Finger Tremolo maj3
+//! c=default i=tremolo o=@2/cc@2:3,127/note@2:24,127
+24 Finger Tremolo 4th
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
+25 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
+26 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
+27 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
+28 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:27,127
+29 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:27,127
+30 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
+31 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
+32 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
+33 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
+34 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:30,127
+35 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:30,127
+36 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:31,127
+37 Glissando FX
+//! c=default i=alt-wave o=@2/note@2:32,127
+38 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:33,127
+39 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:33,127
+40 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:33,127
+41 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:33,127
+42 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:33,127
+43 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:33,127
+44 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:33,127
+45 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:34,127
+46 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
+47 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
+48 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
+49 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:34,127
+50 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
+51 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:34,127
+52 Upbeats Down 5th
+//! c=default i=run-major o=@2/cc@2:3,1/note@2:35,127
+53 Runs Maj
+//! c=default i=run-minor o=@2/cc@2:3,35/note@2:35,127
+54 Runs Min
+//! c=default i=run-minor o=@2/cc@2:3,70/note@2:35,127
+55 Runs Melodic
+//! c=default i=run-minor o=@2/cc@2:3,127/note@2:35,127
+56 Runs Dorian
+//! c=default i=list o=@2/note@2:36,127
+57 Runs Aleatoric
+//! c=default i=crescendo o=@2/cc@2:3,1/note@2:37,127
+58 Accelerando Climax
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Violas"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-6544-6c44-a801-8b461a9a5a61
+Bank * * Peteris Vasks Strings - Violas
+//! c=default i=legato o=@1/cc@1:3,1/note@1:24,127
+1 Sustains Sustains Legato Subtle Vibrato
+//! c=default i=legato-vibrato o=@1/cc@1:3,127/note@1:24,127
+2 Sustains Legato Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:25,127
+3 Sustains Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:25,127
+4 Sustains Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:26,127
+5 Sustains Soft Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:26,127
+6 Sustains Soft Expressive Vibrato
+//! c=default i=light o=@1/note@1:27,127
+7 Sustains Legato Whispered
+//! c=default i=light o=@1/note@1:28,127
+8 Sustains Whispered
+//! c=default i=light o=@1/note@1:29,127
+9 Sustains Whispered Soft
+//! c=default i=portato o=@1/note@1:30,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:31,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:32,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:33,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:34,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:35,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:36,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,1/note@1:37,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:37,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,126/note@1:37,127
+19 Trills min3
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:38,127
+20 Measured Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:38,127
+21 Measured Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,126/note@1:38,127
+22 Measured Trills min3
+//! c=default i=harmonics o=@1/note@1:39,127
+23 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:40,127
+24 Harmonics Tremolo
+//! c=default i=tremolo o=@2/cc@2:3,0/note@2:24,127
+25 Finger Tremolo min3
+//! c=default i=tremolo o=@2/cc@2:3,64/note@2:24,127
+26 Finger Tremolo maj3
+//! c=default i=tremolo o=@2/cc@2:3,126/note@2:24,127
+27 Finger Tremolo 4th
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
+28 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
+29 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
+30 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
+31 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:27,127
+32 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:27,127
+33 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
+34 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
+35 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
+36 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
+37 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:30,127
+38 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:30,127
+39 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:31,127
+40 Glissando FX
+//! c=default i=alt-wave o=@2/note@2:32,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,0/note@2:33,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:33,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:33,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:33,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:33,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:33,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,126/note@2:33,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,0/note@2:34,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:34,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,126/note@2:34,127
+55 Upbeats Down 5th
+//! c=default i=run-major o=@2/cc@2:3,1/note@2:35,127
+56 Runs Maj
+//! c=default i=run-minor o=@2/cc@2:3,35/note@2:35,127
+57 Runs Min
+//! c=default i=run-minor o=@2/cc@2:3,70/note@2:35,127
+58 Runs Melodic
+//! c=default i=run-minor o=@2/cc@2:3,127/note@2:35,127
+59 Runs Dorian
+//! c=default i=list o=@2/note@2:36,127
+60 Runs Aleatoric
+//! c=default i=crescendo o=@2/cc@2:3,1/note@2:37,127
+61 Accelerando Climax (Maj/Min Split Keyboard)
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Celli"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-ac9e-b347-b5f7-ed48adcb788a
+Bank * * Peteris Vasks Strings - Celli
+//! c=default i=legato o=@1/cc@1:3,1/note@1:96,127
+1 Sustains Sustains Legato Subtle Vibrato
+//! c=default i=legato-vibrato o=@1/cc@1:3,127/note@1:96,127
+2 Sustains Legato Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:97,127
+3 Sustains Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:97,127
+4 Sustains Expressive Vibrato
+//! c=default i=note-whole o=@1/cc@1:3,1/note@1:98,127
+5 Sustains Soft Subtle Vibrato
+//! c=default i=vibrato o=@1/cc@1:3,127/note@1:98,127
+6 Sustains Soft Expressive Vibrato
+//! c=default i=light o=@1/note@1:99,127
+7 Sustains Legato Whispered
+//! c=default i=light o=@1/note@1:100,127
+8 Sustains Whispered
+//! c=default i=light o=@1/note@1:101,127
+9 Sustains Whispered Soft
+//! c=default i=portato o=@1/note@1:102,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:103,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:104,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:105,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:106,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:107,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:108,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,1/note@1:109,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:109,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:109,127
+19 Trills min3
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:110,127
+20 Measured Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:110,127
+21 Measured Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:110,127
+22 Measured Trills min3
+//! c=default i=harmonics o=@1/note@1:111,127
+23 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:112,127
+24 Harmonics Tremolo
+//! c=default i=tremolo o=@2/cc@2:3,1/note@2:96,127
+25 Finger Tremolo min3
+//! c=default i=tremolo o=@2/cc@2:3,64/note@2:96,127
+26 Finger Tremolo maj3
+//! c=default i=tremolo o=@2/cc@2:3,127/note@2:96,127
+27 Finger Tremolo 4th
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:97,127
+28 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:97,127
+29 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:98,127
+30 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:98,127
+31 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:99,127
+32 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:99,127
+33 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:100,127
+34 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:100,127
+35 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:101,127
+36 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:101,127
+37 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:102,127
+38 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:102,127
+39 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:103,127
+40 Glissando FX
+//! c=default i=alt-wave o=@2/note@2:104,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:105,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:105,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:105,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:105,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:105,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:105,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:105,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:106,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:106,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:106,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:106,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:106,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:106,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:106,127
+55 Upbeats Down 5th
+//! c=default i=run-major o=@2/cc@2:3,1/note@2:107,127
+56 Runs Maj
+//! c=default i=run-minor o=@2/cc@2:3,35/note@2:107,127
+57 Runs Min
+//! c=default i=run-minor o=@2/cc@2:3,70/note@2:107,127
+58 Runs Melodic
+//! c=default i=run-minor o=@2/cc@2:3,127/note@2:107,127
+59 Runs Dorian
+//! c=default i=list o=@2/note@2:108,127
+60 Runs Aleatoric
+//! c=default i=crescendo o=@2/cc@2:3,1/note@2:109,127
+61 Accelerando Climax (Maj/Min Split Keyboard)
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Basses"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-ff0e-0d4c-905a-8d2a71911d59
+Bank * * Peteris Vasks Strings - Basses
+//! c=default i=list o=@1/note@1:96,127
+1 Legato
+//! c=default i=list o=@1/note@1:97,127
+2 Sustains
+//! c=default i=list o=@1/note@1:98,127
+3 Sustains Soft
+//! c=default i=portato o=@1/note@1:99,127
+4 Portato
+//! c=default i=marcato-quarter o=@1/note@1:100,127
+5 Marcato
+//! c=default i=staccato o=@1/note@1:101,127
+6 Staccato
+//! c=default i=spiccato o=@1/note@1:102,127
+7 Spiccato
+//! c=default i=pizz o=@1/note@1:103,127
+8 Pizzicato
+//! c=default i=tremolo o=@1/note@1:104,127
+9 Tremolo
+//! c=default i=tremolo o=@1/note@1:105,127
+10 Tremolo Short
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:96,127
+11 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:96,127
+12 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:97,127
+13 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:97,127
+14 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:98,127
+15 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:98,127
+16 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:99,127
+17 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:99,127
+18 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:100,127
+19 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:100,127
+20 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:101,127
+21 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:101,127
+22 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:102,127
+23 Glissando FX
+//! c=default i=alt-wave o=@2/note@2:103,127
+24 Waving Longs
+//! c=default i=crescendo o=@2/note@2:104,127
+25 Accelerando Climax
+
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - First Chair Violin I"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-7b00-b44b-9e48-92ef1e3b296f
+Bank * * Peteris Vasks Strings - First Chair Violin I
+//! c=default i=list o=@1/note@1:24,127
+1 Sustains Legato Lyrical
+//! c=default i=list o=@1/note@1:25,127
+2 Sustains Lyrical
+//! c=default i=list o=@1/note@1:26,127
+3 Sustains Lyrical Soft
+//! c=default i=list o=@1/note@1:27,127
+4 Sustains Legato Expressive
+//! c=default i=list o=@1/note@1:28,127
+5 Sustains Expressive
+//! c=default i=list o=@1/note@1:29,127
+6 Sustains Expressive Soft
+//! c=default i=list o=@1/note@1:30,127
+7 Sustains Legato Sul Tasto
+//! c=default i=list o=@1/note@1:31,127
+8 Sustains Sul Tasto
+//! c=default i=list o=@1/note@1:32,127
+9 Sustains Sul Tasto Soft
+//! c=default i=portato o=@1/note@1:33,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:34,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:35,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:36,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:37,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:38,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:39,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:40,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:40,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:40,127
+19 Trills min3
+//! c=default i=harmonics o=@1/note@1:41,127
+20 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:42,127
+21 Harmonics Tremolo
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:24,127
+22 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:24,127
+23 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
+24 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
+25 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
+26 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
+27 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:27,127
+28 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:27,127
+29 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
+30 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
+31 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
+32 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
+33 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:30,127
+34 Glissando FX
+//! c=default i=trill o=@2/cc@2:3,0/note@2:31,127
+35 Trills Short HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:31,127
+36 Trills Short WT
+//! c=default i=trill o=@2/cc@2:3,126/note@2:31,127
+37 Trills Short min3
+//! c=default i=trill o=@2/cc@2:3,0/note@2:32,127
+38 Trills Single HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:32,127
+39 Trills Single WT
+//! c=default i=trill o=@2/cc@2:3,126/note@2:32,127
+40 Trills Single min3
+//! c=default i=alt-wave o=@2/note@2:33,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:34,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:34,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:34,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:35,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:35,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:35,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:35,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:35,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:35,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:35,127
+55 Upbeats Down 5th
+
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - First Chair Violin II"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-96b1-fc44-8d8a-22eb2d9501f8
+Bank * * Peteris Vasks Strings - First Chair Violin II
+//! c=default i=list o=@1/note@1:24,127
+1 Sustains Legato Lyrical
+//! c=default i=list o=@1/note@1:25,127
+2 Sustains Lyrical
+//! c=default i=list o=@1/note@1:26,127
+3 Sustains Lyrical Soft
+//! c=default i=list o=@1/note@1:27,127
+4 Sustains Legato Expressive
+//! c=default i=list o=@1/note@1:28,127
+5 Sustains Expressive
+//! c=default i=list o=@1/note@1:29,127
+6 Sustains Expressive Soft
+//! c=default i=list o=@1/note@1:30,127
+7 Sustains Legato Sul Tasto
+//! c=default i=list o=@1/note@1:31,127
+8 Sustains Sul Tasto
+//! c=default i=list o=@1/note@1:32,127
+9 Sustains Sul Tasto Soft
+//! c=default i=portato o=@1/note@1:33,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:34,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:35,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:36,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:37,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:38,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:39,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:40,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:40,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:40,127
+19 Trills min3
+//! c=default i=harmonics o=@1/note@1:41,127
+20 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:42,127
+21 Harmonics Tremolo
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:24,127
+22 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:24,127
+23 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
+24 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
+25 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
+26 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
+27 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:27,127
+28 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:27,127
+29 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
+30 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
+31 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
+32 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
+33 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:30,127
+34 Glissando FX
+//! c=default i=trill o=@2/cc@2:3,0/note@2:31,127
+35 Trills Short HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:31,127
+36 Trills Short WT
+//! c=default i=trill o=@2/cc@2:3,127/note@2:31,127
+37 Trills Short min3
+//! c=default i=trill o=@2/cc@2:3,0/note@2:32,127
+38 Trills Single HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:32,127
+39 Trills Single WT
+//! c=default i=trill o=@2/cc@2:3,127/note@2:32,127
+40 Trills Single min3
+//! c=default i=alt-wave o=@2/note@2:33,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:34,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:34,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:34,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:35,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:35,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:35,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:35,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:35,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:35,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:35,127
+55 Upbeats Down 5th
+
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - First Chair Viola"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-88e5-e74e-b159-2248975386d3
+Bank * * Peteris Vasks Strings - First Chair Viola
+//! c=default i=list o=@1/note@1:24,127
+1 Sustains Legato Lyrical
+//! c=default i=list o=@1/note@1:25,127
+2 Sustains Lyrical
+//! c=default i=list o=@1/note@1:26,127
+3 Sustains Lyrical Soft
+//! c=default i=list o=@1/note@1:27,127
+4 Sustains Legato Expressive
+//! c=default i=list o=@1/note@1:28,127
+5 Sustains Expressive
+//! c=default i=list o=@1/note@1:29,127
+6 Sustains Expressive Soft
+//! c=default i=list o=@1/note@1:30,127
+7 Sustains Legato Sul Tasto
+//! c=default i=list o=@1/note@1:31,127
+8 Sustains Sul Tasto
+//! c=default i=list o=@1/note@1:32,127
+9 Sustains Sul Tasto Soft
+//! c=default i=portato o=@1/note@1:33,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:34,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:35,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:36,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:37,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:38,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:39,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:40,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:40,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:40,127
+19 Trills min3
+//! c=default i=harmonics o=@1/note@1:41,127
+20 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:42,127
+21 Harmonics Tremolo
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:24,127
+22 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:24,127
+23 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
+24 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
+25 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
+26 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
+27 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:27,127
+28 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:27,127
+29 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
+30 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
+31 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
+32 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
+33 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:30,127
+34 Glissando FX
+//! c=default i=trill o=@2/cc@2:3,0/note@2:31,127
+35 Trills Short HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:31,127
+36 Trills Short WT
+//! c=default i=trill o=@2/cc@2:3,127/note@2:31,127
+37 Trills Short min3
+//! c=default i=trill o=@2/cc@2:3,0/note@2:32,127
+38 Trills Single HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:32,127
+39 Trills Single WT
+//! c=default i=trill o=@2/cc@2:3,127/note@2:32,127
+40 Trills Single min3
+//! c=default i=alt-wave o=@2/note@2:33,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:34,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:34,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:34,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:35,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:35,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:35,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:35,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:35,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:35,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:35,127
+55 Upbeats Down 5th
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - First Chair Cello"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-eeff-1047-a719-bec4565df603
+Bank * * Peteris Vasks Strings - First Chair Cello
+//! c=default i=list o=@1/note@1:96,127
+1 Sustains Legato Lyrical
+//! c=default i=list o=@1/note@1:97,127
+2 Sustains Lyrical
+//! c=default i=list o=@1/note@1:98,127
+3 Sustains Lyrical Soft
+//! c=default i=list o=@1/note@1:99,127
+4 Sustains Legato Expressive
+//! c=default i=list o=@1/note@1:100,127
+5 Sustains Expressive
+//! c=default i=list o=@1/note@1:101,127
+6 Sustains Expressive Soft
+//! c=default i=list o=@1/note@1:102,127
+7 Sustains Legato Sul Tasto
+//! c=default i=list o=@1/note@1:103,127
+8 Sustains Sul Tasto
+//! c=default i=list o=@1/note@1:104,127
+9 Sustains Sul Tasto Soft
+//! c=default i=portato o=@1/note@1:105,127
+10 Portato
+//! c=default i=marcato-quarter o=@1/note@1:106,127
+11 Marcato
+//! c=default i=staccato o=@1/note@1:107,127
+12 Staccato
+//! c=default i=spiccato o=@1/note@1:108,127
+13 Spiccato
+//! c=default i=pizz o=@1/note@1:109,127
+14 Pizzicato
+//! c=default i=tremolo o=@1/note@1:110,127
+15 Tremolo
+//! c=default i=tremolo o=@1/note@1:111,127
+16 Tremolo Short
+//! c=default i=trill-min2 o=@1/cc@1:3,0/note@1:112,127
+17 Trills HT
+//! c=default i=trill-maj2 o=@1/cc@1:3,64/note@1:112,127
+18 Trills WT
+//! c=default i=trill-min3 o=@1/cc@1:3,127/note@1:112,127
+19 Trills min3
+//! c=default i=harmonics o=@1/note@1:113,127
+20 Harmonics Sustains
+//! c=default i=tremolo-harmonics o=@1/note@1:114,127
+21 Harmonics Tremolo
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:96,127
+22 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:96,127
+23 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:97,127
+24 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:97,127
+25 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:98,127
+26 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:98,127
+27 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:99,127
+28 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:99,127
+29 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:100,127
+30 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:100,127
+31 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:101,127
+32 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:101,127
+33 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:102,127
+34 Glissando FX
+//! c=default i=trill o=@2/cc@2:3,0/note@2:103,127
+35 Trills Short HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:103,127
+36 Trills Short WT
+//! c=default i=trill o=@2/cc@2:3,127/note@2:103,127
+37 Trills Short min3
+//! c=default i=trill o=@2/cc@2:3,0/note@2:104,127
+38 Trills Single HT
+//! c=default i=trill o=@2/cc@2:3,64/note@2:104,127
+39 Trills Single WT
+//! c=default i=trill o=@2/cc@2:3,127/note@2:104,127
+40 Trills Single min3
+//! c=default i=alt-wave o=@2/note@2:105,127
+41 Waving Longs
+//! c=default i=list o=@2/cc@2:3,1/note@2:106,127
+42 Upbeats Up HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:106,127
+43 Upbeats Up WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:106,127
+44 Upbeats Up min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:106,127
+45 Upbeats Up maj3
+//! c=default i=list o=@2/cc@2:3,79/note@2:106,127
+46 Upbeats Up 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:106,127
+47 Upbeats Up Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:106,127
+48 Upbeats Up 5th
+//! c=default i=list o=@2/cc@2:3,1/note@2:107,127
+49 Upbeats Down HT
+//! c=default i=list o=@2/cc@2:3,19/note@2:107,127
+50 Upbeats Down WT
+//! c=default i=list o=@2/cc@2:3,37/note@2:107,127
+51 Upbeats Down min3
+//! c=default i=list o=@2/cc@2:3,55/note@2:107,127
+52 Upbeats Down maj3
+//! c=default i=list o=@2/cc@2:3,77/note@2:107,127
+53 Upbeats Down 4th
+//! c=default i=list o=@2/cc@2:3,101/note@2:107,127
+54 Upbeats Down Tritone
+//! c=default i=list o=@2/cc@2:3,127/note@2:107,127
+55 Upbeats Down 5th
+
+//! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - First Chair Bass"
+//! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
+//! id=22222222-8186-db44-b785-0fc6208171ac
+Bank * * Peteris Vasks Strings - First Chair Bass
+//! c=default i=list o=@1/note@1:96,127
+1 Sustains Legato Lyrical
+//! c=default i=list o=@1/note@1:97,127
+2 Sustains Lyrical
+//! c=default i=list o=@1/note@1:98,127
+3 Sustains Lyrical Soft
+//! c=default i=portato o=@1/note@1:99,127
+4 Portato
+//! c=default i=marcato-quarter o=@1/note@1:100,127
+5 Marcato
+//! c=default i=staccato o=@1/note@1:101,127
+6 Staccato
+//! c=default i=spiccato o=@1/note@1:102,127
+7 Spiccato
+//! c=default i=pizz o=@1/note@1:103,127
+8 Pizzicato
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:96,127
+9 Glissando 5th Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:96,127
+10 Glissando 5th Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:97,127
+11 Glissando Oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:97,127
+12 Glissando Oct Down
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:98,127
+13 Glissando 2oct Up
+//! c=default i=fall o=@2/cc@2:3,127/note@2:98,127
+14 Glissando 2oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:99,127
+15 Glissando Trills 5th Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:99,127
+16 Glissando Trills 5th Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:100,127
+17 Glissando Trills Oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:100,127
+18 Glissando Trills Oct Down
+//! c=default i=trill o=@2/cc@2:3,1/note@2:101,127
+19 Glissando Trills 2oct Up
+//! c=default i=trill o=@2/cc@2:3,127/note@2:101,127
+20 Glissando Trills 2oct Down
+//! c=default i=fx o=@2/note@2:102,127
+21 Glissando FX
+//! c=default i=alt-wave o=@2/note@2:103,127
+22 Waving Longs
