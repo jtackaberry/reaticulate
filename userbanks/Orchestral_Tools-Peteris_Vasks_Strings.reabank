@@ -508,11 +508,11 @@ Bank * * Peteris Vasks Strings - Celli
 //! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
 //! id=22222222-ff0e-0d4c-905a-8d2a71911d59
 Bank * * Peteris Vasks Strings - Basses
-//! c=default i=list o=@1/note@1:96,127
-1 Legato
-//! c=default i=list o=@1/note@1:97,127
+//! c=default i=legato o=@1/note@1:96,127
+1 Sustains Legato
+//! c=default i=note-whole o=@1/note@1:97,127
 2 Sustains
-//! c=default i=list o=@1/note@1:98,127
+//! c=default i=note-whole o=@1/note@1:98,127
 3 Sustains Soft
 //! c=default i=portato o=@1/note@1:99,127
 4 Portato
@@ -564,23 +564,23 @@ Bank * * Peteris Vasks Strings - Basses
 //! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
 //! id=22222222-7b00-b44b-9e48-92ef1e3b296f
 Bank * * Peteris Vasks Strings - First Chair Violin I
-//! c=default i=list o=@1/note@1:24,127
+//! c=default i=legato o=@1/note@1:24,127
 1 Sustains Legato Lyrical
-//! c=default i=list o=@1/note@1:25,127
+//! c=default i=note-whole o=@1/note@1:25,127
 2 Sustains Lyrical
-//! c=default i=list o=@1/note@1:26,127
+//! c=default i=note-whole o=@1/note@1:26,127
 3 Sustains Lyrical Soft
-//! c=default i=list o=@1/note@1:27,127
+//! c=default i=legato o=@1/note@1:27,127
 4 Sustains Legato Expressive
-//! c=default i=list o=@1/note@1:28,127
+//! c=default i=note-whole o=@1/note@1:28,127
 5 Sustains Expressive
-//! c=default i=list o=@1/note@1:29,127
+//! c=default i=note-whole o=@1/note@1:29,127
 6 Sustains Expressive Soft
-//! c=default i=list o=@1/note@1:30,127
+//! c=default i=legato o=@1/note@1:30,127
 7 Sustains Legato Sul Tasto
-//! c=default i=list o=@1/note@1:31,127
+//! c=default i=note-whole o=@1/note@1:31,127
 8 Sustains Sul Tasto
-//! c=default i=list o=@1/note@1:32,127
+//! c=default i=note-whole o=@1/note@1:32,127
 9 Sustains Sul Tasto Soft
 //! c=default i=portato o=@1/note@1:33,127
 10 Portato
@@ -680,23 +680,23 @@ Bank * * Peteris Vasks Strings - First Chair Violin I
 //! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
 //! id=22222222-96b1-fc44-8d8a-22eb2d9501f8
 Bank * * Peteris Vasks Strings - First Chair Violin II
-//! c=default i=list o=@1/note@1:24,127
+//! c=default i=legato o=@1/note@1:24,127
 1 Sustains Legato Lyrical
-//! c=default i=list o=@1/note@1:25,127
+//! c=default i=note-whole o=@1/note@1:25,127
 2 Sustains Lyrical
-//! c=default i=list o=@1/note@1:26,127
+//! c=default i=note-whole o=@1/note@1:26,127
 3 Sustains Lyrical Soft
-//! c=default i=list o=@1/note@1:27,127
+//! c=default i=legato o=@1/note@1:27,127
 4 Sustains Legato Expressive
-//! c=default i=list o=@1/note@1:28,127
+//! c=default i=note-whole o=@1/note@1:28,127
 5 Sustains Expressive
-//! c=default i=list o=@1/note@1:29,127
+//! c=default i=note-whole o=@1/note@1:29,127
 6 Sustains Expressive Soft
-//! c=default i=list o=@1/note@1:30,127
+//! c=default i=legato o=@1/note@1:30,127
 7 Sustains Legato Sul Tasto
-//! c=default i=list o=@1/note@1:31,127
+//! c=default i=note-whole o=@1/note@1:31,127
 8 Sustains Sul Tasto
-//! c=default i=list o=@1/note@1:32,127
+//! c=default i=note-whole o=@1/note@1:32,127
 9 Sustains Sul Tasto Soft
 //! c=default i=portato o=@1/note@1:33,127
 10 Portato
@@ -796,23 +796,23 @@ Bank * * Peteris Vasks Strings - First Chair Violin II
 //! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
 //! id=22222222-88e5-e74e-b159-2248975386d3
 Bank * * Peteris Vasks Strings - First Chair Viola
-//! c=default i=list o=@1/note@1:24,127
+//! c=default i=legato o=@1/note@1:24,127
 1 Sustains Legato Lyrical
-//! c=default i=list o=@1/note@1:25,127
+//! c=default i=note-whole o=@1/note@1:25,127
 2 Sustains Lyrical
-//! c=default i=list o=@1/note@1:26,127
+//! c=default i=note-whole o=@1/note@1:26,127
 3 Sustains Lyrical Soft
-//! c=default i=list o=@1/note@1:27,127
+//! c=default i=legato o=@1/note@1:27,127
 4 Sustains Legato Expressive
-//! c=default i=list o=@1/note@1:28,127
+//! c=default i=note-whole o=@1/note@1:28,127
 5 Sustains Expressive
-//! c=default i=list o=@1/note@1:29,127
+//! c=default i=note-whole o=@1/note@1:29,127
 6 Sustains Expressive Soft
-//! c=default i=list o=@1/note@1:30,127
+//! c=default i=legato o=@1/note@1:30,127
 7 Sustains Legato Sul Tasto
-//! c=default i=list o=@1/note@1:31,127
+//! c=default i=note-whole o=@1/note@1:31,127
 8 Sustains Sul Tasto
-//! c=default i=list o=@1/note@1:32,127
+//! c=default i=note-whole o=@1/note@1:32,127
 9 Sustains Sul Tasto Soft
 //! c=default i=portato o=@1/note@1:33,127
 10 Portato
@@ -911,23 +911,23 @@ Bank * * Peteris Vasks Strings - First Chair Viola
 //! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
 //! id=22222222-eeff-1047-a719-bec4565df603
 Bank * * Peteris Vasks Strings - First Chair Cello
-//! c=default i=list o=@1/note@1:96,127
+//! c=default i=legato o=@1/note@1:96,127
 1 Sustains Legato Lyrical
-//! c=default i=list o=@1/note@1:97,127
+//! c=default i=note-whole o=@1/note@1:97,127
 2 Sustains Lyrical
-//! c=default i=list o=@1/note@1:98,127
+//! c=default i=note-whole o=@1/note@1:98,127
 3 Sustains Lyrical Soft
-//! c=default i=list o=@1/note@1:99,127
+//! c=default i=legato o=@1/note@1:99,127
 4 Sustains Legato Expressive
-//! c=default i=list o=@1/note@1:100,127
+//! c=default i=note-whole o=@1/note@1:100,127
 5 Sustains Expressive
-//! c=default i=list o=@1/note@1:101,127
+//! c=default i=note-whole o=@1/note@1:101,127
 6 Sustains Expressive Soft
-//! c=default i=list o=@1/note@1:102,127
+//! c=default i=legato o=@1/note@1:102,127
 7 Sustains Legato Sul Tasto
-//! c=default i=list o=@1/note@1:103,127
+//! c=default i=note-whole o=@1/note@1:103,127
 8 Sustains Sul Tasto
-//! c=default i=list o=@1/note@1:104,127
+//! c=default i=note-whole o=@1/note@1:104,127
 9 Sustains Sul Tasto Soft
 //! c=default i=portato o=@1/note@1:105,127
 10 Portato
@@ -1026,11 +1026,11 @@ Bank * * Peteris Vasks Strings - First Chair Cello
 //! m="Uses SINE Player default CCs for standard setup. If using the OTR mapped setup of the instrument, then Mics **when available** = CC22-29 (close, tree cardioid, ab, surround, x, ribbon, tree omni). For OTR 1mic/mapped setups PolymapXFade = CC2, SINE default controller CCs moved to CC70-75"
 //! id=22222222-8186-db44-b785-0fc6208171ac
 Bank * * Peteris Vasks Strings - First Chair Bass
-//! c=default i=list o=@1/note@1:96,127
+//! c=default i=legato o=@1/note@1:96,127
 1 Sustains Legato Lyrical
-//! c=default i=list o=@1/note@1:97,127
+//! c=default i=note-whole o=@1/note@1:97,127
 2 Sustains Lyrical
-//! c=default i=list o=@1/note@1:98,127
+//! c=default i=note-whole o=@1/note@1:98,127
 3 Sustains Lyrical Soft
 //! c=default i=portato o=@1/note@1:99,127
 4 Portato
