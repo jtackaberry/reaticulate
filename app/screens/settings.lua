@@ -50,7 +50,9 @@ local startup_script = [[
 local sep = package.config:sub(1, 1)
 local script = debug.getinfo(1, 'S').source:sub(2)
 local basedir = script:gsub('(.*)' .. sep .. '.*$', '%1')
-dofile(basedir .. sep .. 'Reaticulate' .. sep .. 'actions' .. sep .. 'Reaticulate_Start.lua')
+pcall(function()
+    dofile(basedir .. sep .. 'Reaticulate' .. sep .. 'actions' .. sep .. 'Reaticulate_Start.lua')
+end)
 -- End Reaticulate startup stanza (don't edit this line)
 ]]
 
