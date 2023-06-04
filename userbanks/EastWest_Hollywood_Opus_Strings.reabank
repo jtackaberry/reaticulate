@@ -1,0 +1,351 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Strings" n="1st Violins KS Master DIV A"
+//! m=""
+//! id=cd257d3a-dba6-4564-aa10-3db6fb91cb7c
+Bank * * 1st Violins KS Master DIV A
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="1st Violins KS Master DIV B"
+//! m=""
+//! id=9e37ac22-af97-4f25-a9ec-8faa5e9824f0
+Bank * * 1st Violins KS Master DIV B
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="1st Violins KS Master"
+//! m=""
+//! id=c3568ce5-b9bb-485b-b52d-7c9cce7bb6dd
+Bank * * 1st Violins KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="2nd Violins KS Master DIV A"
+//! m=""
+//! id=556dee2f-9dc9-41e0-a40b-63d519530934
+Bank * * 2nd Violins KS Master DIV A
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Strings" n="2nd Violins KS Master DIV B"
+//! m=""
+//! id=e00a9719-79cf-4d60-a0e5-1aaf01fd524c
+Bank * * 2nd Violins KS Master DIV B
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Strings" n="2nd Violins KS Master"
+//! m=""
+//! id=2c3d53f0-8624-4261-8757-fb91f494c696
+Bank * * 2nd Violins KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Strings" n="18V KS Master"
+//! m=""
+//! id=f3782198-fbc3-4e9b-8757-43766c306630
+Bank * * 18V KS Master
+//! c=long i=note-half o=note:24
+1 Sus NV VB
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur + Port
+//! c=short-light i=spiccato o=note:27
+42 Spiccato
+//! c=short i=note-sixteenth o=note:28
+41 Staccatissimo
+//! c=short i=staccato o=note:29
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:30
+52 Marc Short
+//! c=long-dark i=marcato-half o=note:31
+9 Marc Vib Long
+//! c=long-light i=tremolo-sul-pont o=note:32
+13 Sul Pont Trem
+//! c=long-light i=flautando o=note:33
+8 Sul Tasto Flaut
+
+//! g="EastWest/Hollywood Opus Strings" n="Basses KS Master DIV A"
+//! m=""
+//! id=da4e563f-0759-4c06-89aa-9697185d7bde
+Bank * * Basses KS Master DIV A
+//! c=long i=note-half o=note:72
+1 Sus
+//! c=long-dark i=accented-half o=note:73
+2 Sus Marc
+//! c=legato i=legato o=note:74
+20 Leg Slur
+//! c=short-light i=spiccato o=note:75
+42 Staccatissimo
+//! c=short i=staccato o=note:76
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:77
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Basses KS Master DIV B"
+//! m=""
+//! id=6478af38-0ccb-4bb0-86c1-5852130e6e70
+Bank * * Basses KS Master DIV B
+//! c=long i=note-half o=note:72
+1 Sus
+//! c=long-dark i=accented-half o=note:73
+2 Sus Marc
+//! c=legato i=legato o=note:74
+20 Leg Slur
+//! c=short-light i=spiccato o=note:75
+42 Staccatissimo
+//! c=short i=staccato o=note:76
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:77
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Basses KS Master"
+//! m=""
+//! id=0ee3d8ee-44af-406e-9753-6c0dfa9d1853
+Bank * * Basses KS Master
+//! c=long i=note-half o=note:72
+1 Sus
+//! c=long-dark i=accented-half o=note:73
+2 Sus Marc
+//! c=legato i=legato o=note:74
+20 Leg Slur
+//! c=short-light i=spiccato o=note:75
+42 Staccatissimo
+//! c=short i=staccato o=note:76
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:77
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Celli KS Master DIV A"
+//! m=""
+//! id=6992db13-b982-42f7-9300-f8375d6338f0
+Bank * * Celli KS Master DIV A
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Celli KS Master DIV B"
+//! m=""
+//! id=dd6c751f-6cd6-43c6-a009-51eddfa4e401
+Bank * * Celli KS Master DIV B
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Celli KS Master"
+//! m=""
+//! id=c556e5b5-39a7-411d-81cc-95b00f744442
+Bank * * Celli KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Violas KS Master DIV A"
+//! m=""
+//! id=1b109f93-3429-4ede-b28b-25e45a8345f9
+Bank * * Violas KS Master DIV A
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Violas KS Master DIV B"
+//! m=""
+//! id=7fc055a0-7751-404d-a2ae-c46c938151a5
+Bank * * Violas KS Master DIV B
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Violas KS Master"
+//! m=""
+//! id=5d684d7a-e63a-4fa2-9135-a6e42e3379e8
+Bank * * Violas KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long-dark i=accented-half o=note:25
+2 Sus Marc
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Stac On Bow
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="ENS KS Master"
+//! m=""
+//! id=4a240280-82a9-4774-8bfd-cd1853259690
+Bank * * ENS KS Master
+//! c=long i=note-half o=note:24
+1 Sus Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=long-dark i=tremolo-sul-pont o=note:26
+18 Sul Pont
+//! c=long-light i=sul-tasto o=note:27
+17 Sul Tasto
+//! c=short-light i=spiccato o=note:28
+42 Staccatissimo
+//! c=short i=staccato o=note:29
+40 Staccato
+
+//! g="EastWest/Hollywood Opus Strings" n="Full STR KS Master DIV A"
+//! m=""
+//! id=5f2bf8a5-5ff1-4212-bb07-5d54201e1a61
+Bank * * Full STR KS Master DIV A
+//! c=long i=note-half o=note:21
+1 Sus
+//! c=long-dark i=accented-half o=note:22
+2 Sus Marc
+//! c=legato i=legato o=note:23
+20 Sus + 1st Vln Leg
+//! c=short-light i=spiccato o=note:102
+42 Spiccato
+//! c=short i=staccato o=note:103
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:104
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Full STR KS Master DIV B"
+//! m=""
+//! id=4f07e703-98eb-40d4-9678-3a1fd929b2ca
+Bank * * Full STR KS Master DIV B
+//! c=long i=note-half o=note:21
+1 Sus
+//! c=long-dark i=accented-half o=note:22
+2 Sus Marc
+//! c=legato i=legato o=note:23
+20 Sus + 1st Vln Leg
+//! c=short-light i=spiccato o=note:102
+42 Spiccato
+//! c=short i=staccato o=note:103
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:104
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Strings" n="Full STR KS Master"
+//! m=""
+//! id=de5f8403-2bae-411d-83ba-2efd8d72a80f
+Bank * * Full STR KS Master
+//! c=long i=note-half o=note:21
+1 Sus
+//! c=long-dark i=accented-half o=note:22
+2 Sus Marc
+//! c=legato i=legato o=note:23
+20 Sus + 1st Vln Leg
+//! c=short-light i=spiccato o=note:102
+42 Spiccato
+//! c=short i=staccato o=note:103
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:104
+52 Marcato Short

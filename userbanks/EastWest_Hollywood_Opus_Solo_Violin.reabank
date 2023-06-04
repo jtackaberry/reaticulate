@@ -1,0 +1,20 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Solo Violin" n="Solo Violin KS Master"
+//! m=""
+//! id=d97a14c3-afff-4672-9f5d-b0b9ab53b24e
+Bank * * Solo Violin KS Master
+//! c=long i=note-whole o=note:24
+1 Sus NV NV VB Solo
+//! c=long i=vibrato o=note:25
+2 Sus NV VB VB Solo
+//! c=legato i=legato o=note:26
+20 Legato Slur
+//! c=short-light i=note-quarter o=note:27
+42 Spiccato
+//! c=short-dark i=tenuto-eighth o=note:28
+50 Martele
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short Vib
