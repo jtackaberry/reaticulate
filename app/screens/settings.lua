@@ -186,8 +186,7 @@ function screen.init()
 
     screen.cb_insert_at_note_selection = rtk.CheckBox{'Insert articulations based on selected notes when MIDI editor is open'}
     screen.cb_insert_at_note_selection.onchange = function(cb)
-        app.config.art_insert_at_selected_notes = cb.value
-        app:save_config()
+        app:set_toggle_option('art_insert_at_selected_notes', cb.value, true)
     end
     section:add(screen.cb_insert_at_note_selection)
 

@@ -96,6 +96,7 @@ function App:initialize(basedir, t0, t1)
         track_selection_follows_fx_focus = {0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},
         single_floating_instrument_fx_window = {0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},
         keyboard_focus_follows_mouse = {0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},
+        art_insert_at_selected_notes = {0, 'Reaticulate_Toggle insert articulations based on selected notes when MIDI editor is open.lua'},
     }
 
     -- List of hwnd classes that we recognize for sloppy focus
@@ -1410,11 +1411,6 @@ function App:handle_command(cmd, arg)
             feedback.sync(self.track)
         end
 
-    elseif cmd == 'set_midi_feedback_active' then
-        local enabled = self:handle_toggle_option(arg, 'cc_feedback_active', false)
-        feedback.set_active(enabled)
-        feedback.sync(self.track)
-
     elseif cmd == 'focus_filter' then
         self.screens.banklist.focus_filter()
 
@@ -1422,39 +1418,31 @@ function App:handle_command(cmd, arg)
         if self.last_track and reaper.ValidatePtr2(0, self.last_track, "MediaTrack*") then
             self:select_track(self.last_track, false)
         end
-    elseif cmd == 'set_track_selection_follows_midi_editor' then
-        self:handle_toggle_option(arg, 'track_selection_follows_midi_editor', true)
-    elseif cmd == 'set_track_selection_follows_fx_focus' then
-        self:handle_toggle_option(arg, 'track_selection_follows_fx_focus', true)
-    elseif cmd == 'set_single_floating_instrument_fx_window' then
-        -- TODO: experimental alert popup
-        self:handle_toggle_option(arg, 'single_floating_instrument_fx_window', true)
-        self:do_single_floating_fx()
-    elseif cmd == 'set_keyboard_focus_follows_mouse' then
-        -- TODO: experimental alert popup
-        self:handle_toggle_option(arg, 'keyboard_focus_follows_mouse', true)
+
+    elseif cmd == 'set_toggle_option' then
+        local args = string.split(arg, ',')
+        local cfgitem = args[1]
+        local enabled = tonumber(args[2])
+        local section_id = tonumber(args[3])
+        local cmd_id = tonumber(args[4])
+        local store = tonumber(args[5])
+        self:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
+
+    elseif cmd == 'set_option' then
+        local args = string.split(arg, ',')
+        local cfgitem = args[1]
+        local value = args[2]
+        local type = args[3]
+        if type == 'number' then
+            value = tonumber(value)
+        elseif type == 'boolean' or type == 'bool' then
+            value = (value == '1' or value == 'true') and true or false
+        end
+        self:set_option(cfgitem, value)
     end
     return BaseApp.handle_command(self, cmd, arg)
 end
 
--- Called by commands that toggle some boolean option.
---
--- args is 1 or 3 comma-delimited values: the first value indicates whether the
--- value is enabled, disabled, or toggled, while, if given, the 2nd and 3rd value are the
--- section id and command id of the REAPER command state to be toggled.  cfgitem is the
--- key within self.config to persist the value when store is true.
---
--- Returns the new boolean value.
-function App:handle_toggle_option(argstr, cfgitem, store)
-    local args = string.split(argstr, ',')
-    local enabled = tonumber(args[1])
-    local section_id, cmd_id
-    if #args > 2 then
-        section_id = tonumber(args[2])
-        cmd_id = tonumber(args[3])
-    end
-    return self:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
-end
 
 -- If enabled is -1 then toggle, otherwise set to given value.  If section_id
 -- and cmd_id are supplied, those will be used to set the command state,
@@ -1468,7 +1456,7 @@ function App:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
     else
         value = (enabled == 1 and true or false)
     end
-    if store then
+    if store ~= false and store ~= 0 then
         self.config[cfgitem] = value
         self:queue_save_config()
     end
@@ -1491,6 +1479,12 @@ function App:set_toggle_option(cfgitem, enabled, store, section_id, cmd_id)
     if self:current_screen() == self.screens.settings then
         self.screens.settings.update()
     end
+    if cfgitem == 'single_floating_instrument_fx_window' then
+        self:do_single_floating_fx()
+    elseif cfgitem == 'cc_feedback_active' then
+        feedback.set_active(value)
+        feedback.sync(self.track)
+    end
     return value
 end
 
@@ -1498,6 +1492,15 @@ end
 -- set_toggle_option()
 function App:get_toggle_option(cfgitem)
     return self.config[cfgitem]
+end
+
+-- Sets a non-toggle config setting.  The value must be of the appropriate type.
+function App:set_option(cfgitem, value)
+    self.config[cfgitem] = value
+    self:queue_save_config()
+    if self:current_screen() == self.screens.settings then
+        self.screens.settings.update()
+    end
 end
 
 -- Sets Reaticulate's default channel, syncs the new channel to any active MIDI Editor,
