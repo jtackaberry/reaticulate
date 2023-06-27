@@ -260,23 +260,25 @@ function Articulation:describe_outputs()
             channel = (channel and (channel .. ' ') or '') .. string.format('bus %s', output.bus)
         end
 
+        -- output.args is unsanitized, so we need to be defensive.
+        local args = {tonumber(output.args[1]), tonumber(output.args[2])}
         if output.type == 'program' then
-            s = string.format('program change %d', output.args[1] or 0)
+            s = string.format('program change %d', args[1] or 0)
         elseif output.type == 'cc' then
-            s = string.format('CC %d val %d', output.args[1] or 0, output.args[2] or 0)
+            s = string.format('CC %d val %d', args[1] or 0, args[2] or 0)
         elseif output.type == 'note' or output.type == 'note-hold' then
-            local note = tonumber(output.args[1] or 0)
+            local note = args[1] or 0
             local name = note_to_name(note)
             verb = output.type == 'note' and 'Sends' or 'Holds'
-            if (output.args[2] or 127) == 127 then
+            if (args[2] or 127) == 127 then
                 s = string.format('note %s (%d)', name, note)
             else
-                s = string.format('note %s (%d) vel %d', name, note, output.args[2] or 127)
+                s = string.format('note %s (%d) vel %d', name, note, args[2] or 127)
             end
         elseif output.type == 'pitch' then
-            s = string.format('pitch bend val %d', output.args[1] or 0)
+            s = string.format('pitch bend val %d', args[1] or 0)
         elseif output.type == 'art' then
-            local program = tonumber(output.args[1] or 0)
+            local program = args[1] or 0
             local bank = self:get_bank()
             local art = bank.articulations_by_program[program]
             if art then
