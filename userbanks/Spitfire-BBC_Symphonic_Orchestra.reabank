@@ -40,7 +40,6 @@ Bank * * BBC Violins 1 Leader
 57 bartok pizz
 //! c=long i=marcato o=note:15
 9 marcato
-//! c=long-dark i=tremolo-sul-pont o=note:16
 
 
 //----------------------------------------------------------------------------
@@ -593,7 +592,6 @@ Bank * * BBC - Celesta
 101 damped
 //! c=short i=staccato o=note:2
 102 damped medium
-//! c=long i=note-whole o=note:3
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Percussion" n="BBC Xylophone"

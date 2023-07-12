@@ -98,7 +98,6 @@ Bank * * 02 Chamber strings/01 1st Violins 6 PLUS
 //! c=long-light i=harmonics o=note:30/note:38
 62 harm. marcato
 
-//! spacer=1
 
 
 //! g="VSL SYN-ized SE/02 Chamber strings" n="02 2nd Violins 6 PLUS"
@@ -205,7 +204,6 @@ Bank * * 02 Chamber strings/04 Cellos 3 PLUS
 //! c=long-light i=harmonics o=note:30/note:98
 62 harm. marcato
 
-//! spacer=1
 
 
 //! g="VSL SYN-ized SE/02 Chamber strings" n="05 Double basses 2 PLUS"
@@ -292,8 +290,6 @@ Bank * * 02 Chamber strings/05 Double basses 2 PLUS
 //! c=long-light i=harmonics o=note:90/note:98
 62 harm. marcato
 
-//! spacer=1
-
 
 //! g="VSL SYN-ized SE/02 Chamber strings" n="11a Chamber Str multi convolution"
 //! id=8f5b1400-b76c-41c8-95da-29b5105d3b66
@@ -341,8 +337,6 @@ Bank * * 02 Chamber strings/11a Chamber Str multi convolution
 
 //! c=short-light i=pizz o=note:17
 56 pizzicato
-
-//! spacer=1
 
 
 //! g="VSL SYN-ized SE/02 Chamber strings" n="11b Chamber Str flat stereo"
@@ -478,8 +472,6 @@ Bank * * 03 Orchestral string/01 1st Violins 14 PLUS
 //! c=legato-light i=con-sord o=note:32/note:38/cc:1,127
 12 con sord. tremolo
 
-//! spacer=1
-
 
 //! g="VSL SYN-ized SE/03 Orchestral strings" n="02 2nd Violins 14 PLUS"
 //! clone="VSL SYN-ized SE/03 Orchestral strings/01 1st Violins 14 PLUS"
@@ -614,8 +606,6 @@ Bank * * 03 Orchestral strings/04 Cellos 8 PLUS
 //! c=legato-light i=con-sord o=note:32/note:98
 12 con sord. tremolo
 
-//! spacer=1
-
 
 //! g="VSL SYN-ized SE/03 Orchestral strings" n="05 Double basses 6 PLUS"
 //! id=e14b3e31-1968-4719-bbdf-dddbfc96398b
@@ -715,8 +705,6 @@ Bank * * 03 Orchestral strings/05 Double basses 6 PLUS
 53 sul pont. marcato
 //! c=long-dark i=sul-pont o=note:91/note:99
 13 sul pont. tremolo
-
-//! spacer=1
 
 
 //! g="VSL SYN-ized SE/03 Orchestral strings" n="11a Orchestral Str multi convolution"
@@ -1024,7 +1012,6 @@ Bank * * 12 Oboes/03 Oboe d amore PLUS PLUS
 //! c=#938C0B i=sfz o=note:27/note:38
 107 fortepiano
 
-//! spacer=1
 
 //! g="VSL SYN-ized SE/12 Oboes" n="04 English Horn I (French) PLUS"
 //! clone="VSL SYN-ized SE/12 Oboes/01 Oboe (French) PLUS"
@@ -1087,7 +1074,6 @@ Bank * * 13 Clarinets/03 Clarinet Bb 2 PLUS
 //! c=#938C0B i=sfz o=note:27/note:38
 107 fortepiano
 
-//! spacer=1
 
 //! g="VSL SYN-ized SE/13 Clarinets" n="01 Clarinet Eb PLUS"
 //! clone="VSL SYN-ized SE/13 Clarinets/03 Clarinet Bb 2 PLUS"
@@ -1265,7 +1251,6 @@ Bank * * 14 Bassoons/03 Contrabassoon PLUS
 //! c=#938C0B i=sfz o=note:87/note:97
 107 fortepiano
 
-//! spacer=1
 
 //-----------------------------------------------------------------------------
 //! g="VSL SYN-ized SE/14 Bassoons" n="14 Bassoons-ens-3 PLUS"
@@ -1507,7 +1492,6 @@ Bank * * 23 Trombones/03 ContraBass trombone PLUS
 //! c=#938C0B i=sfz o=note:87/note:98
 107 fortepiano
 
-//! spacer=1
 
 
 //! g="VSL SYN-ized SE/23 Trombones" n="11 Trombone-ens 3 PLUS"
@@ -1676,7 +1660,6 @@ Bank * * 24 Trombones/02 Wagner tuba PLUS
 //! c=#938C0B i=sfz o=note:87/note:98
 107 fortepiano
 
-//! spacer=1
 
 //---------------------------------------------------------------------------
 //                      PERCUSSIONS

@@ -151,8 +151,6 @@ Bank * * 25 Dimension brass/04 Wagner tuba player
 //! c=#938C0B i=sfz o=note:87
 65 sforzato
 
-//! spacer=1
-
 
 //! g="VSL SYN-ized SE/25 Dimension brass" n="04 Wagner tuba All Players"
 //! clone="VSL SYN-ized SE/25 Dimension brass/04 Wagner tuba player"

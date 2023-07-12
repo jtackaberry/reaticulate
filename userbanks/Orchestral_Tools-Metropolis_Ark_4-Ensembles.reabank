@@ -66,7 +66,6 @@ Bank * * OTMA4 Woodwind Ensemble
 10 3x tongue
 //! c=short i=multitongued o=note:19
 37 4x tongue
-//! c=short i=multitongued o=note:20
 
 //! g="Orchestral Tools/Metropolis Ark 4" n="4. Brass Ensemble"
 //! id=a9cd7344-7e46-461b-9388-801f5da2da63
@@ -91,7 +90,6 @@ Bank * * OTMA4 Brass Ensemble
 10 3x tongue
 //! c=short i=multitongued o=note:30
 37 4x tongue
-//! c=short i=multitongued o=note:31
 
 //! g="Orchestral Tools/Metropolis Ark 4" n="5. Mixed Choir"
 //! id=a9cd7344-7e46-461b-9388-801f5da2da64
