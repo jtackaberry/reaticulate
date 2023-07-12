@@ -87,7 +87,7 @@ Bank * * EW 2 Trumpets FX KS
 //! c=long i=fall o=note:42
 101 fall long
 //! c=long i=fall o=note:43
-106 fall short
+108 fall short
 //! c=long i=vibrato-molto o=note:44
 19 shake
 //! c=fx i=rip o=note:45
@@ -125,7 +125,7 @@ Bank * * EW 3 Trombones FX KS
 //! c=long i=tremolo-measured o=note:88
 11 fluttertongue
 //! c=long i=fx o=note:89
-106 cluster
+109 cluster
 
 //! g="EastWest Quantum Leap/Hollywood Brass Diamond/Ensembles" n="3 Trumpets KS"
 //! id=26963cab-ed4f-47da-8854-6f39879e6d6d
@@ -169,9 +169,9 @@ Bank * * EW 3 Trumpets FX KS
 //! c=long i=tremolo-measured o=note:41
 11 fluttertongue
 //! c=long i=fx o=note:42
-106 cluster
+109 cluster
 //! c=long i=fx o=note:43
-107 cluster bend
+110 cluster bend
 //! c=fx i=rip o=note:44
 100 rips
 //! c=fx i=rip o=note:45
@@ -215,7 +215,7 @@ Bank * * EW 6 Horns FX KS
 //! c=long i=tremolo-measured o=note:41
 11 fluttertongue
 //! c=long i=fx o=note:42
-106 cluster
+110 cluster
 //! c=fx i=rip o=note:43
 100 rip shake
 //! c=fx i=rip o=note:44
@@ -434,4 +434,4 @@ Bank * * EW Tuba FX KS
 //! c=long i=tremolo-measured o=note:75
 11 fluttertongue
 //! c=short-dark i=crescendo o=note:76
-102 sfz cresc
+108 sfz cresc

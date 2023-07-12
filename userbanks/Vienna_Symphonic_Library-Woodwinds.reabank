@@ -3202,7 +3202,7 @@ Bank * * Soprano Sax
 //! c=long i=note-whole o=note:3/note:12/note:116
 33 Sustain (NoVib)
 //! c=long i=fx o=note:3/note:12/note:117
-33 Sustain, Dirty
+34 Sustain, Dirty
 
 //!spacer=1
 //! c=#A12E0C i=phrase-tremolo o=note:4/note:12/note:113
@@ -3376,7 +3376,7 @@ Bank * * Alto Sax
 //! c=long i=note-whole o=note:3/note:12/note:116
 33 Sustain (NoVib)
 //! c=long i=fx o=note:3/note:12/note:117
-33 Sustain, Dirty
+34 Sustain, Dirty
 
 //!spacer=1
 //! c=#A12E0C i=phrase-tremolo o=note:4/note:12/note:113
@@ -3587,7 +3587,7 @@ Bank * * Tenor Sax
 //! c=long i=note-whole o=note:3/note:12/note:116
 33 Sustain (NoVib)
 //! c=long i=fx o=note:3/note:12/note:117
-33 Sustain, Dirty
+34 Sustain, Dirty
 
 //!spacer=1
 //! c=#A12E0C i=phrase-tremolo o=note:4/note:12/note:113
@@ -3760,7 +3760,7 @@ Bank * * Baritone Sax
 //! c=long i=note-whole o=note:3/note:12/note:116
 33 Sustain (NoVib)
 //! c=long i=fx o=note:3/note:12/note:117
-33 Sustain, Dirty
+34 Sustain, Dirty
 
 //!spacer=1
 //! c=#A12E0C i=phrase-tremolo o=note:4/note:12/note:113

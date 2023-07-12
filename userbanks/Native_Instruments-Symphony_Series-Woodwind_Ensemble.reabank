@@ -67,7 +67,7 @@ Bank * * SSWE Flutes Staccato
 //! c=short i=tremolo-measured o=note:17
 41 flutter
 //! c=short-dark i=staccato-sfz o=note:18
-49 staccato sfz
+45 staccato sfz
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Flutes Legato"
 //! id=7303a18e-24bf-40a4-b9cc-c72edb0c707e
@@ -189,7 +189,7 @@ Bank * * SSWE Oboes Staccato
 //! c=short i=tremolo-measured o=note:17
 41 flutter
 //! c=short-dark i=staccato-sfz o=note:18
-49 2nd staccato
+45 2nd staccato
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Oboes Legato"
 //! id=5108a2a7-635a-4491-910f-b9326aff876e
@@ -541,7 +541,7 @@ Bank * * SSWE Bassoons Staccato
 //! c=short i=alt-wave o=note:16
 16 staccato bend dn
 //! c=short i=alt-wave o=note:17
-16 staccato bend up
+17 staccato bend up
 
 //! g="Native Instruments/Symphony Series/Woodwind Ensemble" n="Bassoons Legato"
 //! id=fcd1c222-9468-4e01-a7d2-d34a324d80b0
@@ -695,7 +695,7 @@ Bank * * SSWE Bass Winds Effects
 //! c=short i=staccato o=note:14
 14 cluster stacc bass clar
 //! c=short i=staccato o=note:15
-14 cluster stacc contra bsn
+15 cluster stacc contra bsn
 //! c=short i=staccato o=note:16
 16 cluster staccato
 //! c=long i=note-whole o=note:17

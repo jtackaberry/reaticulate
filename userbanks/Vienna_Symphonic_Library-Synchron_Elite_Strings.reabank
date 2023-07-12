@@ -517,7 +517,7 @@ Bank * * Basses (SES)
 //! c=legato i=legato-portamento o=note:76/note:87
 38 Portamento (VIB-XF)
 //! c=legato-dark i=legato-portamento o=note:76/note:89
-39 Portamento Esp. (VIB-XF)
+40 Portamento Esp. (VIB-XF)
 //! c=legato i=legato-bowed2 o=note:82/note:87
 74 Perf. Detache (VIB-XF)
 //! c=legato-light i=legato-bowed2 o=note:83/note:87

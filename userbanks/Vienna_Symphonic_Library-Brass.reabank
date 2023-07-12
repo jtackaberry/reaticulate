@@ -2124,7 +2124,7 @@ Bank * * Horn, Viennese
 //! c=fx i=fanfare o=note:9/note:14/note:120
 96 Upbeat x3 - 180bpm
 //! c=fx i=fanfare o=note:9/note:14/note:121
-97 Upbeat x3 - 200bpm
+0 Upbeat x3 - 200bpm
 
 //-----------------------------------------------------------------------------------------------------------------------------
 
@@ -3172,25 +3172,25 @@ Bank * * Trumpet Bb (Mute)
 
 //!spacer=1
 //! c=#E1491C i=phrase-tremolo o=note:4/note:12/note:113
-50 Rep. Legato
+80 Rep. Legato
 //! c=#E1491C i=phrase-tremolo o=note:4/note:13/note:113
-51 Rep. Staccato
+81 Rep. Staccato
 //! c=#E1491C i=phrase-tremolo o=note:4/note:14/note:113
-52 Rep. Portato
+82 Rep. Portato
 
 //!spacer=1
 //! c=#938C0B i=sfz o=note:5/note:12/note:113
-60 Fp
+90 Fp
 //! c=#938C0B i=sfz o=note:5/note:12/note:114
-61 Sfz
+91 Sfz
 //! c=#938C0B i=sfz o=note:5/note:12/note:115
-62 Sffz
+92 Sffz
 
 //!spacer=1
 //! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
-70 Flatter
+93 Flatter
 //! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
-71 Flatter, Crescendo
+94 Flatter, Crescendo
 
 //!spacer=1
 //! c=long-dark i=crescendo o=note:7/note:12/note:113

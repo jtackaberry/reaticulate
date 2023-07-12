@@ -580,7 +580,7 @@ Bank * * Violin II
 //! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
 60 Tremolo (X-Fade Vib)
 //! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
-60 Tremolo (X-Fade NoVib)
+61 Tremolo (X-Fade NoVib)
 
 //!spacer=1
 //! c=long-dark i=crescendo o=note:7/note:12/note:113
@@ -1489,7 +1489,7 @@ Bank * * Cello II
 //! c=legato-light i=tremolo-measured o=note:6/note:12/note:113
 60 Tremolo (X-Fade Vib)
 //! c=legato-light i=tremolo-measured o=note:6/note:12/note:114
-60 Tremolo (X-Fade NoVib)
+61 Tremolo (X-Fade NoVib)
 
 //!spacer=1
 //! c=long-dark i=crescendo o=note:7/note:12/note:113

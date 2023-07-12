@@ -103,7 +103,7 @@ Bank * * Hercules (Low Brass)
 //! c=fx i=legato-gliss o=note:78/note:85
 61 Glissando, M2
 //! c=fx i=legato-gliss o=note:78/note:86
-61 Glissando, P4
+62 Glissando, P4
 
 
 //----------------------------------------------------------------------------

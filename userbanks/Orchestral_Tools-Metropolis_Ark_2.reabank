@@ -125,7 +125,7 @@ Bank * * OTMA2 Breitenstein Basso Profondo Choir Multi
 //! c=short i=marcato o=note:98
 52 marcato
 //! c=short i=staccato o=note:99
-40 staccato
+41 staccato
 
 //! g="Orchestral Tools/Metropolis Ark 2" n="Men Choir Legato"
 //! id=9109cb6a-760f-4865-ab07-f62a1ad52a58

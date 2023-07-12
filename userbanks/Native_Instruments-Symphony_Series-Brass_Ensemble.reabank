@@ -89,7 +89,7 @@ Bank * * SSBE Trumpets Expression
 //! c=long i=crescendo o=note:26
 26 swell
 //! c=legato-dark i=legato o=note:27
-28 legato forte
+27 legato forte
 //! c=long i=run-major o=note:28
 28 step down1
 //! c=long i=run-major o=note:29

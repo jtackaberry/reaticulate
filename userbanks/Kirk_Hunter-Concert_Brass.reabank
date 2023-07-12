@@ -14,9 +14,9 @@ Bank * * KH - FrHn
 //! c=short i=marcato o=note:86
 54 acc pp
 //! c=short i=marcato o=note:87
-54 acc mf
+55 acc mf
 //! c=short i=marcato o=note:88
-54 acc ff
+56 acc ff
 //! c=short i=staccato o=note:90
 59 stacc
 
@@ -45,9 +45,9 @@ Bank * * KH - Tpt
 //! c=short i=marcato o=note:26
 54 acc pp
 //! c=short i=marcato o=note:27
-54 acc mf
+55 acc mf
 //! c=short i=marcato o=note:28
-54 acc ff
+56 acc ff
 //! c=short i=staccato o=note:30
 40 stacc
 
@@ -74,9 +74,9 @@ Bank * * KH - Tbn
 //! c=short i=marcato o=note:86
 54 acc pp
 //! c=short i=marcato o=note:87
-54 acc mf
+55 acc mf
 //! c=short i=marcato o=note:88
-54 acc ff
+56 acc ff
 //! c=short i=staccato o=note:90
 40 stacc
 
@@ -105,9 +105,9 @@ Bank * * KH - Tuba
 //! c=short i=marcato o=note:86
 54 acc pp
 //! c=short i=marcato o=note:87
-54 acc mf
+55 acc mf
 //! c=short i=marcato o=note:88
-54 acc ff
+56 acc ff
 //! c=short i=staccato o=note:90
 40 stacc
 
