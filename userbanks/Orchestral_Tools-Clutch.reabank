@@ -1,0 +1,21 @@
+//----------------------------------------------------------------------------
+// Orchestral Tools: Clutch
+// Source: https://github.com/steamwings/reaticulate
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools Clutch" n="Clutch Tonewheel Organ"
+//! m="Uses SINE Player default Keyswitches or CCs for standard setup."
+//! id=33222222-b75c-a34c-8de1-416c794af71a
+Bank * * Clutch - Tonewheel Organ
+//! c=default i=note-whole o=@1/cc@1:70,0/note@1:24,127
+1 Full drawbars slow
+//! c=default i=vibrato o=@1/cc@1:70,21/note@1:25,127
+2 Full drawbars fast vib
+//! c=default i=note-whole o=@1/cc@1:70,42/note@1:26,127
+3 Percussive slow
+//! c=default i=vibrato o=@1/cc@1:70,63/note@1:27,127
+4 Percussive fast vib
+//! c=default i=vibrato o=@1/cc@1:70,84/note@1:28,127
+5 High drawbars fast vib
+//! c=default i=vibrato o=@1/cc@1:70,105/note@1:29,127
+6 Low drawbars fast vib
