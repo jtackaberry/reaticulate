@@ -429,79 +429,79 @@ Bank * * Peteris Vasks Strings - Celli
 23 Harmonics Sustains
 //! c=default i=tremolo-harmonics o=@1/note@1:112,127
 24 Harmonics Tremolo
-//! c=default i=tremolo o=@2/cc@2:3,1/note@2:96,127
+//! c=default i=tremolo o=@2/cc@2:3,1/note@24,127
 25 Finger Tremolo min3
-//! c=default i=tremolo o=@2/cc@2:3,64/note@2:96,127
+//! c=default i=tremolo o=@2/cc@2:3,64/note@2:24,127
 26 Finger Tremolo maj3
-//! c=default i=tremolo o=@2/cc@2:3,127/note@2:96,127
+//! c=default i=tremolo o=@2/cc@2:3,127/note@2:24,127
 27 Finger Tremolo 4th
-//! c=default i=scoop o=@2/cc@2:3,1/note@2:97,127
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:25,127
 28 Glissando 5th Up
-//! c=default i=fall o=@2/cc@2:3,127/note@2:97,127
+//! c=default i=fall o=@2/cc@2:3,127/note@2:25,127
 29 Glissando 5th Down
-//! c=default i=scoop o=@2/cc@2:3,1/note@2:98,127
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:26,127
 30 Glissando Oct Up
-//! c=default i=fall o=@2/cc@2:3,127/note@2:98,127
+//! c=default i=fall o=@2/cc@2:3,127/note@2:26,127
 31 Glissando Oct Down
-//! c=default i=scoop o=@2/cc@2:3,1/note@2:99,127
+//! c=default i=scoop o=@2/cc@2:3,1/note@2:27,127
 32 Glissando 2oct Up
-//! c=default i=fall o=@2/cc@2:3,127/note@2:99,127
+//! c=default i=fall o=@2/cc@2:3,127/note@2:27,127
 33 Glissando 2oct Down
-//! c=default i=trill o=@2/cc@2:3,1/note@2:100,127
+//! c=default i=trill o=@2/cc@2:3,1/note@2:28,127
 34 Glissando Trills 5th Up
-//! c=default i=trill o=@2/cc@2:3,127/note@2:100,127
+//! c=default i=trill o=@2/cc@2:3,127/note@2:28,127
 35 Glissando Trills 5th Down
-//! c=default i=trill o=@2/cc@2:3,1/note@2:101,127
+//! c=default i=trill o=@2/cc@2:3,1/note@2:29,127
 36 Glissando Trills Oct Up
-//! c=default i=trill o=@2/cc@2:3,127/note@2:101,127
+//! c=default i=trill o=@2/cc@2:3,127/note@2:29,127
 37 Glissando Trills Oct Down
-//! c=default i=trill o=@2/cc@2:3,1/note@2:102,127
+//! c=default i=trill o=@2/cc@2:3,1/note@2:30,127
 38 Glissando Trills 2oct Up
-//! c=default i=trill o=@2/cc@2:3,127/note@2:102,127
+//! c=default i=trill o=@2/cc@2:3,127/note@2:30,127
 39 Glissando Trills 2oct Down
-//! c=default i=fx o=@2/note@2:103,127
+//! c=default i=fx o=@2/note@2:31,127
 40 Glissando FX
-//! c=default i=alt-wave o=@2/note@2:104,127
+//! c=default i=alt-wave o=@2/note@2:32,127
 41 Waving Longs
-//! c=default i=list o=@2/cc@2:3,1/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,1/note@2:33,127
 42 Upbeats Up HT
-//! c=default i=list o=@2/cc@2:3,19/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,19/note@2:33,127
 43 Upbeats Up WT
-//! c=default i=list o=@2/cc@2:3,37/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,37/note@2:33,127
 44 Upbeats Up min3
-//! c=default i=list o=@2/cc@2:3,55/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,55/note@2:33,127
 45 Upbeats Up maj3
-//! c=default i=list o=@2/cc@2:3,79/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,79/note@2:33,127
 46 Upbeats Up 4th
-//! c=default i=list o=@2/cc@2:3,101/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,101/note@2:33,127
 47 Upbeats Up Tritone
-//! c=default i=list o=@2/cc@2:3,127/note@2:105,127
+//! c=default i=list o=@2/cc@2:3,127/note@2:33,127
 48 Upbeats Up 5th
-//! c=default i=list o=@2/cc@2:3,1/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,1/note@2:34,127
 49 Upbeats Down HT
-//! c=default i=list o=@2/cc@2:3,19/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,19/note@2:34,127
 50 Upbeats Down WT
-//! c=default i=list o=@2/cc@2:3,37/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,37/note@2:34,127
 51 Upbeats Down min3
-//! c=default i=list o=@2/cc@2:3,55/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,55/note@2:34,127
 52 Upbeats Down maj3
-//! c=default i=list o=@2/cc@2:3,77/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,77/note@2:34,127
 53 Upbeats Down 4th
-//! c=default i=list o=@2/cc@2:3,101/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,101/note@2:34,127
 54 Upbeats Down Tritone
-//! c=default i=list o=@2/cc@2:3,127/note@2:106,127
+//! c=default i=list o=@2/cc@2:3,127/note@2:34,127
 55 Upbeats Down 5th
-//! c=default i=run-major o=@2/cc@2:3,1/note@2:107,127
+//! c=default i=run-major o=@2/cc@2:3,1/note@2:35,127
 56 Runs Maj
-//! c=default i=run-minor o=@2/cc@2:3,35/note@2:107,127
+//! c=default i=run-minor o=@2/cc@2:3,35/note@2:35,127
 57 Runs Min
-//! c=default i=run-minor o=@2/cc@2:3,70/note@2:107,127
+//! c=default i=run-minor o=@2/cc@2:3,70/note@2:35,127
 58 Runs Melodic
-//! c=default i=run-minor o=@2/cc@2:3,127/note@2:107,127
+//! c=default i=run-minor o=@2/cc@2:3,127/note@2:35,127
 59 Runs Dorian
-//! c=default i=list o=@2/note@2:108,127
+//! c=default i=list o=@2/note@2:63,127
 60 Runs Aleatoric
-//! c=default i=crescendo o=@2/cc@2:3,1/note@2:109,127
+//! c=default i=crescendo o=@2/note@2:64,127
 61 Accelerando Climax (Maj/Min Split Keyboard)
 
 //! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Basses"
