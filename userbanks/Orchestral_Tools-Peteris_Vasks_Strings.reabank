@@ -499,9 +499,9 @@ Bank * * Peteris Vasks Strings - Celli
 58 Runs Melodic
 //! c=default i=run-minor o=@2/cc@2:3,127/note@2:35,127
 59 Runs Dorian
-//! c=default i=list o=@2/note@2:63,127
+//! c=default i=list o=@2/note@2:75,127
 60 Runs Aleatoric
-//! c=default i=crescendo o=@2/note@2:64,127
+//! c=default i=crescendo o=@2/note@2:76,127
 61 Accelerando Climax (Maj/Min Split Keyboard)
 
 //! g="Orchestral Tools Peteris Vasks Strings" n="Peteris Vasks Strings - Basses"
