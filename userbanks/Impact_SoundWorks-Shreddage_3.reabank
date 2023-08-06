@@ -6,324 +6,324 @@
 //! m=""
 //! id=6c176909-4ea6-4052-ac97-d9adfdf588f2
 Bank * * Shreddage 3 Abyss
-//! o=note:12
+//! c=long i=note-quarter o=note:12
 1 Auto
 
-//! o=note:13
+//! c=short i=staccato o=note:13
 40 Staccato, Auto
 
-//! o=note:14
+//! c=legato i=legato o=note:14
 20 Tapping
 
-//! o=note:15
+//! c=textured i=harmonics o=note:15
 10 Harmonics
 
-//! o=note:16
+//! c=fx i=fx o=note:16
 80 Effects/Slides
 
 //! g="Impact Sound Works/Shreddage 3" n="Archtop"
 //! m=""
 //! id=08806d44-392f-467c-b418-d83efa80c89b
 Bank * * Shreddage 3 Archtop
-//! o=note:24
+//! c=long i=note-quarter o=note:24
 1 Auto
 
-//! o=note:25
+//! c=long-dark i=note-quarter o=note:25
 2 Power Chord, Auto
 
-//! o=note:26
+//! c=short i=staccato o=note:26
 40 Staccato
 
-//! o=note:27
+//! c=long i=note-quarter o=note:27
 3 Sustain Octaves
 
-//! o=note:28
+//! c=long i=tremolo o=note:28
 11 Tremolo
 
-//! o=note:29
+//! c=long-dark i=harmonics-natural o=note:29
 10 Natural Harmonics
 
-//! o=note:30
+//! c=legato i=legato o=note:30
 20 Tapping
 
-//! o=note:31
+//! c=long-dark i=harmonics o=note:31
 12 Articial Harmonics
 
-//! o=note:32
+//! c=fx i=fx o=note:32
 80 Effects
 
-//! o=note:32
+//! c=short-dark i=staccato-stopped o=note:32
 81 Choke
 
 //! g="Impact Sound Works/Shreddage 3" n="Jupiter"
 //! m=""
 //! id=0b182949-399a-452d-acc9-062b2c6d1cf9
 Bank * * Shreddage 3 Jupiter
-//! o=note:12
+//! c=long i=note-quarter o=note:12
 1 Auto
 
-//! o=note:13
+//! c=long-dark i=note-quarter o=note:13
 2 Power Chord, Auto
 
-//! o=note:14
+//! c=short i=staccato o=note:14
 40 Staccato
 
-//! o=note:15
+//! c=short-dark i=staccato o=note:15
 41 Power Chord, Stacato
 
-//! o=note:16
+//! c=textured i=tremolo o=note:16
 11 Tremolo
 
-//! o=note:17
+//! c=long i=harmonics o=note:17
 10 Harmonics
 
-//! o=note:18
+//! c=legato i=legato o=note:18
 20 Tapping
 
-//! o=note:19
+//! c=fx i=fx o=note:19
 80 Effects
 
-//! o=note:21
+//! c=fx i=staccato-stopped o=note:21
 81 Choke
 
 //! g="Impact Sound Works/Shreddage 3" n="Rogue"
 //! m=""
 //! id=2887ed92-4ffb-4c05-b580-bf6d374d472a
 Bank * * Shreddage 3 Rogue
-//! o=note:12
+//! c=long i=note-quarter o=note:12
 1 Auto
 
-//! o=note:13
+//! c=long-dark i=note-quarter o=note:13
 2 Power Chord, Auto
 
-//! o=note:14
+//! c=short i=staccato o=note:14
 40 Staccato
 
-//! o=note:15
+//! c=short-dark i=staccato o=note:15
 41 Power Chord, Stacato
 
-//! o=note:16
+//! c=textured i=tremolo o=note:16
 11 Tremolo
 
-//! o=note:17
+//! c=long i=harmonics o=note:17
 10 Harmonics
 
-//! o=note:18
+//! c=legato i=legato o=note:18
 20 Tapping
 
-//! o=note:19
+//! c=fx i=fx o=note:19
 80 Effects
 
 //! g="Impact Sound Works/Shreddage 3" n="Serpent"
 //! m=""
 //! id=0bcfb0ec-d7b4-4bba-a00a-feb4954c66bb
 Bank * * Shreddage 3 Serpent
-//! o=note:12
+//! c=long i=note-quarter o=note:12
 1 Auto
 
-//! o=note:13
+//! c=long-dark i=note-quarter o=note:13
 2 Power Chord, Auto
 
-//! o=note:14
+//! c=short i=staccato o=note:14
 40 Staccato
 
-//! o=note:15
+//! c=short-dark i=staccato o=note:15
 41 Power Chord, Stacato
 
-//! o=note:16
+//! c=textured i=tremolo o=note:16
 11 Tremolo
 
-//! o=note:17
+//! c=legato i=legato o=note:17
 20 Tapping
 
-//! o=note:18
+//! c=long i=harmonics o=note:18
 10 Harmonics
 
-//! o=note:19
+//! c=fx i=fx o=note:19
 80 Effects
 
-//! o=note:21
+//! c=fx i=staccato-stopped o=note:21
 81 Choke
 
 //! g="Impact Sound Works/Shreddage 3" n="Stratus"
 //! m=""
 //! id=314154c4-125c-4c96-a8d7-d03b1a2070a3
 Bank * * Shreddage 3 Stratus
-//! o=note:24
+//! c=long i=note-quarter o=note:24
 1 Auto
 
-//! o=note:25
+//! c=long-dark i=note-quarter o=note:25
 2 Power Chord, Auto
 
-//! o=note:26
+//! c=short i=staccato o=note:26
 40 Staccato
 
-//! o=note:28
+//! c=textured i=tremolo o=note:28
 11 Tremolo
 
-//! o=note:29
+//! c=long i=harmonics o=note:29
 10 Harmonics
 
-//! o=note:30
+//! c=legato i=legato o=note:30
 20 Tapping
 
-//! o=note:33
+//! c=fx i=staccato-stopped o=note:33
 81 Choke
 
 //! g="Impact Sound Works/Shreddage 3" n="Fretless"
 //! m=""
 //! id=bc2fbd79-bbb0-4572-9879-82298d85a1a5
 Bank * * Shreddage 3 Fretless
-//! o=note:0
+//! c=long i=note-quarter o=note:0
 1 Sustain
 
-//! o=note:1
+//! c=short i=staccato o=note:1
 40 Staccato
 
-//! o=note:2
+//! c=short-dark i=staccato-stopped o=note:2
 42 Mute
 
-//! o=note:3
+//! c=textured i=trill o=note:3
 70 Buzz Trill
 
-//! o=note:4
+//! c=long i=harmonics o=note:4
 10 Harmonics
 
-//! o=note:5
+//! c=fx i=fx o=note:5
 80 Effects
 
 //! g="Impact Sound Works/Shreddage 3" n="Legacy"
 //! m=""
 //! id=e6290385-92cd-4256-8926-5cf459f659f3
 Bank * * Shreddage 3 Legacy
-//! o=note:12
+//! c=long i=note-quarter o=note:12
 1 Auto
 
-//! o=note:13
+//! c=long-dark i=note-quarter o=note:13
 2 Power Chord, Auto
 
-//! o=note:16
+//! c=textured i=tremolo o=note:16
 11 Tremolo
 
-//! o=note:17
+//! c=long i=harmonics o=note:17
 10 Harmonics
 
-//! o=note:18
+//! c=legato i=legato o=note:18
 20 Tapping
 
-//! o=note:19
+//! c=fx i=fx o=note:19
 80 Effects
 
-//! o=note:21
+//! c=fx i=staccato-stopped o=note:21
 81 Choke
 
-//! o=note:22
+//! c=legato i=bend-up o=note:22
 82 Grace Slide Up
 
-//! o=note:23
+//! c=legato i=bend-down o=note:23
 83 Grace Slide Down
 
 //! g="Impact Sound Works/Shreddage 3" n="Precision"
 //! m="Works for all presets except Init S3 Precision"
 //! id=5d2d6120-c2df-4875-8739-746fcab9a937
 Bank * * Shreddage 3 Precision
-//! o=note:0
+//! c=long-light i=note-quarter o=note:0
 1 Auto Fingered
 
-//! o=note:1
+//! c=long i=note-quarter o=note:1
 2 Auto Picked
 
-//! o=note:2
+//! c=long-dark i=accented-quarter o=note:2
 3 Sustain Slapped
 
-//! o=note:3
+//! c=short-light i=staccato o=note:3
 40 Staccato Fingered
 
-//! o=note:4
+//! c=short i=staccato-sfz o=note:4
 41 Staccato Slapped
 
-//! o=note:5
+//! c=short i=staccato-con-sord o=note:5
 42 Mute Fingered
 
-//! o=note:6
+//! c=short-dark i=staccato-con-sord o=note:6
 43 Mute Picked
 
-//! o=note:7
+//! c=long i=harmonics o=note:7
 10 Harmonics
 
-//! o=note:8
+//! c=legato i=legato o=note:8
 20 Tapping
 
-//! o=note:9
+//! c=textured i=trill o=note:9
 70 Buzz Trill
 
-//! o=note:10
+//! c=fx i=fx o=note:10
 80 Effects
 
-//! o=note:12
+//! c=long-light i=note-quarter o=note:12
 4 Sustain Fingered
 
 //! g="Impact Sound Works/Shreddage 3" n="Precision Init"
 //! m="Only works with Preset: Init S3 Precision"
 //! id=f738b170-f6fd-4b32-b123-7adbe6262b19
 Bank * * Shreddage 3 Precision Init
-//! o=note:0
+//! c=long-light i=note-quarter o=note:0
 1 Auto Fingered
 
-//! o=note:1
+//! c=long i=note-quarter o=note:1
 2 Auto Picked
 
-//! o=note:2
+//! c=long-dark i=accented-quarter o=note:2
 3 Sustain Slapped
 
-//! o=note:3
+//! c=short-light i=staccato o=note:3
 40 Staccato Fingered
 
-//! o=note:4
+//! c=short i=staccato-sfz o=note:4
 41 Staccato Slapped
 
-//! o=note:5
+//! c=long i=harmonics o=note:5
 10 Harmonics
 
-//! o=note:6
+//! c=legato i=legato o=note:6
 20 Tapping
 
-//! o=note:7
+//! c=fx i=fx o=note:7
 80 Effects
 
-//! o=note:8
+//! c=textured i=trill o=note:8
 81 Buzz Trill
 
-//! o=note:12
+//! c=long-light i=note-quarter o=note:12
 4 Sustain Fingered
 
 //! g="Impact Sound Works/Shreddage 3" n="Hydra"
 //! m=""
 //! id=bdef6790-a63e-4f8f-9753-fa7997b8750f
 Bank * * Shreddage 3 Hydra
-//! o=note:12
+//! c=long i=note-quarter o=note:12
 1 Auto
 
-//! o=note:13
+//! c=long-dark i=note-quarter o=note:13
 2 Power Chord, Auto
 
-//! o=note:14
+//! c=short i=staccato o=note:14
 40 Staccato
 
-//! o=note:15
+//! c=short-dark i=staccato o=note:15
 41 Power Chord, Staccato
 
-//! o=note:17
+//! c=long i=harmonics o=note:17
 10 Harmonics
 
-//! o=note:18
+//! c=legato i=legato o=note:18
 20 Tapping
 
-//! o=note:19
+//! c=fx i=fx o=note:19
 80 Effects
 
-//! o=note:20
+//! c=textured i=tremolo o=note:20
 11 Tremolo
 
-//! o=note:21
+//! c=fx i=staccato-stopped o=note:21
 81 Choke
