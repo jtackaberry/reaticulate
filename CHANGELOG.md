@@ -1,3 +1,17 @@
+# 0.5.11 - TBD
+
+This is a hotfix for the Reaticulate 0.5 series.
+
+## Minor Enhancements
+
+* Added a new action "Toggle insert articulations based on selected notes when MIDI editor is open" which provides an action for what was otherwise only adjustable in Reaticulate's settings page
+
+## Bug Fixes
+
+* Fixed runtime error with REAPER 7.0pre when using banks with spacer attributes defined
+* Fixed crash that could occur with some malformed/invalid banks
+
+
 # 0.5.10 - December 3, 2022
 
 This is a hotfix for the Reaticulate 0.5 series.
