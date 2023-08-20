@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.9-pre1'}end)()
+return {_VERSION='0.5.11-pre1'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -200,7 +200,7 @@ end
 function rtk.pushdest(dest)rtk._dest_stack[#rtk._dest_stack+1]=gfx.dest
 gfx.dest=dest
 end
-function rtk.popdest(expect)gfx.dest=table.remove(rtk._dest_stack,#rtk._dest_stack)end
+function rtk.popdest()gfx.dest=table.remove(rtk._dest_stack,#rtk._dest_stack)end
 local function _handle_error(err)rtk._last_error=err
 rtk._last_traceback=debug.traceback()end
 function rtk.onerror(err,traceback)log.error("fatal: %s\n%s", err, traceback)log.flush()error(err)end
@@ -572,21 +572,29 @@ for i=1,#s do
 hash=((hash<<5)+hash)+s:byte(i)end
 return hash&0x7fffffffffffffff
 end
+function string.count(s,sub)local c=-1
+local idx=0
+while idx do
+_,idx=s:find(sub,idx+1)c=c+1
+end
+return c
+end
+local _table_tostring=nil
 local function val_to_str(v,seen)if "string" == type(v) then
 v=string.gsub(v, "\n", "\\n")if string.match(string.gsub(v,"[^'\"]",""), '^"+$') then
 return "'" .. v .. "'"end
 return '"' .. string.gsub(v, '"', '\\"') .. '"'else
 if type(v)=='table' and not v.__tostring then
-return seen[tostring(v)] and '<recursed>' or table.tostring(v, seen)else
+return seen[tostring(v)] and '<recursed>' or _table_tostring(v, seen)else
 return tostring(v)end
-return "table" == type(v) and table.tostring(v, seen) or tostring(v)end
+return "table" == type(v) and _table_tostring(v, seen) or tostring(v)end
 end
 local function key_to_str(k,seen)if "string" == type(k) and string.match(k, "^[_%a][_%a%d]*$") then
 return k
 else
 return "[" .. val_to_str(k, seen) .. "]"end
 end
-local function _table_tostring(tbl,seen)local result,done={},{}seen=seen or {}local id=tostring(tbl)seen[id]=1
+_table_tostring=function(tbl,seen)local result,done={},{}seen=seen or {}local id=tostring(tbl)seen[id]=1
 for k,v in ipairs(tbl)do
 table.insert(result,val_to_str(v,seen))done[k]=true
 end
@@ -1354,7 +1362,7 @@ self.id=nil
 end
 end
 function rtk.Image:pushdest()assert(self.id, 'create() or load() must be called first')rtk.pushdest(self.id)end
-function rtk.Image:popdest()assert(gfx.dest==self.id, 'rtk.Image.popdest() called on image that is not the current drawing target')rtk.popdest(self.id)end
+function rtk.Image:popdest()assert(gfx.dest==self.id, 'rtk.Image.popdest() called on image that is not the current drawing target')rtk.popdest()end
 function rtk.Image:clone()local newimg=rtk.Image(self.w,self.h)if self.id then
 newimg:blit{src=self,sx=self.x,sy=self.y}end
 newimg.density=self.density
@@ -1433,6 +1441,7 @@ end
 function rtk.Image:rect(color,x,y,w,h,fill)self:pushdest()rtk.color.set(color)gfx.rect(x,y,w,h,fill)self:popdest()return self
 end
 function rtk.Image:blur(strength,x,y,w,h)if not self.w then
+return self
 end
 self:pushdest()gfx.mode=6
 x=x or 0
@@ -1742,7 +1751,7 @@ rtk.gfx.roundrect(pad+i,pad+i,self.w+tl+tr-i*2,self.h+tt+tb-i*2,self.elevation,0
 self._image:popdest()self._needs_draw=false
 end
 if tr>0 then
-self._image:blit{sx=pad+tl+self.w,sw=tr+pad,sh=h,dx=x+self.w,dy=y-tt-pad,alpha=alpha
+self._image:blit{sx=pad+tl+self.w,sw=tr+pad,sh=nil,dx=x+self.w,dy=y-tt-pad,alpha=alpha
 }end
 if tb>0 then
 self._image:blit{sy=pad+tt+self.h,sw=self.w+tl+pad,sh=tb+pad,dx=x-tl-pad,dy=y+self.h,alpha=alpha
@@ -2012,16 +2021,19 @@ end
 local calculated=self:_calc_attr(k,v)self:_set_calc_attr(k,v,calculated,calc)end
 end
 end
-function rtk.Widget:_ref(table,key)if self.parent then
+function rtk.Widget:_ref(table,key)rtk.log.info('---------- GET _ref: %s %s', self, key)if self.parent then
 return self.parent.refs[key]
 else
 return rtk._refs[key]
 end
 end
 function rtk.Widget:_get_debug_color()if not self.debug_color then
-local function hashint(i,seed)math.randomseed(i*(seed*53))return math.random(40,235)/255.0
+local x=self.id:hash()*100
+x=x ~(x<<13)x=x ~(x>>7)x=x ~(x<<17)local color=table.pack(rtk.color.rgba(x%16777216))local luma=rtk.color.luma(color)if luma<0.2 then
+color=table.pack(rtk.color.mod(color,1,1,2.5))elseif luma>0.8 then
+color=table.pack(rtk.color.mod(color,1,1,0.75))end
+self.debug_color=color
 end
-local id=self.id:hash()self.debug_color={hashint(id,1),hashint(id,2),hashint(id,3),}end
 return self.debug_color
 end
 function rtk.Widget:_draw_debug_box(offx,offy,event)local calc=self.calc
@@ -2753,14 +2765,18 @@ end
 end
 if pass2 then
 wx,wy,ww,wh=self:_reflow_child(inner_maxw,inner_maxh,uiscale,window,greedyw,greedyh)end
+if greedyw then
 if calc.halign==rtk.Widget.CENTER then
 wx=wx+math.max(0,inner_maxw-ccalc.w)/2
 elseif calc.halign==rtk.Widget.RIGHT then
 wx=wx+math.max(0,(inner_maxw-ccalc.w)-rp)end
+end
+if greedyh then
 if calc.valign==rtk.Widget.CENTER then
 wy=wy+math.max(0,inner_maxh-ccalc.h)/2
 elseif calc.valign==rtk.Widget.BOTTOM then
 wy=wy+math.max(0,(inner_maxh-ccalc.h)-bp)end
+end
 ccalc.x=wx
 ccalc.y=wy
 child:_realize_geometry()innerw=math.ceil(rtk.clamp(ww+wx,fillw and greedyw and inner_maxw,inner_maxw))innerh=math.ceil(rtk.clamp(wh+wy,fillh and greedyh and inner_maxh,inner_maxh))else
@@ -3259,19 +3275,22 @@ local k=keys[n]
 calculated[k]=self:_calc_attr(k, attrs[k], calculated, nil, 'cell', widget)end
 return calculated
 end
-function rtk.Container:reorder(widget,targetidx)local srcidx=self:get_child_index(widget)if srcidx~=nil and srcidx~=targetidx and(targetidx<=srcidx or targetidx-1~=srcidx)then
-local widgetattrs=table.remove(self.children,srcidx)local org=targetidx
-if targetidx>srcidx then
-targetidx=targetidx-1
-end
-table.insert(self.children,rtk.clamp(targetidx,1,#self.children+1),widgetattrs)self._child_index_by_id=nil
+function rtk.Container:_reorder(srcidx,targetidx)if srcidx~=nil and srcidx~=targetidx then
+local widgetattrs=table.remove(self.children,srcidx)table.insert(self.children,rtk.clamp(targetidx,1,#self.children+1),widgetattrs)self._child_index_by_id=nil
 self:queue_reflow(rtk.Widget.REFLOW_FULL)return true
 else
 return false
 end
 end
-function rtk.Container:reorder_before(widget,target)local targetidx=self:get_child_index(target)return self:reorder(widget,targetidx)end
-function rtk.Container:reorder_after(widget,target)local targetidx=self:get_child_index(target)return self:reorder(widget,targetidx+1)end
+function rtk.Container:reorder(widget,targetidx)local srcidx=self:get_child_index(widget)return self:_reorder(srcidx,targetidx)end
+function rtk.Container:reorder_before(widget,target)local srcidx=self:get_child_index(widget)local targetidx=self:get_child_index(target)if not srcidx or not targetidx then
+return false
+end
+return self:_reorder(srcidx,targetidx>srcidx and targetidx-1 or targetidx)end
+function rtk.Container:reorder_after(widget,target)local srcidx=self:get_child_index(widget)local targetidx=self:get_child_index(target)if not srcidx or not targetidx then
+return false
+end
+return self:_reorder(srcidx,srcidx>targetidx and targetidx+1 or targetidx)end
 function rtk.Container:get_child(idx)if idx<0 then
 idx=#self.children+idx+1
 end
@@ -3416,7 +3435,7 @@ end
 end
 icon:popdest()rtk.Window.static._icon_resize_grip=icon
 end
-rtk.Window.register{x=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},y=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},w=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=function(self,anim)return rtk.Widget.attributes.w.animate(self,anim,rtk.scale.framebuffer)end,calculate=function(self,attr,value,target)return value and value*rtk.scale.framebuffer
+rtk.Window.register{x=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},y=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},w=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=function(self,anim)return rtk.Widget.attributes.w.animate(self,anim,rtk.scale.framebuffer)end,calculate=function(self,attr,value,target)return value and value*rtk.scale.framebuffer or target[attr]
 end,},h=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=rtk.Reference('w'),calculate=rtk.Reference('w'),},minw=rtk.Attribute{default=100,window_sync=true,reflow_uses_exterior_value=true,},minh=rtk.Attribute{default=30,window_sync=true,reflow_uses_exterior_value=true,},maxw=rtk.Attribute{window_sync=true,reflow_uses_exterior_value=true,},maxh=rtk.Attribute{window_sync=true,reflow_uses_exterior_value=true,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
 },window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},pinned=rtk.Attribute{default=false,window_sync=true,calculate=function(self,attr,value,target)return rtk.has_js_reascript_api and value
 end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,redraw=false,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,redraw=false,},resizable=rtk.Attribute{default=true,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
@@ -4190,13 +4209,13 @@ function rtk.Box:_reflow(boxx,boxy,boxw,boxh,fillw,fillh,clampw,clamph,uiscale,v
 calc.x,calc.y=self:_get_box_pos(boxx,boxy)local w,h,tp,rp,bp,lp,minw,maxw,minh,maxh=self:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,nil,greedyw,greedyh
 )local inner_maxw=rtk.clamp(w or(boxw-lp-rp),minw,maxw)local inner_maxh=rtk.clamp(h or(boxh-tp-bp),minh,maxh)clampw=clampw or w~=nil or fillw
 clamph=clamph or h~=nil or fillh
-self._reflowed_children={}self._child_index_by_id={}local innerw,innerh,expw,exph,expand_units,remaining_size=self:_reflow_step1(inner_maxw,inner_maxh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
+self._reflowed_children={}self._child_index_by_id={}local innerw,innerh,expw,exph,expand_units,remaining_size,total_spacing=self:_reflow_step1(inner_maxw,inner_maxh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
 )if self.orientation==rtk.Box.HORIZONTAL then
 expw=(expand_units>0)or expw
 elseif self.orientation==rtk.Box.VERTICAL then
 exph=(expand_units>0)or exph
 end
-innerw,innerh=self:_reflow_step2(inner_maxw,inner_maxh,innerw,innerh,clampw,clamph,expand_units,remaining_size,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp
+innerw,innerh=self:_reflow_step2(inner_maxw,inner_maxh,innerw,innerh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp
 )fillw=fillw or(self.w and tonumber(self.w)<1.0)fillh=fillh or(self.h and tonumber(self.h)<1.0)innerw=w or math.max(innerw,fillw and greedyw and inner_maxw or 0)innerh=h or math.max(innerh,fillh and greedyh and inner_maxh or 0)calc.w=math.ceil(rtk.clamp(innerw+lp+rp,minw,maxw))calc.h=math.ceil(rtk.clamp(innerh+tp+bp,minh,maxh))return expw,exph
 end
 function rtk.Box:_reflow_step1(w,h,clampw,clamph,uiscale,viewport,window,greedyw,greedyh)local calc=self.calc
@@ -4212,6 +4231,7 @@ end
 local expand_units=0
 local maxw,maxh=0,0
 local spacing=0
+local total_spacing=0
 local expw,exph=false,false
 for n,widgetattrs in ipairs(self.children)do
 local widget,attrs=table.unpack(widgetattrs)local wcalc=widget.calc
@@ -4266,12 +4286,14 @@ maxw=w
 elseif orientation==rtk.Box.HORIZONTAL and attrs.stretch==rtk.Box.STRETCH_FULL and greedyh then
 maxh=h
 end
+attrs._running_spacing_total=spacing
 spacing=(attrs.spacing or self.spacing)*rtk.scale.value
+total_spacing=total_spacing+spacing
 self:_add_reflowed_child(widgetattrs,attrs.z or wcalc.z or 0)else
 widget.realized=false
 end
 end
-self:_determine_zorders()return maxw,maxh,expw,exph,expand_units,remaining_size
+self:_determine_zorders()return maxw,maxh,expw,exph,expand_units,remaining_size,total_spacing
 end
 end)()
 
@@ -4279,7 +4301,7 @@ __mod_rtk_vbox=(function()
 local rtk=__mod_rtk_core
 rtk.VBox=rtk.class('rtk.VBox', rtk.Box)rtk.VBox.register{orientation=rtk.Box.VERTICAL
 }function rtk.VBox:initialize(attrs,...)rtk.Box.initialize(self,attrs,self.class.attributes.defaults,...)end
-function rtk.VBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and(remaining_size/expand_units)or 0
+function rtk.VBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and((remaining_size-total_spacing)/expand_units)or 0
 local offset=0
 local spacing=0
 local second_pass={}for n,widgetattrs in ipairs(self.children)do
@@ -4301,7 +4323,8 @@ local cellh
 if expand and greedyh and expand>0 then
 local expanded_size=(expand_unit_size*expand)expand_units=expand_units-expand
 if attrs._minh and attrs._minh>expanded_size then
-expand_unit_size=(remaining_size-attrs._minh-ctp-cbp-spacing)/expand_units
+local remaining_spacing=total_spacing-attrs._running_spacing_total
+expand_unit_size=(remaining_size-attrs._minh-ctp-cbp-remaining_spacing)/expand_units
 end
 local child_maxw=rtk.clamp(w-clp-crp,attrs._minw,attrs._maxw)local child_maxh=rtk.clamp(expanded_size-ctp-cbp-spacing,attrs._minh,attrs._maxh)child_maxh=math.min(child_maxh,h-maxh-spacing)wx,wy,ww,wh=widget:reflow(0,0,child_maxw,child_maxh,attrs.fillw,attrs.fillh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
 )if attrs.stretch==rtk.Box.STRETCH_FULL and greedyw then
@@ -4363,7 +4386,7 @@ __mod_rtk_hbox=(function()
 local rtk=__mod_rtk_core
 rtk.HBox=rtk.class('rtk.HBox', rtk.Box)rtk.HBox.register{orientation=rtk.Box.HORIZONTAL
 }function rtk.HBox:initialize(attrs,...)rtk.Box.initialize(self,attrs,self.class.attributes.defaults,...)end
-function rtk.HBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and(remaining_size/expand_units)or 0
+function rtk.HBox:_reflow_step2(w,h,maxw,maxh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp)local expand_unit_size=expand_units>0 and((remaining_size-total_spacing)/expand_units)or 0
 local offset=0
 local spacing=0
 local second_pass={}for n,widgetattrs in ipairs(self.children)do
@@ -4385,9 +4408,10 @@ local cellw
 if expand and greedyw and expand>0 then
 local expanded_size=(expand_unit_size*expand)expand_units=expand_units-expand
 if attrs._minw and attrs._minw>expanded_size then
-expand_unit_size=(remaining_size-attrs._minw-clp-crp-spacing)/expand_units
+local remaining_spacing=total_spacing-attrs._running_spacing_total
+expand_unit_size=(remaining_size-attrs._minw-clp-crp-remaining_spacing)/expand_units
 end
-local child_maxw=rtk.clamp(expanded_size-clp-crp-spacing,attrs._minw,attrs._maxh)child_maxw=math.min(child_maxw,w-maxw-spacing)local child_maxh=rtk.clamp(h-ctp-cbp,attrs._minh,attrs._maxh)wx,wy,ww,wh=widget:reflow(0,0,child_maxw,child_maxh,attrs.fillw,attrs.fillh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
+local child_maxw=rtk.clamp(expanded_size-clp-crp,attrs._minw,attrs._maxw)child_maxw=math.min(child_maxw,w-maxw-spacing)local child_maxh=rtk.clamp(h-ctp-cbp,attrs._minh,attrs._maxh)wx,wy,ww,wh=widget:reflow(0,0,child_maxw,child_maxh,attrs.fillw,attrs.fillh,clampw,clamph,uiscale,viewport,window,greedyw,greedyh
 )if attrs.stretch==rtk.Box.STRETCH_FULL and greedyh then
 wh=maxh
 end
@@ -5016,9 +5040,9 @@ dela=rtk.clamp(dela,1,#value)delb=rtk.clamp(delb,1,#value+1)value=value:sub(1,de
 if insert then
 self._dirty_positions=math.min(caret-1,self._dirty_positions or math.inf)value=value:sub(0,caret-1)..insert..value:sub(caret)caret=caret+insert:len()end
 if value~=calc.value then
-caret=rtk.clamp(caret,1,#value+1)self:sync('value', value)if caret~=calc.caret then
+caret=rtk.clamp(caret,1,#value+1)self:sync('value', value, nil, false)if caret~=calc.caret then
 self:sync('caret', caret)end
-self._dirty_view=true
+self:_handle_change()self._dirty_view=true
 end
 end
 function rtk.Entry:delete_range(a,b)self:push_undo()self:_edit(nil,nil,a,b)end
@@ -5270,12 +5294,16 @@ end,reflow=rtk.Widget.REFLOW_FULL,},fontsize=rtk.Attribute{default=function(self
 end,reflow=rtk.Widget.REFLOW_FULL,},fontscale=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_FULL,},fontflags=rtk.Attribute{default=function(self,attr)return self._theme_font[3]
 end
 },}function rtk.Text:initialize(attrs,...)self._theme_font=self._theme_font or rtk.theme.text_font or rtk.theme.default_font
-rtk.Widget.initialize(self,attrs,rtk.Text.attributes.defaults,...)self._font=rtk.Font()end
+rtk.Widget.initialize(self,attrs,rtk.Text.attributes.defaults,...)self._font=rtk.Font()self._num_newlines=nil
+end
 function rtk.Text:__tostring_info()return self.text
 end
-function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)if attr == 'text' and reflow == rtk.Widget.REFLOW_DEFAULT and self.w and not self.calc.wrap then
-if not value:find('\n') and not oldval:find('\n') then
+function rtk.Text:_handle_attr(attr,value,oldval,trigger,reflow,sync)if attr == 'text' and reflow == rtk.Widget.REFLOW_DEFAULT and not self.calc.wrap then
+if self.w or(self.box and self.box[5])then
+local c=value:count('\n')if c==self._num_newlines then
 reflow=rtk.Widget.REFLOW_PARTIAL
+end
+self._num_newlines=c
 end
 end
 local ok=rtk.Widget._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
@@ -5291,9 +5319,7 @@ function rtk.Text:_reflow(boxx,boxy,boxw,boxh,fillw,fillh,clampw,clamph,uiscale,
 calc.x,calc.y=self:_get_box_pos(boxx,boxy)self._font:set(calc.font,calc.fontsize,calc.fontscale,calc.fontflags)local w,h,tp,rp,bp,lp,minw,maxw,minh,maxh=self:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,nil,greedyw,greedyh
 )local hpadding=lp+rp
 local vpadding=tp+bp
-local lmaxw=(clampw or(fillw and greedyw))and(boxw-hpadding)or w or math.inf
-local lmaxh=(clamph or(fillh and greedyh))and(boxh-vpadding)or h or math.inf
-local seg=self._segments
+local lmaxw=w or((clampw or(fillw and greedyw))and(boxw-hpadding)or math.inf)local lmaxh=h or((clamph or(fillh and greedyh))and(boxh-vpadding)or math.inf)local seg=self._segments
 if not seg or seg.boxw~=lmaxw or not seg.isvalid()then
 self._segments,self.lw,self.lh=self._font:layout(calc.text,lmaxw,lmaxh,calc.wrap~=rtk.Text.WRAP_NONE,self.textalign and calc.textalign or calc.halign,true,calc.spacing,calc.wrap==rtk.Text.WRAP_BREAK_WORD
 )end
@@ -5530,13 +5556,13 @@ end)()
 __mod_rtk_application=(function()
 local rtk=__mod_rtk_core
 rtk.Application=rtk.class('rtk.Application', rtk.VBox)rtk.Application.register{status=rtk.Attribute{reflow=rtk.Widget.REFLOW_NONE
-},statusbar=nil,toolbar=nil,screens=nil,}function rtk.Application:initialize(attrs,...)self.screens={stack={},}self.toolbar=rtk.HBox{bg=rtk.theme.bg,spacing=0,z=110,}self.toolbar:add(rtk.HBox.FLEXSPACE)self.statusbar=rtk.HBox{bg=rtk.theme.bg,lpadding=10,tpadding=5,bpadding=5,rpadding=10,z=110,}self.statusbar.text = self.statusbar:add(rtk.Text{color=rtk.theme.text_faded, text=""}, {expand=1})rtk.VBox.initialize(self,attrs,self.class.attributes.defaults,...)self:add(self.toolbar,{minw=150,bpadding=2})self:add(rtk.VBox.FLEXSPACE)self._content_position=#self.children
+},statusbar=nil,toolbar=nil,screens=nil,}function rtk.Application:initialize(attrs,...)self.screens={stack={},}self.toolbar=rtk.HBox{bg=rtk.theme.bg,spacing=0,z=110,}self.toolbar:add(rtk.HBox.FLEXSPACE)self.statusbar=rtk.HBox{bg=rtk.theme.bg,lpadding=10,tpadding=5,bpadding=5,rpadding=10,z=110,}self.statusbar.text = self.statusbar:add(rtk.Text{color=rtk.theme.text_faded, text=""}, {fillw=true})rtk.VBox.initialize(self,attrs,self.class.attributes.defaults,...)self:add(self.toolbar,{minw=150,bpadding=2})self:add(rtk.VBox.FLEXSPACE)self._content_position=#self.children
 self:add(self.statusbar,{fillw=true})self:_handle_attr('status', self.calc.status)end
 function rtk.Application:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ok=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ok==false then
 return ok
 end
 if attr=='status' then
-self.statusbar.text:attr('text', value or ' ', nil, rtk.Widget.REFLOW_PARTIAL)end
+self.statusbar.text:attr('text', value or ' ')end
 return ok
 end
 function rtk.Application:add_screen(screen,name)assert(type(screen)=='table' and screen.init, 'screen must be a table containing an init() function')name=name or screen.name
@@ -6979,7 +7005,7 @@ self.program=program
 self.name=name
 self._attrs=attrs
 self._has_conditional_output=nil
-table.merge(self,attrs)self.group=tonumber(self.group or 1)self.flags=_parse_flags(self.flags,bank.flags)self.buses=nil
+table.merge(self,attrs)self.group=tonumber(self.group or 1)self.spacer=tonumber(self.spacer)self.flags=_parse_flags(self.flags,bank.flags)self.buses=nil
 end
 function Articulation:has_transforms()return self.velrange or self.pitchrange or self.transpose or self.velocity
 end
@@ -7049,15 +7075,17 @@ channel='current channels'elseif output.channel then
 channel=string.format('ch %d', output.channel)end
 if output.bus then
 channel=(channel and (channel .. ' ') or '') .. string.format('bus %s', output.bus)end
-if output.type=='program' then
-s=string.format('program change %d', output.args[1] or 0)elseif output.type=='cc' then
-s=string.format('CC %d val %d', output.args[1] or 0, output.args[2] or 0)elseif output.type == 'note' or output.type == 'note-hold' then
-local note=tonumber(output.args[1] or 0)local name=note_to_name(note)verb=output.type=='note' and 'Sends' or 'Holds'if(output.args[2] or 127)==127 then
+local args={tonumber(output.args[1]),tonumber(output.args[2])}if output.type=='program' then
+s=string.format('program change %d', args[1] or 0)elseif output.type=='cc' then
+s=string.format('CC %d val %d', args[1] or 0, args[2] or 0)elseif output.type == 'note' or output.type == 'note-hold' then
+local note=args[1] or 0
+local name=note_to_name(note)verb=output.type=='note' and 'Sends' or 'Holds'if(args[2] or 127)==127 then
 s=string.format('note %s (%d)', name, note)else
-s=string.format('note %s (%d) vel %d', name, note, output.args[2] or 127)end
+s=string.format('note %s (%d) vel %d', name, note, args[2] or 127)end
 elseif output.type=='pitch' then
-s=string.format('pitch bend val %d', output.args[1] or 0)elseif output.type=='art' then
-local program=tonumber(output.args[1] or 0)local bank=self:get_bank()local art=bank.articulations_by_program[program]
+s=string.format('pitch bend val %d', args[1] or 0)elseif output.type=='art' then
+local program=args[1] or 0
+local bank=self:get_bank()local art=bank.articulations_by_program[program]
 if art then
 s=art.name or 'unnamed articulation'else
 s='undefined articulation'end
@@ -7213,13 +7241,15 @@ end
 self.realized=true
 end
 local function get_reabank_file()local ini=rtk.file.read(reaper.get_ini_file())return ini and ini:match("mididefbankprog=([^\n]*)")end
-function reabank.init()log.time_start()reabank.last_written_msblsb=app:get_ext_state('last_written_msblsb')reabank.reabank_filename_factory=Path.join(Path.basedir, "Reaticulate-factory.reabank")reabank.reabank_filename_user=Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)local cur_factory_bank_size,err=rtk.file.size(reabank.reabank_filename_factory)local file=get_reabank_file() or ''local tmpnum=file:lower():match("-tmp(%d+).")if tmpnum and rtk.file.exists(file)then
-log.debug("reabank: tmp file exists: %s", file)reabank.version=tonumber(tmpnum)reabank.filename_tmp=file
+function reabank.init()log.time_start()reabank.last_written_msblsb=app:get_ext_state('last_written_msblsb')reabank.reabank_filename_factory=Path.join(Path.basedir, "Reaticulate-factory.reabank")reabank.reabank_filename_user=Path.join(Path.resourcedir, "Data", "Reaticulate.reabank")log.info("reabank: init files factory=%s user=%s", reabank.reabank_filename_factory, reabank.reabank_filename_user)local cur_factory_bank_size,err=rtk.file.size(reabank.reabank_filename_factory)local tmpfile=get_reabank_file() or ''local tmpnum=tmpfile:lower():match("-tmp(%d+).")if tmpnum and rtk.file.exists(tmpfile)then
+log.debug("reabank: tmp file exists: %s", tmpfile)reabank.version=tonumber(tmpnum)reabank.filename_tmp=tmpfile
 local last_factory_bank_size=reaper.GetExtState("reaticulate", "factory_bank_size")if cur_factory_bank_size==tonumber(last_factory_bank_size)then
 reabank.menu=nil
 reabank.parseall()log.info("reabank: parsed bank files (factory banks unchanged since last start)")log.time_end()return
 else
 log.info("reabank: factory bank has changed: cur=%s last=%s", cur_factory_bank_size, last_factory_bank_size)end
+else
+log.debug('reabank: previous tmp file is missing: %s', tmpfile)reabank.last_written_msblsb=nil
 end
 log.info("reabank: generating new reabank")reabank.parseall()reaper.SetExtState("reaticulate", "factory_bank_size", tostring(cur_factory_bank_size), true)log.info("reabank: refreshed reabank %s", reabank.filename_tmp)log.time_end()end
 function reabank.onprojectchange()local state=app.project_state
@@ -8200,7 +8230,7 @@ local rtk=rtk
 local log=rtk.log
 local feedback={SYNC_CC=1,SYNC_ARTICULATIONS=2,SYNC_CHANNEL=4,SYNC_TRACK=8,SYNC_ALL=1|2|4|8,track=nil,track_guid=nil
 }local BUS_TRANSLATOR_MAGIC=0x42424242
-local BUS_TRANSLATOR_FX_NAME='Feedback Translate.jsfx'function feedback.is_enabled()return(app.config.cc_feedback_device or-1)>=0 and app.config.cc_feedback_active
+local BUS_TRANSLATOR_FX_SCRIPT='Feedback Translate.jsfx'local BUS_TRANSLATOR_FX_DESC='Bus Translator for MIDI Feedback (Reaticulate)'function feedback.is_enabled()return(app.config.cc_feedback_device or-1)>=0 and app.config.cc_feedback_active
 end
 function feedback.ontrackchange(last,cur)if not feedback.is_enabled()then
 return
@@ -8246,12 +8276,16 @@ if app.config.cc_feedback_device<0 then
 enabled=0
 end
 rfx.opcode_on_track(track,rfx.OPCODE_SET_CC_FEEDBACK_ENABLED,{enabled,bus})end
+function feedback.get_feedback_track_fx_idx(track)local fx=reaper.TrackFX_GetByName(track,BUS_TRANSLATOR_FX_DESC,false)if fx==-1 then
+fx=reaper.TrackFX_GetByName(track,BUS_TRANSLATOR_FX_SCRIPT,false)end
+return fx
+end
 function feedback.get_feedback_track()if feedback.track and reaper.ValidatePtr2(0, feedback.track, "MediaTrack*") and
 reaper.GetTrackGUID(feedback.track)==feedback.track_guid then
 return feedback.track
 end
 for i=0,reaper.CountTracks(0)-1 do
-local track=reaper.GetTrack(0,i)local fx=reaper.TrackFX_GetByName(track,BUS_TRANSLATOR_FX_NAME,false)if fx>=0 then
+local track=reaper.GetTrack(0,i)local fx=feedback.get_feedback_track_fx_idx(track)if fx>=0 then
 local val,_,_=reaper.TrackFX_GetParam(track,fx,3)if val==BUS_TRANSLATOR_MAGIC then
 feedback.track=track
 feedback.track_guid=reaper.GetTrackGUID(track)return track
@@ -8260,7 +8294,7 @@ end
 end
 return nil
 end
-function feedback.create_feedback_track()log.info('creating track for MIDI feedback')reaper.PreventUIRefresh(1)local idx=reaper.CountTracks(0)reaper.InsertTrackAtIndex(idx,false)feedback.track=reaper.GetTrack(0,idx)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)feedback.track_guid=reaper.GetTrackGUID(feedback.track)reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)local fx=reaper.TrackFX_AddByName(feedback.track,BUS_TRANSLATOR_FX_NAME,0,1)reaper.TrackFX_Show(feedback.track,fx,2)feedback.update_feedback_track_settings()feedback.scroll_mixer(app.track)reaper.PreventUIRefresh(-1)return feedback.track
+function feedback.create_feedback_track()log.info('creating track for MIDI feedback')reaper.PreventUIRefresh(1)local idx=reaper.CountTracks(0)reaper.InsertTrackAtIndex(idx,false)feedback.track=reaper.GetTrack(0,idx)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINTCP', 0)reaper.SetMediaTrackInfo_Value(feedback.track, 'B_SHOWINMIXER', 0)feedback.track_guid=reaper.GetTrackGUID(feedback.track)reaper.GetSetMediaTrackInfo_String(feedback.track, 'P_NAME', "MIDI Feedback (Reaticulate)", true)local fx=reaper.TrackFX_AddByName(feedback.track,BUS_TRANSLATOR_FX_SCRIPT,0,1)reaper.TrackFX_Show(feedback.track,fx,2)feedback.update_feedback_track_settings()feedback.scroll_mixer(app.track)reaper.PreventUIRefresh(-1)return feedback.track
 end
 function feedback.destroy_feedback_track()local feedback_track=feedback.get_feedback_track()if feedback_track then
 for idx=0,reaper.CountTracks(0)-1 do
@@ -8273,8 +8307,8 @@ reaper.DeleteTrack(feedback_track)feedback.track=nil
 end
 end
 function feedback.update_feedback_track_settings(dosync)local feedback_track=feedback.get_feedback_track()if feedback_track then
-reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)local fx=reaper.TrackFX_GetByName(feedback_track,BUS_TRANSLATOR_FX_NAME,false)if fx==-1 then
-log.error("feedback: CC feedback is enabled but BUS Translator FX not found")else
+reaper.SetMediaTrackInfo_Value(feedback_track, "I_MIDIHWOUT", app.config.cc_feedback_device << 5)local fx=feedback.get_feedback_track_fx_idx(feedback_track)if fx==-1 then
+log.error("feedback: CC feedback is enabled but Bus Translator FX not found")else
 reaper.Undo_BeginBlock()rfx.push_state(feedback_track)reaper.TrackFX_SetParam(feedback_track,fx,0,app.config.cc_feedback_active and 1 or 0)reaper.TrackFX_SetParam(feedback_track,fx,1,15)reaper.TrackFX_SetParam(feedback_track,fx,2,app.config.cc_feedback_bus-1)reaper.TrackFX_SetParam(feedback_track,fx,3,BUS_TRANSLATOR_MAGIC)local articulation_cc=0
 if app.config.cc_feedback_articulations==2 then
 articulation_cc=app.config.cc_feedback_articulations_cc or 0
@@ -8309,7 +8343,7 @@ App.static.REPARSE_REABANK_FILE=8
 App.static.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK=16
 App.static.FORCE_RECOGNIZE_BANKS_PROJECT=32
 App.static.REFRESH_BANKS_ACTIONS=2|4|8|32
-function App:initialize(basedir,t0,t1)self.config={cc_feedback_device=-1,cc_feedback_bus=1,cc_feedback_articulations=1,cc_feedback_articulations_cc=0,cc_feedback_active=true,autostart=0,art_colors=nil,track_selection_follows_midi_editor=true,track_selection_follows_fx_focus=false,art_insert_at_selected_notes=true,single_floating_instrument_fx_window=false,keyboard_focus_follows_mouse=false,default_channel_behavior=nil,chase_ccs=nil,}self.config_map_to_script={track_selection_follows_midi_editor={0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},track_selection_follows_fx_focus={0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},single_floating_instrument_fx_window={0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},keyboard_focus_follows_mouse={0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},}self.known_focus_classes={REAPERmidieditorwnd='midi_editor',REAPERTCPDisplay='tcp',REAPERTrackListWindow='arrange',REAPERMCPDisplay='hwnd',Lua_LICE_gfx_standalone='hwnd',eelscript_gfx='hwnd',['#32770'] = 'hwnd',}if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
+function App:initialize(basedir,t0,t1)self.config={cc_feedback_device=-1,cc_feedback_bus=1,cc_feedback_articulations=1,cc_feedback_articulations_cc=0,cc_feedback_active=true,autostart=0,art_colors=nil,track_selection_follows_midi_editor=true,track_selection_follows_fx_focus=false,art_insert_at_selected_notes=true,single_floating_instrument_fx_window=false,keyboard_focus_follows_mouse=false,default_channel_behavior=nil,chase_ccs=nil,}self.config_map_to_script={track_selection_follows_midi_editor={0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},track_selection_follows_fx_focus={0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},single_floating_instrument_fx_window={0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},keyboard_focus_follows_mouse={0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},art_insert_at_selected_notes={0, 'Reaticulate_Toggle insert articulations based on selected notes when MIDI editor is open.lua'},}self.known_focus_classes={REAPERmidieditorwnd='midi_editor',REAPERTCPDisplay='tcp',REAPERTrackListWindow='arrange',REAPERMCPDisplay='hwnd',Lua_LICE_gfx_standalone='hwnd',eelscript_gfx='hwnd',['#32770'] = 'hwnd',}if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
 return
 end
 self.track=nil
@@ -8799,28 +8833,29 @@ local args=string.split(arg, ',')local channel=_cmd_arg_to_channel(args[1])self:
 local args=string.split(arg, ',')local channel=_cmd_arg_to_channel(args[1])self:insert_last_articulation(channel)elseif cmd=='sync_feedback' and rfx.current:valid() then
 if self.track then
 reaper.CSurf_OnTrackSelection(self.track)feedback.sync(self.track)end
-elseif cmd=='set_midi_feedback_active' then
-local enabled=self:handle_toggle_option(arg, 'cc_feedback_active', false)feedback.set_active(enabled)feedback.sync(self.track)elseif cmd=='focus_filter' then
+elseif cmd=='focus_filter' then
 self.screens.banklist.focus_filter()elseif cmd=='select_last_track' then
 if self.last_track and reaper.ValidatePtr2(0, self.last_track, "MediaTrack*") then
 self:select_track(self.last_track,false)end
-elseif cmd=='set_track_selection_follows_midi_editor' then
-self:handle_toggle_option(arg, 'track_selection_follows_midi_editor', true)elseif cmd=='set_track_selection_follows_fx_focus' then
-self:handle_toggle_option(arg, 'track_selection_follows_fx_focus', true)elseif cmd=='set_single_floating_instrument_fx_window' then
-self:handle_toggle_option(arg, 'single_floating_instrument_fx_window', true)self:do_single_floating_fx()elseif cmd=='set_keyboard_focus_follows_mouse' then
-self:handle_toggle_option(arg, 'keyboard_focus_follows_mouse', true)end
+elseif cmd=='set_toggle_option' then
+local args=string.split(arg, ',')local cfgitem=args[1]
+local enabled=tonumber(args[2])local section_id=tonumber(args[3])local cmd_id=tonumber(args[4])local store=tonumber(args[5])self:set_toggle_option(cfgitem,enabled,store,section_id,cmd_id)elseif cmd=='set_option' then
+local args=string.split(arg, ',')local cfgitem=args[1]
+local value=args[2]
+local type=args[3]
+if type=='number' then
+value=tonumber(value)elseif type == 'boolean' or type == 'bool' then
+value = (value == '1' or value == 'true') and true or false
+end
+self:set_option(cfgitem,value)end
 return BaseApp.handle_command(self,cmd,arg)end
-function App:handle_toggle_option(argstr,cfgitem,store)local args=string.split(argstr, ',')local enabled=tonumber(args[1])local section_id,cmd_id
-if #args>2 then
-section_id=tonumber(args[2])cmd_id=tonumber(args[3])end
-return self:set_toggle_option(cfgitem,enabled,store,section_id,cmd_id)end
 function App:set_toggle_option(cfgitem,enabled,store,section_id,cmd_id)local value=self:get_toggle_option(cfgitem)if enabled==-1 then
 value=not value
 elseif type(enabled)=='boolean' then
 value=enabled
 else
 value=(enabled==1 and true or false)end
-if store then
+if store~=false and store~=0 then
 self.config[cfgitem]=value
 self:queue_save_config()end
 log.info("app: set toggle option: %s -> %s", cfgitem, value)if not cmd_id and self.config_map_to_script[cfgitem] then
@@ -8833,9 +8868,16 @@ if cmd_id then
 reaper.SetToggleCommandState(section_id,cmd_id,value and 1 or 0)reaper.RefreshToolbar2(section_id,cmd_id)end
 if self:current_screen()==self.screens.settings then
 self.screens.settings.update()end
+if cfgitem=='single_floating_instrument_fx_window' then
+self:do_single_floating_fx()elseif cfgitem=='cc_feedback_active' then
+feedback.set_active(value)feedback.sync(self.track)end
 return value
 end
 function App:get_toggle_option(cfgitem)return self.config[cfgitem]
+end
+function App:set_option(cfgitem,value)self.config[cfgitem]=value
+self:queue_save_config()if self:current_screen()==self.screens.settings then
+self.screens.settings.update()end
 end
 function App:set_default_channel(channel)self.default_channel=channel
 self.screens.banklist.highlight_channel_button(channel)if self.midi_hwnd then
@@ -9308,7 +9350,9 @@ art.button.onlongpress=function(button,event)app:activate_articulation(art,true,
 end
 art.button.ondoubleclick=art.button.onlongpress
 art.button.ondraw=function(button,offx,offy,alpha,event)screen.draw_button_midi_channel(art,button,offx,offy,alpha,event)end
-art.button.onmouseleave=function(button,event)app:set_statusbar(nil)end
+art.button.onmouseleave=function(button,event)if app.status==art.outputstr then
+app:set_statusbar(nil)end
+end
 art.button.onmouseenter=function(button,event)if not art.outputstr then
 art.outputstr=art:describe_outputs()end
 app:set_statusbar(art.outputstr)return true
@@ -9579,8 +9623,7 @@ local hbox=screen.vbox:add(rtk.HBox{spacing=10},{tpadding=20,bpadding=20,lpaddin
 end
 local section=make_section(screen.vbox, "Behavior")local cb=rtk.CheckBox{'Autostart Reaticulate when Reaper starts'}cb.onchange=function(cb)app.config.autostart=cb.value
 update_startup_action(app.config.autostart)app:save_config()end
-section:add(cb)cb:attr('value', app.config.autostart == true or app.config.autostart == 1)screen.cb_insert_at_note_selection=rtk.CheckBox{'Insert articulations based on selected notes when MIDI editor is open'}screen.cb_insert_at_note_selection.onchange=function(cb)app.config.art_insert_at_selected_notes=cb.value
-app:save_config()end
+section:add(cb)cb:attr('value', app.config.autostart == true or app.config.autostart == 1)screen.cb_insert_at_note_selection=rtk.CheckBox{'Insert articulations based on selected notes when MIDI editor is open'}screen.cb_insert_at_note_selection.onchange=function(cb)app:set_toggle_option('art_insert_at_selected_notes', cb.value, true)end
 section:add(screen.cb_insert_at_note_selection)screen.cb_track_follows_midi_editor=rtk.CheckBox{'Track selection follows MIDI editor target item'}screen.cb_track_follows_midi_editor.onchange=function(cb)app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)end
 section:add(screen.cb_track_follows_midi_editor)screen.cb_track_follows_fx_focus=rtk.CheckBox{'Track selection follows FX focus'}screen.cb_track_follows_fx_focus.onchange=function(cb)app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)end
 screen.cb_sloppy_focus=rtk.CheckBox{'Keyboard focus follows mouse within REAPER (EXPERIMENTAL)'}screen.cb_sloppy_focus.onchange=function(cb)app:set_toggle_option('keyboard_focus_follows_mouse', cb.value, true)end
