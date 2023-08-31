@@ -5,7 +5,7 @@
 
 //! g="Orchestral Tools Clutch" n="Clutch Tonewheel Organ"
 //! m="Uses SINE Player default Keyswitches or CCs for standard setup."
-//! id=33222222-b75c-a34c-8de1-416c794af71a
+//! id=5c863aaa-4846-11ee-be56-0242ac120002
 Bank * * Clutch - Tonewheel Organ
 //! c=default i=note-whole o=@1/cc@1:70,0/note@1:24,127
 1 Full drawbars slow
