@@ -8,7 +8,7 @@ This is a hotfix for the Reaticulate 0.5 series.
 
 ## Bug Fixes
 
-* Fixed runtime error with REAPER 7.0pre when using banks with spacer attributes defined
+* Fixed potential runtime error with REAPER v7.0pre caused by the update to Lua 5.4
 * Fixed crash that could occur with some malformed/invalid banks
 
 
