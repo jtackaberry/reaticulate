@@ -877,7 +877,7 @@ function rfx.GUIDMigrator:migrate_bankinfo(bankinfo)
         -- This might only have been present in prereleases, but we'll migrate
         -- it anyway.
         local src, dst = bankinfo[1], bankinfo[2]
-        msb, lsb = bankinfo[3], bankinfo[4]
+        msb, lsb = tonumber(bankinfo[3]) or 0, tonumber(bankinfo[4]) or 0
         -- Remove existing elements in bankinfo table rather than creating a new table,
         -- since it points to an existing table within the appdata and we want to preserve
         -- that.
@@ -889,7 +889,8 @@ function rfx.GUIDMigrator:migrate_bankinfo(bankinfo)
         bankinfo.v = (msb << 8) | lsb
     elseif bankinfo.t == 'b' then
         -- MSB/LSB bankinfo
-        msb, lsb = bankinfo.v >> 8, bankinfo.v & 0xff
+        local v = tonumber(bankinfo.v) or 0
+        msb, lsb = v >> 8, v & 0xff
     else
         -- Must be a GUID-based bankinfo (bankinfo.t == 'g'). Nothing to migrate.
         return
