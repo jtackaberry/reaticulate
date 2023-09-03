@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.11-pre1'}end)()
+return {_VERSION='0.5.11-pre2'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -7753,14 +7753,15 @@ end
 function rfx.GUIDMigrator:migrate_bankinfo(bankinfo)local msb,lsb
 if not bankinfo.t then
 local src,dst=bankinfo[1],bankinfo[2]
-msb,lsb=bankinfo[3],bankinfo[4]
+msb,lsb=tonumber(bankinfo[3])or 0,tonumber(bankinfo[4])or 0
 while #bankinfo>0 do
 table.remove(bankinfo)end
 bankinfo.src=src
 bankinfo.dst=dst
 bankinfo.v=(msb<<8)|lsb
 elseif bankinfo.t=='b' then
-msb,lsb=bankinfo.v>>8,bankinfo.v&0xff
+local v=tonumber(bankinfo.v)or 0
+msb,lsb=v>>8,v&0xff
 else
 return
 end
