@@ -1,4 +1,4 @@
-# 0.5.11 - TBD
+# 0.5.11 - September 27, 2023
 
 This is a hotfix for the Reaticulate 0.5 series.
 
