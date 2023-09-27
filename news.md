@@ -4,6 +4,19 @@ layout: default
 permalink: /news/
 ---
 
+# Reaticulate 0.5.11 Released
+*September 27, 2023*
+
+### Minor Enhancements
+
+* Added a new action "Toggle insert articulations based on selected notes when MIDI editor is open" which provides an action for what was otherwise only adjustable in Reaticulate's settings page
+
+### Bug Fixes
+
+* Fixed potential runtime error with REAPER v7.0 prereleases caused by the update to Lua 5.4
+* Fixed crash that could occur with some malformed/invalid banks
+
+
 # Reaticulate 0.5.10 Released
 *December 3, 2022*
 
