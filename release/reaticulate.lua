@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.10'}end)()
+return {_VERSION='0.5.11'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -200,7 +200,7 @@ end
 function rtk.pushdest(dest)rtk._dest_stack[#rtk._dest_stack+1]=gfx.dest
 gfx.dest=dest
 end
-function rtk.popdest(expect)gfx.dest=table.remove(rtk._dest_stack,#rtk._dest_stack)end
+function rtk.popdest()gfx.dest=table.remove(rtk._dest_stack,#rtk._dest_stack)end
 local function _handle_error(err)rtk._last_error=err
 rtk._last_traceback=debug.traceback()end
 function rtk.onerror(err,traceback)log.error("fatal: %s\n%s", err, traceback)log.flush()error(err)end
@@ -579,21 +579,22 @@ _,idx=s:find(sub,idx+1)c=c+1
 end
 return c
 end
+local _table_tostring=nil
 local function val_to_str(v,seen)if "string" == type(v) then
 v=string.gsub(v, "\n", "\\n")if string.match(string.gsub(v,"[^'\"]",""), '^"+$') then
 return "'" .. v .. "'"end
 return '"' .. string.gsub(v, '"', '\\"') .. '"'else
 if type(v)=='table' and not v.__tostring then
-return seen[tostring(v)] and '<recursed>' or table.tostring(v, seen)else
+return seen[tostring(v)] and '<recursed>' or _table_tostring(v, seen)else
 return tostring(v)end
-return "table" == type(v) and table.tostring(v, seen) or tostring(v)end
+return "table" == type(v) and _table_tostring(v, seen) or tostring(v)end
 end
 local function key_to_str(k,seen)if "string" == type(k) and string.match(k, "^[_%a][_%a%d]*$") then
 return k
 else
 return "[" .. val_to_str(k, seen) .. "]"end
 end
-local function _table_tostring(tbl,seen)local result,done={},{}seen=seen or {}local id=tostring(tbl)seen[id]=1
+_table_tostring=function(tbl,seen)local result,done={},{}seen=seen or {}local id=tostring(tbl)seen[id]=1
 for k,v in ipairs(tbl)do
 table.insert(result,val_to_str(v,seen))done[k]=true
 end
@@ -1361,7 +1362,7 @@ self.id=nil
 end
 end
 function rtk.Image:pushdest()assert(self.id, 'create() or load() must be called first')rtk.pushdest(self.id)end
-function rtk.Image:popdest()assert(gfx.dest==self.id, 'rtk.Image.popdest() called on image that is not the current drawing target')rtk.popdest(self.id)end
+function rtk.Image:popdest()assert(gfx.dest==self.id, 'rtk.Image.popdest() called on image that is not the current drawing target')rtk.popdest()end
 function rtk.Image:clone()local newimg=rtk.Image(self.w,self.h)if self.id then
 newimg:blit{src=self,sx=self.x,sy=self.y}end
 newimg.density=self.density
@@ -1440,6 +1441,7 @@ end
 function rtk.Image:rect(color,x,y,w,h,fill)self:pushdest()rtk.color.set(color)gfx.rect(x,y,w,h,fill)self:popdest()return self
 end
 function rtk.Image:blur(strength,x,y,w,h)if not self.w then
+return self
 end
 self:pushdest()gfx.mode=6
 x=x or 0
@@ -1749,7 +1751,7 @@ rtk.gfx.roundrect(pad+i,pad+i,self.w+tl+tr-i*2,self.h+tt+tb-i*2,self.elevation,0
 self._image:popdest()self._needs_draw=false
 end
 if tr>0 then
-self._image:blit{sx=pad+tl+self.w,sw=tr+pad,sh=h,dx=x+self.w,dy=y-tt-pad,alpha=alpha
+self._image:blit{sx=pad+tl+self.w,sw=tr+pad,sh=nil,dx=x+self.w,dy=y-tt-pad,alpha=alpha
 }end
 if tb>0 then
 self._image:blit{sy=pad+tt+self.h,sw=self.w+tl+pad,sh=tb+pad,dx=x-tl-pad,dy=y+self.h,alpha=alpha
@@ -2026,9 +2028,12 @@ return rtk._refs[key]
 end
 end
 function rtk.Widget:_get_debug_color()if not self.debug_color then
-local function hashint(i,seed)math.randomseed(i*(seed*53))return math.random(40,235)/255.0
+local x=self.id:hash()*100
+x=x ~(x<<13)x=x ~(x>>7)x=x ~(x<<17)local color=table.pack(rtk.color.rgba(x%16777216))local luma=rtk.color.luma(color)if luma<0.2 then
+color=table.pack(rtk.color.mod(color,1,1,2.5))elseif luma>0.8 then
+color=table.pack(rtk.color.mod(color,1,1,0.75))end
+self.debug_color=color
 end
-local id=self.id:hash()self.debug_color={hashint(id,1),hashint(id,2),hashint(id,3),}end
 return self.debug_color
 end
 function rtk.Widget:_draw_debug_box(offx,offy,event)local calc=self.calc
@@ -3430,7 +3435,7 @@ end
 end
 icon:popdest()rtk.Window.static._icon_resize_grip=icon
 end
-rtk.Window.register{x=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},y=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},w=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=function(self,anim)return rtk.Widget.attributes.w.animate(self,anim,rtk.scale.framebuffer)end,calculate=function(self,attr,value,target)return value and value*rtk.scale.framebuffer
+rtk.Window.register{x=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},y=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},w=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=function(self,anim)return rtk.Widget.attributes.w.animate(self,anim,rtk.scale.framebuffer)end,calculate=function(self,attr,value,target)return value and value*rtk.scale.framebuffer or target[attr]
 end,},h=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=rtk.Reference('w'),calculate=rtk.Reference('w'),},minw=rtk.Attribute{default=100,window_sync=true,reflow_uses_exterior_value=true,},minh=rtk.Attribute{default=30,window_sync=true,reflow_uses_exterior_value=true,},maxw=rtk.Attribute{window_sync=true,reflow_uses_exterior_value=true,},maxh=rtk.Attribute{window_sync=true,reflow_uses_exterior_value=true,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
 },window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},pinned=rtk.Attribute{default=false,window_sync=true,calculate=function(self,attr,value,target)return rtk.has_js_reascript_api and value
 end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,redraw=false,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,redraw=false,},resizable=rtk.Attribute{default=true,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
@@ -3537,11 +3542,11 @@ local x=self.x
 local y=self.y
 if not x then
 x=0
-overrides.halign=rtk.Widget.CENTER
+overrides.halign=overrides.halign or rtk.Widget.CENTER
 end
 if not y then
 y=0
-overrides.valign=rtk.Widget.CENTER
+overrides.valign=overrides.valign or rtk.Widget.CENTER
 end
 local w=rtk.isrel(self.w)and(self.w*sw)or(calc.w/scale)local h=rtk.isrel(self.h)and(self.h*sh)or(calc.h/scale)w=rtk.clamp(w,minw and minw/scale,maxw and maxw/scale)h=rtk.clamp(h,minh and minh/scale,maxh and maxh/scale)if sw and sh then
 if overrides.halign==rtk.Widget.LEFT then
@@ -5035,9 +5040,9 @@ dela=rtk.clamp(dela,1,#value)delb=rtk.clamp(delb,1,#value+1)value=value:sub(1,de
 if insert then
 self._dirty_positions=math.min(caret-1,self._dirty_positions or math.inf)value=value:sub(0,caret-1)..insert..value:sub(caret)caret=caret+insert:len()end
 if value~=calc.value then
-caret=rtk.clamp(caret,1,#value+1)self:sync('value', value)if caret~=calc.caret then
+caret=rtk.clamp(caret,1,#value+1)self:sync('value', value, nil, false)if caret~=calc.caret then
 self:sync('caret', caret)end
-self._dirty_view=true
+self:_handle_change()self._dirty_view=true
 end
 end
 function rtk.Entry:delete_range(a,b)self:push_undo()self:_edit(nil,nil,a,b)end
@@ -6082,7 +6087,9 @@ elseif rtk.os.linux then
 rtk.font.multiplier=0.7
 end
 rtk.set_theme_by_bgcolor(rtk.color.get_reaper_theme_bg() or '#262626')rtk.theme.default=true
-end
+reaper.atexit(function()if rtk.window and rtk.window.running then
+rtk.window:close()end
+rtk.log.flush()end)end
 init()return rtk
 end)()
 __mod_main=(function()
@@ -7000,7 +7007,7 @@ self.program=program
 self.name=name
 self._attrs=attrs
 self._has_conditional_output=nil
-table.merge(self,attrs)self.group=tonumber(self.group or 1)self.flags=_parse_flags(self.flags,bank.flags)self.buses=nil
+table.merge(self,attrs)self.group=tonumber(self.group or 1)self.spacer=tonumber(self.spacer)self.flags=_parse_flags(self.flags,bank.flags)self.buses=nil
 end
 function Articulation:has_transforms()return self.velrange or self.pitchrange or self.transpose or self.velocity
 end
@@ -7070,15 +7077,17 @@ channel='current channels'elseif output.channel then
 channel=string.format('ch %d', output.channel)end
 if output.bus then
 channel=(channel and (channel .. ' ') or '') .. string.format('bus %s', output.bus)end
-if output.type=='program' then
-s=string.format('program change %d', output.args[1] or 0)elseif output.type=='cc' then
-s=string.format('CC %d val %d', output.args[1] or 0, output.args[2] or 0)elseif output.type == 'note' or output.type == 'note-hold' then
-local note=tonumber(output.args[1] or 0)local name=note_to_name(note)verb=output.type=='note' and 'Sends' or 'Holds'if(output.args[2] or 127)==127 then
+local args={tonumber(output.args[1]),tonumber(output.args[2])}if output.type=='program' then
+s=string.format('program change %d', args[1] or 0)elseif output.type=='cc' then
+s=string.format('CC %d val %d', args[1] or 0, args[2] or 0)elseif output.type == 'note' or output.type == 'note-hold' then
+local note=args[1] or 0
+local name=note_to_name(note)verb=output.type=='note' and 'Sends' or 'Holds'if(args[2] or 127)==127 then
 s=string.format('note %s (%d)', name, note)else
-s=string.format('note %s (%d) vel %d', name, note, output.args[2] or 127)end
+s=string.format('note %s (%d) vel %d', name, note, args[2] or 127)end
 elseif output.type=='pitch' then
-s=string.format('pitch bend val %d', output.args[1] or 0)elseif output.type=='art' then
-local program=tonumber(output.args[1] or 0)local bank=self:get_bank()local art=bank.articulations_by_program[program]
+s=string.format('pitch bend val %d', args[1] or 0)elseif output.type=='art' then
+local program=args[1] or 0
+local bank=self:get_bank()local art=bank.articulations_by_program[program]
 if art then
 s=art.name or 'unnamed articulation'else
 s='undefined articulation'end
@@ -7746,14 +7755,15 @@ end
 function rfx.GUIDMigrator:migrate_bankinfo(bankinfo)local msb,lsb
 if not bankinfo.t then
 local src,dst=bankinfo[1],bankinfo[2]
-msb,lsb=bankinfo[3],bankinfo[4]
+msb,lsb=tonumber(bankinfo[3])or 0,tonumber(bankinfo[4])or 0
 while #bankinfo>0 do
 table.remove(bankinfo)end
 bankinfo.src=src
 bankinfo.dst=dst
 bankinfo.v=(msb<<8)|lsb
 elseif bankinfo.t=='b' then
-msb,lsb=bankinfo.v>>8,bankinfo.v&0xff
+local v=tonumber(bankinfo.v)or 0
+msb,lsb=v>>8,v&0xff
 else
 return
 end
@@ -8336,7 +8346,7 @@ App.static.REPARSE_REABANK_FILE=8
 App.static.FORCE_RECOGNIZE_BANKS_CURRENT_TRACK=16
 App.static.FORCE_RECOGNIZE_BANKS_PROJECT=32
 App.static.REFRESH_BANKS_ACTIONS=2|4|8|32
-function App:initialize(basedir,t0,t1)self.config={cc_feedback_device=-1,cc_feedback_bus=1,cc_feedback_articulations=1,cc_feedback_articulations_cc=0,cc_feedback_active=true,autostart=0,art_colors=nil,track_selection_follows_midi_editor=true,track_selection_follows_fx_focus=false,art_insert_at_selected_notes=true,single_floating_instrument_fx_window=false,keyboard_focus_follows_mouse=false,default_channel_behavior=nil,chase_ccs=nil,}self.config_map_to_script={track_selection_follows_midi_editor={0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},track_selection_follows_fx_focus={0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},single_floating_instrument_fx_window={0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},keyboard_focus_follows_mouse={0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},}self.known_focus_classes={REAPERmidieditorwnd='midi_editor',REAPERTCPDisplay='tcp',REAPERTrackListWindow='arrange',REAPERMCPDisplay='hwnd',Lua_LICE_gfx_standalone='hwnd',eelscript_gfx='hwnd',['#32770'] = 'hwnd',}if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
+function App:initialize(basedir,t0,t1)self.config={cc_feedback_device=-1,cc_feedback_bus=1,cc_feedback_articulations=1,cc_feedback_articulations_cc=0,cc_feedback_active=true,autostart=0,art_colors=nil,track_selection_follows_midi_editor=true,track_selection_follows_fx_focus=false,art_insert_at_selected_notes=true,single_floating_instrument_fx_window=false,keyboard_focus_follows_mouse=false,default_channel_behavior=nil,chase_ccs=nil,}self.config_map_to_script={track_selection_follows_midi_editor={0, 'Reaticulate_Toggle track selection follows MIDI editor target item.lua'},track_selection_follows_fx_focus={0, 'Reaticulate_Toggle track selection follows focused FX window.lua'},single_floating_instrument_fx_window={0, 'Reaticulate_Toggle single floating instrument FX window for selected track.lua'},keyboard_focus_follows_mouse={0, 'Reaticulate_Toggle keyboard focus follows mouse.lua'},art_insert_at_selected_notes={0, 'Reaticulate_Toggle insert articulations based on selected notes when MIDI editor is open.lua'},}self.known_focus_classes={REAPERmidieditorwnd='midi_editor',REAPERTCPDisplay='tcp',REAPERTrackListWindow='arrange',REAPERMCPDisplay='hwnd',Lua_LICE_gfx_standalone='hwnd',eelscript_gfx='hwnd',['#32770'] = 'hwnd',}if BaseApp.initialize(self, 'reaticulate', 'Reaticulate', basedir) == false then
 return
 end
 self.track=nil
@@ -8826,28 +8836,29 @@ local args=string.split(arg, ',')local channel=_cmd_arg_to_channel(args[1])self:
 local args=string.split(arg, ',')local channel=_cmd_arg_to_channel(args[1])self:insert_last_articulation(channel)elseif cmd=='sync_feedback' and rfx.current:valid() then
 if self.track then
 reaper.CSurf_OnTrackSelection(self.track)feedback.sync(self.track)end
-elseif cmd=='set_midi_feedback_active' then
-local enabled=self:handle_toggle_option(arg, 'cc_feedback_active', false)feedback.set_active(enabled)feedback.sync(self.track)elseif cmd=='focus_filter' then
+elseif cmd=='focus_filter' then
 self.screens.banklist.focus_filter()elseif cmd=='select_last_track' then
 if self.last_track and reaper.ValidatePtr2(0, self.last_track, "MediaTrack*") then
 self:select_track(self.last_track,false)end
-elseif cmd=='set_track_selection_follows_midi_editor' then
-self:handle_toggle_option(arg, 'track_selection_follows_midi_editor', true)elseif cmd=='set_track_selection_follows_fx_focus' then
-self:handle_toggle_option(arg, 'track_selection_follows_fx_focus', true)elseif cmd=='set_single_floating_instrument_fx_window' then
-self:handle_toggle_option(arg, 'single_floating_instrument_fx_window', true)self:do_single_floating_fx()elseif cmd=='set_keyboard_focus_follows_mouse' then
-self:handle_toggle_option(arg, 'keyboard_focus_follows_mouse', true)end
+elseif cmd=='set_toggle_option' then
+local args=string.split(arg, ',')local cfgitem=args[1]
+local enabled=tonumber(args[2])local section_id=tonumber(args[3])local cmd_id=tonumber(args[4])local store=tonumber(args[5])self:set_toggle_option(cfgitem,enabled,store,section_id,cmd_id)elseif cmd=='set_option' then
+local args=string.split(arg, ',')local cfgitem=args[1]
+local value=args[2]
+local type=args[3]
+if type=='number' then
+value=tonumber(value)elseif type == 'boolean' or type == 'bool' then
+value = (value == '1' or value == 'true') and true or false
+end
+self:set_option(cfgitem,value)end
 return BaseApp.handle_command(self,cmd,arg)end
-function App:handle_toggle_option(argstr,cfgitem,store)local args=string.split(argstr, ',')local enabled=tonumber(args[1])local section_id,cmd_id
-if #args>2 then
-section_id=tonumber(args[2])cmd_id=tonumber(args[3])end
-return self:set_toggle_option(cfgitem,enabled,store,section_id,cmd_id)end
 function App:set_toggle_option(cfgitem,enabled,store,section_id,cmd_id)local value=self:get_toggle_option(cfgitem)if enabled==-1 then
 value=not value
 elseif type(enabled)=='boolean' then
 value=enabled
 else
 value=(enabled==1 and true or false)end
-if store then
+if store~=false and store~=0 then
 self.config[cfgitem]=value
 self:queue_save_config()end
 log.info("app: set toggle option: %s -> %s", cfgitem, value)if not cmd_id and self.config_map_to_script[cfgitem] then
@@ -8860,9 +8871,16 @@ if cmd_id then
 reaper.SetToggleCommandState(section_id,cmd_id,value and 1 or 0)reaper.RefreshToolbar2(section_id,cmd_id)end
 if self:current_screen()==self.screens.settings then
 self.screens.settings.update()end
+if cfgitem=='single_floating_instrument_fx_window' then
+self:do_single_floating_fx()elseif cfgitem=='cc_feedback_active' then
+feedback.set_active(value)feedback.sync(self.track)end
 return value
 end
 function App:get_toggle_option(cfgitem)return self.config[cfgitem]
+end
+function App:set_option(cfgitem,value)self.config[cfgitem]=value
+self:queue_save_config()if self:current_screen()==self.screens.settings then
+self.screens.settings.update()end
 end
 function App:set_default_channel(channel)self.default_channel=channel
 self.screens.banklist.highlight_channel_button(channel)if self.midi_hwnd then
@@ -9608,8 +9626,7 @@ local hbox=screen.vbox:add(rtk.HBox{spacing=10},{tpadding=20,bpadding=20,lpaddin
 end
 local section=make_section(screen.vbox, "Behavior")local cb=rtk.CheckBox{'Autostart Reaticulate when Reaper starts'}cb.onchange=function(cb)app.config.autostart=cb.value
 update_startup_action(app.config.autostart)app:save_config()end
-section:add(cb)cb:attr('value', app.config.autostart == true or app.config.autostart == 1)screen.cb_insert_at_note_selection=rtk.CheckBox{'Insert articulations based on selected notes when MIDI editor is open'}screen.cb_insert_at_note_selection.onchange=function(cb)app.config.art_insert_at_selected_notes=cb.value
-app:save_config()end
+section:add(cb)cb:attr('value', app.config.autostart == true or app.config.autostart == 1)screen.cb_insert_at_note_selection=rtk.CheckBox{'Insert articulations based on selected notes when MIDI editor is open'}screen.cb_insert_at_note_selection.onchange=function(cb)app:set_toggle_option('art_insert_at_selected_notes', cb.value, true)end
 section:add(screen.cb_insert_at_note_selection)screen.cb_track_follows_midi_editor=rtk.CheckBox{'Track selection follows MIDI editor target item'}screen.cb_track_follows_midi_editor.onchange=function(cb)app:set_toggle_option('track_selection_follows_midi_editor', cb.value, true)end
 section:add(screen.cb_track_follows_midi_editor)screen.cb_track_follows_fx_focus=rtk.CheckBox{'Track selection follows FX focus'}screen.cb_track_follows_fx_focus.onchange=function(cb)app:set_toggle_option('track_selection_follows_fx_focus', cb.value, true)end
 screen.cb_sloppy_focus=rtk.CheckBox{'Keyboard focus follows mouse within REAPER (EXPERIMENTAL)'}screen.cb_sloppy_focus.onchange=function(cb)app:set_toggle_option('keyboard_focus_follows_mouse', cb.value, true)end
