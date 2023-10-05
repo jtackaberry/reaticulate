@@ -1,0 +1,33 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Percussion" n="Timpani Flt KS"
+//! m=""
+//! id=1a7996dc-95d9-4c46-a290-2fefd3cf6c27
+Bank * * Timpani Flt KS
+//! c=long i=note-whole o=note:24
+1 Long
+//! c=short i=note-quarter o=note:25
+40 Short
+//! c=short i=acciaccatura-quarter o=note:26
+41 Flam
+//! c=long i=tremolo o=note:27
+11 Rolls
+//! c=long i=crescendo o=note:28
+102 Crescendo
+
+//! g="EastWest/Hollywood Opus Percussion" n="Timpani Hrd KS"
+//! m=""
+//! id=3dcda2c9-8376-42f6-88d2-90706bf37f8b
+Bank * * Timpani Hrd KS
+//! c=long i=note-whole o=note:24
+1 Long
+//! c=short i=note-quarter o=note:25
+40 Short
+//! c=short i=acciaccatura-quarter o=note:26
+41 Flam
+//! c=long i=tremolo o=note:27
+11 Rolls
+//! c=long i=crescendo o=note:28
+102 Crescendo

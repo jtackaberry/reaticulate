@@ -1,0 +1,263 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="3BS KS Master"
+//! m=""
+//! id=7f42398f-e1ff-41ce-84a0-036e9fd9af2f
+Bank * * 3BS KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="3CL KS Master"
+//! m=""
+//! id=47f4f3cb-b50c-46f7-a6f0-d9f056b40483
+Bank * * 3CL KS Master
+//! c=long i=note-half o=note:24
+1 Sus Non Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:30
+9 Marcato Sus NV
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="3FL KS Master"
+//! m=""
+//! id=bbb27920-f41b-406f-868c-8d3a902a5fec
+Bank * * 3FL KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="AF KS Master"
+//! m=""
+//! id=77733563-4642-451d-b9b6-4364c70ef15e
+Bank * * AF KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Staccato
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="BC KS Master"
+//! m=""
+//! id=b29d5090-c336-49ad-a2b4-2173c84dcf26
+Bank * * BC KS Master
+//! c=long i=note-half o=note:24
+1 Sus Non Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="BF KS Master"
+//! m=""
+//! id=f6bfbc6b-d668-4322-9eea-55e23df586b7
+Bank * * BF KS Master
+//! c=long i=vibrato o=note:24
+1 Sus Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Staccato
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="BS KS Master"
+//! m=""
+//! id=4a314819-3592-46a9-a228-f8d5c38d87fc
+Bank * * BS KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="CB KS Master"
+//! m=""
+//! id=6332ed5d-300b-4926-b6c6-dc838997f4e0
+Bank * * CB KS Master
+//! c=long i=note-half o=note:60
+1 Sus
+//! c=long i=accented-half o=note:61
+2 Sus Accent
+//! c=legato i=legato o=note:62
+20 Leg Slur
+//! c=short-light i=spiccato o=note:63
+42 Staccatissimo
+//! c=short i=staccato o=note:64
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:65
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="CC KS Master"
+//! m=""
+//! id=b52e663c-859e-4bc7-96ee-3691d2fc2be8
+Bank * * CC KS Master
+//! c=long i=note-half o=note:72
+1 Sus Non Vib
+//! c=long i=accented-half o=note:73
+2 Sus Accent
+//! c=legato i=legato o=note:74
+20 Leg Slur
+//! c=short i=staccato o=note:75
+40 Staccato
+//! c=legato-dark i=legato-bowed2 o=note:76
+21 Leg Slur Accent
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="CL KS Master"
+//! m=""
+//! id=161b62b6-47a3-4b53-9487-67e683a2b963
+Bank * * CL KS Master
+//! c=long i=note-half o=note:24
+1 Sus Non Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="CL2 KS Master"
+//! m=""
+//! id=685769ff-4bcc-45bd-92fa-ee6d45b969f4
+Bank * * CL2 KS Master
+//! c=long i=note-half o=note:24
+1 Sus Non Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Staccato
+//! c=legato-dark i=legato-bowed2 o=note:28
+21 Leg Slur Accent
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="EH KS Master"
+//! m=""
+//! id=11abac36-1037-4add-ad0a-ad3ba4f482d9
+Bank * * EH KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="FL KS Master"
+//! m=""
+//! id=38e4f897-6535-4b23-8889-6c0f47fd67d9
+Bank * * FL KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="FL2 KS Master"
+//! m=""
+//! id=d233e060-6e04-4309-8380-0039d2e49490
+Bank * * FL2 KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="OB KS Master"
+//! m=""
+//! id=1ce75c05-c28f-4991-b526-ff4f5ce5d760
+Bank * * OB KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Woodwinds" n="PF KS Master"
+//! m=""
+//! id=867587c2-8384-4979-9639-f2129af5870f
+Bank * * PF KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato

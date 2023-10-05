@@ -1,0 +1,20 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Harp" n="Harp KS Master"
+//! m=""
+//! id=dcfceefe-0f76-49c8-aab4-7fe267d1df9f
+Bank * * Harp KS Master
+//! c=long i=tremolo o=note:21
+1 Sus RR Bisbigliando MOD
+//! c=long-light i=tremolo o=note:22
+2 Maestro Bisbigliando MOD
+//! c=long-dark i=tremolo o=note:23
+9 Angels Bisbigliando MOD
+//! c=short i=staccato o=note:24
+40 Pluck Long
+//! c=short-dark i=staccato-dig o=note:25
+49 Thumb Pick
+//! c=short-light i=spiccato-feathered o=note:26
+48 Nail Pick

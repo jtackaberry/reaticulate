@@ -1,0 +1,20 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Solo Cello" n="Solo Cello KS Master"
+//! m=""
+//! id=8bd05abe-5724-4998-9b54-498b9411dc90
+Bank * * Solo Cello KS Master
+//! c=long i=note-whole o=note:24
+1 Sus NV NV VB Solo
+//! c=long i=vibrato o=note:25
+2 Sus NV VB VB Solo
+//! c=legato i=legato o=note:26
+20 Legato Slur
+//! c=short-light i=spiccato o=note:27
+42 Spiccato
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
