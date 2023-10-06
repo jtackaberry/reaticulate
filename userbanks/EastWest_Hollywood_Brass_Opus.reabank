@@ -1,0 +1,218 @@
+//! g="EastWest Hollywood Opus/Brass" n="1CM KS Master"
+Bank * * 1CM KS Master
+//! c=long i=note-whole o=note:62,120
+1 Sus Accent MAX
+//! c=textured i=multitongued o=note:63,120
+2 StacSs DblTng RRx9
+//! c=short i=marcato-quarter o=note:64,120
+3 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:65,120
+4 Marc Sus LITE
+//! g="EastWest Hollywood Opus/Brass" n="1FH KS Master"
+Bank * * 1FH KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccato o=note:27,120
+4 StacSs RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="1TB KS Master"
+Bank * * 1TB KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:27,120
+4 StacSs DblTng RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="1TP KS Master"
+Bank * * 1TP KS Master
+//! c=long i=note-whole o=note:24,120
+1 Sus Non Vib MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:27,120
+4 StacSs DblTng RRx9
+//! c=textured i=multitongued o=note:28,120
+5 Stac DblTng RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt DblTng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="1TP Trills KS"
+Bank * * 1TP Trills KS
+//! c=textured i=phrase o=note:24,120
+1 1Tp mf
+//! c=textured i=phrase o=note:25,120
+2 1Tp mf
+//! g="EastWest Hollywood Opus/Brass" n="1TU KS Master"
+Bank * * 1TU KS Master
+//! c=long i=legato-sul-c o=note:60,120
+1 Sus MAX
+//! c=long i=note-whole o=note:61,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:62,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:63,120
+4 StacSs DblTng RRx9
+//! c=short i=marcato-quarter o=note:64,120
+5 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:65,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="2FH KS Master"
+Bank * * 2FH KS Master
+//! c=long i=blend o=note:24,120
+1 Sus Full
+//! c=long i=legato-sul-c o=note:25,120
+2 Sus Acc
+//! c=long i=note-whole o=note:26,120
+3 Sus Vib Fin
+//! c=short i=staccato o=note:27,120
+4 Stac RRx4
+//! c=legato i=legato-portamento o=note:28,120
+5 Leg Slur
+//! c=long i=sul-tasto o=note:29,120
+6 Gliss Up
+//! c=long i=note-whole o=note:30,120
+7 Sus Non Vib
+//! c=long i=vibrato o=note:31,120
+8 Sus Vib Wes
+//! g="EastWest Hollywood Opus/Brass" n="2FH Trills KS"
+Bank * * 2FH Trills KS
+//! c=fx i=alt-wave-double o=note:24,120
+1 2FH pp
+//! c=long i=blend o=note:25,120
+2 2FH mf
+//! g="EastWest Hollywood Opus/Brass" n="2TB KS Master"
+Bank * * 2TB KS Master
+//! c=long i=legato-sul-c o=note:74,120
+1 Sus MAX
+//! c=long i=note-whole o=note:75,120
+2 Sus Accent MAX
+//! c=textured i=multitongued o=note:76,120
+3 StacSs DblTng RRx8
+//! c=textured i=multitongued o=note:77,120
+4 Stac DblTng RRx8
+//! c=short i=marcato-quarter o=note:78,120
+5 Marc Shrt DblTng RRx8
+//! c=short i=marcato-quarter o=note:79,120
+6 Marc Lng DblTng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="2TP KS Master"
+Bank * * 2TP KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:27,120
+4 StacSs DblTng RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt DblTng RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="2TP Trills KS"
+Bank * * 2TP Trills KS
+//! c=fx i=alt-wave-double o=note:24,120
+1 2FH pp
+//! c=long i=blend o=note:25,120
+2 2FH mf
+//! g="EastWest Hollywood Opus/Brass" n="2TPx KS Master"
+Bank * * 2TPx KS Master
+//! c=long i=note-whole o=note:24,120
+1 Sus
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur
+//! c=textured i=multitongued o=note:27,120
+4 StacSs DblTng RRx8
+//! c=textured i=multitongued o=note:28,120
+5 Stac DblTng RRx8
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt DblTng RRx8
+//! g="EastWest Hollywood Opus/Brass" n="2TPx Trills KS 2"
+Bank * * 2TPx Trills KS 2
+//! c=fx i=alt-wave-double o=note:24,120
+1 2FH pp
+//! c=long i=blend o=note:25,120
+2 2FH mf
+//! g="EastWest Hollywood Opus/Brass" n="3TB KS Master"
+Bank * * 3TB KS Master
+//! c=long i=legato-sul-c o=note:84,120
+1 Sus MAX
+//! c=long i=note-whole o=note:85,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:86,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:87,120
+4 StacSs DblTng RRx9
+//! c=short i=marcato-quarter o=note:88,120
+5 Marc Shrt DblTng RRx4
+//! c=short i=marcato-quarter o=note:89,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="3TP  KS Master"
+Bank * * 3TP  KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:27,120
+4 StacSs DblTng RRx9
+//! c=textured i=multitongued o=note:28,120
+5 Stac DblTng RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt DblTng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="3TP Trills KS"
+Bank * * 3TP Trills KS
+//! c=short i=tenuto-eighth o=note:24,120
+1 3Tp ff
+//! c=short i=tenuto-eighth o=note:25,120
+2 3Tp ff
+//! g="EastWest Hollywood Opus/Brass" n="6FH  KS Master"
+Bank * * 6FH  KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent MAX
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=textured i=multitongued o=note:27,120
+4 Stac DblTng RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt DblTng RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng DblTng RRx4
+//! g="EastWest Hollywood Opus/Brass" n="6FH Trills KS"
+Bank * * 6FH Trills KS
+//! c=long i=blend o=note:24,120
+1 6FH mf
+//! c=long i=blend o=note:25,120
+2 6FH mf
+//! g="EastWest Hollywood Opus/Brass" n="LB KS Master"
+Bank * * LB KS Master
+//! c=long i=legato-sul-c o=note:60,120
+1 Sus MAX
+//! c=long i=note-whole o=note:61,120
+2 Sus Accent MAX
+//! c=short i=staccato o=note:62,120
+3 StacSs RRx5
+//! c=long i=con-sord o=note:63,120
+4 Mute Sus
+//! c=fx i=crescendo o=note:64,120
+5 Mute Sus Accent
+//! c=long i=con-sord o=note:65,120
+6 Mute Stac RRx3

@@ -1,0 +1,556 @@
+//! g="EastWest Hollywood Opus/String" n="18V KS Master"
+Bank * * 18V KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus NV VB
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur + Port
+//! c=short i=spiccato o=note:27,120
+4 Spicatto RRx8
+//! c=short i=staccatissimo-stopped o=note:28,120
+5 Staccatissimo RRx8
+//! c=short i=staccato o=note:29,120
+6 Staccato RRx8
+//! c=short i=marcato-quarter o=note:30,120
+7 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:31,120
+8 Marc Vib Lng RR
+//! c=long i=sul-pont o=note:32,120
+9 Sul Pont Trem
+//! c=long i=sul-tasto o=note:33,120
+10 Sul Tasto Flaut
+//! g="EastWest Hollywood Opus/String" n="1ST VIOLINS KS Master DIV A"
+Bank * * 1ST VIOLINS KS Master DIV A
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx9
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="1ST VIOLINS KS Master DIV B"
+Bank * * 1ST VIOLINS KS Master DIV B
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx9
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="1ST VIOLINS KS Master"
+Bank * * 1ST VIOLINS KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx9
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="1st Violins 8va Run Up Dn KS DIV A"
+Bank * * 1st Violins 8va Run Up Dn KS DIV A
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins 8va Run Up Dn KS DIV B"
+Bank * * 1st Violins 8va Run Up Dn KS DIV B
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins 8va Run Up Dn KS"
+Bank * * 1st Violins 8va Run Up Dn KS
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Maj Run Up Dn KS DIV A"
+Bank * * 1st Violins Maj Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Maj Run Up Dn KS DIV B"
+Bank * * 1st Violins Maj Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Maj Run Up Dn KS"
+Bank * * 1st Violins Maj Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Min Run Up Dn KS DIV A"
+Bank * * 1st Violins Min Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Min Run Up Dn KS DIV B"
+Bank * * 1st Violins Min Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Min Run Up Dn KS"
+Bank * * 1st Violins Min Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins Trills KS DIV A"
+Bank * * 1st Violins Trills KS DIV A
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="1st Violins Trills KS DIV B"
+Bank * * 1st Violins Trills KS DIV B
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="1st Violins Trills KS"
+Bank * * 1st Violins Trills KS
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="1st Violins WT Run Up Dn KS DIV A"
+Bank * * 1st Violins WT Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 WT Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 WT Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins WT Run Up Dn KS DIV B"
+Bank * * 1st Violins WT Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 WT Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 WT Run Up
+//! g="EastWest Hollywood Opus/String" n="1st Violins WT Run Up Dn KS"
+Bank * * 1st Violins WT Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 WT Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 WT Run Up
+//! g="EastWest Hollywood Opus/String" n="2nd Violins KS Master DIV  B"
+Bank * * 2nd Violins KS Master DIV  B
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccato o=note:27,120
+4 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/String" n="2nd Violins KS Master DIV A"
+Bank * * 2nd Violins KS Master DIV A
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccato o=note:27,120
+4 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/String" n="2nd Violins KS Master"
+Bank * * 2nd Violins KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccato o=note:27,120
+4 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:28,120
+5 Marc Shrt RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Lng RRx4
+//! g="EastWest Hollywood Opus/String" n="2nd Violins Trills KS DIV A"
+Bank * * 2nd Violins Trills KS DIV A
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="2nd Violins Trills KS DIV B"
+Bank * * 2nd Violins Trills KS DIV B
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="2nd Violins Trills KS DIV"
+Bank * * 2nd Violins Trills KS DIV
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="2nd Violins Trills KS"
+Bank * * 2nd Violins Trills KS
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Basses KS Master DIV A"
+Bank * * Basses KS Master DIV A
+//! c=long i=legato-sul-c o=note:72,120
+1 Sus MAX
+//! c=short i=marcato-quarter o=note:73,120
+2 Marc Sus LITE
+//! c=legato i=legato-portamento o=note:74,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:75,120
+4 Staccatissimo RRx9
+//! c=short i=staccato o=note:76,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:77,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Basses KS Master DIV B"
+Bank * * Basses KS Master DIV B
+//! c=long i=legato-sul-c o=note:72,120
+1 Sus MAX
+//! c=short i=marcato-quarter o=note:73,120
+2 Marc Sus LITE
+//! c=legato i=legato-portamento o=note:74,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:75,120
+4 Staccatissimo RRx9
+//! c=short i=staccato o=note:76,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:77,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Basses KS Master"
+Bank * * Basses KS Master
+//! c=long i=legato-sul-c o=note:72,120
+1 Sus MAX
+//! c=short i=marcato-quarter o=note:73,120
+2 Marc Sus LITE
+//! c=legato i=legato-portamento o=note:74,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:75,120
+4 Staccatissimo RRx9
+//! c=short i=staccato o=note:76,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:77,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Celli 8va Run Up Dn KS DIV A"
+Bank * * Celli 8va Run Up Dn KS DIV A
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli 8va Run Up Dn KS DIV B"
+Bank * * Celli 8va Run Up Dn KS DIV B
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli 8va Run Up Dn KS"
+Bank * * Celli 8va Run Up Dn KS
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli KS Master DIV A"
+Bank * * Celli KS Master DIV A
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx16
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Celli KS Master DIV B"
+Bank * * Celli KS Master DIV B
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx16
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Celli KS Master"
+Bank * * Celli KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx16
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Celli Maj Run Up Dn KS DIV A"
+Bank * * Celli Maj Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli Maj Run Up Dn KS DIV B"
+Bank * * Celli Maj Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli Maj Run Up Dn KS"
+Bank * * Celli Maj Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli Min Run Up Dn KS DIV A"
+Bank * * Celli Min Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli Min Run Up Dn KS DIV B"
+Bank * * Celli Min Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli Min Run Up Dn KS"
+Bank * * Celli Min Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="Celli Trills KS DIV A"
+Bank * * Celli Trills KS DIV A
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Celli Trills KS DIV B"
+Bank * * Celli Trills KS DIV B
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Celli Trills KS"
+Bank * * Celli Trills KS
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="ENS KS Master"
+Bank * * ENS KS Master
+//! c=long i=vibrato o=note:24,120
+1 Sus Vib
+//! c=long i=note-whole o=note:25,120
+2 Sus Accent
+//! c=long i=sul-tasto o=note:26,120
+3 Sul Pont Sul Tasto
+//! c=long i=sul-tasto o=note:27,120
+4 Sul Tasto
+//! c=short i=staccatissimo-stopped o=note:28,120
+5 Staccatissimo RRx4
+//! c=short i=staccato o=note:29,120
+6 Staccato RRx4
+//! g="EastWest Hollywood Opus/String" n="Solo Cello KS Master"
+Bank * * Solo Cello KS Master
+//! c=long i=sul-pont o=note:24,120
+1 Sus NV NV VB Solo
+//! c=long i=sul-pont o=note:25,120
+2 Sus NV VB VB Solo
+//! c=legato i=legato o=note:26,120
+3 Legato Slur
+//! c=short i=spiccato o=note:27,120
+4 Spiccato RRx4
+//! c=short i=marcato-quarter o=note:28,120
+5 Marcato Shrt RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marcato Lng RRx4
+//! g="EastWest Hollywood Opus/String" n="Solo Violin KS Master"
+Bank * * Solo Violin KS Master
+//! c=long i=sul-pont o=note:24,120
+1 Sus NV NV VB Solo
+//! c=long i=sul-pont o=note:25,120
+2 Sus NV VB VB Solo
+//! c=legato i=legato o=note:26,120
+3 Legato Slur
+//! c=short i=spiccato o=note:27,120
+4 Spiccato RRx4
+//! c=short i=staccato-dig o=note:28,120
+5 Martele RRx4
+//! c=short i=marcato-quarter o=note:29,120
+6 Marcato Vib RRx4
+//! g="EastWest Hollywood Opus/String" n="Violas 8va Run Up Dn KS DIV A"
+Bank * * Violas 8va Run Up Dn KS DIV A
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas 8va Run Up Dn KS DIV B"
+Bank * * Violas 8va Run Up Dn KS DIV B
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas 8va Run Up Dn KS"
+Bank * * Violas 8va Run Up Dn KS
+//! c=long i=note-whole o=note:24,120
+1 8va Run Dn
+//! c=long i=note-whole o=note:25,120
+2 8va Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas KS Master DIV A"
+Bank * * Violas KS Master DIV A
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx16
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Violas KS Master DIV B"
+Bank * * Violas KS Master DIV B
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx16
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Violas KS Master"
+Bank * * Violas KS Master
+//! c=long i=legato-sul-c o=note:24,120
+1 Sus MAX
+//! c=long i=note-whole o=note:25,120
+2 Sus Marc LITE
+//! c=legato i=legato-portamento o=note:26,120
+3 Leg Slur MAX
+//! c=short i=staccatissimo-stopped o=note:27,120
+4 Staccatissimo RRx16
+//! c=short i=staccato o=note:28,120
+5 Stac On Bow RRx9
+//! c=short i=marcato-quarter o=note:29,120
+6 Marc Shrt RRx4
+//! g="EastWest Hollywood Opus/String" n="Violas Maj Run Up Dn KS DIV A"
+Bank * * Violas Maj Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas Maj Run Up Dn KS DIV B"
+Bank * * Violas Maj Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas Maj Run Up Dn KS"
+Bank * * Violas Maj Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 Maj Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Maj Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas Min Run Up Dn KS DIV A"
+Bank * * Violas Min Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas Min Run Up Dn KS DIV B"
+Bank * * Violas Min Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas Min Run Up Dn KS"
+Bank * * Violas Min Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 Min Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 Min Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas Trill KS DIV A"
+Bank * * Violas Trill KS DIV A
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Violas Trills KS DIV A"
+Bank * * Violas Trills KS DIV A
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Violas Trills KS DIV B"
+Bank * * Violas Trills KS DIV B
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Violas Trills KS"
+Bank * * Violas Trills KS
+//! c=textured i=trill-min2 o=note:24,120
+1 Trill HT
+//! c=textured i=trill-min2 o=note:25,120
+2 Trill WT
+//! g="EastWest Hollywood Opus/String" n="Violas WT Run Up Dn KS DIV A"
+Bank * * Violas WT Run Up Dn KS DIV A
+//! c=legato i=legato-runs o=note:24,120
+1 WT Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 WT Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas WT Run Up Dn KS DIV B"
+Bank * * Violas WT Run Up Dn KS DIV B
+//! c=legato i=legato-runs o=note:24,120
+1 WT Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 WT Run Up
+//! g="EastWest Hollywood Opus/String" n="Violas WT Run Up Dn KS"
+Bank * * Violas WT Run Up Dn KS
+//! c=legato i=legato-runs o=note:24,120
+1 WT Run Dn
+//! c=legato i=legato-runs o=note:25,120
+2 WT Run Up

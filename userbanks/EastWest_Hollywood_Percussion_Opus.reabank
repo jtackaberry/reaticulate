@@ -1,0 +1,24 @@
+//! g="EastWest Hollywood Opus/" n="Timpani Fit KS"
+Bank * * Timpani Fit KS
+//! c=textured i=trill-maj2 o=note:24,120
+1 Timpani Flt Lng
+//! c=fx i=note-quarter o=note:25,120
+2 Timpani Flt Sht
+//! c=long i=blend o=note:26,120
+3 Timpani Flt Flm
+//! c=long i=blend o=note:27,120
+4 Timpani Flt Rls
+//! c=textured i=trill-maj2 o=note:28,120
+5 Timpani Flt Crs
+//! g="EastWest Hollywood Opus/" n="Timpani Hrd KS"
+Bank * * Timpani Hrd KS
+//! c=textured i=trill-min3 o=note:24,120
+1 Timpani Hrd Lng
+//! c=fx i=note-quarter o=note:25,120
+2 Timpani Hrd Sht
+//! c=textured i=trill-min3 o=note:26,120
+3 Timpani Hrd Flm
+//! c=textured i=trill-min3 o=note:27,120
+4 Timpani Hrd Rls
+//! c=textured i=trill-min3 o=note:28,120
+5 Timpani Hrd Crs
