@@ -8,7 +8,7 @@ permalink: /reabank/
     While this page tries to be relatively accessible and provides several examples, it's
     also a detailed technical specification for how to create articulation maps (banks)
     for Reaticulate, which might be daunting for new users. Seventh Sam has <a
-    href="https://seventhsam.com/blog/blog/6779963/how-to-create-custom-reaticulate-banks-for-your-sample-libraries-120a9322-0e24-4db4-b5db-153a7eaf6334">provided
+    href="https://seventhsam.com/guides/blog/6779963/how-to-create-custom-reaticulate-banks-for-your-sample-libraries-120a9322-0e24-4db4-b5db-153a7eaf6334">provided
     an excellent blog post</a>, which may serve as a friendlier introduction to this
     topic.  Erik Wikstrom has also done a <a
     href="https://www.youtube.com/watch?v=lMdde8jRUZA">video tutorial for The REAPER
