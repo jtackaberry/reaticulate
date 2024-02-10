@@ -146,7 +146,7 @@ function Articulation:initialize(bank, program, name, attrs)
     self._has_conditional_output = nil
     table.merge(self, attrs)
     -- Coerce types of non-string properties
-    self.group = tonumber(self.group or 1)
+    self.group = tonumber(self.group) or 1
     self.spacer = tonumber(self.spacer)
     self.flags = _parse_flags(self.flags, bank.flags)
     -- 16-bit bitmap of buses that output events are specifically targeting.  Will
