@@ -2,7 +2,7 @@
 -- 
 -- See https://github.com/jtackaberry/reaticulate/ for original source code.
 metadata=(function()
-return {_VERSION='0.5.11'}end)()
+return {_VERSION='0.5.12'}end)()
 rtk=(function()
 __mod_rtk_core=(function()
 __mod_rtk_log=(function()
@@ -104,22 +104,29 @@ return log
 end)()
 
 local log=__mod_rtk_log
-local rtk={touchscroll=false,smoothscroll=true,touch_activate_delay=0.1,long_press_delay=0.5,double_click_delay=0.5,tooltip_delay=0.5,light_luma_threshold=0.6,debug=false,window=nil,has_js_reascript_api=(reaper.JS_Window_GetFocus~=nil),has_sws_extension=(reaper.BR_Win32_GetMonitorRectFromRect~=nil),script_path=nil,reaper_hwnd=nil,tick=0,fps=30,focused_hwnd=nil,focused=nil,theme=nil,_dest_stack={},_image_paths={},_animations={},_animations_len=0,_easing_functions={},_frame_count=0,_frame_time=nil,_modal=nil,_touch_activate_event=nil,_last_traceback=nil,_last_error=nil,_quit=false,_refs=setmetatable({}, {__mode='v'}),_run_soon=nil,_reactive_attr={},}rtk.scale=setmetatable({user=nil,_user=1.0,system=nil,reaper=1.0,framebuffer=nil,value=1.0,_discover=function()local inifile=reaper.get_ini_file()local ini,err=rtk.file.read(inifile)if not err then
+local rtk={touchscroll=false,smoothscroll=true,touch_activate_delay=0.1,long_press_delay=0.5,double_click_delay=0.5,tooltip_delay=0.5,light_luma_threshold=0.6,debug=false,window=nil,has_js_reascript_api=(reaper.JS_Window_GetFocus~=nil),has_sws_extension=(reaper.BR_Win32_GetMonitorRectFromRect~=nil),script_path=nil,reaper_hwnd=nil,tick=0,fps=30,focused_hwnd=nil,focused=nil,theme=nil,_dest_stack={},_image_paths={},_animations={},_animations_len=0,_easing_functions={},_frame_count=0,_frame_time=nil,_modal=nil,_touch_activate_event=nil,_last_traceback=nil,_last_error=nil,_quit=false,_refs=setmetatable({}, {__mode='v'}),_run_soon=nil,_reactive_subscribers={},}rtk.scale=setmetatable({user=nil,_user=1.0,system=nil,reaper=1.0,framebuffer=nil,value=1.0,_discover=function()rtk.log.level=rtk.log.DEBUG
+rtk.log.time_start()local inifile=reaper.get_ini_file()local ini,err=rtk.file.read(inifile)if not err then
 rtk.scale.reaper = ini:match('uiscale=([^\n]*)') or 1.0
 end
 local ok, dpi=reaper.ThemeLayout_GetLayout("mcp", -3)if not ok then
 return
 end
-dpi=math.ceil(tonumber(dpi)/rtk.scale.reaper)rtk.scale.system=dpi/256.0
+rtk.scale.window=rtk.scale.reaper
+dpi=math.ceil(tonumber(dpi)/rtk.scale.reaper)log.info('DPI is %s', dpi)rtk.scale.system=dpi/256.0
+local retina=rtk.os.mac and dpi>=500 and dpi<=514
 if not rtk.scale.framebuffer then
-if rtk.os.mac and dpi==512 then
+if retina then
 rtk.scale.framebuffer=2
 else
 rtk.scale.framebuffer=1
 end
 end
-rtk.scale._calc()end,_calc=function()local value=rtk.scale.user*rtk.scale.system*rtk.scale.reaper
+if not retina then
+rtk.scale.window=rtk.scale.reaper*rtk.scale.system
+end
+rtk.scale._calc()rtk.log.time_end('discover scaling')end,_calc=function()local value=rtk.scale.user*rtk.scale.system*rtk.scale.reaper
 rtk.scale.value=math.ceil(value*100)/100.0
+rtk.scale.window=math.ceil(rtk.scale.window*100)/100.0
 end,},{__index=function(t,key)return key=='user' and t._user or nil
 end,__newindex=function(t,key,value)if key=='user' then
 if value~=t._user then
@@ -202,7 +209,7 @@ gfx.dest=dest
 end
 function rtk.popdest()gfx.dest=table.remove(rtk._dest_stack,#rtk._dest_stack)end
 local function _handle_error(err)rtk._last_error=err
-rtk._last_traceback=debug.traceback()end
+rtk._last_traceback=debug.traceback(nil,2)end
 function rtk.onerror(err,traceback)log.error("fatal: %s\n%s", err, traceback)log.flush()error(err)end
 function rtk.call(func,...)if rtk._quit then
 return
@@ -798,7 +805,7 @@ if anim.sync_exterior_value then
 widget[attr]=exterior or value
 end
 else
-widget:attr(attr,anim.doneval or exterior)end
+widget:sync(attr,anim.doneval or exterior)end
 local reflow=anim.reflow or(anim.attrmeta and anim.attrmeta.reflow)or rtk.Widget.REFLOW_PARTIAL
 if reflow and reflow~=rtk.Widget.REFLOW_NONE then
 widget:queue_reflow(reflow)end
@@ -1673,7 +1680,7 @@ __mod_rtk_shadow=(function()
 local rtk=__mod_rtk_core
 rtk.Shadow=rtk.class('rtk.Shadow')rtk.Shadow.static.RECTANGLE=0
 rtk.Shadow.static.CIRCLE=1
-rtk.Shadow.register{type=nil,color='#00000055',w=nil,h=nil,radius=nil,elevation=nil,}function rtk.Shadow:initialize(color)self.color=color or self.class.attributes.color.default
+rtk.Shadow.register{type=nil,color = rtk.Attribute{default='#00000055', type='color'},w=nil,h=nil,radius=nil,elevation=nil,}function rtk.Shadow:initialize(color)self.color=color or self.class.attributes.color.default
 self._image=nil
 self._last_draw_params=nil
 end
@@ -1881,6 +1888,11 @@ rtk.Widget.static.REFLOW_DEFAULT=nil
 rtk.Widget.static.REFLOW_NONE=0
 rtk.Widget.static.REFLOW_PARTIAL=1
 rtk.Widget.static.REFLOW_FULL=2
+rtk.Widget.static.FOCUS_NEVER=0
+rtk.Widget.static.FOCUS_MOUSE=1
+rtk.Widget.static.FOCUS_KEYBOARD=2
+rtk.Widget.static.FOCUS_ALL=3
+rtk.Widget.static.FOCUS_AUTO=4
 rtk.Widget.static._calc_border=function(self,value)if type(value)=='string' then
 local parts=string.split(value)if #parts==1 then
 return {{rtk.color.rgba(parts[1])},1}elseif #parts==2 then
@@ -2083,6 +2095,9 @@ value=nil
 end
 local oldval=self[attr]
 local oldcalc=self.calc[attr]
+if sync and not rtk.isreactive(value)and rtk.isreactive(oldval)then
+oldval(value,{id=self.id,skip=true})value=oldval
+end
 local replaces=meta.replaces
 if replaces then
 for i=1,#replaces do
@@ -2091,12 +2106,40 @@ end
 end
 if calculated==nil then
 calculated=self:_calc_attr(attr,value,nil,meta)end
+if attr=='w' then
+rtk.log.info('attr() %s->%s   %s->%s', oldval, value, oldcalc, calculated)end
 if not rawequal(value,oldval)or calculated~=oldcalc or replaces or trigger then
 self[attr]=value
 self:_set_calc_attr(attr,value,calculated,self.calc,meta)self:_handle_attr(attr,calculated,oldcalc,trigger==nil or trigger,reflow,sync)end
 return self
 end
-function rtk.Widget:_calc_attr(attr,value,target,meta,namespace,widget)target=target or self.calc
+local function _reactive_attr_callback(reactive,sub,userdata)local value
+local namespace=sub.namespace
+local widget=sub.widget
+if not namespace then
+value=widget[sub.attr]
+if not rtk.isreactive(value)then
+log.debug('%s attribute "%s" was previously reactive and just notified of a change, but ' ..'had since been replaced with a non-reactive value',widget,sub.attr
+)end
+end
+if namespace=='cell' then
+widget.parent:update(widget,nil)elseif namespace~=nil then
+assert(not namespace, string.format('unknown namespace "%s"', namespace))else
+log.info('SET ATR')if not userdata or userdata.id~=widget.id then
+widget:_attr(sub.attr,value)else
+reactive()end
+end
+end
+function rtk.Widget:_calc_attr(attr,value,target,meta,namespace,widget)local isreactive=rtk.isreactive(value)if isreactive then
+local sub={widget=widget or self,id=self.id,attr=attr,namespace=namespace,key=self.id .. '.' .. (namespace and namespace .. '.' or '') .. attr,callback=_reactive_attr_callback,}rtk._reactive_subscribers[#rtk._reactive_subscribers+1]=sub
+if value.__rtk_proxies then
+local new={}for i=1,#value do
+new[i]=value[i]()end
+value=new
+else
+value=value()assert(not rtk.isreactive(value))end
+end
+target=target or self.calc
 meta=meta or self.class.attributes.get(attr)if meta.type then
 value=meta.type(value)end
 local calculate=meta.calculate
@@ -2112,6 +2155,9 @@ if value==rtk.Attribute.NIL then
 value=nil
 end
 value=calculate(self,attr,value,target)end
+end
+if isreactive then
+rtk._reactive_subscribers[#rtk._reactive_subscribers]=nil
 end
 return value
 end
@@ -2130,9 +2176,9 @@ return meta.get(self,attr,self.calc)else
 return self.calc[attr]
 end
 end
-function rtk.Widget:move(x,y)self:attr('x', x)self:attr('y', y)return self
+function rtk.Widget:move(x,y)self:attr('x', rtk.assign(self.x, x))self:attr('y', rtk.assign(self.y, y))return self
 end
-function rtk.Widget:resize(w,h)self:attr('w', w)self:attr('h', h)return self
+function rtk.Widget:resize(w,h)self:attr('w', rtk.assign(self.w, w))self:attr('h', rtk.assign(self.h, h))return self
 end
 function rtk.Widget:_get_relative_pos_to_viewport()local x,y=0,0
 local widget=self
@@ -2182,10 +2228,11 @@ return self:show()end
 end
 function rtk.Widget:focused(event)return rtk.focused==self
 end
-function rtk.Widget:focus(event)if rtk.focused and rtk.focused~=self then
+function rtk.Widget:focus(event,context)if rtk.focused and rtk.focused~=self then
 rtk.focused:blur(event,self)end
-if rtk.focused==nil and self:_handle_focus(event)~=false then
+if rtk.focused==nil and self:_handle_focus(event,context)~=false then
 rtk.focused=self
+self.focus_source=event and event.type==rtk.Event.KEY
 if self.parent then
 self.parent:_set_focused_child(self)end
 self:queue_draw()return true
@@ -2199,10 +2246,13 @@ if self:_handle_blur(event,other)~=false then
 rtk.focused=nil
 if self.parent then
 self.parent:_set_focused_child(nil)end
+self.focus_source=nil
+rtk.last_focused=self
 self:queue_draw()return true
 end
 return false
 end
+function rtk.Widget:activate(event)end
 function rtk.Widget:animate(kwargs)assert(kwargs and (kwargs.attr or #kwargs > 0), 'missing animation arguments')local calc=self.calc
 local attr=kwargs.attr or kwargs[1]
 local meta=self.class.attributes.get(attr)local key=string.format('%s.%s', self.id, attr)local curanim=rtk._animations[key]
@@ -2322,8 +2372,8 @@ return val
 else
 return val*(scale or rtk.scale.value)end
 end
-function rtk.Widget:_get_box_pos(boxx,boxy)local x=self.x or 0
-local y=self.y or 0
+function rtk.Widget:_get_box_pos(boxx,boxy)local x=tonumber(rtk.unwrap1(self.x))or 0
+local y=tonumber(rtk.unwrap1(self.y))or 0
 if self.calc.scalability&rtk.Widget.FULL==rtk.Widget.FULL then
 local scale=rtk.scale.value
 return scale*x+boxx,scale*y+boxy
@@ -2344,7 +2394,7 @@ if fill and box and greedy then
 return box-padding
 end
 end
-function rtk.Widget:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,scale,greedyw,greedyh)scale=self:_adjscale(scale or 1)local tp,rp,bp,lp=self:_get_padding_and_border()local w=_get_content_dimension(self.w,boxw,lp+rp,fillw,clampw,greedyw,scale)local h=_get_content_dimension(self.h,boxh,tp+bp,fillh,clamph,greedyh,scale)local minw,maxw,minh,maxh=self:_get_min_max_sizes(boxw,boxh,greedyw,greedyh,scale)maxw=maxw and clampw and math.min(maxw,boxw)or maxw
+function rtk.Widget:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,scale,greedyw,greedyh)scale=self:_adjscale(scale or 1)local tp,rp,bp,lp=self:_get_padding_and_border()local w=tonumber(rtk.unwrap1(self.w))local h=tonumber(rtk.unwrap1(self.h))w=_get_content_dimension(w,boxw,lp+rp,fillw,clampw,greedyw,scale)h=_get_content_dimension(h,boxh,tp+bp,fillh,clamph,greedyh,scale)local minw,maxw,minh,maxh=self:_get_min_max_sizes(boxw,boxh,greedyw,greedyh,scale)maxw=maxw and clampw and math.min(maxw,boxw)or maxw
 maxh=maxh and clamph and math.min(maxh,boxh)or maxh
 minw=minw and minw-lp-rp
 maxw=maxw and maxw-lp-rp
@@ -2579,7 +2629,12 @@ else
 event:set_button_state(self,(state or 0)|2)self._last_mousedown_time=event.time
 end
 self:queue_draw()end
-function rtk.Widget:_unrealize()self.realized=false
+function rtk.Widget:_unrealize()if self:focused()then
+self:blur()end
+if rtk.last_focused==self then
+rtk.last_focused=nil
+local w,first,last=rtk.window:_find_focus(self,true,nil,rtk._modal==nil)log.info('RESHIFT FOCUS TO: %s', w)end
+self.realized=false
 end
 function rtk.Widget:_release_modal(event)end
 function rtk.Widget:onattr(attr,value,oldval,trigger,sync)return true end
@@ -2609,7 +2664,13 @@ end
 function rtk.Widget:ondrawpre(offx,offy,alpha,event)end
 function rtk.Widget:_handle_drawpre(offx,offy,alpha,event)return self:ondrawpre(offx,offy,alpha,event)end
 function rtk.Widget:ondraw(offx,offy,alpha,event)end
-function rtk.Widget:_handle_draw(offx,offy,alpha,event)return self:ondraw(offx,offy,alpha,event)end
+function rtk.Widget:_handle_draw(offx,offy,alpha,event)self:ondraw(offx,offy,alpha,event)if self.focus_source then
+self:_draw_focus(offx,offy)end
+end
+function rtk.Widget:_draw_focus(offx,offy)local c=self.calc
+gfx.set(1,1,1,1)if true then
+gfx.rect(offx+c.x,offy+c.y,c.w,c.h,0)end
+end
 function rtk.Widget:onmousedown(event)end
 function rtk.Widget:_handle_mousedown(event)local ok=self:onmousedown(event)if ok~=false then
 local autofocus=self.calc.autofocus
@@ -2645,10 +2706,14 @@ function rtk.Widget:_handle_mousemove(event)if self.onmousemove then
 return self:onmousemove(event)end
 end
 function rtk.Widget:onkeypress(event)end
-function rtk.Widget:_handle_keypress(event)return self:onkeypress(event)end
-function rtk.Widget:onfocus(event)return true
+function rtk.Widget:_handle_keypress(event)local ok=self:onkeypress(event)if ok~=false and not event.handled and self:focused()and
+(event.keycode==rtk.keycodes.ENTER or event.keycode==rtk.keycodes.SPACE)then
+self:activate(event)event:set_handled(self)end
+return ok
 end
-function rtk.Widget:_handle_focus(event)return self:onfocus(event)end
+function rtk.Widget:onfocus(event,context)return true
+end
+function rtk.Widget:_handle_focus(event,context)return self:onfocus(event,context)end
 function rtk.Widget:onblur(event,other)return true
 end
 function rtk.Widget:_handle_blur(event,other)return self:onblur(event,other)end
@@ -3050,6 +3115,9 @@ calc.scroll_left,calc.scroll_top=self:_get_clamped_scroll(self.scroll_left,self.
 self._needs_clamping=false
 end
 end
+function rtk.Viewport:_find_focus(anchor,advance,state,listen)listen=self:_should_handle_event(listen)if self.child and self.child._find_focus then
+return self.child:_find_focus(anchor,advance,state,listen)end
+end
 function rtk.Viewport:onscrollpre(last_left,last_top,event)end
 function rtk.Viewport:onscroll(last_left,last_top,event)end
 end)()
@@ -3161,7 +3229,8 @@ end)()
 __mod_rtk_container=(function()
 local rtk=__mod_rtk_core
 rtk.Container=rtk.class('rtk.Container', rtk.Widget)rtk.Container.register{fillw=nil,fillh=nil,halign=nil,valign=nil,padding=nil,tpadding=nil,rpadding=nil,bpadding=nil,lpadding=nil,minw=nil,minh=nil,maxw=nil,maxh=nil,bg=nil,z=nil,children=nil,}function rtk.Container:initialize(attrs,...)self.children={}self._child_index_by_id=nil
-self._reflowed_children={}self._z_indexes={}rtk.Widget.initialize(self,attrs,self.class.attributes.defaults,...)if attrs and #attrs>0 then
+self._reflowed_children={}self._z_indexes={}self._children_changed=false
+rtk.Widget.initialize(self,attrs,self.class.attributes.defaults,...)if attrs and #attrs>0 then
 for i=1,#attrs do
 local w=attrs[i]
 self:add(w)end
@@ -3217,11 +3286,13 @@ function rtk.Container:_reparent_child(child)self:_validate_child(child)if child
 child.parent:remove(child)end
 child.parent=self
 child.window=self.window
+self._children_changed=true
 self:_sync_child_refs(child, 'add')if rtk.focused==child then
 self:_set_focused_child(child)end
 end
 function rtk.Container:_unparent_child(pos)local child=self.children[pos][1]
 if child then
+self._children_changed=true
 if child.visible then
 child:_unrealize()end
 child.parent=nil
@@ -3236,7 +3307,7 @@ function rtk.Container:focused(event)return rtk.focused==self or(event and event
 function rtk.Container:add(widget,attrs)self:_reparent_child(widget)self.children[#self.children+1]={widget,self:_calc_cell_attrs(widget,attrs)}self._child_index_by_id=nil
 self:queue_reflow(rtk.Widget.REFLOW_FULL)return widget
 end
-function rtk.Container:update(widget,attrs,merge)local n=self:get_child_index(widget)assert(n, 'Widget not found in container')attrs=self:_calc_cell_attrs(widget,attrs)if merge then
+function rtk.Container:update(widget,attrs,merge)local n=self:get_child_index(widget)assert(n, 'Widget not found in container')attrs=self:_calc_cell_attrs(widget,attrs or widget.cell)if merge then
 local cellattrs=self.children[n][2]
 table.merge(cellattrs,attrs)else
 self.children[n][2]=attrs
@@ -3266,6 +3337,7 @@ if widget and widget.visible then
 widget:_unrealize()end
 end
 self.children={}self._child_index_by_id=nil
+self._children_changed=true
 self:queue_reflow(rtk.Widget.REFLOW_FULL)end
 function rtk.Container:_calc_cell_attrs(widget,attrs)attrs=attrs or widget.cell
 if not attrs then
@@ -3277,6 +3349,7 @@ return calculated
 end
 function rtk.Container:_reorder(srcidx,targetidx)if srcidx~=nil and srcidx~=targetidx then
 local widgetattrs=table.remove(self.children,srcidx)table.insert(self.children,rtk.clamp(targetidx,1,#self.children+1),widgetattrs)self._child_index_by_id=nil
+self._children_changed=true
 self:queue_reflow(rtk.Widget.REFLOW_FULL)return true
 else
 return false
@@ -3388,7 +3461,8 @@ self:_set_cell_box(attrs,wcalc.x,wcalc.y,ww+clp+crp,wh+ctp+cbp)widget:_realize_g
 widget.realized=false
 end
 end
-self:_determine_zorders()calc.x=x
+self:_determine_zorders()self._children_changed=false
+calc.x=x
 calc.y=y
 calc.w=math.ceil(rtk.clamp((w or innerw)+lp+rp,minw,maxw))calc.h=math.ceil(rtk.clamp((h or innerh)+tp+bp,minh,maxh))end
 function rtk.Container:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)local calc=self.calc
@@ -3419,6 +3493,31 @@ if widget and widget.realized then
 widget:_unrealize()end
 end
 end
+function rtk.Container:_find_focus(anchor,advance,state,listen)state=state or {}listen=self:_should_handle_event(listen)for i=1,#self.children do
+local widget=self.children[i][1]
+if widget and widget.visible then
+if widget.autofocus and listen then
+state.first=state.first or widget
+state.last=widget
+if state.usenext then
+return widget
+elseif widget==anchor then
+if advance==false and state.prev then
+return state.prev
+end
+state.usenext=advance
+end
+state.prev=widget
+end
+if widget._find_focus then
+local w=widget:_find_focus(anchor,advance,state,listen)if w then
+return w,state.first,state.last
+end
+end
+end
+end
+return nil,state.first,state.last
+end
 end)()
 
 __mod_rtk_window=(function()
@@ -3435,7 +3534,7 @@ end
 end
 icon:popdest()rtk.Window.static._icon_resize_grip=icon
 end
-rtk.Window.register{x=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},y=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},w=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=function(self,anim)return rtk.Widget.attributes.w.animate(self,anim,rtk.scale.framebuffer)end,calculate=function(self,attr,value,target)return value and value*rtk.scale.framebuffer or target[attr]
+rtk.Window.register{x=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},y=rtk.Attribute{type='number',default=rtk.Attribute.NIL,reflow=rtk.Widget.REFLOW_NONE,redraw=false,window_sync=true,},w=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=function(self,anim)return rtk.Widget.attributes.w.animate(self,anim,rtk.scale.framebuffer)end,calculate=function(self,attr,value,target)return value and math.ceil(value*rtk.scale.framebuffer*rtk.scale.window)or target[attr]
 end,},h=rtk.Attribute{priority=true,type='number',window_sync=true,reflow_uses_exterior_value=true,animate=rtk.Reference('w'),calculate=rtk.Reference('w'),},minw=rtk.Attribute{default=100,window_sync=true,reflow_uses_exterior_value=true,},minh=rtk.Attribute{default=30,window_sync=true,reflow_uses_exterior_value=true,},maxw=rtk.Attribute{window_sync=true,reflow_uses_exterior_value=true,},maxh=rtk.Attribute{window_sync=true,reflow_uses_exterior_value=true,},visible=rtk.Attribute{window_sync=true,},docked=rtk.Attribute{default=false,window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},dock=rtk.Attribute{default=rtk.Window.DOCK_RIGHT,calculate={bottom=rtk.Window.DOCK_BOTTOM,left=rtk.Window.DOCK_LEFT,top=rtk.Window.DOCK_TOP,right=rtk.Window.DOCK_RIGHT,floating=rtk.Window.DOCK_FLOATING
 },window_sync=true,reflow=rtk.Widget.REFLOW_NONE,},pinned=rtk.Attribute{default=false,window_sync=true,calculate=function(self,attr,value,target)return rtk.has_js_reascript_api and value
 end,},borderless=rtk.Attribute{default=false,window_sync=true,calculate=rtk.Reference('pinned')},title=rtk.Attribute{default='REAPER application',reflow=rtk.Widget.REFLOW_NONE,window_sync=true,redraw=false,},opacity=rtk.Attribute{default=1.0,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,redraw=false,},resizable=rtk.Attribute{default=true,reflow=rtk.Widget.REFLOW_NONE,window_sync=true,},hwnd=nil,in_window=false,is_focused=not rtk.has_js_reascript_api and true or false,running=false,cursor=rtk.mouse.cursors.POINTER,scalability=rtk.Widget.BOX,}function rtk.Window:initialize(attrs,...)rtk.Container.initialize(self,attrs,self.class.attributes.defaults,...)rtk.window=self
@@ -3521,7 +3620,7 @@ function rtk.Window:_run()self:_update()if self.running then
 rtk.defer(self._run,self)end
 self._run_queued=self.running
 end
-function rtk.Window:_get_display_resolution(working,frame)local x=math.floor(self.x or 0)local y=math.floor(self.y or 0)local w=math.floor(x+(self.w or 1))local h=math.floor(y+(self.h or 1))local l,t,r,b=reaper.my_getViewport(0,0,0,0,x,y,w,h,working and 1 or 0)local sw=r-l
+function rtk.Window:_get_display_resolution(working,frame)local x,y,w,h=rtk.unwrap(self.x,self.y,self.w,self.h)x=math.floor(x or 0)y=math.floor(y or 0)w=math.floor(x+(w or 1))h=math.floor(y+(h or 1))local l,t,r,b=reaper.my_getViewport(0,0,0,0,x,y,w,h,working and 1 or 0)local sw=r-l
 local sh=math.abs(b-t)if frame then
 local borderless=self.calc.borderness
 sw=sw-(borderless and 0 or self._os_window_frame_width)sh=sh-(borderless and 0 or self._os_window_frame_height)end
@@ -3538,9 +3637,7 @@ function rtk.Window:_get_geometry_from_attrs(overrides)overrides=overrides or {}
 local minw,maxw,minh,maxh,sx,sy,sw,sh=self:_get_min_max_sizes()if not sh then
 sx,sy,sw,sh=self:_get_display_resolution(true,not self.calc.borderless)end
 local calc=self.calc
-local x=self.x
-local y=self.y
-if not x then
+local x,y,w,h=rtk.unwrap(self.x,self.y)if not x then
 x=0
 overrides.halign=overrides.halign or rtk.Widget.CENTER
 end
@@ -3548,7 +3645,7 @@ if not y then
 y=0
 overrides.valign=overrides.valign or rtk.Widget.CENTER
 end
-local w=rtk.isrel(self.w)and(self.w*sw)or(calc.w/scale)local h=rtk.isrel(self.h)and(self.h*sh)or(calc.h/scale)w=rtk.clamp(w,minw and minw/scale,maxw and maxw/scale)h=rtk.clamp(h,minh and minh/scale,maxh and maxh/scale)if sw and sh then
+w=rtk.isrel(w)and(w*sw)or(calc.w/scale)h=rtk.isrel(h)and(h*sh)or(calc.h/scale)w=rtk.clamp(w,minw and minw/scale,maxw and maxw/scale)h=rtk.clamp(h,minh and minh/scale,maxh and maxh/scale)if sw and sh then
 if overrides.halign==rtk.Widget.LEFT then
 x=sx
 elseif overrides.halign==rtk.Widget.CENTER then
@@ -3570,12 +3667,11 @@ elseif overrides.valign==rtk.Widget.BOTTOM then
 y=sy+(overrides.y or 0)+(sh-h)end
 end
 if overrides.constrain then
-x=rtk.clamp(x,sx,sx+sw-w)y=rtk.clamp(y,sy,sy+sh-h)w=rtk.clamp(w,self.minw or 0,sw-(x-sx))h=rtk.clamp(h,self.minh or 0,sh-(rtk.os.mac and y-sy-h or y-sy))end
+x=rtk.clamp(x,sx,sx+sw-w)y=rtk.clamp(y,sy,sy+sh-h)w=rtk.clamp(w,rtk.unwrap(self.minw)or 0,sw-(x-sx))h=rtk.clamp(h,rtk.unwrap(self.minh)or 0,sh-(rtk.os.mac and y-sy-h or y-sy))end
 end
 return math.round(x),math.round(y),math.round(w),math.round(h)end
 function rtk.Window:_sync_window_attrs(overrides)local calc=self.calc
-local lastw,lasth=self.w,self.h
-local resized
+local lastw,lasth=rtk.unwrap(self.w,self.h)local resized
 local dockstate=self:_get_dockstate_from_attrs()if not rtk.has_js_reascript_api or not self.hwnd then
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)self:_handle_dock_change(dockstate)self:onresize(lastw,lasth)return 1
@@ -3583,12 +3679,12 @@ else
 return 0
 end
 end
-if not self.w or not self.h then
+if not lastw or not lasth then
 self:reflow(rtk.Widget.REFLOW_FULL)end
 if dockstate~=self._dockstate then
 gfx.dock(dockstate)local r,w,h=reaper.JS_Window_GetClientSize(self.hwnd)self:_handle_dock_change(dockstate)if calc.docked then
 gfx.w,gfx.h=w,h
-self:sync('w', w / rtk.scale.framebuffer, w)self:sync('h', h / rtk.scale.framebuffer, h)end
+self:sync('w', w / rtk.scale.framebuffer / rtk.scale.window, w)self:sync('h', h / rtk.scale.framebuffer / rtk.scale.window, h)end
 self:onresize(lastw,lasth)return 1
 end
 if self._resize_grip then
@@ -3601,7 +3697,7 @@ local style='SYSMENU,DLGSTYLE,BORDER,CAPTION'if calc.resizable then
 style=style .. ',THICKFRAME'end
 if calc.borderless then
 style='POPUP'self:_setup_borderless()if not self.realized then
-local sw=math.ceil(self.calc.w/rtk.scale.framebuffer)local sh=math.ceil(self.calc.h/rtk.scale.framebuffer)reaper.JS_Window_Resize(self.hwnd,sw,sh)end
+local sw=math.ceil(self.calc.w/rtk.scale.framebuffer*rtk.scale.window)local sh=math.ceil(self.calc.h/rtk.scale.framebuffer*rtk.scale.window)reaper.JS_Window_Resize(self.hwnd,sw,sh)end
 end
 local function restyle()reaper.JS_Window_SetStyle(self.hwnd,style)if rtk.os.bits~=32 then
 local n=reaper.JS_Window_GetLong(self.hwnd, 'STYLE')reaper.JS_Window_SetLong(self.hwnd, 'STYLE', n | 0x80000000)end
@@ -3622,18 +3718,16 @@ elseif w>scaled_gfxw or h>scaled_gfxh then
 resized=1
 end
 end
-local r,lastx,lasty,x2,y2=reaper.JS_Window_GetClientRect(self.hwnd)local moved=r and(self.x~=lastx or self.y~=lasty)local borderless_toggled=calc.borderless~=self._last_synced_attrs.borderless
+local r,lastx,lasty,x2,y2=reaper.JS_Window_GetClientRect(self.hwnd)local moved=r and(rtk.unwrap(self.x)~=lastx or rtk.unwrap(self.y)~=lasty)local borderless_toggled=calc.borderless~=self._last_synced_attrs.borderless
 if moved or resized~=0 or borderless_toggled then
 local sw,sh=w,h
 if not calc.borderless then
-sw=w+self._os_window_frame_width
-sh=h+self._os_window_frame_height
+sw=sw+self._os_window_frame_width
+sh=sh+self._os_window_frame_height
 end
-sw=math.ceil(sw)sh=math.ceil(sh)reaper.JS_Window_SetPosition(self.hwnd,x,y,sw,sh)end
+sw=math.ceil(sw)sh=math.ceil(sh)log.info('SetPosition() (%s %s + %s) %s %s', w, h, self._os_window_frame_width, sw, sh)end
 if resized~=0 then
-gfx.w=w*rtk.scale.framebuffer
-gfx.h=h*rtk.scale.framebuffer
-self:queue_blit()self:onresize(scaled_gfxw,scaled_gfxh)end
+gfx.w=math.ceil(w*rtk.scale.framebuffer)gfx.h=math.ceil(h*rtk.scale.framebuffer)self:queue_blit()self:onresize(scaled_gfxw,scaled_gfxh)end
 if moved then
 self:sync('x', x, 0)self:sync('y', y, 0)self:onmove(lastx,lasty)end
 reaper.JS_Window_SetOpacity(self.hwnd, 'ALPHA', calc.opacity)reaper.JS_Window_SetTitle(self.hwnd,calc.title)else
@@ -3653,11 +3747,12 @@ options.valign=options.valign or options.align
 end
 if not calc.borderless and self._os_window_frame_width==0 then
 self:_discover_os_window_frame_size(rtk.reaper_hwnd)end
-if not self.w or not self.h then
+if not rtk.unwrap(self.w)or not rtk.unwrap(self.h)then
 self:reflow(rtk.Widget.REFLOW_FULL)end
 self.running=true
 gfx.ext_retina=1
-self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)self:sync('x', x, 0)self:sync('y', y, 0)self:sync('w', w)self:sync('h', h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w/rtk.scale.framebuffer,calc.h/rtk.scale.framebuffer,dockstate,x,y)gfx.update()if gfx.ext_retina==2 and rtk.os.mac and rtk.scale.framebuffer~=2 then
+self:_handle_attr('bg', calc.bg or rtk.theme.bg)options=self:_calc_cell_attrs(self,options)local x,y,w,h=self:_get_geometry_from_attrs(options)self:sync('x', x, 0)self:sync('y', y, 0)self:sync('w', w)self:sync('h', h)log.info('init() calc size: %s %s', w, h)local dockstate=self:_get_dockstate_from_attrs()gfx.init(calc.title,calc.w/rtk.scale.framebuffer,calc.h/rtk.scale.framebuffer,dockstate,x,y
+)gfx.update()if gfx.ext_retina==2 and rtk.os.mac and rtk.scale.framebuffer~=2 then
 log.warning('rtk.Window:open(): unexpected adjustment to rtk.scale.framebuffer: %s -> 2', rtk.scale.framebuffer)rtk.scale.framebuffer=2
 calc.w=calc.w*rtk.scale.framebuffer
 calc.h=calc.h*rtk.scale.framebuffer
@@ -3720,11 +3815,12 @@ move.ondoubleclick=function(this,event)if calc.docked or not calc.borderless the
 return
 end
 local x,y,w,h=self:_get_display_resolution(true)if self._unmaximized_geometry then
-if math.abs(w-self.w)<w*0.05 and math.abs(h-self.h)<h*0.05 then
+if math.abs(w-rtk.unwrap(self.w))<w*0.05 and
+math.abs(h-rtk.unwrap(self.h))<h*0.05 then
 x,y,w,h=table.unpack(self._unmaximized_geometry)end
 self._unmaximized_geometry=nil
 else
-self._unmaximized_geometry={self.x,self.y,self.w,self.h}end
+self._unmaximized_geometry=table.pack(rtk.unwrap(self.x,self.y,self.w,self.h))end
 self:move(x,y)self:resize(w,h)return true
 end
 local resize=rtk.ImageBox{image=rtk.Window._icon_resize_grip,z=10000,visible=calc.resizable,cursor=rtk.mouse.cursors.SIZE_NW_SE,alpha=0.4,autofocus=true,touch_activate_delay=0,tooltip='Resize window',bmargin=-(calc.bpadding or 0),rmargin=-(calc.rpadding or 0),}resize.onmouseenter=function(this)if calc.borderless then
@@ -3783,7 +3879,7 @@ calc.dock=(dockstate>>8)&0xff
 self:sync('dock', calc.dock)self:sync('docked', calc.docked)self._dockstate=dockstate
 self.hwnd=self:_get_hwnd()self:queue_reflow(rtk.Widget.REFLOW_FULL)if was_docked~=calc.docked then
 self:_clear_gdi()if calc.docked then
-self._undocked_geometry={self.x,self.y,self.w,self.h}elseif self._undocked_geometry then
+self._undocked_geometry=table.pack(rtk.unwrap(self.x,self.y,self.w,self.h))elseif self._undocked_geometry then
 local x,y,w,h=table.unpack(self._undocked_geometry)local gw=w*rtk.scale.framebuffer
 local gh=h*rtk.scale.framebuffer
 self:sync('x', x, 0)self:sync('y', y, 0)self:sync('w', w, gw)self:sync('h', h, gh)gfx.w=gw
@@ -3808,8 +3904,8 @@ end
 function rtk.Window:queue_mouse_refresh()self._mouse_refresh_queued=true
 end
 function rtk.Window:_get_content_size(boxw,boxh,fillw,fillh,clampw,clamph,scale,greedyw,greedyh)local calc=self.calc
-local tp,rp,bp,lp=self:_get_padding_and_border()local w=rtk.isrel(self.w)and(self.w*boxw)or(self.w and(calc.w-lp-rp))or nil
-local h=rtk.isrel(self.h)and(self.h*boxh)or(self.h and(calc.h-tp-bp))or nil
+local tp,rp,bp,lp=self:_get_padding_and_border()local w,h=rtk.unwrap(self.w,self.h)w=rtk.isrel(w)and(w*boxw)or(w and(calc.w-lp-rp))or nil
+h=rtk.isrel(h)and(h*boxh)or(h and(calc.h-tp-bp))or nil
 local minw,maxw,minh,maxh=self:_get_min_max_sizes(boxw,boxh,greedyw,greedyh,scale)return w,h,tp,rp,bp,lp,minw,maxw,minh,maxh
 end
 function rtk.Window:_get_min_max_sizes(boxw,boxh,greedyw,greedyh,scale)if not self._sync_window_attrs_on_update then
@@ -3828,21 +3924,21 @@ local widgets=self._reflow_widgets
 local full=false
 self._reflow_queued=false
 self._reflow_widgets=nil
-local t0=reaper.time_precise()if mode~=rtk.Widget.REFLOW_FULL and widgets and self.realized and #widgets<20 then
+local t0=reaper.time_precise()if mode~=rtk.Widget.REFLOW_FULL and widgets and self.realized and #widgets<=20 then
 for widget,_ in pairs(widgets)do
 widget:reflow()widget:_realize_geometry()end
 else
-if #self.children==0 then
-calc.w=self.w and calc.w or calc.minw
-calc.h=self.h and calc.h or calc.minh
+local w,h=rtk.unwrap(self.w,self.h)if #self.children==0 then
+calc.w=w and calc.w or calc.minw
+calc.h=h and calc.h or calc.minh
 else
 local saved_size
 local boxw,boxh=calc.w,calc.h
-if not self.w or not self.h or rtk.isrel(self.w)or rtk.isrel(self.h)then
-local _,_,sw,sh=self:_get_display_resolution(true,not calc.borderless)boxw=(rtk.isrel(self.w)or not self.w)and sw*rtk.scale.framebuffer or boxw
-boxh=(rtk.isrel(self.h)or not self.h)and sh*rtk.scale.framebuffer or boxh
+if not w or not h or rtk.isrel(w)or rtk.isrel(h)then
+local _,_,sw,sh=self:_get_display_resolution(true,not calc.borderless)boxw=(rtk.isrel(w)or not w)and sw*rtk.scale.framebuffer or boxw
+boxh=(rtk.isrel(h)or not h)and sh*rtk.scale.framebuffer or boxh
 end
-local _,_,w,h=rtk.Container.reflow(self,0,0,boxw,boxh,nil,nil,true,true,rtk.scale.value,nil,self,self.w~=nil,self.h~=nil
+rtk.Container.reflow(self,0,0,boxw,boxh,nil,nil,true,true,rtk.scale.value,nil,self,w~=nil,h~=nil
 )self:_realize_geometry()full=true
 end
 end
@@ -3892,11 +3988,24 @@ files[#files+1]=fname
 idx=idx+1
 end
 gfx.getdropfile(-1)end
-gfx.update()if rtk._soon_funcs then
+gfx.update()if false then
+local state=reaper.JS_VKeys_GetState(0)if state~=self._last_vk then
+self._last_vk=state
+local keys={}for b=1,255 do
+if state:byte(b)~=0 then
+keys[#keys+1]=b
+end
+end
+log.info('%s', table.tostring(keys))end
+end
+if rtk._soon_funcs then
 rtk._run_soon()end
 local focus_changed=false
+local last_focused_hwnd=rtk.focused_hwnd
 if rtk.has_js_reascript_api then
-rtk.focused_hwnd=reaper.JS_Window_GetFocus()local is_focused=self.hwnd==rtk.focused_hwnd
+rtk.focused_hwnd=reaper.JS_Window_GetFocus()if last_focused_hwnd~=rtk.focused_hwnd then
+end
+local is_focused=self.hwnd==rtk.focused_hwnd
 if is_focused~=self.is_focused then
 self.is_focused=is_focused
 need_draw=true
@@ -3916,13 +4025,11 @@ end
 local dockstate,x,y=gfx.dock(-1,true,true)local dock_changed=dockstate~=self._dockstate
 if dock_changed then
 self:_handle_dock_change(dockstate)end
-if x~=self.x or y~=self.y then
-local lastx,lasty=self.x,self.y
+local lastx,lasty=rtk.unwrap(self.x,self.y)if x~=lastx or y~=lasty then
 self:sync('x', x, 0)self:sync('y', y, 0)self:onmove(lastx,lasty)end
 local resized=gfx.w~=calc.w or gfx.h~=calc.h
 if resized and self.visible then
-local last_w,last_h=self.w,self.h
-self:sync('w', gfx.w / rtk.scale.framebuffer, gfx.w)self:sync('h', gfx.h / rtk.scale.framebuffer, gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
+local last_w,last_h=rtk.unwrap(self.w,self.h)log.info('RESIZE: gfx.w=%s gfx.h=%s scale=%s -> %s', gfx.w, gfx.h, rtk.scale.window, gfx.w / rtk.scale.window, gfx.h / rtk.scale.window)self:sync('w', math.ceil(gfx.w / rtk.scale.framebuffer / rtk.scale.window), gfx.w)self:sync('h', math.ceil(gfx.h / rtk.scale.framebuffer / rtk.scale.window), gfx.h)self:_clear_gdi(calc.w,calc.h)self:onresize(last_w,last_h)self:reflow(rtk.Widget.REFLOW_FULL)need_draw=true
 elseif self._reflow_queued then
 self:reflow()need_draw=true
 end
@@ -3938,7 +4045,22 @@ event=self._event:reset(rtk.Event.KEY)event:set_modifiers(gfx.mouse_cap,0)event:
 if event.keycode==rtk.keycodes.F12 and log.level<=log.DEBUG then
 rtk.debug=not rtk.debug
 self:queue_draw()elseif event.keycode==rtk.keycodes.ESCAPE and not self.docked then
-self:close()end
+self:close()elseif event.keycode==rtk.keycodes.TAB then
+local advance=event.shift~=true
+local widget=rtk.last_focused
+local context=nil
+if rtk.focused or not widget then
+local w,first,last,c=self:_find_focus(rtk.focused,advance,nil,rtk._modal==nil)log.info('FOCUS: w=%s   first=%s  last=%s   (rtk.focused=%s  widget=%s)', w, first, last, rtk.focused, widget)if w then
+widget=w
+context=c
+else
+widget=(advance and first)or last
+end
+else
+log.info('HERE WITH: %s', widget)end
+if widget then
+widget:scrolltoview(10)widget:focus(event,context)end
+event:set_handled(true)end
 end
 keycode=gfx.getchar()end
 elseif keycode<0 then
@@ -3962,9 +4084,14 @@ if mouse_button_changed and rtk.touchscroll and self._jsx then
 self._restore_mouse_pos={self._jsx,self._jsy,nil}end
 if mouse_moved then
 if self.in_window then
+if self._jsx then
+end
 self._jsx=nil
 elseif not buttons_down then
-self._jsx,self._jsy=reaper.GetMousePosition()end
+self._jsx,self._jsy=reaper.GetMousePosition()if last_focused_hwnd and last_focused_hwnd~=self.hwnd then
+self._restore_focus_hwnd=last_focused_hwnd
+end
+end
 if self._mouse_refresh_queued then
 self._mouse_refresh_queued=false
 local tmp=self:_get_mousemove_event(true)tmp.buttons=0
@@ -4111,7 +4238,7 @@ self._last_mousemove_time=nil
 end
 event.time=now
 if not suppress then
-rtk.Container._handle_event(self,0,0,event,false,rtk._modal==nil)end
+self:_handle_event(0,0,event,false,rtk._modal==nil)end
 assert(event.type~=rtk.Event.MOUSEDOWN or event.button~=0)if event.type==rtk.Event.MOUSEUP then
 self._last_mouseup_time=event.time
 rtk._drag_candidates=nil
@@ -4216,7 +4343,8 @@ elseif self.orientation==rtk.Box.VERTICAL then
 exph=(expand_units>0)or exph
 end
 innerw,innerh=self:_reflow_step2(inner_maxw,inner_maxh,innerw,innerh,clampw,clamph,expand_units,remaining_size,total_spacing,uiscale,viewport,window,greedyw,greedyh,tp,rp,bp,lp
-)fillw=fillw or(self.w and tonumber(self.w)<1.0)fillh=fillh or(self.h and tonumber(self.h)<1.0)innerw=w or math.max(innerw,fillw and greedyw and inner_maxw or 0)innerh=h or math.max(innerh,fillh and greedyh and inner_maxh or 0)calc.w=math.ceil(rtk.clamp(innerw+lp+rp,minw,maxw))calc.h=math.ceil(rtk.clamp(innerh+tp+bp,minh,maxh))return expw,exph
+)fillw=fillw or(self.w and tonumber(self.w)<1.0)fillh=fillh or(self.h and tonumber(self.h)<1.0)innerw=w or math.max(innerw,fillw and greedyw and inner_maxw or 0)innerh=h or math.max(innerh,fillh and greedyh and inner_maxh or 0)calc.w=math.ceil(rtk.clamp(innerw+lp+rp,minw,maxw))calc.h=math.ceil(rtk.clamp(innerh+tp+bp,minh,maxh))self._children_changed=false
+return expw,exph
 end
 function rtk.Box:_reflow_step1(w,h,clampw,clamph,uiscale,viewport,window,greedyw,greedyh)local calc=self.calc
 local orientation=calc.orientation
@@ -4839,6 +4967,7 @@ if calc.label then
 self:setcolor(textcolor,alpha)self._font:draw(self._segments,x+pre.lx,y+pre.ly,pre.clipw,pre.cliph)end
 end
 function rtk.Button:_draw_icon(x,y,hovering,alpha)self.calc.icon:draw(x,y,self.calc.alpha*alpha,rtk.scale.value)end
+function rtk.Button:activate(event)self:_handle_click(event)end
 end)()
 
 __mod_rtk_entry=(function()
@@ -5041,7 +5170,7 @@ if insert then
 self._dirty_positions=math.min(caret-1,self._dirty_positions or math.inf)value=value:sub(0,caret-1)..insert..value:sub(caret)caret=caret+insert:len()end
 if value~=calc.value then
 caret=rtk.clamp(caret,1,#value+1)self:sync('value', value, nil, false)if caret~=calc.caret then
-self:sync('caret', caret)end
+self:sync('caret', caret, caret)end
 self:_handle_change()self._dirty_view=true
 end
 end
@@ -5275,6 +5404,7 @@ self:_draw_borders(offx,offy,alpha,calc.border_hover)else
 self:_draw_borders(offx,offy,alpha)end
 end
 self:_handle_draw(offx,offy,alpha,event)end
+function rtk.Entry:_draw_focus(offx,offy)end
 function rtk.Entry:onchange(event)end
 function rtk.Entry:_handle_change(event)return self:onchange(event)end
 end)()
@@ -5625,7 +5755,9 @@ local log=__mod_rtk_log
 rtk.Slider=rtk.class('rtk.Slider', rtk.Widget)rtk.Slider.static.TICKS_NEVER=0
 rtk.Slider.static.TICKS_ALWAYS=1
 rtk.Slider.static.TICKS_WHEN_ACTIVE=2
-rtk.Slider.register{[1]=rtk.Attribute{alias='value'},value=rtk.Attribute{default=0,priority=true,reflow=rtk.Widget.REFLOW_NONE,calculate=function(self,attr,value,target)return type(value)=='table' and value or {value}end,set=function(self,attr,value,calculated,target)self._use_scalar_value=type(value) ~='table'for i=1,#calculated do
+rtk.Slider.register{[1]=rtk.Attribute{alias='value'},value=rtk.Attribute{default=0,priority=true,reflow=rtk.Widget.REFLOW_NONE,calculate=function(self,attr,value,target)return type(value)=='table' and value or {value}end,set=function(self,attr,value,calculated,target)if rtk.isreactive(value)=='table' then
+error('rtk.Slider values cannot be reactive tables.  Use rtk.scalar() instead for reactive slider values.')end
+self._use_scalar_value=type(rtk.unwrap(value)) ~='table'for i=1,#calculated do
 calculated[i]=rtk.clamp(tonumber(calculated[i]),target.min,target.max)if not self._thumbs[i] then
 self._thumbs[i]={idx=i,radius=0,radius_target=0}end
 end
@@ -5743,7 +5875,7 @@ end
 local newval=self._use_scalar_value and value or table.shallow_copy(current,{[thumbidx]=value})if animate==false then
 self:cancel_animation('value')self:sync('value', newval)else
 self:sync('value', newval, current)local duration=fast and 0.25 or 0.4
-self:animate{'value', dst=newval, doneval=newval, duration=duration, easing='out-expo'}end
+self:animate{'value', xsrc=current, dst=newval, doneval=newval, duration=duration, easing='out-expo'}end
 return true
 end
 function rtk.Slider:_set_thumb_value_with_crossover(idx,value,animate,event)local newidx
@@ -5945,6 +6077,579 @@ self:_draw_borders(offx,offy,alpha)self:_handle_draw(offx,offy,alpha,event)end
 function rtk.Slider:onchange()end
 end)()
 
+__mod_rtk_combobox=(function()
+local rtk=__mod_rtk_core
+local log=__mod_rtk_log
+rtk.List=rtk.class('rtk.List', rtk.VBox)rtk.List.register{autofocus=true,tooltip=true,}local function _check_filter(filter,search)if not search then
+return
+end
+for _,term in ipairs(search)do
+if term:lower():find(filter)then
+return true
+end
+end
+end
+function rtk.List:filter(value)value=value:lower()log.time_start()local found=0
+local show={}local current={}for n=#self.children,1,-1 do
+local child,attrs=table.unpack(self.children[n])local item=child.item
+local search=item and(item.search or {item.label})if search then
+local matched=_check_filter(value,item and(item.search or item.label))if matched then
+found=found+1
+child:show()show[item.within or false]=true
+elseif show[item.id] then
+show[item.within or false]=true
+child:show()if item.count>0 and not item.expanded then
+self:onselectitem(child,true)item.expanded=true
+end
+else
+child:hide()end
+if current.folder~=item.within then
+current={folder=item.within}end
+current[#current+1]=child
+end
+end
+if found==0 then
+log.info('FOUND NOTHING matching %s', value)end
+log.time_end('done filtering')end
+function rtk.List:reset()for n=1,#self.children do
+local child,attrs=table.unpack(self.children[n])local item=child.item
+if item then
+end
+end
+end
+function rtk.List:_draw_tooltip(clientx,clienty,clientw,clienth)if not self._cellover then
+return
+end
+local child=self._cellover[1]
+local item=child.item
+if not item or not item.label then
+return
+end
+if child.offx+child.calc.x+child.calc.w>=self.calc.w then
+child:_draw_tooltip(clientx,clienty,clientw,clienth,item.label)end
+end
+function rtk.List:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.VBox._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret==false then
+return ret
+end
+if attr=='child' then
+assert(not value or rtk.isa(value, rtk.Container), 'rtk.ComboBox child must be a container')end
+return ret
+end
+function rtk.List:_calc_cell_attrs(widget,attrs)attrs=attrs or {}if attrs.stretch==nil then
+attrs.stretch=true
+end
+if not rtk.isa(widget,rtk.List)and not attrs.padding then
+attrs.tpadding=attrs.tpadding or 5
+attrs.bpadding=attrs.bpadding or 5
+attrs.lpadding=attrs.lpadding or 10
+end
+return rtk.VBox._calc_cell_attrs(self,widget,attrs)end
+function rtk.List:_reflow(...)log.info('LIST REFLOW')if self._children_changed then
+log.info('LIST REFLOW - children changed')self._items_by_id={}for _,widgetattrs in ipairs(self.children)do
+local widget=widgetattrs[1]
+local item=widget.item
+if item then
+if not item.id then
+item.id=string.format('autoassigned-%s', widget.id)end
+self._items_by_id[item.id]=item
+item.count=0
+if item.within then
+local folder=self._items_by_id[item.within]
+folder.count=folder.count+1
+item._depth=folder._depth+1
+if folder.expanded~=widget.visible then
+widget:toggle()end
+else
+item._depth=0
+end
+end
+end
+end
+return rtk.VBox._reflow(self,...)end
+function rtk.List:_get_cell_padding(widget,attrs)local ctp,crp,cbp,clp=rtk.VBox._get_cell_padding(self,widget,attrs)local item=widget.item
+local depth=item and item._depth or 0
+if depth>0 then
+clp=clp+20*depth
+end
+return ctp,crp,cbp,clp
+end
+function rtk.List:_handle_event(clparentx,clparenty,event,clipped,listen)local last=self._cellover and self._cellover[2]
+self._cellover=nil
+listen=rtk.VBox._handle_event(self,clparentx,clparenty,event,clipped,listen)if self._cellover then
+if self._cellover[2]~=last then
+if last then
+last.bg=nil
+end
+if not rtk.isa(self._cellover[1],rtk.List)and not clipped then
+self._cellover[2].bg=rtk.theme.accent_subtle
+end
+self:queue_draw()end
+elseif last then
+last.bg=nil
+self:queue_draw()end
+if event.type==rtk.Event.MOUSEDOWN and not event.simulated and not clipped then
+self._mousedown=self._cellover and self._cellover[1].id
+end
+return listen
+end
+function rtk.List:_handle_event_child(clparentx,clparenty,event,clipped,listen,wx,wy,child,attrs)listen=rtk.VBox._handle_event_child(self,clparentx,clparenty,event,clipped,listen,wx,wy,child,attrs)if not self._cellover and not rtk.dnd.dragging then
+local cb=attrs._cellbox
+if child.item and child.item.selectable~=false and
+rtk.point_in_box(event.x,event.y,wx,wy+cb[2],cb[3],cb[4]-1)then
+self._cellover={child,attrs}end
+end
+return listen
+end
+function rtk.List:_handle_click(event)if not self._cellover or self._cellover[1].id~=self._mousedown then
+return
+end
+local widget=self._cellover[1]
+local item=widget.item
+if not item then
+log.info('child is not an item, skipping: %s', item)end
+if item.count==0 then
+self:onselectitem(widget)log.info('select nonfolder: %s', widget)return
+end
+self:_expand_folder(widget,not item.expanded)end
+function rtk.List:_expand_folder(widget,expand,idx)local item=widget.item
+if item.expanded==expand then
+return
+end
+self:onselectitem(widget,expand)log.info('ITEM: %s  expand=%s', item.id, expand)local subfolders={}local autoexpand
+local found=false
+log.time_start()for n=idx or 1,#self.children do
+local child,attrs=table.unpack(self.children[n])if child==widget then
+found=true
+end
+if found then
+local citem=child.item
+local within=citem and citem.within
+if child~=widget and within~=item.id and not subfolders[within] then
+log.info('ABORT LOOP AT: %s  citem=%s within=%s', child, citem, within)break
+end
+if citem and citem.count then
+subfolders[citem.id]=citem.count>0
+end
+if expand then
+local pitem=self._items_by_id[within]
+if citem and pitem then
+if autoexpand~=false and(pitem.count==1 or(child==widget and citem.count>0))then
+autoexpand=citem.id
+else
+autoexpand=false
+end
+end
+if child==widget or within==item.id or within==autoexpand or pitem.expanded then
+child:show()if citem.count>0 and not citem.expanded and autoexpand==citem.id then
+self:onselectitem(child,true)citem.expanded=true
+end
+end
+elseif not expand and child~=widget then
+child:hide()end
+end
+end
+item.expanded=expand
+log.time_end('update children')end
+function rtk.List:onselectitem(widget,expand)end
+rtk.ComboBox=rtk.class('rtk.ComboBox', rtk.HBox)rtk.ComboBox.static._icon=nil
+rtk.ComboBox.register{selected=nil,selected_id=nil,border_active=nil,border_hover=nil,}function rtk.ComboBox:initialize(attrs)rtk.HBox.initialize(self,attrs,self.class.attributes.defaults,{border_active={rtk.theme.entry_border_focused},border_hover={rtk.theme.entry_border_hover},bg=rtk.theme.entry_bg,spacing=0
+})if not self.icon then
+if not rtk.ComboBox._icon then
+local icon=rtk.Image(14,18)self:setcolor(rtk.theme.text)icon:pushdest()gfx.triangle(2,7,10,7,6,11)icon:popdest()rtk.ComboBox.static._icon=icon
+end
+self.icon=rtk.ComboBox._icon
+end
+local this=self
+self.entry=rtk.Entry{placeholder=self.placeholder,value=self.value}self.entry.onfocus=function(entry)self:open()end
+function self.entry:_handle_change(event)rtk.Entry._handle_change(self,event)this:_handle_entry(event,self.value)end
+self.entry._handle_mousedown=function(entry,event)if not self.popup.opened then
+log.info('OPEN POPUP via entry mousedown: event=%s rtk=%s %s', event.tick, rtk.tick, event)self:open()event:set_handled(entry)return false
+else
+return rtk.Entry._handle_mousedown(entry,event)end
+end
+self.entry.focused=function(entry,event)return rtk.Entry.focused(entry,event)or self:focused(event)or(self.popup.opened and self.popup.alpha==1.0)end
+self.button=rtk.ImageBox{self.icon,padding={6,8,6,10},autofocus=true}self.button.onclick=function(img,event)self:_onbuttonclick(event)end
+self:add(self.entry, {fillw=true, expand=1, valign='center'})self:add(self.button)self.entry:attr('value', 'This is a test')self.entry:attr('bg', nil)self.entry:attr('border_focused', nil)self.entry:attr('border_hover', nil)local popup=rtk.Popup{autoclose='global',anchor=self,visible=false,padding=0,margin=20,border=self.border_active,vscrollbar='auto',}function popup:_open(attrs)popup:attr('child', this.child)if rtk.Popup._open(self)then
+rtk.add_modal(self.entry,self.button,self)if not attrs or attrs.select~=false then
+this.entry:select_all()end
+end
+end
+function popup:_close(event)rtk.Popup._close(self,event)this.entry:blur()this.entry:select_range(nil)end
+self.popup=popup
+self:_handle_attr('child', self.calc.child)end
+function rtk.ComboBox:_handle_attr(attr,value,oldval,trigger,reflow,sync)local ret=rtk.HBox._handle_attr(self,attr,value,oldval,trigger,reflow,sync)if ret==false then
+return ret
+end
+if attr=='child' then
+assert(not value or rtk.isa(value, rtk.Container), 'rtk.ComboBox child must be a container')end
+return ret
+end
+function rtk.ComboBox:select(value,trigger)return self:attr('selected', value, trigger == nil or trigger)end
+function rtk.ComboBox:open(attrs)self.popup:open(attrs)end
+function rtk.ComboBox:_onbuttonclick(event)if self.popup.visible then
+self.popup:close()event:set_handled(self)else
+self:open()end
+end
+function rtk.ComboBox:_draw(offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)local calc=self.calc
+rtk.HBox._draw(self,offx,offy,alpha,event,clipw,cliph,cltargetx,cltargety,parentx,parenty)local y=calc.y+offy
+if y+calc.h<0 or y>cliph or calc.ghost then
+return false
+end
+if self.window.is_focused and(self.entry:focused(event)or self.button:focused(event))then
+self:_draw_borders(offx,offy,alpha,calc.border_active)elseif self.hovering or self.entry.hovering or self.button.hovering then
+self:_draw_borders(offx,offy,alpha,calc.border_hover)end
+end
+function rtk.ComboBox:_handle_event(clparentx,clparenty,event,clipped,listen)if event.handled then
+return
+end
+listen=rtk.HBox._handle_event(self,clparentx,clparenty,event,clipped,listen)if listen==false then
+return
+end
+if event.type==rtk.Event.KEY and self.entry:focused(event)then
+if event.keycode==rtk.keycodes.ESCAPE then
+if self.entry.value=='' then
+self.popup:close()rtk.HBox.focus(self,event)else
+self.entry:attr('value', '')end
+event:set_handled(self)elseif event.keycode==rtk.keycodes.UP or event.keycode==rtk.keycodes.DOWN then
+self:open()event:set_handled(self)elseif event.keycode~=rtk.keycodes.TAB then
+if not self.popup.opened then
+self:open{select=false}event:set_handled(self)end
+end
+end
+return listen
+end
+function rtk.ComboBox:onchange()end
+function rtk.ComboBox:onselectitem()end
+function rtk.ComboBox:onentry(event,value)end
+function rtk.ComboBox:_handle_entry(event,value)if not self.popup or not self.popup.opened then
+return
+end
+log.info('ENTRY: %s %s', value, self.popup.opened)if self:onentry(event,value)==false then
+return false
+end
+if rtk.isa(self.child,rtk.List)then
+self.child:filter(value)end
+end
+end)()
+
+__mod_rtk_reactive=(function()
+local rtk=__mod_rtk_core
+local log=__mod_rtk_log
+local function unwrap(value)if type(value)=='table' and value.__rtk_reactive then
+if value.__rtk_proxies then
+return value.__rtk_wrapped
+else
+return value()end
+else
+return value
+end
+end
+rtk.unwrap1=unwrap
+function rtk.unwrap(...)local args={...}local n=#args
+if n==0 then
+return nil
+elseif n==1 then
+return unwrap(args[1])elseif n==2 then
+return unwrap(args[1]),unwrap(args[2])elseif n==3 then
+return unwrap(args[1]),unwrap(args[2]),unwrap(args[3])elseif n==4 then
+return unwrap(args[1]),unwrap(args[2]),unwrap(args[3]),unwrap(args[4])end
+local results={}for i=1,n do
+results[i]=unwrap(args[i])end
+return table.unpack(results)end
+local function call(f,code)local ok,r=pcall(f)if not ok then
+r=r:gsub('.*:%d+: ', '')error(string.format('expression "%s": %s', code, r))end
+return r
+end
+local function _reactive_scalar_subscribe(t)local sub=rtk._reactive_subscribers[#rtk._reactive_subscribers]
+if not sub then
+return
+end
+assert(sub.key)if not t.__rtk_subscriptions then
+t.__rtk_subscriptions={}end
+if not t.__rtk_subscriptions[sub.key] and not sub.watches then
+t.__rtk_subscriptions[sub.key]=sub
+end
+end
+local _notify_subscribers=nil
+local function _reactive_notify(t,userdata,...)local subs=t.__rtk_subscriptions
+local watches=t.__rtk_watches
+if not subs and not watches then
+return
+end
+t.__rtk_subscriptions=false
+if not rtk._pending_notifications then
+rtk._pending_notifications={}rtk.callsoon(_notify_subscribers)end
+if subs then
+for k,sub in pairs(subs)do
+if not rtk._pending_notifications[sub.key] then
+rtk._pending_notifications[sub.key]={sub=sub,reactive=t,userdata=userdata}end
+end
+end
+if watches then
+local key='reactive.' .. t.__rtk_id .. '.watches'if not rtk._pending_notifications[key] then
+local sub={key=key,reactive=t,watches=watches,args=table.pack(...)}rtk._pending_notifications[key]={sub=sub,reactive=t,userdata=userdata}end
+end
+end
+_notify_subscribers=function()local watches=nil
+for i=1,30 do
+local notifications=rtk._pending_notifications
+if not notifications then
+break
+end
+rtk._pending_notifications=nil
+for key,notify in pairs(notifications)do
+local sub=notify.sub
+local idx=#rtk._reactive_subscribers+1
+rtk._reactive_subscribers[idx]=sub
+if sub.watches then
+if not watches then
+watches={}end
+watches[sub.key]=sub
+elseif sub.callback then
+sub.callback(notify.reactive,sub,notify.userdata)elseif sub.reactive then
+_reactive_notify(sub.reactive)end
+rtk._reactive_subscribers[idx]=nil
+end
+if i==30 then
+rtk.warning('reactive: notifying subscribers looped more than 30 times')end
+end
+if watches then
+for _,sub in pairs(watches)do
+local idx=#rtk._reactive_subscribers+1
+rtk._reactive_subscribers[idx]=sub
+local args=sub.args
+for i=1,#sub.watches do
+local func=sub.watches[i]
+func(sub.reactive,table.unpack(args,1,args.n))end
+sub.reactive()rtk._reactive_subscribers[idx]=nil
+end
+end
+end
+local _reactive_table_metatable={__index=function(t,k)local value=rawget(t.__rtk_wrapped,k)local proxy=t.__rtk_proxies[k]
+if not proxy then
+if rtk.isreactive(value)then
+proxy=value
+else
+proxy=rtk.scalar(t,k)assert(t.__rtk_proxies[k], 'internal error: failed to register proxy')end
+end
+if not proxy.__rtk_proxies then
+proxy()end
+return proxy
+end,__newindex=function(t,k,v)local proxy=t.__rtk_proxies[k]
+local oldval=rawget(t.__rtk_wrapped,k)rawset(t.__rtk_wrapped,k,v)if rtk.isreactive(v)then
+v=v()end
+if proxy and not proxy.__rtk_proxies then
+proxy(v)end
+_reactive_notify(t,nil,k,v,oldval)end,__call=function(t)return rawget(t, '__rtk_wrapped')end,__len=function(t)local wrapped=rawget(t, '__rtk_wrapped')return #wrapped
+end,__pairs=function(t)local wrapped=rawget(t, '__rtk_wrapped')return next,wrapped,nil
+end,__tostring=function(t)local wrapped=rawget(t, '__rtk_wrapped')return string.format('<reactive table wrapping %s>', wrapped)end,}local function _reactive_scalar_get(t)local wrapped=rawget(t, '__rtk_wrapped')_reactive_scalar_subscribe(t)if t.__rtk_template then
+if type(wrapped)=='function' then
+local idx=#rtk._reactive_subscribers+1
+rtk._reactive_subscribers[idx]={reactive=t, key='reactive.' .. t.__rtk_id}wrapped=call(wrapped,t.__rtk_template)wrapped=rtk.unwrap(wrapped)rtk._reactive_subscribers[idx]=nil
+else
+t.__rtk_template=false
+t.__rtk_wrapped=wrapped
+end
+end
+assert(not rtk.isreactive(wrapped))return wrapped
+end
+local function _reactive_scalar_set(t,v,userdata)local wrapped=rawget(t, '__rtk_wrapped')if rtk.isreactive(v)then
+v=v()end
+if wrapped==v then
+return
+end
+t.__rtk_wrapped_is_table=type(v)=='table'rawset(t, '__rtk_wrapped', v)_reactive_notify(t,userdata,v,wrapped)end
+local function _proxy_error()error('Cannot operate directly against reactive value. ' ..'Invoke reactive as function first to retrieve its wrapped value and operate on that instead.')end
+local _reactive_scalar_metatable={__index=function(t,k)if k ~='__rtk_wrapped' then
+_proxy_error()end
+end,__newindex=function(t,k,v)_proxy_error()end,__add=function(a,b)_proxy_error()end,__sub=function(a,b)_proxy_error()end,__mul=function(a,b)_proxy_error()end,__div=function(a,b)_proxy_error()end,__mod=function(a,b)_proxy_error()end,__pow=function(a,b)_proxy_error()end,__unm=function(t)_proxy_error()end,__idiv=function(a,b)_proxy_error()end,__band=function(a,b)_proxy_error()end,__bor=function(a,b)_proxy_error()end,__bxor=function(a,b)_proxy_error()end,__bnot=function(t)_proxy_error()end,__shl=function(a,b)_proxy_error()end,__shr=function(a,b)_proxy_error()end,__concat=function(a,b)_proxy_error()end,__lt=function(a,b)_proxy_error()end,__lte=function(a,b)_proxy_error()end,__len=function(t)_proxy_error()end,__pairs=function(t)_proxy_error()end,__tostring=function(t)local v=unwrap(t)return string.format('<reactive scalar %s: %s>', type(v), v)end,__call=function(t,...)local args=table.pack(...)if args.n==0 then
+return _reactive_scalar_get(t)else
+if args[1] ~=rawget(t, '__rtk_wrapped') then
+_reactive_scalar_set(t,args[1],args[2])end
+return args[1]
+end
+end,}local _reactive_last_id=0
+function rtk._reactive(value,key,reactive_values,template)local proxies
+local metatable=_reactive_table_metatable
+local istable=type(value)=='table'if istable and value.__rtk_reactive then
+if not key then
+return value
+else
+proxies=value.__rtk_proxies
+assert(proxies, 'reactive() called with key but given reactive value is a non-table')local p=proxies[key]
+if p then
+return p
+end
+value=rawget(value.__rtk_wrapped,key)if rtk.isreactive(value)then
+return value
+end
+istable=type(value)=='table'end
+elseif key then
+error('reactive() called with key but given value was not reactive')end
+if reactive_values==nil then
+reactive_values=istable
+end
+if reactive_values and not istable then
+error('non-table passed when table value proxying was requested')end
+if not reactive_values then
+metatable=_reactive_scalar_metatable
+end
+_reactive_last_id=_reactive_last_id+1
+assert(not rtk.isreactive(value))local reactive=setmetatable({__rtk_reactive=true,__rtk_id=_reactive_last_id,__rtk_wrapped=value,__rtk_wrapped_is_table=istable,__rtk_subscriptions=false,__rtk_watches=false,__rtk_template=template or false,__rtk_proxies=reactive_values and {},},metatable)if proxies and key then
+proxies[key]=reactive
+end
+return reactive
+end
+function rtk.reactive(value)return rtk._reactive(value)end
+function rtk.watch(value,func)assert(rtk.isreactive(value), 'given value is not reactive')local watches=value.__rtk_watches
+if not watches then
+watches={}value.__rtk_watches=watches
+end
+watches[#watches+1]=func
+end
+function rtk.watchkey(value,key,func)return rtk.watch(rtk.scalar(value,key),func)end
+function rtk.scalar(value,key)return rtk._reactive(value,key,false)end
+function rtk.isscalar(value)return rtk.isreactive(value)and not value.__rtk_proxies
+end
+function rtk.isreactive(value)return type(value) == 'table' and value.__rtk_reactive == true and (value.__rtk_proxies and 'table' or 'scalar')end
+function rtk.assign(reactive,value)if not rtk.isreactive(reactive)then
+return value
+else
+assert(rtk.isscalar(reactive), 'must provide reactive scalar (reactive tables not supported)')reactive(value)return reactive
+end
+end
+function rtk.toscalars(t)assert(rtk.isreactive(t), 'given value is not reactive')assert(t.__rtk_proxies, 'given value is a reactive scalar, not a reactive table')local result={}local wrapped=rawget(t, '__rtk_wrapped')for k,v in pairs(wrapped)do
+local proxy=t.__rtk_proxies[k]
+if not proxy then
+if rtk.isreactive(v)then
+proxy=v
+else
+proxy=rtk.scalar(t,k)t.__rtk_proxies[k]=proxy
+end
+end
+result[k]=proxy
+end
+return result
+end
+local function getenvidx(f,search)search=search or '_ENV'local i=1
+while true do
+local name=debug.getupvalue(f,i)log.debug('upvalue %s: %s', i, name)if name==search then
+return i
+elseif not name then
+break
+end
+i=i+1
+end
+end
+local function locals(startlevel)local env=table.shallow_copy(_G)local level=(startlevel or 0)+2
+local levels={}while true do
+local info=debug.getinfo(level, 'n')if not info then
+break
+elseif info.namewhat == '' or info.namewhat == 'upvalue' then
+levels[#levels+1]=level
+end
+level=level+1
+end
+for i=#levels,1,-1 do
+level=levels[i]
+local idx=1
+while true do
+local ln,lv=debug.getlocal(level,idx)if ln~=nil then
+env[ln]=lv
+else
+break
+end
+idx=1+idx
+end
+end
+return env
+end
+local function wrapenv(env)return function()return env
+end
+end
+local function bind(f,env,this)if env then
+env.type=type
+env.tostring=tostring
+debug.upvaluejoin(f,1,wrapenv(env),1)end
+if this then
+debug.setupvalue(f,2,this)end
+return f
+end
+local inert={}setmetatable(inert,{__index=function(t,key)return inert end,__newindex=function(t,key,v)end,__call=function(t,...)return inert end,__add=function(a,b)return inert end,__sub=function(a,b)return inert end,__mul=function(a,b)return inert end,__div=function(a,b)return inert end,__mod=function(a,b)return inert end,__pow=function(a,b)return inert end,__unm=function(t)return inert end,__idiv=function(a,b)return inert end,__band=function(a,b)return inert end,__bor=function(a,b)return inert end,__bxor=function(a,b)return inert end,__bnot=function(t)return inert end,__shl=function(a,b)return inert end,__shr=function(a,b)return inert end,__concat=function(a,b)return inert end,__eq=function(a,b)return inert end,__lt=function(a,b)return inert end,__lte=function(a,b)return inert end,__len=function(t)return inert end,__pairs=function(t)return inert end,})local function get_tracked_env(startfrom)local env=locals((startfrom or 0)+1)return setmetatable({__rtk_keys={},__rtk_get=function(self,functions)for i=1,#functions do
+local funcinfo=functions[i]
+getenvidx(funcinfo.f)debug.setupvalue(funcinfo.f,1,self)local ok,r=pcall(funcinfo.f())log.info('pcall: %s %s', ok, r)debug.setupvalue(funcinfo.f,1,nil)end
+local filtered={}for key,_ in pairs(self.__rtk_keys)do
+filtered[key]=env[key]
+end
+return filtered
+end
+},{__index=function(t,key)t.__rtk_keys[key]=1
+log.info('lookup %s', key)return inert
+end,})end
+local function compile_code(code,env,isexpr,template)local orig=code
+if isexpr then
+code='return (' .. code .. ')'else
+code=string.format([[
+            local __rml_expr = (%s)
+            if (type(__rml_expr) == 'table' and __rml_expr.__rtk_reactive) then
+                return __rml_expr()(...)
+            elseif type(__rml_expr) == 'function' then
+                return __rml_expr(...)
+            else
+                return __rml_expr
+            end
+        ]],code)end
+local wrapper=string.format([[
+        local this = nil; return function(...) __rtk_this=this; %s; end
+    ]],code)local f,err=load(wrapper,nil,nil,env)if not f then
+if err then
+err=err:gsub('.*:%d+: ', '')end
+error(string.format('expression "%s": %s', orig, err))end
+return {__rml_code=true,f=f,isexpr=isexpr,template=template or false,code=orig,}end
+local function quote(s)return '"' .. s:gsub('"', '\\"') .. '"'end
+local function compile_template(s,env)if not s then
+return
+end
+local a=s:find('{{', 1)if not a then
+return s
+end
+local pos=1
+local parts={}for i=1,1000 do
+if a then
+if pos<a then
+parts[#parts+1]=quote(s:sub(pos,a-1))end
+local b=s:find('}}', a)if not b then
+break
+end
+local slice=s:sub(a+2,b-1)if #slice>0 then
+parts[#parts+1]='(tostring(' .. slice .. ') or "")'end
+pos=b+2
+else
+break
+end
+a=s:find('{{', pos)end
+if pos<=#s then
+parts[#parts+1]=quote(s:sub(pos))end
+if #parts==0 then
+return s
+end
+local expr=table.concat(parts, ' .. ')return compile_code(expr,env,true,s)end
+local function _computed(f,env,template,this)if type(f)=='function' then
+local function unwrapper(...)return rtk.unwrap(f(...))end
+return rtk._reactive(unwrapper, nil, nil, string.format('computed %s', f))end
+local trackedenv=get_tracked_env(1)local code
+if template then
+code=compile_template(f,trackedenv)else
+code=compile_code(f,trackedenv,true,f)end
+local newenv=trackedenv:__rtk_get({code})if env then
+if rtk.isreactive(env)then
+env=rtk.toscalars(env)end
+table.merge(newenv,env)end
+local bound=bind(code.f(),newenv,this)local r=rtk._reactive(bound,nil,nil,code.template)r()return r
+end
+function rtk.template(tpl,env)return _computed(tpl,env,true)end
+function rtk.computed(f,env)return _computed(f,env,false)end
+return {bind=bind,call=call,unwrap=unwrap,locals=locals,get_tracked_env=get_tracked_env,compile_code=compile_code,compile_template=compile_template,}end)()
 __mod_rtk_xml=(function()
 local rtk=__mod_rtk_core
 local log=__mod_rtk_log
@@ -6070,6 +6775,112 @@ root=stack[#stack]
 end
 end
 return root
+end
+end)()
+
+__mod_rtk_rml=(function()
+local rtk=__mod_rtk_core
+local log=__mod_rtk_log
+local reactive=__mod_rtk_reactive
+local TAG_MAP={viewport=rtk.Viewport,popup=rtk.Popup,container=rtk.Container,window=rtk.Window,vbox=rtk.VBox,hbox=rtk.HBox,flowbox=rtk.FlowBox,spacer=rtk.Spacer,button=rtk.Button,entry=rtk.Entry,text=rtk.Text,heading=rtk.Heading,imagebox=rtk.ImageBox,optionmenu=rtk.OptionMenu,checkbox=rtk.CheckBox,slider=rtk.Slider,}function rtk.rml(s,scope)log.time_start()local r=rtk.RML(s)log.time_end('compiled %s', r)log.time_start()local w=r:render(scope)log.time_end('rendered %s', w)return w
+end
+rtk.RML=rtk.class('RML')function rtk.RML:initialize(s)self._env=nil
+if s then
+assert(type(s)=='string', 'passing non-string to RML()')self:_compile(s)end
+end
+function rtk.RML:__tostring()if self._root then
+return string.format('<RML root=%s>', self._root.tag)else
+return '<RML uncompiled>'end
+end
+function rtk.RML:compile(s)return self:_compile(s)end
+local function _ontagend(elem,userdata)local compiled=reactive.compile_template(elem.content,userdata.env)if type(compiled)=='table' and compiled.__rml_code then
+userdata.functions[#userdata.functions+1]=compiled
+end
+elem.content=compiled
+end
+local function _onattr(elem,attr,userdata)if attr.type=='mustache' then
+attr.value=reactive.compile_code(attr.value,userdata.env,true)elseif attr.name:startswith('!') then
+attr.name=attr.name:sub(2)attr.value=reactive.compile_code(attr.value,userdata.env,true)elseif attr.name:startswith('@') then
+attr.name='on' .. attr.name:sub(2)elseif attr.value then
+attr.value=reactive.compile_template(attr.value,userdata.env)end
+if attr.name=='if' then
+attr.value=reactive.compile_code(attr.value,userdata.env,true)elseif attr.name:startswith('on') then
+attr.value=reactive.compile_code(attr.value,userdata.env,false)elseif attr.type=='novalue' then
+attr.value=true
+end
+if type(attr.value)=='table' and attr.value.__rml_code then
+userdata.functions[#userdata.functions+1]=attr.value
+end
+local delim=attr.name:find(':')if delim then
+attr.namespace=attr.name:sub(1,delim-1)attr.name=attr.name:sub(delim+1)end
+end
+function rtk.RML:_compile(s)local trackedenv=reactive.get_tracked_env(3)local functions={}self._rml=s
+local parsedata={env=trackedenv,functions=functions}self._root=rtk.xmlparse{s,userdata=parsedata,ontagend=_ontagend,onattr=_onattr}self._env=trackedenv:__rtk_get(functions)end
+function rtk.RML:render(overrides)assert(self._root, 'must call rtk.RML:compile() before rtk.RML:render()')assert(self._env)local env=self._env
+if overrides then
+env=table.shallow_copy(env)if rtk.isreactive(overrides)then
+overrides=rtk.toscalars(overrides)end
+table.merge(env,overrides)end
+local late={}local root=self:_render(self._root,env,late)if late then
+for _,attrs in pairs(late)do
+local widget=attrs.__widget
+attrs.__widget=nil
+for attr,attrtable in pairs(attrs)do
+attrs[attr]=attrtable.value()end
+widget:_setattrs(attrs)end
+end
+return root
+end
+local function _process_attr(attr,value,namespace,env,widget)if type(value) ~='table' or not value.__rml_code then
+return value
+end
+local sub={widget=widget,id=widget.__id,attr=attr,template=value.template,code=value.code,namespace=namespace,key=widget.__id .. '.' .. (namespace and namespace .. '.' or '') .. attr,}rtk._reactive_subscribers[#rtk._reactive_subscribers+1]=sub
+local f=reactive.bind(value.f(),env,widget)if value.template then
+value=rtk._reactive(f,nil,nil,value.template)elseif value.isexpr then
+value=reactive.call(f,value.code)if not rtk.isreactive(value)then
+value=rtk._reactive(f,nil,nil,sub.code)end
+else
+value=f
+end
+rtk._reactive_subscribers[#rtk._reactive_subscribers]=nil
+return value
+end
+function rtk.RML:_render(elem,env,late,parent)local attrs=elem.attrs or {}local attrtable=attrs['if']
+if attrtable then
+assert(parent, '"if" condition not allowed on root node')local f=reactive.bind(attrtable.value.f(),env)if not reactive.unwrap(f())then
+return
+end
+end
+local widget
+if elem.tag=='template' then
+assert(parent, 'root node cannot be template')else
+local cls=TAG_MAP[elem.tag]
+assert(cls, 'unknown tag ' .. elem.tag)widget=cls:allocate()local args={}for k,attrtable in pairs(attrs)do
+local v=attrtable.value
+local dst=args
+local namespace=attrtable.namespace
+if namespace then
+if not args[namespace] then
+args[namespace]={}end
+dst=args[namespace]
+end
+v=_process_attr(k,v,namespace,env,widget)if v~=nil then
+dst[k]=v
+end
+end
+if elem.content then
+local meta=cls.attributes[1]
+local v=_process_attr(meta and meta.alias or '?', elem.content, nil, env, widget)args[#args+1]=v
+end
+widget:initialize(args)parent=widget
+end
+if #elem>0 then
+for i=1,#elem do
+local child=self:_render(elem[i],env,late,widget or parent)if child then
+parent:add(child)end
+end
+end
+return widget
 end
 end)()
 
@@ -7007,7 +7818,8 @@ self.program=program
 self.name=name
 self._attrs=attrs
 self._has_conditional_output=nil
-table.merge(self,attrs)self.group=tonumber(self.group or 1)self.spacer=tonumber(self.spacer)self.flags=_parse_flags(self.flags,bank.flags)self.buses=nil
+table.merge(self,attrs)self.group=tonumber(self.group)or 1
+self.spacer=tonumber(self.spacer)self.flags=_parse_flags(self.flags,bank.flags)self.buses=nil
 end
 function Articulation:has_transforms()return self.velrange or self.pitchrange or self.transpose or self.velocity
 end
@@ -8829,7 +9641,7 @@ break
 end
 end
 end
-self:activate_articulation_if_exists(art,false,false)elseif cmd=='activate_relative_articulation' and rfx.current:valid() then
+self:activate_articulation_if_exists(art,false,nil)elseif cmd=='activate_relative_articulation' and rfx.current:valid() then
 local args=string.split(arg, ',')local channel=_cmd_arg_to_channel(args[1])local group=tonumber(args[2])local distance=_cmd_arg_to_distance(args[3],args[4],args[5])self:activate_relative_articulation_in_group(channel,group,distance)elseif cmd=='select_relative_articulation' and rfx.current:valid() then
 local args=string.split(arg, ',')local distance=_cmd_arg_to_distance(args[1],args[2],args[3])self.screens.banklist.select_relative_articulation(distance)elseif cmd=='activate_selected_articulation' and rfx.current:valid() then
 local args=string.split(arg, ',')local channel=_cmd_arg_to_channel(args[1])self:activate_selected_articulation(channel,false)elseif cmd=='insert_articulation' then
