@@ -1381,7 +1381,7 @@ function App:handle_command(cmd, arg)
                 end
             end
         end
-        self:activate_articulation_if_exists(art, false, false)
+        self:activate_articulation_if_exists(art, false, nil)
 
     elseif cmd == 'activate_relative_articulation' and rfx.current:valid() then
         local args = string.split(arg, ',')
