@@ -4,13 +4,15 @@ layout: default
 permalink: /news/
 ---
 
-# Reaticulate 0.5.12 Released
+# Reaticulate 0.5.13 Released
 *February 19, 2024*
 
 ### Bug Fixes
 
 * Fixed bug where quickly double-running the "Activate articulation slot number by CC on default channel" was not inserting the articulation in the current MIDI item
 * Fixed another crash that could occur with some malformed/invalid banks
+
+(Note: 0.5.12 was discarded due to an improper build process.)
 
 
 # Reaticulate 0.5.11 Released
