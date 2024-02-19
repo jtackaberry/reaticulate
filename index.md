@@ -4,7 +4,7 @@ layout: default
 permalink: /
 ---
 <div style='border: 1px solid #4f596c; background-color: #2c3034; padding: 9px; text-align: center; margin-bottom: 1em'>
-Version 0.5.11 was released on September 27, 2023. Read about the <a href='{% link news.md %}#reaticulate-0511-released'>new features and fixes</a>.
+Version 0.5.12 was released on February 19, 2024. Read about the <a href='{% link news.md %}#reaticulate-0511-released'>new features and fixes</a>.
 </div>
 
 ![floating](img/banklist.png)
