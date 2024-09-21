@@ -1,0 +1,220 @@
+//----------------------------------------------------------------------------
+// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+//----------------------------------------------------------------------------
+
+//! g="EastWest/Hollywood Opus Brass" n="2FH KS Master"
+//! m=""
+//! id=4dca6b9e-a239-433b-93d4-db4757c41f03
+Bank * * 2FH KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="2TB KS Master"
+//! m=""
+//! id=957290b7-f0c1-42d3-8c85-8704f592b16e
+Bank * * 2TB KS Master
+//! c=long i=note-half o=note:74
+1 Sus
+//! c=long i=accented-half o=note:75
+2 Sus Accent
+//! c=short-light i=spiccato o=note:76
+42 Staccatissimo
+//! c=short i=staccato o=note:77
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:78
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:79
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="3TB KS Master"
+//! m=""
+//! id=5b239442-9075-467b-9230-f6fc6f09eaac
+Bank * * 3TB KS Master
+//! c=long i=note-half o=note:84
+1 Sus
+//! c=long i=accented-half o=note:85
+2 Sus Max
+//! c=legato i=legato o=note:86
+20 Leg Slur
+//! c=short-light i=spiccato o=note:87
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:88
+9 Marcato Short
+//! c=long-dark i=marcato-half o=note:89
+52 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="2TP KS Master"
+//! m=""
+//! id=0e40466d-6e9f-4352-b699-01486b1903d1
+Bank * * 2TP KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="2TPx KS Master"
+//! m=""
+//! id=51ecd1eb-fc81-4bf9-b48c-c3997a1da01c
+Bank * * 2TPx KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Brass" n="3TP KS Master"
+//! m=""
+//! id=0cc445ce-f737-427d-9b67-de73f33f8f64
+Bank * * 3TP KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Brass" n="6FH KS Master"
+//! m=""
+//! id=065a2506-fed5-41b7-84fb-59d4c4f0b9be
+Bank * * 6FH KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short i=staccato o=note:27
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="LB KS Master"
+//! m=""
+//! id=32832720-ae21-4a9e-8380-cecdbfa13ae7
+Bank * * LB KS Master
+//! c=long i=note-half o=note:60
+1 Sus
+//! c=long i=accented-half o=note:61
+2 Sus Accent
+//! c=short-light i=spiccato o=note:62
+42 Staccatissimo
+//! c=long-light i=con-sord o=note:63
+7 Mute Sus
+//! c=long-light i=con-sord-bow-up o=note:64
+8 Mute Sus Accent
+//! c=short-light i=staccato-con-sord o=note:65
+47 Mute Stac
+
+//! g="EastWest/Hollywood Opus Brass" n="1CM KS Master"
+//! m=""
+//! id=b1c9b98f-e47a-46c0-9f98-b8e5a25ebaae
+Bank * * 1CM KS Master
+//! c=long i=accented-half o=note:62
+2 Sus Accent
+//! c=short-light i=spiccato o=note:63
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:64
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:65
+9 Marcato Sus
+
+//! g="EastWest/Hollywood Opus Brass" n="1FH KS Master"
+//! m=""
+//! id=3879f6e6-7d4d-44a8-97eb-bcaf152b2802
+Bank * * 1FH KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="1TB KS Master"
+//! m=""
+//! id=fb7627d7-b014-43c9-9bb8-527193ef6f9b
+Bank * * 1TB KS Master
+//! c=long i=note-half o=note:24
+1 Sus
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:28
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:29
+9 Marcato Long
+
+//! g="EastWest/Hollywood Opus Brass" n="1TP KS Master"
+//! m=""
+//! id=47207e3c-4800-45fb-b233-f35f46ecd5c2
+Bank * * 1TP KS Master
+//! c=long i=note-half o=note:24
+1 Sus Non Vib
+//! c=long i=accented-half o=note:25
+2 Sus Accent
+//! c=legato i=legato o=note:26
+20 Leg Slur
+//! c=short-light i=spiccato o=note:27
+42 Staccatissimo
+//! c=short i=staccato o=note:28
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:29
+52 Marcato Short
+
+//! g="EastWest/Hollywood Opus Brass" n="1TU KS Master"
+//! m=""
+//! id=dbff86b6-252e-43cf-88d9-05cf8db1e1fe
+Bank * * 1TU KS Master
+//! c=long i=note-half o=note:60
+1 Sus
+//! c=long i=accented-half o=note:61
+2 Sus Accent
+//! c=legato i=legato o=note:62
+20 Leg Slur
+//! c=short-light i=spiccato o=note:63
+42 Staccatissimo
+//! c=short-dark i=marcato-quarter o=note:64
+52 Marcato Short
+//! c=long-dark i=marcato-half o=note:65
+9 Marcato Long
