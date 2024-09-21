@@ -1,263 +1,606 @@
 //----------------------------------------------------------------------------
-// Source xshill: https://github.com/jtackaberry/reaticulate/pull/211
+// Source gbombadil: https://github.com/jtackaberry/reaticulate/issues/212
+//
+// A special thanks to EastWest for making such a huge number of easy to translate
+// articulations and very little consistency accross instruments. But their library is
+// gorgeous anyway :-)
 //----------------------------------------------------------------------------
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="3BS KS Master"
-//! m=""
-//! id=7f42398f-e1ff-41ce-84a0-036e9fd9af2f
-Bank * * 3BS KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
-//! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="PF KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - All articulations are included"
+//! id=3763cdf7-16ad-48a7-833e-4193f96d2bfd
+Bank * * Piccolo Flute KS
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="3CL KS Master"
-//! m=""
-//! id=47f4f3cb-b50c-46f7-a6f0-d9f056b40483
-Bank * * 3CL KS Master
-//! c=long i=note-half o=note:24
-1 Sus Non Vib
-//! c=long i=accented-half o=note:25
-2 Sus Accent
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
-//! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
-//! c=long-dark i=marcato-half o=note:30
-9 Marcato Sus NV
-
-//! g="EastWest/Hollywood Opus Woodwinds" n="3FL KS Master"
-//! m=""
-//! id=bbb27920-f41b-406f-868c-8d3a902a5fec
-Bank * * 3FL KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
-//! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
-
-//! g="EastWest/Hollywood Opus Woodwinds" n="AF KS Master"
-//! m=""
-//! id=77733563-4642-451d-b9b6-4364c70ef15e
-Bank * * AF KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
+20 Leg Slur (Legato)
 //! c=short i=staccato o=note:27
-40 Staccato
-
-//! g="EastWest/Hollywood Opus Woodwinds" n="BC KS Master"
-//! m=""
-//! id=b29d5090-c336-49ad-a2b4-2173c84dcf26
-Bank * * BC KS Master
-//! c=long i=note-half o=note:24
-1 Sus Non Vib
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
+42 StaccSS DblTng RRx9 (Staccatissimo)
 //! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+40 Stacc DblTng RRx9 (Staccato)
+//! c=long i=multitongued o=note:29
+75 LegRep RRx4 (Long Repetitions)
+//! c=textured i=tremolo-fingered o=note:30
+11 Flutter Tng
+//! c=short i=trill-min2 o=note:31
+70 Trill HT
+//! c=short i=trill-maj2 o=note:32
+71 Trill WT
+//! c=legato i=legato-bowed2 o=note:33
+34 Leg Slur Accent
+//! c=legato i=legato-bowed o=note:34
+21 Leg Slur Rep
+//! c=legato i=run-major o=note:35
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:36
+37 Leg Stac Runs
+//! c=textured i=tremolo o=note:37
+82 Rep Fst 170bpm
+//! c=textured i=tremolo-measured-sixteenth o=note:38
+81 Rep Med 145bpm
+//! c=textured i=tremolo-measured-eighth o=note:39
+80 Rep Slw 120bpm
+//! c=fx i=list o=note:40
+90 FX
+//! c=legato-dark i=rip o=note:41
+100 8va Run up
+//! c=legato-dark i=fall o=note:42
+101 8va Run Dn
+//! c=legato-dark i=rip o=note:43
+106 Maj Run up
+//! c=legato-dark i=fall o=note:44
+107 Maj Run Dn
+//! c=legato-dark i=rip o=note:45
+108 Min Run up
+//! c=legato-dark i=fall o=note:46
+109 Min Run Dn
+//! c=legato-dark i=rip o=note:47
+110 WT Run up
+//! c=legato-dark i=fall o=note:48
+111 WT Run Dn
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="BF KS Master"
-//! m=""
-//! id=f6bfbc6b-d668-4322-9eea-55e23df586b7
-Bank * * BF KS Master
-//! c=long i=vibrato o=note:24
-1 Sus Vib
-//! c=long i=accented-half o=note:25
-2 Sus Accent
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="FL KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - All articulations are included"
+//! id=da4a6c36-2d7e-4680-9456-2d437a4d35ad
+Bank * * Flute KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:26
-20 Leg Slur
+20 Leg Slur (Legato)
 //! c=short i=staccato o=note:27
-40 Staccato
-
-//! g="EastWest/Hollywood Opus Woodwinds" n="BS KS Master"
-//! m=""
-//! id=4a314819-3592-46a9-a228-f8d5c38d87fc
-Bank * * BS KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
+42 StaccSS DblTng RRx9 (Staccatissimo)
 //! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=legato i=legato-bowed2 o=note:34
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:35
+21 Leg Slur Exp
+//! c=legato i=legato-bowed o=note:36
+38 Leg Slur Rep
+//! c=legato i=run-major o=note:37
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:38
+37 Leg Stac Runs
+//! c=textured i=tremolo-fingered o=note:39
+11 Flutter Tng
+//! c=fx i=list o=note:40
+92 Sing RR
+//! c=legato-dark i=rip o=note:41
+100 8va Run up
+//! c=legato-dark i=fall o=note:42
+101 8va Run Dn
+//! c=legato-dark i=rip o=note:43
+106 Maj Run up
+//! c=legato-dark i=fall o=note:44
+107 Maj Run Dn
+//! c=legato-dark i=rip o=note:45
+108 Min Run up
+//! c=legato-dark i=fall o=note:46
+109 Min Run Dn
+//! c=legato-dark i=rip o=note:47
+110 WT Run up
+//! c=legato-dark i=fall o=note:48
+111 WT Run Dn
+//! c=textured i=tremolo o=note:49
+112 Rep Fst 170bpm
+//! c=textured i=tremolo-measured-sixteenth o=note:50
+81 Rep Med 145bpm
+//! c=textured i=tremolo-measured-eighth o=note:51
+80 Rep Slw 120bpm
+//! c=fx i=list o=note:52
+90 FX Long
+//! c=fx i=list o=note:53
+91 FX Short
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="CB KS Master"
-//! m=""
-//! id=6332ed5d-300b-4926-b6c6-dc838997f4e0
-Bank * * CB KS Master
-//! c=long i=note-half o=note:60
-1 Sus
-//! c=long i=accented-half o=note:61
-2 Sus Accent
-//! c=legato i=legato o=note:62
-20 Leg Slur
-//! c=short-light i=spiccato o=note:63
-42 Staccatissimo
-//! c=short i=staccato o=note:64
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:65
-52 Marcato Short
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="FL2 KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=79645f47-17c0-4249-a5a5-eca92435ce82
+Bank * * Flute 2 KS
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="CC KS Master"
-//! m=""
-//! id=b52e663c-859e-4bc7-96ee-3691d2fc2be8
-Bank * * CC KS Master
-//! c=long i=note-half o=note:72
-1 Sus Non Vib
-//! c=long i=accented-half o=note:73
-2 Sus Accent
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
+//! c=short i=staccato o=note:28
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=textured i=tremolo-fingered o=note:34
+11 Flutter Tng
+//! c=legato i=legato-bowed2 o=note:35
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:36
+21 Leg Slur Exp
+//! c=legato i=legato-bowed o=note:37
+38 Leg Slur Rep
+//! c=legato i=run-major o=note:38
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:39
+37 Leg Stac Runs
+//! c=textured i=tremolo o=note:40
+112 Rep Fst 170bpm
+//! c=textured i=tremolo-measured-sixteenth o=note:41
+81 Rep Med 145bpm
+//! c=textured i=tremolo-measured-eighth o=note:42
+80 Rep Slw 120bpm
+//! c=legato-dark i=rip o=note:43
+100 8va Run up
+//! c=legato-dark i=fall o=note:44
+101 8va Run Dn
+//! c=legato-dark i=rip o=note:45
+106 Maj Run up
+//! c=legato-dark i=fall o=note:46
+107 Maj Run Dn
+//! c=legato-dark i=rip o=note:47
+108 Min Run up
+//! c=legato-dark i=fall o=note:48
+109 Min Run Dn
+//! c=legato-dark i=rip o=note:49
+110 WT Run up
+//! c=legato-dark i=fall o=note:50
+111 WT Run Dn
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="3FL KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=07acf721-54af-46a9-9a1c-ce9e66b5f38a
+Bank * * 3 Flutes KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
+//! c=short i=staccato o=note:28
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato-quarter o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=short i=marcato-half o=note:30
+53 Marc Sus (Marcato)
+//! c=legato i=legato-bowed2 o=note:31
+34 Leg Slur Accent
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="AF KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=addf1f76-0156-475b-a354-15a6c8cd905c
+Bank * * Alto Flute KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+40 Stacc RRx4 (Staccato)
+//! c=long i=vibrato o=note:28
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:29
+75 LegRep RRx4 (Long Repetitions)
+//! c=legato i=legato-bowed2 o=note:30
+34 Leg Slur Accent
+//! c=legato i=legato-bowed o=note:31
+38 Leg Slur Rep
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="BF KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=de27735b-27fd-445f-91a7-70775d3225fa
+Bank * * Bass Flute KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+40 Stacc RRx4 (Staccato)
+//! c=long i=vibrato o=note:28
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:29
+75 LegRep RRx4 (Long Repetitions)
+//! c=legato i=legato-bowed2 o=note:30
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:31
+21 Leg Slur Exp
+//! c=legato i=legato-bowed o=note:32
+38 Leg Slur Rep
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="CL KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=a88ce16f-2ed4-411a-9a40-172b7847f66f
+Bank * * Clarinet KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
+//! c=short i=staccato o=note:28
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=legato i=legato-bowed2 o=note:34
+34 Leg Slur Accent
+//! c=legato i=legato-bowed o=note:35
+38 Leg Slur Rep
+//! c=legato i=run-major o=note:36
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:37
+37 Leg Stac Runs
+//! c=legato-dark i=rip o=note:38
+100 8va Run up
+//! c=legato-dark i=fall o=note:39
+101 8va Run Dn
+//! c=legato-dark i=rip o=note:40
+106 Maj Run up
+//! c=legato-dark i=fall o=note:41
+107 Maj Run Dn
+//! c=legato-dark i=rip o=note:42
+108 Min Run up
+//! c=legato-dark i=fall o=note:43
+109 Min Run Dn
+//! c=legato-dark i=rip o=note:44
+110 WT Run up
+//! c=legato-dark i=fall o=note:45
+111 WT Run Dn
+//! c=textured i=tremolo-measured-eighth o=note:46
+80 Rep Slw 120bpm
+//! c=fx i=list o=note:47
+90 FX Long
+//! c=fx i=list o=note:48
+91 FX Short
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="CL2 KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=d8fcc33a-b2d1-4778-b34e-7cbc42a05c47
+Bank * * Eb Clarinet KS
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+40 Stacc DblTng RRx9 (Staccato)
+//! c=legato i=legato-bowed2 o=note:28
+34 Leg Slur Accent
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="3CL KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=86c8e090-4fc9-46c6-a68c-e16f4b813bbd
+Bank * * 3 Clarinets KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
+//! c=short i=staccato o=note:28
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato-quarter o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=short i=marcato-half o=note:30
+53 Marc Sus (Marcato)
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="BCL KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=9ea28b72-2f2b-4093-837d-c64ef58ad163
+Bank * * Bass Clarinet KS
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:26
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
+//! c=short i=staccato o=note:28
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=fx i=list o=note:79
+90 FX Long
+//! c=legato i=legato-bowed2 o=note:80
+34 Leg Slur Accent
+//! c=legato i=run-major o=note:81
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:82
+37 Leg Stac Runs
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="CBCL KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=b02fb79a-fc75-4613-b3c6-72d2eb95c293
+Bank * * Contrabass Clarinet KS
+//! c=long i=note-whole o=note:72
+1 Sus (Long)
+//! c=long i=portato o=note:73
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:74
-20 Leg Slur
+20 Leg Slur (Legato)
 //! c=short i=staccato o=note:75
-40 Staccato
-//! c=legato-dark i=legato-bowed2 o=note:76
-21 Leg Slur Accent
+40 Stacc DblTng RRx9 (Staccato)
+//! c=legato i=legato-bowed2 o=note:76
+34 Leg Slur Accent
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="CL KS Master"
-//! m=""
-//! id=161b62b6-47a3-4b53-9487-67e683a2b963
-Bank * * CL KS Master
-//! c=long i=note-half o=note:24
-1 Sus Non Vib
-//! c=long i=accented-half o=note:25
-2 Sus Accent
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="OB KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=2f9e138a-61ed-43b9-be63-f15ed4ec0993
+Bank * * Oboe KS
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
-//! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
-
-//! g="EastWest/Hollywood Opus Woodwinds" n="CL2 KS Master"
-//! m=""
-//! id=685769ff-4bcc-45bd-92fa-ee6d45b969f4
-Bank * * CL2 KS Master
-//! c=long i=note-half o=note:24
-1 Sus Non Vib
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
+20 Leg Slur (Legato)
 //! c=short i=staccato o=note:27
-40 Staccato
-//! c=legato-dark i=legato-bowed2 o=note:28
-21 Leg Slur Accent
-
-//! g="EastWest/Hollywood Opus Woodwinds" n="EH KS Master"
-//! m=""
-//! id=11abac36-1037-4add-ad0a-ad3ba4f482d9
-Bank * * EH KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
+42 StaccSS DblTng RRx9 (Staccatissimo)
 //! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=legato i=legato-bowed2 o=note:34
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:35
+21 Leg Slur Exp
+//! c=legato i=legato-bowed o=note:36
+38 Leg Slur Rep
+//! c=legato i=run-major o=note:37
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:38
+37 Leg Stac Runs
+//! c=textured i=tremolo-measured-sixteenth o=note:39
+81 Rep Med 145bpm
+//! c=textured i=tremolo-measured-eighth o=note:40
+80 Rep Slw 120bpm
+//! c=legato-dark i=rip o=note:41
+100 8va Run up
+//! c=legato-dark i=fall o=note:42
+101 8va Run Dn
+//! c=legato-dark i=rip o=note:43
+106 Maj Run up
+//! c=legato-dark i=fall o=note:44
+107 Maj Run Dn
+//! c=legato-dark i=rip o=note:45
+108 Min Run up
+//! c=legato-dark i=fall o=note:46
+109 Min Run Dn
+//! c=legato-dark i=rip o=note:47
+110 WT Run up
+//! c=legato-dark i=fall o=note:48
+111 WT Run Dn
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="FL KS Master"
-//! m=""
-//! id=38e4f897-6535-4b23-8889-6c0f47fd67d9
-Bank * * FL KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="EH KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=03c6e436-e823-4b68-b495-d21f09efbd77
+Bank * * English Horn KS
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
 //! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=legato i=legato-bowed2 o=note:34
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:35
+21 Leg Slur Exp
+//! c=legato i=legato-bowed o=note:36
+38 Leg Slur Rep
+//! c=legato i=run-major o=note:37
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:38
+37 Leg Stac Runs
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="FL2 KS Master"
-//! m=""
-//! id=d233e060-6e04-4309-8380-0039d2e49490
-Bank * * FL2 KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
-//! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
-//! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="BS KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=c03937f9-d9d2-48c8-a2c8-39173923a3a1
+Bank * * Bassoon KS
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="OB KS Master"
-//! m=""
-//! id=1ce75c05-c28f-4991-b526-ff4f5ce5d760
-Bank * * OB KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
 //! c=short i=staccato o=note:28
-40 Staccato
-//! c=short-dark i=marcato-quarter o=note:29
-52 Marcato Short
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:30
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:31
+75 LegRep RRx4 (Long Repetitions)
+//! c=short i=trill-min2 o=note:32
+70 Trill HT
+//! c=short i=trill-maj2 o=note:33
+71 Trill WT
+//! c=legato i=legato-bowed2 o=note:76
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:77
+21 Leg Slur Exp
+//! c=legato i=ricochet o=note:78
+37 Leg Stac Runs
+//! c=textured i=tremolo-measured-sixteenth o=note:79
+81 Rep Med 145bpm
+//! c=textured i=tremolo-measured-eighth o=note:80
+80 Rep Slw 120bpm
+//! c=legato-dark i=rip o=note:81
+100 8va Run up
+//! c=legato-dark i=fall o=note:82
+101 8va Run Dn
+//! c=legato-dark i=rip o=note:83
+106 Maj Run up
+//! c=legato-dark i=fall o=note:84
+107 Maj Run Dn
+//! c=legato-dark i=rip o=note:85
+108 Min Run up
+//! c=legato-dark i=fall o=note:86
+109 Min Run Dn
+//! c=legato-dark i=rip o=note:87
+110 WT Run up
+//! c=legato-dark i=fall o=note:88
+111 WT Run Dn
 
-//! g="EastWest/Hollywood Opus Woodwinds" n="PF KS Master"
-//! m=""
-//! id=867587c2-8384-4979-9639-f2129af5870f
-Bank * * PF KS Master
-//! c=long i=note-half o=note:24
-1 Sus
-//! c=long i=accented-half o=note:25
-2 Sus Accent
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="3BS KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=adaaa44d-8e9d-4722-8ec9-3dfd32538129
+Bank * * 3 Bassoons KS
+
+//! c=long i=note-whole o=note:24
+1 Sus (Long)
+//! c=long i=portato o=note:25
+2 Sus Accent (Portato)
 //! c=legato i=legato o=note:26
-20 Leg Slur
-//! c=short-light i=spiccato o=note:27
-42 Staccatissimo
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:27
+42 StaccSS DblTng RRx9 (Staccatissimo)
 //! c=short i=staccato o=note:28
-40 Staccato
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato-quarter o=note:29
+52 Marc DblTng RRx4 (Marcato)
+//! c=short i=marcato-half o=note:30
+53 Marc Sus (Marcato)
+//! c=legato i=legato-bowed2 o=note:31
+34 Leg Slur Accent
+
+//----------------------------------------------------------------------------
+//! g="EastWest Quantum Leap/Hollywood Opus Woodwinds" n="CB KS Master"
+//! chase=1,11,16-21,64-69 m="KS Master - Check loaded articulations"
+//! id=2951d704-dea8-4019-9e29-c1fe6d29850c
+Bank * * Contrabassoon KS
+//! c=long i=note-whole o=note:60
+1 Sus (Long)
+//! c=long i=portato o=note:61
+2 Sus Accent (Portato)
+//! c=legato i=legato o=note:62
+20 Leg Slur (Legato)
+//! c=short i=staccato o=note:63
+42 StaccSS DblTng RRx9 (Staccatissimo)
+//! c=short i=staccato o=note:64
+40 Stacc DblTng RRx9 (Staccato)
+//! c=short i=marcato o=note:65
+52 Marc DblTng RRx4 (Marcato)
+//! c=long i=vibrato o=note:66
+16 Sus Exp (long vibrato)
+//! c=long i=multitongued o=note:67
+75 LegRep RRx4 (Long Repetitions)
+//! c=legato i=legato-bowed2 o=note:68
+34 Leg Slur Accent
+//! c=legato i=legato-vibrato o=note:69
+21 Leg Slur Exp
+//! c=legato i=legato-bowed o=note:70
+38 Leg Slur Rep
+//! c=legato i=run-major o=note:71
+33 Leg Slur Runs
+//! c=legato i=ricochet o=note:72
+37 Leg Stac Runs
