@@ -115,13 +115,16 @@ You can use these to get started, but of course you're almost certainly going to
 ## User Banks
 
 <p class='warning'>
-    Currently there is no GUI for creating custom banks.  This will be coming
-    in 2022, but for now unfortunately it means some manual text editing will
-    be necessary to configure banks.
+    Currently there is no GUI for creating custom banks.  Until this is available,
+    unfortunately it means some manual text editing will be necessary to configure banks.
     <a href='{% link reabank.md %}'><b>Click here to learn how to create your own custom banks for Reaticulate</b></a>.
 </p>
 
 You can also [download user-contributed banks](/download#download-bank-files) for various libraries.
+
+If you've downloaded one or more Reaticulate-annotated reabank files that you want to
+install, the easiest way to do this is to drag the files from File Explorer (Windows) or
+Finder (Mac) onto Reaticulate's GUI window.
 
 # Usage
 
