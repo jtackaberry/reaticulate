@@ -1,0 +1,104 @@
+//----------------------------------------------------------------------------
+// Source: shawnb61 - https://forum.cockos.com/member.php?u=218634
+//
+//! g="EastWest Quantum Leap/Voices of Soul" n="Legato"
+//! m="Switches True Legato off & on"
+//! id=8950c5be-aae6-4605-bbe6-c1d91c049d16
+Bank * * Legato
+//! c=legato-dark i=legato o=cc:22,127
+81 True Legato / Mono
+//! c=legato-dark i=dblstop-5th-eighth o=cc:22,0
+82 Poly
+
+//! g="EastWest Quantum Leap/Voices of Soul" n="Legato KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=221f673c-9e91-4b04-9d2b-dba8847eb8e2
+Bank * * Legato KS
+//! c=legato i=legato o=note:24
+24 Ah Legato
+//! c=legato i=legato o=note:25
+25 Ha Legato
+//! c=legato i=legato o=note:26
+26 Ho Legato
+//! c=legato i=legato o=note:27
+27 La Legato
+//! c=legato i=legato o=note:28
+28 Oh Legato
+//! c=legato i=legato o=note:29
+29 So Legato
+//! c=legato i=legato o=note:30
+30 Wo Legato
+
+//! spacer=1
+//! c=legato-dark i=legato o=cc:22,127 g=2
+81 True Legato / Mono
+//! c=legato-dark i=dblstop-5th-eighth o=cc:22,0 g=2
+82 Poly
+
+//! g="EastWest Quantum Leap/Voices of Soul" n="Sustain KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=960837f1-f790-4c31-9d5c-afd03b8baa5a
+Bank * * Sustain KS
+//! c=long i=note-whole o=note:24
+24 Ah
+//! c=long i=note-whole o=note:25
+25 Doo
+//! c=long i=note-whole o=note:26
+26 Ee
+//! c=long i=note-whole o=note:27
+27 Eh
+//! c=long i=note-whole o=note:28
+28 Ha
+//! c=long i=note-whole o=note:29
+29 Hm
+//! c=long i=note-whole o=note:30
+30 Ho
+//! c=long i=vibrato-molto o=note:31
+31 Ho Exp
+//! c=long i=note-whole o=note:32
+32 Hoo
+//! c=long i=note-whole o=note:33
+33 La
+//! c=long i=note-whole o=note:34
+34 Mm
+//! c=long i=note-whole o=note:35
+35 Oh
+//! c=long i=vibrato-molto o=note:36
+36 Oh Exp
+//! c=long i=note-whole o=note:37
+37 Oo
+//! c=long i=vibrato-molto o=note:38
+38 So Exp
+//! c=long i=note-whole o=note:39
+39 Wo
+//! c=long i=vibrato-molto o=note:40
+40 Wo Exp
+
+//! g="EastWest Quantum Leap/Voices of Soul" n="Phrases KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=a5bc6272-9f17-4cb0-bb79-1dc7cec228fa
+Bank * * Phrases KS
+//! c=long i=phrase2 o=note:24
+24 Phrases - Key of C
+//! c=long i=phrase2 o=note:25
+25 Phrases - Key of C#
+//! c=long i=phrase2 o=note:26
+26 Phrases - Key of D
+//! c=long i=phrase2 o=note:27
+27 Phrases - Key of Eb
+//! c=long i=phrase2 o=note:28
+28 Phrases - Key of E
+//! c=long i=phrase2 o=note:29
+29 Phrases - Key of F
+//! c=long i=phrase2 o=note:30
+30 Phrases - Key of F#
+//! c=long i=phrase2 o=note:31
+31 Phrases - Key of G
+//! c=long i=phrase2 o=note:32
+32 Phrases - Key of G#
+//! c=long i=phrase2 o=note:33
+33 Phrases - Key of A
+//! c=long i=phrase2 o=note:34
+34 Phrases - Key of Bb
+//! c=long i=phrase2 o=note:35
+35 Phrases - Key of B
