@@ -192,7 +192,9 @@ marked as required.
 <tr>
     <td valign="top" style='text-align: center'>clone</td>
     <td>
-        Clones the articulations <i>from</i> the referenced bank, specified as a fully qualified bank name (i.e. the groupname/bankname format), <i>to</i> the current bank which contains the clone attribute.  The cloned articulations will appear after any articulations explicitly defined in the current bank.
+        Clones the articulations <i>from</i> the referenced bank, specified as the referenced bank's <code>id</code> attribute (its GUID), <i>to</i> the current bank which contains the clone attribute. The cloned articulations will appear after any articulations explicitly defined in the current bank.
+        <br/><br/>
+        Although this is now deprecated and should not be used in new banks, the clone value may also be a fully qualified bank name (i.e. the groupname/bankname format).  New banks should use the source bank's <code>id</code> instead, which is more robust.
     </td>
 </tr>
 <tr>
