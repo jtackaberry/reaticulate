@@ -302,6 +302,21 @@ Bank * * BBC - Contrabass Tuba
 //! id=cf75e634-a93d-471a-9d17-8b50397463d6
 Bank * * BBC - Contrabass Trombone
 
+//----------------------------------------------------------------------------
+//! g="Spitfire/BBC Symphonic Orchestra/Brass" n="BBC Cimbasso"
+//! id=ecda3930-7268-408c-a50a-1be213cd4383
+Bank * * BBC - Cimbasso
+
+//! c=long i=note-whole o=note:0
+1 long
+//! c=short i=spiccato o=note:1
+41 staccatissimo
+//! c=short i=marcato-quarter o=note:2
+52 marcato
+//! c=long-dark i=cuivre o=note:3
+9 long cuivre
+//! c=short i=staccato-sfz o=note:4
+54 long sfz
 
 //----------------------------------------------------------------------------
 //! g="Spitfire/BBC Symphonic Orchestra/Woodwinds" n="BBC Flute"
