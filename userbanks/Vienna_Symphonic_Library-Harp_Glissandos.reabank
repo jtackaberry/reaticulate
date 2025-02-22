@@ -1,0 +1,80 @@
+//----------------------------------------------------------------------------
+// Source: liquidlino - https://github.com/jtackaberry/reaticulate/issues/196
+//
+
+//! g="VSL/Free" n="Harp Glissandos"
+//! id=a7c6c4d9-8521-419b-95ea-d57ad980a309
+Bank * * Harp Glissandos
+
+//! c=textured i=run-major o=note:21/note:24/note:36
+1 C maj
+
+//! c=textured i=run-major o=note:21/note:25/note:36
+2 Db maj
+
+//! c=textured i=run-major o=note:21/note:26/note:36
+3 D maj
+
+//! c=textured i=run-major o=note:21/note:27/note:36
+4 Eb maj
+
+//! c=textured i=run-major o=note:21/note:28/note:36
+5 E maj
+
+//! c=textured i=run-major o=note:21/note:29/note:36
+6 F maj
+
+//! c=textured i=run-major o=note:21/note:30/note:36
+7 F# maj
+
+//! c=textured i=run-major o=note:21/note:31/note:36
+8 G maj
+
+//! c=textured i=run-major o=note:21/note:32/note:36
+9 Ab maj
+
+//! c=textured i=run-major o=note:21/note:33/note:36
+10 A maj
+
+//! c=textured i=run-major o=note:21/note:34/note:36
+11 Bb maj
+
+//! c=textured i=run-major o=note:21/note:35/note:36
+12 B maj
+
+//! spacer=1
+//! c=textured i=run-major o=note:23/note:24/note:36
+13 C min
+
+//! c=textured i=run-major o=note:23/note:25/note:36
+14 Db min
+
+//! c=textured i=run-major o=note:23/note:26/note:36
+15 D min
+
+//! c=textured i=run-major o=note:23/note:27/note:36
+16 Eb min
+
+//! c=textured i=run-major o=note:23/note:28/note:36
+17 E min
+
+//! c=textured i=run-major o=note:23/note:29/note:36
+18 F min
+
+//! c=textured i=run-major o=note:23/note:30/note:36
+19 F# min
+
+//! c=textured i=run-major o=note:23/note:31/note:36
+20 G min
+
+//! c=textured i=run-major o=note:23/note:32/note:36
+21 Ab min
+
+//! c=textured i=run-major o=note:23/note:33/note:36
+22 A min
+
+//! c=textured i=run-major o=note:23/note:34/note:36
+23 Bb min
+
+//! c=textured i=run-major o=note:23/note:35/note:36
+24 B min
