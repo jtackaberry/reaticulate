@@ -1,0 +1,107 @@
+//--------------------------------------------------
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/185
+
+//-----------------------------------------------------------------
+//!g="Cinesamples/Tina Guo Cello Vol 1" n="Legato Classic"
+//! id=5fc63f73-8d0a-44e1-9179-75de786372c0
+Bank * * Legato Classic
+
+//! c=legato i=legato o=note:24
+1 Legato
+
+//! c=long i=note-whole o=note:26
+2 Sustain
+
+//---------------------------------------------------------------
+//!g="Cinesamples/Tina Guo Cello Vol 1" n="Legato"
+//! id=340e3865-33f7-4289-a0ff-a6026e28d9aa
+Bank * * Legato
+
+//! c=legato i=legato o=note:24
+1 Legato
+
+//! c=long i=note-whole o=note:26
+2 Sustain
+
+//-----------------------------------------------------------------------------------
+//!g="Cinesamples/Tina Guo Cello Vol 2" n="Articulations"
+//! id=54293e73-fcff-4648-a6f3-330395e32c7a
+Bank * * Rrticulations
+
+//! c=legato i=legato o=note:24
+1 Arco Legato
+
+//! c=long i=note-whole o=note:25
+2 Open Strings
+
+//! c=long-light i=note-whole o=note:26
+3 Sul Pont
+
+//! c=long-light i=harmonics o=note:27
+4 Harmonics
+
+//! c=short i=spiccato o=note:28
+5 Spiccato
+
+//! c=short-dark i=marcato-half o=note:29
+6 Marcato
+
+//! c=short-light i=pizz o=note:30
+7 Vib Pizz
+
+//---------------------------------------------------------
+//!g="Cinesamples/Tina Guo Cello Vol 2" n="Phrases"
+//! id=8b483f5d-b196-4698-adba-cdbb59adcb22
+Bank * * Phrases
+
+//! c=fx i=note-whole o=note:21
+1 Tonal
+
+//! c=fx i=note-whole o=note:23
+2 Non-tonal
+
+//! c=long i=phrase o=note:24
+3 C
+
+//! c=long i=phrase o=note:25
+4 C#
+
+//! c=long i=phrase o=note:26
+5 D
+
+//! c=long i=phrase o=note:27
+6 D#
+
+//! c=long i=phrase o=note:28
+7 E
+
+//! c=long i=phrase o=note:29
+8 F
+
+//! c=long i=phrase o=note:30
+9 F#
+
+//! c=long i=phrase o=note:31
+10 G
+
+//! c=long i=phrase o=note:32
+11 G#
+
+//! c=long i=phrase o=note:33
+12 A
+
+//! c=long i=phrase o=note:34
+13 A#
+
+//! c=long i=phrase o=note:35
+14 B
+
+//! c=textured i=phrase o=note:36
+15 Minor 1
+
+//! c=textured i=phrase2 o=note:38
+16 Minor 2
+
+//! c=textured i=phrase o=note:40
+17 Major
