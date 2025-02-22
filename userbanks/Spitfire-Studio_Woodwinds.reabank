@@ -1,796 +1,988 @@
-//----------------------------------------------------------------------------
-// Source: robinboncoeur - https://github.com/jtackaberry/reaticulate/issues/117
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute"
-//! m="Set patch to UACC"
-//! id=c2e0dd07-b17f-4eaa-9814-06084bc31c6a
-Bank * * SStW - Piccolo Flute
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="b-Flute Solo"
-//! m="Set patch to UACC"
-//! id=913d7355-8a33-4e03-a5e4-045af9dfc916
-Bank * * SStW - Flute Solo
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="c-Flutes a3"
-//! m="Set patch to UACC"
-//! id=e373c14d-f13f-41da-8e89-ccf1900f0b26
-Bank * * SStW - Flutes A3
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="d-Alto Flute"
-//! m="Set patch to UACC"
-//! id=c2e27b09-2740-4f9b-a482-660cc74525c4
-Bank * * SStW - Alto Flute
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo"
-//! m="Set patch to UACC"
-//! id=0b4fa24f-92b9-4c74-862b-e34af6c36fe3
-Bank * * SStW - Clarinet Solo
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=long-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="f-Clarinets a3"
-//! m="Set patch to UACC"
-//! id=fd782331-472c-48bb-a6bf-48325eab5049
-Bank * * SStW - Clarinets a3
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=long-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet"
-//! m="Set patch to UACC"
-//! id=364d18a9-2806-40f5-838f-b8ba6856b299
-Bank * * SStW - Bass Clarinet
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=long-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="h-Oboe Solo"
-//! m="Set patch to UACC"
-//! id=d4bb3233-cc8b-43fc-97b1-8b322fe3937b
-Bank * * SStW - Oboe Solo
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="i-Oboes a3"
-//! m="Set patch to UACC"
-//! id=5fe8eb94-ddee-4bff-9adb-dcf53d03a22f
-Bank * * SStW - Oboes A3
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo"
-//! m="Set patch to UACC"
-//! id=2181b619-5e5d-48a0-83c7-c661bd6485dc
-Bank * * SStW - Bassoon Solo
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="k-Bassoons a3"
-//! m="Set patch to UACC"
-//! id=5e224159-9e17-4441-8516-306f9fe17afa
-Bank * * SStW - Bassoons A3
-
-//! c=legato i=legato o=cc:32,20
-20 legato
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=staccato-sfz o=cc:32,18
-18 long sfz
-//! c=short-dark i=marcato o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-dark i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-
-
-//------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute Core"
-//! m="Set patch to UACC"
-//! id=68ec1c92-18a8-4b24-b730-c343c602831a
-Bank * * SStW - Piccolo Flute Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="b-Flute Solo Core"
-//! m="Set patch to UACC"
-//! id=176bc315-b07a-49ec-983e-fa781ca54f5f
-Bank * * SStW - Flute Solo Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="c-Flutes a3 Core"
-//! m="Set patch to UACC"
-//! id=e259a264-4c66-462f-a0f5-74b698ab4c73
-Bank * * SStW - Flutes a3 Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="d-Alto Flute Core"
-//! m="Set patch to UACC"
-//! id=e7b9bcc9-274c-4f78-af3a-163423a09e53
-Bank * * SStW - Alto Flute Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo Core"
-//! m="Set patch to UACC"
-//! id=2121ac24-7914-4c92-aae8-398f41f34214
-Bank * * SStW - Clarinet Solo Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="f-Clarinets a3 Core"
-//! m="Set patch to UACC"
-//! id=97049ae3-4750-4490-9ff2-636aaeddb867
-Bank * * SStW - Clarinets a3 Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet Core"
-//! m="Set patch to UACC"
-//! id=916c334e-fd3b-4f35-8faf-21700ae41c3b
-Bank * * SStW - Bass Clarinet Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="h-Oboe Solo Core"
-//! m="Set patch to UACC"
-//! id=5b31473e-e981-46b8-85be-b3060a2fcb3f
-Bank * * SStW - Oboe Solo Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="i-Oboes a3 Core"
-//! m="Set patch to UACC"
-//! id=a5025cc3-7164-43d3-9e7e-a97c9ed3f812
-Bank * * SStW - Oboes a3 Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=short-light i=staccatissimo-stopped o=cc:32,42
-42 staccatissimo
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo Core"
-//! m="Set patch to UACC"
-//! id=70748c04-67aa-41ce-95b0-5a5d19efda3c
-Bank * * SStW - Bassoon Solo Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=long i=tremolo o=cc:32,11
-11 long flutter
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="k-Bassoons a3 Core"
-//! m="Set patch to UACC"
-//! id=ba15180b-1fef-422f-8631-ef81d0aae882
-Bank * * SStW - Bassoons a3 Core
-
-//! c=long i=note-whole o=cc:32,1
-1 long
-//! c=short-light i=marcato-quarter o=cc:32,52
-52 marcato
-//! c=short-dark i=tenuto-eighth o=cc:32,50
-50 tenuto
-//! c=short-light i=staccato o=cc:32,40
-40 staccato
-//! c=long-light i=trill-min2 o=cc:32,70
-70 trill m2
-//! c=long-light i=trill-maj2 o=cc:32,71
-71 trill M2
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute Decorative"
-//! m="Set patch to UACC"
-//! id=bb1ec68a-cad2-441f-8e69-b1bfee0818b5
-Bank * * SStW - Piccolo Flute Decorative
-
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-//! c=fx i=cresc-half o=cc:32,90
-90 keynoise
-//! c=fx i=cresc-half o=cc:32,91
-91 air
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="b-Flute Solo Decorative"
-//! m="Set patch to UACC"
-//! id=b5ac44a3-93a5-4cff-bab6-4d3f15dd4f72
-Bank * * SStW - Flute Solo Decorative
-
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-//! c=fx i=cresc-half o=cc:32,90
-90 keynoise
-//! c=fx i=cresc-half o=cc:32,91
-91 air
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="c-Flutes a3 Decorative"
-//! m="Set patch to UACC"
-//! id=470b92e9-d1eb-4509-8906-3c8fff58478a
-Bank * * SStW - Flutes a3 Decorative
-
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-//! c=fx i=cresc-half o=cc:32,90
-90 keynoise
-//! c=fx i=cresc-half o=cc:32,91
-91 air
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="d-Alto Flute Decorative"
-//! m="Set patch to UACC"
-//! id=418a5e37-793d-4826-a408-8502085acaae
-Bank * * SStW - Alto Flute Decorative
-
-//! c=long i=note-whole o=cc:32,8
-8 long hollow
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-//! c=fx i=cresc-half o=cc:32,90
-90 keynoise
-//! c=fx i=cresc-half o=cc:32,91
-91 air
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo Decorative"
-//! m="Set patch to UACC"
-//! id=4a6c1462-bb5d-4010-8818-92c1af12e4d8
-Bank * * SStW - Clarinet Solo Decorative
-
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="f-Clarinets a3 Decorative"
-//! m="Set patch to UACC"
-//! id=9973ede7-57ef-469d-a48d-97c90e12dc73
-Bank * * SStW - Clarinets a3 Decorative
-
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet Decorative"
-//! m="Set patch to UACC"
-//! id=037d3991-b55a-4252-bd95-042580bb38fc
-Bank * * SStW - Bass Clarinet Decorative
-
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="h-Oboe Solo Decorative"
-//! m="Set patch to UACC"
-//! id=7e9df405-6ceb-44a0-830e-4332e437bf92
-Bank * * SStW - Oboe Solo Decorative
-
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=rip o=cc:32,100
-100 rip
-//! c=long-dark i=fall o=cc:32,101
-101 fall
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="i-Oboes a3 Decorative"
-//! m="Set patch to UACC"
-//! id=08b891e5-561f-4dae-a9a9-e04a26802372
-Bank * * SStW - Oboes a3 Decorative
-
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
-
-
-//----------------------------------------------------------------------------
-//! g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo Decorative"
-//! m="Set patch to UACC"
-//! id=3b83f29d-2bae-4751-96d8-9c8505a1e6ab
-Bank * * SStW - Bassoon Solo Decorative
-
-//! c=long-light i=sfz o=cc:32,18
-18 long sfz
-//! c=long-light i=multitongued o=cc:32,75
-75 multitongued
-//! c=long-dark i=cresc-half o=cc:32,102
-102 swell
+//-----------------------------------------------------------
+// Spitfire Studio Woodwinds (Non Pro Version)
+//
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/179
+
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="a-Piccolo Flute"
+//! id=39d39363-c77c-4957-a016-ad8725d8f794
+Bank * * a-Piccolo Flute
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="b-Flute Solo"
+//! id=a600c8cc-e1f0-4d11-b7ec-33987aed53b7
+Bank * * b-Flute Solo
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="c-Flutes a3"
+//! id=232a458e-facc-495b-ab20-743511ab68c1
+Bank * * c-Flutes a3
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="d-Alto Flute"
+//! id=88b37819-f6cb-42fd-95f9-1631987c2d3f
+Bank * * d-Alto Flute
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="e-Clarinet Solo"
+//! id=5fd3e5d4-9577-4dd2-bc72-430db8559532
+Bank * * e-Clarinet Solo
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=sfz o=note:3
+4 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:4
+5 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:5
+6 Tenuto
+
+//! c=short i=staccato o=note:6
+7 Staccato
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="f-Clarinets a3"
+//! id=aee840bc-4a45-4473-acbf-15941551919d
+Bank * * f-Clarinets a3
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=sfz o=note:3
+4 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:4
+5 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:5
+6 Tenuto
+
+//! c=short i=staccato o=note:6
+7 Staccato
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="g-Bass Clarinet"
+//! id=ff9b0588-9c16-412d-9805-2e9e9e25f953
+Bank * * g-Bass Clarinet
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-light i=tremolo o=note:2
+3 Long flutter
+
+//! c=long-dark i=sfz o=note:3
+4 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:4
+5 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:5
+6 Tenuto
+
+//! c=short i=staccato o=note:6
+7 Staccato
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="h-Oboe Solo"
+//! id=6385fe43-3e8c-41f7-8a15-29209295ed41
+Bank * * h-Oboe Solo
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-dark i=sfz o=note:2
+3 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="i-Oboes a3"
+//! id=24d8b150-67c8-4bdf-b3ae-7eea25990079
+Bank * * i-Oboes a3
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-dark i=sfz o=note:2
+3 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="j-Bassoon Solo"
+//! id=15d0373f-01ef-40c1-8273-9bc1a443cd86
+Bank * * j-Basson Solo
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-dark i=sfz o=note:2
+3 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds" n="k-Bassoons a3"
+//! id=d5d9a150-383c-4f46-a77a-be73cef17b65
+Bank * * k-Bassoons a3
+
+//! c=legato i=legato o=note:0
+1 Legato
+
+//! c=long i=note-whole o=note:1
+2 Long
+
+//! c=long-dark i=sfz o=note:2
+3 Long Sfz
+
+//! c=long-dark i=marcato-quarter o=note:3
+4 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:4
+5 Tenuto
+
+//! c=short i=staccato o=note:5
+6 Staccato
+
+//! c=short-light i=spiccato o=note:6
+7 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:7
+8 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:8
+9 Trill maj 2nd
+
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="a-Piccolo Flute Core"
+//! id=5abd75f1-ffd9-4fe2-a98f-920fefcb98ce
+Bank * * a-Piccolo Flute Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=short-light i=spiccato o=note:5
+6 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:6
+7 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+8 Trill maj 2nd
+
+//! c=long-light i=harmonics-natural o=note:8
+9 Long Hollow
+
+//! c=long-dark i=sfz o=note:9
+10 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+11 Multitongued
+
+//! c=textured i=rip o=note:11
+12 Rip
+
+//! c=textured i=fall o=note:12
+13 Fall
+
+//! c=textured i=cresc-half o=note:13
+14 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="a-Piccolo Flute Decorative"
+//! id=76cb1c8c-0392-4a00-a7cf-2307f74ab2ab
+Bank * * a-Piccolo Flute Decorative
+
+//! c=long-light i=harmonics-natural o=note:0
+1 Long Hollow
+
+//! c=long-dark i=sfz o=note:1
+2 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+3 Multitongued
+
+//! c=textured i=rip o=note:3
+4 Rip
+
+//! c=textured i=fall o=note:4
+5 Fall
+
+//! c=textured i=cresc-half o=note:5
+6 Swell
+
+//! c=fx i=fx o=note:6
+7 Keynoise
+
+//! c=fx i=fx o=note:7
+8 Air
+
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="b-Flute Solo Core"
+//! id=42b3b520-9a6e-422a-82f8-c6c941a0621d
+Bank * * b-Flute Solo Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=short-light i=spiccato o=note:5
+6 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:6
+7 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+8 Trill maj 2nd
+
+//! c=long-light i=harmonics-natural o=note:8
+9 Long Hollow
+
+//! c=long-dark i=sfz o=note:9
+10 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+11 Multitongued
+
+//! c=textured i=rip o=note:11
+12 Rip
+
+//! c=textured i=fall o=note:12
+13 Fall
+
+//! c=textured i=cresc-half o=note:13
+14 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="b-Flute Solo Decorative"
+//! id=82765019-5a79-4c9f-9e21-0751380df18c
+Bank * * b-Flute Solo Decorative
+
+//! c=long-light i=harmonics-natural o=note:0
+1 Long Hollow
+
+//! c=long-dark i=sfz o=note:1
+2 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+3 Multitongued
+
+//! c=textured i=rip o=note:3
+4 Rip
+
+//! c=textured i=fall o=note:4
+5 Fall
+
+//! c=textured i=cresc-half o=note:5
+6 Swell
+
+//! c=fx i=fx o=note:6
+7 Keynoise
+
+//! c=fx i=fx o=note:7
+8 Air
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="c-Flutes a3 Core"
+//! id=7cbfb5aa-bbf7-48a4-ba07-74c27210c2e8
+Bank * * c-Flutes a3 Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=short-light i=spiccato o=note:5
+6 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:6
+7 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+8 Trill maj 2nd
+
+//! c=long-light i=harmonics-natural o=note:8
+9 Long Hollow
+
+//! c=long-dark i=sfz o=note:9
+10 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+11 Multitongued
+
+//! c=textured i=rip o=note:11
+12 Rip
+
+//! c=textured i=fall o=note:12
+13 Fall
+
+//! c=textured i=cresc-half o=note:13
+14 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="c-Flutes a3 Decorative"
+//! id=408329de-04eb-41de-a00b-9a0b501b417b
+Bank * * c-Flutes a3 Decorative
+
+//! c=long-light i=harmonics-natural o=note:0
+1 Long Hollow
+
+//! c=long-dark i=sfz o=note:1
+2 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+3 Multitongued
+
+//! c=textured i=rip o=note:3
+4 Rip
+
+//! c=textured i=fall o=note:4
+5 Fall
+
+//! c=textured i=cresc-half o=note:5
+6 Swell
+
+//! c=fx i=fx o=note:6
+7 Keynoise
+
+//! c=fx i=fx o=note:7
+8 Air
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="d-Alto Flute Core"
+//! id=edf9086a-c7e0-496b-becb-0cb1ada9185f
+Bank * * d-Alto Flute Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=short-light i=spiccato o=note:5
+6 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:6
+7 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+8 Trill maj 2nd
+
+//! c=long-light i=harmonics-natural o=note:8
+9 Long Hollow
+
+//! c=long-dark i=sfz o=note:9
+10 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+11 Multitongued
+
+//! c=textured i=rip o=note:11
+12 Rip
+
+//! c=textured i=fall o=note:12
+13 Fall
+
+//! c=textured i=cresc-half o=note:13
+14 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="d-Alto Flute Decorative"
+//! id=bea9cb35-d183-404e-83e3-c88a7166f144
+Bank * * d-Alto Flute Decorative
+
+//! c=long-light i=harmonics-natural o=note:0
+1 Long Hollow
+
+//! c=long-dark i=sfz o=note:1
+2 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+3 Multitongued
+
+//! c=textured i=rip o=note:3
+4 Rip
+
+//! c=textured i=fall o=note:4
+5 Fall
+
+//! c=textured i=cresc-half o=note:5
+6 Swell
+
+//! c=fx i=fx o=note:6
+7 Keynoise
+
+//! c=fx i=fx o=note:7
+8 Air
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="e-Clarinet Solo Core"
+//! id=f83d503a-92da-4397-a1d0-c1fb619d4678
+Bank * * e-Clarinet Solo Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=textured i=trill-min2 o=note:6
+6 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+7 Trill maj 2nd
+
+//! c=long-dark i=sfz o=note:9
+8 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+9 Multitongued
+
+//! c=textured i=cresc-half o=note:13
+10 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="e-Clarinet Solo Decorative"
+//! id=19f27913-7022-4ebf-affd-0cff332b3934
+Bank * * e-Clarinet Solo Decorative
+
+//! c=long-dark i=sfz o=note:1
+1 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+2 Multitongued
+
+//! c=textured i=cresc-half o=note:5
+3 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="f-Clarinets a3 Core"
+//! id=47eef864-d130-4371-931a-f40679161f10
+Bank * * f-Clarinets a3 Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=textured i=trill-min2 o=note:6
+6 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+7 Trill maj 2nd
+
+//! c=long-dark i=sfz o=note:9
+8 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+9 Multitongued
+
+//! c=textured i=cresc-half o=note:13
+10 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="f-Clarinets a3 Decorative"
+//! id=1d57137f-68c8-46bb-951b-eb801477984f
+Bank * * f-Clarinets a3 Decorative
+
+//! c=long-dark i=sfz o=note:1
+1 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+2 Multitongued
+
+//! c=textured i=cresc-half o=note:5
+3 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="g-Bass Clarinet Core"
+//! id=0c1896f4-53ca-4f4e-9395-f9c7b088351c
+Bank * * g-Bass Clarinet Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-light i=tremolo o=note:1
+2 Long flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=long-dark i=sfz o=note:9
+6 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+7 Multitongued
+
+//! c=textured i=cresc-half o=note:13
+8 Swell
+
+//-------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="g-Bass Clarinet Decorative"
+//! id=081378e2-6d65-4d5c-b14b-a76f2e4ec555
+Bank * * g-Bass Clarinet Decorative
+
+//! c=long-dark i=sfz o=note:1
+1 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+2 Multitongued
+
+//! c=textured i=cresc-half o=note:5
+3 Swell
+
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="h-Oboe Solo Core"
+//! id=8f9a322f-8741-4cc3-b731-f1a5b4dd0232
+Bank * * h-Oboe Solo Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-dark i=marcato-quarter o=note:2
+2 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+3 Tenuto
+
+//! c=short i=staccato o=note:4
+4 Staccato
+
+//! c=short-light i=spiccato o=note:5
+5 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:6
+6 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+7 Trill maj 2nd
+
+//! c=long-dark i=sfz o=note:9
+8 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+9 Multitongued
+
+//! c=textured i=rip o=note:11
+10 Rip
+
+//! c=textured i=fall o=note:12
+11 Fall
+
+//! c=textured i=cresc-half o=note:13
+12 Swell
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="h-Oboe Solo Decorative"
+//! id=9eceb0c1-d486-415d-982a-3122e1d5b085
+Bank * * h-Oboe Solo Decorative
+
+//! c=long-dark i=sfz o=note:1
+1 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+2 Multitongued
+
+//! c=textured i=rip o=note:3
+3 Rip
+
+//! c=textured i=fall o=note:4
+4 Fall
+
+//! c=textured i=cresc-half o=note:5
+5 Swell
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="i-Oboes a3 Core"
+//! id=37295248-72e0-4aab-b4c5-250ba182002a
+Bank * * i-Oboes a3 Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-dark i=marcato-quarter o=note:2
+2 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+3 Tenuto
+
+//! c=short i=staccato o=note:4
+4 Staccato
+
+//! c=short-light i=spiccato o=note:5
+5 Staccatissimo
+
+//! c=textured i=trill-min2 o=note:6
+6 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+7 Trill maj 2nd
+
+//! c=long-dark i=sfz o=note:9
+8 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+9 Multitongued
+
+//! c=textured i=cresc-half o=note:13
+10 Swell
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="i-Oboes a3 Decorative"
+//! id=cd275adb-ba35-44ab-9952-66ecbbda429f
+Bank * * i-Oboes a3 Decorative
+
+//! c=long-dark i=sfz o=note:1
+1 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+2 Multitongued
+
+//! c=textured i=cresc-half o=note:5
+3 Swell
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="j-Bassoon Solo Core"
+//! id=4905542f-275d-4ac6-ae51-1d15100321d2
+Bank * * j-Bassoon Solo Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=textured i=tremolo o=note:1
+2 Long Flutter
+
+//! c=long-dark i=marcato-quarter o=note:2
+3 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+4 Tenuto
+
+//! c=short i=staccato o=note:4
+5 Staccato
+
+//! c=textured i=trill-min2 o=note:6
+6 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+7 Trill maj 2nd
+
+//! c=long-dark i=sfz o=note:9
+8 Long Sfz
+
+//! c=textured i=multitongued o=note:10
+9 Multitongued
+
+//! c=textured i=cresc-half o=note:13
+10 Swell
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="j-Bassoon Solo Decorative"
+//! id=2a8575ea-979a-4def-b179-6058ff3f23c5
+Bank * * j-Bassoon Solo Decorative
+
+//! c=long-dark i=sfz o=note:1
+1 Long Sfz
+
+//! c=textured i=multitongued o=note:2
+2 Multitongued
+
+//! c=textured i=cresc-half o=note:5
+3 Swell
+
+//-------------------------------------------------------------
+//!g="Spitfire/Studio Woodwinds/Extended techniques" n="k-Bassoons a3 Core"
+//! id=c13b7ba6-f67e-465b-aeac-a4b117bcdc8c
+Bank * * k-Bassoons a3 Core
+
+//! c=long i=note-whole o=note:0
+1 Long
+
+//! c=long-dark i=marcato-quarter o=note:2
+2 Marcato
+
+//! c=short-dark i=tenuto-quarter o=note:3
+3 Tenuto
+
+//! c=short i=staccato o=note:4
+4 Staccato
+
+//! c=textured i=trill-min2 o=note:6
+5 Trill min 2nd
+
+//! c=textured i=trill-maj2 o=note:7
+6 Trill maj 2nd
+
+//! c=long-dark i=sfz o=note:9
+7 Long Sfz
+
+//! c=textured i=cresc-half o=note:13
+8 Swell
