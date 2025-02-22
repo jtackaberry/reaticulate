@@ -1,0 +1,88 @@
+// *******************************
+// Basso Profondo Choir (Synchron)
+// *******************************
+
+//! g="VSL/Synchron Collections" n="Basso Profondo Choir"
+//! id=7c176ed4-61c0-4214-82b3-58199093d92e
+Bank * * Basso Profondo Choir (Synchron)
+
+//! c=textured i=list o=note:24 g=2
+0 AA
+//! c=textured i=list o=note:26 g=2
+1 UU
+//! c=long i=note-whole o=note:28/note:85 g=2
+26 MM (long)
+//! c=legato-light i=legato o=note:28/note:86 g=2
+27 MM (legato)
+
+//! spacer=1
+//! c=short i=staccato o=note:84/note:89
+2 vowel (stacc)
+//! c=short i=staccato o=note:84/note:90
+3 K (stacc)
+//! c=short i=staccato o=note:84/note:91
+4 L (stacc)
+//! c=short i=staccato o=note:84/note:92
+5 M (stacc)
+//! c=short i=staccato o=note:84/note:93
+6 P (stacc)
+//! c=short i=staccato o=note:84/note:94
+7 R (stacc)
+//! c=short i=staccato o=note:84/note:95
+8 S (stacc)
+//! c=short i=staccato o=note:84/note:96
+9 T (stacc)
+
+//! spacer=1
+//! c=long i=note-whole o=note:85/note:89
+10 regular
+//! c=long i=note-whole o=note:85/note:90
+11 espressivo
+//! c=long i=note-whole o=note:85/note:91
+12 sfz
+//! c=long i=crescendo o=note:85/note:92
+13 cresc (short)
+//! c=long i=crescendo o=note:85/note:93
+14 cresc (long)
+//! c=long i=decrescendo o=note:85/note:94
+15 decresc (short)
+//! c=long i=decrescendo o=note:85/note:95
+16 decresc (long)
+
+//! spacer=1
+//! c=legato i=legato o=note:86/note:89
+17 legato
+//! c=legato i=legato o=note:86/note:90
+18 legato + port
+
+//! spacer=1
+//! c=long-dark i=marcato-half o=note:87/note:90
+19 K (marc)
+//! c=long-dark i=marcato-half o=note:87/note:91
+20 L (marc)
+//! c=long-dark i=marcato-half o=note:87/note:92
+21 M (marc)
+//! c=long-dark i=marcato-half o=note:87/note:93
+22 P (marc)
+//! c=long-dark i=marcato-half o=note:87/note:94
+23 R (marc)
+//! c=long-dark i=marcato-half o=note:87/note:95
+24 S (marc)
+//! c=long-dark i=marcato-half o=note:87/note:96
+25 T (marc)
+
+//! spacer=1
+//! c=fx i=fx o=note:29/note:32/note:84
+28 AEIOU
+//! c=fx i=fx o=note:29/note:32/note:85
+29 omm
+//! c=fx i=fx o=note:29/note:32/note:86
+30 pray
+//! c=fx i=fx o=note:29/note:32/note:87
+31 matata
+//! c=fx i=fx o=note:29/note:32/note:88
+32 rise & fall
+//! c=fx i=fx o=note:29/note:32/note:89
+33 laugh & creep
+//! c=fx i=fx o=note:29/note:32/note:90
+34 hugh & hey
