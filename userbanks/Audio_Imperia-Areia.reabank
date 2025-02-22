@@ -1,0 +1,49 @@
+//----------------------------------------------------------------------------
+// Audio Imperia - Areia
+// Source: Tobias Kummer - https://github.com/tobkum
+//
+// https://github.com/jtackaberry/reaticulate/issues/180
+
+//----------------------------------------------------------------------------
+//!g="Audio Imperia/Areia" n="01 AI Areia Basic Articulations"
+//! id=c457fb07-67b4-485c-afc1-a20e79d90a40
+Bank * * Basic Articulations
+//! c=legato i=legato-bowed o=note:12
+20 Legato
+//! c=long i=note-whole o=note:13
+1 Sustained
+//! c=short i=pizz o=note:14
+56 Pizzicato
+//! c=short-dark i=pizz o=note:15
+42 Spiccato Fast
+//! c=short-light i=pizz o=note:16
+41 Spiccato Slow
+//! c=short i=staccato o=note:17
+40 Staccato
+//! c=short-dark i=marcato-quarter o=note:18
+52 Marcato Short
+//! c=short-light i=marcato-half o=note:19
+55 Marcato Long
+
+
+//!g="Audio Imperia/Areia" n="02 AI Areia Advanced Articulations"
+//! id=8e630a12-5d28-455a-b8ec-24312057be69
+Bank * * Advanced Articulations
+//! c=textured i=tremolo o=note:12
+11 Tremolo
+//! c=fx i=trill-min2 o=note:13
+70 Trill Half Tone
+//! c=fx i=trill-maj2 o=note:14
+71 Trill Whole Tone
+//! c=long i=con-sord o=note:15
+7 Sustained Con Sordino
+//! c=long i=sul-tasto o=note:16
+17 Sustained Sul Tasto
+//! c=fx i=harmonics o=note:17
+10 Harmonics
+//! c=long i=portato o=note:18
+2 Portato
+//! c=short i=col-legno o=note:19
+58 Col Legno
+//! c=fx i=pizz-bartok o=note:20
+57 Bartok Pizzicato
