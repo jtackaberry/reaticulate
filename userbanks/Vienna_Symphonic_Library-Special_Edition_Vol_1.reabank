@@ -112,7 +112,7 @@ Bank * * VSLse1 - Strings Violas
 //! id=04710332-9cf3-4d1b-acf3-3747e50c98a6
 Bank * * VSLse1 - Strings Cellos
 
-//! g="VSL/SE1/Strings/Orchestral Strings" n="Strings Violins"
+//! g="VSL/SE1/Strings/Orchestral Strings" n="Strings Basses"
 //! clone="VSL/SE1/Strings/Solo Strings/Solo Bass"
 //! id=078bb54c-567b-4da9-852f-116c0a8171a7
 Bank * * VSLse1 - Strings Basses
