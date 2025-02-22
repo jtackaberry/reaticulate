@@ -1,0 +1,362 @@
+/// Samplemodeling Solo, Chamber & Ensemble Strings
+/// ======================================
+// For library v.2.0.1.
+// v1.0 - Created by Richard Gruet (rig), Feb 2022
+//
+// NB: All artics triggered with key velocity > 86 to be in "latch" mode.
+//     Artic will be ON until triggered again or another exclusive one is triggered.
+
+// Violin Solo
+// -----------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo" n="Violin Solo" off=1
+//! id=788d9b26-603b-4f8d-8e73-49c8633155d2
+Bank * * Violin Solo
+
+//! c=fx i=rest-quarter o=note:44/note:45/note:46
+//! m="(doesn't reset microtuning!)"
+127 panic reset!
+
+//! spacer=1
+
+//! c=default i=note-whole o=note:36
+//! m="Up to two simultaneous notes"
+1 solo (default mode)
+
+//! c=default i=note-whole o=note:37
+2 polyphonic mode
+
+//! spacer=1
+
+//! c=legato i=legato-bowed2 o=note:38
+//! m="Notes auto sustained; bow change on each note"
+34 bow change / détaché
+// (When started, the note keeps playing on release. Playing the same or different note performs a bow change/detaché).
+
+//! c=long i=cresc-quarter o=note:39
+//! m="expressive crescendo on each legato note"
+102 note crescendo
+
+//! c=long-dark i=tremolo o=note:40
+//! m="CC11:dynamics; CC19:tremolo rate"
+11 tremolo
+
+//! c=short-light i=pizz o=note:41
+//! m="velocity -> dynamics; CC27: decay curve"
+56 pizzicato
+
+//! c=short-light i=col-legno o=note:42
+58 col legno
+
+//! c=short-light i=staccato-harmonics o=note:43
+//! m="natural & artificial; sounds one 8ve higher"
+61 harmonics
+// (Vibrato and legato by overlapping notes also allowed for special effects)
+
+//! spacer=1
+
+//! c=fx i=fx o=note:44
+//! m="not used by default, except lowest one"
+113 allow open strings
+
+//! c=fx i=fx o=note:45
+114 play low positions (default)
+
+//! c=fx i=fx o=note:46
+115 play high positions (where possible)
+
+// (note:47 reserved for future use)
+
+//! c=fx i=fx o=note:48
+116 highest positions (where possible)
+
+//! spacer=1
+
+//! c=fx i=fx o=note:35/note:36
+//! m="back to tempered scale (preset #1)"
+117 microtuning OFF
+
+//! c=fx i=fx o=note:35/note:37
+//! m="activate preset #2"
+118 microtuning #2
+
+//! c=fx i=fx o=note:35/note:38
+//! m="activate preset #3"
+119 microtuning #3
+
+//! c=fx i=fx o=note:35/note:39
+//! m="activate preset #4"
+120 microtuning #4
+
+//! c=fx i=fx o=note:35/note:40
+//! m="activate preset #5"
+121 microtuning #5
+
+//! c=fx i=fx o=note:35/note:41
+//! m="activate preset #6"
+122 microtuning #6
+
+//! c=fx i=fx o=note:35/note:42
+//! m="activate preset #7"
+123 microtuning #7
+
+
+// Viola Solo
+// -----------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo" n="Viola Solo" off=1
+//! id=8def28df-295a-4d96-9385-173053e7ae65
+Bank * * Viola Solo
+
+//! c=fx i=rest-quarter o=note:44/note:45/note:46
+//! m="(doesn't reset microtuning!)"
+127 panic reset!
+
+//! spacer=1
+
+//! c=default i=note-whole o=note:36
+//! m="Up to two simultaneous notes"
+1 solo (default mode)
+
+//! c=default i=note-whole o=note:37
+2 polyphonic mode
+
+//! spacer=1
+
+//! c=legato i=legato-bowed2 o=note:38
+//! m="Notes auto sustained; bow change on each note"
+34 bow change / détaché
+// (When started, the note keeps playing on release. Playing the same or different note performs a bow change/detaché).
+
+//! c=long i=cresc-quarter o=note:39
+//! m="expressive crescendo on each legato note"
+102 note crescendo
+
+//! c=long-dark i=tremolo o=note:40
+//! m="CC11:dynamics; CC19:tremolo rate"
+11 tremolo
+
+//! c=short-light i=pizz o=note:41
+//! m="velocity -> dynamics; CC27: decay curve"
+56 pizzicato
+
+//! c=short-light i=col-legno o=note:42
+58 col legno
+
+//! c=short-light i=staccato-harmonics o=note:43
+//! m="natural & artificial; sounds one 8ve higher"
+61 harmonics
+// (Vibrato and legato by overlapping notes also allowed for special effects)
+
+//! spacer=1
+
+//! c=fx i=fx o=note:44
+//! m="not used by default, except lowest one"
+113 allow open strings
+
+//! c=fx i=fx o=note:45
+114 play low positions (default)
+
+//! c=fx i=fx o=note:46
+115 play high positions (where possible)
+
+// (note:47 reserved for future use)
+
+//! spacer=1
+
+//! c=fx i=fx o=note:35/note:36
+//! m="back to tempered scale (preset #1)"
+117 microtuning OFF
+
+//! c=fx i=fx o=note:35/note:37
+//! m="activate preset #2"
+118 microtuning #2
+
+//! c=fx i=fx o=note:35/note:38
+//! m="activate preset #3"
+119 microtuning #3
+
+//! c=fx i=fx o=note:35/note:39
+//! m="activate preset #4"
+120 microtuning #4
+
+//! c=fx i=fx o=note:35/note:40
+//! m="activate preset #5"
+121 microtuning #5
+
+//! c=fx i=fx o=note:35/note:41
+//! m="activate preset #6"
+122 microtuning #6
+
+//! c=fx i=fx o=note:35/note:42
+//! m="activate preset #7"
+123 microtuning #7
+
+
+// Cello Solo
+// -----------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo" n="Cello Solo" off=1
+//! id=035a3607-8b73-4157-961a-8354d57581d8
+Bank * * Cello Solo
+
+//! c=fx i=rest-quarter o=note:32/note:33/note:34
+//! m="(doesn't reset microtuning!)"
+127 panic reset!
+
+//! spacer=1
+
+//! c=default i=note-whole o=note:24
+//! m="Up to two simultaneous notes"
+1 solo (default mode)
+
+//! c=default i=note-whole o=note:25
+2 polyphonic mode
+
+//! spacer=1
+
+//! c=legato i=legato-bowed2 o=note:26
+//! m="Notes auto sustained; bow change on each note"
+34 bow change / détaché
+// (When started, the note keeps playing on release. Playing the same or different note performs a bow change/detaché).
+
+//! c=long i=cresc-quarter o=note:27
+//! m="expressive crescendo on each legato note"
+102 note crescendo
+
+//! c=long-dark i=tremolo o=note:28
+//! m="CC11:dynamics; CC19:tremolo rate"
+11 tremolo
+
+//! c=short-light i=pizz o=note:29
+//! m="velocity -> dynamics; CC27: decay curve"
+56 pizzicato
+
+//! c=short-light i=col-legno o=note:30
+58 col legno
+
+//! c=short-light i=staccato-harmonics o=note:31
+//! m="natural & artificial; sounds one 8ve higher"
+61 harmonics
+// (Vibrato and legato by overlapping notes also allowed for special effects)
+
+//! spacer=1
+
+//! c=fx i=fx o=note:32
+//! m="not used by default, except lowest one"
+113 allow open strings
+
+//! c=fx i=fx o=note:33
+114 play low positions (default)
+
+//! c=fx i=fx o=note:34
+115 play high positions (where possible)
+
+// (note:47 reserved for future use)
+
+//! spacer=1
+
+//! c=fx i=fx o=note:23/note:24
+//! m="back to tempered scale (preset #1)"
+117 microtuning OFF
+
+//! c=fx i=fx o=note:23/note:25
+//! m="activate preset #2"
+118 microtuning #2
+
+//! c=fx i=fx o=note:23/note:26
+//! m="activate preset #3"
+119 microtuning #3
+
+//! c=fx i=fx o=note:23/note:27
+//! m="activate preset #4"
+120 microtuning #4
+
+//! c=fx i=fx o=note:23/note:28
+//! m="activate preset #5"
+121 microtuning #5
+
+//! c=fx i=fx o=note:23/note:29
+//! m="activate preset #6"
+122 microtuning #6
+
+//! c=fx i=fx o=note:23/note:30
+//! m="activate preset #7"
+123 microtuning #7
+
+
+// Dble Bass Solo
+// --------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo" n="Dble Bass Solo" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Cello Solo"
+//! id=e262afc6-989e-4d21-a184-d5b63ec41c90
+Bank * * Dble Bass Solo
+
+
+// Violin Ensemble
+// ---------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Violin Ensemble" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Viola Solo"
+//! id=840517fa-9839-43eb-b81a-55e2e50ed7bc
+Bank * * Violin Ensemble
+
+// 2nd Violin Ensemble
+// -------------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="2nd Violin Ensemble" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Violin Ensemble"
+//! id=b464bba2-9d17-4c12-8527-8e93523db9be
+Bank * * 2nd Violin Ensemble
+
+// Viola Ensemble
+// --------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Viola Ensemble" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Viola Solo"
+//! id=95bf6015-b244-4dfe-841d-1e362cde449e
+Bank * * Viola Ensemble
+
+// Cello Ensemble
+// --------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Cello Ensemble" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Cello Solo"
+//! id=ecc161e0-554d-4469-b8a2-63fb3615871f
+Bank * * Cello Ensemble
+
+// Dble Bass Ensemble
+// ------------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Dble Bass Ensemble" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Dble Bass Solo"
+//! id=bc3f24af-3437-45f1-94e8-e0098a0a292b
+Bank * * Dble Bass Ensemble
+
+
+// Chamber Violins
+// ---------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Violins" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Violin Ensemble"
+//! id=be5d257e-d68b-43d9-a0fb-629c6ce2141f
+Bank * * Chamber Violins
+
+// Chamber 2nd Violins
+// -------------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber 2nd Violins" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/2nd Violin Ensemble"
+//! id=b0602cab-9c78-40e2-981a-b75566ab8a20
+Bank * * Chamber 2nd Violins
+
+// Chamber Violas
+// --------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Violas" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Viola Ensemble"
+//! id=3efa7d45-2eae-4064-ad1b-5f95dc3a05e2
+Bank * * Chamber Violas
+
+// Chamber Cellos
+// --------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Cellos" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Cello Ensemble"
+//! id=c4927e91-b4b0-4c6b-a32c-5b8f4fe0864c
+Bank * * Chamber Cellos
+
+// Chamber Dble Basses
+// -------------------
+//! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Dble Basses" off=1
+//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Dble Bass Ensemble"
+//! id=f1e4741d-418d-47d5-83f6-c108451680bc
+Bank * * Chamber Dble Basses
