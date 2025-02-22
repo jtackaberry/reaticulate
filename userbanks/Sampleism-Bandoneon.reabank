@@ -1,0 +1,89 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Sampleism Bandoneón
+// CREATOR: Scott Sadowsky
+//
+// https://github.com/jtackaberry/reaticulate/issues/188
+//
+// NOTE:    This instrument's articulations can only be triggered by CCs, but
+//          none come pre-assigned. In order for this file to work with
+//          Reaticulate, you must right click on each articulation button,
+//          select "Learn MIDI CC automation", and assign the values USED BELOW.
+//          Also, it doesn't save user-assigned CCs, even in presets, so you'd
+//          be wise to save the instrument in a track template after assigning CCs.
+// NOTE:    The octave numbers used to specify the range of each articulation
+//          are those that appear in Reaper's Piano Roll. In Kontakt, they
+//          appear one octave lower (e.g. E2 in Reaper appears as E1 in Kontakt).
+// NOTE:    This instrument's articulations behave in a peculiar fashion.
+//          Activating a given articulation does not replace the prior articulation
+//          with the newly selected one. Rather, it superimposes the new one on
+//          top of all others that have been previously selected. Sometimes the
+//          new articulation overlaps the old one(s), partially or fully. When
+//          this happens, the results are unpredictable: sometimes the new
+//          articulation is played alone and sometimes two or more
+//          articulations are played simultaneously. To deal with this chaos,
+//          each articulation here has been programmed to turn off all others
+//          except for "Effects", which is instrument noise and which can be
+//          turned on or off without regard to other articulations.
+// NOTE:    To allow the issue mentioned in the previous note to be handled
+//          manually, I've created an "ALL OFF" button, which turns off all
+//          articulations, including Effects (Instrument Noise). This will
+//          generate silence until you select a new articulation.
+// KEY:     c=COLOR	i=ICON g=GROUP o=cc:CCNUM m="MESSAGE"
+//
+//! g="Sampleism" n="Bandoneon"
+//! id=f58b5c7c-037f-48e5-af70-1e257c14ca90
+Bank * * Bandoneon
+
+// ------------------------------- LONG -----------------------------------------
+//! c=long		i=note-whole	g=1		o=cc:20,127/cc:22,1/cc:23,1/cc:24,1/cc:25,1/cc:26,1/cc:27,1/cc:28,1/cc:29,1	m="CC 20 · Range: C1-B6"
+// (Called "Main Notes")
+1 Sustain (C1-B6)
+
+//! c=long		i=harmonics-natural  g=1  o=cc:20,1/cc:22,1/cc:23,1/cc:24,1/cc:25,1/cc:26,1/cc:27,127/cc:28,1/cc:29,1	m="CC 27 · Range: C2-A3"
+// (Called "Long Notes (oct)")
+3 Octave (Long) (C2-A3)
+
+//! c=long		i=tremolo		g=1		o=cc:20,1/cc:22,1/cc:23,1/cc:24,1/cc:25,1/cc:26,1/cc:27,1/cc:28,1/cc:29,127	m="CC 29 · Range: C5-C6"
+11 Tremolo (C5-C6)
+
+// ------------------------------- SHORT ----------------------------------------
+//! c=short		i=staccato		g=1		o=cc:20,1/cc:22,1/cc:23,1/cc:24,1/cc:25,1/cc:26,1/cc:27,1/cc:28,127/cc:29,1	m="CC 28 · Range: C2-B6"
+40 Staccato (C2-B6)
+
+//! c=short		i=harmonics-natural  g=1  o=cc:20,1/cc:22,1/cc:23,1/cc:24,1/cc:25,1/cc:26,127/cc:27,1/cc:28,1/cc:29,1	m="CC 26 · Range: C2-A3"
+// (Called "Short Notes (oct)")
+45 Octave (Short) (C2-A3)
+
+// ------------------------------- TEXTURED ------------------------------------
+//! c=textured	i=trill-min2	g=1		o=cc:20,1/cc:22,1/cc:23,1/cc:24,127/cc:25,1/cc:26,1/cc:27,1/cc:28,1/cc:29,1	m="CC 24 · Range: E4-E5"
+// (Called "Halftone Trem")
+70 Trill min2 (E4-E5)
+
+//! c=textured	i=trill-maj2	g=1		o=cc:20,1/cc:22,1/cc:23,1/cc:24,1/cc:25,127/cc:26,1/cc:27,1/cc:28,1/cc:29,1	m="CC 25 · Range: F5-E6"
+// (Called "Wholetone Trem")
+71 Trill maj2 (F5-E6)
+
+
+// ------------------------------- FX ------------------------------------------
+//! c=fx		i=ricochet			g=1		o=cc:20,1/cc:22,1/cc:23,127/cc:24,1/cc:25,1/cc:26,1/cc:27,1/cc:28,1/cc:29,1	m="CC 23 · Range: F#2-F4"
+62 Repetition (F#2-F4)
+
+//! c=fx		i=legato-portamento g=1		o=cc:20,1/cc:22,127/cc:23,1/cc:24,1/cc:25,1/cc:26,1/cc:27,1/cc:28,1/cc:29,1	m="CC 22 · Range: C4-C5"
+// (Called "Saltos")
+91 Jump (Salto) (C4-C5)
+
+// ------------------------------- HOUSEKEEPING --------------------------------
+//! spacer=1
+
+//! c=default		i=fx		g=2		o=cc:21,127		m="CC 21 · Range: C1-B8"
+// (Called "Effects")
+90 Instrument Noise ON
+
+//! c=default		i=fx     	g=2		o=cc:21,0		m="CC 21"
+89 Instrument Noise OFF
+
+//! spacer=1
+
+//! c=#000000		i=list		g=3		o=cc:20,1/cc:21,1/cc:22,1/cc:23,1/cc:24,1/cc:25,1/cc:26,1/cc:27,1/cc:28,1/cc:29,1	m="Turn off all articulations"
+112 ALL OFF
+
