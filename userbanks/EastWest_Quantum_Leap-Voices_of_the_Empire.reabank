@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------
 // Source: Jorchime - https://www.jorchime.com/
 //
-//! g="EastWest Quantum Leap/Voices of the Empire/" n="Legato KS"
+//! g="EastWest Quantum Leap/Voices of the Empire" n="Legato KS"
 //! m="Make Sure KS is on default range from C0"
 //! id=c94a68e3-b426-4f19-85ac-dc2594cde3aa
 Bank * * Legato KS
@@ -18,7 +18,7 @@ Bank * * Legato KS
 //! c=legato-dark i=dblstop-5th-eighth o=cc:22,0 g=2
 82 Poly
 
-//! g="EastWest Quantum Leap/Voices of the Empire/" n="Melisma KS"
+//! g="EastWest Quantum Leap/Voices of the Empire" n="Melisma KS"
 //! m="Make Sure KS is on default range from C0"
 //! id=3f9c1e8e-ec98-425a-a46f-d2ca7ad033a0
 Bank * * Melisma KS
@@ -57,7 +57,7 @@ Bank * * Melisma KS
 //! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
 82 Legato Off
 
-//! g="EastWest Quantum Leap/Voices of the Empire/" n="Phrases KS"
+//! g="EastWest Quantum Leap/Voices of the Empire" n="Phrases KS"
 //! m="Make Sure KS is on default range from C0"
 //! id=634686ec-29cb-4739-bf47-263c096a5773
 Bank * * Phrases KS
@@ -92,7 +92,7 @@ Bank * * Phrases KS
 //! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
 82 Legato Off
 
-//! g="EastWest Quantum Leap/Voices of the Empire/" n="Sus KS"
+//! g="EastWest Quantum Leap/Voices of the Empire" n="Sus KS"
 //! m="Make Sure KS is on default range from C0"
 //! id=31bc11e7-8060-49da-b2c1-fff0b854e2fd
 Bank * * Sustain KS
@@ -123,7 +123,7 @@ Bank * * Sustain KS
 //! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
 82 Legato Off
 
-//! g="EastWest Quantum Leap/Voices of the Empire/" n="Words KS"
+//! g="EastWest Quantum Leap/Voices of the Empire" n="Words KS"
 //! m="Make Sure KS is on default range from A-1"
 //! id=11fae0b7-c54f-4696-96e8-8afe6fdb1fcd
 Bank * * Words KS
