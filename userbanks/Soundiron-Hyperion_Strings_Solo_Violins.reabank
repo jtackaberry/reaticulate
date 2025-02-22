@@ -1,0 +1,102 @@
+//--------------------------------------------------
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/183
+
+//-----------------------------------------------------
+//! g="Soundiron/Hyperion Strings Solo Violins" n="Master"
+//! id=7908db44-24f7-4fa2-96f7-05869bea25cd
+Bank * * Master
+
+//! c=long i=note-whole o=note:12
+1 Sustain p.
+
+//! c=long-light i=note-whole o=note:13
+2 Sustain f.
+
+//! c=textured i=tremolo o=note:14
+3 Tremolo
+
+//! c=short-dark i=staccato o=note:15
+4 Staccato p.
+
+//! c=short i=staccato o=note:16
+5 Staccato f.
+
+//! c=short-light i=pizz o=note:17
+6 Pizzicato p.
+
+//! c=short-dark i=pizz o=note:18
+7 Pizzicato f.
+
+//! c=short-dark i=staccato o=note:19
+8 Staccato decr.
+
+//! c=textured i=crescendo o=note:20
+9 Crescendo
+
+//! c=textured i=decrescendo o=note:21
+10 Decrescendo
+
+//! c=textured i=sfz o=note:22
+11 Sforzando
+
+//! c=textured i=note-eighth o=note:23
+12 Swell
+
+//-----------------------------------------------------
+//! g="Soundiron/Hyperion Strings Solo Violins" n="Phrases"
+//! id=432e82c3-3b1d-4e33-baba-a4c062eee4a8
+Bank * * Phrases
+
+//! c=textured i=note-whole o=note:12
+1 phrase 1
+
+//! c=textured i=note-whole o=note:13
+2 phrase 2
+
+//! c=textured i=note-whole o=note:14
+3 phrase 3
+
+//! c=textured i=note-whole o=note:15
+4 phrase 4
+
+//! c=textured i=note-whole o=note:16
+5 phrase 5
+
+//! c=textured i=note-whole o=note:17
+6 phrase 6
+
+//! c=textured i=note-whole o=note:18
+7 phrase 7
+
+//! c=textured i=note-whole o=note:19
+8 phrase 8
+
+//! c=textured i=note-whole o=note:20
+9 phrase 9
+
+//! c=textured i=note-whole o=note:21
+10 phrase 10
+
+//! c=textured i=note-whole o=note:22
+11 phrase 11
+
+//! c=textured i=note-whole o=note:23
+12 phrase 12
+
+//-----------------------------------------------------
+//! g="Soundiron/Hyperion Strings Solo Violins" n="legato"
+//! id=b2cf2f97-c3d3-4871-9d19-5aa374b74bd4
+Bank * * Legato
+
+//! c=legato-light i=legato o=note:12
+1 legato p.
+
+//! c=legato-dark i=legato o=note:13
+2 legato f.
+
+//! c=legato-light i=legato-gliss o=note:14
+3 legato glissando
+
+//! c=legato-dark i=legato-con-sord o=note:15
+4 legato Sordino
