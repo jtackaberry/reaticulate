@@ -1,0 +1,36 @@
+//-----------------------------------------------------------------
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/175
+//===========================================================================
+
+//! g="VSL/Free" n="Big Bang Orchestra"
+//! id=dda082b5-138b-4dba-8995-f9780f395d10
+Bank * * Big Bang Orchestra
+
+//! c=short i=staccato o=note:24
+1 Short notes
+
+//! c=long i=note-whole o=note:25
+2 Long notes
+
+//! spacer=1
+//! c=long-dark i=note-whole o=note:26/note:96
+3 Marcato
+
+//! c=long-dark i=note-whole o=note:26/note:98
+4 Marcato attack
+
+//! spacer=1
+//! c=textured i=crescendo o=note:27
+5 Fast swells
+
+//! spacer=1
+//! c=textured i=crescendo o=note:28/note:96
+6 Swells marcato
+
+//! c=textured i=crescendo o=note:28/note:98
+7 Sweeks marcato attack
+
+//! spacer=1
+//! c=fx i=fanfare o=note:29
+8 Fast runs
