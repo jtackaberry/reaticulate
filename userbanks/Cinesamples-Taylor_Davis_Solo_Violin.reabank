@@ -1,0 +1,29 @@
+//--------------------------------------------------
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/186
+
+//--------------------------------------------------------------
+//! g="Cinesamples/Taylor Davis Solo Violin" n="Articulations"
+//! id=b5df4c06-7449-4752-8fe2-cfc200f11ab4
+Bank * * Taylor Davis
+
+//! c=legato i=legato o=note:36
+1 Legato
+
+//! c=long i=note-whole o=note:37
+2 Sustains
+
+//! c=short i=spiccato o=note:38
+3 Spiccato
+
+//! c=short-dark i=marcato-half o=note:39
+4 Marcato
+
+//! c=short-light i=pizz o=note:40
+5 Pizzicato
+
+//! c=short-dark i=tenuto-eighth o=note:41
+6 Tenuto
+
+//! c=textured i=note-whole o=note:42
+7 Open Strings
