@@ -1,0 +1,93 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: IRCAM Solo Instruments 2
+// CREATOR: Scott Sadowsky
+//
+// NOTE: this file only includes a subset of instruments available in IRCAM Solo
+// Instruments 2
+//
+// https://github.com/jtackaberry/reaticulate/issues/239
+// https://github.com/jtackaberry/reaticulate/issues/240
+// https://github.com/jtackaberry/reaticulate/issues/242
+//
+//! g="IRCAM/Solo Instruments 2" n="Clarinet"
+//! id=96589044-9ffd-463e-8161-59a272db6ad0
+Bank * * IRCAM - Clarinet Solo
+// -------------------- LONG --------------------
+//! c=long i=note-whole g=1	 o=note:36
+1 Ordinario
+//! c=long i=sfz g=1 o=note:37
+9 Sforzando
+// -------------------- SHORT -------------------
+//! c=short i=staccato g=1 o=note:38
+40 Staccato
+//! c=short-dark i=note-eighth g=1 o=note:42
+42 0.5 sec
+//! c=short-dark i=note-quarter g=1	 o=note:43
+41 1.0 sec
+// -------------------- FX ----------------------
+//! c=long-dark i=tremolo g=1 o=note:39
+11 Flatterzunge
+//! c=fx i=trill-min2 g=1 o=note:40
+70 Trill min2
+//! c=fx i=trill-maj2 g=1 o=note:41
+71 Trill maj2
+//! c=fx i=fortepiano g=1 o=note:44
+103 Fortepiano
+
+//! g="IRCAM/Solo Instruments 2" n="Flute"
+//! id=7ff34501-faf4-4fb4-8af7-8566bc20c715
+Bank * * IRCAM - Flute Solo
+// -------------------- LONG --------------------
+//! c=long i=note-whole g=1      o=note:36
+1 Ordinario (Sustained)
+//! c=long-dark i=sfz g=1 o=note:37
+9 Sforzando
+//! c=long-dark i=tremolo g=1 o=note:39
+11 Flatterzunge
+// -------------------- SHORT -------------------
+//! c=short i=note-quarter g=1   o=note:43
+40 Short (1.0 sec)
+//! c=short i=staccato g=1 o=note:38
+12 Staccato
+//! c=short-dark i=note-eighth g=1 o=note:42
+42 Tongue Flick
+// -------------------- TRILLS -----------------
+//! c=textured i=trill-min2 g=1 o=note:40
+70 Trill min2
+//! c=textured i=trill-maj2 g=1 o=note:41
+71 Trill maj2
+// -------------------- FX ---------------------
+//! c=fx i=fortepiano g=1 o=note:44
+103 Fortepiano
+
+
+//! g="IRCAM/Solo Instruments 2" n="Cello"
+//! id=d32b137d-2067-41f0-b268-21a413bf1282
+Bank * * IRCAM - Cello Solo
+// -------------------- LONG --------------------
+//! c=long              i=note-whole    g=1     o=note:12
+1 Ordinario (Sustained)
+//! c=long-light        i=note-whole    g=1     o=note:13
+7 Ordinario (Non Vibrato)
+//! c=long-light        i=tremolo       g=1     o=note:14
+11 Tremolo
+//! c=long-dark         i=sfz           g=1     o=note:16
+9 Sforzando
+// -------------------- SHORT -------------------
+//! c=short             i=note-quarter  g=1     o=note:22
+43 0.5 sec
+//! c=short             i=note-half     g=1     o=note:23
+40 1.0 sec
+//! c=short             i=staccato      g=1     o=note:17
+44 Staccato
+//! c=short-light       i=pizz          g=1     o=note:18
+56 Pizzicato
+//! c=short-light       i=pizz          g=1     o=note:19
+41 Pizzicato Secco
+// -------------------- TRILLS -----------------
+//! c=textured          i=trill-min2    g=1     o=note:45
+70 Trill min2
+//! c=textured          i=trill-maj2    g=1     o=note:21
+71 Trill maj2
+// -------------------- FX ---------------------
+//! c=fx                i=fortepiano    g=1     o=note:15
