@@ -1,0 +1,215 @@
+//----------------------------------------------------------------------------
+// Source: Hamrock - https://vi-control.net/community/threads/reaticulate-articulation-management-for-reaper-0-4-7-now-available.66851/post-4764029
+//
+
+//! g="Heavyocity/Forzo Modern Brass" n="12 Horns"
+//! id=52533f97-c74a-493e-8c6f-a8f1cc90db83
+Bank * * 12 Horns
+
+//! c=long i=note-whole o=note@1:12
+1 Long Sustain
+//! c=long i=sfz o=note@1:13
+2 Sforzato
+//! c=long-light i=note-whole o=note@1:14
+3 ppp Sustain
+//! c=long-light i=note-whole o=note@1:15
+4 Portato
+//! c=short-dark i=staccato o=note@1:16
+5 Staccato
+//! c=long-dark i=crescendo o=note@1:17
+6 Crescendo
+//! c=long-dark i=crescendo o=note@1:18
+7 Swell
+//! c=textured i=alt-wave o=note@2:12
+8 Waves
+//! c=textured i=alt-wave-double o=note@2:13
+9 Waves Wide
+//! c=textured i=marcato o=note@2:14
+10 Pulsing Beats
+//! c=textured i=staccato o=note@2:15
+11 Puls Beats Wide
+//! c=long-dark i=multitongued o=note@2:16
+12 Rnd Flutters
+//! c=long-dark i=multitongued o=note@2:17
+13 Rnd Flutters WD
+//! c=short-dark i=staccato o=note@2:18
+14 Rnd Staccatos
+//! c=short-dark i=staccato o=note@2:19
+15 Rnd Staccatos WD
+//! c=fx i=fx o=note@3:12
+16 Clusters
+//! c=fx i=fx o=note@3:13
+17 Cluster Cres
+//! c=fx i=fx o=note@3:14
+18 Cluster Swell
+//! c=fx i=fx o=note@3:15
+19 Cluster Bends
+//! c=fx i=fx o=note@3:16
+20 Seasick Bends
+//! c=fx i=fx o=note@3:17
+21 Atonal Pedals
+//! c=long-dark i=crescendo o=note@4:12
+22 Stp Cres
+//! c=long-dark i=crescendo o=note@4:13
+23 Stp Swell
+//! c=textured i=alt-wave o=note@4:14
+24 Stp Waves
+//! c=fx i=fx o=note@4:15
+25 Stp Clusters
+//! c=fx i=crescendo o=note@4:16
+26 Stp Clus Cresc
+//! c=fx i=crescendo o=note@4:17
+27 Stp Clus Swell
+
+
+//----------------------------------------------------------------------------
+//! g="Heavyocity/Forzo Modern Brass" n="4 Trumpets"
+//! id=777e52a2-6ac5-44b4-8e5d-1bd3dcd3f785
+Bank * * 4 Trumpets
+
+//! c=long i=note-whole o=note@5:12
+1 Long Sustain
+//! c=long i=sfz o=note@5:13
+2 Sforzato
+//! c=long-light i=note-whole o=note@5:14
+3 ppp Sustain
+//! c=long-light i=note-whole o=note@5:15
+4 Portato
+//! c=short-dark i=staccato o=note@5:16
+5 Staccato
+//! c=long-dark i=crescendo o=note@5:17
+6 Crescendo
+//! c=long-dark i=crescendo o=note@5:18
+7 Swell
+//! c=textured i=alt-wave o=note@6:12
+8 Waves
+//! c=textured i=alt-wave-double o=note@6:13
+9 Waves Wide
+//! c=textured i=marcato o=note@6:14
+10 Pulsing Beats
+//! c=textured i=staccato o=note@6:15
+11 Puls Beats Wide
+//! c=long-dark i=multitongued o=note@6:16
+12 Rnd Flutters
+//! c=long-dark i=multitongued o=note@6:17
+13 Rnd Flutters WD
+//! c=short-dark i=staccato o=note@6:18
+14 Rnd Staccatos
+//! c=fx i=fx o=note@7:12
+17 Clusters
+//! c=fx i=fx o=note@7:13
+18 Cluster Cresc
+//! c=fx i=fx o=note@7:14
+19 Cluster Swell
+
+
+//----------------------------------------------------------------------------
+//! g="Heavyocity/Forzo Modern Brass" n="4 Tenor Trombones"
+//! id=eed0aacb-2744-4d02-b54a-79f139be4be7
+Bank * * 4 Tenor Trombones
+
+//! c=long i=note-whole o=note@8:12
+1 Long Sustain
+//! c=long i=sfz o=note@8:13
+2 Sforzato
+//! c=long-light i=note-whole o=note@8:14
+3 ppp Sustain
+//! c=long-light i=note-whole o=note@8:15
+4 Portato
+//! c=short-dark i=staccato o=note@8:16
+5 Staccato
+//! c=long-dark i=crescendo o=note@8:17
+6 Crescendo
+//! c=long-dark i=crescendo o=note@8:18
+7 Swell
+//! c=long-dark i=crescendo o=note@8:19
+8 Cresc Bend
+//! c=textured i=alt-wave o=note@9:12
+9 Waves
+//! c=textured i=marcato o=note@9:13
+10 Pulsing Beats
+//! c=short-dark i=staccato o=note@9:14
+11 Rnd Staccatos
+//! c=fx i=fx o=note@9:15
+12 Clusters
+//! c=fx i=fx o=note@9:16
+13 Cluster Cresc
+//! c=fx i=fx o=note@9:17
+14 Cluster Swell
+//! c=fx i=fx o=note@9:18
+15 Uni Clus Cresc
+//! c=fx i=crescendo o=note@9:19
+16 Uni Clus Swell
+
+
+
+//----------------------------------------------------------------------------
+//! g="Heavyocity/Forzo Modern Brass" n="4 Contra Trombones"
+//! id=536cd0cd-d216-43b6-b21a-1d62dcdbf9b6
+Bank * * 4 Contra Trombones
+
+//! c=long i=note-whole o=note@10:12
+1 Long Sustain
+//! c=long i=sfz o=note@10:13
+2 Sforzato
+//! c=long-light i=note-whole o=note@10:14
+3 ppp Sustain
+//! c=long-light i=note-whole o=note@10:15
+4 Portato
+//! c=short-dark i=staccato o=note@10:16
+5 Staccato
+//! c=long-dark i=crescendo o=note@10:17
+6 Crescendo
+//! c=long-dark i=crescendo o=note@10:18
+7 Swell
+//! c=long-dark i=crescendo o=note@10:19
+8 Cresc Bend
+//! c=textured i=alt-wave o=note@11:12
+9 Waves
+//! c=long-dark i=multitongued o=note@11:13
+10 Rnd Flutters
+//! c=short-dark i=staccato o=note@11:14
+11 Rnd Staccatos
+//! c=fx i=fx o=note@11:15
+12 Cluster Blatt
+//! c=fx i=fx o=note@11:16
+13 Clusters
+//! c=fx i=fx o=note@11:17
+14 Cluster Cresc
+//! c=fx i=fx o=note@11:18
+15 Cluster Swell
+//! c=fx i=fx o=note@11:19
+16 Uni Clus Cresc
+//! c=fx i=crescendo o=note@12:12
+17 Uni Clus Swell
+//! c=fx i=fx o=note@12:13
+18 Atonal Pedals
+
+
+//----------------------------------------------------------------------------
+//! g="Heavyocity/Forzo Modern Brass" n="2 Tubas"
+//! id=651bde68-9abf-4753-8dba-07c2aaeb0e0b
+Bank * * 2 Tubas
+
+//! c=long i=note-whole o=note@13:12
+1 Long Sustain
+//! c=long i=sfz o=note@13:13
+2 Sforzato
+//! c=long-light i=note-whole o=note@13:14
+3 Portato
+//! c=short-dark i=staccato o=note@13:15
+4 Staccato
+//! c=long-dark i=crescendo o=note@13:16
+5 Crescendo
+//! c=long-dark i=crescendo o=note@13:17
+6 Swell
+//! c=long-dark i=crescendo o=note@13:18
+7 Cresc Bend
+//! c=textured i=alt-wave o=note@14:12
+8 Waves
+//! c=long-dark i=multitongued o=note@14:13
+10 Rnd Flutters
+//! c=fx i=fx o=note@14:14
+11 Cluster Blatt
+//! c=fx i=fx o=note@14:15
+12 Atonal Pedals
