@@ -1,0 +1,61 @@
+//--------------------------------------------------
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/179
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Brass Elements" n="Master"
+//! id=0ca1559a-f8b4-48cd-8c22-c4426fe0dee8
+Bank * * HBE Master
+
+//! c=long i=note-whole o=note:0
+1 Easy lead
+
+//! c=short-dark i=staccato o=note:1
+2 Staccato
+
+//! c=short i=staccatissimo-stopped o=note:2
+3 Staccatissimo
+
+//! c=short-light i=staccato o=note:3
+4 Multi-Staccato
+
+//! c=long i=crescendo o=note:4
+5 Crescendo high
+
+//! c=long i=decrescendo o=note:5
+6 Decrescendo high
+
+//! c=short i=crescendo o=note:6
+7 Crescendo short
+
+//! c=short i=decrescendo o=note:7
+8 Decrescendo
+
+//! c=long i=sfz o=note:8
+9 Sforzando
+
+//! c=short i=sfz o=note:9
+10 Sforzando short
+
+//! c=long i=note-whole o=note:10
+11 Swell
+
+//! c=short i=note-eighth o=note:11
+12 Swell short
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Brass Elements" n="Legato"
+//! id=c556ac4d-258e-40b7-8c1f-319062257f1b
+Bank * * HBE Legato
+
+//! c=legato i=legato o=note:0
+1 True legato
+
+//! c=legato-light i=legato o=note:1
+2 True legato p.
+
+//! c=legato i=legato o=note:2
+3 True legato mf.
+
+//! c=legato-dark i=legato o=note:3
+4 True legato f.
