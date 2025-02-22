@@ -1,0 +1,755 @@
+//----------------------------------------------------------------------------
+// Source: Peter Eastman (peastman)
+// https://github.com/jtackaberry/reaticulate/issues/237
+//===========================================================================
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="1st/2nd Violins"
+//! id=f62c31e0-283e-5e4c-9d6f-428229f30b27
+Bank * * 1st/2nd Violins
+
+//! c=long i=note-whole o=note:36
+1 Sustain
+//! c=legato i=legato o=note:37
+20 Legato
+//! c=long-dark i=marcato-half o=note:38
+9 Marcato
+//! c=short-dark i=staccato o=note:40
+40 Staccato
+//! c=short i=pizz o=note:41
+56 Pizzicato
+//! c=short-light i=col-legno o=note:42
+58 Col Legno
+//! c=textured i=tremolo o=note:43
+11 Tremolo
+//! c=textured i=harmonics o=note:45
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Violas"
+//! id=ce6ddbeb-1c79-5b4a-95d6-067b0966505d
+Bank * * Violas
+
+//! c=long i=note-whole o=note:36
+1 Sustain
+//! c=legato i=legato o=note:37
+20 Legato
+//! c=long-dark i=marcato-half o=note:38
+9 Marcato
+//! c=short-dark i=staccato o=note:40
+40 Staccato
+//! c=short i=pizz o=note:41
+56 Pizzicato
+//! c=short-light i=col-legno o=note:42
+58 Col Legno
+//! c=textured i=tremolo o=note:43
+11 Tremolo
+//! c=textured i=harmonics o=note:45
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Celli"
+//! id=80500aee-ea0c-9441-95e7-56812559e1d9
+Bank * * Celli
+
+//! c=long i=note-whole o=note:84
+1 Sustain
+//! c=legato i=legato o=note:85
+20 Legato
+//! c=long-dark i=marcato-half o=note:86
+9 Marcato
+//! c=short-dark i=staccato o=note:88
+40 Staccato
+//! c=short i=pizz o=note:89
+56 Pizzicato
+//! c=short-light i=col-legno o=note:90
+58 Col Legno
+//! c=textured i=tremolo o=note:91
+11 Tremolo
+//! c=textured i=harmonics o=note:93
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Basses"
+//! id=5ce4ae1c-967a-0740-988c-8a3a3a2770ec
+Bank * * Basses
+
+//! c=long i=note-whole o=note:84
+1 Sustain
+//! c=legato i=legato o=note:85
+20 Legato
+//! c=long-dark i=marcato-half o=note:86
+9 Marcato
+//! c=short-dark i=staccato o=note:88
+40 Staccato
+//! c=short i=pizz o=note:89
+56 Pizzicato
+//! c=short-light i=col-legno o=note:90
+58 Col Legno
+//! c=textured i=tremolo o=note:91
+11 Tremolo
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Solo Violin 1"
+//! id=99c7e830-1500-634b-ad07-e39124401cdb
+Bank * * Solo Violin 1
+
+//! c=long i=note-whole o=note:37
+1 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:38
+20 Legato
+//! c=long-dark i=marcato-half o=note:40
+9 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:39
+17 Marcato (non-looped)
+//! c=short-dark i=spiccato o=note:41
+42 Spiccato
+//! c=short-dark i=staccato o=note:42
+40 Staccato
+//! c=short i=pizz o=note:43
+56 Pizzicato
+//! c=textured i=harmonics o=note:45
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Solo Violin 2"
+//! id=c15be4c8-fdbb-274c-9add-ba34b6553533
+Bank * * Solo Violin 2
+
+//! c=long i=note-whole o=note:36
+1 Sustain
+//! c=long i=note-whole o=note:37
+2 Sustain non-vibrato
+//! c=legato i=legato o=note:38
+20 Legato
+//! c=legato i=legato o=note:39
+21 Legato non-vibrato
+//! c=long-dark i=marcato-half o=note:40
+9 Marcato
+//! c=long-dark i=marcato-half o=note:41
+16 Marcato non-vibrato
+//! c=short-dark i=spiccato o=note:42
+42 Spiccato
+//! c=short-dark i=staccato o=note:45
+40 Staccato
+//! c=short i=pizz o=note:43
+56 Pizzicato
+//! c=textured i=tremolo o=note:44
+11 Tremolo
+//! c=textured i=harmonics o=note:46
+10 Harmonics
+//! c=textured i=harmonics o=note:47
+29 Harmonics non-vibrato
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Solo Viola"
+//! id=1b459eb5-8c51-f946-8024-5e4b48345a67
+Bank * * Solo Viola
+
+//! c=long i=note-whole o=note:36
+1 Sustain
+//! c=legato i=legato o=note:37
+20 Legato
+//! c=long-dark i=marcato-half o=note:38
+9 Marcato
+//! c=short-dark i=staccato o=note:40
+40 Staccato
+//! c=short i=pizz o=note:41
+56 Pizzicato
+//! c=textured i=harmonics o=note:43
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Solo Cello"
+//! id=69d59b14-b254-c14f-bdad-b9a229d6ec79
+Bank * * Solo Cello
+
+//! c=long i=note-whole o=note:91
+1 Sustain
+//! c=legato i=legato o=note:92
+20 Legato
+//! c=long-dark i=marcato-half o=note:93
+9 Marcato
+//! c=short-dark i=staccato o=note:95
+40 Staccato
+//! c=short i=pizz o=note:96
+56 Pizzicato
+//! c=textured i=harmonics o=note:98
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="Solo Bass"
+//! id=1d2d4cd8-f722-f44d-81c6-6ccd5e4557b2
+Bank * * Solo Bass
+
+//! c=long i=note-whole o=note:84
+1 Sustain
+//! c=legato i=legato o=note:85
+20 Legato
+//! c=long-dark i=marcato-half o=note:86
+9 Marcato
+//! c=short-dark i=staccato o=note:88
+40 Staccato
+//! c=short i=pizz o=note:89
+56 Pizzicato
+//! c=textured i=harmonics o=note:91
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Strings" n="All Strings"
+//! id=bf998dea-b0c2-0f41-80fa-d9ca6380161c
+Bank * * All Strings
+
+//! c=long i=note-whole o=note:12
+1 Sustain
+//! c=long-dark i=marcato-half o=note:14
+9 Marcato
+//! c=short-dark i=staccato o=note:16
+40 Staccato
+//! c=short i=pizz o=note:17
+56 Pizzicato
+//! c=short-light i=col-legno o=note:18
+58 Col Legno
+//! c=textured i=tremolo o=note:19
+11 Tremolo
+//! c=textured i=harmonics o=note:21
+10 Harmonics
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Horns"
+//! id=3eddfe07-b279-824f-9b80-0b1574ba458d
+Bank * * Horns
+
+//! c=long i=note-whole o=note:84
+1 Sustain
+//! c=legato i=legato o=note:89
+20 Legato
+//! c=long-dark i=marcato-half o=note:86
+9 Marcato
+//! c=short-dark i=staccato o=note:88
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Trumpets"
+//! id=bc3fb3b6-aaea-2145-a208-a67782a9f2c9
+Bank * * Trumpets
+
+//! c=long i=note-whole o=note:36
+1 Sustain (looped)
+//! c=long i=note-whole o=note:37
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:41
+20 Legato
+//! c=long-dark i=marcato-half o=note:38
+9 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:39
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:40
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Trombones"
+//! id=a673d263-44e3-5a4a-a933-b3ca98ef86ed
+Bank * * Trombones
+
+//! c=long i=note-whole o=note:84
+1 Sustain (looped)
+//! c=long i=note-whole o=note:85
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:89
+20 Legato
+//! c=long-dark i=marcato-half o=note:86
+9 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:87
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:88
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Tuba"
+//! id=3cebb2cb-12ba-3b47-8a7a-ed4fb4d9ed50
+Bank * * Tuba
+
+//! c=long i=note-whole o=note:84
+1 Sustain (looped)
+//! c=long i=note-whole o=note:85
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:89
+20 Legato
+//! c=long-dark i=marcato-half o=note:86
+9 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:87
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:88
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Solo Horn"
+//! id=08c34d93-3010-8345-9eb7-bf10f6cbdf42
+Bank * * Solo Horn
+
+//! c=long i=note-whole o=note:86
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:85
+4 Sustain (looped)
+//! c=long i=note-whole o=note:84
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:87
+20 Legato
+//! c=long-dark i=marcato-half o=note:90
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:89
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:88
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:91
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Solo Trumpet"
+//! id=4558f912-1227-7f41-86df-0a7b883fd9bc
+Bank * * Solo Trumpet
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:39
+20 Legato
+//! c=long-dark i=marcato-half o=note:42
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:41
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:40
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:43
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Solo Tenor Trombone"
+//! id=43664959-0b5d-d544-b98c-706a977290b4
+Bank * * Solo Tenor Trombone
+
+//! c=long i=note-whole o=note:86
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:85
+4 Sustain (looped)
+//! c=long i=note-whole o=note:84
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:87
+20 Legato
+//! c=long-dark i=marcato-half o=note:90
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:89
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:88
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:91
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="Solo Bass Trombone"
+//! id=20873589-cc03-a54c-b818-7d59e6c6e349
+Bank * * Solo Bass Trombone
+
+//! c=long i=note-whole o=note:86
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:85
+4 Sustain (looped)
+//! c=long i=note-whole o=note:84
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:87
+20 Legato
+//! c=long-dark i=marcato-half o=note:90
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:89
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:88
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:91
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Brass" n="All Brass"
+//! id=f6b99bfa-5cd3-d048-850b-bfe5bf784f08
+Bank * * All Brass
+
+//! c=long i=note-whole o=note:12
+1 Sustain
+//! c=long-dark i=marcato-half o=note:14
+9 Marcato
+//! c=short-dark i=staccato o=note:16
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Flutes"
+//! id=ce5874f3-86a1-7e4c-9005-cb9bc3565094
+Bank * * Flutes
+
+//! c=long i=note-whole o=note:36
+1 Sustain (looped)
+//! c=long i=note-whole o=note:37
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:41
+20 Legato
+//! c=long-dark i=marcato-half o=note:38
+9 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:39
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:40
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Oboes"
+//! id=b6f54325-ba2f-a249-805b-6d134d657d40
+Bank * * Woodwinds
+
+//! c=long i=note-whole o=note:36
+1 Sustain (looped)
+//! c=long i=note-whole o=note:37
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:39
+20 Legato
+//! c=short-dark i=staccato o=note:38
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Clarinets"
+//! id=5b0f4b71-54ee-7740-8e5c-2aa8300c20bb
+Bank * * Clarinets
+
+//! c=long i=note-whole o=note:36
+1 Sustain (looped)
+//! c=long i=note-whole o=note:37
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:39
+20 Legato
+//! c=short-dark i=staccato o=note:38
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Bassoons"
+//! id=a1580db4-c19c-4141-8f76-9a3943483ea2
+Bank * * Bassoons
+
+//! c=long i=note-whole o=note:84
+1 Sustain (looped)
+//! c=long i=note-whole o=note:85
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:87
+20 Legato
+//! c=short-dark i=staccato o=note:86
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Flute 1"
+//! id=99f0ece7-3f66-444c-8000-eea2fef2cc49
+Bank * * Solo Flute 1
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:39
+20 Legato
+//! c=long-dark i=marcato-half o=note:42
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:41
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:40
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:43
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Flute 2"
+//! id=48593614-e352-f546-8944-e46bbd9e0cdd
+Bank * * Solo Flute 2
+
+//! c=long i=note-whole o=note:36
+1 Sustain
+//! c=long i=note-whole o=note:37
+2 Sustain non-vibrato
+//! c=legato i=legato o=note:38
+20 Legato
+//! c=legato i=legato o=note:39
+21 Legato non-vibrato
+//! c=long-dark i=marcato-half o=note:40
+9 Marcato
+//! c=long-dark i=marcato-half o=note:41
+16 Marcato non-vibrato
+//! c=short-dark i=staccato o=note:42
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Piccolo"
+//! id=5e170ebd-7dc2-a147-a54f-beb35b493991
+Bank * * Solo Piccolo
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:39
+20 Legato
+//! c=long-dark i=marcato-half o=note:42
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:41
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:40
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:43
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Alto Flute"
+//! id=965d1356-efe9-e643-9aaf-170285e7a145
+Bank * * Solo Alto Flute
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:39
+20 Legato
+//! c=long-dark i=marcato-half o=note:42
+9 Marcato (looped, decay)
+//! c=long-dark i=marcato-half o=note:41
+18 Marcato (looped)
+//! c=long-dark i=marcato-half o=note:40
+17 Marcato (non-looped)
+//! c=short-dark i=staccato o=note:43
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Oboe"
+//! id=968ef21a-b12c-6b42-b767-a9dffd5f74c4
+Bank * * Solo Oboe
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:40
+20 Legato
+//! c=short-dark i=staccato o=note:39
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Cor Anglais"
+//! id=0174a057-d453-274d-9d7e-9e1569080d21
+Bank * * Solo Cor Anglais
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:40
+20 Legato
+//! c=short-dark i=staccato o=note:39
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Clarinet"
+//! id=b83fec97-9227-e44c-afbc-310f81c0f127
+Bank * * Solo Clarinet
+
+//! c=long i=note-whole o=note:38
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:37
+4 Sustain (looped)
+//! c=long i=note-whole o=note:36
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:40
+20 Legato
+//! c=short-dark i=staccato o=note:39
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Bass Clarinet"
+//! id=d57dbd44-f93a-8b4c-834c-89f92898b480
+Bank * * Solo Bass Clarinet
+
+//! c=long i=note-whole o=note:86
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:85
+4 Sustain (looped)
+//! c=long i=note-whole o=note:84
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:88
+20 Legato
+//! c=short-dark i=staccato o=note:87
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Bassoon"
+//! id=1cc81cc0-a48f-2a40-a85d-2ebeff7ef770
+Bank * * Solo Bassoon
+
+//! c=long i=note-whole o=note:86
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:85
+4 Sustain (looped)
+//! c=long i=note-whole o=note:84
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:88
+20 Legato
+//! c=short-dark i=staccato o=note:87
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="Solo Contrabassoon"
+//! id=e1de27ce-8542-3742-9534-8e6271b9f52a
+Bank * * Solo Contrabassoon
+
+//! c=long i=note-whole o=note:86
+1 Sustain (looped, decay)
+//! c=long i=note-whole o=note:85
+4 Sustain (looped)
+//! c=long i=note-whole o=note:84
+3 Sustain (non-looped)
+//! c=legato i=legato o=note:88
+20 Legato
+//! c=short-dark i=staccato o=note:87
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Woodwinds" n="All Woodwinds"
+//! id=938a20b2-2c05-af4d-8b28-ce958e3f3080
+Bank * * All Woodwinds
+
+//! c=long i=note-whole o=note:24
+1 Sustain
+//! c=short-dark i=staccato o=note:26
+40 Staccato
+
+//! g="Sonatina Symphonic Orchestra/Keyboards" n="Harpsichord"
+//! id=6225de5c-5968-8841-adba-03814b602319
+Bank * * Harpsichord
+
+//! c=short i=note-half o=note:98
+1 8'
+//! c=short-light i=note-half o=note:96
+2 4'
+//! c=short-dark i=note-half o=note:100
+3 8' + 4'
+
+//! g="Sonatina Symphonic Orchestra/Keyboards" n="Organ Single Stops"
+//! id=8d22939e-6e93-2e43-a582-8919f9393ec2
+Bank * * Organ Single Stops
+
+//! c=#1c24cc i=note-half o=note:12
+1 Great Bourdon 16'
+//! c=#401ccc i=note-half o=note:13
+2 Great Open Diapason 8'
+//! c=#401ccc i=note-half o=note:14
+3 Great Stopped Diapason 8'
+//! c=#401ccc i=note-half o=note:15
+4 Great Dulciana 8'
+//! c=#6c1ccc i=note-half o=note:16
+5 Great Flute 4'
+//! c=#6c1ccc i=note-half o=note:17
+6 Great Principal 4'
+//! c=#981ccc i=note-half o=note:18
+7 Great Twelfth 3'
+//! c=#c41ccc i=note-half o=note:19
+8 Great Fifteenth 2'
+//! spacer=1
+//! c=#20a619 i=note-half o=note:20
+9 Swell Gamba 8'
+//! c=#20a619 i=note-half o=note:21
+10 Swell Gedact 8'
+//! c=#20a619 i=note-half o=note:22
+11 Swell Oboe 8'
+//! c=#19a69f i=note-half o=note:23
+12 Swell Octave 4'
+//! spacer=1
+//! c=#936112 i=note-half o=note:24
+13 Pedal Bourdon 16'
+//! c=#936112 i=note-half o=note:25
+14 Pedal Violon 16'
+
+//! g="Sonatina Symphonic Orchestra/Keyboards" n="Organ Combinations"
+//! id=15ee813a-072b-9846-8d13-e4b9d7fef9da
+Bank * * Organ Combinatins
+
+//! c=#11469a i=note-half o=note:12
+1 Great Mezzo piano
+//! c=#11469a i=note-half o=note:13
+2 Great Mezzo forte
+//! c=#11469a i=note-half o=note:14
+3 Great Forte
+//! c=#11469a i=note-half o=note:15
+4 Great Fortissimo
+//! c=#11469a i=note-half o=note:16
+5 Great Intense
+//! spacer=1
+//! c=#119a20 i=note-half o=note:17
+6 Swell Mezzo piano
+//! c=#119a20 i=note-half o=note:18
+7 Swell Mezzo forte
+//! c=#119a20 i=note-half o=note:19
+8 Swell Forte
+//! spacer=1
+//! c=#9a118b i=note-half o=note:20
+9 Pure solo
+//! c=#9a118b i=note-half o=note:21
+10 High solo
+//! c=#9a118b i=note-half o=note:22
+11 Intense Solo
+//! c=#9a118b i=note-half o=note:23
+12 Combined flutes
+//! spacer=1
+//! c=#9a6511 i=note-half o=note:24
+13 Low pedal
+//! c=#9a6511 i=note-half o=note:25
+14 Flute pedal Piano
+//! c=#9a6511 i=note-half o=note:26
+15 Flute Pedal Mezzo forte
+//! c=#9a6511 i=note-half o=note:27
+16 Oboe Pedal Mezzo piano
+//! c=#9a6511 i=note-half o=note:28
+17 Oboe Pedal Mezzo forte
+
+//! g="Sonatina Symphonic Orchestra/Keyboards" n="Organ All Stops"
+//! id=36f5addf-1caa-c844-bb9c-c093e56da0f4
+Bank * * Organ All Stops
+
+//! c=#1c24cc i=note-half o=cc:16,127
+1 ON Great Bourdon 16'
+//! c=#7276ca i=alt-x o=cc:16,0
+2 OFF Great Bourdon 16'
+//! c=#401ccc i=note-half o=cc:17,127
+3 ON Great Open Diapason 8'
+//! c=#8472ca i=alt-x o=cc:17,0
+4 OFF Great Open Diapason 8'
+//! c=#401ccc i=note-half o=cc:18,127
+5 ON Great Stopped Diapason 8'
+//! c=#8472ca i=alt-x o=cc:18,0
+6 OFF Great Stopped Diapason 8'
+//! c=#401ccc i=note-half o=cc:19,127
+7 ON Great Dulciana 8'
+//! c=#8472ca i=alt-x o=cc:19,0
+8 OFF Great Dulciana 8'
+//! c=#6c1ccc i=note-half o=cc:20,127
+9 ON Great Flute 4'
+//! c=#9a72ca i=alt-x o=cc:20,0
+10 OFF Great Flute 4'
+//! c=#6c1ccc i=note-half o=cc:21,127
+11 ON Great Principal 4'
+//! c=#9a72ca i=alt-x o=cc:21,0
+12 OFF Great Principal 4'
+//! c=#981ccc i=note-half o=cc:22,127
+13 ON Great Twelfth 3'
+//! c=#b072ca i=alt-x o=cc:22,0
+14 OFF Great Twelfth 3'
+//! c=#c41ccc i=note-half o=cc:23,127
+15 ON Great Fifteenth 2'
+//! c=#c672ca i=alt-x o=cc:23,0
+16 OFF Great Fifteenth 2'
+//! spacer=1
+//! c=#20a619 i=note-half o=cc:24,127
+17 ON Swell Gamba 8'
+//! c=#74b770 i=alt-x o=cc:24,0
+18 OFF Swell Gamba 8'
+//! c=#20a619 i=note-half o=cc:25,127
+19 ON Swell Gedact 8'
+//! c=#74b770 i=alt-x o=cc:25,0
+20 OFF Swell Gedact 8'
+//! c=#20a619 i=note-half o=cc:26,127
+21 ON Swell Oboe 8'
+//! c=#74b770 i=alt-x o=cc:26,0
+22 OFF Swell Oboe 8'
+//! c=#19a69f i=note-half o=cc:27,127
+23 ON Swell Octave 4'
+//! c=#70b7b3 i=alt-x o=cc:27,0
+24 OFF Swell Octave 4'
+//! spacer=1
+//! c=#936112 i=note-half o=cc:28,127
+25 ON Pedal Bourdon 16'
+//! c=#ad946d i=alt-x o=cc:28,0
+26 OFF Pedal Bourdon 16'
+//! c=#936112 i=note-half o=cc:29,127
+27 ON Pedal Violon 16'
+//! c=#ad946d i=alt-x o=cc:29,0
+28 OFF Pedal Violon 16'
