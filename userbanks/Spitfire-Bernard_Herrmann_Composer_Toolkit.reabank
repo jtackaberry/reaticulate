@@ -1,0 +1,70 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit
+// CREATOR: Scott Sadowsky
+//
+// NOTE: this file only includes a subset of instruments available in Spitfire Bernard
+// Herrmann Composer Toolkit
+//
+// https://github.com/jtackaberry/reaticulate/issues/243
+// https://github.com/jtackaberry/reaticulate/issues/244
+// https://github.com/jtackaberry/reaticulate/issues/245
+
+
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="Flutes and Clarinets"
+//! m="Set patch to UACC"
+//! id=9ed53529-cd37-4c09-a373-bdf58a2b609e
+Bank * * BHCT - Flutes and Clarinets
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=harmonics-natural	g=1	 	o=cc:32,3
+3 Long (Octave)
+
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+//! c=short 			i=harmonics-natural	g=1	 	o=cc:32,45
+45 Short (Octave)
+
+// -------------------- FX ----------------------
+//! c=fx		 			i=trill-min2 	g=1	 	o=cc:32,70
+70 Trill (min2)
+//! c=fx		 			i=trill-maj2 	g=1	 	o=cc:32,71
+71 Trill (maj2)
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="Piccolo and Flutes"
+//! m="Set patch to UACC"
+//! id=f2c4ebda-6d28-4f1a-95ab-93ab1b6aa095
+Bank * * BHCT - PICCOLO AND FLUTES
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+
+
+//----------------------------------------------------------------------------
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="Trumpet and Xylophone"
+//! m="Set patch to UACC"
+//! id=eed68bb7-c3ac-407a-9b43-21017a6184f7
+Bank * * BHCT - Trumpet and Xylophone
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=harmonics-natural	g=1	 	o=cc:32,3
+3 Long (Octave)
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+//! c=short-light		i=con-sord			g=1	 	o=cc:32,47
+47 Short (Muted)
+//! c=short 			i=harmonics-natural	g=1	 	o=cc:32,45
+45 Short (Octave)
+
