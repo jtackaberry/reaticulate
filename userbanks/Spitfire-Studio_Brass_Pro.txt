@@ -1,0 +1,804 @@
+//--------------------------------------------------
+// Source: Richard Gruet
+// https://github.com/jtackaberry/reaticulate/issues/190
+//
+// SPITFIRE STUDIO BRASS PRO
+// -------------------------
+// v1.0 - Created by Richard Gruet (rig) on June 28, 2022
+//
+// This includes the 8 instruments in the STUDIO BRASS library plus 9 additional
+// instruments only available in the PRO edition.
+//
+// This is an "all artics" set of definitions. Load the appropriate instrument
+// section(s) (core, decorative, legato) according to your actual artics use.
+//
+// **IMPORTANT**: due to a (reported) BUG in the library v 1.0.0b61 (the latest as
+// of August 2022), switch to "long (muted)" artic via UACC 7 only works for horns.
+// The WORKAROUND used here is to send UACC 26 instead of 7. This requires to
+// reassign the UACC for the artic, then follow these instructions:
+// https://www.youtube.com/watch?v=qbXTqXmgI2k
+
+//! g="Spitfire/Studio Brass Pro" n="Horn Solo 1"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=64ea652e-2ffe-4a81-9f28-25ea5b9bc1be
+Bank * * Spitfire SStB - Horn Solo 1
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long i=note-whole  o=cc:32,7
+7 long (stopped)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (stopped)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (stopped)
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (stopped)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=short i=marcato-half o=cc:32,53
+53 marcato (stopped)
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (stopped)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (stopped)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (stopped)
+
+//! c=long-dark i=note-whole o=cc:32,17
+17 bells up long
+
+//! c=short-light i=staccato  o=cc:32,49
+49 bells up staccato
+
+
+//! g="Spitfire/Studio Brass Pro" n="Horn Solo 2"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=ce017cf0-c3b4-441e-94f2-89b7a392513e
+Bank * * Spitfire SStB - Horn Solo 2
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long i=note-whole  o=cc:32,7
+7 long (stopped)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (stopped)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (stopped)
+
+//! c=long-light i=trill-min2 o=cc:32,70
+70 trill m2
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (stopped)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=short i=marcato-half o=cc:32,53
+53 marcato (stopped)
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (stopped)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (stopped)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (stopped)
+
+//! c=long-dark i=note-whole o=cc:32,17
+17 bells up long
+
+//! c=short-light i=staccato  o=cc:32,49
+49 bells up staccato
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Horns a4"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! clone="Spitfire/Studio Brass Pro/Horn Solo 2"
+//! id=e993fdac-b8bd-4c35-a81c-ed76ac14f6e0
+Bank * * Spitfire SStB - Horns a4
+
+//! c=long i=cuivre  o=cc:32,9
+9 long cuivre
+
+
+//! g="Spitfire/Studio Brass Pro" n="Piccolo Trumpet"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=c4536b79-460c-4be2-a119-3cd1eee44b18
+Bank * * Spitfire SStB - Piccolo Trumpet
+
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=trill-min2 o=cc:32,70
+70 trill m2
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Trumpet Solo 1"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=3ca2823f-b049-455a-a4ed-ecbcc3f6902c
+Bank * * Spitfire SStB - Trumpet Solo 1
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (muted)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (muted)
+
+//! c=long-light i=trill-min2 o=cc:32,70
+70 trill m2
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (muted)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (muted)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (muted)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Trumpet Solo 2"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=0cdb6606-fb80-49a6-82d8-f0612396a84e
+Bank * * Spitfire SStB - Trumpet Solo 2
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (muted)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (muted)
+
+//! c=long-light i=trill-min2 o=cc:32,70
+70 trill m2
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (muted)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Trumpets a2"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=98727121-24ad-4985-95e9-5ebc2519add6
+Bank * * Spitfire SStB - Trumpets a2
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=note-whole  o=cc:32,2
+2 long (ext. muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (muted)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (muted)
+
+//! c=long-light i=trill-min2 o=cc:32,70
+70 trill m2
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (muted)
+
+//! c=short i=staccatissimo-stopped o=cc:32,41
+41 stacc (ext. muted)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (muted)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (muted)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Bass Trumpet"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=4746d96e-334b-4910-aa83-f97c8205f9f1
+Bank * * Spitfire SStB - Bass Trumpet
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=trill-min2 o=cc:32,70
+70 trill m2
+
+//! c=long i=trill-maj2 o=cc:32,71
+71 trill M2
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Tenor Trombone Solo"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=a5366cc6-133e-47ad-9a7d-14b8a278fed1
+Bank * * Spitfire SStB - Tenor Trombone Solo
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (muted)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (muted)
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (muted)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (muted)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (muted)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Tenor Trombones a2"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! clone="Spitfire/Studio Brass Pro/Tenor Trombone Solo"
+//! id=d700b22f-a3b0-421b-b7f6-bf626c218dcb
+Bank * * Spitfire SStB - Tenor Trombones a2
+
+//! c=long i=cuivre  o=cc:32,9
+9 long cuivre
+
+//! g="Spitfire/Studio Brass Pro" n="Bass Trombone Solo"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=75603fd0-5782-44e3-8236-347e016fdcb9
+Bank * * Spitfire SStB - Bass Trombone Solo
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (muted)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (muted)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Bass Trombones a2"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=54123ab2-4ff9-4d28-a362-e600ff394a59
+Bank * * Spitfire SStB - Bass Trombones a2
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,12
+12 flutter (muted)
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=rip o=cc:32,108
+108 rip (muted)
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=fall o=cc:32,109
+109 fall (muted)
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+//! g="Spitfire/Studio Brass Pro" n="Contrabass Trombone"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=717cb3bc-596c-48a6-a2bc-d7f65a927bde
+Bank * * Spitfire SStB - Contrabass Trombone
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long i=tremolo-measured-sixteenth  o=cc:32,11
+11 flutter
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (muted)
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+//! c=long-light i=multitongued o=cc:32,75
+75 multitongued
+
+
+//! g="Spitfire/Studio Brass Pro" n="Tuba"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=f7ceefde-43f7-4503-84d8-f27fc08fd79a
+Bank * * Spitfire SStB - Tuba
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+// FIXME: replace 26 with 7 when library is fixed!
+//! c=long i=note-whole  o=cc:32,26
+7 long (muted)
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=long-light i=sfz o=cc:32,19
+19 long sfz (muted)
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=staccatissimo-stopped o=cc:32,47
+47 staccatissimo (muted)
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+//! c=short-light  i=cresc-half o=cc:32,106
+106 swell (muted)
+
+
+//! g="Spitfire/Studio Brass Pro" n="Contrabass Tuba"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=4b120409-ecb2-4f61-81f9-0492e31041e5
+Bank * * Spitfire SStB - Contrabass Tuba
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long-light i=sfz o=cc:32,18
+18 long sfz
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long-dark i=rip o=cc:32,100
+100 rip
+
+//! c=long-dark i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+
+//! g="Spitfire/Studio Brass Pro" n="Cimbasso"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=8fb46117-7a42-4377-899d-02715af0507f
+Bank * * Spitfire SStB - Cimbasso
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long i=cuivre  o=cc:32,9
+9 cuivre
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=short i=rip o=cc:32,100
+100 rip
+
+//! c=short i=fall o=cc:32,101
+101 fall
+
+//! c=long-dark i=cresc-half o=cc:32,102
+102 swell
+
+
+//! g="Spitfire/Studio Brass Pro" n="Euphonium"
+//! chase=1,11,16-21,64-69  m="Set patch to UACC"
+//! id=1e9bf90b-83c7-45c0-a8c3-305cfdbf810d
+Bank * * Spitfire SStB - Euphonium
+
+//! c=legato i=legato o=cc:32,20
+20 legato
+
+//! c=long i=note-whole  o=cc:32,1
+1 long
+
+//! c=long i=sfz  o=cc:32,18
+18 long sfz
+
+//! c=short i=staccatissimo-stopped o=cc:32,42
+42 staccatissimo
+
+//! c=short i=tenuto-quarter o=cc:32,50
+50 tenuto
+
+//! c=short i=marcato-half o=cc:32,52
+52 marcato
+
+//! c=long i=cresc-half  o=cc:32,102
+102 swell
