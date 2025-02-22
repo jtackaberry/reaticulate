@@ -1,0 +1,2905 @@
+//-------------------------------------------------
+// Soundiron Olympus Elements
+//
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/176
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Choral Effects"
+//! id=f6c2faed-b761-40e7-a7bc-16e26f6d9936
+Bank * * Choral Effects
+
+//! c=fx i=note-whole o=note:95
+1 M: Falls
+
+//! c=fx i=note-whole o=note:96
+2 M: H.Clstr
+
+//! c=fx i=note-whole o=note:97
+3 M: Risers
+
+//! c=fx i=note-whole o=note:98
+4 M: S.Clstr
+
+//! c=fx i=note-whole o=note:99
+5 M: Shouts
+
+//! c=fx i=note-whole o=note:100
+6 M: Clstr Ah
+
+//! c=fx i=note-whole o=note:101
+7 M: Clstr Ee
+
+//! c=fx i=note-whole o=note:102
+8 M: Clstr Eh
+
+//! c=fx i=note-whole o=note:103
+9 M: Whispers
+
+//! c=fx i=note-whole o=note:104
+10 M: Gliss
+
+//! c=textured i=note-whole o=note:105
+11 W: Drones
+
+//! c=textured i=note-whole o=note:106
+12 W: Falls
+
+//! c=textured i=note-whole o=note:107
+13 W: Risers
+
+//! c=textured i=note-whole o=note:108
+14 W: Shouts
+
+//! c=textured i=note-whole o=note:109
+15 W: Trills
+
+//! c=textured i=note-whole o=note:110
+16 W: Up-down
+
+//! c=textured i=note-whole o=note:111
+17 W: Clstr Ah
+
+//! c=textured i=note-whole o=note:112
+18 W: Clstr Ee
+
+//! c=textured i=note-whole o=note:113
+19 W:Clstr Eh
+
+//! c=textured i=note-whole o=note:114
+20 W:Clstr Ih
+
+//! c=textured i=note-whole o=note:115
+21 W: Clstr Mm
+
+//! c=textured i=note-whole o=note:116
+22 W:Clstr OH
+
+//! c=textured i=note-whole o=note:117
+23 W: Clstr Oo
+
+//! c=textured i=note-whole o=note:118
+24 W: V-morphs
+
+//! c=textured i=note-whole o=note:119
+25 W: Whispers
+
+//! c=short i=note-whole o=note:120
+26 All
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Marcato Ensemble"
+//! id=e97194b5-6134-4a39-bb10-8dfd726f5816
+Bank * * Marcato Ensemble
+
+//! c=long-dark i=marcato-quarter o=note:24
+1 M: Ah
+
+//! c=long-dark i=marcato-quarter o=note:25
+2 M: Ee
+
+//! c=long-dark i=marcato-quarter o=note:26
+3 M: Eh
+
+//! c=long-dark i=marcato-quarter o=note:27
+4 M: Ei
+
+//! c=long-dark i=marcato-quarter o=note:28
+5 M: Ih
+
+//! c=long-dark i=marcato-quarter o=note:29
+6 M: Mm
+
+//! c=long-dark i=marcato-quarter o=note:30
+7 M: Oh
+
+//! c=long-dark i=marcato-quarter o=note:31
+8 M: Oo
+
+//! c=short-dark i=marcato-quarter o=note:88
+9 W: Ah
+
+//! c=short-dark i=marcato-quarter o=note:89
+10 W: Ee
+
+//! c=short-dark i=marcato-quarter o=note:90
+11 W: Eh
+
+//! c=short-dark i=marcato-quarter o=note:91
+12 W: Ei
+
+//! c=short-dark i=marcato-quarter o=note:92
+13 W: Ih
+
+//! c=short-dark i=marcato-quarter o=note:93
+14 W: Mm
+
+//! c=short-dark i=marcato-quarter o=note:94
+15 W: Oh
+
+//! c=short-dark i=marcato-quarter o=note:95
+16 W: Oo
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Marcato Men Divisi"
+//! id=bbbf106a-36f4-407b-ab2c-d6ca70df3881
+Bank * * Marcato Men Divisi
+
+//! c=long-dark i=marcato-quarter o=note:24
+1 Bass: Ah
+
+//! c=long-dark i=marcato-quarter o=note:25
+2 Bass: Ee
+
+//! c=long-dark i=marcato-quarter o=note:26
+3 Bass: Eh
+
+//! c=long-dark i=marcato-quarter o=note:27
+4 Bass: Ei
+
+//! c=long-dark i=marcato-quarter o=note:28
+5 Bass: Ih
+
+//! c=long-dark i=marcato-quarter o=note:29
+6 Bass: Mm
+
+//! c=long-dark i=marcato-quarter o=note:30
+7 Bass: Oh
+
+//! c=long-dark i=marcato-quarter o=note:31
+8 Bass: Oo
+
+//! c=short-dark i=marcato-quarter o=note:86
+9 Tenor: Ah
+
+//! c=short-dark i=marcato-quarter o=note:87
+10 Tenor: Ee
+
+//! c=short-dark i=marcato-quarter o=note:88
+11 Tenor: Eh
+
+//! c=short-dark i=marcato-quarter o=note:89
+12 Tenor: Ei
+
+//! c=short-dark i=marcato-quarter o=note:90
+13 Tenor: Ih
+
+//! c=short-dark i=marcato-quarter o=note:91
+14 Tenor: Mm
+
+//! c=short-dark i=marcato-quarter o=note:92
+15 Tenor: Oh
+
+//! c=short-dark i=marcato-quarter o=note:93
+16 Tenor: Oo
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Marcato Men"
+//! id=b8cb8b75-00ac-46c4-a853-7113d2eaa019
+Bank * * Marcato Men
+
+//! c=long-dark i=marcato-quarter o=note:24
+1 Vowel 1: Ah
+
+//! c=long-dark i=marcato-quarter o=note:25
+2 Vowel 1: Ee
+
+//! c=long-dark i=marcato-quarter o=note:26
+3 Vowel 1: Eh
+
+//! c=long-dark i=marcato-quarter o=note:27
+4 Vowel 1: Ei
+
+//! c=long-dark i=marcato-quarter o=note:28
+5 Vowel 1: Ih
+
+//! c=long-dark i=marcato-quarter o=note:29
+6 Vowel 1: Mm
+
+//! c=long-dark i=marcato-quarter o=note:30
+7 Vowel 1: Oh
+
+//! c=long-dark i=marcato-quarter o=note:31
+8 Vowel 1: Oo
+
+//! c=short-dark i=marcato-quarter o=note:86
+9 Vowel 2: Ah
+
+//! c=short-dark i=marcato-quarter o=note:87
+10 Vowel 2: Ee
+
+//! c=short-dark i=marcato-quarter o=note:88
+11 Vowel 2: Eh
+
+//! c=short-dark i=marcato-quarter o=note:89
+12 Vowel 2: Ei
+
+//! c=short-dark i=marcato-quarter o=note:90
+13 Vowel 2: Ih
+
+//! c=short-dark i=marcato-quarter o=note:91
+14 Vowel 2: Mm
+
+//! c=short-dark i=marcato-quarter o=note:92
+15 Vowel 2: Oh
+
+//! c=short-dark i=marcato-quarter o=note:93
+16 Vowel 2: Oo
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Marcato Women Divisi"
+//! id=43960a77-094a-4f6d-aa7d-85fc1cba8737
+Bank * * Marcato Women Divisi
+
+//! c=long-dark i=marcato-quarter o=note:24
+1 Alto: Ah
+
+//! c=long-dark i=marcato-quarter o=note:25
+2 Alto: Ee
+
+//! c=long-dark i=marcato-quarter o=note:26
+3 Alto: Eh
+
+//! c=long-dark i=marcato-quarter o=note:27
+4 Alto: Ei
+
+//! c=long-dark i=marcato-quarter o=note:28
+5 Alto: Ih
+
+//! c=long-dark i=marcato-quarter o=note:29
+6 Alto: Mm
+
+//! c=long-dark i=marcato-quarter o=note:30
+7 Alto: Oh
+
+//! c=long-dark i=marcato-quarter o=note:31
+8 Alto: Oo
+
+//! c=short-dark i=marcato-quarter o=note:88
+9 Soprano: Ah
+
+//! c=short-dark i=marcato-quarter o=note:89
+10 Soprano: Ee
+
+//! c=short-dark i=marcato-quarter o=note:90
+11 Soprano: Eh
+
+//! c=short-dark i=marcato-quarter o=note:91
+12 Soprano: Ei
+
+//! c=short-dark i=marcato-quarter o=note:92
+13 Soprano: Ih
+
+//! c=short-dark i=marcato-quarter o=note:93
+14 Soprano: Mm
+
+//! c=short-dark i=marcato-quarter o=note:94
+15 Soprano: Oh
+
+//! c=short-dark i=marcato-quarter o=note:95
+16 Soprano: Oo
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Marcato Women"
+//! id=9833fe72-9a57-4a72-bc5a-865a49b0d577
+Bank * * Marcato Women
+
+//! c=long-dark i=marcato-quarter o=note:24
+1 Vowel 1: Ah
+
+//! c=long-dark i=marcato-quarter o=note:25
+2 Vowel 1: Ee
+
+//! c=long-dark i=marcato-quarter o=note:26
+3 Vowel 1: Eh
+
+//! c=long-dark i=marcato-quarter o=note:27
+4 Vowel 1: Ei
+
+//! c=long-dark i=marcato-quarter o=note:28
+5 Vowel 1: Ih
+
+//! c=long-dark i=marcato-quarter o=note:29
+6 Vowel 1: Mm
+
+//! c=long-dark i=marcato-quarter o=note:30
+7 Vowel 1: Oh
+
+//! c=long-dark i=marcato-quarter o=note:31
+8 Vowel 1: Oo
+
+//! c=short-dark i=marcato-quarter o=note:88
+9 Vowel 2: Ah
+
+//! c=short-dark i=marcato-quarter o=note:89
+10 Vowel 2: Ee
+
+//! c=short-dark i=marcato-quarter o=note:90
+11 Vowel 2: Eh
+
+//! c=short-dark i=marcato-quarter o=note:91
+12 Vowel 2: Ei
+
+//! c=short-dark i=marcato-quarter o=note:92
+13 Vowel 2: Ih
+
+//! c=short-dark i=marcato-quarter o=note:93
+14 Vowel 2: Mm
+
+//! c=short-dark i=marcato-quarter o=note:94
+15 Vowel 2: Oh
+
+//! c=short-dark i=marcato-quarter o=note:95
+16 Vowel 2: Oo
+
+//--------------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Staccato Ensemble"
+//! id=c46efd30-9490-4878-b132-cc0de82a4962
+Bank * * Staccato Ensemble
+
+//! c=short-dark i=staccato o=note:24
+1 M: Ah
+
+//! c=short-dark i=staccato o=note:25
+2 M: Ee
+
+//! c=short-dark i=staccato o=note:26
+3 M: Eh
+
+//! c=short-dark i=staccato o=note:27
+4 M: Ei
+
+//! c=short-dark i=staccato o=note:28
+5 M: Ih
+
+//! c=short-dark i=staccato o=note:29
+6 M: Mm
+
+//! c=short-dark i=staccato o=note:30
+7 M: Oh
+
+//! c=short-dark i=staccato o=note:31
+8 M: Oo
+
+//! c=short-light i=staccato o=note:86
+9 W: Ah
+
+//! c=short-light i=staccato o=note:87
+10 W: Ee
+
+//! c=short-light i=staccato o=note:88
+11 W: Eh
+
+//! c=short-light i=staccato o=note:89
+12 W: Ei
+
+//! c=short-light i=staccato o=note:90
+13 W: Ih
+
+//! c=short-light i=staccato o=note:91
+14 W: Mm
+
+//! c=short-light i=staccato o=note:92
+15 W: Oh
+
+//! c=short-light i=staccato o=note:93
+16 W: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Staccato Men Divisi"
+//! id=344abff6-02d5-423b-85e5-1071b2371d78
+Bank * * Staccato Men Divisi
+
+//! c=short-dark i=staccato o=note:24
+1 Bass: Ah
+
+//! c=short-dark i=staccato o=note:25
+2 Bass: Ee
+
+//! c=short-dark i=staccato o=note:26
+3 Bass: Eh
+
+//! c=short-dark i=staccato o=note:27
+4 Bass: Ei
+
+//! c=short-dark i=staccato o=note:28
+5 Bass: Ih
+
+//! c=short-dark i=staccato o=note:29
+6 Bass: Mm
+
+//! c=short-dark i=staccato o=note:30
+7 Bass: Oh
+
+//! c=short-dark i=staccato o=note:31
+8 Bass: Oo
+
+//! c=short-light i=staccato o=note:86
+9 Tenor: Ah
+
+//! c=short-light i=staccato o=note:87
+10 Tenor: Ee
+
+//! c=short-light i=staccato o=note:88
+11 Tenor: Eh
+
+//! c=short-light i=staccato o=note:89
+12 Tenor: Ei
+
+//! c=short-light i=staccato o=note:90
+13 Tenor: Ih
+
+//! c=short-light i=staccato o=note:91
+14 Tenor: Mm
+
+//! c=short-light i=staccato o=note:92
+15 Tenor: Oh
+
+//! c=short-light i=staccato o=note:93
+16 Tenor: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Staccato Men"
+//! id=2a7e6a6e-5996-44f3-8880-b48936f57d97
+Bank * * Staccato Men
+
+//! c=short-dark i=staccato o=note:24
+1 Vowel 1: Ah
+
+//! c=short-dark i=staccato o=note:25
+2 Vowel 1: Ee
+
+//! c=short-dark i=staccato o=note:26
+3 Vowel 1: Eh
+
+//! c=short-dark i=staccato o=note:27
+4 Vowel 1: Ei
+
+//! c=short-dark i=staccato o=note:28
+5 Vowel 1: Ih
+
+//! c=short-dark i=staccato o=note:29
+6 Vowel 1: Mm
+
+//! c=short-dark i=staccato o=note:30
+7 Vowel 1: Oh
+
+//! c=short-dark i=staccato o=note:31
+8 Vowel 1: Oo
+
+//! c=short-light i=staccato o=note:86
+9 Vowel 2: Ah
+
+//! c=short-light i=staccato o=note:87
+10 Vowel 2: Ee
+
+//! c=short-light i=staccato o=note:88
+11 Vowel 2: Eh
+
+//! c=short-light i=staccato o=note:89
+12 Vowel 2: Ei
+
+//! c=short-light i=staccato o=note:90
+13 Vowel 2: Ih
+
+//! c=short-light i=staccato o=note:91
+14 Vowel 2: Mm
+
+//! c=short-light i=staccato o=note:92
+15 Vowel 2: Oh
+
+//! c=short-light i=staccato o=note:93
+16 Vowel 2: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Staccato Women Divisi"
+//! id=7c395b2f-90ae-45af-91cb-39384b65a1e7
+Bank * * Staccato Women Divisi
+
+//! c=short-dark i=staccato o=note:24
+1 Alto: Ah
+
+//! c=short-dark i=staccato o=note:25
+2 Alto: Ee
+
+//! c=short-dark i=staccato o=note:26
+3 Alto: Eh
+
+//! c=short-dark i=staccato o=note:27
+4 Alto: Ei
+
+//! c=short-dark i=staccato o=note:28
+5 Alto: Ih
+
+//! c=short-dark i=staccato o=note:29
+6 Alto: Mm
+
+//! c=short-dark i=staccato o=note:30
+7 Alto: Oh
+
+//! c=short-dark i=staccato o=note:31
+8 Alto: Oo
+
+//! c=short-light i=staccato o=note:86
+9 Soprano: Ah
+
+//! c=short-light i=staccato o=note:87
+10 Soprano: Ee
+
+//! c=short-light i=staccato o=note:88
+11 Soprano: Eh
+
+//! c=short-light i=staccato o=note:89
+12 Soprano: Ei
+
+//! c=short-light i=staccato o=note:90
+13 Soprano: Ih
+
+//! c=short-light i=staccato o=note:91
+14 Tenor: Mm
+
+//! c=short-light i=staccato o=note:92
+15 Soprano: Oh
+
+//! c=short-light i=staccato o=note:93
+16 Soprano: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Staccato Women"
+//! id=8f19e040-6e0d-4260-9a3d-cb9ced26e1c6
+Bank * * Staccato Women
+
+//! c=short-dark i=staccato o=note:24
+1 Vowel 1: Ah
+
+//! c=short-dark i=staccato o=note:25
+2 Vowel 1: Ee
+
+//! c=short-dark i=staccato o=note:26
+3 Vowel 1: Eh
+
+//! c=short-dark i=staccato o=note:27
+4 Vowel 1: Ei
+
+//! c=short-dark i=staccato o=note:28
+5 Vowel 1: Ih
+
+//! c=short-dark i=staccato o=note:29
+6 Vowel 1: Mm
+
+//! c=short-dark i=staccato o=note:30
+7 Vowel 1: Oh
+
+//! c=short-dark i=staccato o=note:31
+8 Vowel 1: Oo
+
+//! c=short-light i=staccato o=note:86
+9 Vowel 2: Ah
+
+//! c=short-light i=staccato o=note:87
+10 Vowel 2: Ee
+
+//! c=short-light i=staccato o=note:88
+11 Vowel 2: Eh
+
+//! c=short-light i=staccato o=note:89
+12 Vowel 2: Ei
+
+//! c=short-light i=staccato o=note:90
+13 Vowel 2: Ih
+
+//! c=short-light i=staccato o=note:91
+14 Vowel 2: Mm
+
+//! c=short-light i=staccato o=note:92
+15 Vowel 2: Oh
+
+//! c=short-light i=staccato o=note:93
+16 Vowel 2: Oo
+
+//--------------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Sustain Ensemble"
+//! id=707515af-910d-43f6-af1b-89b3ab5925d7
+Bank * * Sustain Ensemble
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 W: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 W: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 W: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 W: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 W: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 W: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 W: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 W: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Sustain Men Divisi"
+//! id=adc804ac-e74d-4ce6-95fd-1d00c4d9ddc5
+Bank * * Sustain Men Divisi
+
+//! c=long-dark i=note-whole o=note:24
+1 Bass: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 Bass: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 Bass: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 Bass: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 Bass: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 Bass: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 Bass: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 Bass: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 Tenor: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 Tenor: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 Tenor: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 Tenor: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 Tenor: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 Tenor: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 Tenor: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 Tenor: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Sustain Men"
+//! id=c62988be-36b6-4321-abbc-f332e0f6a919
+Bank * * Sustain Men
+
+//! c=long-dark i=note-whole o=note:24
+1 Vowel 1: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 Vowel 1: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 Vowel 1: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 Vowel 1: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 Vowel 1: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 Vowel 1: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 Vowel 1: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 Vowel 1: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 Vowel 2: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 Vowel 2: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 Vowel 2: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 Vowel 2: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 Vowel 2: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 Vowel 2: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 Vowel 2: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 Vowel 2: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Sustain Women Divisi"
+//! id=20cb9d41-457e-4d54-abea-bdc68de70697
+Bank * * Sustain Women Divisi
+
+//! c=long-dark i=note-whole o=note:24
+1 Alto: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 Alto: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 Alto: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 Alto: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 Alto: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 Alto: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 Alto: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 Alto: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 Soprano: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 Soprano: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 Soprano: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 Soprano: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 Soprano: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 Soprano: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 Soprano: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 Soprano: Oo
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Sustain Women"
+//! id=e3882c91-9a29-4f7e-a714-c82c3448bbde
+Bank * * Sustain Women
+
+//! c=long-dark i=note-whole o=note:24
+1 Vowel 1: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 Vowel 1: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 Vowel 1: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 Vowel 1: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 Vowel 1: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 Vowel 1: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 Vowel 1: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 Vowel 1: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 Vowel 2: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 Vowel 2: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 Vowel 2: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 Vowel 2: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 Vowel 2: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 Vowel 2: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 Vowel 2: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 Vowel 2: Oo
+
+//--------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Legato Ensemble"
+//! id=fb5774ab-1811-47b6-939d-516bdc0effc7
+Bank * * Legato Ensemble
+
+//! c=legato i=legato o=note:0
+1 M: Ah
+
+//! c=legato i=legato o=note:1
+2 M: Oo
+
+//! c=legato-light i=legato o=note:86
+3 W: Ah
+
+//! c=legato-light i=legato o=note:87
+4 W: Oo
+
+//---------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Legato Men Divisi"
+//! id=ede37dbe-3c7d-4050-b4c4-c210cdd4b2c2
+Bank * * Legato Men Divisi
+
+//! c=legato i=legato o=note:24
+1 Bass: Ah
+
+//! c=legato i=legato o=note:25
+2 Bass: Oo
+
+//! c=legato i=legato o=note:86
+3 Tenor: Ah
+
+//! c=legato i=legato o=note:87
+4 Tenor: Oo
+
+//---------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Legato Men"
+//! id=55aa12e0-0474-48ee-8181-eeb847041e6d
+Bank * * Legato Men
+
+//! c=legato i=legato o=note:24
+1 Vowel 1: Ah
+
+//! c=legato i=legato o=note:25
+2 Vowel 1: Oo
+
+//! c=legato i=legato o=note:86
+3 Vowel 2: Ah
+
+//! c=legato i=legato o=note:87
+4 Vowel 2: Oo
+
+//---------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Legato Women Divisi"
+//! id=19a38208-421b-4d8f-b702-7d327c7a4453
+Bank * * Legato Women Divisi
+
+//! c=legato i=legato o=note:24
+1 Alto: Ah
+
+//! c=legato i=legato o=note:25
+2 Alto: Oo
+
+//! c=legato i=legato o=note:86
+3 Soprano: Ah
+
+//! c=legato i=legato o=note:87
+4 Soprano: Oo
+
+//---------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="LegatoWomen"
+//! id=ded90a86-ab32-491d-bd20-15d7c46fadb1
+Bank * * Legato Women
+
+//! c=legato i=legato o=note:24
+1 Vowel 1: Ah
+
+//! c=legato i=legato o=note:25
+2 Vowel 1: Oo
+
+//! c=legato i=legato o=note:86
+3 Vowel 2: Ah
+
+//! c=legato i=legato o=note:87
+4 Vowel 2: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Phrasemaster Ensemble"
+//! id=7017ad01-5964-4d07-9fd4-14fb73314a7b
+Bank * * Phrasemaster Ensemble
+
+//! c=short-light i=staccato o=note:102
+1 Staccato note
+
+//! c=short-dark i=marcato-quarter o=note:103
+2 Marcato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+3 phrase 1
+
+//! c=fx i=phrase o=note:25
+4 phrase 2
+
+//! c=fx i=phrase o=note:26
+5 phrase 3
+
+//! c=fx i=phrase o=note:27
+6 phrase 4
+
+//! c=fx i=phrase o=note:28
+7 phrase 5
+
+//! c=fx i=phrase o=note:29
+8 phrase 6
+
+//! c=fx i=phrase o=note:30
+9 phrase 7
+
+//! c=fx i=phrase o=note:31
+10 phrase 8
+
+//! c=fx i=phrase o=note:32
+11 phrase 9
+
+//! c=fx i=phrase o=note:33
+12 phrase 10
+
+//! c=fx i=phrase o=note:34
+13 phrase 11
+
+//! c=fx i=phrase o=note:35
+14 phrase 12
+
+//! c=fx i=phrase o=note:36
+15 phrase 13
+
+//! c=fx i=phrase o=note:37
+16 phrase 14
+
+//! c=fx i=phrase o=note:38
+17 phrase 15
+
+//! c=fx i=phrase o=note:39
+18 phrase 16
+
+//! c=textured i=note-quarter o=note:104
+19 Male vox on/off
+
+//! c=textured i=note-quarter o=note:105
+20 Female vox on/off
+
+//! spacer=1
+//! c=short i=note-quarter o=note:86
+21 start on 1
+
+//! c=short i=note-quarter o=note:87
+22 start on 2
+
+//! c=short i=note-quarter o=note:88
+23 start on 3
+
+//! c=short i=note-quarter o=note:89
+24 start on 4
+
+//! c=short i=note-quarter o=note:90
+25 start on 5
+
+//! c=short i=note-quarter o=note:91
+26 start on 6
+
+//! c=short i=note-quarter o=note:92
+27 start on 7
+
+//! c=short i=note-quarter o=note:93
+28 start on 8
+
+//! c=short i=note-quarter o=note:94
+29 start on 9
+
+//! c=short i=note-quarter o=note:95
+30 start on 10
+
+//! c=short i=note-quarter o=note:96
+31 start on 11
+
+//! c=short i=note-quarter o=note:97
+32 start on 12
+
+//! c=short i=note-quarter o=note:98
+33 start on 13
+
+//! c=short i=note-quarter o=note:99
+34 start on 14
+
+//! c=short i=note-quarter o=note:100
+35 start on 15
+
+//! c=short i=note-quarter o=note:101
+36 start on 16
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Phrasemaster Men"
+//! id=1a54b3c4-c3c5-411c-916f-c736c3f55bf8
+Bank * * Phrasemaster Men
+
+//! c=short-light i=staccato o=note:86
+1 Staccato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+2 phrase 1
+
+//! c=fx i=phrase o=note:25
+3 phrase 2
+
+//! c=fx i=phrase o=note:26
+4 phrase 3
+
+//! c=fx i=phrase o=note:27
+5 phrase 4
+
+//! c=fx i=phrase o=note:28
+6 phrase 5
+
+//! c=fx i=phrase o=note:29
+7 phrase 6
+
+//! c=fx i=phrase o=note:30
+8 phrase 7
+
+//! c=fx i=phrase o=note:31
+9 phrase 8
+
+//! c=fx i=phrase o=note:32
+10 phrase 9
+
+//! c=fx i=phrase o=note:33
+11 phrase 10
+
+//! c=fx i=phrase o=note:34
+12 phrase 11
+
+//! c=fx i=phrase o=note:35
+13 phrase 12
+
+//! c=fx i=phrase o=note:36
+14 phrase 13
+
+//! c=fx i=phrase o=note:37
+15 phrase 14
+
+//! c=fx i=phrase o=note:38
+16 phrase 15
+
+//! c=fx i=phrase o=note:39
+17 phrase 16
+
+//! c=short-dark i=marcato-quarter o=note:87
+18 Marcato note
+
+//! spacer=1
+//! c=short i=note-quarter o=note:89
+19 start on 1
+
+//! c=short i=note-quarter o=note:90
+20 start on 2
+
+//! c=short i=note-quarter o=note:91
+21 start on 3
+
+//! c=short i=note-quarter o=note:92
+22 start on 4
+
+//! c=short i=note-quarter o=note:93
+23 start on 5
+
+//! c=short i=note-quarter o=note:94
+24 start on 6
+
+//! c=short i=note-quarter o=note:95
+25 start on 7
+
+//! c=short i=note-quarter o=note:96
+26 start on 8
+
+//! c=short i=note-quarter o=note:97
+27 start on 9
+
+//! c=short i=note-quarter o=note:98
+28 start on 10
+
+//! c=short i=note-quarter o=note:99
+29 start on 11
+
+//! c=short i=note-quarter o=note:100
+30 start on 12
+
+//! c=short i=note-quarter o=note:101
+31 start on 13
+
+//! c=short i=note-quarter o=note:102
+32 start on 14
+
+//! c=short i=note-quarter o=note:103
+33 start on 15
+
+//! c=short i=note-quarter o=note:104
+34 start on 16
+
+//-----------------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Phrasemaster Women"
+//! id=7a1796b3-a02f-4d34-996a-692e0edb4240
+Bank * * Phrasemaster Women
+
+//! c=short-light i=staccato o=note:86
+1 Staccato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+2 phrase 1
+
+//! c=fx i=phrase o=note:25
+3 phrase 2
+
+//! c=fx i=phrase o=note:26
+4 phrase 3
+
+//! c=fx i=phrase o=note:27
+5 phrase 4
+
+//! c=fx i=phrase o=note:28
+6 phrase 5
+
+//! c=fx i=phrase o=note:29
+7 phrase 6
+
+//! c=fx i=phrase o=note:30
+8 phrase 7
+
+//! c=fx i=phrase o=note:31
+9 phrase 8
+
+//! c=fx i=phrase o=note:32
+10 phrase 9
+
+//! c=fx i=phrase o=note:33
+11 phrase 10
+
+//! c=fx i=phrase o=note:34
+12 phrase 11
+
+//! c=fx i=phrase o=note:35
+13 phrase 12
+
+//! c=fx i=phrase o=note:36
+14 phrase 13
+
+//! c=fx i=phrase o=note:37
+15 phrase 14
+
+//! c=fx i=phrase o=note:38
+16 phrase 15
+
+//! c=fx i=phrase o=note:39
+17 phrase 16
+
+//! c=short-dark i=marcato-quarter o=note:87
+18 Marcato note
+
+//! spacer=1
+//! c=short i=note-quarter o=note:88
+19 start on 1
+
+//! c=short i=note-quarter o=note:89
+20 start on 2
+
+//! c=short i=note-quarter o=note:90
+21 start on 3
+
+//! c=short i=note-quarter o=note:91
+22 start on 4
+
+//! c=short i=note-quarter o=note:92
+23 start on 5
+
+//! c=short i=note-quarter o=note:93
+24 start on 6
+
+//! c=short i=note-quarter o=note:94
+25 start on 7
+
+//! c=short i=note-quarter o=note:95
+26 start on 8
+
+//! c=short i=note-quarter o=note:96
+27 start on 9
+
+//! c=short i=note-quarter o=note:97
+28 start on 10
+
+//! c=short i=note-quarter o=note:98
+29 start on 11
+
+//! c=short i=note-quarter o=note:99
+30 start on 12
+
+//! c=short i=note-quarter o=note:100
+31 start on 13
+
+//! c=short i=note-quarter o=note:101
+32 start on 14
+
+//! c=short i=note-quarter o=note:102
+33 start on 15
+
+//! c=short i=note-quarter o=note:103
+34 start on 16
+
+//-----------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Vowel Master Ensemble"
+//! id=cd306014-0e71-49e5-a51a-61e9183d00d1
+Bank * * Vowel Master Ensemble
+
+//! c=long i=note-whole o=note:30
+1 Sustain
+
+//! c=short i=staccato o=note:31
+2 Staccato
+
+//! spacer=1
+//! c=long-dark i=note-eighth o=note:22
+3 M: Ah
+
+//! c=long-dark i=note-eighth o=note:23
+4 M: Ee
+
+//! c=long-dark i=note-eighth o=note:24
+5 M: Eh
+
+//! c=long-dark i=note-eighth o=note:25
+6 M: Ei
+
+//! c=long-dark i=note-eighth o=note:26
+7 M: Ih
+
+//! c=long-dark i=note-eighth o=note:27
+8 M: Mm
+
+//! c=long-dark i=note-eighth o=note:28
+9 M: Oh
+
+//! c=long-dark i=note-eighth o=note:29
+10 M: Oo
+
+//! c=long i=note-whole o=note:94
+11 Sustain
+
+//! c=short i=staccato o=note:95
+12 Staccato
+
+//! spacer=1
+//! c=short-dark i=note-eighth o=note:86
+13 W: Ah
+
+//! c=short-dark i=note-eighth o=note:87
+14 W: Ee
+
+//! c=short-dark i=note-eighth o=note:88
+15 W: Eh
+
+//! c=short-dark i=note-eighth o=note:89
+16 W: Ei
+
+//! c=short-dark i=note-eighth o=note:90
+17 W: Ih
+
+//! c=short-dark i=note-eighth o=note:91
+18 W: Mm
+
+//! c=short-dark i=note-eighth o=note:92
+19 W: Oh
+
+//! c=short-dark i=note-eighth o=note:93
+20 W: Oo
+
+//-----------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Vowel Master Men Divisi"
+//! id=3f42b0cc-7f75-4201-be4f-edae01306232
+Bank * * Vowel Master Men Divisi
+
+//! c=long i=note-whole o=note:30
+1 Sustain
+
+//! c=short i=staccato o=note:31
+2 Staccato
+
+//! spacer=1
+//! c=long-dark i=note-eighth o=note:22
+3 Bass: Ah
+
+//! c=long-dark i=note-eighth o=note:23
+4 Bass: Ee
+
+//! c=long-dark i=note-eighth o=note:24
+5 Bass: Eh
+
+//! c=long-dark i=note-eighth o=note:25
+6 Bass: Ei
+
+//! c=long-dark i=note-eighth o=note:26
+7 Bass: Ih
+
+//! c=long-dark i=note-eighth o=note:27
+8 Bass: Mm
+
+//! c=long-dark i=note-eighth o=note:28
+9 Bass: Oh
+
+//! c=long-dark i=note-eighth o=note:29
+10 Bass: Oo
+
+//! c=long i=note-whole o=note:94
+11 Sustain
+
+//! c=short i=staccato o=note:95
+12 Staccato
+
+//! spacer=1
+//! c=short-dark i=note-eighth o=note:86
+13 Tenor: Ah
+
+//! c=short-dark i=note-eighth o=note:87
+14 Tenor: Ee
+
+//! c=short-dark i=note-eighth o=note:88
+15 Tenor: Eh
+
+//! c=short-dark i=note-eighth o=note:89
+16 Tenor: Ei
+
+//! c=short-dark i=note-eighth o=note:90
+17 Tenor: Ih
+
+//! c=short-dark i=note-eighth o=note:91
+18 Tenor: Mm
+
+//! c=short-dark i=note-eighth o=note:92
+19 Tenor: Oh
+
+//! c=short-dark i=note-eighth o=note:93
+20 Tenor: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Vowel Master Men"
+//! id=035b93f8-7034-488f-aaff-2826a414bddf
+Bank * * Vowel Master Men
+
+//! c=long i=note-whole o=note:30
+1 Sustain
+
+//! c=short i=staccato o=note:31
+2 Staccato
+
+//! spacer=1
+//! c=long-dark i=note-eighth o=note:22
+3 Vowel 1: Ah
+
+//! c=long-dark i=note-eighth o=note:23
+4 Vowel 1: Ee
+
+//! c=long-dark i=note-eighth o=note:24
+5 Vowel 1: Eh
+
+//! c=long-dark i=note-eighth o=note:25
+6 Vowel 1: Ei
+
+//! c=long-dark i=note-eighth o=note:26
+7 Vowel 1: Ih
+
+//! c=long-dark i=note-eighth o=note:27
+8 Vowel 1: Mm
+
+//! c=long-dark i=note-eighth o=note:28
+9 Vowel 1: Oh
+
+//! c=long-dark i=note-eighth o=note:29
+10 Vowel 1: Oo
+
+//! c=long i=note-whole o=note:94
+11 Sustain
+
+//! c=short i=staccato o=note:95
+12 Staccato
+
+//! spacer=1
+//! c=short-dark i=note-eighth o=note:86
+13 Vowel 2: Ah
+
+//! c=short-dark i=note-eighth o=note:87
+14 Vowel 2: Ee
+
+//! c=short-dark i=note-eighth o=note:88
+15 Vowel 2: Eh
+
+//! c=short-dark i=note-eighth o=note:89
+16 Vowel 2: Ei
+
+//! c=short-dark i=note-eighth o=note:90
+17 Vowel 2: Ih
+
+//! c=short-dark i=note-eighth o=note:91
+18 Vowel 2: Mm
+
+//! c=short-dark i=note-eighth o=note:92
+19 Vowel 2: Oh
+
+//! c=short-dark i=note-eighth o=note:93
+20 Vowel 2: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Vowel Master Women Divisi"
+//! id=12ff5ad3-84d9-45c2-bde2-c9b0e8d9985c
+Bank * * Vowel Women Divisi
+
+//! c=long i=note-whole o=note:30
+1 Sustain
+
+//! c=short i=staccato o=note:31
+2 Staccato
+
+//! spacer=1
+//! c=long-dark i=note-eighth o=note:22
+3 Alto: Ah
+
+//! c=long-dark i=note-eighth o=note:23
+4 Alto: Ee
+
+//! c=long-dark i=note-eighth o=note:24
+5 Alto: Eh
+
+//! c=long-dark i=note-eighth o=note:25
+6 Alto: Ei
+
+//! c=long-dark i=note-eighth o=note:26
+7 Alto: Ih
+
+//! c=long-dark i=note-eighth o=note:27
+8 Alto: Mm
+
+//! c=long-dark i=note-eighth o=note:28
+9 Alto: Oh
+
+//! c=long-dark i=note-eighth o=note:29
+10 Alto: Oo
+
+//! c=long i=note-whole o=note:94
+11 Sustain
+
+//! c=short i=staccato o=note:95
+12 Staccato
+
+//! spacer=1
+//! c=short-dark i=note-eighth o=note:86
+13 Soprano: Ah
+
+//! c=short-dark i=note-eighth o=note:87
+14 Soprano: Ee
+
+//! c=short-dark i=note-eighth o=note:88
+15 Soprano: Eh
+
+//! c=short-dark i=note-eighth o=note:89
+16 Soprano: Ei
+
+//! c=short-dark i=note-eighth o=note:90
+17 Soprano: Ih
+
+//! c=short-dark i=note-eighth o=note:91
+18 Soprano: Mm
+
+//! c=short-dark i=note-eighth o=note:92
+19 Soprano: Oh
+
+//! c=short-dark i=note-eighth o=note:93
+20 Soprano: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements" n="Vowel Master Women"
+//! id=36a02c57-381d-42e2-98bb-8573f40c4f14
+Bank * * Vowel Master Women
+
+//! c=long i=note-whole o=note:30
+1 Sustain
+
+//! c=short i=staccato o=note:31
+2 Staccato
+
+//! spacer=1
+//! c=long-dark i=note-eighth o=note:22
+3 Vowel 1: Ah
+
+//! c=long-dark i=note-eighth o=note:23
+4 Vowel 1: Ee
+
+//! c=long-dark i=note-eighth o=note:24
+5 Vowel 1: Eh
+
+//! c=long-dark i=note-eighth o=note:25
+6 Vowel 1: Ei
+
+//! c=long-dark i=note-eighth o=note:26
+7 Vowel 1: Ih
+
+//! c=long-dark i=note-eighth o=note:27
+8 Vowel 1: Mm
+
+//! c=long-dark i=note-eighth o=note:28
+9 Vowel 1: Oh
+
+//! c=long-dark i=note-eighth o=note:29
+10 Vowel 1: Oo
+
+//! c=long i=note-whole o=note:94
+11 Sustain
+
+//! c=short i=staccato o=note:95
+12 Staccato
+
+//! spacer=1
+//! c=short-dark i=note-eighth o=note:86
+13 Vowel 2: Ah
+
+//! c=short-dark i=note-eighth o=note:87
+14 Vowel 2: Ee
+
+//! c=short-dark i=note-eighth o=note:88
+15 Vowel 2: Eh
+
+//! c=short-dark i=note-eighth o=note:89
+16 Vowel 2: Ei
+
+//! c=short-dark i=note-eighth o=note:90
+17 Vowel 2: Ih
+
+//! c=short-dark i=note-eighth o=note:91
+18 Vowel 2: Mm
+
+//! c=short-dark i=note-eighth o=note:92
+19 Vowel 2: Oh
+
+//! c=short-dark i=note-eighth o=note:93
+20 Vowel 2: Oo
+
+//-----------------------------------------------------
+// Olympus Elements Custom FX
+//
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Aggro Men"
+//! id=25363e22-6b41-4ba7-9796-12700a937346
+Bank * * Aggro Men
+
+//! c=long-dark i=note-whole o=note:24
+1 Vowel 1: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 Vowel 1: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 Vowel 1: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 Vowel 1: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 Vowel 1: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 Vowel 1: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 Vowel 1: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 Vowel 1: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 Vowel 2: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 Vowel 2: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 Vowel 2: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 Vowel 2: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 Vowel 2: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 Vowel 2: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 Vowel 2: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 Vowel 2: Oo
+
+//--------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Altogether Now"
+//! id=62914961-3aa1-4d2c-b8c4-ca3e824f4f7d
+Bank * * Altogether Now
+
+//! c=long i=note-whole o=note:0
+1 M: Ah
+
+//! c=long i=note-whole o=note:1
+2 M: Oo
+
+//! c=short i=note-whole o=note:86
+3 W: Ah
+
+//! c=short i=note-whole o=note:87
+4 W: Oo
+
+//----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Church Hymmm"
+//! id=cc58ef8e-ddf5-48d2-97ea-4e5e6f8fe37e
+Bank * * Church Hymmm
+
+//! c=long i=note-whole o=note:30
+1 Sustain
+
+//! c=short i=staccato o=note:31
+2 Staccato
+
+//! spacer=1
+//! c=long-dark i=note-eighth o=note:22
+3 M: Ah
+
+//! c=long-dark i=note-eighth o=note:23
+4 M: Ee
+
+//! c=long-dark i=note-eighth o=note:24
+5 M: Eh
+
+//! c=long-dark i=note-eighth o=note:25
+6 M: Ei
+
+//! c=long-dark i=note-eighth o=note:26
+7 M: Ih
+
+//! c=long-dark i=note-eighth o=note:27
+8 M: Mm
+
+//! c=long-dark i=note-eighth o=note:28
+9 M: Oh
+
+//! c=long-dark i=note-eighth o=note:29
+10 M: Oo
+
+//! c=long i=note-whole o=note:94
+11 Sustain
+
+//! c=short i=staccato o=note:95
+12 Staccato
+
+//! spacer=1
+//! c=short-dark i=note-eighth o=note:86
+13 W: Ah
+
+//! c=short-dark i=note-eighth o=note:87
+14 W: Ee
+
+//! c=short-dark i=note-eighth o=note:88
+15 W: Eh
+
+//! c=short-dark i=note-eighth o=note:89
+16 W: Ei
+
+//! c=short-dark i=note-eighth o=note:90
+17 W: Ih
+
+//! c=short-dark i=note-eighth o=note:91
+18 W: Mm
+
+//! c=short-dark i=note-eighth o=note:92
+19 W: Oh
+
+//! c=short-dark i=note-eighth o=note:93
+20 W: Oo
+
+//------------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Enter The Gates"
+//! id=a0471a5d-2514-4a0f-945e-d34704b6bf2c
+Bank * * Enter The Gates
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=short-dark i=note-whole o=note:86
+9 W: Ah
+
+//! c=short-dark i=note-whole o=note:87
+10 W: Ee
+
+//! c=short-dark i=note-whole o=note:88
+11 W: Eh
+
+//! c=short-dark i=note-whole o=note:89
+12 W: Ei
+
+//! c=short-dark i=note-whole o=note:90
+13 W: Ih
+
+//! c=short-dark i=note-whole o=note:91
+14 W: Mm
+
+//! c=short-dark i=note-whole o=note:92
+15 W: Oh
+
+//! c=short-dark i=note-whole o=note:93
+16 W: Oo
+
+//------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Epic Phrases"
+//! id=34139077-c608-42a0-a0a0-b286d0f154ca
+Bank * * Epic Phrases
+
+//! c=short-light i=staccato o=note:102
+1 Staccato note
+
+//! c=short-dark i=marcato-quarter o=note:103
+2 Marcato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+3 phrase 1
+
+//! c=fx i=phrase o=note:25
+4 phrase 2
+
+//! c=fx i=phrase o=note:26
+5 phrase 3
+
+//! c=textured i=note-quarter o=note:104
+19 Male vox on/off
+
+//! c=textured i=note-quarter o=note:105
+20 Female vox on/off
+
+//! spacer=1
+//! c=short i=note-quarter o=note:86
+21 start on 1
+
+//! c=short i=note-quarter o=note:87
+22 start on 2
+
+//! c=short i=note-quarter o=note:88
+23 start on 3
+
+//! c=short i=note-quarter o=note:89
+24 start on 4
+
+//! c=short i=note-quarter o=note:90
+25 start on 5
+
+//! c=short i=note-quarter o=note:91
+26 start on 6
+
+//! c=short i=note-quarter o=note:92
+27 start on 7
+
+//! c=short i=note-quarter o=note:93
+28 start on 8
+
+//! c=short i=note-quarter o=note:94
+29 start on 9
+
+//! c=short i=note-quarter o=note:95
+30 start on 10
+
+//! c=short i=note-quarter o=note:96
+31 start on 11
+
+//! c=short i=note-quarter o=note:97
+32 start on 12
+
+//! c=short i=note-quarter o=note:98
+33 start on 13
+
+//! c=short i=note-quarter o=note:99
+34 start on 14
+
+//! c=short i=note-quarter o=note:100
+35 start on 15
+
+//! c=short i=note-quarter o=note:101
+36 start on 16
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Brave New World"
+//! id=58da2d5b-8f8f-40a3-83ee-a9d1412fc29d
+Bank * * Brave New World
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=short-dark i=note-whole o=note:86
+9 W: Ah
+
+//! c=short-dark i=note-whole o=note:87
+10 W: Ee
+
+//! c=short-dark i=note-whole o=note:88
+11 W: Eh
+
+//! c=short-dark i=note-whole o=note:89
+12 W: Ei
+
+//! c=short-dark i=note-whole o=note:90
+13 W: Ih
+
+//! c=short-dark i=note-whole o=note:91
+14 W: Mm
+
+//! c=short-dark i=note-whole o=note:92
+15 W: Oh
+
+//! c=short-dark i=note-whole o=note:93
+16 W: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Flipped"
+//! id=e6cd8ccd-e52d-4b83-b972-d01b569b6f93
+Bank * * Flipped
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=short-dark i=note-whole o=note:86
+9 W: Ah
+
+//! c=short-dark i=note-whole o=note:87
+10 W: Ee
+
+//! c=short-dark i=note-whole o=note:88
+11 W: Eh
+
+//! c=short-dark i=note-whole o=note:89
+12 W: Ei
+
+//! c=short-dark i=note-whole o=note:90
+13 W: Ih
+
+//! c=short-dark i=note-whole o=note:91
+14 W: Mm
+
+//! c=short-dark i=note-whole o=note:92
+15 W: Oh
+
+//! c=short-dark i=note-whole o=note:93
+16 W: Oo
+
+//------------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Gregorian Men"
+//! id=a981c009-1e24-44c0-969e-3ef8f4c2ad56
+Bank * * Gregorian Men
+
+//! c=long-dark i=note-whole o=note:24
+1 Vowel 1: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 Vowel 1: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 Vowel 1: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 Vowel 1: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 Vowel 1: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 Vowel 1: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 Vowel 1: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 Vowel 1: Oo
+
+//! c=long-light i=note-whole o=note:86
+9 Vowel 2: Ah
+
+//! c=long-light i=note-whole o=note:87
+10 Vowel 2: Ee
+
+//! c=long-light i=note-whole o=note:88
+11 Vowel 2: Eh
+
+//! c=long-light i=note-whole o=note:89
+12 Vowel 2: Ei
+
+//! c=long-light i=note-whole o=note:90
+13 Vowel 2: Ih
+
+//! c=long-light i=note-whole o=note:91
+14 Vowel 2: Mm
+
+//! c=long-light i=note-whole o=note:92
+15 Vowel 2: Oh
+
+//! c=long-light i=note-whole o=note:93
+16 Vowel 2: Oo
+
+//------------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Halogato Men"
+//! id=b2f61cfd-4a71-49b9-89a5-8625e5a82ac7
+Bank * * Halogato Men
+
+//! c=legato i=legato o=note:24
+1 Bass: Ah
+
+//! c=legato i=legato o=note:25
+2 Bass: Oo
+
+//! c=legato i=legato o=note:86
+3 Tenor: Ah
+
+//! c=legato i=legato o=note:87
+4 Tenor: Oo
+
+//------------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Lovely Legato"
+//! id=1c7ebab6-e92d-4e8c-a005-470c60b90de4
+Bank * * Lovely Legato
+
+//! c=legato i=legato o=note:24
+1 Vowel 1: Ah
+
+//! c=legato i=legato o=note:25
+2 Vowel 1: Oo
+
+//! c=legato i=legato o=note:86
+3 Vowel 2: Ah
+
+//! c=legato i=legato o=note:87
+4 Vowel 2: Oo
+
+//------------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Magical Swells"
+//! id=57822613-ccf7-42ff-96ab-0f452de030c0
+Bank * * Magical Swells
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=short-dark i=note-whole o=note:86
+9 W: Ah
+
+//! c=short-dark i=note-whole o=note:87
+10 W: Ee
+
+//! c=short-dark i=note-whole o=note:88
+11 W: Eh
+
+//! c=short-dark i=note-whole o=note:89
+12 W: Ei
+
+//! c=short-dark i=note-whole o=note:90
+13 W: Ih
+
+//! c=short-dark i=note-whole o=note:91
+14 W: Mm
+
+//! c=short-dark i=note-whole o=note:92
+15 W: Oh
+
+//! c=short-dark i=note-whole o=note:93
+16 W: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Mars vs Venus"
+//! id=f9ff9466-6f11-4e18-a0ac-a9c60e352e67
+Bank * * Mars vs Venus
+
+//! c=short-light i=staccato o=note:102
+1 Staccato note
+
+//! c=short-dark i=marcato-quarter o=note:103
+2 Marcato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+3 phrase 1
+
+//! c=fx i=phrase o=note:25
+4 phrase 2
+
+//! c=fx i=phrase o=note:26
+5 phrase 3
+
+//! c=fx i=phrase o=note:27
+6 phrase 4
+
+//! c=fx i=phrase o=note:28
+7 phrase 5
+
+//! c=fx i=phrase o=note:29
+8 phrase 6
+
+//! c=fx i=phrase o=note:30
+9 phrase 7
+
+//! c=fx i=phrase o=note:31
+10 phrase 8
+
+//! c=fx i=phrase o=note:32
+11 phrase 9
+
+//! c=fx i=phrase o=note:33
+12 phrase 10
+
+//! c=fx i=phrase o=note:34
+13 phrase 11
+
+//! c=fx i=phrase o=note:35
+14 phrase 12
+
+//! c=fx i=phrase o=note:36
+15 phrase 13
+
+//! c=fx i=phrase o=note:37
+16 phrase 14
+
+//! c=fx i=phrase o=note:38
+17 phrase 15
+
+//! c=fx i=phrase o=note:39
+18 phrase 16
+
+//! c=textured i=note-quarter o=note:104
+19 Male vox on/off
+
+//! c=textured i=note-quarter o=note:105
+20 Female vox on/off
+
+//! spacer=1
+//! c=short i=note-quarter o=note:86
+21 start on 1
+
+//! c=short i=note-quarter o=note:87
+22 start on 2
+
+//! c=short i=note-quarter o=note:88
+23 start on 3
+
+//! c=short i=note-quarter o=note:89
+24 start on 4
+
+//! c=short i=note-quarter o=note:90
+25 start on 5
+
+//! c=short i=note-quarter o=note:91
+26 start on 6
+
+//! c=short i=note-quarter o=note:92
+27 start on 7
+
+//! c=short i=note-quarter o=note:93
+28 start on 8
+
+//! c=short i=note-quarter o=note:94
+29 start on 9
+
+//! c=short i=note-quarter o=note:95
+30 start on 10
+
+//! c=short i=note-quarter o=note:96
+31 start on 11
+
+//! c=short i=note-quarter o=note:97
+32 start on 12
+
+//! c=short i=note-quarter o=note:98
+33 start on 13
+
+//! c=short i=note-quarter o=note:99
+34 start on 14
+
+//! c=short i=note-quarter o=note:100
+35 start on 15
+
+//! c=short i=note-quarter o=note:101
+36 start on 16
+
+//-------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Nori"
+//! id=598ae732-7194-4591-9c61-a3e1fa9b2bdb
+Bank * * Nori
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=short-dark i=note-whole o=note:86
+9 W: Ah
+
+//! c=short-dark i=note-whole o=note:87
+10 W: Ee
+
+//! c=short-dark i=note-whole o=note:88
+11 W: Eh
+
+//! c=short-dark i=note-whole o=note:89
+12 W: Ei
+
+//! c=short-dark i=note-whole o=note:90
+13 W: Ih
+
+//! c=short-dark i=note-whole o=note:91
+14 W: Mm
+
+//! c=short-dark i=note-whole o=note:92
+15 W: Oh
+
+//! c=short-dark i=note-whole o=note:93
+16 W: Oo
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Open Fields"
+//! id=001219ae-db39-4c8a-a1b9-4505212a72c8
+Bank * * Open Fields
+
+//! c=short-light i=staccato o=note:102
+1 Staccato note
+
+//! c=short-dark i=marcato-quarter o=note:103
+2 Marcato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+3 phrase 1
+
+//! c=fx i=phrase o=note:25
+4 phrase 2
+
+//! c=fx i=phrase o=note:26
+5 phrase 3
+
+//! c=fx i=phrase o=note:27
+6 phrase 4
+
+//! c=fx i=phrase o=note:28
+7 phrase 5
+
+//! c=fx i=phrase o=note:29
+8 phrase 6
+
+//! c=fx i=phrase o=note:30
+9 phrase 7
+
+//! c=fx i=phrase o=note:31
+10 phrase 8
+
+//! c=fx i=phrase o=note:32
+11 phrase 9
+
+//! c=fx i=phrase o=note:33
+12 phrase 10
+
+//! c=fx i=phrase o=note:34
+13 phrase 11
+
+//! c=fx i=phrase o=note:35
+14 phrase 12
+
+//! c=fx i=phrase o=note:36
+15 phrase 13
+
+//! c=fx i=phrase o=note:37
+16 phrase 14
+
+//! c=fx i=phrase o=note:38
+17 phrase 15
+
+//! c=fx i=phrase o=note:39
+18 phrase 16
+
+//! c=textured i=note-quarter o=note:104
+19 Male vox on/off
+
+//! c=textured i=note-quarter o=note:105
+20 Female vox on/off
+
+//! spacer=1
+//! c=short i=note-quarter o=note:86
+21 start on 1
+
+//! c=short i=note-quarter o=note:87
+22 start on 2
+
+//! c=short i=note-quarter o=note:88
+23 start on 3
+
+//! c=short i=note-quarter o=note:89
+24 start on 4
+
+//! c=short i=note-quarter o=note:90
+25 start on 5
+
+//! c=short i=note-quarter o=note:91
+26 start on 6
+
+//! c=short i=note-quarter o=note:92
+27 start on 7
+
+//! c=short i=note-quarter o=note:93
+28 start on 8
+
+//! c=short i=note-quarter o=note:94
+29 start on 9
+
+//! c=short i=note-quarter o=note:95
+30 start on 10
+
+//! c=short i=note-quarter o=note:96
+31 start on 11
+
+//! c=short i=note-quarter o=note:97
+32 start on 12
+
+//! c=short i=note-quarter o=note:98
+33 start on 13
+
+//! c=short i=note-quarter o=note:99
+34 start on 14
+
+//! c=short i=note-quarter o=note:100
+35 start on 15
+
+//! c=short i=note-quarter o=note:101
+36 start on 16
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Hallway Shouts"
+//! id=86342ec3-dfc8-40e2-8a5a-b0adc140cf87
+Bank * * Hallway Shouts
+
+//! c=fx i=note-whole o=note:95
+1 M: Falls
+
+//! c=fx i=note-whole o=note:96
+2 M: H.Clstr
+
+//! c=fx i=note-whole o=note:97
+3 M: Risers
+
+//! c=fx i=note-whole o=note:98
+4 M: S.Clstr
+
+//! c=fx i=note-whole o=note:99
+5 M: Shouts
+
+//! c=fx i=note-whole o=note:100
+6 M: Clstr Ah
+
+//! c=fx i=note-whole o=note:101
+7 M: Clstr Ee
+
+//! c=fx i=note-whole o=note:102
+8 M: Clstr Eh
+
+//! c=fx i=note-whole o=note:103
+9 M: Whispers
+
+//! c=fx i=note-whole o=note:104
+10 M: Gliss
+
+//! c=textured i=note-whole o=note:105
+11 W: Drones
+
+//! c=textured i=note-whole o=note:106
+12 W: Falls
+
+//! c=textured i=note-whole o=note:107
+13 W: Risers
+
+//! c=textured i=note-whole o=note:108
+14 W: Shouts
+
+//! c=textured i=note-whole o=note:109
+15 W: Trills
+
+//! c=textured i=note-whole o=note:110
+16 W: Up-down
+
+//! c=textured i=note-whole o=note:111
+17 W: Clstr Ah
+
+//! c=textured i=note-whole o=note:112
+18 W: Clstr Ee
+
+//! c=textured i=note-whole o=note:113
+19 W:Clstr Eh
+
+//! c=textured i=note-whole o=note:114
+20 W:Clstr Ih
+
+//! c=textured i=note-whole o=note:115
+21 W: Clstr Mm
+
+//! c=textured i=note-whole o=note:116
+22 W:Clstr OH
+
+//! c=textured i=note-whole o=note:117
+23 W: Clstr Oo
+
+//! c=textured i=note-whole o=note:118
+24 W: V-morphs
+
+//! c=textured i=note-whole o=note:119
+25 W: Whispers
+
+//! c=short i=note-whole o=note:120
+26 All
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Pandemoneum"
+//! id=b86cde02-c5cf-4478-a159-a5f60d3c7754
+Bank * * Pandemoneum
+
+//! c=fx i=note-whole o=note:95
+1 M: Falls
+
+//! c=fx i=note-whole o=note:96
+2 M: H.Clstr
+
+//! c=fx i=note-whole o=note:97
+3 M: Risers
+
+//! c=fx i=note-whole o=note:98
+4 M: S.Clstr
+
+//! c=fx i=note-whole o=note:99
+5 M: Shouts
+
+//! c=fx i=note-whole o=note:100
+6 M: Clstr Ah
+
+//! c=fx i=note-whole o=note:101
+7 M: Clstr Ee
+
+//! c=fx i=note-whole o=note:102
+8 M: Clstr Eh
+
+//! c=fx i=note-whole o=note:103
+9 M: Whispers
+
+//! c=fx i=note-whole o=note:104
+10 M: Gliss
+
+//! c=textured i=note-whole o=note:105
+11 W: Drones
+
+//! c=textured i=note-whole o=note:106
+12 W: Falls
+
+//! c=textured i=note-whole o=note:107
+13 W: Risers
+
+//! c=textured i=note-whole o=note:108
+14 W: Shouts
+
+//! c=textured i=note-whole o=note:109
+15 W: Trills
+
+//! c=textured i=note-whole o=note:110
+16 W: Up-down
+
+//! c=textured i=note-whole o=note:111
+17 W: Clstr Ah
+
+//! c=textured i=note-whole o=note:112
+18 W: Clstr Ee
+
+//! c=textured i=note-whole o=note:113
+19 W:Clstr Eh
+
+//! c=textured i=note-whole o=note:114
+20 W:Clstr Ih
+
+//! c=textured i=note-whole o=note:115
+21 W: Clstr Mm
+
+//! c=textured i=note-whole o=note:116
+22 W:Clstr OH
+
+//! c=textured i=note-whole o=note:117
+23 W: Clstr Oo
+
+//! c=textured i=note-whole o=note:118
+24 W: V-morphs
+
+//! c=textured i=note-whole o=note:119
+25 W: Whispers
+
+//! c=short i=note-whole o=note:120
+26 All
+
+//------------------------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Peaceful Women"
+//! id=96a43762-9b34-4e71-a838-767466ca7a87
+Bank * * Peaceful Women
+
+//! c=short-dark i=note-whole o=note:24
+1 Vowel 1: Ah
+
+//! c=short-dark i=note-whole o=note:25
+2 Vowel 1: Ee
+
+//! c=short-dark i=note-whole o=note:26
+3 Vowel 1: Eh
+
+//! c=short-dark i=note-whole o=note:27
+4 Vowel 1: Ei
+
+//! c=short-dark i=note-whole o=note:28
+5 Vowel 1: Ih
+
+//! c=short-dark i=note-whole o=note:29
+6 Vowel 1: Mm
+
+//! c=short-dark i=note-whole o=note:30
+7 Vowel 1: Oh
+
+//! c=short-dark i=note-whole o=note:31
+8 Vowel 1: Oo
+
+//! c=short-light i=note-whole o=note:86
+9 Vowel 2: Ah
+
+//! c=short-light i=note-whole o=note:87
+10 Vowel 2: Ee
+
+//! c=short-light i=note-whole o=note:88
+11 Vowel 2: Eh
+
+//! c=short-light i=note-whole o=note:89
+12 Vowel 2: Ei
+
+//! c=short-light i=note-whole o=note:90
+13 Vowel 2: Ih
+
+//! c=short-light i=note-whole o=note:91
+14 Vowel 2: Mm
+
+//! c=short-light i=note-whole o=note:92
+15 Vowel 2: Oh
+
+//! c=short-light i=note-whole o=note:93
+16 Vowel 2: Oo
+
+//-------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Reverse Choir"
+//! id=160ad433-b5cd-4834-8491-5612c74a1f74
+Bank * * Reverse Choir
+
+//! c=fx i=note-whole o=note:95
+1 M: Falls
+
+//! c=fx i=note-whole o=note:96
+2 M: H.Clstr
+
+//! c=fx i=note-whole o=note:97
+3 M: Risers
+
+//! c=fx i=note-whole o=note:98
+4 M: S.Clstr
+
+//! c=fx i=note-whole o=note:99
+5 M: Shouts
+
+//! c=fx i=note-whole o=note:100
+6 M: Clstr Ah
+
+//! c=fx i=note-whole o=note:101
+7 M: Clstr Ee
+
+//! c=fx i=note-whole o=note:102
+8 M: Clstr Eh
+
+//! c=fx i=note-whole o=note:103
+9 M: Whispers
+
+//! c=fx i=note-whole o=note:104
+10 M: Gliss
+
+//! c=textured i=note-whole o=note:105
+11 W: Drones
+
+//! c=textured i=note-whole o=note:106
+12 W: Falls
+
+//! c=textured i=note-whole o=note:107
+13 W: Risers
+
+//! c=textured i=note-whole o=note:108
+14 W: Shouts
+
+//! c=textured i=note-whole o=note:109
+15 W: Trills
+
+//! c=textured i=note-whole o=note:110
+16 W: Up-down
+
+//! c=textured i=note-whole o=note:111
+17 W: Clstr Ah
+
+//! c=textured i=note-whole o=note:112
+18 W: Clstr Ee
+
+//! c=textured i=note-whole o=note:113
+19 W:Clstr Eh
+
+//! c=textured i=note-whole o=note:114
+20 W:Clstr Ih
+
+//! c=textured i=note-whole o=note:115
+21 W: Clstr Mm
+
+//! c=textured i=note-whole o=note:116
+22 W:Clstr OH
+
+//! c=textured i=note-whole o=note:117
+23 W: Clstr Oo
+
+//! c=textured i=note-whole o=note:118
+24 W: V-morphs
+
+//! c=textured i=note-whole o=note:119
+25 W: Whispers
+
+//! c=short i=note-whole o=note:120
+26 All
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Solemn Phrases"
+//! id=028a592b-7b0c-4f55-a264-2c84626ba0e0
+Bank * * Solemn Phrases
+
+//! c=short-light i=staccato o=note:102
+1 Staccato note
+
+//! c=short-dark i=marcato-quarter o=note:103
+2 Marcato note
+
+//! spacer=1
+//! c=fx i=phrase o=note:24
+3 phrase 1
+
+//! c=fx i=phrase o=note:25
+4 phrase 2
+
+//! c=fx i=phrase o=note:26
+5 phrase 3
+
+//! c=fx i=phrase o=note:27
+6 phrase 4
+
+//! c=fx i=phrase o=note:28
+7 phrase 5
+
+//! c=fx i=phrase o=note:29
+8 phrase 6
+
+//! c=fx i=phrase o=note:30
+9 phrase 7
+
+//! c=fx i=phrase o=note:31
+10 phrase 8
+
+//! c=fx i=phrase o=note:32
+11 phrase 9
+
+//! c=fx i=phrase o=note:33
+12 phrase 10
+
+//! c=fx i=phrase o=note:34
+13 phrase 11
+
+//! c=fx i=phrase o=note:35
+14 phrase 12
+
+//! c=fx i=phrase o=note:36
+15 phrase 13
+
+//! c=fx i=phrase o=note:37
+16 phrase 14
+
+//! c=fx i=phrase o=note:38
+17 phrase 15
+
+//! c=fx i=phrase o=note:39
+18 phrase 16
+
+//! c=textured i=note-quarter o=note:104
+19 Male vox on/off
+
+//! c=textured i=note-quarter o=note:105
+20 Female vox on/off
+
+//! spacer=1
+//! c=short i=note-quarter o=note:86
+21 start on 1
+
+//! c=short i=note-quarter o=note:87
+22 start on 2
+
+//! c=short i=note-quarter o=note:88
+23 start on 3
+
+//! c=short i=note-quarter o=note:89
+24 start on 4
+
+//! c=short i=note-quarter o=note:90
+25 start on 5
+
+//! c=short i=note-quarter o=note:91
+26 start on 6
+
+//! c=short i=note-quarter o=note:92
+27 start on 7
+
+//! c=short i=note-quarter o=note:93
+28 start on 8
+
+//! c=short i=note-quarter o=note:94
+29 start on 9
+
+//! c=short i=note-quarter o=note:95
+30 start on 10
+
+//! c=short i=note-quarter o=note:96
+31 start on 11
+
+//! c=short i=note-quarter o=note:97
+32 start on 12
+
+//! c=short i=note-quarter o=note:98
+33 start on 13
+
+//! c=short i=note-quarter o=note:99
+34 start on 14
+
+//! c=short i=note-quarter o=note:100
+35 start on 15
+
+//! c=short i=note-quarter o=note:101
+36 start on 16
+
+//-----------------------------------------------------
+//! g="Soundiron/Olympus Elements/Custom FX" n="Triumphant"
+//! id=0df2be2b-8dd4-4798-9971-8b23ea58164d
+Bank * * Triumphant
+
+//! c=long-dark i=note-whole o=note:24
+1 M: Ah
+
+//! c=long-dark i=note-whole o=note:25
+2 M: Ee
+
+//! c=long-dark i=note-whole o=note:26
+3 M: Eh
+
+//! c=long-dark i=note-whole o=note:27
+4 M: Ei
+
+//! c=long-dark i=note-whole o=note:28
+5 M: Ih
+
+//! c=long-dark i=note-whole o=note:29
+6 M: Mm
+
+//! c=long-dark i=note-whole o=note:30
+7 M: Oh
+
+//! c=long-dark i=note-whole o=note:31
+8 M: Oo
+
+//! c=short-dark i=note-whole o=note:86
+9 W: Ah
+
+//! c=short-dark i=note-whole o=note:87
+10 W: Ee
+
+//! c=short-dark i=note-whole o=note:88
+11 W: Eh
+
+//! c=short-dark i=note-whole o=note:89
+12 W: Ei
+
+//! c=short-dark i=note-whole o=note:90
+13 W: Ih
+
+//! c=short-dark i=note-whole o=note:91
+14 W: Mm
+
+//! c=short-dark i=note-whole o=note:92
+15 W: Oh
+
+//! c=short-dark i=note-whole o=note:93
+16 W: Oo
