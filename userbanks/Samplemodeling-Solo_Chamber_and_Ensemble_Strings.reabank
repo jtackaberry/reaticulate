@@ -285,7 +285,8 @@ Bank * * Cello Solo
 // Dble Bass Solo
 // --------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo" n="Dble Bass Solo" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Cello Solo"
+// Clones Cello Solo
+//! clone=035a3607-8b73-4157-961a-8354d57581d8
 //! id=e262afc6-989e-4d21-a184-d5b63ec41c90
 Bank * * Dble Bass Solo
 
@@ -293,35 +294,40 @@ Bank * * Dble Bass Solo
 // Violin Ensemble
 // ---------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Violin Ensemble" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Viola Solo"
+// Clones Viola Solo
+//! clone=8def28df-295a-4d96-9385-173053e7ae65
 //! id=840517fa-9839-43eb-b81a-55e2e50ed7bc
 Bank * * Violin Ensemble
 
 // 2nd Violin Ensemble
 // -------------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="2nd Violin Ensemble" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Violin Ensemble"
+// Clones Violin Ensemble
+//! clone=840517fa-9839-43eb-b81a-55e2e50ed7bc
 //! id=b464bba2-9d17-4c12-8527-8e93523db9be
 Bank * * 2nd Violin Ensemble
 
 // Viola Ensemble
 // --------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Viola Ensemble" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Viola Solo"
+// Clones Viola Solo
+//! clone=8def28df-295a-4d96-9385-173053e7ae65
 //! id=95bf6015-b244-4dfe-841d-1e362cde449e
 Bank * * Viola Ensemble
 
 // Cello Ensemble
 // --------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Cello Ensemble" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Cello Solo"
+// Clones Cello Solo
+//! clone=035a3607-8b73-4157-961a-8354d57581d8
 //! id=ecc161e0-554d-4469-b8a2-63fb3615871f
 Bank * * Cello Ensemble
 
 // Dble Bass Ensemble
 // ------------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles" n="Dble Bass Ensemble" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Solo/Dble Bass Solo"
+// Clones Solo/Dble Bass Solo
+//! clone=e262afc6-989e-4d21-a184-d5b63ec41c90
 //! id=bc3f24af-3437-45f1-94e8-e0098a0a292b
 Bank * * Dble Bass Ensemble
 
@@ -329,34 +335,39 @@ Bank * * Dble Bass Ensemble
 // Chamber Violins
 // ---------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Violins" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Violin Ensemble"
+// Clones Violin Ensemble
+//! clone=840517fa-9839-43eb-b81a-55e2e50ed7bc
 //! id=be5d257e-d68b-43d9-a0fb-629c6ce2141f
 Bank * * Chamber Violins
 
 // Chamber 2nd Violins
 // -------------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber 2nd Violins" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/2nd Violin Ensemble"
+// Clones 2nd Violin Ensemble
+//! clone=b464bba2-9d17-4c12-8527-8e93523db9be
 //! id=b0602cab-9c78-40e2-981a-b75566ab8a20
 Bank * * Chamber 2nd Violins
 
 // Chamber Violas
 // --------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Violas" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Viola Ensemble"
+// Clones Viola Ensemble
+//! clone=95bf6015-b244-4dfe-841d-1e362cde449e
 //! id=3efa7d45-2eae-4064-ad1b-5f95dc3a05e2
 Bank * * Chamber Violas
 
 // Chamber Cellos
 // --------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Cellos" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Cello Ensemble"
+// Clones Ensembles/Cello Ensemble
+//! clone=ecc161e0-554d-4469-b8a2-63fb3615871f
 //! id=c4927e91-b4b0-4c6b-a32c-5b8f4fe0864c
 Bank * * Chamber Cellos
 
 // Chamber Dble Basses
 // -------------------
 //! g="Samplemodeling/Solo, Chamber & Ensemble Strings/Chamber" n="Chamber Dble Basses" off=1
-//! clone="Samplemodeling/Solo, Chamber & Ensemble Strings/Ensembles/Dble Bass Ensemble"
+// Clones Dble Bass Ensemble
+//! clone=bc3f24af-3437-45f1-94e8-e0098a0a292b
 //! id=f1e4741d-418d-47d5-83f6-c108451680bc
 Bank * * Chamber Dble Basses
