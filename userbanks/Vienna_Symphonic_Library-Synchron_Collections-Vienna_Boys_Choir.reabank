@@ -1,0 +1,58 @@
+// ****************************
+// Vienna Boys Choir (Synchron)
+// ****************************
+
+//! g="VSL/Synchron Collections" n="Vienna Boys Choir"
+//! id=1cbf3d73-a058-4236-96a9-356113dacf11
+Bank * * Vienna Boys Choir (Synchron)
+
+//! c=textured i=list o=note:24 g=2
+0 AA
+//! c=textured i=list o=note:26 g=2
+1 UU
+//! c=textured i=list o=note:28 g=2
+21 MM
+
+//! spacer=1
+//! c=short i=staccato o=note:36/note:41
+2 vowel (stacc)
+//! c=short i=staccato o=note:36/note:42
+3 K (stacc)
+//! c=short i=staccato o=note:36/note:43
+4 L (stacc)
+//! c=short i=staccato o=note:36/note:44
+5 M (stacc)
+//! c=short i=staccato o=note:36/note:45
+6 P (stacc)
+//! c=short i=staccato o=note:36/note:46
+7 R (stacc)
+//! c=short i=staccato o=note:36/note:47
+8 S (stacc)
+//! c=short i=staccato o=note:36/note:48
+9 T (stacc)
+
+//! spacer=1
+//! c=long i=note-whole o=note:37
+10 regular
+//! c=legato i=legato o=note:38/note:41 
+11 legato
+//! c=legato i=legato o=note:38/note:42 
+12 legato + port
+
+//! spacer=1
+//! c=long-dark i=marcato-half o=note:39/note:41 
+13 vowel (marc)
+//! c=long-dark i=marcato-half o=note:39/note:42 
+14 K (marc)
+//! c=long-dark i=marcato-half o=note:39/note:43 
+15 L (marc)
+//! c=long-dark i=marcato-half o=note:39/note:44 
+16 M (marc)
+//! c=long-dark i=marcato-half o=note:39/note:45 
+17 P (marc)
+//! c=long-dark i=marcato-half o=note:39/note:46 
+18 R (marc)
+//! c=long-dark i=marcato-half o=note:39/note:47 
+19 S (marc)
+//! c=long-dark i=marcato-half o=note:39/note:48 
+20 T (marc)
