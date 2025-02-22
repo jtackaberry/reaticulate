@@ -1,0 +1,115 @@
+//-------------------------------------------------
+// Source: MapleTheFoxx
+// https://github.com/jtackaberry/reaticulate/issues/178
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Strings Elements" n="Strings"
+//! id=bff4a598-9ed0-4353-9576-96290cbaaf17
+Bank * * Strings
+
+//! c=long i=note-whole o=note:12
+1 Sustain
+
+//! c=textured i=tremolo o=note:13
+2 Tremolo
+
+//! c=short-dark i=staccato o=note:14
+3 Staccato 8th
+
+//! c=short i=staccato o=note:15
+4 Staccato
+
+//! c=short i=spiccato o=note:16
+5 Spiccato
+
+//! c=short-light i=pizz o=note:17
+6 Pizzicato
+
+//! c=short-light i=pizz-bartok o=note:18
+7 Pizzicato Bartok
+
+//! c=short-dark i=col-legno o=note:19
+8 Col Legno
+
+//! c=textured i=crescendo o=note:20
+9 Crescendo
+
+//! c=textured i=decrescendo o=note:21
+10 Decrescendo
+
+//! c=textured i=sfz o=note:22
+11 Sforzando 4ct
+
+//! c=textured i=note-eighth o=note:23
+12 Swell 4ct
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Strings Elements" n="Legato Violins"
+//! id=cd89ab34-5b38-44fa-a1c5-6df16656c522
+Bank * * Legato Violins
+
+//! c=legato i=legato o=note:12
+1 True legato
+
+//! c=legato-light i=legato o=note:16
+2 True legato p.
+
+//! c=legato-light i=legato o=note:18
+3 True legato mp.
+
+//! c=legato i=legato o=note:20
+4 True legato mf.
+
+//! c=legato-dark i=legato o=note:22
+5 True legato f.
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Strings Elements" n="Legato Violas"
+//! id=02b9689b-a8c9-481f-9cec-a59c3bc159dd
+Bank * * Legato Violas
+
+//! c=legato i=legato o=note:12
+1 True legato
+
+//! c=legato-light i=legato o=note:16
+2 True legato p.
+
+//! c=legato i=legato o=note:18
+3 True legato mf.
+
+//! c=legato-dark i=legato o=note:20
+4 True legato f.
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Strings Elements" n="Legato Cellos"
+//! id=9c456baa-67bc-4ab4-9725-4ae5f0ab441f
+Bank * * Legato Cellos
+
+//! c=legato i=legato o=note:12
+1 True legato
+
+//! c=legato-light i=legato o=note:16
+2 True legato p.
+
+//! c=legato i=legato o=note:18
+3 True legato mf.
+
+//! c=legato-dark i=legato o=note:20
+4 True legato f.
+
+//-----------------------------------------------------
+//!g="Soundiron/Hyperion Strings Elements" n="Legato Basses"
+//! id=20528a4d-4ab1-4b73-8471-499977ae8e19
+Bank * * Legato Basses
+
+//! c=legato i=legato o=note:12
+1 True legato
+
+//! c=legato-light i=legato o=note:16
+2 True legato p.
+
+//! c=legato i=legato o=note:18
+3 True legato mf.
+
+//! c=legato-dark i=legato o=note:20
+4 True legato f.
