@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------------
+// Source: MapleTheFoxx - https://github.com/jtackaberry/reaticulate/issues/174
+//
+
+//----------------------------------------------
+//!g="VSL/Free" n="Fujara Flute"
+//! id=fd39ae61-51f8-4cec-8a85-be4cb455a62d
+Bank * * Fujara Flute
+
+//! c=short-dark i=staccato o=note:24
+1 Short notes
+
+//! spacer=1
+//! c=long-light i=note-whole o=note:25/note:36
+2 Long non vib
+
+//! c=long-light i=note-whole o=note:25/note:37
+3 Long vib
+
+//! spacer=1
+//! c=long-dark i=marcato o=note:26/note:36/note:84
+4 Marcato non-vib
+
+//! c=long-dark i=marcato o=note:26/note:36/note:86
+5 Marcato non-vib attack
+
+//! c=long-dark i=marcato o=note:26/note:37/note:84
+6 Marcato vib
+
+//! c=long-dark i=marcato o=note:26/note:37/note:86
+7 Marcato vib attack
+
+//! spacer=1
+//! c=long-dark i=crescendo o=note:27/note:36
+8 Crescendo Short
+
+//! c=long-dark i=crescendo o=note:27/note:37
+9 Crescendo Long
+
+//! spacer=1
+//! c=long-dark i=trill o=note:28/note:36
+10 Flutter tongue
