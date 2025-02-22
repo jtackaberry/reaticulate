@@ -1,0 +1,320 @@
+//----------------------------------------------------------------------------
+// Source: shawnb61 - https://forum.cockos.com/member.php?u=218634
+//
+//! g="EastWest Quantum Leap/Voices of Passion/Wales" n="Wales Vowels"
+//! m="Make Sure KS is on default range from C0"
+//! id=c468270d-8205-433d-ac4c-a24381e9de02
+Bank * * Wales Vowels
+//! c=long i=note-quarter o=note:24
+24 Ah
+//! c=long i=note-quarter o=note:25
+25 Oh
+//! c=long i=note-quarter o=note:26
+26 Ee
+//! c=long i=note-quarter o=note:27
+27 Oo
+//! c=long i=note-quarter o=note:28
+28 Mm
+
+//! g="EastWest Quantum Leap/Voices of Passion/Wales" n="Wales Words"
+//! m="Make Sure KS is on default range from C0"
+//! id=b3503ea7-663e-47a2-8a89-7e6493453356
+Bank * * Wales Words
+//! c=long i=note-quarter o=note:24
+24 Bene
+//! c=long i=note-quarter o=note:25
+25 Breathe
+//! c=long i=note-quarter o=note:26
+26 Close
+//! c=long i=note-quarter o=note:27
+27 Dark
+//! c=long i=note-quarter o=note:28
+28 Death
+//! c=long i=note-quarter o=note:29
+29 Domine
+//! c=long i=note-quarter o=note:30
+30 Dream
+//! c=long i=note-quarter o=note:31
+31 Drown
+//! c=long i=note-quarter o=note:32
+32 Im
+//! c=long i=note-quarter o=note:33
+33 Fall
+//! c=long i=note-quarter o=note:34
+34 Fire
+//! c=long i=note-quarter o=note:35
+35 Fly
+//! c=long i=note-quarter o=note:36
+36 Gaia
+//! c=long i=note-quarter o=note:37
+37 Grass
+//! c=long i=note-quarter o=note:38
+38 Hasan
+//! c=long i=note-quarter o=note:39
+39 Hate
+//! c=long i=note-quarter o=note:40
+40 How
+//! c=long i=note-quarter o=note:41
+41 In
+//! c=long i=note-quarter o=note:42
+42 Len
+//! c=long i=note-quarter o=note:43
+43 Love
+//! c=long i=note-quarter o=note:44
+44 Luxet
+//! c=long i=note-quarter o=note:45
+45 Ly
+//! c=long i=note-quarter o=note:46
+46 Mei
+//! c=long i=note-quarter o=note:47
+47 Ness
+//! c=long i=note-quarter o=note:48
+48 Of
+//! c=long i=note-quarter o=note:49
+49 Ooze
+//! c=long i=note-quarter o=note:50
+50 Pray
+//! c=long i=note-quarter o=note:51
+51 Priest
+//! c=long i=note-quarter o=note:52
+52 Row
+//! c=long i=note-quarter o=note:53
+53 Ruins
+//! c=long i=note-quarter o=note:54
+54 Run
+//! c=long i=note-quarter o=note:55
+55 San
+//! c=long i=note-quarter o=note:56
+56 Sing
+//! c=long i=note-quarter o=note:57
+57 So
+//! c=long i=note-quarter o=note:58
+58 Soft
+//! c=long i=note-quarter o=note:59
+59 This
+//! c=long i=note-quarter o=note:60
+60 True
+//! c=long i=note-quarter o=note:61
+61 Uram
+//! c=long i=note-quarter o=note:62
+62 Ventius
+//! c=long i=note-quarter o=note:63
+63 Ver
+//! c=long i=note-quarter o=note:64
+64 Vosh
+//! c=long i=note-quarter o=note:65
+65 Fortuna
+//! c=long i=note-quarter o=note:66
+66 From
+//! c=long i=note-quarter o=note:67
+67 Gravis
+//! c=long i=note-quarter o=note:68
+68 Is
+//! c=long i=note-quarter o=note:69
+69 Rain
+//! c=long i=note-quarter o=note:70
+70 The
+
+//! g="EastWest Quantum Leap/Voices of Passion/Wales" n="Wales Legato/Port"
+//! m="Requires a multi/performance with channel assignments spelled out below"
+//! id=7b83b9c7-6f43-4e69-b785-3461663553dd
+Bank * * Wales Legato/Port
+//! c=legato i=legato-fast o=@1
+20 Oh Legato (Ch 1)
+//! c=legato i=legato o=@2
+21 Oh Legato Port (Ch 2)
+//! c=legato i=legato-portamento o=@3
+22 Oh Portamento (Ch 3)
+//! c=legato-dark i=legato-fast o=@4
+23 Ah Legato (Ch 4)
+//! c=legato-dark i=legato o=@5
+24 Ah Legato Port (Ch 5)
+//! c=legato-dark i=legato-portamento o=@6
+25 Ah Portamento (Ch 6)
+
+//! g="EastWest Quantum Leap/Voices of Passion/America" n="America Articulations"
+//! m="Make Sure KS is on default range from C0"
+//! id=700a72d2-0a4b-4114-b18a-35933683d91f
+Bank * * America Articulations
+//! c=long i=note-quarter o=note:24
+24 Ah Non Vib
+//! c=long i=vibrato o=note:25
+25 Ah Oo Vib
+//! c=long i=vibrato o=note:26
+26 Ah Vib
+//! c=long i=note-quarter o=note:27
+27 Ah Short
+//! c=long i=bend-up o=note:28
+28 Ah Spooky Play Clstrs
+//! c=long i=staccato o=note:29
+29 Ah Staccato
+//! c=long i=vibrato o=note:30
+30 Ah Vib
+//! c=long i=note-quarter o=note:31
+31 Doo
+//! c=long i=note-quarter o=note:32
+32 Dream
+//! c=long i=vibrato-molto o=note:33
+33 Ee Vib
+//! c=long i=note-quarter o=note:34
+34 Ee Ah
+//! c=long i=note-quarter o=note:35
+35 Hu Oh
+//! c=long i=note-quarter o=note:36
+36 Mah
+//! c=long i=note-quarter o=note:37
+37 Mei
+//! c=long i=note-quarter o=note:38
+38 Maom
+//! c=long i=note-quarter o=note:39
+39 Mm
+//! c=long i=note-quarter o=note:40
+40 Muah
+//! c=long i=note-quarter o=note:41
+41 Oh Nv
+//! c=long i=vibrato o=note:42
+42 Oh Opera
+//! c=long i=vibrato o=note:43
+43 Oh Vib
+//! c=long i=note-quarter o=note:44
+44 Ohm
+//! c=long i=vibrato o=note:45
+45 Ohm Vib
+//! c=long i=note-quarter o=note:46
+46 Oo Nv Breathy
+//! c=long i=note-quarter o=note:47
+47 Oo Nv
+//! c=long i=vibrato-molto o=note:48
+48 Oo Vib
+//! c=long i=vibrato o=note:49
+49 Rnb Ah
+//! c=long i=note-quarter o=note:50
+50 Sigh
+
+//! g="EastWest Quantum Leap/Voices of Passion/America" n="America Legato/Port"
+//! m="Requires a multi/performance with channel assignments spelled out below"
+//! id=99ac06cf-8f98-4c2f-a54c-48c7ea7393d4
+Bank * * America Legato/Port
+//! c=legato i=legato-fast o=@1
+20 Oo Legato (Ch 1)
+//! c=legato i=legato o=@2
+21 Oo Legato Port (Ch 2)
+//! c=legato i=legato-portamento o=@3
+22 Oo Portamento (Ch 3)
+
+//! g="EastWest Quantum Leap/Voices of Passion" n="Bulgaria"
+//! m="Make Sure KS is on default range from C0"
+//! id=23a546d8-caf6-4ab5-8e05-f60f843eb50a
+Bank * * Bulgaria
+//! c=long i=phrase2 o=note:24
+24 Bulgarian 1
+//! c=long i=phrase2 o=note:25
+25 Bulgarian 2
+//! c=long i=phrase2 o=note:26
+26 Bulgarian 3
+//! c=long i=phrase2 o=note:27
+27 Bulgarian 4
+//! c=long i=phrase2 o=note:28
+28 Bulgarian 5
+//! c=long i=phrase2 o=note:29
+29 Bulgarian 6
+//! c=long i=phrase2 o=note:30
+30 Bulgarian 7
+//! c=long i=phrase2 o=note:31
+31 Bulgarian 8
+//! c=long i=phrase2 o=note:32
+32 Hiaheya
+//! c=long i=phrase2 o=note:33
+33 Melody
+//! c=long i=phrase2 o=note:34
+34 Melody 2
+//! c=long i=phrase2 o=note:35
+35 Oho Calling
+//! c=long i=note-whole o=note:36
+36 Oho Calling 2
+//! c=long i=vibrato-molto o=note:37
+37 Sheep Call
+//! c=long i=note-quarter o=note:38
+38 Oo
+//! c=long i=note-quarter o=note:39
+39 Oho
+//! c=long i=note-quarter o=note:40
+40 So
+//! c=long i=note-quarter o=note:41
+41 Woho
+//! c=long i=note-quarter o=note:42
+42 Ihehoh
+//! c=long i=note-quarter o=note:43
+43 Oho 2
+//! c=long i=note-quarter o=note:44
+44 Aha
+//! c=long i=note-quarter o=note:45
+45 Heya
+//! c=long i=note-quarter o=note:46
+46 Laha
+
+//! g="EastWest Quantum Leap/Voices of Passion" n="India"
+//! m="Make Sure KS is on default range from C0"
+//! id=5464e866-940c-4364-9448-98e159cdd235
+Bank * * India
+//! c=long i=phrase2 o=note:25
+25 Phrases - Key of C#
+//! c=long i=phrase2 o=note:27
+27 Phrases - Key of Eb
+//! c=long i=phrase2 o=note:28
+28 Phrases - Key of E
+//! c=long i=phrase2 o=note:30
+30 Phrases - Key of F#
+//! c=long i=phrase2 o=note:32
+32 Phrases - Key of Ab
+//! c=long i=phrase2 o=note:34
+34 Phrases - Key of Bb
+//! c=long i=phrase2 o=note:35
+35 Phrases - Key of B
+//! c=long i=phrase2 o=note:44
+44 Phrases - Key of Ab +1 oct
+//! c=long i=phrase2 o=note:46
+46 Phrases - Key of Bb +1 oct
+//! c=long i=phrase2 o=note:47
+47 Phrases - Key of B +1 oct
+
+//! spacer=1
+//! c=long i=phrase2 o=cc:01,00 g=2
+81 Long phrase
+//! c=short i=phrase o=cc:01,127 g=2
+82 Short phrase
+
+//! g="EastWest Quantum Leap/Voices of Passion" n="Syria"
+//! m="Make Sure KS is on default range from C0"
+//! id=aac59077-bcb3-4d00-b887-7920bf9128d7
+Bank * * Syria
+//! c=long i=phrase2 o=note:24
+24 Phrases - Key of C
+//! c=long i=phrase2 o=note:25
+25 Phrases - Key of Db
+//! c=long i=phrase2 o=note:26
+26 Phrases - Key of D
+//! c=long i=phrase2 o=note:27
+27 Phrases - Key of Eb
+//! c=long i=phrase2 o=note:28
+28 Phrases - Key of E
+//! c=long i=phrase2 o=note:29
+29 Phrases - Key of F
+//! c=long i=phrase2 o=note:30
+30 Phrases - Key of Gb
+//! c=long i=phrase2 o=note:31
+31 Phrases - Key of G
+//! c=long i=phrase2 o=note:32
+32 Phrases - Key of Ab
+//! c=long i=phrase2 o=note:33
+33 Phrases - Key of A
+//! c=long i=phrase2 o=note:34
+34 Phrases - Key of Bb
+//! c=long i=phrase2 o=note:35
+35 Phrases - Key of B
+
+//! spacer=1
+//! c=long i=phrase2 o=cc:01,00 g=2
+81 Long phrase
+//! c=short i=phrase o=cc:01,127 g=2
+82 Short phrase
