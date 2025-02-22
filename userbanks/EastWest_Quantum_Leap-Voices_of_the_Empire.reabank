@@ -1,0 +1,193 @@
+//----------------------------------------------------------------------------
+// Source: Jorchime - https://www.jorchime.com/
+//
+//! g="EastWest Quantum Leap/Voices of the Empire/" n="Legato KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=c94a68e3-b426-4f19-85ac-dc2594cde3aa
+Bank * * Legato KS
+//! c=legato i=legato o=note:24
+24 Oo Legato
+//! c=legato i=legato o=note:25
+25 Oh Legato
+//! c=legato i=legato o=note:26
+26 Ah Mong Legato
+
+//! spacer=1
+//! c=legato-dark i=legato o=cc:22,127 g=2
+81 True Legato / Mono
+//! c=legato-dark i=dblstop-5th-eighth o=cc:22,0 g=2
+82 Poly
+
+//! g="EastWest Quantum Leap/Voices of the Empire/" n="Melisma KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=3f9c1e8e-ec98-425a-a46f-d2ca7ad033a0
+Bank * * Melisma KS
+//! c=long i=phrase2 o=note:24
+24 Ah Mel5 Cresx4
+//! c=long i=phrase2 o=note:25
+25 Ee Mel1 b3, 6
+//! c=long i=phrase2 o=note:26
+26 Ee Mel2 Cresx4
+//! c=long i=phrase2 o=note:27
+27 Oh Mel1 Cres Decrs
+//! c=long i=phrase2 o=note:28
+28 Oh Mel2 b3, 6
+//! c=long i=phrase2 o=note:29
+29 Oh Mel3 b2, 4
+//! c=long i=phrase2 o=note:30
+30 Oh Mel4
+//! c=long i=phrase2 o=note:31
+31 Oh Mel5 Cresx4
+//! c=long i=phrase2 o=note:32
+32 Oo Mel1 b3, 6
+//! c=long i=phrase2 o=note:33
+33 Oo Mel2 Cresx4
+//! c=long i=phrase2 o=note:34
+34 Ah Mel1 x8
+//! c=long i=phrase2 o=note:35
+35 Ah Mel2 b3, 6
+//! c=long i=phrase2 o=note:36
+36 Ah Mel3 b2, 4
+//! c=long i=phrase2 o=note:37
+37 Ah Mel4
+
+//! spacer=1
+//! c=legato-dark i=legato o=cc:68,127 g=2
+81 Legato On
+//! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
+82 Legato Off
+
+//! g="EastWest Quantum Leap/Voices of the Empire/" n="Phrases KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=634686ec-29cb-4739-bf47-263c096a5773
+Bank * * Phrases KS
+//! c=long i=phrase o=note:24
+24 Phrases - Key of C
+//! c=long i=phrase o=note:25
+25 Phrases - Key of C#
+//! c=long i=phrase o=note:26
+26 Phrases - Key of D
+//! c=long i=phrase o=note:27
+27 Phrases - Key of Eb
+//! c=long i=phrase o=note:28
+28 Phrases - Key of E
+//! c=long i=phrase o=note:29
+29 Phrases - Key of F
+//! c=long i=phrase o=note:30
+30 Phrases - Key of F#
+//! c=long i=phrase o=note:31
+31 Phrases - Key of G
+//! c=long i=phrase o=note:32
+32 Phrases - Key of G#
+//! c=long i=phrase o=note:33
+33 Phrases - Key of A
+//! c=long i=phrase o=note:34
+34 Phrases - Key of Bb
+//! c=long i=phrase o=note:35
+35 Phrases - Key of B
+
+//! spacer=1
+//! c=legato-dark i=legato o=cc:68,127 g=2
+81 Legato On
+//! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
+82 Legato Off
+
+//! g="EastWest Quantum Leap/Voices of the Empire/" n="Sus KS"
+//! m="Make Sure KS is on default range from C0"
+//! id=31bc11e7-8060-49da-b2c1-fff0b854e2fd
+Bank * * Sustain KS
+//! c=long i=note-whole o=note:24
+24 Ah NonVib
+//! c=long i=note-whole o=note:25
+25 Ah SusVib
+//! c=long i=note-whole o=note:26
+26 Ee SusVib
+//! c=long i=note-whole o=note:27
+27 Oh NonVib
+//! c=long i=note-whole o=note:28
+28 Oh SusVib
+//! c=long i=note-whole o=note:29
+29 Oo SusVib
+//! c=long i=note-whole o=note:30
+30 Ah Slur m2nd
+//! c=long i=note-whole o=note:31
+31 Ah Slur M2nd
+//! c=long i=note-whole o=note:32
+32 Ah Slur m3rd
+//! c=long i=note-whole o=note:33
+33 Ah Slur P5th
+
+//! spacer=1
+//! c=legato-dark i=legato o=cc:68,127 g=2
+81 Legato On
+//! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
+82 Legato Off
+
+//! g="EastWest Quantum Leap/Voices of the Empire/" n="Words KS"
+//! m="Make Sure KS is on default range from A-1"
+//! id=11fae0b7-c54f-4696-96e8-8afe6fdb1fcd
+Bank * * Words KS
+//! c=long i=note-whole o=note:21
+21 Dee
+//! c=long i=note-whole o=note:22
+22 Door
+//! c=long i=note-whole o=note:23
+23 Kohn
+//! c=long i=note-whole o=note:24
+24 Le
+//! c=long i=note-whole o=note:25
+25 MohJey
+//! c=long i=note-whole o=note:26
+26 Nar
+//! c=long i=note-whole o=note:27
+27 Nosh
+//! c=long i=note-whole o=note:28
+28 Rain
+//! c=long i=note-whole o=note:29
+29 StraVeyHe
+//! c=long i=note-whole o=note:30
+30 Ve
+//! c=long i=note-whole o=note:31
+31 Vom
+//! c=long i=note-whole o=note:32
+32 Vos Breathy
+//! c=long i=note-whole o=note:33
+33 Bro
+//! c=long i=note-whole o=note:34
+34 Dez
+//! c=long i=note-whole o=note:35
+35 Djan
+//! c=long i=note-whole o=note:36
+36 Gor
+//! c=long i=note-whole o=note:37
+37 Greer
+//! c=long i=note-whole o=note:38
+38 HoHuaHua
+//! c=long i=note-whole o=note:39
+39 Jee
+//! c=long i=note-whole o=note:40
+40 KahlKo
+//! c=long i=note-whole o=note:41
+41 La
+//! c=long i=note-whole o=note:42
+42 Mai
+//! c=long i=note-whole o=note:43
+43 Sha
+//! c=long i=note-whole o=note:44
+44 Som
+//! c=long i=note-whole o=note:45
+45 Stra
+//! c=long i=note-whole o=note:46
+46 Stro
+//! c=long i=note-whole o=note:47
+47 VesLa
+//! c=long i=note-whole o=note:48
+48 Vos
+//! c=long i=note-whole o=note:49
+49 Yer
+
+//! spacer=1
+//! c=legato-dark i=legato o=cc:68,127 g=2
+81 Legato On
+//! c=legato-dark i=dblstop-5th-eighth o=cc:68,0 g=2
+82 Legato Off
