@@ -2,7 +2,7 @@
 // ********************
 // Shreddage 3
 // ********************
-//! g="Impact Sound Works/Shreddage 3" n="Abyss"
+//! g="Impact Soundworks/Shreddage 3" n="Abyss"
 //! m=""
 //! id=6c176909-4ea6-4052-ac97-d9adfdf588f2
 Bank * * Shreddage 3 Abyss
@@ -21,7 +21,7 @@ Bank * * Shreddage 3 Abyss
 //! c=fx i=fx o=note:16
 80 Effects/Slides
 
-//! g="Impact Sound Works/Shreddage 3" n="Archtop"
+//! g="Impact Soundworks/Shreddage 3" n="Archtop"
 //! m=""
 //! id=08806d44-392f-467c-b418-d83efa80c89b
 Bank * * Shreddage 3 Archtop
@@ -55,7 +55,7 @@ Bank * * Shreddage 3 Archtop
 //! c=short-dark i=staccato-stopped o=note:32
 81 Choke
 
-//! g="Impact Sound Works/Shreddage 3" n="Jupiter"
+//! g="Impact Soundworks/Shreddage 3" n="Jupiter"
 //! m=""
 //! id=0b182949-399a-452d-acc9-062b2c6d1cf9
 Bank * * Shreddage 3 Jupiter
@@ -86,7 +86,7 @@ Bank * * Shreddage 3 Jupiter
 //! c=fx i=staccato-stopped o=note:21
 81 Choke
 
-//! g="Impact Sound Works/Shreddage 3" n="Rogue"
+//! g="Impact Soundworks/Shreddage 3" n="Rogue"
 //! m=""
 //! id=2887ed92-4ffb-4c05-b580-bf6d374d472a
 Bank * * Shreddage 3 Rogue
@@ -114,7 +114,7 @@ Bank * * Shreddage 3 Rogue
 //! c=fx i=fx o=note:19
 80 Effects
 
-//! g="Impact Sound Works/Shreddage 3" n="Serpent"
+//! g="Impact Soundworks/Shreddage 3" n="Serpent"
 //! m=""
 //! id=0bcfb0ec-d7b4-4bba-a00a-feb4954c66bb
 Bank * * Shreddage 3 Serpent
@@ -145,7 +145,7 @@ Bank * * Shreddage 3 Serpent
 //! c=fx i=staccato-stopped o=note:21
 81 Choke
 
-//! g="Impact Sound Works/Shreddage 3" n="Stratus"
+//! g="Impact Soundworks/Shreddage 3" n="Stratus"
 //! m=""
 //! id=314154c4-125c-4c96-a8d7-d03b1a2070a3
 Bank * * Shreddage 3 Stratus
@@ -170,7 +170,7 @@ Bank * * Shreddage 3 Stratus
 //! c=fx i=staccato-stopped o=note:33
 81 Choke
 
-//! g="Impact Sound Works/Shreddage 3" n="Fretless"
+//! g="Impact Soundworks/Shreddage 3" n="Fretless"
 //! m=""
 //! id=bc2fbd79-bbb0-4572-9879-82298d85a1a5
 Bank * * Shreddage 3 Fretless
@@ -192,7 +192,7 @@ Bank * * Shreddage 3 Fretless
 //! c=fx i=fx o=note:5
 80 Effects
 
-//! g="Impact Sound Works/Shreddage 3" n="Legacy"
+//! g="Impact Soundworks/Shreddage 3" n="Legacy"
 //! m=""
 //! id=e6290385-92cd-4256-8926-5cf459f659f3
 Bank * * Shreddage 3 Legacy
@@ -223,7 +223,7 @@ Bank * * Shreddage 3 Legacy
 //! c=legato i=bend-down o=note:23
 83 Grace Slide Down
 
-//! g="Impact Sound Works/Shreddage 3" n="Precision"
+//! g="Impact Soundworks/Shreddage 3" n="Precision"
 //! m="Works for all presets except Init S3 Precision"
 //! id=5d2d6120-c2df-4875-8739-746fcab9a937
 Bank * * Shreddage 3 Precision
@@ -263,7 +263,7 @@ Bank * * Shreddage 3 Precision
 //! c=long-light i=note-quarter o=note:12
 4 Sustain Fingered
 
-//! g="Impact Sound Works/Shreddage 3" n="Precision Init"
+//! g="Impact Soundworks/Shreddage 3" n="Precision Init"
 //! m="Only works with Preset: Init S3 Precision"
 //! id=f738b170-f6fd-4b32-b123-7adbe6262b19
 Bank * * Shreddage 3 Precision Init
@@ -297,7 +297,7 @@ Bank * * Shreddage 3 Precision Init
 //! c=long-light i=note-quarter o=note:12
 4 Sustain Fingered
 
-//! g="Impact Sound Works/Shreddage 3" n="Hydra"
+//! g="Impact Soundworks/Shreddage 3" n="Hydra"
 //! m=""
 //! id=bdef6790-a63e-4f8f-9753-fa7997b8750f
 Bank * * Shreddage 3 Hydra

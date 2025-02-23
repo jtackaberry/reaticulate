@@ -1,6 +1,9 @@
 //----------------------------------------------------------------------------
 // Source: Hamrock - https://vi-control.net/community/threads/reaticulate-articulation-management-for-reaper-0-4-7-now-available.66851/post-4764029
 //
+// This is an alternative opinionated mapping for Heavyocity's Forzo Modern Brass library
+// that loads all patches into a single Kontakt instance across 14 MIDI channels
+//
 
 //! g="Heavyocity/Forzo Modern Brass" n="12 Horns"
 //! id=52533f97-c74a-493e-8c6f-a8f1cc90db83
