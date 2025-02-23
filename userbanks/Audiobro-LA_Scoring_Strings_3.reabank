@@ -1,0 +1,85 @@
+//! g="Audiobro/LA Scoring Strings 3" n="Basses"
+//! id=22a5df31-d92b-4fbd-9270-2db945f13d01
+Bank * * Basses
+//! c=legato i=legato o=note:72
+20 Legato
+//! c=long i=con-sord-blend o=note:73
+12 Sordino
+//! c=short i=spiccato o=note:76
+40 Shorts
+//! c=short i=pizz o=note:77
+56 Pizzacato
+//! c=long i=harmonics o=note:78
+10 Harmonics
+//! c=short-dark i=pizz-bartok o=note:39
+57 Bartok Pizzacato
+//! c=fx i=phrase2 o=note:84
+18 Fanfare A.R.T.
+//! c=fx i=phrase o=note:85
+19 16ths A.R.T
+//! c=fx i=phrase-multitongued o=note:86
+16 Ostinato Bakery A.R.T.
+
+//! g="Audiobro/LA Scoring Strings 3" n="Cellos"
+//! id=97d95287-3585-47ac-b429-2b035a92ed34
+Bank * * Cellos
+//! c=legato i=legato o=note:24
+20 Legato
+//! c=long i=con-sord-blend o=note:25
+12 Sordino
+//! c=short i=spiccato o=note:28
+40 Shorts
+//! c=short i=pizz o=note:29
+56 Pizzicato
+//! c=long i=tremolo o=note:31
+11 tremolo
+//! c=long i=harmonics o=note:33
+10 Harmonics
+
+//! g="Audiobro/LA Scoring Strings 3" n="Violas"
+//! id=eab1ed9f-adb8-44f5-abc2-61ff8e373a39
+Bank * * Violas
+//! c=legato i=legato o=note:24
+20 Legato
+//! c=long i=con-sord-blend o=note:25
+12 Sordino
+//! c=short i=spiccato o=note:28
+40 Shorts
+//! c=short i=pizz o=note:29
+56 Pizzicato
+//! c=long i=tremolo o=note:31
+11 tremolo
+//! c=long i=harmonics o=note:33
+10 Harmonics
+
+//! g="Audiobro/LA Scoring Strings 3" n="Violins 2"
+//! id=7e1013bd-d2f5-4607-833f-6fd68b7cc1a2
+Bank * * Violins 2
+//! c=legato i=legato o=note:24
+20 Legato
+//! c=long i=con-sord-blend o=note:25
+12 Sordino
+//! c=short i=spiccato o=note:28
+40 Shorts
+//! c=short i=pizz o=note:29
+56 Pizzicato
+//! c=long i=tremolo o=note:31
+11 tremolo
+//! c=long i=harmonics o=note:33
+10 Harmonics
+
+//! g="Audiobro/LA Scoring Strings 3" n="Violins"
+//! id=646360ea-979a-484b-8c9e-958a524602df
+Bank * * Violins
+//! c=legato i=legato o=note:24
+20 Legato
+//! c=long i=con-sord-blend o=note:25
+12 Sordino
+//! c=short i=spiccato o=note:28
+40 Shorts
+//! c=short i=pizz o=note:29
+56 Pizzicato
+//! c=long i=tremolo o=note:31
+11 tremolo
+//! c=long i=harmonics o=note:33
+10 Harmonics
