@@ -1,0 +1,19 @@
+//----------------------------------------------------------------------------
+// Source: shawnb61 - https://forum.cockos.com/member.php?u=218634
+//
+//! g="_Multi-purpose Banks/" n="Simple Channel Routing"
+//! m="Requires a multi with 2-6 parts with channel assignments as spelled out below"
+//! id=643fc43d-73e8-479f-bfef-c3343fe609cb
+Bank * * Simple Channel Routing
+//! c=long i=legato-runs o=@1
+20 Multi part 1 (Ch 1)
+//! c=long i=legato-runs o=@2
+21 Multi part 2 (Ch 2)
+//! c=long i=legato-runs o=@3
+22 Multi part 3 (Ch 3)
+//! c=long i=legato-runs o=@4
+23 Multi part 4 (Ch 4)
+//! c=long i=legato-runs o=@5
+24 Multi part 5 (Ch 5)
+//! c=long i=legato-runs o=@6
+25 Multi part 6 (Ch 6)
