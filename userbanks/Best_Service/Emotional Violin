@@ -1,0 +1,735 @@
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/01. Masterpatch" n="01. Emotional Violin"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 01"
+//! id=a63b8d10-ffed-490a-b533-04571af602ce
+Bank * * Emotional Violin - Master Bank
+
+//! c=short i=spiccato o=note@1:20,127/@1
+1 Spiccato
+//! c=short i=staccato o=note@1:21,127/@1
+2 Paganini Stacc
+//! c=short-light i=pizz o=note@1:22,127/@1
+3 Pizzicato
+//! c=short-light i=spiccato-feathered o=note@1:23,127/@1
+4 Very Fast Spiccato
+//! c=legato i=note-whole o=note@1:24,127/@1
+5 Slow & Passionate
+//! c=legato-light i=legato o=note@1:25,127/@1
+6 Passionate Agile
+//! c=legato-dark i=vibrato o=note@1:26,127/@1
+7 Delicate Vib
+//! c=legato-light i=vibrato-molto o=note@1:27,127/@1
+8 Delicate Vib Fast
+//! c=long i=note-quarter o=note@1:28,127/@1
+9 Straight
+//! c=long i=note-quarter o=note@1:29,127/@1
+10 Quarter
+//! c=short i=pickup o=note@1:30,127/@1
+11 Pickup To Detache
+//! c=short-dark i=note-eighth o=note@1:31,127/@1
+12 Double Attack
+//! c=short i=marcato o=note@1:32,127/@1
+13 Marcato
+//! c=legato-light i=note-quarter o=note@1:33,127/@1
+14 Vivid
+//! c=short-light i=legato-runs o=note@1:34,127/@1
+15 Paganini Run
+//! c=long i=vib o=note@1:35,127/@1
+16 Sustain Vib XFDe
+//! c=long-light i=vibrato-molto o=note@1:36,127/@1
+17 Sustain Non Vib XFDe
+//! c=long-dark i=note-whole o=note@1:37,127/@1
+18 Sustain Vib
+//! c=textured i=vibrato-molto o=note@1:38,127/@1
+19 Bright Vibrato
+//! c=textured i=decrescendo o=note@1:39,127/@1
+20 Bright Decrease
+//! c=legato i=legato-slow o=note@1:40,127/@1
+21 Gentle Motion
+//! c=fx i=tremolo o=note@1:41,127/@1
+22 Tremolo
+//! c=fx i=tremolo-slurred o=note@1:42,127/@1
+23 Tremolo XFDe
+//! c=fx i=trill-min2 o=note@1:43,127/@1
+24 Trill HT
+//! c=fx i=trill-maj2 o=note@1:44,127/@1
+25 Trill WT
+
+//! spacer=1
+// --- Ornament / MKS (right column) ---
+
+//! c=long i=bow-down o=note-hold@1:48,127/@1
+26 Rebow 1
+//! c=long i=bow-up o=note-hold@1:49,127/@1
+27 Rebow 2
+//! c=legato i=legato-portamento o=note-hold@1:50,127/@1
+28 To Espressivo
+//! c=legato i=vibrato o=note-hold@1:51,127/@1
+29 To Vib
+//! c=legato i=vibrato o=note-hold@1:52,127/@1
+30 To Vib Late
+//! c=fx i=plop o=note-hold@1:53,127/@1
+31 Fall!
+//! c=fx i=rip o=note-hold@1:54,127/@1
+32 Rise!
+//! c=long-light i=crescendo o=note-hold@1:97,127/@1
+33 To Cresc
+//! c=long-light i=crescendo o=note-hold@1:98,127/@1
+34 To Short Cresc
+//! c=long-light i=decrescendo o=note-hold@1:99,127/@1
+35 To Soft End
+//! c=long-light i=light o=note-hold@1:100,127/@1
+36 To Delicate End
+//! c=textured i=sul-pont o=note-hold@1:101,127/@1
+37 To Sulponti
+//! c=textured i=trill-min2 o=note-hold@1:102,127/@1
+38 To Halftone Trill
+//! c=textured i=trill-maj2 o=note-hold@1:103,127/@1
+39 To Wholetone Trill
+//! c=textured i=tremolo o=note-hold@1:104,127/@1
+40 To Tremolo Sus
+//! c=textured i=tremolo o=note-hold@1:105,127/@1
+41 To Tremolo Cresc
+//! c=textured i=sfz o=note-hold@1:106,127/@1
+42 Tremolo Sfz
+//! c=textured i=harmonics-natural-eighth o=note-hold@1:107,127/@1
+43 Harmonic Short!!
+
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/01. Masterpatch" n="02. Intimate Violin"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 01"
+//! id=b69c6541-9845-4dd8-90bd-22178598071a
+Bank * * Emotional Violin - Master Bank
+
+//! c=short i=spiccato o=note@1:20,127/@1
+1 Spiccato Short
+//! c=short i=staccato o=note@1:21,127/@1
+2 Paganini Stacc
+//! c=short-light i=pizz o=note@1:22,127/@1
+3 Pizzicato
+//! c=short-light i=spiccato-feathered o=note@1:23,127/@1
+4 Long Spiccato
+//! c=legato i=sul-tasto o=note@1:24,127/@1
+5 Delicate
+//! c=legato-light i=sul-tasto-super-eighth o=note@1:25,127/@1
+6 Delicate Short
+//! c=legato-light i=vibrato o=note@1:26,127/@1
+7 Progressive Vib
+//! c=legato-dark i=vibrato-molto o=note@1:27,127/@1
+8 Adagio Slow Vib
+//! c=legato-dark i=note-whole o=note@1:28,127/@1
+9 Straight Mxd Vib
+//! c=legato-light i=legato-bowed2 o=note@1:29,127/@1
+10 Lyrical Flow
+//! c=legato-light i=legato-bowed2 o=note@1:30,127/@1
+11 Lyrical Slow
+//! c=legato-light i=portato o=note@1:31,127/@1
+12 Lyrical DbleBow
+//! c=legato-dark i=note-half o=note@1:32,127/@1
+13 Tenderness
+//! c=short i=ricochet o=note@1:33,127/@1
+14 Spicc Run Legato
+//! c=short-light i=legato-runs o=note@1:34,127/@1
+15 Paganini Run Legato
+//! c=long i=vibrato o=note@1:35,127/@1
+16 Vib Sus XFDe
+//! c=long i=legato-bowed2 o=note@1:36,127/@1
+17 NV Sus XFDe
+//! c=long-dark i=note-whole o=note@1:37,127/@1
+18 Sustain NV
+//! c=long i=flautando o=note@1:38,127/@1
+19 Flautando
+//! c=long i=sul-g o=note@1:39,127/@1
+20 Sul G Flautando
+//! c=legato i=legato o=note@1:40,127/@1
+21 Gentle Motion
+//! c=textured i=vibrato-molto o=note@1:41,127/@1
+22 Godot Vib - WAIT!
+//! c=fx i=tremolo o=note@1:42,127/@1
+23 Tremolo
+//! c=fx i=trill-min2 o=note@1:43,127/@1
+24 Trill HT
+//! c=fx i=trill-maj2 o=note@1:44,127/@1
+25 Trill WT
+
+//! spacer=1
+// --- Ornament / MKS (right column) ---
+
+//! c=long i=bow-down o=note-hold@1:48,127/@1
+26 Rebow 1
+//! c=long i=bow-up o=note-hold@1:49,127/@1
+27 Rebow 2
+//! c=legato i=legato-portamento o=note-hold@1:50,127/@1
+28 To Espressivo
+//! c=legato i=vibrato o=note-hold@1:51,127/@1
+29 To Vib
+//! c=legato i=vibrato-molto o=note-hold@1:52,127/@1
+30 Intensity
+//! c=fx i=plop o=note-hold@1:53,127/@1
+31 Fall!
+//! c=fx i=rip o=note-hold@1:54,127/@1
+32 Rise!
+//! c=long-light i=crescendo o=note-hold@1:97,127/@1
+33 To Cresc
+//! c=long-light i=crescendo o=note-hold@1:98,127/@1
+34 To Short Cresc
+//! c=long-light i=decrescendo o=note-hold@1:99,127/@1
+35 To Soft End
+//! c=long-light i=light o=note-hold@1:100,127/@1
+36 To Delicate End
+//! c=textured i=sul-pont o=note-hold@1:101,127/@1
+37 To Sulponti
+//! c=textured i=trill-min2 o=note-hold@1:102,127/@1
+38 To Halftone Trill
+//! c=textured i=trill-maj2 o=note-hold@1:103,127/@1
+39 To Wholetone Trill
+//! c=textured i=tremolo o=note-hold@1:104,127/@1
+40 To Tremolo Sus
+//! c=textured i=tremolo o=note-hold@1:105,127/@1
+41 To Tremolo Cresc
+//! c=textured i=sfz o=note-hold@1:106,127/@1
+42 Tremolo Sfz
+//! c=textured i=harmonics-natural-eighth o=note-hold@1:107,127/@1
+43 Harmonic Short!!
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/01. Masterpatch" n="03. Manual Legato"
+//! chase=1,2,5,11,20,64-69
+//! m="Tip: you can deactivate any legato transition type by changing the velocity ranges in these two windows: Portamento only: move the Portamento Velocity slider to 127; Finger Legato (F.L.) only: set Portamento Velocity to 0 and Bow change Velocity to 127; Bow Change Legato only: move the bow change velocity slider to 0"
+
+//! id=55d1f71c-13b5-48e3-b860-9734d7974120
+Bank * * Emotional Violin - Master Bank
+
+//! c=short i=spiccato o=note@1:20,127/@1
+1 Spiccato
+//! c=short i=staccato o=note@1:21,127/@1
+2 Paganini Stacc
+//! c=short-light i=pizz o=note@1:22,127/@1
+3 Pizzicato
+//! c=short-light i=spiccato-feathered o=note@1:23,127/@1
+4 Very Fast Spiccato
+//! c=legato i=note-whole o=note@1:24,127/@1
+5 Slow & Passionate
+//! c=legato-light i=legato o=note@1:25,127/@1
+6 Passionate Agile
+//! c=legato-dark i=vibrato o=note@1:26,127/@1
+7 Delicate Vib
+//! c=legato-light i=vibrato-molto o=note@1:27,127/@1
+8 Delicate Vib Fast
+//! c=long i=note-quarter o=note@1:28,127/@1
+9 Straight
+//! c=long i=note-quarter o=note@1:29,127/@1
+10 Quarter
+//! c=short i=pickup o=note@1:30,127/@1
+11 Pickup To Detache
+//! c=short-dark i=note-eighth o=note@1:31,127/@1
+12 Double Attack
+//! c=short i=marcato o=note@1:32,127/@1
+13 Marcato
+//! c=legato-light i=note-quarter o=note@1:33,127/@1
+14 Vivid
+//! c=short-light i=legato-runs o=note@1:34,127/@1
+15 Paganini Run
+//! c=long i=vib o=note@1:35,127/@1
+16 Sustain Vib XFDe
+//! c=long-light i=vibrato-molto o=note@1:36,127/@1
+17 Sustain Non Vib XFDe
+//! c=long-dark i=note-whole o=note@1:37,127/@1
+18 Sustain Vib
+//! c=textured i=vibrato-molto o=note@1:38,127/@1
+19 Bright Vibrato
+//! c=textured i=decrescendo o=note@1:39,127/@1
+20 Bright Decrease
+//! c=legato i=legato-slow o=note@1:40,127/@1
+21 Gentle Motion
+//! c=long i=legato o=note@1:41,127/@1
+22 Dolce
+//! c=fx i=tremolo o=note@1:42,127/@1
+23 Tremolo XFDe
+//! c=fx i=trill-m2 o=note@1:43,127/@1
+24 Trill HT
+//! c=fx i=trill-maj2 o=note@1:44,127/@1
+25 Trill WT
+
+//! spacer=1
+// --- Ornament / MKS (right column) ---
+
+//! c=long i=bow-down o=note-hold@1:48,127/@1
+26 Rebow 1
+//! c=long i=bow-up o=note-hold@1:49,127/@1
+27 Rebow 2
+//! c=legato i=legato-vibrato o=note-hold@1:50,127/@1
+28 To Espressivo
+//! c=legato i=vibrato o=note-hold@1:51,127/@1
+29 To Vib
+//! c=legato i=vibrato o=note-hold@1:52,127/@1
+30 To Vib Late
+//! c=fx i=plop o=note-hold@1:53,127/@1
+31 Fall!
+//! c=fx i=rip o=note-hold@1:54,127/@1
+32 Rise!
+//! c=long-light i=crescendo o=note-hold@1:97,127/@1
+33 To Cresc
+//! c=long-light i=crescendo o=note-hold@1:98,127/@1
+34 To Short Cresc
+//! c=long-light i=decrescendo o=note-hold@1:99,127/@1
+35 To Soft End
+//! c=long-light i=light o=note-hold@1:100,127/@1
+36 To Delicate End
+//! c=textured i=sul-pont o=note-hold@1:101,127/@1
+37 To Sulponti
+//! c=textured i=trill-min2 o=note-hold@1:102,127/@1
+38 To Halftone Trill
+//! c=textured i=trill-maj2 o=note-hold@1:103,127/@1
+39 To Wholetone Trill
+//! c=textured i=tremolo o=note-hold@1:104,127/@1
+40 To Tremolo Sus
+//! c=textured i=tremolo o=note-hold@1:105,127/@1
+41 To Tremolo Cresc
+//! c=textured i=sfz o=note-hold@1:106,127/@1
+42 Tremolo Sfz
+//! c=textured i=harmonics-natural-eighth o=note-hold@1:107,127/@1
+43 Harmonic Short!!
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="01. Violin Sustains Standard"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 01"
+//! id=11111111-57c8-b8cb-666d-3fc1ed3d68cc
+Bank 1 1 Emotional Violin - 02 Individuals
+
+//! c=long i=sustain o=note@1:24,127/@1
+1 Delicate Sustain
+//! c=long-light i=vibrato o=note@1:25,127/@1
+2 LtVib 4 Layer
+//! c=long i=vibrato-molto o=note@1:26,127/@1
+3 Vib 4 Layer
+//! c=long i=sustain o=note@1:27,127/@1
+4 NV - LtVib
+//! c=long i=sustain o=note@1:28,127/@1
+5 NV Sustain
+//! c=long i=sustain o=note@1:29,127/@1
+6 Plain Sus 3 layer
+//! c=legato-dark i=vibrato-molto o=note@1:30,127/@1
+7 Intimate Late Vib
+//! c=legato-light i=vibrato o=note@1:31,127/@1
+8 Intimate Slow Vib mp
+//! c=legato-light i=sustain o=note@1:32,127/@1
+9 Intimate p
+//! c=legato-light i=sustain o=note@1:33,127/@1
+10 Intimate mp
+//! c=long-dark i=sordino o=note@1:34,127/@1
+11 Sordino Vib
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="02. Violin Sustains Special"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 02"
+//! id=11111111-456a-fe64-91bc-606ba6180b65
+Bank 1 2 Emotional Violin - 02 Individuals
+
+//! c=long i=flautando o=note@2:24,127/@2
+1 Flautando
+//! c=long-light i=flautando o=note@2:25,127/@2
+2 Flautando free Vib
+//! c=textured i=dark o=note@2:26,127/@2
+3 Morbid
+//! c=textured i=harmonics-natural o=note@2:27,127/@2
+4 Harmonics
+//! c=textured i=vibrato o=note@2:28,127/@2
+5 Sulponti Vib XFde
+//! c=textured i=sustain o=note@2:29,127/@2
+6 Sulponti NV XFde
+//! c=textured i=flautando o=note@2:30,127/@2
+7 Sul G Flautando
+//! c=textured i=vibrato-molto o=note@2:31,127/@2
+8 Undulation WAIT!
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="03. Violin Shorts"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 03"
+//! id=11111111-3cec-0e21-f3ed-e8bc75b15a51
+Bank 1 3 Emotional Violin - 02 Individuals
+
+//! c=short i=spiccato o=note@3:24,127/@3
+1 Paganini Shorts
+//! c=short i=spiccato o=note@3:25,127/@3
+2 Spicc Short
+//! c=short i=marcato o=note@3:26,127/@3
+3 Spicc – Marcato Short
+//! c=short-light i=spiccato-feathered o=note@3:27,127/@3
+4 Dirty Fast Spicc
+//! c=short i=spiccato o=note@3:28,127/@3
+5 Spicc Long
+//! c=short i=ricochet o=note@3:29,127/@3
+6 Ricochet
+//! c=short i=spiccato o=note@3:30,127/@3
+7 Rota Spicc
+//! c=short-light i=vibrato o=note@3:31,127/@3
+8 Auftakt Vib
+//! c=short-light i=vibrato o=note@3:32,127/@3
+9 Auftakt NV
+//! c=short i=accent o=note@3:33,127/@3
+10 Passionate 8th
+//! c=short i=accent o=note@3:34,127/@3
+11 Passionate Quarter
+//! c=short-dark i=marcato o=note@3:35,127/@3
+12 Dramatic Marc
+//! c=short-dark i=accent o=note@3:36,127/@3
+13 Dramatic 8th
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="04. Violin Pizzicatos"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 04"
+//! id=11111111-3b86-74e1-e03e-71f7bfb49cb8
+Bank 1 4 Emotional Violin - 02 Individuals
+
+//! c=short-light i=pizz o=note@4:24,127/@4
+1 Pizz
+//! c=short-light i=pizz o=note@4:25,127/@4
+2 Paganini-Pizz
+//! c=short i=pickup o=note@4:26,127/@4
+3 Hammer-On
+//! c=short-light i=pizz o=note@4:27,127/@4
+4 Ancient-Ethnic Pizz
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="05. Violin Tremolos"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 05"
+//! id=11111111-fb70-338f-39eb-62899bc797cc
+Bank 1 5 Emotional Violin - 02 Individuals
+
+//! c=fx i=tremolo o=note@5:24,127/@5
+1 Tremolo
+//! c=fx i=crescendo o=note@5:25,127/@5
+2 Tremolo Cresc
+//! c=fx i=sfz o=note@5:26,127/@5
+3 Tremolo Sfz
+//! c=fx i=tremolo o=note@5:27,127/@5
+4 Tremolo SP
+//! c=fx i=crescendo o=note@5:28,127/@5
+5 Tremolo SP Cresc
+//! c=fx i=sfz o=note@5:29,127/@5
+6 Tremolo SP Sfz
+
+//! spacer=1
+// --- Ornament / MKS ---
+//! c=fx i=tremolo o=note-hold@5:36,127/@5
+7 Tremolo Sustain
+//! c=fx i=crescendo o=note-hold@5:37,127/@5
+8 Tremolo Cresc
+//! c=fx i=sfz o=note-hold@5:38,127/@5
+9 Tremolo Sfz
+//! c=fx i=tremolo o=note-hold@5:39,127/@5
+10 Tremolo Sustain SP
+//! c=fx i=crescendo o=note-hold@5:40,127/@5
+11 Tremolo Cresc SP
+//! c=fx i=sfz o=note-hold@5:41,127/@5
+12 Tremolo Sfz SP
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="06. Violin Trills"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 06"
+//! id=11111111-cf8f-9966-15e8-d0691e0f5981
+Bank 1 6 Emotional Violin - 02 Individuals
+
+//! c=fx i=trill-min2 o=note@6:24,127/@6
+1 Minor Trill lg
+//! c=fx i=trill-maj2 o=note@6:25,127/@6
+2 Major Trill lg
+//! c=fx i=trill-min2 o=note@6:26,127/@6
+3 Minor Trill lg 2 accelerando
+//! c=fx i=trill-maj2 o=note@6:27,127/@6
+4 Major Trill lg 2 accelerando
+//! c=fx i=trill-min2 o=note@6:28,127/@6
+5 Minor Hook Trill lg
+//! c=fx i=trill-maj2 o=note@6:29,127/@6
+6 Major Hook Trill lg
+//! c=fx i=trill-min2 o=note@6:30,127/@6
+7 Minor Hook Trill med
+//! c=fx i=trill-maj2 o=note@6:31,127/@6
+8 Major Hook Trill med
+//! c=fx i=trill-min2 o=note@6:32,127/@6
+9 Minor Hook Trill sh
+//! c=fx i=trill-maj2 o=note@6:33,127/@6
+10 Major Hook Trill sh
+//! c=fx i=trill-min2 o=note@6:34,127/@6
+11 Minor Prall Trill sh
+//! c=fx i=trill-maj2 o=note@6:35,127/@6
+12 Major Prall Trill sh
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="07. Violin Soft Padding Espressivos"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 07"
+//! id=11111111-2107-fc03-c6a5-60d11993112e
+Bank 1 7 Emotional Violin - 02 Individuals
+
+//! c=long-light i=vibrato o=note@7:24,127/@7
+1 Intimate Plain Sus p Vib
+//! c=long-light i=sustain o=note@7:25,127/@7
+2 Intimate Plain Sus p NV
+//! c=long-light i=swells o=note@7:26,127/@7
+3 Short espr swell
+//! c=legato-light i=vibrato o=note@7:27,127/@7
+4 Prog Vib Short
+//! c=legato-light i=vibrato o=note@7:28,127/@7
+5 Prog Vib Short 2
+//! c=legato-light i=vibrato o=note@7:29,127/@7
+6 Prog Vib medium
+//! c=legato-light i=vibrato o=note@7:30,127/@7
+7 Prog Vib med Late
+//! c=legato-dark i=vibrato-molto o=note@7:31,127/@7
+8 Prog Vib Late
+//! c=textured i=bowed o=note@7:32,127/@7
+9 2Bows Cresc-Decresc
+//! c=textured i=bowed o=note@7:33,127/@7
+10 2Bows Cresc-Decresc 2
+//! c=long-light i=crescendo o=note@7:34,127/@7
+11 Crescendo
+//! c=long-light i=decrescendo o=note@7:35,127/@7
+12 Decrescendo
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="08. Violin Double Stops"
+//! chase=1,2,5,11,20,64-69  m="Set patch on Kontakt to channel 08"
+//! id=11111111-ba11-37aa-9ac2-5ff5ce149bdf
+Bank 1 8 Emotional Violin - 02 Individuals
+
+//! c=textured i=dblstop-5th o=note@8:24,127/@8
+1 Dble Stop Major
+//! c=textured i=dblstop-5th o=note@8:25,127/@8
+2 Dble Stop Minor
+//! c=textured i=dblstop-5th o=note@8:26,127/@8
+3 Dble Stop V7
+//! c=textured i=dblstop-5th o=note@8:27,127/@8
+4 Dble Stop Dim
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/02. Individuals" n="Individuals Masterpatch"
+//! chase=1,2,5,11,20,64-69  m="Set multi on ascending channels 01-08"
+//! id=3d270daa-4c23-4087-bcc0-ece935afc634
+Bank * * Emotional Violin - 02 Individuals Masterpatch
+
+// ------------------- 01. Violin Sustains Standard (ch.01) -------------------
+
+//! c=long i=sustain o=note@1:24,127/@1 m="Mild vibrato"
+1 Delicate Sustain
+//! c=long-light i=vibrato o=note@1:25,127/@1
+2 LtVib (4 Layer)
+//! c=long i=vibrato-molto o=note@1:26,127/@1
+3 Vib (4 Layer)
+//! c=long i=sustain o=note@1:27,127/@1
+4 NV - LtVib
+//! c=long i=sustain o=note@1:28,127/@1
+5 NV Sustain
+//! c=long i=sustain o=note@1:29,127/@1
+6 Plain Sus 3 layer
+//! c=legato-dark i=vibrato-molto o=note@1:30,127/@1
+7 Intimate Late Vib
+//! c=legato-light i=vibrato o=note@1:31,127/@1
+8 Intimate Slow Vib mp
+//! c=legato-light i=sustain o=note@1:32,127/@1
+9 Intimate p
+//! c=legato-light i=sustain o=note@1:33,127/@1
+10 Intimate mp
+//! c=long-dark i=sordino o=note@1:34,127/@1
+11 Sordino Vib
+
+//! spacer=1
+// ------------------- 02. Violin Sustains Special (ch.02) -------------------
+
+//! c=long i=flautando o=note@2:24,127/@2
+12 Flautando
+//! c=long-light i=flautando o=note@2:25,127/@2
+13 Flautando free Vib
+//! c=textured i=dark o=note@2:26,127/@2
+14 Morbid
+//! c=textured i=harmonics-natural o=note@2:27,127/@2
+15 Harmonics
+//! c=textured i=vibrato o=note@2:28,127/@2
+16 Sulponti Vib XFde
+//! c=textured i=sustain o=note@2:29,127/@2
+17 Sulponti NV XFde
+//! c=textured i=flautando o=note@2:30,127/@2
+18 Sul G Flautando
+//! c=textured i=vibrato-molto o=note@2:31,127/@2
+19 Undulation WAIT!
+
+//! spacer=1
+// ------------------- 03. Violin Shorts (ch.03) -------------------
+
+//! c=short i=spiccato o=note@3:24,127/@3
+20 Paganini Shorts
+//! c=short i=spiccato o=note@3:25,127/@3
+21 Spicc Short
+//! c=short i=marcato o=note@3:26,127/@3
+22 Spicc – Marcato Short
+//! c=short-light i=spiccato-feathered o=note@3:27,127/@3
+23 Dirty Fast Spicc
+//! c=short i=spiccato o=note@3:28,127/@3
+24 Spicc Long
+//! c=short i=ricochet o=note@3:29,127/@3
+25 Ricochet
+//! c=short i=spiccato o=note@3:30,127/@3
+26 Rota Spicc
+//! c=short-light i=vibrato o=note@3:31,127/@3
+27 Auftakt Vib
+//! c=short-light i=vibrato o=note@3:32,127/@3
+28 Auftakt NV
+//! c=short i=accent o=note@3:33,127/@3
+29 Passionate 8th
+//! c=short i=accent o=note@3:34,127/@3
+30 Passionate Quarter
+//! c=short-dark i=marcato o=note@3:35,127/@3
+31 Dramatic Marc
+//! c=short-dark i=accent o=note@3:36,127/@3
+32 Dramatic 8th
+
+//! spacer=1
+// ------------------- 04. Violin Pizzicatos (ch.04) -------------------
+
+//! c=short-light i=pizz o=note@4:24,127/@4
+33 Pizz
+//! c=short-light i=pizz o=note@4:25,127/@4
+34 Paganini-Pizz
+//! c=short i=pickup o=note@4:26,127/@4
+35 Hammer-On
+//! c=short-light i=pizz o=note@4:27,127/@4
+36 Ancient-Ethnic Pizz
+
+//! spacer=1
+// ------------------- 05. Violin Tremolos (ch.05) -------------------
+
+//! c=fx i=tremolo o=note@5:24,127/@5
+37 Tremolo
+//! c=fx i=crescendo o=note@5:25,127/@5
+38 Tremolo Cresc
+//! c=fx i=sfz o=note@5:26,127/@5
+39 Tremolo Sfz
+//! c=fx i=tremolo o=note@5:27,127/@5
+40 Tremolo SP
+//! c=fx i=crescendo o=note@5:28,127/@5
+41 Tremolo SP Cresc
+//! c=fx i=sfz o=note@5:29,127/@5
+42 Tremolo SP Sfz
+
+// --- Ornament / MKS ---
+//! c=fx i=tremolo o=note-hold@5:36,127/@5
+43 Tremolo Sustain
+//! c=fx i=crescendo o=note-hold@5:37,127/@5
+44 Tremolo Cresc
+//! c=fx i=sfz o=note-hold@5:38,127/@5
+45 Tremolo Sfz
+//! c=fx i=tremolo o=note-hold@5:39,127/@5
+46 Tremolo Sustain SP
+//! c=fx i=crescendo o=note-hold@5:40,127/@5
+47 Tremolo Cresc SP
+//! c=fx i=sfz o=note-hold@5:41,127/@5
+48 Tremolo Sfz SP
+
+//! spacer=1
+// ------------------- 06. Violin Trills (ch.06) -------------------
+
+//! c=fx i=trill-min2 o=note@6:24,127/@6
+49 Minor Trill lg
+//! c=fx i=trill-maj2 o=note@6:25,127/@6
+50 Major Trill lg
+//! c=fx i=trill-min2 o=note@6:26,127/@6
+51 Minor Trill lg 2 accelerando
+//! c=fx i=trill-maj2 o=note@6:27,127/@6
+52 Major Trill lg 2 accelerando
+//! c=fx i=trill-min2 o=note@6:28,127/@6
+53 Minor Hook Trill lg
+//! c=fx i=trill-maj2 o=note@6:29,127/@6
+54 Major Hook Trill lg
+//! c=fx i=trill-min2 o=note@6:30,127/@6
+55 Minor Hook Trill med
+//! c=fx i=trill-maj2 o=note@6:31,127/@6
+56 Major Hook Trill med
+//! c=fx i=trill-min2 o=note@6:32,127/@6
+57 Minor Hook Trill sh
+//! c=fx i=trill-maj2 o=note@6:33,127/@6
+58 Major Hook Trill sh
+//! c=fx i=trill-min2 o=note@6:34,127/@6
+59 Minor Prall Trill sh
+//! c=fx i=trill-maj2 o=note@6:35,127/@6
+60 Major Prall Trill sh
+
+//! spacer=1
+// ------------------- 07. Violin Soft Padding Espressivos (ch.07) -------------------
+
+//! c=long-light i=vibrato o=note@7:24,127/@7
+61 Intimate Plain Sus p Vib
+//! c=long-light i=sustain o=note@7:25,127/@7
+62 Intimate Plain Sus p NV
+//! c=long-light i=swells o=note@7:26,127/@7
+63 Short espr swell
+//! c=legato-light i=vibrato o=note@7:27,127/@7
+64 Prog Vib Short
+//! c=legato-light i=vibrato o=note@7:28,127/@7
+65 Prog Vib Short 2
+//! c=legato-light i=vibrato o=note@7:29,127/@7
+66 Prog Vib medium
+//! c=legato-light i=vibrato o=note@7:30,127/@7
+67 Prog Vib med Late
+//! c=legato-dark i=vibrato-molto o=note@7:31,127/@7
+68 Prog Vib Late
+//! c=textured i=bowed o=note@7:32,127/@7
+69 2Bows Cresc-Decresc
+//! c=textured i=bowed o=note@7:33,127/@7
+70 2Bows Cresc-Decresc 2
+//! c=long-light i=crescendo o=note@7:34,127/@7
+71 Crescendo
+//! c=long-light i=decrescendo o=note@7:35,127/@7
+72 Decrescendo
+
+//! spacer=1
+// ------------------- 08. Violin Double Stops (ch.08) -------------------
+
+//! c=textured i=dblstop-5th o=note@8:24,127/@8
+73 Dble Stop Major
+//! c=textured i=dblstop-5th o=note@8:25,127/@8
+74 Dble Stop Minor
+//! c=textured i=dblstop-5th o=note@8:26,127/@8
+75 Dble Stop V7
+//! c=textured i=dblstop-5th o=note@8:27,127/@8
+76 Dble Stop Dim
+
+
+//----------------------------------------------------------------------------
+//! g="Best Service/Emotional Violin/03. Specials" n="Specials Masterpatch"
+//! chase=1,2,5,11,20,64-69  m="Set multi on ascending channels 01-07"
+//! id=ca7e7cce-418d-4a0e-ae73-b799def9b6bd
+Bank * * Emotional Violin - 03 Specials Masterpatch
+
+//! c=fx i=atonal o=@1
+1 Violin Morbid Sus
+
+//! c=fx i=pizz-bartok o=@2
+2 Violin Ancient Ethnic Pizz
+
+//! c=fx i=ornament o=@3
+3 Violin Indiarabic VSW
+
+//! c=fx i=gliss o=@4
+4 Violin Harmonic Gliss FX
+
+//! c=fx i=tremolo o=@5
+5 Violin Undulation Wait
+
+//! c=fx i=percussive o=@6
+6 Violin Percussives
+
+//! c=fx i=room-tone o=@7
+7 ROOM Tone with Human Being
