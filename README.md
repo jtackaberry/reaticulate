@@ -1,4 +1,4 @@
-_NOTE: This fork of the original repository incorporates about 70 user-submitted reabank files in the userbank folder hierarchy that were in the Issues._
+_NOTE: This fork of the original repository incorporates about 70 user-submitted reabank files in the userbank folder hierarchy that were in the Issues section._
 
 
 # Reaticulate
