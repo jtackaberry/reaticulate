@@ -1,13 +1,6 @@
 //----------------------------------------------------------------------------
 // Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/110
 //
-// Link to detailed installation instructions:
-//
-// https://www.vsl.co.at/community/posts/t53083-Comprehensive-Articulation-Management-System-for-VSL-Libraries--for-REAPER-users#post287931
-//
-// NOTE: there are VI presets available for all banks at the above URL.
-
-
 // TABLE OF CONTENTS
 //
 // DIRECTIONS: Use *Ctrl-F* to quickly jump to the articulation banks using the names listed below.
@@ -168,4 +161,5 @@ Bank * * Prepared Piano
 //! c=long i=list o=note:120
 8 Stick, roll
 //! c=long i=list o=note:121
+
 9 Glissando
