@@ -1,3 +1,6 @@
+_NOTE: This fork of the original repository incorporates about 70 user-submitted reabank files in the userbank folder hierarchy that were in the Issues._
+
+
 # Reaticulate
 
 Reaticulate provides a system for managing virtual instrument articulations in REAPER.
