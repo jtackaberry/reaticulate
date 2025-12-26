@@ -1,0 +1,39 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Orchestral Tools - Berlin Strings - Celli (Shorts)
+// CREATOR: Scott Sadowsky
+// NOTE: Only the first four articulations are defined out of the box. This
+//		 file assumes that the user has defined articulations 5-12 as follows:
+//		 5 staccato blurred, 6 spiccato, 7 trems sfz, 8 trills sfz +1, 
+//		 9 trills sfz +2, 10 trems hook, 11 martele FFF, 12 port long.
+//
+// KEY: c=COLOR	i=ICON g=GROUP o=note:NOTENUMBER
+//
+//! g="Orchestral Tools/Berlin Strings" n="Celli (Shorts)"
+//! id=b5f8d091-90fe-4cdd-86c2-5b33080248ab
+Bank * * OT-BS Celli (Shorts)
+//----------------------------------------------------------------------------
+//! c=short			i=staccato			g=1		o=note:24
+44 Staccato
+//! c=short-light	i=staccato			g=1		o=note:28
+42 Staccato Blurred
+//! c=short			i=spiccato			g=1		o=note:29
+41 Spiccato
+//! c=short-dark	i=spiccato			g=1		o=note:25
+62 Spiccato Exposed
+//! c=short-light	i=pizz				g=1		o=note:27
+56 Pizzicato
+//! c=short-dark	i=tenuto-eighth		g=1		o=note:34
+49 Martele FFF
+//! c=legato-dark	i=legato-portamento	g=1		o=note:26
+32 Portamento Short
+//! c=legato-dark	i=legato-gliss			g=1		o=note:35
+31 Portamento Long
+//! c=long-dark		i=trill-min2		g=1		o=note:31
+70 Trill Min2 Sfz
+//! c=long-dark		i=trill-maj2		g=1		o=note:32
+71 Trill Maj2 Sfz
+//! c=fx			i=tremolo			g=1		o=note:30
+15 Tremolo Sfz
+//! c=fx			i=tremolo			g=1		o=note:33
+14 Tremolo Hook
+

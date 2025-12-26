@@ -1,0 +1,1292 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 01 1st Violins
+// CREATOR: Scott Sadowsky
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="01 1st Violins (05 FX)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'Flow' view.\nNOTE: Read the tooltips! They contain valuable information about which base articulations modifier articulations work with, which CCs are available with a given articulation, etc."
+//! id=e00f1264-c454-4c07-bf34-101155e96844
+Bank * * 1st Violins (VSL Synchron Duality 05 FX)
+
+// ==================== CONTROLLER ARTICULATIONS ====================
+
+// ========== DIRECTION ==========
+//! c=#450204		i=list			o=note:43									m="For use with Cluster, Short, Pegs"
+111 DIRECTION: Up/Frnt to Bk
+//! c=#450204		i=list			o=note:44									m="For use with Cluster, Short, Pegs"
+112 DIRECTION: Down/Bk to Frnt
+
+// ========== RELEASE ==========
+//! c=#024523		i=list			o=note:43									m="For use with Natural Harmonics"
+113 RELEASE: Low Note
+//! c=#024523		i=list			o=note:44									m="For use with Natural Harmonics"
+114 RELEASE: Hi Note
+
+// ========== SPEED ==========
+//! c=#021645		i=list			o=note:41									m="For use with Cluster"
+115 SPEED: Slow
+//! c=#021645		i=list			o=note:42									m="For use with Cluster"
+116 SPEED: Fast
+//! c=#021645		i=list			o=note:43									m="For use with Cluster"
+117 SPEED: X-Fade
+
+// ========== STRING ==========
+//! c=#3B0075		i=list			o=note:42									m="For use with Natural Harmonics"
+119 STRING: Merged
+//! c=#3B0075		i=list			o=note:43									m="For use with Natural Harmonics"
+120 STRING: Sul G (sol)
+//! c=#3B0075		i=list			o=note:44									m="For use with Natural Harmonics"
+121 STRING: Sul D (re)
+//! c=#3B0075		i=list			o=note:45									m="For use with Natural Harmonics"
+122 STRING: Sul A (la)
+//! c=#3B0075		i=list			o=note:46									m="For use with Natural Harmonics"
+123 STRING: Sul E (mi)
+//! c=#3B0075		i=list			o=note:47									m="For use with Natural Harmonics"
+124 STRING: Chords
+
+// ========== STYLE ==========
+//! c=#08486E		i=list			o=note:45									m="For use with Cluster"
+125 STYLE: Long/One Dir
+//! c=#08486E		i=list			o=note:46									m="For use with Cluster"
+126 STYLE: Tremolo/Crossed
+//! c=#08486E		i=list			o=note:47									m="For use with Cluster\nNormally triggers an articulation where CC03 controls cross-fade"
+127 STYLE: X-Fade
+
+//! spacer=1
+
+// ========== CLUSTERS ==========
+//! spacer=1
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:36					m=""
+0 Cluster X-Slide Fast
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:37					m="CC03 controls cross-fade"
+1 Gliss to Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:38					m="CC03 controls cross-fade"
+2 Cluster Meas Vib
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:39					m="CC03 controls cross-fade"
+3 Pulsing Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:40					m=""
+4 Cluster trill
+
+// ========== SHORT NOTE FX ==========
+//! spacer=1
+//! c=#A65F1B		i=note-eighth				o=note:25/note:36					m=""
+6 Short Stac. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:25/note:37					m=""
+7 Short Pizz. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:25/note:38					m=""
+8 Short Gliss Short
+//! c=#A65F1B		i=note-eighth				o=note:25/note:39					m=""
+9 Short Gliss Detache
+//! c=#A65F1B		i=note-eighth				o=note:25/note:40					m=""
+10 Short Gliss Pizz Up
+//! c=#A65F1B		i=note-eighth				o=note:25/note:41					m=""
+11 Short Gliss Pizz on Nails
+//! c=#A65F1B		i=note-eighth				o=note:25/note:42					m=""
+12 Short Hammer on
+
+// ========== VERTICAL BOWING ==========
+//! spacer=1
+//! c=#6BAB2B		i=bow-up					o=note:26/note:36					m=""
+14 Vert Bowing Short
+//! c=#6BAB2B		i=bow-up					o=note:26/note:37					m=""
+15 Vert Bowing Long
+//! c=#6BAB2B		i=bow-up					o=note:26/note:38					m=""
+16 Vert Bowing Tremolo
+//! c=#6BAB2B		i=bow-up					o=note:26/note:39					m="CC03 controls cross-fade"
+17 Vert Bow Long XF Trem
+
+// ========== ALEATORIC CHAOS ==========
+//! spacer=1
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:36					m=""
+19 Aleat Chaos Detache (f)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:37					m=""
+20 Aleat Chaos Detache (p)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:38					m=""
+21 Aleat Chaos Vert Bow (pp)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:39					m="CC03 controls cross-fade"
+22 Aleat Chaos XF
+
+// ========== SCRATCHES ==========
+//! spacer=1
+//! c=#432DD7		i=staccato-dig				o=note:28/note:36					m=""
+24 Scratches Short
+//! c=#432DD7		i=staccato-dig				o=note:28/note:37					m=""
+25 Scratches Long
+
+// ========== NATURAL HARMONICS ==========
+//! spacer=1
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:36					m=""
+27 Nat Harmonics Short
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:37					m=""
+28 Nat Harmonics Long
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:38					m=""
+29 Nat Harmonics Tremolo
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:39					m="CC03 controls cross-fade"
+30 Nat Harm Long XF Trem
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:40					m=""
+31 Nat Harmonics Trill
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:41					m=""
+32 Nat Harmonics Gliss
+
+// ========== OPEN STRING CLUSTERS ==========
+//! spacer=1
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:36					m=""
+34 Open Str Clst Short
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:37					m=""
+35 Open Str Clst Long
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:38					m=""
+36 Open Str ClstTremolo
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:39					m="CC03 controls cross-fade"
+37 Op Str Clst Lng XF Trem
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:40					m=""
+38 Open Str Clst Pizz
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:41					m=""
+39 Open Str Clst Arp
+
+// ========== BEHIND BRIDGE ==========
+//! spacer=1
+//! c=#FDC745		i=sul-pont				o=note:31/note:36					m=""
+41 Behind Bridge Short
+//! c=#FDC745		i=sul-pont				o=note:31/note:37					m=""
+42 Behind Bridge Long
+//! c=#FDC745		i=sul-pont				o=note:31/note:38					m=""
+43 Behind Bridge Tremolo
+//! c=#FDC745		i=sul-pont				o=note:31/note:39					m="CC03 controls cross-fade"
+44 Behind Brdg Lng XF Trem
+//! c=#FDC745		i=sul-pont				o=note:31/note:40					m=""
+45 Behind Bridge Pizz
+//! c=#FDC745		i=sul-pont				o=note:31/note:41					m=""
+46 Behind Bridge Arp
+//! c=#FDC745		i=sul-pont				o=note:31/note:42					m=""
+47 Behind Bridge Arp Cross
+
+// ========== PEGS TUNING ==========
+//! spacer=1
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:37/note:43			m=""
+48 Pegs Tuning Reg Up
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:37/note:44			m=""
+49 Pegs Tuning Reg Dn
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:38					m=""
+50 Pegs Tuning Trem Dn
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:39					m="CC03 controls cross-fade"
+51 Pegs Tuning Reg X Trem
+
+// ========== CHAOS COMBIS ==========
+//! spacer=1
+//! c=#54205C		i=legato-portamento			o=note:33/note:36/note:43			m="CC03 controls cross-fade"
+53 Chaos X-Slide XF Meas Vib
+//! c=#54205C		i=legato-portamento			o=note:33/note:36/note:44			m="CC03 controls cross-fade"
+54 Chaos X-Slide XF Scratches
+//! c=#54205C		i=legato-portamento			o=note:33/note:36/note:45			m="CC03 controls cross-fade"
+55 Chaos X-Slide XF + Puls Clst
+
+//! c=#8D369B		i=trill					o=note:33/note:37/note:43			m="CC03 controls cross-fade"
+57 Chaos Clst Tr XF Al Leg
+//! c=#8D369B		i=						o=note:33/note:37/note:44			m="CC03 controls cross-fade"
+58 Chaos Clst Tr XF X-Sld Fst
+//! c=#8D369B		i=						o=note:33/note:37/note:45			m="CC03 controls cross-fade"
+59 Chaos Clst Tr XF X-Sld XF M Vib
+
+//! c=#54205C		i=legato-portamento			o=note:33/note:38/note:43			m="CC03 controls cross-fade"
+61 Chaos Al Leg XF X-Sld Fst
+//! c=#54205C		i=legato-portamento			o=note:33/note:38/note:44			m="CC03 controls cross-fade"
+62 Chaos Al Leg XF Meas Vib Cross
+//! c=#54205C		i=legato-portamento			o=note:33/note:38/note:45			m="CC03 controls cross-fade"
+63 Chaos Al Leg XF Puls Clst
+
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:39/note:43			m="CC03 controls cross-fade"
+65 Chaos Brdg Lay X-Sld+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:39/note:44			m="CC03 controls cross-fade"
+66 Chaos Brdg Lay Meas Vib+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:39/note:45			m="CC03 controls cross-fade"
+67 Chaos Brdg Lay Clst Tr+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:39/note:46			m="CC03 controls cross-fade"
+68 Chaos Brdg Lay Al Leg+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:39/note:47			m="CC03 controls cross-fade"
+69 Chaos Brdg Lay Al Vert Bow+Br
+
+//! c=#54205C		i=legato-gliss				o=note:33/note:40/note:120			m="Must assign note C9 (120) to Stack category in Synchron Player for this to work"
+71 Chaos Gliss to Clst Det Dn
+//! c=#54205C		i=legato-gliss				o=note:33/note:40/note:121			m="Must assign note C9 (120) to Stack category in Synchron Player for this to work"
+72 Chaos Gliss to Clst Up
+
+// ========== HARMONIC COMBIS ==========
+//! spacer=1
+//! c=#156155		i=phrase2					o=note:34/note:36/note:44			m="CC03 controls cross-fade"
+74 Harm Cmb Vert B Shrt +Chd
+//! c=#156155		i=phrase2					o=note:34/note:36/note:45			m="CC03 controls cross-fade"
+75 Harm Cmb Vert B Long + Chd
+//! c=#156155		i=phrase2					o=note:34/note:36/note:46			m="CC03 controls cross-fade"
+76 Harm Cmb Vert B Trem + Chd
+
+//! c=#38D5BE		i=phrase2					o=note:34/note:37/note:44			m="CC03 controls cross-fade"
+77 Harm Cmb Op Str Clst Shrt XF Ch
+//! c=#38D5BE		i=phrase2					o=note:34/note:37/note:45			m="CC03 controls cross-fade"
+78 Harm Cmb Op Str Clst Long XF Ch
+//! c=#38D5BE		i=phrase2					o=note:34/note:37/note:46			m="CC03 controls cross-fade"
+79 Harm Cmb Op Str Clst Trem XF Ch
+
+//! c=#156155		i=phrase2					o=note:34/note:38/note:44			m="CC03 controls cross-fade"
+80 Harm Cmb Harm XF Brdg Short
+//! c=#156155		i=phrase2					o=note:34/note:38/note:45			m="CC03 controls cross-fade"
+81 Harm Cmb Harm XF Brdg Long
+//! c=#156155		i=phrase2					o=note:34/note:38/note:46			m="CC03 controls cross-fade"
+82 Harm Cmb Harm XF Brdg Trem
+
+//! c=#38D5BE		i=phrase2					o=note:34/note:39/note:43			m="CC03 controls cross-fade"
+83 Harm Cmb XF Hrm Gl Al Leg
+//! c=#38D5BE		i=phrase2					o=note:34/note:39/note:44			m="CC03 controls cross-fade"
+84 Harm Cmb Cmb XF Hrm Gl Al Vrt B
+//! c=#38D5BE		i=phrase2					o=note:34/note:39/note:45			m="CC03 controls cross-fade"
+85 Harm Cmb Cmb XF Hrm Gl X-Sld Fst
+//! c=#38D5BE		i=phrase2					o=note:34/note:39/note:46			m="CC03 controls cross-fade"
+86 Harm Cmb Cmb XF Hrm Gl Meas Vib
+//! c=#38D5BE		i=phrase2					o=note:34/note:39/note:47			m="CC03 controls cross-fade"
+87 Harm Cmb Cmb XF Hrm Gl Vrt B Trem
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 02 2nd Violins
+// CREATOR: Scott Sadowsky
+//! clone=e00f1264-c454-4c07-bf34-101155e96844
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="02 2nd Violins (05 FX)"
+//! id=7aee27f4-d86c-4d7b-94f5-ba213e51a45b
+Bank * * 2nd Violins (VSL Synchron Duality 05 FX)
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 03 Violas
+// CREATOR: Scott Sadowsky
+//! clone=e00f1264-c454-4c07-bf34-101155e96844
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="03 Violas (05 FX)"
+//! id=73a6396f-c2fb-48d5-961d-9c75acd10556
+Bank * * Violas (VSL Synchron Duality 05 FX)
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 04 Violoncellos
+// CREATOR: Scott Sadowsky
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="04 Violoncellos (05 FX)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'Flow' view.\nNOTE: Read the tooltips! They contain valuable information about which base articulations modifier articulations work with, which CCs are available with a given articulation, etc."
+//! id=c55bef1f-ea63-4e4b-aec0-92bd0019857c
+Bank * * Violoncellos (VSL Synchron Duality 05 FX)
+
+// ==================== CONTROLLER ARTICULATIONS ====================
+
+// ========== DIRECTION ==========
+//! c=#450204		i=list			o=note:103									m="For use with Cluster, Short, Pegs"
+111 DIRECTION: Up/Frnt to Bk
+//! c=#450204		i=list			o=note:104									m="For use with Cluster, Short, Pegs"
+112 DIRECTION: Down/Bk to Frnt
+
+// ========== RELEASE ==========
+//! c=#024523		i=list			o=note:103									m="For use with Natural Harmonics"
+113 RELEASE: Low Note
+//! c=#024523		i=list			o=note:104									m="For use with Natural Harmonics"
+114 RELEASE: Hi Note
+
+// ========== SPEED ==========
+//! c=#021645		i=list			o=note:101									m="For use with Cluster"
+115 SPEED: Slow
+//! c=#021645		i=list			o=note:102									m="For use with Cluster"
+116 SPEED: Fast
+//! c=#021645		i=list			o=note:103									m="For use with Cluster"
+117 SPEED: X-Fade
+
+// ========== STRING ==========
+//! c=#3B0075		i=list			o=note:102									m="For use with Natural Harmonics"
+119 STRING: Merged
+//! c=#3B0075		i=list			o=note:103									m="For use with Natural Harmonics"
+120 STRING: Sul C (do)
+//! c=#3B0075		i=list			o=note:104									m="For use with Natural Harmonics"
+121 STRING: Sul G (sol)
+//! c=#3B0075		i=list			o=note:105									m="For use with Natural Harmonics"
+122 STRING: Sul D (re)
+//! c=#3B0075		i=list			o=note:106									m="For use with Natural Harmonics"
+123 STRING: Sul A (la)
+//! c=#3B0075		i=list			o=note:107									m="For use with Natural Harmonics"
+124 STRING: Chords
+
+// ========== STYLE ==========
+//! c=#08486E		i=list			o=note:105									m="For use with Cluster"
+125 STYLE: Long/One Dir
+//! c=#08486E		i=list			o=note:106									m="For use with Cluster"
+126 STYLE: Tremolo/Crossed
+//! c=#08486E		i=list			o=note:107									m="For use with Cluster\nNormally triggers an articulation where CC03 controls cross-fade"
+127 STYLE: X-Fade
+
+//! spacer=1
+
+// ========== CLUSTERS ==========
+//! spacer=1
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:96						m=""
+0 Cluster X-Slide Fast
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:97						m="CC03 controls cross-fade"
+1 Gliss to Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:98						m="CC03 controls cross-fade"
+2 Cluster Meas Vib
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:99						m="CC03 controls cross-fade"
+3 Pulsing Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:100						m=""
+4 Cluster trill
+
+// ========== SHORT NOTE FX ==========
+//! spacer=1
+//! c=#A65F1B		i=note-eighth				o=note:25/note:96						m=""
+6 Short Stac. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:25/note:97						m=""
+7 Short Pizz. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:25/note:98						m=""
+8 Short Gliss Short
+//! c=#A65F1B		i=note-eighth				o=note:25/note:99						m=""
+9 Short Gliss Detache
+//! c=#A65F1B		i=note-eighth				o=note:25/note:100						m=""
+10 Short Gliss Pizz Up
+//! c=#A65F1B		i=note-eighth				o=note:25/note:101						m=""
+11 Short Gliss Pizz on Nails
+//! c=#A65F1B		i=note-eighth				o=note:25/note:102						m=""
+12 Short Hammer on
+
+// ========== VERTICAL BOWING ==========
+//! spacer=1
+//! c=#6BAB2B		i=bow-up					o=note:26/note:96						m=""
+14 Vert Bowing Short
+//! c=#6BAB2B		i=bow-up					o=note:26/note:97						m=""
+15 Vert Bowing Long
+//! c=#6BAB2B		i=bow-up					o=note:26/note:98						m=""
+16 Vert Bowing Tremolo
+//! c=#6BAB2B		i=bow-up					o=note:26/note:99						m="CC03 controls cross-fade"
+17 Vert Bow Long XF Trem
+
+// ========== ALEATORIC CHAOS ==========
+//! spacer=1
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:96						m=""
+19 Aleat Chaos Detache (f)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:97						m=""
+20 Aleat Chaos Detache (p)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:98						m=""
+21 Aleat Chaos Vert Bow (pp)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:99						m="CC03 controls cross-fade"
+22 Aleat Chaos XF
+
+// ========== SCRATCHES ==========
+//! spacer=1
+//! c=#432DD7		i=staccato-dig				o=note:28/note:96						m=""
+24 Scratches Short
+//! c=#432DD7		i=staccato-dig				o=note:28/note:97						m=""
+25 Scratches Long
+
+// ========== NATURAL HARMONICS ==========
+//! spacer=1
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:96						m=""
+27 Nat Harmonics Short
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:97						m=""
+28 Nat Harmonics Long
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:98						m=""
+29 Nat Harmonics Tremolo
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:99						m="CC03 controls cross-fade"
+30 Nat Harm Long XF Trem
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:100						m=""
+31 Nat Harmonics Trill
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:101						m=""
+32 Nat Harmonics Gliss
+
+// ========== OPEN STRING CLUSTERS ==========
+//! spacer=1
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:96						m=""
+34 Open Str Clst Short
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:97						m=""
+35 Open Str Clst Long
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:98						m=""
+36 Open Str ClstTremolo
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:99						m="CC03 controls cross-fade"
+37 Op Str Clst Lng XF Trem
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:100						m=""
+38 Open Str Clst Pizz
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:101						m=""
+39 Open Str Clst Arp
+
+// ========== BEHIND BRIDGE ==========
+//! spacer=1
+//! c=#FDC745		i=sul-pont				o=note:31/note:96						m=""
+41 Behind Bridge Short
+//! c=#FDC745		i=sul-pont				o=note:31/note:97						m=""
+42 Behind Bridge Long
+//! c=#FDC745		i=sul-pont				o=note:31/note:98						m=""
+43 Behind Bridge Tremolo
+//! c=#FDC745		i=sul-pont				o=note:31/note:99						m="CC03 controls cross-fade"
+44 Behind Brdg Lng XF Trem
+//! c=#FDC745		i=sul-pont				o=note:31/note:100						m=""
+45 Behind Bridge Pizz
+//! c=#FDC745		i=sul-pont				o=note:31/note:101						m=""
+46 Behind Bridge Arp
+//! c=#FDC745		i=sul-pont				o=note:31/note:102						m=""
+47 Behind Bridge Arp Cross
+
+// ========== PEGS TUNING ==========
+//! spacer=1
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:97/note:103				m=""
+48 Pegs Tuning Reg Up
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:97/note:104				m=""
+49 Pegs Tuning Reg Dn
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:98						m=""
+50 Pegs Tuning Trem Dn
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:99						m="CC03 controls cross-fade"
+51 Pegs Tuning Reg X Trem
+
+// ========== CHAOS COMBIS ==========
+//! spacer=1
+//! c=#54205C		i=legato-portamento			o=note:33/note:96/note:103				m="CC03 controls cross-fade"
+53 Chaos X-Slide XF Meas Vib
+//! c=#54205C		i=legato-portamento			o=note:33/note:96/note:104				m="CC03 controls cross-fade"
+54 Chaos X-Slide XF Scratches
+//! c=#54205C		i=legato-portamento			o=note:33/note:96/note:105				m="CC03 controls cross-fade"
+55 Chaos X-Slide XF + Puls Clst
+
+//! c=#8D369B		i=trill					o=note:33/note:97/note:103				m="CC03 controls cross-fade"
+57 Chaos Clst Tr XF Al Leg
+//! c=#8D369B		i=						o=note:33/note:97/note:104				m="CC03 controls cross-fade"
+58 Chaos Clst Tr XF X-Sld Fst
+//! c=#8D369B		i=						o=note:33/note:97/note:105				m="CC03 controls cross-fade"
+59 Chaos Clst Tr XF X-Sld XF M Vib
+
+//! c=#54205C		i=legato-portamento			o=note:33/note:98/note:103				m="CC03 controls cross-fade"
+61 Chaos Al Leg XF X-Sld Fst
+//! c=#54205C		i=legato-portamento			o=note:33/note:98/note:104				m="CC03 controls cross-fade"
+62 Chaos Al Leg XF Meas Vib Cross
+//! c=#54205C		i=legato-portamento			o=note:33/note:98/note:105				m="CC03 controls cross-fade"
+63 Chaos Al Leg XF Puls Clst
+
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:103				m="CC03 controls cross-fade"
+65 Chaos Brdg Lay X-Sld+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:104				m="CC03 controls cross-fade"
+66 Chaos Brdg Lay Meas Vib+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:105				m="CC03 controls cross-fade"
+67 Chaos Brdg Lay Clst Tr+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:106				m="CC03 controls cross-fade"
+68 Chaos Brdg Lay Al Leg+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:107				m="CC03 controls cross-fade"
+69 Chaos Brdg Lay Al Vert Bow+Br
+
+//! c=#54205C		i=legato-gliss				o=note:33/note:100/note:120				m="Must assign note C9 (120) to Stack category in Synchron Player for this to work"
+71 Chaos Gliss to Clst Det Dn
+//! c=#54205C		i=legato-gliss				o=note:33/note:100/note:121				m="Must assign note C9 (120) to Stack category in Synchron Player for this to work"
+72 Chaos Gliss to Clst Up
+
+// ========== HARMONIC COMBIS ==========
+//! spacer=1
+//! c=#156155		i=phrase2					o=note:34/note:96/note:104				m="CC03 controls cross-fade"
+74 Harm Cmb Vert B Shrt +Chd
+//! c=#156155		i=phrase2					o=note:34/note:96/note:105				m="CC03 controls cross-fade"
+75 Harm Cmb Vert B Long + Chd
+//! c=#156155		i=phrase2					o=note:34/note:96/note:106				m="CC03 controls cross-fade"
+76 Harm Cmb Vert B Trem + Chd
+
+//! c=#38D5BE		i=phrase2					o=note:34/note:97/note:104				m="CC03 controls cross-fade"
+77 Harm Cmb Op Str Clst Shrt XF Ch
+//! c=#38D5BE		i=phrase2					o=note:34/note:97/note:105				m="CC03 controls cross-fade"
+78 Harm Cmb Op Str Clst Long XF Ch
+//! c=#38D5BE		i=phrase2					o=note:34/note:97/note:106				m="CC03 controls cross-fade"
+79 Harm Cmb Op Str Clst Trem XF Ch
+
+//! c=#156155		i=phrase2					o=note:34/note:98/note:104				m="CC03 controls cross-fade"
+80 Harm Cmb Harm XF Brdg Short
+//! c=#156155		i=phrase2					o=note:34/note:98/note:105				m="CC03 controls cross-fade"
+81 Harm Cmb Harm XF Brdg Long
+//! c=#156155		i=phrase2					o=note:34/note:98/note:106				m="CC03 controls cross-fade"
+82 Harm Cmb Harm XF Brdg Trem
+
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:103				m="CC03 controls cross-fade"
+83 Harm Cmb XF Hrm Gl Al Leg
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:104				m="CC03 controls cross-fade"
+84 Harm Cmb Cmb XF Hrm Gl Al Vrt B
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:105				m="CC03 controls cross-fade"
+85 Harm Cmb Cmb XF Hrm Gl X-Sld Fst
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:106				m="CC03 controls cross-fade"
+86 Harm Cmb Cmb XF Hrm Gl Meas Vib
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:107				m="CC03 controls cross-fade"
+87 Harm Cmb Cmb XF Hrm Gl Vrt B Trem
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 05 Double Basses
+// CREATOR: Scott Sadowsky
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="05 Double Basses (05 FX)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'Flow' view.\nNOTE: Read the tooltips! They contain valuable information about which base articulations modifier articulations work with, which CCs are available with a given articulation, etc."
+//! id=c0abb7b8-98e9-4c40-b47d-7fc1e97dfac2
+Bank * * Double Basses (VSL Synchron Duality 05 FX)
+
+// ==================== CONTROLLER ARTICULATIONS ====================
+
+// ========== DIRECTION ==========
+//! c=#450204		i=list			o=note:103									m="For use with Cluster, Short, Pegs"
+111 DIRECTION: Up/Frnt to Bk
+//! c=#450204		i=list			o=note:104									m="For use with Cluster, Short, Pegs"
+112 DIRECTION: Down/Bk to Frnt
+
+// ========== RELEASE ==========
+//! c=#024523		i=list			o=note:103									m="For use with Natural Harmonics"
+113 RELEASE: Low Note
+//! c=#024523		i=list			o=note:104									m="For use with Natural Harmonics"
+114 RELEASE: Hi Note
+
+// ========== SPEED ==========
+//! c=#021645		i=list			o=note:101									m="For use with Cluster"
+115 SPEED: Slow
+//! c=#021645		i=list			o=note:102									m="For use with Cluster"
+116 SPEED: Fast
+//! c=#021645		i=list			o=note:103									m="For use with Cluster"
+117 SPEED: X-Fade
+
+// ========== STRING ==========
+//! c=#3B0075		i=list			o=note:102									m="For use with Natural Harmonics"
+118 STRING: Merged
+//! c=#3B0075		i=list			o=note:103									m="For use with Natural Harmonics"
+119 STRING: Sul C (do)
+//! c=#3B0075		i=list			o=note:104									m="For use with Natural Harmonics"
+120 STRING: Sul E (mi)
+//! c=#3B0075		i=list			o=note:105									m="For use with Natural Harmonics"
+121 STRING: Sul A (la)
+//! c=#3B0075		i=list			o=note:106									m="For use with Natural Harmonics"
+122 STRING: Sul D (re)
+//! c=#3B0075		i=list			o=note:107									m="For use with Natural Harmonics"
+123 STRING: Sul G (sol)
+//! c=#3B0075		i=list			o=note:108									m="For use with Natural Harmonics"
+124 STRING: Chords
+
+// ========== STYLE ==========
+//! c=#08486E		i=list			o=note:105									m="For use with Cluster"
+125 STYLE: Long/One Dir
+//! c=#08486E		i=list			o=note:106									m="For use with Cluster"
+126 STYLE: Tremolo/Crossed
+//! c=#08486E		i=list			o=note:107									m="For use with Cluster\nNormally triggers an articulation where CC03 controls cross-fade"
+127 STYLE: X-Fade
+
+//! spacer=1
+
+// ========== CLUSTERS ==========
+//! spacer=1
+//! c=#6E0405		i=tremolo-slurred			o=note:84/note:96						m=""
+0 Cluster X-Slide Fast
+//! c=#6E0405		i=tremolo-slurred			o=note:84/note:97						m="CC03 controls cross-fade"
+1 Gliss to Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:84/note:98						m="CC03 controls cross-fade"
+2 Cluster Meas Vib
+//! c=#6E0405		i=tremolo-slurred			o=note:84/note:99						m="CC03 controls cross-fade"
+3 Pulsing Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:84/note:100						m=""
+4 Cluster trill
+
+// ========== SHORT NOTE FX ==========
+//! spacer=1
+//! c=#A65F1B		i=note-eighth				o=note:85/note:96						m=""
+6 Short Stac. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:85/note:97						m=""
+7 Short Pizz. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:85/note:98						m=""
+8 Short Gliss Short
+//! c=#A65F1B		i=note-eighth				o=note:85/note:99						m=""
+9 Short Gliss Detache
+//! c=#A65F1B		i=note-eighth				o=note:85/note:100						m=""
+10 Short Gliss Pizz Up
+//! c=#A65F1B		i=note-eighth				o=note:85/note:101						m=""
+11 Short Gliss Pizz on Nails
+//! c=#A65F1B		i=note-eighth				o=note:85/note:102						m=""
+12 Short Hammer on
+
+// ========== VERTICAL BOWING ==========
+//! spacer=1
+//! c=#6BAB2B		i=bow-up					o=note:86/note:96						m=""
+14 Vert Bowing Short
+//! c=#6BAB2B		i=bow-up					o=note:86/note:97						m=""
+15 Vert Bowing Long
+//! c=#6BAB2B		i=bow-up					o=note:86/note:98						m=""
+16 Vert Bowing Tremolo
+//! c=#6BAB2B		i=bow-up					o=note:86/note:99						m="CC03 controls cross-fade"
+17 Vert Bow Long XF Trem
+
+// ========== ALEATORIC CHAOS ==========
+//! spacer=1
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:87/note:96						m=""
+19 Aleat Chaos Detache (f)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:87/note:97						m=""
+20 Aleat Chaos Detache (p)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:87/note:98						m=""
+21 Aleat Chaos Vert Bow (pp)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:87/note:99						m="CC03 controls cross-fade"
+22 Aleat Chaos XF
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:87/note:100						m="CC03 controls cross-fade"
+23 Special FX
+
+// ========== SCRATCHES ==========
+//! spacer=1
+//! c=#432DD7		i=staccato-dig				o=note:88/note:96						m=""
+24 Scratches Short
+//! c=#432DD7		i=staccato-dig				o=note:88/note:97						m=""
+25 Scratches Long
+
+// ========== NATURAL HARMONICS ==========
+//! spacer=1
+//! c=#A813B7		i=harmonics-natural			o=note:89/note:96						m=""
+27 Nat Harmonics Short
+//! c=#A813B7		i=harmonics-natural			o=note:89/note:97						m=""
+28 Nat Harmonics Long
+//! c=#A813B7		i=harmonics-natural			o=note:89/note:98						m=""
+29 Nat Harmonics Tremolo
+//! c=#A813B7		i=harmonics-natural			o=note:89/note:99						m="CC03 controls cross-fade"
+30 Nat Harm Long XF Trem
+//! c=#A813B7		i=harmonics-natural			o=note:89/note:100						m=""
+31 Nat Harmonics Trill
+//! c=#A813B7		i=harmonics-natural			o=note:89/note:101						m=""
+32 Nat Harmonics Gliss
+
+// ========== OPEN STRING CLUSTERS ==========
+//! spacer=1
+//! c=#266A0C		i=tremolo-fingered			o=note:90/note:96						m=""
+34 Open Str Clst Short
+//! c=#266A0C		i=tremolo-fingered			o=note:90/note:97						m=""
+35 Open Str Clst Long
+//! c=#266A0C		i=tremolo-fingered			o=note:90/note:98						m=""
+36 Open Str ClstTremolo
+//! c=#266A0C		i=tremolo-fingered			o=note:90/note:99						m="CC03 controls cross-fade"
+37 Op Str Clst Lng XF Trem
+//! c=#266A0C		i=tremolo-fingered			o=note:90/note:100						m=""
+38 Open Str Clst Pizz
+//! c=#266A0C		i=tremolo-fingered			o=note:90/note:101						m=""
+39 Open Str Clst Arp
+
+// ========== BEHIND BRIDGE ==========
+//! spacer=1
+//! c=#FDC745		i=sul-pont				o=note:91/note:96						m=""
+41 Behind Bridge Short
+//! c=#FDC745		i=sul-pont				o=note:91/note:97						m=""
+42 Behind Bridge Long
+//! c=#FDC745		i=sul-pont				o=note:91/note:98						m=""
+43 Behind Bridge Tremolo
+//! c=#FDC745		i=sul-pont				o=note:91/note:99						m="CC03 controls cross-fade"
+44 Behind Brdg Lng XF Trem
+//! c=#FDC745		i=sul-pont				o=note:91/note:100						m=""
+45 Behind Bridge Pizz
+//! c=#FDC745		i=sul-pont				o=note:91/note:101						m=""
+46 Behind Bridge Arp
+//! c=#FDC745		i=sul-pont				o=note:91/note:102						m=""
+47 Behind Bridge Arp Cross
+
+// ========== PEGS TUNING ==========
+//! spacer=1
+//! c=#05DF72		i=alt-gypsy				o=note:92/note:97/note:103				m=""
+48 Pegs Tuning Reg Up
+//! c=#05DF72		i=alt-gypsy				o=note:92/note:97/note:104				m=""
+49 Pegs Tuning Reg Dn
+//! c=#05DF72		i=alt-gypsy				o=note:92/note:98						m=""
+50 Pegs Tuning Trem Dn
+//! c=#05DF72		i=alt-gypsy				o=note:92/note:99						m="CC03 controls cross-fade"
+51 Pegs Tuning Reg X Trem
+
+// ========== CHAOS COMBIS ==========
+//! spacer=1
+//! c=#54205C		i=legato-portamento			o=note:93/note:96/note:103				m="CC03 controls cross-fade"
+53 Chaos X-Slide XF Meas Vib
+//! c=#54205C		i=legato-portamento			o=note:93/note:96/note:104				m="CC03 controls cross-fade"
+54 Chaos X-Slide XF Scratches
+//! c=#54205C		i=legato-portamento			o=note:93/note:96/note:105				m="CC03 controls cross-fade"
+55 Chaos X-Slide XF + Puls Clst
+
+//! c=#8D369B		i=trill					o=note:93/note:97/note:103				m="CC03 controls cross-fade"
+57 Chaos Clst Tr XF Al Leg
+//! c=#8D369B		i=						o=note:93/note:97/note:104				m="CC03 controls cross-fade"
+58 Chaos Clst Tr XF X-Sld Fst
+//! c=#8D369B		i=						o=note:93/note:97/note:105				m="CC03 controls cross-fade"
+59 Chaos Clst Tr XF X-Sld XF M Vib
+
+//! c=#54205C		i=legato-portamento			o=note:93/note:98/note:103				m="CC03 controls cross-fade"
+61 Chaos Al Leg XF X-Sld Fst
+//! c=#54205C		i=legato-portamento			o=note:93/note:98/note:104				m="CC03 controls cross-fade"
+62 Chaos Al Leg XF Meas Vib Cross
+//! c=#54205C		i=legato-portamento			o=note:93/note:98/note:105				m="CC03 controls cross-fade"
+63 Chaos Al Leg XF Puls Clst
+
+//! c=#8D369B		i=tremolo-sul-pont			o=note:93/note:99/note:103				m="CC03 controls cross-fade"
+65 Chaos Brdg Lay X-Sld+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:93/note:99/note:104				m="CC03 controls cross-fade"
+66 Chaos Brdg Lay Meas Vib+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:93/note:99/note:105				m="CC03 controls cross-fade"
+67 Chaos Brdg Lay Clst Tr+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:93/note:99/note:106				m="CC03 controls cross-fade"
+68 Chaos Brdg Lay Al Leg+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:93/note:99/note:107				m="CC03 controls cross-fade"
+69 Chaos Brdg Lay Al Vert Bow+Br
+
+//! c=#54205C		i=legato-gliss				o=note:93/note:100/note:120				m="Must assign note C9 (120) to Stack category in Synchron Player for this to work"
+71 Chaos Gliss to Clst Det Dn
+//! c=#54205C		i=legato-gliss				o=note:93/note:100/note:121				m="Must assign note C9 (120) to Stack category in Synchron Player for this to work"
+72 Chaos Gliss to Clst Up
+
+// ========== HARMONIC COMBIS ==========
+//! spacer=1
+//! c=#156155		i=phrase2					o=note:94/note:96/note:104				m="CC03 controls cross-fade"
+74 Harm Cmb Vert B Shrt +Chd
+//! c=#156155		i=phrase2					o=note:94/note:96/note:105				m="CC03 controls cross-fade"
+75 Harm Cmb Vert B Long + Chd
+//! c=#156155		i=phrase2					o=note:94/note:96/note:106				m="CC03 controls cross-fade"
+76 Harm Cmb Vert B Trem + Chd
+
+//! c=#38D5BE		i=phrase2					o=note:94/note:97/note:104				m="CC03 controls cross-fade"
+77 Harm Cmb Op Str Clst Shrt XF Ch
+//! c=#38D5BE		i=phrase2					o=note:94/note:97/note:105				m="CC03 controls cross-fade"
+78 Harm Cmb Op Str Clst Long XF Ch
+//! c=#38D5BE		i=phrase2					o=note:94/note:97/note:106				m="CC03 controls cross-fade"
+79 Harm Cmb Op Str Clst Trem XF Ch
+
+//! c=#156155		i=phrase2					o=note:94/note:98/note:104				m="CC03 controls cross-fade"
+80 Harm Cmb Harm XF Brdg Short
+//! c=#156155		i=phrase2					o=note:94/note:98/note:105				m="CC03 controls cross-fade"
+81 Harm Cmb Harm XF Brdg Long
+//! c=#156155		i=phrase2					o=note:94/note:98/note:106				m="CC03 controls cross-fade"
+82 Harm Cmb Harm XF Brdg Trem
+
+//! c=#38D5BE		i=phrase2					o=note:94/note:99/note:103				m="CC03 controls cross-fade"
+83 Harm Cmb XF Hrm Gl Al Leg
+//! c=#38D5BE		i=phrase2					o=note:94/note:99/note:104				m="CC03 controls cross-fade"
+84 Harm Cmb Cmb XF Hrm Gl Al Vrt B
+//! c=#38D5BE		i=phrase2					o=note:94/note:99/note:105				m="CC03 controls cross-fade"
+85 Harm Cmb Cmb XF Hrm Gl X-Sld Fst
+//! c=#38D5BE		i=phrase2					o=note:94/note:99/note:106				m="CC03 controls cross-fade"
+86 Harm Cmb Cmb XF Hrm Gl Meas Vib
+//! c=#38D5BE		i=phrase2					o=note:94/note:99/note:107				m="CC03 controls cross-fade"
+87 Harm Cmb Cmb XF Hrm Gl Vrt B Trem
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 06 Tutti Full Range
+// CREATOR: Scott Sadowsky
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="06 Tutti Full Range (05 FX)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'Flow' view.\nNOTE: Read the tooltips! They contain valuable information about which base articulations modifier articulations work with, which CCs are available with a given articulation, etc.\nNOTE: The 'stack' option has no notes assigned to it by default. To use it, you must manually assign the note C9 (120) instrument stack category in the Synchron Player.\nNOTE: Oddly, however, the Chaos Combis Gliss to Cluster articulations have TWO stack categories, and these are inextricably linked, so that whatever trigger you assign to one is automatically assigned to the other (even if this is not reflected in the interface). This seems to be a bug, as it makes no sense to chain glissando detache down to 1st violins and glissando to cluster up to 2nd violins. As a result, I've opted to only include the icons for the instrument stack."
+//! id=3f2ca20a-ba74-451b-9caa-dd43275532f2
+Bank * * Tutti Full Range (VSL Synchron Duality 05 FX)
+
+// ==================== CONTROLLER ARTICULATIONS ====================
+
+// ========== INSTRUMENT STACK ==========
+//! c=#737373		i=list			o=note:120									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+106 STACK: 1st violins
+//! c=#737373		i=list			o=note:121									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+107 STACK: 2nd violins
+//! c=#737373		i=list			o=note:122									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+108 STACK: Violas
+//! c=#737373		i=list			o=note:123									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+109 STACK: Violoncellos
+//! c=#737373		i=list			o=note:124									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+110 STACK: Double Basses
+
+//! spacer=1
+
+// ========== DIRECTION ==========
+//! c=#450204		i=list			o=note:115									m="For use with Cluster, Short, Pegs"
+111 DIRECTION: Up/Frnt to Bk
+//! c=#450204		i=list			o=note:116									m="For use with Cluster, Short, Pegs"
+112 DIRECTION: Down/Bk to Frnt
+
+// ========== RELEASE ==========
+//! c=#024523		i=list			o=note:115									m="For use with Natural Harmonics"
+113 RELEASE: Low Note
+//! c=#024523		i=list			o=note:116									m="For use with Natural Harmonics"
+114 RELEASE: Hi Note
+
+// ========== SPEED ==========
+//! c=#021645		i=list			o=note:113									m="For use with Cluster"
+115 SPEED: Slow
+//! c=#021645		i=list			o=note:114									m="For use with Cluster"
+116 SPEED: Fast
+//! c=#021645		i=list			o=note:115									m="For use with Cluster"
+117 SPEED: X-Fade
+
+// ========== STRING ==========
+//! c=#3B0075		i=list			o=note:114									m="For use with Natural Harmonics"
+118 STRING: Merged
+//! c=#3B0075		i=list			o=note:115									m="For use with Natural Harmonics"
+119 STRING: 1st String
+//! c=#3B0075		i=list			o=note:116									m="For use with Natural Harmonics"
+120 STRING: 2nd String
+//! c=#3B0075		i=list			o=note:117									m="For use with Natural Harmonics"
+121 STRING: 3rd String
+//! c=#3B0075		i=list			o=note:118									m="For use with Natural Harmonics"
+122 STRING: 4th String
+//! c=#3B0075		i=list			o=note:119									m="For use with Natural Harmonics"
+123 STRING: Chords
+
+// ========== STYLE ==========
+//! c=#08486E		i=list			o=note:117									m="For use with Cluster"
+125 STYLE: Long/One Dir
+//! c=#08486E		i=list			o=note:118									m="For use with Cluster"
+126 STYLE: Tremolo/Crossed
+//! c=#08486E		i=list			o=note:119									m="For use with Cluster\nNormally triggers an articulation where CC03 controls cross-fade"
+127 STYLE: X-Fade
+
+//! spacer=1
+
+// ========== CLUSTERS ==========
+//! spacer=1
+//! c=#6E0405		i=tremolo-slurred			o=note:12/note:108						m=""
+0 Cluster X-Slide Fast
+//! c=#6E0405		i=tremolo-slurred			o=note:12/note:109						m="CC03 controls cross-fade"
+1 Gliss to Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:12/note:110						m="CC03 controls cross-fade"
+2 Cluster Meas Vib
+//! c=#6E0405		i=tremolo-slurred			o=note:12/note:111						m="CC03 controls cross-fade"
+3 Pulsing Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:12/note:112						m=""
+4 Cluster trill
+
+// ========== SHORT NOTE FX ==========
+//! spacer=1
+//! c=#A65F1B		i=note-eighth				o=note:13/note:108						m=""
+6 Short Stac. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:13/note:109						m=""
+7 Short Pizz. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:13/note:110						m=""
+8 Short Gliss Short
+//! c=#A65F1B		i=note-eighth				o=note:13/note:111						m=""
+9 Short Gliss Detache
+//! c=#A65F1B		i=note-eighth				o=note:13/note:112						m=""
+10 Short Gliss Pizz Up
+//! c=#A65F1B		i=note-eighth				o=note:13/note:113						m=""
+11 Short Gliss Pizz on Nails
+//! c=#A65F1B		i=note-eighth				o=note:13/note:114						m=""
+12 Short Hammer on
+
+// ========== VERTICAL BOWING ==========
+//! spacer=1
+//! c=#6BAB2B		i=bow-up					o=note:14/note:108						m=""
+14 Vert Bowing Short
+//! c=#6BAB2B		i=bow-up					o=note:14/note:109						m=""
+15 Vert Bowing Long
+//! c=#6BAB2B		i=bow-up					o=note:14/note:110						m=""
+16 Vert Bowing Tremolo
+//! c=#6BAB2B		i=bow-up					o=note:14/note:111						m="CC03 controls cross-fade"
+17 Vert Bow Long XF Trem
+
+// ========== ALEATORIC CHAOS ==========
+//! spacer=1
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:15/note:108						m=""
+19 Aleat Chaos Detache (f)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:15/note:109						m=""
+20 Aleat Chaos Detache (p)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:15/note:110						m=""
+21 Aleat Chaos Vert Bow (pp)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:15/note:111						m="CC03 controls cross-fade"
+22 Aleat Chaos XF
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:15/note:112						m="CC03 controls cross-fade"
+23 Special FX
+
+// ========== SCRATCHES ==========
+//! spacer=1
+//! c=#432DD7		i=staccato-dig				o=note:16/note:108						m=""
+24 Scratches Short
+//! c=#432DD7		i=staccato-dig				o=note:16/note:109						m=""
+25 Scratches Long
+
+// ========== NATURAL HARMONICS ==========
+//! spacer=1
+//! c=#A813B7		i=harmonics-natural			o=note:17/note:108						m=""
+27 Nat Harmonics Short
+//! c=#A813B7		i=harmonics-natural			o=note:17/note:109						m=""
+28 Nat Harmonics Long
+//! c=#A813B7		i=harmonics-natural			o=note:17/note:110						m=""
+29 Nat Harmonics Tremolo
+//! c=#A813B7		i=harmonics-natural			o=note:17/note:111						m="CC03 controls cross-fade"
+30 Nat Harm Long XF Trem
+//! c=#A813B7		i=harmonics-natural			o=note:17/note:112						m=""
+31 Nat Harmonics Trill
+//! c=#A813B7		i=harmonics-natural			o=note:17/note:113						m=""
+32 Nat Harmonics Gliss
+
+// ========== OPEN STRING CLUSTERS ==========
+//! spacer=1
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:108						m=""
+34 Open Str Clst Short
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:109						m=""
+35 Open Str Clst Long
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:110						m=""
+36 Open Str ClstTremolo
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:111						m="CC03 controls cross-fade"
+37 Op Str Clst Lng XF Trem
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:112						m=""
+38 Open Str Clst Pizz
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:113						m=""
+39 Open Str Clst Arp Slow
+//! c=#266A0C		i=tremolo-fingered			o=note:18/note:114						m=""
+40 Open Str Clst Arp Fast
+
+// ========== BEHIND BRIDGE ==========
+//! spacer=1
+//! c=#FDC745		i=sul-pont				o=note:19/note:108						m=""
+41 Behind Bridge Short
+//! c=#FDC745		i=sul-pont				o=note:19/note:109						m=""
+42 Behind Bridge Long
+//! c=#FDC745		i=sul-pont				o=note:19/note:110						m=""
+43 Behind Bridge Tremolo
+//! c=#FDC745		i=sul-pont				o=note:19/note:111						m="CC03 controls cross-fade"
+44 Behind Brdg Lng XF Trem
+//! c=#FDC745		i=sul-pont				o=note:19/note:112						m=""
+45 Behind Bridge Pizz
+//! c=#FDC745		i=sul-pont				o=note:19/note:113						m=""
+46 Behind Bridge Arp Slow
+//! c=#FDC745		i=sul-pont				o=note:19/note:114						m=""
+47 Behind Bridge Arp Fast
+//! c=#FDC745		i=sul-pont				o=note:19/note:115						m=""
+48 Behind Bridge Arp Crs Slow
+//! c=#FDC745		i=sul-pont				o=note:19/note:116						m=""
+49 Behind Bridge Arp Crs Fast
+
+// ========== PEGS TUNING ==========
+//! spacer=1
+//! c=#05DF72		i=alt-gypsy				o=note:20/note:109/note:115				m=""
+53 Pegs Tuning Reg Up
+//! c=#05DF72		i=alt-gypsy				o=note:20/note:109/note:116				m=""
+54 Pegs Tuning Reg Dn
+//! c=#05DF72		i=alt-gypsy				o=note:20/note:110						m=""
+55 Pegs Tuning Trem Dn
+//! c=#05DF72		i=alt-gypsy				o=note:20/note:111						m="CC03 controls cross-fade"
+56 Pegs Tuning Reg X Trem
+
+// ========== CHAOS COMBIS ==========
+//! spacer=1
+//! c=#54205C		i=legato-portamento			o=note:21/note:108/note:115				m="CC03 controls cross-fade"
+57 Chaos X-Slide XF Meas Vib
+//! c=#54205C		i=legato-portamento			o=note:21/note:108/note:116				m="CC03 controls cross-fade"
+58 Chaos X-Slide XF Scratches
+//! c=#54205C		i=legato-portamento			o=note:21/note:108/note:117				m="CC03 controls cross-fade"
+59 Chaos X-Slide XF + Puls Clst
+
+//! c=#8D369B		i=trill					o=note:21/note:109/note:115				m="CC03 controls cross-fade"
+60 Chaos Clst Tr XF Al Leg
+//! c=#8D369B		i=						o=note:21/note:109/note:116				m="CC03 controls cross-fade"
+61 Chaos Clst Tr XF X-Sld Fst
+//! c=#8D369B		i=						o=note:21/note:109/note:117				m="CC03 controls cross-fade"
+62 Chaos Clst Tr XF X-Sld XF M Vib
+
+//! c=#54205C		i=legato-portamento			o=note:21/note:110/note:115				m="CC03 controls cross-fade"
+63 Chaos Al Leg XF X-Sld Fst
+//! c=#54205C		i=legato-portamento			o=note:21/note:110/note:116				m="CC03 controls cross-fade"
+64 Chaos Al Leg XF Meas Vib Cross
+//! c=#54205C		i=legato-portamento			o=note:21/note:110/note:117				m="CC03 controls cross-fade"
+65 Chaos Al Leg XF Puls Clst
+
+//! c=#8D369B		i=tremolo-sul-pont			o=note:21/note:111/note:115				m="CC03 controls cross-fade"
+66 Chaos Brdg Lay X-Sld+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:21/note:111/note:116				m="CC03 controls cross-fade"
+67 Chaos Brdg Lay Meas Vib+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:21/note:111/note:117				m="CC03 controls cross-fade"
+68 Chaos Brdg Lay Clst Tr+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:21/note:111/note:118				m="CC03 controls cross-fade"
+69 Chaos Brdg Lay Al Leg+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:21/note:111/note:119				m="CC03 controls cross-fade"
+70 Chaos Brdg Lay Al Vert Bow+Br
+
+// ========== HARMONIC COMBIS ==========
+//! spacer=1
+//! c=#156155		i=phrase2					o=note:22/note:108/note:116				m="CC03 controls cross-fade"
+74 Harm Cmb Vert B Shrt +Chd
+//! c=#156155		i=phrase2					o=note:22/note:108/note:117				m="CC03 controls cross-fade"
+75 Harm Cmb Vert B Long + Chd
+//! c=#156155		i=phrase2					o=note:22/note:108/note:118				m="CC03 controls cross-fade"
+76 Harm Cmb Vert B Trem + Chd
+
+//! c=#38D5BE		i=phrase2					o=note:22/note:109/note:116				m="CC03 controls cross-fade"
+77 Harm Cmb Op Str Clst Shrt XF Ch
+//! c=#38D5BE		i=phrase2					o=note:22/note:109/note:117				m="CC03 controls cross-fade"
+78 Harm Cmb Op Str Clst Long XF Ch
+//! c=#38D5BE		i=phrase2					o=note:22/note:109/note:118				m="CC03 controls cross-fade"
+79 Harm Cmb Op Str Clst Trem XF Ch
+
+//! c=#156155		i=phrase2					o=note:22/note:110/note:116				m="CC03 controls cross-fade"
+80 Harm Cmb Harm XF Brdg Short
+//! c=#156155		i=phrase2					o=note:22/note:110/note:117				m="CC03 controls cross-fade"
+81 Harm Cmb Harm XF Brdg Long
+//! c=#156155		i=phrase2					o=note:22/note:110/note:118				m="CC03 controls cross-fade"
+82 Harm Cmb Harm XF Brdg Trem
+
+//! c=#38D5BE		i=phrase2					o=note:22/note:111/note:115				m="CC03 controls cross-fade"
+83 Harm Cmb XF Hrm Gl Al Leg
+//! c=#38D5BE		i=phrase2					o=note:22/note:111/note:116				m="CC03 controls cross-fade"
+84 Harm Cmb Cmb XF Hrm Gl Al Vrt B
+//! c=#38D5BE		i=phrase2					o=note:22/note:111/note:117				m="CC03 controls cross-fade"
+85 Harm Cmb Cmb XF Hrm Gl X-Sld Fst
+//! c=#38D5BE		i=phrase2					o=note:22/note:111/note:118				m="CC03 controls cross-fade"
+86 Harm Cmb Cmb XF Hrm Gl Meas Vib
+//! c=#38D5BE		i=phrase2					o=note:22/note:111/note:119				m="CC03 controls cross-fade"
+87 Harm Cmb Cmb XF Hrm Gl Vrt B Trem
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vienna Symphonic Library - SYNCHRON - Synchron Duality Strings - 05 FX - 07 Tutti Compressed Range
+// CREATOR: Scott Sadowsky
+//
+//! g="VSL - SYNCHRON/Synchron Duality Strings/05 FX" n="07 Tutti Compressed Range (05 FX)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'Flow' view.\nNOTE: Read the tooltips! They contain valuable information about which base articulations modifier articulations work with, which CCs are available with a given articulation, etc.\nNOTE: The 'stack' option has no notes assigned to it by default. To use it, you must manually assign the note C9 (120) instrument stack category in the Synchron Player.\nNOTE: Oddly, however, the Chaos Combis Gliss to Cluster articulations have TWO stack categories, and these are inextricably linked, so that whatever trigger you assign to one is automatically assigned to the other (even if this is not reflected in the interface). This seems to be a bug, as it makes no sense to chain glissando detache down to 1st violins and glissando to cluster up to 2nd violins. As a result, I've opted to only include the icons for the instrument stack."
+//! id=e0cc7208-b060-41e4-833e-de6b6a33f1b4
+Bank * * Tutti Compressed Range (VSL Synchron Duality 05 FX)
+
+// ==================== CONTROLLER ARTICULATIONS ====================
+
+// ========== INSTRUMENT STACK ==========
+//! c=#737373		i=list			o=note:120									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+106 STACK: 1st violins
+//! c=#737373		i=list			o=note:121									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+107 STACK: 2nd violins
+//! c=#737373		i=list			o=note:122									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+108 STACK: Violas
+//! c=#737373		i=list			o=note:123									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+109 STACK: Violoncellos
+//! c=#737373		i=list			o=note:124									m="You must assign C9 to the instrument stack in the Synchron player for this to work"
+110 STACK: Double Basses
+
+//! spacer=1
+
+// ========== DIRECTION ==========
+//! c=#450204		i=list			o=note:103									m="For use with Cluster, Short, Pegs"
+111 DIRECTION: Up/Frnt to Bk
+//! c=#450204		i=list			o=note:104									m="For use with Cluster, Short, Pegs"
+112 DIRECTION: Down/Bk to Frnt
+
+// ========== RELEASE ==========
+//! c=#024523		i=list			o=note:103									m="For use with Natural Harmonics"
+113 RELEASE: Low Note
+//! c=#024523		i=list			o=note:104									m="For use with Natural Harmonics"
+114 RELEASE: Hi Note
+
+// ========== SPEED ==========
+//! c=#021645		i=list			o=note:101									m="For use with Cluster"
+115 SPEED: Slow
+//! c=#021645		i=list			o=note:102									m="For use with Cluster"
+116 SPEED: Fast
+//! c=#021645		i=list			o=note:103									m="For use with Cluster"
+117 SPEED: X-Fade
+
+// ========== STRING ==========
+//! c=#3B0075		i=list			o=note:102									m="For use with Natural Harmonics"
+118 STRING: Merged
+//! c=#3B0075		i=list			o=note:103									m="For use with Natural Harmonics"
+119 STRING: 1st String
+//! c=#3B0075		i=list			o=note:104									m="For use with Natural Harmonics"
+120 STRING: 2nd String
+//! c=#3B0075		i=list			o=note:105									m="For use with Natural Harmonics"
+121 STRING: 3rd String
+//! c=#3B0075		i=list			o=note:106									m="For use with Natural Harmonics"
+122 STRING: 4th String
+//! c=#3B0075		i=list			o=note:107									m="For use with Natural Harmonics"
+123 STRING: Chords
+
+// ========== STYLE ==========
+//! c=#08486E		i=list			o=note:105									m="For use with Cluster"
+125 STYLE: Long/One Dir
+//! c=#08486E		i=list			o=note:106									m="For use with Cluster"
+126 STYLE: Tremolo/Crossed
+//! c=#08486E		i=list			o=note:107									m="For use with Cluster\nNormally triggers an articulation where CC03 controls cross-fade"
+127 STYLE: X-Fade
+
+//! spacer=1
+
+// ========== CLUSTERS ==========
+//! spacer=1
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:96						m=""
+0 Cluster X-Slide Fast
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:97						m="CC03 controls cross-fade"
+1 Gliss to Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:98						m="CC03 controls cross-fade"
+2 Cluster Meas Vib
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:99						m="CC03 controls cross-fade"
+3 Pulsing Cluster
+//! c=#6E0405		i=tremolo-slurred			o=note:24/note:100						m=""
+4 Cluster trill
+
+// ========== SHORT NOTE FX ==========
+//! spacer=1
+//! c=#A65F1B		i=note-eighth				o=note:25/note:96						m=""
+6 Short Stac. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:25/note:97						m=""
+7 Short Pizz. Shuff.
+//! c=#A65F1B		i=note-eighth				o=note:25/note:98						m=""
+8 Short Gliss Short
+//! c=#A65F1B		i=note-eighth				o=note:25/note:99						m=""
+9 Short Gliss Detache
+//! c=#A65F1B		i=note-eighth				o=note:25/note:100						m=""
+10 Short Gliss Pizz Up
+//! c=#A65F1B		i=note-eighth				o=note:25/note:101						m=""
+11 Short Gliss Pizz on Nails
+//! c=#A65F1B		i=note-eighth				o=note:25/note:102						m=""
+12 Short Hammer on
+
+// ========== VERTICAL BOWING ==========
+//! spacer=1
+//! c=#6BAB2B		i=bow-up					o=note:26/note:96						m=""
+14 Vert Bowing Short
+//! c=#6BAB2B		i=bow-up					o=note:26/note:97						m=""
+15 Vert Bowing Long
+//! c=#6BAB2B		i=bow-up					o=note:26/note:98						m=""
+16 Vert Bowing Tremolo
+//! c=#6BAB2B		i=bow-up					o=note:26/note:99						m="CC03 controls cross-fade"
+17 Vert Bow Long XF Trem
+
+// ========== ALEATORIC CHAOS ==========
+//! spacer=1
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:96						m=""
+19 Aleat Chaos Detache (f)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:97						m=""
+20 Aleat Chaos Detache (p)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:98						m=""
+21 Aleat Chaos Vert Bow (pp)
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:99						m="CC03 controls cross-fade"
+22 Aleat Chaos XF
+//! c=#1A7595		i=alt-tremolo-gypsy-harmonics	o=note:27/note:100						m="CC03 controls cross-fade"
+23 Special FX
+
+// ========== SCRATCHES ==========
+//! spacer=1
+//! c=#432DD7		i=staccato-dig				o=note:28/note:96						m=""
+24 Scratches Short
+//! c=#432DD7		i=staccato-dig				o=note:28/note:97						m=""
+25 Scratches Long
+
+// ========== NATURAL HARMONICS ==========
+//! spacer=1
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:96						m=""
+27 Nat Harmonics Short
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:97						m=""
+28 Nat Harmonics Long
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:98						m=""
+29 Nat Harmonics Tremolo
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:99						m="CC03 controls cross-fade"
+30 Nat Harm Long XF Trem
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:100						m=""
+31 Nat Harmonics Trill
+//! c=#A813B7		i=harmonics-natural			o=note:29/note:101						m=""
+32 Nat Harmonics Gliss
+
+// ========== OPEN STRING CLUSTERS ==========
+//! spacer=1
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:96						m=""
+34 Open Str Clst Short
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:97						m=""
+35 Open Str Clst Long
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:98						m=""
+36 Open Str ClstTremolo
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:99						m="CC03 controls cross-fade"
+37 Op Str Clst Lng XF Trem
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:100						m=""
+38 Open Str Clst Pizz
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:101						m=""
+39 Open Str Clst Arp Slow
+//! c=#266A0C		i=tremolo-fingered			o=note:30/note:102						m=""
+40 Open Str Clst Arp Fast
+
+// ========== BEHIND BRIDGE ==========
+//! spacer=1
+//! c=#FDC745		i=sul-pont				o=note:31/note:96						m=""
+41 Behind Bridge Short
+//! c=#FDC745		i=sul-pont				o=note:31/note:97						m=""
+42 Behind Bridge Long
+//! c=#FDC745		i=sul-pont				o=note:31/note:98						m=""
+43 Behind Bridge Tremolo
+//! c=#FDC745		i=sul-pont				o=note:31/note:99						m="CC03 controls cross-fade"
+44 Behind Brdg Lng XF Trem
+//! c=#FDC745		i=sul-pont				o=note:31/note:100						m=""
+45 Behind Bridge Pizz
+//! c=#FDC745		i=sul-pont				o=note:31/note:101						m=""
+46 Behind Bridge Arp Slow
+//! c=#FDC745		i=sul-pont				o=note:31/note:102						m=""
+47 Behind Bridge Arp Fast
+//! c=#FDC745		i=sul-pont				o=note:31/note:103						m=""
+48 Behind Bridge Arp Crs Slow
+//! c=#FDC745		i=sul-pont				o=note:31/note:104						m=""
+49 Behind Bridge Arp Crs Fast
+
+// ========== PEGS TUNING ==========
+//! spacer=1
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:97/note:103				m=""
+53 Pegs Tuning Reg Up
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:97/note:104				m=""
+54 Pegs Tuning Reg Dn
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:98						m=""
+55 Pegs Tuning Trem Dn
+//! c=#05DF72		i=alt-gypsy				o=note:32/note:99						m="CC03 controls cross-fade"
+56 Pegs Tuning Reg X Trem
+
+// ========== CHAOS COMBIS ==========
+//! spacer=1
+//! c=#54205C		i=legato-portamento			o=note:33/note:96/note:103				m="CC03 controls cross-fade"
+57 Chaos X-Slide XF Meas Vib
+//! c=#54205C		i=legato-portamento			o=note:33/note:96/note:104				m="CC03 controls cross-fade"
+58 Chaos X-Slide XF Scratches
+//! c=#54205C		i=legato-portamento			o=note:33/note:96/note:105				m="CC03 controls cross-fade"
+59 Chaos X-Slide XF + Puls Clst
+
+//! c=#8D369B		i=trill					o=note:33/note:97/note:103				m="CC03 controls cross-fade"
+60 Chaos Clst Tr XF Al Leg
+//! c=#8D369B		i=						o=note:33/note:97/note:104				m="CC03 controls cross-fade"
+61 Chaos Clst Tr XF X-Sld Fst
+//! c=#8D369B		i=						o=note:33/note:97/note:105				m="CC03 controls cross-fade"
+62 Chaos Clst Tr XF X-Sld XF M Vib
+
+//! c=#54205C		i=legato-portamento			o=note:33/note:98/note:103				m="CC03 controls cross-fade"
+63 Chaos Al Leg XF X-Sld Fst
+//! c=#54205C		i=legato-portamento			o=note:33/note:98/note:104				m="CC03 controls cross-fade"
+64 Chaos Al Leg XF Meas Vib Cross
+//! c=#54205C		i=legato-portamento			o=note:33/note:98/note:105				m="CC03 controls cross-fade"
+65 Chaos Al Leg XF Puls Clst
+
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:103				m="CC03 controls cross-fade"
+66 Chaos Brdg Lay X-Sld+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:104				m="CC03 controls cross-fade"
+67 Chaos Brdg Lay Meas Vib+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:105				m="CC03 controls cross-fade"
+68 Chaos Brdg Lay Clst Tr+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:106				m="CC03 controls cross-fade"
+69 Chaos Brdg Lay Al Leg+Br
+//! c=#8D369B		i=tremolo-sul-pont			o=note:33/note:99/note:107				m="CC03 controls cross-fade"
+70 Chaos Brdg Lay Al Vert Bow+Br
+
+// ========== HARMONIC COMBIS ==========
+//! spacer=1
+//! c=#156155		i=phrase2					o=note:34/note:96/note:104				m="CC03 controls cross-fade"
+74 Harm Cmb Vert B Shrt +Chd
+//! c=#156155		i=phrase2					o=note:34/note:96/note:105				m="CC03 controls cross-fade"
+75 Harm Cmb Vert B Long + Chd
+//! c=#156155		i=phrase2					o=note:34/note:96/note:106				m="CC03 controls cross-fade"
+76 Harm Cmb Vert B Trem + Chd
+
+//! c=#38D5BE		i=phrase2					o=note:34/note:97/note:104				m="CC03 controls cross-fade"
+77 Harm Cmb Op Str Clst Shrt XF Ch
+//! c=#38D5BE		i=phrase2					o=note:34/note:97/note:105				m="CC03 controls cross-fade"
+78 Harm Cmb Op Str Clst Long XF Ch
+//! c=#38D5BE		i=phrase2					o=note:34/note:97/note:106				m="CC03 controls cross-fade"
+79 Harm Cmb Op Str Clst Trem XF Ch
+
+//! c=#156155		i=phrase2					o=note:34/note:98/note:104				m="CC03 controls cross-fade"
+80 Harm Cmb Harm XF Brdg Short
+//! c=#156155		i=phrase2					o=note:34/note:98/note:105				m="CC03 controls cross-fade"
+81 Harm Cmb Harm XF Brdg Long
+//! c=#156155		i=phrase2					o=note:34/note:98/note:106				m="CC03 controls cross-fade"
+82 Harm Cmb Harm XF Brdg Trem
+
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:103				m="CC03 controls cross-fade"
+83 Harm Cmb XF Hrm Gl Al Leg
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:104				m="CC03 controls cross-fade"
+84 Harm Cmb Cmb XF Hrm Gl Al Vrt B
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:105				m="CC03 controls cross-fade"
+85 Harm Cmb Cmb XF Hrm Gl X-Sld Fst
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:106				m="CC03 controls cross-fade"
+86 Harm Cmb Cmb XF Hrm Gl Meas Vib
+//! c=#38D5BE		i=phrase2					o=note:34/note:99/note:107				m="CC03 controls cross-fade"
+87 Harm Cmb Cmb XF Hrm Gl Vrt B Trem

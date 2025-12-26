@@ -1,0 +1,21 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - l-LOW WINDS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="l-Low Winds"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=fb9432a5-9669-4f33-be58-41b31e0de4ac
+Bank * * BHCT - l-Low Winds
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 			i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 			i=harmonics-natural		g=1	 	o=cc:32,3
+3 Long (Octave)
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short 			i=harmonics-natural		g=1	 	o=cc:32,45
+45 Short (Octave)
+

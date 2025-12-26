@@ -1,0 +1,16 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - h-PICCOLO + FLUTES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="h-Piccolo + Flutes"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=d51a6ce4-60d2-4413-8ed0-f16ea6c83ba4
+Bank * * BHCT - h-Piccolo + Flutes
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 			i=note-whole		g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter		g=1	 	o=cc:32,40
+40 Short

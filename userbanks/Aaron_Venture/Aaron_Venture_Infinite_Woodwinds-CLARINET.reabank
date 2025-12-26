@@ -1,0 +1,35 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Aaron Venture - Infinite Woodwinds - Clarinet
+// CREATOR: Scott Sadowsky
+//
+//! g="Aaron Venture/Infinite Woodwinds" n="Clarinet"
+//! m="CC1=Dynamics, CC11=Volume, CC16=Flutter, CC17=Growl, CC20=VibRate, CC21=VibDepth, CC29=AttackTime, CC65=Humanize"
+Bank * * Clarinet
+// -------------------- LONG --------------------
+//! c=legato 			i=note-whole 					g=1		o=note:24
+1 Sustain Without Vib
+// -------------------- TRILLS -----------------
+//! c=long				i=trill-min2					g=1		o=note:29
+70 Trills Min2
+//! c=long				i=trill-maj2					g=1		o=note:30
+71 Trills Maj2
+//! c=long				i=trill-min3					g=1		o=note:33
+72 Trills Min3
+//! c=long-dark			i=trill-min2					g=1		o=note:34
+77 1x Trills Min2
+//! c=long-dark			i=trill-maj2					g=1		o=note:35
+78 1x Trills Maj2
+// -------------------- SHORT -------------------
+//! c=short				i=staccato						g=1		o=note:26
+44 Staccato
+//! c=short-light		i=staccato						g=1		o=note:27
+42 Staccato Short
+//! c=short-light 		i=tenuto-half					g=1		o=note:25
+31 Portato Long
+//! c=short-light		i=tenuto-quarter				g=1		o=note:28
+32 Portato Short
+//! c=short 			i=dblstop-5th-eighth			g=1		o=note:31
+62 Double Tongue
+//! c=short 			i=run-minor						g=1		o=note:32
+63 Triple Tongue
+
