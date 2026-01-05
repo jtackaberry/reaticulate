@@ -1,13 +1,6 @@
 //----------------------------------------------------------------------------
 // Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/110
 //
-// Link to detailed installation instructions:
-//
-// https://www.vsl.co.at/community/posts/t53083-Comprehensive-Articulation-Management-System-for-VSL-Libraries--for-REAPER-users#post287931
-//
-// NOTE: there are VI presets available for all banks at the above URL.
-
-
 // TABLE OF CONTENTS
 //
 // DIRECTIONS: Use *Ctrl-F* to quickly jump to the articulation banks using the names listed below.
@@ -4619,4 +4612,5 @@ Bank * * Bassoons a3
 //! c=long-dark i=crescendo o=note:7/note:12/note:114
 81 Dyn - 3s
 //! c=long-dark i=crescendo o=note:7/note:12/note:115
+
 82 Dyn - 5s
