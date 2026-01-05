@@ -1,0 +1,25 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - k-FLUTES + CLARINETS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="k-Flutes + Clarinets"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=9ed53529-cd37-4c09-a373-bdf58a2b609e
+Bank * * BHCT - k-Flutes + Clarinets
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 			i=note-whole		g=1	 	o=cc:32,1
+1 Long
+//! c=long 			i=harmonics-natural	g=1	 	o=cc:32,3
+3 Long (Octave)
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+//! c=short 			i=harmonics-natural	g=1	 	o=cc:32,45
+45 Short (Octave)
+// -------------------- FX ----------------------
+//! c=fx		 		i=trill-min2 	g=1	 	o=cc:32,70
+70 Trill min2
+//! c=fx		 		i=trill-maj2 	g=1	 	o=cc:32,71
+71 Trill maj2

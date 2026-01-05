@@ -1,0 +1,40 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Soundiron Hyperion Strings Elements Master Basses
+// CREATOR: Scott Sadowsky
+// NOTE:	This file assumes you have set the articulations as follows:
+// 			C-1 Sustain Dyn+React, C#-1 Sustain P, D-1 Sustain F,
+//			D#-1 Sustain Vib P, E-1 Sustain Vib F, F-1 Trem Dyn,
+//			F#-1 Staccato 8th Dyn, G-1 Staccato Dyn, G#-1 Spiccato Dyn,
+//			A-1 Pizzicato Dyn, A#-1 Cresc 8ct P-F Vib,
+//			B-1 Decresc 8ct P-F Vib.
+//! g="Soundiron/Hyperion Strings Elements" n="Master Basses"
+//! m="CC1=Swell/Volume"
+//! id=96deab43-ac16-40f8-b981-5c0725acae9c
+Bank * * Master Basses
+//------------------------- LONG -------------------------
+//! c=long-dark			i=note-whole	g=1		o=note:12
+19 Dynamic Expr Long
+//! c=long-light		i=note-whole	g=1		o=note:13
+1 Sustain P
+//! c=long-dark			i=note-whole	g=1		o=note:14
+2 Sustain F
+//! c=long-light		i=vibrato		g=1		o=note:15
+38 Sustain Vib P
+//! c=long-dark			i=vibrato		g=1		o=note:16
+39 Sustain Vib F
+//! c=long-dark			i=tremolo		g=1		o=note:17
+15 Tremolo Dyn
+//------------------------- SHORT ------------------------
+//! c=short				i=staccato			g=1		o=note:18
+41 Staccato 8th Dyn
+//! c=short				i=staccato			g=1		o=note:19
+40 Staccato Dyn
+//! c=short-light		i=spiccato			g=1		o=note:20
+42 Spiccato Dyn
+//! c=short-light		i=pizz				g=1		o=note:21
+56 Pizzicato
+//------------------------- FX+SPECIAL --------------------
+//! c=fx			i=crescendo			g=1		o=note:22
+102 Cresc 8ct P-F Vib
+//! c=fx			i=decrescendo		g=1		o=note:23
+103 Decresc 8ct P-F Vib

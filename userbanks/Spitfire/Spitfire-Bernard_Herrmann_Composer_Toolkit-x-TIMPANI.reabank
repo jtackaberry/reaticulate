@@ -1,0 +1,28 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - x-TIMPANI
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="x-Timpani"
+//! m="Set patch to UACC.\nIMPORTANT NOTE: Seven of this patch's nine articulations are mistakenly assigned to UACC 40, and two are mistakenly assigned to UACC 1. In order to use this bank, you must assign UACCs 40-48 to the nine articulations in order, from left to right in the GUI (e.g. Hit (Soft Stick)=40, Hit damped (Soft Stick)=41 .. Hit damped (hotrod)=48)."
+//! id=39b69dd8-3265-4b82-8203-01c52800cb57
+Bank * * BHCT - x-Timpani
+// -------------------- HITS --------------------
+//! c=short-dark 			i=note-eighth			g=1	 	o=cc:32,43
+43 Hit (Hard Stick)
+//! c=short-dark			i=note-eighth			g=1	 	o=cc:32,44
+44 Hit Damped (Hard Stick)
+//! c=short 				i=note-eighth			g=1	 	o=cc:32,40
+40 Hit (Soft Stick)
+//! c=short 				i=note-eighth			g=1	 	o=cc:32,41
+41 Hit Damped (Soft Stick)
+//! c=short 				i=note-eighth			g=1	 	o=cc:32,45
+45 Hit x Damped (HD)
+//! c=short-light			i=note-eighth			g=1	 	o=cc:32,47
+47 Hit (Hotrod)
+//! c=short-light			i=note-eighth			g=1	 	o=cc:32,48
+48 Hit Damped (Hotrod)
+// -------------------- ROLLS -------------------
+//! c=long-dark			i=legato-runs			g=1	 	o=cc:32,46
+46 Roll (Hard Stick)
+//! c=long-light			i=legato-runs			g=1	 	o=cc:32,42
+42 Roll (Soft Stick)

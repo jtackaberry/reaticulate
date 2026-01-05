@@ -1,0 +1,25 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - v-ONDES MARTENOT
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="v-Ondes Martenot"
+//! m="Set patch to UACC"
+//! id=157ee89d-e081-48a5-bf09-fc6b3decacec
+Bank * * BHCT - v-Ondes Martenot
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long Ondes
+//! c=long 				i=note-whole			g=1	 	o=cc:32,2
+2 Ondes Gong
+//! c=long 				i=note-whole			g=1	 	o=cc:32,3
+3 Ondes Tutti
+//! c=long 				i=note-whole			g=1	 	o=cc:32,4
+4 Ondes Wind Str.
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------- FX ----------------------
+//! c=fx					i=trill				g=1	 	o=cc:32,90
+90 FX:Trills
+//! c=fx					i=list				g=1	 	o=cc:32,91
+91 FX: Birds

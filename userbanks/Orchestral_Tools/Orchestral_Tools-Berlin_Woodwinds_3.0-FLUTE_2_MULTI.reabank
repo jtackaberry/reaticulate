@@ -1,0 +1,38 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Orchestral Tools - Berlin Woodwinds 3.0 - Flute 2 Multi
+// CREATOR: Scott Sadowsky
+// NOTE: Articulations 7, 11 and 12 are undefined out of the box. This
+//		 file assumes that the user has defined them as follows:
+//		 7=STAC, 11=SUSAW, 12=SUSAR. Furthermore, articulation 8 (16th
+//		 repetitions) has been replaced with SUSIW.
+//
+//! g="Orchestral Tools/Berlin Woodwinds 3.0" n="Flute 2 Multi"
+//! id=b9813008-fec2-47ba-a753-10d1c1167ea4
+Bank * * Flute 2 Multi
+// -------------------- LONG --------------------
+//! c=long	 			i=note-whole 					g=1		o=note:31
+1 Sustain (No Vibrato)
+//! c=long	 			i=vibrato	 					g=1		o=note:24
+16 Sustain (Romantic Vibrato)
+//! c=long-dark			i=note-whole 					g=1		o=note:34
+2 Sustain w/ Accent (No Vibrato)
+//! c=long-dark	 		i=vibrato						g=1		o=note:35
+31 Sustain w/ Accent (Romantic Vibrato)
+//! c=long-dark	 		i=marcato	 					g=1		o=note:26
+55 Marcato Long
+// -------------------- TRILLS -----------------
+//! c=textured			i=trill-min2					g=1		o=note:28
+70 Trills Min2
+//! c=textured			i=trill-maj2					g=1		o=note:29
+71 Trills Maj2
+//! c=textured			i=trill-min2					g=1		o=note:32
+77 Measured Trills Min2
+//! c=textured			i=trill-maj2					g=1		o=note:33
+78 Measured Trills Maj2
+// -------------------- SHORT -------------------
+//! c=short				i=staccato						g=1		o=note:30
+44 Staccato
+//! c=short-light		i=staccato						g=1		o=note:25
+42 Staccatissimo
+//! c=short-dark		i=marcato	 					g=1		o=note:27
+52 Marcato Short

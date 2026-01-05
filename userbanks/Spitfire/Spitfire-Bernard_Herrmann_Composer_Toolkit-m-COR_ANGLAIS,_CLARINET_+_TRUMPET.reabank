@@ -1,0 +1,22 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - m-COR ANGLAIS, CLARINET + TRUMPET
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="m-Cor Anglais, Clarinet + Trumpet"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=dd832e78-dce1-4804-bef7-282e324f221a
+Bank * * BHCT - m-Cor Anglais, Clarinet + Trumpet
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------------------- TEXTURED --------------------------------
+//! c=textured	 			i=trill-min2 			g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured	 			i=trill-maj2 			g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=trill-maj2 			g=1	 	o=cc:32,90
+90 FX (Chatter)
