@@ -1,0 +1,19 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - q-MID BRASS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="q-Mid Brass"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=da7b0a88-6c91-4a9c-8153-0258f9853b1b
+Bank * * BHCT - q-Mid Brass
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------- FX ----------------------
+//! c=fx		 			i=fx					g=1	 	o=cc:32,90
+90 FX: Chatter
+//! c=fx		 			i=fall				g=1	 	o=cc:32,91
+91 FX: Falls

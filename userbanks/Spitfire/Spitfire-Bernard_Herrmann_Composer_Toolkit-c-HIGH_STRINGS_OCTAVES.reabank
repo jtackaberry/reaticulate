@@ -1,0 +1,26 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - c-HIGH STRINGS OCTAVES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="c-High Strings Octaves"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=b74f1a8e-eb78-4269-803c-0e51b0dc1477
+Bank * * BHCT - c-High Strings Octaves
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=con-sord			g=1	 	o=cc:32,7
+7 Long (Con Sordino)
+//! c=long 				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+// -------------------------------- TEXTURED --------------------------------
+//! c=textured	 			i=trill-min2			g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured	 			i=trill-maj2			g=1	 	o=cc:32,71
+71 Trill maj2
+

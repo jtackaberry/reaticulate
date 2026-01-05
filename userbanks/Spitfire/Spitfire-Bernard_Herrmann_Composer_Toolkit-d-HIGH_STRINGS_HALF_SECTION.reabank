@@ -1,0 +1,30 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - d-HIGH STRINGS HALF SECTION
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="d-High Strings Half Section"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=8fd4acdd-de02-4dcf-823f-122ac2acf2c2
+Bank * * BHCT - d-High Strings Half Section
+// -------------------------------- LONG ------------------------------------
+//! c=long 					i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 					i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long-dark				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+//! c=long-light				i=con-sord			g=1	 	o=cc:32,7
+7 Long (Con Sordino)
+//! c=long-light				i=flautando			g=1	 	o=cc:32,8
+8 Long (Flautando)
+
+// -------------------------------- SHORT -----------------------------------
+//! c=short 					i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+//! c=short-light				i=staccato-con-sord		g=1	 	o=cc:32,47
+47 Spiccato (Con Sordino)
+//! c=short 					i=note-quarter			g=1	 	o=cc:32,50
+50 Short (0.5 sec)
+// -------------------------------- FX --------------------------------------
+//! c=fx						i=fx					g=1	 	o=cc:32,92
+92 FX: Chatter

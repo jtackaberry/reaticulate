@@ -1,0 +1,94 @@
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Vir2 Mojo Upright Bass
+// CREATOR: Scott Sadowsky
+//
+// KEY: c=COLOR	i=ICON g=GROUP o=note:NOTENUMBER
+//
+//! g="Vir2/Mojo" n="Upright Bass"
+//! id=dbf7589a-312b-4360-b5c3-481376ad62d5
+Bank * * Upright Bass
+//-------------------- ARTICULATIONS --------------------
+//-------- LONG --------
+//! c=long			i=note-whole	g=1		o=note:24
+1 Sustain (No Vibrato)
+//! c=long-dark		i=vibrato		g=1		o=note:25
+38 Sustain Vibrato
+//! c=long-light	i=harmonics		g=1		o=note:29
+10 Harmonics
+//-------- SHORT -------
+//! c=short-light	i=staccato		g=1		o=note:26
+40 Staccato
+//----- REPETITIONS ----
+//! c=long	i=note-eighth 		g=1		o=note:27
+110 Perf. Rep. 8ths
+//! c=long	i=note-sixteenth	g=1		o=note:28
+111 Perf. Rep. 16ths
+//---------------------- LINKING ------------------------
+//! c=#e61be9			i=list		g=1		o=note:19
+35 Legato On/Off Tog.
+//! c=#e61be9			i=list		g=1		o=note:20
+36 Leg. Smart/Auto-Fcd Tog.
+//! c=#e61be9			i=list		g=1		o=note:21
+37 Auto-Slides On/Off Tog.
+//! c=#e61be9			i=list		g=1		o=note:84
+62 Force HO-PO
+//! c=#e61be9			i=list		g=1		o=note:85
+63 Force Slide
+//----------------------- CONTROL -----------------------
+//! c=#ff0000			i=list		g=1		o=note:30
+83 Percussion Mode
+//! c=#ff0000			i=list		g=1		o=note:31
+84 Chords Mode
+//! c=#ff0000			i=list		g=1		o=note:36
+85 Repeat Last Played Note
+//---------------------- STRINGS ------------------------
+//! c=#b0ad00			i=list		g=1		o=note:77
+86 Force E String
+//! c=#b0ad00			i=list		g=1		o=note:78
+87 Force A String
+//! c=#b0ad00			i=list		g=1		o=note:79
+88 Force D String
+//! c=#b0ad00			i=list		g=1		o=note:80
+89 Force G String
+//---------------------- RELEASES -----------------------
+//! c=#ff9700			i=list		g=1		o=note:89
+90 Normal Release
+//! c=#ff9700			i=list		g=1		o=note:90
+91 Fall Release Up
+//! c=#ff9700			i=list		g=1		o=note:91
+92 Fall Release Down
+//! c=#ff9700			i=list		g=1		o=note:92
+93 Slap Release
+//! c=#ff9700			i=list		g=1		o=note:93
+94 Alternate Slap Release
+//! c=#ff9700			i=list		g=1		o=note:94
+95 Squeak Release
+//----------------------- PLAYBACK ----------------------
+//! c=#00ffec			i=list		g=1		o=note:108,1
+96 Playback: Natural
+//! c=#00ffec			i=list		g=1		o=note:108,64
+97 Playback: Poly
+//! c=#00ffec			i=list		g=1		o=note:108,127
+98 Playback: Mono
+//---------------- CHORD MODE CHORD TYPES --------------
+// NOTE: These only work when in Chord Mode. In Normal
+// 	     Mode they will have unintended consequences!
+//! c=#bbf78c			i=list		g=1		o=note:84
+99 Major 7th Chords
+//! c=#bbf78c			i=list		g=1		o=note:85
+100 Major 6th Chords
+//! c=#bbf78c			i=list		g=1		o=note:86
+101 Major 5th Chords
+//! c=#bbf78c			i=list		g=1		o=note:87
+102 Diminished Chords
+//! c=#bbf78c			i=list		g=1		o=note:88
+103 D7/E Chords
+//! c=#bbf78c			i=list		g=1		o=note:89
+104 D7/A Chords
+//! c=#bbf78c			i=list		g=1		o=note:90
+105 Minor 7th Chords
+//! c=#bbf78c			i=list		g=1		o=note:91
+106 Plus 5 Chords
+//! c=#bbf78c			i=list		g=1		o=note:92
+107 Minor 6th Chords

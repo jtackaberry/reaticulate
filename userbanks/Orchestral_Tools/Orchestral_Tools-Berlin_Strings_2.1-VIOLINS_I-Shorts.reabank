@@ -1,0 +1,39 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Orchestral Tools - Berlin Strings 2.1 - Violins I (Shorts)
+// CREATOR: Scott Sadowsky
+// NOTE: Only the first four articulations are defined out of the box (C0 STAC,
+//		 C#0 SPICX, D0 PORTS, D#0 PZ). This file assumes that the user has defined
+//		 articulations 5-12 as follows:
+//		 E0 SPIC, F0 STACF, F#0 STACB, G0 SPICB, G#0 SPICS, A0 SFZ+1, A#0 SFZ+2, B0 TRSFZ.
+//
+//! g="Orchestral Tools/Berlin Strings 2.1" n="Violins I (Shorts)"
+//! id=b6af024b-f7a4-47de-9e79-9237c1a397b8
+Bank * * OT-BS Violins I (Shorts)
+//----------------------------- SHORT ------------------------------
+//! c=short			i=staccato			g=1		o=note:24
+44 Staccato
+//! c=short-light	i=staccato			g=1		o=note:30
+42 Staccato Blurred
+//! c=short-dark	i=staccato			g=1		o=note:29
+43 Staccato Bold
+//! c=short			i=spiccato			g=1		o=note:28
+41 Spiccato
+//! c=short-light	i=spiccato			g=1		o=note:25
+62 Spiccato Exposed
+//! c=short-light	i=spiccato			g=1		o=note:31
+46 Spiccato Blurred
+//! c=short-light	i=spiccato			g=1		o=note:32
+45 Spiccatissimo
+//! c=short-light	i=pizz				g=1		o=note:27
+56 Pizzicato
+//! c=legato-dark	i=legato-portamento	g=1		o=note:26
+32 Portamento Short
+//! c=long-dark		i=trill-min2		g=1		o=note:33
+70 Trill Min2 Sfz
+//! c=long-dark		i=trill-maj2		g=1		o=note:34
+71 Trill Maj2 Sfz
+//! c=fx			i=tremolo			g=1		o=note:35
+15 Tremolo Sfz
+//----------------------------- CONTROL ----------------------------
+//! c=default		i=list				g=1		o=note:21
+112 Reset RR 

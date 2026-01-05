@@ -1,0 +1,59 @@
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Embertone - Intimate Strings - Leonid Bass 1.0
+// CREATOR: Scott Sadowsky
+//
+// NOTE: 	The ways articulations are controled in this virtual instrument are
+//			frankly confusing and poorly documented in the manual. It also
+//			contains contradictions, such as CC12 controlling portamento (p. 4)
+//			or bow position (the software interface, where CC5 controls porta).
+//			See the text message below for the details I have worked out.
+//! g="Embertone/Intimate Strings" n="Leonid Bass 1.0" off=0
+//! m="CC1=VibratoAmount, CC2=PortaBreathController, CC5=PortaSpeed, CC11=StaccatoDynamics, CC12=BowPosition, CC14=VibratoSpeed, CC55=Ensemble, CC64=Sustain, CC67=AltTrans.\n→ The four ARTICULATIONS (sustain, staccato, pizzicatao, tremolo) are mutually exclusive: activating one deactivates the others.\n→ The three BOWING TECHNIQUES (normal, sul pont, harmonics) are likewise mutually exclusive, and exactly one of them can be combined with any one of the articulations.\n→ COLOR ON deactivates all three bowing techniques and passes control of the bow position to CC 12 by default. COLOR OFF returns bowing control to the three articulations.\n→ The CON SORDINO style can be used with any combination of articulation and bowing technique, and it will continue to be in effect indefinitely, until the Con Sordino OFF signal is sent.\n→ The LEGATO MODE should, in theory, trigger legato mode. However, it produces no change at all in the VI's GUI. Activating Legato Mode is, however, the only way to turn off POLYPHONIC MODE, which allows for 2+ notes to be played at once.\n→ If GHOST NOTE is triggered, the next note hit and HELD will not sound, but a slide from it to the following note played while the first is held will be produced.\n→ REBOW can be achieved by activating CC64 (sustain) and playing the same note twice.\n→ Though correctly assigned, Portamento and Alt. Legato Trans. seem to do nothing, at least with the VI's default configuration.\n→ Finally, note that Reaticulate will REPLACE one articulation with another if you add them with a given note selected, so to combine, for example, sustain + sul pont + con sordino, you will need to place these articulations one after the other, with a small space between them!"
+//! id=1aa024c1-eb61-44cf-bd83-949de219ce5c
+Bank * * Leonid Bass
+//
+//---------------------------- ARTICULATIONS --------------------------------
+//! c=fx				i=note-whole			g=1	    o=note:20,127
+1 Sustain Articulations
+//! c=fx				i=staccato				g=1		o=note:19,127
+40 Staccato Articulations
+//! c=fx				i=pizz					g=1		o=note:18,127
+56 Pizzicato Articulations
+//! c=fx				i=tremolo				g=1		o=note:17,127
+11 Tremolo Articulations
+//! spacer=1
+//---------------------------- BOWING ----------------------------------------
+//! c=textured			i=note-whole			g=1		o=note:11,127
+37 Normal Bowing
+//! c=textured			i=sul-pont				g=1		o=note:12,127
+18 Sul Ponticello Bowing
+//! c=textured			i=harmonics				g=1		o=note:13,127
+10 Harmonics Bowing
+//! c=default			i=list					g=1		o=note:9,127
+98 Color On
+//! c=default			i=list					g=1		o=note:10,127
+99 Color Off
+//! spacer=1
+//---------------------------- SORDINO ---------------------------------------
+//! c=long				i=con-sord				g=1		o=note:14,127
+7 Con Sordino ON
+//! c=default			i=con-sord				g=1		o=note:15,127
+19 Con Sordino OFF
+//! spacer=1
+//---------------------------- MODE ------------------------------------------
+//! c=legato				i=legato				g=1		o=note:22,127
+20 Legato Mode (Polyphonic OFF)
+//! c=legato				i=dblstop-5th			g=1		o=note:23,127
+112 Polyphonic Mode (Legato OFF)
+//! spacer=1
+//---------------------------- FX --------------------------------------------
+//! c=short-light			i=ghost-eighth			g=1		o=note-hold:81,127
+96 Ghost Note
+//! spacer=1
+//---------------------------- LINKING ---------------------------------------
+//! c=default			i=legato-portamento		g=1		o=note:16,127
+63 Portamento (?)
+//! c=default			i=list					g=1		o=note-hold:21,127
+100 Alt. Legato Trans. (?)
+

@@ -1,0 +1,23 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - o-TRUMPET + XYLOPHONE
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="o-Trumpet + Xylophone"
+//! m="Set patch to UACC\nIMPORTANT NOTE: This patch contains an error: CC47 is assigned by default to both Short (Muted) and Short (Oct. Muted). You must manually set Short (Oct. Muted) to CC48 in order for it to work.\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=eed68bb7-c3ac-407a-9b43-21017a6184f7
+Bank * * BHCT - o-Trumpet + Xylophone
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=harmonics-natural		g=1	 	o=cc:32,3
+3 Long (Octave)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short-light			i=con-sord			g=1	 	o=cc:32,47
+47 Short (Muted)
+//! c=short 				i=harmonics-natural		g=1	 	o=cc:32,45
+45 Short (Octave)
+//! c=short 				i=pizz-con-sord		g=1	 	o=cc:32,48
+47 Short (Octave Muted)
+

@@ -1,0 +1,34 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Orchestral Tools - Berlin Percussion - Glockenspiel (Multi)
+// CREATOR: Scott Sadowsky
+//
+//! g="Orchestral Tools/Berlin Percussion" n="Glockenspiel (Multi)"
+//! m="CC1=Layer Morphing, CC11=Expression/Vol"
+//! id=75fd351d-ed83-4cb8-9f35-4fb1c45e8785
+Bank * * Glockenspiel (Multi)
+//------------------------------ LONG ----------------------------------------
+//! c=long					i=note-whole		g=1		o=note:24
+1 Sustain (Normal)
+//! c=long-light			i=note-whole		g=1		o=note:30
+2 Sustain (Soft)
+//! c=long-dark				i=note-whole		g=1		o=note:33
+3 Sustain (Hard)
+//! c=long					i=vibrato			g=1		o=note:26
+17 Sustain Vibrato (Normal)
+//! c=long-light			i=vibrato			g=1		o=note:31
+16 Sustain Vibrato (Soft)
+//! c=long					i=tremolo			g=1		o=note:27
+11 Tremolo 5x (Normal)
+//! c=long-light			i=tremolo			g=1		o=note:28
+13 Tremolo Dim
+//------------------------------ SHORT ---------------------------------------
+//! c=short					i=staccato			g=1		o=note:25
+44 Staccato (Normal)
+//------------------------------ FX ------------------------------------------
+//! c=fx					i=legato-gliss		g=1		o=note:29
+31 Glissando (Norm) (C4,D4,C5,D5)
+//! c=fx					i=legato-gliss		g=1		o=note:32
+32 Glissando (Soft) (F3)
+//------------------------------ CONTROL -------------------------------------
+//! c=default				i=list				g=1		o=note:21
+112 Round Robin Reset

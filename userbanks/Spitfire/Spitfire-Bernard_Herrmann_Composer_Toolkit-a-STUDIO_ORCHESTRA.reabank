@@ -1,0 +1,29 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - a-STUDIO ORCHESTRA
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="a-Studio Orchestra"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=87525201-8369-4ecc-adcc-d27cee8e9421
+Bank * * BHCT - a-Studio Orchestra
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+// -------------------- FX ----------------------
+//! c=fx-dark	 			i=note-whole		g=1	 	o=cc:32,123
+123 Chords (Common)
+//! c=fx		 			i=rip	 		g=1	 	o=cc:32,90
+90 Exp Clusters
+//! c=fx		 			i=rip 			g=1	 	o=cc:32,91
+91 Cluster Stabs
+//! c=fx		 			i=rip	 		g=1	 	o=cc:32,92
+92 Slides
+//! c=fx		 			i=rip 			g=1	 	o=cc:32,93
+93 String Slides
+//! c=fx		 			i=fx	 			g=1	 	o=cc:32,94
+94 Cluster Swells
+//! c=fx		 			i=fx 			g=1	 	o=cc:32,95
+95 Chatter

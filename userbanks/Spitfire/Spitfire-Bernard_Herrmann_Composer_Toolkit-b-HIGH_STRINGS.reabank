@@ -1,0 +1,29 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - b-HIGH STRINGS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="b-High Strings"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=07bd40d8-de2c-4650-9f14-18fb043bebff
+Bank * * BHCT - b-High Strings
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=legato				g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,50
+50 Short (0.5 sec)
+//! c=short 				i=pizz				g=1	 	o=cc:32,56
+56 Pizzicato
+// -------------------------------- TEXTURE ---------------------------------
+//! c=textured	 			i=trill-min2			g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured	 			i=trill-maj2			g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=col-legno			g=1	 	o=cc:32,58
+58 Col Legno
+

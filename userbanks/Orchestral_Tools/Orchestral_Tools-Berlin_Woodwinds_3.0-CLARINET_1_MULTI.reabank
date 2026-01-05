@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Orchestral Tools - Berlin Woodwinds - Clarinet 1 Multi
+// CREATOR: Scott Sadowsky
+// NOTE: Articulations 2, 10, 11 and 12 are undefined out of the box. This
+//		 file assumes that the user has defined them as follows:
+//		 2=Port Long, 10=Trills +3, 11=1x Trills +1, 12=1x Trills +2.
+// NOTE: This file is NOT identical to Orchestral Tools - Berlin Woodwinds - 
+//       Clarinet 1. 
+//
+// KEY: c=COLOR	i=ICON g=GROUP o=note:NOTENUMBER
+//
+//! g="Orchestral Tools/Berlin Woodwinds" n="Clarinet 1 Multi"
+//! id=3c72f24d-d132-43e3-bb0b-4df2fb5282ec
+Bank * * OT-BWW Cello 1 Multi
+// -------------------- LONG --------------------
+//! c=legato 			i=note-whole 					g=1		o=note:24
+1 Sustain Without Vib
+// -------------------- TRILLS -----------------
+//! c=long				i=trill-min2					g=1		o=note:29
+70 Trills Min2
+//! c=long				i=trill-maj2					g=1		o=note:30
+71 Trills Maj2
+//! c=long				i=trill-min3					g=1		o=note:33
+72 Trills Min3
+//! c=long-dark			i=trill-min2					g=1		o=note:34
+77 1x Trills Min2
+//! c=long-dark			i=trill-maj2					g=1		o=note:35
+78 1x Trills Maj2
+// -------------------- SHORT -------------------
+//! c=short				i=staccato						g=1		o=note:26
+44 Staccato
+//! c=short-light		i=staccato						g=1		o=note:27
+42 Staccato Short
+//! c=short-light 		i=tenuto-half					g=1		o=note:25
+31 Portato Long
+//! c=short-light		i=tenuto-quarter				g=1		o=note:28
+32 Portato Short
+//! c=short 			i=dblstop-5th-eighth			g=1		o=note:31
+62 Double Tongue
+//! c=short 			i=run-minor						g=1		o=note:32
+63 Triple Tongue
+

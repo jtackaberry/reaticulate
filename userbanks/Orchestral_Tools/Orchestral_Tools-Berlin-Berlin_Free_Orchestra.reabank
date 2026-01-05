@@ -1,0 +1,148 @@
+//----------------------------------------------------------------------------
+// Orchestral Tools: Berlin Free
+// Alex Deckmyn, 1 June 2025
+//----------------------------------------------------------------------------
+// Percussion & harp don't have any key switches.
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Violins a8"
+Bank * * Violins
+//! c=long i=note-whole o=note:24
+1 long
+//! c=short i=spiccato o=note:25
+42 spiccato
+//! c=short-light i=pizz o=note:26
+56 pizzicato
+//! c=long-dark i=tremolo o=note:27
+11 tremolo
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Violas a5"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Strings/Violins a8"
+Bank * * Violas
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Cellos a5"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Strings/Violins a8"
+Bank * * Cellos
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Basses a4"
+Bank * * Basses
+//! c=long i=note-whole o=note:96
+1 long
+//! c=short i=spiccato o=note:97
+42 spiccato
+//! c=short-light i=pizz o=note:98
+56 pizzicato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Strings ensemble"
+Bank * * Strings Ensemble
+//! c=long i=note-whole o=note:97
+1 long
+//! c=short i=spiccato o=note:98
+42 spiccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Violin solo"
+Bank * * Violin solo
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 long
+//! c=short i=staccato o=note:26
+42 staccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Strings" n="Cello solo"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Strings/Violin solo"
+Bank * * Cello solo
+
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Trumpets a3"
+Bank * * Trumpets a3
+//! c=long i=note-whole o=note:24
+1 long
+//! c=short i=staccato o=note:25
+42 staccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Trumpet solo"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Brass/Trumpets a3"
+Bank * * Trumpet solo
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Horns a4"
+Bank * * Horns a4
+//! c=long i=note-whole o=note:96
+1 long
+//! c=short i=staccato o=note:97
+42 staccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Horn solo"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Brass/Horns a4"
+Bank * * Horn solo
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Trombone solo"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Brass/Horns a4"
+Bank * * Trombone solo
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Trombones a3"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Brass/Horns a4"
+Bank * * Trombones a3
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Tuba"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Brass/Horns a4"
+Bank * * Tuba
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Brass" n="Brass ensemble"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Brass/Horns a4"
+Bank * * Brass ensemble
+
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Flute"
+Bank * * Flute
+//! c=legato i=legato o=note:24
+20 legato
+//! c=long i=note-whole o=note:25
+1 long
+//! c=short i=staccato o=note:26
+42 staccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Clarinet"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Woodwinds/Flute"
+Bank * * Clarinet
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Piccolo"
+Bank * * Piccolo
+//! c=long i=note-whole o=note:24
+1 long
+//! c=short i=staccato o=note:25
+42 staccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Oboe"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Woodwinds/Piccolo"
+Bank * * Oboe
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="English horn"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Woodwinds/Piccolo"
+Bank * * English horn
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Bassoon"
+Bank * * Bassoon
+//! c=long i=note-whole o=note:96
+1 long
+//! c=short i=staccato o=note:97
+42 staccato
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Bass clarinet"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Woodwinds/Bassoon"
+Bank * * Bass clarinet
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Contrabassoon"
+//! clone="Orchestral Tools/Berlin Free Orchestra/Woodwinds/Bassoon"
+Bank * * Contrabassoon
+
+//! g="Orchestral Tools/Berlin Free Orchestra/Woodwinds" n="Woodwind ensemble"
+Bank * * Woodwinds ensemble
+//! c=long i=note-whole o=note:109
+1 long
+//! c=short i=staccato o=note:110
+42 staccato
+

@@ -1,0 +1,37 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Orchestral Tools - Berlin Woodwinds 3.0 - Flute 1 Multi
+// CREATOR: Scott Sadowsky
+// NOTE: Articulation 8 is undefined out of the box. This file assumes that
+//		 that the user has defined it as STAC.
+//
+//! g="Orchestral Tools/Berlin Woodwinds 3.0" n="Flute 1 Multi"
+//! id=da93fa47-74c9-4c2c-af22-cc2db9c52882
+Bank * * Flute 1 Multi
+// -------------------- LONG --------------------
+//! c=long	 			i=vibrato	 					g=1		o=note:24
+16 Sustain (Romantic Vibrato)
+//! c=long		 		i=tenuto-half					g=1		o=note:26
+31 Portato Long
+// -------------------- TRILLS -----------------
+//! c=textured			i=trill-min2					g=1		o=note:28
+70 Trills Min2
+//! c=textured			i=trill-maj2					g=1		o=note:29
+71 Trills Maj2
+//! c=textured			i=trill-min2					g=1		o=note:32
+77 Measured Trills Min2
+//! c=textured			i=trill-maj2					g=1		o=note:33
+78 Measured Trills Maj2
+// -------------------- SHORT -------------------
+//! c=short				i=staccato						g=1		o=note:31
+44 Staccato
+//! c=short-light		i=staccato						g=1		o=note:25
+42 Staccatissimo
+//! c=short-dark	 	i=sfz							g=1		o=note:30
+9 Sforzando Short
+//! c=short		 		i=tenuto-quarter				g=1		o=note:27
+48 Portato Short
+// -------------------- FX ----------------------
+//! c=fx		 		i=multitongued					g=1		o=note:34
+75 Double Tongued
+//! c=fx		 		i=multitongued					g=1		o=note:35
+79 Triple Tongued

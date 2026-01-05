@@ -1,0 +1,69 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Native Instruments Cremona Quartet Stradivari Violin Multi Mic
+// CREATOR: Scott Sadowsky
+//
+// NOTE: This instrument comes with only four of its 20 articulations mapped
+//		 out of the box, and these four skip black keys, which are needed to
+//		 assign all 20 articulations. This file assumes that you have
+//		 (re)mapped the articulations as follows:
+//		 C0: Virtuoso. C#0: Détaché Bowed. D0: Staccato. D#0: Pizzicato.
+//		 E0: Sustain Finger. F0: Marcato Bowed. F#0: Sautillé Single.
+//		 G0: Spiccatissimo. G#0: Spiccato. A0: Tremolo Bowed.
+//		 A#0: Trill Porta. B0: Ricochet. C1: Sautillé. C#1: Crescendo.
+//		 D1: Dimin Short. D#1: Dimin Long. E1: Sul Pont. F1: Sul Tasto.
+//		 F#1: Harmonics. G1: Col Legno.
+//
+//! g="Native Instruments/Cremona Quartet" n="Stradivari Violin Multi Mic"
+//! m="CC1=Dynamics, CC11=Expression, CC14=Vibrato Intensity, CC15=Vibrato Rate, CC20=Vibrato Style, CC21=Position Preference."
+//! id=6f9613de-4812-4803-9f3f-12c6053091cf
+Bank * * Stradivari Violin Multi Mic
+//
+//------------------------- LONG -------------------------
+//! c=legato				i=note-whole			g=1		o=note:24
+19 Virtuoso
+//! c=long					i=note-whole			g=1		o=note:28
+1 Sustain Finger
+//! c=long-dark				i=tremolo				g=1		o=note:33
+15 Tremolo Bowed
+//! c=long-dark				i=trill					g=1		o=note:34
+77 Trill Porta
+//! c=long-dark				i=marcato				g=1		o=note:29
+13 Marcato Bowed
+//! c=long-light			i=sul-pont				g=1		o=note:40
+18 Sul Pont
+//! c=long-light			i=sul-tasto				g=1		o=note:41
+17 Sul Tasto
+//! c=long-light			i=harmonics				g=1		o=note:42
+61 Harmonics
+//------------------------- SHORT ------------------------
+//! c=short-dark			i=note-quarter			g=1		o=note:25
+34 Détaché Bowed
+//! c=short-dark			i=riccochet 			g=1		o=note:36
+43 Sautillé
+//! c=short 				i=staccato 				g=1		o=note:26
+12 Staccato
+//! c=short-light			i=pizz					g=1		o=note:27
+14 Pizzicato
+//! c=short-light			i=riccochet 			g=1		o=note:30
+48 Sautillé Single
+//! c=short-light			i=spiccato				g=1		o=note:32
+42 Spiccato
+//! c=short-light			i=spiccato				g=1		o=note:31
+41 Spiccatisimo
+//------------------------- DYNAMICS ----------------------
+//! c=fx					i=crescendo 			g=1		o=note:37
+102 Crescendo
+//! c=fx					i=decrescendo 			g=1		o=note:39
+103 Dimin Long
+//! c=fx					i=decrescendo 			g=1		o=note:38
+106 Dimin Short
+//------------------------- FX+SPECIAL --------------------
+//! c=fx					i=ricochet				g=1		o=note:35
+62 Ricochet
+//! c=fx					i=col-legno				g=1		o=note:43
+58 Col Legno
+//------------------------- CONTROL ----------------------
+//! c=default				i=list					g=1		o=note:50
+110 Bow Change
+//! c=default				i=list					g=1		o=note:52
+111 Force Open Strings

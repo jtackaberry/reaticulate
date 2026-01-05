@@ -1,0 +1,31 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - i-CONCERT FLUTES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="i-Concert Flutes"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=d5eb1809-5123-49a3-849c-e29fa0f04054
+
+Bank * * BHCT - i-Concert Flutes
+// -------------------- LONG --------------------
+//! c=legato	 			i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=tremolo			g=1	 	o=cc:32,11
+11 Long (Flutter)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+// -------------------- TEXTURED ----------------------
+//! c=textured		 		i=trill-min2 		g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured		 		i=trill-maj2 		g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------- FX ----------------------------
+//! c=fx			 		i=rip			g=1	 	o=cc:32,90
+90 FX: Rips
+//! c=fx			 		i=phrase			g=1	 	o=cc:32,92
+92 FX: Upper Mordant Min
+//! c=fx			 		i=phrase			g=1	 	o=cc:32,91
+91 FX: Upper Mordant Maj

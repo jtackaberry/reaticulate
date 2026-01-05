@@ -1,0 +1,36 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire Alternative Solo Strings - Violin
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Alternative Solo Strings" n="Violin"
+//! m="Set patch to UACC"
+//! id=1ca009b3-4f61-40ca-9533-b764c2abea8d
+Bank * * Spitfire Solo Strings - Violin
+// -------------------- LONG --------------------
+//! c=long i=note-whole o=cc:32,1
+1 Long
+//! c=long i=note-whole o=cc:32,2
+2 Long (Alternative)
+//! c=long i=harmonics o=cc:32,10
+10 Long (Harmonics)
+//! c=long-dark i=sul-pont o=cc:32,18
+18 Long Sul Pont
+//! c=long-light i=sul-tasto o=cc:32,17
+17 Long Sul Tasto
+//! c=legato i=legato o=cc:32,20
+20 Performance Legato
+// -------------------- TRILLS -----------------
+//! c=fx i=tremolo o=cc:32,11
+11 Tremolo
+//! c=fx i=tremolo o=cc:32,13
+13 Tremolo Sul Pont
+// -------------------- SHORT -------------------
+//! c=short i=staccato o=cc:32,49
+49 Staccato Dig
+//! c=short i=spiccato o=cc:32,42
+42 Spiccato
+//! c=short-light i=spiccato o=cc:32,44
+44 Spiccato Brush
+//! c=short i=pizz o=cc:32,56
+56 Pizzicato
+

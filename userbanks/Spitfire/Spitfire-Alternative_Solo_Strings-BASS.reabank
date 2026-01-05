@@ -1,0 +1,35 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire Alternative Solo Strings - Bass
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Alternative Solo Strings" n="Bass"
+//! m="Set patch to UACC"
+//! id=9292b513-e31d-480a-b033-4b9b1764a19e
+Bank * * Spitfire Solo Strings - Bass
+// -------------------- LONG --------------------
+//! c=long i=note-whole o=cc:32,1
+1 Long
+//! c=long-light i=note-whole o=cc:32,2
+2 Long (Alternative)
+//! c=long-light i=harmonics o=cc:32,10
+10 Long (Harmonics)
+//! c=long-dark i=sul-pont o=cc:32,18
+18 Long Sul Pont
+//! c=long-light i=sul-pont o=cc:32,113
+113 Long Sul Pont (Dist)
+// -------------------- SHORT -------------------
+//! c=short i=staccato o=cc:32,49
+49 Staccato Dig
+//! c=short i=spiccato o=cc:32,42
+42 Spiccato
+//! c=short-light i=spiccato o=cc:32,44
+44 Spiccato Brush
+//! c=short i=pizz o=cc:32,56
+56 Pizzicato
+//! c=short-light i=pizz o=cc:32,57
+57 Pizzicato (Damped)
+// -------------------- TRILLS -----------------
+//! c=long-dark i=tremolo o=cc:32,11
+11 Tremolo
+//! c=long-light i=tremolo o=cc:32,13
+13 Tremolo Sul Pont

@@ -1,0 +1,68 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Ample Sound Ample Guitars Ample RB (Rickenbacker)
+// CREATOR: Scott Sadowsky
+//
+//! g="Ample Sound/Ample Guitars" n="Ample RB (Rickenbacker)"
+//! m="Note that Auto-Legato has a software bug - it can't be turned off by KS or CC, only by clicking on the button in the GUI."
+//! id=a7465fdb-bab6-4e89-9bbf-e9c0a0564327
+Bank * * Ample Rickenbacker
+//
+//---------------------- ARTICULATIONS ----------------------
+//! c=long				i=note-whole		g=1		o=note:24
+1 Sustain (1-126) & Pop (127) (E1-E5)
+//! c=long-light			i=harmonics		g=1		o=note:25
+10 Natural Harmonic (E1-B4)
+//! //! c=short-light		i=spiccato		g=1		o=note:26
+47 Palm Mute (E1-E5)
+//! c=textured			i=legato			g=1		o=note:29
+107 HO/PO (Must be BEF 1st Note) (E1-D#5)
+//! c=textured				i=legato-runs		g=1		o=note:27
+25 Slide In (Bef Note) & Out (Dur Note) (F#1-E5)
+//! c=textured				i=legato-runs		g=1		o=note:28
+23 Legato Slide (Poly Legato) (Must Be BEF 1st Note; 2nd Note Vel=Speed) (F#1-E5)
+//! c=textured				i=trill			g=1		o=note:30
+38 Maj2 Mordent Up (E1-D#5)
+//------------------------- MODES ------------------------
+//! spacer=1
+//! c=legato-dark			i=list			g=1		o=note:104,127
+62 Open Strings First ON
+//! c=default				i=list			g=1		o=note:104,1
+63 Open Strings First OFF
+//! c=legato-dark			i=list			g=1		o=note:26,127/note=24,127
+64 Palm Mute Vel Mode ON
+//! c=default				i=list			g=1		o=note:26,1/note=24,1
+65 Palm Mute Vel Mode OFF
+//! c=legato-dark			i=list			g=1		o=note:107,127
+66 Capo Logic CHORDS
+//! c=legato-light			i=list			g=1		o=note:107,1
+67 Capo Logic Toggle MELODY
+//! c=legato-dark			i=list			g=1		o=note:99,127
+68 Auto Legato SLIDE
+//! c=legato-light			i=list			g=1		o=note:99,1
+69 Auto Legato HO/PO
+//! c=legato-dark			i=list			g=1		o=note:97,127
+77 Strum Mode ON
+//! c=default				i=list			g=1		o=note:97,1
+78 Strum Mode OFF
+//! c=long				i=list			g=1		o=note:98
+19 Poly Repeater
+//------------------------- NOISES ------------------------
+//! spacer=1
+//! c=fx					i=fx				g=1		o=note:89
+80 Scratch Noise
+//! c=fx					i=fx				g=1		o=note:90
+81 Slap Noise
+//! c=fx					i=fx				g=1		o=note:91
+82 Press Noise
+//! c=fx					i=fx				g=1		o=note:92
+83 Stroke Muting
+//! c=fx					i=fx				g=1		o=note:93
+84 Downstroke 1
+//! c=fx					i=fx				g=1		o=note:94
+85 Upstroke 1
+//! c=fx					i=fx				g=1		o=note:95
+86 Downstroke 2
+//! c=fx					i=fx				g=1		o=note:96
+87 Upstroke 2
+//! c=fx					i=fx				g=1		o=note:101
+88 Pick Scrape

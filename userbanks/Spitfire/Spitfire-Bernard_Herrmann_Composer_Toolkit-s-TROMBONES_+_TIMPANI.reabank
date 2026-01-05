@@ -1,0 +1,14 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - s-TROMBONES + TIMPANI
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="s-Trombones + Timpani"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=8c24ddbd-cda1-4af0-bd69-2fa7b97e6fd5
+Bank * * BHCT - s-Trombones + Timpani
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+
