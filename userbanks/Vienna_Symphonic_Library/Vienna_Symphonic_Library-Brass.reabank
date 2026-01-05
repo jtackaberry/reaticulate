@@ -1,12 +1,5 @@
 //----------------------------------------------------------------------------
 // Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/110
-//
-// Link to detailed installation instructions:
-//
-// https://www.vsl.co.at/community/posts/t53083-Comprehensive-Articulation-Management-System-for-VSL-Libraries--for-REAPER-users#post287931
-//
-// NOTE: there are VI presets available for all banks at the above URL.
-
 
 // TABLE OF CONTENTS
 //
@@ -5637,4 +5630,5 @@ Bank * * Cimbasso
 //! c=fx i=fanfare o=note:11/note:14/note:119
 116 Upbeat x3 - 140bpm
 //! c=fx i=fanfare o=note:11/note:14/note:120
+
 117 Upbeat x3 - 150bpm
