@@ -1,12 +1,5 @@
 //----------------------------------------------------------------------------
 // Source: seventh-sam - https://github.com/jtackaberry/reaticulate/issues/110
-//
-// Link to detailed installation instructions:
-//
-// https://www.vsl.co.at/community/posts/t53083-Comprehensive-Articulation-Management-System-for-VSL-Libraries--for-REAPER-users#post287931
-//
-// NOTE: there are VI presets available for all banks at the above URL.
-
 
 // TABLE OF CONTENTS
 //
@@ -4915,4 +4908,5 @@ Bank * * Harp II
 //! c=short i=con-sord o=note:121
 9 Mute + Mute Release
 //! c=short i=legato-gliss o=note:122
+
 10 Normal + Pedal Gliss
