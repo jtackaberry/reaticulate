@@ -1,0 +1,48 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Native Instruments Choir x Omnia
+// CREATOR: Scott Sadowsky
+//
+// NOTE:	This bank assumes you are using KEYS mode, which gives you full
+// 		control over the sounds produced.
+// NOTE:	Apparently nothing in this library can be controlled by CC, even
+//		user-assigned ones.
+//
+//! g="Native Instruments" n="Choir x Omnia"
+//! m="For use with KEYS mode.\nA Kontakt multi and preset that makes the use of this bank effortless can be found here: https://stash.reaper.fm/v/50213/Native%20Instruments%20-%20Choir%20X%20Omnia%20-%20Kontakt%20Multi%20%2B%20Presets.zip"
+//! id=19814083-ee51-4da5-8368-4add3b15689f
+Bank * * Choir x Omnia
+//
+//------------------------- ARTICULATIONS ----------------
+//! c=long					i=note-whole			g=1		o=note:24
+1 Sustain
+//! c=long-dark				i=marcato-quarter				g=1		o=note:26
+13 Marcato
+//! c=short 					i=staccato 			g=1		o=note:28
+12 Staccato
+//! c=short 					i=staccatissimo-stopped	g=1		o=note:29
+42 Staccatissimo
+//------------------------- VOWELS & SYLLABLES -----------
+//! c=textured					i=list				g=1		o=note:12
+90 a
+//! c=textured					i=list				g=1		o=note:13
+91 e
+//! c=textured					i=list				g=1		o=note:14
+92 i
+//! c=textured					i=list				g=1		o=note:15
+93 o
+//! c=textured					i=list				g=1		o=note:16
+94 u
+//! c=textured					i=list				g=1		o=note:17
+95 kyr
+//! c=textured					i=list				g=1		o=note:18
+96 lux
+//! c=textured					i=list				g=1		o=note:19
+97 m
+//! c=textured					i=list				g=1		o=note:20
+98 nom
+//! c=textured					i=list				g=1		o=note:21
+99 ras
+//! c=textured					i=list				g=1		o=note:22
+100 tar
+//! c=textured					i=list				g=1		o=note:23
+101 vey

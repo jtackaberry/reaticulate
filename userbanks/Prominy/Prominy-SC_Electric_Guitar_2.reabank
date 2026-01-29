@@ -1,0 +1,278 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Prominy SC Electric Guitar 2 (FULL)
+// CREATOR: Scott Sadowsky
+//
+//! g="Prominy" n="SC Electric Guitar 2"
+//! id=acbc08d7-86d7-45b2-8171-164d074ef712
+Bank * * Prominy SC2 (FULL)
+
+//-------------------- PICK-UP SELECTION --------------------
+//! c=#44403B				i=list		g=1		o=note:120
+1 PICKUP: Neck
+//! c=#44403B				i=list		g=1		o=note:121
+2 PICKUP:Neck+Middle
+//! c=#44403B				i=list		g=1		o=note:122
+3 PICKUP:Middle
+//! c=#44403B				i=list		g=1		o=note:123
+4 PICKUP:Middle+Bridge
+//! c=#44403B				i=list		g=1		o=note:124
+5 PICKUP:Bridge
+
+//-------------------- GENERAL OPTIONS --------------------
+
+//! c=#4D778C				i=list		g=1		o=cc:48,0
+116 Mute mode: Mod Wheel
+//! c=#4D778C				i=list		g=1		o=cc:48,127
+117 Mute mode: Velocity
+
+//! c=#C17180				i=list		g=1		o=cc:20,0
+78 Pos change noise soft
+//! c=#C17180				i=list		g=1		o=cc:20,60
+79 Pos change noise mid
+//! c=#C17180				i=list		g=1		o=cc:20,127
+80 Pos change noise loud
+
+//! c=#28A635				i=list		g=1		o=cc:41,0
+89 Finger release noise tight
+//! c=#28A635				i=list		g=1		o=cc:41,127
+90 Finger release noise loose
+
+//! c=#AC87B3				i=list		g=1		o=cc:54,127
+96 Auto-sustain OFF
+//! c=#AC87B3				i=list		g=1		o=cc:54,0
+118 Auto-sustain ON
+
+//! c=#A4B387				i=list		g=1		o=cc:90,0
+105 Feedback: OFF
+//! c=#A4B387				i=list		g=1		o=cc:90,127
+106 Feedback: ON
+
+//! c=#7F1F91				i=list		g=1		o=cc:108,0
+107 Auto-Wah (fretboard) OFF
+//! c=#7F1F91				i=list		g=1		o=cc:108,127
+108 Auto-Wah (fretboard) ON
+
+//! c=#FA0C61				i=list		g=1		o=cc:112,0
+109 Auto-Wah sync OFF
+//! c=#FA0C61				i=list		g=1		o=cc:112,127
+110 Auto-Wah sync ON
+
+//! c=#4D778C				i=list		g=1		o=cc:57,0
+111 Auto-alternation: 1/8
+//! c=#4D778C				i=list		g=1		o=cc:57,26
+112 Auto-alternation: 1/8 T
+//! c=#4D778C				i=list		g=1		o=cc:57,51
+113 Auto-alternation: 1/16
+//! c=#4D778C				i=list		g=1		o=cc:57,76
+114 Auto-alternation: 1/16 T
+//! c=#4D778C				i=list		g=1		o=cc:57,101
+115 Auto-alternation: 1/32
+
+//-------------------- SINGLE NOTE CONTROLLERS --------------------
+//! spacer=1
+//! c=#AB6F26				i=list		g=1		o=cc:4,0
+62 NOTE: Gliss down fast
+//! c=#AB6F26				i=list		g=1		o=cc:4,20
+63 NOTE: Gliss down mid
+//! c=#AB6F26				i=list		g=1		o=cc:4,40
+64 NOTE: Gliss down slow
+//! c=#AB6F26				i=list		g=1		o=cc:4,60
+65 NOTE: Gliss up fast
+//! c=#AB6F26				i=list		g=1		o=cc:4,80
+66 NOTE: Gliss up mid
+//! c=#AB6F26				i=list		g=1		o=cc:4,100
+67 NOTE: Gliss up slow
+
+//! c=#9F2D01				i=list		g=1		o=cc:5,0
+68 NOTE: Vibrato deep
+//! c=#9F2D01				i=list		g=1		o=cc:5,127
+69 NOTE: Vibrato light
+
+//! c=#AD944C				i=list		g=1		o=cc:14,0
+70 HI VEL: Not assigned
+//! c=#AD944C				i=list		g=1		o=cc:14,1
+71 HI VEL: Pinch Harm 1 Vib
+//! c=#AD944C				i=list		g=1		o=cc:14,2
+72 HI VEL: Pinch Harm 2
+//! c=#AD944C				i=list		g=1		o=cc:14,3
+73 HI VEL: 5th dy wham 1 Pinch
+//! c=#AD944C				i=list		g=1		o=cc:14,4
+74 HI VEL: 5th dy wham 2
+//! c=#AD944C				i=list		g=1		o=cc:14,5
+75 HI VEL: Half bend pinch harm
+//! c=#AD944C				i=list		g=1		o=cc:14,6
+76 HI VEL: Whole bend pinch harm
+//! c=#AD944C				i=list		g=1		o=cc:14,7
+77 HI VEL: 1.5 bend pinch harm
+
+//! c=#4D8C62				i=list		g=1		o=cc:56,127
+97 Poly mode ON
+//! c=#4D8C62				i=list		g=1		o=cc:56,0
+98 Poly mode OFF
+
+//-------------------- DIRECT SELECT INSTRUMENT: SINGLE NOTES --------------------
+//! spacer=1
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,1
+6 Legato slide
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,2
+7 HO & PO / Trill
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,3
+8 No legato
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,4
+9 Picking tremolo
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,6
+11 Half-step trill
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,5
+10 Whole-step trill
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,8
+13 Half-step bend
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,9
+14 Whole-step bend
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,10
+15 1.5-step bend
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,11
+16 Whole-step bend+vib
+//! c=#8A0194				i=list		g=1		o=cc:45,0/cc:31,7
+12 Pick stop noise
+
+//-------------------- DIRECT SELECT INSTRUMENT: DYAD CHORDS --------------------
+//! spacer=1
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,1
+17 Min2 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,2
+18 Maj2 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,3
+19 Min3 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,4
+20 Maj3 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,5
+21 P4 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,6
+22 ♭5 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,7
+23 P5 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,8
+24 ♯5 dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,9
+25 6th dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,10
+26 7th dyad
+//! c=#372AAC				i=list		g=1		o=cc:45,1/cc:31,11
+27 maj7 dyad
+
+//-------------------- CHORD CONTROLLERS --------------------
+//! spacer=1
+//! c=#733E0A				i=list		g=1		o=cc:3,127	m="Strum speed controlled via CC 22 (2-30 ms)"
+81 CHORDS: Slow strum
+//! c=#733E0A				i=list		g=1		o=cc:3,0		m="Strum speed controlled via CC 23 (30-199 ms)"
+82 CHORDS: Fast strum
+
+//! c=#EE963F				i=list		g=1		o=cc:19,0
+83 CHORDS: Tight strum noise
+//! c=#EE963F				i=list		g=1		o=cc:19,127
+84 CHORDS: Loose strum nosie
+
+//! c=#2874A6				i=list		g=1		o=cc:21,127
+85 CHORDS: Prefer open
+//! c=#2874A6				i=list		g=1		o=cc:21,0
+86 CHORDS: Disprefer open
+
+//! c=#28A693				i=list		g=1		o=cc:24,0
+87 CHORDS: Hybrid mode
+//! c=#28A693				i=list		g=1		o=cc:24,127
+88 CHORDS: Sampled mode
+
+//! c=#8C4D57				i=list		g=1		o=cc:34,0
+91 Palm mute gate off
+//! c=#8C4D57				i=list		g=1		o=cc:34,32
+92 Palm mute gate slow
+//! c=#8C4D57				i=list		g=1		o=cc:34,64
+93 Palm mute gate mid
+//! c=#8C4D57				i=list		g=1		o=cc:34,127
+94 Palm mute gate slow
+
+//! c=#3EA9CD				i=list		g=1		o=cc:58,0
+99 STRUM: Auto
+//! c=#3EA9CD				i=list		g=1		o=cc:58,32
+100 STRUM: Forced
+//! c=#3EA9CD				i=list		g=1		o=cc:58,64
+101 STRUM: Down
+//! c=#3EA9CD				i=list		g=1		o=cc:58,127
+102 STRUM: Up
+
+//! c=#3EA9CD				i=list		g=1		o=cc:80,127
+103 Extra strum noise ON
+//! c=#3EA9CD				i=list		g=1		o=cc:80,0
+104 Extra strum noise OFF
+
+//-------------------- DIRECT SELECT INSTRUMENT: FULL CHORDS --------------------
+//! spacer=1
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,1
+28 Major chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,2
+29 Minor chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,3
+30 7th chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,4
+31 min7 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,5
+32 maj7 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,6
+33 9th chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,7
+34 min7(9) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,8
+35 maj9 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,9
+36 add9 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,10
+37 sus4 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,11
+38 dim7 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,12
+39 aug chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,13
+40 rush chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,14
+41 7♭5 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,15
+42 min7♭5 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,16
+43 7♯5 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,17
+44 6th chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,18
+45 min6 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,19
+46 6(9) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,20
+47 min6(9) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,21
+48 minMaj7 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,22
+49 7♭9 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,23
+50 ♯9 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,24
+51 min add9 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,25
+52 7sus4 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,26
+53 dim chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,27
+54 min7(11) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,28
+55 min9(11) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,29
+56 9th(♯11) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,30
+57 maj7(♯11) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,31
+58 maj9(♯11) chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,32
+59 9sus4 chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,33
+60 Power chord
+//! c=#178236				i=list		g=1		o=cc:45,2/cc:31,34
+61 Power 9th chord
+

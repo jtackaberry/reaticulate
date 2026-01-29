@@ -1,0 +1,1644 @@
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/01 1st Violins (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ BPM: Meas tremolo.     → ATTACK: Short, long, perf legato, tremolo, harmonics, pizzicato.     → RELEASE: Long, perf legato.     → TRANSITION: Tremolo, trills.     →DIRECTION: Glissandos, runs.     →KEY: Runs.     →LEG STY: Legato."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="01 1st Violins (02b Regular+Sordino) (Duality)"
+//! id=d7d062ef-e619-4ad9-8771-89f9e17ec3cd
+Bank * * 01 1st Violins (02b Regular+Sordino) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+// ========== NORMAL/SORDINO ==========
+//! c=#535C0E		i=list					o=note:21
+89 TECHNIQUE: Normal
+//! c=#535C0E		i=list					o=note:23
+90 TECHNIQUE: Con Sordino
+
+// ========== BPM ==========
+//! c=#460809		i=list					o=note:41					m="For Measured Tremolo"
+97 BPM: 120
+//! c=#460809		i=list					o=note:42					m="For Measured Tremolo"
+98 BPM: 130
+//! c=#460809		i=list					o=note:43					m="For Measured Tremolo"
+99 BPM: 140
+//! c=#460809		i=list					o=note:44					m="For Measured Tremolo"
+100 BPM: 160
+//! c=#460809		i=list					o=note:45					m="For Measured Tremolo"
+101 BPM: 180
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105				m="For Short, Pizzicato, Harmonics / Long, Perf Legato, Tremolo"
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106				m="For Short, Pizzicato, Harmonics / Long, Perf Legato"
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107				m="For Long, Perf Legato, Tremolo"
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108				m="For Long, Perf Legato, Tremolo"
+105 ATTACK: Sfz
+
+// ========== RELEASE ==========
+//! c=#01212C		i=list					o=note:101				m="For Long, Perf Legato"
+106 RELEASE: Normal
+//! c=#01212C		i=list					o=note:102				m="For Long, Perf Legato"
+107 RELEASE: Soft
+//! c=#01212C		i=list					o=note:103				m="For Long, Perf Legato"
+108 RELEASE: Very Soft
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101				m="For Tremolo, Trills."
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102				m="For Tremolo, Trills."
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103				m="For Tremolo, Trills."
+111 TRANSITION: Slurred
+//! c=#034543		i=list					o=note:104				m="For Tremolo, Trills."
+91 TRANSITION: Cut
+
+// ========== DIRECTION ==========
+//! c=#4B004F		i=list					o=note:45					m="For Glissandos, Runs."
+112 DIRECTION: Up
+//! c=#4B004F		i=list					o=note:46					m="For Glissandos, Runs."
+113 DIRECTION: Down
+
+// ========== KEY ==========
+//! c=#023002		i=list					o=note:96					m="For Runs."
+114 KEY: C maj / MD: Maj
+//! c=#023002		i=list					o=note:97					m="For Runs."
+115 KEY: C♯ maj / MD: Min
+//! c=#023002		i=list					o=note:98					m="For Runs."
+116 KEY: D maj / MD: Phry
+//! c=#023002		i=list					o=note:99					m="For Runs."
+117 KEY: E♭ maj
+//! c=#023002		i=list					o=note:100				m="For Runs."
+118 KEY: E maj
+//! c=#023002		i=list					o=note:101				m="For Runs."
+119 KEY: F maj
+//! c=#023002		i=list					o=note:102				m="For Runs."
+120 KEY: F♯ maj
+//! c=#023002		i=list					o=note:103				m="For Runs."
+121 KEY: G maj
+//! c=#023002		i=list					o=note:104				m="For Runs."
+122 KEY: A♭ maj
+//! c=#023002		i=list					o=note:105				m="For Runs."
+123 KEY: A maj
+//! c=#023002		i=list					o=note:106				m="For Runs."
+124 KEY: B♭ maj
+//! c=#023002		i=list					o=note:107				m="For Runs."
+125 KEY: B maj
+
+// ========== LEGATO STYLE ==========
+//! c=#140E0E		i=list					o=note:34					m="For Legato."
+126 LEG STY: Normal
+//! c=#140E0E		i=list					o=note:35					m="For Legato."
+127 LEG STY: Largo
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#3F137D		i=spiccato 				o=note:24/note:36			m="Select ATTACK separately"
+0 Spiccato
+//! c=#3F137D		i=spiccato 				o=note:24/note:37			m="Select ATTACK separately"
+1 Spiccato Tight
+//! c=#5C1BB5		i=staccato 				o=note:24/note:38			m="Select ATTACK separately"
+2 Staccato
+//! c=#5C1BB5		i=staccato 				o=note:24/note:42			m="Select ATTACK separately"
+3 Staccato Hard
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:39			m="Select ATTACK separately"
+4 Detache
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:40			m="Select ATTACK separately"
+5 Detache Marcato
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:41			m="Select ATTACK separately"
+6 Detache Sft
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=long-light	i=vibrato 				o=note:25/note:41			m="Specify ATTACK and RELEASE separately"
+7 Poco Vib
+//! c=long-dark	i=vibrato-molto 			o=note:25/note:42			m="Specify ATTACK and RELEASE separately"
+8 Molto Vib
+//! c=long		i=legato-vibrato 			o=note:25/note:43			m="Specify ATTACK and RELEASE separately. CC20 controls cross-fade."
+9 Vib X-Fade
+//! c=long-dark	i=rip 					o=note:25/note:44			m="Specify LEG STY and RELEASE separately"
+10 Espressivo
+//! c=long-light	i=crescendo 				o=note:25/note:45			m="Specify LEG STY and RELEASE separately"
+11 Swell
+//! c=long		i=note-whole 				o=note:25/note:46			m="Specify ATTACK separately"
+12 No Vib
+//! c=long		i=note-whole 				o=note:25/note:47			m="Specify ATTACK separately. CC20 controls cross-fade."
+13 No Vib XF
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:26/note:36/note:41	m="Specify LEG STY, ATTACK and RELEASE separately"
+14 Legato, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:26/note:36/note:42	m="Specify LEG STY, ATTACK and RELEASE separately"
+15 Legato, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:26/note:36/note:43	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+16 Legato, Norm, Vib XF
+//! c=#00291F		i=legato-fast				o=note:26/note:36/note:44	m="Specify LEG STY and RELEASE separately."
+17 Legato, Norm, Express
+// ---------- TYPE: AGILE ----------
+//! c=#004232		i=legato					o=note:26/note:37/note:41	m="Specify LEG STY, ATTACK and RELEASE separately"
+18 Legato, Agile, Poco Vib
+//! c=#004232		i=legato-vibrato			o=note:26/note:37/note:42	m="Specify LEG STY, ATTACK and RELEASE separately"
+19 Legato, Agile, Molto Vib
+//! c=#004232		i=legato-blend-generic		o=note:26/note:37/note:43	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+20 Legato, Agile, Vib XF
+// ---------- TYPE: AUTO-SPD ----------
+//! c=#016950		i=legato					o=note:26/note:38/note:41	m="Specify LEG STY, ATTACK and RELEASE separately"
+21 Legato, Auto-Spd, Poco Vib
+//! c=#016950		i=legato-vibrato			o=note:26/note:38/note:42	m="Specify LEG STY, ATTACK and RELEASE separately"
+22 Legato, Auto-Spd, Molto Vib
+//! c=#016950		i=legato-blend-generic		o=note:26/note:38/note:43	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade. Vib Speed CC must be set manually!"
+23 Legato, Auto-Spd, Vib XF
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:26/note:39/note:41	m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:26/note:39/note:42	m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:26/note:39/note:43	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+26 Legato, Slur, Vib XF
+//! c=#029975		i=legato-fast				o=note:26/note:39/note:44	m="Specify LEG STY and RELEASE separately."
+27 Legato, Slur, Express
+// ---------- TYPE: PORTAMENTO ----------
+//! c=#00C798		i=legato					o=note:26/note:40/note:41	m="Specify LEG STY, ATTACK and RELEASE separately"
+28 Legato, Port, Poco Vib
+//! c=#00C798		i=legato-vibrato			o=note:26/note:40/note:42	m="Specify LEG STY, ATTACK and RELEASE separately"
+29 Legato, Port, Molto Vib
+//! c=#00C798		i=legato-blend-generic		o=note:26/note:40/note:43	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+30 Legato, Port, Vib XF
+//! c=#00C798		i=legato-fast				o=note:26/note:40/note:44	m="Specify LEG STY and RELEASE separately."
+31 Legato, Port, Express
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#4A2554		i=tremolo					o=note:27/note:36/note:101	m="Specify ATTACK separately"
+32 Fast Trm, Normal
+//! c=#4A2554		i=legato-tremolo			o=note:27/note:36/note:102	m="Specify ATTACK separately"
+33 Fast Trm, Legato
+//! c=#4A2554		i=tremolo					o=note:27/note:36/note:103	m="Specify ATTACK separately"
+34 Fast Trm, Slurred
+// ---------- TYPE: SLOW ----------
+//! c=#693678		i=tremolo					o=note:27/note:37/note:101	m="Specify ATTACK separately"
+35 Slow Trm, Normal
+//! c=#693678		i=legato-tremolo			o=note:27/note:37/note:102	m="Specify ATTACK separately"
+36 Slow Trm, Legato
+//! c=#693678		i=tremolo					o=note:27/note:37/note:103	m="Specify ATTACK separately"
+37 Slow Trm, Slurred
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#8E46A3		i=tremolo					o=note:27/note:38/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+38 Slow x Fast Trm, Normal
+//! c=#8E46A3		i=legato-tremolo			o=note:27/note:38/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+39 Slow x Fast Trm, Legato
+//! c=#8E46A3		i=tremolo					o=note:27/note:38/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+40 Slow x Fast Trm, Slurred
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:39/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+41 Long XF Trm, Normal
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:39/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+42 Long XF Trm, Legato
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:39/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+43 Long XF Trm, Slurred
+// ---------- TYPE: MEASURED ----------
+//! c=#E198F5		i=tremolo	o=note:27/note:40/note:101	m="Specify TRANSITION and BPM separately"
+44 Meas Trm, Normal
+//! c=#E198F5		i=tremolo	o=note:27/note:40/note:102	m="Specify TRANSITION and BPM separately"
+45 Meas Trm, Legato
+//! c=#E198F5		i=tremolo	o=note:27/note:40/note:103	m="Specify TRANSITION and BPM separately"
+46 Meas Trm, Slurred
+//! c=#E198F5		i=tremolo	o=note:27/note:40/note:104	m="Specify TRANSITION and BPM separately"
+47 Meas Trm, Cut
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:28/note:41			m="Specify TRANSITION separately"
+48 Trill min2
+//! c=#C76933		i=trill-maj2				o=note:28/note:42			m="Specify TRANSITION separately"
+49 Trill maj2
+//! c=#C76933		i=trill-min3				o=note:28/note:43			m="Specify TRANSITION separately"
+50 Trill min3
+//! c=#C76933		i=trill-maj3				o=note:28/note:44			m="Specify TRANSITION separately"
+51 Trill maj3
+
+// -------------------- PIZZICATO --------------------
+//! spacer=1
+//! c=#7E2A0C		i=pizz				o=note:29/note:36			m="Specify ATTACK separately"
+52 Pizzicato Reg
+//! c=#7E2A0C		i=pizz-bartok				o=note:29/note:37			m="Specify ATTACK separately"
+53 Pizzicato Snap
+//! c=#7E2A0C		i=pizz				o=note:29/note:38			m="Specify ATTACK separately"
+54 Pizzicato Col Leg
+
+// -------------------- HARMONICS --------------------
+//! spacer=1
+//! c=#B7AF66		i=harmonics				o=note:30/note:36			m="Specify ATTACK separately"
+55 Harm Long
+//! c=#B7AF66		i=tremolo-harmonics			o=note:30/note:37			m="Specify ATTACK separately"
+56 Harm Trem
+//! c=#B7AF66		i=tremolo-harmonics			o=note:30/note:38			m="CC20 controls cross-fade."
+57 Harm Long XF Tr
+//! c=#B7AF66		i=harmonics				o=note:30/note:39			m="CC20 controls cross-fade."
+58 Reg X Harm
+//! c=#B7AF66		i=harmonics				o=note:30/note:40			m="Specify ATTACK separately. CC20 controls cross-fade."
+59 Trm X Harm
+//! c=#B7AF66		i=harmonics-natural-eighth	o=note:30/note:41			m="Specify ATTACK separately"
+60 Staccato
+
+// -------------------- GLISSANDOS --------------------
+//! spacer=1
+// ---------- TYPE: GLISSANDO NORMAL ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:36/note:39/note:41	m="Specify DIRECTION separately"
+61 Gliss Nrm Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:36/note:39/note:42	m="Specify DIRECTION separately"
+62 Gliss Nrm Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:36/note:39/note:43	m="Specify DIRECTION separately"
+63 Gliss Nrm Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:36/note:40/note:41	m="Specify DIRECTION separately"
+64 Gliss Nrm Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:36/note:40/note:42	m="Specify DIRECTION separately"
+65 Gliss Nrm Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:36/note:40/note:43	m="Specify DIRECTION separately"
+66 Gliss Nrm Slow 2nd
+// ---------- TYPE: GLISSANDO TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:37/note:39/note:41	m="Specify DIRECTION separately"
+67 Gliss Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:37/note:39/note:42	m="Specify DIRECTION separately"
+68 Gliss Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:37/note:39/note:43	m="Specify DIRECTION separately"
+69 Gliss Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:37/note:40/note:41	m="Specify DIRECTION separately"
+70 Gliss Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:37/note:40/note:42	m="Specify DIRECTION separately"
+71 Gliss Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:37/note:40/note:43	m="Specify DIRECTION separately"
+72 Gliss Trem Slow 2nd
+// ---------- TYPE: GLISSANDO XF TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:38/note:39/note:41	m="Specify DIRECTION separately. CC20 controls cross-fade. CC20 controls cross-fade."
+73 Gliss XF Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:38/note:39/note:42	m="Specify DIRECTION separately. CC20 controls cross-fade."
+74 Gliss XF Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:38/note:39/note:43	m="Specify DIRECTION separately. CC20 controls cross-fade."
+75 Gliss XF Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:38/note:40/note:41	m="Specify DIRECTION separately. CC20 controls cross-fade."
+76 Gliss XF Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:38/note:40/note:42	m="Specify DIRECTION separately. CC20 controls cross-fade."
+77 Gliss XF Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:38/note:40/note:43	m="Specify DIRECTION separately. CC20 controls cross-fade."
+78 Gliss XF Trem Slow 2nd
+
+// -------------------- RUNS --------------------
+//! spacer=1
+// ---------- TYPE: LEGATO ----------
+//! c=#B86568		i=legato-runs				o=note:32/note:36/note:41		m="Specify KEY and DIRECTION separately"
+79 Leg Runs Oct  (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:36/note:42		m="Specify KEY and DIRECTION separately"
+80 Leg Runs 5th (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:36/note:43		m="Specify MODE and DIRECTION separately"
+81 Leg Runs 3rd (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:36/note:44		m="Specify MODE and DIRECTION separately"
+82 Leg Runs 3rd (Mode)
+// ---------- TYPE: DETACHE ----------
+//! c=#F28386		i=legato-runs				o=note:32/note:37/note:41		m="Specify KEY and DIRECTION separately"
+83 Detache Runs Oct  (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:37/note:42		m="Specify KEY and DIRECTION separately"
+84 Detache Runs 5th (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:37/note:43		m="Specify MODE and DIRECTION separately"
+85 Detache Runs 3rd (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:37/note:44		m="Specify MODE and DIRECTION separately"
+86 Detache Runs 3rd (Mode)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/02 2nd Violins (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! clone=d7d062ef-e619-4ad9-8771-89f9e17ec3cd
+//
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="02 2nd Violins (02b Regular+Sordino) (Duality)"
+//! id=329460ab-2d08-486b-aed4-a2c7dd0de464
+Bank * * 02 2nd Violins (02b Regular+Sordino) (Duality)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/03 Violas (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! clone=d7d062ef-e619-4ad9-8771-89f9e17ec3cd
+//
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="03 Violas (02b Regular+Sordino) (Duality)"
+//! id=62f6d03a-65ff-4998-b345-147ccb6c4168
+Bank * * 03 Violas (02b Regular+Sordino) (Duality)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/04 Violoncellos (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="04 Violoncellos (02b Regular+Sordino) (Duality)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), BPM, attack, release, transition, direction and key must be set manually, using other articulation switches in addition to the main articulation. Summary:\n→ BPM: Meas tremolo.     → ATTACK: Short, long, perf legato, tremolo, harmonics, pizzicato.     → RELEASE: Long, perf legato.     → TRANSITION: Tremolo, trills.     →DIRECTION: Glissandos, runs.     →KEY: Runs.\nCC7=Master Vol, CC11=Expr, CC1=Vel XFade, CC8=Timbre, CC31=Dyn Range, CC22=Attack, CC23=Release, CC34=Stretch Factor, CC25=Hum Delay Scale, CC26=Hum Tuning, CC27=Hum Amt, CC5=Ret 1 Vol, CC63=Master Chan Vol. CC20=Crossfade (on some patches)."
+//! id=9b98efad-af20-4596-90a5-41bc1f619b4f
+Bank * * 04 Violoncellos (02b Regular+Sordino) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+
+// ========== NORMAL/SORDINO ==========
+//! c=#535C0E		i=list					o=note:21
+89 TECHNIQUE: Normal
+//! c=#535C0E		i=list					o=note:23
+90 TECHNIQUE: Con Sordino
+
+// ========== BPM ==========
+//! c=#460809		i=list					o=note:89					m="For Measured Tremolo"
+97 BPM: 120
+//! c=#460809		i=list					o=note:90					m="For Measured Tremolo"
+98 BPM: 130
+//! c=#460809		i=list					o=note:91					m="For Measured Tremolo"
+99 BPM: 140
+//! c=#460809		i=list					o=note:92					m="For Measured Tremolo"
+100 BPM: 160
+//! c=#460809		i=list					o=note:93					m="For Measured Tremolo"
+101 BPM: 180
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105				m="For Short, Pizzicato, Harmonics / Long, Perf Legato, Tremolo"
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106				m="For Short, Pizzicato, Harmonics / Long, Perf Legato"
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107				m="For Long, Perf Legato, Tremolo"
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108				m="For Long, Perf Legato, Tremolo"
+105 ATTACK: Sfz
+
+// ========== RELEASE ==========
+//! c=#01212C		i=list					o=note:101				m="For Long, Perf Legato"
+106 RELEASE: Normal
+//! c=#01212C		i=list					o=note:102				m="For Long, Perf Legato"
+107 RELEASE: Soft
+//! c=#01212C		i=list					o=note:103				m="For Long, Perf Legato"
+108 RELEASE: Very Soft
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101				m="For Tremolo, Trills."
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102				m="For Tremolo, Trills."
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103				m="For Tremolo, Trills."
+111 TRANSITION: Slurred
+//! c=#034543		i=list					o=note:104				m="For Tremolo, Trills."
+91 TRANSITION: Cut
+
+// ========== DIRECTION ==========
+//! c=#4B004F		i=list					o=note:93					m="For Glissandos, Runs."
+112 DIRECTION: Up
+//! c=#4B004F		i=list					o=note:94					m="For Glissandos, Runs."
+113 DIRECTION: Down
+
+// ========== KEY ==========
+//! c=#023002		i=list					o=note:96					m="For Runs."
+114 KEY: C maj / MD: Maj
+//! c=#023002		i=list					o=note:97					m="For Runs."
+115 KEY: C♯ maj / MD: Min
+//! c=#023002		i=list					o=note:98					m="For Runs."
+116 KEY: D maj / MD: Phry
+//! c=#023002		i=list					o=note:99					m="For Runs."
+117 KEY: E♭ maj
+//! c=#023002		i=list					o=note:100				m="For Runs."
+118 KEY: E maj
+//! c=#023002		i=list					o=note:101				m="For Runs."
+119 KEY: F maj
+//! c=#023002		i=list					o=note:102				m="For Runs."
+120 KEY: F♯ maj
+//! c=#023002		i=list					o=note:103				m="For Runs."
+121 KEY: G maj
+//! c=#023002		i=list					o=note:104				m="For Runs."
+122 KEY: A♭ maj
+//! c=#023002		i=list					o=note:105				m="For Runs."
+123 KEY: A maj
+//! c=#023002		i=list					o=note:106				m="For Runs."
+124 KEY: B♭ maj
+//! c=#023002		i=list					o=note:107				m="For Runs."
+125 KEY: B maj
+
+// ========== LEGATO STYLE ==========
+//! c=#140E0E		i=list					o=note:34					m="For Legato."
+126 LEG STY: Normal
+//! c=#140E0E		i=list					o=note:35					m="For Legato."
+127 LEG STY: Largo
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#3F137D		i=spiccato 				o=note:24/note:84			m="Select ATTACK separately"
+0 Spiccato
+//! c=#3F137D		i=spiccato 				o=note:24/note:85			m="Select ATTACK separately"
+1 Spiccato Tight
+//! c=#5C1BB5		i=staccato 				o=note:24/note:86			m="Select ATTACK separately"
+2 Staccato
+//! c=#5C1BB5		i=staccato 				o=note:24/note:90			m="Select ATTACK separately"
+3 Staccato Hard
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:87			m="Select ATTACK separately"
+4 Detache
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:88			m="Select ATTACK separately"
+5 Detache Marcato
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:89			m="Select ATTACK separately"
+6 Detache Sft
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=long-light	i=vibrato 				o=note:25/note:89			m="Specify ATTACK and RELEASE separately"
+7 Poco Vib
+//! c=long-dark	i=vibrato-molto 			o=note:25/note:90			m="Specify ATTACK and RELEASE separately"
+8 Molto Vib
+//! c=long		i=legato-vibrato 			o=note:25/note:91			m="Specify ATTACK and RELEASE separately. CC20 controls cross-fade."
+9 Vib X-Fade
+//! c=long-dark	i=rip 					o=note:25/note:92			m="Specify LEG STY and RELEASE separately"
+10 Espressivo
+//! c=long-light	i=crescendo 				o=note:25/note:93			m="Specify LEG STY and RELEASE separately"
+11 Swell
+//! c=long		i=note-whole 				o=note:25/note:94			m="Specify ATTACK separately"
+12 No Vib
+//! c=long		i=note-whole 				o=note:25/note:95			m="Specify ATTACK separately. CC20 controls cross-fade."
+13 No Vib XF
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:26/note:84/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+14 Legato, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:26/note:84/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+15 Legato, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:26/note:84/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+16 Legato, Norm, Vib XF
+//! c=#00291F		i=legato-fast				o=note:26/note:84/note:92	m="Specify LEG STY and RELEASE separately."
+17 Legato, Norm, Express
+// ---------- TYPE: AGILE ----------
+//! c=#004232		i=legato					o=note:26/note:85/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+18 Legato, Agile, Poco Vib
+//! c=#004232		i=legato-vibrato			o=note:26/note:85/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+19 Legato, Agile, Molto Vib
+//! c=#004232		i=legato-blend-generic		o=note:26/note:85/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+20 Legato, Agile, Vib XF
+// ---------- TYPE: AUTO-SPD ----------
+//! c=#016950		i=legato					o=note:26/note:86/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+21 Legato, Auto-Spd, Poco Vib
+//! c=#016950		i=legato-vibrato			o=note:26/note:86/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+22 Legato, Auto-Spd, Molto Vib
+//! c=#016950		i=legato-blend-generic		o=note:26/note:86/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade. Vib Speed CC must be set manually!"
+23 Legato, Auto-Spd, Vib XF
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:26/note:87/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:26/note:87/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:26/note:87/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+26 Legato, Slur, Vib XF
+//! c=#029975		i=legato-fast				o=note:26/note:87/note:92	m="Specify LEG STY and RELEASE separately."
+27 Legato, Slur, Express
+// ---------- TYPE: PORTAMENTO ----------
+//! c=#00C798		i=legato					o=note:26/note:88/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+28 Legato, Port, Poco Vib
+//! c=#00C798		i=legato-vibrato			o=note:26/note:88/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+29 Legato, Port, Molto Vib
+//! c=#00C798		i=legato-blend-generic		o=note:26/note:88/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+30 Legato, Port, Vib XF
+//! c=#00C798		i=legato-fast				o=note:26/note:88/note:92	m="Specify LEG STY and RELEASE separately."
+31 Legato, Port, Express
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#4A2554		i=tremolo					o=note:27/note:84/note:101	m="Specify ATTACK separately"
+32 Fast Trm, Normal
+//! c=#4A2554		i=legato-tremolo			o=note:27/note:84/note:102	m="Specify ATTACK separately"
+33 Fast Trm, Legato
+//! c=#4A2554		i=tremolo					o=note:27/note:84/note:103	m="Specify ATTACK separately"
+34 Fast Trm, Slurred
+// ---------- TYPE: SLOW ----------
+//! c=#693678		i=tremolo					o=note:27/note:85/note:101	m="Specify ATTACK separately"
+35 Slow Trm, Normal
+//! c=#693678		i=legato-tremolo			o=note:27/note:85/note:102	m="Specify ATTACK separately"
+36 Slow Trm, Legato
+//! c=#693678		i=tremolo					o=note:27/note:85/note:103	m="Specify ATTACK separately"
+37 Slow Trm, Slurred
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#8E46A3		i=tremolo					o=note:27/note:86/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+38 Slow x Fast Trm, Normal
+//! c=#8E46A3		i=legato-tremolo			o=note:27/note:86/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+39 Slow x Fast Trm, Legato
+//! c=#8E46A3		i=tremolo					o=note:27/note:86/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+40 Slow x Fast Trm, Slurred
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:87/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+41 Long XF Trm, Normal
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:87/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+42 Long XF Trm, Legato
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:87/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+43 Long XF Trm, Slurred
+// ---------- TYPE: MEASURED ----------
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:101	m="Specify TRANSITION and BPM separately"
+44 Meas Trm, Normal
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:102	m="Specify TRANSITION and BPM separately"
+45 Meas Trm, Legato
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:103	m="Specify TRANSITION and BPM separately"
+46 Meas Trm, Slurred
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:104	m="Specify TRANSITION and BPM separately"
+47 Meas Trm, Cut
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:28/note:89			m="Specify TRANSITION separately"
+48 Trill min2
+//! c=#C76933		i=trill-maj2				o=note:28/note:90			m="Specify TRANSITION separately"
+49 Trill maj2
+//! c=#C76933		i=trill-min3				o=note:28/note:91			m="Specify TRANSITION separately"
+50 Trill min3
+//! c=#C76933		i=trill-maj3				o=note:28/note:92			m="Specify TRANSITION separately"
+51 Trill maj3
+
+// -------------------- PIZZICATO --------------------
+//! spacer=1
+//! c=#7E2A0C		i=pizz				o=note:29/note:84			m="Specify ATTACK separately"
+52 Pizzicato Reg
+//! c=#7E2A0C		i=pizz-bartok				o=note:29/note:85			m="Specify ATTACK separately"
+53 Pizzicato Snap
+//! c=#7E2A0C		i=pizz				o=note:29/note:86			m="Specify ATTACK separately"
+54 Pizzicato Col Leg
+
+// -------------------- HARMONICS --------------------
+//! spacer=1
+//! c=#B7AF66		i=harmonics				o=note:30/note:84			m="Specify ATTACK separately"
+55 Harm Long
+//! c=#B7AF66		i=tremolo-harmonics			o=note:30/note:85			m="Specify ATTACK separately"
+56 Harm Trem
+//! c=#B7AF66		i=tremolo-harmonics			o=note:30/note:86			m="CC20 controls cross-fade."
+57 Harm Long XF Tr
+//! c=#B7AF66		i=harmonics				o=note:30/note:87			m="CC20 controls cross-fade."
+58 Reg X Harm
+//! c=#B7AF66		i=harmonics				o=note:30/note:88			m="Specify ATTACK separately. CC20 controls cross-fade."
+59 Trm X Harm
+//! c=#B7AF66		i=harmonics-natural-eighth	o=note:30/note:89			m="Specify ATTACK separately"
+60 Staccato
+
+// -------------------- GLISSANDOS --------------------
+//! spacer=1
+// ---------- TYPE: GLISSANDO NORMAL ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:84/note:87/note:89	m="Specify DIRECTION separately"
+61 Gliss Nrm Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:84/note:87/note:90	m="Specify DIRECTION separately"
+62 Gliss Nrm Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:84/note:87/note:91	m="Specify DIRECTION separately"
+63 Gliss Nrm Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:84/note:88/note:89	m="Specify DIRECTION separately"
+64 Gliss Nrm Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:84/note:88/note:90	m="Specify DIRECTION separately"
+65 Gliss Nrm Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:84/note:88/note:91	m="Specify DIRECTION separately"
+66 Gliss Nrm Slow 2nd
+// ---------- TYPE: GLISSANDO TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:85/note:87/note:89	m="Specify DIRECTION separately"
+67 Gliss Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:85/note:87/note:90	m="Specify DIRECTION separately"
+68 Gliss Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:85/note:87/note:91	m="Specify DIRECTION separately"
+69 Gliss Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:85/note:88/note:89	m="Specify DIRECTION separately"
+70 Gliss Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:85/note:88/note:90	m="Specify DIRECTION separately"
+71 Gliss Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:85/note:88/note:91	m="Specify DIRECTION separately"
+72 Gliss Trem Slow 2nd
+// ---------- TYPE: GLISSANDO XF TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:86/note:87/note:89	m="Specify DIRECTION separately. CC20 controls cross-fade. CC20 controls cross-fade."
+73 Gliss XF Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:86/note:87/note:90	m="Specify DIRECTION separately. CC20 controls cross-fade."
+74 Gliss XF Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:86/note:87/note:91	m="Specify DIRECTION separately. CC20 controls cross-fade."
+75 Gliss XF Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:86/note:88/note:89	m="Specify DIRECTION separately. CC20 controls cross-fade."
+76 Gliss XF Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:86/note:88/note:90	m="Specify DIRECTION separately. CC20 controls cross-fade."
+77 Gliss XF Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:86/note:88/note:91	m="Specify DIRECTION separately. CC20 controls cross-fade."
+78 Gliss XF Trem Slow 2nd
+
+// -------------------- RUNS --------------------
+//! spacer=1
+// ---------- TYPE: LEGATO ----------
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:89		m="Specify KEY and DIRECTION separately"
+79 Leg Runs Oct  (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:90		m="Specify KEY and DIRECTION separately"
+80 Leg Runs 5th (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:91		m="Specify MODE and DIRECTION separately"
+81 Leg Runs 3rd (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:92		m="Specify MODE and DIRECTION separately"
+82 Leg Runs 3rd (Mode)
+// ---------- TYPE: DETACHE ----------
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:89		m="Specify KEY and DIRECTION separately"
+83 Detache Runs Oct  (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:90		m="Specify KEY and DIRECTION separately"
+84 Detache Runs 5th (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:91		m="Specify MODE and DIRECTION separately"
+85 Detache Runs 3rd (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:92		m="Specify MODE and DIRECTION separately"
+86 Detache Runs 3rd (Mode)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/05 Double Basses (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view. Note also that sordino has no harmonics articulation.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ BPM: Meas tremolo.     → ATTACK: Short, long, perf legato, tremolo, harmonics, pizzicato.     → RELEASE: Long, perf legato.     → TRANSITION: Tremolo, trills.     →DIRECTION: Glissandos, runs.     →KEY: Runs.     →LEG STY: Legato."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="05 Double Basses (02b Regular+Sordino) (Duality)"
+//! id=ffa6fb33-2682-4c5b-89ea-9f67e034edb0
+Bank * * 05 Double Basses (02b Regular+Sordino) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+// ========== NORMAL/SORDINO ==========
+//! c=#535C0E		i=list					o=note:69
+89 TECHNIQUE: Normal
+//! c=#535C0E		i=list					o=note:71
+90 TECHNIQUE: Con Sordino
+
+// ========== BPM ==========
+//! c=#460809		i=list					o=note:89					m="For Measured Tremolo"
+97 BPM: 120
+//! c=#460809		i=list					o=note:90					m="For Measured Tremolo"
+98 BPM: 130
+//! c=#460809		i=list					o=note:91					m="For Measured Tremolo"
+99 BPM: 140
+//! c=#460809		i=list					o=note:92					m="For Measured Tremolo"
+100 BPM: 160
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105				m="For Short, Pizzicato, Harmonics / Long, Perf Legato, Tremolo"
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106				m="For Short, Pizzicato, Harmonics / Long, Perf Legato"
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107				m="For Long, Perf Legato, Tremolo"
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108				m="For Long, Perf Legato, Tremolo"
+105 ATTACK: Sfz
+
+// ========== RELEASE ==========
+//! c=#01212C		i=list					o=note:101				m="For Long, Perf Legato"
+106 RELEASE: Normal
+//! c=#01212C		i=list					o=note:102				m="For Long, Perf Legato"
+107 RELEASE: Soft
+//! c=#01212C		i=list					o=note:103				m="For Long, Perf Legato"
+108 RELEASE: Very Soft
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101				m="For Tremolo, Trills."
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102				m="For Tremolo, Trills."
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103				m="For Tremolo, Trills."
+111 TRANSITION: Slurred
+//! c=#034543		i=list					o=note:104				m="For Tremolo, Trills."
+91 TRANSITION: Cut
+
+// ========== DIRECTION ==========
+//! c=#4B004F		i=list					o=note:93					m="For Glissandos, Runs."
+112 DIRECTION: Up
+//! c=#4B004F		i=list					o=note:94					m="For Glissandos, Runs."
+113 DIRECTION: Down
+
+// ========== KEY ==========
+//! c=#023002		i=list					o=note:96					m="For Runs."
+114 KEY: C maj / MD: Maj
+//! c=#023002		i=list					o=note:97					m="For Runs."
+115 KEY: C♯ maj / MD: Min
+//! c=#023002		i=list					o=note:98					m="For Runs."
+116 KEY: D maj / MD: Phry
+//! c=#023002		i=list					o=note:99					m="For Runs."
+117 KEY: E♭ maj
+//! c=#023002		i=list					o=note:100				m="For Runs."
+118 KEY: E maj
+//! c=#023002		i=list					o=note:101				m="For Runs."
+119 KEY: F maj
+//! c=#023002		i=list					o=note:102				m="For Runs."
+120 KEY: F♯ maj
+//! c=#023002		i=list					o=note:103				m="For Runs."
+121 KEY: G maj
+//! c=#023002		i=list					o=note:104				m="For Runs."
+122 KEY: A♭ maj
+//! c=#023002		i=list					o=note:105				m="For Runs."
+123 KEY: A maj
+//! c=#023002		i=list					o=note:106				m="For Runs."
+124 KEY: B♭ maj
+//! c=#023002		i=list					o=note:107				m="For Runs."
+125 KEY: B maj
+
+// ========== LEGATO STYLE ==========
+//! c=#140E0E		i=list					o=note:82					m="For Legato."
+126 LEG STY: Normal
+//! c=#140E0E		i=list					o=note:83					m="For Legato."
+127 LEG STY: Largo
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#3F137D		i=spiccato 				o=note:72/note:84			m="Select ATTACK separately"
+0 Spiccato
+//! c=#3F137D		i=spiccato 				o=note:72/note:85			m="Select ATTACK separately"
+1 Spiccato Tight
+//! c=#5C1BB5		i=staccato 				o=note:72/note:86			m="Select ATTACK separately"
+2 Staccato
+//! c=#833CE6		i=tenuto-eighth 			o=note:72/note:87			m="Select ATTACK separately"
+4 Detache
+//! c=#833CE6		i=tenuto-eighth 			o=note:72/note:88			m="Select ATTACK separately"
+5 Detache Marcato
+//! c=#833CE6		i=tenuto-eighth 			o=note:72/note:89			m="Select ATTACK separately"
+6 Detache Sft
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=long-light	i=vibrato 				o=note:73/note:89			m="Specify ATTACK and RELEASE separately"
+7 Poco Vib
+//! c=long-dark	i=vibrato-molto 			o=note:73/note:90			m="Specify ATTACK and RELEASE separately"
+8 Molto Vib
+//! c=long		i=legato-vibrato 			o=note:73/note:91			m="Specify ATTACK and RELEASE separately. CC20 controls cross-fade."
+9 Vib X-Fade
+//! c=long-dark	i=rip 					o=note:73/note:92			m="Specify LEG STY and RELEASE separately"
+10 Espressivo
+//! c=long-light	i=crescendo 				o=note:73/note:93			m="Specify LEG STY and RELEASE separately"
+11 Swell
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:74/note:84/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+14 Legato, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:74/note:84/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+15 Legato, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:74/note:84/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+16 Legato, Norm, Vib XF
+//! c=#00291F		i=legato-fast				o=note:74/note:84/note:92	m="Specify LEG STY and RELEASE separately."
+17 Legato, Norm, Express
+// ---------- TYPE: AGILE ----------
+//! c=#004232		i=legato					o=note:74/note:85/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+18 Legato, Agile, Poco Vib
+//! c=#004232		i=legato-vibrato			o=note:74/note:85/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+19 Legato, Agile, Molto Vib
+//! c=#004232		i=legato-blend-generic		o=note:74/note:85/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+20 Legato, Agile, Vib XF
+// ---------- TYPE: AUTO-SPD ----------
+//! c=#016950		i=legato					o=note:74/note:86/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+21 Legato, Auto-Spd, Poco Vib
+//! c=#016950		i=legato-vibrato			o=note:74/note:86/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+22 Legato, Auto-Spd, Molto Vib
+//! c=#016950		i=legato-blend-generic		o=note:74/note:86/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade. Vib Speed CC must be set manually!"
+23 Legato, Auto-Spd, Vib XF
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:74/note:87/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:74/note:87/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:74/note:87/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+26 Legato, Slur, Vib XF
+//! c=#029975		i=legato-fast				o=note:74/note:87/note:92	m="Specify LEG STY and RELEASE separately."
+27 Legato, Slur, Express
+// ---------- TYPE: PORTAMENTO ----------
+//! c=#00C798		i=legato					o=note:74/note:88/note:89	m="Specify LEG STY, ATTACK and RELEASE separately"
+28 Legato, Port, Poco Vib
+//! c=#00C798		i=legato-vibrato			o=note:74/note:88/note:90	m="Specify LEG STY, ATTACK and RELEASE separately"
+29 Legato, Port, Molto Vib
+//! c=#00C798		i=legato-blend-generic		o=note:74/note:88/note:91	m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+30 Legato, Port, Vib XF
+//! c=#00C798		i=legato-fast				o=note:74/note:88/note:92	m="Specify LEG STY and RELEASE separately."
+31 Legato, Port, Express
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#4A2554		i=tremolo					o=note:75/note:84/note:101	m="Specify ATTACK separately"
+32 Fast Trm, Normal
+//! c=#4A2554		i=legato-tremolo			o=note:75/note:84/note:102	m="Specify ATTACK separately"
+33 Fast Trm, Legato
+//! c=#4A2554		i=tremolo					o=note:75/note:84/note:103	m="Specify ATTACK separately"
+34 Fast Trm, Slurred
+// ---------- TYPE: SLOW ----------
+//! c=#693678		i=tremolo					o=note:75/note:85/note:101	m="Specify ATTACK separately"
+35 Slow Trm, Normal
+//! c=#693678		i=legato-tremolo			o=note:75/note:85/note:102	m="Specify ATTACK separately"
+36 Slow Trm, Legato
+//! c=#693678		i=tremolo					o=note:75/note:85/note:103	m="Specify ATTACK separately"
+37 Slow Trm, Slurred
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#8E46A3		i=tremolo					o=note:75/note:86/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+38 Slow x Fast Trm, Normal
+//! c=#8E46A3		i=legato-tremolo			o=note:75/note:86/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+39 Slow x Fast Trm, Legato
+//! c=#8E46A3		i=tremolo					o=note:75/note:86/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+40 Slow x Fast Trm, Slurred
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#AF66C4		i=tremolo-fingered			o=note:75/note:87/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+41 Long XF Trm, Normal
+//! c=#AF66C4		i=tremolo-fingered			o=note:75/note:87/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+42 Long XF Trm, Legato
+//! c=#AF66C4		i=tremolo-fingered			o=note:75/note:87/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+43 Long XF Trm, Slurred
+// ---------- TYPE: MEASURED ----------
+//! c=#E198F5		i=tremolo	o=note:75/note:88/note:101	m="Specify TRANSITION and BPM separately"
+44 Meas Trm, Normal
+//! c=#E198F5		i=tremolo	o=note:75/note:88/note:102	m="Specify TRANSITION and BPM separately"
+45 Meas Trm, Legato
+//! c=#E198F5		i=tremolo	o=note:75/note:88/note:103	m="Specify TRANSITION and BPM separately"
+46 Meas Trm, Slurred
+//! c=#E198F5		i=tremolo	o=note:75/note:88/note:104	m="Specify TRANSITION and BPM separately"
+47 Meas Trm, Cut
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:76/note:89			m="Specify TRANSITION separately"
+48 Trill min2
+//! c=#C76933		i=trill-maj2				o=note:76/note:90			m="Specify TRANSITION separately"
+49 Trill maj2
+
+// -------------------- PIZZICATO --------------------
+//! spacer=1
+//! c=#7E2A0C		i=pizz				o=note:77/note:84			m="Specify ATTACK separately"
+52 Pizzicato Reg
+//! c=#7E2A0C		i=pizz-bartok				o=note:77/note:85			m="Specify ATTACK separately"
+53 Pizzicato Snap
+//! c=#7E2A0C		i=pizz				o=note:77/note:86			m="Specify ATTACK separately"
+54 Pizzicato Col Leg
+
+// -------------------- HARMONICS --------------------
+//! spacer=1
+//! c=#B7AF66		i=harmonics				o=note:78/note:84			m="Specify ATTACK separately"
+55 Harm Long
+//! c=#B7AF66		i=tremolo-harmonics			o=note:78/note:85			m="Specify ATTACK separately"
+56 Harm Trem
+//! c=#B7AF66		i=tremolo-harmonics			o=note:78/note:86			m="CC20 controls cross-fade."
+57 Harm Long XF Tr
+//! c=#B7AF66		i=harmonics				o=note:78/note:87			m="CC20 controls cross-fade."
+58 Reg X Harm
+//! c=#B7AF66		i=harmonics				o=note:78/note:88			m="Specify ATTACK separately. CC20 controls cross-fade."
+59 Trm X Harm
+//! c=#B7AF66		i=harmonics-natural-eighth	o=note:78/note:89			m="Specify ATTACK separately"
+60 Staccato
+
+// -------------------- GLISSANDOS --------------------
+//! spacer=1
+// ---------- TYPE: GLISSANDO NORMAL ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:79/note:84/note:87/note:89	m="Specify DIRECTION separately"
+61 Gliss Nrm Fast Octave
+//! c=#286965		i=legato-gliss				o=note:79/note:84/note:87/note:90	m="Specify DIRECTION separately"
+62 Gliss Nrm Fast 5th
+//! c=#286965		i=legato-gliss				o=note:79/note:84/note:87/note:91	m="Specify DIRECTION separately"
+63 Gliss Nrm Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:84/note:88/note:89	m="Specify DIRECTION separately"
+64 Gliss Nrm Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:84/note:88/note:90	m="Specify DIRECTION separately"
+65 Gliss Nrm Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:84/note:88/note:91	m="Specify DIRECTION separately"
+66 Gliss Nrm Slow 2nd
+// ---------- TYPE: GLISSANDO TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:79/note:85/note:87/note:89	m="Specify DIRECTION separately"
+67 Gliss Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:79/note:85/note:87/note:90	m="Specify DIRECTION separately"
+68 Gliss Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:79/note:85/note:87/note:91	m="Specify DIRECTION separately"
+69 Gliss Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:85/note:88/note:89	m="Specify DIRECTION separately"
+70 Gliss Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:85/note:88/note:90	m="Specify DIRECTION separately"
+71 Gliss Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:85/note:88/note:91	m="Specify DIRECTION separately"
+72 Gliss Trem Slow 2nd
+// ---------- TYPE: GLISSANDO XF TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:79/note:86/note:87/note:89	m="Specify DIRECTION separately. CC20 controls cross-fade. CC20 controls cross-fade."
+73 Gliss XF Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:79/note:86/note:87/note:90	m="Specify DIRECTION separately. CC20 controls cross-fade."
+74 Gliss XF Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:79/note:86/note:87/note:91	m="Specify DIRECTION separately. CC20 controls cross-fade."
+75 Gliss XF Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:86/note:88/note:89	m="Specify DIRECTION separately. CC20 controls cross-fade."
+76 Gliss XF Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:86/note:88/note:90	m="Specify DIRECTION separately. CC20 controls cross-fade."
+77 Gliss XF Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:79/note:86/note:88/note:91	m="Specify DIRECTION separately. CC20 controls cross-fade."
+78 Gliss XF Trem Slow 2nd
+
+// -------------------- RUNS --------------------
+//! spacer=1
+// ---------- TYPE: LEGATO ----------
+//! c=#B86568		i=legato-runs				o=note:80/note:84/note:89		m="Specify KEY and DIRECTION separately"
+79 Leg Runs Oct  (Key)
+//! c=#B86568		i=legato-runs				o=note:80/note:84/note:90		m="Specify KEY and DIRECTION separately"
+80 Leg Runs 5th (Key)
+//! c=#B86568		i=legato-runs				o=note:80/note:84/note:91		m="Specify MODE and DIRECTION separately"
+81 Leg Runs 3rd (Key)
+//! c=#B86568		i=legato-runs				o=note:80/note:84/note:92		m="Specify MODE and DIRECTION separately"
+82 Leg Runs 3rd (Mode)
+// ---------- TYPE: DETACHE ----------
+//! c=#F28386		i=legato-runs				o=note:80/note:85/note:89		m="Specify KEY and DIRECTION separately"
+83 Detache Runs Oct  (Key)
+//! c=#F28386		i=legato-runs				o=note:80/note:85/note:90		m="Specify KEY and DIRECTION separately"
+84 Detache Runs 5th (Key)
+//! c=#F28386		i=legato-runs				o=note:80/note:85/note:91		m="Specify MODE and DIRECTION separately"
+85 Detache Runs 3rd (Key)
+//! c=#F28386		i=legato-runs				o=note:80/note:85/note:92		m="Specify MODE and DIRECTION separately"
+86 Detache Runs 3rd (Mode)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/06 Tutti Full Range (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! m="NOTE: The 'stack' option has no notes assigned to it by default. To use it, you must manually assign the notes C9 (120) to E9 (124) to the five stack slots.\nNOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), stack, BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ STACK: All    → BPM: Meas tremolo.   → ATTACK: Short, tremolo, pizzicato, harmonics / Long, perf legato.   → RELEASE: Long, perf legato.   → TRANSITION: Tremolo, trills.   → DIRECTION: Glissandos, runs.   →KEY: Runs.   →LEG STY: Legato."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="06 Tutti Full Range (02b Regular+Sordino) (Duality)"
+//! id=d2d262ef-e339-4fd9-4741-12a9a17bc3b4
+Bank * * 06 Tutti Full Range (02b Regular+Sordino) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// ========== STACK ==========
+//! c=#5A5B63		i=list					o=note:120				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+92 STACK: 1st Violins
+//! c=#5A5B63		i=list					o=note:121				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+93 STACK: 2nd Violins
+//! c=#5A5B63		i=list					o=note:122				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+94 STACK: Violas
+//! c=#5A5B63		i=list					o=note:123				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+95 STACK: Violoncellos
+//! c=#5A5B63		i=list					o=note:124				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+96 STACK: Double Basses
+
+// ========== NORMAL/SORDINO ==========
+//! c=#535C0E		i=list					o=note:117
+89 TECHNIQUE: Normal
+//! c=#535C0E		i=list					o=note:119
+90 TECHNIQUE: Con Sordino
+
+// ========== BPM ==========
+//! c=#460809		i=list					o=note:17					m="For Measured Tremolo"
+97 BPM: 120
+//! c=#460809		i=list					o=note:18					m="For Measured Tremolo"
+98 BPM: 130
+//! c=#460809		i=list					o=note:19					m="For Measured Tremolo"
+99 BPM: 140
+//! c=#460809		i=list					o=note:20					m="For Measured Tremolo"
+100 BPM: 160
+//! c=#460809		i=list					o=note:21					m="For Measured Tremolo"
+101 BPM: 180
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105				m="For Short, Tremolo, Pizzicato, Harmonics / Long, Perf Legato, Tremolo"
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106				m="For Short, Tremolo, Pizzicato, Harmonics / Long, Perf Legato"
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107				m="For Long, Perf Legato, Tremolo"
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108				m="For Long, Perf Legato, Tremolo"
+105 ATTACK: Sfz
+
+// ========== RELEASE ==========
+//! c=#01212C		i=list					o=note:101				m="For Long, Perf Legato"
+106 RELEASE: Normal
+//! c=#01212C		i=list					o=note:102				m="For Long, Perf Legato"
+107 RELEASE: Soft
+//! c=#01212C		i=list					o=note:103				m="For Long, Perf Legato"
+108 RELEASE: Very Soft
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101				m="For Tremolo, Trills."
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102				m="For Tremolo, Trills."
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103				m="For Tremolo, Trills."
+111 TRANSITION: Slurred
+//! c=#034543		i=list					o=note:104				m="For Tremolo, Trills."
+91 TRANSITION: Cut
+
+// ========== DIRECTION ==========
+//! c=#4B004F		i=list					o=note:21					m="For Glissandos, Runs."
+112 DIRECTION: Up
+//! c=#4B004F		i=list					o=note:22					m="For Glissandos, Runs."
+113 DIRECTION: Down
+
+// ========== KEY ==========
+//! c=#023002		i=list					o=note:96					m="For Runs."
+114 KEY: C maj / MD: Maj
+//! c=#023002		i=list					o=note:97					m="For Runs."
+115 KEY: C♯ maj / MD: Min
+//! c=#023002		i=list					o=note:98					m="For Runs."
+116 KEY: D maj / MD: Phry
+//! c=#023002		i=list					o=note:99					m="For Runs."
+117 KEY: E♭ maj
+//! c=#023002		i=list					o=note:100				m="For Runs."
+118 KEY: E maj
+//! c=#023002		i=list					o=note:101				m="For Runs."
+119 KEY: F maj
+//! c=#023002		i=list					o=note:102				m="For Runs."
+120 KEY: F♯ maj
+//! c=#023002		i=list					o=note:103				m="For Runs."
+121 KEY: G maj
+//! c=#023002		i=list					o=note:104				m="For Runs."
+122 KEY: A♭ maj
+//! c=#023002		i=list					o=note:105				m="For Runs."
+123 KEY: A maj
+//! c=#023002		i=list					o=note:106				m="For Runs."
+124 KEY: B♭ maj
+//! c=#023002		i=list					o=note:107				m="For Runs."
+125 KEY: B maj
+
+// ========== LEGATO STYLE ==========
+//! c=#140E0E		i=list					o=note:10					m="For Legato."
+126 LEG STY: Normal
+//! c=#140E0E		i=list					o=note:11					m="For Legato."
+127 LEG STY: Largo
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#3F137D		i=spiccato 				o=note:0/note:12			m="Select ATTACK separately"
+0 Spiccato
+//! c=#3F137D		i=spiccato 				o=note:0/note:13			m="Select ATTACK separately"
+1 Spiccato Tight
+//! c=#5C1BB5		i=staccato 				o=note:0/note:14			m="Select ATTACK separately"
+2 Staccato
+//! c=#833CE6		i=tenuto-eighth 			o=note:0/note:18			m="Select ATTACK separately"
+3 Staccato Hard
+//! c=#833CE6		i=tenuto-eighth 			o=note:0/note:15			m="Select ATTACK separately"
+4 Detache
+//! c=#833CE6		i=tenuto-eighth 			o=note:0/note:16			m="Select ATTACK separately"
+5 Detache Marcato
+//! c=#5C1BB5		i=staccato 				o=note:0/note:17			m="Select ATTACK separately"
+6 Detache Sft
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=long-light	i=vibrato 				o=note:1/note:17			m="Specify ATTACK and RELEASE separately"
+7 Poco Vib
+//! c=long-dark	i=vibrato-molto 			o=note:1/note:18			m="Specify ATTACK and RELEASE separately"
+8 Molto Vib
+//! c=long		i=legato-vibrato 			o=note:1/note:19			m="Specify ATTACK and RELEASE separately. CC20 controls cross-fade."
+9 Vib X-Fade
+//! c=long-dark	i=rip 					o=note:1/note:20			m="Specify RELEASE separately"
+10 Espressivo
+//! c=long-light	i=crescendo 				o=note:1/note:21			m="Specify RELEASE separately"
+11 Swell
+//! c=long		i=note-whole 				o=note:1/note:22			m="Specify ATTACK and RELEASE separately"
+12 No Vib
+//! c=long		i=note-whole 				o=note:1/note:23			m="Specify ATTACK separately. CC20 controls cross-fade."
+13 No Vib XF
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:2/note:12/note:17		m="Specify LEG STY, ATTACK and RELEASE separately"
+14 Legato, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:2/note:12/note:18		m="Specify LEG STY, ATTACK and RELEASE separately"
+15 Legato, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:2/note:12/note:19		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+16 Legato, Norm, Vib XF
+//! c=#00291F		i=legato-fast				o=note:2/note:12/note:20		m="Specify LEG STY and RELEASE separately."
+17 Legato, Norm, Express
+// ---------- TYPE: AGILE ----------
+//! c=#004232		i=legato					o=note:2/note:13/note:17		m="Specify LEG STY, ATTACK and RELEASE separately"
+18 Legato, Agile, Poco Vib
+//! c=#004232		i=legato-vibrato			o=note:2/note:13/note:18		m="Specify LEG STY, ATTACK and RELEASE separately"
+19 Legato, Agile, Molto Vib
+//! c=#004232		i=legato-blend-generic		o=note:2/note:13/note:19		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+20 Legato, Agile, Vib XF
+// ---------- TYPE: AUTO-SPD ----------
+//! c=#016950		i=legato					o=note:2/note:14/note:17		m="Specify LEG STY, ATTACK and RELEASE separately"
+21 Legato, Auto-Spd, Poco Vib
+//! c=#016950		i=legato-vibrato			o=note:2/note:14/note:18		m="Specify LEG STY, ATTACK and RELEASE separately"
+22 Legato, Auto-Spd, Molto Vib
+//! c=#016950		i=legato-blend-generic		o=note:2/note:14/note:19		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade. Vib Speed CC must be set manually!"
+23 Legato, Auto-Spd, Vib XF
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:2/note:15/note:17		m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:2/note:15/note:18		m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:2/note:15/note:19		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+26 Legato, Slur, Vib XF
+//! c=#029975		i=legato-fast				o=note:2/note:15/note:20		m="Specify LEG STY and RELEASE separately."
+27 Legato, Slur, Express
+// ---------- TYPE: PORTAMENTO ----------
+//! c=#00C798		i=legato					o=note:2/note:16/note:17		m="Specify LEG STY, ATTACK and RELEASE separately"
+28 Legato, Port, Poco Vib
+//! c=#00C798		i=legato-vibrato			o=note:2/note:16/note:18		m="Specify LEG STY, ATTACK and RELEASE separately"
+29 Legato, Port, Molto Vib
+//! c=#00C798		i=legato-blend-generic		o=note:2/note:16/note:19		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+30 Legato, Port, Vib XF
+//! c=#00C798		i=legato-fast				o=note:2/note:16/note:20		m="Specify LEG STY and RELEASE separately."
+31 Legato, Port, Express
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#4A2554		i=tremolo					o=note:3/note:12/note:101	m="Specify ATTACK separately"
+32 Fast Trm, Normal
+//! c=#4A2554		i=legato-tremolo			o=note:3/note:12/note:102	m="Specify ATTACK separately"
+33 Fast Trm, Legato
+//! c=#4A2554		i=tremolo					o=note:3/note:12/note:103	m="Specify ATTACK separately"
+34 Fast Trm, Slurred
+// ---------- TYPE: SLOW ----------
+//! c=#693678		i=tremolo					o=note:3/note:13/note:101	m="Specify ATTACK separately"
+35 Slow Trm, Normal
+//! c=#693678		i=legato-tremolo			o=note:3/note:13/note:102	m="Specify ATTACK separately"
+36 Slow Trm, Legato
+//! c=#693678		i=tremolo					o=note:3/note:13/note:103	m="Specify ATTACK separately"
+37 Slow Trm, Slurred
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#8E46A3		i=tremolo					o=note:3/note:14/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+38 Slow x Fast Trm, Normal
+//! c=#8E46A3		i=legato-tremolo			o=note:3/note:14/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+39 Slow x Fast Trm, Legato
+//! c=#8E46A3		i=tremolo					o=note:3/note:14/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+40 Slow x Fast Trm, Slurred
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#AF66C4		i=tremolo-fingered			o=note:3/note:15/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+41 Long XF Trm, Normal
+//! c=#AF66C4		i=tremolo-fingered			o=note:3/note:15/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+42 Long XF Trm, Legato
+//! c=#AF66C4		i=tremolo-fingered			o=note:3/note:15/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+43 Long XF Trm, Slurred
+// ---------- TYPE: MEASURED ----------
+//! c=#E198F5		i=tremolo	o=note:3/note:16/note:101	m="Specify TRANSITION and BPM separately"
+44 Meas Trm, Normal
+//! c=#E198F5		i=tremolo	o=note:3/note:16/note:102	m="Specify TRANSITION and BPM separately"
+45 Meas Trm, Legato
+//! c=#E198F5		i=tremolo	o=note:3/note:16/note:103	m="Specify TRANSITION and BPM separately"
+46 Meas Trm, Slurred
+//! c=#E198F5		i=tremolo	o=note:3/note:16/note:104	m="Specify TRANSITION and BPM separately"
+47 Meas Trm, Cut
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:4/note:17			m="Specify TRANSITION separately"
+48 Trill min2
+//! c=#C76933		i=trill-maj2				o=note:4/note:18			m="Specify TRANSITION separately"
+49 Trill maj2
+//! c=#C76933		i=trill-min3				o=note:4/note:19			m="Specify TRANSITION separately"
+50 Trill min3
+//! c=#C76933		i=trill-maj3				o=note:4/note:20			m="Specify TRANSITION separately"
+51 Trill maj3
+
+// -------------------- PIZZICATO --------------------
+//! spacer=1
+//! c=#7E2A0C		i=pizz				o=note:5/note:12			m="Specify ATTACK separately"
+52 Pizzicato Reg
+//! c=#7E2A0C		i=pizz-bartok				o=note:5/note:13			m="Specify ATTACK separately"
+53 Pizzicato Snap
+//! c=#7E2A0C		i=pizz				o=note:5/note:14			m="Specify ATTACK separately"
+54 Pizzicato Col Leg
+
+// -------------------- HARMONICS --------------------
+//! spacer=1
+//! c=#B7AF66		i=harmonics				o=note:6/note:12			m="Specify ATTACK separately"
+55 Harm Long
+//! c=#B7AF66		i=tremolo-harmonics			o=note:6/note:13			m="Specify ATTACK separately"
+56 Harm Trem
+//! c=#B7AF66		i=tremolo-harmonics			o=note:6/note:14			m="CC20 controls cross-fade."
+57 Harm Long XF Tr
+//! c=#B7AF66		i=harmonics				o=note:6/note:15			m="CC20 controls cross-fade."
+58 Reg X Harm
+//! c=#B7AF66		i=harmonics				o=note:6/note:16			m="Specify ATTACK separately. CC20 controls cross-fade."
+59 Trm X Harm
+//! c=#B7AF66		i=harmonics-natural-eighth	o=note:6/note:17			m="Specify ATTACK separately"
+60 Staccato
+
+// -------------------- GLISSANDOS --------------------
+//! spacer=1
+// ---------- TYPE: GLISSANDO NORMAL ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:7/note:12/note:15/note:17	m="Specify DIRECTION separately"
+61 Gliss Nrm Fast Octave
+//! c=#286965		i=legato-gliss				o=note:7/note:12/note:15/note:18	m="Specify DIRECTION separately"
+62 Gliss Nrm Fast 5th
+//! c=#286965		i=legato-gliss				o=note:7/note:12/note:15/note:19	m="Specify DIRECTION separately"
+63 Gliss Nrm Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:12/note:16/note:17	m="Specify DIRECTION separately"
+64 Gliss Nrm Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:12/note:16/note:18	m="Specify DIRECTION separately"
+65 Gliss Nrm Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:12/note:16/note:19	m="Specify DIRECTION separately"
+66 Gliss Nrm Slow 2nd
+// ---------- TYPE: GLISSANDO TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:7/note:13/note:15/note:17	m="Specify DIRECTION separately"
+67 Gliss Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:7/note:13/note:15/note:18	m="Specify DIRECTION separately"
+68 Gliss Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:7/note:13/note:15/note:19	m="Specify DIRECTION separately"
+69 Gliss Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:13/note:16/note:17	m="Specify DIRECTION separately"
+70 Gliss Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:13/note:16/note:18	m="Specify DIRECTION separately"
+71 Gliss Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:13/note:16/note:19	m="Specify DIRECTION separately"
+72 Gliss Trem Slow 2nd
+// ---------- TYPE: GLISSANDO XF TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:7/note:14/note:15/note:17	m="Specify DIRECTION separately. CC20 controls cross-fade. CC20 controls cross-fade."
+73 Gliss XF Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:7/note:14/note:15/note:18	m="Specify DIRECTION separately. CC20 controls cross-fade."
+74 Gliss XF Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:7/note:14/note:15/note:19	m="Specify DIRECTION separately. CC20 controls cross-fade."
+75 Gliss XF Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:14/note:16/note:17	m="Specify DIRECTION separately. CC20 controls cross-fade."
+76 Gliss XF Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:14/note:16/note:18	m="Specify DIRECTION separately. CC20 controls cross-fade."
+77 Gliss XF Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:7/note:14/note:16/note:19	m="Specify DIRECTION separately. CC20 controls cross-fade."
+78 Gliss XF Trem Slow 2nd
+
+// -------------------- RUNS --------------------
+//! spacer=1
+// ---------- TYPE: LEGATO ----------
+//! c=#B86568		i=legato-runs				o=note:8/note:12/note:17		m="Specify KEY and DIRECTION separately"
+79 Leg Runs Oct  (Key)
+//! c=#B86568		i=legato-runs				o=note:8/note:12/note:18		m="Specify KEY and DIRECTION separately"
+80 Leg Runs 5th (Key)
+//! c=#B86568		i=legato-runs				o=note:8/note:12/note:19		m="Specify MODE and DIRECTION separately"
+81 Leg Runs 3rd (Key)
+//! c=#B86568		i=legato-runs				o=note:8/note:12/note:20		m="Specify MODE and DIRECTION separately"
+82 Leg Runs 3rd (Mode)
+// ---------- TYPE: DETACHE ----------
+//! c=#F28386		i=legato-runs				o=note:8/note:13/note:17		m="Specify KEY and DIRECTION separately"
+83 Detache Runs Oct  (Key)
+//! c=#F28386		i=legato-runs				o=note:8/note:13/note:18		m="Specify KEY and DIRECTION separately"
+84 Detache Runs 5th (Key)
+//! c=#F28386		i=legato-runs				o=note:8/note:13/note:19		m="Specify MODE and DIRECTION separately"
+85 Detache Runs 3rd (Key)
+//! c=#F28386		i=legato-runs				o=note:8/note:13/note:20		m="Specify MODE and DIRECTION separately"
+86 Detache Runs 3rd (Mode)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino/07 Tutti Compressed Range (02b Regular+Sordino) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! m="NOTE: The 'stack' option has no notes assigned to it by default. To use it, you must manually assign the notes C9 (120) to E9 (124) to the five stack slots.\nNOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), stack, BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ STACK: All    → BPM: Meas tremolo.   → ATTACK: Short, tremolo, pizzicato, harmonics / Long, perf legato.   → RELEASE: Long, perf legato.   → TRANSITION: Tremolo, trills.   → DIRECTION: Glissandos, runs.   →KEY: Runs.   →LEG STY: Legato."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/02b Regular+Sordino" n="07 Tutti Compressed Range (02b Regular+Sordino) (Duality)"
+//! id=d7d062aa-e616-6aa9-8676-13a9b67ec33c
+Bank * * 07 Tutti Compressed Range (02b Regular+Sordino) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+
+// ========== STACK ==========
+//! c=#5A5B63		i=list					o=note:120				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+92 STACK: 1st Violins
+//! c=#5A5B63		i=list					o=note:121				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+93 STACK: 2nd Violins
+//! c=#5A5B63		i=list					o=note:122				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+94 STACK: Violas
+//! c=#5A5B63		i=list					o=note:123				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+95 STACK: Violoncellos
+//! c=#5A5B63		i=list					o=note:124				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+96 STACK: Double Basses
+
+// ========== NORMAL/SORDINO ==========
+//! c=#535C0E		i=list					o=note:21
+89 TECHNIQUE: Normal
+//! c=#535C0E		i=list					o=note:23
+90 TECHNIQUE: Con Sordino
+
+// ========== BPM ==========
+//! c=#460809		i=list					o=note:89					m="For Measured Tremolo"
+97 BPM: 120
+//! c=#460809		i=list					o=note:90					m="For Measured Tremolo"
+98 BPM: 130
+//! c=#460809		i=list					o=note:91					m="For Measured Tremolo"
+99 BPM: 140
+//! c=#460809		i=list					o=note:92					m="For Measured Tremolo"
+100 BPM: 160
+//! c=#460809		i=list					o=note:93					m="For Measured Tremolo"
+101 BPM: 180
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105				m="For Short, Tremolo, Pizzicato, Harmonics / Long, Perf Legato, Tremolo"
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106				m="For Short, Tremolo, Pizzicato, Harmonics / Long, Perf Legato"
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107				m="For Long, Perf Legato, Tremolo"
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108				m="For Long, Perf Legato, Tremolo"
+105 ATTACK: Sfz
+
+// ========== RELEASE ==========
+//! c=#01212C		i=list					o=note:101				m="For Long, Perf Legato"
+106 RELEASE: Normal
+//! c=#01212C		i=list					o=note:102				m="For Long, Perf Legato"
+107 RELEASE: Soft
+//! c=#01212C		i=list					o=note:103				m="For Long, Perf Legato"
+108 RELEASE: Very Soft
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101				m="For Tremolo, Trills."
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102				m="For Tremolo, Trills."
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103				m="For Tremolo, Trills."
+111 TRANSITION: Slurred
+//! c=#034543		i=list					o=note:104				m="For Tremolo, Trills."
+91 TRANSITION: Cut
+
+// ========== DIRECTION ==========
+//! c=#4B004F		i=list					o=note:93					m="For Glissandos, Runs."
+112 DIRECTION: Up
+//! c=#4B004F		i=list					o=note:94					m="For Glissandos, Runs."
+113 DIRECTION: Down
+
+// ========== KEY ==========
+//! c=#023002		i=list					o=note:96					m="For Runs."
+114 KEY: C maj / MD: Maj
+//! c=#023002		i=list					o=note:97					m="For Runs."
+115 KEY: C♯ maj / MD: Min
+//! c=#023002		i=list					o=note:98					m="For Runs."
+116 KEY: D maj / MD: Phry
+//! c=#023002		i=list					o=note:99					m="For Runs."
+117 KEY: E♭ maj
+//! c=#023002		i=list					o=note:100				m="For Runs."
+118 KEY: E maj
+//! c=#023002		i=list					o=note:101				m="For Runs."
+119 KEY: F maj
+//! c=#023002		i=list					o=note:102				m="For Runs."
+120 KEY: F♯ maj
+//! c=#023002		i=list					o=note:103				m="For Runs."
+121 KEY: G maj
+//! c=#023002		i=list					o=note:104				m="For Runs."
+122 KEY: A♭ maj
+//! c=#023002		i=list					o=note:105				m="For Runs."
+123 KEY: A maj
+//! c=#023002		i=list					o=note:106				m="For Runs."
+124 KEY: B♭ maj
+//! c=#023002		i=list					o=note:107				m="For Runs."
+125 KEY: B maj
+
+// ========== LEGATO STYLE ==========
+//! c=#140E0E		i=list					o=note:84					m="For Legato."
+126 LEG STY: Legato
+//! c=#140E0E		i=list					o=note:85					m="For Legato."
+127 LEG STY: Detache
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#3F137D		i=spiccato 				o=note:24/note:84			m="Select ATTACK separately"
+0 Spiccato
+//! c=#3F137D		i=spiccato 				o=note:24/note:85			m="Select ATTACK separately"
+1 Spiccato Tight
+//! c=#5C1BB5		i=staccato 				o=note:24/note:86			m="Select ATTACK separately"
+2 Staccato
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:90			m="Select ATTACK separately"
+3 Staccato Hard
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:87			m="Select ATTACK separately"
+4 Detache
+//! c=#833CE6		i=tenuto-eighth 			o=note:24/note:88			m="Select ATTACK separately"
+5 Detache Marcato
+//! c=#5C1BB5		i=staccato 				o=note:24/note:89			m="Select ATTACK separately"
+6 Detache Sft
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=long-light	i=vibrato 				o=note:25/note:89			m="Specify ATTACK and RELEASE separately"
+7 Poco Vib
+//! c=long-dark	i=vibrato-molto 			o=note:25/note:90			m="Specify ATTACK and RELEASE separately"
+8 Molto Vib
+//! c=long		i=legato-vibrato 			o=note:25/note:91			m="Specify ATTACK and RELEASE separately. CC20 controls cross-fade."
+9 Vib X-Fade
+//! c=long-dark	i=rip 					o=note:25/note:92			m="Specify RELEASE separately"
+10 Espressivo
+//! c=long-light	i=crescendo 				o=note:25/note:93			m="Specify RELEASE separately"
+11 Swell
+//! c=long		i=note-whole 				o=note:25/note:94			m="Specify ATTACK and RELEASE separately"
+12 No Vib
+//! c=long		i=note-whole 				o=note:25/note:95			m="Specify ATTACK separately. CC20 controls cross-fade."
+13 No Vib XF
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:26/note:84/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+14 Legato, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:26/note:84/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+15 Legato, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:26/note:84/note:91		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+16 Legato, Norm, Vib XF
+//! c=#00291F		i=legato-fast				o=note:26/note:84/note:92		m="Specify LEG STY and RELEASE separately."
+17 Legato, Norm, Express
+// ---------- TYPE: AGILE ----------
+//! c=#004232		i=legato					o=note:26/note:85/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+18 Legato, Agile, Poco Vib
+//! c=#004232		i=legato-vibrato			o=note:26/note:85/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+19 Legato, Agile, Molto Vib
+//! c=#004232		i=legato-blend-generic		o=note:26/note:85/note:91		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+20 Legato, Agile, Vib XF
+// ---------- TYPE: AUTO-SPD ----------
+//! c=#016950		i=legato					o=note:26/note:86/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+21 Legato, Auto-Spd, Poco Vib
+//! c=#016950		i=legato-vibrato			o=note:26/note:86/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+22 Legato, Auto-Spd, Molto Vib
+//! c=#016950		i=legato-blend-generic		o=note:26/note:86/note:91		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade. Vib Speed CC must be set manually!"
+23 Legato, Auto-Spd, Vib XF
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:26/note:87/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:26/note:87/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:26/note:87/note:91		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+26 Legato, Slur, Vib XF
+//! c=#029975		i=legato-fast				o=note:26/note:87/note:92		m="Specify LEG STY and RELEASE separately."
+27 Legato, Slur, Express
+// ---------- TYPE: PORTAMENTO ----------
+// == EXPRESSIO
+//! c=#00C798		i=legato					o=note:26/note:88/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+28 Legato, Port, Poco Vib
+//! c=#00C798		i=legato-vibrato			o=note:26/note:88/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+29 Legato, Port, Molto Vib
+//! c=#00C798		i=legato-blend-generic		o=note:26/note:88/note:91		m="Specify LEG STY, ATTACK and RELEASE separately. CC20 controls cross-fade."
+30 Legato, Port, Vib XF
+//! c=#00C798		i=legato-fast				o=note:26/note:88/note:92		m="Specify LEG STY and RELEASE separately."
+31 Legato, Port, Express
+
+// ==================== TREMOLO ====================
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#4A2554		i=tremolo					o=note:27/note:84/note:101	m="Specify ATTACK separately"
+32 Fast Trm, Normal
+//! c=#4A2554		i=legato-tremolo			o=note:27/note:84/note:102	m="Specify ATTACK separately"
+33 Fast Trm, Legato
+//! c=#4A2554		i=tremolo					o=note:27/note:84/note:103	m="Specify ATTACK separately"
+34 Fast Trm, Slurred
+// ---------- TYPE: SLOW ----------
+//! c=#693678		i=tremolo					o=note:27/note:85/note:101	m="Specify ATTACK separately"
+35 Slow Trm, Normal
+//! c=#693678		i=legato-tremolo			o=note:27/note:85/note:102	m="Specify ATTACK separately"
+36 Slow Trm, Legato
+//! c=#693678		i=tremolo					o=note:27/note:85/note:103	m="Specify ATTACK separately"
+37 Slow Trm, Slurred
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#8E46A3		i=tremolo					o=note:27/note:86/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+38 Slow x Fast Trm, Normal
+//! c=#8E46A3		i=legato-tremolo			o=note:27/note:86/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+39 Slow x Fast Trm, Legato
+//! c=#8E46A3		i=tremolo					o=note:27/note:86/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+40 Slow x Fast Trm, Slurred
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:87/note:101	m="Specify ATTACK separately. CC20 controls cross-fade."
+41 Long XF Trm, Normal
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:87/note:102	m="Specify ATTACK separately. CC20 controls cross-fade."
+42 Long XF Trm, Legato
+//! c=#AF66C4		i=tremolo-fingered			o=note:27/note:87/note:103	m="Specify ATTACK separately. CC20 controls cross-fade."
+43 Long XF Trm, Slurred
+// ---------- TYPE: MEASURED ----------
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:101	m="Specify TRANSITION and BPM separately"
+44 Meas Trm, Normal
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:102	m="Specify TRANSITION and BPM separately"
+45 Meas Trm, Legato
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:103	m="Specify TRANSITION and BPM separately"
+46 Meas Trm, Slurred
+//! c=#E198F5		i=tremolo	o=note:27/note:88/note:104	m="Specify TRANSITION and BPM separately"
+47 Meas Trm, Cut
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:28/note:89			m="Specify TRANSITION separately"
+48 Trill min2
+//! c=#C76933		i=trill-maj2				o=note:28/note:90			m="Specify TRANSITION separately"
+49 Trill maj2
+//! c=#C76933		i=trill-min3				o=note:28/note:91			m="Specify TRANSITION separately"
+50 Trill min3
+//! c=#C76933		i=trill-maj3				o=note:28/note:92			m="Specify TRANSITION separately"
+51 Trill maj3
+
+// -------------------- PIZZICATO --------------------
+//! spacer=1
+//! c=#7E2A0C		i=pizz				o=note:29/note:84			m="Specify ATTACK separately"
+52 Pizzicato Reg
+//! c=#7E2A0C		i=pizz-bartok				o=note:29/note:85			m="Specify ATTACK separately"
+53 Pizzicato Snap
+//! c=#7E2A0C		i=pizz				o=note:29/note:86			m="Specify ATTACK separately"
+54 Pizzicato Col Leg
+
+// -------------------- HARMONICS --------------------
+//! spacer=1
+//! c=#B7AF66		i=harmonics				o=note:30/note:84			m="Specify ATTACK separately"
+55 Harm Long
+//! c=#B7AF66		i=tremolo-harmonics			o=note:30/note:85			m="Specify ATTACK separately"
+56 Harm Trem
+//! c=#B7AF66		i=tremolo-harmonics			o=note:30/note:86			m="CC20 controls cross-fade."
+57 Harm Long XF Tr
+//! c=#B7AF66		i=harmonics				o=note:30/note:87			m="CC20 controls cross-fade."
+58 Reg X Harm
+//! c=#B7AF66		i=harmonics				o=note:30/note:88			m="Specify ATTACK separately. CC20 controls cross-fade."
+59 Trm X Harm
+//! c=#B7AF66		i=harmonics-natural-eighth	o=note:30/note:89			m="Specify ATTACK separately"
+60 Staccato
+
+// -------------------- GLISSANDOS --------------------
+//! spacer=1
+// ---------- TYPE: GLISSANDO NORMAL ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:84/note:87/note:89	m="Specify DIRECTION separately"
+61 Gliss Nrm Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:84/note:87/note:90	m="Specify DIRECTION separately"
+62 Gliss Nrm Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:84/note:87/note:91	m="Specify DIRECTION separately"
+63 Gliss Nrm Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:84/note:88/note:89	m="Specify DIRECTION separately"
+64 Gliss Nrm Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:84/note:88/note:90	m="Specify DIRECTION separately"
+65 Gliss Nrm Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:84/note:88/note:91	m="Specify DIRECTION separately"
+66 Gliss Nrm Slow 2nd
+
+// ---------- TYPE: GLISSANDO TREM ----------
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:85/note:87/note:89	m="Specify DIRECTION separately"
+67 Gliss Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:85/note:87/note:90	m="Specify DIRECTION separately"
+68 Gliss Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:85/note:87/note:91	m="Specify DIRECTION separately"
+69 Gliss Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:85/note:88/note:89	m="Specify DIRECTION separately"
+70 Gliss Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:85/note:88/note:90	m="Specify DIRECTION separately"
+71 Gliss Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:85/note:88/note:91	m="Specify DIRECTION separately"
+72 Gliss Trem Slow 2nd
+
+// ========== TYPE: GLISSANDO XF TREM
+// ===== SPEED: FAST
+//! c=#286965		i=legato-gliss				o=note:31/note:86/note:87/note:89	m="Specify DIRECTION separately. CC20 controls cross-fade. CC20 controls cross-fade."
+73 Gliss XF Trem Fast Octave
+//! c=#286965		i=legato-gliss				o=note:31/note:86/note:87/note:90	m="Specify DIRECTION separately. CC20 controls cross-fade."
+74 Gliss XF Trem Fast 5th
+//! c=#286965		i=legato-gliss				o=note:31/note:86/note:87/note:91	m="Specify DIRECTION separately. CC20 controls cross-fade."
+75 Gliss XF Trem Fast 2nd
+// ===== SPEED: SLOW
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:86/note:88/note:89	m="Specify DIRECTION separately. CC20 controls cross-fade."
+76 Gliss XF Trem Slow Octave
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:86/note:88/note:90	m="Specify DIRECTION separately. CC20 controls cross-fade."
+77 Gliss XF Trem Slow 5th
+//! c=#3C9E98		i=legato-gliss				o=note:31/note:86/note:88/note:91	m="Specify DIRECTION separately. CC20 controls cross-fade."
+78 Gliss XF Trem Slow 2nd
+
+// -------------------- RUNS --------------------
+//! spacer=1
+// ---------- TYPE: LEGATO ----------
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:89		m="Specify KEY and DIRECTION separately"
+79 Leg Runs Oct  (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:90		m="Specify KEY and DIRECTION separately"
+80 Leg Runs 5th (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:91		m="Specify MODE and DIRECTION separately"
+81 Leg Runs 3rd (Key)
+//! c=#B86568		i=legato-runs				o=note:32/note:84/note:92		m="Specify MODE and DIRECTION separately"
+82 Leg Runs 3rd (Mode)
+// ---------- TYPE: DETACHE ----------
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:89		m="Specify KEY and DIRECTION separately"
+83 Detache Runs Oct  (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:90		m="Specify KEY and DIRECTION separately"
+84 Detache Runs 5th (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:91		m="Specify MODE and DIRECTION separately"
+85 Detache Runs 3rd (Key)
+//! c=#F28386		i=legato-runs				o=note:32/note:85/note:92		m="Specify MODE and DIRECTION separately"
+86 Detache Runs 3rd (Mode)

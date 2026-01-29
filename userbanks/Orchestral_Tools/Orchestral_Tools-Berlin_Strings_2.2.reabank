@@ -2,7 +2,7 @@
 // Source: daeavelwyn - https://forum.cockos.com/showpost.php?p=2149051&postcount=500
 //
 
-//! g="Orchestral Tools/Berlin Strings" n="Violins 1"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Violins 1"
 //! m="Using custom keyswitch (24 to 35)"
 //! id=f946ec63-6f3d-4215-8622-6c35e4ecfef6
 Bank * * OT-BS - V1
@@ -29,7 +29,7 @@ Bank * * OT-BS - V1
 //! c=long-dark i=accented-quarter o=note:34
 11 Portato short- A#1
 
-//! g="Orchestral Tools/Berlin Strings" n="Violins 2"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Violins 2"
 //! m="Using custom keyswitch (24 to 35)"
 //! id=57ee78af-3ec5-4676-80ef-f671eddb8ce6
 Bank * * OT-BS - V2
@@ -52,7 +52,7 @@ Bank * * OT-BS - V2
 //! c=long-dark i=accented-quarter o=note:34
 11 Portato short- A#1
 
-//! g="Orchestral Tools/Berlin Strings" n="Violas"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Violas"
 //! m="Using custom keyswitch (24 to 35)"
 //! id=501e05f1-6f9d-4f7f-b118-41b233540987
 Bank * * OT-BS - Va
@@ -77,7 +77,7 @@ Bank * * OT-BS - Va
 //! c=long-dark i=accented-quarter o=note:34
 11 Portato short- A#1
 
-//! g="Orchestral Tools/Berlin Strings" n="Celli"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Celli"
 //! m="Using custom keyswitch (24 to 35)"
 //! id=7b202d6f-db15-430a-a4b4-dc7ae700703d
 Bank * * OT-BS - Cello
@@ -100,7 +100,7 @@ Bank * * OT-BS - Cello
 //! c=long-dark i=accented-quarter o=note:35
 12 Portato long - B1
 
-//! g="Orchestral Tools/Berlin Strings" n="Basses"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Basses"
 //! m="Using custom keyswitch (96 to 107)"
 //! id=b2cea8ab-c632-4a2a-9480-bc1749d3a6ed
 Bank * * OT-BS - Basses
@@ -125,7 +125,7 @@ Bank * * OT-BS - Basses
 //! c=long-dark i=accented-quarter o=note:107
 12 Portato long - B7
 
-//! g="Orchestral Tools/Berlin Strings" n="Basses Dynamics"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Basses Dynamics"
 //! m="Using custom keyswitch (84 to 95)"
 //! id=5100b78d-6fec-4c9b-97ce-65fbc216a54c
 Bank * * OT-BS - Basses Dynamics
@@ -156,7 +156,7 @@ Bank * * OT-BS - Basses Dynamics
 
 
 
-//! g="Orchestral Tools/Berlin Strings" n="Extras"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Extras"
 //! m="CC messages like con sordino, legato..."
 //! id=74ef64e5-2295-40b9-9fb6-3765dc574aa0
 Bank * * OT-BS - Extras
@@ -177,7 +177,7 @@ Bank * * OT-BS - Extras
 //! c=default i=fx g=4 o=cc:53,0
 108 Soft Layer Off
 
-//! g="Orchestral Tools/Berlin Strings" n="Extras 2"
+//! g="Orchestral Tools/Berlin Strings 2.2" n="Extras 2"
 //! m="CC messages like con sordino, legato..."
 //! id=b06a3afe-2249-470a-a3ea-168275d481db
 Bank * * OT-BS - Extras 2

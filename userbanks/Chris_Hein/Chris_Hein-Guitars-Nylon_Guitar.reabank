@@ -1,0 +1,53 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Chris Hein Guitars Nylon Guitar
+// CREATOR: Scott Sadowsky
+//
+//! g="Chris Hein/Guitars" n="Nylon Guitar"
+//! m="CC01=Vibrato, CC02=Bridge/Neck (0=Neck, 127=Bridge), CC11=Expression"
+//! id=9ede28b3-70e8-4281-adf3-d0e7c72bd08c
+Bank * * Nylon Guitar
+//
+//------------------------- LONG -------------------------
+//! c=long					i=note-whole		g=1		o=note:12
+1 Sustain
+//! c=long-light			i=harmonics			g=1		o=note:23
+10 Harmonic (Flagolet)
+//------------------------- SHORT ------------------------
+//! c=short					i=note-quarter		g=1		o=note:17
+40 Short
+//! c=short					i=spiccato			g=1		o=note:24
+47 Palm Mute
+//! c=short					i=spiccato			g=1		o=note:26
+46 Palm Mute Pkup 1 (m2 Glide)
+//! c=short					i=spiccato			g=1		o=note:28
+48 Palm Mute Pkup 2 (M2 Glide)
+//! c=short					i=harp-pdlt			g=1		o=note:27
+62 Dead Note
+//! c=short					i=harp-pdlt			g=1		o=note:19
+69 Strum (No Tone)
+//------------------------- FX ---------------------------
+//! c=fx					i=legato				g=1		o=note:13
+20 Hammer-On
+//! c=fx					i=legato				g=1		o=note:15
+21 Pull-Off
+//! c=fx					i=legato-runs 			g=1		o=note:14
+70 Pickup 1 (m2 Glide)
+//! c=fx					i=legato-runs 			g=1		o=note:16
+71 Pickup 2 (M2 Glide)
+//! c=fx					i=legato-runs 			g=1		o=note:21
+25 Slide Up
+//! c=fx					i=legato-runs 			g=1		o=note:22
+23 Slide Down
+//! c=fx					i=legato-runs 			g=1		o=note:25
+32 Fall
+//------------------------- CONTROL -----------------------
+//! c=default					i=fx			g=1		o=note:18
+90 FX Mode
+//! c=default					i=list			g=1		o=note:20
+106 Slide Mode
+//! c=default					i=list			g=1		o=note:29
+107 HO/PO Mode (Solo Mode)
+//! c=default					i=list			g=1		o=note:30
+108 Chord Mode 1
+//! c=default					i=list			g=1		o=note:32
+109 Chord Mode 2

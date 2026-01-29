@@ -1,0 +1,52 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: IK Multimedia Modo Bass 2
+// CREATOR: Scott Sadowsky
+//
+// KEY: c=COLOR	i=ICON g=GROUP o=note:NOTENUMBER
+//
+//! g="IK Multimedia" n="Modo Bass 2"
+//! id=100531df-8461-4e8a-a5e1-6b41363111f4
+Bank * * Modo Bass 2
+//--------------------- PLAYING MODE --------------------
+//! c=long				i=note-whole		g=1		o=note:25
+1 Fingered
+//! c=long-dark			i=note-whole		g=1		o=note:27
+2 Picked
+//! c=short-dark			i=note-eighth		g=1		o=note:30
+49 Slapped
+//--------------------- PLAYING STYLE ------------------
+//! spacer=1
+//! c=short-light			i=ghost-eighth		g=1		o=note:22
+48 Ghost Note
+//! c=long-light			i=harmonics		g=1		o=note:29
+10 Harmonics
+//! c=long-light			i=harmonics		g=1		o=note:13
+54 Index / Down / Slap
+//! c=long-light			i=harmonics		g=1		o=note:15
+52 Middle / Up / Pull
+//---------------------- LINKING -----------------------
+//! spacer=1
+//! c=legato				i=note-eighth			g=1		o=note:24
+62 Hammer On/Pull Off
+//--------------------- SLAPPING -----------------------
+//! spacer=1
+//! c=fx					i=fx				g=1		o=note:37
+57 DB Slap Noise
+//! c=#ff9700				i=pizz			g=1		o=note:32
+77 Stop On Detach
+//! c=#ff9700				i=rest-quarter		g=1		o=note:39
+78 Stop Strings
+//---------------------- STRINGS ------------------------
+//! spacer=1
+//! c=#b0ad00				i=list		g=1		o=note:23
+83 Force B String
+//! c=#b0ad00				i=list		g=1		o=note:28
+84 Force E String
+//! c=#b0ad00				i=list		g=1		o=note:21
+85 Force A String
+//! c=#b0ad00				i=list		g=1		o=note:26
+86 Force D String
+//! c=#b0ad00				i=list		g=1		o=note:31
+87 Force G String
+//! c=#b0ad00				i=list		g=1		o=note:12
+88 Force C String

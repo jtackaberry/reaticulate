@@ -1,0 +1,674 @@
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/01 1st Violins (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has, attack and transition must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="01 1st Violins (03a Colors) (Duality)"
+//! id=4643fa95-a986-4f1f-bdc4-24066e707d68
+Bank * * 01 1st Violins (03a Colors) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108
+105 ATTACK: Sfz
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103
+111 TRANSITION: Slurred
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:39	m="Select ATTACK separately"
+0 Flaut Detache
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:40	m="Select ATTACK separately"
+1 Flaut Detache Marc
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:41	m="Select ATTACK separately"
+2 Flaut Detache Soft
+
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:36	m="Select ATTACK separately"
+5 Pont Spiccato
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:37	m="Select ATTACK separately"
+6 Pont Spic Tight
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:38	m="Select ATTACK separately"
+90 Pont Spic (Copy)
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:39	m="Select ATTACK separately"
+3 Pont Detache
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:40	m="Select ATTACK separately"
+4 Pont Detache Marc
+
+//! c=#A36FEB		i=blend 					o=note:24/note:35/note:36/note:39	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+91 Flaut X Pont, Detache
+//! c=#A36FEB		i=blend 					o=note:24/note:35/note:37/note:40	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+92 Flaut X Pont, Detache Marc
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=#000080		i=flautando 				o=note:25/note:31/note:41	m="Select ATTACK separately"
+7 Long, Flaut, Poco Vib
+//! c=#000080		i=flautando 				o=note:25/note:31/note:42	m="Select ATTACK separately"
+8 Long, Flaut, Molto Vib
+//! c=#000080		i=flautando 				o=note:25/note:31/note:43	m="Select ATTACK separately.\nCC20 controls vibrato cross-fade."
+9 Long, Flaut, Vib XF
+
+//! c=#0000D1		i=sul-pont 				o=note:25/note:33/note:36	m="Select ATTACK separately"
+10 Long, Pont, Poco Vib
+
+//! c=#8A8AFF		i=blend 					o=note:25/note:35/note:36	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+11 Long, Flt X Pnt, Poco Vib
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:26/note:36/note:41		m="Specify LEG STY, ATTACK and TRANSITION separately"
+14 Legato Flaut, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:26/note:36/note:42		m="Specify LEG STY, ATTACK and TRANSITION separately"
+15 Legato Flaut, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:26/note:36/note:43		m="Specify LEG STY, ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+16 Legato Flautando, Norm, Vib XF
+
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:26/note:37/note:41		m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato Flaut, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:26/note:37/note:42		m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato Flaut, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:26/note:37/note:43		m="Specify LEG STY, ATTACK and RELEASE separately.\nCC20 controls cross-fade."
+26 Legato Flaut, Slur, Vib XF
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#3E093E		i=tremolo	o=note:27/note:31/note:36		m="Specify ATTACK and TRANSITION separately"
+32 Fast Trem, Flautando
+//! c=#3E093E		i=tremolo	o=note:27/note:33/note:36		m="Specify ATTACK separately"
+33 Fast Trem, Ponticello
+//! c=#3E093E		i=tremolo	o=note:27/note:35/note:36		m="Specify ATTACK separately.\nCC03 controls flautando and ponticello cross-fade."
+34 Fast Trem, Flaut X Pont
+// ---------- TYPE: SLOW ----------
+//! c=#7A107A		i=tremolo	o=note:27/note:31/note:37		m="Specify ATTACK and TRANSITION separately"
+35 Slow Trem, Flautando
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#EA71EA		i=legato-tremolo			o=note:27/note:31/note:38		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+38 Slow x Fast Trem, Flautando
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:31/note:39		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+41 Long XF Trem, Flautando
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:33/note:39		m="Specify ATTACK separately.\nCC20 controls cross-fade."
+42 Long XF Trem, Ponticello
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:35/note:39		m="Specify ATTACK separately.\nCC03 controls flautando/ponticello cross-fade.\nCC20 controls tremolo cross-fade."
+43 Long XF Trem, Flaut X Pont
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:28/note:41				m="Specify TRANSITION separately"
+48 Flautando Trill min2
+//! c=#C76933		i=trill-maj2				o=note:28/note:42				m="Specify TRANSITION separately"
+49 Flautando Trill maj2
+//! c=#C76933		i=trill-min3				o=note:28/note:43				m="Specify TRANSITION separately"
+50 Flautando Trill min3
+//! c=#C76933		i=trill-maj3				o=note:28/note:44				m="Specify TRANSITION separately"
+51 Flautando Trill maj3
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/02 2nd Violins (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! clone=4643fa95-a986-4f1f-bdc4-24066e707d68
+//
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has, attack and transition must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="02 2nd Violins (03a Colors) (Duality)"
+//! id=cc8f1180-aed8-470d-9cd3-d1e81fa4c8e0
+Bank * * 02 2nd Violins (03a Colors) (Duality)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/03 Violas (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! clone=4643fa95-a986-4f1f-bdc4-24066e707d68
+//
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has, attack and transition must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="03 Violas (03a Colors) (Duality)"
+//! id=51cd7a40-1539-4969-b175-81ffb3744f2b
+Bank * * 03 Violas (03a Colors) (Duality)
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/04 Violoncellos (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="04 Violoncellos (03a Colors) (Duality)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), BPM, attack, release, transition, direction and key must be set manually, using other articulation switches in addition to the main articulation. Summary:\n→ BPM: Meas tremolo.     → ATTACK: Short, long, perf legato, tremolo, harmonics, pizzicato.     → RELEASE: Long, perf legato.     → TRANSITION: Tremolo, trills.     →DIRECTION: Glissandos, runs.     →KEY: Runs.\nCC7=Master Vol, CC11=Expr, CC1=Vel XFade, CC8=Timbre, CC31=Dyn Range, CC22=Attack, CC23=Release, CC34=Stretch Factor, CC25=Hum Delay Scale, CC26=Hum Tuning, CC27=Hum Amt, CC5=Ret 1 Vol, CC63=Master Chan Vol.\nCC20=Crossfade (on some patches)."
+//! id=a61ec4d3-80f9-4893-bbbe-923efe359478
+Bank * * 04 Violoncellos (03a Colors) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108
+105 ATTACK: Sfz
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:84
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:85
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:86
+111 TRANSITION: Slurred
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:87	m="Select ATTACK separately"
+0 Flaut Detache
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:88	m="Select ATTACK separately"
+1 Flaut Detache Marc
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:89	m="Select ATTACK separately"
+2 Flaut Detache Soft
+
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:84	m="Select ATTACK separately"
+5 Pont Spiccato
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:85	m="Select ATTACK separately"
+6 Pont Spic Tight
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:86	m="Select ATTACK separately"
+90 Pont Spic (Copy)
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:87	m="Select ATTACK separately"
+3 Pont Detache
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:88	m="Select ATTACK separately"
+4 Pont Detache Marc
+
+//! c=#A36FEB		i=blend 					o=note:24/note:35/note:87	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+91 Flaut X Pont, Detache
+//! c=#A36FEB		i=blend 					o=note:24/note:35/note:88	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+92 Flaut X Pont, Detache Marc
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=#000080		i=flautando 				o=note:25/note:31/note:89	m="Select ATTACK separately"
+7 Long, Flaut, Poco Vib
+//! c=#000080		i=flautando 				o=note:25/note:31/note:90	m="Select ATTACK separately"
+8 Long, Flaut, Molto Vib
+//! c=#000080		i=flautando 				o=note:25/note:31/note:91	m="Select ATTACK separately.\nCC20 controls vibrato cross-fade."
+9 Long, Flaut, Vib XF
+
+//! c=#0000D1		i=sul-pont 				o=note:25/note:33/note:89	m="Select ATTACK separately"
+10 Long, Pont, Poco Vib
+
+//! c=#8A8AFF		i=blend 					o=note:25/note:35/note:90	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+11 Long, Flt X Pnt, Poco Vib
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:26/note:84/note:89		m="Specify LEG STY, ATTACK and TRANSITION separately"
+14 Legato Flaut, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:26/note:84/note:90		m="Specify LEG STY, ATTACK and TRANSITION separately"
+15 Legato Flaut, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:26/note:84/note:91		m="Specify LEG STY, ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+16 Legato Flautando, Norm, Vib XF
+
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:26/note:85/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato Flaut, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:26/note:85/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato Flaut, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:26/note:85/note:91		m="Specify LEG STY, ATTACK and RELEASE separately.\nCC20 controls cross-fade."
+26 Legato Flaut, Slur, Vib XF
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#3E093E		i=tremolo	o=note:27/note:31/note:84		m="Specify ATTACK and TRANSITION separately"
+32 Fast Trem, Flautando
+//! c=#3E093E		i=tremolo	o=note:27/note:33/note:84		m="Specify ATTACK separately"
+33 Fast Trem, Ponticello
+//! c=#3E093E		i=tremolo	o=note:27/note:35/note:84		m="Specify ATTACK separately.\nCC03 controls flautando and ponticello cross-fade."
+34 Fast Trem, Flaut X Pont
+// ---------- TYPE: SLOW ----------
+//! c=#7A107A		i=tremolo	o=note:27/note:31/note:85		m="Specify ATTACK and TRANSITION separately"
+35 Slow Trem, Flautando
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#EA71EA		i=legato-tremolo			o=note:27/note:31/note:86		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+38 Slow x Fast Trem, Flautando
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:31/note:87		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+41 Long XF Trem, Flautando
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:33/note:87		m="Specify ATTACK separately.\nCC20 controls cross-fade."
+42 Long XF Trem, Ponticello
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:35/note:87		m="Specify ATTACK separately.\nCC03 controls flautando/ponticello cross-fade.\nCC20 controls tremolo cross-fade."
+43 Long XF Trem, Flaut X Pont
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:28/note:89				m="Specify TRANSITION separately"
+48 Flautando Trill min2
+//! c=#C76933		i=trill-maj2				o=note:28/note:90				m="Specify TRANSITION separately"
+49 Flautando Trill maj2
+//! c=#C76933		i=trill-min3				o=note:28/note:91				m="Specify TRANSITION separately"
+50 Flautando Trill min3
+//! c=#C76933		i=trill-maj3				o=note:28/note:92				m="Specify TRANSITION separately"
+51 Flautando Trill maj3
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/05 Double Basses (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="05 Double Basses (03a Colors) (Duality)"
+//! m="NOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view. Note also that sordino has no harmonics articulation.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ BPM: Meas tremolo.     → ATTACK: Short, long, perf legato, tremolo, harmonics, pizzicato.     → RELEASE: Long, perf legato.     → TRANSITION: Tremolo, trills.     →DIRECTION: Glissandos, runs.     →KEY: Runs.     →LEG STY: Legato."
+//! id=cf3c49b9-a288-4f87-8cc8-547e6bbe11d1
+Bank * * 05 Double Basses (03a Colors) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108
+105 ATTACK: Sfz
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:84
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:85
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:86
+111 TRANSITION: Slurred
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#2C0C59		i=flautando 				o=note:72/note:79/note:87	m="Select ATTACK separately"
+0 Flaut Detache
+//! c=#2C0C59		i=flautando 				o=note:72/note:79/note:88	m="Select ATTACK separately"
+1 Flaut Detache Marc
+//! c=#2C0C59		i=flautando 				o=note:72/note:79/note:89	m="Select ATTACK separately"
+2 Flaut Detache Soft
+
+//! c=#5B19B8		i=sul-pont 				o=note:72/note:81/note:84	m="Select ATTACK separately"
+5 Pont Spiccato
+//! c=#5B19B8		i=sul-pont 				o=note:72/note:81/note:85	m="Select ATTACK separately"
+6 Pont Spic Tight
+//! c=#5B19B8		i=sul-pont 				o=note:72/note:81/note:86	m="Select ATTACK separately"
+90 Pont Spic (Copy)
+//! c=#5B19B8		i=sul-pont 				o=note:72/note:81/note:87	m="Select ATTACK separately"
+3 Pont Detache
+//! c=#5B19B8		i=sul-pont 				o=note:72/note:81/note:88	m="Select ATTACK separately"
+4 Pont Detache Marc
+
+//! c=#A36FEB		i=blend 					o=note:72/note:83/note:87	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+91 Flaut X Pont, Detache
+//! c=#A36FEB		i=blend 					o=note:72/note:83/note:88	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+92 Flaut X Pont, Detache Marc
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=#000080		i=flautando 				o=note:73/note:79/note:89	m="Select ATTACK separately"
+7 Long, Flaut, Poco Vib
+//! c=#000080		i=flautando 				o=note:73/note:79/note:90	m="Select ATTACK separately"
+8 Long, Flaut, Molto Vib
+//! c=#000080		i=flautando 				o=note:73/note:79/note:91	m="Select ATTACK separately.\nCC20 controls vibrato cross-fade."
+9 Long, Flaut, Vib XF
+
+//! c=#0000D1		i=sul-pont 				o=note:73/note:81/note:89	m="Select ATTACK separately"
+10 Long, Pont, Poco Vib
+
+//! c=#8A8AFF		i=blend 					o=note:73/note:83/note:90	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+11 Long, Flt X Pnt, Poco Vib
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:74/note:84/note:89		m="Specify LEG STY, ATTACK and TRANSITION separately"
+14 Legato Flaut, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:74/note:84/note:90		m="Specify LEG STY, ATTACK and TRANSITION separately"
+15 Legato Flaut, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:74/note:84/note:91		m="Specify LEG STY, ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+16 Legato Flautando, Norm, Vib XF
+
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:74/note:85/note:89		m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato Flaut, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:74/note:85/note:90		m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato Flaut, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:74/note:85/note:91		m="Specify LEG STY, ATTACK and RELEASE separately.\nCC20 controls cross-fade."
+26 Legato Flaut, Slur, Vib XF
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#3E093E		i=tremolo	o=note:75/note:79/note:84		m="Specify ATTACK and TRANSITION separately"
+32 Fast Trem, Flautando
+//! c=#3E093E		i=tremolo	o=note:75/note:81/note:84		m="Specify ATTACK separately"
+33 Fast Trem, Ponticello
+//! c=#3E093E		i=tremolo	o=note:75/note:83/note:84		m="Specify ATTACK separately.\nCC03 controls flautando and ponticello cross-fade."
+34 Fast Trem, Flaut X Pont
+// ---------- TYPE: SLOW ----------
+//! c=#7A107A		i=tremolo	o=note:75/note:79/note:85		m="Specify ATTACK and TRANSITION separately"
+35 Slow Trem, Flautando
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#EA71EA		i=legato-tremolo			o=note:75/note:79/note:86		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+38 Slow x Fast Trem, Flautando
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#F6C1F6		i=tremolo-fingered			o=note:75/note:79/note:87		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+41 Long XF Trem, Flautando
+//! c=#F6C1F6		i=tremolo-fingered			o=note:75/note:81/note:87		m="Specify ATTACK separately.\nCC20 controls cross-fade."
+42 Long XF Trem, Ponticello
+//! c=#F6C1F6		i=tremolo-fingered			o=note:75/note:83/note:87		m="Specify ATTACK separately.\nCC03 controls flautando/ponticello cross-fade.\nCC20 controls tremolo cross-fade."
+43 Long XF Trem, Flaut X Pont
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:76/note:89				m="Specify TRANSITION separately"
+48 Flautando Trill min2
+//! c=#C76933		i=trill-maj2				o=note:76/note:90				m="Specify TRANSITION separately"
+49 Flautando Trill maj2
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/06 Tutti Full Range (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! m="NOTE: The 'stack' option has no notes assigned to it by default. To use it, you must manually assign the notes C9 (120) to E9 (124) to the five stack slots.\nNOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), stack, BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ STACK: All    → BPM: Meas tremolo.   → ATTACK: Short, tremolo, pizzicato, harmonics / Long, perf legato.   → RELEASE: Long, perf legato.   → TRANSITION: Tremolo, trills.   → DIRECTION: Glissandos, runs.   →KEY: Runs.   →LEG STY: Legato."
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="06 Tutti Full Range (03a Colors) (Duality)"
+//! id=eef52430-2bd6-46a3-a1ff-deafb0585bfd
+Bank * * 05 06 Tutti Full Range (03a Colors) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+
+// ========== STACK ==========
+//! c=#5A5B63		i=list					o=note:120				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+92 STACK: 1st Violins
+//! c=#5A5B63		i=list					o=note:121				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+93 STACK: 2nd Violins
+//! c=#5A5B63		i=list					o=note:122				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+94 STACK: Violas
+//! c=#5A5B63		i=list					o=note:123				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+95 STACK: Violoncellos
+//! c=#5A5B63		i=list					o=note:124				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9."
+96 STACK: Double Basses
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108
+105 ATTACK: Sfz
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103
+111 TRANSITION: Slurred
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#2C0C59		i=flautando 				o=note:0/note:7/note:15	m="Select ATTACK separately"
+0 Flaut Detache
+//! c=#2C0C59		i=flautando 				o=note:0/note:7/note:16	m="Select ATTACK separately"
+1 Flaut Detache Marc
+//! c=#2C0C59		i=flautando 				o=note:0/note:7/note:17	m="Select ATTACK separately"
+2 Flaut Detache Soft
+
+//! c=#5B19B8		i=sul-pont 				o=note:0/note:9/note:12	m="Select ATTACK separately"
+5 Pont Spiccato
+//! c=#5B19B8		i=sul-pont 				o=note:0/note:9/note:13	m="Select ATTACK separately"
+6 Pont Spic Tight
+//! c=#5B19B8		i=sul-pont 				o=note:0/note:9/note:14	m="Select ATTACK separately"
+90 Pont Spic (Copy)
+//! c=#5B19B8		i=sul-pont 				o=note:0/note:9/note:15	m="Select ATTACK separately"
+3 Pont Detache
+//! c=#5B19B8		i=sul-pont 				o=note:0/note:9/note:16	m="Select ATTACK separately"
+4 Pont Detache Marc
+
+//! c=#A36FEB		i=blend 					o=note:0/note:11/note:12/note:15	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+91 Flaut X Pont, Detache
+//! c=#A36FEB		i=blend 					o=note:0/note:11/note:13/note:16	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+112 Flaut X Pont, Detache Marc
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=#000080		i=flautando 				o=note:1/note:7/note:17	m="Select ATTACK separately"
+7 Long, Flaut, Poco Vib
+//! c=#000080		i=flautando 				o=note:1/note:7/note:18	m="Select ATTACK separately"
+8 Long, Flaut, Molto Vib
+//! c=#000080		i=flautando 				o=note:1/note:7/note:19	m="Select ATTACK separately.\nCC20 controls vibrato cross-fade."
+9 Long, Flaut, Vib XF
+
+//! c=#0000D1		i=sul-pont 				o=note:1/note:9/note:12	m="Select ATTACK separately"
+10 Long, Pont, Poco Vib
+
+//! c=#8A8AFF		i=blend 					o=note:1/note:11/note:12	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+11 Long, Flt X Pnt, Poco Vib
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:2/note:12/note:17		m="Specify LEG STY, ATTACK and TRANSITION separately"
+14 Legato Flaut, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:2/note:12/note:18		m="Specify LEG STY, ATTACK and TRANSITION separately"
+15 Legato Flaut, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:2/note:12/note:19		m="Specify LEG STY, ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+16 Legato Flautando, Norm, Vib XF
+
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:2/note:13/note:17		m="Specify LEG STY, ATTACK and RELEASE separately"
+24 Legato Flaut, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:2/note:13/note:18		m="Specify LEG STY, ATTACK and RELEASE separately"
+25 Legato Flaut, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:2/note:13/note:19		m="Specify LEG STY, ATTACK and RELEASE separately.\nCC20 controls cross-fade."
+26 Legato Flaut, Slur, Vib XF
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#3E093E		i=tremolo	o=note:3/note:7/note:12		m="Specify ATTACK and TRANSITION separately"
+32 Fast Trem, Flautando
+//! c=#3E093E		i=tremolo	o=note:3/note:9/note:12		m="Specify ATTACK separately"
+33 Fast Trem, Ponticello
+//! c=#3E093E		i=tremolo	o=note:3/note:11/note:12		m="Specify ATTACK separately.\nCC03 controls flautando and ponticello cross-fade."
+34 Fast Trem, Flaut X Pont
+// ---------- TYPE: SLOW ----------
+//! c=#7A107A		i=tremolo	o=note:3/note:7/note:13		m="Specify ATTACK and TRANSITION separately"
+35 Slow Trem, Flautando
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#EA71EA		i=legato-tremolo			o=note:3/note:7/note:14		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+38 Slow x Fast Trem, Flautando
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#F6C1F6		i=tremolo-fingered			o=note:3/note:7/note:15		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+41 Long XF Trem, Flautando
+//! c=#F6C1F6		i=tremolo-fingered			o=note:3/note:9/note:15		m="Specify ATTACK separately.\nCC20 controls cross-fade."
+42 Long XF Trem, Ponticello
+//! c=#F6C1F6		i=tremolo-fingered			o=note:3/note:11/note:15		m="Specify ATTACK separately.\nCC03 controls flautando/ponticello cross-fade.\nCC20 controls tremolo cross-fade."
+43 Long XF Trem, Flaut X Pont
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:4/note:17				m="Specify TRANSITION separately"
+48 Flautando Trill min2
+//! c=#C76933		i=trill-maj2				o=note:4/note:18				m="Specify TRANSITION separately"
+49 Flautando Trill maj2
+//! c=#C76933		i=trill-min3				o=note:4/note:19				m="Specify TRANSITION separately"
+50 Flautando Trill min3
+//! c=#C76933		i=trill-maj3				o=note:4/note:20				m="Specify TRANSITION separately"
+51 Flautando Trill maj3
+
+
+
+// ################################################################################
+// Vienna Symphonic Library/Synchron/Duality Strings/03a Colors/07 Tutti Compressed Range (03a Colors) (Duality)
+// Created by Scott Sadowsky
+// ################################################################################
+//
+//! g="Vienna Symphonic Library/Synchron/Duality Strings/03a Colors" n="07 Tutti Compressed Range (03a Colors) (Duality)"
+//! m="NOTE: The 'stack' option has no notes assigned to it by default. To use it, you must manually assign the notes C9 (120) to E9 (124) to the five stack slots.\nNOTE: This file is designed for the traditional or 'precision' view. It will not work with the new 'flow' view.\nLIMITATIONS: Due to the massive number of articulations this library has (at least 956 by my count), stack, BPM, attack, release, transition, direction, key and legato style must be set manually, using other articulation switches in addition to the main articulation. READ THE TOOLTIPS to see which articulations require which additional articulations. Summary:\n→ STACK: All    → BPM: Meas tremolo.   → ATTACK: Short, tremolo, pizzicato, harmonics / Long, perf legato.   → RELEASE: Long, perf legato.   → TRANSITION: Tremolo, trills.   → DIRECTION: Glissandos, runs.   →KEY: Runs.   →LEG STY: Legato."
+//! id=58ed762d-52a7-4678-8aad-a0ba48fcdc03
+Bank * * 07 Tutti Compressed Range (03a Colors) (Duality)
+
+// =========================== ARTICULATIONS =================================
+
+// -------------------- CONTROL --------------------
+// ========== STACK ==========
+//! c=#5A5B63		i=list					o=note:120				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9 in Synchron Player."
+92 STACK: 1st Violins
+//! c=#5A5B63		i=list					o=note:121				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9 in Synchron Player."
+93 STACK: 2nd Violins
+//! c=#5A5B63		i=list					o=note:122				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9 in Synchron Player."
+94 STACK: Violas
+//! c=#5A5B63		i=list					o=note:123				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9 in Synchron Player."
+95 STACK: Violoncellos
+//! c=#5A5B63		i=list					o=note:124				m="For all articulations. Must manually set the stack trigger to NOTE | C9-G9 | C9 in Synchron Player."
+96 STACK: Double Basses
+
+// ========== ATTACK ==========
+//! c=#5C2C06		i=list					o=note:105
+102 ATTACK: Bold / Normal
+//! c=#5C2C06		i=list					o=note:106
+103 ATTACK: Agile / Soft
+//! c=#5C2C06		i=list					o=note:107
+104 ATTACK: Fast
+//! c=#5C2C06		i=list					o=note:108
+105 ATTACK: Sfz
+
+// ========== TRANSITION ==========
+//! c=#034543		i=list					o=note:101
+109 TRANSITION: Normal
+//! c=#034543		i=list					o=note:102
+110 TRANSITION: Legato
+//! c=#034543		i=list					o=note:103
+111 TRANSITION: Slurred
+
+// -------------------- SHORT --------------------
+//! spacer=1
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:87	m="Select ATTACK separately"
+0 Flaut Detache
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:88	m="Select ATTACK separately"
+1 Flaut Detache Marc
+//! c=#2C0C59		i=flautando 				o=note:24/note:31/note:89	m="Select ATTACK separately"
+2 Flaut Detache Soft
+
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:84	m="Select ATTACK separately"
+5 Pont Spiccato
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:85	m="Select ATTACK separately"
+6 Pont Spic Tight
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:86	m="Select ATTACK separately"
+90 Pont Spic (Copy)
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:87	m="Select ATTACK separately"
+3 Pont Detache
+//! c=#5B19B8		i=sul-pont 				o=note:24/note:33/note:88	m="Select ATTACK separately"
+4 Pont Detache Marc
+
+//! c=#A36FEB		i=blend 					o=note:24/note:35/note:87	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+91 Flaut X Pont, Detache
+//! c=#A36FEB		i=blend 					o=note:24/note:35/note:88	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+60 Flaut X Pont, Detache Marc
+
+// -------------------- LONG / SUSTAIN --------------------
+//! spacer=1
+//! c=#000080		i=flautando 				o=note:25/note:31/note:89	m="Select ATTACK separately"
+7 Long, Flaut, Poco Vib
+//! c=#000080		i=flautando 				o=note:25/note:31/note:90	m="Select ATTACK separately"
+8 Long, Flaut, Molto Vib
+//! c=#000080		i=flautando 				o=note:25/note:31/note:91	m="Select ATTACK separately.\nCC20 controls vibrato cross-fade."
+9 Long, Flaut, Vib XF
+
+//! c=#0000D1		i=sul-pont 				o=note:25/note:33/note:92	m="Select ATTACK separately"
+10 Long, Pont, Poco Vib
+
+//! c=#8A8AFF		i=blend 					o=note:25/note:35/note:93	m="Select ATTACK separately.\nCC03 controls flautando/ponticello crossfade."
+11 Long, Flt X Pnt, Poco Vib
+
+// -------------------- LEGATO --------------------
+//! spacer=1
+// ---------- TYPE: NORMAL ----------
+//! c=#00291F		i=legato					o=note:26/note:84/note:89		m="Specify ATTACK and TRANSITION separately"
+14 Legato Flaut, Norm, Poco Vib
+//! c=#00291F		i=legato-vibrato			o=note:26/note:84/note:90		m="Specify ATTACK and TRANSITION separately"
+15 Legato Flaut, Norm, Molto Vib
+//! c=#00291F		i=legato-blend-generic		o=note:26/note:84/note:91		m="Specify ATTACK and TRANSITION separately.\nCC20 controls cross-fade."
+16 Legato Flautando, Norm, Vib XF
+
+// ---------- TYPE: SLURRED ----------
+//! c=#029975		i=legato					o=note:26/note:85/note:89		m="Specify ATTACK and RELEASE separately"
+24 Legato Flaut, Slur, Poco Vib
+//! c=#029975		i=legato-vibrato			o=note:26/note:85/note:90		m="Specify ATTACK and RELEASE separately"
+25 Legato Flaut, Slur, Molto Vib
+//! c=#029975		i=legato-blend-generic		o=note:26/note:85/note:91		m="Specify ATTACK and RELEASE separately.\nCC20 controls cross-fade."
+26 Legato Flaut, Slur, Vib XF
+
+// -------------------- TREMOLO --------------------
+//! spacer=1
+// ---------- TYPE: FAST ----------
+//! c=#3E093E		i=tremolo	o=note:27/note:84/note:31		m="Specify ATTACK and TRANSITION separately"
+32 Fast Trem, Flautando
+//! c=#3E093E		i=tremolo	o=note:27/note:84/note:33		m="Specify ATTACK separately"
+33 Fast Trem, Ponticello
+//! c=#3E093E		i=tremolo	o=note:27/note:84/note:35		m="Specify ATTACK separately.\nCC03 controls flautando/ponticello cross-fade."
+34 Fast Trem, Flaut X Pont
+// ---------- TYPE: SLOW ----------
+//! c=#7A107A		i=tremolo	o=note:27/note:85/note:31		m="Specify ATTACK and TRANSITION separately"
+35 Slow Trem, Flautando
+// ---------- TYPE: SLOW X FAST ----------
+//! c=#EA71EA		i=legato-tremolo			o=note:27/note:86/note:31		m="Specify ATTACK and TRANSITION separately.\nCC20 controls normal/tremolo cross-fade."
+38 Slow x Fast Trem, Flautando
+// ---------- TYPE: LONG XF TREM ----------
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:87/note:31		m="Specify ATTACK and TRANSITION separately.\nCC20 controls tremolo cross-fade."
+41 Long XF Trem, Flautando
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:87/note:33		m="Specify ATTACK separately.\nCC20 controls tremolo cross-fade."
+42 Long XF Trem, Ponticello
+//! c=#F6C1F6		i=tremolo-fingered			o=note:27/note:87/note:35		m="Specify ATTACK separately.\nCC03 controls flautando/ponticello cross-fade.\nCC20 controls tremolo cross-fade."
+43 Long XF Trem, Flaut X Pont
+
+// -------------------- TRILLS --------------------
+//! spacer=1
+//! c=#C76933		i=trill-min2				o=note:28/note:89				m="Specify TRANSITION separately"
+48 Flautando Trill min2
+//! c=#C76933		i=trill-maj2				o=note:28/note:90				m="Specify TRANSITION separately"
+49 Flautando Trill maj2
+//! c=#C76933		i=trill-min3				o=note:28/note:91				m="Specify TRANSITION separately"
+50 Flautando Trill min3
+//! c=#C76933		i=trill-maj3				o=note:28/note:92				m="Specify TRANSITION separately"
+51 Flautando Trill maj3

@@ -1,0 +1,48 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Sketch Nylon Guitar
+// CREATOR: Scott Sadowsky
+//
+//! g="Sketch" n="Nylon Guitar"
+//! m="CC1=LFO Vibrato, CC110=Nail Attack Offset, C#5-C6=Percussion"
+//
+//! id=b3eaac25-9c3f-4ee1-9491-04ad94aa9205
+Bank * * Sketch Nylon Guitar
+// ---------------------- LONG ----------------------
+//! c=long 			i=note-whole 		g=1	 	o=note-hold:24
+1 Tirando
+//! c=long 			i=note-whole 		g=1	 	o=note-hold:26
+2 Apoyando
+//! c=long-light		i=harmonics 		g=1	 	o=note-hold:29
+10 Flageolet (Harmonics)
+//! c=long-dark			i=vibrato	 	g=1	 	o=note-hold:31
+16 Vibrato
+// ---------------------- SHORT ---------------------
+//! c=short 			i=note-quarter 		g=1	 	o=note-hold:28
+42 Mute
+// -------------------- TEXTURED --------------------
+//! c=textured			i=legato		g=1	 	o=note-hold:33
+24 Hammer-On/Pull-Off
+//! c=textured 			i=legato		g=1	 	o=note-hold:27
+105 Slow Slide Up
+//! c=fx 			i=legato	 	g=1	 	o=note-hold:25
+106 Fast Slide Up
+//! c=textured 			i=trill		 	g=1	 	o=note-hold:30
+37 Mordent min2
+//! c=textured 			i=trill		 	g=1	 	o=note-hold:32
+38 Mordent maj2
+//! c=textured 			i=legato-tremolo	g=1	 	o=note-hold:34
+44 Triplet
+//! c=textured 			i=legato-runs 		g=1	 	o=note-hold:37
+62 Gissando Up
+//! c=textured 			i=legato-runs 		g=1	 	o=note-hold:39
+63 Glissando Down
+// ----------------------- FX -----------------------
+//! c=fx 			i=fx 			g=1	 	o=note-hold:35
+90 FX
+//! c=fx 			i=fx 			g=1	 	o=note-hold:36
+107 Release 2
+//! c=fx 			i=fx		 	g=1	 	o=note-hold:38
+108 Release Off
+// --------------------- CONTROL --------------------
+//! c=default			i=list		 	g=1	 	o=note-hold:84
+112 Repeat Last Note

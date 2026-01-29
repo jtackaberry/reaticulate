@@ -1,0 +1,47 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: HAVE Audio Balkan Clarinet
+// CREATOR: Scott Sadowsky
+//
+//! g="HAVE Audio" n="Balkan Clarinet"
+//! id=42fe19c1-dbbc-43f1-adb5-c101a4c67889
+Bank * * HAVE Audio - Balkan Clarinet
+// -------------------- LONG --------------------
+//! c=long-light			i=note-whole		 g=1	 		o=note:24
+1 Long
+//! c=long-light			i=note-whole 		g=1	 			o=note:35
+16 Long (Strong Vibrato)
+//! c=long-dark 			i=trill-min2 		g=1 			o=note:25
+37 Long Mordent (min 2)
+//! c=long-dark 			i=trill-maj2 		g=1 			o=note:27
+38 Long Mordent (maj 2)
+//! c=long-dark 			i=trill-min2 		g=1 			o=note:37
+106 Double Mordent (min 2)
+//! c=long-dark 			i=trill-maj2 		g=1 			o=note:38
+107 Double Mordent (maj 2)
+//! c=long 					i=bend-up 			g=1 			o=note:26
+83 Short Gliss Up (Scoop)
+//! c=long 					i=bend-down 		g=1 			o=note:29
+84 Short Gliss Down (Scoop)
+// -------------------- SHORT -------------------
+//! c=short 				i=staccato 			g=1 			o=note:28
+42 Staccato
+//! c=short 				i=staccato 			g=1 			o=note:31
+65 Double Staccato
+//! c=short 				i=staccato 			g=1 			o=note:33
+66 Triple Staccato
+//! c=short-dark 			i=trill-min2 		g=1 			o=note:30
+62 Short Mordent (min 2)
+//! c=short-dark 			i=trill-maj2 		g=1 			o=note:32
+63 Short Mordent (maj 2)
+//! c=short-dark 			i=trill-min3 		g=1 			o=note:34
+64 Short Mordent (min 3)
+// -------------------- FX ----------------------
+//! c=fx 					i=fx 				g=1 			o=note:36
+67 Special Balkan Artic.
+// ------------- PHRASES & DYNAMICS -------------
+//! c=fx 					i=phrase 			g=1 			o=note:39
+108 Balkan Phrase (Tempo Sync)
+//! c=fx 					i=phrase 			g=1 			o=note:40
+109 Approach Nt Gr1 (Tempo Sync)
+//! c=fx 					i=phrase 			g=1 			o=note:41
+112 Approach Nt Gr2 (Tempo Sync)

@@ -91,3 +91,77 @@ Bank * * IRCAM - Cello Solo
 71 Trill maj2
 // -------------------- FX ---------------------
 //! c=fx                i=fortepiano    g=1     o=note:15
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: IRCAM Solo Instruments 2 Violin
+// CREATOR: Scott Sadowsky
+//
+//! g="IRCAM/Solo Instruments 2" n="Violin"
+//! id=0f3e773b-ba27-429a-9880-a2d8165ec617
+Bank * * IRCAM - Violin Solo
+// -------------------- LONG --------------------
+//! c=long i=note-whole g=1	 o=note:24
+1 Ordinario Vibrato (Sustained)
+//! c=long i=note-whole g=1	 o=note:25
+2 Ordinario Non Vibrato (Sustained)
+//! c=long-dark i=tremolo g=1 o=note:26
+11 Tremolo
+//! c=long-dark i=sfz g=1 o=note:28
+9 Sforzando
+// -------------------- SHORT -------------------
+//! c=short i=note-eighth  g=1	 o=note:34
+41 Short (0.5 sec)
+//! c=short i=note-quarter g=1	 o=note:35
+40 Short (1.0 sec)
+//! c=short i=staccato g=1 o=note:29
+12 Staccato
+//! c=short-dark i=note-eighth g=1 o=note:30
+42 Pizzicato
+//! c=short-dark i=note-eighth g=1 o=note:31
+43 Pizzicato Secco
+// -------------------- TRILLS -----------------
+//! c=textured i=trill-min2 g=1 o=note:33
+70 Trill min2
+//! c=textured i=trill-maj2 g=1 o=note:32
+71 Trill maj2
+// -------------------- FX ---------------------
+//! c=fx i=fortepiano g=1 o=note:27
+103 Fortepiano
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: IRCAM Solo Instruments 2 Contrabass
+// CREATOR: Scott Sadowsky
+//
+//! g="IRCAM/Solo Instruments 2" n="Contrabass"
+//! id=32de18a9-9cf2-44e0-b4a4-cce48ec23ad9
+Bank * * IRCAM - Contrabass Solo
+// -------------------- LONG --------------------
+//! c=long 			i=note-whole 	g=1	 	o=note:12
+1 Ordinario (Sustained)
+//! c=long-light 	i=note-whole 	g=1	 	o=note:13
+7 Ordinario (Non Vibrato)
+//! c=long-light 	i=tremolo 		g=1		o=note:14
+11 Tremolo
+//! c=long-dark 	i=sfz 			g=1 	o=note:16
+9 Sforzando
+// -------------------- SHORT -------------------
+//! c=short 		i=note-quarter 		g=1 	o=note:22
+43 0.5 sec
+//! c=short 		i=note-half 		g=1 	o=note:23
+40 1.0 sec
+//! c=short 		i=staccato 		g=1 	o=note:17
+44 Staccato
+//! c=short-light	i=pizz	 		g=1 	o=note:18
+56 Pizzicato
+//! c=short-light	i=pizz	 		g=1 	o=note:19
+41 Pizzicato Secco
+// -------------------- TRILLS -----------------
+//! c=textured 		i=trill-min2 	g=1 	o=note:21
+70 Trill min2
+//! c=textured 		i=trill-maj2 	g=1 	o=note:20
+71 Trill maj2
+// -------------------- FX ---------------------
+//! c=fx 			i=fortepiano 	g=1 	o=note:15
+103 Fortepiano

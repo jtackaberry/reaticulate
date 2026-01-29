@@ -1,0 +1,63 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Chris Hein Solo Strings Cello
+// CREATOR: Scott Sadowsky
+//
+// KEY: c=COLOR	i=ICON g=GROUP o=note:NOTENUMBER
+//
+//! g="Chris Hein/Solo Strings" n="Cello"
+//! id=ae5e4730-a117-4bb0-9c7e-50dc9c45d773
+Bank * * Cello
+//------------------------- LONG -------------------------
+//! c=long-dark		i=note-whole	g=1		o=note:26
+19 Dynamic Expr Long
+//! c=long			i=note-whole	g=1		o=note:25
+1 Sustain
+//! c=long-dark		i=vibrato		g=1		o=note:24
+38 Sustain Vibrato
+//! c=long-dark		i=vibrato		g=1		o=note:21
+44 Accent Vibrato
+//! c=long-dark		i=vibrato-molto	g=1		o=note:23
+16 Lyrical Vibrato
+//! c=long			i=sul-pont		g=1		o=note:38
+18 Ponticello
+//! c=long-light	i=flautando		g=1		o=note:22
+8 Flautando
+//------------------------- SHORT ------------------------
+//! c=short-dark	i=note-half			g=1		o=note:27
+28 Dynamic Expr Short
+//! c=short			i=note-quarter		g=1		o=note:29
+40 Short 1
+//! c=short			i=note-eighth		g=1		o=note:30
+41 Short 4
+//! c=short			i=note-sixteenth	g=1		o=note:31
+43 Short 6
+//! c=short-light	i=pizz				g=1		o=note:28
+14 Pizzicato
+//! c=short-light	i=spiccato			g=1		o=note:32
+42 Spiccato 1
+//! c=short-light	i=spiccato			g=1		o=note:33
+62 Spiccato 4
+//! c=short-light	i=spiccato			g=1		o=note:34
+63 Spiccato 6
+//------------------------- FX+SPECIAL --------------------
+//! c=fx			i=fx				g=1		o=note:37
+13 Flageolet
+//! c=long-dark		i=trill-min2		g=1		o=note:35
+70 Trill min2
+//! c=long-dark		i=trill-maj2		g=1		o=note:36
+71 Trill maj2
+//! c=short			i=ricochet			g=1		o=note:39
+57 Ricochet
+//! c=fx			i=fx				g=1		o=note:41
+89 Repetitions
+//! c=fx			i=rip				g=1		o=note:40
+110 Doit
+//! c=fx			i=fall				g=1		o=note:44
+111 Play Fall
+//! c=fx			i=tremolo			g=1		o=note:45
+15 Play Tremolo
+//! c=fx			i=fall				g=1		o=note:46
+109 Key Vibrato Up
+//! c=fx			i=fx				g=1		o=note:42
+58 Repeat Last Note
+

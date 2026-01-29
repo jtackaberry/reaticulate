@@ -1,0 +1,41 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Strezov Sampling - Afflatus - Chapter I Strings - Violas - CHAMBER VIOLAS
+// CREATOR: Scott Sadowsky
+//
+// NOTE: In order for articulations to work, the following CC values MUST be
+//       set by YOU inside the Kontakt instrument (by right clicking on the
+//       relevant control and selecting "Learn MIDI CC Automation"):
+//       CC80 = Legato Toggle, CC81 = Overlap Toggle, CC82=Play Releases Toggle,
+//       CC83 = Sordino.
+//
+//! g="Strezov Sampling/Afflatus/Chapter I Strings - Violas" n="Chamber Violas"
+//! m="IMPORTANT: You MUST set this VI's CC values as per the comments in the ReaBank code in order to make the articulations work. Pre-defined CCs: CC1=Dynamics, CC11=Expression, CC22=CloseMicVol, CC23=DeccaMicVol, CC24=HallMicVol, CC64=Sustained Notes"
+//! id=48afb3e8-2ff1-4e03-8236-365564bdf7d6
+Bank * * Afflatus Chamber Violas
+//
+//----------------------------------------------------------------------------
+// -------------------------- SUSTAIN
+//! c=long				f=toggle	i=note-whole			g=1		o=cc:64,127
+77 Sustain Pedal On
+//! c=default			f=toggle	i=note-quarter			g=1		o=cc:64,0
+78 Sustain Pedal Off
+// -------------------------- LEGATO
+//! c=legato			f=toggle	i=legato				g=1		o=cc:80,127
+79 Legato On
+//! c=default			f=toggle	i=note-whole				g=1		o=cc:80,0
+80 Legato Off
+// -------------------------- OVERLAPPING NOTES
+//! c=legato			f=toggle	i=dblstop-5th			g=1		o=cc:81,127
+81 Overlapping Notes On
+//! c=default			f=toggle	i=note-whole			g=1		o=cc:81,0
+82 Overlapping Notes Off
+// -------------------------- RELEASES
+//! c=legato			f=toggle	i=plop					g=1		o=cc:82,127
+83 Releases On
+//! c=default			f=toggle	i=note-quarter			g=1		o=cc:82,0
+84 Releases Off
+// -------------------------- SORDINO
+//! c=legato			f=toggle	i=con-sord				g=1		o=cc:83,127
+85 Sordino On
+//! c=default			f=toggle	i=note-whole			g=1		o=cc:83,0
+86 Sordino Off

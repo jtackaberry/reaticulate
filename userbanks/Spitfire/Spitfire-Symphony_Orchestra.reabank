@@ -1,6 +1,12 @@
 //----------------------------------------------------------------------------
 // Source: Missak79 - https://github.com/jtackaberry/reaticulate/issues/246
 //
+// Normalized and corrected by Scott Sadowsky
+//
+// NOTE: the bank ids are different in this version compared to Missak79's original
+// due to the remapped program numbers (which follow Reaticulate's program numbering
+// recommendations).
+
 
 //************************************************************************************
 //Strings: Violins 1: All techniques
@@ -12,131 +18,131 @@ Bank * * Violins 1: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-3 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-4 Long Sul Pont
+18 Long Sul Pont
 
 //"Long Sul Tasto"
-//! c=long i=sul-tasto o=cc:32,17
-5 Long Sul Tasto
+//! c=long i=sul-tasto-super o=cc:32,17
+113 Long Sul Tasto
 
 //"Long Sul G"
 //! c=long i=sul-g o=cc:32,112
-6 Long Sul G
+112 Long Sul G
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-7 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-8 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-9 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-10 Short 1.0
+41 Short 1.0
 
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-11 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-12 Short Brushed CS
+114 Short Brushed CS
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-13 Short Harmonics
+61 Short Harmonics
 
 //"Short CS"
 //! c=short i=staccato-con-sord o=cc:32,47
-14 Short CS
+47 Short CS
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-15 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-16 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-17 Col Legno
+58 Col Legno
 
 //"Long CS Sul Pont"
 //! c=long i=con-sord-sul-pont o=cc:32,19
-18 Long CS Sul Pont
+115 Long CS Sul Pont
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-19 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long (Rachm.)"
 //! c=long i=vibrato o=cc:32,16
-20 Long (Rachm.)
+9 Long (Rachm.)
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-21 Long CS Blend
+116 Long CS Blend
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-22 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-23 Trem Sul Pont
+117 Trem Sul Pont
 
 //"Trem CS MS (150BPM)"
 //! c=long i=tremolo-con-sord o=cc:32,84
-24 Trem CS MS (150BPM)
+118 Trem CS MS (150BPM)
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-25 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-26 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-27 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-28 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Trill (Minor 3rd)"
 //! c=long i=trill-min3 o=cc:32,72
-29 Trill (Minor 3rd
+72 Trill (Minor 3rd
 
 //"Trill (Major 3rd)"
 //! c=long i=trill-maj3 o=cc:32,73
-30 Trill (Major 3rd)
+73 Trill (Major 3rd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-31 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Violins 1: Core techniques
@@ -148,75 +154,71 @@ Bank * * Violins 1: Core techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-3 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-4 Long Sul Pont
-
-//"Long Sul Tasto"
-//! c=long i=sul-tasto o=cc:32,17
-5 Long Sul Tasto
+18 Long Sul Pont
 
 //"Long Sul G"
 //! c=long i=sul-g o=cc:32,112
-6 Long Sul G
+112 Long Sul G
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-7 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-8 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-9 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-10 Short 1.0
+41 Short 1.0
 
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-11 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-12 Short Brushed CS
+113 Short Brushed CS
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-13 Short Harmonics
+61 Short Harmonics
 
 //"Short CS"
 //! c=short i=staccato-con-sord o=cc:32,47
-14 Short CS
+47 Short CS
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-15 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-16 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-17 Col Legno
+58 Col Legno
 
 //************************************************************************************
 //Strings: Violins 1: Decorative techniques
@@ -228,59 +230,59 @@ Bank * * Violins 1: Decorative techniques
 
 //"Long CS Sul Pont"
 //! c=long i=con-sord-sul-pont o=cc:32,19
-0 Long CS Sul Pont
+114 Long CS Sul Pont
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-1 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long (Rachm.)"
 //! c=long i=vibrato o=cc:32,16
-2 Long (Rachm.)
+9 Long (Rachm.)
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-3 Long CS Blend
+115 Long CS Blend
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-4 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-5 Trem Sul Pont
+116 Trem Sul Pont
 
 //"Trem CS MS (150BPM)"
 //! c=long i=tremolo-con-sord o=cc:32,84
-6 Trem CS MS (150BPM)
+117 Trem CS MS (150BPM)
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-7 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-8 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-9 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-10 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Trill (Minor 3rd)"
 //! c=long i=trill-min3 o=cc:32,72
-11 Trill (Minor 3rd
+72 Trill (Minor 3rd
 
 //"Trill (Major 3rd)"
 //! c=long i=trill-maj3 o=cc:32,73
-12 Trill (Major 3rd)
+73 Trill (Major 3rd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-13 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Solo Violin 1: All techniques
@@ -292,27 +294,27 @@ Bank * * Solo Violin 1: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-1 Spiccato
+42 Spiccato
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-2 staccato
+40 staccato
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-3 Pizzicato
+56 Pizzicato
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-4 Short Harmonics
+61 Short Harmonics
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-5 Long Harmonics
+10 Long Harmonics
 
 //************************************************************************************
 //Strings: Violins 2: All techniques
@@ -360,119 +362,119 @@ Bank * * Violas: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-3 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-4 Long Sul Pont
+18 Long Sul Pont
 
 //"Long Sul C"
 //! c=long i=sul-g o=cc:32,112
-5 Long Sul G
+112 Long Sul C
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-6 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-7 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-8 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-9 Short 1.0
+41 Short 1.0
 
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-10 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-11 Short Brushed CS
+113 Short Brushed CS
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-12 Short Harmonics
+61 Short Harmonics
 
 //"Short CS"
 //! c=short i=staccato-con-sord o=cc:32,47
-13 Short CS
+47 Short CS
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-14 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-15 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-16 Col Legno
+58 Col Legno
 
 //"Long CS Sul Pont"
 //! c=long i=con-sord-sul-pont o=cc:32,19
-17 Long CS Sul Pont
+114 Long CS Sul Pont
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-18 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long (Rachm.)"
 //! c=long i=vibrato o=cc:32,16
-19 Long (Rachm.)
+9 Long (Rachm.)
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-20 Long CS Blend
+115 Long CS Blend
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-21 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-22 Trem Sul Pont
+116 Trem Sul Pont
 
 //"Trem CS"
 //! c=long i=tremolo-con-sord o=cc:32,12
-23 Trem CS
+15 Trem CS
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-24 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-25 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-26 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-27 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-28 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Violas: Core techniques
@@ -484,71 +486,71 @@ Bank * * Violas: Core techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-3 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-4 Long Sul Pont
+18 Long Sul Pont
 
 //"Long Sul C"
 //! c=long i=sul-g o=cc:32,112
-5 Long Sul G
+112 Long Sul C
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-6 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-7 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-8 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-9 Short 1.0
+41 Short 1.0
 
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-10 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-11 Short Brushed CS
+113 Short Brushed CS
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-12 Short Harmonics
+61 Short Harmonics
 
 //"Short CS"
 //! c=short i=staccato-con-sord o=cc:32,47
-13 Short CS
+47 Short CS
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-14 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-15 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-16 Col Legno
+58 Col Legno
 
 //************************************************************************************
 //Strings: Violas: Decorative techniques
@@ -560,51 +562,51 @@ Bank * * Violas: Decorative techniques
 
 //"Long CS Sul Pont"
 //! c=long i=con-sord-sul-pont o=cc:32,19
-0 Long CS Sul Pont
+114 Long CS Sul Pont
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-1 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long (Rachm.)"
 //! c=long i=vibrato o=cc:32,16
-2 Long (Rachm.)
+9 Long (Rachm.)
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-3 Long CS Blend
+115 Long CS Blend
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-4 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-5 Trem Sul Pont
+116 Trem Sul Pont
 
 //"Trem CS"
 //! c=long i=tremolo-con-sord o=cc:32,12
-6 Trem CS
+15 Trem CS
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-7 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-8 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-9 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-10 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-11 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Solo Viola: All techniques
@@ -616,27 +618,27 @@ Bank * * Solo Viola: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-1 Spiccato
+42 Spiccato
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-2 staccato
+40 staccato
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-3 Pizzicato
+56 Pizzicato
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-4 Short Harmonics
+61 Short Harmonics
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-5 Long Harmonics
+10 Long Harmonics
 
 //************************************************************************************
 //Strings: Celli: All techniques
@@ -648,131 +650,131 @@ Bank * * Celli: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-3 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-4 Long Sul Pont
+18 Long Sul Pont
 
 //"Long Sul C"
 //! c=long i=sul-g o=cc:32,112
-5 Long Sul G
+112 Long Sul C
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-6 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-7 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-8 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-9 Short 1.0
+41 Short 1.0
 
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-10 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-11 Short Brushed CS
+113 Short Brushed CS
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-12 Short Harmonics
+61 Short Harmonics
 
 //"Short CS"
 //! c=short i=staccato-con-sord o=cc:32,47
-13 Short CS
+47 Short CS
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-14 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-15 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-16 Col Legno
+58 Col Legno
 
 //"Long CS Sul Pont"
 //! c=long i=con-sord-sul-pont o=cc:32,19
-17 Long CS Sul Pont
+114 Long CS Sul Pont
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-18 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long (Rachm.)"
 //! c=long i=vibrato o=cc:32,16
-19 Long (Rachm.)
+9 Long (Rachm.)
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-20 Long CS Blend
+115 Long CS Blend
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-21 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-22 Trem Sul Pont
+117 Trem Sul Pont
 
 //"Trem CS"
 //! c=long i=tremolo-con-sord o=cc:32,12
-23 Trem CS
+12 Trem CS
 
 //"Trem CS MS (150BPM)"
 //! c=long i=tremolo o=cc:32,84
-24 Trem CS MS (150BPM)
+116 Trem CS MS (150BPM)
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-25 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-26 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-27 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-28 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Trill (Minor 3rd)"
 //! c=long i=trill-min2 o=cc:32,72
-29 Trill (Minor 3rd)
+72 Trill (Minor 3rd)
 
 //"Trill (Major 3rd)"
 //! c=long i=trill-maj2 o=cc:32,73
-30 Trill (Major 3rd)
+73 Trill (Major 3rd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-31 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Celli: Core techniques
@@ -784,71 +786,71 @@ Bank * * Celli: Core techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-3 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-4 Long Sul Pont
+18 Long Sul Pont
 
 //"Long Sul C"
 //! c=long i=sul-g o=cc:32,112
-5 Long Sul G
+112 Long Sul C
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-6 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-7 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-8 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-9 Short 1.0
+41 Short 1.0
 
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-10 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-11 Short Brushed CS
+113 Short Brushed CS
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-12 Short Harmonics
+61 Short Harmonics
 
 //"Short CS"
 //! c=short i=staccato-con-sord o=cc:32,47
-13 Short CS
+47 Short CS
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-14 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-15 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-16 Col Legno
+58 Col Legno
 
 //************************************************************************************
 //Strings: Celli: Decorative techniques
@@ -860,63 +862,63 @@ Bank * * Celli: Decorative techniques
 
 //"Long CS Sul Pont"
 //! c=long i=con-sord-sul-pont o=cc:32,19
-0 Long CS Sul Pont
+114 Long CS Sul Pont
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-1 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long (Rachm.)"
 //! c=long i=vibrato o=cc:32,16
-2 Long (Rachm.)
+9 Long (Rachm.)
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-3 Long CS Blend
+115 Long CS Blend
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-4 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-5 Trem Sul Pont
+116 Trem Sul Pont
 
 //"Trem CS"
 //! c=long i=tremolo-con-sord o=cc:32,12
-6 Trem CS
+12 Trem CS
 
 //"Trem CS MS (150BPM)"
 //! c=long i=tremolo o=cc:32,84
-7 Trem CS MS (150BPM)
+117 Trem CS MS (150BPM)
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-8 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-9 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-10 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-11 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Trill (Minor 3rd)"
 //! c=long i=trill-min2 o=cc:32,72
-12 Trill (Minor 3rd)
+72 Trill (Minor 3rd)
 
 //"Trill (Major 3rd)"
 //! c=long i=trill-maj2 o=cc:32,73
-13 Trill (Major 3rd)
+73 Trill (Major 3rd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-14 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Solo Cello: All techniques
@@ -928,23 +930,23 @@ Bank * * Solo Cello: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-1 Spiccato
+42 Spiccato
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-3 Pizzicato
+56 Pizzicato
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-4 Short Harmonics
+61 Short Harmonics
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-5 Long Harmonics
+10 Long Harmonics
 
 //************************************************************************************
 //Strings: Basses: All techniques
@@ -956,95 +958,95 @@ Bank * * Basses: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-1 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-2 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-3 Long Sul Pont
+18 Long Sul Pont
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-4 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-5 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-6 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-7 Short 1.0
+41 Short 1.0
 
 //"Staccato Dig"
 //! c=short i=staccato-dig o=cc:32,49
-8 Staccato Dig
+49 Staccato Dig
 
 //"Short Spicc-Pizz"
 //! c=short i=pizz o=cc:32,41
-9 Short Spicc-Pizz
+113 Short Spicc-Pizz
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-10 Short Harmonics
+61 Short Harmonics
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-11 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-12 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-13 Col Legno
+58 Col Legno
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-14 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long Sul Pont (Dist)"
 //! c=long i=sul-pont o=cc:32,113
-15 Long Sul Pont (Dist)
+114 Long Sul Pont (Dist)
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-16 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-17 Trem Sul Pont
+115 Trem Sul Pont
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-18 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-19 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-20 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-21 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-22 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Basses: Core techniques
@@ -1056,59 +1058,59 @@ Bank * * Basses: Core techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-1 Long Harmonics
+10 Long Harmonics
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-2 Long Flautando
+8 Long Flautando
 
 //"Long Sul Pont"
 //! c=long i=sul-pont o=cc:32,18
-3 Long Sul Pont
+18 Long Sul Pont
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-4 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-5 Spiccato
+42 Spiccato
 
 //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-6 Short 0.5
+40 Short 0.5
 
 //"Short 1.0"
 //! c=short i=tenuto-half o=cc:32,52
-7 Short 1.0
+41 Short 1.0
 
 //"Staccato Dig"
 //! c=short i=staccato-dig o=cc:32,49
-8 Staccato Dig
+49 Staccato Dig
 
 //"Short Spicc-Pizz"
 //! c=short i=pizz o=cc:32,41
-9 Short Spicc-Pizz
+113 Short Spicc-Pizz
 
 //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-10 Short Harmonics
+61 Short Harmonics
 
 //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-11 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-12 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-13 Col Legno
+58 Col Legno
 
 //************************************************************************************
 //Strings: Basses: Decorative techniques
@@ -1120,39 +1122,39 @@ Bank * * Basses: Decorative techniques
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-0 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Long Sul Pont (Dist)"
 //! c=long i=sul-pont o=cc:32,113
-1 Long Sul Pont (Dist)
+114 Long Sul Pont (Dist)
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-2 Tremelo
+11 Tremelo
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-3 Trem Sul Pont
+115 Trem Sul Pont
 
 //"Trem MS (150BPM)"
 //! c=long i=tremolo o=cc:32,81
-4 Trem MS (150BPM)
+81 Trem MS (150BPM)
 
 //"Trem MS (180BPM)"
 //! c=long i=tremolo o=cc:32,82
-5 Trem MS (180BPM)
+82 Trem MS (180BPM)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-6 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-7 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-8 Fx
+90 Fx
 
 //************************************************************************************
 //Strings: Ensembles: All techniques
@@ -1164,71 +1166,71 @@ Bank * * Ensembles: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-2 Long Flautando
+8 Long Flautando
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-3 Long Harmonics
+10 Long Harmonics
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-4 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-5 Spiccato
-
-//"Short 0.5"
+42 Spiccato
+    
+    //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-6 Short 0.5
-
-//"Pizzicato"
+40 Short 0.5
+    
+    //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-7 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-8 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-9 Col Legno
-
-//"Short Harmonics"
+58 Col Legno
+    
+    //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-10 Short Harmonics
-
+61 Short Harmonics
+    
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-11 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-12 Short Brushed CS
+113 Short Brushed CS
 
 //"Spiccato CS"
 //! c=short i=spiccato o=cc:32,47
-13 Spiccato CS
+47 Spiccato CS
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-14 Long CS Blend
+114 Long CS Blend
 
 //"Long Sul Pont"
-//! c=long i=sul-pont o=cc:32,18
-15 Long Sul Pont
+//! c=long i=con-sord-sul-pont o=cc:32,18
+18 Long CS Sul Pont
 
 //"Long Sul String"
 //! c=long i=sul-g o=cc:32,112
-16 Long Sul String
+112 Long Sul String
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
@@ -1236,23 +1238,23 @@ Bank * * Ensembles: All techniques
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-18 Tremelo
+11 Tremelo
 
 //"Trem CS"
 //! c=long i=tremolo-con-sord o=cc:32,12
-19 Trem CS
+12 Trem CS
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-20 Trem Sul Pont
+13 Trem Sul Pont
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-21 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-22 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //************************************************************************************
 //Strings: Ensembles: Core techniques
@@ -1264,59 +1266,59 @@ Bank * * Ensembles: Core techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long CS"
 //! c=long i=con-sord o=cc:32,7
-1 Long CS
+7 Long CS
 
 //"Long Flautando"
 //! c=long i=flautando o=cc:32,8
-2 Long Flautando
+8 Long Flautando
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-3 Long Harmonics
+10 Long Harmonics
 
 //"Marcato Attack"
 //! c=short i=marcato-half o=cc:32,9
-4 Marcato Attack
+52 Marcato Attack
 
 //"Spiccato"
 //! c=short i=spiccato o=cc:32,42
-5 Spiccato
-
-//"Short 0.5"
+42 Spiccato
+    
+    //"Short 0.5"
 //! c=short i=tenuto-eighth o=cc:32,50
-6 Short 0.5
-
-//"Pizzicato"
+40 Short 0.5
+    
+    //"Pizzicato"
 //! c=short i=pizz o=cc:32,56
-7 Pizzicato
+56 Pizzicato
 
 //"Pizzicato Bartok"
 //! c=short i=pizz-bartok o=cc:32,57
-8 Pizzicato Bartok
+57 Pizzicato Bartok
 
 //"Col Legno"
 //! c=short i=col-legno o=cc:32,58
-9 Col Legno
-
-//"Short Harmonics"
+58 Col Legno
+    
+    //"Short Harmonics"
 //! c=short i=staccato-harmonics o=cc:32,61
-10 Short Harmonics
-
+61 Short Harmonics
+    
 //"Short Brushed"
 //! c=short i=spiccato-brushed o=cc:32,48
-11 Short Brushed
+48 Short Brushed
 
 //"Short Brushed CS"
 //! c=short i=spiccato-brushed-con-sord o=cc:32,62
-12 Short Brushed CS
+113 Short Brushed CS
 
 //"Spiccato CS"
 //! c=short i=spiccato o=cc:32,47
-13 Spiccato CS
+47 Spiccato CS
 
 //************************************************************************************
 //Strings: Ensembles: Decorative techniques
@@ -1328,39 +1330,39 @@ Bank * * Ensembles: Decorative techniques
 
 //"Long CS Blend"
 //! c=long i=con-sord-blend o=cc:32,5
-0 Long CS Blend
+114 Long CS Blend
 
 //"Long Sul Pont"
-//! c=long i=sul-pont o=cc:32,18
-1 Long Sul Pont
+//! c=long i=con-sord-sul-pont o=cc:32,18
+18 Long CS Sul Pont
 
 //"Long Sul String"
 //! c=long i=sul-g o=cc:32,112
-2 Long Sul String
+112 Long Sul String
 
 //"Long Super Sul Tasto"
 //! c=long i=sul-tasto-super o=cc:32,114
-3 Long Super Sul Tasto
+17 Long Super Sul Tasto
 
 //"Tremelo"
 //! c=long i=tremolo o=cc:32,11
-4 Tremelo
+11 Tremelo
 
 //"Trem CS"
 //! c=long i=tremolo-con-sord o=cc:32,12
-5 Trem CS
+12 Trem CS
 
 //"Trem Sul Pont"
 //! c=long i=tremolo-sul-pont o=cc:32,13
-6 Trem Sul Pont
+13 Trem Sul Pont
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-7 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-8 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //************************************************************************************
 //Brass: Trumpet Solo: All techniques
@@ -1372,47 +1374,47 @@ Bank * * Trumpet Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long (Muted)"
 //! c=long i=con-sord o=cc:32,7
-1 Long (Muted)
+7 Long (Muted)
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Marcato (Muted)"
 //! c=short i=marcato-quarter o=cc:32,53
-3 Marcato (Muted)
+47 Marcato (Muted)
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-4 Tenuto
+50 Tenuto
 
 //"Tenuto (Muted)"
 //! c=short i=tenuto-eighth o=cc:32,51
-5 Tenuto (Muted)
+113 Tenuto (Muted)
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-6 staccato
+40 staccato
 
 //"staccato (Muted)"
 //! c=short i=staccato o=cc:32,47
-7 staccato (Muted)
+114 staccato (Muted)
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-8 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-9 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-10 Multi Tongued
+75 Multi Tongued
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
@@ -1420,19 +1422,19 @@ Bank * * Trumpet Solo: All techniques
 
 //"Long Mariachi"
 //! c=short i=vibrato-molto o=cc:32,2
-12 Long Mariachi
+115 Long Mariachi
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-13 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-14 Fall
+111 Fall
 
 //"Fx Glissandi"
 //! c=short i=fx o=cc:32,90
-15 Fx Glissandi
+31 Fx Glissandi
 
 //************************************************************************************
 //Brass: Trumpets a2: All techniques
@@ -1444,47 +1446,47 @@ Bank * * Trumpets a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long (Muted)"
 //! c=long i=con-sord o=cc:32,7
-1 Long (Muted)
+7 Long (Muted)
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-5 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-6 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-7 Multi Tongued
+75 Multi Tongued
 
 //"Long Mariachi"
 //! c=short i=vibrato-molto o=cc:32,2
-8 Long Mariachi
+113 Long Mariachi
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-9 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-10 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Trumpets a6: All techniques
@@ -1496,35 +1498,35 @@ Bank * * Trumpets a6: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-6 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-7 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Horn Solo: All techniques
@@ -1536,39 +1538,39 @@ Bank * * Horn Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-1 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-2 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-4 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-5 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-6 Long Flutter
+11 Long Flutter
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-7 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-8 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Horns a2: All techniques
@@ -1580,67 +1582,67 @@ Bank * * Horns a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Long Stopped"
 //! c=long i=stopped  o=cc:32,7
-2 Long Stopped
+7 Long Stopped
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-3 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-4 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-5 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-6 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-7 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-8 Multi Tongued
+75 Multi Tongued
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-9 Long Flutter
+11 Long Flutter
 
 //"Bells up Staccato"
 //! c=short i=staccato o=cc:32,59
-10 Bells up Staccato
+113 Bells up Staccato
 
 //"Bells up Quaver"
 //! c=short i=note-eighth o=cc:32,54
-11 Bells up Quaver
+114 Bells up Quaver
 
 //"Bells up Crotchet"
 //! c=short i=note-quarter o=cc:32,55
-12 Bells up Crotchet
+115 Bells up Crotchet
 
 //"Bells up Long"
 //! c=short i=note-whole o=cc:32,17
-13 Bells up Long
+116 Bells up Long
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-14 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-15 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Horns a6: All techniques
@@ -1652,35 +1654,35 @@ Bank * * Horns a6: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-6 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-7 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Tenor Trombone Solo: All techniques
@@ -1692,59 +1694,59 @@ Bank * * Tenor Trombone Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Long (Muted)"
 //! c=long i=con-sord o=cc:32,7
-2 Long (Muted)
+7 Long (Muted)
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-3 Marcato
+52 Marcato
 
 //"Marcato (Muted)"
 //! c=short i=marcato-quarter o=cc:32,53
-4 Marcato (Muted)
+47 Marcato (Muted)
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-5 Tenuto
+50 Tenuto
 
 //"Tenuto (Muted)"
 //! c=short i=tenuto-eighth o=cc:32,51
-6 Tenuto (Muted)
+113 Tenuto (Muted)
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-7 staccato
+40 staccato
 
 //"staccato (Muted)"
 //! c=short i=staccato o=cc:32,47
-8 staccato (Muted)
+114 staccato (Muted)
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-9 Multi Tongued
+75 Multi Tongued
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-10 Long Flutter
+11 Long Flutter
 
 //"Long Flutter (Muted)"
 //! c=short i=tremolo o=cc:32,12
-11 Long Flutter (Muted)
+115 Long Flutter (Muted)
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-12 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-13 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Tenor Trombones a2: All techniques
@@ -1756,39 +1758,39 @@ Bank * * Tenor Trombones a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Fx Glissandi"
 //! c=short i=fx o=cc:32,90
-6 Fx Glissandi
+31 Fx Glissandi
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-7 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-8 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Trombones a6: All techniques
@@ -1800,35 +1802,35 @@ Bank * * Trombones a6: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-6 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-7 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Bass Trombone Solo: All techniques
@@ -1840,39 +1842,39 @@ Bank * * Bass Trombone Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-6 Long Flutter
+11 Long Flutter
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-7 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-8 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Bass Trombones a2: All techniques
@@ -1884,39 +1886,39 @@ Bank * * Bass Trombones a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-6 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-7 Fall
+111 Fall
 
 //"Fx Glissandi"
 //! c=short i=fx o=cc:32,90
-8 Fx Glissandi
+31 Fx Glissandi
 
 //************************************************************************************
 //Brass: Contrabass Trombone Solo: All techniques
@@ -1928,39 +1930,39 @@ Bank * * Contrabass Trombone Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Long Stopped"
 //! c=long i=stopped  o=cc:32,7
-2 Long Stopped
+7 Long Stopped
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-3 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-4 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-5 staccato
+40 staccato
 
 //"staccato (Muted)"
 //! c=short i=staccato o=cc:32,47
-6 staccato (Muted)
+113 staccato (Muted)
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-7 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-8 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Cimbassi a2: All techniques
@@ -1972,31 +1974,31 @@ Bank * * Cimbassi a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-5 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-6 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Cimbasso Solo: All techniques
@@ -2008,31 +2010,31 @@ Bank * * Cimbasso Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Cuivre"
 //! c=long i=cuivre o=cc:32,9
-1 Long Cuivre
+9 Long Cuivre
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-5 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-6 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Tuba Solo: All techniques
@@ -2044,35 +2046,35 @@ Bank * * Tuba Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Stopped"
 //! c=long i=stopped  o=cc:32,7
-1 Long Stopped
+7 Long Stopped
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Short Stopped"
 //! c=long i=staccato-stopped  o=cc:32,47
-5 Short Stopped
+113 Short Stopped
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-6 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-7 Fall
+111 Fall
 
 //************************************************************************************
 //Brass: Contrabass Tuba Solo: All techniques
@@ -2084,27 +2086,27 @@ Bank * * Contrabass Tuba Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-1 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-2 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //"Rip"
 //! c=short i=rip o=cc:32,100
-4 Rip
+110 Rip
 
 //"Fall"
 //! c=short i=fall o=cc:32,101
-5 Fall
+111 Fall
 
 //************************************************************************************
 //Woodwinds: Piccolo Flute: All techniques
@@ -2116,39 +2118,39 @@ Bank * * Piccolo Flute: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-3 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-4 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-5 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-6 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-7 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-8 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Flute Solo: All techniques
@@ -2160,43 +2162,43 @@ Bank * * Flute Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Hollow"
 //! c=long i=harmonics-natural o=cc:32,8
-3 Long Hollow
+113 Long Hollow
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-4 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-5 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-6 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-7 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-8 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-9 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Flutes a2: All techniques
@@ -2208,55 +2210,55 @@ Bank * * Flutes a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Overblown"
 //! c=long i=tremolo-ghost o=cc:32,9
-3 Long Overblown
+9 Long Overblown
 
 //"Long Hollow"
 //! c=long i=harmonics-natural o=cc:32,8
-4 Long Hollow
+113 Long Hollow
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-5 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-6 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-7 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-8 staccato
+40 staccato
 
 //"Short Overblown"
 //! c=long i=staccato-stopped o=cc:32,49
-9 Short Overblown
+54 Short Overblown
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-10 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-11 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //"Marcato SFZ"
 //! c=short i=staccato-sfz o=cc:32,54
-12 Marcato SFZ
+55 Marcato SFZ
 
 //************************************************************************************
 //Woodwinds: Alto Flute: All techniques
@@ -2268,43 +2270,43 @@ Bank * * Alto Flute: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Long Overblown"
 //! c=long i=tremolo-ghost o=cc:32,9
-3 Long Overblown
+9 Long Overblown
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-4 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-5 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-6 staccato
+40 staccato
 
 //"Short Overblown"
 //! c=long i=staccato-stopped o=cc:32,49
-7 Short Overblown
+54 Short Overblown
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-8 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-9 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Bass Flute: All techniques
@@ -2316,27 +2318,27 @@ Bank * * Bass Flute: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Long Overblown"
 //! c=long i=tremolo-ghost o=cc:32,9
-2 Long Overblown
+9 Long Overblown
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-3 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-4 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-5 staccato
+40 staccato
 
 //************************************************************************************
 //Woodwinds: Oboe Solo: All techniques
@@ -2348,35 +2350,35 @@ Bank * * Oboe Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-2 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-3 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-4 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-5 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-6 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-7 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Oboes a2: All techniques
@@ -2388,27 +2390,27 @@ Bank * * Oboes a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-4 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-5 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Cor Anglais: All techniques
@@ -2420,19 +2422,19 @@ Bank * * Cor Anglais: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-1 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-2 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //************************************************************************************
 //Woodwinds: Clarinet Solo: All techniques
@@ -2444,27 +2446,27 @@ Bank * * Clarinet Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-2 Multi Tongued
+75 Multi Tongued
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-4 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-5 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Clarinets a2: All techniques
@@ -2476,31 +2478,31 @@ Bank * * Clarinets a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-1 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-2 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-3 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-4 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-5 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-6 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Bass Clarinet: All techniques
@@ -2512,23 +2514,23 @@ Bank * * Bass Clarinet: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-1 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-2 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-3 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-4 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Contrabass Clarinet: All techniques
@@ -2540,19 +2542,19 @@ Bank * * Contrabass Clarinet: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-1 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-2 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //************************************************************************************
 //Woodwinds: Bassoon Solo: All techniques
@@ -2564,39 +2566,39 @@ Bank * * Bassoon Solo: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Long Harmonics"
 //! c=long i=harmonics o=cc:32,10
-2 Long Harmonics
+10 Long Harmonics
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-3 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-4 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-5 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-6 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-7 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-8 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: Bassoons a2: All techniques
@@ -2608,35 +2610,35 @@ Bank * * Bassoons a2: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Long Flutter"
 //! c=short i=tremolo o=cc:32,11
-1 Long Flutter
+11 Long Flutter
 
 //"Multi Tongued"
 //! c=short i=multitongued o=cc:32,75
-2 Multi Tongued
+75 Multi Tongued
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-3 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-4 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-5 staccato
+40 staccato
 
 //"Trill (Minor 2nd)"
 //! c=long i=trill-min2 o=cc:32,70
-6 Trill (Minor 2nd)
+70 Trill (Minor 2nd)
 
 //"Trill (Major 2nd)"
 //! c=long i=trill-maj2 o=cc:32,71
-7 Trill (Major 2nd)
+71 Trill (Major 2nd)
 
 //************************************************************************************
 //Woodwinds: ContraBassoon: All techniques
@@ -2648,19 +2650,19 @@ Bank * * ContraBassoon: All techniques
 
 //"Long"
 //! c=long i=note-whole  o=cc:32,1
-0 Long
+1 Long
 
 //"Marcato"
 //! c=short i=marcato-quarter o=cc:32,52
-1 Marcato
+52 Marcato
 
 //"Tenuto"
 //! c=short i=tenuto-eighth o=cc:32,50
-2 Tenuto
+50 Tenuto
 
 //"staccato"
 //! c=short i=staccato o=cc:32,40
-3 staccato
+40 staccato
 
 //************************************************************************************
 //Percussion: Harp
@@ -2672,31 +2674,27 @@ Bank * * Harp
 
 //"Normale"
 //! c=short i=note-eighth  o=cc:32,1
-0 Normale
+1 Normale
 
 //"PDLT"
 //! c=short i=harp-pdlt o=cc:32,18
-1 PDLT
+18 PDLT
 
 //"Flageolet"
 //! c=short i=harmonics-natural-eighth o=cc:32,29
-2 Flageolet
-
-//"staccato"
-//! c=short i=staccato o=cc:32,40
-3 staccato
+10 Flageolet
 
 //"Slid"
 //! c=short i=run-major o=cc:32,2
-4 Slid
+2 Slid
 
 //"Bisbigliando"
 //! c=long i=tremolo o=cc:32,11
-5 Bisbigliando
+11 Bisbigliando
 
 //"Fx"
 //! c=fx i=fx o=cc:32,90
-6 Fx
+90 Fx
 
 //************************************************************************************
 //Percussion: Harp Glissandi
@@ -2708,24 +2706,24 @@ Bank * * Harp Glissandi
 
 //"Whole"
 //! c=short i=legato-portamento  o=cc:32,70
-0 Whole
+113 Whole
 
 //"Minor H"
 //! c=short i=legato-portamento o=cc:32,71
-1 Minor H
+114 Minor H
 
 //"Minor M"
 //! c=short i=legato-portamento o=cc:32,72
-2 Minor M
+115 Minor M
 
 //"Major"
 //! c=short i=legato-portamento o=cc:32,73
-3 Major
+116 Major
 
 //"Pentatonic"
 //! c=short i=legato-portamento o=cc:32,74
-4 Pentatonic
+117 Pentatonic
 
 //"Diminished"
 //! c=short i=legato-portamento o=cc:32,75
-5 Diminished
+118 Diminished
