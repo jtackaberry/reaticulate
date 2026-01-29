@@ -2,7 +2,7 @@
 // VIRTUAL INSTRUMENT: Sampleism Bandoneón
 // CREATOR: Scott Sadowsky
 //
-// https://github.com/jtackaberry/reaticulate/issues/188
+// https://github.com/jtackaberry/reaticulate/issues/241
 //
 // NOTE:    This instrument's articulations can only be triggered by CCs, but
 //          none come pre-assigned. In order for this file to work with
