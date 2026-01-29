@@ -1,70 +1,564 @@
 //----------------------------------------------------------------------------
-// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - a-STUDIO ORCHESTRA
 // CREATOR: Scott Sadowsky
 //
-// NOTE: this file only includes a subset of instruments available in Spitfire Bernard
-// Herrmann Composer Toolkit
-//
-// https://github.com/jtackaberry/reaticulate/issues/243
-// https://github.com/jtackaberry/reaticulate/issues/244
-// https://github.com/jtackaberry/reaticulate/issues/245
-
-
-//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="Flutes and Clarinets"
-//! m="Set patch to UACC"
-//! id=9ed53529-cd37-4c09-a373-bdf58a2b609e
-Bank * * BHCT - Flutes and Clarinets
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="a-Studio Orchestra"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=87525201-8369-4ecc-adcc-d27cee8e9421
+Bank * * BHCT - a-Studio Orchestra
 // -------------------- LONG --------------------
-//! c=legato	 		i=legato			g=1	 	o=cc:32,20
-20 Legato
 //! c=long 				i=note-whole		g=1	 	o=cc:32,1
 1 Long
-//! c=long 				i=harmonics-natural	g=1	 	o=cc:32,3
-3 Long (Octave)
-
 // -------------------- SHORT -------------------
-//! c=short 			i=note-quarter		g=1	 	o=cc:32,40
+//! c=short 				i=note-quarter		g=1	 	o=cc:32,40
 40 Short
-//! c=short 			i=harmonics-natural	g=1	 	o=cc:32,45
-45 Short (Octave)
-
 // -------------------- FX ----------------------
-//! c=fx		 			i=trill-min2 	g=1	 	o=cc:32,70
-70 Trill (min2)
-//! c=fx		 			i=trill-maj2 	g=1	 	o=cc:32,71
-71 Trill (maj2)
+//! c=fx	 			i=note-whole		g=1	 	o=cc:32,123
+123 Chords (Common)
+//! c=fx		 			i=rip	 		g=1	 	o=cc:32,90
+90 Exp Clusters
+//! c=fx		 			i=rip 			g=1	 	o=cc:32,91
+91 Cluster Stabs
+//! c=fx		 			i=rip	 		g=1	 	o=cc:32,92
+92 Slides
+//! c=fx		 			i=rip 			g=1	 	o=cc:32,93
+93 String Slides
+//! c=fx		 			i=fx	 			g=1	 	o=cc:32,94
+94 Cluster Swells
+//! c=fx		 			i=fx 			g=1	 	o=cc:32,95
+95 Chatter
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - b-HIGH STRINGS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="b-High Strings"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=07bd40d8-de2c-4650-9f14-18fb043bebff
+Bank * * BHCT - b-High Strings
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=legato				g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,50
+50 Short (0.5 sec)
+//! c=short 				i=pizz				g=1	 	o=cc:32,56
+56 Pizzicato
+// -------------------------------- TEXTURE ---------------------------------
+//! c=textured	 			i=trill-min2			g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured	 			i=trill-maj2			g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=col-legno			g=1	 	o=cc:32,58
+58 Col Legno
 
 
 //----------------------------------------------------------------------------
-//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="Piccolo and Flutes"
-//! m="Set patch to UACC"
-//! id=f2c4ebda-6d28-4f1a-95ab-93ab1b6aa095
-Bank * * BHCT - PICCOLO AND FLUTES
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - c-HIGH STRINGS OCTAVES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="c-High Strings Octaves"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=b74f1a8e-eb78-4269-803c-0e51b0dc1477
+Bank * * BHCT - c-High Strings Octaves
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=con-sord			g=1	 	o=cc:32,7
+7 Long (Con Sordino)
+//! c=long 				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+// -------------------------------- TEXTURED --------------------------------
+//! c=textured	 			i=trill-min2			g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured	 			i=trill-maj2			g=1	 	o=cc:32,71
+71 Trill maj2
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - d-HIGH STRINGS HALF SECTION
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="d-High Strings Half Section"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=8fd4acdd-de02-4dcf-823f-122ac2acf2c2
+Bank * * BHCT - d-High Strings Half Section
+// -------------------------------- LONG ------------------------------------
+//! c=long 					i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 					i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long-dark				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+//! c=long-light				i=con-sord			g=1	 	o=cc:32,7
+7 Long (Con Sordino)
+//! c=long-light				i=flautando			g=1	 	o=cc:32,8
+8 Long (Flautando)
+
+// -------------------------------- SHORT -----------------------------------
+//! c=short 					i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+//! c=short-light				i=staccato-con-sord		g=1	 	o=cc:32,47
+47 Spiccato (Con Sordino)
+//! c=short 					i=note-quarter			g=1	 	o=cc:32,50
+50 Short (0.5 sec)
+// -------------------------------- FX --------------------------------------
+//! c=fx						i=fx					g=1	 	o=cc:32,92
+92 FX: Chatter
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - e-LOW STRINGS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="e-Low Strings"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=53cdfc64-3f2b-4651-a0bf-a841d490e63a
+Bank * * BHCT - e-Low Strings
+// -------------------------------- LONG ------------------------------------
+//! c=legato 				i=note-whole			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=legato				g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=con-sord			g=1	 	o=cc:32,7
+7 Con Sordino
+//! c=long 				i=flautando			g=1	 	o=cc:32,8
+8 Flautando
+//! c=long 				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=spiccato			g=1	 	o=cc:32,42
+42 Spiccato
+//! c=short 				i=pizz				g=1	 	o=cc:32,56
+56 Pizzicato
+//! c=short 				i=pizz-bartok			g=1	 	o=cc:32,57
+57 Bartok Pizzicato
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=col-legno			g=1	 	o=cc:32,58
+58 Col Legno
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - f-LOW STRINGS + HORNS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="f-Low Strings + Horns"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=d34d4d97-3106-4670-a93a-d2b101cbfafb
+Bank * * BHCT - f-Low Strings + Horns
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=legato				g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=con-sord			g=1	 	o=cc:32,7
+7 Con Sordino
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short 				i=pizz				g=1	 	o=cc:32,56
+56 Pizzicato
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=col-legno			g=1	 	o=cc:32,58
+58 Col Legno
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - g-LOW STRINGS + TROMBONES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="g-Low Strings + Trombones"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=a8118795-88b3-4687-815d-b85186aa10ed
+Bank * * BHCT - g-Low Strings + Trombones
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=tremolo				g=1	 	o=cc:32,11
+11 Tremolo
+//! c=long 				i=con-sord			g=1	 	o=cc:32,7
+7 Con Sordino
+//! c=long 				i=con-sord-sul-pont		g=1	 	o=cc:32,19
+19 Long Con Sordino Sul Pont
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short 				i=con-sord-sul-pont		g=1	 	o=cc:32,55
+55 Short Con Sordino Sul Pont
+
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - h-PICCOLO + FLUTES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="h-Piccolo + Flutes"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=d51a6ce4-60d2-4413-8ed0-f16ea6c83ba4
+Bank * * BHCT - h-Piccolo + Flutes
 // -------------------- LONG --------------------
 //! c=legato	 		i=legato			g=1	 	o=cc:32,20
 20 Legato
-//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+//! c=long 			i=note-whole		g=1	 	o=cc:32,1
 1 Long
 // -------------------- SHORT -------------------
 //! c=short 			i=note-quarter		g=1	 	o=cc:32,40
 40 Short
 
-
 //----------------------------------------------------------------------------
-//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="Trumpet and Xylophone"
-//! m="Set patch to UACC"
-//! id=eed68bb7-c3ac-407a-9b43-21017a6184f7
-Bank * * BHCT - Trumpet and Xylophone
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - i-CONCERT FLUTES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="i-Concert Flutes"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=d5eb1809-5123-49a3-849c-e29fa0f04054
+
+Bank * * BHCT - i-Concert Flutes
 // -------------------- LONG --------------------
+//! c=legato	 			i=legato			g=1	 	o=cc:32,20
+20 Legato
 //! c=long 				i=note-whole		g=1	 	o=cc:32,1
 1 Long
-//! c=long 				i=harmonics-natural	g=1	 	o=cc:32,3
+//! c=long 				i=tremolo			g=1	 	o=cc:32,11
+11 Long (Flutter)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+// -------------------- TEXTURED ----------------------
+//! c=textured		 		i=trill-min2 		g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured		 		i=trill-maj2 		g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------- FX ----------------------------
+//! c=fx			 		i=rip			g=1	 	o=cc:32,90
+90 FX: Rips
+//! c=fx			 		i=phrase			g=1	 	o=cc:32,92
+92 FX: Upper Mordant Min
+//! c=fx			 		i=phrase			g=1	 	o=cc:32,91
+91 FX: Upper Mordant Maj
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - j-MIXED FLUTES
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="j-Mixed Flutes"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=4fc3fa0d-7e45-48d3-b2da-cbee49c79651
+Bank * * BHCT - j-Mixed Flutes
+// -------------------- LONG --------------------
+//! c=legato	 			i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 				i=note-whole		g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=tremolo			g=1	 	o=cc:32,11
+11 Long (Flutter)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter		g=1	 	o=cc:32,40
+40 Short
+// -------------------- TEXTURED ----------------------
+//! c=textured		 		i=trill-min2 		g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured		 		i=trill-maj2 		g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------- FX ----------------------------
+//! c=fx			 		i=fx				g=1	 	o=cc:32,90
+90 FX 1
+//! c=fx			 		i=fx				g=1	 	o=cc:32,91
+91 FX 2
+// -------------------- CHORDS ------------------------
+//! c=textured		 		i=list			g=1	 	o=cc:32,123
+123 Chords
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - k-FLUTES + CLARINETS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="k-Flutes + Clarinets"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=9ed53529-cd37-4c09-a373-bdf58a2b609e
+Bank * * BHCT - k-Flutes + Clarinets
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato			g=1	 	o=cc:32,20
+20 Legato
+//! c=long 			i=note-whole		g=1	 	o=cc:32,1
+1 Long
+//! c=long 			i=harmonics-natural	g=1	 	o=cc:32,3
 3 Long (Octave)
 // -------------------- SHORT -------------------
 //! c=short 			i=note-quarter		g=1	 	o=cc:32,40
 40 Short
-//! c=short-light		i=con-sord			g=1	 	o=cc:32,47
-47 Short (Muted)
 //! c=short 			i=harmonics-natural	g=1	 	o=cc:32,45
 45 Short (Octave)
+// -------------------- FX ----------------------
+//! c=fx		 		i=trill-min2 	g=1	 	o=cc:32,70
+70 Trill min2
+//! c=fx		 		i=trill-maj2 	g=1	 	o=cc:32,71
+71 Trill maj2
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - l-LOW WINDS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="l-Low Winds"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=fb9432a5-9669-4f33-be58-41b31e0de4ac
+Bank * * BHCT - l-Low Winds
+// -------------------- LONG --------------------
+//! c=legato	 		i=legato				g=1	 	o=cc:32,20
+20 Legato
+//! c=long 			i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 			i=harmonics-natural		g=1	 	o=cc:32,3
+3 Long (Octave)
+// -------------------- SHORT -------------------
+//! c=short 			i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short 			i=harmonics-natural		g=1	 	o=cc:32,45
+45 Short (Octave)
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - m-COR ANGLAIS, CLARINET + TRUMPET
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="m-Cor Anglais, Clarinet + Trumpet"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=dd832e78-dce1-4804-bef7-282e324f221a
+Bank * * BHCT - m-Cor Anglais, Clarinet + Trumpet
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------------------- TEXTURED --------------------------------
+//! c=textured	 			i=trill-min2 			g=1	 	o=cc:32,70
+70 Trill min2
+//! c=textured	 			i=trill-maj2 			g=1	 	o=cc:32,71
+71 Trill maj2
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=trill-maj2 			g=1	 	o=cc:32,90
+90 FX (Chatter)
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - n-OBOE, BASSOONS + HORNS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="n-Oboe, Bassoons + Horns"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=0bbc210c-4deb-43c7-b16b-33b896edf53e
+Bank * * BHCT - n-Oboe, Bassoons + Horns
+// -------------------------------- LONG ------------------------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------------------- SHORT -----------------------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------------------- FX --------------------------------------
+//! c=fx		 			i=fx		 			g=1	 	o=cc:32,90
+90 FX (Chatter)
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - o-TRUMPET + XYLOPHONE
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="o-Trumpet + Xylophone"
+//! m="Set patch to UACC\nIMPORTANT NOTE: This patch contains an error: CC47 is assigned by default to both Short (Muted) and Short (Oct. Muted). You must manually set Short (Oct. Muted) to CC48 in order for it to work.\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=eed68bb7-c3ac-407a-9b43-21017a6184f7
+Bank * * BHCT - o-Trumpet + Xylophone
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=harmonics-natural		g=1	 	o=cc:32,3
+3 Long (Octave)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short-light			i=con-sord			g=1	 	o=cc:32,47
+47 Short (Muted)
+//! c=short 				i=harmonics-natural		g=1	 	o=cc:32,45
+45 Short (Octave)
+//! c=short 				i=pizz-con-sord		g=1	 	o=cc:32,48
+48 Short (Octave Muted)
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - p-HORNS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="p-Horns"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=b7614fd1-8433-4ef1-9c6d-77259ee624f8
+Bank * * BHCT - p-Horns
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------- CHORDS ------------------
+//! c=textured 			i=list				g=1	 	o=cc:32,123
+123 Chords
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - q-MID BRASS
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="q-Mid Brass"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=da7b0a88-6c91-4a9c-8153-0258f9853b1b
+Bank * * BHCT - q-Mid Brass
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------- FX ----------------------
+//! c=fx		 			i=fx					g=1	 	o=cc:32,90
+90 FX: Chatter
+//! c=fx		 			i=fall				g=1	 	o=cc:32,91
+91 FX: Falls
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - r-TROMBONES
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="r-Trombones"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=adb3bc6b-43e6-41db-822c-7fe11fec4175
+Bank * * BHCT - r-Trombones
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=con-sord			g=1	 	o=cc:32,7
+7 Long (Muted)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+//! c=short 				i=staccato-con-sord		g=1	 	o=cc:32,47
+47 Short (Muted)
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - s-TROMBONES + TIMPANI
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="s-Trombones + Timpani"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=8c24ddbd-cda1-4af0-bd69-2fa7b97e6fd5
+Bank * * BHCT - s-Trombones + Timpani
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - t-HARP + CELESTE
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="t-Harp + Celeste"
+//! m="Set patch to UACC\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=f8a68e27-757c-4da9-b69e-a5aa5151a517
+Bank * * BHCT - t-Harp + Celeste
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------- CHORDS -----------------
+//! c=textured				i=list				g=1	 	o=cc:32,123
+123 Chords (Common)
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - u-HARP + VIBRAPHONE
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="u-Harp + Vibraphone"
+//! m="Set patch to UACC.\nIMPORTANT NOTE: This patch comes with a defective configuration: all three short articulations are assigned to CC40! To make it work with this bank, you must manually assign Short (Vibes On) to CC41 and Hotrods (Vibes Off) to CC42.\nCC1=DynamicLayer, CC11=Expression/Volume, CC15=EmotionalIntensity, CC16=LegatoIntervalSpeed, CC17=ReleaseLength, CC18=Tightness, CC21=VibratoAmount."
+//! id=051d9001-ca9f-46b5-82ec-8927b9f231ae
+Bank * * BHCT - u-Harp + Vibraphone
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long
+//! c=long 				i=legato-bowed			g=1	 	o=cc:32,10
+10 Long (Bowed)
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short (Vibes Off)
+//! c=short 				i=vibrato				g=1	 	o=cc:32,41
+41 Short (Vibes On)
+//! c=short-light			i=note-quarter			g=1	 	o=cc:32,42
+42 Hotrods (Vibes Off)
+// -------------------- CHORDS -----------------
+//! c=textured				i=list				g=1	 	o=cc:32,123
+123 Chords (Common)
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - v-ONDES MARTENOT
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="v-Ondes Martenot"
+//! m="Set patch to UACC"
+//! id=157ee89d-e081-48a5-bf09-fc6b3decacec
+Bank * * BHCT - v-Ondes Martenot
+// -------------------- LONG --------------------
+//! c=long 				i=note-whole			g=1	 	o=cc:32,1
+1 Long Ondes
+//! c=long 				i=note-whole			g=1	 	o=cc:32,2
+2 Ondes Gong
+//! c=long 				i=note-whole			g=1	 	o=cc:32,3
+3 Ondes Tutti
+//! c=long 				i=note-whole			g=1	 	o=cc:32,4
+4 Ondes Wind Str.
+// -------------------- SHORT -------------------
+//! c=short 				i=note-quarter			g=1	 	o=cc:32,40
+40 Short
+// -------------------- FX ----------------------
+//! c=fx					i=trill				g=1	 	o=cc:32,90
+90 FX:Trills
+//! c=fx					i=list				g=1	 	o=cc:32,91
+91 FX: Birds
+
+// Bank w is Percussion, but it has not articulations to control, and so there is no ReaBank file for it.
+
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Spitfire - Bernard Herrmann Composer Toolkit - x-TIMPANI
+// CREATOR: Scott Sadowsky
+//
+//! g="Spitfire/Bernard Herrmann Composer Toolkit" n="x-Timpani"
+//! m="Set patch to UACC.\nIMPORTANT NOTE: Seven of this patch's nine articulations are mistakenly assigned to UACC 40, and two are mistakenly assigned to UACC 1. In order to use this bank, you must assign UACCs 40-48 to the nine articulations in order, from left to right in the GUI (e.g. Hit (Soft Stick)=40, Hit damped (Soft Stick)=41 .. Hit damped (hotrod)=48)."
+//! id=39b69dd8-3265-4b82-8203-01c52800cb57
+Bank * * BHCT - x-Timpani
+// -------------------- HITS --------------------
+//! c=short-dark 			i=note-eighth			g=1	 	o=cc:32,43
+43 Hit (Hard Stick)
+//! c=short-dark			i=note-eighth			g=1	 	o=cc:32,44
+44 Hit Damped (Hard Stick)
+//! c=short 				i=note-eighth			g=1	 	o=cc:32,40
+40 Hit (Soft Stick)
+//! c=short 				i=note-eighth			g=1	 	o=cc:32,41
+41 Hit Damped (Soft Stick)
+//! c=short 				i=note-eighth			g=1	 	o=cc:32,45
+45 Hit x Damped (HD)
+//! c=short-light			i=note-eighth			g=1	 	o=cc:32,47
+47 Hit (Hotrod)
+//! c=short-light			i=note-eighth			g=1	 	o=cc:32,48
+48 Hit Damped (Hotrod)
+// -------------------- ROLLS -------------------
+//! c=long-dark			i=legato-runs			g=1	 	o=cc:32,46
+46 Roll (Hard Stick)
+//! c=long-light			i=legato-runs			g=1	 	o=cc:32,42
+42 Roll (Soft Stick)
 
