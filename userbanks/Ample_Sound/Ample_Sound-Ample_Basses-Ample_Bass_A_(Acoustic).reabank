@@ -1,0 +1,48 @@
+//----------------------------------------------------------------------------
+// VIRTUAL INSTRUMENT: Ample Sound/Ample Basses/Ample Bass A (Acoustic)
+// CREATOR: Scott Sadowsky
+//
+//! g="Ample Sound/Ample Basses" n="Ample Bass A (Acoustic)"
+//! m="Note that Auto-Legato has a software bug - it can't be turned off by KS or CC, only by clicking on the button in the GUI.\nThe tooltips contain much useful information."
+//! id=1f2d8953-e556-43af-bdbb-82c5200b04cf
+Bank * * Ample Bass A (Acoustic)
+//
+//---------------------- ARTICULATIONS ----------------------
+//! c=long				i=note-whole		g=1		o=note:24
+1 Sustain (vel 1-126) & Pop (vel 127)
+
+//! c=legato				    i=legato      	g=1		o=note:99,120
+20 Auto-Legato Mode ON
+
+//! c=default				   i=legato         g=1		o=note:99,0
+21 Auto-Legato Mode OFF
+
+//! c=long-light		       i=harmonics		g=1		o=note:25
+10 Natural Harmonic
+
+//! c=short-light		      i=spiccato		g=1		o=note:26
+47 Palm Mute
+
+//! c=short-light		      i=spiccato		g=1		o=note:24/note:26  m="High-velocity notes trigger sustain; low-velocity notes trigger palm mutes."
+48 Vel sets Sustain/Mute
+
+//! c=textured			      i=legato-runs		g=1		o=note:27    m="If placed before a note, it triggers a slide-in (fret 2 to highest).\nIf placed during a note, it triggers a slide-out (fret 3 to highest.\nArticulation reverts to sustain afterwards."
+25 Slide In & Out2
+
+//! c=textured			      i=legato			g=1		o=note:29   m="The articulation must be placed before the first note. The notes must overlap."
+107 HO/PO
+
+//! c=textured			      i=legato-runs		g=1		o=note:28   m="Articulation must be before start note to work.\nWith long slides, note velocity determines speed of slide.\nAll slide types revert to previous articulation."
+23 Legato Slide (Poly Legato)
+
+//! c=short-dark		     i=staccato-dig		g=1		o=note:31
+49 Slap
+
+//! c=short-dark		     i=staccato-dig		g=1		o=note:31/note:33    m="With this articulataion, notes on strings 1 & 2 are automatically pops amd those on strings 3 & 4 are slaps.""
+50 Auto Slap/Pop
+
+//! c=fx		               i=fx           	g=1		o=note:104,120
+62 Open Strings First ON
+
+//! c=default		          i=fx           	g=1		o=note:104,10
+63 Open Strings First OFF
