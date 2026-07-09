@@ -1,0 +1,1768 @@
+//----------------------------------------------------------------------------
+// Source: shawnb61 - https://forum.cockos.com/member.php?u=218634
+//
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Ensemble" n="Violins"
+//! m="For use with a multi patch, part/chan 1 = 14 Violins Multi KS, parts 2-16 will map by channel"
+//! id=05737f31-5020-49d1-bea9-5e11f8674559
+Bank * * Ensemble Violins
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain A
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain up
+//! c=legato i=note-whole o=note-hold:26
+4 Sustain ff
+//! c=legato i=note-whole o=note-hold:27
+5 No Vib ff
+//! c=legato i=note-whole o=note-hold:28
+6 No Vib d-u
+//! c=legato i=note-whole o=note-hold:29
+7 Sustain d-u
+//! c=legato-light i=note-quarter o=note-hold:30
+34 Detache 0,4
+//! c=legato-light i=note-quarter o=note-hold:31
+36 Detache 0,6
+//! c=legato-light i=note-quarter o=note-hold:32
+37 Detache 1,9
+//! c=legato-light i=note-quarter o=note-hold:33
+38 Detache 2,0
+//! c=legato-light i=note-quarter o=note-hold:34
+39 Detache 3,5
+//! c=legato-dark i=vibrato o=note-hold:35
+16 Espressivo
+//! c=legato-dark i=staccato o=note-hold:36
+44 Staccato 0,3
+//! c=legato-dark i=staccato o=note-hold:37
+52 Staccato Forz
+//! c=legato-dark i=pizz o=note-hold:38
+56 Pizzicato
+//! c=legato-dark i=sul-pont o=note-hold:39
+18 SulPoint
+//! c=legato-dark i=tremolo o=note-hold:40
+11 Tremolo
+//! c=legato-dark i=legato o=note-hold:41
+31 Legato Slow
+//! c=legato-dark i=legato o=note-hold:42
+32 Legato Norm
+//! c=legato-dark i=legato o=note-hold:43
+33 Legato Fast
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain ff LP
+//! c=long-light i=tremolo o=@5
+13 Tremolo p
+//! c=long-light i=sul-pont o=@7
+19 SulPoint p
+//! c=long-light i=legato o=@8
+20 Legato Fast mf Alt
+//! c=long-light i=note-quarter o=@9
+35 Detache 3,5 ff d LP
+//! c=long-light i=spiccato o=@10
+42 Spiccato mf
+//! c=long-light i=staccato o=@11
+45 Staccato Short
+//! c=long-dark i=pizz-bartok o=@13
+57 Pizzicato p
+//! c=long-dark i=trill-min2 o=@14
+70 Trills Half Step mp
+//! c=long-dark i=trill-maj2 o=@15
+71 Trills WholeStep mf
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Ensemble" n="Violas"
+//! m="For use with a multi patch, part/chan 1 = 8 Violas Multi KS, parts 2-16 will map by channel"
+//! id=881bc957-9669-4cf7-b29a-d04a2a5cae6d
+Bank * * Ensemble Violas
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain mf
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain pp
+//! c=legato i=note-whole o=note-hold:26
+4 Sustain p
+//! c=legato i=note-whole o=note-hold:27
+5 Sustain ff
+//! c=legato i=note-whole o=note-hold:28
+6 Sustain d-u
+//! c=legato i=note-whole o=note-hold:29
+7 Detache 0,8
+//! c=legato-light i=note-quarter o=note-hold:30
+34 Detache 1,4
+//! c=legato-light i=note-quarter o=note-hold:31
+36 Detache 2,5
+//! c=legato-light i=note-quarter o=note-hold:32
+37 Detache pp
+//! c=legato-light i=note-quarter o=note-hold:33
+38 Espressivo pp
+//! c=legato-light i=note-quarter o=note-hold:34
+39 Espressivo mf
+//! c=legato-dark i=vibrato o=note-hold:35
+16 Pizzicato
+//! c=legato-dark i=staccato o=note-hold:36
+44 Staccato mf
+//! c=legato-dark i=staccato o=note-hold:37
+52 Staccato d-u
+//! c=legato-dark i=pizz o=note-hold:38
+56 Sul Pont mf
+//! c=legato-dark i=sul-pont o=note-hold:39
+18 Tremolo
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain p LP
+//! c=long-light i=tremolo o=@5
+13 Tremolo pp LP
+//! c=long-light i=vibrato o=@6
+17 Espressivo pp
+//! c=long-light i=sul-pont o=@7
+19 SulPoint pp
+//! c=long-light i=note-quarter o=@9
+35 Detache Vivaldi
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato mf
+//! c=long-dark i=pizz-bartok o=@13
+57 Pizzicato p
+//! c=long-dark i=trill o=@15
+71 Trills 0,3
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Ensemble" n="Cellos"
+//! m="For use with a multi patch, part/chan 1 = 5 Cellos Multi KS, parts 2-16 will map by channel"
+//! id=53dc29d3-9f34-4659-ae72-8194ee2aa996
+Bank * * Ensemble Cellos
+//! c=legato i=note-whole o=note-hold:84
+1 Sustain A
+//! c=legato i=note-whole o=note-hold:85
+3 Sustain B
+//! c=legato i=note-whole o=note-hold:86
+4 Espressivo A
+//! c=legato i=note-whole o=note-hold:87
+5 Espressivo B
+//! c=legato i=note-whole o=note-hold:88
+6 Legato
+//! c=legato i=note-whole o=note-hold:89
+7 Legato Fast
+//! c=legato i=note-quarter o=note-hold:90
+34 Legato Faster
+//! c=legato i=note-quarter o=note-hold:91
+36 Sustain NV
+//! c=legato-light i=note-quarter o=note-hold:92
+37 Detache 1,5
+//! c=legato-light i=note-quarter o=note-hold:93
+38 Detache 1,9
+//! c=legato-light i=note-quarter o=note-hold:94
+39 Detache 2,3
+//! c=legato-light i=vibrato o=note-hold:95
+16 Detache 3,5
+//! c=legato-dark i=staccato o=note-hold:96
+44 Staccato 0,8
+//! c=legato-dark i=staccato o=note-hold:97
+52 Staccato d-u
+//! c=legato-dark i=pizz o=note-hold:98
+56 Staccato Short
+//! c=legato-dark i=sul-pont o=note-hold:99
+18 Flautado
+//! c=legato-dark i=tremolo o=note-hold:100
+11 Sul Point
+//! c=legato-dark i=legato o=note-hold:101
+31 Sul Point ff
+//! c=legato-dark i=legato o=note-hold:102
+32 Sul Point p
+//! c=legato-dark i=legato o=note-hold:103
+33 Tremolo p
+//! c=legato-dark i=legato o=note-hold:104
+51 Tremolo mf
+//! c=legato-dark i=legato o=note-hold:105
+53 Pizzicato
+//! c=legato-dark i=legato o=note-hold:106
+54 Legato Slow
+//! c=legato-dark i=legato o=note-hold:107
+55 Legato Mid-Fast
+//! c=legato-dark i=legato o=note-hold:108
+57 Legato Faster
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain d LP
+//! c=long i=flautando o=@3
+8 Flautando u
+//! c=long-light i=tremolo o=@5
+13 Tremolo f LP
+//! c=long-light i=vibrato o=@6
+17 Espressivo Dark
+//! c=long-light i=sul-pont o=@7
+19 SulPoint Tremolo f
+//! c=long-light i=legato o=@8
+20 Legato Faster alt
+//! c=long-light i=note-quarter o=@9
+35 Detache ff
+//! c=long-light i=spiccato o=@10
+42 Spiccato
+//! c=long-light i=staccato o=@11
+45 Staccato Alt 1
+//! c=long-dark i=pizz-bartok o=@13
+57 Pizzicato mf 2
+//! c=long-dark i=trill-min2 o=@14
+70 Trills Half Step p
+//! c=long-dark i=trill-maj2 o=@15
+71 Trills Whole Step p
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Ensemble" n="Basses"
+//! m="For use with a multi patch, part/chan 1 = 4 Basses Multi KS, parts 2-16 will map by channel"
+//! id=d2009468-6a79-4219-9aaf-d37c34a1c321
+Bank * * Ensemble Basses
+//! c=legato i=note-whole o=note-hold:72
+1 Sustain mp
+//! c=legato i=note-whole o=note-hold:73
+3 Sustain pp
+//! c=legato i=note-whole o=note-hold:74
+4 Sustain mf
+//! c=legato i=note-whole o=note-hold:75
+5 Sustain ff
+//! c=legato-light i=note-whole o=note-hold:76
+6 Detache 0,7 d-u
+//! c=legato-light i=note-whole o=note-hold:77
+7 Detache 2,5
+//! c=legato-light i=note-quarter o=note-hold:78
+34 Detache p
+//! c=legato-light i=note-quarter o=note-hold:79
+36 Detache mf
+//! c=legato-light i=note-quarter o=note-hold:80
+37 Detache short mp
+//! c=legato-light i=note-quarter o=note-hold:81
+38 Detache short mf
+//! c=legato-light i=note-quarter o=note-hold:82
+39 Detache Vivaldi
+//! c=legato-dark i=vibrato o=note-hold:83
+16 Staccato pp
+//! c=legato-dark i=staccato o=note-hold:84
+44 Staccato Forz pp
+//! c=legato-dark i=staccato o=note-hold:85
+52 Staccato Forz mf
+//! c=legato-dark i=pizz o=note-hold:86
+56 Staccato short d-u
+//! c=legato-dark i=sul-pont o=note-hold:87
+18 Pizzicato p
+//! c=legato-dark i=tremolo o=note-hold:88
+11 Pizzicato mf
+//! c=legato-dark i=legato o=note-hold:89
+31 Sul Pont p
+//! c=legato-dark i=legato o=note-hold:90
+32 Sul Pont mf
+//! c=legato-dark i=legato o=note-hold:91
+33 Tremolo p
+//! c=legato-dark i=legato o=note-hold:92
+51 Tremolo mf
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain mf LP
+//! c=long-light i=tremolo o=@5
+13 Tremolo mf LP
+//! c=long-light i=sul-pont o=@7
+53 SulPoint pp
+//! c=long-light i=note-quarter o=@9
+35 Detache 0,6 d
+//! c=long-light i=staccato o=@11
+45 Staccato Alt Short
+//! c=long-dark i=pizz-bartok o=@13
+57 Pizzicato p
+//! c=long-dark i=trill o=@14
+70 Trills 0,3
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Solo" n="Violin"
+//! m="For use with a multi patch, part/chan 1 = Violin Multi KS, parts 2-16 will map by channel"
+//! id=4c1e4141-381f-4bb5-abc9-5ddeb0640e11
+Bank * * Solo Violin
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Detache
+//! c=legato i=note-whole o=note-hold:26
+4 Legato Normal
+//! c=legato i=note-whole o=note-hold:27
+5 Legato Fast
+//! c=legato-light i=note-whole o=note-hold:28
+6 Staccato
+//! c=legato-light i=note-whole o=note-hold:29
+7 Spiccato
+//! c=legato-light i=note-quarter o=note-hold:30
+34 Staccato Spiccato
+//! c=legato i=note-quarter o=note-hold:31
+36 Trill tone
+//! c=legato i=note-quarter o=note-hold:32
+37 Trill semitone
+//! c=legato i=note-quarter o=note-hold:33
+38 Trill semitone
+//! c=legato i=note-quarter o=note-hold:34
+39 Violin Det
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 mp LP
+//! c=long-light i=legato o=@8
+20 Legato Slow mp
+//! c=long-light i=note-quarter o=@9
+35 Detache Long 2,5 mf
+//! c=long-light i=spiccato o=@10
+42 Spiccato dry alt
+//! c=long-light i=staccato o=@11
+45 Staccato 0,4 p
+//! c=long-dark i=trill-min2 o=@14
+70 Trills Half Step VS
+//! c=long-dark i=trill-maj2 o=@15
+71 Trills Half Step Fast VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Solo" n="Viola"
+//! m="For use with a multi patch, part/chan 1 = Viola Multi KS, parts 2-16 will map by channel"
+//! id=4153fee4-d039-4a8d-bfac-9c93db08b3ba
+Bank * * Solo Viola
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain Mood
+//! c=legato i=note-whole o=note-hold:26
+4 Sustain Accents
+//! c=legato-light i=note-quarter o=note-hold:27
+34 Detache 0,5
+//! c=legato-light i=note-quarter o=note-hold:28
+36 Detache 1,0
+//! c=legato-light i=note-quarter o=note-hold:29
+37 Detache 1,8
+//! c=legato-dark i=legato o=note-hold:30
+32 Legato
+//! c=legato-dark i=legato o=note-hold:31
+31 Legato Slow
+//! c=legato-dark i=staccato o=note-hold:32
+44 Staccato
+//! c=legato-dark i=spiccato o=note-hold:33
+46 Spiccato
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain mp LP
+//! c=long-light i=legato o=@8
+20 Legato Fast mf
+//! c=long-light i=note-quarter o=@9
+35 Detache 3,5 mf
+//! c=long-light i=spiccato o=@10
+42 Spiccato 2
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato mf
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Solo" n="Cello"
+//! m="For use with a multi patch, part/chan 1 = Cello Multi KS, parts 2-16 will map by channel"
+//! id=16ccc8a3-962d-4b85-8f49-46752d9b586e
+Bank * * Solo Cello
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain Espressivo
+//! c=legato-light i=note-quarter o=note-hold:26
+34 Detache 2,3
+//! c=legato-light i=note-quarter o=note-hold:27
+36 Detache 1,9
+//! c=legato-light i=note-quarter o=note-hold:28
+37 Detache 3,5
+//! c=legato-light i=note-quarter o=note-hold:29
+38 Detache 4,0
+//! c=legato-dark i=legato o=note-hold:30
+33 Legato Fast
+//! c=legato-dark i=spiccato o=note-hold:31
+43 Spiccato
+//! c=legato-dark i=staccato o=note-hold:32
+44 Staccato mf
+//! c=legato-dark i=staccato o=note-hold:33
+46 Staccato Vivaldo
+//! c=legato-dark i=spiccato o=note-hold:34
+52 Spiccato Fast
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain mp LP
+//! c=long i=note-whole o=@4
+4 Sustain mf LP
+//! c=long-light i=legato o=@8
+20 Legato Normal
+//! c=long-light i=note-quarter o=@9
+35 Detache 1,5
+//! c=long-light i=spiccato o=@10
+42 Spiccato Forzato
+//! c=long-dark i=trill-min2 o=@14
+70 Trills 4,5
+//! c=long-dark i=trill-maj2 o=@15
+71 Trills Whole Step
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Strings Solo" n="Bass"
+//! m="For use with a multi patch, part/chan 1 = Bass Multi KS, parts 2-16 will map by channel"
+//! id=126e2701-6105-46ef-a162-e3d2acd3d6c4
+Bank * * Solo Bass
+//! c=legato i=note-whole o=note-hold:72
+1 Sustain
+//! c=legato i=note-whole o=note-hold:73
+3 Sustain 5,5 d
+//! c=legato i=note-whole o=note-hold:74
+4 Sustain 5,5 u
+//! c=legato-light i=note-quarter o=note-hold:75
+34 Detache 1,0
+//! c=legato-light i=note-quarter o=note-hold:76
+36 Detache 2,0
+//! c=legato-light i=note-quarter o=note-hold:77
+37 Detache 2,5
+//! c=legato-light i=note-quarter o=note-hold:78
+38 Detache 3,0
+//! c=legato-dark i=note-quarter o=note-hold:79
+39 Overtones
+//! c=legato-dark i=Spiccato o=note-hold:80
+16 Spiccato
+//! c=legato-dark i=staccato o=note-hold:81
+44 Staccato d
+//! c=legato-dark i=staccato o=note-hold:82
+52 Staccato u
+//! c=legato-dark i=staccato o=note-hold:83
+18 Staccato Wide
+//! c=legato-dark i=pizz o=note-hold:84
+56 Pizzicato Vitous
+//! c=legato-dark i=pizz o=note-hold:85
+11 Pizzicato
+//! c=legato-dark i=legato o=note-hold:86
+33 Legato Fast
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 mf d LP
+//! c=long i=note-whole o=@4
+5 Sustain 5,5 mf u LP
+//! c=long-dark i=pizz-bartok o=@13
+57 Pizzicato
+//! c=long-dark i=note-whole o=@14
+70 Sustain 5,5 mp d LP
+//! c=long-dark i=note-whole o=@15
+71 Sustain 5,5 mp u LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="Trumpets"
+//! m="For use with a multi patch, part/chan 1 = 3 Trumpets Multi KS, parts 2-16 will map by channel"
+//! id=38374873-55b6-4045-b288-35760bf64ba3
+Bank * * Ensemble Trumpets
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain ff
+//! c=legato i=portato o=note-hold:26
+4 Portato 0,5
+//! c=legato i=portato o=note-hold:27
+5 Portato 1,0
+//! c=legato i=portato o=note-hold:28
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:29
+7 Portato 2,5
+//! c=legato i=staccato o=note-hold:30
+44 Staccato
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 7,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 4,5
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="Trumpets Port"
+//! m="For use with a multi patch, part/chan 1 = 3 Trumpets Port KS, parts 2-16 will map by channel"
+//! id=67eb2f88-29a3-4c5d-9235-fda81e4d82e0
+Bank * * Ensemble Trumpets Port
+//! c=legato i=portato o=note-hold:24
+4 Portato 0,5
+//! c=legato i=portato o=note-hold:25
+5 Portato 1,0
+//! c=legato i=portato o=note-hold:26
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:27
+7 Portato 2,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 7,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 4,5
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="Trumpets Port Mute"
+//! m="For use with a multi patch, part/chan 1 = 3 Trumpets Port Mute KS, parts 2-16 will map by channel"
+//! id=3d1be816-6fb4-41ac-8d66-ebb2438ef0d1
+Bank * * Ensemble Trumpets Port Mute
+//! c=legato i=portato o=note-hold:24
+4 Portato 1,0
+//! c=legato i=portato o=note-hold:25
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:26
+6 Portato 3,0
+//! c=legato i=portato o=note-hold:27
+7 Portato 3,0 LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 7,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato mute 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="French Horns"
+//! m="For use with a multi patch, part/chan 1 = 4 French Horns Multi KS, parts 2-16 will map by channel"
+//! id=29547156-f9e2-4d5b-b8fc-0f1a0c8d3b19
+Bank * * Ensemble French Horns
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain ff
+//! c=legato i=portato o=note-hold:26
+4 Portato 1,0
+//! c=legato i=portato o=note-hold:27
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:28
+6 Portato 3,0
+//! c=legato i=staccato o=note-hold:29
+44 Staccato
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long i=note-whole o=@3
+7 Sustain 7,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato VS
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="French Horns Port"
+//! m="For use with a multi patch, part/chan 1 = 4 French Horns Port KS, parts 2-16 will map by channel"
+//! id=bb13e1a2-bae3-433c-9ce4-0a979d9d4bee
+Bank * * Ensemble French Horns Port
+//! c=legato i=portato o=note-hold:24
+4 Portato 1,0
+//! c=legato i=portato o=note-hold:25
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:26
+6 Portato 3,0
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long i=note-whole o=@3
+7 Sustain 7,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato VS
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="Trombones"
+//! m="For use with a multi patch, part/chan 1 = 3 Trombones Multi KS, parts 2-16 will map by channel"
+//! id=f549f20d-b59c-4daf-9651-65d9f942bea4
+Bank * * Ensemble Trombones
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain ff
+//! c=legato i=portato o=note-hold:26
+4 Portato 1,0
+//! c=legato i=portato o=note-hold:27
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:28
+6 Portato 3,0
+//! c=legato i=staccato o=note-hold:29
+44 Staccato
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 7,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@10
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@12
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@13
+52 Portato 3,0 VS
+//! c=long-light i=portato o=@14
+53 Portato Port A VS
+//! c=long-light i=portato o=@15
+54 Portato Port B VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Ensemble" n="Trombone and Tuba"
+//! m="For use with a multi patch, part/chan 1 = Trombone & Tuba Multi KS, parts 2-16 will map by channel"
+//! id=8e073b85-e146-42cd-a5c2-06af10008d6d
+Bank * * Trombone & Tuba
+//! c=legato i=note-whole o=note-hold:48
+1 Sustain
+//! c=legato i=note-whole o=note-hold:49
+3 Sustain ff
+//! c=legato i=staccato o=note-hold:50
+44 Staccato
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 LP
+//! c=long-light i=note_whole o=@4
+45 Forte
+//! c=long-light i=staccato o=@11
+46 Staccato
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="1st Trumpet"
+//! m="For use with a multi patch, part/chan 1 = 1st Trumpet Multi KS, parts 2-16 will map by channel"
+//! id=3e4b881d-d7a9-4677-8620-7799c6263cf0
+Bank * * Solo 1st Trumpet
+//! c=legato i=portato o=note-hold:24
+4 Portato 3,0
+//! c=legato i=portato o=note-hold:25
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:26
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:27
+33 Legato Fast
+//! c=legato i=portato o=note-hold:28
+44 Staccato mf
+//! c=legato i=staccato o=note-hold:29
+46 Staccato p
+
+//! spacer=1
+
+//! c=long-light i=legato o=@8
+20 Legato Normal
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato ff LP
+//! c=long-light i=portato o=@13
+51 Portato mf 3,5 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="1st Trumpet Port"
+//! m="For use with a multi patch, part/chan 1 = 1st Trumpet Port KS, parts 2-16 will map by channel"
+//! id=c039d482-6720-4c5b-b696-1b8910f4d41d
+Bank * * Solo 1st Trumpet Port
+//! c=legato i=portato o=note-hold:24
+4 Portato 1,5
+//! c=legato i=portato o=note-hold:25
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:26
+6 Portato 3,0
+//! c=legato i=portato o=note-hold:27
+34 Portato 3,5
+//! c=legato i=portato o=note-hold:28
+35 Portato 3,5 LP
+//! c=legato i=portato o=note-hold:29
+36 Portato ff
+//! c=legato i=portato o=note-hold:30
+37 Portato ff LP
+//! c=legato i=portato o=note-hold:31
+38 Portato 4,0
+
+//! spacer=1
+
+//! c=long-light i=legato o=@8
+20 Legato Med Fast
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato ff LP
+//! c=long-light i=portato o=@13
+51 Portato mf 3,5 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="1st Trumpet Legato"
+//! m="For use with a multi patch, part/chan 1 = 1st Trumpet Legato KS, parts 2-16 will map by channel"
+//! id=c07d3bbd-105a-49ba-bcfd-4305ad8131c3
+Bank * * Solo 1st Trumpet Legato
+//! c=legato i=legato o=note-hold:24
+4 Legato Slow
+//! c=legato i=legato o=note-hold:25
+5 Legato Normal
+//! c=legato i=legato o=note-hold:26
+6 Legato Med Fast
+//! c=legato i=legato o=note-hold:27
+33 Legato Fast
+//! c=legato i=legato o=note-hold:28
+34 Legato Faster
+
+//! spacer=1
+
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato ff LP
+//! c=long-light i=portato o=@13
+51 Portato mf 3,5 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="2nd Trumpet"
+//! m="For use with a multi patch, part/chan 1 = 2nd Trumpet Multi KS, parts 2-16 will map by channel"
+//! id=10aa58c8-4813-45a0-9d1e-e0ee490b9894
+Bank * * Solo 2nd Trumpet
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain mp 5,0
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain p 5,0
+//! c=legato i=note-whole o=note-hold:26
+4 Sustain mf 4,0
+//! c=legato i=portato o=note-hold:27
+5 Portato 4,0
+//! c=legato i=portato o=note-hold:28
+6 Portato 3,0
+//! c=legato i=portato o=note-hold:29
+7 Portato 1,5
+//! c=legato i=staccato o=note-hold:30
+44 Staccato mf
+//! c=legato i=staccato o=note-hold:31
+46 Staccato p
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato ff LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="2nd Trumpet Port"
+//! m="For use with a multi patch, part/chan 1 = 2nd Trumpet Port KS, parts 2-16 will map by channel"
+//! id=07102798-eef7-4e61-a331-789acd2e2363
+Bank * * Solo 2nd Trumpet Port
+//! c=legato i=portato o=note-hold:24
+5 Portato 1,5
+//! c=legato i=portato o=note-hold:25
+6 Portato 3,0
+//! c=legato i=portato o=note-hold:26
+7 Portato 4,0
+//! c=legato i=portato o=note-hold:27
+51 Portato ff
+//! c=legato i=portato o=note-hold:28
+52 Portato ff LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="French Horn"
+//! m="For use with a multi patch, part/chan 1 = French Horn Multi KS, parts 2-16 will map by channel"
+//! id=443f345b-6d1b-438e-9bb1-7ad8e0b41278
+Bank * * Solo French Horn
+//! c=legato i=note-whole o=note-hold:84
+1 Sustain 4,0 mf
+//! c=legato i=note-whole o=note-hold:85
+3 Sustain 4,0 mp
+//! c=legato i=note-whole o=note-hold:86
+4 Sustain 4,0 p
+//! c=legato i=portato o=note-hold:87
+6 Portato ff
+//! c=legato i=portato o=note-hold:88
+7 Portato 3,5 p
+//! c=legato i=staccato o=note-hold:89
+44 Staccato mf
+//! c=legato i=staccato o=note-hold:90
+46 Staccato p
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 VS
+//! c=long i=note-whole o=@3
+5 Sustain 4,0 LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 1,5
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="French Horn Port"
+//! m="For use with a multi patch, part/chan 1 = French Horn Port KS, parts 2-16 will map by channel"
+//! id=f6922c52-bae0-4376-99fe-d681351c18cf
+Bank * * Solo French Horn Port
+//! c=legato i=portato o=note-hold:24
+5 Portato 2,0
+//! c=legato i=portato o=note-hold:25
+6 Portato 3,5
+//! c=legato i=portato o=note-hold:26
+7 Portato ff
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 VS
+//! c=long i=note-whole o=@3
+3 Sustain 4,0 LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 1,5
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Trombone"
+//! m="For use with a multi patch, part/chan 1 = Trombone Multi KS, parts 2-16 will map by channel"
+//! id=fe46116d-60a6-448e-8a0a-17676e8b79fa
+Bank * * Solo Trombone
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain 6,0 mf
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain 5,0 ff
+//! c=legato i=note-whole o=note-hold:26
+4 Sustain 5,0 p
+//! c=legato i=portato o=note-hold:27
+5 Portato 3,5 ff
+//! c=legato i=portato o=note-hold:28
+6 Portato 2,5
+//! c=legato i=portato o=note-hold:29
+7 Portato 1,5
+//! c=legato i=staccato o=note-hold:30
+44 Staccato ff
+//! c=legato i=staccato o=note-hold:31
+46 Staccato mf
+//! c=legato i=staccato o=note-hold:32
+47 Staccato p
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato p 4,5 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Trombone Port"
+//! m="For use with a multi patch, part/chan 1 = Trombone Port KS, parts 2-16 will map by channel"
+//! id=5de7923d-fea8-4ee1-83af-18dbaa8e7e86
+Bank * * Solo Trombone Port
+//! c=legato i=portato o=note-hold:24
+5 Portato 1,5
+//! c=legato i=portato o=note-hold:25
+6 Portato 2,5
+//! c=legato i=portato o=note-hold:26
+7 Portato 4,5
+//! c=legato i=portato o=note-hold:27
+51 Portato 4,5 LP
+//! c=legato i=portato o=note-hold:28
+52 Portato 3,5 ff
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato p 4,5 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Trombone Sustain"
+//! m="For use with a multi patch, part/chan 1 = Trombone Sustain KS, parts 2-16 will map by channel"
+//! id=4a7235cd-4401-4602-8f83-f48d22110f40
+Bank * * Solo Trombone Sustain
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain 5,0
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain 6,0
+//! c=legato i=note-whole o=note-hold:26
+4 Sustain 6,0 LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato p 4,5 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Bass Trombone"
+//! m="For use with a multi patch, part/chan 1 = Bass Trombone Multi KS, parts 2-16 will map by channel"
+//! id=6b9c4c80-09be-4a74-a26d-b3111d0604dc
+Bank * * Solo Bass Trombone
+//! c=legato i=portato o=note-hold:72
+6 Portato 4,0 mf
+//! c=legato i=portato o=note-hold:73
+7 Portato 4,0 p
+//! c=legato i=staccato o=note-hold:74
+44 Staccato ff
+//! c=legato i=staccato o=note-hold:75
+46 Staccato mf
+
+//! spacer=1
+
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato LP VS
+//! c=long-light i=portato o=@13
+51 Portato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Bass Trombone Port"
+//! m="For use with a multi patch, part/chan 1 = Bass Trombone Port KS, parts 2-16 will map by channel"
+//! id=73cfa772-c06d-43bb-b85e-668d8bea0927
+Bank * * Solo Bass Trombone Port
+//! c=legato i=portato o=note:24
+6 Portato 4,0 mf
+//! c=legato i=portato o=note:25
+7 Portato 4,0 mf LP
+//! c=legato i=portato o=note:26
+44 Portato 4,0 p
+//! c=legato i=portato o=note:27
+46 Portato 4,0 p LP
+//! c=legato i=portato o=note:28
+47 Portato 3,0 ff
+
+//! spacer=1
+
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato LP VS
+//! c=long-light i=portato o=@13
+51 Portato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Tuba"
+//! m="For use with a multi patch, part/chan 1 = Tuba Multi KS, parts 2-16 will map by channel"
+//! id=b71c9dc8-e38c-4681-902e-065f9edd07de
+Bank * * Solo Tuba
+//! c=legato i=note-whole o=note-hold:84
+1 Sustain 5,0 p
+//! c=legato i=portato o=note-hold:85
+4 Portato ff
+//! c=legato i=portato o=note-hold:86
+5 Portato 3,0 mf
+//! c=legato i=staccato o=note-hold:87
+44 Staccato f
+//! c=legato i=staccato o=note-hold:88
+46 Staccato mf
+//! c=legato i=staccato o=note-hold:89
+47 Staccato p
+//! c=legato i=legato o=note-hold:90
+6 Legato Fastest
+//! c=legato i=legato o=note-hold:91
+7 Legato Fast
+//! c=legato i=legato o=note-hold:92
+8 Legato Normal
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Tuba Sustain"
+//! m="For use with a multi patch, part/chan 1 = Tuba Sustain KS, parts 2-16 will map by channel"
+//! id=042e1422-8757-45e7-8612-77fd2d18b8bb
+Bank * * Solo Tuba Sustain
+//! c=legato i=note-whole o=note:24
+1 Sustain
+//! c=legato i=note-whole o=note:25
+3 Sustain LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Tuba Port"
+//! m="For use with a multi patch, part/chan 1 = Tuba Port KS, parts 2-16 will map by channel"
+//! id=127fd109-66ff-40c8-bf22-c667f9aa6eb7
+Bank * * Solo Tuba Port
+//! c=legato i=portato o=note:24
+3 Portato 1,0
+//! c=legato i=portato o=note:25
+4 Portato 2,0
+//! c=legato i=portato o=note:26
+5 Portato 3,0
+//! c=legato i=portato o=note:27
+6 Portato 3,0 mf
+//! c=legato i=portato o=note:28
+7 Portato mf LP
+//! c=legato i=portato o=note:29
+8 Portato 1,5 f
+//! c=legato i=portato o=note:30
+9 Portato ff
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Brass Solo" n="Tuba Legato"
+//! m="For use with a multi patch, part/chan 1 = Tuba Legato KS, parts 2-16 will map by channel"
+//! id=8e9b3812-3bca-4f22-a5b4-8dbd18d396a6
+Bank * * Solo Tuba Legato
+//! c=legato i=legato o=note-hold:24
+6 Legato Normal
+//! c=legato i=legato o=note-hold:25
+7 Legato Fast
+//! c=legato i=legato o=note-hold:26
+8 Legato Faster
+//! c=legato i=legato o=note-hold:27
+9 Legato Fastest
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Flutes"
+//! m="For use with a multi patch, part/chan 1 = 3 Flutes Multi KS, parts 2-16 will map by channel"
+//! id=481123d0-a627-439d-92d3-a3f572cf0ead
+Bank * * Ensemble Flutes
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain LP
+//! c=legato i=staccato o=note-hold:26
+44 Staccato mf
+//! c=legato i=staccato o=note-hold:27
+46 Staccato mp
+//! c=legato i=staccato o=note-hold:28
+47 Staccato p
+//! c=legato i=portato o=note-hold:29
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:30
+7 Portato 2,0
+//! c=legato i=portato o=note-hold:31
+8 Portato 3,0
+//! c=legato i=portato o=note-hold:32
+9 Portato 3,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 6,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Flutes Port"
+//! m="For use with a multi patch, part/chan 1 = 3 Flutes Port KS, parts 2-16 will map by channel"
+//! id=c8c9f294-2efc-4b48-ac1f-6ac062c5fbaf
+Bank * * Ensemble Flutes Port
+//! c=legato i=portato o=note-hold:24
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:25
+7 Portato 2,0
+//! c=legato i=portato o=note-hold:26
+8 Portato 3,0
+//! c=legato i=portato o=note-hold:27
+9 Portato 3,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 6,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Piccolos"
+//! m="For use with a multi patch, part/chan 1 = 3 Piccolos Multi KS, parts 2-16 will map by channel"
+//! id=623e34ec-d6c3-4e7c-abd1-5b94dddc734f
+Bank * * Ensemble Piccolos
+//! c=legato i=cresc-half o=note-hold:24
+1 Crescendo
+//! c=legato i=staccato o=note-hold:25
+44 Staccato
+//! c=legato i=portato o=note-hold:26
+50 Portato
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Clarinets"
+//! m="For use with a multi patch, part/chan 1 = 3 Clarinets Multi KS, parts 2-16 will map by channel"
+//! id=91129e92-c134-4b16-8d43-ee315edf5984
+Bank * * Ensemble Clarinets
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain LP
+//! c=legato i=staccato o=note-hold:26
+44 Staccato
+//! c=legato i=staccato o=note-hold:27
+46 Staccato p
+//! c=legato i=staccato o=note-hold:28
+47 Staccato mf
+//! c=legato i=portato o=note-hold:29
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:30
+7 Portato 1,2
+//! c=legato i=portato o=note-hold:31
+8 Portato 2,0
+//! c=legato i=portato o=note-hold:32
+9 Portato 3,0
+//! c=legato i=portato o=note-hold:33
+10 Portato 3,0 LP
+//! c=legato i=portato o=note-hold:34
+11 Portato 3,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato mf
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Clarinets Port"
+//! m="For use with a multi patch, part/chan 1 = 3 Clarinets Port KS, parts 2-16 will map by channel"
+//! id=873c3aae-cdd8-4965-8374-99c089e15bd4
+Bank * * Ensemble Clarinets Port
+//! c=legato i=portato o=note-hold:24
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:25
+7 Portato 1,2
+//! c=legato i=portato o=note-hold:26
+8 Portato 2,0
+//! c=legato i=portato o=note-hold:27
+9 Portato 3,0
+//! c=legato i=portato o=note-hold:28
+10 Portato 3,0 LP
+//! c=legato i=portato o=note-hold:29
+11 Portato 3,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato mf
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Oboes"
+//! m="For use with a multi patch, part/chan 1 = 3 Oboes Multi KS, parts 2-16 will map by channel"
+//! id=b9511ef6-6918-4bc0-9914-9f9ea9bfbe69
+Bank * * Ensemble Oboes
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain LP
+//! c=legato-dark i=staccato o=note-hold:26
+44 Staccato
+//! c=legato-dark i=staccato o=note-hold:27
+46 Staccato shp
+//! c=legato i=portato o=note-hold:28
+6 Portato 1,0 mf
+//! c=legato i=portato o=note-hold:29
+7 Portato 1,0 mp
+//! c=legato i=portato o=note-hold:30
+8 Portato 1,2
+//! c=legato i=portato o=note-hold:31
+9 Portato 2,0 mf
+//! c=legato i=portato o=note-hold:32
+10 Portato 2,0 mp
+//! c=legato i=portato o=note-hold:33
+11 Portato 3,0 mf
+//! c=legato i=portato o=note-hold:34
+12 Portato 3,0 mp
+//! c=legato i=portato o=note-hold:35
+13 Portato 3,0 LP
+//! c=legato i=portato o=note-hold:36
+14 Portato 4,0
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 3,0 mp LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="English Horns"
+//! m="For use with a multi patch, parts 2-16 will map by channel"
+//! id=9ba8d12d-a08c-4935-9fa5-7d519daf5097
+Bank * * Ensemble English Horns
+//! c=long i=note-whole o=@2
+2 Sustain 6,0
+//! c=long i=note-whole o=@3
+3 Sustain 6,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato
+//! c=long-light i=portato o=@12
+50 Portato
+//! c=long-light i=portato o=@13
+51 Portato Espr
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Bassoons"
+//! m="For use with a multi patch, part/chan 1 = 3 Bassoons Multi KS, parts 2-16 will map by channel"
+//! id=4d6a2cb0-44f6-4fc3-abfd-2db3a5f60959
+Bank * * Ensemble Bassoons
+//! c=legato i=note-whole o=note-hold:84
+1 Sustain 6,0
+//! c=legato i=note-whole o=note-hold:85
+3 Sustain 6,0 LP
+//! c=legato-dark i=staccato o=note-hold:86
+44 Staccato mf
+//! c=legato-dark i=staccato o=note-hold:87
+46 Staccato mf shp
+//! c=legato-dark i=staccato o=note-hold:88
+47 Staccato mp sht
+//! c=legato-dark i=staccato o=note-hold:89
+48 Staccato mf sht
+//! c=legato i=portato o=note-hold:90
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:91
+7 Portato 2,0
+//! c=legato i=portato o=note-hold:92
+8 Portato 3,0
+//! c=legato i=portato o=note-hold:93
+9 Portato 3,0 LP
+//! c=legato i=portato o=note-hold:94
+10 Portato 4,0
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 6,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato mf
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Ensemble" n="Bassoons Port"
+//! m="For use with a multi patch, part/chan 1 = 3 Bassoons Port KS, parts 2-16 will map by channel"
+//! id=86c20874-6420-40f6-84ab-ef6d2d59eded
+Bank * * Ensemble Bassoons Port
+//! c=legato i=portato o=note-hold:84
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:85
+7 Portato 2,0
+//! c=legato i=portato o=note-hold:86
+8 Portato 3,0
+//! c=legato i=portato o=note-hold:87
+9 Portato 3,0 LP
+//! c=legato i=portato o=note-hold:88
+10 Portato 4,0
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 6,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato Forzato mf
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 2,0 VS
+//! c=long-light i=portato o=@14
+52 Portato 3,0 VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Flute"
+//! m="For use with a multi patch, part/chan 1 = Flute Multi KS, parts 2-16 will map by channel"
+//! id=8808de75-719c-4ba9-96f2-b9f6c81976ba
+Bank * * Solo Flute
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato-dark i=staccato o=note-hold:25
+44 Staccato
+//! c=legato i=portato o=note-hold:26
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:27
+7 Portato 2,5
+//! c=legato i=portato o=note-hold:28
+8 Portato 3,5
+//! c=legato i=portato o=note-hold:29
+9 Portato 3,5 LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Flute Port"
+//! m="For use with a multi patch, part/chan 1 = Flute Port KS, parts 2-16 will map by channel"
+//! id=e69cbea3-8aaf-4a59-8ca0-1b618ef72742
+Bank * * Solo Flute Port
+//! c=legato i=portato o=note-hold:24
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:25
+7 Portato 2,5
+//! c=legato i=portato o=note-hold:26
+8 Portato 3,5
+//! c=legato i=portato o=note-hold:27
+9 Portato 3,5 LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Piccolo"
+//! m="For use with a multi patch, part/chan 1 = Piccolo Multi KS, parts 2-16 will map by channel"
+//! id=3e0d6468-4eb4-40f1-bb8d-78e149f71c83
+Bank * * Solo Piccolo
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain LP
+//! c=legato i=staccato o=note-hold:26
+44 Staccato
+//! c=legato i=staccato o=note-hold:27
+52 Staccato ff
+//! c=legato i=portato o=note-hold:28
+50 Portato ff
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 VS
+//! c=long i=note-whole o=@3
+4 Sustain 4,0 LP VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Clarinet"
+//! m="For use with a multi patch, part/chan 1 = Clarinet Multi KS, parts 2-16 will map by channel"
+//! id=fe11b409-f0c6-4bff-af65-a2b5ac1f58ac
+Bank * * Solo Clarinet
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain LP
+//! c=legato-dark i=staccato o=note-hold:26
+44 Staccato
+//! c=legato-dark i=staccato o=note-hold:27
+46 Staccato shp
+//! c=legato i=portato o=note-hold:28
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:29
+7 Portato 2,5
+//! c=legato i=portato o=note-hold:30
+8 Portato long
+//! c=legato i=portato o=note-hold:31
+9 Portato long LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,5 VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=staccato o=@12
+47 Staccato Run VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Clarinet Port"
+//! m="For use with a multi patch, part/chan 1 = Clarinet Port KS, parts 2-16 will map by channel"
+//! id=8085f19c-2213-493d-bf4a-4bce5d86d7a1
+Bank * * Solo Clarinet Port
+//! c=legato i=portato o=note-hold:24
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:25
+7 Portato 2,5
+//! c=legato i=portato o=note-hold:26
+8 Portato long
+//! c=legato i=portato o=note-hold:27
+9 Portato long LP
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,5 VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=staccato o=@12
+47 Staccato Run VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Bass Clarinet"
+//! m="For use with a multi patch, part/chan 1 = Bass Clarinet Multi KS, parts 2-16 will map by channel"
+//! id=9ae177af-6420-4134-afca-865dc7b7502d
+Bank * * Solo Bass Clarinet
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato-dark i=staccato o=note-hold:25
+44 Staccato
+//! c=legato-dark i=staccato o=note-hold:26
+46 Staccato f
+//! c=legato i=portato o=note-hold:27
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:28
+7 Portato 2,0
+//! c=legato i=portato o=note-hold:29
+8 Portato 3,0
+//! c=legato i=portato o=note-hold:30
+9 Portato 3,0 LP
+//! c=legato i=legato o=note-hold:31
+10 Legato fast
+//! c=legato i=legato o=note-hold:32
+11 Legato med fast
+//! c=legato i=legato o=note-hold:33
+12 Intervals
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long-light i=staccato o=@11
+45 Staccato 1 VS
+//! c=long-light i=staccato o=@12
+47 Staccato 2 VS
+//! c=long-light i=portato o=@13
+13 Portato 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Bass Clarinet Legato"
+//! m="For use with a multi patch, part/chan 1 = Bass Clarinet Legato KS, parts 2-16 will map by channel"
+//! id=dc9bde70-5197-4920-a927-5a77a008748e
+Bank * * Solo Bass Clarinet Legato
+//! c=legato i=legato o=note-hold:24
+10 Legato p
+//! c=legato i=legato o=note-hold:25
+11 Legato med fast
+//! c=legato i=legato o=note-hold:26
+12 Legato fast
+//! c=legato i=legato o=note-hold:27
+13 Legato faster
+//! c=legato i=legato o=note-hold:28
+14 Intervals
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain VS
+//! c=long-light i=staccato o=@11
+45 Staccato 1 VS
+//! c=long-light i=staccato o=@12
+47 Staccato 2 VS
+//! c=long-light i=portato o=@13
+15 Portato 3,0 mf LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Oboe"
+//! m="For use with a multi patch, part/chan 1 = Oboe Multi KS, parts 2-16 will map by channel"
+//! id=6f3ee2e4-0d6f-435a-abcd-50afaa737b86
+Bank * * Solo Oboe
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+4 Sustain LP
+//! c=legato-dark i=staccato o=note-hold:26
+44 Staccato
+//! c=legato-dark i=staccato o=note-hold:27
+46 Staccato ff
+//! c=legato i=portato o=note-hold:28
+6 Portato 1,5
+//! c=legato i=portato o=note-hold:29
+7 Portato 2,5
+//! c=legato i=portato o=note-hold:30
+8 Portato 5,0
+//! c=legato i=portato o=note-hold:31
+9 Portato 5,0 LP
+//! c=legato i=portato o=note-hold:32
+10 Portato 2,8 ff
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,0 VS
+//! c=long i=note-whole o=@3
+3 Sustain mp 5,0 LP
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+11 Portato 5,0 VS
+//! c=long-light i=portato o=@13
+12 Portato mf 5,0 LP
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="English Horn"
+//! m="For use with a multi patch, part/chan 1 = English Horn Multi KS, parts 2-16 will map by channel"
+//! id=56f1f408-8fc8-403b-a8f2-606b67383e9e
+Bank * * Solo English Horn
+//! c=legato i=note-whole o=note-hold:24
+1 Sustain
+//! c=legato i=note-whole o=note-hold:25
+3 Sustain LP
+//! c=legato-dark i=staccato o=note-hold:26
+44 Staccato
+//! c=legato-dark i=staccato o=note-hold:27
+46 Staccato Forz
+//! c=legato i=portato o=note-hold:28
+6 Portato 1,0
+//! c=legato i=portato o=note-hold:29
+7 Portato 1,5
+//! c=legato i=portato o=note-hold:30
+8 Portato 2,0
+//! c=legato i=portato o=note-hold:31
+9 Portato ff
+//! c=legato-dark i=legato o=note-hold:32
+31 Legato normal
+//! c=legato-dark i=legato o=note-hold:33
+32 Legato fast
+//! c=legato-dark i=legato o=note-hold:34
+33 Legato faster
+//! c=legato-dark i=legato o=note-hold:35
+34 Legato fastest
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 3,0 VS
+//! c=long i=note-whole o=@3
+4 Sustain LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 1,5 VS
+//! c=long-light i=portato o=@14
+52 Portato 2,0 VS
+//! c=long-light i=portato o=@15
+53 Portato ff 4,0 espr
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="English Horn Legato"
+//! m="For use with a multi patch, part/chan 1 = English Horn Legato KS, parts 2-16 will map by channel"
+//! id=1ecb8d10-13b9-4671-8337-295d2e033421
+Bank * * Solo English Horn Legato
+//! c=legato-dark i=legato o=note-hold:24
+31 Legato normal
+//! c=legato-dark i=legato o=note-hold:25
+32 Legato fast
+//! c=legato-dark i=legato o=note-hold:26
+33 Legato faster
+//! c=legato-dark i=legato o=note-hold:27
+34 Legato fastest
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 3,0 VS
+//! c=long i=note-whole o=@3
+4 Sustain LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+//! c=long-light i=portato o=@12
+50 Portato 1,0 VS
+//! c=long-light i=portato o=@13
+51 Portato 1,5 VS
+//! c=long-light i=portato o=@14
+52 Portato 2,0 VS
+//! c=long-light i=portato o=@15
+53 Portato ff 4,0 espr
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Bassoon"
+//! m="For use with a multi patch, part/chan 1 = Bassoon Multi KS, parts 2-16 will map by channel"
+//! id=5d7713e7-b31e-4635-a32d-bd9cdd8aa03c
+Bank * * Solo Bassoon
+//! c=legato i=note-whole o=note:24
+1 Sustain
+//! c=legato i=note-whole o=note:25
+3 Sustain LP
+//! c=legato i=note-whole o=note:26
+4 Sustain Espressivo
+//! c=legato-dark i=staccato o=note:27
+44 Staccato
+//! c=legato-dark i=staccato o=note:28
+46 Staccato shp
+//! c=legato i=portato o=note:29
+7 Portato 1,5
+//! c=legato i=portato o=note:30
+8 Portato 2,5
+//! c=legato-dark i=legato o=note:31
+31 Legato slow
+//! c=legato-dark i=legato o=note:32
+32 Legato fast
+//! c=legato-dark i=legato o=note:33
+33 Legato fastest
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 VS
+//! c=long i=note-whole o=@3
+5 Sustain 5,5 LP VS
+//! c=long i=note-whole o=@4
+6 Sustain mf 4,0 Espressivo
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Bassoon Port"
+//! m="For use with a multi patch, part/chan 1 = Bassoon Port KS, parts 2-16 will map by channel"
+//! id=516cca90-8054-431b-b30b-f6e40ca37303
+Bank * * Solo Bassoon Port
+//! c=legato i=portato o=note:24
+7 Portato 1,5
+//! c=legato i=portato o=note:25
+8 Portato 2,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 VS
+//! c=long i=note-whole o=@3
+5 Sustain 5,5 LP VS
+//! c=long i=note-whole o=@4
+6 Sustain mf 4,0 Espressivo
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Bassoon Legato"
+//! m="For use with a multi patch, part/chan 1 = Bassoon Legato KS, parts 2-16 will map by channel"
+//! id=2c91cd0c-2041-4cf0-8bc2-7a1d0c5ac1d2
+Bank * * Solo Bassoon Legato
+//! c=legato-dark i=legato o=note-hold:24
+31 Legato slow
+//! c=legato-dark i=legato o=note-hold:25
+32 Legato fast
+//! c=legato-dark i=legato o=note-hold:26
+33 Legato fastest
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 5,5 VS
+//! c=long i=note-whole o=@3
+5 Sustain 5,5 LP VS
+//! c=long i=note-whole o=@4
+6 Sustain mf 4,0 Espressivo
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Contrabassoon"
+//! m="For use with a multi patch, part/chan 1 = Contrabassoon Multi KS, parts 2-16 will map by channel"
+//! id=e6559099-1d1d-46e0-b713-65a1b936d48c
+Bank * * Solo Contrabassoon
+//! c=legato i=note-whole o=note-hold:60
+1 Sustain A
+//! c=legato i=note-whole o=note-hold:61
+3 Sustain B
+//! c=legato i=note-whole o=note-hold:62
+4 Sustain LP
+//! c=legato-dark i=staccato o=note-hold:63
+44 Staccato
+//! c=legato i=portato o=note-hold:64
+7 Portato 1,0
+//! c=legato i=portato o=note-hold:65
+8 Portato 2,0
+//! c=legato i=portato o=note-hold:66
+9 Portato 3,0
+//! c=legato i=portato o=note-hold:67
+10 Portato 3,5
+//! c=legato-dark i=legato o=note-hold:68
+31 Legato slow
+//! c=legato-dark i=legato o=note-hold:69
+32 Legato fast
+//! c=legato-dark i=legato o=note-hold:70
+33 Legato fastest
+//! c=legato-dark i=legato o=note-hold:71
+70 Trills
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 VS
+//! c=long i=note-whole o=@3
+5 Sustain 5,0 VS
+//! c=long i=note-whole o=@4
+6 Sustain LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Contrabassoon Port"
+//! m="For use with a multi patch, part/chan 1 = Contrabassoon Port KS, parts 2-16 will map by channel"
+//! id=908473dd-059e-4219-978a-ebdab29380f7
+Bank * * Solo Contrabassoon Port
+//! c=legato i=portato o=note-hold:60
+7 Portato 1,0
+//! c=legato i=portato o=note-hold:61
+8 Portato 2,0
+//! c=legato i=portato o=note-hold:62
+9 Portato 3,0
+//! c=legato i=portato o=note-hold:63
+10 Portato 3,5
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 VS
+//! c=long i=note-whole o=@3
+5 Sustain 5,0 VS
+//! c=long i=note-whole o=@4
+6 Sustain LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
+
+//! g="IK Multimedia/Miroslav Philharmonik 2/Woodwinds Solo" n="Contrabassoon Legato"
+//! m="For use with a multi patch, part/chan 1 = Contrabassoon Legato KS, parts 2-16 will map by channel"
+//! id=39c99b5c-6b77-4405-b78a-9e222c4cec3f
+Bank * * Solo Contrabassoon Legato
+//! c=legato-dark i=legato o=note-hold:60
+31 Legato slow
+//! c=legato-dark i=legato o=note-hold:61
+32 Legato normal
+//! c=legato-dark i=legato o=note-hold:62
+33 Legato fast
+//! c=legato-dark i=legato o=note-hold:63
+34 Legato faster
+//! c=legato-dark i=legato o=note-hold:64
+35 Legato fastest
+//! c=legato-dark i=legato o=note-hold:65
+70 Trills
+
+//! spacer=1
+
+//! c=long i=note-whole o=@2
+2 Sustain 4,0 VS
+//! c=long i=note-whole o=@3
+5 Sustain 5,0 VS
+//! c=long i=note-whole o=@4
+6 Sustain LP VS
+//! c=long-light i=staccato o=@11
+45 Staccato VS
