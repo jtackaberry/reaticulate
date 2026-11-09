@@ -531,14 +531,28 @@ function App:get_take_at_position(track, pos)
     if not track then
         return
     end
+    local eps = 1e-9
+    local fallback_item, fallback_take
     for idx = 0, reaper.CountTrackMediaItems(track) - 1 do
         local item = reaper.GetTrackMediaItem(track, idx)
         local startpos = reaper.GetMediaItemInfo_Value(item, 'D_POSITION')
         local endpos = startpos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
-        if pos >= startpos and pos < endpos then
-            return item, reaper.GetActiveTake(item)
+        if pos >= startpos - eps and pos <= endpos + eps then
+            local take = reaper.GetActiveTake(item)
+            if take then
+                if math.abs(pos - startpos) <= eps then
+                    -- Return immediately if found an item with a startpos at the cursor
+                    return item, take
+                end
+                -- Saves as fallback_item if an item is overlapping the cursor
+                fallback_item, fallback_take = item, take
+            end
+        elseif fallback_item then
+            -- If the item after the fallback_item falls outside the range, we return the fallback_item
+            return fallback_item, fallback_take
         end
     end
+    return fallback_item, fallback_take
 end
 
 -- Deletes all bank select or program change events at the given ppq. The caller passes an
